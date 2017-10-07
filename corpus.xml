@@ -1,2 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<teiCorpus xmlns:xi="http://www.w3.org/2001/XInclude">
+    <teiHeader>
+        <!-- HEADER INFORMATION FOR ENTIRE CORPUS HERE -->
+    </teiHeader>
+    <TEI>
+        <xi:include href="transcription1.xml" parse="xml"/>
+    </TEI>
+    <TEI>
+        <xi:include href="transcription2.xml" parse="xml"/>
+    </TEI>
+    <!-- FURTHER TRANSCRIPTION FILES HERE -->
+</teiCorpus>
 
