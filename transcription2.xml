@@ -1,647 +1,1334 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TEI>
-    <teiHeader>
-        <fileDesc>
-            <titleStmt>
-                <title> ... </title>
-                <respStmt corresp="...">
-                    <name>Eystein P. Thanisch</name>
-                    <resp>Transcriber</resp>
-                </respStmt>
-                <respStmt>
-                    <name> ... </name>
-                    <resp> ... </resp>
-                </respStmt> 
-                ...    
-            </titleStmt>
-            <publicationStmt>
-                <p> ... </p>
-            </publicationStmt>
-            <sourceDesc>
-                <msDesc>
-                    <msIdentifier sameAs="#..."/>
-                    <origin when="..." notBefore="..." notAfter="...">
-                        <p> ... </p>
-                    </origin>
-                    <history>
-                        <p> ... </p>
-                    </history>
-                    <msContents>
-                        <summary> ... </summary>
-                        <msItem n="..." resp="#..." when="..." notBefore="..." notAfter="...">
-                            <locus> ... </locus>
-                            <title> ... </title>
-                            <incipit> ... </incipit>
-                            <explicit> ... </explicit>
-                            <textLang mainLang="..." otherLangs="..."> ... </textLang>
-                            <note> ... </note>
-                            <msDesc>
-                                <msItem> ... </msItem>
-                            </msDesc>
-                            <biblFull>
-                                <profileDesc>
-                                    <textClass>
-                                        <keywords scheme="#FnaG">
-                                            <term> ... </term> 
-                                            ... 
-                                        </keywords>
-                                    </textClass>
-                                </profileDesc>
-                            </biblFull>
-                        </msItem> ... <ab>
-                            <physDesc>
-                                <additions>
-                                    <list>
-                                        <item n="..." resp="#...">
-                                            <locus from="..." to="..." scheme="..."
-                                                target="..."> 
-                                                ... 
-                                            </locus>
-                                            <p>
-                                                ... 
-                                            </p>
-                                        </item> 
-                                        ... 
-                                    </list>
-                                </additions>
-                            </physDesc>
-                        </ab>
-                    </msContents>
-                    <physDesc>
-                        <handDesc>
-                            <handNote scribeRef="#...">
-                                <locus from="..." to="..." scheme="..."> ... </locus>
-                            </handNote> 
-                            ... 
-                        </handDesc>
-                        <objectDesc>
-                            <supportDesc>
-                                <p> ... </p>
-                            </supportDesc>
-                            <foliation>
-                                <p> ... </p>
-                            </foliation>
-                            <condition>
-                                <p> ... </p>
-                            </condition>
-                        </objectDesc>
-                    </physDesc>
-                </msDesc>
-            </sourceDesc>
-        </fileDesc>
-        <revisionDesc>
-            <change when="..." who="..."> ... </change> ... </revisionDesc>
-    </teiHeader>
-    <body>
-        <div1 n="1" type="verse" corresp="#..." hand="...">
-            <pb n="iii"/>
-            <lb n="1"/>
-            <lg type="stanza" n="1">
-                <s>        
-                    <l n="a">
-                        <w>
-                            Aingeal
-                        </w>
-                        <w>
-                            de
-                        </w>
-                        <w>
-                            do<abbr cert="high">m</abbr>
-                        </w>
-                        <w>
-                            d<abbr cert="high">h</abbr>í<abbr cert="high">n</abbr>
-                        </w>    
-                    </l>
-                <l n="b">
-                    <w>
-                        fa<abbr cert="high">n</abbr>
-                    </w>
-                    <w>
-                        c<abbr cert="high">h</abbr>aíngin
-                    </w>
-                    <w>
-                        c<abbr cert="high">h</abbr>lé
-                    </w>
-                    <w>
-                        atc<abbr cert="high">h</abbr>ia<abbr cert="high">m</abbr>
-                    </w>.
-                    </l>
-                    <l n="c">
-                        <w>
-                            <choice>
-                                <sic>seact</sic>
-                                <corr>seacht</corr>
-                            </choice>
-                        </w>
-                        <w>
-                            naisde
-                        </w>
-                        <w>
-                            do<abbr cert="high">n</abbr>
-                        </w>
-                        <w>
-                            <choice>
-                                <sic>or</sic>
-                                <corr>ór</corr>
-                            </choice>
-                        </w>
-                    </l>
-                    <l n="d">
-                        <w>
-                            sluag
-                        </w>
-                        <w>
-                            <choice>
-                                <sic>nac</sic>
-                                <corr>nach</corr>
-                            </choice>
-                        </w>
-                        <w>
-                            blaisde
-                        </w>
-                        <lb n="2"/>
-                        <w>
-                            biad<abbr cert="high">h</abbr>
-                        </w>
-                    </l>
-                </s>
-            </lg>
-            <lg type="stanza" n="2">
-                <s>
-                    <l n="a">
-                        <w>
-                            Se<abbr cert="high">acht</abbr>
-                        </w>
-                        <w>
-                            ná<abbr cert="high">r</abbr>ć<abbr cert="high">h</abbr>ai<abbr cert="high">n</abbr>gíl
-                        </w>
-                        <w>
-                            a<abbr cert="high">n</abbr>d
-                        </w>
-                    </l>
-                    <l n="b">
-                        <w>
-                            na
-                        </w>
-                        <w>
-                            rath
-                        </w>
-                        <w>
-                            mainḋir
-                        </w>
-                        <w>
-                            liu<abbr cert="high">m</abbr>
-                        </w>
-                    </l>
-                    <l n="c">
-                        <w>
-                            Se<abbr cert="high">acht</abbr>
-                        </w>
-                        <w>
-                            <choice>
-                                <sic>cloi<abbr cert="high">m</abbr>d<abbr cert="high">h</abbr>e</sic>
-                                <corr>cloid<abbr cert="high">h</abbr>d<abbr cert="high">m</abbr>e</corr>
-                            </choice>
-                        </w>
-                        <w>
-                            na
-                        </w>
-                        <w>
-                            <choice>
-                                <sic>c<abbr cert="high">h</abbr>eall</sic>
-                                <corr>ceall</corr>
-                            </choice>
-                        </w>
-                    </l>
-                    <l n="d">
-                        <w>
-                            do<abbr cert="high">m</abbr>
-                        </w>
-                        <w>
-                            coi<abbr cert="high">m</abbr>d<abbr cert="high">h</abbr>e
-                        </w>
-                        <w>
-                            os
-                        </w>
-                        <w>
-                            ma
-                        </w>
-                        <w>
-                            c<abbr cert="high">h</abbr>i<abbr cert="high">n</abbr>d
-                        </w>
-                    </l>
-                </s>
-            </lg>
-            <lb n="3"/>
-            <lg type="stanza" n="3">
-                <s>
-                    <l n="a">
-                        <w>
-                            Se<abbr cert="high">acht</abbr>
-                        </w>
-                        <w>
-                            si<abbr cert="high">n</abbr>sir
-                        </w>
-                        <w>
-                            se<abbr cert="high">acht</abbr>
-                        </w>
-                        <w>
-                            sloig
-                        </w>
-                    </l>
-                    <l n="b">
-                        <w>
-                            <choice>
-                                <sic>nac</sic>
-                                <corr>nach</corr>
-                            </choice>
-                        </w>
-                        <w>
-                            m<abbr cert="high">h</abbr>illter
-                        </w>
-                        <w>
-                            me
-                        </w>
-                        <w>
-                            tríb<abbr cert="high">h</abbr>
-                        </w>
-                    </l>
-                    <l n="c">
-                        <w>
-                            se<abbr cert="high">acht</abbr>
-                        </w>
-                        <w>
-                            sgeit<abbr cert="high">h</abbr>
-                        </w>
-                        <w>
-                            a<abbr cert="high">r</abbr>    
-                        </w>
-                        <w>
-                            mo
-                        </w>
-                        <w>
-                            sgat<abbr cert="high">h</abbr>
-                        </w>
-                    </l>
-                    <l n="d">
-                        <w>
-                            na    
-                        </w>
-                        <w>
-                            cleit<abbr cert="high">h</abbr>
-                        </w>
-                        <w>
-                            go
-                        </w>
-                        <w>
-                            brat<abbr cert="high">h</abbr>
-                        </w>
-                        <lb n="4"/>
-                        <w>
-                            bíd
-                        </w>
-                    </l>    
-                </s>
-            </lg>
-            <lg type="stanza" n="4">
-                <s>
-                    <l n="a">
-                        <w>
-                            beit
-                        </w>
-                        <w>
-                            leam
-                        </w>
-                        <w>
-                            a
-                        </w>
-                        <w>
-                            d<abbr cert="high">h</abbr>ia
-                        </w>
-                        <w>
-                            d<abbr cert="high">h</abbr>il
-                        </w>
-                    </l>
-                    <l n="b">
-                        <w>
-                            im
-                        </w>
-                        <w>
-                            ci<abbr cert="high">n</abbr>ḋ
-                        </w>
-                        <w>
-                            cia
-                        </w>
-                        <w>
-                            roib<abbr cert="high">h</abbr>
-                        </w>
-                    </l>
-                    <l n="c">
-                        <w>
-                            beirt
-                        </w>
-                        <w>
-                            daing<abbr cert="high">h</abbr>ean
-                        </w>
-                        <w>
-                            <choice>
-                                <sic>nac</sic>
-                                <corr>nach</corr>
-                            </choice>
-                        </w>
-                        <w>
-                            dluig<abbr cert="high">h</abbr>
-                        </w>
-                    </l>
-                    <l n="d">
-                        <w>
-                            sea<abbr cert="high">cht</abbr>
-                        </w>
-                        <w>
-                            cuir
-                        </w>
-                        <w>
-                            aingil
-                        </w>
-                        <lb n="5"/>
-                        <w>
-                            a<abbr cert="high">ir</abbr>
-                        </w>
-                    </l>
-                </s>
-            </lg>
-            <lg type="stanza" n="5">
-                <s>
-                    <l n="a">
-                        <w>
-                            Cor
-                        </w>
-                        <w>
-                            dib<abbr cert="high">h</abbr>
-                        </w>
-                        <name type="personal">
-                            michel
-                        </name>
-                        <w>
-                            mor
-                        </w>
-                    </l>
-                    <l n="b">
-                        <w>
-                            a
-                        </w>
-                        <w>
-                            gloir
-                        </w>
-                        <w>
-                            ní
-                        </w>
-                        <w>
-                            gloir
-                        </w>
-                        <w>
-                            and
-                        </w>
-                    </l>
-                    <l n="c">
-                        <name type="personal">
-                            raphael
-                        </name>
-                        <w>
-                            <choice>
-                                <sic>doraid<abbr cert="high">h</abbr></sic>
-                                <corr>doráith</corr>
-                            </choice>                            
-                        </w>
-                        <w>
-                            ru<abbr cert="high">m</abbr>
-                        </w>
-                    </l>
-                    <l n="d">
-                        <w>
-                            <choice>
-                                <sic>scaphel</sic>
-                                <supp resp="#[O'Nolan]">scath-fhial</supp>
-                            </choice>
-                        </w>
-                        <w>
-                            blait<abbr cert="high">h</abbr>
-                        </w>
-                        <lb n="6"/>
-                        <w>
-                            a
-                        </w>
-                        <w>
-                            b<abbr cert="high">h</abbr>a<abbr cert="high">rr</abbr>
-                        </w>
-                    </l>
-                </s>
-            </lg>
-            <lg type="stanza" n="6">
-                <s>
-                    <l n="a">
-                        <w>
-                            Cor
-                        </w>
-                        <w>
-                            dib<abbr cert="high">h</abbr>
-                        </w>
-                        <name>
-                            uriel
-                        </name>
-                        <w>
-                            ám
-                        </w>
-                    </l>
-                    <l n="b">
-                        <w>
-                            <choice>
-                                <sic>renacgad</sic>
-                                <supp resp="#[O'Nolan]">re cech ngád</supp>
-                            </choice>
-                        </w>
-                        <w>
-                            <m>
-                                ro<abbr cert="high">m</abbr>
-                            </m>
-                            <m>
-                                feít<abbr cert="high">h</abbr>
-                            </m>
-                        </w>
-                    </l>
-                    <l n="c">
-                        <w>
-                            cor
-                        </w>
-                        <w>
-                            dib<abbr cert="high">h</abbr>
-                        </w>
-                        <name type="peraonal">
-                            sariel
-                        </name>
-                        <w>
-                            sruit<abbr cert="high">h</abbr>
-                        </w>
-                    </l>
-                    <l n="d">
-                        <w>
-                            ban<abbr cert="high">n</abbr>ia<abbr cert="high">m</abbr>
-                        </w>
-                        <w>
-                            de
-                        </w>
-                        <w>
-                            ara
-                        </w>
-                        <w>
-                            d<abbr cert="high">h</abbr>réic<abbr cert="high">h</abbr>
-                        </w>
-                    </l>
-                </s>
-            </lg>
-            <lb n="7"/>
-            <lg type="stanza" n="7">
-                <s>
-                    <l n="a">
-                        <w>
-                            Sea<abbr cert="high">cht</abbr>
-                        </w>
-                        <w>
-                            cuir
-                        </w>
-                        <w>
-                            ta<abbr cert="high">r</abbr>
-                        </w>
-                        <w>
-                            cea<abbr cert="high">n</abbr>d
-                        </w>
-                        <w>
-                            de
-                        </w>
-                    </l>
-                    <l n="b">
-                        <w>
-                            ma<abbr cert="high">r</abbr>
-                        </w>
-                        <w>
-                            as
-                        </w>
-                        <w>
-                            <choice>
-                                <sic>fear</sic>
-                                <corr>fearr</corr>
-                            </choice>
-                        </w>
-                        <w>
-                            fuil
-                        </w>
-                        <w>
-                            faí
-                        </w>
-                    </l>
-                    <l m="c">
-                        <w>
-                            ae<abbr cert="high">n</abbr>
-                        </w>
-                        <w>
-                            cor
-                        </w>
-                        <w>
-                            cea<abbr cert="high">n</abbr>d
-                        </w>
-                        <w>
-                            a
-                        </w>
-                        <w>
-                            cea<abbr cert="high">n</abbr>d
-                        </w>
-                    </l>
-                    <l n="d">
-                        <w>
-                            geb<abbr cert="high">h</abbr>a<abbr cert="high">r</abbr>
-                        </w>
-                        <w>
-                            lea<abbr cert="high">m</abbr>
-                        </w>
-                        <w>
-                            gac<abbr cert="high">h</abbr>
-                        </w>
-                        <w>
-                            laí
-                        </w>
-                    </l>
-                </s>
-            </lg>
-            <lb n="8"/>
-            <lg type="stanza" n="8">
-                <s>
-                    <l n="a">
-                      <name type="personal">
-                          Michel
-                      </name>
-                      <w>
-                          lea<abbr cert="high">m</abbr>
-                      </w>
-                      <w>
-                          <choice>
-                              <sic>gac</sic>
-                              <corr>gach</corr>
-                          </choice>
-                      </w>
-                      <w>
-                          luain
-                      </w>
-                    </l>
-                    <l n="b">
-                        <w>
-                            <choice>
-                                <sic>nac</sic>
-                                <corr>nach</corr>
-                            </choice>
-                        </w>
-                        <w>
-                            d
-                        </w>
-                        <w>
-                            icel
-                        </w>
-                        <w>
-                            dail
-                        </w>
-                    </l>
-                    <l n="c">
-                        <w>
-                            m
-                        </w>
-                        <w>
-                            ai<abbr cert="high">n</abbr>gil
-                        </w>
-                        <w>
-                            <m>fi<abbr cert="high">n</abbr>d</m>
-                            <m>sa</m>
-                        </w>
-                        <w>
-                            fei<abbr cert="high">n</abbr>
-                        </w>
-                    </l>
-                    <l n="d">
-                        <w>
-                            dai<abbr cert="high">n</abbr>g<abbr cert="high">h</abbr>i<abbr cert="high">n</abbr>
-                        </w>
-                        <w>
-                            <m>li<abbr cert="high">m</abbr></m>
-                            <m>sa</m>
-                        </w>
-                        <w>
-                            am
-                        </w>
-                        <w>
-                            lai<abbr cert="high">m</abbr>
-                        </w>
-                    </l>
-                </s>
-            </lg>
-            ...
-        </div1>        
-    </body>
+	<teiHeader>
+		<fileDesc>
+			<titleStmt>
+				<title> ... </title>
+				<respStmt corresp="...">
+					<name>Eystein P. Thanisch</name>
+					<resp>Transcriber</resp>
+				</respStmt>
+				<respStmt>
+					<name> ... </name>
+					<resp> ... </resp>
+				</respStmt> ... </titleStmt>
+			<publicationStmt>
+				<p> ... </p>
+			</publicationStmt>
+			<sourceDesc>
+				<msDesc>
+					<msIdentifier sameAs="#..."/>
+					<origin when="..." notBefore="..." notAfter="...">
+						<p> ... </p>
+					</origin>
+					<history>
+						<p> ... </p>
+					</history>
+					<msContents>
+						<summary> ... </summary>
+						<msItem n="..." resp="#..." when="..." notBefore="..." notAfter="...">
+							<locus> ... </locus>
+							<title> ... </title>
+							<incipit> ... </incipit>
+							<explicit> ... </explicit>
+							<textLang mainLang="..." otherLangs="..."> ... </textLang>
+							<note> ... </note>
+							<msDesc>
+								<msItem> ... </msItem>
+							</msDesc>
+							<biblFull>
+								<profileDesc>
+									<textClass>
+										<keywords scheme="#FnaG">
+											<term> ... </term> ... </keywords>
+									</textClass>
+								</profileDesc>
+							</biblFull>
+						</msItem> ... <ab>
+							<physDesc>
+								<additions>
+									<list>
+										<item n="..." resp="#...">
+											<locus from="..." to="..." scheme="..." target="...">
+												... </locus>
+											<p> ... </p>
+										</item> ... </list>
+								</additions>
+							</physDesc>
+						</ab>
+					</msContents>
+					<physDesc>
+						<handDesc>
+							<handNote scribeRef="#...">
+								<locus from="..." to="..." scheme="..."> ... </locus>
+							</handNote> ... </handDesc>
+						<objectDesc>
+							<supportDesc>
+								<p> ... </p>
+							</supportDesc>
+							<foliation>
+								<p> ... </p>
+							</foliation>
+							<condition>
+								<p> ... </p>
+							</condition>
+						</objectDesc>
+					</physDesc>
+				</msDesc>
+			</sourceDesc>
+		</fileDesc>
+		<revisionDesc>
+			<change when="..." who="..."> ... </change> ... </revisionDesc>
+	</teiHeader>
+	<body>
+		<div1 n="1" type="verse" corresp="#..." hand="...">
+			<pb n="iii"/>
+			<lb n="1"/>
+			<lg n="1" type="stanza">
+				<s>
+					<l n="a">
+						<w> Aingeal </w>
+						<w> de </w>
+						<w> do<abbr cert="high">m</abbr>
+						</w>
+						<w> d<abbr cert="high">h</abbr>í<abbr cert="high">n</abbr>
+						</w>
+					</l>
+					<l n="b">
+						<w> fa<abbr cert="high">n</abbr>
+						</w>
+						<w> c<abbr cert="high">h</abbr>aíngin </w>
+						<w> c<abbr cert="high">h</abbr>lé </w>
+						<w> atc<abbr cert="high">h</abbr>ia<abbr cert="high">m</abbr>
+						</w>
+					</l>
+					<l n="c">
+						<w>
+							<choice>
+								<sic>seact</sic>
+								<corr>seacht</corr>
+							</choice>
+						</w>
+						<w> naisde </w>
+						<w> do<abbr cert="high">n</abbr>
+						</w>
+						<w>
+							<choice>
+								<sic>or</sic>
+								<corr>ór</corr>
+							</choice>
+						</w>
+					</l>
+					<l n="d">
+						<w> sluag </w>
+						<w>
+							<choice>
+								<sic>nac</sic>
+								<corr>nach</corr>
+							</choice>
+						</w>
+						<w> blaisde </w>
+						<lb n="2"/>
+						<w> biad<abbr cert="high">h</abbr>
+						</w>
+					</l>
+				</s>
+			</lg>
+			<lg n="2" type="stanza">
+				<s>
+					<l n="a">
+						<w> Se<abbr cert="high">acht</abbr>
+						</w>
+						<w> ná<abbr cert="high">r</abbr>ć<abbr cert="high">h</abbr>ai<abbr
+								cert="high">n</abbr>gíl </w>
+						<w> a<abbr cert="high">n</abbr>d </w>
+					</l>
+					<l n="b">
+						<w> na </w>
+						<w> rath </w>
+						<w> mainḋir </w>
+						<w> liu<abbr cert="high">m</abbr>
+						</w>
+					</l>
+					<l n="c">
+						<w> Se<abbr cert="high">acht</abbr>
+						</w>
+						<w>
+							<choice>
+								<sic>cloi<abbr cert="high">m</abbr>d<abbr cert="high"
+									>h</abbr>e</sic>
+								<corr>cloid<abbr cert="high">h</abbr>d<abbr cert="high"
+									>m</abbr>e</corr>
+							</choice>
+						</w>
+						<w> na </w>
+						<w>
+							<choice>
+								<sic>c<abbr cert="high">h</abbr>eall</sic>
+								<corr>ceall</corr>
+							</choice>
+						</w>
+					</l>
+					<l n="d">
+						<w> do<abbr cert="high">m</abbr>
+						</w>
+						<w> coi<abbr cert="high">m</abbr>d<abbr cert="high">h</abbr>e </w>
+						<w> os </w>
+						<w> ma </w>
+						<w> c<abbr cert="high">h</abbr>i<abbr cert="high">n</abbr>d </w>
+					</l>
+				</s>
+			</lg>
+			<lb n="3"/>
+			<lg n="3" type="stanza">
+				<s>
+					<l n="a">
+						<w> Se<abbr cert="high">acht</abbr>
+						</w>
+						<w> si<abbr cert="high">n</abbr>sir </w>
+						<w> se<abbr cert="high">acht</abbr>
+						</w>
+						<w> sloig </w>
+					</l>
+					<l n="b">
+						<w>
+							<choice>
+								<sic>nac</sic>
+								<corr>nach</corr>
+							</choice>
+						</w>
+						<w> m<abbr cert="high">h</abbr>illter </w>
+						<w> me </w>
+						<w> tríb<abbr cert="high">h</abbr>
+						</w>
+					</l>
+					<l n="c">
+						<w> se<abbr cert="high">acht</abbr>
+						</w>
+						<w> sgeit<abbr cert="high">h</abbr>
+						</w>
+						<w> a<abbr cert="high">r</abbr>
+						</w>
+						<w> mo </w>
+						<w> sgat<abbr cert="high">h</abbr>
+						</w>
+					</l>
+					<l n="d">
+						<w> na </w>
+						<w> cleit<abbr cert="high">h</abbr>
+						</w>
+						<w> go </w>
+						<w> brat<abbr cert="high">h</abbr>
+						</w>
+						<lb n="4"/>
+						<w> bíd </w>
+					</l>
+				</s>
+			</lg>
+			<lg n="4" type="stanza">
+				<s>
+					<l n="a">
+						<w> beit </w>
+						<w> leam </w>
+						<w> a </w>
+						<w> d<abbr cert="high">h</abbr>ia </w>
+						<w> d<abbr cert="high">h</abbr>il </w>
+					</l>
+					<l n="b">
+						<w> im </w>
+						<w> ci<abbr cert="high">n</abbr>ḋ </w>
+						<w> cia </w>
+						<w> roib<abbr cert="high">h</abbr>
+						</w>
+					</l>
+					<l n="c">
+						<w> beirt </w>
+						<w> daing<abbr cert="high">h</abbr>ean </w>
+						<w>
+							<choice>
+								<sic>nac</sic>
+								<corr>nach</corr>
+							</choice>
+						</w>
+						<w> dluig<abbr cert="high">h</abbr>
+						</w>
+					</l>
+					<l n="d">
+						<w> sea<abbr cert="high">cht</abbr>
+						</w>
+						<w> cuir </w>
+						<w> aingil </w>
+						<lb n="5"/>
+						<w> a<abbr cert="high">ir</abbr>
+						</w>
+					</l>
+				</s>
+			</lg>
+			<lg n="5" type="stanza">
+				<s>
+					<l n="a">
+						<w> Cor </w>
+						<w> dib<abbr cert="high">h</abbr>
+						</w>
+						<name type="personal"> michel </name>
+						<w> mor </w>
+					</l>
+					<l n="b">
+						<w> a </w>
+						<w> gloir </w>
+						<w> ní </w>
+						<w> gloir </w>
+						<w> and </w>
+					</l>
+					<l n="c">
+						<name type="personal"> raphael </name>
+						<w>
+							<choice>
+								<sic>doraid<abbr cert="high">h</abbr></sic>
+								<corr>doráith</corr>
+							</choice>
+						</w>
+						<w> ru<abbr cert="high">m</abbr>
+						</w>
+					</l>
+					<l n="d">
+						<w>
+							<choice>
+								<sic>scaphel</sic>
+								<supp resp="#[O'Nolan]">scath-fhial</supp>
+							</choice>
+						</w>
+						<w> blait<abbr cert="high">h</abbr>
+						</w>
+						<lb n="6"/>
+						<w> a </w>
+						<w> b<abbr cert="high">h</abbr>a<abbr cert="high">rr</abbr>
+						</w>
+					</l>
+				</s>
+			</lg>
+			<lg n="6" type="stanza">
+				<s>
+					<l n="a">
+						<w> Cor </w>
+						<w> dib<abbr cert="high">h</abbr>
+						</w>
+						<name> uriel </name>
+						<w> ám </w>
+					</l>
+					<l n="b">
+						<w>
+							<choice>
+								<sic>renacgad</sic>
+								<supp resp="#[O'Nolan]">re cech ngád</supp>
+							</choice>
+						</w>
+						<w>
+							<m> ro<abbr cert="high">m</abbr>
+							</m>
+							<m> feít<abbr cert="high">h</abbr>
+							</m>
+						</w>
+					</l>
+					<l n="c">
+						<w> cor </w>
+						<w> dib<abbr cert="high">h</abbr>
+						</w>
+						<name type="personal"> sariel </name>
+						<w> sruit<abbr cert="high">h</abbr>
+						</w>
+					</l>
+					<l n="d">
+						<w> ban<abbr cert="high">n</abbr>ia<abbr cert="high">m</abbr>
+						</w>
+						<w> de </w>
+						<w> ara </w>
+						<w> d<abbr cert="high">h</abbr>réic<abbr cert="high">h</abbr>
+						</w>
+					</l>
+				</s>
+			</lg>
+			<lb n="7"/>
+			<lg n="7" type="stanza">
+				<s>
+					<l n="a">
+						<w> Sea<abbr cert="high">cht</abbr>
+						</w>
+						<w> cuir </w>
+						<w> ta<abbr cert="high">r</abbr>
+						</w>
+						<w> cea<abbr cert="high">n</abbr>d </w>
+						<w> de </w>
+					</l>
+					<l n="b">
+						<w> ma<abbr cert="high">r</abbr>
+						</w>
+						<w> as </w>
+						<w>
+							<choice>
+								<sic>fear</sic>
+								<corr>fearr</corr>
+							</choice>
+						</w>
+						<w> fuil </w>
+						<w> faí </w>
+					</l>
+					<l m="c">
+						<w> ae<abbr cert="high">n</abbr>
+						</w>
+						<w> cor </w>
+						<w> cea<abbr cert="high">n</abbr>d </w>
+						<w> a </w>
+						<w> cea<abbr cert="high">n</abbr>d </w>
+					</l>
+					<l n="d">
+						<w> geb<abbr cert="high">h</abbr>a<abbr cert="high">r</abbr>
+						</w>
+						<w> lea<abbr cert="high">m</abbr>
+						</w>
+						<w> gac<abbr cert="high">h</abbr>
+						</w>
+						<w> laí </w>
+					</l>
+				</s>
+			</lg>
+			<lb n="8"/>
+			<lg n="8" type="stanza">
+				<s>
+					<l n="a">
+						<name type="personal"> Michel </name>
+						<w> lea<abbr cert="high">m</abbr>
+						</w>
+						<w>
+							<choice>
+								<sic>gac</sic>
+								<corr>gach</corr>
+							</choice>
+						</w>
+						<w> luain </w>
+					</l>
+					<l n="b">
+						<w>
+							<choice>
+								<sic>nac</sic>
+								<corr>nach</corr>
+							</choice>
+						</w>
+						<w> d </w>
+						<w> icel </w>
+						<w> dail </w>
+					</l>
+					<l n="c">
+						<w> m </w>
+						<w> ai<abbr cert="high">n</abbr>gil </w>
+						<w>
+							<m>fi<abbr cert="high">n</abbr>d</m>
+							<m>sa</m>
+						</w>
+						<w> fei<abbr cert="high">n</abbr>
+						</w>
+					</l>
+					<l n="d">
+						<w> dai<abbr cert="high">n</abbr>g<abbr cert="high">h</abbr>i<abbr
+								cert="high">n</abbr>
+						</w>
+						<w>
+							<m>li<abbr cert="high">m</abbr></m>
+							<m>sa</m>
+						</w>
+						<w> am </w>
+						<w> lai<abbr cert="high">m</abbr>
+						</w>
+					</l>
+				</s>
+			</lg>
+			<lb n="9"/>
+			<lg n="9" type="stanza">
+				<s>
+					<l n="a">
+						<name type="personal"> Raphael </name>
+						<w> lea<abbr cert="high">m</abbr>
+						</w>
+						<w>
+							<m> do </m>
+							<m> roit<abbr cert="high">h</abbr>
+							</m>
+						</w>
+					</l>
+					<l n="b">
+						<w> os </w>
+						<w> ci<abbr cert="high">n</abbr>d </w>
+						<w> gac<abbr cert="high">h</abbr>a </w>
+						<w> cuir </w>
+					</l>
+					<l n="c">
+						<w> mo </w>
+						<w>
+							<m>
+								<choice>
+									<sic>lainti</sic>
+									<corr>shlainti</corr>
+								</choice>
+							</m>
+							<m>si</m>
+						</w>
+						<w> a<abbr cert="high">ir</abbr>
+						</w>
+					</l>
+					<l n="d">
+						<w> sam<abbr cert="high">h</abbr>a<abbr cert="high">ir</abbr>t </w>
+						<w> is </w>
+						<w> do </w>
+						<w> is </w>
+						<w> dluig </w>
+					</l>
+				</s>
+			</lg>
+			<lb n="10"/>
+			<lg n="10" type="stanza">
+				<s>
+					<l n="a">
+						<name type="personal"> Uriel </name>
+						<w> fíal </w>
+						<w> na </w>
+						<w>
+							<abbr cert="high">bh</abbr>feart </w>
+					</l>
+					<l n="b">
+						<w> ciab<abbr cert="high">h</abbr>
+						</w>
+						<name type="personal"> uriel </name>
+						<w> nad </w>
+						<w> lo<abbr cert="high">cht</abbr>
+						</w>
+					</l>
+					<l n="c">
+						<w> sa </w>
+						<w> c<abbr cert="high">h</abbr>edai<abbr cert="high">n</abbr>
+						</w>
+						<w> fa<abbr cert="high">m</abbr>
+						</w>
+						<w> c<abbr cert="high">h</abbr>orp </w>
+					</l>
+					<l n="d">
+						<w>
+							<choice>
+								<sic>nac</sic>
+								<corr>nach</corr>
+							</choice>
+						</w>
+						<w> egai<abbr cert="high">n</abbr>
+						</w>
+						<w> an </w>
+						<w> tolc </w>
+					</l>
+				</s>
+			</lg>
+			<lb n="11"/>
+			<lg n="11" type="stanza">
+				<s>
+					<l n="a">
+						<name> Sarael </name>
+						<w> ai<abbr cert="high">n</abbr>gil </w>
+						<w> uai<abbr cert="high">m</abbr>
+						</w>
+					</l>
+					<l n="b">
+						<w> go </w>
+						<w> dai<abbr cert="high">n</abbr>gin </w>
+						<w> a<abbr cert="high">m</abbr>
+						</w>
+						<w> d<abbr cert="high">h</abbr>ail </w>
+					</l>
+					<l n="c">
+						<w> do<abbr cert="high">m</abbr>
+						</w>
+						<w> d<abbr cert="high">h</abbr>i<abbr cert="high">n</abbr>
+						</w>
+						<w> g<abbr cert="high">ach</abbr>
+						</w>
+						<w> dia<abbr cert="high">r</abbr>dain </w>
+					</l>
+					<l n="d">
+						<w> a<abbr cert="high">r</abbr>
+						</w>
+						<w> g<abbr cert="high">ach</abbr>
+						</w>
+						<w> gni<abbr cert="high">m</abbr>
+						</w>
+						<w> s </w>
+						<w> a<abbr cert="high">r</abbr>
+						</w>
+						<w> grai<abbr cert="high">n</abbr>
+						</w>
+					</l>
+				</s>
+			</lg>
+			<lb n="12"/>
+			<lg n="12">
+				<s>
+					<l n="a">
+						<name type="personal"> Ruimuel </name>
+						<w> li<abbr cert="high">m</abbr>
+						</w>
+						<w>
+							<m> do </m>
+							<m> roit<abbr cert="high">hr</abbr>
+							</m>
+						</w>
+					</l>
+					<l n="b">
+						<w> os </w>
+						<w> ci<abbr cert="high">n</abbr>d </w>
+						<w> caic<abbr cert="high">h</abbr>
+						</w>
+						<w> go </w>
+						<w> cea<abbr cert="high">r</abbr>t </w>
+					</l>
+					<l n="c">
+						<w> ni<abbr cert="high">m</abbr>
+						</w>
+						<w> ria </w>
+						<w> an </w>
+						<w> aine </w>
+					</l>
+					<l n="d">
+						<w> olc </w>
+						<w> le </w>
+						<w> naei<abbr cert="high">m</abbr>e </w>
+						<w> is </w>
+						<w> le </w>
+						<w> nea<abbr cert="high">r</abbr>t </w>
+					</l>
+				</s>
+			</lg>
+			<lb n="13"/>
+			<lg n="12" type="stanza">
+				<s>
+					<l n="a">
+						<name type="personal"> Panael </name>
+						<w> puirt </w>
+						<w> de </w>
+					</l>
+					<l n="b">
+						<w> do<abbr cert="high">m</abbr>
+						</w>
+						<w> di<abbr cert="high">n</abbr>
+						</w>
+						<w> a<abbr cert="high">ir</abbr>
+						</w>
+						<w> g<abbr cert="high">ach</abbr>
+						</w>
+						<w> droing </w>
+					</l>
+					<l n="c">
+						<w> a<abbr cert="high">r</abbr>
+						</w>
+						<w> tei<abbr cert="high">m</abbr>
+						</w>
+						<w> s<abbr cert="high">h</abbr>at<abbr cert="high">h</abbr>airn </w>
+						<w> s<abbr cert="high">h</abbr>einġ </w>
+					</l>
+					<l n="d">
+						<w> fo </w>
+						<w> rinḋ </w>
+						<w>
+							<m> cat<abbr cert="high">h</abbr>
+							</m>
+							<m> a<abbr cert="high">ir</abbr>m </m>
+						</w>
+						<w> c<abbr cert="high">h</abbr>uir </w>
+					</l>
+				</s>
+			</lg>
+			<lb n="14"/>
+			<lg n="13" type="stanza">
+				<s>
+					<l n="a">
+						<name type="personal"> Gabriel </name>
+						<w> gelta<abbr cert="high">r</abbr>
+						</w>
+						<w> gruad<abbr cert="high">h</abbr>
+						</w>
+					</l>
+					<l n="b">
+						<w> as </w>
+						<w> e </w>
+						<w> a<abbr cert="high">n</abbr>
+						</w>
+						<w> se<abbr cert="high">acht</abbr>mad<abbr cert="high">h</abbr>
+						</w>
+						<w> sla<abbr cert="high">n</abbr>
+						</w>
+					</l>
+					<l n="c">
+						<w> g<abbr cert="high">ach</abbr>
+						</w>
+						<w> do<abbr cert="high">m</abbr>naic </w>
+						<w> do<abbr cert="high">m</abbr>
+						</w>
+						<w> d<abbr cert="high">h</abbr>i<abbr cert="high">n</abbr>
+						</w>
+					</l>
+					<l n="d">
+						<w> a<abbr cert="high">r</abbr>
+						</w>
+						<w> fog<abbr cert="high">h</abbr>laib<abbr cert="high">h</abbr>
+						</w>
+						<w> a<abbr cert="high">r</abbr>
+						</w>
+						<w>
+							<choice>
+								<sic>plaig</sic>
+								<corr>plág</corr>
+							</choice>
+						</w>
+					</l>
+				</s>
+			</lg>
+			<lb n="14"/>
+			<lg n="14" type="stanza">
+				<s>
+					<l n="a">
+						<w> Na </w>
+						<w> se<abbr cert="high">acht</abbr>
+						</w>
+						<w> cuir </w>
+						<w> sin </w>
+						<name type="personal"> cr<abbr cert="high">ist</abbr>
+						</name>
+					</l>
+					<l n="b">
+						<name type="personal"> crist </name>
+						<w> fein </w>
+						<w> fea<abbr cert="high">r</abbr>
+						</w>
+						<w> ga<abbr cert="high">n</abbr>
+						</w>
+						<w> crit<abbr cert="high">h</abbr>
+						</w>
+					</l>
+					<l n="c">
+						<w>
+							<m> do<abbr cert="high">m</abbr>
+							</m>
+							<m> saerad<abbr cert="high">h</abbr>
+							</m>
+						</w>
+						<w> go </w>
+						<w> dait<abbr cert="high">h</abbr>
+						</w>
+					</l>
+					<l n="d">
+						<w> a<abbr cert="high">r</abbr>
+						</w>
+						<w> badal </w>
+						<w> ar </w>
+						<w> bit<abbr cert="high">h</abbr>
+						</w>
+					</l>
+				</s>
+			</lg>
+			<lb n="16"/>
+			<lg n="16" type="stanza">
+				<s>
+					<l n="a">
+						<w> A<abbr cert="high">r</abbr>
+						</w>
+						<w> ésgai<abbr cert="high">n</abbr>
+						</w>
+						<w> ar </w>
+						<w> air </w>
+					</l>
+					<l n="b">
+						<w> a<abbr cert="high">r</abbr>
+						</w>
+						<w> gresgui<abbr cert="high">n</abbr>
+						</w>
+						<w> a<abbr cert="high">r</abbr>
+						</w>
+						<w> gliaig </w>
+					</l>
+					<l n="c">
+						<w> a<abbr cert="high">r</abbr>
+						</w>
+						<w> pianaib<abbr cert="high">h</abbr>
+						</w>
+						<w> a<abbr cert="high">r</abbr>
+						</w>
+						<w> plaig </w>
+					</l>
+					<l n="d">
+						<w> a<abbr cert="high">r</abbr>
+						</w>
+						<w> diab<abbr cert="high">h</abbr>luib<abbr cert="high">h</abbr>
+						</w>
+						<w> am </w>
+						<w> diaig </w>
+					</l>
+				</s>
+			</lg>
+			<lb n="17"/>
+			<lg n="17" type="stanza">
+				<s>
+					<l n="a">
+						<w> A<abbr cert="high">r</abbr>
+						</w>
+						<w> sai<abbr cert="high">n</abbr>t </w>
+						<w> u<abbr cert="high">m</abbr>
+						</w>
+						<w> ni </w>
+						<w> ac </w>
+						<w> nea<abbr cert="high">m</abbr>
+						</w>
+					</l>
+					<l n="b">
+						<w> a<abbr cert="high">r</abbr>
+						</w>
+						<w> in </w>
+						<w>
+							<choice>
+								<sic>nac</sic>
+								<corr>nach</corr>
+							</choice>
+						</w>
+						<w> bí </w>
+						<w> bail </w>
+					</l>
+					<l n="c">
+						<w> a<abbr cert="high">r</abbr>
+						</w>
+						<w>
+							<choice>
+								<sic>cras</sic>
+								<corr>cráes</corr>
+							</choice>
+						</w>
+						<w> ia<abbr cert="high">r</abbr>
+						</w>
+						<w> col </w>
+					</l>
+					<l n="d">
+						<w> a<abbr cert="high">r</abbr>
+						</w>
+						<w> toil </w>
+						<w> re </w>
+						<w> baís </w>
+						<w> ḃan </w>
+					</l>
+				</s>
+			</lg>
+			<lb n="18"/>
+			<lg n="18" type="stanza">
+				<s>
+					<l n="a">
+						<w> A<abbr cert="high">r</abbr>
+						</w>
+						<w> urcane<add resp="XXX" postion="above">ad</add>
+						</w>
+						<w> ngur </w>
+					</l>
+					<l n="b">
+						<w> a<abbr cert="high">r</abbr>
+						</w>
+						<w>
+							<m> gle </m>
+							<m> c<abbr cert="high">h</abbr>anead </m>
+						</w>
+						<w>
+							<choice>
+								<sic>gin<abbr cert="high">n</abbr></sic>
+								<corr>gnim</corr>
+							</choice>
+						</w>
+					</l>
+					<l n="c">
+						<w> ar </w>
+						<w> g<abbr cert="high">ach</abbr>
+						</w>
+						<w>
+							<choice>
+								<sic>aingin</sic>
+								<corr>caingin</corr>
+							</choice>
+						</w>
+						<w> cle </w>
+					</l>
+					<l n="d">
+						<w>
+							<m> ad </m>
+							<m> c<abbr cert="high">h</abbr>iam<abbr cert="high">h</abbr>
+							</m>
+						</w>
+						<w> aingeal </w>
+						<w> de </w>
+						<w> do<abbr cert="high">m</abbr>
+						</w>
+						<w> d<abbr cert="high">h</abbr>in </w>
+					</l>
+				</s>
+			</lg>
+			<seg type="dúnad">
+				<w>ai<abbr cert="high">n</abbr>gil</w>
+			</seg>
+			<lb n="19"/>
+			<lg n="19" type="stanza">
+				<s>
+					<l n="a">
+						<w> Da </w>
+						<w> apstal </w>
+						<w> dég </w>
+						<w> de </w>
+					</l>
+					<l n="b">
+						<w> go </w>
+						<w> torset </w>
+						<w> aníu </w>
+					</l>
+					<l n="c">
+						<w> i<abbr cert="high">n</abbr>
+						</w>
+						<w> cure </w>
+						<w> nae<abbr cert="high">m</abbr>
+						</w>
+						<w> nua </w>
+					</l>
+					<l n="d">
+						<name type="personal"> mure </name>
+						<w> mare<abbr cert="high">n</abbr>
+						</w>
+						<w> riu </w>
+					</l>
+				</s>
+			</lg>
+			<lb n="20"/>
+			<lg n="20" type="stanza">
+				<s>
+					<l n="a">
+						<name type="personal"> Pilip </name>
+						<name type="personal"> peda<abbr cert="high">ir</abbr>
+						</name>
+						<name type="personal"> pol </name>
+					</l>
+					<l n="b">
+						<name type="personal"> pa<abbr cert="high">rr</abbr>t<abbr cert="high"
+								>h</abbr>alo<abbr cert="high">n</abbr>
+						</name>
+						<w> na </w>
+						<w> bea<abbr cert="high">nn</abbr>
+						</w>
+					</l>
+					<l n="c">
+						<name type="personal"> m<abbr cert="high">ur</abbr>e </name>
+						<w> an </w>
+						<w>
+							<choice>
+								<sic>ír</sic>
+								<corr>fhír</corr>
+							</choice>
+						</w>
+						<w> og </w>
+						<w> f<abbr cert="high">h</abbr>ind </w>
+					</l>
+					<l n="d">
+						<w> li<abbr cert="high">m</abbr>
+						</w>
+						<w>
+							<abbr cert="high">is</abbr>
+						</w>
+						<name type="personal"> symon </name>
+						<w> sea<abbr cert="high">n</abbr>g </w>
+					</l>
+				</s>
+			</lg>
+			<lb n="21"/>
+			<lg n="21" type="stanza">
+				<s>
+					<l n="a">
+						<name type="personal"> Mata </name>
+						<w> mait<abbr cert="high">h</abbr>
+						</w>
+						<w> do<abbr cert="high">m</abbr>
+						</w>
+						<w> d<abbr cert="high">h</abbr>i<abbr cert="high">n</abbr>
+						</w>
+					</l>
+					<l n="b">
+						<w> re </w>
+						<w> dul </w>
+						<w> a<abbr cert="high">n</abbr>
+						</w>
+						<w> treas </w>
+						<w> nuilc </w>
+					</l>
+					<l n="c">
+						<w> tarr </w>
+						<w>
+							<abbr cert="high">is</abbr>
+						</w>
+						<w> feít<abbr cert="high">h</abbr>
+						</w>
+						<add resp="XXX" place="margin">
+							<w> me </w>
+						</add>
+						<w> a </w>
+						<w> m<abbr cert="high">h</abbr>a<abbr cert="high">ir</abbr>c </w>
+					</l>
+					<l n="d">
+						<w> do </w>
+						<w> leit<abbr cert="high">h</abbr>
+						</w>
+						<w> cle </w>
+						<w> ma </w>
+						<w> c<abbr cert="high">h</abbr>uirp </w>
+					</l>
+				</s>
+			</lg>
+			<lb n="22"/>
+			<lg n="22" type="stanza">
+				<s>
+					<l n="a">
+						<w> Gudi<abbr cert="high">m</abbr>
+						</w>
+						<name type="personal"> andrias </name>
+						<w> ur </w>
+					</l>
+					<l n="b">
+						<w> a<abbr cert="high">r</abbr>
+						</w>
+						<w> mo </w>
+						<w> c<abbr cert="high">h</abbr>ul </w>
+						<w> re </w>
+						<w> cac<abbr cert="high">h</abbr>
+						</w>
+					</l>
+					<l n="c">
+						<w> da </w>
+						<w> iacob<abbr cert="high">h</abbr>
+						</w>
+						<w> ga<abbr cert="high">n</abbr>
+						</w>
+						<w> f<abbr cert="high">h</abbr>ic </w>
+					</l>
+					<l n="d">
+						<w> sgiat<abbr cert="high">h</abbr>
+						</w>
+						<w> fail </w>
+						<w> a<abbr cert="high">r</abbr>
+						</w>
+						<w> mo </w>
+						<w> sgath </w>
+					</l>
+				</s>
+			</lg>
+			<lg n="23" type="stanza">
+				<s>
+					<l n="a">
+						<name type="personal"> Lucas </name>
+						<w> do<abbr cert="high">m</abbr>
+						</w>
+						<w> leit<abbr cert="high">h</abbr>
+						</w>
+						<w> deis </w>
+					</l>
+					<l n="b">
+						<w> coír </w>
+						<w> a </w>
+						<w>
+							<choice>
+								<sic>bit<abbr cert="high">h</abbr></sic>
+								<corr>beit<abbr cert="high">h</abbr></corr>
+							</choice>
+						</w>
+						<w> is </w>
+						<w> biaid </w>
+					</l>
+					<l n="c">
+						<w> bid </w>
+						<name type="personal"> eoi<abbr cert="high">n</abbr>
+						</name>
+						<w>
+							<abbr cert="high">is</abbr>
+						</w>
+						<w> da </w>
+						<w> eoin </w>
+					</l>
+					<l n="d">
+						<w> ago<abbr cert="high">m</abbr>
+						</w>
+						<w> dín </w>
+						<w> a<abbr cert="high">m</abbr>
+						</w>
+						<w> diaid<abbr cert="high">h</abbr>
+						</w>
+					</l>
+				</s>
+			</lg>
+			<lb n="24"/>
+			<lg n="24">
+				<s>
+					<l n="a">
+						<w> Éigid </w>
+						<w> fi<abbr cert="high">n</abbr>d </w>
+						<name type="personal"> pol </name>
+						<w> rum </w>
+					</l>
+					<l n="b">
+						<w> re </w>
+						<w> gac<abbr cert="high">h</abbr>
+						</w>
+						<w> nimclog </w>
+						<w> na<abbr cert="high">r</abbr>
+						</w>
+					</l>
+					<l n="c">
+						<w> mar </w>
+						<w> tísat </w>
+						<w>
+							<choice>
+								<sic>eac</sic>
+								<corr>each</corr>
+							</choice>
+						</w>
+						<w> ur </w>
+					</l>
+					<l n="d">
+						<w> fu<abbr cert="high">m</abbr>
+						</w>
+						<w> t<abbr cert="high">h</abbr>is </w>
+						<w> lam </w>
+						<w> ri </w>
+						<w> la<abbr cert="high">r</abbr>
+						</w>
+					</l>
+				</s>
+			</lg>
+			<lb n="25"/>
+			<lg n="25" type="stanza">
+				<s>
+					<l n="a">
+						<name type="personal"> Peda<abbr cert="high">ir</abbr>
+						</name>
+						<w> t<abbr cert="high">h</abbr>ora<abbr cert="high">m</abbr>
+						</w>
+						<w> thuas </w>
+					</l>
+					<l n="b">
+						<w>
+							<choice>
+								<sic>toseac</sic>
+								<corr>toseach</corr>
+							</choice>
+						</w>
+						<w> na </w>
+						<w> fea<abbr cert="high">r</abbr>
+						</w>
+						<w> fi<abbr cert="high">n</abbr>d </w>
+					</l>
+					<l n="c">
+						<w> mo </w>
+						<w> comla </w>
+						<w> n<abbr cert="high">ach</abbr>
+						</w>
+						<w> gan<abbr cert="high">n</abbr>
+						</w>
+					</l>
+					<l n="d">
+						<w> do<abbr cert="high">m</abbr>
+						</w>
+						<w> co<abbr cert="high">mh</abbr>ḋa </w>
+						<w> os </w>
+						<w> ma </w>
+						<w> ci<abbr cert="high">n</abbr>d </w>
+					</l>
+				</s>
+			</lg>
+			<lb n="26"/>
+			<lg n="26" type="stanza">
+				<s>
+					<l n="a">
+						<w> Na </w>
+						<w>
+							<m> pri<abbr cert="high">m</abbr>
+							</m>
+							<m> f<abbr cert="high">h</abbr>ait<abbr cert="high">h</abbr>i </m>
+						</w>
+						<w> fos </w>
+					</l>
+					<l n="b">
+						<w>fet<abbr cert="high">h</abbr>eat</w>
+						<w>me</w>
+						<w>a<abbr cert="high">r</abbr></w>
+						<w>rit<abbr cert="high">h</abbr></w>
+						<w>uilc</w>
+					</l>
+					<l n="c">
+						<w>
+							<choice>
+								<sic>seait</sic>
+								<corr>seacht</corr>
+							</choice>
+						</w>
+						<w>coi<abbr cert="high">n</abbr>dle</w>
+						<w>na</w>
+						<w>cea<abbr cert="high">r</abbr>t</w>
+					</l>
+					<l  n="d">
+						<w>do</w>
+						<w>coi<abbr cert="high">mh</abbr>ḋe</w>
+						<w>ma</w>
+						<w>c<abbr cert="high">h</abbr>uirp</w>
+					</l>
+				</s>
+			</lg> 
+			<lb n="27"/>
+			<lg n="27" type="stanza">
+				<s>
+					<l n="a">
+						<w>Sgiat<abbr cert="high">h</abbr></w>
+						<w>carat</w>
+						<w>fa<abbr cert="high">m</abbr></w>
+						<w>cliu</w>
+					</l>
+					<l n="b">
+						<w>
+							<m>naca<abbr cert="high">mh</abbr></m>
+							<m>gabsat</m>
+						</w>
+						<w>gaí</w>
+					</l>
+					<l n="c">
+						<w>spirad</w>
+						<w>
+							<choice>
+								<sic>duleac</sic>
+								<corr>duleach</corr>
+							</choice>
+						</w>
+						<w>de</w>
+					</l>
+					<l n="d">
+						<w>mo</w>
+						<w>
+							<choice>
+								<sic>lurec</sic>
+								<corr>lurech</corr>
+							</choice>
+						</w>
+						<w>ga<abbr cert="high">ch</abbr></w>
+						<w>laí</w>
+					</l>
+				</s>
+			</lg>
+			<lb n="28"/>
+			<lg n="28">
+				<s>
+					<l n="a">
+						<name type="personal">Crist</name>
+						<w>fu<abbr cert="high">m</abbr></w>
+						<name type="personal">cr<abbr cert="high">ist</abbr></name>
+						<w>fa<abbr cert="high">m</abbr></w>
+						<w>c<abbr cert="high">h</abbr>ea<abbr cert="high">n</abbr>d</w>
+					</l>
+					<l n="b">
+						<name type="personal">cr<abbr cert="high">ist</abbr></name>
+						<w>
+							<choice>
+								<sic>cecta<abbr cert="high">r</abbr></sic>
+								<corr>cechta<abbr cert="high">r</abbr></corr>
+							</choice>
+						</w>
+						<w>dam<abbr cert="high">h</abbr></w>
+						<w>taeb<abbr cert="high">h</abbr></w>
+					</l>
+					<l n="c">
+						<w>go<abbr cert="high">m</abbr></w>
+						<w>crid<abbr cert="high">h</abbr>e</w>
+						<w>go<abbr cert="high">m</abbr></w>
+						<w>cliab<abbr cert="high">h</abbr></w>
+					</l>
+					<l n="d">
+						<w>ríg</w>
+						<w>ni<abbr cert="high">m</abbr>e</w>
+						<w>na</w>
+						<w>nae<abbr cert="high">m</abbr></w>
+					</l>
+				</s>
+			</lg>
+			<lb n="29"/>
+			<lg n="29" type="stanza">
+				<s>
+					<l n="a">
+						<w>Rig</w>
+						<w>ni<abbr cert="high">m</abbr>e</w>
+						<w>na</w>
+						<w>nae<abbr cert="high">m</abbr></w>
+					</l>
+					<l n="b">
+						<w>bile</w>
+						<w>ur</w>
+						<w>os</w>
+						<w>c<abbr cert="high">h</abbr>na<abbr cert="high">rr</abbr></w>
+					</l>
+					<l n="c">
+						<w>a<abbr cert="high">r</abbr></w>
+						<w>deam<abbr cert="high">h</abbr>a<abbr cert="high">n</abbr></w>
+						<w>do<abbr cert="high">m</abbr></w>
+						<w>d<abbr cert="high">h</abbr>in</w>
+					</l>
+					<l n="d">
+						<w>do<abbr cert="high">m</abbr></w>
+						<w>spregad<abbr cert="high">h</abbr></w>
+						<w>do<abbr cert="high">m</abbr></w>
+						<w>spa<abbr cert="high">rr</abbr></w>
+					</l>
+				</s>
+			</lg>
+			<lb n="30"/>
+			<lg n="30" type="stanza">
+				<s>
+					<l n="a">
+						<w>
+							<choice>
+								<sic>Lureac</sic>
+								<corr>Lureach</corr>
+							</choice>
+						</w>
+						<w>de</w>
+						<w>fa<abbr cert="high">m</abbr></w>
+						<w>
+							<choice>
+								<sic>sginḋ</sic>
+								<corr>sging</corr>
+							</choice>
+						</w>
+					</l>
+					<l n="b">
+						<w>dicras</w>
+						<w>deam<abbr cert="high">h</abbr>a<abbr cert="high">n</abbr></w>
+						<w>di<abbr cert="high">m</abbr></w>
+					</l>
+					<l n="c">
+						<w>me</w>
+						<w>mai<abbr cert="high">n</abbr>ḋir</w>
+						<w>na</w>
+						<w>nae<abbr cert="high">m</abbr></w>
+					</l>
+					<l n="d">
+						<w>aingeal</w>
+						<w>de</w>
+						<w>do<abbr cert="high">m</abbr></w>
+						<w>d<abbr cert="high">h</abbr>i<abbr cert="high">n</abbr></w>					
+					</l>
+				</s>
+			</lg>
+			<lb n="31"/>
+			<seg type="dúnad">
+				<w>aingil</w>
+				<w>dé</w>
+				<w>do<abbr cert="high">m</abbr></w>
+				<w>d<abbr cert="high">h</abbr>i<abbr cert="high">n</abbr></w>
+			</seg>
+		</div1>
+	</body>
 </TEI>
