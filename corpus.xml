@@ -1,13 +1,139 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<teiCorpus xmlns:xi="http://www.w3.org/2001/XInclude">
-    <teiHeader>
-        <!-- HEADER INFORMATION FOR ENTIRE CORPUS HERE -->
-    </teiHeader>
-    <TEI>
-        <xi:include href="transcription1.xml" parse="xml"/>
-    </TEI>
-    <TEI>
-        <xi:include href="transcription2.xml" parse="xml"/>
-    </TEI>
-    <!-- FURTHER TRANSCRIPTION FILES HERE -->
-</teiCorpus>
+<?xml-stylesheet type="text/xsl" href="stylesheet.xsl"?>
+<TEI>
+	<teiHeader>
+		<teiHeader>
+			<fileDesc>
+				<titleStmt>
+					<title>Faclair na Gaìdhlig: Medieval and Early Modern Manuscript Corpus</title>
+					<respStmt>
+						<name xml:id="EPT">Eystein P. Thanisch</name>
+						<resp>Transcriber</resp>
+					</respStmt>
+					<respStmt>
+						<name xml:id="WGI">William Gillies</name>
+						<resp>Overseer</resp>
+					</respStmt>
+					<!-- MORE RESPSTMTs HERE -->
+				</titleStmt>
+				<publicationStmt>
+					<p> ... </p>
+				</publicationStmt>
+				<sourceDesc>
+					<msDesc>
+						<physDesc>
+							<handDesc>
+								<p><head>Hands</head></p>
+								<handNote xml:id="Hand1">
+									<forename>[unknown}</forename>
+									<surname>[unknown}</surname>
+									<date from="1100" to="1150">1100-1150</date>
+									<region cert="high">NE Scotland</region>
+									<note>Hand A in the Book of Deer Gaelic Notes</note>
+								</handNote>
+								<handNote xml:id="Hand2">
+									<forename>[unknown}</forename>
+									<surname>[unknown}</surname>
+									<date from="1100" to="1150">1100-1150</date>
+									<region cert="high">NE Scotland</region>
+									<note>Hand B in the Book of Deer Gaelic Notes</note>
+								</handNote>
+								<handNote xml:id="Hand3">
+									<forename>[unknown}</forename>
+									<surname>[unknown}</surname>
+									<date from="1100" to="1150">1100-1150</date>
+									<region cert="high">NE Scotland</region>
+									<note>Hand C in the Book of Deer Gaelic Notes</note>
+								</handNote>
+								<handNote xml:id="Hand4">
+									<forename>[unknown}</forename>
+									<surname>[unknown}</surname>
+									<date from="1100" to="1150">1100-1150</date>
+									<region cert="high">NE Scotland</region>
+									<note>Hand D in the Book of Deer Gaelic Notes</note>
+								</handNote>
+								<handNote xml:id="Hand5">
+									<forename>[unknown}</forename>
+									<surname>[unknown}</surname>
+									<date from="1100" to="1150">1100-1150</date>
+									<region cert="high">NE Scotland</region>
+									<note>Hand E in the Book of Deer Gaelic Notes</note>
+								</handNote>
+								<handNote xml:id="Hand6">
+									<forename>[unknown}</forename>
+									<surname>[unknown}</surname>
+									<date cert="med" from="900" to="1000">900-1000</date>
+									<region cert="high">NE Scotland</region>
+									<note>Scribe of main text in the Book of Deer</note>
+								</handNote>
+								<handNote xml:id="Hand7">
+									<forename>[unknown]</forename>
+									<surname cert="med">MacEwen</surname>
+									<date from="1450" to="1550">fl. 1500</date>
+									<region cert="med">Argyll</region>
+									<note>This is the scribe of 'Aingil Dé dom dhín' in London, BL MS. Egerton 2899 and a set of poems about St Columba in Edinburgh, NLS Adv. MS 72.1.31. Black has suggested that he was a MacEwen working for the Campbells of Glenorchy.</note>
+								</handNote>
+								...
+							</handDesc>
+						</physDesc>
+					</msDesc>
+					<listBibl>
+						<msDesc>
+							<head>Manuscripts</head>
+							<msIdentifier xml:id="MS1">
+								<settlement>Cambridge</settlement>
+								<repository>CUL</repository>
+								<idno type="shelfmark">MS. Ii.6.32</idno>
+							</msIdentifier>
+							<msIdentifier xml:id="MS2">
+								<settlement>London</settlement>
+								<repository>British Library</repository>
+								<idno type="shelfmark">MS. Egerton 2899</idno>
+							</msIdentifier>
+						</msDesc> 
+						... 
+						<head>Primary Sources</head>
+						<bibl> ... </bibl> ... <head>Secondary Sources</head>
+						<bibl> ... </bibl> ... </listBibl>
+				</sourceDesc>
+			</fileDesc>
+			<encodingDesc>
+				<charDecl> ... </charDecl>
+				<metDecl> ... </metDecl>
+				<tagsDecl partial="true">
+					<tagUsage> ... </tagUsage> ... </tagsDecl>
+				<refsDecl> ... </refsDecl>
+				<editorialDecl>
+					<correction>
+						<p> ... </p>
+					</correction>
+					<normalization>
+						<p> ... </p>
+					</normalization>
+					<punctuation>
+						<p> ... </p>
+					</punctuation>
+					<interpretation>
+						<p> ... </p>
+					</interpretation>
+				</editorialDecl>
+				<classDecl>
+					<taxonomy xml:id="FnaG">
+						<category xml:id="...">
+							<catDesc> ... </catDesc>
+						</category> ... </taxonomy>
+				</classDecl>
+			</encodingDesc>
+			<revisionDesc>
+				<change when="..." who="..."> ... </change> ... </revisionDesc>
+		</teiHeader>
+
+	</teiHeader>
+	<TEI>
+		<xi:include href="transcription1.xml" parse="xml"/>
+	</TEI>
+	<TEI>
+		<xi:include href="transcription2.xml" parse="xml"/>
+	</TEI>
+	<!-- FURTHER TRANSCRIPTION FILES HERE -->
+</TEI>
