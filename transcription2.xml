@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+
 <?xml-stylesheet type="text/xsl" href="stylesheet.xsl"?>
-<TEI xml:id="T2">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="T2">
 	<teiHeader>
 		<fileDesc>
 			<titleStmt>
@@ -18,11 +22,19 @@
 				<p> ... </p>
 			</publicationStmt>
 			<sourceDesc>
-				<ab>
-				<label>Summary</label><p>'Aingil Dé dom dhín' is a Middle Gaelic verse litany, praising and invoking the protection of seven archangels (one for each of the seven days of the week) and the twelve apostles. It was inscribed around 1500 on the flyleaf of <ref target="#MS2">Egerton 2899,</ref>, a Psalter belonging to the Campbells of Glenorchy. It shows little to no influence from Scottish Gaelic but was evidently valued in the elite learned culture of Argyll at the time.</p>
-					<label>Textual History</label>
-					<p>Thomas O'Nolan (<ref target="#ONolan1912">1912</ref>) has edited 'Aingil Dé dom dhín', although without using Egerton 2899. Instead, he used eight Irish manuscripts:</p><list>
-						<item>Dublin, Royal Irish Academy, MS 23.P.16 (1230), 15th cent., <i>An Leabhar Breac</i></item>
+				<p><label>Summary</label></p>
+				<p>'Aingil Dé dom dhín' is a Middle Gaelic verse litany, praising and invoking the
+					protection of seven archangels (one for each of the seven days of the week) and
+					the twelve apostles. It was inscribed around 1500 on the flyleaf of <ref
+						target="#MS2">Egerton 2899,</ref>, a Psalter belonging to the Campbells of
+					Glenorchy. It shows little to no influence from Scottish Gaelic but was
+					evidently valued in the elite learned culture of Argyll at the time.</p>
+				<p><label>Textual History</label></p>
+				<p>Thomas O'Nolan (<ref target="#ONolan1912">1912</ref>) has edited 'Aingil Dé dom
+					dhín', although without using Egerton 2899. Instead, he used eight Irish
+					manuscripts: <list>
+						<item>Dublin, Royal Irish Academy, MS 23.P.16 (1230), 15th cent., <hi>An
+								Leabhar Breac</hi></item>
 						<item>Oxford, Bodleian Library, MS Laud Misc. 615, 16th century</item>
 						<item>Dublin, Royal Irish Academy, MS 23.G.23 (256), 17th century</item>
 						<item>Dublin, Royal Irish Academy, MS 23.N.13 (???), date unknown</item>
@@ -31,8 +43,11 @@
 						<item>Maynooth, St Patrick’s College, O’Renehan MS. 96, date unknown</item>
 						<item>A copy in the O’Curry Mss. (unspecified), 19th century</item>
 					</list>
-					<p>The number and order of the quatrains in the different manuscript versions varies quite significantly. This can be used to show Egerton 2899’s affiliation in the tradition.</p>
-					<table rows="10" cols="3">
+				</p>
+				<p>The number and order of the quatrains in the different manuscript versions varies
+					quite significantly. This can be used to show Egerton 2899’s affiliation in the
+					tradition.</p>
+				<p><table rows="10" cols="3">
 						<row role="label">
 							<cell role="data">Manuscript</cell>
 							<cell role="data">O'Nolan Siglum</cell>
@@ -41,12 +56,12 @@
 						<row role="data">
 							<cell role="data">RIA 23.P.16 </cell>
 							<cell role="data">LB</cell>
-							<cell role="data"><b>1–6, 8–31</b></cell>
+							<cell role="data"><hi>1–6, 8–31</hi></cell>
 						</row>
 						<row role="data">
 							<cell role="data">Laud Misc. 615</cell>
 							<cell role="data">L</cell>
-							<cell role="data"><b>1–6, 8–31</b></cell>
+							<cell role="data"><hi>1–6, 8–31</hi></cell>
 						</row>
 						<row role="data">
 							<cell role="data">RIA 23.G.23 </cell>
@@ -81,202 +96,152 @@
 						<row role="data">
 							<cell role="data">Egerton 2899</cell>
 							<cell role="data">-</cell>
-							<cell role="data"><b>1–6, 8–31</b></cell>
+							<cell role="data"><hi>1–6, 8–31</hi></cell>
 						</row>
-					</table>
-					<p>The Egerton 2899 text thus seems to align structurally with the <i>Leabhar Breac</i> and Laud Misc. 615 texts. This is not particularly borne out by a comparison between the <i>varia lectiones</i> in O'Nolan's edition, however. While the Egerton 2899 text never closely aligns in any serious way with the others against the <i>Leabhar Breac</i> and Laud Misc. 615, it often presents its own distinctive readings against them.</p>
-					<p>It seems fairly likely that the omission of q7 was a mistake at a certain point in the tradition. qq5–7 list seven archangels, describing each of them as a “crown” (<i>cor</i>). q8 then calls them “the seven crowns on the head of God” (<i>Seacht cuir dar cend De</i>). Given that three of these crowns (Raphael, Painiel, and Gabriel) are enumerated in q7, it was almost certainly in the original composition. The <i>Leabhar Breac</i>, Laud Misc. 615, and Egerton 2899 texts thus all have a common ancestor somewhere below the archetype where this omission occured. This archetype must have existed by the period 14081411, when the <i>Leabhar Breac</i> was produced (<ref target="https://www.ria.ie/library/catalogues/special-collections/medieval-and-early-modern-manuscripts/leabhar-breac-speckled">RIA 2017</ref>).</p>
-				</ab>
-				<msDesc>
-					<msIdentifier sameAs="#MS2"/>
-					<origin notBefore="1300" notAfter="1523">
-						<p>According to Flower (<ref target="#Flower1926">1926</ref>: 23), Egerton 2899 began life in the 14th
-							century as a Psalter. About a century later, this was joined by a
-							tabulated martyrology. The latter’s emphasis is on Scottish saints, some
-							very local to Argyll. This, combined with an inscription implying that
-							the manuscript was the property of Colin Campbell, Laird of Glenorchy
-							(d. 1523), and a 18th-century bookplate of his descendants, the Earls of
-							Breadalbane (Flower <ref target="#Flower1926">1926</ref>: 23) suggests an Argyll provenance for the
-							gathering containing the martyrology. Technically, the Psalter could be
-							from elsewhere.</p>
-					</origin>
-					<history>
-						<p>While the origins of the psalter, which forms the bulk of the manuscript,
-							are unknown, the manuscript was clearly in Argyll and quite possibly in
-							Campbell possession from at least the 16th century until the 18th
-							century.</p>
-					</history>
-					<msContents>
-						<summary><hi rend="bold">A Middle Gaelic <i>lorica</i> poem</hi>; a
-							martyrology with Scottish interests; a Psalter.</summary>
-						<msItem xml:id="MS2.1" resp="#Hand7" when="1500" notBefore="1450"
-							notAfter="1550">
-							<locus>fol.iiir</locus>
-							<title>[none]</title>
-							<incipit>Aingeal de dom dhin</incipit>
-							<explicit>aingil dé dom dhin</explicit>
-							<textLang mainLang="mga" otherLangs="ghc">
-								<p> In the linguistic survey that follows, I focus on the Egerton
-									2899 text of 'Aingil Dé dom dhin'.</p>
-								<p>The text may have been written originally in early Middle Gaelic,
-									as it preserves some Old Gaelic forms and is largely compliant
-									with the norms of Middle Gaelic. However, there are several
-									Early Modern forms that possibly appeared during the poem's
-									transmission or possibly call for the dating of its composition
-									later in the Middle Gaelic period rather than earlier. While the
-									poem was inscribed in Argyll by a Scottish scribe, there seems
-									to be negligible influence from Scottish Gaelic.</p>
-								<p>It should be noted that the poem does not provide a great deal of
-									linguistic data that could be used to ascertain date or
-									provenance; it includes relatively few verbs, for example, and
-									makes no references to secular history.</p>
-								<p>Old Gaelic or conservative Middle Gaelic features include: <list>
-										<item>A long <i>a</i>-preterite is retained: <i>do róith</i>
-											(:"cáich") (<ref target="#T2:1:12a">q12a</ref></item>.
-											<item>Continued use of infixed pronouns: e.g. <i>rom
-												féith</i> ('who watches over me'), <ref
-												target="#T2:1:6b">q6b</ref>, but see also <ref
-												target="#T2:1:26b">q26b</ref>; <i>nachum gabsat
-												gaí</i> ('spears that did not transfix me'). <ref
-												target="#T2:1:27b">q27b</ref>; <i>ním ria</i> ('wil
-											not reach me')<ref target="#T2:1:12c">q12c</ref>.</item>
-										<item>Old Gaelic 1st plural present, <i>atchiam</i>
-												(:<i>biadh</i>, <ref target="#T2.1.1b"
-											>q1b</ref>.</item>
-										<item>Old Gaelic 3rd singular future, <i>ním ria</i> ('wil
-											not reach me')<ref target="#T2:1:12c">q12c</ref>,
-											although <ref target="#http://www.dil.ie/35557"
-												>eDIL</ref>has examples of <i>ria</i> from Early
-											Modern Gaelic poetry.</item>
-									</list>
-								</p>
-								<p>Later Middle and Early Modern Gaelic features include: <list>
-										<item>Object pronoun used with verb other than the copula:
-												<i>fetheat me</i> ('may they watch over me')<ref
-												target="#T2:1:26b">q26b</ref>.</item>
-										<item>Subject pronoun used with verb other than the copula:
-												<i>nach mhillter me tríbh</i> ('that I am not
-											troubled through them'), <ref target="#T2:1:3b"
-												>q3b</ref></item>
-										<item>Elision occurs on 8/10 instances where elision would
-											be possible in Early Modern Gaelic: <ref
-												target="#T2:1:1b">1b</ref>, <ref target="#T2:1:6d"
-												>6d</ref>, <ref target="#T2:1:8d">8d</ref>, <ref
-												target="#T2:1:12c">12c</ref>, <ref
-												target="#T2:1:12d">12d</ref>, <ref
-												target="#T2:1:18c">18c</ref>, <ref
-												target="#T2:1:20c">20c</ref>, <ref
-												target="#T2:1:25d">25d</ref>, ; the two exceptions
-											are <ref target="#T2:1:9c">9c</ref> and <ref
-												target="#T2:1:29b">29b</ref></item>
-									</list>
-								</p>
-								<p>Possible signs of Scottish Gaelic influence : <list>
-										<item>One instance of the object of <i>fri</i> being in the
-											dative: "re bais bhan", <ref target="#T2:1:17d"
-												>q17d</ref>,</item>
-									</list>
-								</p>
-								<p>Resistance of Scottish Gaelic influence: <list>
-										<item>'Irish' passive form used; e.g., <i>gebhar leam gach
-												laí</i> ('is seized on by me each day'), <ref
-												target="#T2:1:7d">q7d</ref>.</item>
-										<item>Numerals 7-10 still nasalise: e.g., <i>Seacht
-												nárćhaingíl</i> ('seven archangels'), <ref
-												target="#T2:1:2a">q2a</ref>.</item>
-										<item>'Irish' eclipsis is used: <i>parrthalon na
-												b[p]eann</i> ('Parrthalón of the pains'), <ref
-												target="#T2:1:20b">q20b</ref></item>
-									</list></p>It should be noted that these are merely examples of
-								the different influences on the text and are not proportional to one
-								another. The bulk of the text seems to be Middle Gaelic.<p/>
-							</textLang>
-							<biblFull>
-								<profileDesc>
-									<textClass>
-										<keywords scheme="#FnaG">
-											<term>Verse</term> .<term>Religious</term>
-											<term>Panegyric</term>
-										</keywords>
-									</textClass>
-								</profileDesc>
-							</biblFull>
-						</msItem>
-						<ab>
-							<physDesc>
-								<additions>
-									<list>
-										<item>
-											<p>There are no later additions.</p>
-										</item>
-									</list>
-								</additions>
-							</physDesc>
-						</ab>
-					</msContents>
-					<physDesc>
-						<handDesc>
-							<handNote scribeRef="#Hand7">
-								<locus from="fol. iiir" to="fol. iiir" scheme="...">Entire text of
-									'Aingeal de dom dhin' on fol. iiir.</locus>
-								<p>On the whole, the scribe follows the conventions of medieval
-									Gaelic orthography and restricts himself to the most
-									conventional abbreviations.</p>
-								<p>The scribe displays a curious attitude towards lenition, often
-									omitting it from monosyllables ending with /X'/ (e.g.
-									<i>nac</i>, <ref target="#T2.1.1d">q1d</ref> not <i>nach</i>. At
-									the same time, lenition markers are added where lenition would
-									not normally be written (e.g. <i>mainḋir</i>, <ref
-										target="#T2.1.2b">q2b</ref>. There is also one occasion
-									where lenition is used to indicate eclipsis (<ref
-										target="#T2.1.10a">q10a</ref>). The absence of lenition from
-									final /X'/ may be designed to represent Scottish Gaelic
-									pronounciation in some way, but I am yet to find a way of making
-									sense of the feature along these lines.</p>
-								<p>He also tends to add a hair-stroke flick towards the upper right
-									above the letter “i”, in the absence of any other diacritic.
-									This closely resembles an acute accent but is probably meant
-									merely as a minim marker. Examination of words in which “i”
-									really should have an acute accent (e.g. l.17, “nac bí”; l.24,
-									“tísat”) reveals no reliable visual indicator of when the flick
-									is an accent or not, so accents on “i” are included in the
-									diplomatic text simply when they would be expected in mainstream
-									Classical Gaelic orthography.</p>
-							</handNote>
-						</handDesc>
-						<objectDesc>
-							<supportDesc>
-								<p>Vellum; 9.5 by 6.75 inches (Flower 1926:23)</p>
-							</supportDesc>
-							<foliation>
-								<p>Modern; poem is inscribed on what was intended as the
-									flyleaf.</p>
-							</foliation>
-							<condition>
-								<p>The condition is very good; the entire text is perfectly
-									legible.</p>
-							</condition>
-						</objectDesc>
-					</physDesc>
-				</msDesc>
+					</table></p>
+				<p>The Egerton 2899 text thus seems to align structurally with the <hi>Leabhar
+						Breac</hi> and Laud Misc. 615 texts. This is not particularly borne out by a
+					comparison between the <hi>varia lectiones</hi> in O'Nolan's edition, however.
+					While the Egerton 2899 text never closely aligns in any serious way with the
+					others against the <hi>Leabhar Breac</hi> and Laud Misc. 615, it often presents
+					its own distinctive readings against them.</p>
+				<p>It seems fairly likely that the omission of q7 was a mistake at a certain point
+					in the tradition. qq5–7 list seven archangels, describing each of them as a
+					“crown” (<hi>cor</hi>). q8 then calls them “the seven crowns on the head of God”
+						(<hi>Seacht cuir dar cend De</hi>). Given that three of these crowns
+					(Raphael, Painiel, and Gabriel) are enumerated in q7, it was almost certainly in
+					the original composition. The <hi>Leabhar Breac</hi>, Laud Misc. 615, and
+					Egerton 2899 texts thus all have a common ancestor somewhere below the archetype
+					where this omission occured. This archetype must have existed by the period
+					14081411, when the <hi>Leabhar Breac</hi> was produced (<ref
+						target="https://www.ria.ie/library/catalogues/special-collections/medieval-and-early-modern-manuscripts/leabhar-breac-speckled"
+						>RIA 2017</ref>).</p>
+				<!--<msDesc>
+          <msIdentifier sameAs="#MS2"/>
+          <origin notBefore="1300" notAfter="1523">
+            <p>According to Flower (1926: 23), Egerton 2899 began life in the 14th century as a Psalter. About a century later, this was joined by a tabulated martyrology. The latter’s emphasis is on
+              Scottish saints, some very local to Argyll. This, combined with an inscription implying that the manuscript was the property of Colin Campbell, Laird of Glenorchy (d. 1523), and a
+              18th-century bookplate of his descendants, the Earls of Breadalbane (Flower 1926: 23) suggests an Argyll provenance for the gathering containing the martyrology. Technically, the Psalter
+              could be from elsewhere.</p>
+          </origin>
+          <history>
+            <p>While the origins of the psalter, which forms the bulk of the manuscript, are unknown, the manuscript was clearly in Argyll and quite possibly in Campbell possession from at least the
+              16th century until the 18th century.</p>
+          </history>
+          <msContents>
+            <summary><hi rend="bold">A Middle Gaelic <i>lorica</i> poem</hi>; a martyrology with Scottish interests; a Psalter.</summary>
+            <msItem xml:id="MS2.1" resp="#Hand7" when="1500" notBefore="1450" notAfter="1550">
+              <locus>fol.iiir</locus>
+              <title>[none]</title>
+              <incipit>Aingeal de dom dhin</incipit>
+              <explicit>aingil dé dom dhin</explicit>
+              <textLang mainLang="mga" otherLangs="ghc">
+                <p> In the linguistic survey that follows, I focus on the Egerton 2899 text of 'Aingil Dé dom dhin'.</p>
+                <p>The text may have been written originally in early Middle Gaelic, as it preserves some Old Gaelic forms and is largely compliant with the norms of Middle Gaelic. However, there are
+                  several Early Modern forms that possibly appeared during the poem's transmission or possibly call for the dating of its composition later in the Middle Gaelic period rather than
+                  earlier. While the poem was inscribed in Argyll by a Scottish scribe, there seems to be negligible influence from Scottish Gaelic.</p>
+                <p>It should be noted that the poem does not provide a great deal of linguistic data that could be used to ascertain date or provenance; it includes relatively few verbs, for example,
+                  and makes no references to secular history.</p>
+                <p>Old Gaelic or conservative Middle Gaelic features include: <list>
+                    <item>A long <i>a</i>-preterite is retained: <i>do róith</i> (:"cáich") (<ref target="#T2-1-12a">q12a</ref></item>. <item>Continued use of infixed pronouns: e.g. <i>rom féith</i>
+                      ('who watches over me'), <ref target="#T2-1-6b">q6b</ref>, but see also <ref target="#T2-1-26b">q26b</ref>; <i>nachum gabsat gaí</i> ('spears that did not transfix me'). <ref
+                        target="#T2-1-27b">q27b</ref>; <i>ním ria</i> ('wil not reach me')<ref target="#T2-1-12c">q12c</ref>.</item>
+                    <item>Old Gaelic 1st plural present, <i>atchiam</i> (:<i>biadh</i>, <ref target="#T2.1.1b">q1b</ref>.</item>
+                    <item>Old Gaelic 3rd singular future, <i>ním ria</i> ('wil not reach me')<ref target="#T2-1-12c">q12c</ref>, although <ref target="#http://www.dil.ie/35557">eDIL</ref>has examples
+                      of <i>ria</i> from Early Modern Gaelic poetry.</item>
+                  </list>
+                </p>
+                <p>Later Middle and Early Modern Gaelic features include: <list>
+                    <item>Object pronoun used with verb other than the copula: <i>fetheat me</i> ('may they watch over me')<ref target="#T2-1-26b">q26b</ref>.</item>
+                    <item>Subject pronoun used with verb other than the copula: <i>nach mhillter me tríbh</i> ('that I am not troubled through them'), <ref target="#T2-1-3b">q3b</ref></item>
+                    <item>Elision occurs on 8/10 instances where elision would be possible in Early Modern Gaelic: <ref target="#T2-1-1b">1b</ref>, <ref target="#T2-1-6d">6d</ref>, <ref
+                        target="#T2-1-8d">8d</ref>, <ref target="#T2-1-12c">12c</ref>, <ref target="#T2-1-12d">12d</ref>, <ref target="#T2-1-18c">18c</ref>, <ref target="#T2-1-20c">20c</ref>, <ref
+                        target="#T2-1-25d">25d</ref>, ; the two exceptions are <ref target="#T2-1-9c">9c</ref> and <ref target="#T2-1-29b">29b</ref></item>
+                  </list>
+                </p>
+                <p>Possible signs of Scottish Gaelic influence : <list>
+                    <item>One instance of the object of <i>fri</i> being in the dative: "re bais bhan", <ref target="#T2-1-17d">q17d</ref>,</item>
+                  </list>
+                </p>
+                <p>Resistance of Scottish Gaelic influence: <list>
+                    <item>'Irish' passive form used; e.g., <i>gebhar leam gach laí</i> ('is seized on by me each day'), <ref target="#T2-1-7d">q7d</ref>.</item>
+                    <item>Numerals 7-10 still nasalise: e.g., <i>Seacht nárćhaingíl</i> ('seven archangels'), <ref target="#T2-1-2a">q2a</ref>.</item>
+                    <item>'Irish' eclipsis is used: <i>parrthalon na b[p]eann</i> ('Parrthalón of the pains'), <ref target="#T2-1-20b">q20b</ref></item>
+                  </list></p>It should be noted that these are merely examples of the different influences on the text and are not proportional to one another. The bulk of the text seems to be Middle
+                Gaelic.<p/>
+              </textLang>
+              <biblFull>
+                <profileDesc>
+                  <textClass>
+                    <keywords scheme="#FnaG">
+                      <term>Verse</term> .<term>Religious</term>
+                      <term>Panegyric</term>
+                    </keywords>
+                  </textClass>
+                </profileDesc>
+              </biblFull>
+            </msItem>
+            <ab>
+              <physDesc>
+                <additions>
+                  <list>
+                    <item>
+                      <p>There are no later additions.</p>
+                    </item>
+                  </list>
+                </additions>
+              </physDesc>
+            </ab>
+          </msContents>
+          <physDesc>
+            <handDesc>
+              <handNote scribeRef="#Hand7">
+                <locus from="fol. iiir" to="fol. iiir" scheme="...">Entire text of 'Aingeal de dom dhin' on fol. iiir.</locus>
+                <p>On the whole, the scribe follows the conventions of medieval Gaelic orthography and restricts himself to the most conventional abbreviations.</p>
+                <p>The scribe displays a curious attitude towards lenition, often omitting it from monosyllables ending with /X'/ (e.g. <i>nac</i>, <ref target="#T2.1.1d">q1d</ref> not <i>nach</i>. At
+                  the same time, lenition markers are added where lenition would not normally be written (e.g. <i>mainḋir</i>, <ref target="#T2.1.2b">q2b</ref>. There is also one occasion where
+                  lenition is used to indicate eclipsis (<ref target="#T2.1.10a">q10a</ref>). The absence of lenition from final /X'/ may be designed to represent Scottish Gaelic pronounciation in
+                  some way, but I am yet to find a way of making sense of the feature along these lines.</p>
+                <p>He also tends to add a hair-stroke flick towards the upper right above the letter “i”, in the absence of any other diacritic. This closely resembles an acute accent but is probably
+                  meant merely as a minim marker. Examination of words in which “i” really should have an acute accent (e.g. l.17, “nac bí”; l.24, “tísat”) reveals no reliable visual indicator of when
+                  the flick is an accent or not, so accents on “i” are included in the diplomatic text simply when they would be expected in mainstream Classical Gaelic orthography.</p>
+              </handNote>
+            </handDesc>
+            <objectDesc>
+              <supportDesc>
+                <p>Vellum; 9.5 by 6.75 inches (Flower 1926:23)</p>
+              </supportDesc>
+              <foliation>
+                <p>Modern; poem is inscribed on what was intended as the flyleaf.</p>
+              </foliation>
+              <condition>
+                <p>The condition is very good; the entire text is perfectly legible.</p>
+              </condition>
+            </objectDesc>
+          </physDesc>
+        </msDesc>-->
 			</sourceDesc>
 		</fileDesc>
 		<encodingDesc>
 			<metDecl>
-				<p>The poem's metre is <i>rannaigecht bec</i> (5<hi rend="sup">1</hi>, 5<hi rend="sup"
-						>1</hi>, 5<hi rend="sup">1</hi>, 5<hi rend="sup">1</hi>). The text is laid out with one quatrain per line in <ref target="#MS2">Egerton 2899</ref>.</p>
+				<p>The poem's metre is <hi>rannaigecht bec</hi> (5<hi rend="sup">1</hi>, 5<hi
+						rend="sup">1</hi>, 5<hi rend="sup">1</hi>, 5<hi rend="sup">1</hi>). The text
+					is laid out with one quatrain per line in <ref target="#MS2">Egerton
+					2899</ref>.</p>
 			</metDecl>
 		</encodingDesc>
-		<revisionDesc>
-			<change when="..." who="..."> ... </change> ... </revisionDesc>
+		<!--<revisionDesc>
+      <change when="..." who="..."> ... </change>
+    </revisionDesc>-->
 	</teiHeader>
-	<body>
-		<div1 n="1" type="verse" corresp="#..." hand="...">
-			<pb n="iii"/>
-			<lb n="1"/>
-			<lg n="1" type="stanza" xml:id="T2:1:1">
-				<s>
-					<l n="a" xml:id="T2:1:1a">
+	<text>
+		<body>
+			<div1 n="1" type="verse" corresp="#...">
+				<pb n="iii"/>
+				<lb n="1"/>
+				<lg n="1" type="stanza" xml:id="T2-1-1">
+					<!--<s>-->
+					<l n="a" xml:id="T2-1-1a">
 						<w> Aingeal </w>
 						<w> de </w>
 						<w> do<abbr cert="high">m</abbr>
@@ -284,7 +249,7 @@
 						<w> d<abbr cert="high">h</abbr>í<abbr cert="high">n</abbr>
 						</w>
 					</l>
-					<l n="b" xml:id="T2:1:1b">
+					<l n="b" xml:id="T2-1-1b">
 						<w> fa<abbr cert="high">n</abbr>
 						</w>
 						<w> c<abbr cert="high">h</abbr>aíngin </w>
@@ -292,7 +257,7 @@
 						<w> atc<abbr cert="high">h</abbr>ia<abbr cert="high">m</abbr>
 						</w>
 					</l>
-					<l n="c" xml:id="T2:1:1c">
+					<l n="c" xml:id="T2-1-1c">
 						<w>
 							<choice>
 								<sic>seact</sic>
@@ -309,7 +274,7 @@
 							</choice>
 						</w>
 					</l>
-					<l n="d" xml:id="T2:1:1d">
+					<l n="d" xml:id="T2-1-1d">
 						<w> sluag </w>
 						<w>
 							<choice>
@@ -322,25 +287,25 @@
 						<w> biad<abbr cert="high">h</abbr>
 						</w>
 					</l>
-				</s>
-			</lg>
-			<lg n="2" type="stanza" xml:id="T2:1:2">
-				<s>
-					<l n="a" xml:id="T2:1:2a">
+					<!---->
+				</lg>
+				<lg n="2" type="stanza" xml:id="T2-1-2">
+					<!--<s>-->
+					<l n="a" xml:id="T2-1-2a">
 						<w> Se<abbr cert="high">acht</abbr>
 						</w>
 						<w> ná<abbr cert="high">r</abbr>ć<abbr cert="high">h</abbr>ai<abbr
 								cert="high">n</abbr>gíl </w>
 						<w> a<abbr cert="high">n</abbr>d </w>
 					</l>
-					<l n="b" xml:id="T2:1:2b">
+					<l n="b" xml:id="T2-1-2b">
 						<w> na </w>
 						<w> rath </w>
 						<w> mainḋir </w>
 						<w> liu<abbr cert="high">m</abbr>
 						</w>
 					</l>
-					<l n="c" xml:id="T2:1:2c">
+					<l n="c" xml:id="T2-1-2c">
 						<w> Se<abbr cert="high">acht</abbr>
 						</w>
 						<w>
@@ -359,7 +324,7 @@
 							</choice>
 						</w>
 					</l>
-					<l n="d" xml:id="T2:1:2d">
+					<l n="d" xml:id="T2-1-2d">
 						<w> do<abbr cert="high">m</abbr>
 						</w>
 						<w> coi<abbr cert="high">m</abbr>d<abbr cert="high">h</abbr>e </w>
@@ -367,12 +332,12 @@
 						<w> ma </w>
 						<w> c<abbr cert="high">h</abbr>i<abbr cert="high">n</abbr>d </w>
 					</l>
-				</s>
-			</lg>
-			<lb n="3"/>
-			<lg n="3" type="stanza" xml:id="T2:1:3">
-				<s>
-					<l n="a" xml:id="T2:1:3a">
+					<!---->
+				</lg>
+				<lb n="3"/>
+				<lg n="3" type="stanza" xml:id="T2-1-3">
+					<!--<s>-->
+					<l n="a" xml:id="T2-1-3a">
 						<w> Se<abbr cert="high">acht</abbr>
 						</w>
 						<w> si<abbr cert="high">n</abbr>sir </w>
@@ -380,7 +345,7 @@
 						</w>
 						<w> sloig </w>
 					</l>
-					<l n="b" xml:id="T2:1:3b">
+					<l n="b" xml:id="T2-1-3b">
 						<w>
 							<choice>
 								<sic>nac</sic>
@@ -392,7 +357,7 @@
 						<w> tríb<abbr cert="high">h</abbr>
 						</w>
 					</l>
-					<l n="c" xml:id="T2:1:3c">
+					<l n="c" xml:id="T2-1-3c">
 						<w> se<abbr cert="high">acht</abbr>
 						</w>
 						<w> sgeit<abbr cert="high">h</abbr>
@@ -403,7 +368,7 @@
 						<w> sgat<abbr cert="high">h</abbr>
 						</w>
 					</l>
-					<l n="d" xml:id="T2:1:3d">
+					<l n="d" xml:id="T2-1-3d">
 						<w> na </w>
 						<w> cleit<abbr cert="high">h</abbr>
 						</w>
@@ -413,25 +378,25 @@
 						<lb n="4"/>
 						<w> bíd </w>
 					</l>
-				</s>
-			</lg>
-			<lg n="4" type="stanza" xml:id="T2:1:4">
-				<s>
-					<l n="a" xml:id="T2:1:4a">
+					<!---->
+				</lg>
+				<lg n="4" type="stanza" xml:id="T2-1-4">
+					<!--<s>-->
+					<l n="a" xml:id="T2-1-4a">
 						<w> beit </w>
 						<w> leam </w>
 						<w> a </w>
 						<w> d<abbr cert="high">h</abbr>ia </w>
 						<w> d<abbr cert="high">h</abbr>il </w>
 					</l>
-					<l n="b" xml:id="T2:1:4b">
+					<l n="b" xml:id="T2-1-4b">
 						<w> im </w>
 						<w> ci<abbr cert="high">n</abbr>ḋ </w>
 						<w> cia </w>
 						<w> roib<abbr cert="high">h</abbr>
 						</w>
 					</l>
-					<l n="c" xml:id="T2:1:4c">
+					<l n="c" xml:id="T2-1-4c">
 						<w> beirt </w>
 						<w> daing<abbr cert="high">h</abbr>ean </w>
 						<w>
@@ -443,7 +408,7 @@
 						<w> dluig<abbr cert="high">h</abbr>
 						</w>
 					</l>
-					<l n="d" xml:id="T2:1:4d">
+					<l n="d" xml:id="T2-1-4d">
 						<w> sea<abbr cert="high">cht</abbr>
 						</w>
 						<w> cuir </w>
@@ -452,25 +417,25 @@
 						<w> a<abbr cert="high">ir</abbr>
 						</w>
 					</l>
-				</s>
-			</lg>
-			<lg n="5" type="stanza" xml:id="T2:1:5">
-				<s>
-					<l n="a" xml:id="T2:1:5a">
+					<!---->
+				</lg>
+				<lg n="5" type="stanza" xml:id="T2-1-5">
+					<!--<s>-->
+					<l n="a" xml:id="T2-1-5a">
 						<w> Cor </w>
 						<w> dib<abbr cert="high">h</abbr>
 						</w>
 						<name type="personal"> michel </name>
 						<w> mor </w>
 					</l>
-					<l n="b" xml:id="T2:1:5b">
+					<l n="b" xml:id="T2-1-5b">
 						<w> a </w>
 						<w> gloir </w>
 						<w> ní </w>
 						<w> gloir </w>
 						<w> and </w>
 					</l>
-					<l n="c" xml:id="T2:1:5c">
+					<l n="c" xml:id="T2-1-5c">
 						<name type="personal"> raphael </name>
 						<w>
 							<choice>
@@ -481,11 +446,11 @@
 						<w> ru<abbr cert="high">m</abbr>
 						</w>
 					</l>
-					<l n="d" xml:id="T2:1:5d">
+					<l n="d" xml:id="T2-1-5d">
 						<w>
 							<choice>
 								<sic>scaphel</sic>
-								<supp resp="#ONolan1912">scath-fhial</supp>
+								<!--<supp resp="#[O'Nolan]">scath-fhial</supp>-->
 							</choice>
 						</w>
 						<w> blait<abbr cert="high">h</abbr>
@@ -494,33 +459,33 @@
 						<w> b<abbr cert="high">h</abbr>a<abbr cert="high">rr</abbr>
 						</w>
 					</l>
-				</s>
-			</lg>
-			<lb n="6"/>
-			<lg n="6" type="stanza" xml:id="T2:1:6">
-				<s>
-					<l n="a" xml:id="T2:1:6a">
+					<!---->
+				</lg>
+				<lb n="6"/>
+				<lg n="6" type="stanza" xml:id="T2-1-6">
+					<!--<s>-->
+					<l n="a" xml:id="T2-1-6a">
 						<w> Cor </w>
 						<w> dib<abbr cert="high">h</abbr>
 						</w>
 						<name> uriel </name>
 						<w> ám </w>
 					</l>
-					<l n="b" xml:id="T2:1:6b">
+					<l n="b" xml:id="T2-1-6b">
 						<w>
 							<choice>
 								<sic>renacgad</sic>
-								<corr resp="#ONolan1912">re cech ngád</corr>
+								<corr resp="#[O'Nolan]">re cech ngád</corr>
 							</choice>
 						</w>
 						<w>
-							<m> ro<abbr cert="high">m</abbr>
+							<m> ro<!--<abbr cert="high">m</abbr>-->
 							</m>
-							<m> feít<abbr cert="high">h</abbr>
+							<m> feít<!--<abbr cert="high">h</abbr>-->
 							</m>
 						</w>
 					</l>
-					<l n="c" xml:id="T2:1:6c">
+					<l n="c" xml:id="T2-1-6c">
 						<w> cor </w>
 						<w> dib<abbr cert="high">h</abbr>
 						</w>
@@ -528,7 +493,7 @@
 						<w> sruit<abbr cert="high">h</abbr>
 						</w>
 					</l>
-					<l n="d" xml:id="T2:1:6d">
+					<l n="d" xml:id="T2-1-6d">
 						<w> ban<abbr cert="high">n</abbr>ia<abbr cert="high">m</abbr>
 						</w>
 						<w> de </w>
@@ -536,12 +501,12 @@
 						<w> d<abbr cert="high">h</abbr>réic<abbr cert="high">h</abbr>
 						</w>
 					</l>
-				</s>
-			</lg>
-			<lb n="7"/>
-			<lg n="7" type="stanza" xml:id="T2:1:7">
-				<s>
-					<l n="a" xml:id="T2:1:7a">
+					<!---->
+				</lg>
+				<lb n="7"/>
+				<lg n="7" type="stanza" xml:id="T2-1-7">
+					<!--<s>-->
+					<l n="a" xml:id="T2-1-7a">
 						<w> Sea<abbr cert="high">cht</abbr>
 						</w>
 						<w> cuir </w>
@@ -550,7 +515,7 @@
 						<w> cea<abbr cert="high">n</abbr>d </w>
 						<w> de </w>
 					</l>
-					<l n="b" xml:id="T2:1:7b">
+					<l n="b" xml:id="T2-1-7b">
 						<w> ma<abbr cert="high">r</abbr>
 						</w>
 						<w> as </w>
@@ -563,7 +528,7 @@
 						<w> fuil </w>
 						<w> faí </w>
 					</l>
-					<l m="c" xml:id="T2:1:7c">
+					<l n="c" xml:id="T2-1-7c">
 						<w> ae<abbr cert="high">n</abbr>
 						</w>
 						<w> cor </w>
@@ -571,7 +536,7 @@
 						<w> a </w>
 						<w> cea<abbr cert="high">n</abbr>d </w>
 					</l>
-					<l n="d" xml:id="T2:1:7d">
+					<l n="d" xml:id="T2-1-7d">
 						<w> geb<abbr cert="high">h</abbr>a<abbr cert="high">r</abbr>
 						</w>
 						<w> lea<abbr cert="high">m</abbr>
@@ -580,12 +545,12 @@
 						</w>
 						<w> laí </w>
 					</l>
-				</s>
-			</lg>
-			<lb n="8"/>
-			<lg n="8" type="stanza" xml:id="T2:1:8">
-				<s>
-					<l n="a" xml:id="T2:1:8a">
+					<!---->
+				</lg>
+				<lb n="8"/>
+				<lg n="8" type="stanza" xml:id="T2-1-8">
+					<!--<s>-->
+					<l n="a" xml:id="T2-1-8a">
 						<name type="personal"> Michel </name>
 						<w> lea<abbr cert="high">m</abbr>
 						</w>
@@ -597,7 +562,7 @@
 						</w>
 						<w> luain </w>
 					</l>
-					<l n="b" xml:id="T2:1:8b">
+					<l n="b" xml:id="T2-1-8b">
 						<w>
 							<choice>
 								<sic>nac</sic>
@@ -608,83 +573,83 @@
 						<w> icel </w>
 						<w> dail </w>
 					</l>
-					<l n="c" xml:id="T2:1:8c">
+					<l n="c" xml:id="T2-1-8c">
 						<w> m </w>
 						<w> ai<abbr cert="high">n</abbr>gil </w>
 						<w>
-							<m>fi<abbr cert="high">n</abbr>d</m>
+							<m>fi<!--<abbr cert="high">n</abbr>-->d</m>
 							<m>sa</m>
 						</w>
 						<w> fei<abbr cert="high">n</abbr>
 						</w>
 					</l>
-					<l n="d" xml:id="T2:1:8d">
+					<l n="d" xml:id="T2-1-8d">
 						<w> dai<abbr cert="high">n</abbr>g<abbr cert="high">h</abbr>i<abbr
 								cert="high">n</abbr>
 						</w>
 						<w>
-							<m>li<abbr cert="high">m</abbr></m>
+							<m>li<!--<abbr cert="high">m</abbr>--></m>
 							<m>sa</m>
 						</w>
 						<w> am </w>
 						<w> lai<abbr cert="high">m</abbr>
 						</w>
 					</l>
-				</s>
-			</lg>
-			<lb n="9"/>
-			<lg n="9" type="stanza" xml:id="T2:1:9">
-				<s>
-					<l n="a" xml:id="T2:1:9a">
+					<!--</s>-->
+				</lg>
+				<lb n="9"/>
+				<lg n="9" type="stanza" xml:id="T2-1-9">
+					<!--<s>-->
+					<l n="a" xml:id="T2-1-9a">
 						<name type="personal"> Raphael </name>
 						<w> lea<abbr cert="high">m</abbr>
 						</w>
 						<w>
 							<m> do </m>
-							<m> roit<abbr cert="high">h</abbr>
+							<m> roit<!--<abbr cert="high">h</abbr>-->
 							</m>
 						</w>
 					</l>
-					<l n="b" xml:id="T2:1:9b">
+					<l n="b" xml:id="T2-1-9b">
 						<w> os </w>
 						<w> ci<abbr cert="high">n</abbr>d </w>
 						<w> gac<abbr cert="high">h</abbr>a </w>
 						<w> cuir </w>
 					</l>
-					<l n="c" xml:id="T2:1:9c">
+					<l n="c" xml:id="T2-1-9c">
 						<w> mo </w>
 						<w>
 							<m>
-								<choice>
-									<sic>lainti</sic>
-									<corr>shlainti</corr>
-								</choice>
+								<!--<choice>
+                    <sic>lainti</sic>
+                    <corr>shlainti</corr>
+                  </choice>-->
 							</m>
 							<m>si</m>
 						</w>
 						<w> a<abbr cert="high">ir</abbr>
 						</w>
 					</l>
-					<l n="d" xml:id="T2:1:9d">
+					<l n="d" xml:id="T2-1-9d">
 						<w> sam<abbr cert="high">h</abbr>a<abbr cert="high">ir</abbr>t </w>
 						<w> is </w>
 						<w> do </w>
 						<w> is </w>
 						<w> dluig </w>
 					</l>
-				</s>
-			</lg>
-			<lb n="10"/>
-			<lg n="10" type="stanza" xml:id="T2:1:10">
-				<s>
-					<l n="a" xml:id="T2:1:10a">
+					<!--</s>-->
+				</lg>
+				<lb n="10"/>
+				<lg n="10" type="stanza" xml:id="T2-1-10">
+					<!--<s>-->
+					<l n="a" xml:id="T2-1-10a">
 						<name type="personal"> Uriel </name>
 						<w> fíal </w>
 						<w> na </w>
 						<w>
 							<abbr cert="high">bh</abbr>feart </w>
 					</l>
-					<l n="b" xml:id="T2:1:10b">
+					<l n="b" xml:id="T2-1-10b">
 						<w> ciab<abbr cert="high">h</abbr>
 						</w>
 						<name type="personal"> uriel </name>
@@ -692,7 +657,7 @@
 						<w> lo<abbr cert="high">cht</abbr>
 						</w>
 					</l>
-					<l n="c" xml:id="T2:1:10c">
+					<l n="c" xml:id="T2-1-10c">
 						<w> sa </w>
 						<w> c<abbr cert="high">h</abbr>edai<abbr cert="high">n</abbr>
 						</w>
@@ -700,7 +665,7 @@
 						</w>
 						<w> c<abbr cert="high">h</abbr>orp </w>
 					</l>
-					<l n="d" xml:id="T2:1:10d">
+					<l n="d" xml:id="T2-1-10d">
 						<w>
 							<choice>
 								<sic>nac</sic>
@@ -712,25 +677,25 @@
 						<w> an </w>
 						<w> tolc </w>
 					</l>
-				</s>
-			</lg>
-			<lb n="11"/>
-			<lg n="11" type="stanza" xml:id="T2:1:11">
-				<s>
-					<l n="a" xml:id="T2:1:11a">
+					<!--</s>-->
+				</lg>
+				<lb n="11"/>
+				<lg n="11" type="stanza" xml:id="T2-1-11">
+					<!--<s>-->
+					<l n="a" xml:id="T2-1-11a">
 						<name> Sarael </name>
 						<w> ai<abbr cert="high">n</abbr>gil </w>
 						<w> uai<abbr cert="high">m</abbr>
 						</w>
 					</l>
-					<l n="b" xml:id="T2:1:11b">
+					<l n="b" xml:id="T2-1-11b">
 						<w> go </w>
 						<w> dai<abbr cert="high">n</abbr>gin </w>
 						<w> a<abbr cert="high">m</abbr>
 						</w>
 						<w> d<abbr cert="high">h</abbr>ail </w>
 					</l>
-					<l n="c" xml:id="T2:1:11c">
+					<l n="c" xml:id="T2-1-11c">
 						<w> do<abbr cert="high">m</abbr>
 						</w>
 						<w> d<abbr cert="high">h</abbr>i<abbr cert="high">n</abbr>
@@ -739,7 +704,7 @@
 						</w>
 						<w> dia<abbr cert="high">r</abbr>dain </w>
 					</l>
-					<l n="d" xml:id="T2:1:11d">
+					<l n="d" xml:id="T2-1-11d">
 						<w> a<abbr cert="high">r</abbr>
 						</w>
 						<w> g<abbr cert="high">ach</abbr>
@@ -752,26 +717,26 @@
 						<w> grai<abbr cert="high">n</abbr>
 						</w>
 					</l>
-				</s>
-			</lg>
-			<lb n="12"/>
-			<lg n="12" type="stanza" xml:id="T2:1:12">
-				<s>
-					<l n="a" xml:id="T2:1:12a">
+					<!--</s>-->
+				</lg>
+				<lb n="12"/>
+				<lg n="12" type="stanza" xml:id="T2-1-12">
+					<!--<s>-->
+					<l n="a" xml:id="T2-1-12a">
 						<name type="personal"> Ruimuel </name>
 						<w> li<abbr cert="high">m</abbr>
 						</w>
 						<w>
 							<m> do </m>
 							<m>
-								<choice>
-									<sic>roit<abbr cert="high">h</abbr></sic>
-									<corr resp="#WGI">ráit<abbr cert="high">h</abbr></corr>
-								</choice>
+								<!--<choice>
+                    <sic>roit<abbr cert="high">h</abbr></sic>
+                    <corr resp="#WGI">ráit<abbr cert="high">h</abbr></corr>
+                  </choice>-->
 							</m>
 						</w>
 					</l>
-					<l n="b" xml:id="T2:1:12b">
+					<l n="b" xml:id="T2-1-12b">
 						<w> os </w>
 						<w> ci<abbr cert="high">n</abbr>d </w>
 						<w>
@@ -783,7 +748,7 @@
 						<w> go </w>
 						<w> cea<abbr cert="high">r</abbr>t </w>
 					</l>
-					<l n="c" xml:id="T2:1:12c">
+					<l n="c" xml:id="T2-1-12c">
 						<w>
 							<choice>
 								<sic>ni<abbr cert="high">m</abbr></sic>
@@ -794,7 +759,7 @@
 						<w> an </w>
 						<w> aine </w>
 					</l>
-					<l n="d" xml:id="T2:1:12d">
+					<l n="d" xml:id="T2-1-12d">
 						<w> olc </w>
 						<w> le </w>
 						<w> naei<abbr cert="high">m</abbr>e </w>
@@ -802,17 +767,17 @@
 						<w> le </w>
 						<w> nea<abbr cert="high">r</abbr>t </w>
 					</l>
-				</s>
-			</lg>
-			<lb n="13"/>
-			<lg n="13" type="stanza" xml:id="T2:1:13">
-				<s>
-					<l n="a" xml:id="T2:1:13a">
+					<!--</s>-->
+				</lg>
+				<lb n="13"/>
+				<lg n="13" type="stanza" xml:id="T2-1-13">
+					<!--<s>-->
+					<l n="a" xml:id="T2-1-13a">
 						<name type="personal"> Panael </name>
 						<w> puirt </w>
 						<w> de </w>
 					</l>
-					<l n="b" xml:id="T2:1:13b">
+					<l n="b" xml:id="T2-1-13b">
 						<w> do<abbr cert="high">m</abbr>
 						</w>
 						<w> di<abbr cert="high">n</abbr>
@@ -823,7 +788,7 @@
 						</w>
 						<w> droing </w>
 					</l>
-					<l n="c" xml:id="T2:1:13c">
+					<l n="c" xml:id="T2-1-13c">
 						<w> a<abbr cert="high">r</abbr>
 						</w>
 						<w> tei<abbr cert="high">m</abbr>
@@ -831,29 +796,29 @@
 						<w> s<abbr cert="high">h</abbr>at<abbr cert="high">h</abbr>airn </w>
 						<w> s<abbr cert="high">h</abbr>einġ </w>
 					</l>
-					<l n="d" xml:id="T2:1:13d">
+					<l n="d" xml:id="T2-1-13d">
 						<w> fo </w>
 						<w> rinḋ </w>
 						<w>
-							<m> cat<abbr cert="high">h</abbr>
+							<m> cat<!--<abbr cert="high">h</abbr>-->
 							</m>
-							<m> a<abbr cert="high">ir</abbr>m </m>
+							<m> a<!--<abbr cert="high">ir</abbr>-->m </m>
 						</w>
 						<w> c<abbr cert="high">h</abbr>uir </w>
 					</l>
-				</s>
-			</lg>
-			<lb n="14"/>
-			<lg n="14" type="stanza" xml:id="T2:1:14">
-				<s>
-					<l n="a" xml:id="T2:1:14a">
+					<!--</s>-->
+				</lg>
+				<lb n="14"/>
+				<lg n="14" type="stanza" xml:id="T2-1-14">
+					<!--<s>-->
+					<l n="a" xml:id="T2-1-14a">
 						<name type="personal"> Gabriel </name>
 						<w> gelta<abbr cert="high">r</abbr>
 						</w>
 						<w> gruad<abbr cert="high">h</abbr>
 						</w>
 					</l>
-					<l n="b" xml:id="T2:1:14b">
+					<l n="b" xml:id="T2-1-14b">
 						<w> as </w>
 						<w> e </w>
 						<w> a<abbr cert="high">n</abbr>
@@ -863,7 +828,7 @@
 						<w> sla<abbr cert="high">n</abbr>
 						</w>
 					</l>
-					<l n="c" xml:id="T2:1:14c">
+					<l n="c" xml:id="T2-1-14c">
 						<w> g<abbr cert="high">ach</abbr>
 						</w>
 						<w> do<abbr cert="high">m</abbr>naic </w>
@@ -872,7 +837,7 @@
 						<w> d<abbr cert="high">h</abbr>i<abbr cert="high">n</abbr>
 						</w>
 					</l>
-					<l n="d" xml:id="T2:1:14d">
+					<l n="d" xml:id="T2-1-14d">
 						<w> a<abbr cert="high">r</abbr>
 						</w>
 						<w> fog<abbr cert="high">h</abbr>laib<abbr cert="high">h</abbr>
@@ -886,12 +851,12 @@
 							</choice>
 						</w>
 					</l>
-				</s>
-			</lg>
-			<lb n="15"/>
-			<lg n="15" type="stanza" xml:id="T2:1:15">
-				<s>
-					<l n="a" xml:id="T2:1:15a">
+					<!--</s>-->
+				</lg>
+				<lb n="15"/>
+				<lg n="15" type="stanza" xml:id="T2-1-15">
+					<!--<s>-->
+					<l n="a" xml:id="T2-1-15a">
 						<w> Na </w>
 						<w> se<abbr cert="high">acht</abbr>
 						</w>
@@ -900,7 +865,7 @@
 						<name type="personal"> cr<abbr cert="high">ist</abbr>
 						</name>
 					</l>
-					<l n="b" xml:id="T2:1:15b">
+					<l n="b" xml:id="T2-1-15b">
 						<name type="personal"> crist </name>
 						<w> fein </w>
 						<w> fea<abbr cert="high">r</abbr>
@@ -910,18 +875,18 @@
 						<w> crit<abbr cert="high">h</abbr>
 						</w>
 					</l>
-					<l n="c" xml:id="T2:1:15c">
+					<l n="c" xml:id="T2-1-15c">
 						<w>
-							<m> do<abbr cert="high">m</abbr>
+							<m> do<!--<abbr cert="high">m</abbr>-->
 							</m>
-							<m> saerad<abbr cert="high">h</abbr>
+							<m> saerad<!--<abbr cert="high">h</abbr>-->
 							</m>
 						</w>
 						<w> go </w>
 						<w> dait<abbr cert="high">h</abbr>
 						</w>
 					</l>
-					<l n="d" xml:id="T2:1:15d">
+					<l n="d" xml:id="T2-1-15d">
 						<w> a<abbr cert="high">r</abbr>
 						</w>
 						<w> badal </w>
@@ -929,12 +894,12 @@
 						<w> bit<abbr cert="high">h</abbr>
 						</w>
 					</l>
-				</s>
-			</lg>
-			<lb n="16"/>
-			<lg n="16" type="stanza" xml:id="T2:1:16">
-				<s>
-					<l n="a" xml:id="T2:1:16a">
+					<!--</s>-->
+				</lg>
+				<lb n="16"/>
+				<lg n="16" type="stanza" xml:id="T2-1-16">
+					<!--<s>-->
+					<l n="a" xml:id="T2-1-16a">
 						<w> A<abbr cert="high">r</abbr>
 						</w>
 						<w> ésgai<abbr cert="high">n</abbr>
@@ -942,7 +907,7 @@
 						<w> ar </w>
 						<w> air </w>
 					</l>
-					<l n="b" xml:id="T2:1:16b">
+					<l n="b" xml:id="T2-1-16b">
 						<w> a<abbr cert="high">r</abbr>
 						</w>
 						<w> gresgui<abbr cert="high">n</abbr>
@@ -951,7 +916,7 @@
 						</w>
 						<w> gliaig </w>
 					</l>
-					<l n="c" xml:id="T2:1:16c">
+					<l n="c" xml:id="T2-1-16c">
 						<w> a<abbr cert="high">r</abbr>
 						</w>
 						<w> pianaib<abbr cert="high">h</abbr>
@@ -960,7 +925,7 @@
 						</w>
 						<w> plaig </w>
 					</l>
-					<l n="d" xml:id="T2:1:16d">
+					<l n="d" xml:id="T2-1-16d">
 						<w> a<abbr cert="high">r</abbr>
 						</w>
 						<w> diab<abbr cert="high">h</abbr>luib<abbr cert="high">h</abbr>
@@ -968,12 +933,12 @@
 						<w> am </w>
 						<w> diaig </w>
 					</l>
-				</s>
-			</lg>
-			<lb n="17"/>
-			<lg n="17" type="stanza" xml:id="T2:1:17">
-				<s>
-					<l n="a" xml:id="T2:1:17a">
+					<!--</s>-->
+				</lg>
+				<lb n="17"/>
+				<lg n="17" type="stanza" xml:id="T2-1-17">
+					<!--<s>-->
+					<l n="a" xml:id="T2-1-17a">
 						<w> A<abbr cert="high">r</abbr>
 						</w>
 						<w> sai<abbr cert="high">n</abbr>t </w>
@@ -984,7 +949,7 @@
 						<w> nea<abbr cert="high">m</abbr>
 						</w>
 					</l>
-					<l n="b" xml:id="T2:1:17b">
+					<l n="b" xml:id="T2-1-17b">
 						<w> a<abbr cert="high">r</abbr>
 						</w>
 						<w> in </w>
@@ -997,7 +962,7 @@
 						<w> bí </w>
 						<w> bail </w>
 					</l>
-					<l n="c" xml:id="T2:1:17c">
+					<l n="c" xml:id="T2-1-17c">
 						<w> a<abbr cert="high">r</abbr>
 						</w>
 						<w>
@@ -1010,7 +975,7 @@
 						</w>
 						<w> col </w>
 					</l>
-					<l n="d" xml:id="T2:1:17d">
+					<l n="d" xml:id="T2-1-17d">
 						<w> a<abbr cert="high">r</abbr>
 						</w>
 						<w> toil </w>
@@ -1018,24 +983,24 @@
 						<w> baís </w>
 						<w> ḃ<abbr cert="high">h</abbr>an </w>
 					</l>
-				</s>
-			</lg>
-			<lb n="18"/>
-			<lg n="18" type="stanza" xml:id="T2:1:18">
-				<s>
-					<l n="a" xml:id="T2:1:18a">
+					<!--</s>-->
+				</lg>
+				<lb n="18"/>
+				<lg n="18" type="stanza" xml:id="T2-1-18">
+					<!--<s>-->
+					<l n="a" xml:id="T2-1-18a">
 						<w> A<abbr cert="high">r</abbr>
 						</w>
-						<w> urcane<add resp="XXX" postion="above">ad</add>
+						<w> urcane<add resp="XXX" place="above">ad</add>
 						</w>
 						<w> ngur </w>
 					</l>
-					<l n="b" xml:id="T2:1:18b">
+					<l n="b" xml:id="T2-1-18b">
 						<w> a<abbr cert="high">r</abbr>
 						</w>
 						<w>
 							<m> gle </m>
-							<m> c<abbr cert="high">h</abbr>anead </m>
+							<m> c<!--<abbr cert="high">h</abbr>-->anead </m>
 						</w>
 						<w>
 							<choice>
@@ -1044,7 +1009,7 @@
 							</choice>
 						</w>
 					</l>
-					<l n="c" xml:id="T2:1:18c">
+					<l n="c" xml:id="T2-1-18c">
 						<w> ar </w>
 						<w> g<abbr cert="high">ach</abbr>
 						</w>
@@ -1056,10 +1021,11 @@
 						</w>
 						<w> cle </w>
 					</l>
-					<l n="d" xml:id="T2:1:18d">
+					<l n="d" xml:id="T2-1-18d">
 						<w>
 							<m> ad </m>
-							<m> c<abbr cert="high">h</abbr>iam<abbr cert="high">h</abbr>
+							<m>
+								c<!--<abbr cert="high">h</abbr>-->iam<!--<abbr cert="high">h</abbr>-->
 							</m>
 						</w>
 						<w> aingeal </w>
@@ -1068,26 +1034,26 @@
 						</w>
 						<w> d<abbr cert="high">h</abbr>in </w>
 					</l>
-				</s>
-			</lg>
-			<seg type="dúnad" xml:id="T2:1:18e">
-				<w>ai<abbr cert="high">n</abbr>gil</w>
-			</seg>
-			<lb n="19"/>
-			<lg n="19" type="stanza" xml:id="T2:1:19">
-				<s>
-					<l n="a" xml:id="T2:1:19a">
+					<!--</s>-->
+				</lg>
+				<!--<seg type="dúnad" xml:id="T2-1-18e">
+          <w>ai<abbr cert="high">n</abbr>gil</w>
+        </seg>-->
+				<lb n="19"/>
+				<lg n="19" type="stanza" xml:id="T2-1-19">
+					<!--<s>-->
+					<l n="a" xml:id="T2-1-19a">
 						<w> Da </w>
 						<w> apstal </w>
 						<w> dég </w>
 						<w> de </w>
 					</l>
-					<l n="b" xml:id="T2:1:19b">
+					<l n="b" xml:id="T2-1-19b">
 						<w> go </w>
 						<w> torset </w>
 						<w> aníu </w>
 					</l>
-					<l n="c" xml:id="T2:1:19c">
+					<l n="c" xml:id="T2-1-19c">
 						<w> i<abbr cert="high">n</abbr>
 						</w>
 						<w> cure </w>
@@ -1095,24 +1061,24 @@
 						</w>
 						<w> nua </w>
 					</l>
-					<l n="d" xml:id="T2:1:19d">
+					<l n="d" xml:id="T2-1-19d">
 						<name type="personal"> mure </name>
 						<w> mare<abbr cert="high">n</abbr>
 						</w>
 						<w> riu </w>
 					</l>
-				</s>
-			</lg>
-			<lb n="20"/>
-			<lg n="20" type="stanza" xml:id="T2:1:20">
-				<s>
-					<l n="a" xml:id="T2:1:20a">
+					<!--</s>-->
+				</lg>
+				<lb n="20"/>
+				<lg n="20" type="stanza" xml:id="T2-1-20">
+					<!--<s>-->
+					<l n="a" xml:id="T2-1-20a">
 						<name type="personal"> Pilip </name>
 						<name type="personal"> peda<abbr cert="high">ir</abbr>
 						</name>
 						<name type="personal"> pol </name>
 					</l>
-					<l n="b" xml:id="T2:1:20b">
+					<l n="b" xml:id="T2-1-20b">
 						<name type="personal"> pa<abbr cert="high">rr</abbr>t<abbr cert="high"
 								>h</abbr>alo<abbr cert="high">n</abbr>
 						</name>
@@ -1124,7 +1090,7 @@
 							</choice>
 						</w>
 					</l>
-					<l n="c" xml:id="T2:1:20c">
+					<l n="c" xml:id="T2-1-20c">
 						<name type="personal"> m<abbr cert="high">ur</abbr>e </name>
 						<w> an </w>
 						<w>
@@ -1136,7 +1102,7 @@
 						<w> og </w>
 						<w> f<abbr cert="high">h</abbr>ind </w>
 					</l>
-					<l n="d" xml:id="T2:1:20d">
+					<l n="d" xml:id="T2-1-20d">
 						<w> li<abbr cert="high">m</abbr>
 						</w>
 						<w>
@@ -1145,12 +1111,12 @@
 						<name type="personal">symon</name>
 						<w> sea<abbr cert="high">n</abbr>g </w>
 					</l>
-				</s>
-			</lg>
-			<lb n="21"/>
-			<lg n="21" type="stanza" xml:id="T2:1:21">
-				<s>
-					<l n="a" xml:id="T2:1:21a">
+					<!--</s>-->
+				</lg>
+				<lb n="21"/>
+				<lg n="21" type="stanza" xml:id="T2-1-21">
+					<!--<s>-->
+					<l n="a" xml:id="T2-1-21a">
 						<name type="personal"> Mata </name>
 						<w> mait<abbr cert="high">h</abbr>
 						</w>
@@ -1159,14 +1125,14 @@
 						<w> d<abbr cert="high">h</abbr>i<abbr cert="high">n</abbr>
 						</w>
 					</l>
-					<l n="b" xml:id="T2:1:21b">
+					<l n="b" xml:id="T2-1-21b">
 						<w> re </w>
 						<w> dul </w>
 						<w> a<abbr cert="high">n</abbr></w>
 						<w> treas </w>
 						<w> nuilc </w>
 					</l>
-					<l n="c" xml:id="T2:1:21c">
+					<l n="c" xml:id="T2-1-21c">
 						<w> tarr </w>
 						<w>
 							<abbr cert="high">is</abbr>
@@ -1179,7 +1145,7 @@
 						<w> a </w>
 						<w> m<abbr cert="high">h</abbr>a<abbr cert="high">ir</abbr>c </w>
 					</l>
-					<l n="d" xml:id="T2:1:21d">
+					<l n="d" xml:id="T2-1-21d">
 						<w> do </w>
 						<w> leit<abbr cert="high">h</abbr>
 						</w>
@@ -1187,18 +1153,18 @@
 						<w> ma </w>
 						<w> c<abbr cert="high">h</abbr>uirp </w>
 					</l>
-				</s>
-			</lg>
-			<lb n="22"/>
-			<lg n="22" type="stanza" xml:id="T2:1:22">
-				<s>
-					<l n="a" xml:id="T2:1:22a">
+					<!--</s>-->
+				</lg>
+				<lb n="22"/>
+				<lg n="22" type="stanza" xml:id="T2-1-22">
+					<!--<s>-->
+					<l n="a" xml:id="T2-1-22a">
 						<w> Gudi<abbr cert="high">m</abbr>
 						</w>
 						<name type="personal"> andrias </name>
 						<w> ur </w>
 					</l>
-					<l n="b" xml:id="T2:1:22b">
+					<l n="b" xml:id="T2-1-22b">
 						<w> a<abbr cert="high">r</abbr>
 						</w>
 						<w> mo </w>
@@ -1207,7 +1173,7 @@
 						<w> cac<abbr cert="high">h</abbr>
 						</w>
 					</l>
-					<l n="c" xml:id="T2:1:22c">
+					<l n="c" xml:id="T2-1-22c">
 						<w> da </w>
 						<w> iacob<abbr cert="high">h</abbr>
 						</w>
@@ -1215,7 +1181,7 @@
 						</w>
 						<w> f<abbr cert="high">h</abbr>ic </w>
 					</l>
-					<l n="d" xml:id="T2:1:22d">
+					<l n="d" xml:id="T2-1-22d">
 						<w> sgiat<abbr cert="high">h</abbr>
 						</w>
 						<w> fail </w>
@@ -1224,12 +1190,12 @@
 						<w> mo </w>
 						<w> sgath </w>
 					</l>
-				</s>
-			</lg>
-			<lb n="23"/>
-			<lg n="23" type="stanza" xml:id="T2:1:23">
-				<s>
-					<l n="a" xml:id="T2:1:23a">
+					<!--</s>-->
+				</lg>
+				<lb n="23"/>
+				<lg n="23" type="stanza" xml:id="T2-1-23">
+					<!--<s>-->
+					<l n="a" xml:id="T2-1-23a">
 						<name type="personal"> Lucas </name>
 						<w> do<abbr cert="high">m</abbr>
 						</w>
@@ -1237,7 +1203,7 @@
 						</w>
 						<w> deis </w>
 					</l>
-					<l n="b" xml:id="T2:1:23b">
+					<l n="b" xml:id="T2-1-23b">
 						<w> coír </w>
 						<w> a </w>
 						<w>
@@ -1249,7 +1215,7 @@
 						<w> is </w>
 						<w> biaid </w>
 					</l>
-					<l n="c" xml:id="T2:1:23c">
+					<l n="c" xml:id="T2-1-23c">
 						<w> bid </w>
 						<name type="personal"> eoi<abbr cert="high">n</abbr>
 						</name>
@@ -1259,7 +1225,7 @@
 						<w> da </w>
 						<w> eoin </w>
 					</l>
-					<l n="d" xml:id="T2:1:23d">
+					<l n="d" xml:id="T2-1-23d">
 						<w> ago<abbr cert="high">m</abbr>
 						</w>
 						<w> dín </w>
@@ -1268,18 +1234,18 @@
 						<w> diaid<abbr cert="high">h</abbr>
 						</w>
 					</l>
-				</s>
-			</lg>
-			<lb n="24"/>
-			<lg n="24" type="stanza" xml:id="T2:1:24">
-				<s>
-					<l n="a" xml:id="T2:1:24a">
+					<!--</s>-->
+				</lg>
+				<lb n="24"/>
+				<lg n="24" type="stanza" xml:id="T2-1-24">
+					<!--<s>-->
+					<l n="a" xml:id="T2-1-24a">
 						<w> Éigid </w>
 						<w> fi<abbr cert="high">n</abbr>d </w>
 						<name type="personal"> pol </name>
 						<w> rum </w>
 					</l>
-					<l n="b" xml:id="T2:1:24b">
+					<l n="b" xml:id="T2-1-24b">
 						<w> re </w>
 						<w> gac<abbr cert="high">h</abbr>
 						</w>
@@ -1287,7 +1253,7 @@
 						<w> na<abbr cert="high">r</abbr>
 						</w>
 					</l>
-					<l n="c" xml:id="T2:1:24c">
+					<l n="c" xml:id="T2-1-24c">
 						<w> mar </w>
 						<w> tísat </w>
 						<w>
@@ -1298,7 +1264,7 @@
 						</w>
 						<w> ur </w>
 					</l>
-					<l n="d" xml:id="T2:1:24d">
+					<l n="d" xml:id="T2-1-24d">
 						<w> fu<abbr cert="high">m</abbr>
 						</w>
 						<w> t<abbr cert="high">h</abbr>is </w>
@@ -1307,19 +1273,19 @@
 						<w> la<abbr cert="high">r</abbr>
 						</w>
 					</l>
-				</s>
-			</lg>
-			<lb n="25"/>
-			<lg n="25" type="stanza" xml:id="T2:1:25">
-				<s>
-					<l n="a" xml:id="T2:1:25a">
+					<!--</s>-->
+				</lg>
+				<lb n="25"/>
+				<lg n="25" type="stanza" xml:id="T2-1-25">
+					<!--<s>-->
+					<l n="a" xml:id="T2-1-25a">
 						<name type="personal"> Peda<abbr cert="high">ir</abbr>
 						</name>
 						<w> t<abbr cert="high">h</abbr>ora<abbr cert="high">m</abbr>
 						</w>
 						<w> thuas </w>
 					</l>
-					<l n="b" xml:id="T2:1:25b">
+					<l n="b" xml:id="T2-1-25b">
 						<w>
 							<choice>
 								<sic>toseac</sic>
@@ -1331,7 +1297,7 @@
 						</w>
 						<w> fi<abbr cert="high">n</abbr>d </w>
 					</l>
-					<l n="c" xml:id="T2:1:25c">
+					<l n="c" xml:id="T2-1-25c">
 						<w> mo </w>
 						<w> comla </w>
 						<w> n<abbr cert="high">ach</abbr>
@@ -1339,7 +1305,7 @@
 						<w> gan<abbr cert="high">n</abbr>
 						</w>
 					</l>
-					<l n="d" xml:id="T2:1:25d">
+					<l n="d" xml:id="T2-1-25d">
 						<w> do<abbr cert="high">m</abbr>
 						</w>
 						<w> co<abbr cert="high">mh</abbr>ḋa </w>
@@ -1347,28 +1313,30 @@
 						<w> ma </w>
 						<w> ci<abbr cert="high">n</abbr>d </w>
 					</l>
-				</s>
-			</lg>
-			<lb n="26"/>
-			<lg n="26" type="stanza" xml:id="T2:1:26">
-				<s>
-					<l n="a" xml:id="T2:1:26a">
+					<!--</s>-->
+				</lg>
+				<lb n="26"/>
+				<lg n="26" type="stanza" xml:id="T2-1-26">
+					<!--<s>-->
+					<l n="a" xml:id="T2-1-26a">
 						<w> Na </w>
 						<w>
-							<m> pri<abbr cert="high">m</abbr>
+							<m> pri<!--<abbr cert="high">m</abbr>-->
 							</m>
-							<m> f<abbr cert="high">h</abbr>ait<abbr cert="high">h</abbr>i </m>
+							<m>
+								f<!--<abbr cert="high">h</abbr>-->ait<!--<abbr cert="high">h</abbr>-->i
+							</m>
 						</w>
 						<w> fos </w>
 					</l>
-					<l n="b" xml:id="T2:1:26b">
+					<l n="b" xml:id="T2-1-26b">
 						<w>fet<abbr cert="high">h</abbr>eat</w>
 						<w>me</w>
 						<w>a<abbr cert="high">r</abbr></w>
 						<w>rit<abbr cert="high">h</abbr></w>
 						<w>uilc</w>
 					</l>
-					<l n="c" xml:id="T2:1:26c">
+					<l n="c" xml:id="T2-1-26c">
 						<w>
 							<choice>
 								<sic>seait</sic>
@@ -1379,31 +1347,31 @@
 						<w>na</w>
 						<w>cea<abbr cert="high">r</abbr>t</w>
 					</l>
-					<l n="d" xml:id="T2:1:26d">
+					<l n="d" xml:id="T2-1-26d">
 						<w>do</w>
 						<w>coi<abbr cert="high">mh</abbr>ḋe</w>
 						<w>ma</w>
 						<w>c<abbr cert="high">h</abbr>uirp</w>
 					</l>
-				</s>
-			</lg>
-			<lb n="27"/>
-			<lg n="27" type="stanza" xml:id="T2:1:27">
-				<s>
-					<l n="a" xml:id="T2:1:27a">
+					<!--</s>-->
+				</lg>
+				<lb n="27"/>
+				<lg n="27" type="stanza" xml:id="T2-1-27">
+					<!--<s>-->
+					<l n="a" xml:id="T2-1-27a">
 						<w>Sgiat<abbr cert="high">h</abbr></w>
 						<w>carat</w>
 						<w>fa<abbr cert="high">m</abbr></w>
 						<w>cliu</w>
 					</l>
-					<l n="b" xml:id="T2:1:27b">
+					<l n="b" xml:id="T2-1-27b">
 						<w>
-							<m>naca<abbr cert="high">mh</abbr></m>
+							<m>naca<!--<abbr cert="high">mh</abbr>--></m>
 							<m>gabsat</m>
 						</w>
 						<w>gaí</w>
 					</l>
-					<l n="c" xml:id="T2:1:27c">
+					<l n="c" xml:id="T2-1-27c">
 						<w>spirad</w>
 						<w>
 							<choice>
@@ -1413,7 +1381,7 @@
 						</w>
 						<w>de</w>
 					</l>
-					<l n="d" xml:id="T2:1:27d">
+					<l n="d" xml:id="T2-1-27d">
 						<w>mo</w>
 						<w>
 							<choice>
@@ -1424,19 +1392,19 @@
 						<w>ga<abbr cert="high">ch</abbr></w>
 						<w>laí</w>
 					</l>
-				</s>
-			</lg>
-			<lb n="28"/>
-			<lg n="28" type="stanza" xml:id="T2:1:28">
-				<s>
-					<l n="a" xml:id="T2:1:28a">
+					<!--</s>-->
+				</lg>
+				<lb n="28"/>
+				<lg n="28" type="stanza" xml:id="T2-1-28">
+					<!--<s>-->
+					<l n="a" xml:id="T2-1-28a">
 						<name type="personal">Crist</name>
 						<w>fu<abbr cert="high">m</abbr></w>
 						<name type="personal">cr<abbr cert="high">ist</abbr></name>
 						<w>fa<abbr cert="high">m</abbr></w>
 						<w>c<abbr cert="high">h</abbr>ea<abbr cert="high">n</abbr>d</w>
 					</l>
-					<l n="b" xml:id="T2:1:28b">
+					<l n="b" xml:id="T2-1-28b">
 						<name type="personal">cr<abbr cert="high">ist</abbr></name>
 						<w>
 							<choice>
@@ -1447,53 +1415,53 @@
 						<w>dam<abbr cert="high">h</abbr></w>
 						<w>taeb<abbr cert="high">h</abbr></w>
 					</l>
-					<l n="c" xml:id="T2:1:28c">
+					<l n="c" xml:id="T2-1-28c">
 						<w>go<abbr cert="high">m</abbr></w>
 						<w>crid<abbr cert="high">h</abbr>e</w>
 						<w>go<abbr cert="high">m</abbr></w>
 						<w>cliab<abbr cert="high">h</abbr></w>
 					</l>
-					<l n="d" xml:id="T2:1:28d">
+					<l n="d" xml:id="T2-1-28d">
 						<w>ríg</w>
 						<w>ni<abbr cert="high">m</abbr>e</w>
 						<w>na</w>
 						<w>nae<abbr cert="high">m</abbr></w>
 					</l>
-				</s>
-			</lg>
-			<lb n="29"/>
-			<lg n="29" type="stanza" xml:id="T2:1:29">
-				<s>
-					<l n="a" xml:id="T2:1:29a">
+					<!--</s>-->
+				</lg>
+				<lb n="29"/>
+				<lg n="29" type="stanza" xml:id="T2-1-29">
+					<!--<s>-->
+					<l n="a" xml:id="T2-1-29a">
 						<w>Rig</w>
 						<w>ni<abbr cert="high">m</abbr>e</w>
 						<w>na</w>
 						<w>nae<abbr cert="high">m</abbr></w>
 					</l>
-					<l n="b" xml:id="T2:1:29b">
+					<l n="b" xml:id="T2-1-29b">
 						<w>bile</w>
 						<w>ur</w>
 						<w>os</w>
 						<w>c<abbr cert="high">h</abbr>na<abbr cert="high">rr</abbr></w>
 					</l>
-					<l n="c" xml:id="T2:1:29c">
+					<l n="c" xml:id="T2-1-29c">
 						<w>a<abbr cert="high">r</abbr></w>
 						<w>deam<abbr cert="high">h</abbr>a<abbr cert="high">n</abbr></w>
 						<w>do<abbr cert="high">m</abbr></w>
 						<w>d<abbr cert="high">h</abbr>in</w>
 					</l>
-					<l n="d" xml:id="T2:1:29d">
+					<l n="d" xml:id="T2-1-29d">
 						<w>do<abbr cert="high">m</abbr></w>
 						<w>spregad<abbr cert="high">h</abbr></w>
 						<w>do<abbr cert="high">m</abbr></w>
 						<w>spa<abbr cert="high">rr</abbr></w>
 					</l>
-				</s>
-			</lg>
-			<lb n="30"/>
-			<lg n="30" type="stanza" xml:id="T2:1:30">
-				<s>
-					<l n="a" xml:id="T2:1:30a">
+					<!--</s>-->
+				</lg>
+				<lb n="30"/>
+				<lg n="30" type="stanza" xml:id="T2-1-30">
+					<!--<s>-->
+					<l n="a" xml:id="T2-1-30a">
 						<w>
 							<choice>
 								<sic>Lureac</sic>
@@ -1509,32 +1477,33 @@
 							</choice>
 						</w>
 					</l>
-					<l n="b" xml:id="T2:1:30b">
+					<l n="b" xml:id="T2-1-30b">
 						<w>dicras</w>
 						<w>deam<abbr cert="high">h</abbr>a<abbr cert="high">n</abbr></w>
 						<w>di<abbr cert="high">m</abbr></w>
 					</l>
-					<l n="c" xml:id="T2:1:30c">
+					<l n="c" xml:id="T2-1-30c">
 						<w>me</w>
 						<w>mai<abbr cert="high">n</abbr>ḋir</w>
 						<w>na</w>
 						<w>nae<abbr cert="high">m</abbr></w>
 					</l>
-					<l n="d" xml:id="T2:1:30d">
+					<l n="d" xml:id="T2-1-30d">
 						<w>aingeal</w>
 						<w>de</w>
 						<w>do<abbr cert="high">m</abbr></w>
 						<w>d<abbr cert="high">h</abbr>i<abbr cert="high">n</abbr></w>
 					</l>
-				</s>
-			</lg>
-			<lb n="31"/>
-			<seg type="dúnad">
-				<w>aingil</w>
-				<w>dé</w>
-				<w>do<abbr cert="high">m</abbr></w>
-				<w>d<abbr cert="high">h</abbr>i<abbr cert="high">n</abbr></w>
-			</seg>
-		</div1>
-	</body>
+					<!--</s>-->
+				</lg>
+				<lb n="31"/>
+				<!--<seg type="dúnad">
+          <w>aingil</w>
+          <w>dé</w>
+          <w>do<abbr cert="high">m</abbr></w>
+          <w>d<abbr cert="high">h</abbr>i<abbr cert="high">n</abbr></w>
+        </seg>-->
+			</div1>
+		</body>
+	</text>
 </TEI>
