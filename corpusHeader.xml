@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+
+<?xml-stylesheet type="text/xsl" href="stylesheet.xsl"?>
+<teiCorpus xmlns="http://www.tei-c.org/ns/1.0">
+	<teiHeader>
+		<fileDesc>
+			<titleStmt>
+				<title>Faclair na Gaìdhlig: Medieval and Early Modern Manuscript Corpus</title>
+				<respStmt>
+					<!-- respStmts here -->
+				</respStmt>
+			</titleStmt>
+			<publicationStmt>
+				<authority>
+					<!-- Information about distribution of the corpus -->
+				</authority>
+				<availability>
+					<!-- Information on availability of the corpus -->
+				</availability>
+			</publicationStmt>
+			<notesStmt>
+				<note>
+					<!-- corpus summary here -->
+				</note>
+			</notesStmt>
+			<sourceDesc>
+				<listBibl>
+					<head>Manuscripts</head>
+					<!-- generate a list from <MSDesc> elements in transcription files -->
+				</listBibl>
+				<listBibl>
+					<head>Editions</head>
+					<!-- Details of editions used in <bibl> elements with xmlIDs -->
+				</listBibl>
+				<listBibl>
+					<head>Secondary Literature</head>
+					<!-- Details of secondary literature used in <bibl> elements with xmlIDs -->
+				</listBibl>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<projectDesc>
+				<!-- description of the FnaG ms project -->
+			</projectDesc>
+			<samplingDecl>
+				<!-- description of how items were selected for transcription for the FnaG ms project -->
+			</samplingDecl>
+			<editorialDecl>
+				<correction>
+					<!-- details -->
+				</correction>
+				<normalization>
+					<!-- details -->
+				</normalization>
+				<punctuation>
+					<!-- details -->
+				</punctuation>
+				<segmentation>
+					<!-- details -->
+				</segmentation>
+			</editorialDecl>
+			<tagsDecl>
+				<!-- tags used in the transcriptions -->
+			</tagsDecl>
+		</encodingDesc>
+		<profileDesc>
+			<handNotes>
+				<!-- list of scribal hands appearing throughout the corpus -->
+			</handNotes>
+		</profileDesc>
+		<revisionDesc>
+			<!-- revision history here -->
+		</revisionDesc>
+	</teiHeader>
+	<TEI>
+		<!-- transcription file here -->
+	</TEI>
+</teiCorpus>
