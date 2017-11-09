@@ -33,7 +33,7 @@
 						<addrLine>IV44 8RQ</addrLine>
 					</address>
 				</authority>
-				<availability status="restricted" xml:id="availability">
+				<availability status="restricted">
 					<p>For internal use by the Faclair na Gàidhlig/DASG projects</p>
 				</availability>
 			</publicationStmt>
@@ -480,7 +480,38 @@
 				</handNote>
 			</handNotes>
 		</profileDesc>
+		<encodingDesc>
+			<charDecl>
+				<glyph xml:id="g1" corresp="http://www.vanhamel.nl/codecs/M_stroke">
+					<glyphName>m-stroke</glyphName>
+					<note>A horizontal line with a downwards hook, standing for "-m".</note>
+				</glyph>
+				<glyph xml:id="g2" corresp="http://www.vanhamel.nl/codecs/Ocus,_et_(Tironian_note)">
+					<glyphName>
+					Tironian et</glyphName>
+					<note>Resembles a "7"; may stand for "ocus" and variants or "et" and variants.</note>
+				</glyph>
+				<glyph xml:id="g3" corresp="http://www.vanhamel.nl/codecs/Suspension_stroke">
+					<glyphName>Generic suspension stroke (superscript)</glyphName>
+					<note>A horizontal superscript stroke that may stand for any character(s).</note>
+				</glyph>
+				<glyph xml:id="g4" corresp="http://www.vanhamel.nl/codecs/Spiritus_asper">
+					<glyphName>Lenition dot/tick</glyphName>
+					<note>Also known as <hi rend="italics">spiritus asper</hi>; adds an "-h" to consonants (i.e. aspirates).</note>
+				</glyph>
+				<glyph xml:id="g5" corresp="http://www.vanhamel.nl/codecs/Suspension_stroke">
+					<glyphName>n-stroke</glyphName>
+					<note>A horizontal line, standing for -n. Often indistinguishable from a <ref target="#g3">generic suspension stroke</ref></note>
+				</glyph>
+				<glyph xml:id="gn" corresp="n">
+					<glyphName></glyphName>
+					<note></note>
+				</glyph>
+			</charDecl>
+		</encodingDesc>
 		<revisionDesc>
+			<change when="2017-11-08" who="#EPT">Corpus header: New &lt;charDecl&gt; element.
+				form and checked over</change>
 			<change when="2017-11-06" who="#EPT, #MMC">Corpus header: Elements planned in template
 				form and checked over</change>
 			<change when="2017-11-07" who="#EPT">Corpus header: Added content to elements</change>
