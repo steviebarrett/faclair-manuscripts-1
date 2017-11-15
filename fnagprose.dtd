@@ -1,5 +1,5 @@
 <!ELEMENT extent (#PCDATA)>
-<!ELEMENT corr (#PCDATA | add)*>
+<!ELEMENT corr (#PCDATA)>
 <!ATTLIST corr cert CDATA #IMPLIED>
 <!ATTLIST corr resp CDATA #IMPLIED>
 <!ATTLIST corr instant CDATA #IMPLIED>
@@ -97,15 +97,15 @@
 <!ELEMENT msContents (#PCDATA | summary | msItem)*>
 <!ATTLIST msContents defective CDATA #IMPLIED>
 <!ELEMENT foliation (#PCDATA | p)*>
-<!ELEMENT div1 (#PCDATA | pb | lb | name | w | add | pc)*>
+<!ELEMENT div1 (#PCDATA | p)*>
+<!ATTLIST div1 corresp CDATA #IMPLIED>
 <!ATTLIST div1 n CDATA #IMPLIED>
 <!ATTLIST div1 type CDATA #IMPLIED>
-<!ATTLIST div1 corresp CDATA #IMPLIED>
 <!ATTLIST div1 resp CDATA #IMPLIED>
 <!ATTLIST div1 part CDATA #IMPLIED>
 <!ATTLIST div1 org CDATA #IMPLIED>
 <!ATTLIST div1 sample CDATA #IMPLIED>
-<!ELEMENT p (#PCDATA)>
+<!ELEMENT p (#PCDATA | pb | lb | name | w | add | pc | handShift)*>
 <!ATTLIST p part CDATA #IMPLIED>
 <!ELEMENT titleStmt (#PCDATA | title | respStmt)*>
 <!ELEMENT pb (#PCDATA)>
@@ -120,8 +120,6 @@
 <!ATTLIST lb n CDATA #IMPLIED>
 <!ATTLIST lb xml:id CDATA #IMPLIED>
 <!ELEMENT w (#PCDATA | abbr | w | lb | add | del | choice | handShift | sic | corr)*>
-<!ATTLIST w ref CDATA #IMPLIED>
-<!ATTLIST w lenmma CDATA #IMPLIED>
 <!ATTLIST w lang CDATA #IMPLIED>
 <!ATTLIST w lemma CDATA #IMPLIED>
 <!ATTLIST w corresp CDATA #IMPLIED>
