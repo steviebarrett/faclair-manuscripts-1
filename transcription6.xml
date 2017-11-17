@@ -8,15 +8,19 @@
 	<teiHeader>
 		<fileDesc>
 			<titleStmt>
-				<title> ... </title>
+				<title>Transcription 6: </title>
 				<respStmt corresp="#EPT">
 					<name>Eystein P. Thanisch</name>
 					<resp>Transcriber</resp>
-					<resp>Editor</resp>
+					<resp>Digital Editor</resp>
 				</respStmt>
 				<respStmt corresp="#WGI">
 					<name>William Gillies</name>
 					<resp>Overseer</resp>
+				</respStmt>
+				<respStmt corresp="#Black1984">
+					<name>Ronald Black</name>
+					<resp>Editor</resp>
 				</respStmt>
 			</titleStmt>
 			<extent> ... words </extent>
@@ -25,7 +29,7 @@
 				<availability status="restricted">
 					<p>For internal use by the Faclair na Gàidhlig/DASG projects</p>
 				</availability>
-				<idno> Tn </idno>
+				<idno>T6</idno>
 			</publicationStmt>
 			<notesStmt>
 				<note>
@@ -102,6 +106,33 @@
 		</revisionDesc>
 	</teiHeader>
 	<text>
-		
+		<body>
+			<p>
+				<pb n="fol.8r" xml:id="MS6.fol.8r"/>
+				<lb n="1" xml:id="MS6.fol.8r.1"/>
+				<gap extent="31+ chars" reason="damage"/><name type="personal"><w ana="noun"
+						resp="#Black1984"><unclear reason="damage">donnc</unclear><abbr>h<g
+								ref="#g3">adh</g></abbr></w></name><space resp="Black1984"/><w
+					ana="noun" resp="#Black1984"><abbr>m<g ref="#g3">a</g></abbr>c</w><space
+					resp="Black1984"/><name type="personal"><w ana="noun" resp="#Black1984"
+						>dubhghaill</w></name><gap extent="6+ chars" reason="damage"/>
+				<lb n="2" xml:id="MS6.fol.8r.2"/>
+				<gap extent="12+ chars" reason="damage"/><w ana="art" resp="#Black1984">an</w><space
+					resp="Black1984"/><w ana="noun" resp="#Black1984">marg</w><gap extent="38+ chars" reason="damage"/>
+				<lb n="3" xml:id="MS6.fol.8r.3"/>
+				<gap extent="12+ chars" reason="damage"/><w lemma="ocus"
+					lemmaRef="http://www.dil.ie/33484" ana="conj"><abbr cert="high"><g ref="#g2"
+							>ocus</g></abbr></w><space resp="Black1984"/><w ana="verb"
+					resp="#Black1984">is</w><w ana="pron" resp="#Black1984">e</w><space
+					resp="Black1984"/><w ana="verb" resp="#Black1984">paig</w><gap extent="17 chars"
+					reason="damage"/><w ana="noun" resp="#Black1984"><unclear reason="damage"
+						>m</unclear>arg</w><space resp="Black1984"/><w ana="verb" resp="#Black1984"
+					>ata</w><gap extent="12 chars"/><w ana="prep" resp="#Black1984">ag</w><gap
+					extent="4 chars"/><w ana="verb" resp="#Black1984">ata</w><space/><w ana="pron"
+					resp="#Black1984">se</w><gap extent="14+ chars" reason="damage"/>
+				<lb n="4" xml:id="MS6.fol.8r.4"/>
+				<gap extent="4+ chars" reason="damage"/><w ana="noun" resp="#Black1984">bolla</w><space resp="#Black1984"/><w ana="noun" resp="#Black1984">mine</w>
+			</p>
+		</body>
 	</text>
 </TEI>
