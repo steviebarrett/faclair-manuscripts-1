@@ -427,25 +427,35 @@
 					<p>Segmentation differs depending on whether the text is prose or verse</p>
 					<p>All texts, at the lowest level, are segemented by word (&lt;w&gt;). Some
 						compound words (e.g. conjunct verbs with preverbal particles or some
-						compound nouns) are further segmented into morphemes by &lt;w&gt; elements
-						within the outer &lt;w&gt; element. A morpheme is here defined as a unit
-						that could constitute a lemma in its own right, which cannot be subdivided
+						compound nouns) are further segmented by &lt;w&gt; elements within the outer
+						&lt;w&gt; element. The inner &lt;w&gt; element encloses a morpheme that
+						could constitute a lemma in its own right and which cannot be subdivided
 						into further lemmata. This is done in cases where both the compound word as
 						a whole could also constitute a lemma. For example, <hi rend="italic"
 							>do-beir</hi> is both a lemma in eDIL and contains the <hi rend="italic"
 							>do-</hi> preverbal particle, which is a lemma in eDIL in its own right.
-						Similarly, proper names are enclosed in the &lt;name&gt; element with the
+						In such cases, in the outer &lt;w&gt; element, the @lemma, @lemmaRef, and
+						@ana attributes will include data for all the lemmata contained in the inner
+						&lt;w&gt; element elements seperated by whitepace. Very occasionally, three
+						levels of &lt;w&gt; elements might be needed to capture all the potential
+						lemmata in a word.</p>
+					<p>Similarly, proper names are enclosed in the &lt;name&gt; element with the
 						@type attribute, then the names' components are enclosed in one or more
 						inner &lt;w&gt; elements. This means that names can be excluded from search
 						but, if they are included, their components can be retrieved in the same way
 						as other nouns.</p>
 					<p>Prose texts are not segmented by sentence. This will be an arbitrary decision
 						in many cases (punctuation and capitals being absent) and it is unnecessary,
-						since context in the DASG Corpus is determiend by word count rather than by
-						segmentation. If a prose text is clearly organised into units (e.g. some
-						medical texts consist of commentary around propositions), then the
-						&lt;seg&gt; element will be used to delineate these..</p>
+						since context in the DASG Corpus is determined by word count rather than by
+						sentence segmentation. If a prose text is clearly organised into units (e.g.
+						some medical texts consist of commentary around propositions), then the
+						&lt;ab&gt; element will be used to delineate these..</p>
 					<p>Verse texts are segmented by line (&lt;l&gt;) and stanza (&lt;lg&gt;).</p>
+					<p>Slips created by Ronald Black during the HDSG project are currently being
+						digitised by DASG and it is an aim of this project to integrate this
+						material into the metadata on the corpus. Thus, segments that have also been
+						transcribed on a slip will be contained in the &lt;seg&gt; element and a
+						link provided to the corresponding digitised slip.</p>
 					<p>A transcription file (a &lt;text&gt; in the &lt;teiCorpus&gt;) corresponds to
 						a physical manuscript. If multiple texts are being transcribed from the same
 						manuscript, then the &lt;div1&gt; element will be used to subdivide them
@@ -470,6 +480,81 @@
 			<tagsDecl>
 				<!-- tags used in the transcriptions -->
 			</tagsDecl>
+			<charDecl>
+				<glyph xml:id="g0">
+					<glyphName>UNKNOWN</glyphName>
+					<note>The scribal abbreviation is unknown. This will probably be because the
+						manuscript is now illegible and an edition is being used. The editor will
+						have indicated that an abbreviation has been expanded but given no
+						details.</note>
+				</glyph>
+				<glyph xml:id="g1" corresp="http://www.vanhamel.nl/codecs/M_stroke">
+					<glyphName>m-stroke</glyphName>
+					<note>A horizontal line with a downwards hook, standing for "-m".</note>
+				</glyph>
+				<glyph xml:id="g2" corresp="http://www.vanhamel.nl/codecs/Ocus,_et_(Tironian_note)">
+					<glyphName> Tironian et</glyphName>
+					<note>Resembles a "7"; may stand for "ocus" and variants or "et" and
+						variants.</note>
+				</glyph>
+				<glyph xml:id="g3" corresp="http://www.vanhamel.nl/codecs/Suspension_stroke">
+					<glyphName>Generic suspension stroke (superscript)</glyphName>
+					<note>A horizontal superscript stroke that may stand for any
+						character(s).</note>
+				</glyph>
+				<glyph xml:id="g4" corresp="http://www.vanhamel.nl/codecs/Spiritus_asper">
+					<glyphName>Lenition dot/tick</glyphName>
+					<note>Also known as <hi rend="italic">spiritus asper</hi>; adds an "-h" to
+						consonants (i.e. aspirates).</note>
+				</glyph>
+				<glyph xml:id="g5" corresp="http://www.vanhamel.nl/codecs/Suspension_stroke">
+					<glyphName>n-stroke</glyphName>
+					<note>A horizontal line, standing for -n. Often indistinguishable from a <ref
+						target="#g3">generic suspension stroke</ref></note>
+				</glyph>
+				<glyph xml:id="g6" corresp="http://www.vanhamel.nl/codecs/I_(superscript_rounded)">
+					<glyphName>ir superscript</glyphName>
+					<note>An anti-clockwise loop on top of a consonant, usually representing "-ir"
+						but with some variability in the vowel.</note>
+				</glyph>
+				<glyph xml:id="g7" corresp="http://www.vanhamel.nl/codecs/Us_(symbol)">
+					<glyphName>us abbreviation</glyphName>
+					<note>Resembles a semi-colon (;). Stands for "-us" or "-as".</note>
+				</glyph>
+				<glyph xml:id="g8" corresp="http://www.vanhamel.nl/codecs/Ar_(with_stroke)">
+					<glyphName>ar abbreviation</glyphName>
+					<note>An "a" with a descender (very like "q"), with a cross-stroke across the
+						descender, standing for "ar".</note>
+				</glyph>
+				<glyph xml:id="g9">
+					<glyphName>Generic suspension dot</glyphName>
+					<note>An "." that stands for potentially any string of characters..</note>
+				</glyph>
+				<glyph xml:id="g10"
+					corresp="http://www.vanhamel.nl/codecs/S_(insular)_with_suspension_stroke">
+					<glyphName>acht/sed abbreviation</glyphName>
+					<note>An "s" with a horizontal superscript stroke on top. Originally for Latin
+						"sed" but used to represent "(a)ch(t)" in Gaelic contexts.</note>
+				</glyph>
+				<glyph xml:id="g11"
+					corresp="http://www.vanhamel.nl/codecs/Air_(symbol_with_superscript)">
+					<glyphName>air abbreviation</glyphName>
+					<note>An ar abbreviation, with a superscript "i", standing for "air".</note>
+				</glyph>
+				<glyph xml:id="g12" corresp="http://www.vanhamel.nl/codecs/C_(superscript)">
+					<glyphName>Superscript c</glyphName>
+					<note>A superscript c, standing for "[vowel]c(h)".</note>
+				</glyph>
+				<glyph xml:id="g13" corresp="http://www.vanhamel.nl/codecs/Arr_(double_stroke)">
+					<glyphName>arr abbreviation</glyphName>
+					<note>Like the ar abbreviation, but with two cross-strokes on the descender
+						instead of one; stands for "arr".</note>
+				</glyph>
+				<glyph xml:id="gn" corresp="n">
+					<glyphName/>
+					<note/>
+				</glyph>
+			</charDecl>
 		</encodingDesc>
 		<profileDesc>
 			<handNotes>
@@ -559,81 +644,6 @@
 				</handNote>
 			</handNotes>
 		</profileDesc>
-		<encodingDesc>
-			<charDecl>
-				<glyph xml:id="g0">
-					<glyphName>UNKNOWN</glyphName>
-					<note>The scribal abbreviation is unknown. This will probably be because the
-						manuscript is now illegible and an edition is being used. The editor will
-						have indicated that an abbreviation has been expanded but given no
-						details.</note>
-				</glyph>
-				<glyph xml:id="g1" corresp="http://www.vanhamel.nl/codecs/M_stroke">
-					<glyphName>m-stroke</glyphName>
-					<note>A horizontal line with a downwards hook, standing for "-m".</note>
-				</glyph>
-				<glyph xml:id="g2" corresp="http://www.vanhamel.nl/codecs/Ocus,_et_(Tironian_note)">
-					<glyphName> Tironian et</glyphName>
-					<note>Resembles a "7"; may stand for "ocus" and variants or "et" and
-						variants.</note>
-				</glyph>
-				<glyph xml:id="g3" corresp="http://www.vanhamel.nl/codecs/Suspension_stroke">
-					<glyphName>Generic suspension stroke (superscript)</glyphName>
-					<note>A horizontal superscript stroke that may stand for any
-						character(s).</note>
-				</glyph>
-				<glyph xml:id="g4" corresp="http://www.vanhamel.nl/codecs/Spiritus_asper">
-					<glyphName>Lenition dot/tick</glyphName>
-					<note>Also known as <hi rend="italic">spiritus asper</hi>; adds an "-h" to
-						consonants (i.e. aspirates).</note>
-				</glyph>
-				<glyph xml:id="g5" corresp="http://www.vanhamel.nl/codecs/Suspension_stroke">
-					<glyphName>n-stroke</glyphName>
-					<note>A horizontal line, standing for -n. Often indistinguishable from a <ref
-							target="#g3">generic suspension stroke</ref></note>
-				</glyph>
-				<glyph xml:id="g6" corresp="http://www.vanhamel.nl/codecs/I_(superscript_rounded)">
-					<glyphName>ir superscript</glyphName>
-					<note>An anti-clockwise loop on top of a consonant, usually representing "-ir"
-						but with some variability in the vowel.</note>
-				</glyph>
-				<glyph xml:id="g7" corresp="http://www.vanhamel.nl/codecs/Us_(symbol)">
-					<glyphName>us abbreviation</glyphName>
-					<note>Resembles a semi-colon (;). Stands for "-us" or "-as".</note>
-				</glyph>
-				<glyph xml:id="g8" corresp="http://www.vanhamel.nl/codecs/Ar_(with_stroke)">
-					<glyphName>ar abbreviation</glyphName>
-					<note>An "a" with a descender (very like "q"), with a cross-stroke across the
-						descender, standing for "ar".</note>
-				</glyph>
-				<glyph xml:id="g9">
-					<glyphName>Generic suspension dot</glyphName>
-					<note>An "." that stands for potentially any string of characters..</note>
-				</glyph>
-				<glyph xml:id="g10"
-					corresp="http://www.vanhamel.nl/codecs/S_(insular)_with_suspension_stroke">
-					<glyphName>acht/sed abbreviation</glyphName>
-					<note>An "s" with a horizontal superscript stroke on top. Originally for Latin
-						"sed" but used to represent "(a)ch(t)" in Gaelic contexts.</note>
-				</glyph>
-				<glyph xml:id="g11" corresp="http://www.vanhamel.nl/codecs/Air_(symbol_with_superscript)">
-					<glyphName>air abbreviation</glyphName>
-					<note>An ar abbreviation, with a superscript "i", standing for "air".</note>
-				</glyph>
-				<glyph xml:id="g12" corresp="http://www.vanhamel.nl/codecs/C_(superscript)">
-					<glyphName>Superscript c</glyphName>
-					<note>A superscript c, standing for "[vowel]c(h)".</note>
-				</glyph>
-				<glyph xml:id="g13" corresp="http://www.vanhamel.nl/codecs/Arr_(double_stroke)">
-					<glyphName>arr abbreviation</glyphName>
-					<note>Like the ar abbreviation, but with two cross-strokes on the descender instead of one; stands for "arr".</note>
-				</glyph>
-				<glyph xml:id="gn" corresp="n">
-					<glyphName/>
-					<note/>
-				</glyph>
-			</charDecl>
-		</encodingDesc>
 		<revisionDesc>
 			<change when="2017-11-16" who="#EPT">Corpus header: Revised &lt;encodingDesc&gt; in line
 				with changes in policy changes arising from work on Transcription 1.</change>
