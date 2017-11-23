@@ -407,7 +407,13 @@
 						carried out in cases of clear and potentially misleading scribal error.
 						Where available, lemma data will be added to the &lt;w&gt; element using the
 						@lemma attribute. A reference to the most appropriate dictionary will be
-						added using @lemmaRef.</p>
+						added using @lemmaRef. Where a word contains multiple potential lemmata
+						(e.g. a compound verb), it will be encoded as a single word containing
+						several words (i.e. with outer and inner &lt;w&gt; elements). For more
+						details, see below. Words that contain multipel syntactic units but where
+						these units might be expected to appear within the dictionary entry on that
+						word (e.g. conjugated prepositions) will remain within a single &lt;w&gt;
+						element.</p>
 					<p>Both scribal and analytic word division will be encoded; which is to be
 						displayed will be determined by the stylesheet. The the &lt;space/&gt;
 						element will be used to represent scribal or orthographic word division. The
@@ -510,7 +516,7 @@
 				<glyph xml:id="g5" corresp="http://www.vanhamel.nl/codecs/Suspension_stroke">
 					<glyphName>n-stroke</glyphName>
 					<note>A horizontal line, standing for -n. Often indistinguishable from a <ref
-						target="#g3">generic suspension stroke</ref></note>
+							target="#g3">generic suspension stroke</ref></note>
 				</glyph>
 				<glyph xml:id="g6" corresp="http://www.vanhamel.nl/codecs/I_(superscript_rounded)">
 					<glyphName>ir superscript</glyphName>
@@ -645,6 +651,9 @@
 			</handNotes>
 		</profileDesc>
 		<revisionDesc>
+			<change when="2017-11-23" who="#EPT">Corpus header: Revised &lt;encodingDesc&gt; in line
+				with changes in policy changes arising from work on Transcriptions 2 and 6. Merged
+				seperate &lt;encodingDesc&gt; elements.</change>
 			<change when="2017-11-16" who="#EPT">Corpus header: Revised &lt;encodingDesc&gt; in line
 				with changes in policy changes arising from work on Transcription 1.</change>
 			<change when="2017-11-08" who="#EPT">Corpus header: New &lt;charDecl&gt; element. form
