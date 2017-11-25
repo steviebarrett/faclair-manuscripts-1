@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+
+<?xml-stylesheet type="text/xsl" href="stylesheet.xsl"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="T2">
+	<teiHeader>
+		<fileDesc>
+			<titleStmt>
+				<title> ... </title>
+				<respStmt corresp="#EPT">
+					<name>Eystein P. Thanisch</name>
+					<resp>Transcriber</resp>
+					<resp>Editor</resp>
+				</respStmt>
+				<respStmt corresp="#WGI">
+					<name>William Gillies</name>
+					<resp>Overseer</resp>
+				</respStmt>
+			</titleStmt>
+			<extent> ... words </extent>
+			<publicationStmt>
+				<authority sameAs="#authority"/>
+				<availability status="restricted">
+					<p>For internal use by the Faclair na Gàidhlig/DASG projects</p>
+				</availability>
+				<idno> Tn </idno>
+			</publicationStmt>
+			<notesStmt>
+				<note>
+					<p> ... </p>
+				</note>
+			</notesStmt>
+			<sourceDesc>
+				<msDesc>
+					<msIdentifier sameAs="#MSn">
+						<settlement> ... </settlement>
+						<repository> ... </repository>
+						<idno type="shelfmark"> ... </idno>
+					</msIdentifier>
+					<msContents>
+						<summary> ... </summary>
+						<msItem xml:id="MSn.n" resp="#Handn">
+							<locus>...</locus>
+							<title> ... </title>
+							<incipit> ... </incipit>
+							<explicit> ... </explicit>
+							<filiation>
+								<p> ... </p>
+							</filiation>
+							<textLang mainLang="..." otherLangs="... ...">
+								<note><p> ... </p></note>
+							</textLang>
+						</msItem>
+					</msContents>
+					<physDesc>
+						<p> ... </p>
+						<objectDesc>
+							<supportDesc>
+								<support>
+									<p> ... </p>
+								</support>
+								<foliation>
+									<p> ... </p>
+								</foliation>
+								<condition>
+									<p> ... </p>
+								</condition>
+							</supportDesc>
+							<layoutDesc>
+								<p> ... </p>
+							</layoutDesc>
+						</objectDesc>
+					</physDesc>
+					<history>
+						<provenance><p> ... </p></provenance>
+					</history>
+				</msDesc>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<metDecl>
+				<p> ... </p>
+			</metDecl>
+			<refsDecl>
+				<p> ... </p>
+			</refsDecl>
+		</encodingDesc>
+		<profileDesc>
+			<handNotes>
+				<handNote sameAs="#Handn"/>
+			</handNotes>
+			<textClass>
+				<keywords>
+					<term> ... </term>
+				</keywords>
+			</textClass>
+		</profileDesc>
+		<revisionDesc>
+			<change when="..." who="#...">...</change>
+		</revisionDesc>
+	</teiHeader>
+	<text>
+		<body>
+			<div1 n="1" type="verse" resp="#Hand9">
+				<lb n="fol.85v" xml:id="MS12.f85v"/>
+				<lg n="1" type="stanza" xml:id="MS12.1.1">
+					<l n="a" xml:id="MS12.1.1a">
+						<w lemma="soraid" lemmaRef="http://www.dil.ie/38494" ana="adj">Sorai<abbr
+								cert="high">d<g ref="#g4">h</g></abbr></w><space type="scribal"/><w
+							lemma="slán" lemmaRef="http://www.dil.ie/37834" ana="adj">slan</w><space
+							type="scribal"/><w lemma="do" lemmaRef="http://www.dil.ie/17096"
+							ana="prep art">don</w><space type="scribal"/><w lemma="adaig"
+							lemmaRef="http://www.dil.ie/256" ana="noun">aoid<abbr cert="high">c<g
+									ref="#g4">h</g></abbr>e</w><space type="scribal"/><w
+							lemma="irráir" lemmaRef="http://www.dil.ie/29082" ana="adv"
+							>reir</w><pc>:</pc>
+					</l>
+					<l n="b" xml:id="MS12.1.1b">
+						<w lemma="fota" lemmaRef="http://www.dil.ie/24135" ana="adj">fada</w><space
+							type="scribal"/><w lemma="gér" lemmaRef="http://www.dil.ie/25709"
+							ana="adj">ge<abbr cert="high">a<g ref="#g8">r</g></abbr></w><space
+							type="scribal"/><w lemma="oc" lemmaRef="http://www.dil.ie/33397"
+							ana="prep">ag</w><space type="scribal"/><w lemma="dul"
+							lemmaRef="http://www.dil.ie/19189" ana="vnoun">dul</w><space
+							type="scribal"/><w lemma="ar" lemmaRef="http://www.dil.ie/3902"
+							ana="prep"><abbr cert="high">a<g ref="#g8">r</g></abbr></w><space
+							type="scribal"/><w lemma="cúl" lemmaRef="http://www.dil.ie/13749"
+							ana="noun">gcuil</w>
+					</l>
+					<l n="c" xml:id="MS12.1.1c">
+						<w lemma="ocus" lemmaRef="http://www.dil.ie/33483" ana="conj">is</w><space
+							type="scribal"/><w lemma="dá n-" lemmaRef="http://www.dil.ie/14079"
+							ana="prep">da</w><space type="scribal"/><w lemma="attá"
+							lemmaRef="http://www.dil.ie/4927">mbei<abbr cert="high">t<g ref="#g4"
+									>h</g></abbr></w><w lemma="ansae"
+							lemmaRef="http://www.dil.ie/3771" ana="noun">ansa</w><space
+							type="scribal"/><w lemma="do" lemmaRef="http://www.dil.ie/17096"
+							ana="prep pron">dom</w><space type="scribal"/><w lemma="cuirid"
+							lemmaRef="http://www.dil.ie/13660" ana="verb">cuir</w><space
+							type="scribal"/><w lemma="i" lemmaRef="http://www.dil.ie/26891"
+							ana="prep">a</w><w lemma="croch" lemmaRef="http://www.dil.ie/13037"
+							ana="noun">c<abbr cert="high">c<g ref="#g15">ro</g></abbr>i<abbr
+								cert="high">c<g ref="#g4">h</g></abbr></w><pc>:</pc>
+					</l>
+					<l n="d" xml:id="MS12.1.1d">
+						<w lemma="is" lemmaRef="http://www.dil.ie/29104" ana="verb">is</w><space
+							type="scribal"/><space type="scribal"/><w lemma="trúag"
+							lemmaRef="http://www.dil.ie/42079" ana="adj"><abbr cert="high">t<g
+									ref="#g16">ru</g></abbr>a<abbr cert="high">g<g ref="#g4"
+								>h</g></abbr></w><space type="scribal"/><space type="scribal"/><w
+							lemma="nach" lemmaRef="http://www.dil.ie/32909" ana="conj">na<abbr
+								cert="high">c<g ref="#g4">h</g></abbr></w><space type="scribal"/><w
+							lemma="é" lemmaRef="http://www.dil.ie/19325" ana="pron">é</w><space
+							type="scribal"/><w lemma="innocht" lemmaRef="http://www.dil.ie/28835"
+							ana="adv">ano<abbr cert="high"><g ref="#g10">cht</g></abbr></w><space
+							type="scribal"/><w lemma="a" lemmaRef="http://www.dil.ie/3" ana="poss"
+							>a</w><w lemma="tús" lemmaRef="http://www.dil.ie/42552" ana="noun"
+							>tús</w>
+					</l>
+				</lg>
+				<lg n="2" type="stanza" xml:id="MS12.1.2">
+					<l n="a" xml:id="MS12.1.2a">
+						<w lemma="attá" lemmaRef="http://www.dil.ie/4927" ana="verb">Ata</w><space
+							type="scribal"/><w lemma="días" lemmaRef="http://www.dil.ie/15982"
+							ana="noun">dias</w><space type="scribal"/><w lemma="istech"
+							lemmaRef="http://www.dil.ie/29129" ana="adv"><w lemma="i"
+								lemmaRef="http://www.dil.ie/26891" ana="prep">is</w><space
+								type="scribal"/><w lemma="tech" lemmaRef="http://www.dil.ie/40265"
+								ana="noun">ti<abbr cert="high">g<g ref="#g4">h</g></abbr></w><w
+								lemma="si" lemmaRef="http://www.dil.ie/37352" ana="pron"
+							>si</w></w><space type="scribal"/><w lemma="innocht"
+							lemmaRef="http://www.dil.ie/28835" ana="adv">ano<abbr cert="high"><g
+									ref="#g10">cht</g></abbr></w><pc>:</pc>
+					</l>
+				</lg>
+			</div1>
+		</body>
+	</text>
+</TEI>
