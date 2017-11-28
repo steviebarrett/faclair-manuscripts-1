@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+
+<?xml-stylesheet type="text/xsl" href="stylesheet.xsl"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="T2">
+<teiHeader>
+	<fileDesc>
+		<titleStmt>
+			<title> ... </title>
+			<respStmt corresp="#EPT">
+				<name>Eystein P. Thanisch</name>
+				<resp>Transcriber</resp>
+				<resp>Editor</resp>
+			</respStmt>
+			<respStmt corresp="#WGI">
+				<name>William Gillies</name>
+				<resp>Overseer</resp>
+			</respStmt>
+		</titleStmt>
+		<extent> ... words </extent>
+		<publicationStmt>
+			<authority sameAs="#authority"/>
+			<availability status="restricted">
+				<p>For internal use by the Faclair na Gàidhlig/DASG projects</p>
+			</availability>
+			<idno> Tn </idno>
+		</publicationStmt>
+		<notesStmt>
+			<note>
+				<p> ... </p>
+			</note>
+		</notesStmt>
+		<sourceDesc>
+			<msDesc>
+				<msIdentifier sameAs="#MSn">
+					<settlement> ... </settlement>
+					<repository> ... </repository>
+					<idno type="shelfmark"> ... </idno>
+				</msIdentifier>
+				<msContents>
+					<summary> ... </summary>
+					<msItem xml:id="MSn.n" resp="#Handn">
+						<locus>...</locus>
+						<title> ... </title>
+						<incipit> ... </incipit>
+						<explicit> ... </explicit>
+						<filiation>
+							<p> ... </p>
+						</filiation>
+						<textLang mainLang="..." otherLangs="... ...">
+							<note><p> ... </p></note>
+						</textLang>
+					</msItem>
+				</msContents>
+				<physDesc>
+					<p> ... </p>
+					<objectDesc>
+						<supportDesc>
+							<support>
+								<p> ... </p>
+							</support>
+							<foliation>
+								<p> ... </p>
+							</foliation>
+							<condition>
+								<p> ... </p>
+							</condition>
+						</supportDesc>
+						<layoutDesc>
+							<p> ... </p>
+						</layoutDesc>
+					</objectDesc>
+				</physDesc>
+				<history>
+					<provenance><p> ... </p></provenance>
+				</history>
+			</msDesc>
+		</sourceDesc>
+	</fileDesc>
+	<encodingDesc>
+		<metDecl>
+			<p> ... </p>
+		</metDecl>
+		<refsDecl>
+			<p> ... </p>
+		</refsDecl>
+	</encodingDesc>
+	<profileDesc>
+		<handNotes>
+			<handNote sameAs="#Handn"/>
+		</handNotes>
+		<textClass>
+			<keywords>
+				<term> ... </term>
+			</keywords>
+		</textClass>
+	</profileDesc>
+	<revisionDesc>
+		<change when="..." who="#...">...</change>
+	</revisionDesc>
+</teiHeader>
+	<text>
+		<body>
+			<div1 n="1" resp="#Hand10">
+				<p>
+				<pb n="1v" xml:id="MS9.1r"/>
+				<lb n="1" xml:id="MS9.1r.1"/>
+				
+				</p>
+			</div1>
+		</body>
+	</text>
