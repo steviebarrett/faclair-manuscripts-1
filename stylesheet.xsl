@@ -10,7 +10,7 @@
   
   <xsl:template match="/">
     <html>
-      <head><title>...</title></head>
+    	<head><title><xsl:value-of select="tei:teiHeader/tei:fileDesc/tei:titleStmt/tei:title"/></title></head>
       <body>
         <xsl:apply-templates select="descendant::lg"/>
       </body>

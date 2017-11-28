@@ -3,15 +3,13 @@
 <?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
 	schematypens="http://purl.oclc.org/dsdl/schematron"?>
 
-<?xml-stylesheet type="text/xsl" href="stylesheet.xsl"?>
-<?xml-stylesheet type="text/xsl" href="stylesheet.xsl"?>
-<?xml-stylesheet type="text/xsl" href="basic.xsl"?>
-<?xml-stylesheet type="text/xsl" href="basic.xsl"?>
+
+<?xml-stylesheet type="text/xsl" href="basic_prose.xsl"?>
 <TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="T2">
 	<teiHeader>
 		<fileDesc>
 			<titleStmt>
-				<title> ... </title>
+				<title>Transcription 12</title>
 				<respStmt corresp="#EPT">
 					<name>Eystein P. Thanisch</name>
 					<resp>Transcriber</resp>
@@ -185,9 +183,10 @@
 							type="scribal"/><w lemma="nach" lemmaRef="http://www.dil.ie/32908"
 							ana="part">na<abbr cert="high">c<g ref="#g4">h</g></abbr></w><space
 							type="scribal"/><w lemma="ceilid" lemmaRef="http://www.dil.ie/8460"
-							ana="verb">ceillin</w><space type="scribal"/><w>in</w><space
-							type="scribal"/><w lemma="rosc" lemmaRef="http://www.dil.ie/35559"
-							ana="noun">rosc</w><space type="scribal"/><w lemma="rún"
+							ana="verb">ceillin</w><space type="scribal"/><w lemma="in"
+							lemmaRef="http://www.dil.ie/28194" ana="art">in</w><space type="scribal"
+							/><w lemma="rosc" lemmaRef="http://www.dil.ie/35559" ana="noun"
+							>rosc</w><space type="scribal"/><w lemma="rún"
 							lemmaRef="http://www.dil.ie/35788" ana="adj">rún</w>
 					</l>
 					<lb n="4" xml:id="MS12.85v.4"/>
@@ -278,6 +277,7 @@
 							lemmaRef="http://www.dil.ie/35787" ana="noun">rún</w>
 					</l>
 				</lg>
+				<lb n="7" xml:id="MS12.85v.7"/>
 				<lg type="incomplete">
 					<l>
 						<del resp="#Hand9"><w lemma="attá" lemmaRef="http://www.dil.ie/4927"
