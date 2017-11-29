@@ -50,9 +50,7 @@
 		<xsl:text> </xsl:text><xsl:apply-templates/>
 	</xsl:template>
 	
-	<xsl:template match="tei:supplied">
-		[<a title="{@resp}"><xsl:apply-templates/></a>]
-	</xsl:template>
+	<xsl:template match="tei:supplied">[<a title="{@resp}"><xsl:apply-templates/></a>]</xsl:template>
 	
 	<xsl:template match="tei:unclear">
 		<a title="{@reason}">{<xsl:apply-templates/>}</a>
