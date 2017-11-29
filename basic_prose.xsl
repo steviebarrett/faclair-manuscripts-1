@@ -47,17 +47,23 @@
 	</xsl:template>
 
 	<xsl:template match="tei:space">
-		<xsl:text> </xsl:text>
-		<xsl:apply-templates/>
+		<xsl:text> </xsl:text><xsl:apply-templates/>
 	</xsl:template>
-
-	<xsl:template match="tei:supplied">[<xsl:apply-templates/>]</xsl:template>
-
+	
+	<xsl:template match="tei:supplied">
+		[<a title="{@resp}"><xsl:apply-templates/></a>]
+	</xsl:template>
+	
+	<xsl:template match="tei:unclear">
+		<a title="{@reason}">{<xsl:apply-templates/>}</a>
+	</xsl:template>
+	
+	<xsl:template match="tei:gap">
+		{<xsl:value-of select="@extent"/>, <xsl:value-of select="@reason"/>} 
+	</xsl:template>
+	
 	<xsl:template match="tei:w">
-		<a href="{@lemmaRef}" style="text-decoration:none; color:#000000">
-			<xsl:apply-templates/>
-		</a>
+		<a href="{@lemmaRef}" title="{@lemma}; {@ana}" style="text-decoration:none; color:#000000"><xsl:apply-templates/></a>
 	</xsl:template>
-
 
 </xsl:stylesheet>
