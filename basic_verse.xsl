@@ -31,7 +31,7 @@
 		<br/>
 	</xsl:template>
 
-	<xsl:template match="tei:abbr">
+	<xsl:template match="tei:abbr/tei:g">
 		<i>
 			<xsl:apply-templates/>
 		</i>
