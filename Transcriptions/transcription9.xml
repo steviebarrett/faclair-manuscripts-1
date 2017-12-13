@@ -3,7 +3,8 @@
 <?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
 	schematypens="http://purl.oclc.org/dsdl/schematron"?>
 
-<?xml-stylesheet type="text/xsl" href="../basic_prose.xsl"?>
+
+<?xml-stylesheet type="text/xsl" href="../basic2.xsl"?>
 <TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="T2">
 	<teiHeader>
 		<fileDesc>
@@ -217,8 +218,8 @@
 					<lb n="1" xml:id="MS9.2r.1"/>
 					<w ana="noun" xml:lang="lat">Anno</w><space type="scribal"/><w ana="noun"
 						xml:lang="lat">domini</w><space type="scribal"/><w lemma="mile"
-						lemmaRef="http://www.dil.ie/32234" ana="num">mile <lb n="2"
-							xml:id="MS9.2r.2"/> an</w><space type="scribal"/><w lemma="ocus"
+						lemmaRef="http://www.dil.ie/32234" ana="num">mile<lb n="2"
+							xml:id="MS9.2r.2"/>an</w><space type="scribal"/><w lemma="ocus"
 						lemmaRef="http://www.dil.ie/33483" ana="conj">agus</w><space type="scribal"
 						/><w lemma="sé" lemmaRef="http://www.dil.ie/36708" ana="num">se</w><space
 						type="scribal"/><w lemma="cét" lemmaRef="http://www.dil.ie/8862" ana="num"
@@ -355,9 +356,9 @@
 					</lg>
 				</div2>
 			</div1>
-			<lb n="12" xml:id="MS9.2r.12"/>
 			<div1 type="prose" resp="#Hand10" sameAs="#MS9.1">
 				<p>
+					<lb n="12" xml:id="MS9.2r.12"/>
 					<w lemma="áes" lemmaRef="http://www.dil.ie/644" ana="noun">Aois</w><space
 						type="scribal"/><w lemma="in" lemmaRef="http://www.dil.ie/28194" ana="art"
 						>an</w><space type="scribal"/><w lemma="tigerna"
@@ -709,7 +710,7 @@
 						>duini</w></w><space type="scribal"/><w lemma="do, is"
 						lemmaRef="http://www.dil.ie/17098, http://www.dil.ie/29104" ana="part, verb"
 							><w lemma="do" lemmaRef="http://www.dil.ie/17098" ana="part">do</w><w
-							lemma="is" lemmaRef="http://www.dil.ie/29104" ana="verb">>b</w></w><w
+							lemma="is" lemmaRef="http://www.dil.ie/29104" ana="verb">b</w></w><w
 						lemma="maith" lemmaRef="http://www.dil.ie/31438" ana="adj"><abbr>f<g
 								ref="#g22">earr</g></abbr></w><space type="scribal"/><w lemma="de"
 						lemmaRef="http://www.dil.ie/14787" ana="prep">do</w><w lemma="clann"
@@ -2487,7 +2488,7 @@
 								>h</g></abbr>oir</w><space type="scribal"/><w lemma="cen"
 						lemmaRef="http://www.dil.ie/8581" ana="prep">gan</w><w lemma="dúthaig"
 						lemmaRef="http://www.dil.ie/19305" ana="noun">dui<unclear reason="damage"
-							resp="#EPT"><abbr cert="low">t<g ref="#g12">ch</g></abbr>e</unclear></w>
+							cert="low" resp="#EPT"><abbr>t<g ref="#g12">ch</g></abbr>e</unclear></w>
 					<lb n="13" xml:id="MS9.6r.13"/>
 					<w lemma="cen" lemmaRef="http://www.dil.ie/8581" ana="prep">gan</w><space
 						type="scribal"/><w lemma="slicht" lemmaRef="http://www.dil.ie/37930"

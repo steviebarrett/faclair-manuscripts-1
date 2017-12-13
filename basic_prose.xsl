@@ -64,4 +64,6 @@
 		<a href="{@lemmaRef}" title="{@lemma}; {@ana}" style="text-decoration:none; color:#000000"><xsl:apply-templates/></a>
 	</xsl:template>
 
+
+
 </xsl:stylesheet>
