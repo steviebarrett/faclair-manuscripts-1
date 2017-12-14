@@ -83,18 +83,17 @@
 	<xsl:template match="tei:supplied">
 		<xsl:choose>
 			<xsl:when test="@cert = 'low'">
-				<a href="{ancestor::*[@lemmaRef][1]/@lemmaRef}"
+				<mark style="color:ff9f80">[<a href="{ancestor::*[@lemmaRef][1]/@lemmaRef}"
 					title="{ancestor::*[@lemma][1]/@lemma}; {ancestor::*[@ana][1]/@ana}.&#010;Supp. by: {/g/@resp}."
 					style="text-decoration:none; color:#ff0000">
 					<xsl:apply-templates/>
-				</a>
+				</a>]</mark>
 			</xsl:when>
 			<xsl:otherwise>
-				<a href="{ancestor::*[@lemmaRef][1]/@lemmaRef}"
-					title="{ancestor::*[@lemma][1]/@lemma}; {ancestor::*[@ana][1]/@ana}.&#010;Supp. by: {/g/@resp}."
-					style="text-decoration:none; color:#000000">
+				[<a href="{ancestor::*[@lemmaRef][1]/@lemmaRef}"
+					title="{ancestor::*[@lemma][1]/@lemma}; {ancestor::*[@ana][1]/@ana}.&#010;Supp. by: {/g/@resp}.">
 					<xsl:apply-templates/>
-				</a>
+				</a>]
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
@@ -139,8 +138,8 @@
 	<xsl:template match="tei:abbr">
 		<xsl:choose>
 			<xsl:when test="@cert = 'low'">
-				<a href="{ancestor::*[@lemmaRef][1]/@lemmaRef}"
-					title="{ancestor::*[@lemma][1]/@lemma}; {ancestor::*[@ana][1]/@ana}."
+				<a href="{ancestor::*[@lemmaRef]/@lemmaRef}"
+					title="{ancestor::*[@lemma]/@lemma}; {ancestor::*[@ana]/@ana}."
 					style="text-decoration:none; color:#ff0000">
 					<xsl:apply-templates/>
 				</a>
