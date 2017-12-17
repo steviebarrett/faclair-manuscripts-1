@@ -13,7 +13,7 @@
 				</title>
 			</head>
 			<body>
-				<h1>Transcription 9: NLS Adv. MS 72.1.50</h1>
+				<h1/>
 				<xsl:apply-templates select="descendant::tei:body"/>
 			</body>
 			<backmatter>
@@ -57,13 +57,18 @@
 
 	<xsl:template match="tei:lg">
 		<xsl:choose>
-			<xsl:when test="count(parent::tei:div//tei:lg[@type = 'stanza']) >1">
-				<b align="left"><a title="Stanza number" href="#" onclick="return false;"
-					style="text-decoration:none; color:#000000">
-					<xsl:value-of select="@n"/></a>
+			<xsl:when test="count(parent::tei:div//tei:lg[@type = 'stanza']) > 1">
+				<br/>
+				<b align="left">
+					<a title="Stanza number" href="#" onclick="return false;"
+						style="text-decoration:none; color:#000000">
+						<xsl:value-of select="@n"/>
+					</a>
 				</b>
 				<br/>
-				<p style="margin-left:30px"><xsl:apply-templates select="descendant::tei:l"/></p>
+				<p style="margin-left:30px">
+					<xsl:apply-templates select="descendant::tei:l"/>
+				</p>
 			</xsl:when>
 			<xsl:otherwise>
 				<p style="margin-left:30px">
@@ -186,15 +191,35 @@
 	<xsl:template match="tei:choice[//tei:w]">
 		<xsl:choose>
 			<xsl:when test="child::tei:abbr or child::tei:unclear or child::tei:seg">
-				<xsl:apply-templates select="child::*[@n = '1']"/>
-				<sub>
-					<b>
-						<i>
-							<a title="Or, {child::*[@n='2']}" href="{child::*[@n='2']/@lemmaRef}"
-								style="text-decoration:none; color:#000000">alt </a>
-						</i>
-					</b>
-				</sub>
+				<xsl:choose>
+					<xsl:when test="count(child::tei:seg/*/tei:w) > 1">
+						<xsl:text>{</xsl:text><xsl:for-each select="tei:seg">
+							<xsl:apply-templates select="child::*[@n = '1']/tei:w"/>
+							<xsl:if test="child::*[@n = '2']/tei:w">
+							<sub>
+								<b>
+									<i>
+										<a title="Or, {child::*[@n = '2']} ({child::*[@n = '2']/tei:w/@lemma}); {child::*[@n = '2']/tei:w/@ana}"
+											href="{child::*[@n = '2']/tei:w/@lemmaRef}" style="text-decoration:none; color:#000000">alt </a>
+									</i>
+								</b>
+							</sub>
+							</xsl:if>
+						</xsl:for-each><xsl:text>}</xsl:text>
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:apply-templates select="child::*[@n = '1']"/>
+						<sub>
+							<b>
+								<i>
+									<a title="Or, {child::*[@n='2']}; {child::*[@n='2']/@ana}"
+										href="{child::*[@n='2']/@lemmaRef}"
+										style="text-decoration:none; color:#000000">alt </a>
+								</i>
+							</b>
+						</sub>
+					</xsl:otherwise>
+				</xsl:choose>
 			</xsl:when>
 			<xsl:when test="child::tei:sic and child::tei:corr">
 				<xsl:apply-templates select="tei:corr"/>
@@ -205,11 +230,11 @@
 								<xsl:when test="child::tei:sic/tei:w/@lemmaRef">
 									<a href="{child::tei:sic/tei:w/@lemmaRef}"
 										title="MS: {child::tei:sic/tei:w}"
-										style="text-decoration:none; color:#000000">alt </a>
+										style="text-decoration:none; color:#000000"> alt </a>
 								</xsl:when>
 								<xsl:when test="child::tei:sic/tei:w[not(@lemmaRef)]">
 									<a title="MS: {child::tei:sic/tei:w}"
-										style="text-decoration:none; color:#000000">alt </a>
+										style="text-decoration:none; color:#000000"> alt </a>
 								</xsl:when>
 							</xsl:choose>
 						</i>
@@ -232,23 +257,23 @@
 			<xsl:when test="@place = 'above'">
 				<b>
 					<a title="{@resp}" href="#" onclick="return false;"
-						style="text-decoration:none; color:#000000">\</a>
+						style="text-decoration:none; color:#000000"> \ </a>
 				</b>
 				<xsl:apply-templates/>
 				<b>
 					<a title="{@resp}" href="#" onclick="return false;"
-						style="text-decoration:none; color:#000000">/</a>
+						style="text-decoration:none; color:#000000">/ </a>
 				</b>
 			</xsl:when>
 			<xsl:when test="@place = 'below'">
 				<b>
 					<a title="{@resp}" href="#" onclick="return false;"
-						style="text-decoration:none; color:#000000">/</a>
+						style="text-decoration:none; color:#000000"> / </a>
 				</b>
 				<xsl:apply-templates/>
 				<b>
 					<a title="{@resp}" href="#" onclick="return false;"
-						style="text-decoration:none; color:#000000">\</a>
+						style="text-decoration:none; color:#000000">\ </a>
 				</b>
 			</xsl:when>
 			<xsl:when test="@place = 'margin, right'">
