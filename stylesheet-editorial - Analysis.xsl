@@ -9,18 +9,43 @@
 		<html>
 			<head>
 				<title>
-					<xsl:value-of select="tei:teiHeader/tei:fileDesc/tei:titleStmt/tei:title"/>
+					Report: <xsl:value-of select="/tei:TEI/tei:teiHeader/tei:fileDesc/tei:titleStmt/tei:title"/>
 				</title>
 			</head>
 			<body>
-				<xsl:apply-templates select="descendant::tei:body"/>
+				<table border="1px solid black">
+					<tr>
+						<th>
+							<b>Form</b>
+						</th>
+						<th>
+							<b>Lemma</b>
+						</th>
+						<th>
+							<b>Part of Speech</b>
+						</th>
+						<th>
+							<b>Reference</b>
+						</th>
+					</tr>
+					<xsl:for-each select="//tei:w[not(/tei:w)]">
+					<tr>
+						<td>
+							<xsl:apply-templates/>
+						</td>
+						<td>
+							<a href="{@lemmaRef}"><xsl:value-of select="@lemma"/></a>
+						</td>
+						<td>
+							<xsl:value-of select="@ana"/>
+						</td>
+						<td>
+							<xsl:value-of select="preceding::tei:lb[1]/@xml:id"/>
+						</td>
+					</tr>
+					</xsl:for-each>
+				</table>
 			</body>
-			<backmatter>
-				<h1>Notes</h1>
-				<xsl:for-each select="//tei:note[@type = 'fn']">
-					<xsl:value-of select="@n"/>. <xsl:value-of select="tei:p"/><br/>
-				</xsl:for-each>
-			</backmatter>
 		</html>
 	</xsl:template>
 
@@ -192,23 +217,19 @@
 			<xsl:when test="child::tei:abbr or child::tei:unclear or child::tei:seg">
 				<xsl:choose>
 					<xsl:when test="count(child::tei:seg/*/tei:w) > 1">
-						<xsl:text>{</xsl:text>
-						<xsl:for-each select="tei:seg">
+						<xsl:text>{</xsl:text><xsl:for-each select="tei:seg">
 							<xsl:apply-templates select="child::*[@n = '1']/tei:w"/>
 							<xsl:if test="child::*[@n = '2']/tei:w">
-								<sub>
-									<b>
-										<i>
-											<a
-												title="Or, {child::*[@n = '2']} ({child::*[@n = '2']/tei:w/@lemma}); {child::*[@n = '2']/tei:w/@ana}"
-												href="{child::*[@n = '2']/tei:w/@lemmaRef}"
-												style="text-decoration:none; color:#000000">alt </a>
-										</i>
-									</b>
-								</sub>
+							<sub>
+								<b>
+									<i>
+										<a title="Or, {child::*[@n = '2']} ({child::*[@n = '2']/tei:w/@lemma}); {child::*[@n = '2']/tei:w/@ana}"
+											href="{child::*[@n = '2']/tei:w/@lemmaRef}" style="text-decoration:none; color:#000000">alt </a>
+									</i>
+								</b>
+							</sub>
 							</xsl:if>
-						</xsl:for-each>
-						<xsl:text>}</xsl:text>
+						</xsl:for-each><xsl:text>}</xsl:text>
 					</xsl:when>
 					<xsl:otherwise>
 						<xsl:apply-templates select="child::*[@n = '1']"/>
@@ -226,30 +247,23 @@
 			</xsl:when>
 			<xsl:when test="child::tei:sic and child::tei:corr">
 				<xsl:apply-templates select="tei:corr"/>
-				<xsl:choose>
-					<xsl:when test="child::tei:sic/tei:w/@lemmaRef">
-						<a href="{child::tei:sic/tei:w/@lemmaRef}"
-							title="MS: {child::tei:sic/tei:w}"
-							style="text-decoration:none; color:#000000">
-							<sub>
-								<b>
-									<i>alt </i>
-								</b>
-							</sub>
-						</a>
-					</xsl:when>
-					<xsl:when test="child::tei:sic/tei:w[not(@lemmaRef)]">
-						<a title="MS: {child::tei:sic/tei:w}"
-							style="text-decoration:none; color:#000000" href="#"
-							onclick="return false;">
-							<sub>
-								<b>
-									<i>alt </i>
-								</b>
-							</sub>
-						</a>
-					</xsl:when>
-				</xsl:choose>
+				<sub>
+					<b>
+						<i>
+							<xsl:choose>
+								<xsl:when test="child::tei:sic/tei:w/@lemmaRef">
+									<a href="{child::tei:sic/tei:w/@lemmaRef}"
+										title="MS: {child::tei:sic/tei:w}"
+										style="text-decoration:none; color:#000000"> alt </a>
+								</xsl:when>
+								<xsl:when test="child::tei:sic/tei:w[not(@lemmaRef)]">
+									<a title="MS: {child::tei:sic/tei:w}"
+										style="text-decoration:none; color:#000000"> alt </a>
+								</xsl:when>
+							</xsl:choose>
+						</i>
+					</b>
+				</sub>
 			</xsl:when>
 		</xsl:choose>
 	</xsl:template>

@@ -3,7 +3,7 @@
 <?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
 	schematypens="http://purl.oclc.org/dsdl/schematron"?>
 
-<?xml-stylesheet type="text/xsl" href="stylesheet.xsl"?>
+<?xml-stylesheet type="text/xsl" href="stylesheet-editorial%20-%20Analysis.xsl"?>
 <teiCorpus xmlns="http://www.tei-c.org/ns/1.0" xmlns:xi="http://www.w3.org/2001/XInclude">
 	<teiHeader>
 		<fileDesc>
@@ -744,6 +744,10 @@
 			<change when="2017-11-07" who="#EPT">Corpus header: Added content to elements</change>
 		</revisionDesc>
 	</teiHeader>
-	<xi:include href="transcription1.xml" parse="xml"/>
-	<xi:include href="transcription2.xml" parse="xml"/>
+	<xi:include href="Transcriptions/transcription1.xml" parse="xml"/>
+	<xi:include href="Transcriptions/transcription2.xml" parse="xml"/>
+	<xi:include href="Transcriptions/transcription6.xml" parse="xml"/>
+	<xi:include href="Transcriptions/transcription7.xml" parse="xml"/>
+	<xi:include href="Transcriptions/transcription9.xml" parse="xml"/>
+	<xi:include href="Transcriptions/transcription12.xml" parse="xml"/>
 </teiCorpus>

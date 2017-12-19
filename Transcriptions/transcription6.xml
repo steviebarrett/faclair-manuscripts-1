@@ -4,7 +4,7 @@
 	schematypens="http://purl.oclc.org/dsdl/schematron"?>
 
 
-<?xml-stylesheet type="text/xsl" href="../stylesheet-editorial.xsl"?>
+<?xml-stylesheet type="text/xsl" href="../stylesheet-editorial%20-%20Analysis.xsl"?>
 <TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="T2">
 	<teiHeader>
 		<fileDesc>
@@ -108,7 +108,7 @@
 	</teiHeader>
 	<text>
 		<body>
-			<div1 n="1" type="prose" resp="#Hand8">
+			<div n="1" type="prose" resp="#Hand8">
 				<p>
 					<pb n="fol.8r" xml:id="MS6.8r"/><lb n="1" xml:id="MS6.8r.1"/><gap
 						extent="31+ chars" reason="damage" source="#Black1984"/><name
@@ -118,7 +118,9 @@
 							>adh</g></abbr></w></name><space type="editorial" source="#Black1984"
 						/><w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun"
 						source="#Black1984"><abbr>m<g ref="#g3">a</g></abbr>c</w><space
-						type="editorial" source="#Black1984"/><name type="personal"><w ana="noun"
+						type="editorial" source="#Black1984"/><name type="personal"><w
+							lemma="dúb, gall"
+							lemmaRef="http://www.dil.ie/18985, http://www.dil.ie/25308" ana="noun"
 							source="#Black1984"><w lemma="dub" lemmaRef="http://www.dil.ie/18985"
 								ana="adj">dubh</w><w lemma="gall" lemmaRef="http://www.dil.ie/25308"
 								ana="noun">ghaill</w></w></name><gap extent="6+ chars"
@@ -481,7 +483,7 @@
 						type="personal"><w xml:lang="sco" ana="noun" source="#Black1984"
 								>Dunc<supplied resp="#Black1984">an</supplied></w></name>
 				</p>
-			</div1>
+			</div>
 		</body>
 	</text>
 </TEI>
