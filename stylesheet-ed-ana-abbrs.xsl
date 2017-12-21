@@ -3,55 +3,71 @@
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema"
 	exclude-result-prefixes="xs" version="1.0">
 
+	<xsl:key name="abbrs" match="*" use="@xml:id"/>
+	<xsl:key name="hands" match="*" use="@xml:id"/>
+
 	<xsl:output method="html"/>
 
 	<xsl:template match="/">
 		<html>
 			<head>
-				<title>
-					Report: <xsl:value-of select="/tei:TEI/tei:teiHeader/tei:fileDesc/tei:titleStmt/tei:title"/>
+				<title> Report: <xsl:value-of
+						select="/tei:TEI/tei:teiHeader/tei:fileDesc/tei:titleStmt/tei:title"/>
 				</title>
 			</head>
 			<body>
 				<table border="1px solid black">
 					<tr>
 						<th>
-							<b>Form</b>
-						</th>
-						<th>
-							<b>Lemma</b>
-						</th>
-						<th>
-							<b>Part of Speech</b>
-						</th>
-						<th>
 							<b>Scribe</b>
+						</th>
+						<th>
+							<b>Abbreviation</b>
+						</th>
+						<th>
+							<b>Context</b>
 						</th>
 						<th>
 							<b>Reference</b>
 						</th>
 					</tr>
-					<xsl:for-each select="//tei:w[not(/tei:w)]">
-					<tr>
-						<td>
-							<xsl:apply-templates/>
-						</td>
-						<td>
-							<a href="{@lemmaRef}"><xsl:value-of select="@lemma"/></a>
-						</td>
-						<td>
-							<xsl:value-of select="@ana"/>
-						</td>
-						<td>
-							<xsl:value-of select="ancestor::tei:div/@resp"/>
-						</td>
-						<td>
-							<xsl:value-of select="preceding::tei:lb[1]/@xml:id"/>
-						</td>
-					</tr>
+					<xsl:for-each select="//tei:g">
+						<tr>
+							<td>
+								<xsl:choose>
+									<xsl:when test="ancestor::tei:div//tei:handShift">
+										<xsl:value-of
+											select="key('abbrs', preceding::tei:handShift[1]/@new)/tei:forename or key('abbrs', preceding::tei:div[1]/@resp)/tei:forename"/>
+										<xsl:text> </xsl:text>
+										<xsl:value-of
+											select="key('abbrs', preceding::tei:handShift[1]/@new)/tei:forename or key('abbrs', preceding::tei:div[1]/@resp)/tei:forename"
+										/>
+									</xsl:when>
+									<xsl:otherwise>
+										<xsl:value-of
+											select="key('abbrs', ancestor::tei:div[1]/@resp)/tei:forename"/>
+										<xsl:text> </xsl:text>
+										<xsl:value-of
+											select="key('abbrs', ancestor::tei:div[1]/@resp)/tei:surname"
+										/>
+									</xsl:otherwise>
+								</xsl:choose>
+							</td>
+							<td>
+								<xsl:value-of select="key('abbrs', @ref)/tei:glyphName"/>
+							</td>
+							<td>
+								<xsl:for-each select="ancestor::tei:w[1]">
+									<xsl:apply-templates/>
+								</xsl:for-each>
+							</td>
+							<td>
+								<xsl:value-of select="preceding::tei:lb[1]/@xml:id"/>
+							</td>
+						</tr>
 					</xsl:for-each>
 				</table>
-				
+
 			</body>
 		</html>
 	</xsl:template>
@@ -224,19 +240,23 @@
 			<xsl:when test="child::tei:abbr or child::tei:unclear or child::tei:seg">
 				<xsl:choose>
 					<xsl:when test="count(child::tei:seg/*/tei:w) > 1">
-						<xsl:text>{</xsl:text><xsl:for-each select="tei:seg">
+						<xsl:text>{</xsl:text>
+						<xsl:for-each select="tei:seg">
 							<xsl:apply-templates select="child::*[@n = '1']/tei:w"/>
 							<xsl:if test="child::*[@n = '2']/tei:w">
-							<sub>
-								<b>
-									<i>
-										<a title="Or, {child::*[@n = '2']} ({child::*[@n = '2']/tei:w/@lemma}); {child::*[@n = '2']/tei:w/@ana}"
-											href="{child::*[@n = '2']/tei:w/@lemmaRef}" style="text-decoration:none; color:#000000">alt </a>
-									</i>
-								</b>
-							</sub>
+								<sub>
+									<b>
+										<i>
+											<a
+												title="Or, {child::*[@n = '2']} ({child::*[@n = '2']/tei:w/@lemma}); {child::*[@n = '2']/tei:w/@ana}"
+												href="{child::*[@n = '2']/tei:w/@lemmaRef}"
+												style="text-decoration:none; color:#000000">alt </a>
+										</i>
+									</b>
+								</sub>
 							</xsl:if>
-						</xsl:for-each><xsl:text>}</xsl:text>
+						</xsl:for-each>
+						<xsl:text>}</xsl:text>
 					</xsl:when>
 					<xsl:otherwise>
 						<xsl:apply-templates select="child::*[@n = '1']"/>

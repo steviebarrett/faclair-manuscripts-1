@@ -5,6 +5,10 @@
 
 	<xsl:output method="html"/>
 
+	<xsl:key name="abbrs" match="*" use="@xml:id"/>
+	<xsl:key name="hands" match="*" use="@xml:id"/>
+	
+
 	<xsl:template match="/">
 		<html>
 			<head>
@@ -16,13 +20,7 @@
 				<table border="1px solid black">
 					<tr>
 						<th>
-							<b>Form</b>
-						</th>
-						<th>
-							<b>Lemma</b>
-						</th>
-						<th>
-							<b>Part of Speech</b>
+							<b>String</b>
 						</th>
 						<th>
 							<b>Scribe</b>
@@ -31,19 +29,30 @@
 							<b>Reference</b>
 						</th>
 					</tr>
-					<xsl:for-each select="//tei:w[not(/tei:w)]">
+					<xsl:for-each select="//tei:space[//tei:div]">
 					<tr>
 						<td>
-							<xsl:apply-templates/>
+							<xsl:apply-templates select="/preceding::*[not(preceding::tei:space)]"/>
 						</td>
 						<td>
-							<a href="{@lemmaRef}"><xsl:value-of select="@lemma"/></a>
-						</td>
-						<td>
-							<xsl:value-of select="@ana"/>
-						</td>
-						<td>
-							<xsl:value-of select="ancestor::tei:div/@resp"/>
+							<xsl:choose>
+								<xsl:when test="ancestor::tei:div//tei:handShift">
+									<xsl:value-of
+										select="key('hands', preceding::tei:handShift[1]/@new)/tei:forename or key('hands', preceding::tei:div[1]/@resp)/tei:forename"/>
+									<xsl:text> </xsl:text>
+									<xsl:value-of
+										select="key('hands', preceding::tei:handShift[1]/@new)/tei:forename or key('hands', preceding::tei:div[1]/@resp)/tei:forename"
+									/>
+								</xsl:when>
+								<xsl:otherwise>
+									<xsl:value-of
+										select="key('hands', ancestor::tei:div[1]/@resp)/tei:forename"/>
+									<xsl:text> </xsl:text>
+									<xsl:value-of
+										select="key('hands', ancestor::tei:div[1]/@resp)/tei:surname"
+									/>
+								</xsl:otherwise>
+							</xsl:choose>
 						</td>
 						<td>
 							<xsl:value-of select="preceding::tei:lb[1]/@xml:id"/>
@@ -55,6 +64,8 @@
 			</body>
 		</html>
 	</xsl:template>
+
+<xsl:template match="tei:space"/>
 
 	<xsl:template match="tei:pb">
 		<br/>

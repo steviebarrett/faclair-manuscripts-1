@@ -3,7 +3,8 @@
 <?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
 	schematypens="http://purl.oclc.org/dsdl/schematron"?>
 
-<?xml-stylesheet type="text/xsl" href="stylesheet-editorial%20-%20Analysis.xsl"?>
+
+<?xml-stylesheet type="text/xsl" href="stylesheet-ed-ana-abbrs.xsl"?>
 <teiCorpus xmlns="http://www.tei-c.org/ns/1.0" xmlns:xi="http://www.w3.org/2001/XInclude">
 	<teiHeader>
 		<fileDesc>
@@ -519,16 +520,17 @@
 							target="#g3">generic suspension stroke</ref></note>
 				</glyph>
 				<glyph xml:id="g6" corresp="http://www.vanhamel.nl/codecs/I_(superscript_rounded)">
-					<glyphName>superscript ir</glyphName>
+					<glyphName>Superscript ir</glyphName>
 					<note>An anti-clockwise loop on top of a consonant, usually representing "-ir"
 						but with some variability in the vowel.</note>
 				</glyph>
 				<glyph xml:id="g7" corresp="http://www.vanhamel.nl/codecs/Us_(symbol)">
-					<glyphName>us abbreviation</glyphName>
-					<note>Resembles a semi-colon (;). Stands for "-us" or "-as". Can be modified with addition of subscript "i" (to "-uis" or "-ais").</note>
+					<glyphName>us-abbreviation</glyphName>
+					<note>Resembles a semi-colon (;). Stands for "-us" or "-as". Can be modified
+						with addition of subscript "i" (to "-uis" or "-ais").</note>
 				</glyph>
 				<glyph xml:id="g8" corresp="http://www.vanhamel.nl/codecs/Ar_(with_stroke)">
-					<glyphName>ar abbreviation</glyphName>
+					<glyphName>ar-abbreviation</glyphName>
 					<note>An "a" with a descender (very like "q"), with a cross-stroke across the
 						descender, standing for "ar".</note>
 				</glyph>
@@ -544,76 +546,86 @@
 				</glyph>
 				<glyph xml:id="g11"
 					corresp="http://www.vanhamel.nl/codecs/Air_(symbol_with_superscript)">
-					<glyphName>air abbreviation</glyphName>
+					<glyphName>air-abbreviation</glyphName>
 					<note>An ar abbreviation, with a superscript "i", standing for "air".</note>
 				</glyph>
 				<glyph xml:id="g12" corresp="http://www.vanhamel.nl/codecs/C_(superscript)">
 					<glyphName>Superscript c</glyphName>
-					<note>A superscript c, standing for "[vowel]c(h)". Sometimes vowl is added (e.g. m+superscript "ic" for "mic").</note>
+					<note>A superscript c, standing for "[vowel]c(h)". Sometimes vowl is added (e.g.
+						m+superscript "ic" for "mic").</note>
 				</glyph>
 				<glyph xml:id="g13" corresp="http://www.vanhamel.nl/codecs/Arr_(double_stroke)">
-					<glyphName>arr abbreviation</glyphName>
+					<glyphName>arr-abbreviation</glyphName>
 					<note>Like the ar abbreviation, but with two cross-strokes on the descender
 						instead of one; stands for "arr".</note>
 				</glyph>
-				<glyph xml:id="g14" corresp="http://www.vanhamel.nl/codecs/Suspension_stroke_(double)">
+				<glyph xml:id="g14"
+					corresp="http://www.vanhamel.nl/codecs/Suspension_stroke_(double)">
 					<glyphName>nn-strokes</glyphName>
 					<note>A double n-stroke, standing for "-nn".</note>
 				</glyph>
 				<glyph xml:id="g15" corresp="http://www.vanhamel.nl/codecs/O_(superscript)">
-					<glyphName>superscript o</glyphName>
+					<glyphName>Superscript o</glyphName>
 					<note>Superscript o, representing "or" or "ro".</note>
 				</glyph>
 				<glyph xml:id="g16" corresp="http://www.vanhamel.nl/codecs/U_(superscript_v)">
-					<glyphName>superscript u/v</glyphName>
+					<glyphName>Superscript u/v</glyphName>
 					<note>Superscript u or v, representing "ur" or "ru".</note>
 				</glyph>
 				<glyph xml:id="g17" corresp="http://www.vanhamel.nl/codecs/A_(superscript)">
 					<glyphName>Superscript a</glyphName>
-					<note>A superscript "a", looking more like a superscript "r", standing for "ra".</note>
+					<note>A superscript "a", looking more like a superscript "r", standing for
+						"ra".</note>
 				</glyph>
 				<glyph xml:id="g18" corresp="http://www.vanhamel.nl/codecs/Est_(superscript)">
-					<glyphName>est abbreviation</glyphName>
-					<note>Resembles a "2"; stands for Latin "est" or Gaelic orthographic equivalents (e.g. "easd").</note>
+					<glyphName>est-abbreviation</glyphName>
+					<note>Resembles a "2"; stands for Latin "est" or Gaelic orthographic equivalents
+						(e.g. "easd").</note>
 				</glyph>
 				<glyph xml:id="g19" corresp="http://www.vanhamel.nl/codecs/Uir_(subscript_ir)">
-					<glyphName>uir abbreviation</glyphName>
-					<note>A "u" with a descender with cross-stroke and a superscript "i"; stands for "uir".</note>
+					<glyphName>uir-abbreviation</glyphName>
+					<note>A "u" with a descender with cross-stroke and a superscript "i"; stands for
+						"uir".</note>
 				</glyph>
 				<glyph xml:id="g20" corresp="http://www.vanhamel.nl/codecs/E_(superscript)">
-					<glyphName>superscript e</glyphName>
+					<glyphName>Superscript e</glyphName>
 					<note>A superscript "e", standing for "-er", "-re", or "-e".</note>
 				</glyph>
 				<glyph xml:id="g21" corresp="http://www.vanhamel.nl/codecs/Er_(vertical_tilde)">
-					<glyphName>er abbreviation</glyphName>
+					<glyphName>er-abbreviation</glyphName>
 					<note>A vertical tilde (i.e. a zig-zag), standing for "-e(a)r".</note>
 				</glyph>
 				<glyph xml:id="g22" corresp="http://www.vanhamel.nl/codecs/Err_(inverted_tildes)">
-					<glyphName>err abbreviation</glyphName>
+					<glyphName>err-abbreviation</glyphName>
 					<note>Two vertical tildes, standing for "-e(a)rr".</note>
 				</glyph>
-				<glyph xml:id="g23" corresp="http://www.vanhamel.nl/codecs/Suspension_stroke_(double)">
-					<glyphName>double suspension stroke</glyphName>
-					<note>Two superscript cross-strokes, standing for either "-nn" or an expansion containing two of the same consonant.</note>
+				<glyph xml:id="g23"
+					corresp="http://www.vanhamel.nl/codecs/Suspension_stroke_(double)">
+					<glyphName>Double suspension stroke</glyphName>
+					<note>Two superscript cross-strokes, standing for either "-nn" or an expansion
+						containing two of the same consonant.</note>
 				</glyph>
 				<glyph xml:id="g24" corresp="http://www.vanhamel.nl/codecs/D_(superscript)">
-					<glyphName>superscript d</glyphName>
+					<glyphName>Superscript d</glyphName>
 					<note>A superscript "d", standing for a vowel + d.</note>
 				</glyph>
 				<glyph xml:id="g25" corresp="http://www.vanhamel.nl/codecs/I_(superscript)">
-					<glyphName>superscript i</glyphName>
+					<glyphName>Superscript i</glyphName>
 					<note>A superscript "i", standing for "-ri" or "-ir".</note>
 				</glyph>
 				<glyph xml:id="g26" corresp="http://www.vanhamel.nl/codecs/2_(Arabic_numeral)">
-					<glyphName>da abbreviation</glyphName>
-					<note>The Arabic numeral "2", standing for "dá" or "da" in Gaelic contexts and "duo" in Latin contexts. Similar to <hi rend="italics">est abbreviation.</hi></note>
+					<glyphName>da-abbreviation</glyphName>
+					<note>The Arabic numeral "2", standing for "dá" or "da" in Gaelic contexts and
+						"duo" in Latin contexts. Similar to <hi rend="italics">est
+							abbreviation.</hi></note>
 				</glyph>
 				<glyph xml:id="g27">
 					<glyphName>none</glyphName>
-					<note>There is no visual indicator of an abbreviation but it is apparent for some reason that a word has been abbreviated.</note>
+					<note>There is no visual indicator of an abbreviation but it is apparent for
+						some reason that a word has been abbreviated.</note>
 				</glyph>
 				<glyph xml:id="g28" corresp="http://www.vanhamel.nl/codecs/Con_(reversed_c)">
-					<glyphName>con abbreviation</glyphName>
+					<glyphName>con-abbreviation</glyphName>
 					<note>A backwards "c", standing for "con".</note>
 				</glyph>
 				<glyph xml:id="gn" corresp="n">
@@ -625,43 +637,43 @@
 		<profileDesc>
 			<handNotes>
 				<handNote xml:id="Hand1">
-					<forename>[unknown}</forename>
-					<surname>[unknown}</surname>
+					<forename>[unknown]</forename>
+					<surname>[unknown]</surname>
 					<date from="1100" to="1150">1100-1150</date>
 					<region cert="high">NE Scotland</region>
 					<note>Hand A in the Gaelic Notes in the Book of Deer</note>
 				</handNote>
 				<handNote xml:id="Hand2">
-					<forename>[unknown}</forename>
-					<surname>[unknown}</surname>
+					<forename>[unknown]</forename>
+					<surname>[unknown]</surname>
 					<date from="1100" to="1150">1100-1150</date>
 					<region cert="high">NE Scotland</region>
 					<note>Hand B in the Gaelic Notes in the Book of Deer</note>
 				</handNote>
 				<handNote xml:id="Hand3">
-					<forename>[unknown}</forename>
-					<surname>[unknown}</surname>
+					<forename>[unknown]</forename>
+					<surname>[unknown]</surname>
 					<date from="1100" to="1150">1100-1150</date>
 					<region cert="high">NE Scotland</region>
 					<note>Hand C in the Gaelic Notes in the Book of Deer</note>
 				</handNote>
 				<handNote xml:id="Hand4">
-					<forename>[unknown}</forename>
-					<surname>[unknown}</surname>
+					<forename>[unknown]</forename>
+					<surname>[unknown]</surname>
 					<date from="1100" to="1150">1100-1150</date>
 					<region cert="high">NE Scotland</region>
 					<note>Hand D in the Gaelic Notes in the Book of Deer</note>
 				</handNote>
 				<handNote xml:id="Hand5">
-					<forename>[unknown}</forename>
-					<surname>[unknown}</surname>
+					<forename>[unknown]</forename>
+					<surname>[unknown]</surname>
 					<date from="1100" to="1150">1100-1150</date>
 					<region cert="high">NE Scotland</region>
 					<note>Hand E in the Gaelic Notes in the Book of Deer</note>
 				</handNote>
 				<handNote xml:id="Hand6">
-					<forename>[unknown}</forename>
-					<surname>[unknown}</surname>
+					<forename>[unknown]</forename>
+					<surname>[unknown]</surname>
 					<date cert="medium" from="0900" to="1000">900-1000</date>
 					<region cert="high">NE Scotland</region>
 					<note>Scribe of main text in the Book of Deer</note>
@@ -718,7 +730,7 @@
 				<handNote xml:id="Hand10">
 					<forename>Niall</forename>
 					<surname>MacMhuirich</surname>
-					<date cert="medium" from="1600" to="1660">c. 1600-1670</date>
+					<date cert="medium" from="1600" to="1660">c. 1630-1726</date>
 					<region cert="high">W Scotland</region>
 					<note/>
 				</handNote>

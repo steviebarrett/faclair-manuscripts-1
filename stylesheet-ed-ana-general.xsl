@@ -5,6 +5,10 @@
 
 	<xsl:output method="html"/>
 
+	<xsl:key name="abbrs" match="*" use="@xml:id"/>
+	<xsl:key name="hands" match="*" use="@xml:id"/>
+	
+
 	<xsl:template match="/">
 		<html>
 			<head>
@@ -43,7 +47,24 @@
 							<xsl:value-of select="@ana"/>
 						</td>
 						<td>
-							<xsl:value-of select="ancestor::tei:div/@resp"/>
+							<xsl:choose>
+								<xsl:when test="ancestor::tei:div//tei:handShift">
+									<xsl:value-of
+										select="key('hands', preceding::tei:handShift[1]/@new)/tei:forename or key('hands', preceding::tei:div[1]/@resp)/tei:forename"/>
+									<xsl:text> </xsl:text>
+									<xsl:value-of
+										select="key('hands', preceding::tei:handShift[1]/@new)/tei:forename or key('hands', preceding::tei:div[1]/@resp)/tei:forename"
+									/>
+								</xsl:when>
+								<xsl:otherwise>
+									<xsl:value-of
+										select="key('hands', ancestor::tei:div[1]/@resp)/tei:forename"/>
+									<xsl:text> </xsl:text>
+									<xsl:value-of
+										select="key('hands', ancestor::tei:div[1]/@resp)/tei:surname"
+									/>
+								</xsl:otherwise>
+							</xsl:choose>
 						</td>
 						<td>
 							<xsl:value-of select="preceding::tei:lb[1]/@xml:id"/>
