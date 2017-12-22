@@ -25,6 +25,9 @@
 							<b>Abbreviation</b>
 						</th>
 						<th>
+							<b>More Info</b>
+						</th>
+						<th>
 							<b>Context</b>
 						</th>
 						<th>
@@ -41,7 +44,7 @@
 										<xsl:text> </xsl:text>
 										<xsl:value-of
 											select="key('abbrs', preceding::tei:handShift[1]/@new)/tei:forename or key('abbrs', preceding::tei:div[1]/@resp)/tei:forename"
-										/>
+										/><xsl:text> (</xsl:text><xsl:value-of select="preceding::tei:handShift[1]/@new or preceding::tei:div[1]/@resp"/><xsl:text>)</xsl:text>
 									</xsl:when>
 									<xsl:otherwise>
 										<xsl:value-of
@@ -49,12 +52,15 @@
 										<xsl:text> </xsl:text>
 										<xsl:value-of
 											select="key('abbrs', ancestor::tei:div[1]/@resp)/tei:surname"
-										/>
+										/><xsl:text> (</xsl:text><xsl:value-of select="ancestor::tei:div[1]/@resp"/><xsl:text>)</xsl:text>
 									</xsl:otherwise>
 								</xsl:choose>
 							</td>
 							<td>
 								<xsl:value-of select="key('abbrs', @ref)/tei:glyphName"/>
+							</td>
+							<td>
+								<a href="{key('abbrs', @ref)/@corresp}">More info</a>
 							</td>
 							<td>
 								<xsl:for-each select="ancestor::tei:w[1]">

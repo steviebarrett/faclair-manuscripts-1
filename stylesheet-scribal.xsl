@@ -262,12 +262,12 @@
 		</sup>
 	</xsl:template>
 
-	<xsl:template match="tei:add">
+	<xsl:template match="tei:add[@type='insertion']">
 		<xsl:choose>
 			<xsl:when test="@place = 'above'">
 				<b>
 					<a title="{@resp}" href="#" onclick="return false;"
-						style="text-decoration:none; color:#000000"> \</a>
+						style="text-decoration:none; color:#000000"><xsl:text> </xsl:text>\</a>
 				</b>
 				<xsl:apply-templates/>
 				<b>
@@ -278,7 +278,7 @@
 			<xsl:when test="@place = 'below'">
 				<b>
 					<a title="{@resp}" href="#" onclick="return false;"
-						style="text-decoration:none; color:#000000"> /</a>
+						style="text-decoration:none; color:#000000"><xsl:text> </xsl:text>/</a>
 				</b>
 				<xsl:apply-templates/>
 				<b>
@@ -289,23 +289,23 @@
 			<xsl:when test="@place = 'margin, right'">
 				<b>
 					<a title="{@resp}" href="#" onclick="return false;"
-						style="text-decoration:none; color:#000000">&lt; &lt;</a>
+						style="text-decoration:none; color:#000000"><xsl:text> </xsl:text>&lt;</a>
 				</b>
 				<xsl:apply-templates/>
 				<b>
 					<a title="{@resp}" href="#" onclick="return false;"
-						style="text-decoration:none; color:#000000">&lt; &lt;</a>
+						style="text-decoration:none; color:#000000">&lt;<xsl:text> </xsl:text></a>
 				</b>
 			</xsl:when>
 			<xsl:when test="@place = 'margin, left'">
 				<b>
 					<a title="{@resp}" href="#" onclick="return false;"
-						style="text-decoration:none; color:#000000">&gt; &gt;</a>
+						style="text-decoration:none; color:#000000"><xsl:text> </xsl:text>&gt;</a>
 				</b>
 				<xsl:apply-templates/>
 				<b>
 					<a title="{@resp}" href="#" onclick="return false;"
-						style="text-decoration:none; color:#000000">&gt; &gt;</a>
+						style="text-decoration:none; color:#000000">&gt;<xsl:text> </xsl:text></a>
 				</b>
 			</xsl:when>
 		</xsl:choose>

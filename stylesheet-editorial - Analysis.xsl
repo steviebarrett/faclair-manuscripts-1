@@ -16,10 +16,10 @@
 				<table border="1px solid black">
 					<tr>
 						<th>
-							<b>Form</b>
+							<b>Lemma</b>
 						</th>
 						<th>
-							<b>Lemma</b>
+							<b>Form</b>
 						</th>
 						<th>
 							<b>Part of Speech</b>
@@ -34,10 +34,10 @@
 					<xsl:for-each select="//tei:w[not(/tei:w)]">
 					<tr>
 						<td>
-							<xsl:apply-templates/>
+							<a href="{@lemmaRef}"><xsl:value-of select="@lemma"/></a>
 						</td>
 						<td>
-							<a href="{@lemmaRef}"><xsl:value-of select="@lemma"/></a>
+							<xsl:apply-templates/>
 						</td>
 						<td>
 							<xsl:value-of select="@ana"/>

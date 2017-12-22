@@ -51,7 +51,6 @@
 								<xsl:when test="ancestor::tei:div//tei:handShift">
 									<xsl:value-of
 										select="key('hands', preceding::tei:handShift[1]/@new)/tei:forename or key('hands', preceding::tei:div[1]/@resp)/tei:forename"/>
-									<xsl:text> </xsl:text>
 									<xsl:value-of
 										select="key('hands', preceding::tei:handShift[1]/@new)/tei:forename or key('hands', preceding::tei:div[1]/@resp)/tei:forename"
 									/>
@@ -59,7 +58,6 @@
 								<xsl:otherwise>
 									<xsl:value-of
 										select="key('hands', ancestor::tei:div[1]/@resp)/tei:forename"/>
-									<xsl:text> </xsl:text>
 									<xsl:value-of
 										select="key('hands', ancestor::tei:div[1]/@resp)/tei:surname"
 									/>
