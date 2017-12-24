@@ -17,7 +17,7 @@
 				</title>
 			</head>
 			<body>
-				<table border="1px solid black">
+				<table border="1px solid black" xml:id="tbl1">
 					<tr>
 						<th>
 							<b>Form</b>
@@ -55,11 +55,11 @@
 								<xsl:choose>
 									<xsl:when test="ancestor::tei:div//tei:handShift">
 										<xsl:value-of
-											select="key('hands', preceding::tei:handShift[1]/@new)/tei:forename or key('hands', preceding::tei:div[1]/@resp)/tei:forename"/>
+											select="key('hands', preceding::tei:handShift[1]/@new)/tei:forename | key('hands', preceding::tei:div[1]/@resp)/tei:forename"/>
 										<xsl:text> </xsl:text>
 										<xsl:value-of
-											select="key('hands', preceding::tei:handShift[1]/@new)/tei:forename or key('hands', preceding::tei:div[1]/@resp)/tei:forename"
-										/>
+											select="key('hands', preceding::tei:handShift[1]/@new)/tei:surname | key('hands', preceding::tei:div[1]/@resp)/tei:surname"
+										/><xsl:text> (</xsl:text><xsl:value-of select="preceding::tei:handShift[1]/@new | preceding::tei:div[1]/@resp"/><xsl:text>)</xsl:text>
 									</xsl:when>
 									<xsl:otherwise>
 										<xsl:value-of
@@ -67,51 +67,67 @@
 										<xsl:text> </xsl:text>
 										<xsl:value-of
 											select="key('hands', ancestor::tei:div[1]/@resp)/tei:surname"
-										/>
+										/><xsl:text> (</xsl:text><xsl:value-of select="ancestor::tei:div[1]/@resp"/><xsl:text>)</xsl:text>
 									</xsl:otherwise>
 								</xsl:choose>
 							</td>
 							<td>
-								<xsl:value-of select="preceding::tei:lb[1]/@xml:id"/>
+								<xsl:value-of select="preceding::tei:lb[1]/@xml:id | preceding::tei:lb[1]/@sameAs"/>
 							</td>
 							<td>
 								<xsl:choose>
 									<xsl:when test="ancestor::tei:div[@type='verse'][1]">
 										<xsl:apply-templates select="ancestor::tei:lg[1]"/>
 									</xsl:when>
-									<xsl:when test="">
-										<!-- Move up a level for <w> elements on lower level (e.g. <name><w></w></name> -->
+									<xsl:when test="ancestor::*[preceding-sibling::tei:w or following-sibling::tei:w]">
+										<xsl:apply-templates select="ancestor::*[preceding-sibling::tei:w | following-sibling::tei:w]/preceding-sibling::*[8][/descendant-or-self::tei:w | tei:gap | tei:handShift and not(tei:lg/ancestor-or-self::* | tei:p/ancestor-or-self::* | tei:div/ancestor-or-self::*)]"/>
+										<xsl:apply-templates select="ancestor::*[preceding-sibling::tei:w | following-sibling::tei:w]/preceding-sibling::*[7][/descendant-or-self::tei:w | tei:gap | tei:handShift and not(tei:lg/ancestor-or-self::* | tei:p/ancestor-or-self::* | tei:div/ancestor-or-self::*)]"/>
+										<xsl:apply-templates select="ancestor::*[preceding-sibling::tei:w | following-sibling::tei:w]/preceding-sibling::*[6][/descendant-or-self::tei:w | tei:gap | tei:handShift and not(tei:lg/ancestor-or-self::* | tei:p/ancestor-or-self::* | tei:div/ancestor-or-self::*)]"/>
+										<xsl:apply-templates select="ancestor::*[preceding-sibling::tei:w | following-sibling::tei:w]/preceding-sibling::*[5][/descendant-or-self::tei:w | tei:gap | tei:handShift and not(tei:lg/ancestor-or-self::* | tei:p/ancestor-or-self::* | tei:div/ancestor-or-self::*)]"/>
+										<xsl:apply-templates select="ancestor::*[preceding-sibling::tei:w | following-sibling::tei:w]/preceding-sibling::*[4][/descendant-or-self::tei:w | tei:gap | tei:handShift and not(tei:lg/ancestor-or-self::* | tei:p/ancestor-or-self::* | tei:div/ancestor-or-self::*)]"/>
+										<xsl:apply-templates select="ancestor::*[preceding-sibling::tei:w | following-sibling::tei:w]/preceding-sibling::*[3][/descendant-or-self::tei:w | tei:gap | tei:handShift and not(tei:lg/ancestor-or-self::* | tei:p/ancestor-or-self::* | tei:div/ancestor-or-self::*)]"/>
+										<xsl:apply-templates select="ancestor::*[preceding-sibling::tei:w | following-sibling::tei:w]/preceding-sibling::*[2][/descendant-or-self::tei:w | tei:gap | tei:handShift and not(tei:lg/ancestor-or-self::* | tei:p/ancestor-or-self::* | tei:div/ancestor-or-self::*)]"/>
+										<xsl:apply-templates select="ancestor::*[preceding-sibling::tei:w | following-sibling::tei:w]/preceding-sibling::*[1][/descendant-or-self::tei:w | tei:gap | tei:handShift and not(tei:lg/ancestor-or-self::* | tei:p/ancestor-or-self::* | tei:div/ancestor-or-self::*)]"/>
+										<b><xsl:apply-templates select="ancestor::*[preceding-sibling::tei:w | following-sibling::tei:w]"/><xsl:text> </xsl:text></b>
+										<xsl:apply-templates select="ancestor::*[preceding-sibling::tei:w | following-sibling::tei:w]/following-sibling::*[1][/descendant-or-self::tei:w | tei:gap | tei:handShift and not(tei:lg/ancestor-or-self::* | tei:p/ancestor-or-self::* | tei:div/ancestor-or-self::*)]"/>
+										<xsl:apply-templates select="ancestor::*[preceding-sibling::tei:w | following-sibling::tei:w]/following-sibling::*[2][/descendant-or-self::tei:w | tei:gap | tei:handShift and not(tei:lg/ancestor-or-self::* | tei:p/ancestor-or-self::* | tei:div/ancestor-or-self::*)]"/>
+										<xsl:apply-templates select="ancestor::*[preceding-sibling::tei:w | following-sibling::tei:w]/following-sibling::*[3][/descendant-or-self::tei:w | tei:gap | tei:handShift and not(tei:lg/ancestor-or-self::* | tei:p/ancestor-or-self::* | tei:div/ancestor-or-self::*)]"/>
+										<xsl:apply-templates select="ancestor::*[preceding-sibling::tei:w | following-sibling::tei:w]/following-sibling::*[4][/descendant-or-self::tei:w | tei:gap | tei:handShift and not(tei:lg/ancestor-or-self::* | tei:p/ancestor-or-self::* | tei:div/ancestor-or-self::*)]"/>
+										<xsl:apply-templates select="ancestor::*[preceding-sibling::tei:w | following-sibling::tei:w]/following-sibling::*[5][/descendant-or-self::tei:w | tei:gap | tei:handShift and not(tei:lg/ancestor-or-self::* | tei:p/ancestor-or-self::* | tei:div/ancestor-or-self::*)]"/>
+										<xsl:apply-templates select="ancestor::*[preceding-sibling::tei:w | following-sibling::tei:w]/following-sibling::*[6][/descendant-or-self::tei:w | tei:gap | tei:handShift and not(tei:lg/ancestor-or-self::* | tei:p/ancestor-or-self::* | tei:div/ancestor-or-self::*)]"/>
+										<xsl:apply-templates select="ancestor::*[preceding-sibling::tei:w | following-sibling::tei:w]/following-sibling::*[7][/descendant-or-self::tei:w | tei:gap | tei:handShift and not(tei:lg/ancestor-or-self::* | tei:p/ancestor-or-self::* | tei:div/ancestor-or-self::*)]"/>
+										<xsl:apply-templates select="ancestor::*[preceding-sibling::tei:w | following-sibling::tei:w]/following-sibling::*[8][/descendant-or-self::tei:w | tei:gap | tei:handShift and not(tei:lg/ancestor-or-self::* | tei:p/ancestor-or-self::* | tei:div/ancestor-or-self::*)]"/>
 									</xsl:when>
 								<xsl:otherwise>
-									<xsl:apply-templates select="preceding-sibling::*[8][/descendant-or-self::tei:w or tei:gap and not(ancestor-or-self::tei:lg or tei:p)]"/>
-									<xsl:apply-templates select="preceding-sibling::*[7][/descendant-or-self::tei:w or tei:gap and not(ancestor-or-self::tei:lg or tei:p)]"/>
-									<xsl:apply-templates select="preceding-sibling::*[6][/descendant-or-self::tei:w or tei:gap and not(ancestor-or-self::tei:lg or tei:p)]"/>
-									<xsl:apply-templates select="preceding-sibling::*[5][/descendant-or-self::tei:w or tei:gap and not(ancestor-or-self::tei:lg or tei:p)]"/>
-									<xsl:apply-templates select="preceding-sibling::*[4][/descendant-or-self::tei:w or tei:gap and not(ancestor-or-self::tei:lg or tei:p)]"/>
-									<xsl:apply-templates select="preceding-sibling::*[3][/descendant-or-self::tei:w or tei:gap and not(ancestor-or-self::tei:lg or tei:p)]"/>
-									<xsl:apply-templates select="preceding-sibling::*[2][/descendant-or-self::tei:w or tei:gap and not(ancestor-or-self::tei:lg or tei:p)]"/>
-									<xsl:apply-templates select="preceding-sibling::*[1][/descendant-or-self::tei:w or tei:gap and not(ancestor-or-self::tei:lg or tei:p)]"/>
-								<b><xsl:apply-templates/></b>
-									<xsl:apply-templates select="following-sibling::*[1][/descendant-or-self::tei:w or tei:gap and not(ancestor-or-self::tei:lg or tei:p)]"/>
-									<xsl:apply-templates select="following-sibling::*[2][/descendant-or-self::tei:w or tei:gap and not(ancestor-or-self::tei:lg or tei:p)]"/>
-									<xsl:apply-templates select="following-sibling::*[3][/descendant-or-self::tei:w or tei:gap and not(ancestor-or-self::tei:lg or tei:p)]"/>
-									<xsl:apply-templates select="following-sibling::*[4][/descendant-or-self::tei:w or tei:gap and not(ancestor-or-self::tei:lg or tei:p)]"/>
-									<xsl:apply-templates select="following-sibling::*[5][/descendant-or-self::tei:w or tei:gap and not(ancestor-or-self::tei:lg or tei:p)]"/>
-									<xsl:apply-templates select="following-sibling::*[6][/descendant-or-self::tei:w or tei:gap and not(ancestor-or-self::tei:lg or tei:p)]"/>
-									<xsl:apply-templates select="following-sibling::*[7][/descendant-or-self::tei:w or tei:gap and not(ancestor-or-self::tei:lg or tei:p)]"/>
-									<xsl:apply-templates select="following-sibling::*[8][/descendant-or-self::tei:w or tei:gap and not(ancestor-or-self::tei:lg or tei:p)]"/>
+									<xsl:apply-templates select="preceding-sibling::*[8][/descendant-or-self::tei:w | tei:gap | tei:handShift and not(tei:lg/ancestor-or-self::* | tei:p/ancestor-or-self::* | tei:div/ancestor-or-self::*)]"/>
+									<xsl:apply-templates select="preceding-sibling::*[7][/descendant-or-self::tei:w | tei:gap | tei:handShift and not(tei:lg/ancestor-or-self::* | tei:p/ancestor-or-self::* | tei:div/ancestor-or-self::*)]"/>
+									<xsl:apply-templates select="preceding-sibling::*[6][/descendant-or-self::tei:w | tei:gap | tei:handShift and not(tei:lg/ancestor-or-self::* | tei:p/ancestor-or-self::* | tei:div/ancestor-or-self::*)]"/>
+									<xsl:apply-templates select="preceding-sibling::*[5][/descendant-or-self::tei:w | tei:gap | tei:handShift and not(tei:lg/ancestor-or-self::* | tei:p/ancestor-or-self::* | tei:div/ancestor-or-self::*)]"/>
+									<xsl:apply-templates select="preceding-sibling::*[4][/descendant-or-self::tei:w | tei:gap | tei:handShift and not(tei:lg/ancestor-or-self::* | tei:p/ancestor-or-self::* | tei:div/ancestor-or-self::*)]"/>
+									<xsl:apply-templates select="preceding-sibling::*[3][/descendant-or-self::tei:w | tei:gap | tei:handShift and not(tei:lg/ancestor-or-self::* | tei:p/ancestor-or-self::* | tei:div/ancestor-or-self::*)]"/>
+									<xsl:apply-templates select="preceding-sibling::*[2][/descendant-or-self::tei:w | tei:gap | tei:handShift and not(tei:lg/ancestor-or-self::* | tei:p/ancestor-or-self::* | tei:div/ancestor-or-self::*)]"/>
+									<xsl:apply-templates select="preceding-sibling::*[1][/descendant-or-self::tei:w | tei:gap | tei:handShift and not(tei:lg/ancestor-or-self::* | tei:p/ancestor-or-self::* | tei:div/ancestor-or-self::*)]"/>
+									<b><xsl:apply-templates/></b><xsl:text> </xsl:text>
+									<xsl:apply-templates select="following-sibling::*[1][/descendant-or-self::tei:w | tei:gap | tei:handShift and not(tei:lg/ancestor-or-self::* | tei:p/ancestor-or-self::* | tei:div/ancestor-or-self::*)]"/>
+									<xsl:apply-templates select="following-sibling::*[2][/descendant-or-self::tei:w | tei:gap | tei:handShift and not(tei:lg/ancestor-or-self::* | tei:p/ancestor-or-self::* | tei:div/ancestor-or-self::*)]"/>
+									<xsl:apply-templates select="following-sibling::*[3][/descendant-or-self::tei:w | tei:gap | tei:handShift and not(tei:lg/ancestor-or-self::* | tei:p/ancestor-or-self::* | tei:div/ancestor-or-self::*)]"/>
+									<xsl:apply-templates select="following-sibling::*[4][/descendant-or-self::tei:w | tei:gap | tei:handShift and not(tei:lg/ancestor-or-self::* | tei:p/ancestor-or-self::* | tei:div/ancestor-or-self::*)]"/>
+									<xsl:apply-templates select="following-sibling::*[5][/descendant-or-self::tei:w | tei:gap | tei:handShift and not(tei:lg/ancestor-or-self::* | tei:p/ancestor-or-self::* | tei:div/ancestor-or-self::*)]"/>
+									<xsl:apply-templates select="following-sibling::*[6][/descendant-or-self::tei:w | tei:gap | tei:handShift and not(tei:lg/ancestor-or-self::* | tei:p/ancestor-or-self::* | tei:div/ancestor-or-self::*)]"/>
+									<xsl:apply-templates select="following-sibling::*[7][/descendant-or-self::tei:w | tei:gap | tei:handShift and not(tei:lg/ancestor-or-self::* | tei:p/ancestor-or-self::* | tei:div/ancestor-or-self::*)]"/>
+									<xsl:apply-templates select="following-sibling::*[8][/descendant-or-self::tei:w | tei:gap | tei:handShift and not(tei:lg/ancestor-or-self::* | tei:p/ancestor-or-self::* | tei:div/ancestor-or-self::*)]"/>
 								</xsl:otherwise>
 								</xsl:choose>
 							</td>
 						</tr>
 					</xsl:for-each>
 				</table>
-
+				
 			</body>
 		</html>
 	</xsl:template>
 
-	<xsl:template match="tei:pb">
+	<!-- <xsl:template match="tei:pb">
 		<br/>
 		<hr align="left" width="40%"/>
 		<p align="left">
@@ -126,14 +142,14 @@
 				</xsl:otherwise>
 			</xsl:choose>
 		</p>
-	</xsl:template>
+	</xsl:template> -->
 
-	<xsl:template match="tei:p//tei:lb">
+	<!-- <xsl:template match="tei:p//tei:lb">
 		<br/>
 		<xsl:value-of select="@n"/>
 		<xsl:text>. </xsl:text>
 		<xsl:apply-templates/>
-	</xsl:template>
+	</xsl:template> -->
 
 	<xsl:template match="//tei:lg//tei:lb">
 		<sub><a title="MS fol/p {preceding::tei:pb/@n}, line {@n}" href="#" onclick="return false;"
@@ -167,7 +183,7 @@
 
 	<xsl:template match="tei:l">
 		<xsl:apply-templates/>
-		<br/>
+		<xsl:text> || </xsl:text>
 	</xsl:template>
 
 	<xsl:template match="tei:w">
