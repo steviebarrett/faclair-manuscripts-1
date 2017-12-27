@@ -79,7 +79,7 @@
 									<xsl:when test="ancestor::tei:div[@type='verse'][1]">
 										<xsl:apply-templates select="ancestor::tei:lg[1]"/>
 									</xsl:when>
-									<xsl:when test="ancestor::*[preceding-sibling::tei:w or following-sibling::tei:w]">
+									<xsl:when test="ancestor::*[preceding-sibling::tei:w | following-sibling::tei:w]">
 										<xsl:apply-templates select="ancestor::*[preceding-sibling::tei:w | following-sibling::tei:w]/preceding-sibling::*[8][/descendant-or-self::tei:w | tei:gap | tei:handShift and not(tei:lg/ancestor-or-self::* | tei:p/ancestor-or-self::* | tei:div/ancestor-or-self::*)]"/>
 										<xsl:apply-templates select="ancestor::*[preceding-sibling::tei:w | following-sibling::tei:w]/preceding-sibling::*[7][/descendant-or-self::tei:w | tei:gap | tei:handShift and not(tei:lg/ancestor-or-self::* | tei:p/ancestor-or-self::* | tei:div/ancestor-or-self::*)]"/>
 										<xsl:apply-templates select="ancestor::*[preceding-sibling::tei:w | following-sibling::tei:w]/preceding-sibling::*[6][/descendant-or-self::tei:w | tei:gap | tei:handShift and not(tei:lg/ancestor-or-self::* | tei:p/ancestor-or-self::* | tei:div/ancestor-or-self::*)]"/>
@@ -157,29 +157,21 @@
 		<xsl:apply-templates/>
 	</xsl:template>
 
-	<xsl:template match="tei:lg">
+	<!-- <xsl:template match="tei:lg">
 		<xsl:choose>
 			<xsl:when test="count(parent::tei:div//tei:lg[@type = 'stanza']) > 1">
-				<br/>
 				<b align="left">
 					<a title="Stanza number" href="#" onclick="return false;"
 						style="text-decoration:none; color:#000000">
 						<xsl:value-of select="@n"/>
 					</a>
-				</b>
-				<br/>
-				<p style="margin-left:30px">
-					<xsl:apply-templates select="descendant::tei:l"/>
-				</p>
+				</b><p style="margin-left:30px"><xsl:apply-templates select="descendant::tei:l"/></p>
 			</xsl:when>
 			<xsl:otherwise>
-				<p style="margin-left:30px">
-					<br/>
-					<xsl:apply-templates select="descendant::tei:l"/>
-				</p>
+				<p style="margin-left:30px"><xsl:apply-templates select="descendant::tei:l"/></p>
 			</xsl:otherwise>
 		</xsl:choose>
-	</xsl:template>
+	</xsl:template> -->
 
 	<xsl:template match="tei:l">
 		<xsl:apply-templates/>
