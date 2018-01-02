@@ -254,7 +254,7 @@
 		</xsl:choose>
 	</xsl:template>
 
-	<xsl:template match="tei:note[@resp = '#EPT']">
+	<xsl:template match="tei:note[@resp = 'EPT']">
 		<sup>
 			<b>
 				<xsl:value-of select="@n"/>

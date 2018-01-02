@@ -80,23 +80,23 @@
 										<xsl:apply-templates select="ancestor::tei:lg[1]"/>
 									</xsl:when>
 									<xsl:otherwise>
-										<xsl:apply-templates select="preceding::*[parent::tei:p and descendant-or-self::tei:w and not(tei:lg)][8]"/>
-										<xsl:apply-templates select="preceding::*[parent::tei:p and descendant-or-self::tei:w and not(tei:lg)][7]"/>
-										<xsl:apply-templates select="preceding::*[parent::tei:p and descendant-or-self::tei:w and not(tei:lg)][6]"/>
-										<xsl:apply-templates select="preceding::*[parent::tei:p and descendant-or-self::tei:w and not(tei:lg)][5]"/>
-										<xsl:apply-templates select="preceding::*[parent::tei:p and descendant-or-self::tei:w and not(tei:lg)][4]"/>
-										<xsl:apply-templates select="preceding::*[parent::tei:p and descendant-or-self::tei:w and not(tei:lg)][3]"/>
-										<xsl:apply-templates select="preceding::*[parent::tei:p and descendant-or-self::tei:w and not(tei:lg)][2]"/>
-										<xsl:apply-templates select="preceding::*[parent::tei:p and descendant-or-self::tei:w and not(tei:lg)][1]"/>
+										<xsl:apply-templates select="preceding::*[parent::tei:p and not(tei:lg)][8]"/>
+										<xsl:apply-templates select="preceding::*[parent::tei:p and not(tei:lg)][7]"/>
+										<xsl:apply-templates select="preceding::*[parent::tei:p and not(tei:lg)][6]"/>
+										<xsl:apply-templates select="preceding::*[parent::tei:p and not(tei:lg)][5]"/>
+										<xsl:apply-templates select="preceding::*[parent::tei:p and not(tei:lg)][4]"/>
+										<xsl:apply-templates select="preceding::*[parent::tei:p and not(tei:lg)][3]"/>
+										<xsl:apply-templates select="preceding::*[parent::tei:p and not(tei:lg)][2]"/>
+										<xsl:apply-templates select="preceding::*[parent::tei:p and not(tei:lg)][1]"/>
 										<b><xsl:apply-templates/><xsl:text> </xsl:text></b>
-										<xsl:apply-templates select="following::*[parent::tei:p and descendant-or-self::tei:w and not(tei:lg)][1]"/>
-										<xsl:apply-templates select="following::*[parent::tei:p and descendant-or-self::tei:w and not(tei:lg)][2]"/>
-										<xsl:apply-templates select="following::*[parent::tei:p and descendant-or-self::tei:w and not(tei:lg)][3]"/>
-										<xsl:apply-templates select="following::*[parent::tei:p and descendant-or-self::tei:w and not(tei:lg)][4]"/>
-										<xsl:apply-templates select="following::*[parent::tei:p and descendant-or-self::tei:w and not(tei:lg)][5]"/>
-										<xsl:apply-templates select="following::*[parent::tei:p and descendant-or-self::tei:w and not(tei:lg)][6]"/>
-										<xsl:apply-templates select="following::*[parent::tei:p and descendant-or-self::tei:w and not(tei:lg)][7]"/>
-										<xsl:apply-templates select="following::*[parent::tei:p and descendant-or-self::tei:w and not(tei:lg)][8]"/>
+										<xsl:apply-templates select="following::*[parent::tei:p and not(tei:lg)][1]"/>
+										<xsl:apply-templates select="following::*[parent::tei:p and not(tei:lg)][2]"/>
+										<xsl:apply-templates select="following::*[parent::tei:p and not(tei:lg)][3]"/>
+										<xsl:apply-templates select="following::*[parent::tei:p and not(tei:lg)][4]"/>
+										<xsl:apply-templates select="following::*[parent::tei:p and not(tei:lg)][5]"/>
+										<xsl:apply-templates select="following::*[parent::tei:p and not(tei:lg)][6]"/>
+										<xsl:apply-templates select="following::*[parent::tei:p and not(tei:lg)][7]"/>
+										<xsl:apply-templates select="following::*[parent::tei:p and not(tei:lg)][8]"/>
 									</xsl:otherwise>
 								</xsl:choose>
 							</td>
