@@ -121,7 +121,8 @@
 <!ATTLIST lb xml:id CDATA #IMPLIED>
 <!ELEMENT w (#PCDATA | abbr | w | lb | add | del | choice | handShift | sic | corr)*>
 <!ATTLIST w lang CDATA #IMPLIED>
-<!ATTLIST w lemma CDATA #IMPLIED>
+<!ATTLIST w lemma1 CDATA #IMPLIED>
+<!ATTLIST w lemma2 CDATA #IMPLIED>
 <!ATTLIST w corresp CDATA #IMPLIED>
 <!ATTLIST w ana CDATA #IMPLIED>
 <!ATTLIST w part CDATA #IMPLIED>
