@@ -4,7 +4,6 @@
 	schematypens="http://purl.oclc.org/dsdl/schematron"?>
 
 
-
 <?xml-stylesheet type="text/xsl" href="Stylesheet%20Archive/stylesheet-ana-abbrCount.xsl"?>
 <teiCorpus xmlns="http://www.tei-c.org/ns/1.0" xmlns:xi="http://www.w3.org/2001/XInclude">
 	<teiHeader>
@@ -652,6 +651,10 @@
 					<glyphName>q Abbreviation</glyphName>
 					<note>Latin "q", standing for "cu".</note>
 				</glyph>
+				<glyph xml:id="g31" corresp="NULL">
+					<glyphName>Superscript l</glyphName>
+					<note>Superscript "l", standing for "vowel + l" or "l + vowel".</note>
+				</glyph>
 				<glyph xml:id="gn" corresp="n">
 					<glyphName/>
 					<note/>
@@ -770,13 +773,20 @@
 					<surname>[Unknown]</surname>
 					<date type="floruit" cert="medium" from="1500" to="1590">fl. c. 1500-1590</date>
 					<region cert="high">W Scotland</region>
-					<note>Hand M (Black) in NLS Adv. MS 72.1.33.</note>
+					<note>Hand M in NLS Adv. MS 72.1.33.</note>
 				</handNote>
 				<handNote xml:id="Hand13">
 					<forename>Lachlan Mór</forename>
 					<surname>MacLean</surname>
 					<date type="floruit" cert="medium" from="1577" to="1598">fl. c. 1577-1598</date>
 					<region cert="high">Isle of Mull</region>
+					<note/>
+				</handNote>
+				<handNote xml:id="Hand14">
+					<forename>James</forename>
+					<surname>Beaton</surname>
+					<date type="floruit" cert="medium" from="" to=""></date>
+					<region cert="high"></region>
 					<note/>
 				</handNote>
 			</handNotes>
