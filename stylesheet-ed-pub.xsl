@@ -113,19 +113,19 @@
 					<xsl:otherwise>
 						<xsl:choose>
 							<xsl:when test="@ana">
-									<a title="{@ana}; lemma unavailable" href="#"
-										onclick="return false;"
-										style="text-decoration:none; background-color:#ffff00">
-										<xsl:apply-templates/>
-									</a>
+								<a title="{@ana}; lemma unavailable" href="#"
+									onclick="return false;"
+									style="text-decoration:none; background-color:#ffff00">
+									<xsl:apply-templates/>
+								</a>
 								<xsl:text> </xsl:text>
 							</xsl:when>
 							<xsl:otherwise>
-									<a title="PoS unavailable; lemma unavailable" href="#"
-										onclick="return false;"
-										style="text-decoration:none; background-color:#ffff00">
-										<xsl:apply-templates/>
-									</a>
+								<a title="PoS unavailable; lemma unavailable" href="#"
+									onclick="return false;"
+									style="text-decoration:none; background-color:#ffff00">
+									<xsl:apply-templates/>
+								</a>
 								<xsl:text> </xsl:text>
 							</xsl:otherwise>
 						</xsl:choose>
@@ -136,17 +136,17 @@
 				<!-- If @lemma is UNKNOWN -->
 				<xsl:choose>
 					<xsl:when test="@ana">
-							<a title="{@ana}; lemma unknown" href="#" onclick="return false;"
-								style="text-decoration:none; background-color:#ffff00">
-								<xsl:apply-templates/>
-							</a>
+						<a title="{@ana}; lemma unknown" href="#" onclick="return false;"
+							style="text-decoration:none; background-color:#ffff00">
+							<xsl:apply-templates/>
+						</a>
 						<xsl:text> </xsl:text>
 					</xsl:when>
 					<xsl:otherwise>
-							<a title="PoS unavailable; lemma unknown" href="#"
-								onclick="return false;" style="text-decoration:none; background-color:#ffff00">
-								<xsl:apply-templates/>
-							</a>
+						<a title="PoS unavailable; lemma unknown" href="#" onclick="return false;"
+							style="text-decoration:none; background-color:#ffff00">
+							<xsl:apply-templates/>
+						</a>
 						<xsl:text> </xsl:text>
 					</xsl:otherwise>
 				</xsl:choose>
@@ -204,7 +204,7 @@
 					<xsl:text>-</xsl:text>
 				</a>
 			</xsl:when>
-			<xsl:when test="@ana='verb' and ancestor::tei:w[contains(@ana, 'verb, pron')]">
+			<xsl:when test="@ana = 'verb' and ancestor::tei:w[contains(@ana, 'verb, pron')]">
 				<a href="{@lemmaRef}" title="'{@lemma}'; {@ana}"
 					style="text-decoration:none; color:#000000">
 					<xsl:apply-templates/>
@@ -228,8 +228,8 @@
 	</xsl:template>
 
 	<xsl:template match="tei:date">
-				<xsl:apply-templates/>
-				<xsl:text> </xsl:text>
+		<xsl:apply-templates/>
+		<xsl:text> </xsl:text>
 	</xsl:template>
 
 	<xsl:template match="tei:c">
@@ -241,7 +241,8 @@
 	</xsl:template>
 
 	<xsl:template match="tei:pc">
-				<xsl:apply-templates/><xsl:text> </xsl:text>
+		<xsl:apply-templates/>
+		<xsl:text> </xsl:text>
 	</xsl:template>
 
 	<xsl:template match="tei:supplied">
@@ -279,32 +280,40 @@
 			<xsl:when test="descendant::tei:w">
 				<xsl:choose>
 					<xsl:when test="@cert = 'low'">
-						<xsl:text>{ </xsl:text>
+						<a title="{@reason}" style="text-decoration:none; color:#000000" href="#"
+							onclick="return false">{ </a>
 						<hi background-color="#ffff00">
 							<xsl:apply-templates/>
 						</hi>
-						<xsl:text>} </xsl:text>
+						<a title="{@reason}" style="text-decoration:none; color:#000000" href="#"
+							onclick="return false">} </a>
 					</xsl:when>
 					<xsl:otherwise>
-						<xsl:text>{ </xsl:text>
+						<a title="{@reason}" style="text-decoration:none; color:#000000" href="#"
+							onclick="return false">{ </a>
 						<xsl:apply-templates/>
-						<xsl:text>} </xsl:text>
+						<a title="{@reason}" style="text-decoration:none; color:#000000" href="#"
+							onclick="return false">} </a>
 					</xsl:otherwise>
 				</xsl:choose>
 			</xsl:when>
 			<xsl:otherwise>
 				<xsl:choose>
 					<xsl:when test="@cert = 'low'">
-						<xsl:text>{</xsl:text>
+						<a title="{@reason}" style="text-decoration:none; color:#000000" href="#"
+							onclick="return false">{</a>
 						<hi background-color="#ffff00">
 							<xsl:apply-templates/>
 						</hi>
-						<xsl:text>}</xsl:text>
+						<a title="{@reason}" style="text-decoration:none; color:#000000" href="#"
+							onclick="return false">}</a>
 					</xsl:when>
 					<xsl:otherwise>
-						<xsl:text>{</xsl:text>
+						<a title="{@reason}" style="text-decoration:none; color:#000000" href="#"
+							onclick="return false">{</a>
 						<xsl:apply-templates/>
-						<xsl:text>}</xsl:text>
+						<a title="{@reason}" style="text-decoration:none; color:#000000" href="#"
+							onclick="return false">}</a>
 					</xsl:otherwise>
 				</xsl:choose>
 			</xsl:otherwise>
@@ -338,16 +347,20 @@
 		</xsl:choose>
 	</xsl:template>
 
-<xsl:template match="tei:del">
-	<del rend="strikethrough"><xsl:apply-templates/></del>
-</xsl:template>
+	<xsl:template match="tei:del">
+		<del rend="strikethrough">
+			<xsl:apply-templates/>
+		</del>
+	</xsl:template>
 
 	<xsl:template match="tei:choice[descendant::tei:w]">
 		<xsl:choose>
 			<xsl:when test="child::tei:abbr or child::tei:unclear or child::tei:seg">
 				<xsl:choose>
 					<xsl:when test="count(child::tei:seg/*/tei:w) > 1">
-						<xsl:text>{</xsl:text>
+						<a title="{child::tei:unclear/@reason}"
+							style="text-decoration:none; color:#000000" href="#"
+							onclick="return false">{</a>
 						<xsl:for-each select="tei:seg">
 							<xsl:apply-templates select="child::*[@n = '1']/tei:w"/>
 							<xsl:if test="child::*[@n = '2']/tei:w">
@@ -363,15 +376,17 @@
 								</sub>
 							</xsl:if>
 						</xsl:for-each>
-						<xsl:text>}</xsl:text>
+						<a title="{child::tei:unclear/@reason}"
+							style="text-decoration:none; color:#000000" href="#"
+							onclick="return false">}</a>
 					</xsl:when>
 					<xsl:otherwise>
 						<xsl:apply-templates select="child::*[@n = '1']"/>
 						<sub>
 							<b>
 								<i>
-									<a title="Or, {child::*[@n='2']}; {child::*[@n='2']/@ana}"
-										href="{child::*[@n='2']/@lemmaRef}"
+									<a title="Or, {child::*[@n='2']//*} ({child::*[@n='2']//*/@lemma}); {child::*[@n='2']//*/@ana}"
+										href="{child::*[@n='2']//*/@lemmaRef}"
 										style="text-decoration:none; color:#000000">alt </a>
 								</i>
 							</b>
@@ -380,29 +395,68 @@
 				</xsl:choose>
 			</xsl:when>
 			<xsl:when test="child::tei:sic and child::tei:corr">
-				<xsl:apply-templates select="tei:corr"/>
 				<xsl:choose>
-					<xsl:when test="child::tei:sic/tei:w/@lemmaRef">
-						<a href="{child::tei:sic/tei:w/@lemmaRef}" title="MS: {child::tei:sic//*}"
-							style="text-decoration:none; color:#000000">
-							<sub>
-								<b>
-									<i>alt </i>
-								</b>
-							</sub>
-						</a>
+					<xsl:when test="count(child::*/tei:w) > 1">
+						<xsl:for-each select="tei:corr//tei:w[@n]">
+							<xsl:apply-templates select="self::*"/>
+							<xsl:variable name="wpos" select="self::*/@n"/>
+							<xsl:choose>
+								<xsl:when test="ancestor::tei:choice/tei:sic/tei:w/@lemmaRef">
+									<sub>
+										<b>
+											<i>
+												<a
+												title="MS: {ancestor::tei:choice/tei:sic//tei:w[@n = $wpos]}; {ancestor::tei:choice/tei:sic//tei:w[@n = $wpos]/@ana}"
+												href="{ancestor::tei:choice/tei:sic//tei:w[@n = $wpos]/@lemmaRef}"
+												style="text-decoration:none; color:#000000"
+												>alt</a>
+											</i>
+										</b>
+									</sub>
+								</xsl:when>
+								<xsl:when test="ancestor::tei:choice/tei:sic/tei:w[not(@lemmaRef)]">
+									<sub>
+										<b>
+											<i>
+												<a
+												title="MS: {ancestor::tei:choice/tei:sic//tei:w[@n = $wpos]}"
+												href="#" onclick="return false;"
+												style="text-decoration:none; color:#000000"
+												>alt</a>
+											</i>
+										</b>
+									</sub>
+								</xsl:when>
+							</xsl:choose>
+						</xsl:for-each>
 					</xsl:when>
-					<xsl:when test="child::tei:sic/tei:w[not(@lemmaRef)]">
-						<a title="MS: {child::tei:sic//*}"
-							style="text-decoration:none; color:#000000" href="#"
-							onclick="return false;">
-							<sub>
-								<b>
-									<i>alt </i>
-								</b>
-							</sub>
-						</a>
-					</xsl:when>
+					<xsl:otherwise>
+						<xsl:apply-templates select="tei:corr"/>
+						<xsl:choose>
+							<xsl:when test="child::tei:sic/tei:w/@lemmaRef">
+								<a href="{child::tei:sic/tei:w/@lemmaRef}"
+									title="MS: {child::tei:sic//*}"
+									style="text-decoration:none; color:#000000">
+									<sub>
+										<b>
+											<i>alt </i>
+										</b>
+									</sub>
+								</a>
+							</xsl:when>
+							<xsl:when test="child::tei:sic/tei:w[not(@lemmaRef)]">
+								<a title="MS: {child::tei:sic//*}"
+									style="text-decoration:none; color:#000000" href="#"
+									onclick="return false;">
+									<sub>
+										<b>
+											<i>alt </i>
+										</b>
+									</sub>
+								</a>
+							</xsl:when>
+						</xsl:choose>
+					</xsl:otherwise>
 				</xsl:choose>
 			</xsl:when>
 		</xsl:choose>
@@ -511,8 +565,9 @@
 
 	<xsl:template match="tei:handShift">
 		<sub>
-			<b><a title="beg. {@new}" href="#" onclick="return false;"
-				style="text-decoration:none; color:#000000">handShift</a>
+			<b>
+				<a title="beg. {@new}" href="#" onclick="return false;"
+					style="text-decoration:none; color:#000000">handShift</a>
 			</b>
 		</sub>
 	</xsl:template>
