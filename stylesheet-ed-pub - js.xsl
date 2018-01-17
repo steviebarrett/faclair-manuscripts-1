@@ -176,7 +176,13 @@
 						<xsl:text> </xsl:text>
 					</xsl:when>
 					<xsl:otherwise>
-						<a href="{@lemmaRef}" title="'{@lemma}'; {@ana}"
+						<script>
+							function GetWordFile(there) {
+							var opened = window.open("");
+							opened.document.write("<h1>Test</h1><p><xsl:value-of select="@lemma"/></p>");
+							} <!-- Returns "corr" (last @lemma in file) -->
+						</script>
+						<a id="w" onclick="GetWordFile(this)" lemma="{@lemma}" title="'{@lemma}'; {@ana}"
 							style="text-decoration:none; color:#000000">
 							<xsl:apply-templates/>
 						</a>
