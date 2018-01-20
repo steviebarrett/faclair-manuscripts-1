@@ -6,12 +6,19 @@
 
 	<xsl:output method="html"/>
 
-	<xsl:template match="/">
+	<xsl:template match="/">						
 		<html>
 			<head>
 				<title>
 					<xsl:value-of select="tei:teiHeader/tei:fileDesc/tei:titleStmt/tei:title"/>
 				</title>
+				<script>
+					function GetWordFile(id) {
+					var lem = el.getAttribute(lemma);
+					var opened = window.open("");
+					opened.document.write(lem);
+					}
+				</script>
 			</head>
 			<body>
 				<xsl:apply-templates select="descendant::tei:body"/>
@@ -175,8 +182,8 @@
 						</a>
 						<xsl:text> </xsl:text>
 					</xsl:when>
-					<xsl:otherwise>
-						<a href="{@lemmaRef}" title="'{@lemma}'; {@ana}"
+					<xsl:otherwise>	
+						<a id="{generate-id()}" onclick="GetWordFile(this.attributes)" lemma="{@lemma}" title="'{@lemma}'; {@ana}"
 							style="text-decoration:none; color:#000000">
 							<xsl:apply-templates/>
 						</a>
@@ -438,7 +445,7 @@
 						</xsl:for-each>
 					</xsl:when>
 					<xsl:otherwise>
-						<xsl:apply-templates select="tei:corr//tei:w"/>
+						<xsl:apply-templates select="tei:corr"/>
 						<xsl:choose>
 							<xsl:when test="child::tei:sic/tei:w/@lemmaRef">
 								<a href="{child::tei:sic/tei:w/@lemmaRef}"
@@ -471,7 +478,7 @@
 
 	<xsl:template match="tei:choice[not(descendant::tei:w)]">
 		<xsl:apply-templates select="tei:corr"/>
-		<a title="MS: {child::tei:sic}" href="#" style="text-decoration:none; color:#000000"
+		<a title="MS: {child::tei:sic//*}" href="#" style="text-decoration:none; color:#000000"
 			onclick="return false">
 			<sub>
 				<b>

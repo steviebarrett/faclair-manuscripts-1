@@ -5,6 +5,13 @@
 	<xsl:strip-space elements="*"/>
 
 	<xsl:output method="html"/>
+	
+	<xsl:key name="abbrs" match="*" use="@xml:id"/>
+	<xsl:key name="hands" match="*" use="@xml:id"/>
+	
+	<xsl:variable name="hand">
+		<xsl:value-of select="preceding::tei:div[@resp]/@resp|tei:handShift/@resp"/>
+	</xsl:variable>
 
 	<xsl:template match="/">
 		<html>
@@ -12,6 +19,19 @@
 				<title>
 					<xsl:value-of select="tei:teiHeader/tei:fileDesc/tei:titleStmt/tei:title"/>
 				</title>
+				<script>
+					function GetWordFile(id) {
+					var el = document.getElementById(id);
+					var form = el.innerHTML;
+					var lem = el.getAttribute('lemma');
+					var an = el.getAttribute('ana');
+					var lref = el.getAttribute('lemmaRef');
+					var hnd = el.getAttribute('hand');
+					var leman = lem + ", " + an; 
+					var opened = window.open("");
+					opened.document.write("<table><tr><td><b>MS Form</b></td><td>"+form+"</td></tr>"+"<tr><td><b>MS Reference</b></td><td>[MS ref here]</td></tr>"+"<tr><td><b>Scribe</b></td><td>"+hnd+"</td></tr>"+"<tr><td><b>Lemma (eDIL)</b></td><td>"+lem+"</td></tr>"+"<tr><td><b>Reference (eDIL)</b></td><td>"+lref+"</td></tr>"+"<tr><td><b>Lemma (Dwellys)</b></td><td>[Dwelly's lemma here]</td></tr></table>");
+					}
+				</script>
 			</head>
 			<body>
 				<xsl:apply-templates select="descendant::tei:body"/>
@@ -109,7 +129,7 @@
 							<xsl:apply-templates/>
 						</a>
 						<xsl:text> </xsl:text>
-					</xsl:when>					
+					</xsl:when>
 					<xsl:when test="@xml:lang">
 						<a title="Language = '{@xml:lang}'" href="#" onclick="return false;"
 							style="text-decoration:none; color:#000000">
@@ -176,14 +196,9 @@
 						<xsl:text> </xsl:text>
 					</xsl:when>
 					<xsl:otherwise>
-						<script>
-							function GetWordFile(there) {
-							var opened = window.open("");
-							opened.document.write("<h1>Test</h1><p><xsl:value-of select="@lemma"/></p>");
-							} <!-- Returns "corr" (last @lemma in file) -->
-						</script>
-						<a id="w" onclick="GetWordFile(this)" lemma="{@lemma}" title="'{@lemma}'; {@ana}"
-							style="text-decoration:none; color:#000000">
+						<a id="{generate-id()}" onclick="GetWordFile(this.id)" lemma="{@lemma}" lemmaRef="{@lemmaRef}"
+							ana="{@ana}" title="'{@lemma}'; {@ana}." hand="{ancestor::tei:div[@resp]/@resp|preceding::tei:handShift[1]/@resp}" 
+							data.style="text-decoration:none; color:#000000">
 							<xsl:apply-templates/>
 						</a>
 						<xsl:text> </xsl:text>
@@ -398,7 +413,8 @@
 						<sub>
 							<b>
 								<i>
-									<a title="Or, {child::*[@n='2']//*} ({child::*[@n='2']//*/@lemma}); {child::*[@n='2']//*/@ana}"
+									<a
+										title="Or, {child::*[@n='2']//*} ({child::*[@n='2']//*/@lemma}); {child::*[@n='2']//*/@ana}"
 										href="{child::*[@n='2']//*/@lemmaRef}"
 										style="text-decoration:none; color:#000000">alt </a>
 								</i>
