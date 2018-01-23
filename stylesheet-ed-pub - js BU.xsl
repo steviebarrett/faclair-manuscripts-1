@@ -21,9 +21,7 @@
 					<xsl:value-of select="tei:teiHeader/tei:fileDesc/tei:titleStmt/tei:title"/>
 				</title>
 				<script>
-					var first_click = true;
 					function GetWordFile(id) {
-					if (first_click = true) {
 					var el = document.getElementById(id);
 					var form = el.innerHTML;
 					var lem = el.getAttribute('lemma');
@@ -67,27 +65,17 @@
 					r2col6.innerHTML = "[Faclair Beag lemma here]";
 					var r2col7 = row2.insertCell(6);
 					r2col7.innerHTML = "[Faclair Beag URL here]";
+					<!--  var row3 = table.insertRow(-1);
+					var r3cell = row3.insertCell(0);
+					r3cell.innerHTML = '<button onclick="copyTable()">Copy Table Data to Clipboard</button>';
+					function copyTable() {
+					var copyCells = document.getElementsByTagName("table");
+					copyCells.select();
+					document.execCommand("Copy");
+					alert("Table copied to clipboard");
+					} -->
 					var opened = window.open("", "FnaG MS Corpus Word Table");
 					opened.document.body.appendChild(table);
-					first_click = false;
-					}
-					else {
-					var row = table.insertRow(-1);
-					var rcol1 = row.insertCell(0);
-					rcol1.innerHTML = form;
-					var rcol2 = row.insertCell(1);
-					rcol2.innerHTML = msref;
-					var rcol3 = row.insertCell(2);
-					rcol3.innerHTML = hnd;
-					var rcol4 = row.insertCell(3);
-					rcol4.innerHTML = lem;
-					var rcol5 = row.insertCell(4);		
-					rcol5.innerHTML = '<a href="'+lref+'">'+lref+'</a>';
-					var rcol6 = row.insertCell(5);
-					rcol6.innerHTML = "[Faclair Beag lemma here]";
-					var rcol7 = row.insertCell(6);
-					rcol7.innerHTML = "[Faclair Beag URL here]";
-					opened.document.body.table.appendChild(row);
 					}
 					}
 				</script>

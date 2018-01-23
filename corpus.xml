@@ -55,6 +55,13 @@
 							<idno type="shelfmark">MS. Egerton 2899</idno>
 						</msIdentifier>
 					</msDesc>
+					<msDesc>
+						<msIdentifier xml:id="MS7">
+							<settlement>Edinburgh</settlement>
+							<repository>NLS Adv.</repository>
+							<idno type="shelfmark">MS. 72.2.2</idno>
+						</msIdentifier>
+					</msDesc>
 				</listBibl>
 				<listBibl>
 					<head>Editions</head>
@@ -674,7 +681,12 @@
 				</glyph>
 				<glyph xml:id="g32" corresp="http://www.vanhamel.nl/codecs/Et_reliqua">
 					<glyphName>et reliqua</glyphName>
-					<note>Ligatures tironian et and rl with cross stroke, standing for either "et reliqua" or "ocus araile".</note>
+					<note>Ligatures tironian et and rl with cross stroke, standing for either "et
+						reliqua" or "ocus araile".</note>
+				</glyph>
+				<glyph xml:id="g33" corresp="http://www.vanhamel.nl/codecs/M_(vertical)">
+					<glyphName>Vertical m</glyphName>
+					<note>A descending zig-zag attached to the preceding letter, standing for "-m".</note>
 				</glyph>
 				<glyph xml:id="gn" corresp="n">
 					<glyphName/>
@@ -685,49 +697,49 @@
 		<profileDesc>
 			<handNotes>
 				<handNote xml:id="Hand1">
-					<forename>[unknown]</forename>
-					<surname>[unknown]</surname>
+					<forename>[unk.]</forename>
+					<surname>[unk.]</surname>
 					<date from="1100" to="1150">1100-1150</date>
 					<region cert="high">NE Scotland</region>
 					<note>Hand A in the Gaelic Notes in the Book of Deer</note>
 				</handNote>
 				<handNote xml:id="Hand2">
-					<forename>[unknown]</forename>
-					<surname>[unknown]</surname>
+					<forename>[unk.]</forename>
+					<surname>[unk.]</surname>
 					<date from="1100" to="1150">1100-1150</date>
 					<region cert="high">NE Scotland</region>
 					<note>Hand B in the Gaelic Notes in the Book of Deer</note>
 				</handNote>
 				<handNote xml:id="Hand3">
-					<forename>[unknown]</forename>
-					<surname>[unknown]</surname>
+					<forename>[unk.]</forename>
+					<surname>[unk.]</surname>
 					<date from="1100" to="1150">1100-1150</date>
 					<region cert="high">NE Scotland</region>
 					<note>Hand C in the Gaelic Notes in the Book of Deer</note>
 				</handNote>
 				<handNote xml:id="Hand4">
-					<forename>[unknown]</forename>
-					<surname>[unknown]</surname>
+					<forename>[unk.]</forename>
+					<surname>[unk.]</surname>
 					<date from="1100" to="1150">1100-1150</date>
 					<region cert="high">NE Scotland</region>
 					<note>Hand D in the Gaelic Notes in the Book of Deer</note>
 				</handNote>
 				<handNote xml:id="Hand5">
-					<forename>[unknown]</forename>
-					<surname>[unknown]</surname>
+					<forename>[unk.]</forename>
+					<surname>[unk.]</surname>
 					<date from="1100" to="1150">1100-1150</date>
 					<region cert="high">NE Scotland</region>
 					<note>Hand E in the Gaelic Notes in the Book of Deer</note>
 				</handNote>
 				<handNote xml:id="Hand6">
-					<forename>[unknown]</forename>
-					<surname>[unknown]</surname>
+					<forename>[unk.]</forename>
+					<surname>[unk.]</surname>
 					<date cert="medium" from="0900" to="1000">900-1000</date>
 					<region cert="high">NE Scotland</region>
 					<note>Scribe of main text in the Book of Deer</note>
 				</handNote>
 				<handNote xml:id="Hand7">
-					<forename>[unknown]</forename>
+					<forename>[unk.]</forename>
 					<surname cert="medium">MacEwen</surname>
 					<date from="1450" to="1550">fl. 1500</date>
 					<region cert="medium">Argyll</region>
@@ -790,8 +802,8 @@
 					<note/>
 				</handNote>
 				<handNote xml:id="Hand12">
-					<forename>[Unknown]</forename>
-					<surname>[Unknown]</surname>
+					<forename>[unk.]</forename>
+					<surname>[unk.]</surname>
 					<date type="floruit" cert="medium" from="1500" to="1590">fl. c. 1500-1590</date>
 					<region cert="high">W Scotland</region>
 					<note>Hand M in NLS Adv. MS 72.1.33.</note>
@@ -806,7 +818,7 @@
 				<handNote xml:id="Hand14">
 					<forename>James</forename>
 					<surname>Beaton</surname>
-					<date type="floruit" cert="medium" from="" to=""/>
+					<date type="floruit" cert="medium" from="1613" to="1621">fl. c. 1613-1621</date>
 					<region cert="high"/>
 					<note/>
 				</handNote>
