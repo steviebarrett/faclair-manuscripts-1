@@ -20,67 +20,9 @@
 				<title>
 					<xsl:value-of select="tei:teiHeader/tei:fileDesc/tei:titleStmt/tei:title"/>
 				</title>
-				<script>
-					function GetWordFile(id) {
-					var el = document.getElementById(id);
-					var form = el.innerHTML;
-					var lem = el.getAttribute('lemma');
-					var an = el.getAttribute('ana');
-					var lref = el.getAttribute('lemmaRef');
-					var hnd = el.getAttribute('hand');
-					var leman = lem + ", " + an;
-					var msref = el.getAttribute('ref');
-					var table = document.createElement("table");
-						document.getElementsByTagName("table");
-						var tblBorder = document.createAttribute ("border");
-						tblBorder.value = "solid 0.1mm black";
-						table.setAttributeNode(tblBorder);
-					var row1 = table.insertRow(0);
-					var r1col1 = row1.insertCell(0);
-					r1col1.outerHTML = "<th><b>MS Form</b></th>";
-					var r1col2 = row1.insertCell(1);
-					r1col2.outerHTML = "<th><b>MS Reference</b></th>";
-					var r1col3 = row1.insertCell(2);
-					r1col3.outerHTML = "<th><b>Scribe</b></th>";
-					var r1col4 = row1.insertCell(3);
-					r1col4.outerHTML = "<th><b>Lemma (eDIL)</b></th>";
-					var r1col5 = row1.insertCell(4);
-					r1col5.outerHTML = "<th><b>URL (eDIL)</b></th>";
-					var r1col6 = row1.insertCell(5);
-					r1col6.outerHTML = "<th><b>Lemma (Faclair Beag)</b></th>";
-					var r1col7 = row1.insertCell(6);
-					r1col7.outerHTML = "<th><b>URL (Faclair Beag)</b></th>";
-					var row2 = table.insertRow(-1);
-					var r2col1 = row2.insertCell(0);
-					r2col1.innerHTML = form;
-					var r2col2 = row2.insertCell(1);
-					r2col2.innerHTML = msref;
-					var r2col3 = row2.insertCell(2);
-					r2col3.innerHTML = hnd;
-					var r2col4 = row2.insertCell(3);
-					r2col4.innerHTML = lem;
-					var r2col5 = row2.insertCell(4);		
-					r2col5.innerHTML = '<a href="'+lref+'">'+lref+'</a>';
-					var r2col6 = row2.insertCell(5);
-					r2col6.innerHTML = "[Faclair Beag lemma here]";
-					var r2col7 = row2.insertCell(6);
-					r2col7.innerHTML = "[Faclair Beag URL here]";
-					<!--  var row3 = table.insertRow(-1);
-					var r3cell = row3.insertCell(0);
-					r3cell.innerHTML = '<button onclick="copyTable()">Copy Table Data to Clipboard</button>';
-					function copyTable() {
-					var copyCells = document.getElementsByTagName("table");
-					copyCells.select();
-					document.execCommand("Copy");
-					alert("Table copied to clipboard");
-					} -->
-					var opened = window.open("", "FnaG MS Corpus Word Table");
-					opened.document.body.appendChild(table);
-					}
-					}
-				</script>
+				<script src="/Files/faclair-manuscripts/WordFile.js"/>
 			</head>
-			<body>
+			<body onload="createTable()">
 				<xsl:apply-templates select="descendant::tei:body"/>
 			</body>
 			<backmatter>
@@ -177,11 +119,42 @@
 			<xsl:value-of select="$handRef"/>
 			<xsl:text>) </xsl:text>
 		</xsl:variable>
+		<xsl:variable name="handDate">
+			<xsl:value-of select="key('hands', $handRef)/tei:date"/>
+		</xsl:variable>
 		<xsl:variable name="shelfmark">
-			<xsl:value-of select="concat(ancestor::tei:TEI//tei:msIdentifier/tei:settlement,', ', ancestor::tei:TEI//tei:msIdentifier/tei:repository,' ', ancestor::tei:TEI//tei:msIdentifier/tei:idno)"/> 
+			<xsl:value-of
+				select="concat(ancestor::tei:TEI//tei:msIdentifier/tei:settlement, ', ', ancestor::tei:TEI//tei:msIdentifier/tei:repository, ' ', ancestor::tei:TEI//tei:msIdentifier/tei:idno)"
+			/>
 		</xsl:variable>
 		<xsl:variable name="msref">
-			<xsl:value-of select="concat($shelfmark,' ', preceding::tei:pb[1]/@n, preceding::tei:lb[1]/@n)"/>
+			<xsl:value-of
+				select="concat($shelfmark, ' ', preceding::tei:pb[1]/@n, preceding::tei:lb[1]/@n)"/>
+		</xsl:variable>
+		<xsl:variable name="prob">
+			<xsl:choose>
+				<xsl:when
+					test="ancestor-or-self::*[@cert = 'medium'] or descendant-or-self::*[@cert = 'medium']"
+					>Moderate</xsl:when>
+				<xsl:when test="ancestor-or-self::tei:unclear or descendant-or-self::tei:unclear"
+					>Moderate</xsl:when>
+				<xsl:when
+					test="ancestor-or-self::*[@cert = 'low'] or descendant-or-self::*[@cert = 'low']"
+					>Severe</xsl:when>
+				<xsl:when test="ancestor::tei:supplied">Form supplied by editor</xsl:when>
+				<xsl:when test="/@xml:lang">Word in a language other than Gaelic</xsl:when>
+				<xsl:when test="descendant::tei:supplied">Some characters supplied by
+					editor</xsl:when>
+				<xsl:otherwise>None</xsl:otherwise>
+			</xsl:choose>
+		</xsl:variable>
+		<xsl:variable name="medium">
+			<xsl:choose>
+				<xsl:when test="ancestor::tei:div/@type = 'verse'">Verse</xsl:when>
+				<xsl:when
+					test="ancestor::tei:div/@type = 'prose' or ancestor::tei:div/@type = 'divprose'"
+					>Prose</xsl:when>
+			</xsl:choose>
 		</xsl:variable>
 		<xsl:choose>
 			<xsl:when test="not(@lemma)">
@@ -274,10 +247,10 @@
 						<xsl:text> </xsl:text>
 					</xsl:when>
 					<xsl:otherwise>
-						<a id="{generate-id()}" onclick="GetWordFile(this.id)" lemma="{@lemma}"
-							lemmaRef="{@lemmaRef}" ana="{@ana}"
-							title="'{@lemma}'; {@ana}" hand="{$hand}" ref="{$msref}"
-							data.style="text-decoration:none; color:#000000">
+						<a id="{generate-id()}" onclick="addSlip(this.id)" lemma="{@lemma}"
+							lemmaRef="{@lemmaRef}" ana="{@ana}" title="'{@lemma}'; {@ana}"
+							hand="{$hand}" ref="{$msref}" date="{$handDate}" problem="{$prob}"
+							medium="{$medium}" style="text-decoration:none; color:#000000">
 							<xsl:apply-templates/>
 						</a>
 						<xsl:text> </xsl:text>
@@ -342,7 +315,9 @@
 	</xsl:template>
 
 	<xsl:template match="tei:date">
-		<xsl:apply-templates/>
+		<a href="#" onclick="return false;" style="text-decoration:none; color:#000000">
+			<xsl:apply-templates/>
+		</a>
 		<xsl:text> </xsl:text>
 	</xsl:template>
 
@@ -355,7 +330,10 @@
 	</xsl:template>
 
 	<xsl:template match="tei:pc">
-		<xsl:apply-templates/>
+		<a title="Scribal punctuation" href="#" onclick="return false;"
+			style="text-decoration:none; color:#000000">
+			<xsl:apply-templates/>
+		</a>
 		<xsl:text> </xsl:text>
 	</xsl:template>
 
@@ -417,17 +395,21 @@
 						<a title="{@reason}" style="text-decoration:none; color:#000000" href="#"
 							onclick="return false">{</a>
 						<hi background-color="#ffff00">
-							<xsl:apply-templates/>
+							<a xsl:use-attribute-sets="">
+								<xsl:apply-templates/>
+							</a>
 						</hi>
 						<a title="{@reason}" style="text-decoration:none; color:#000000" href="#"
 							onclick="return false">}</a>
 					</xsl:when>
 					<xsl:otherwise>
-						<a title="{@reason}" style="text-decoration:none; color:#000000" href="#"
-							onclick="return false">{</a>
-						<xsl:apply-templates/>
-						<a title="{@reason}" style="text-decoration:none; color:#000000" href="#"
-							onclick="return false">}</a>
+						<a lemma="{ancestor::tei:w/@lemma}" lemmaRef="{ancestor::tei:w/@lemmaRef}"
+							ana="{ancestor::tei:w/@ana}"
+							title="'{ancestor::tei:w/@lemma}'; {ancestor::tei:w/@ana}"
+							hand="{ancestor::tei:w/@hand}" ref="{ancestor::tei:w/@ref}"
+							date="{ancestor::tei:w/@date}" problem="{ancestor::tei:w/@problem}"
+							medium="{ancestor::tei:w/@medium}"
+							style="text-decoration:none; color:#000000"><xsl:text>{</xsl:text><xsl:apply-templates/><xsl:text>}</xsl:text></a>
 					</xsl:otherwise>
 				</xsl:choose>
 			</xsl:otherwise>

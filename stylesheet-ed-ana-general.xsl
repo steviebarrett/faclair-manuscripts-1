@@ -76,7 +76,7 @@
 							</td>
 							<td>
 								<xsl:choose>
-									<xsl:when test="ancestor::tei:div[@type='verse'][1]">
+									<xsl:when test="ancestor::tei:div[@type='verse'][1] | ancestor::tei:div[@type='divprose'][1]">
 										<xsl:apply-templates select="ancestor::tei:lg[1]"/>
 									</xsl:when>
 									<xsl:otherwise>

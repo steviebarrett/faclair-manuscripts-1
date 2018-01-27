@@ -20,77 +20,7 @@
 				<title>
 					<xsl:value-of select="tei:teiHeader/tei:fileDesc/tei:titleStmt/tei:title"/>
 				</title>
-				<script>
-					var first_click = true;
-					function GetWordFile(id) {
-					if (first_click = true) {
-					var el = document.getElementById(id);
-					var form = el.innerHTML;
-					var lem = el.getAttribute('lemma');
-					var an = el.getAttribute('ana');
-					var lref = el.getAttribute('lemmaRef');
-					var hnd = el.getAttribute('hand');
-					var leman = lem + ", " + an;
-					var msref = el.getAttribute('ref');
-					var table = document.createElement("table");
-						document.getElementsByTagName("table");
-						var tblBorder = document.createAttribute ("border");
-						tblBorder.value = "solid 0.1mm black";
-						table.setAttributeNode(tblBorder);
-					var row1 = table.insertRow(0);
-					var r1col1 = row1.insertCell(0);
-					r1col1.outerHTML = "<th><b>MS Form</b></th>";
-					var r1col2 = row1.insertCell(1);
-					r1col2.outerHTML = "<th><b>MS Reference</b></th>";
-					var r1col3 = row1.insertCell(2);
-					r1col3.outerHTML = "<th><b>Scribe</b></th>";
-					var r1col4 = row1.insertCell(3);
-					r1col4.outerHTML = "<th><b>Lemma (eDIL)</b></th>";
-					var r1col5 = row1.insertCell(4);
-					r1col5.outerHTML = "<th><b>URL (eDIL)</b></th>";
-					var r1col6 = row1.insertCell(5);
-					r1col6.outerHTML = "<th><b>Lemma (Faclair Beag)</b></th>";
-					var r1col7 = row1.insertCell(6);
-					r1col7.outerHTML = "<th><b>URL (Faclair Beag)</b></th>";
-					var row2 = table.insertRow(-1);
-					var r2col1 = row2.insertCell(0);
-					r2col1.innerHTML = form;
-					var r2col2 = row2.insertCell(1);
-					r2col2.innerHTML = msref;
-					var r2col3 = row2.insertCell(2);
-					r2col3.innerHTML = hnd;
-					var r2col4 = row2.insertCell(3);
-					r2col4.innerHTML = lem;
-					var r2col5 = row2.insertCell(4);		
-					r2col5.innerHTML = '<a href="'+lref+'">'+lref+'</a>';
-					var r2col6 = row2.insertCell(5);
-					r2col6.innerHTML = "[Faclair Beag lemma here]";
-					var r2col7 = row2.insertCell(6);
-					r2col7.innerHTML = "[Faclair Beag URL here]";
-					var opened = window.open("", "FnaG MS Corpus Word Table");
-					opened.document.body.appendChild(table);
-					first_click = false;
-					}
-					else {
-					var row = table.insertRow(-1);
-					var rcol1 = row.insertCell(0);
-					rcol1.innerHTML = form;
-					var rcol2 = row.insertCell(1);
-					rcol2.innerHTML = msref;
-					var rcol3 = row.insertCell(2);
-					rcol3.innerHTML = hnd;
-					var rcol4 = row.insertCell(3);
-					rcol4.innerHTML = lem;
-					var rcol5 = row.insertCell(4);		
-					rcol5.innerHTML = '<a href="'+lref+'">'+lref+'</a>';
-					var rcol6 = row.insertCell(5);
-					rcol6.innerHTML = "[Faclair Beag lemma here]";
-					var rcol7 = row.insertCell(6);
-					rcol7.innerHTML = "[Faclair Beag URL here]";
-					opened.document.body.table.appendChild(row);
-					}
-					}
-				</script>
+				<script src="/Files/faclair-manuscripts/WordFile.js"/>
 			</head>
 			<body>
 				<xsl:apply-templates select="descendant::tei:body"/>
@@ -110,27 +40,25 @@
 		<p align="left">
 			<xsl:choose>
 				<xsl:when test="ancestor::tei:div//tei:handShift">
-					<b><xsl:value-of select="@n"/>: <xsl:value-of
-							select="preceding::tei:handShift/@new"/></b>
+					<b><xsl:value-of select="@n"/>: <xsl:value-of select="key('hands', preceding::tei:handShift/@new)/tei:forename"/><xsl:text> </xsl:text><xsl:value-of select="key('hands', preceding::tei:handShift/@new)/tei:surname"/><xsl:text> (</xsl:text><xsl:value-of select="preceding::tei:handShift/@new"/><xsl:text>)</xsl:text></b>
 				</xsl:when>
 				<xsl:otherwise>
-					<b><xsl:value-of select="@n"/>: <xsl:value-of select="ancestor::tei:div/@resp"
-						/></b>
+					<b><xsl:value-of select="@n"/>: <xsl:value-of select="key('hands', ancestor::tei:div/@resp)/tei:forename"/><xsl:text> </xsl:text><xsl:value-of select="key('hands', ancestor::tei:div/@resp)/tei:surname"/><xsl:text> (</xsl:text><xsl:value-of select="ancestor::tei:div/@resp"/><xsl:text>) </xsl:text></b>
 				</xsl:otherwise>
-			</xsl:choose>
+			</xsl:choose><button  onclick="createTable()">Collect Slips</button>
 		</p>
 	</xsl:template>
 
-	<xsl:template match="tei:p//tei:lb">
+	<xsl:template match="tei:p/tei:lb">
 		<br/>
 		<xsl:value-of select="@n"/>
 		<xsl:text>. </xsl:text>
 		<xsl:apply-templates/>
 	</xsl:template>
 
-	<xsl:template match="//tei:lg//tei:lb">
+	<xsl:template match="//tei:lb[ancestor::tei:lg] | //tei:w//tei:lb[ancestor::tei:lg]">
 		<sub><a title="MS fol/p {preceding::tei:pb/@n}, line {@n}" href="#" onclick="return false;"
-				style="text-decoration:none; color:#000000"><xsl:value-of select="@n"/></a>. </sub>
+				style="text-decoration:none; color:#000000"><xsl:value-of select="@n"/></a>.</sub>
 		<xsl:apply-templates/>
 	</xsl:template>
 
@@ -189,11 +117,42 @@
 			<xsl:value-of select="$handRef"/>
 			<xsl:text>) </xsl:text>
 		</xsl:variable>
+		<xsl:variable name="handDate">
+			<xsl:value-of select="key('hands', $handRef)/tei:date"/>
+		</xsl:variable>
 		<xsl:variable name="shelfmark">
-			<xsl:value-of select="concat(ancestor::tei:TEI//tei:msIdentifier/tei:settlement,', ', ancestor::tei:TEI//tei:msIdentifier/tei:repository,' ', ancestor::tei:TEI//tei:msIdentifier/tei:idno)"/> 
+			<xsl:value-of
+				select="concat(ancestor::tei:TEI//tei:msIdentifier/tei:settlement, ', ', ancestor::tei:TEI//tei:msIdentifier/tei:repository, ' ', ancestor::tei:TEI//tei:msIdentifier/tei:idno)"
+			/>
 		</xsl:variable>
 		<xsl:variable name="msref">
-			<xsl:value-of select="concat($shelfmark,' ', preceding::tei:pb[1]/@n, preceding::tei:lb[1]/@n)"/>
+			<xsl:value-of
+				select="concat($shelfmark, ' ', preceding::tei:pb[1]/@n, preceding::tei:lb[1]/@n)"/>
+		</xsl:variable>
+		<xsl:variable name="prob">
+			<xsl:choose>
+				<xsl:when
+					test="ancestor-or-self::*[@cert = 'medium'] or descendant-or-self::*[@cert = 'medium']"
+					>Moderate</xsl:when>
+				<xsl:when test="ancestor-or-self::tei:unclear or descendant-or-self::tei:unclear"
+					>Moderate</xsl:when>
+				<xsl:when
+					test="ancestor-or-self::*[@cert = 'low'] or descendant-or-self::*[@cert = 'low']"
+					>Severe</xsl:when>
+				<xsl:when test="ancestor::tei:supplied">Form supplied by editor</xsl:when>
+				<xsl:when test="/@xml:lang">Word in a language other than Gaelic</xsl:when>
+				<xsl:when test="descendant::tei:supplied">Some characters supplied by
+					editor</xsl:when>
+				<xsl:otherwise>None</xsl:otherwise>
+			</xsl:choose>
+		</xsl:variable>
+		<xsl:variable name="medium">
+			<xsl:choose>
+				<xsl:when test="ancestor::tei:div/@type = 'verse'">Verse</xsl:when>
+				<xsl:when
+					test="ancestor::tei:div/@type = 'prose' or ancestor::tei:div/@type = 'divprose'"
+					>Prose</xsl:when>
+			</xsl:choose>
 		</xsl:variable>
 		<xsl:choose>
 			<xsl:when test="not(@lemma)">
@@ -286,10 +245,10 @@
 						<xsl:text> </xsl:text>
 					</xsl:when>
 					<xsl:otherwise>
-						<a id="{generate-id()}" onclick="GetWordFile(this.id)" lemma="{@lemma}"
-							lemmaRef="{@lemmaRef}" ana="{@ana}"
-							title="'{@lemma}'; {@ana}" hand="{$hand}" ref="{$msref}"
-							data.style="text-decoration:none; color:#000000">
+						<a id="{generate-id()}" onclick="addSlip(this.id)" lemma="{@lemma}"
+							lemmaRef="{@lemmaRef}" ana="{@ana}" title="'{@lemma}'; {@ana}"
+							hand="{$hand}" ref="{$msref}" date="{$handDate}" problem="{$prob}"
+							medium="{$medium}" style="text-decoration:none; color:#000000">
 							<xsl:apply-templates/>
 						</a>
 						<xsl:text> </xsl:text>
@@ -354,7 +313,9 @@
 	</xsl:template>
 
 	<xsl:template match="tei:date">
-		<xsl:apply-templates/>
+		<a href="#" onclick="return false;" style="text-decoration:none; color:#000000">
+			<xsl:apply-templates/>
+		</a>
 		<xsl:text> </xsl:text>
 	</xsl:template>
 
@@ -367,7 +328,10 @@
 	</xsl:template>
 
 	<xsl:template match="tei:pc">
-		<xsl:apply-templates/>
+		<a title="Scribal punctuation" href="#" onclick="return false;"
+			style="text-decoration:none; color:#000000">
+			<xsl:apply-templates/>
+		</a>
 		<xsl:text> </xsl:text>
 	</xsl:template>
 
@@ -404,45 +368,17 @@
 	<xsl:template match="tei:unclear">
 		<xsl:choose>
 			<xsl:when test="descendant::tei:w">
-				<xsl:choose>
-					<xsl:when test="@cert = 'low'">
-						<a title="{@reason}" style="text-decoration:none; color:#000000" href="#"
-							onclick="return false">{ </a>
-						<hi background-color="#ffff00">
-							<xsl:apply-templates/>
-						</hi>
-						<a title="{@reason}" style="text-decoration:none; color:#000000" href="#"
-							onclick="return false">} </a>
-					</xsl:when>
-					<xsl:otherwise>
-						<a title="{@reason}" style="text-decoration:none; color:#000000" href="#"
-							onclick="return false">{ </a>
-						<xsl:apply-templates/>
-						<a title="{@reason}" style="text-decoration:none; color:#000000" href="#"
-							onclick="return false">} </a>
-					</xsl:otherwise>
-				</xsl:choose>
+			<xsl:text>{</xsl:text><xsl:apply-templates/><xsl:text>}</xsl:text>
 			</xsl:when>
-			<xsl:otherwise>
-				<xsl:choose>
-					<xsl:when test="@cert = 'low'">
-						<a title="{@reason}" style="text-decoration:none; color:#000000" href="#"
-							onclick="return false">{</a>
-						<hi background-color="#ffff00">
-							<xsl:apply-templates/>
-						</hi>
-						<a title="{@reason}" style="text-decoration:none; color:#000000" href="#"
-							onclick="return false">}</a>
-					</xsl:when>
-					<xsl:otherwise>
-						<a title="{@reason}" style="text-decoration:none; color:#000000" href="#"
-							onclick="return false">{</a>
-						<xsl:apply-templates/>
-						<a title="{@reason}" style="text-decoration:none; color:#000000" href="#"
-							onclick="return false">}</a>
-					</xsl:otherwise>
-				</xsl:choose>
-			</xsl:otherwise>
+			<xsl:when test="ancestor::tei:w">
+			<xsl:text>{</xsl:text><xsl:apply-templates/><xsl:text>} </xsl:text>	
+			</xsl:when>
+			<xsl:when test="descendant::tei:date">
+			<xsl:text>{</xsl:text><xsl:apply-templates/><xsl:text>}</xsl:text>	
+			</xsl:when>
+			<xsl:when test="ancestor::tei:date">
+			<xsl:text>{</xsl:text><xsl:apply-templates/><xsl:text>} </xsl:text>
+			</xsl:when>
 		</xsl:choose>
 	</xsl:template>
 
@@ -612,7 +548,7 @@
 		<xsl:text> </xsl:text>
 	</xsl:template>
 
-	<xsl:template match="tei:add">
+	<xsl:template match="tei:add[@type='insertion']">
 		<xsl:choose>
 			<xsl:when test="not(descendant::tei:w)">
 				<b>
@@ -689,6 +625,11 @@
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
+	
+	<xsl:template match="tei:add[@type='gloss']">
+		<xsl:apply-templates/>
+			<!-- Write a function to display the gloss in a new window? -->
+	</xsl:template>
 
 	<xsl:template match="tei:handShift">
 		<sub>
@@ -699,13 +640,13 @@
 		</sub>
 	</xsl:template>
 
-	<xsl:template match="tei:div/@resp">
-		<xsl:if test="not(preceding::tei:div/@resp or preceding::tei:handShift/@new)">
+	<xsl:template match="tei:div[/@resp]">
+		<xsl:if test="/@resp=not(preceding::tei:div/@resp or preceding::tei:handShift/@new)">
 			<sub>
-				<b> beg. <xsl:value-of select="@resp"/>
-				</b>
+				<b>beg. <xsl:value-of select="key('hands', @resp)/tei:forename"/><xsl:text> </xsl:text><xsl:value-of select="key('hands', @resp)/tei:surname"/><xsl:text> (</xsl:text><xsl:value-of select="@resp"/><xsl:text>) </xsl:text></b>
 			</sub>
 		</xsl:if>
+		
 	</xsl:template>
 
 </xsl:stylesheet>

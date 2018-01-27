@@ -438,7 +438,7 @@
 						</xsl:for-each>
 					</xsl:when>
 					<xsl:otherwise>
-						<xsl:apply-templates select="tei:corr//tei:w"/>
+						<xsl:apply-templates select="//tei:w[ancestor::tei:corr]"/>
 						<xsl:choose>
 							<xsl:when test="child::tei:sic/tei:w/@lemmaRef">
 								<a href="{child::tei:sic/tei:w/@lemmaRef}"
