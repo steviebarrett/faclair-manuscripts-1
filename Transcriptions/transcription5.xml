@@ -104,10 +104,10 @@
 	</teiHeader>
 	<text>
 		<body>
-			<div n="1" type="prose">
+			<div n="1" type="prose" xml:id="MS5.1">
 				<!-- Charms -->
 			</div>
-			<div n="2" type="divprose" resp="Hand12">
+			<div n="2" type="divprose" resp="Hand12" xml:id="MS5.2">
 				<pb n="37" xml:id="MS5.37"/>
 				<lg n="1" type="prosediv" xml:id="MS5.2.1">
 					<l xml:lang="la"><lb n="1" xml:id="MS5.37.1"/>
@@ -315,12 +315,12 @@
 									ref="#g2">agus</g></abbr></w><space type="scribal"/><w><abbr
 								cert="high"><g ref="g30">cu</g></abbr>m</w><space type="scribal"/><w
 							lemma="in" lemmaRef="http://www.dil.ie/28194" ana="art">na</w><w
-							lemma="cíall" lemmaRef="http://www.dil.ie/8983" ana="noun">g<pc>-</pc><lb n="10"
-								xml:id="MS5.37.10"/><abbr cert="medium">c<g ref="g9"
-							>iall</g></abbr></w><w lemma="fo" lemmaRef="http://www.dil.ie/22333"
-							ana="prep, pron"><abbr cert="low">f<g ref="g24"
-							>uithe</g></abbr></w><space type="scribal"/><w lemma="do"
-							lemmaRef="http://www.dil.ie/17096" ana="prep">d</w><w
+							lemma="cíall" lemmaRef="http://www.dil.ie/8983" ana="noun"
+								>g<pc>-</pc><lb n="10" xml:id="MS5.37.10"/><abbr cert="medium">c<g
+									ref="g9">iall</g></abbr></w><w lemma="fo"
+							lemmaRef="http://www.dil.ie/22333" ana="prep, pron"><abbr cert="low">f<g
+									ref="g24">uithe</g></abbr></w><space type="scribal"/><w
+							lemma="do" lemmaRef="http://www.dil.ie/17096" ana="prep">d</w><w
 							lemma="follamnaigid" lemmaRef="http://www.dil.ie/23123" ana="vnoun"
 								>foll<abbr cert="high">a<g ref="g1">m</g></abbr>na<abbr
 								cert="medium">g<g ref="g24">ud</g></abbr></w><pc>.</pc>
@@ -411,8 +411,8 @@
 				<lg n="10" type="prosediv" xml:id="MS5.2.10">
 					<l xml:lang="la">
 						<w xml:lang="la">Malus</w><space type="scribal"/><w xml:lang="la"
-							>aer</w><add type="gloss" place="margin, right" resp="Hand13">TNA</add><lb
-							n="14" xml:id="MS5.37.14"/><w xml:lang="la">plus</w><space
+							>aer</w><add type="gloss" place="margin, right" resp="Hand13"
+							>TNA</add><lb n="14" xml:id="MS5.37.14"/><w xml:lang="la">plus</w><space
 							type="scribal"/><w xml:lang="la">a<abbr cert="high">g<g ref="g16"
 								>ra</g></abbr>uat</w><space type="scribal"/><w xml:lang="la"
 								>cor<abbr cert="high">p<g ref="g7">us</g></abbr></w><space
@@ -450,7 +450,7 @@
 						<w xml:lang="la">duo</w><space type="scribal"/><w xml:lang="la"
 							>sunt</w><space type="scribal"/><w xml:lang="la">in</w><space
 							type="scribal"/><w xml:lang="la">nobis</w><w xml:lang="la"
-								>lu<pc>-</pc><lb n="16" xml:id="MS.5.37.16"/>x</w><pc>,</pc><space
+								>lu<pc>-</pc><lb n="16" xml:id="MS5.37.16"/>x</w><pc>,</pc><space
 							type="scribal"/><w xml:lang="la">et</w><space type="scribal"/><w
 							xml:lang="la">calor</w>
 					</l>
@@ -469,9 +469,51 @@
 							ana="noun"><abbr cert="high">s<g ref="g31">ol</g></abbr>us</w><space
 							type="scribal"/><w lemma="ocus" lemmaRef="http://www.dil.ie/33483"
 							ana="conj"><abbr cert="high"><g ref="g2">agus</g></abbr></w><w
-								lemma="tesbach" lemmaRef="http://www.dil.ie/40584" ana="noun"><abbr
+							lemma="tesbach" lemmaRef="http://www.dil.ie/40584" ana="noun"><abbr
 								cert="medium">t<g ref="g9">esbach</g></abbr></w>
 					</l>
+				</lg>
+				<lg n="12" type="prosediv" xml:id="MS5.2.12">
+					<l xml:lang="la">
+						<w xml:lang="la">Unum</w><space type="scribal"/><w>quod<abbr cert="low">q<g
+									ref="g7">uod</g></abbr></w><space type="scribal"/><w
+							xml:lang="la"><abbr cert="high">p<g ref="g34">ro</g></abbr>p<abbr
+								cert="high">t<g ref="g21">er</g></abbr></w><space type="scribal"/><w
+							xml:lang="la">illud</w><lb n="17" xml:id="MS5.37.17"/><w xml:lang="la"
+								><abbr cert="high">e<g ref="g3">st</g></abbr></w><space
+							type="scribal"/><w xml:lang="la">ad</w><w xml:lang="la"><abbr
+								cert="medium">q<g ref="g3">uod</g></abbr></w><space type="scribal"
+							/><w xml:lang="la">finaliter</w><space type="scribal"/><w xml:lang="la"
+								>ordina<abbr cert="high">t<g ref="g16">ur</g></abbr></w>
+					</l>
+					<l xml:lang="hsg">
+						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><w
+							lemma="cech" lemmaRef="http://www.dil.ie/7528" ana="adj"><abbr
+								cert="high">g<g ref="g12">ach</g></abbr></w><space type="scribal"
+							/><w lemma="uile" lemmaRef="http://www.dil.ie/42968" ana="adj"
+							>uile</w><space type="scribal"/><w lemma="ní"
+							lemmaRef="http://www.dil.ie/33146" ana="noun">ni</w><space
+							type="scribal"/><w lemma="is" lemmaRef="http://www.dil.ie/29104"
+							ana="verb">is</w><w lemma="dochum" lemmaRef="http://www.dil.ie/17406"
+							ana="prep"><abbr cert="medium">c<g ref="g1">um</g></abbr></w><space
+							type="scribal"/><w lemma="a" lemmaRef="http://www.dil.ie/3" ana="poss"
+							>a</w><w lemma="cride" lemmaRef="http://www.dil.ie/12925" ana="noun"
+							>cridhe</w><note n="1" type="fn" resp="EPT"><p>The original reading
+								could well have been "críche", "cum a críche" ("to its end") being a
+								translation of "finaliter".</p></note><space type="scribal"/><w
+									lemma="dag" lemmaRef="http://www.dil.ie/14139" ana="adj">d<abbr
+								cert="high"><g ref="g2">et</g><g ref="g4">h</g></abbr></w><unclear
+							cert="medium" reason="interp obscure" resp="EPT"><w lemma="inne"
+								lemmaRef="http://www.dil.ie/28806" ana="noun">io<abbr cert="high"
+										>n<g ref="g5">n</g></abbr>e</w></unclear><lb n="18"
+							xml:id="MS5.37.18"/><w lemma="do" lemmaRef="http://www.dil.ie/17098"
+							ana="part">do</w><w lemma="orddaigidir"
+							lemmaRef="http://www.dil.ie/33976" ana="verb">hor<abbr cert="medium">d<g
+									ref="g3">aig</g><g ref="g4">h</g><g ref="g2">ead</g><g ref="g4"
+									>h</g></abbr></w><space type="scribal"/><w lemma="é"
+							lemmaRef="http://www.dil.ie/19325" ana="pron">hé</w><pc>.</pc>
+					</l>
+
 				</lg>
 			</div>
 			<div n="3" type="prose" xml:id="MS5.3" resp="Hand13">
