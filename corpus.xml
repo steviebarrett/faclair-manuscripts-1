@@ -3,7 +3,6 @@
 <?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
 	schematypens="http://purl.oclc.org/dsdl/schematron"?>
 
-
 <?xml-stylesheet type="text/xsl" href="stylesheet-ed-pub%20-%20js.xsl"?>
 <teiCorpus xmlns="http://www.tei-c.org/ns/1.0" xmlns:xi="http://www.w3.org/2001/XInclude">
 	<teiHeader>
@@ -62,6 +61,14 @@
 							<idno type="shelfmark">MS. 72.2.2</idno>
 						</msIdentifier>
 					</msDesc>
+					<msDesc>
+						<msIdentifier xml:id="MS9">
+							<settlement>Edinburgh</settlement>
+							<repository>NLS Adv.</repository>
+							<idno type="shelfmark">MS. 72.1.50</idno>
+						</msIdentifier>
+					</msDesc>
+					
 				</listBibl>
 				<listBibl>
 					<head>Editions</head>
@@ -523,9 +530,35 @@
 						expected that more will be discovered in the course of analysis.</p>
 				</segmentation>
 			</editorialDecl>
-			<tagsDecl>
-				<!-- tags used in the transcriptions -->
-			</tagsDecl>
+			<classDecl>
+				<taxonomy xml:id="POS">
+					<gloss xml:id="conj">conj.</gloss>
+					<gloss xml:id="noun">noun</gloss>
+					<gloss xml:id="pron">pronoun</gloss>
+					<gloss xml:id="pronom">pronom.</gloss>
+					<gloss xml:id="verb">verb</gloss>
+					<gloss xml:id="part">particle</gloss>
+					<gloss xml:id="adj">adjective</gloss>
+					<gloss xml:id="poss">poss. pron</gloss>
+					<gloss xml:id="art">article</gloss>
+					<gloss xml:id="dpron">dem. pronoun</gloss>
+					<gloss xml:id="abbr">abbreviation</gloss>
+					<gloss xml:id="adv">adverb</gloss>
+					<gloss xml:id="num">numeral</gloss>
+					<gloss xml:id="vnoun">verbal noun</gloss>
+					<gloss xml:id="pref">prefix</gloss>
+					<gloss xml:id="intj">interjection</gloss>
+					<gloss xml:id="tit">title</gloss>
+					<gloss xml:id="ptcp">participle</gloss>
+					<gloss xml:id="name">name</gloss>
+				</taxonomy>
+				<taxonomy xml:id="probs">
+					<gloss xml:id="interp_obscure">the interpretation of this word is doubtful.</gloss>
+					<gloss xml:id="text_obscure">some characters in this word are difficult to decipher.</gloss>
+					<gloss xml:id="abbrv">this word is based on the doubtful expansion of an abbreviation.</gloss>
+					<gloss xml:id="damage">loss of vellum means some characters have had to be supplied.</gloss>
+				</taxonomy>
+			</classDecl>
 			<charDecl>
 				<glyph xml:id="g0">
 					<glyphName>UNKNOWN</glyphName>
@@ -534,167 +567,183 @@
 						have indicated that an abbreviation has been expanded but given no
 						details.</note>
 				</glyph>
-				<glyph xml:id="g1" corresp="http://www.vanhamel.nl/codecs/M_stroke">
+				<glyph xml:id="g1" corresp="www.vanhamel.nl/codecs/M_stroke">
 					<glyphName>m-stroke</glyphName>
 					<note>A horizontal line with a downwards hook, standing for "-m".</note>
 				</glyph>
-				<glyph xml:id="g2" corresp="http://www.vanhamel.nl/codecs/Ocus,_et_(Tironian_note)">
-					<glyphName> Tironian et</glyphName>
+				<glyph xml:id="g2" corresp="www.vanhamel.nl/codecs/Ocus,_et_(Tironian_note)">
+					<glyphName> Tironian et/ocus</glyphName>
 					<note>Resembles a "7"; may stand for "ocus" and variants or "et" and
 						variants.</note>
 				</glyph>
-				<glyph xml:id="g3" corresp="http://www.vanhamel.nl/codecs/Suspension_stroke">
-					<glyphName>Generic suspension stroke</glyphName>
+				<glyph xml:id="g3" corresp="www.vanhamel.nl/codecs/Suspension_stroke">
+					<glyphName>suspension stroke</glyphName>
 					<note>A horizontal (superscript or mid-level) stroke that may stand for any
 						character(s).</note>
 				</glyph>
-				<glyph xml:id="g4" corresp="http://www.vanhamel.nl/codecs/Spiritus_asper">
-					<glyphName>Lenition dot/tick</glyphName>
+				<glyph xml:id="g4" corresp="www.vanhamel.nl/codecs/Spiritus_asper">
+					<glyphName>spiritus asper</glyphName>
 					<note>Also known as <hi rend="italic">spiritus asper</hi>; adds an "-h" to
 						consonants (i.e. aspirates).</note>
 				</glyph>
-				<glyph xml:id="g5" corresp="http://www.vanhamel.nl/codecs/Suspension_stroke">
+				<glyph xml:id="g5" corresp="www.vanhamel.nl/codecs/Suspension_stroke">
 					<glyphName>n-stroke</glyphName>
 					<note>A horizontal line, standing for -n. Often indistinguishable from a <ref
 							target="#g3">generic suspension stroke</ref></note>
 				</glyph>
-				<glyph xml:id="g6" corresp="http://www.vanhamel.nl/codecs/I_(superscript_rounded)">
-					<glyphName>Superscript ir</glyphName>
+				<glyph xml:id="g6" corresp="www.vanhamel.nl/codecs/I_(superscript_rounded)">
+					<glyphName>superscript rounded i</glyphName>
 					<note>An anti-clockwise loop on top of a consonant, usually representing "-ir"
 						but with some variability in the vowel.</note>
 				</glyph>
-				<glyph xml:id="g7" corresp="http://www.vanhamel.nl/codecs/Us_(symbol)">
-					<glyphName>us-abbreviation</glyphName>
+				<glyph xml:id="g7" corresp="www.vanhamel.nl/codecs/Us_(symbol)">
+					<glyphName>us-symbol (;)</glyphName>
 					<note>Resembles a semi-colon (;). Stands for "-us" or "-as". Can be modified
 						with addition of subscript "i" (to "-uis" or "-ais").</note>
 				</glyph>
-				<glyph xml:id="g8" corresp="http://www.vanhamel.nl/codecs/Ar_(with_stroke)">
-					<glyphName>ar-abbreviation</glyphName>
+				<glyph xml:id="g8" corresp="www.vanhamel.nl/codecs/Ar_(with_stroke)">
+					<glyphName>ar (with stroke)</glyphName>
 					<note>An "a" with a descender (very like "q"), with a cross-stroke across the
 						descender, standing for "ar".</note>
 				</glyph>
 				<glyph xml:id="g9">
-					<glyphName>Generic suspension dot</glyphName>
+					<glyphName>suspension dot</glyphName>
 					<note>An "." that stands for potentially any string of characters..</note>
 				</glyph>
 				<glyph xml:id="g10"
-					corresp="http://www.vanhamel.nl/codecs/S_(insular)_with_suspension_stroke">
-					<glyphName>acht/sed abbreviation</glyphName>
+					corresp="www.vanhamel.nl/codecs/S_(insular)_with_suspension_stroke">
+					<glyphName>s with suspension stroke (acht/sed)</glyphName>
 					<note>An "s" with a horizontal superscript stroke on top. Originally for Latin
 						"sed" but used to represent "(a)ch(t)" in Gaelic contexts.</note>
 				</glyph>
 				<glyph xml:id="g11"
-					corresp="http://www.vanhamel.nl/codecs/Air_(symbol_with_superscript)">
-					<glyphName>air-abbreviation</glyphName>
+					corresp="www.vanhamel.nl/codecs/Air_(symbol_with_superscript)">
+					<glyphName>air-symbol (with superscript)</glyphName>
 					<note>An ar abbreviation, with a superscript "i", standing for "air".</note>
 				</glyph>
-				<glyph xml:id="g12" corresp="http://www.vanhamel.nl/codecs/C_(superscript)">
-					<glyphName>Superscript c</glyphName>
+				<glyph xml:id="g12" corresp="www.vanhamel.nl/codecs/C_(superscript)">
+					<glyphName>c (superscript)</glyphName>
 					<note>A superscript c, standing for "[vowel]c(h)". Sometimes vowl is added (e.g.
 						m+superscript "ic" for "mic").</note>
 				</glyph>
-				<glyph xml:id="g13" corresp="http://www.vanhamel.nl/codecs/Arr_(double_stroke)">
-					<glyphName>arr-abbreviation</glyphName>
+				<glyph xml:id="g13" corresp="www.vanhamel.nl/codecs/Arr_(double_stroke)">
+					<glyphName>arr (double stroke)</glyphName>
 					<note>Like the ar abbreviation, but with two cross-strokes on the descender
 						instead of one; stands for "arr".</note>
 				</glyph>
 				<glyph xml:id="g14"
-					corresp="http://www.vanhamel.nl/codecs/Suspension_stroke_(double)">
-					<glyphName>nn-strokes</glyphName>
+					corresp="www.vanhamel.nl/codecs/Suspension_stroke_(double)">
+					<glyphName>double n-stroke</glyphName>
 					<note>A double n-stroke, standing for "-nn".</note>
 				</glyph>
-				<glyph xml:id="g15" corresp="http://www.vanhamel.nl/codecs/O_(superscript)">
-					<glyphName>Superscript o</glyphName>
+				<glyph xml:id="g15" corresp="www.vanhamel.nl/codecs/O_(superscript)">
+					<glyphName>o (superscript)</glyphName>
 					<note>Superscript o, representing "or" or "ro".</note>
 				</glyph>
-				<glyph xml:id="g16" corresp="http://www.vanhamel.nl/codecs/U_(superscript_v)">
-					<glyphName>Superscript u/v</glyphName>
+				<glyph xml:id="g16" corresp="www.vanhamel.nl/codecs/U_(superscript_v)">
+					<glyphName>u/v (superscript)</glyphName>
 					<note>Superscript u or v, representing "ur" or "ru". <hi rend="bold">NB:</hi> Currently merged
 						with <hi rend="italics"><ref
 								target="http://www.vanhamel.nl/codecs/Suspension_stroke_(wavy)"
 								>suspension stroke (wavy)</ref></hi></note>
 				</glyph>
-				<glyph xml:id="g17" corresp="http://www.vanhamel.nl/codecs/A_(superscript)">
-					<glyphName>Superscript a</glyphName>
+				<glyph xml:id="g17" corresp="www.vanhamel.nl/codecs/A_(superscript)">
+					<glyphName>a (superscript)</glyphName>
 					<note>A superscript "a", looking more like a superscript "r", standing for
 						"ra".</note>
 				</glyph>
-				<glyph xml:id="g18" corresp="http://www.vanhamel.nl/codecs/Est_(superscript)">
+				<glyph xml:id="g18" corresp="www.vanhamel.nl/codecs/Est_(superscript)">
 					<glyphName>est-abbreviation</glyphName>
 					<note>Resembles a "2"; stands for Latin "est" or Gaelic orthographic equivalents
 						(e.g. "easd").</note>
 				</glyph>
-				<glyph xml:id="g19" corresp="http://www.vanhamel.nl/codecs/Uir_(subscript_ir)">
-					<glyphName>uir-abbreviation</glyphName>
+				<glyph xml:id="g19" corresp="www.vanhamel.nl/codecs/Uir_(subscript_ir)">
+					<glyphName>uir (subscript ir)</glyphName>
 					<note>A "u" with a descender with cross-stroke and a superscript "i"; stands for
 						"uir".</note>
 				</glyph>
-				<glyph xml:id="g20" corresp="http://www.vanhamel.nl/codecs/E_(superscript)">
-					<glyphName>Superscript e</glyphName>
+				<glyph xml:id="g20" corresp="www.vanhamel.nl/codecs/E_(superscript)">
+					<glyphName>e (superscript)</glyphName>
 					<note>A superscript "e", standing for "-er", "-re", or "-e".</note>
 				</glyph>
-				<glyph xml:id="g21" corresp="http://www.vanhamel.nl/codecs/Er_(vertical_tilde)">
-					<glyphName>er-abbreviation</glyphName>
+				<glyph xml:id="g21" corresp="www.vanhamel.nl/codecs/Er_(vertical_tilde)">
+					<glyphName>er (vertical tilde)</glyphName>
 					<note>A vertical tilde (i.e. a zig-zag), standing for "-e(a)r".</note>
 				</glyph>
-				<glyph xml:id="g22" corresp="http://www.vanhamel.nl/codecs/Err_(inverted_tildes)">
-					<glyphName>err-abbreviation</glyphName>
+				<glyph xml:id="g22" corresp="www.vanhamel.nl/codecs/Err_(inverted_tildes)">
+					<glyphName>err (inverted tildes)</glyphName>
 					<note>Two vertical tildes, standing for "-e(a)rr".</note>
 				</glyph>
 				<glyph xml:id="g23"
-					corresp="http://www.vanhamel.nl/codecs/Suspension_stroke_(double)">
-					<glyphName>Double suspension stroke</glyphName>
+					corresp="www.vanhamel.nl/codecs/Suspension_stroke_(double)">
+					<glyphName>double n-stroke</glyphName>
 					<note>Two superscript cross-strokes, standing for either "-nn" or an expansion
 						containing two of the same consonant.</note>
 				</glyph>
-				<glyph xml:id="g24" corresp="http://www.vanhamel.nl/codecs/D_(superscript)">
-					<glyphName>Superscript d</glyphName>
+				<glyph xml:id="g24" corresp="www.vanhamel.nl/codecs/D_(superscript)">
+					<glyphName>d (superscript)</glyphName>
 					<note>A superscript "d", standing for a vowel + d.</note>
 				</glyph>
-				<glyph xml:id="g25" corresp="http://www.vanhamel.nl/codecs/I_(superscript)">
-					<glyphName>Superscript i</glyphName>
+				<glyph xml:id="g25" corresp="www.vanhamel.nl/codecs/I_(superscript)">
+					<glyphName>i (superscript)</glyphName>
 					<note>A superscript "i", standing for "-ri" or "-ir".</note>
 				</glyph>
-				<glyph xml:id="g26" corresp="http://www.vanhamel.nl/codecs/2_(Arabic_numeral)">
-					<glyphName>da-abbreviation</glyphName>
+				<glyph xml:id="g26" corresp="www.vanhamel.nl/codecs/2_(Arabic_numeral)">
+					<glyphName>2 (Arabic numeral)</glyphName>
 					<note>The Arabic numeral "2", standing for "dá" or "da" in Gaelic contexts and
 						"duo" in Latin contexts. Similar to <hi rend="italics">est
 							abbreviation.</hi></note>
 				</glyph>
 				<glyph xml:id="g27">
-					<glyphName>none</glyphName>
+					<glyphName>[none]</glyphName>
 					<note>There is no visual indicator of an abbreviation but it is apparent for
 						some reason that a word has been abbreviated.</note>
 				</glyph>
-				<glyph xml:id="g28" corresp="http://www.vanhamel.nl/codecs/Con_(reversed_c)">
-					<glyphName>con-abbreviation</glyphName>
+				<glyph xml:id="g28" corresp="www.vanhamel.nl/codecs/Con_(reversed_c)">
+					<glyphName>con (reversed c)</glyphName>
 					<note>A backwards "c", standing for "con".</note>
 				</glyph>
-				<glyph xml:id="g29" corresp="http://www.vanhamel.nl/codecs/T_(superscript)">
-					<glyphName>Superscript t</glyphName>
+				<glyph xml:id="g29" corresp="www.vanhamel.nl/codecs/T_(superscript)">
+					<glyphName>t (superscript)</glyphName>
 					<note>A superscript "t", standing for "tr" or "rt".</note>
 				</glyph>
-				<glyph xml:id="g30" corresp="http://www.vanhamel.nl/codecs/Q_(regular)">
-					<glyphName>q Abbreviation</glyphName>
+				<glyph xml:id="g30" corresp="www.vanhamel.nl/codecs/Q_(regular)">
+					<glyphName>q (regular)</glyphName>
 					<note>Latin "q", standing for "cu".</note>
 				</glyph>
 				<glyph xml:id="g31" corresp="NULL">
-					<glyphName>Superscript l</glyphName>
+					<glyphName>l (superscript)</glyphName>
 					<note>Superscript "l", standing for "vowel + l" or "l + vowel".</note>
 				</glyph>
-				<glyph xml:id="g32" corresp="http://www.vanhamel.nl/codecs/Et_reliqua">
+				<glyph xml:id="g32" corresp="www.vanhamel.nl/codecs/Et_reliqua">
 					<glyphName>et reliqua</glyphName>
 					<note>Ligatures tironian et and rl with cross stroke, standing for either "et
 						reliqua" or "ocus araile".</note>
 				</glyph>
-				<glyph xml:id="g33" corresp="http://www.vanhamel.nl/codecs/M_(vertical)">
-					<glyphName>Vertical m</glyphName>
+				<glyph xml:id="g33" corresp="www.vanhamel.nl/codecs/M_(vertical)">
+					<glyphName>m (vertical)</glyphName>
 					<note>A descending zig-zag attached to the preceding letter, standing for
 						"-m".</note>
 				</glyph>
-				<glyph xml:id="g34" corresp="http://www.vanhamel.nl/codecs/Pro_(p_with_tail)">
-					<glyphName>pro abbreviation</glyphName>
+				<glyph xml:id="g34" corresp="www.vanhamel.nl/codecs/Pro_(p_with_tail)">
+					<glyphName>pro (p with tail)</glyphName>
 					<note>A "p" with a back-pointing tail on the descender.</note>
+				</glyph>
+				<glyph xml:id="g35" corresp="NULL">
+					<glyphName>ligature</glyphName>
+					<note>Two letters are placed together as a ligature, with text to be inserted in between.</note>
+				</glyph>
+				<glyph xml:id="g36" corresp="www.vanhamel.nl/codecs/Per_(p_with_cross_stroke)">
+					<glyphName>p with cross-stroke</glyphName>
+					<note>A "p" with a subscript suspension stroke, normally standing for "per"/"par/"por".</note>
+				</glyph>
+				<glyph xml:id="g37" corresp="www.vanhamel.nl/codecs/Ac_(ligature)">
+					<glyphName>ac ligature</glyphName>
+					<note>Various combinations of "a" and "c".</note>
+				</glyph>
+				<glyph xml:id="g38" corresp="http://www.vanhamel.nl/codecs/Ur_(symbol)">
+					<glyphName>ur symbol</glyphName>
+					<note>A "u" with a descender and cross-stroke, standing for "ur".</note>
 				</glyph>
 				<glyph xml:id="gn" corresp="n">
 					<glyphName/>
@@ -845,11 +894,11 @@
 			<change when="2017-11-07" who="#EPT">Corpus header: Added content to elements</change>
 		</revisionDesc>
 	</teiHeader>
-	<xi:include href="Transcriptions/transcription1.xml" parse="xml"/>
-	<xi:include href="Transcriptions/transcription2.xml" parse="xml"/>
+	<!-- <xi:include href="Transcriptions/transcription1.xml" parse="xml"/> -->
+	<!-- <xi:include href="Transcriptions/transcription2.xml" parse="xml"/> -->
 	<xi:include href="Transcriptions/transcription5.xml" parse="xml"/>
-	<xi:include href="Transcriptions/transcription6.xml" parse="xml"/>
-	<xi:include href="Transcriptions/transcription7.xml" parse="xml"/>
-	<xi:include href="Transcriptions/transcription9.xml" parse="xml"/>
-	<xi:include href="Transcriptions/transcription12.xml" parse="xml"/>
+	<!-- <xi:include href="Transcriptions/transcription6.xml" parse="xml"/> -->
+	<!--  <xi:include href="Transcriptions/transcription7.xml" parse="xml"/> -->
+	<!-- <xi:include href="Transcriptions/transcription9.xml" parse="xml"/>  -->
+	<!-- <xi:include href="Transcriptions/transcription12.xml" parse="xml"/> -->
 </teiCorpus>

@@ -18,7 +18,7 @@ function createTable() {
 	var r1col4 = row1.insertCell(3);
 	r1col4.outerHTML = "<th><b>Text Form</b></th>";
 	var r1col5 = row1.insertCell(4);
-	r1col5.outerHTML = "<th><b>Issue(s)?</b></th>";
+	r1col5.outerHTML = "<th><b>Problem(s) with reading?</b></th>";
 	var r1col6 = row1.insertCell(5);
 	r1col6.outerHTML = "<th><b>Abbreviations</b></th>";
 	var r1col7 = row1.insertCell(6);
@@ -26,7 +26,7 @@ function createTable() {
 	var r1col8 = row1.insertCell(7);
 	r1col8.outerHTML = "<th><b>Scribe Date</b></th>";
 	var r1col9 = row1.insertCell(8);
-	r1col9.outerHTML = "<th><b>PoS</b></th>";
+	r1col9.outerHTML = "<th><b>Part of Speech</b></th>";
 	var r1col10 = row1.insertCell(9);
 	r1col10.outerHTML = "<th><b>Lemma (eDIL)</b></th>";
 	var r1col11 = row1.insertCell(10);
@@ -34,9 +34,11 @@ function createTable() {
 	var r1col12 = row1.insertCell(11);
 	r1col12.outerHTML = "<th><b>Lemma (Dwellys)</b></th>";
 	var r1col13 = row1.insertCell(12);
-	r1col13.outerHTML = "<th><b>HDSG Slip</b></th>";
+	r1col13.outerHTML = "<th><b>URL (Dwellys)</b></th>";
 	var r1col14 = row1.insertCell(13);
-	r1col14.outerHTML = "<button onclick='downloadTbl(table)'>Download Table</button><br/><button onclick='delRow(this)'>Delete Row</button>";
+	r1col14.outerHTML = "<th><b>HDSG Slip</b></th>";
+	var r1col15 = row1.insertCell(14);
+	r1col15.outerHTML = "<button>Download Table</button><br/><button onclick='delRow(this)'>Delete Row</button>";
 	var opened = window.open("", "FnaG MS Corpus Word Table");
 	opened.document.body.appendChild(table);
 	opened.document.head.appendChild(script);
@@ -104,65 +106,25 @@ function addSlip(id) {
 //
 //	OPTION 3
 	var el_plus_1;
-		if (el == el.parentNode.lastElementChild) {
-		el_plus_1 = "";
-		}
-		else if (el.nextElementSibling == null) {
+		if (el.nextElementSibling == null) {
 		el_plus_1 = "";
 		}
 		else {el_plus_1 = el.nextElementSibling}
 	var el_minus_1;
-		if (el == el.parentNode.firstElementChild) {
-		el_minus_1 = "";	
-		}
 		if (el.previousElementSibling == null) {
 		el_minus_1 = "";
 		}
 		else {el_minus_1 = el.previousElementSibling}
 	var el_plus_2;
-		if (el == el.parentNode.lastElementChild) {
-		el_plus_2 = "";
-		}
-		else if (el.nextElementSibling == el.parentNode.lastElementChild) {
-		el_plus_2 = "";	
-		}
-		else if (el.nextElementSibling.nextElementSibling == null) {
+		if (el.nextElementSibling.nextElementSibling == null) {
 		el_plus_2 = "";
 		}
 		else {el_plus_2 = el.nextElementSibling.nextElementSibling}
 	var el_minus_2;
-		if (el == el.parentNode.firstElementChild) {
-		el_minus_2 = "";	
-		}
-		else if (el.previousElementSibling == el.parentNode.firstElementChild) {
-		el_minus_2 = "";	
-		}
-		else if (el.previousElementSibling.previousElementSibling == null) {
+		if (el.previousElementSibling.previousElementSibling == null) {
 		el_minus_2 = "";
 		}
 		else {el_minus_2 = el.previousElementSibling.previousElementSibling}
-	var el_plus_3;
-		if (el == el.parentNode.lastElementChild) {
-		el_plus_3 = "";
-		}
-		else if (el.nextElementSibling == el.parentNode.lastElementChild) {
-		el_plus_3 = "";	
-		}
-		else if (el.nextElementSibling.nextElementSibling.nextElementSibling == null) {
-		el_plus_3 = "";
-		}
-		else {el_plus_3 = el.nextElementSibling.nextElementSibling.nextElementSibling}
-	var el_minus_3;
-		if (el == el.parentNode.firstElementChild) {
-		el_minus_3 = "";
-		}
-		else if (el.previousElementSibling == el.parentNode.firstElementChild) {
-		el_minus_3 = "";	
-		}
-		else if (el.previousElementSibling.previousElementSibling.previousElementSibling == null) {
-		el_minus_3 = "";
-		}
-		else {el_minus_3 = el.previousElementSibling.previousElementSibling.previousElementSibling}	
 	var el_plus_1Id;
 		if (el_plus_1.id == null) {
 		el_plus_1Id = "";	
@@ -178,21 +140,11 @@ function addSlip(id) {
 		el_plus_2Id = "";	
 		}
 		else {el_plus_2Id = el_plus_2.id}
-	var el_minus_2Id;
+	var el_minus_2Id = el_minus_2.id;
 		if (el_minus_2.id == null) {
 		el_minus_2Id = "";	
 		}
 		else {el_minus_2Id = el_minus_2.id}
-	var el_plus_3Id;
-		if (el_plus_3.id == null) {
-		el_plus_3Id = "";	
-		}
-		else {el_plus_3Id = el_plus_3.id}
-	var el_minus_3Id;
-		if (el_minus_3.id == null) {
-		el_minus_3Id = "";	
-		}
-		else {el_minus_3Id = el_minus_3.id}	
 	var el_plus_1node;
 		if (el_plus_1Id === "") {
 		el_plus_1node = "";
@@ -212,7 +164,47 @@ function addSlip(id) {
 		if (el_minus_2Id === "") {
 		el_minus_2node = "";
 		}
-		else {el_minus_2node = document.getElementById(el_minus_2Id).outerHTML}	
+		else {el_minus_2node = document.getElementById(el_minus_2Id).outerHTML}
+	var el_plus_3;
+		if (el.nextElementSibling.nextElementSibling.nextElementSibling == null) {
+		el_plus_3 = "";
+		}
+		else {el_plus_3 = el.nextElementSibling.nextElementSibling.nextElementSibling}
+	var el_minus_3;
+		if (el.previousElementSibling.previousElementSibling.previousElementSibling == null) {
+		el_minus_3 = "";
+		}
+		else {el_minus_3 = el.previousElementSibling.previousElementSibling.previousElementSibling}
+	var el_plus_4;
+		if (el.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling == null) {
+		el_plus_4 = "";
+		}
+		else {el_plus_4 = el.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling}
+	var el_minus_4;
+		if (el.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling == null) {
+		el_minus_4 = "";
+		}
+		else {el_minus_4 = el.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling}
+	var el_plus_3Id;
+		if (el_plus_3.id == null) {
+		el_plus_3Id = "";	
+		}
+		else {el_plus_3Id = el_plus_3.id}
+	var el_minus_3Id;
+		if (el_minus_3.id == null) {
+		el_minus_3Id = "";	
+		}
+		else {el_minus_3Id = el_minus_3.id}
+	var el_plus_4Id;
+		if (el_plus_4.id == null) {
+		el_plus_4Id = "";	
+		}
+		else {el_plus_4Id = el_plus_4.id}
+	var el_minus_4Id = el_minus_4.id;
+		if (el_minus_4.id == null) {
+		el_minus_4Id = "";	
+		}
+		else {el_minus_2Id = el_minus_2.id}
 	var el_plus_3node;
 		if (el_plus_3Id === "") {
 		el_plus_3node = "";
@@ -222,11 +214,20 @@ function addSlip(id) {
 		if (el_minus_3Id === "") {
 		el_minus_3node = "";
 		}
-		else {el_minus_3node = document.getElementById(el_minus_3Id).outerHTML}	
-	var context = el_minus_3node.concat(' ', el_minus_2node ,' ', el_minus_1node ,' ',  '<b>'+form+'</b>' ,' ', el_plus_1node ,' ', el_plus_2node ,' ', el_plus_3node);
+		else {el_minus_3node = document.getElementById(el_minus_3Id).outerHTML}
+	var el_plus_4node;
+		if (el_plus_4Id === "") {
+		el_plus_4node = "";
+		}
+		else {el_plus_4node = document.getElementById(el_plus_4Id).outerHTML}
+	var el_minus_4node;
+		if (el_minus_4Id === "") {
+		el_minus_4node = "";
+		}
+		else {el_minus_4node = document.getElementById(el_minus_4Id).outerHTML}	
+	var context = el_minus_4node.concat(' ', el_minus_3node ,' ', el_minus_2node ,' ', el_minus_1node ,' ',  '<b>'+form+'</b>' ,' ', el_plus_1node ,' ', el_plus_2node ,' ', el_plus_3node ,' ', el_plus_4node);
 	var msref = el.getAttribute('ref');
 	var row = createdTable.insertRow(-1);
-	row.style.fontSize = "small";
 	var rcol1 = row.insertCell(0);
 	rcol1.innerHTML = form;
 	var rcol2 = row.insertCell(1);
@@ -254,20 +255,8 @@ function addSlip(id) {
 	var rcol13 = row.insertCell(12);
 	rcol13.innerHTML = "";
 	var rcol14 = row.insertCell(13);
-	rcol14.outerHTML = '<button onclick="delRow(this)">Delete Row</button>';
+	rcol14.innerHTML = "";
+	var rcol15 = row.insertCell(14);
+	rcol15.outerHTML = '<button onclick="delRow(this)">Delete Row</button>';
 	opened.document.table.appendChild(tr);
-}
-
-function downloadTbl(table) {
-	var csv = 'MS Form, MS Reference, MS Context, Text Form, Issue(s)?, Abbreviations, Scribe, Scribe Date, PoS, Lemma (eDIL), URL (eDIL), Lemma (Dwellys), HDGS Slip\n';
-	table.forEach(function(tr) {
-		csv += tr.join(',');
-		csv += "\n";
-	});
-	console.log(csv);
-    var hiddenElement = document.createElement('a');
-    hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);
-    hiddenElement.target = '_blank';
-    hiddenElement.download = 'people.csv';
-    hiddenElement.click();
 }
