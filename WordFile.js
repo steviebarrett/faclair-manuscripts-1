@@ -36,7 +36,7 @@ function createTable() {
 	var r1col13 = row1.insertCell(12);
 	r1col13.outerHTML = "<th><b>HDSG Slip</b></th>";
 	var r1col14 = row1.insertCell(13);
-	r1col14.outerHTML = "<button onclick='downloadTbl(table)'>Download Table</button><br/><button onclick='delRow(this)'>Delete Row</button>";
+	r1col14.outerHTML = "<button>Download Table</button><br/><button onclick='delRow(this)'>Delete Row</button>";
 	var opened = window.open("", "FnaG MS Corpus Word Table");
 	opened.document.body.appendChild(table);
 	opened.document.head.appendChild(script);
@@ -256,18 +256,4 @@ function addSlip(id) {
 	var rcol14 = row.insertCell(13);
 	rcol14.outerHTML = '<button onclick="delRow(this)">Delete Row</button>';
 	opened.document.table.appendChild(tr);
-}
-
-function downloadTbl(table) {
-	var csv = 'MS Form, MS Reference, MS Context, Text Form, Issue(s)?, Abbreviations, Scribe, Scribe Date, PoS, Lemma (eDIL), URL (eDIL), Lemma (Dwellys), HDGS Slip\n';
-	table.forEach(function(tr) {
-		csv += tr.join(',');
-		csv += "\n";
-	});
-	console.log(csv);
-    var hiddenElement = document.createElement('a');
-    hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);
-    hiddenElement.target = '_blank';
-    hiddenElement.download = 'people.csv';
-    hiddenElement.click();
 }
