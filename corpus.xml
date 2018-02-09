@@ -25,12 +25,14 @@
 			<publicationStmt>
 				<authority xml:id="authority">
 					<address>
-						<addrLine>Faclair na Gàidhlig,</addrLine>
-						<addrLine>Fàs,</addrLine>
-						<addrLine>Sabhal Mòr Ostaig,</addrLine>
-						<addrLine>Sleat,</addrLine>
+						<addrLine>Faclair na Gàidhlig</addrLine>
+						<addrLine>Fàs</addrLine>
+						<addrLine>Sabhal Mòr Ostaig</addrLine>
+						<addrLine>Sleat</addrLine>
 						<addrLine>Isle of Skye</addrLine>
 						<addrLine>IV44 8RQ</addrLine>
+						<addrLine><email>mail@faclair.ac.uk</email></addrLine>
+						<addrLine><num>01471 888 273</num> </addrLine>
 					</address>
 				</authority>
 				<availability status="restricted">
@@ -38,7 +40,7 @@
 				</availability>
 			</publicationStmt>
 			<sourceDesc>
-				<listBibl>
+				<listBibl type="mss">
 					<msDesc>
 						<msIdentifier xml:id="MS1">
 							<settlement>Cambridge</settlement>
@@ -70,8 +72,7 @@
 					</msDesc>
 					
 				</listBibl>
-				<listBibl>
-					<head>Editions</head>
+				<listBibl type="editions">
 					<biblStruct type="bookSection" xml:id="ONolan1912"
 						corresp="http://zotero.org/users/2484668/items/YWUK9V32">
 						<analytic>
@@ -92,7 +93,7 @@
 						corresp="http://zotero.org/users/2484668/items/AY8LIWXS">
 						<analytic>
 							<title level="a">Some Irish Charms</title>
-							<author><forename>R. I.</forename><surname>Best</surname></author>
+							<editor><forename>R. I.</forename><surname>Best</surname></editor>
 						</analytic>
 						<monogr>
 							<title level="j">Ériu</title>
@@ -110,10 +111,10 @@
 						corresp="http://zotero.org/users/2484668/items/V9TX8L28">
 						<analytic>
 							<title level="a">A Sixteenth-Century Gaelic Letter</title>
+							<editor><forename>Ronald</forename><surname>Black</surname></editor>
 						</analytic>
 						<monogr>
 							<title level="j">Scottish Gaelic Studies</title>
-							<editor><forename>Ronald</forename><surname>Black</surname></editor>
 							<imprint>
 								<biblScope unit="volume">13</biblScope>
 								<biblScope unit="page">56-65</biblScope>
@@ -125,8 +126,9 @@
 						corresp="http://zotero.org/users/2484668/items/NKNENZVR">
 						<monogr>
 							<title level="m">The Gaelic notes in the Book of Deer</title>
-							<author><forename>Kenneth
-								Hurlstone</forename><surname>Jackson</surname></author>
+							<editor><forename>Kenneth
+								Hurlstone</forename><surname>Jackson</surname></editor>
+							
 							<imprint>
 								<pubPlace>Cambridge</pubPlace>
 								<publisher>Cambridge University Press</publisher>
@@ -139,12 +141,12 @@
 						<analytic>
 							<title level="a">The property records: Diplomatic Edition, including
 								accents</title>
-						</analytic>
-						<monogr>
-							<title level="m">Studies in the Book of Deer</title>
 							<editor><forename>Roibeard</forename><surname>Ó
 								Maolalaigh</surname></editor>
 							<editor><forename>Katherine</forename><surname>Forsyth</surname></editor>
+						</analytic>
+						<monogr>
+							<title level="m">Studies in the Book of Deer</title>
 							<imprint>
 								<pubPlace>Dublin</pubPlace>
 								<biblScope unit="page">119-130</biblScope>
@@ -200,8 +202,7 @@
 						</monogr>
 					</biblStruct>
 				</listBibl>
-				<listBibl>
-					<head>Secondary Literature</head>
+				<listBibl type="secLit">
 					<biblStruct type="bookSection" xml:id="Ó_Maolalaigh2008a"
 						corresp="http://zotero.org/users/2484668/items/8SEQ87D5">
 						<analytic>
@@ -896,9 +897,9 @@
 	</teiHeader>
 	<!-- <xi:include href="Transcriptions/transcription1.xml" parse="xml"/> -->
 	<!-- <xi:include href="Transcriptions/transcription2.xml" parse="xml"/> -->
-	<xi:include href="Transcriptions/transcription5.xml" parse="xml"/>
+	<!-- <xi:include href="Transcriptions/transcription5.xml" parse="xml"/> -->
 	<!-- <xi:include href="Transcriptions/transcription6.xml" parse="xml"/> -->
 	<!--  <xi:include href="Transcriptions/transcription7.xml" parse="xml"/> -->
-	<!-- <xi:include href="Transcriptions/transcription9.xml" parse="xml"/>  -->
+	<xi:include href="Transcriptions/transcription9.xml" parse="xml"/>
 	<!-- <xi:include href="Transcriptions/transcription12.xml" parse="xml"/> -->
 </teiCorpus>

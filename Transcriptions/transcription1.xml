@@ -54,7 +54,7 @@
 							of the monastery of Deer and its property claims.</summary>
 						<msItem xml:id="MS1.1" resp="Hand1">
 							<locus>fols 3r.10-3v.8</locus>
-							<title>Text 1: The Foundation Legend</title>
+							<title>The Foundation Legend</title>
 							<incipit>Columcille ocus drostán mac cósgreg ...</incipit>
 							<explicit>... áńim óhúnń ímácć ;</explicit>
 							<filiation>
@@ -64,7 +64,7 @@
 						</msItem>
 						<msItem xml:id="MS1.2" resp="Hand1, #Hand3">
 							<locus>fols 3v9-4r1, 4v1-2</locus>
-							<title>Text 2: Property Records</title>
+							<title>Property Records (1)</title>
 							<incipit>Cómgeall mac éda dórat ... </incipit>
 							<explicit> ... ocus dansil daneis</explicit>
 							<filiation>
@@ -74,7 +74,7 @@
 						</msItem>
 						<msItem xml:id="MS1.3" resp="Hand4">
 							<locus>fol.4r13-23</locus>
-							<title>Text 3: A Property Record</title>
+							<title>Property Records (2)</title>
 							<incipit>Gartnait mac cannech ocus éte ingengillemíchel ... </incipit>
 							<explicit>... ocus dubni mac málcolaim</explicit>
 							<filiation>
@@ -84,7 +84,7 @@
 						</msItem>
 						<msItem xml:id="MS1.4" resp="Hand4">
 							<locus>fol.4r23-26</locus>
-							<title>Text 4: A Property Record</title>
+							<title>Property Records (3)</title>
 							<incipit>Dorat gartnait ocus ingengillemicecl ...</incipit>
 							<explicit>... ocus mál girc mac tralin.</explicit>
 							<filiation>
@@ -94,7 +94,7 @@
 						</msItem>
 						<msItem xml:id="MS1.5" resp="Hand2">
 							<locus>fol.4v3-28</locus>
-							<title>Text 5: A Property Record</title>
+							<title>Property Records (4)</title>
 							<incipit>Dondchad mac mec bead ...</incipit>
 							<explicit>... etar sliab ocus achad</explicit>
 							<filiation>
@@ -104,7 +104,7 @@
 						</msItem>
 						<msItem xml:id="MS1.6" resp="Hand3">
 							<locus>fol.5r1-33</locus>
-							<title>Text 6: Property Records</title>
+							<title>Property Records (5)</title>
 							<incipit>Robaid colbain mormér ...</incipit>
 							<explicit>... naiaidnaisse in helain;</explicit>
 							<filiation>
@@ -114,7 +114,7 @@
 						</msItem>
 						<msItem xml:id="MS1.7" resp="Hand6">
 							<locus>fols 28v15, 85r18-19</locus>
-							<title>Text 7: Old Gaelic in the Book of Deer Main Text</title>
+							<title>Old Gaelic in the Book of Deer Main Text</title>
 							<incipit> Hisund ...</incipit>
 							<explicit>... rodscribai</explicit>
 							<filiation>
@@ -250,7 +250,7 @@
 	</teiHeader>
 	<text>
 		<body>
-			<div n="1" type="prose" corresp="MS1.1" resp="Hand1">
+			<div n="1" type="prose" sameAs="MS1.1" resp="Hand1">
 				<p>
 					<pb n="fol.3r" xml:id="MS1.3r"/>
 					<lb n="10" xml:id="MS1.3r.10"/>
@@ -315,10 +315,9 @@
 					<space type="scribal"/>
 					<w lemma="ro, attá" lemmaRef="http://www.dil.ie/35364, http://www.dil.ie/4927"
 						ana="part, verb"><w lemma="ro" lemmaRef="http://www.dil.ie/35364" ana="part"
-							>ro</w></w>
-					<lb n="13" xml:id="MS1.3r.13"/>
-					<w lemma="mormaer" lemmaRef="http://www.dil.ie/32580" ana="noun"><supplied
-							resp="WGI" cert="medium">mór</supplied>máer</w>
+							>ro</w><w lemma="attá" lemmaRef="http://www.dil.ie/4927" ana="verb"
+							>bo</w></w><w lemma="mormaer" lemmaRef="http://www.dil.ie/32580"
+						ana="noun">mor<lb n="13" xml:id="MS1.3r.13"/> máer</w>
 					<name type="place">
 						<w ana="noun">bu<abbr cert="high">c<g ref="g4">h</g></abbr>an</w>
 					</name>
@@ -751,7 +750,7 @@
 					<pc>;</pc>
 				</p>
 			</div>
-			<div n="2" type="prose" corresp="MS1.2" resp="Hand1">
+			<div n="2" type="prose" sameAs="MS1.2" resp="Hand1">
 				<p>
 					<lb n="9" xml:id="MS1.3v.9"/>
 					<name type="personal">
@@ -1500,12 +1499,15 @@
 						</abbr>
 					</w>
 					<w lemma="ó" lemmaRef="http://www.dil.ie/33364" ana="prep">o</w>
-					<w lemma="toísech" lemmaRef="http://www.dil.ie/41302" ana="noun"><abbr cert="high">t<g ref="g4">h</g></abbr>ese<abbr cert="high">c<g
-								ref="g4">h</g></abbr></w>
+					<w lemma="toísech" lemmaRef="http://www.dil.ie/41302" ana="noun"><abbr
+							cert="high">t<g ref="g4">h</g></abbr>ese<abbr cert="high">c<g ref="g4"
+								>h</g></abbr></w>
 					<add resp="Hand3" place="above">
 						<w lemma="co" lemmaRef="http://www.dil.ie/9786" ana="prep">cu</w>
-						<w lemma="lá" lemmaRef="http://www.dil.ie/29234" ana="noun">lai<abbr cert="high">t<g ref="g4">h</g></abbr>i</w>
-						<w lemma="bráth" lemmaRef="http://www.dil.ie/6579" ana="noun">brá<abbr cert="high">t<g ref="g4">h</g></abbr>a</w>
+						<w lemma="lá" lemmaRef="http://www.dil.ie/29234" ana="noun">lai<abbr
+								cert="high">t<g ref="g4">h</g></abbr>i</w>
+						<w lemma="bráth" lemmaRef="http://www.dil.ie/6579" ana="noun">brá<abbr
+								cert="high">t<g ref="g4">h</g></abbr>a</w>
 					</add>
 					<pb n="fol.4v" xml:id="MS1.4v"/>
 					<lb n="1" xml:id="MS1.4v.1"/>
@@ -1554,7 +1556,7 @@
 				</p>
 			</div>
 			<pb n="fol.4r" sameAs="MS1.4r"/>
-			<div n="3" type="prose" corresp="MS1.3" resp="Hand4">
+			<div n="3" type="prose" sameAs="MS1.3" resp="Hand4">
 				<p>
 					<lb n="13" xml:id="MS1.4r.13"/>
 					<name type="personal">
@@ -1886,7 +1888,7 @@
 					</name>
 				</p>
 			</div>
-			<div n="4" type="prose" corresp="MS1.4" resp="Hand4">
+			<div n="4" type="prose" sameAs="MS1.4" resp="Hand4">
 				<p>
 					<lb n="24" sameAs="MS1.4r.24"/>
 					<w lemma="do, do-beir"
@@ -1997,7 +1999,7 @@
 				</p>
 			</div>
 			<pb n="fol.4v" sameAs="MS1.4v"/>
-			<div n="5" type="prose" corresp="MS1.5" resp="Hand2">
+			<div n="5" type="prose" sameAs="MS1.5" resp="Hand2">
 				<p>
 					<lb n="3" xml:id="MS1.4v.3"/>
 					<name type="personal">
@@ -2322,7 +2324,7 @@
 					<pc>;</pc>
 				</p>
 			</div>
-			<div n="6" type="prose" corresp="MS1.6" resp="Hand3">
+			<div n="6" type="prose" sameAs="MS1.6" resp="Hand3">
 				<p>
 					<pb n="fol.5r" xml:id="MS1.5r"/>
 					<lb n="1" xml:id="MS1.5r.1"/>
@@ -2601,20 +2603,20 @@
 					<pc>;</pc>
 				</p>
 			</div>
-			<div n="7" type="prose" corresp="MS1.7" resp="Hand6">
+			<div n="7" type="prose" sameAs="MS1.7" resp="Hand6">
 				<p>
 					<pb n="fol.28v" xml:id="MS1.28v"/>
 					<lb n="15" xml:id="MS1.28v.15"/>
 					<w lemma="i" lemmaRef="http://www.dil.ie/26891" ana="prep">Hi</w><w lemma="sund"
-						lemmaRef="http://www.dil.ie/39303" ana="pron">sund</w><space type="scribal"/><w
-						lemma="do, do-beir"
+						lemmaRef="http://www.dil.ie/39303" ana="pron">sund</w><space type="scribal"
+						/><w lemma="do, do-beir"
 						lemmaRef="http://www.dil.ie/17098, http://www.dil.ie/17216" ana="part, verb"
 							><w lemma="do" lemmaRef="http://www.dil.ie/17098" ana="part">du</w><w
 							lemma="do-beir" lemmaRef="http://www.dil.ie/17216" ana="verb"><abbr
-								cert="high">b<g ref="g3">eir</g></abbr></w></w><space type="scribal"/><w
-						lemma="sacrifis" lemmaRef="http://www.dil.ie/35931" ana="noun"
-						>sacorfice</w><space type="scribal"/><w lemma="do" lemmaRef="http://www.dil.ie/17096"
-						ana="prep, pron">dau</w></p>
+								cert="high">b<g ref="g3">eir</g></abbr></w></w><space type="scribal"
+						/><w lemma="sacrifis" lemmaRef="http://www.dil.ie/35931" ana="noun"
+						>sacorfice</w><space type="scribal"/><w lemma="do"
+						lemmaRef="http://www.dil.ie/17096" ana="prep, pron">dau</w></p>
 				<pb n="fol.85r" xml:id="MS1.85r"/>
 				<lb n="17" xml:id="MS1.85r.17"/>
 				<p>
@@ -2624,22 +2626,23 @@
 					<space type="scribal"/>
 					<w lemma="cach" lemmaRef="http://www.dil.ie/7528" ana="adj">caich</w><w
 						lemma="duine" lemmaRef="http://www.dil.ie/19139" ana="noun">duin<unclear
-							resp="EPT" reason="damage">e</unclear></w><space type="scribal"/><w lemma="i"
-						lemmaRef="http://www.dil.ie/26891" ana="prep">i</w><w lemma="attá"
-						lemmaRef="http://www.dil.ie/4927" ana="verb">mbia</w><space type="scribal"/><w lemma="ar"
-						lemmaRef="http://www.dil.ie/3902" ana="prep">ar</w><w lemma="rath"
-						lemmaRef="http://www.dil.ie/3483r" ana="noun">rath</w><space type="scribal"/><w lemma="in"
-						lemmaRef="http://www.dil.ie/28194" ana="art">in</w><w lemma="lebrán"
-						lemmaRef="http://www.dil.ie/29677" ana="noun">leb<lb n="18"
-							xml:id="MS1.85r.18"/>rán</w><space type="scribal"/><w lemma="co"
-						lemmaRef="http://www.dil.ie/9787" ana="prep">co</w><w lemma="lí"
+							resp="EPT" reason="damage">e</unclear></w><space type="scribal"/><w
+						lemma="i" lemmaRef="http://www.dil.ie/26891" ana="prep">i</w><w lemma="attá"
+						lemmaRef="http://www.dil.ie/4927" ana="verb">mbia</w><space type="scribal"
+						/><w lemma="ar" lemmaRef="http://www.dil.ie/3902" ana="prep">ar</w><w
+						lemma="rath" lemmaRef="http://www.dil.ie/3483r" ana="noun">rath</w><space
+						type="scribal"/><w lemma="in" lemmaRef="http://www.dil.ie/28194" ana="art"
+						>in</w><w lemma="lebrán" lemmaRef="http://www.dil.ie/29677" ana="noun"
+							>leb<lb n="18" xml:id="MS1.85r.18"/>rán</w><space type="scribal"/><w
+						lemma="co" lemmaRef="http://www.dil.ie/9787" ana="prep">co</w><w lemma="lí"
 						lemmaRef="http://www.dil.ie/30091" ana="noun">lli</w><pc>.</pc><w
 						lemma="ara" lemmaRef="http://www.dil.ie/3913" ana="conj">ara</w><w
 						lemma="do-beir" lemmaRef="http://www.dil.ie/17216" ana="verb">ta<unclear
-							resp="EPT" reason="damage">r</unclear>da</w><space type="scribal"/><w lemma="bennacht"
-						lemmaRef="http://www.dil.ie/5661" ana="noun">bendacht</w><space type="scribal"/><w
-						lemma="for" lemmaRef="http://www.dil.ie/23272" ana="prep"><abbr cert="high"
-								>f<g ref="g3">or</g></abbr></w><w lemma="ainimm"
+							resp="EPT" reason="damage">r</unclear>da</w><space type="scribal"/><w
+						lemma="bennacht" lemmaRef="http://www.dil.ie/5661" ana="noun"
+						>bendacht</w><space type="scribal"/><w lemma="for"
+						lemmaRef="http://www.dil.ie/23272" ana="prep"><abbr cert="high">f<g ref="g3"
+								>or</g></abbr></w><w lemma="ainimm"
 						lemmaRef="http://www.dil.ie/1402" ana="prep">an<lb n="19"
 							xml:id="MS1.85r.19"/>main</w><space type="scribal"/><w lemma="in"
 						lemmaRef="http://www.dil.ie/28194" ana="art">in</w><w lemma="trúagán"

@@ -11,10 +11,12 @@
 	<xsl:key name="mss" match="*" use="@xml:id"/>
 	<xsl:key name="pos" match="*" use="@xml:id"/>
 	<xsl:key name="probs" match="*" use="@xml:id"/>
+	<xsl:key name="divTitle" match="*" use="@xml:id"/>
 
 	<xsl:attribute-set name="tblBorder">
 		<xsl:attribute name="border">solid 0.1mm black</xsl:attribute>
 	</xsl:attribute-set>
+
 
 	<xsl:template match="/">
 		<html>
@@ -22,23 +24,73 @@
 				<script src="WordFile.js"/>
 			</head>
 			<body>
-				<title>
-					<xsl:value-of select="tei:teiHeader/tei:fileDesc/tei:titleStmt/tei:title"/>
-				</title>
-				<xsl:apply-templates select="descendant::tei:body"/>
-			</body>
-			<backmatter>
-				<h1>Notes</h1>
-				<xsl:for-each select="//tei:note[@type = 'fn']">
-					<xsl:value-of select="@n"/>. <xsl:value-of select="tei:p"/> <br />
+				<!-- <xsl:apply-templates select="tei:teiCorpus/tei:teiHeader"/> -->
+				<h1>Transcriptions</h1>
+				<xsl:for-each select="tei:teiCorpus/tei:TEI">
+					<br/>
+					<xsl:apply-templates/>
+					<br/>
 				</xsl:for-each>
-			</backmatter>
+			</body>
 		</html>
 	</xsl:template>
 
+	<!-- <xsl:template match="tei:teiCorpus/tei:TEI">
+		<br/><xsl:apply-templates/>
+	</xsl:template>
+	
+	<xsl:template match="tei:body">
+		<xsl:apply-templates/>
+	</xsl:template>
+	
+	<xsl:template match="tei:teiHeader">
+		<xsl:apply-templates/>
+	</xsl:template>
+
+	<xsl:template match="tei:teiCorpus/tei:teiHeader/tei:fileDesc/tei:titleStmt/tei:title">
+		<h1><xsl:apply-templates/></h1><br/>
+	</xsl:template>
+
+	<xsl:template match="tei:teiCorpus//tei:teiHeader/tei:fileDesc/tei:titleStmt">
+		<h2><xsl:apply-templates select="tei:title"/></h2>
+		<xsl:for-each select="tei:respStmt">
+			<xsl:value-of select="tei:name"/><xsl:text> (</xsl:text><xsl:value-of select="tei:resp"/><xsl:text>)</xsl:text><br/>
+		</xsl:for-each><br/>
+	</xsl:template>
+	
+	<xsl:template match="tei:teiCorpus/tei:teiHeader/tei:fileDesc/tei:publicationStmt">
+		<xsl:value-of select="tei:availability"/><xsl:text>For more information, contact:</xsl:text><xsl:apply-templates select="tei:authority/tei:address"/>
+	</xsl:template>
+	
+	<xsl:template match="tei:authority/tei:address">
+		<p style="margin-left:30px"><xsl:for-each select="tei:addrLine">
+			<xsl:apply-templates/><br/>
+		</xsl:for-each></p>
+	</xsl:template>
+	
+	<xsl:template match="tei:teiCorpus/tei:teiHeader//tei:sourceDesc">
+		<h2>Bibliography</h2>
+		<xsl:apply-templates/>	
+	</xsl:template>
+	
+	<xsl:template match="tei:teiCorpus/tei:teiHeader//tei:sourceDesc/tei:listBibl[@type='mss']">
+		<xsl:for-each select="tei:msDesc">
+			<xsl:value-of select="tei:msIdentifier/tei:settlement"/><xsl:text>, </xsl:text><xsl:value-of select="tei:msIdentifier/tei:repository"/><xsl:text> </xsl:text><xsl:value-of select="tei:msIdentifier/tei:idno"/><br />
+		</xsl:for-each>
+	</xsl:template>
+	
+	<xsl:template match="tei:teiCorpus/tei:teiHeader//tei:sourceDesc/tei:listBibl[@type='editions']">
+		<xsl:variable name="eds">
+		<xsl:value-of select="$surname"/><xsl:text>, </xsl:text><xsl:value-of select="$forename"/><xsl:text> (</xsl:text><xsl:value-of select="$resp"/><xsl:text>) </xsl:text>
+		</xsl:variable>
+		<xsl:for-each select="tei:biblStruct">
+			<xsl:value-of select="tei:monogr/tei:imprint/tei:date"/><xsl:text>. </xsl:text><xsl:value-of select="$eds"/><xsl:text>.</xsl:text> 
+		</xsl:for-each>
+	</xsl:template> -->
+
 	<xsl:template match="tei:pb">
-		 <br />
-		<hr align="left" width="40%" />
+		<br/>
+		<hr align="left" width="40%"/>
 		<p align="left">
 			<xsl:choose>
 				<xsl:when test="ancestor::tei:div//tei:handShift">
@@ -63,7 +115,7 @@
 	</xsl:template>
 
 	<xsl:template match="tei:p//tei:lb">
-		 <br />
+		<br/>
 		<xsl:value-of select="@n"/>
 		<xsl:text>. </xsl:text>
 	</xsl:template>
@@ -76,21 +128,21 @@
 	<xsl:template match="tei:lg">
 		<xsl:choose>
 			<xsl:when test="count(parent::tei:div//tei:lg[@type = 'stanza']) > 1">
-				<br />
+				<br/>
 				<b align="left">
 					<a title="Stanza number" href="#" onclick="return false;"
 						style="text-decoration:none; color:#000000">
 						<xsl:value-of select="@n"/>
 					</a>
 				</b>
-				<br />
+				<br/>
 				<p style="margin-left:30px">
 					<xsl:apply-templates select="descendant::tei:l"/>
 				</p>
 			</xsl:when>
 			<xsl:otherwise>
 				<p style="margin-left:30px">
-					<br />
+					<br/>
 					<xsl:apply-templates select="descendant::tei:l"/>
 				</p>
 			</xsl:otherwise>
@@ -99,7 +151,7 @@
 
 	<xsl:template match="tei:l">
 		<xsl:apply-templates/>
-		<br />
+		<br/>
 	</xsl:template>
 
 	<xsl:template match="tei:w[not(descendant::tei:w)]">
@@ -156,31 +208,34 @@
 		</xsl:variable>
 		<xsl:variable name="certProb">
 			<xsl:if test="ancestor::*[@cert] or descendant::*[@cert]">
-				<xsl:for-each select="ancestor::*[@cert]|descendant::*[@cert]">
+				<xsl:for-each select="ancestor::*[@cert] | descendant::*[@cert]">
 					<xsl:choose>
-						<xsl:when test="@cert = 'medium'">Moderate problems with this
-							reading &#10;</xsl:when>
-						<xsl:when test="@cert = 'low'">Serious problems with this
-							reading &#10;</xsl:when>
+						<xsl:when test="@cert = 'medium'">Moderate problems with this reading
+							&#10;</xsl:when>
+						<xsl:when test="@cert = 'low'">Serious problems with this reading
+							&#10;</xsl:when>
 					</xsl:choose>
 				</xsl:for-each>
 			</xsl:if>
 		</xsl:variable>
 		<xsl:variable name="abbrs">
 			<xsl:choose>
-			<xsl:when test="descendant::tei:abbr or ancestor::tei:abbr">
-				<xsl:for-each select="descendant::tei:abbr/tei:g | ancestor::tei:abbr/tei:g">
-					<xsl:value-of select="key('abbrs', @ref)/tei:glyphName"/>
-					<xsl:text>; </xsl:text>
-				</xsl:for-each>
-			</xsl:when>
-				<xsl:otherwise><xsl:text>none</xsl:text></xsl:otherwise>
+				<xsl:when test="descendant::tei:abbr or ancestor::tei:abbr">
+					<xsl:for-each select="descendant::tei:abbr/tei:g | ancestor::tei:abbr/tei:g">
+						<xsl:value-of select="key('abbrs', @ref)/tei:glyphName"/>
+						<xsl:text>; </xsl:text>
+					</xsl:for-each>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:text>none</xsl:text>
+				</xsl:otherwise>
 			</xsl:choose>
 		</xsl:variable>
 		<xsl:variable name="abbrRef">
 			<xsl:if test="descendant::tei:abbr or ancestor::tei:abbr">
 				<xsl:for-each select="descendant::tei:abbr/tei:g | ancestor::tei:abbr/tei:g">
-					<xsl:value-of select="key('abbrs', @ref)/@corresp"/><xsl:text>&#10;</xsl:text>
+					<xsl:value-of select="key('abbrs', @ref)/@corresp"/>
+					<xsl:text>&#10;</xsl:text>
 				</xsl:for-each>
 			</xsl:if>
 		</xsl:variable>
@@ -252,7 +307,50 @@
 			title="{$lem}&#10;{@ana}&#10;{$prob}{$certProb}&#10;Abbreviations: {$abbrs}">
 			<xsl:apply-templates/>
 		</a>
-		<xsl:text> </xsl:text>
+		<xsl:choose>
+			<xsl:when test="not(ancestor::tei:w)">
+				<xsl:text> </xsl:text>
+			</xsl:when>
+			<xsl:when test="@ana = 'part' and ancestor::tei:w[contains(@ana, 'part, verb')]">
+				<xsl:text> </xsl:text>
+			</xsl:when>
+			<xsl:when test="@ana = 'part' and ancestor::tei:w[contains(@ana, 'part, pron, verb')]">
+				<xsl:text/>
+			</xsl:when>
+			<xsl:when test="@ana = 'pron' and ancestor::tei:w[contains(@ana, 'part, pron, verb')]">
+				<xsl:text> </xsl:text>
+			</xsl:when>
+			<xsl:when test="@ana = 'noun' and ancestor::tei:w[contains(@ana, 'noun, pron')]">
+				<xsl:text/>
+			</xsl:when>
+			<xsl:when test="@ana = 'conj' and ancestor::tei:w[contains(@ana, 'noun, verb')]">
+				<xsl:text/>
+			</xsl:when>
+			<xsl:when test="@ana = 'verb' and ancestor::tei:w[contains(@ana, 'verb, pron')]">
+				<xsl:text/>
+			</xsl:when>
+			<xsl:when
+				test="@ana = 'noun' and ancestor::tei:w[contains(@ana, 'noun, noun')] and following-sibling::tei:w[@ana = 'noun']">
+				<xsl:text/>
+			</xsl:when>
+			<xsl:when
+				test="@ana = 'adj' and ancestor::tei:w[contains(@ana, 'adj, noun')] and following-sibling::tei:w[@ana = 'noun']">
+				<xsl:text/>
+			</xsl:when>
+			<xsl:when
+				test="@ana = 'adj' and ancestor::tei:w[contains(@ana, 'adj, adj')] and following-sibling::tei:w[@ana = 'adj']">
+				<xsl:text/>
+			</xsl:when>
+			<xsl:when test="@ana = 'num' and ancestor::tei:w[contains(@ana, 'num, noun')]">
+				<xsl:text/>
+			</xsl:when>
+			<xsl:when test="not(following-sibling::*)">
+				<xsl:text> </xsl:text>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:text> </xsl:text>
+			</xsl:otherwise>
+		</xsl:choose>
 	</xsl:template>
 
 	<xsl:template match="tei:name">
@@ -456,7 +554,8 @@
 	</xsl:template> -->
 
 	<xsl:template match="tei:date">
-		<a id="{generate-id()}" href="#" onclick="return false;" style="text-decoration:none; color:#000000">
+		<a id="{generate-id()}" href="#" onclick="return false;"
+			style="text-decoration:none; color:#000000">
 			<xsl:apply-templates/>
 		</a>
 		<xsl:text> </xsl:text>
@@ -536,8 +635,8 @@
 	<xsl:template match="tei:gap">
 		<xsl:choose>
 			<xsl:when test="@extent = 'unknown'">
-				<a id="{generate-id()}" title="{concat(@extent, ' extent')}, {@reason}" href="#" onclick="return false;"
-					style="text-decoration:none; color:#000000">
+				<a id="{generate-id()}" title="{concat(@extent, ' extent')}, {@reason}" href="#"
+					onclick="return false;" style="text-decoration:none; color:#000000">
 					<sub>
 						<b>
 							<i>-gap-</i>
@@ -547,8 +646,8 @@
 				<xsl:text> </xsl:text>
 			</xsl:when>
 			<xsl:otherwise>
-				<a  id="{generate-id()}" title="{@extent}, {@reason}" href="#" onclick="return false;"
-					style="text-decoration:none; color:#000000">
+				<a id="{generate-id()}" title="{@extent}, {@reason}" href="#"
+					onclick="return false;" style="text-decoration:none; color:#000000">
 					<sub>
 						<b>
 							<i>-gap-</i>
@@ -571,7 +670,7 @@
 			<xsl:when test="child::tei:abbr or child::tei:unclear or child::tei:seg">
 				<xsl:choose>
 					<xsl:when test="count(child::tei:seg/*/tei:w) > 1">
-						<a  id="{generate-id()}" title="{child::tei:unclear/@reason}"
+						<a id="{generate-id()}" title="{child::tei:unclear/@reason}"
 							style="text-decoration:none; color:#000000" href="#"
 							onclick="return false">{</a>
 						<xsl:for-each select="tei:seg">
@@ -580,8 +679,8 @@
 								<sub>
 									<b>
 										<i>
-											<a
-												id="{generate-id()}" title="Or, {child::*[@n = '2']} ({child::*[@n = '2']/tei:w/@lemma}); {child::*[@n = '2']/tei:w/@ana}"
+											<a id="{generate-id()}"
+												title="Or, {child::*[@n = '2']} ({child::*[@n = '2']/tei:w/@lemma}); {child::*[@n = '2']/tei:w/@ana}"
 												href="{child::*[@n = '2']/tei:w/@lemmaRef}"
 												style="text-decoration:none; color:#000000">alt </a>
 										</i>
@@ -589,7 +688,7 @@
 								</sub>
 							</xsl:if>
 						</xsl:for-each>
-						<a  id="{generate-id()}" title="{child::tei:unclear/@reason}"
+						<a id="{generate-id()}" title="{child::tei:unclear/@reason}"
 							style="text-decoration:none; color:#000000" href="#"
 							onclick="return false">}</a>
 					</xsl:when>
@@ -619,8 +718,8 @@
 									<sub>
 										<b>
 											<i>
-												<a
-												id="{generate-id()}" title="MS: {ancestor::tei:choice/tei:sic//tei:w[@n = $wpos]}; {ancestor::tei:choice/tei:sic//tei:w[@n = $wpos]/@ana}"
+												<a id="{generate-id()}"
+												title="MS: {ancestor::tei:choice/tei:sic//tei:w[@n = $wpos]}; {ancestor::tei:choice/tei:sic//tei:w[@n = $wpos]/@ana}"
 												href="{ancestor::tei:choice/tei:sic//tei:w[@n = $wpos]/@lemmaRef}"
 												style="text-decoration:none; color:#000000"
 												>alt</a>
@@ -632,8 +731,8 @@
 									<sub>
 										<b>
 											<i>
-												<a
-												id="{generate-id()}" title="MS: {ancestor::tei:choice/tei:sic//tei:w[@n = $wpos]}"
+												<a id="{generate-id()}"
+												title="MS: {ancestor::tei:choice/tei:sic//tei:w[@n = $wpos]}"
 												href="#" onclick="return false;"
 												style="text-decoration:none; color:#000000"
 												>alt</a>
@@ -678,8 +777,8 @@
 
 	<xsl:template match="tei:choice[not(descendant::tei:w)]">
 		<xsl:apply-templates select="tei:corr"/>
-		<a  id="{generate-id()}" title="MS: {child::tei:sic//*}" href="#" style="text-decoration:none; color:#000000"
-			onclick="return false">
+		<a id="{generate-id()}" title="MS: {child::tei:sic//*}" href="#"
+			style="text-decoration:none; color:#000000" onclick="return false">
 			<sub>
 				<b>
 					<i>alt </i>
@@ -702,60 +801,40 @@
 	<xsl:template match="tei:add[@type = 'insertion']">
 		<xsl:choose>
 			<xsl:when test="not(descendant::tei:w)">
-				<b>
-					\
-				</b>
+				<b> \ </b>
 				<xsl:text> </xsl:text>
-					<xsl:apply-templates/>
+				<xsl:apply-templates/>
 				<xsl:text> </xsl:text>
-				<b>
-					/
-				</b>
+				<b> / </b>
 			</xsl:when>
 			<xsl:otherwise>
 				<xsl:choose>
 					<xsl:when test="@place = 'above'">
-						<b>
-							\
-						</b>
+						<b> \ </b>
 						<xsl:text> </xsl:text>
 						<xsl:apply-templates/>
-						<b>
-							/
-						</b>
+						<b> / </b>
 						<xsl:text> </xsl:text>
 					</xsl:when>
 					<xsl:when test="@place = 'below'">
-						<b>
-							/
-						</b>
+						<b> / </b>
 						<xsl:text> </xsl:text>
 						<xsl:apply-templates/>
-						<b>
-							\
-						</b>
+						<b> \ </b>
 						<xsl:text> </xsl:text>
 					</xsl:when>
 					<xsl:when test="@place = 'margin, right'">
-						<b>
-							&lt;
-						</b>
+						<b> &lt; </b>
 						<xsl:text> </xsl:text>
 						<xsl:apply-templates/>
-						<b>
-							&lt;
-						</b>
+						<b> &lt; </b>
 						<xsl:text> </xsl:text>
 					</xsl:when>
 					<xsl:when test="@place = 'margin, left'">
-						<b>
-							&gt;
-						</b>
+						<b> &gt; </b>
 						<xsl:text> </xsl:text>
 						<xsl:apply-templates/>
-						<b>
-							&gt;
-						</b>
+						<b> &gt; </b>
 						<xsl:text> </xsl:text>
 					</xsl:when>
 				</xsl:choose>
@@ -764,7 +843,11 @@
 	</xsl:template>
 
 	<xsl:template match="tei:add[@type = 'gloss']">
-		<b><xsl:text>gl. </xsl:text></b><xsl:text> </xsl:text><xsl:apply-templates/>
+		<b>
+			<xsl:text>gl. </xsl:text>
+		</b>
+		<xsl:text> </xsl:text>
+		<xsl:apply-templates/>
 		<!-- Write a function to display the gloss in a new window? -->
 	</xsl:template>
 
@@ -777,8 +860,8 @@
 		</sub>
 	</xsl:template>
 
-	<xsl:template match="tei:div[/@resp]">
-		<xsl:if test="/@resp = not(preceding::tei:div/@resp or preceding::tei:handShift/@new)">
+	<xsl:template match="tei:div[@n]">
+		<!-- <xsl:if test="/@resp = not(preceding::tei:div/@resp or preceding::tei:handShift/@new)">
 			<sub>
 				<b>beg. <xsl:value-of select="key('hands', @resp)/tei:forename"
 						/><xsl:text> </xsl:text><xsl:value-of
@@ -786,8 +869,14 @@
 						/><xsl:text> (</xsl:text><xsl:value-of select="@resp"
 					/><xsl:text>) </xsl:text></b>
 			</sub>
-		</xsl:if>
-
+		</xsl:if> -->
+		<h2>
+			<xsl:text>Text </xsl:text>
+			<xsl:value-of select="key('divTitle', @sameAs)/@n"/>
+			<xsl:text>: </xsl:text>
+			<xsl:value-of select="key('divTitle', @sameAs)/tei:title"/>
+		</h2>
+		<xsl:apply-templates/>
 	</xsl:template>
 
 </xsl:stylesheet>

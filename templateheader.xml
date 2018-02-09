@@ -3,12 +3,13 @@
 <?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
 	schematypens="http://purl.oclc.org/dsdl/schematron"?>
 
-<?xml-stylesheet type="text/xsl" href="stylesheet.xsl"?>
-<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="T2">
+
+<?xml-stylesheet type="text/xsl" href="../stylesheet-ed-ana-general.xsl"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="T...">
 	<teiHeader>
 		<fileDesc>
 			<titleStmt>
-				<title> ... </title>
+				<title>...</title>
 				<respStmt corresp="#EPT">
 					<name>Eystein P. Thanisch</name>
 					<resp>Transcriber</resp>
@@ -25,7 +26,7 @@
 				<availability status="restricted">
 					<p>For internal use by the Faclair na Gàidhlig/DASG projects</p>
 				</availability>
-				<idno> Tn </idno>
+				<idno>T...</idno>
 			</publicationStmt>
 			<notesStmt>
 				<note>
@@ -34,13 +35,46 @@
 			</notesStmt>
 			<sourceDesc>
 				<msDesc>
-					<msIdentifier sameAs="#MSn">
-						<settlement> ... </settlement>
-						<repository> ... </repository>
-						<idno type="shelfmark"> ... </idno>
+					<msIdentifier sameAs="MS...">
+						<settlement>...</settlement>
+						<repository>...</repository>
+						<idno type="shelfmark">...</idno>
 					</msIdentifier>
 					<msContents>
-						<summary> ... </summary>
+						<summary>
+							<p><!-- Summarise contents of MS and note which texts are excerpted (Template 0-5) --></p>
+							<p><!-- Orthography (template 18) --></p>
+						</summary>
+						<msItem n="..." xml:id="..." resp="...">
+							<locus>...</locus>
+							<title>...</title>
+							<incipit> ... </incipit>
+							<explicit> ... </explicit>
+							<note>
+								<p><!-- Template 12, 13, 15, 16 --></p>
+							</note>
+							<filiation>
+								<p><!-- Template 14 --></p>
+							</filiation>
+							<textLang mainLang="..." otherLangs="... ...">
+								<note><p><!-- Template 19, 20, 21, 22 --></p></note>
+							</textLang>
+						</msItem>
+						<msItem n="..." xml:id="..." resp="...">
+							<locus>...</locus>
+							<title>...</title>
+							<incipit> ... </incipit>
+							<explicit> ... </explicit>
+							<note>
+								<p><!-- Template 12, 13, 15, 16 --></p>
+							</note>
+							<filiation>
+								<p><!-- Template 14 --></p>
+							</filiation>
+							<textLang mainLang="..." otherLangs="... ...">
+								<note><p><!-- Template 19, 20, 21, 22 --></p></note>
+							</textLang>
+						</msItem>
 						<msItem xml:id="MSn.n" resp="Handn">
 							<locus>...</locus>
 							<title> ... </title>
@@ -59,22 +93,24 @@
 						<objectDesc>
 							<supportDesc>
 								<support>
-									<p> ... </p>
+									<p><!-- Template 7 --></p>
 								</support>
 								<foliation>
 									<p> ... </p>
 								</foliation>
 								<condition>
-									<p> ... </p>
+									<p><!-- Template 6 --></p>
 								</condition>
 							</supportDesc>
 							<layoutDesc>
-								<p> ... </p>
+								<p> <!-- Template 8 --> </p>
 							</layoutDesc>
 						</objectDesc>
 					</physDesc>
 					<history>
-						<provenance><p> ... </p></provenance>
+						<origin><p><!-- Template 1.1 --></p></origin>
+						<provenance><p><!-- Template 1.1 --></p></provenance>
+						<acquisition><p><!-- Template 10 --></p></acquisition>
 					</history>
 				</msDesc>
 			</sourceDesc>
@@ -89,7 +125,7 @@
 		</encodingDesc>
 		<profileDesc>
 			<handNotes>
-				<handNote sameAs="Handn"/>
+				<handNote sameAs="Handn"><!-- Template 1.2 --></handNote>
 			</handNotes>
 			<textClass>
 				<keywords>
@@ -98,10 +134,6 @@
 			</textClass>
 		</profileDesc>
 		<revisionDesc>
-			<change when="..." who="#...">...</change>
+			<change when="2017-11-29" who="#...">...</change>
 		</revisionDesc>
 	</teiHeader>
-	<text>
-		
-	</text>
-</TEI>
