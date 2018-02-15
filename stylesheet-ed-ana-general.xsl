@@ -601,6 +601,10 @@
 			</xsl:when>
 		</xsl:choose>
 	</xsl:template>
+	
+	<xsl:template match="tei:del">
+		<del rend="strikethrough"><xsl:apply-templates/></del>
+	</xsl:template>
 
 	<xsl:template match="tei:handShift">
 		<sub>

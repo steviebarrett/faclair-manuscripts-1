@@ -800,45 +800,34 @@
 
 	<xsl:template match="tei:add[@type = 'insertion']">
 		<xsl:choose>
-			<xsl:when test="not(descendant::tei:w)">
+			<xsl:when test="@place = 'above'">
 				<b> \ </b>
 				<xsl:text> </xsl:text>
 				<xsl:apply-templates/>
-				<xsl:text> </xsl:text>
 				<b> / </b>
+				<xsl:text> </xsl:text>
 			</xsl:when>
-			<xsl:otherwise>
-				<xsl:choose>
-					<xsl:when test="@place = 'above'">
-						<b> \ </b>
-						<xsl:text> </xsl:text>
-						<xsl:apply-templates/>
-						<b> / </b>
-						<xsl:text> </xsl:text>
-					</xsl:when>
-					<xsl:when test="@place = 'below'">
-						<b> / </b>
-						<xsl:text> </xsl:text>
-						<xsl:apply-templates/>
-						<b> \ </b>
-						<xsl:text> </xsl:text>
-					</xsl:when>
-					<xsl:when test="@place = 'margin, right'">
-						<b> &lt; </b>
-						<xsl:text> </xsl:text>
-						<xsl:apply-templates/>
-						<b> &lt; </b>
-						<xsl:text> </xsl:text>
-					</xsl:when>
-					<xsl:when test="@place = 'margin, left'">
-						<b> &gt; </b>
-						<xsl:text> </xsl:text>
-						<xsl:apply-templates/>
-						<b> &gt; </b>
-						<xsl:text> </xsl:text>
-					</xsl:when>
-				</xsl:choose>
-			</xsl:otherwise>
+			<xsl:when test="@place = 'below'">
+				<b> / </b>
+				<xsl:text> </xsl:text>
+				<xsl:apply-templates/>
+				<b> \ </b>
+				<xsl:text> </xsl:text>
+			</xsl:when>
+			<xsl:when test="@place = 'margin, right'">
+				<b> &lt; </b>
+				<xsl:text> </xsl:text>
+				<xsl:apply-templates/>
+				<b> &lt; </b>
+				<xsl:text> </xsl:text>
+			</xsl:when>
+			<xsl:when test="@place = 'margin, left'">
+				<b> &gt; </b>
+				<xsl:text> </xsl:text>
+				<xsl:apply-templates/>
+				<b> &gt; </b>
+				<xsl:text> </xsl:text>
+			</xsl:when>
 		</xsl:choose>
 	</xsl:template>
 

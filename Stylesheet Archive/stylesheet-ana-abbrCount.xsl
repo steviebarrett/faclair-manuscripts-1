@@ -6,7 +6,7 @@
 <xsl:key name="abbrs" match="*" use="@xml:id"/>		
 		
 <xsl:template match="/">
-	<xsl:variable name="glyph" select="//tei:TEI[@xml:id='T9']//tei:g"/>
+	<xsl:variable name="glyph" select="//tei:TEI[@xml:id='T9']//tei:div[@n='1']//tei:g"/>
 	<xsl:variable name="count" select="count($glyph)"/>
 	<html>
 		<body>

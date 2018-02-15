@@ -3,6 +3,7 @@
 <?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
 	schematypens="http://purl.oclc.org/dsdl/schematron"?>
 
+
 <?xml-stylesheet type="text/xsl" href="stylesheet-ed-pub%20-%20js.xsl"?>
 <teiCorpus xmlns="http://www.tei-c.org/ns/1.0" xmlns:xi="http://www.w3.org/2001/XInclude">
 	<teiHeader>
@@ -746,6 +747,10 @@
 					<glyphName>ur symbol</glyphName>
 					<note>A "u" with a descender and cross-stroke, standing for "ur".</note>
 				</glyph>
+				<glyph xml:id="g39" corresp="http://www.vanhamel.nl/codecs/Eile_(ee)">
+					<glyphName>Eile (ee)</glyphName>
+					<note>Double e with acute accents, standing for "eile".</note>
+				</glyph>
 				<glyph xml:id="gn" corresp="n">
 					<glyphName/>
 					<note/>
@@ -897,9 +902,9 @@
 	</teiHeader>
 	<!-- <xi:include href="Transcriptions/transcription1.xml" parse="xml"/> -->
 	<!-- <xi:include href="Transcriptions/transcription2.xml" parse="xml"/> -->
-	<!-- <xi:include href="Transcriptions/transcription5.xml" parse="xml"/> -->
+	<xi:include href="Transcriptions/transcription5.xml" parse="xml"/>
 	<!-- <xi:include href="Transcriptions/transcription6.xml" parse="xml"/> -->
 	<!--  <xi:include href="Transcriptions/transcription7.xml" parse="xml"/> -->
-	<xi:include href="Transcriptions/transcription9.xml" parse="xml"/>
+	<!--  <xi:include href="Transcriptions/transcription9.xml" parse="xml"/> -->
 	<!-- <xi:include href="Transcriptions/transcription12.xml" parse="xml"/> -->
 </teiCorpus>
