@@ -50,9 +50,7 @@
 								<xsl:apply-templates/>
 							</td>
 							<td>
-								<a href="{@lemmaRef}">
-									<xsl:value-of select="@lemma"/>
-								</a>
+								<a href="{@lemmaRef}"><xsl:value-of select="@lemma"/></a>
 							</td>
 							<td>
 								<xsl:value-of select="@ana"/>
