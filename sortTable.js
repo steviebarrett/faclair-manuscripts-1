@@ -21,9 +21,9 @@ function sortTable(n) {
     }
     else {
         //So  dir === "desc"
+        rows = table.getElementsByTagName("tr");
         while (switching) {
             switching = false;
-            rows = table.getElementsByTagName("tr");
             for (i = 1; i < rows.length - 1; i++) {
                 console.log("In loop");
                 shouldSwitch = false;

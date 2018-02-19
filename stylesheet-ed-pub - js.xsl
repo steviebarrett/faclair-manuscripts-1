@@ -707,9 +707,9 @@
 					</xsl:otherwise>
 				</xsl:choose>
 			</xsl:when>
-			<xsl:when test="child::tei:sic and child::tei:corr">
+			<xsl:when test="child::tei:sic">
 				<xsl:choose>
-					<xsl:when test="count(child::*/tei:w) > 1">
+					<xsl:when test="count(child::tei:sic/tei:w) > 1 or count(child::tei:corr/tei:w) > 1">
 						<xsl:for-each select="tei:corr//tei:w[@n]">
 							<xsl:apply-templates select="self::*"/>
 							<xsl:variable name="wpos" select="self::*/@n"/>

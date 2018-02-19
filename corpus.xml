@@ -33,7 +33,8 @@
 						<addrLine>Isle of Skye</addrLine>
 						<addrLine>IV44 8RQ</addrLine>
 						<addrLine><email>mail@faclair.ac.uk</email></addrLine>
-						<addrLine><num>01471 888 273</num> </addrLine>
+						<addrLine><num>01471 888 273</num>
+						</addrLine>
 					</address>
 				</authority>
 				<availability status="restricted">
@@ -71,7 +72,7 @@
 							<idno type="shelfmark">MS. 72.1.50</idno>
 						</msIdentifier>
 					</msDesc>
-					
+
 				</listBibl>
 				<listBibl type="editions">
 					<biblStruct type="bookSection" xml:id="ONolan1912"
@@ -129,7 +130,7 @@
 							<title level="m">The Gaelic notes in the Book of Deer</title>
 							<editor><forename>Kenneth
 								Hurlstone</forename><surname>Jackson</surname></editor>
-							
+
 							<imprint>
 								<pubPlace>Cambridge</pubPlace>
 								<publisher>Cambridge University Press</publisher>
@@ -555,10 +556,14 @@
 					<gloss xml:id="name">name</gloss>
 				</taxonomy>
 				<taxonomy xml:id="probs">
-					<gloss xml:id="interp_obscure">the interpretation of this word is doubtful.</gloss>
-					<gloss xml:id="text_obscure">some characters in this word are difficult to decipher.</gloss>
-					<gloss xml:id="abbrv">this word is based on the doubtful expansion of an abbreviation.</gloss>
-					<gloss xml:id="damage">loss of vellum means some characters have had to be supplied.</gloss>
+					<gloss xml:id="interp_obscure">the interpretation of this word is
+						doubtful.</gloss>
+					<gloss xml:id="text_obscure">some characters in this word are difficult to
+						decipher.</gloss>
+					<gloss xml:id="abbrv">this word is based on the doubtful expansion of an
+						abbreviation.</gloss>
+					<gloss xml:id="damage">loss of vellum means some characters have had to be
+						supplied.</gloss>
 				</taxonomy>
 			</classDecl>
 			<charDecl>
@@ -618,8 +623,7 @@
 					<note>An "s" with a horizontal superscript stroke on top. Originally for Latin
 						"sed" but used to represent "(a)ch(t)" in Gaelic contexts.</note>
 				</glyph>
-				<glyph xml:id="g11"
-					corresp="www.vanhamel.nl/codecs/Air_(symbol_with_superscript)">
+				<glyph xml:id="g11" corresp="www.vanhamel.nl/codecs/Air_(symbol_with_superscript)">
 					<glyphName>air-symbol (with superscript)</glyphName>
 					<note>An ar abbreviation, with a superscript "i", standing for "air".</note>
 				</glyph>
@@ -633,8 +637,7 @@
 					<note>Like the ar abbreviation, but with two cross-strokes on the descender
 						instead of one; stands for "arr".</note>
 				</glyph>
-				<glyph xml:id="g14"
-					corresp="www.vanhamel.nl/codecs/Suspension_stroke_(double)">
+				<glyph xml:id="g14" corresp="www.vanhamel.nl/codecs/Suspension_stroke_(double)">
 					<glyphName>double n-stroke</glyphName>
 					<note>A double n-stroke, standing for "-nn".</note>
 				</glyph>
@@ -644,8 +647,8 @@
 				</glyph>
 				<glyph xml:id="g16" corresp="www.vanhamel.nl/codecs/U_(superscript_v)">
 					<glyphName>u/v (superscript)</glyphName>
-					<note>Superscript u or v, representing "ur" or "ru". <hi rend="bold">NB:</hi> Currently merged
-						with <hi rend="italics"><ref
+					<note>Superscript u or v, representing "ur" or "ru". <hi rend="bold">NB:</hi>
+						Currently merged with <hi rend="italics"><ref
 								target="http://www.vanhamel.nl/codecs/Suspension_stroke_(wavy)"
 								>suspension stroke (wavy)</ref></hi></note>
 				</glyph>
@@ -676,8 +679,7 @@
 					<glyphName>err (inverted tildes)</glyphName>
 					<note>Two vertical tildes, standing for "-e(a)rr".</note>
 				</glyph>
-				<glyph xml:id="g23"
-					corresp="www.vanhamel.nl/codecs/Suspension_stroke_(double)">
+				<glyph xml:id="g23" corresp="www.vanhamel.nl/codecs/Suspension_stroke_(double)">
 					<glyphName>double n-stroke</glyphName>
 					<note>Two superscript cross-strokes, standing for either "-nn" or an expansion
 						containing two of the same consonant.</note>
@@ -733,11 +735,13 @@
 				</glyph>
 				<glyph xml:id="g35" corresp="NULL">
 					<glyphName>ligature</glyphName>
-					<note>Two letters are placed together as a ligature, with text to be inserted in between.</note>
+					<note>Two letters are placed together as a ligature, with text to be inserted in
+						between.</note>
 				</glyph>
 				<glyph xml:id="g36" corresp="www.vanhamel.nl/codecs/Per_(p_with_cross_stroke)">
 					<glyphName>p with cross-stroke</glyphName>
-					<note>A "p" with a subscript suspension stroke, normally standing for "per"/"par/"por".</note>
+					<note>A "p" with a subscript suspension stroke, normally standing for
+						"per"/"par/"por".</note>
 				</glyph>
 				<glyph xml:id="g37" corresp="www.vanhamel.nl/codecs/Ac_(ligature)">
 					<glyphName>ac ligature</glyphName>
@@ -757,7 +761,16 @@
 				</glyph>
 				<glyph xml:id="g41" corresp="http://www.vanhamel.nl/codecs/L_with_suspension_stroke">
 					<glyphName>l with suspension stroke</glyphName>
-					<note>l with a suspension stroke mid-line, representing a vowel following the l.</note>
+					<note>l with a suspension stroke mid-line, representing a vowel following the
+						l.</note>
+				</glyph>
+				<glyph xml:id="g42" corresp="http://www.vanhamel.nl/codecs/S_(superscript)">
+					<glyphName>superscript s</glyphName>
+					<note>A superscript "s", often a majuscule "s" without the lower leftward loop, standing for a string ending in "s".</note>
+				</glyph>
+				<glyph xml:id="g43" corresp="http://www.vanhamel.nl/codecs/I_(subscript)">
+					<glyphName>subscript i</glyphName>
+					<note>A subscript "i", resembling an us-symbol (;), standing for "i", perhaps plus a further string.</note>
 				</glyph>
 				<glyph xml:id="gn" corresp="n">
 					<glyphName/>
@@ -890,8 +903,18 @@
 					<forename>James</forename>
 					<surname>Beaton</surname>
 					<date type="floruit" cert="medium" from="1613" to="1621">17</date>
-					<region cert="high"/>
+					<region/>
 					<note/>
+				</handNote>
+				<handNote xml:id="Hand15">
+					<forename>[unk.]</forename>
+					<surname>[unk.]</surname>
+					<date type="floruit" cert="low" from="1590" to="1700">17</date>
+					<region/>
+					<note>Like James Beaton's, this hand makes occasional brief interventions in
+						Transcription 5.2 (NLS Adv. MS. 72.1.33). It is mucher neater than James
+						Beaton's and the main scribes, with each stroke an angular block strongly
+						distinguished from the others.</note>
 				</handNote>
 			</handNotes>
 		</profileDesc>
@@ -913,6 +936,6 @@
 	<xi:include href="Transcriptions/transcription5.xml" parse="xml"/>
 	<!-- <xi:include href="Transcriptions/transcription6.xml" parse="xml"/> -->
 	<!-- <xi:include href="Transcriptions/transcription7.xml" parse="xml"/> -->
-	<!-- <xi:include href="Transcriptions/transcription9.xml" parse="xml"/> -->
+	<xi:include href="Transcriptions/transcription9.xml" parse="xml"/>
 	<!-- <xi:include href="Transcriptions/transcription12.xml" parse="xml"/> -->
 </teiCorpus>
