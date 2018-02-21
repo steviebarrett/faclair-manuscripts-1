@@ -120,7 +120,13 @@
 		<xsl:text>. </xsl:text>
 	</xsl:template>
 
-	<xsl:template match="//tei:lb[ancestor::tei:lg] | //tei:w//tei:lb[ancestor::tei:lg]">
+	<xsl:template match="tei:div[@type='verse']//tei:lb[ancestor::tei:lg] | //tei:w//tei:lb[ancestor::tei:lg]">
+		<sub><xsl:value-of select="@n"/>.</sub>
+		<xsl:apply-templates/>
+	</xsl:template>
+
+	<xsl:template match="tei:div[@type='divprose']//tei:lb[ancestor::tei:lg] | //tei:w//tei:lb[ancestor::tei:lg]">
+		<br/>
 		<sub><xsl:value-of select="@n"/>.</sub>
 		<xsl:apply-templates/>
 	</xsl:template>
@@ -291,7 +297,7 @@
 		</xsl:variable>
 		<xsl:variable name="msref">
 			<xsl:value-of
-				select="concat($shelfmark, ' ', preceding::tei:pb[1]/@n, preceding::tei:lb[1]/@n)"/>
+				select="concat($shelfmark, ' ', preceding::tei:pb[1]/@n, ' ', preceding::tei:lb[1]/@n)"/>
 		</xsl:variable>
 		<xsl:variable name="medium">
 			<xsl:choose>
