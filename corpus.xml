@@ -37,7 +37,7 @@
 						</addrLine>
 					</address>
 				</authority>
-				<availability status="restricted">
+				<availability status="restricted" xml:id="availability">
 					<p>For internal use by the Faclair na Gàidhlig/DASG projects</p>
 				</availability>
 			</publicationStmt>
@@ -776,6 +776,10 @@
 					<glyphName>s with cross-stroke</glyphName>
 					<note>A long insular "s" with a cross-stroke pointing towards the bottom right, standing for "s", a vowel, and often an "r".</note>
 				</glyph>
+				<glyph xml:id="g45" corresp="http://www.vanhamel.nl/codecs/Vel_(l_with_stroke)">
+					<glyphName>l with suspension stroke (vel)</glyphName>
+					<note>An "l" with a suspension stroke, standing for Latin "vel" or Gaelic "no".</note>
+				</glyph>
 				<glyph xml:id="gn" corresp="n">
 					<glyphName/>
 					<note/>
@@ -908,7 +912,7 @@
 					<surname>Beaton</surname>
 					<date type="floruit" cert="medium" from="1613" to="1621">17</date>
 					<region/>
-					<note/>
+					<note>Black's Hand K (NLS Adv. 72.1.33)</note>
 				</handNote>
 				<handNote xml:id="Hand15">
 					<forename>[unk.]</forename>
@@ -919,6 +923,27 @@
 						Transcription 5.2 (NLS Adv. MS. 72.1.33). It is mucher neater than James
 						Beaton's and the main scribes, with each stroke an angular block strongly
 						distinguished from the others.</note>
+				</handNote>
+				<handNote xml:id="Hand16">
+					<forename>Rev. John</forename>
+					<surname>Beaton</surname>
+					<date type="life" cert="medium" from="1640" to="1715">17</date>
+					<region/>
+					<note>Black's Hand S (NLS Adv. 72.1.33)</note>
+				</handNote>
+				<handNote xml:id="Hand17">
+					<forename>Neil</forename>
+					<surname>Beaton</surname>
+					<date type="floruit" cert="medium" from="1656" to="1656">17</date>
+					<region/>
+					<note>Black's Hand D (NLS Adv. 72.1.33)</note>
+				</handNote>
+				<handNote xml:id="Hand18">
+					<forename>Dubhghall Albanach</forename>
+					<surname>mac mhic Cathail</surname>
+					<date type="floruit" cert="medium" from="1467" to="1467">15</date>
+					<region/>
+					<note/>
 				</handNote>
 			</handNotes>
 		</profileDesc>
@@ -937,9 +962,9 @@
 	</teiHeader>
 	<!-- <xi:include href="Transcriptions/transcription1.xml" parse="xml"/> -->
 	<!-- <xi:include href="Transcriptions/transcription2.xml" parse="xml"/> -->
-	<xi:include href="Transcriptions/transcription5.xml" parse="xml"/>
+	<!-- <xi:include href="Transcriptions/transcription5.xml" parse="xml"/> -->
 	<!-- <xi:include href="Transcriptions/transcription6.xml" parse="xml"/> -->
 	<!-- <xi:include href="Transcriptions/transcription7.xml" parse="xml"/> -->
 	<!-- <xi:include href="Transcriptions/transcription9.xml" parse="xml"/> -->
-	<!-- <xi:include href="Transcriptions/transcription12.xml" parse="xml"/> -->
+	<xi:include href="Transcriptions/transcription12.xml" parse="xml"/>
 </teiCorpus>

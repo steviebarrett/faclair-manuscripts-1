@@ -248,7 +248,7 @@ function addSlip(id) {
 	var rcol10 = row.insertCell(9);
 	rcol10.innerHTML = lem;
 	var rcol11 = row.insertCell(10);
-	rcol11.innerHTML = '<a href="' + lref + '">' + lref + '</a>';
+	rcol11.innerHTML = '<a target="' + lref + '" href="' + lref + '">' + lref + '</a>';
 	var rcol12 = row.insertCell(11);
 	rcol12.innerHTML = "";
 	var rcol13 = row.insertCell(12);
