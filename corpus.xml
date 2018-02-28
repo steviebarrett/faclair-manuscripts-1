@@ -565,6 +565,12 @@
 					<gloss xml:id="damage">loss of vellum means some characters have had to be
 						supplied.</gloss>
 				</taxonomy>
+				<taxonomy xml:id="lang">
+					<gloss xml:id="la">Latin</gloss>
+					<gloss xml:id="sco">Scots</gloss>
+					<gloss xml:id="hbo">Ancient Hebrew</gloss>
+					<gloss xml:id="und">unknown</gloss>
+				</taxonomy>
 			</classDecl>
 			<charDecl>
 				<glyph xml:id="g0">
@@ -780,6 +786,10 @@
 					<glyphName>l with suspension stroke (vel)</glyphName>
 					<note>An "l" with a suspension stroke, standing for Latin "vel" or Gaelic "no".</note>
 				</glyph>
+				<glyph xml:id="g46" corresp="http://www.vanhamel.nl/codecs/Ir_(cross_stroke)">
+					<glyphName>ir (cross stroke)</glyphName>
+					<note>An "i" set below the inner writing tracks, with a cross-stroke, standing for "ir". The cross-stroke can be doubled to form "irr".</note>
+				</glyph>
 				<glyph xml:id="gn" corresp="n">
 					<glyphName/>
 					<note/>
@@ -962,9 +972,10 @@
 	</teiHeader>
 	<!-- <xi:include href="Transcriptions/transcription1.xml" parse="xml"/> -->
 	<!-- <xi:include href="Transcriptions/transcription2.xml" parse="xml"/> -->
-	<!-- <xi:include href="Transcriptions/transcription5.xml" parse="xml"/> -->
+	<!-- <xi:include href="Transcriptions/transcription4.xml" parse="xml"/> -->
+	<xi:include href="Transcriptions/transcription5.xml" parse="xml"/>
 	<!-- <xi:include href="Transcriptions/transcription6.xml" parse="xml"/> -->
 	<!-- <xi:include href="Transcriptions/transcription7.xml" parse="xml"/> -->
 	<!-- <xi:include href="Transcriptions/transcription9.xml" parse="xml"/> -->
-	<xi:include href="Transcriptions/transcription12.xml" parse="xml"/>
+	<!-- <xi:include href="Transcriptions/transcription12.xml" parse="xml"/> -->
 </teiCorpus>

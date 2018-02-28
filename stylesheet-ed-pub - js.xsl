@@ -13,11 +13,11 @@
 	<xsl:key name="probs" match="*" use="@xml:id"/>
 	<xsl:key name="divTitle" match="*" use="@xml:id"/>
 	<xsl:key name="auth" match="*" use="@xml:id"/>
+	<xsl:key name="lang" match="*" use="@xml:id"/>
 
 	<xsl:attribute-set name="tblBorder">
 		<xsl:attribute name="border">solid 0.1mm black</xsl:attribute>
 	</xsl:attribute-set>
-
 
 	<xsl:template match="/">
 		<html>
@@ -200,6 +200,11 @@
 			<button onclick="createTable()">Collect Slips</button>
 		</p>
 	</xsl:template>
+	
+	<xsl:template match="tei:cb">
+		<br/>
+		<b>Column:<xsl:text> </xsl:text></b><xsl:value-of select="@n"/>
+	</xsl:template>
 
 	<xsl:template match="tei:p//tei:lb">
 		<br/>
@@ -261,7 +266,7 @@
 									name</xsl:otherwise>
 							</xsl:choose>
 						</xsl:when>
-						<xsl:when test="@xml:lang">Other lang.: <xsl:value-of select="@xml:lang"
+						<xsl:when test="@xml:lang">Language: <xsl:value-of select="key('lang', @xml:lang)/text()"
 							/></xsl:when>
 						<xsl:otherwise>[no lemma entered]</xsl:otherwise>
 					</xsl:choose>
@@ -290,7 +295,7 @@
 							<xsl:text xml:space="preserve">- some or all of this word is difficult to decipher &#10;</xsl:text>
 						</xsl:when>
 						<xsl:when test="@reason = 'abbrv'">
-							<xsl:text xml:space="preserve">- this involves an abbreviation that cannot be expanded with certainty &#10;</xsl:text>
+							<xsl:text xml:space="preserve">- this reading involves an abbreviation that cannot be expanded with certainty &#10;</xsl:text>
 						</xsl:when>
 						<xsl:when test="@reason = 'damage'">
 							<xsl:text xml:space="preserve">- loss of vellum; some characters are lost and may have been supplied by an editor &#10;</xsl:text>
@@ -298,11 +303,25 @@
 					</xsl:choose>
 				</xsl:for-each>
 			</xsl:if>
+			<xsl:if test="ancestor::tei:choice">
+				<xsl:text xml:space="preserve">- there is a possible alternative to this reading &#10;</xsl:text>
+			</xsl:if>
+			<xsl:if test="ancestor::tei:supplied">
+				<xsl:text xml:space="preserve">- this word has been supplied by an editor &#10;</xsl:text>
+			</xsl:if>
+			<xsl:if test="descendant::tei:supplied">
+				<xsl:text xml:space="preserve">- some characters have been supplied by an editor &#10;</xsl:text>
+			</xsl:if>
+			<xsl:if test="@xml:lang">
+				<xsl:text xml:space="preserve">- this word is in a language other than Gaelic &#10;</xsl:text>
+			</xsl:if>
 		</xsl:variable>
 		<xsl:variable name="certProb">
 			<xsl:if test="ancestor::*[@cert] or descendant::*[@cert]">
 				<xsl:for-each select="ancestor::*[@cert] | descendant::*[@cert]">
 					<xsl:choose>
+						<xsl:when test="@cert = 'High'">Slight/possible problems with this reading
+							&#10;</xsl:when>
 						<xsl:when test="@cert = 'medium'">Moderate problems with this reading
 							&#10;</xsl:when>
 						<xsl:when test="@cert = 'low'">Serious problems with this reading
@@ -342,11 +361,6 @@
 				<xsl:when
 					test="ancestor-or-self::*[@cert = 'low'] or descendant-or-self::*[@cert = 'low']"
 					>Severe</xsl:when>
-				<xsl:when test="ancestor::tei:supplied">Form supplied by editor</xsl:when>
-				<xsl:when test="@xml:lang">Word in a language other than Gaelic</xsl:when>
-				<xsl:when test="descendant::tei:supplied">Some characters supplied by
-					editor</xsl:when>
-				<xsl:otherwise>None</xsl:otherwise>
 			</xsl:choose>
 		</xsl:variable>
 		<xsl:variable name="handRef">
@@ -367,12 +381,28 @@
 			</xsl:choose>
 		</xsl:variable>
 		<xsl:variable name="hand">
+			<xsl:choose>
+				<xsl:when test="descendant::tei:handShift">
+					<xsl:value-of select="key('hands', $handRef)/tei:forename"/>
+					<xsl:text> </xsl:text>
+					<xsl:value-of select="key('hands', $handRef)/tei:surname"/>
+					<xsl:text> (</xsl:text>
+					<xsl:value-of select="$handRef"/>
+					<xsl:text>) / </xsl:text><xsl:value-of select="key('hands', descendant::tei:handShift/@new)/tei:forename"/>
+					<xsl:text> </xsl:text>
+					<xsl:value-of select="key('hands', descendant::tei:handShift/@new)/tei:surname"/>
+					<xsl:text> (</xsl:text>
+					<xsl:value-of select="descendant::tei:handShift/@new"/><xsl:text>) </xsl:text>
+				</xsl:when>
+				<xsl:otherwise>
 			<xsl:value-of select="key('hands', $handRef)/tei:forename"/>
 			<xsl:text> </xsl:text>
 			<xsl:value-of select="key('hands', $handRef)/tei:surname"/>
 			<xsl:text> (</xsl:text>
 			<xsl:value-of select="$handRef"/>
 			<xsl:text>) </xsl:text>
+				</xsl:otherwise>
+			</xsl:choose>
 		</xsl:variable>
 		<xsl:variable name="handDate">
 			<xsl:value-of select="key('hands', $handRef)/tei:date"/>
@@ -395,10 +425,13 @@
 					>Prose</xsl:when>
 			</xsl:choose>
 		</xsl:variable>
-		<a id="{generate-id()}" lemma="{$lem}" lemmaRef="{$lemRef}" ana="{@ana}"
-			hand="{$hand}" ref="{$msref}" date="{$handDate}" medium="{$medium}" cert="{$certLvl}"
+		<xsl:variable name="pos">
+			<xsl:value-of select="key('pos', @ana)"/>
+		</xsl:variable>
+		<a id="{generate-id()}" lemma="{$lem}" lemmaRef="{$lemRef}" ana="{@ana}" hand="{$hand}"
+			ref="{$msref}" date="{$handDate}" medium="{$medium}" cert="{$certLvl}"
 			abbrRefs="{$abbrRef}"
-			title="{$lem}&#10;{@ana}&#10;{$prob}{$certProb}&#10;Abbreviations: {$abbrs}"
+			title="{$lem}: {$pos}&#10;{$hand}&#10;{$prob}{$certProb}&#10;Abbreviations: {$abbrs}"
 			style="text-decoration:none; color:#000000">
 			<xsl:if test="@lemma">
 				<xsl:attribute name="onclick">addSlip(this.id)</xsl:attribute>
@@ -784,7 +817,62 @@
 		</del>
 	</xsl:template>
 
-	<xsl:template match="tei:choice[descendant::tei:w]">
+	<xsl:template match="tei:choice">
+		<xsl:choose>
+			<xsl:when test="child::tei:sic | tei:corr">
+				<xsl:apply-templates select="child::tei:corr"/>
+				<a id="{generate-id()}" title="MS: {child::tei:sic}">
+						<xsl:if test="tei:sic//tei:w/@lemma">
+							<xsl:attribute name="href">
+								<xsl:value-of select="child::tei:sic//tei:w[not(descendant::tei:w)]/@lemmaRef"/>
+							</xsl:attribute>
+							<xsl:attribute name="style">text-decoration:none; color:#000000</xsl:attribute>
+							</xsl:if>
+							<sub>
+								<b>
+									<i>alt</i>
+								</b>
+							</sub>
+						</a>
+						<xsl:text> </xsl:text>
+			</xsl:when>
+			<xsl:when test="child::tei:unclear">
+				<xsl:text>{</xsl:text><xsl:for-each select="tei:unclear[@n = '1']/descendant::*[@n]"><xsl:variable name="wpos" select="@n"/>
+					<xsl:apply-templates select="self::*"/><xsl:if test="ancestor::tei:choice/tei:unclear[@n = '2']/descendant::*/@n = $wpos"><a id="{generate-id()}" title="Or, {ancestor::tei:choice/tei:unclear[@n = '2']/descendant::tei:w[@n = $wpos]}">
+						<xsl:if test="ancestor::tei:choice/tei:unclear[@n = '2']/descendant::*[@n = $wpos]/@lemma">
+							<xsl:attribute name="href">
+								<xsl:value-of select="ancestor::tei:choice/tei:unclear[@n = '2']/descendant::*[@n = $wpos]/@lemmaRef"/>
+							</xsl:attribute>
+							<xsl:attribute name="style">text-decoration:none; color:#000000</xsl:attribute>
+						</xsl:if>
+						<sub>
+							<b>
+								<i>alt</i>
+							</b>
+						</sub>
+					</a>
+						</xsl:if>
+				</xsl:for-each>
+				<xsl:for-each select="tei:unclear[@n = '2']/*[@n > ancestor::tei:choice/tei:unclear[@n = '1']//tei:w//@n]">
+					<a id="{generate-id()}" title="{self::*}">
+						<xsl:if test="@lemma">
+							<xsl:attribute name="href">
+								<xsl:value-of select="@lemmaRef"/>
+							</xsl:attribute>
+							<xsl:attribute name="style">text-decoration:none; color:#000000</xsl:attribute>
+						</xsl:if>
+						<sub>
+							<b>
+								<i><xsl:text> </xsl:text>alt<xsl:text> </xsl:text></i>
+							</b>
+						</sub>
+					</a>
+				</xsl:for-each><xsl:text>} </xsl:text>
+			</xsl:when>
+		</xsl:choose>
+	</xsl:template>
+
+	<!-- <xsl:template match="tei:choice[descendant::tei:w]">
 		<xsl:choose>
 			<xsl:when test="child::tei:abbr or child::tei:unclear or child::tei:seg">
 				<xsl:choose>
@@ -905,7 +993,7 @@
 				</b>
 			</sub>
 		</a>
-	</xsl:template>
+	</xsl:template> -->
 
 	<xsl:template match="tei:note[@type = 'fn']">
 		<sup>
@@ -961,12 +1049,11 @@
 	</xsl:template>
 
 	<xsl:template match="tei:handShift">
-		<sub>
+		<xsl:text> </xsl:text><sub>
 			<b>
-				<a id="{generate-id()}" title="beg. {@new}" href="#" onclick="return false;"
-					style="text-decoration:none; color:#000000">handShift</a>
+				new hand
 			</b>
-		</sub>
+		</sub><xsl:text> </xsl:text>
 	</xsl:template>
 
 	<xsl:template match="tei:div[@n]">

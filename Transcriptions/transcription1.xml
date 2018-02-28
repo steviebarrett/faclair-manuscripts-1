@@ -587,12 +587,12 @@
 						<w lemma="pet(t)" lemmaRef="http://www.dil.ie/34300" ana="noun">pette</w>
 						<lb n="3" xml:id="MS1.3v.3"/>
 						<choice>
-							<unclear n="1" reason="abbrv" resp="EPT"><w lemma="mac"
-									lemmaRef="http://www.dil.ie/31166" ana="noun"><abbr n="1"
+							<unclear n="1" reason="abbrv" resp="EPT"><w n="1" lemma="mac"
+									lemmaRef="http://www.dil.ie/31166" ana="noun"><abbr
 										cert="medium">m<g ref="g1" cert="medium"
 								>a</g></abbr>c</w></unclear>
-							<unclear n="2" reason="abbrv" resp="EPT"><w lemma="mac"
-									lemmaRef="http://www.dil.ie/31166" ana="noun"><abbr n="2"
+							<unclear n="2" reason="abbrv" resp="EPT"><w n="1" lemma="mac"
+									lemmaRef="http://www.dil.ie/31166" ana="noun"><abbr
 										cert="medium">m<g ref="g1" cert="medium"
 								>ei</g></abbr>c</w></unclear>
 						</choice>
@@ -825,11 +825,11 @@
 					<name type="place">
 						<w lemma="pet(t)" lemmaRef="http://www.dil.ie/34300" ana="noun">pett</w>
 						<space type="scribal"/><choice>
-							<unclear n="1" reason="abbrv" resp="EPT"><w lemma="mac"
+							<unclear n="1" reason="abbrv" resp="EPT"><w n="1" lemma="mac"
 									lemmaRef="http://www.dil.ie/31166" ana="noun"><abbr
 										cert="medium">m<g ref="g1" cert="medium"
 								>a</g></abbr>c</w></unclear>
-							<unclear n="2" reason="abbrv" resp="EPT"><w lemma="mac"
+							<unclear n="2" reason="abbrv" resp="EPT"><w n="1" lemma="mac"
 									lemmaRef="http://www.dil.ie/31166" ana="noun"><abbr
 										cert="medium">m<g ref="g1" cert="medium"
 								>ei</g></abbr>c</w></unclear>
@@ -1124,11 +1124,11 @@
 						<w lemma="pet(t)" lemmaRef="http://www.dil.ie/34300" ana="noun">pett</w>
 						<space type="scribal"/>
 						<choice>
-							<unclear n="1" reason="abbrv" resp="EPT"><w lemma="mac"
+							<unclear n="1" reason="abbrv" resp="EPT"><w n="1" lemma="mac"
 									lemmaRef="http://www.dil.ie/31166" ana="noun"><abbr
 										cert="medium">m<g ref="g1" cert="medium"
 								>a</g></abbr>c</w></unclear>
-							<unclear n="2" reason="abbrv" resp="EPT"><w lemma="mac"
+							<unclear n="2" reason="abbrv" resp="EPT"><w n="1" lemma="mac"
 									lemmaRef="http://www.dil.ie/31166" ana="noun"><abbr
 										cert="medium">m<g ref="g1" cert="medium"
 								>ei</g></abbr>c</w></unclear>
@@ -1555,8 +1555,8 @@
 					<w lemma="éis" lemmaRef="http://www.dil.ie/19846" ana="noun">neis</w>
 				</p>
 			</div>
-			<pb n="fol.4r" sameAs="MS1.4r"/>
 			<div n="3" type="prose" sameAs="MS1.3" resp="Hand4">
+				<pb n="fol.4r" sameAs="MS1.4r"/>
 				<p>
 					<lb n="13" xml:id="MS1.4r.13"/>
 					<name type="personal">
@@ -1595,10 +1595,10 @@
 					<name type="place">
 						<w lemma="pet(t)" lemmaRef="http://www.dil.ie/34300" ana="noun">pet</w>
 						<choice>
-							<unclear n="1" reason="abbrv" resp="EPT"><w lemma="mac"
+							<unclear n="1" reason="abbrv" resp="EPT"><w n="1" lemma="mac"
 									lemmaRef="http://www.dil.ie/31166" ana="noun"><abbr
 										cert="medium">m<g ref="g3">e</g></abbr>c</w></unclear>
-							<unclear n="2" reason="abbrv" resp="EPT"><w lemma="mac"
+							<unclear n="2" reason="abbrv" resp="EPT"><w n="1" lemma="mac"
 									lemmaRef="http://www.dil.ie/31166" ana="noun"><abbr
 										cert="medium">m<g ref="g3">a</g></abbr>c</w></unclear>
 						</choice>
@@ -1998,8 +1998,8 @@
 					</name>
 				</p>
 			</div>
-			<pb n="fol.4v" sameAs="MS1.4v"/>
 			<div n="5" type="prose" sameAs="MS1.5" resp="Hand2">
+				<pb n="fol.4v" sameAs="MS1.4v"/>
 				<p>
 					<lb n="3" xml:id="MS1.4v.3"/>
 					<name type="personal">
@@ -2268,7 +2268,7 @@
 					<w lemma="achad" lemmaRef="http://www.dil.ie/186" ana="noun">achad</w>
 					<pc>.</pc>
 					<lb n="27" xml:id="MS1.4v.27"/>
-					<handShift new="Hand3"/>
+					<handShift new="Hand1"/>
 					<w lemma="i" lemmaRef="http://www.dil.ie/26891" ana="prep">i</w>
 					<w lemma="saíre" lemmaRef="http://www.dil.ie/36041" ana="noun">ssaeri</w>
 					<space type="scribal"/>
