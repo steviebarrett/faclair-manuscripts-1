@@ -167,9 +167,11 @@
 		<hr align="left" width="40%"/>
 		<p align="left">
 			<xsl:choose>
-				<xsl:when test="ancestor::tei:div//tei:handShift">
+				<xsl:when test="ancestor::tei:div[1]//tei:handShift">
+					<xsl:variable name="comDiv" select="ancestor::tei:div[1]/@xml:id"/>
 					<xsl:choose>
-						<xsl:when test="preceding::tei:handShift">
+						<xsl:when
+							test="preceding::tei:handShift/ancestor::tei:div[1]/@corresp = $comDiv">
 							<b><xsl:value-of select="@n"/>: <xsl:value-of
 									select="key('hands', preceding::tei:handShift[1]/@new)/tei:forename"
 									/><xsl:text> </xsl:text><xsl:value-of
@@ -200,10 +202,11 @@
 			<button onclick="createTable()">Collect Slips</button>
 		</p>
 	</xsl:template>
-	
+
 	<xsl:template match="tei:cb">
 		<br/>
-		<b>Column:<xsl:text> </xsl:text></b><xsl:value-of select="@n"/>
+		<b>Column:<xsl:text> </xsl:text></b>
+		<xsl:value-of select="@n"/>
 	</xsl:template>
 
 	<xsl:template match="tei:p//tei:lb">
@@ -266,8 +269,8 @@
 									name</xsl:otherwise>
 							</xsl:choose>
 						</xsl:when>
-						<xsl:when test="@xml:lang">Language: <xsl:value-of select="key('lang', @xml:lang)/text()"
-							/></xsl:when>
+						<xsl:when test="@xml:lang">Language: <xsl:value-of
+								select="key('lang', @xml:lang)/text()"/></xsl:when>
 						<xsl:otherwise>[no lemma entered]</xsl:otherwise>
 					</xsl:choose>
 				</xsl:when>
@@ -300,6 +303,9 @@
 						<xsl:when test="@reason = 'damage'">
 							<xsl:text xml:space="preserve">- loss of vellum; some characters are lost and may have been supplied by an editor &#10;</xsl:text>
 						</xsl:when>
+						<xsl:when test="@reason = 'fold'">
+							<xsl:text xml:space="preserve">- the page edge is folded in the digital image; more text may be discernible by examining the manuscript in person &#10;</xsl:text>
+						</xsl:when>
 					</xsl:choose>
 				</xsl:for-each>
 			</xsl:if>
@@ -315,13 +321,53 @@
 			<xsl:if test="@xml:lang">
 				<xsl:text xml:space="preserve">- this word is in a language other than Gaelic &#10;</xsl:text>
 			</xsl:if>
+			<xsl:if test="ancestor::tei:del">
+				<xsl:text xml:space="preserve">- this word has been deleted by </xsl:text>
+				<xsl:value-of select="key('hands', ancestor::tei:del/@resp)/tei:forename"/>
+				<xsl:text> </xsl:text>
+				<xsl:value-of select="key('hands', ancestor::tei:del/@resp)/tei:surname"/>
+				<xsl:text> (</xsl:text>
+				<xsl:value-of select="key('hands', ancestor::tei:del/@resp)/@xml:id"/>
+				<xsl:text>)&#10;</xsl:text>
+			</xsl:if>
+			<xsl:if test="descendant::tei:del">
+				<xsl:for-each select="descendant::tei:del">
+					<xsl:text xml:space="preserve">- characters have been deleted by </xsl:text>
+					<xsl:value-of select="key('hands', @resp)/tei:forename"/>
+					<xsl:text> </xsl:text>
+					<xsl:value-of select="key('hands', @resp)/tei:surname"/>
+					<xsl:text> (</xsl:text>
+					<xsl:value-of select="key('hands', @resp)/@xml:id"/>
+					<xsl:text>)&#10;</xsl:text>
+				</xsl:for-each>
+			</xsl:if>
+			<xsl:if test="ancestor::tei:add">
+				<xsl:text xml:space="preserve">- this word has been added by </xsl:text>
+				<xsl:value-of select="key('hands', ancestor::tei:add/@resp)/tei:forename"/>
+				<xsl:text> </xsl:text>
+				<xsl:value-of select="key('hands', ancestor::tei:add/@resp)/tei:surname"/>
+				<xsl:text> (</xsl:text>
+				<xsl:value-of select="key('hands', ancestor::tei:add/@resp)/@xml:id"/>
+				<xsl:text>)&#10;</xsl:text>
+			</xsl:if>
+			<xsl:if test="descendant::tei:add">
+				<xsl:for-each select="descendant::tei:add">
+					<xsl:text xml:space="preserve">- characters have been added by </xsl:text>
+					<xsl:value-of select="key('hands', @resp)/tei:forename"/>
+					<xsl:text> </xsl:text>
+					<xsl:value-of select="key('hands', @resp)/tei:surname"/>
+					<xsl:text> (</xsl:text>
+					<xsl:value-of select="key('hands', @resp)/@xml:id"/>
+					<xsl:text>)&#10;</xsl:text>
+				</xsl:for-each>
+			</xsl:if>
 		</xsl:variable>
 		<xsl:variable name="certProb">
 			<xsl:if test="ancestor::*[@cert] or descendant::*[@cert]">
 				<xsl:for-each select="ancestor::*[@cert] | descendant::*[@cert]">
 					<xsl:choose>
-						<xsl:when test="@cert = 'High'">Slight/possible problems with this reading
-							&#10;</xsl:when>
+						<xsl:when test="@cert[parent::tei:unclear] = 'High'">Slight/possible
+							problems with this reading &#10;</xsl:when>
 						<xsl:when test="@cert = 'medium'">Moderate problems with this reading
 							&#10;</xsl:when>
 						<xsl:when test="@cert = 'low'">Serious problems with this reading
@@ -388,19 +434,21 @@
 					<xsl:value-of select="key('hands', $handRef)/tei:surname"/>
 					<xsl:text> (</xsl:text>
 					<xsl:value-of select="$handRef"/>
-					<xsl:text>) / </xsl:text><xsl:value-of select="key('hands', descendant::tei:handShift/@new)/tei:forename"/>
+					<xsl:text>) / </xsl:text>
+					<xsl:value-of select="key('hands', descendant::tei:handShift/@new)/tei:forename"/>
 					<xsl:text> </xsl:text>
 					<xsl:value-of select="key('hands', descendant::tei:handShift/@new)/tei:surname"/>
 					<xsl:text> (</xsl:text>
-					<xsl:value-of select="descendant::tei:handShift/@new"/><xsl:text>) </xsl:text>
+					<xsl:value-of select="descendant::tei:handShift/@new"/>
+					<xsl:text>) </xsl:text>
 				</xsl:when>
 				<xsl:otherwise>
-			<xsl:value-of select="key('hands', $handRef)/tei:forename"/>
-			<xsl:text> </xsl:text>
-			<xsl:value-of select="key('hands', $handRef)/tei:surname"/>
-			<xsl:text> (</xsl:text>
-			<xsl:value-of select="$handRef"/>
-			<xsl:text>) </xsl:text>
+					<xsl:value-of select="key('hands', $handRef)/tei:forename"/>
+					<xsl:text> </xsl:text>
+					<xsl:value-of select="key('hands', $handRef)/tei:surname"/>
+					<xsl:text> (</xsl:text>
+					<xsl:value-of select="$handRef"/>
+					<xsl:text>) </xsl:text>
 				</xsl:otherwise>
 			</xsl:choose>
 		</xsl:variable>
@@ -426,7 +474,27 @@
 			</xsl:choose>
 		</xsl:variable>
 		<xsl:variable name="pos">
-			<xsl:value-of select="key('pos', @ana)"/>
+			<!-- <xsl:choose>
+				<xsl:when test="contains(@ana, ',')">
+					<xsl:variable name="anastring" select="@ana/text()"/>
+					<xsl:variable name="item_1">
+						<xsl:value-of select="substring-before($anastring, ', ')"/>
+					</xsl:variable>
+					<xsl:variable name="item">
+						<xsl:value-of select="substring-after($anastring, ', ')"/>
+					</xsl:variable>
+					<xsl:variable name="items">
+						<xsl:for-each select="$item">
+							<xsl:value-of select="self::*"/><xsl:text>; </xsl:text>
+						</xsl:for-each>
+					</xsl:variable>
+					<xsl:value-of select="$item_1"/><xsl:text>; </xsl:text><xsl:value-of select="$items"/>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:value-of select="key('pos', @ana)"/>
+				</xsl:otherwise>
+			</xsl:choose> -->
+			<xsl:value-of select="@ana"/>
 		</xsl:variable>
 		<a id="{generate-id()}" lemma="{$lem}" lemmaRef="{$lemRef}" ana="{@ana}" hand="{$hand}"
 			ref="{$msref}" date="{$handDate}" medium="{$medium}" cert="{$certLvl}"
@@ -717,7 +785,7 @@
 	</xsl:template>
 
 	<xsl:template match="tei:c">
-		<a id="{generate-id()}" title="Unexplained character" href="#" onclick="return false;"
+		<a id="{generate-id()}" title="Unexplained character(s)" href="#" onclick="return false;"
 			style="text-decoration:none; color:#000000">
 			<xsl:apply-templates/>
 		</a>
@@ -784,7 +852,7 @@
 		</xsl:choose>
 	</xsl:template>
 
-	<xsl:template match="tei:gap">
+	<xsl:template match="tei:gap[not(ancestor::tei:w)]">
 		<xsl:choose>
 			<xsl:when test="@extent = 'unknown'">
 				<a id="{generate-id()}" title="{concat(@extent, ' extent')}, {@reason}" href="#"
@@ -822,11 +890,40 @@
 			<xsl:when test="child::tei:sic | tei:corr">
 				<xsl:apply-templates select="child::tei:corr"/>
 				<a id="{generate-id()}" title="MS: {child::tei:sic}">
-						<xsl:if test="tei:sic//tei:w/@lemma">
-							<xsl:attribute name="href">
-								<xsl:value-of select="child::tei:sic//tei:w[not(descendant::tei:w)]/@lemmaRef"/>
-							</xsl:attribute>
-							<xsl:attribute name="style">text-decoration:none; color:#000000</xsl:attribute>
+					<xsl:if test="tei:sic//tei:w/@lemma">
+						<xsl:attribute name="href">
+							<xsl:value-of
+								select="child::tei:sic//tei:w[not(descendant::tei:w)]/@lemmaRef"/>
+						</xsl:attribute>
+						<xsl:attribute name="style">text-decoration:none;
+							color:#000000</xsl:attribute>
+					</xsl:if>
+					<sub>
+						<b>
+							<i>alt</i>
+						</b>
+					</sub>
+				</a>
+				<xsl:text> </xsl:text>
+			</xsl:when>
+			<xsl:when test="child::tei:unclear">
+				<xsl:text>{</xsl:text>
+				<xsl:for-each select="tei:unclear[@n = '1']/descendant::*[@n]">
+					<xsl:variable name="wpos" select="@n"/>
+					<xsl:apply-templates select="self::*"/>
+					<xsl:if
+						test="ancestor::tei:choice/tei:unclear[@n = '2']/descendant::*/@n = $wpos">
+						<a id="{generate-id()}"
+							title="Or, {ancestor::tei:choice/tei:unclear[@n = '2']/descendant::tei:w[@n = $wpos]}">
+							<xsl:if
+								test="ancestor::tei:choice/tei:unclear[@n = '2']/descendant::*[@n = $wpos]/@lemma">
+								<xsl:attribute name="href">
+									<xsl:value-of
+										select="ancestor::tei:choice/tei:unclear[@n = '2']/descendant::*[@n = $wpos]/@lemmaRef"
+									/>
+								</xsl:attribute>
+								<xsl:attribute name="style">text-decoration:none;
+									color:#000000</xsl:attribute>
 							</xsl:if>
 							<sub>
 								<b>
@@ -834,32 +931,17 @@
 								</b>
 							</sub>
 						</a>
-						<xsl:text> </xsl:text>
-			</xsl:when>
-			<xsl:when test="child::tei:unclear">
-				<xsl:text>{</xsl:text><xsl:for-each select="tei:unclear[@n = '1']/descendant::*[@n]"><xsl:variable name="wpos" select="@n"/>
-					<xsl:apply-templates select="self::*"/><xsl:if test="ancestor::tei:choice/tei:unclear[@n = '2']/descendant::*/@n = $wpos"><a id="{generate-id()}" title="Or, {ancestor::tei:choice/tei:unclear[@n = '2']/descendant::tei:w[@n = $wpos]}">
-						<xsl:if test="ancestor::tei:choice/tei:unclear[@n = '2']/descendant::*[@n = $wpos]/@lemma">
-							<xsl:attribute name="href">
-								<xsl:value-of select="ancestor::tei:choice/tei:unclear[@n = '2']/descendant::*[@n = $wpos]/@lemmaRef"/>
-							</xsl:attribute>
-							<xsl:attribute name="style">text-decoration:none; color:#000000</xsl:attribute>
-						</xsl:if>
-						<sub>
-							<b>
-								<i>alt</i>
-							</b>
-						</sub>
-					</a>
-						</xsl:if>
+					</xsl:if>
 				</xsl:for-each>
-				<xsl:for-each select="tei:unclear[@n = '2']/*[@n > ancestor::tei:choice/tei:unclear[@n = '1']//tei:w//@n]">
+				<xsl:for-each
+					select="tei:unclear[@n = '2']/*[@n > ancestor::tei:choice/tei:unclear[@n = '1']//tei:w//@n]">
 					<a id="{generate-id()}" title="{self::*}">
 						<xsl:if test="@lemma">
 							<xsl:attribute name="href">
 								<xsl:value-of select="@lemmaRef"/>
 							</xsl:attribute>
-							<xsl:attribute name="style">text-decoration:none; color:#000000</xsl:attribute>
+							<xsl:attribute name="style">text-decoration:none;
+								color:#000000</xsl:attribute>
 						</xsl:if>
 						<sub>
 							<b>
@@ -867,7 +949,8 @@
 							</b>
 						</sub>
 					</a>
-				</xsl:for-each><xsl:text>} </xsl:text>
+				</xsl:for-each>
+				<xsl:text>} </xsl:text>
 			</xsl:when>
 		</xsl:choose>
 	</xsl:template>
@@ -1049,11 +1132,11 @@
 	</xsl:template>
 
 	<xsl:template match="tei:handShift">
-		<xsl:text> </xsl:text><sub>
-			<b>
-				new hand
-			</b>
-		</sub><xsl:text> </xsl:text>
+		<xsl:text> </xsl:text>
+		<sub>
+			<b> new hand </b>
+		</sub>
+		<xsl:text> </xsl:text>
 	</xsl:template>
 
 	<xsl:template match="tei:div[@n]">

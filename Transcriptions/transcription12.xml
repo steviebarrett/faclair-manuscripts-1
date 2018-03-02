@@ -5,7 +5,7 @@
 
 
 <?xml-stylesheet type="text/xsl" href="../stylesheet-ed-ana-general.xsl"?>
-<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="T2">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="T12">
 	<teiHeader>
 		<fileDesc>
 			<titleStmt>
@@ -26,7 +26,7 @@
 				<availability status="restricted">
 					<p>For internal use by the Faclair na Gàidhlig/DASG projects</p>
 				</availability>
-				<idno> Tn </idno>
+				<idno>T12</idno>
 			</publicationStmt>
 			<notesStmt>
 				<note>
@@ -35,22 +35,34 @@
 			</notesStmt>
 			<sourceDesc>
 				<msDesc>
-					<msIdentifier sameAs="#MSn">
-						<settlement> ... </settlement>
-						<repository> ... </repository>
-						<idno type="shelfmark"> ... </idno>
+					<msIdentifier sameAs="MS12">
+						<settlement>Edinburgh</settlement>
+						<repository>NLS Adv. MS.</repository>
+						<idno type="shelfmark">72.1.36</idno>
 					</msIdentifier>
 					<msContents>
 						<summary> ... </summary>
-						<msItem xml:id="MSn.n" resp="Handn">
-							<locus>...</locus>
-							<title> ... </title>
-							<incipit> ... </incipit>
-							<explicit> ... </explicit>
+						<msItem xml:id="MS12.1" resp="Hand9">
+							<locus>fol.85v1-13</locus>
+							<title>'Soraidh slan don aoidche areir'</title>
+							<incipit>Soraidh slan don aoidche [a]reir ...</incipit>
+							<explicit>... soraidh slan don naoidche [a]reir</explicit>
 							<filiation>
 								<p> ... </p>
 							</filiation>
-							<textLang mainLang="..." otherLangs="... ...">
+							<textLang mainLang="hsg">
+								<note><p> ... </p></note>
+							</textLang>
+						</msItem>
+						<msItem xml:id="MS12.2" resp="Hand9">
+							<locus>fols 111r1-113v16</locus>
+							<title>'Greis ar chaithrem an fhir mor'</title>
+							<incipit>Greis ar chaithrem an fhir mor ...</incipit>
+							<explicit>... trian a gaisgedh ni airisiomh</explicit>
+							<filiation>
+								<p> ... </p>
+							</filiation>
+							<textLang mainLang="hsg">
 								<note><p> ... </p></note>
 							</textLang>
 						</msItem>
@@ -1393,7 +1405,62 @@
 							lemmaRef="http://www.dil.ie/28510" ana="adv">ánois</w><pc>.</pc>
 					</l>
 					<l n="b" xml:id="MS12.2.19b">
-						<w lemma="ós" lemmaRef="http://www.dil.ie/34047" ana="prep">os</w>
+						<unclear reason="interp_obscure" cert="medium" resp="EPT"><w lemma="ós"
+								lemmaRef="http://www.dil.ie/34047" ana="prep">os</w><space
+								type="scribal"/><w lemma="maith, rind"
+								lemmaRef="http://www.dil.ie/31438, http://www.dil.ie/35318"
+								ana="adj, noun"><w lemma="maith" lemmaRef="http://www.dil.ie/31438"
+									ana="adj">mai<abbr cert="high">t<g ref="g4">h</g></abbr></w><w
+									lemma="rind" lemmaRef="http://www.dil.ie/35318" ana="noun"
+									>rion</w></w></unclear><space type="scribal"/><name
+							type="personal"><w lemma="in" lemmaRef="http://www.dil.ie/28194"
+								ana="art">an</w><space type="scribal"/><w lemma="derg"
+								lemmaRef="http://www.dil.ie/15626" ana="noun"><abbr cert="high">d<g
+										ref="g21">eir</g>g</abbr></w></name><space type="scribal"
+							/><w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun"><abbr
+								cert="high">m<g ref="g12">ic</g></abbr></w><space type="scribal"
+							/><name type="personal"><w ana="noun"><abbr cert="medium">d<g ref="g16"
+										>ra</g></abbr>oi<abbr cert="high">t<g ref="g4">h</g>b<g
+										ref="g4">h</g></abbr>ill</w></name>
+					</l>
+					<l n="c" xml:id="MS12.2.19c"><lb n="13" xml:id="MS12.111v.13"/>
+						<w lemma="co" lemmaRef="http://www.dil.ie/9788" ana="conj">gu</w><space
+							type="scribal"/><w lemma="fégaid" lemmaRef="http://www.dil.ie/21449"
+							ana="verb">bfe<abbr cert="high">c<g ref="g4">h</g></abbr>miste</w><space
+							type="scribal"/><w lemma="ar" lemmaRef="http://www.dil.ie/3902"
+							ana="prep, poss"><abbr cert="high">a<g ref="g8">r</g>a</abbr></w><w
+							lemma="céle" lemmaRef="http://www.dil.ie/8452" ana="noun"><abbr
+								cert="high">c<g ref="g4">h</g></abbr>eile</w><pc>.</pc>
+					</l>
+					<l n="d" xml:id="MS12.2.19d">
+						<w lemma="ar" lemmaRef="http://www.dil.ie/3906" ana="poss"><abbr cert="high"
+									>a<g ref="g8">r</g></abbr></w><space type="scribal"/><w
+							lemma="fích" lemmaRef="http://www.dil.ie/21975" ana="noun">bfia<abbr
+								cert="high">c<g ref="g4">h</g></abbr></w><space type="scribal"/><w
+							lemma="ocus" lemmaRef="http://www.dil.ie/33483" ana="conj"><abbr
+								cert="high"><g ref="g2">agus</g></abbr></w><space type="scribal"/><w
+							lemma="ar" lemmaRef="http://www.dil.ie/3906" ana="poss"><abbr
+								cert="high">a<g ref="g8">r</g></abbr></w><space type="scribal"/><w
+							lemma="aimréide" lemmaRef="http://www.dil.ie/1137" ana="noun">nai<abbr
+								cert="high">m<g ref="g4">h</g></abbr>reite</w>
+					</l>
+				</lg>
+				<lg n="20" type="stanza" xml:id="MS12.2.20">
+					<l n="a" xml:id="MS12.2.20a"><lb n="14" xml:id="MS12.111v.14"/>
+						<w lemma="tar" lemmaRef="http://www.dil.ie/40049" ana="prep">D<abbr
+								cert="high">a<g ref="g8">r</g></abbr></w><space type="scribal"/><w
+							lemma="mo" lemmaRef="http://www.dil.ie/32400" ana="poss">mo</w><space
+							type="scribal"/><w lemma="bríathar" lemmaRef="http://www.dil.ie/6796"
+							ana="noun"><abbr cert="high">b<g ref="g4">h</g></abbr>ria<abbr
+								cert="high">t<g ref="g4">h</g>a<g ref="g8">r</g></abbr></w><space
+							type="scribal"/><w lemma="cía" lemmaRef="http://www.dil.ie/8966"
+							ana="conj, verb">gio<abbr cert="high">d<g ref="g4"
+							>h</g></abbr></w><space type="scribal"/><unclear reason="interp_obscure"
+							cert="medium" resp="EPT"><w lemma="prò"
+								lemmaRef="http://www.faclair.com/ViewDictionaryEntry.aspx?ID=1504B3C905BEC811795F9188CC72D5D6"
+								ana="adj">pro</w></unclear><space type="scribal"/><w lemma="la"
+							lemmaRef="http://www.dil.ie/29233" ana="prep, pron">li<abbr cert="high">b<g
+									ref="g4">h</g></abbr></w><pc>.</pc>
 					</l>
 				</lg>
 			</div>
