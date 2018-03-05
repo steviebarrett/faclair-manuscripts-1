@@ -1283,4 +1283,8 @@
 		<xsl:apply-templates/>
 	</xsl:template>
 
+<xsl:template match="tei:head">
+	<xsl:apply-templates/>
+</xsl:template>
+
 </xsl:stylesheet>
