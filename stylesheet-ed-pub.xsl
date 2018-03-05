@@ -165,13 +165,13 @@
 	<xsl:template match="tei:pb">
 		<br/>
 		<hr align="left" width="40%"/>
-		<p align="left">
-			<xsl:choose>
-				<xsl:when test="ancestor::tei:div[1]//tei:handShift">
-					<xsl:variable name="comDiv" select="ancestor::tei:div[1]/@xml:id"/>
-					<xsl:choose>
-						<xsl:when
-							test="preceding::tei:handShift/ancestor::tei:div[1]/@corresp = $comDiv">
+		<xsl:choose>
+			<xsl:when test="ancestor::tei:div[1]//tei:handShift">
+				<xsl:variable name="comDiv" select="ancestor::tei:div[1]/@xml:id"/>
+				<xsl:choose>
+					<xsl:when
+						test="preceding::tei:handShift/ancestor::tei:div[1]/@corresp = $comDiv">
+						<seg align="left">
 							<b><xsl:value-of select="@n"/>: <xsl:value-of
 									select="key('hands', preceding::tei:handShift[1]/@new)/tei:forename"
 									/><xsl:text> </xsl:text><xsl:value-of
@@ -179,28 +179,32 @@
 									/><xsl:text> (</xsl:text><xsl:value-of
 									select="preceding::tei:handShift[1]/@new"
 								/><xsl:text>)</xsl:text></b>
-						</xsl:when>
-						<xsl:otherwise>
+						</seg>
+					</xsl:when>
+					<xsl:otherwise>
+						<seg align="left">
 							<b><xsl:value-of select="@n"/>: <xsl:value-of
 									select="key('hands', ancestor::tei:div/@resp)/tei:forename"
 									/><xsl:text> </xsl:text><xsl:value-of
 									select="key('hands', ancestor::tei:div/@resp)/tei:surname"
 									/><xsl:text> (</xsl:text><xsl:value-of
 									select="ancestor::tei:div/@resp"/><xsl:text>) </xsl:text></b>
-						</xsl:otherwise>
-					</xsl:choose>
-				</xsl:when>
-				<xsl:otherwise>
+						</seg>
+					</xsl:otherwise>
+				</xsl:choose>
+			</xsl:when>
+			<xsl:otherwise>
+				<seg align="left">
 					<b><xsl:value-of select="@n"/>: <xsl:value-of
 							select="key('hands', ancestor::tei:div/@resp)/tei:forename"
 							/><xsl:text> </xsl:text><xsl:value-of
 							select="key('hands', ancestor::tei:div/@resp)/tei:surname"
 							/><xsl:text> (</xsl:text><xsl:value-of select="ancestor::tei:div/@resp"
 						/><xsl:text>) </xsl:text></b>
-				</xsl:otherwise>
-			</xsl:choose>
-			<button onclick="createTable()">Collect Slips</button>
-		</p>
+				</seg>
+			</xsl:otherwise>
+		</xsl:choose>
+		<button onclick="createTable()">Collect Slips</button>
 	</xsl:template>
 
 	<xsl:template match="tei:cb">
@@ -225,23 +229,32 @@
 
 	<xsl:template match="tei:lg">
 		<xsl:choose>
-			<xsl:when test="count(parent::tei:div//tei:lg[@type = 'stanza']) > 1">
-				<br/>
-				<b align="left">
-					<a title="Stanza number" href="#" onclick="return false;"
-						style="text-decoration:none; color:#000000">
-						<xsl:value-of select="@n"/>
-					</a>
-				</b>
-				<br/>
+			<xsl:when test="child::tei:pb">
+				<xsl:variable name="conID" select="@xml:id"/>
 				<p style="margin-left:30px">
-					<xsl:apply-templates select="descendant::tei:l"/>
+					<b align="left">
+						<a title="Stanza number" href="#" onclick="return false;"
+							style="text-decoration:none; color:#000000">
+							<xsl:value-of select="@n"/>
+						</a>
+						<xsl:text>. </xsl:text>
+					</b>
+					<xsl:text>  </xsl:text>
+					<xsl:apply-templates
+						select="descendant::tei:l[following::tei:pb[ancestor::tei:lg/@xml:id = $conID]]"
+					/>
+				</p>
+				<xsl:apply-templates select="child::tei:pb"/>
+				<p style="margin-left:30px">
+					<xsl:apply-templates
+						select="descendant::tei:l[preceding::tei:pb[ancestor::tei:lg/@xml:id = $conID]]"
+					/>
 				</p>
 			</xsl:when>
 			<xsl:otherwise>
 				<p style="margin-left:30px">
 					<b align="left">
-						<a title="Dictum number" href="#" onclick="return false;"
+						<a title="Stanza number" href="#" onclick="return false;"
 							style="text-decoration:none; color:#000000">
 							<xsl:value-of select="@n"/>
 						</a>
@@ -415,11 +428,12 @@
 		</xsl:variable>
 		<xsl:variable name="handRef">
 			<xsl:choose>
-				<xsl:when test="ancestor::tei:div[1]//tei:handShift">
-					<xsl:variable name="comDiv" select="ancestor::tei:div[1]/@xml:id"/>
+				<xsl:when test="ancestor::tei:div[@resp]//tei:handShift">
+					<xsl:variable name="comDiv" select="ancestor::tei:div[@resp]/@corresp"/>
 					<xsl:choose>
-						<xsl:when test="preceding::tei:handShift/ancestor::tei:div[1]/@corresp = $comDiv">
-							<xsl:value-of select="preceding::tei:handShift/@new[1]"/>
+						<xsl:when
+							test="preceding::tei:handShift[1]/ancestor::tei:div[@resp]/@corresp = $comDiv">
+							<xsl:value-of select="preceding::tei:handShift[1]/@new"/>
 						</xsl:when>
 						<xsl:otherwise>
 							<xsl:value-of select="ancestor::tei:div[@resp]/@resp"/>
@@ -439,13 +453,15 @@
 					<xsl:value-of select="key('hands', $handRef)/tei:surname"/>
 					<xsl:text> (</xsl:text>
 					<xsl:value-of select="$handRef"/>
-					<xsl:text>) / </xsl:text>
-					<xsl:value-of select="key('hands', descendant::tei:handShift/@new)/tei:forename"/>
-					<xsl:text> </xsl:text>
-					<xsl:value-of select="key('hands', descendant::tei:handShift/@new)/tei:surname"/>
-					<xsl:text> (</xsl:text>
-					<xsl:value-of select="descendant::tei:handShift/@new"/>
-					<xsl:text>) </xsl:text>
+					<xsl:text>); </xsl:text>
+					<xsl:for-each select="descendant::tei:handShift">
+						<xsl:value-of select="key('hands', @new)/tei:forename"/>
+						<xsl:text> </xsl:text>
+						<xsl:value-of select="key('hands', @new)/tei:surname"/>
+						<xsl:text> (</xsl:text>
+						<xsl:value-of select="@new"/>
+						<xsl:text>); </xsl:text>
+					</xsl:for-each>
 				</xsl:when>
 				<xsl:otherwise>
 					<xsl:value-of select="key('hands', $handRef)/tei:forename"/>
@@ -1146,6 +1162,15 @@
 							<xsl:text> &gt;</xsl:text>
 						</b>
 					</xsl:when>
+					<xsl:when test="@place = 'inline'">
+						<b>
+							<xsl:text>| </xsl:text>
+						</b>
+						<xsl:apply-templates/>
+						<b>
+							<xsl:text> |</xsl:text>
+						</b>
+					</xsl:when>
 				</xsl:choose>
 			</xsl:when>
 			<xsl:otherwise>
@@ -1235,7 +1260,9 @@
 	<xsl:template match="tei:handShift">
 		<xsl:text> </xsl:text>
 		<sub>
-			<b> new hand </b>
+			<i>
+				<b> beg. H<xsl:value-of select="substring(@new, 5)"/></b>
+			</i>
 		</sub>
 		<xsl:text> </xsl:text>
 	</xsl:template>
