@@ -517,10 +517,22 @@
 			</xsl:choose> -->
 			<xsl:value-of select="@ana"/>
 		</xsl:variable>
+		<xsl:variable name="src">
+			<xsl:choose>
+				<xsl:when test="@source">
+					<xsl:text>(from </xsl:text>
+					<xsl:value-of select="@source"/>
+					<xsl:text>)</xsl:text>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:text/>
+				</xsl:otherwise>
+			</xsl:choose>
+		</xsl:variable>
 		<a id="{generate-id()}" lemma="{$lem}" lemmaRef="{$lemRef}" ana="{@ana}" hand="{$hand}"
 			ref="{$msref}" date="{$handDate}" medium="{$medium}" cert="{$certLvl}"
 			abbrRefs="{$abbrRef}"
-			title="{$lem}: {$pos}&#10;{$hand}&#10;{$prob}{$certProb}&#10;Abbreviations: {$abbrs}"
+			title="{$lem}: {$pos} {$src}&#10;{$hand}&#10;{$prob}{$certProb}&#10;Abbreviations: {$abbrs}"
 			style="text-decoration:none; color:#000000">
 			<xsl:if test="@lemma">
 				<xsl:attribute name="onclick">addSlip(this.id)</xsl:attribute>
@@ -563,8 +575,7 @@
 			<xsl:when test="@ana = 'verb' and ancestor::tei:w[contains(@ana, 'verb, pron')]">
 				<xsl:text/>
 			</xsl:when>
-			<xsl:when
-				test="@ana = 'noun' and ancestor::tei:w[contains(@ana, 'noun, noun')] and following-sibling::tei:w[@ana = 'noun']">
+			<xsl:when test="@ana = 'noun' and ancestor::tei:w[contains(@ana, 'noun, noun')]">
 				<xsl:text/>
 			</xsl:when>
 			<xsl:when
@@ -572,7 +583,7 @@
 				<xsl:text/>
 			</xsl:when>
 			<xsl:when
-				test="@ana = 'adj' and ancestor::tei:w[contains(@ana, 'adj, adj')] and following-sibling::tei:w[@ana = 'adj']">
+				test="@ana = 'adj' and ancestor::tei:w[contains(@ana, 'adj, adj')] and @n = '1'">
 				<xsl:text/>
 			</xsl:when>
 			<xsl:when test="@ana = 'num' and ancestor::tei:w[contains(@ana, 'num, noun')]">
@@ -587,6 +598,15 @@
 			<xsl:when test="@ana = 'pron' and ancestor::tei:w[contains(@ana, 'pron, verb')]">
 				<xsl:text/>
 			</xsl:when>
+			<xsl:when test="@ana = 'conj' and ancestor::tei:w[contains(@ana, 'conj, pron')]">
+				<xsl:text/>
+			</xsl:when>
+			<xsl:when test="ancestor::tei:w and following::tei:pc">
+				<xsl:text/>
+			</xsl:when>
+			<xsl:when test="self::tei:pc and ancestor::tei:w and following::tei:w">
+				<xsl:text/>
+			</xsl:when>
 			<xsl:when test="not(following-sibling::*)">
 				<xsl:text> </xsl:text>
 			</xsl:when>
@@ -596,6 +616,19 @@
 			</xsl:when>
 			<xsl:otherwise>
 				<xsl:text> </xsl:text>
+			</xsl:otherwise>
+		</xsl:choose>
+	</xsl:template>
+
+	<xsl:template match="tei:w[descendant::tei:w]">
+		<xsl:choose>
+			<xsl:when test="contains(@ana, 'noun, noun') or contains(@ana, 'adj, adj')">
+				<xsl:apply-templates/>
+				<xsl:text> </xsl:text>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:apply-templates/>
+				<xsl:text/>
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
@@ -947,7 +980,7 @@
 					<xsl:if
 						test="ancestor::tei:choice/tei:unclear[@n = '2']/descendant::*/@n = $wpos">
 						<a id="{generate-id()}"
-							title="Or, {ancestor::tei:choice/tei:unclear[@n = '2']/descendant::tei:w[@n = $wpos]}">
+							title="Or, {ancestor::tei:choice/tei:unclear[@n = '2']/descendant::tei:w[@n = $wpos]} ({ancestor::tei:choice/tei:unclear[@n = '2']/descendant::tei:w[@n = $wpos]/@ana})&#10;{key('probs', ancestor::tei:unclear/@reason)}">
 							<xsl:if
 								test="ancestor::tei:choice/tei:unclear[@n = '2']/descendant::*[@n = $wpos]/@lemma">
 								<xsl:attribute name="href">
@@ -1283,8 +1316,8 @@
 		<xsl:apply-templates/>
 	</xsl:template>
 
-<xsl:template match="tei:head">
-	<xsl:apply-templates/>
-</xsl:template>
+	<xsl:template match="tei:head">
+		<xsl:apply-templates/>
+	</xsl:template>
 
 </xsl:stylesheet>
