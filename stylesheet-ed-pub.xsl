@@ -205,6 +205,7 @@
 			</xsl:otherwise>
 		</xsl:choose>
 		<button onclick="createTable()">Collect Slips</button>
+		<br/>
 	</xsl:template>
 
 	<xsl:template match="tei:cb">
@@ -566,6 +567,9 @@
 			<xsl:when test="@ana = 'prep' and ancestor::tei:w[contains(@ana, 'prep, dpron')]">
 				<xsl:text/>
 			</xsl:when>
+			<xsl:when test="@ana = 'noun' and ancestor::tei:w[contains(@ana, 'noun, dpron')]">
+				<xsl:text/>
+			</xsl:when>
 			<xsl:when test="@ana = 'adj' and ancestor::tei:w[contains(@ana, 'adj, pron')]">
 				<xsl:text/>
 			</xsl:when>
@@ -601,7 +605,7 @@
 			<xsl:when test="@ana = 'conj' and ancestor::tei:w[contains(@ana, 'conj, pron')]">
 				<xsl:text/>
 			</xsl:when>
-			<xsl:when test="ancestor::tei:w and following::tei:pc">
+			<xsl:when test="ancestor::tei:w and following::tei:pc[1]">
 				<xsl:text/>
 			</xsl:when>
 			<xsl:when test="self::tei:pc and ancestor::tei:w and following::tei:w">
@@ -621,16 +625,8 @@
 	</xsl:template>
 
 	<xsl:template match="tei:w[descendant::tei:w]">
-		<xsl:choose>
-			<xsl:when test="contains(@ana, 'noun, noun') or contains(@ana, 'adj, adj')">
 				<xsl:apply-templates/>
 				<xsl:text> </xsl:text>
-			</xsl:when>
-			<xsl:otherwise>
-				<xsl:apply-templates/>
-				<xsl:text/>
-			</xsl:otherwise>
-		</xsl:choose>
 	</xsl:template>
 
 	<xsl:template match="tei:name">
