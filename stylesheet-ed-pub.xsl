@@ -359,17 +359,20 @@
 					<xsl:text>)&#10;</xsl:text>
 				</xsl:for-each>
 			</xsl:if>
-			<xsl:if test="ancestor::tei:add">
+			<xsl:if test="ancestor::tei:add[@type = 'insertion']">
 				<xsl:text xml:space="preserve">- this word has been added by </xsl:text>
-				<xsl:value-of select="key('hands', ancestor::tei:add/@resp)/tei:forename"/>
+				<xsl:value-of
+					select="key('hands', ancestor::tei:add[@type = 'insertion']/@resp)/tei:forename"/>
 				<xsl:text> </xsl:text>
-				<xsl:value-of select="key('hands', ancestor::tei:add/@resp)/tei:surname"/>
+				<xsl:value-of
+					select="key('hands', ancestor::tei:add[@type = 'insertion']/@resp)/tei:surname"/>
 				<xsl:text> (</xsl:text>
-				<xsl:value-of select="key('hands', ancestor::tei:add/@resp)/@xml:id"/>
+				<xsl:value-of
+					select="key('hands', ancestor::tei:add[@type = 'insertion']/@resp)/@xml:id"/>
 				<xsl:text>)&#10;</xsl:text>
 			</xsl:if>
-			<xsl:if test="descendant::tei:add">
-				<xsl:for-each select="descendant::tei:add">
+			<xsl:if test="descendant::tei:add[@type = 'insertion']">
+				<xsl:for-each select="descendant::tei:add[@type = 'insertion']">
 					<xsl:text xml:space="preserve">- characters have been added by </xsl:text>
 					<xsl:value-of select="key('hands', @resp)/tei:forename"/>
 					<xsl:text> </xsl:text>
@@ -429,20 +432,27 @@
 		</xsl:variable>
 		<xsl:variable name="handRef">
 			<xsl:choose>
-				<xsl:when test="ancestor::tei:div[@resp]//tei:handShift">
-					<xsl:variable name="comDiv" select="ancestor::tei:div[@resp]/@corresp"/>
+				<xsl:when test="ancestor::tei:add">
+					<xsl:value-of select="ancestor::tei:add[@type = 'gloss']/@resp"/>
+				</xsl:when>
+				<xsl:otherwise>
 					<xsl:choose>
-						<xsl:when
-							test="preceding::tei:handShift[1]/ancestor::tei:div[@resp]/@corresp = $comDiv">
-							<xsl:value-of select="preceding::tei:handShift[1]/@new"/>
+						<xsl:when test="ancestor::tei:div[@resp]//tei:handShift">
+							<xsl:variable name="comDiv" select="ancestor::tei:div[@resp]/@corresp"/>
+							<xsl:choose>
+								<xsl:when
+									test="preceding::tei:handShift[1]/ancestor::tei:div[@resp]/@corresp = $comDiv">
+									<xsl:value-of select="preceding::tei:handShift[1]/@new"/>
+								</xsl:when>
+								<xsl:otherwise>
+									<xsl:value-of select="ancestor::tei:div[@resp]/@resp"/>
+								</xsl:otherwise>
+							</xsl:choose>
 						</xsl:when>
 						<xsl:otherwise>
 							<xsl:value-of select="ancestor::tei:div[@resp]/@resp"/>
 						</xsl:otherwise>
 					</xsl:choose>
-				</xsl:when>
-				<xsl:otherwise>
-					<xsl:value-of select="ancestor::tei:div[@resp]/@resp"/>
 				</xsl:otherwise>
 			</xsl:choose>
 		</xsl:variable>
@@ -530,10 +540,30 @@
 				</xsl:otherwise>
 			</xsl:choose>
 		</xsl:variable>
+		<xsl:variable name="gloss">
+			<xsl:choose>
+				<xsl:when test="descendant::tei:add[@type = 'gloss']">
+					<xsl:for-each select="descendant::tei:add[@type = 'gloss']">
+						<xsl:text>A gloss ("</xsl:text>
+						<xsl:value-of select="self::*"/>
+						<xsl:text>") has been added by </xsl:text>
+						<xsl:value-of select="key('hands', @resp)/tei:forename"/>
+						<xsl:text> </xsl:text>
+						<xsl:value-of select="key('hands', @resp)/tei:surname"/>
+						<xsl:text> (</xsl:text>
+						<xsl:value-of select="@resp"/>
+						<xsl:text>)</xsl:text>
+					</xsl:for-each>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:text/>
+				</xsl:otherwise>
+			</xsl:choose>
+		</xsl:variable>
 		<a id="{generate-id()}" lemma="{$lem}" lemmaRef="{$lemRef}" ana="{@ana}" hand="{$hand}"
 			ref="{$msref}" date="{$handDate}" medium="{$medium}" cert="{$certLvl}"
 			abbrRefs="{$abbrRef}"
-			title="{$lem}: {$pos} {$src}&#10;{$hand}&#10;{$prob}{$certProb}&#10;Abbreviations: {$abbrs}"
+			title="{$lem}: {$pos} {$src}&#10;{$hand}&#10;{$prob}{$certProb}&#10;Abbreviations: {$abbrs}&#10;{$gloss}"
 			style="text-decoration:none; color:#000000">
 			<xsl:if test="@lemma">
 				<xsl:attribute name="onclick">addSlip(this.id)</xsl:attribute>
@@ -625,8 +655,8 @@
 	</xsl:template>
 
 	<xsl:template match="tei:w[descendant::tei:w]">
-				<xsl:apply-templates/>
-				<xsl:text> </xsl:text>
+		<xsl:apply-templates/>
+		<xsl:text> </xsl:text>
 	</xsl:template>
 
 	<xsl:template match="tei:name">
@@ -838,11 +868,73 @@
 	</xsl:template>
 
 	<xsl:template match="tei:c">
-		<a id="{generate-id()}" title="Unexplained character(s)" href="#" onclick="return false;"
-			style="text-decoration:none; color:#000000">
-			<xsl:apply-templates/>
-		</a>
-		<xsl:text> </xsl:text>
+		<xsl:variable name="handRef">
+			<xsl:choose>
+				<xsl:when test="ancestor::tei:add">
+					<xsl:value-of select="ancestor::tei:add[@type = 'gloss']/@resp"/>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:choose>
+						<xsl:when test="ancestor::tei:div[@resp]//tei:handShift">
+							<xsl:variable name="comDiv" select="ancestor::tei:div[@resp]/@corresp"/>
+							<xsl:choose>
+								<xsl:when
+									test="preceding::tei:handShift[1]/ancestor::tei:div[@resp]/@corresp = $comDiv">
+									<xsl:value-of select="preceding::tei:handShift[1]/@new"/>
+								</xsl:when>
+								<xsl:otherwise>
+									<xsl:value-of select="ancestor::tei:div[@resp]/@resp"/>
+								</xsl:otherwise>
+							</xsl:choose>
+						</xsl:when>
+						<xsl:otherwise>
+							<xsl:value-of select="ancestor::tei:div[@resp]/@resp"/>
+						</xsl:otherwise>
+					</xsl:choose>
+				</xsl:otherwise>
+			</xsl:choose>
+		</xsl:variable>
+		<xsl:variable name="hand">
+			<xsl:choose>
+				<xsl:when test="descendant::tei:handShift">
+					<xsl:value-of select="key('hands', $handRef)/tei:forename"/>
+					<xsl:text> </xsl:text>
+					<xsl:value-of select="key('hands', $handRef)/tei:surname"/>
+					<xsl:text> (</xsl:text>
+					<xsl:value-of select="$handRef"/>
+					<xsl:text>); </xsl:text>
+					<xsl:for-each select="descendant::tei:handShift">
+						<xsl:value-of select="key('hands', @new)/tei:forename"/>
+						<xsl:text> </xsl:text>
+						<xsl:value-of select="key('hands', @new)/tei:surname"/>
+						<xsl:text> (</xsl:text>
+						<xsl:value-of select="@new"/>
+						<xsl:text>); </xsl:text>
+					</xsl:for-each>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:value-of select="key('hands', $handRef)/tei:forename"/>
+					<xsl:text> </xsl:text>
+					<xsl:value-of select="key('hands', $handRef)/tei:surname"/>
+					<xsl:text> (</xsl:text>
+					<xsl:value-of select="$handRef"/>
+					<xsl:text>) </xsl:text>
+				</xsl:otherwise>
+			</xsl:choose>
+		</xsl:variable>
+		<xsl:choose>
+			<xsl:when test="ancestor::tei:w">
+				<xsl:apply-templates/>
+				<xsl:text> </xsl:text>
+			</xsl:when>
+			<xsl:otherwise>
+				<a id="{generate-id()}" title="Unexplained character(s)&#10;{$hand}" href="#"
+					onclick="return false;" style="text-decoration:none; color:#000000">
+					<xsl:apply-templates/>
+				</a>
+				<xsl:text> </xsl:text>
+			</xsl:otherwise>
+		</xsl:choose>
 	</xsl:template>
 
 	<xsl:template match="tei:pc">
