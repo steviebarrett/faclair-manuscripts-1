@@ -210,8 +210,8 @@
 
 	<xsl:template match="tei:cb">
 		<br/>
-		<b>Column:<xsl:text> </xsl:text></b>
-		<xsl:value-of select="@n"/>
+		<b>Column:<xsl:text> </xsl:text>
+			<xsl:value-of select="@n"/></b>
 	</xsl:template>
 
 	<xsl:template match="tei:p//tei:lb">
@@ -493,9 +493,24 @@
 			/>
 		</xsl:variable>
 		<xsl:variable name="msref">
-			<xsl:value-of
-				select="concat($shelfmark, ' ', preceding::tei:pb[1]/@n, ' ', preceding::tei:lb[1]/@n)"
-			/>
+			<xsl:variable name="pbpos">
+				<xsl:value-of select="count(preceding::tei:pb[1]/preceding::*)"/>
+			</xsl:variable>
+			<xsl:variable name="cbpos">
+				<xsl:value-of select="count(preceding::tei:cb[1]/preceding::*)"/>
+			</xsl:variable>
+			<xsl:choose>
+				<xsl:when test="ancestor::tei:div//tei:cb and not($pbpos > $cbpos)">
+					<xsl:value-of
+						select="concat($shelfmark, ' ', preceding::tei:pb[1]/@n, '', preceding::tei:cb[1]/@n, '', preceding::tei:lb[1]/@n)"
+					/>
+				</xsl:when>
+			<xsl:otherwise>
+				<xsl:value-of
+					select="concat($shelfmark, ' ', preceding::tei:pb[1]/@n, ' ', preceding::tei:lb[1]/@n)"
+				/>
+			</xsl:otherwise>
+			</xsl:choose>
 		</xsl:variable>
 		<xsl:variable name="medium">
 			<xsl:choose>
@@ -624,6 +639,9 @@
 				<xsl:text/>
 			</xsl:when>
 			<xsl:when test="@ana = 'pref' and ancestor::tei:w[contains(@ana, 'pref, adj')]">
+				<xsl:text/>
+			</xsl:when>
+			<xsl:when test="@ana = 'pref' and ancestor::tei:w[contains(@ana, 'pref, noun')]">
 				<xsl:text/>
 			</xsl:when>
 			<xsl:when test="@ana = 'pron' and ancestor::tei:w[contains(@ana, 'pron, part')]">
