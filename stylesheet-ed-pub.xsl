@@ -1019,10 +1019,30 @@
 		</xsl:choose>
 	</xsl:template>
 
-	<xsl:template match="tei:gap[not(ancestor::tei:w)]">
+	<xsl:template match="tei:gap">
+		<xsl:variable name="gapReason">
+				<xsl:choose>
+
+					<xsl:when test="@reason = 'text_obscure'">
+						<xsl:text xml:space="preserve">illegible text; writing surface is intact</xsl:text>
+					</xsl:when>
+					<xsl:when test="@reason = 'damage'">
+						<xsl:text xml:space="preserve">loss of writing surface</xsl:text>
+					</xsl:when>
+					<xsl:when test="@reason = 'fold'">
+						<xsl:text xml:space="preserve">the page edge is folded in the digital image</xsl:text>
+					</xsl:when>
+					<xsl:when test="@reason = 'text_omitted'">
+						<xsl:text xml:space="preserve">textual lacuna; no physical loss/damage</xsl:text>
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:text xml:space="preserve">reason unavailable</xsl:text>
+					</xsl:otherwise>
+				</xsl:choose>
+		</xsl:variable>
 		<xsl:choose>
 			<xsl:when test="@extent = 'unknown'">
-				<a id="{generate-id()}" title="{concat(@extent, ' extent')}, {@reason}" href="#"
+				<a id="{generate-id()}" title="{concat(@extent, ' extent')}, {$gapReason}" href="#"
 					onclick="return false;" style="text-decoration:none; color:#000000">
 					<sub>
 						<b>
@@ -1033,7 +1053,7 @@
 				<xsl:text> </xsl:text>
 			</xsl:when>
 			<xsl:otherwise>
-				<a id="{generate-id()}" title="{@extent}, {@reason}" href="#"
+				<a id="{generate-id()}" title="{@extent}, {$gapReason}" href="#"
 					onclick="return false;" style="text-decoration:none; color:#000000">
 					<sub>
 						<b>
