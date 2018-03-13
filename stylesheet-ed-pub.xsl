@@ -175,6 +175,38 @@
 								<xsl:text>); </xsl:text>
 							</xsl:if>
 						</xsl:for-each>
+						<br/>
+						<xsl:text>Additions/emendations: </xsl:text>
+						<xsl:for-each
+							select="//tei:add[@type = 'insertion'][ancestor::tei:div[@corresp = $ItemID]] | //tei:del[ancestor::tei:div[@corresp = $ItemID]]">
+							<xsl:variable name="comDiv"
+								select="ancestor::tei:div[@corresp = $ItemID]"/>
+							<xsl:if
+								test="not(@resp = preceding::tei:add[@type = 'insertion'][ancestor::tei:div[@corresp = $ItemID]]/@resp | preceding::tei:del[ancestor::tei:div[@corresp = $ItemID]]/@resp) and not(@resp = $itemHand) or not(preceding::tei:add[@type = 'insertion'][ancestor::tei:div[@corresp = $ItemID]] | preceding::tei:del[ancestor::tei:div[@corresp = $ItemID]])">
+								<xsl:value-of select="key('hands', @resp)/tei:forename"/>
+								<xsl:text> </xsl:text>
+								<xsl:value-of select="key('hands', @resp)/tei:surname"/>
+								<xsl:text> (</xsl:text>
+								<xsl:value-of select="@resp"/>
+								<xsl:text>); </xsl:text>
+							</xsl:if>
+						</xsl:for-each>
+						<br/>
+						<xsl:text>Glossing: </xsl:text>
+						<xsl:for-each
+							select="//tei:add[@type = 'gloss'][ancestor::tei:div[@corresp = $ItemID]]">
+							<xsl:variable name="comDiv"
+								select="ancestor::tei:div[@corresp = $ItemID]"/>
+							<xsl:if
+								test="not(@resp = preceding::tei:add[@type = 'gloss'][ancestor::tei:div[@corresp = $ItemID]]/@resp) and not(@resp = $itemHand) or not(preceding::tei:add[@type = 'gloss'][ancestor::tei:div[@corresp = $ItemID]])">
+								<xsl:value-of select="key('hands', @resp)/tei:forename"/>
+								<xsl:text> </xsl:text>
+								<xsl:value-of select="key('hands', @resp)/tei:surname"/>
+								<xsl:text> (</xsl:text>
+								<xsl:value-of select="@resp"/>
+								<xsl:text>); </xsl:text>
+							</xsl:if>
+						</xsl:for-each>
 					</p>
 				</xsl:for-each>
 			</xsl:if>
@@ -627,6 +659,28 @@
 					<xsl:value-of select="@lemmaRef"/>
 				</xsl:attribute>
 			</xsl:if>
+			<xsl:choose>
+				<xsl:when test="ancestor::*[@cert='low'] or descendant::*[@cert='low']">
+					<xsl:attribute name="style">text-decoration:none; color:#ff0000</xsl:attribute>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:choose>
+						<xsl:when test="ancestor::*[@cert='medium'] or descendant::*[@cert='medium']">
+							<xsl:attribute name="style">text-decoration:none; color:#ff9900</xsl:attribute>
+						</xsl:when>
+						<xsl:otherwise>
+							<xsl:choose>
+								<xsl:when test="ancestor::tei:unclear[@cert='high'] or descendant::tei:unclear[@cert='high']">
+									<xsl:attribute name="style">text-decoration:none; color:#cccc00</xsl:attribute>
+								</xsl:when>
+								<xsl:otherwise>
+									<xsl:attribute name="style">text-decoration:none; color:#000000</xsl:attribute>
+								</xsl:otherwise>
+							</xsl:choose>
+						</xsl:otherwise>
+					</xsl:choose>
+				</xsl:otherwise>
+			</xsl:choose>
 			<xsl:apply-templates/>
 		</a>
 		<xsl:choose>
@@ -1018,7 +1072,7 @@
 	<xsl:template match="tei:g">
 		<xsl:choose>
 			<xsl:when test="ancestor::tei:abbr[@cert = 'low']">
-				<i style="background-color:#ffff00">
+				<i style="background-color:#000000">
 					<xsl:apply-templates/>
 				</i>
 			</xsl:when>
