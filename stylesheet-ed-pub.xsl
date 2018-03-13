@@ -14,6 +14,7 @@
 	<xsl:key name="divTitle" match="*" use="@xml:id"/>
 	<xsl:key name="auth" match="*" use="@xml:id"/>
 	<xsl:key name="lang" match="*" use="@xml:id"/>
+	<xsl:key name="text" match="*" use="@xml:id"/>
 
 	<xsl:attribute-set name="tblBorder">
 		<xsl:attribute name="border">solid 0.1mm black</xsl:attribute>
@@ -135,6 +136,7 @@
 			</xsl:if>
 			<xsl:if test="child::tei:msItem">
 				<xsl:for-each select="child::tei:msItem">
+					<xsl:variable name="ItemID" select="@xml:id"/>
 					<h5 style="margin-left:40px">
 						<xsl:apply-templates select="tei:title"/>
 					</h5>
@@ -156,11 +158,30 @@
 						<xsl:text> (</xsl:text>
 						<xsl:value-of select="@resp"/>
 						<xsl:text>)</xsl:text>
+						<br/>
+						<xsl:variable name="itemHand" select="@resp"/>
+						<xsl:text>Other hands: </xsl:text>
+						<xsl:for-each
+							select="//tei:handShift[ancestor::tei:div[@corresp = $ItemID]]">
+							<xsl:variable name="comDiv"
+								select="ancestor::tei:div[@corresp = $ItemID]"/>
+							<xsl:if
+								test="not(@new = preceding::tei:handShift[ancestor::tei:div[@corresp = $ItemID]]/@new) and not(@new = $itemHand) or not(preceding::tei:handShift[ancestor::tei:div[@corresp = $ItemID]])">
+								<xsl:value-of select="key('hands', @new)/tei:forename"/>
+								<xsl:text> </xsl:text>
+								<xsl:value-of select="key('hands', @new)/tei:surname"/>
+								<xsl:text> (</xsl:text>
+								<xsl:value-of select="@new"/>
+								<xsl:text>); </xsl:text>
+							</xsl:if>
+						</xsl:for-each>
 					</p>
 				</xsl:for-each>
 			</xsl:if>
 		</xsl:for-each>
 	</xsl:template>
+
+
 
 	<xsl:template match="tei:pb">
 		<br/>
@@ -234,31 +255,46 @@
 				<xsl:variable name="conID" select="@xml:id"/>
 				<p style="margin-left:30px">
 					<b align="left">
-						<a title="Stanza number" href="#" onclick="return false;"
-							style="text-decoration:none; color:#000000">
-							<xsl:value-of select="@n"/>
-						</a>
+						<xsl:value-of select="@n"/>
+
 						<xsl:text>. </xsl:text>
 					</b>
 					<xsl:text>  </xsl:text>
 					<xsl:apply-templates
-						select="descendant::tei:l[following::tei:pb[ancestor::tei:lg/@xml:id = $conID]]"
+						select="descendant::tei:l[following::tei:pb[ancestor::tei:lg[@xml:id = $conID]]]"
 					/>
 				</p>
 				<xsl:apply-templates select="child::tei:pb"/>
 				<p style="margin-left:30px">
 					<xsl:apply-templates
-						select="descendant::tei:l[preceding::tei:pb[ancestor::tei:lg/@xml:id = $conID]]"
+						select="descendant::tei:l[preceding::tei:pb[ancestor::tei:lg[@xml:id = $conID]]]"
+					/>
+				</p>
+			</xsl:when>
+			<xsl:when test="descendant::tei:pb">
+				<xsl:variable name="conID" select="@xml:id"/>
+				<p style="margin-left:30px">
+					<b align="left">
+						<xsl:value-of select="@n"/>
+
+						<xsl:text>. </xsl:text>
+					</b>
+					<xsl:text>  </xsl:text>
+					<xsl:apply-templates
+						select="descendant::*[following::tei:pb[ancestor::tei:lg[@xml:id = $conID]]]"
+					/>
+				</p>
+				<xsl:apply-templates select="descendant::tei:pb"/>
+				<p style="margin-left:30px">
+					<xsl:apply-templates
+						select="descendant::*[preceding::tei:pb[ancestor::tei:lg[@xml:id = $conID]]]"
 					/>
 				</p>
 			</xsl:when>
 			<xsl:otherwise>
 				<p style="margin-left:30px">
 					<b align="left">
-						<a title="Stanza number" href="#" onclick="return false;"
-							style="text-decoration:none; color:#000000">
-							<xsl:value-of select="@n"/>
-						</a>
+						<xsl:value-of select="@n"/>
 						<xsl:text>. </xsl:text>
 					</b>
 					<xsl:text>  </xsl:text>
@@ -505,11 +541,11 @@
 						select="concat($shelfmark, ' ', preceding::tei:pb[1]/@n, '', preceding::tei:cb[1]/@n, '', preceding::tei:lb[1]/@n)"
 					/>
 				</xsl:when>
-			<xsl:otherwise>
-				<xsl:value-of
-					select="concat($shelfmark, ' ', preceding::tei:pb[1]/@n, ' ', preceding::tei:lb[1]/@n)"
-				/>
-			</xsl:otherwise>
+				<xsl:otherwise>
+					<xsl:value-of
+						select="concat($shelfmark, ' ', preceding::tei:pb[1]/@n, ' ', preceding::tei:lb[1]/@n)"
+					/>
+				</xsl:otherwise>
 			</xsl:choose>
 		</xsl:variable>
 		<xsl:variable name="medium">
@@ -1021,24 +1057,24 @@
 
 	<xsl:template match="tei:gap">
 		<xsl:variable name="gapReason">
-				<xsl:choose>
+			<xsl:choose>
 
-					<xsl:when test="@reason = 'text_obscure'">
-						<xsl:text xml:space="preserve">illegible text; writing surface is intact</xsl:text>
-					</xsl:when>
-					<xsl:when test="@reason = 'damage'">
-						<xsl:text xml:space="preserve">loss of writing surface</xsl:text>
-					</xsl:when>
-					<xsl:when test="@reason = 'fold'">
-						<xsl:text xml:space="preserve">the page edge is folded in the digital image</xsl:text>
-					</xsl:when>
-					<xsl:when test="@reason = 'text_omitted'">
-						<xsl:text xml:space="preserve">textual lacuna; no physical loss/damage</xsl:text>
-					</xsl:when>
-					<xsl:otherwise>
-						<xsl:text xml:space="preserve">reason unavailable</xsl:text>
-					</xsl:otherwise>
-				</xsl:choose>
+				<xsl:when test="@reason = 'text_obscure'">
+					<xsl:text xml:space="preserve">illegible text; writing surface is intact</xsl:text>
+				</xsl:when>
+				<xsl:when test="@reason = 'damage'">
+					<xsl:text xml:space="preserve">loss of writing surface</xsl:text>
+				</xsl:when>
+				<xsl:when test="@reason = 'fold'">
+					<xsl:text xml:space="preserve">the page edge is folded in the digital image</xsl:text>
+				</xsl:when>
+				<xsl:when test="@reason = 'text_omitted'">
+					<xsl:text xml:space="preserve">textual lacuna; no physical loss/damage</xsl:text>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:text xml:space="preserve">reason unavailable</xsl:text>
+				</xsl:otherwise>
+			</xsl:choose>
 		</xsl:variable>
 		<xsl:choose>
 			<xsl:when test="@extent = 'unknown'">
