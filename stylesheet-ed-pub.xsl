@@ -125,7 +125,11 @@
 				<xsl:text>"</xsl:text>
 				<br/>
 			</xsl:if>
-			<xsl:if test="@resp">
+			<xsl:if test="not(child::tei:msItem)">
+				<xsl:variable name="ItemID" select="@xml:id"/>
+				<xsl:variable name="comDiv"
+					select="ancestor::tei:div[@corresp = $ItemID]"/>
+				<xsl:variable name="itemHand" select="@resp"/>
 				<xsl:text>Main scribe: </xsl:text>
 				<xsl:value-of select="key('hands', @resp)/tei:forename"/>
 				<xsl:text> </xsl:text>
@@ -133,10 +137,55 @@
 				<xsl:text> (</xsl:text>
 				<xsl:value-of select="@resp"/>
 				<xsl:text>)</xsl:text>
+				<br/>
+				<xsl:text>Other hands: </xsl:text>
+				<xsl:for-each
+					select="//tei:handShift[ancestor::tei:div[@corresp = $ItemID]]">
+					<xsl:if
+						test="not(@new = preceding::tei:handShift[ancestor::tei:div[@corresp = $ItemID]]/@new) and not(@new = $itemHand) or not(preceding::tei:handShift[ancestor::tei:div[@corresp = $ItemID]])">
+						<xsl:value-of select="key('hands', @new)/tei:forename"/>
+						<xsl:text> </xsl:text>
+						<xsl:value-of select="key('hands', @new)/tei:surname"/>
+						<xsl:text> (</xsl:text>
+						<xsl:value-of select="@new"/>
+						<xsl:text>); </xsl:text>
+					</xsl:if>
+				</xsl:for-each>
+				<br/>
+				<xsl:text>Additions/emendations: </xsl:text>
+				<xsl:for-each
+					select="//tei:add[@type = 'insertion'][ancestor::tei:div[@corresp = $ItemID]] | //tei:del[ancestor::tei:div[@corresp = $ItemID]]">
+					<xsl:if
+						test="not(@resp = preceding::tei:add[@type = 'insertion'][ancestor::tei:div[@corresp = $ItemID]]/@resp | preceding::tei:del[ancestor::tei:div[@corresp = $ItemID]]/@resp) and not(@resp = $itemHand) or not(preceding::tei:add[@type = 'insertion'][ancestor::tei:div[@corresp = $ItemID]] | preceding::tei:del[ancestor::tei:div[@corresp = $ItemID]])">
+						<xsl:value-of select="key('hands', @resp)/tei:forename"/>
+						<xsl:text> </xsl:text>
+						<xsl:value-of select="key('hands', @resp)/tei:surname"/>
+						<xsl:text> (</xsl:text>
+						<xsl:value-of select="@resp"/>
+						<xsl:text>); </xsl:text>
+					</xsl:if>
+				</xsl:for-each>
+				<br/>
+				<xsl:text>Glossing: </xsl:text>
+				<xsl:for-each
+					select="//tei:add[@type = 'gloss'][ancestor::tei:div[@corresp = $ItemID]]">
+					<xsl:if
+						test="not(@resp = preceding::tei:add[@type = 'gloss'][ancestor::tei:div[@corresp = $ItemID]]/@resp) and not(@resp = $itemHand) or not(preceding::tei:add[@type = 'gloss'][ancestor::tei:div[@corresp = $ItemID]])">
+						<xsl:value-of select="key('hands', @resp)/tei:forename"/>
+						<xsl:text> </xsl:text>
+						<xsl:value-of select="key('hands', @resp)/tei:surname"/>
+						<xsl:text> (</xsl:text>
+						<xsl:value-of select="@resp"/>
+						<xsl:text>); </xsl:text>
+					</xsl:if>
+				</xsl:for-each>
 			</xsl:if>
 			<xsl:if test="child::tei:msItem">
 				<xsl:for-each select="child::tei:msItem">
 					<xsl:variable name="ItemID" select="@xml:id"/>
+					<xsl:variable name="comDiv"
+						select="ancestor::tei:div[@corresp = $ItemID]"/>
+					<xsl:variable name="itemHand" select="@resp"/>
 					<h5 style="margin-left:40px">
 						<xsl:apply-templates select="tei:title"/>
 					</h5>
@@ -159,12 +208,9 @@
 						<xsl:value-of select="@resp"/>
 						<xsl:text>)</xsl:text>
 						<br/>
-						<xsl:variable name="itemHand" select="@resp"/>
 						<xsl:text>Other hands: </xsl:text>
 						<xsl:for-each
 							select="//tei:handShift[ancestor::tei:div[@corresp = $ItemID]]">
-							<xsl:variable name="comDiv"
-								select="ancestor::tei:div[@corresp = $ItemID]"/>
 							<xsl:if
 								test="not(@new = preceding::tei:handShift[ancestor::tei:div[@corresp = $ItemID]]/@new) and not(@new = $itemHand) or not(preceding::tei:handShift[ancestor::tei:div[@corresp = $ItemID]])">
 								<xsl:value-of select="key('hands', @new)/tei:forename"/>
@@ -179,8 +225,6 @@
 						<xsl:text>Additions/emendations: </xsl:text>
 						<xsl:for-each
 							select="//tei:add[@type = 'insertion'][ancestor::tei:div[@corresp = $ItemID]] | //tei:del[ancestor::tei:div[@corresp = $ItemID]]">
-							<xsl:variable name="comDiv"
-								select="ancestor::tei:div[@corresp = $ItemID]"/>
 							<xsl:if
 								test="not(@resp = preceding::tei:add[@type = 'insertion'][ancestor::tei:div[@corresp = $ItemID]]/@resp | preceding::tei:del[ancestor::tei:div[@corresp = $ItemID]]/@resp) and not(@resp = $itemHand) or not(preceding::tei:add[@type = 'insertion'][ancestor::tei:div[@corresp = $ItemID]] | preceding::tei:del[ancestor::tei:div[@corresp = $ItemID]])">
 								<xsl:value-of select="key('hands', @resp)/tei:forename"/>
@@ -195,8 +239,6 @@
 						<xsl:text>Glossing: </xsl:text>
 						<xsl:for-each
 							select="//tei:add[@type = 'gloss'][ancestor::tei:div[@corresp = $ItemID]]">
-							<xsl:variable name="comDiv"
-								select="ancestor::tei:div[@corresp = $ItemID]"/>
 							<xsl:if
 								test="not(@resp = preceding::tei:add[@type = 'gloss'][ancestor::tei:div[@corresp = $ItemID]]/@resp) and not(@resp = $itemHand) or not(preceding::tei:add[@type = 'gloss'][ancestor::tei:div[@corresp = $ItemID]])">
 								<xsl:value-of select="key('hands', @resp)/tei:forename"/>
