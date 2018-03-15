@@ -770,6 +770,9 @@
 			<xsl:when test="@ana = 'num' and ancestor::tei:w[contains(@ana, 'num, noun')]">
 				<xsl:text/>
 			</xsl:when>
+			<xsl:when test="@ana = 'num' and ancestor::tei:w[contains(@ana, 'num, vnoun')]">
+				<xsl:text/>
+			</xsl:when>
 			<xsl:when test="@ana = 'pref' and ancestor::tei:w[contains(@ana, 'pref, adj')]">
 				<xsl:text/>
 			</xsl:when>
@@ -1114,7 +1117,7 @@
 	<xsl:template match="tei:g">
 		<xsl:choose>
 			<xsl:when test="ancestor::tei:abbr[@cert = 'low']">
-				<i style="background-color:#000000">
+				<i>
 					<xsl:apply-templates/>
 				</i>
 			</xsl:when>
