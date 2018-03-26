@@ -437,7 +437,11 @@
 					</xsl:choose>
 				</xsl:for-each>
 			</xsl:if>
-			<xsl:if test="ancestor::tei:choice">
+			<xsl:if test="ancestor::tei:choice/tei:corr">
+				<xsl:variable name="alt" select="ancestor::tei:choice/tei:sic"/>
+				<xsl:text xml:space="preserve">- this is an editorial emendation of the manuscript reading ("</xsl:text><xsl:value-of select="$alt"/><xsl:text>")&#10;</xsl:text>
+			</xsl:if>
+			<xsl:if test="ancestor::tei:choice[descendant::tei:unclear]">
 				<xsl:text xml:space="preserve">- there is a possible alternative to this reading &#10;</xsl:text>
 			</xsl:if>
 			<xsl:if test="ancestor::tei:supplied">
@@ -1213,7 +1217,8 @@
 				<xsl:text>{</xsl:text>
 				<xsl:apply-templates select="tei:corr"/>
 				<xsl:for-each select="tei:sic/descendant::tei:w[not(descendant::tei:w)]">
-					<a id="{generate-id()}" title="MS: {self::*}">
+					<xsl:variable name="alt" select="ancestor::tei:choice/tei:corr"/>
+					<a id="{generate-id()}" title="MS: {self::*}&#10;- this reading is unintelligible and may be corrupt; an amended reading ('{$alt}') has been supplied.">
 						<xsl:if test="tei:sic//tei:w/@lemma">
 							<xsl:attribute name="href">
 								<xsl:value-of
