@@ -127,8 +127,7 @@
 			</xsl:if>
 			<xsl:if test="not(child::tei:msItem)">
 				<xsl:variable name="ItemID" select="@xml:id"/>
-				<xsl:variable name="comDiv"
-					select="ancestor::tei:div[@corresp = $ItemID]"/>
+				<xsl:variable name="comDiv" select="ancestor::tei:div[@corresp = $ItemID]"/>
 				<xsl:variable name="itemHand" select="@resp"/>
 				<xsl:text>Main scribe: </xsl:text>
 				<xsl:value-of select="key('hands', @resp)/tei:forename"/>
@@ -139,8 +138,7 @@
 				<xsl:text>)</xsl:text>
 				<br/>
 				<xsl:text>Other hands: </xsl:text>
-				<xsl:for-each
-					select="//tei:handShift[ancestor::tei:div[@corresp = $ItemID]]">
+				<xsl:for-each select="//tei:handShift[ancestor::tei:div[@corresp = $ItemID]]">
 					<xsl:if
 						test="not(@new = preceding::tei:handShift[ancestor::tei:div[@corresp = $ItemID]]/@new) and not(@new = $itemHand) or not(preceding::tei:handShift[ancestor::tei:div[@corresp = $ItemID]])">
 						<xsl:value-of select="key('hands', @new)/tei:forename"/>
@@ -183,8 +181,7 @@
 			<xsl:if test="child::tei:msItem">
 				<xsl:for-each select="child::tei:msItem">
 					<xsl:variable name="ItemID" select="@xml:id"/>
-					<xsl:variable name="comDiv"
-						select="ancestor::tei:div[@corresp = $ItemID]"/>
+					<xsl:variable name="comDiv" select="ancestor::tei:div[@corresp = $ItemID]"/>
 					<xsl:variable name="itemHand" select="@resp"/>
 					<h5 style="margin-left:40px">
 						<xsl:apply-templates select="tei:title"/>
@@ -366,14 +363,23 @@
 				</p>
 			</xsl:when>
 			<xsl:otherwise>
-				<p style="margin-left:30px">
-					<b align="left">
-						<xsl:value-of select="@n"/>
-						<xsl:text>. </xsl:text>
-					</b>
-					<xsl:text>  </xsl:text>
-					<xsl:apply-templates select="descendant::tei:l"/>
-				</p>
+				<xsl:choose>
+					<xsl:when test="@type = 'dúnad'">
+						<p style="margin-left:30px">
+							<xsl:apply-templates select="descendant::tei:l"/>
+						</p>
+					</xsl:when>
+					<xsl:otherwise>
+						<p style="margin-left:30px">
+							<b align="left">
+								<xsl:value-of select="@n"/>
+								<xsl:text>. </xsl:text>
+							</b>
+							<xsl:text>  </xsl:text>
+							<xsl:apply-templates select="descendant::tei:l"/>
+						</p>
+					</xsl:otherwise>
+				</xsl:choose>
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
@@ -390,7 +396,8 @@
 				<xsl:when test="not(@lemma)">
 					<xsl:choose>
 						<xsl:when test="ancestor::tei:name">
-								<xsl:value-of select="ancestor::tei:name/@type"/><xsl:text> name</xsl:text>
+							<xsl:value-of select="ancestor::tei:name/@type"/>
+							<xsl:text> name</xsl:text>
 						</xsl:when>
 						<xsl:when test="@xml:lang">Language: <xsl:value-of
 								select="key('lang', @xml:lang)/text()"/></xsl:when>
@@ -434,7 +441,9 @@
 			</xsl:if>
 			<xsl:if test="ancestor::tei:choice/tei:corr">
 				<xsl:variable name="alt" select="ancestor::tei:choice/tei:sic"/>
-				<xsl:text xml:space="preserve">- this is an editorial emendation of the manuscript reading ("</xsl:text><xsl:value-of select="$alt"/><xsl:text>")&#10;</xsl:text>
+				<xsl:text xml:space="preserve">- this is an editorial emendation of the manuscript reading ("</xsl:text>
+				<xsl:value-of select="$alt"/>
+				<xsl:text>")&#10;</xsl:text>
 			</xsl:if>
 			<xsl:if test="ancestor::tei:choice[descendant::tei:unclear]">
 				<xsl:text xml:space="preserve">- there is a possible alternative to this reading &#10;</xsl:text>
@@ -701,21 +710,26 @@
 				</xsl:attribute>
 			</xsl:if>
 			<xsl:choose>
-				<xsl:when test="ancestor::*[@cert='low'] or descendant::*[@cert='low']">
+				<xsl:when test="ancestor::*[@cert = 'low'] or descendant::*[@cert = 'low']">
 					<xsl:attribute name="style">text-decoration:none; color:#ff0000</xsl:attribute>
 				</xsl:when>
 				<xsl:otherwise>
 					<xsl:choose>
-						<xsl:when test="ancestor::*[@cert='medium'] or descendant::*[@cert='medium']">
-							<xsl:attribute name="style">text-decoration:none; color:#ff9900</xsl:attribute>
+						<xsl:when
+							test="ancestor::*[@cert = 'medium'] or descendant::*[@cert = 'medium']">
+							<xsl:attribute name="style">text-decoration:none;
+								color:#ff9900</xsl:attribute>
 						</xsl:when>
 						<xsl:otherwise>
 							<xsl:choose>
-								<xsl:when test="ancestor::tei:unclear[@cert='high'] or descendant::tei:unclear[@cert='high']">
-									<xsl:attribute name="style">text-decoration:none; color:#cccc00</xsl:attribute>
+								<xsl:when
+									test="ancestor::tei:unclear[@cert = 'high'] or descendant::tei:unclear[@cert = 'high']">
+									<xsl:attribute name="style">text-decoration:none;
+										color:#cccc00</xsl:attribute>
 								</xsl:when>
 								<xsl:otherwise>
-									<xsl:attribute name="style">text-decoration:none; color:#000000</xsl:attribute>
+									<xsl:attribute name="style">text-decoration:none;
+										color:#000000</xsl:attribute>
 								</xsl:otherwise>
 							</xsl:choose>
 						</xsl:otherwise>
@@ -793,7 +807,8 @@
 			<xsl:when test="self::tei:pc and ancestor::tei:w and following::tei:w">
 				<xsl:text/>
 			</xsl:when>
-			<xsl:when test="@lemmaRef='http://www.dil.ie/33147' and following::tei:w[1]/@ana='pron'">
+			<xsl:when
+				test="@lemmaRef = 'http://www.dil.ie/33147' and following::tei:w[1]/@ana = 'pron'">
 				<xsl:text/>
 			</xsl:when>
 			<xsl:when test="not(following-sibling::*)">
@@ -1216,7 +1231,8 @@
 				<xsl:apply-templates select="tei:corr"/>
 				<xsl:for-each select="tei:sic/descendant::tei:w[not(descendant::tei:w)]">
 					<xsl:variable name="alt" select="ancestor::tei:choice/tei:corr"/>
-					<a id="{generate-id()}" title="MS: {self::*}&#10;- this reading is unintelligible and may be corrupt; an amended reading ('{$alt}') has been supplied.">
+					<a id="{generate-id()}"
+						title="MS: {self::*}&#10;- this reading is unintelligible and may be corrupt; an amended reading ('{$alt}') has been supplied.">
 						<xsl:if test="tei:sic//tei:w/@lemma">
 							<xsl:attribute name="href">
 								<xsl:value-of
