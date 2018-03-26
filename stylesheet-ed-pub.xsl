@@ -299,9 +299,11 @@
 		</table>
 		<br/>
 	</xsl:template>
-	
-	<xsl:template match="tei:hi[@rend='italics']">
-		<i><xsl:apply-templates/></i>
+
+	<xsl:template match="tei:hi[@rend = 'italics']">
+		<i>
+			<xsl:apply-templates/>
+		</i>
 	</xsl:template>
 
 	<xsl:template match="tei:pb">
@@ -435,8 +437,18 @@
 	</xsl:template>
 
 	<xsl:template match="tei:l">
-		<xsl:apply-templates/>
-		<br/>
+		<xsl:choose>
+			<xsl:when test="ancestor::tei:lg[@type = 'prosediv'] and @n">
+				<xsl:value-of select="@n"/>
+				<xsl:text>. </xsl:text>
+				<xsl:apply-templates/>
+				<br/>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:apply-templates/>
+				<br/>
+			</xsl:otherwise>
+		</xsl:choose>
 	</xsl:template>
 
 	<xsl:template match="tei:w[not(descendant::tei:w)]">
