@@ -390,12 +390,7 @@
 				<xsl:when test="not(@lemma)">
 					<xsl:choose>
 						<xsl:when test="ancestor::tei:name">
-							<xsl:choose>
-								<xsl:when test="ancestor::tei:name/@type = 'place'"><xsl:value-of
-										select="ancestor::tei:name/@type"/>name</xsl:when>
-								<xsl:otherwise><xsl:value-of select="ancestor::tei:name/@type"/>
-									name</xsl:otherwise>
-							</xsl:choose>
+								<xsl:value-of select="ancestor::tei:name/@type"/><xsl:text> name</xsl:text>
 						</xsl:when>
 						<xsl:when test="@xml:lang">Language: <xsl:value-of
 								select="key('lang', @xml:lang)/text()"/></xsl:when>
@@ -739,7 +734,7 @@
 			<xsl:when test="@ana = 'part' and ancestor::tei:w[contains(@ana, 'part, pron, verb')]">
 				<xsl:text/>
 			</xsl:when>
-			<xsl:when test="@ana = 'pron' and ancestor::tei:w[contains(@ana, 'part, pron, verb')]">
+			<xsl:when test="@ana = 'pron' and ancestor::tei:w[contains(@ana, 'pron, verb')]">
 				<xsl:text> </xsl:text>
 			</xsl:when>
 			<xsl:when test="@ana = 'noun' and ancestor::tei:w[contains(@ana, 'noun, pron')]">
@@ -796,6 +791,9 @@
 				<xsl:text/>
 			</xsl:when>
 			<xsl:when test="self::tei:pc and ancestor::tei:w and following::tei:w">
+				<xsl:text/>
+			</xsl:when>
+			<xsl:when test="@lemmaRef='http://www.dil.ie/33147' and following::tei:w[1]/@ana='pron'">
 				<xsl:text/>
 			</xsl:when>
 			<xsl:when test="not(following-sibling::*)">
