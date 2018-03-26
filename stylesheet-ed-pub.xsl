@@ -246,13 +246,63 @@
 								<xsl:text>); </xsl:text>
 							</xsl:if>
 						</xsl:for-each>
+						<br/>
 					</p>
 				</xsl:for-each>
 			</xsl:if>
+			<h5>Filiation of Text</h5>
+			<xsl:for-each select="tei:filiation/tei:p">
+				<p>
+					<xsl:apply-templates/>
+				</p>
+			</xsl:for-each>
+			<br/>
+			<xsl:for-each select="tei:textLang/tei:note/tei:p">
+				<p>
+					<xsl:apply-templates/>
+				</p>
+			</xsl:for-each>
+			<br/>
 		</xsl:for-each>
 	</xsl:template>
 
+	<xsl:template match="tei:list">
+		<br/>
+		<ul style="margin-left:30px">
+			<xsl:for-each select="tei:item">
+				<li>
+					<xsl:apply-templates/>
+				</li>
+				<br/>
+			</xsl:for-each>
+		</ul>
+	</xsl:template>
 
+	<xsl:template match="tei:table">
+		<table style="margin-left:30px">
+			<tr>
+				<xsl:for-each select="tei:row[@role = 'label']/tei:cell">
+					<th style="bold">
+						<xsl:apply-templates/>
+					</th>
+				</xsl:for-each>
+			</tr>
+			<xsl:for-each select="tei:row[@role = 'data']">
+				<tr>
+					<xsl:for-each select="tei:cell">
+						<td>
+							<xsl:apply-templates/>
+						</td>
+					</xsl:for-each>
+				</tr>
+			</xsl:for-each>
+		</table>
+		<br/>
+	</xsl:template>
+	
+	<xsl:template match="tei:hi[@rend='italics']">
+		<i><xsl:apply-templates/></i>
+	</xsl:template>
 
 	<xsl:template match="tei:pb">
 		<br/>
