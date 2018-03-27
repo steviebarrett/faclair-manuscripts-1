@@ -20,9 +20,9 @@
 					<resp>Overseer</resp>
 				</respStmt>
 			</titleStmt>
-			<extent> 384 words </extent>
+			<extent> 527 words </extent>
 			<publicationStmt>
-				<authority sameAs="#authority"/>
+				<authority/>
 				<availability status="restricted">
 					<p>For internal use by the Faclair na Gàidhlig/DASG projects</p>
 				</availability>
@@ -47,9 +47,9 @@
 						<idno type="shelfmark">MS. Egerton 2899</idno>
 					</msIdentifier>
 					<msContents>
-						<summary><hi rend="bold">A Middle Gaelic <hi rend="italics">lorica</hi>
-								poem</hi>; otherwise, the manuscript contains a martyrology with
-							Scottish focus and a Psalter.</summary>
+						<summary>A Middle Gaelic <hi rend="italics">lorica</hi> poem; otherwise, the
+							manuscript contains a martyrology with Scottish focus and a
+							Psalter.</summary>
 						<msItem xml:id="MS2.1" resp="Hand7">
 							<locus>fol.iiir</locus>
 							<title>Aingeal de dom dhin</title>
@@ -282,30 +282,45 @@
 						</objectDesc>
 					</physDesc>
 					<history>
-						<provenance><p>According to Flower (<ref target="Flower1926">1926</ref>:
-								23), <ref target="MS2">Egerton 2899</ref> began life in the 14th
-								century as a Psalter. About a century later, this was joined by a
-								tabulated martyrology. The latter’s emphasis is on Scottish saints,
-								some very local to Argyll. This, combined with an inscription
-								implying that the manuscript was the property of <name
-									type="personal">Colin Campbell</name>, Laird of Glenorchy (d.
-								1523), and a 18th-century bookplate of his descendants, the Earls of
-								Breadalbane suggests an <location>
+						<origin><p>According to Flower (<ref target="Flower1926">1926</ref>: 23),
+									<ref target="MS2">Egerton 2899</ref> began life in the 14th
+								century as a Psalter.</p></origin>
+						<provenance><p>About a century later, this was joined by a tabulated
+								martyrology. The latter’s emphasis is on Scottish saints, some very
+								local to Argyll. This, combined with an inscription implying that
+								the manuscript was the property of <name type="personal">Colin
+									Campbell</name>, Laird of Glenorchy (d. 1523), and a
+								18th-century bookplate of his descendants, the Earls of Breadalbane
+								suggests an <location>
 									<region>Argyll</region>
 								</location> provenance for the gathering containing the martyrology.
 									'<ref target="MS2.1">Aingil Dé dom dhín</ref>' would have been
 								added in this context (around 1500). Technically, the Psalter could
-								be from elsewhere.</p></provenance>
+								be from elsewhere.</p><p>It has been pointed out (<ref
+									target="Flower1926">1926</ref>: 23) that Colin's father, Duncan,
+								is attributed poetry in the <hi rend="italics">Book of the Dean of
+									Lismore</hi>, implying sustained interest in Gaelic literature
+								on the part of this family.</p></provenance>
+						<acquisition><p>The manuscript was purchased for the British Museum's
+								collections from Sotheby's in February 1912. How it came to be up
+								for sale is unclear.</p></acquisition>
 					</history>
 				</msDesc>
 			</sourceDesc>
 		</fileDesc>
 		<encodingDesc>
+			<editorialDecl>
+				<p>This transcription raised few particular editorial issues that required deviation
+					from standard encoding practice. On a few occasions, an editorial emendation of
+					highly corrupt forms have been supplied from O'Nolan's edition (<ref
+						target="ONolan1912">1912</ref>) using the &lt;corr&gt; element, which is
+					usually used for editorial interventions by personnel on the FnaG project.</p>
+			</editorialDecl>
 			<metDecl>
-				<p>The poem's metre is <hi>rannaigecht bec</hi> (5<hi rend="sup">1</hi>, 5<hi
-						rend="sup">1</hi>, 5<hi rend="sup">1</hi>, 5<hi rend="sup">1</hi>). The text
-					is laid out with one quatrain per line in <ref target="MS2">Egerton
-					2899</ref>.</p>
+				<p>The poem's metre is <hi rend="italics">rannaigecht bec</hi> (5<hi rend="sup"
+						>1</hi>, 5<hi rend="sup">1</hi>, 5<hi rend="sup">1</hi>, 5<hi rend="sup"
+						>1</hi>). The text is laid out with one quatrain per line in <ref
+						target="MS2">Egerton 2899</ref>.</p>
 			</metDecl>
 			<refsDecl>
 				<p>References are to quatrain (q<hi rend="italics">n</hi>; the &lt;lg&gt; element>)
@@ -327,7 +342,11 @@
 			</textClass>
 		</profileDesc>
 		<revisionDesc>
-			<change when="2017-11-07" who="#EPT">Header: Restructured header</change>
+			<change when="2017-10-07" who="EPT">File Created</change>
+			<change when="2017-10-10" who="EPT">Intital Transcription Completed</change>
+			<change when="2017-11-07" who="EPT">Expanded and restructured header</change>
+			<change when="2017-11-24" who="EPT">Revised text in response to feedback</change>
+			<change when="2018-03-27" who="EPT">Updated mark-up and header structure</change>
 		</revisionDesc>
 	</teiHeader>
 	<text>

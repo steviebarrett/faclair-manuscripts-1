@@ -24,6 +24,7 @@
 		<html>
 			<head>
 				<script src="WordFile.js"/>
+				<script src="ref.js"/>
 			</head>
 			<body>
 				<h1>
@@ -264,6 +265,92 @@
 			</xsl:for-each>
 			<br/>
 		</xsl:for-each>
+		<h4>Physical Description of Manuscrpt</h4>
+		<xsl:if test="tei:msDesc/tei:physDesc/tei:p">
+			<p>
+				<xsl:apply-templates select="tei:msDesc/tei:physDesc/tei:p"/>
+			</p>
+		</xsl:if>
+		<h5> Writing Surface </h5>
+		<p>
+			<xsl:apply-templates
+				select="tei:msDesc/tei:physDesc/tei:objectDesc/tei:supportDesc/tei:support/tei:p"/>
+		</p>
+		<h5> Foliation </h5>
+		<p>
+			<xsl:apply-templates
+				select="tei:msDesc/tei:physDesc/tei:objectDesc/tei:supportDesc/tei:foliation/tei:p"
+			/>
+		</p>
+		<h5> Condition </h5>
+		<p>
+			<xsl:apply-templates
+				select="tei:msDesc/tei:physDesc/tei:objectDesc/tei:supportDesc/tei:condition/tei:p"
+			/>
+		</p>
+		<h5> Layout of Page </h5>
+		<p>
+			<xsl:apply-templates
+				select="tei:msDesc/tei:physDesc/tei:objectDesc/tei:layoutDesc/tei:p"/>
+		</p>
+		<h4> History of the Manuscript </h4>
+		<h5>Summary</h5>
+		<p>
+			<xsl:apply-templates select="tei:msDesc/tei:history/tei:summary/tei:p"/>
+		</p>
+		<h5>Origin</h5>
+		<p>
+			<xsl:apply-templates select="tei:msDesc/tei:history/tei:origin/tei:p"/>
+		</p>
+		<h5>Subsequent History</h5>
+		<p>
+			<xsl:apply-templates select="tei:msDesc/tei:history/tei:provenance/tei:p"/>
+		</p>
+		<h5>Acquisition</h5>
+		<p>
+			<xsl:apply-templates select="tei:msDesc/tei:history/tei:acquisition/tei:p"/>
+		</p>
+	</xsl:template>
+
+	<xsl:template match="tei:teiHeader/tei:encodingDesc">
+		<h3>Encoding of this Transcription</h3>
+		<h4>Issues</h4>
+		<p>
+			<xsl:apply-templates select="tei:editorialDecl/tei:p"/>
+		</p>
+		<xsl:if test="tei:metDecl">
+			<h4>Metrics</h4>
+			<p>
+				<xsl:apply-templates select="tei:metDecl/tei:p"/>
+			</p>
+		</xsl:if>
+		<h4>Referencing of this Transcription</h4>
+		<p>
+			<xsl:apply-templates select="tei:refsDecl/tei:p"/>
+		</p>
+	</xsl:template>
+
+	<xsl:template match="tei:teiHeader/tei:profileDesc/tei:textClass">
+		<h3>Keywords</h3>
+		<ul style="margin-left:30px">
+			<xsl:for-each select="tei:keywords/tei:term">
+				<li>
+					<xsl:apply-templates/>
+				</li>
+			</xsl:for-each>
+		</ul>
+	</xsl:template>
+
+	<xsl:template match="tei:teiHeader/tei:revisionDesc">
+		<h3>Revision History</h3>
+		<xsl:for-each select="tei:change">
+			<b>
+				<xsl:value-of select="@when"/>
+				<xsl:text>: </xsl:text>
+			</b>
+			<xsl:apply-templates/>
+			<br/>
+		</xsl:for-each>
 	</xsl:template>
 
 	<xsl:template match="tei:list">
@@ -304,6 +391,18 @@
 		<i>
 			<xsl:apply-templates/>
 		</i>
+	</xsl:template>
+
+	<xsl:template match="tei:hi[@rend = 'bold']">
+		<b>
+			<xsl:apply-templates/>
+		</b>
+	</xsl:template>
+
+	<xsl:template match="tei:hi[@rend = 'sup']">
+		<sup>
+			<xsl:apply-templates/>
+		</sup>
 	</xsl:template>
 
 	<xsl:template match="tei:pb">
@@ -1097,6 +1196,10 @@
 			<xsl:apply-templates/>
 		</a>
 		<xsl:text> </xsl:text>
+	</xsl:template>
+	
+	<xsl:template match="tei:ref">
+		<a onclick="refDetails()"><xsl:apply-templates/></a>
 	</xsl:template>
 
 	<xsl:template match="tei:c">
