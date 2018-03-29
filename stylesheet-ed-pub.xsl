@@ -457,18 +457,30 @@
 			<xsl:value-of select="@n"/></b>
 	</xsl:template>
 
-	<xsl:template match="tei:p//tei:lb">
-		<br/>
-		<xsl:value-of select="@n"/>
-		<xsl:text>. </xsl:text>
-	</xsl:template>
-
-	<xsl:template match="tei:lb[ancestor::tei:lg] | tei:lb[ancestor::tei:w[ancestor::tei:lg]]">
-		<sub>
-			<xsl:text> </xsl:text>
-			<xsl:value-of select="@n"/>
-			<xsl:text>. </xsl:text>
-		</sub>
+	<xsl:template match="tei:lb">
+		<xsl:choose>
+			<xsl:when test="ancestor::tei:p">
+				<sub>
+				<br/>
+				<xsl:value-of select="@n"/>
+				<xsl:text>. </xsl:text>
+				</sub>
+			</xsl:when>
+			<xsl:when test="ancestor::tei:lg or ancestor::tei:w[ancestor::tei:lg]">
+				<sub>
+					<xsl:text> </xsl:text>
+					<xsl:value-of select="@n"/>
+					<xsl:text>. </xsl:text>
+				</sub>
+			</xsl:when>
+			<xsl:otherwise>
+				<sub>
+				<br/>
+				<xsl:value-of select="@n"/>
+				<xsl:text>. </xsl:text>
+				</sub>
+			</xsl:otherwise>
+		</xsl:choose>
 	</xsl:template>
 
 	<xsl:template match="tei:lg">
