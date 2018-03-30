@@ -1210,6 +1210,14 @@
 		<xsl:text> </xsl:text>
 	</xsl:template>
 	
+	<xsl:template match="tei:num">
+		<a id="{generate-id()}" href="#" onclick="return false;"
+			style="text-decoration:none; color:#000000">
+			<xsl:apply-templates/>
+		</a>
+		<xsl:text> </xsl:text>
+	</xsl:template>
+	
 	<xsl:template match="tei:ref">
 		<a onclick="refDetails()"><xsl:apply-templates/></a>
 	</xsl:template>
