@@ -15,6 +15,7 @@
 	<xsl:key name="auth" match="*" use="@xml:id"/>
 	<xsl:key name="lang" match="*" use="@xml:id"/>
 	<xsl:key name="text" match="*" use="@xml:id"/>
+	<xsl:key name="altText" match="*" use="@corresp"/>
 
 	<xsl:attribute-set name="tblBorder">
 		<xsl:attribute name="border">solid 0.1mm black</xsl:attribute>
@@ -461,9 +462,9 @@
 		<xsl:choose>
 			<xsl:when test="ancestor::tei:p">
 				<sub>
-				<br/>
-				<xsl:value-of select="@n"/>
-				<xsl:text>. </xsl:text>
+					<br/>
+					<xsl:value-of select="@n"/>
+					<xsl:text>. </xsl:text>
 				</sub>
 			</xsl:when>
 			<xsl:when test="ancestor::tei:lg or ancestor::tei:w[ancestor::tei:lg]">
@@ -475,9 +476,9 @@
 			</xsl:when>
 			<xsl:otherwise>
 				<sub>
-				<br/>
-				<xsl:value-of select="@n"/>
-				<xsl:text>. </xsl:text>
+					<br/>
+					<xsl:value-of select="@n"/>
+					<xsl:text>. </xsl:text>
 				</sub>
 			</xsl:otherwise>
 		</xsl:choose>
@@ -548,6 +549,7 @@
 	</xsl:template>
 
 	<xsl:template match="tei:l">
+		<xsl:variable name="Id" select="@xml:id"/>
 		<xsl:choose>
 			<xsl:when test="ancestor::tei:lg[@type = 'prosediv'] and @n">
 				<xsl:value-of select="@n"/>
@@ -560,6 +562,18 @@
 				<br/>
 			</xsl:otherwise>
 		</xsl:choose>
+		<xsl:if test="ancestor::tei:lg/tei:note[@corresp = $Id]">
+		<xsl:for-each select="key('altText', @xml:id)/tei:p">
+			<style>
+				.indented{
+				padding-left: 40pt;
+				padding-right: 40pt;
+				}</style>
+			<p class="indented" style="font-size:11px">
+				<xsl:apply-templates/>
+			</p>
+		</xsl:for-each>
+		</xsl:if>
 	</xsl:template>
 
 	<xsl:template match="tei:w[not(descendant::tei:w)]">
@@ -925,7 +939,7 @@
 				<xsl:text> </xsl:text>
 			</xsl:when>
 			<xsl:when test="@ana = 'pron' and ancestor::tei:w[@ana = 'pron, verb']">
-				<xsl:text/> 
+				<xsl:text/>
 			</xsl:when>
 			<xsl:when test="@ana = 'noun' and ancestor::tei:w[contains(@ana, 'noun, pron')]">
 				<xsl:text/>
@@ -975,6 +989,9 @@
 				<xsl:text/>
 			</xsl:when>
 			<xsl:when test="@ana = 'conj' and ancestor::tei:w[contains(@ana, 'conj, pron')]">
+				<xsl:text/>
+			</xsl:when>
+			<xsl:when test="@ana = 'conj' and ancestor::tei:w[contains(@ana, 'conj, verb')]">
 				<xsl:text/>
 			</xsl:when>
 			<xsl:when test="ancestor::tei:w and following::tei:pc[1]">
@@ -1212,7 +1229,7 @@
 		</a>
 		<xsl:text> </xsl:text>
 	</xsl:template>
-	
+
 	<xsl:template match="tei:num">
 		<a id="{generate-id()}" href="#" onclick="return false;"
 			style="text-decoration:none; color:#000000">
@@ -1220,9 +1237,11 @@
 		</a>
 		<xsl:text> </xsl:text>
 	</xsl:template>
-	
+
 	<xsl:template match="tei:ref">
-		<a onclick="refDetails()"><xsl:apply-templates/></a>
+		<a onclick="refDetails()">
+			<xsl:apply-templates/>
+		</a>
 	</xsl:template>
 
 	<xsl:template match="tei:c">
