@@ -26,6 +26,7 @@
 			<head>
 				<script src="WordFile.js"/>
 				<script src="ref.js"/>
+				<script src="hilites.js"/>
 			</head>
 			<body>
 				<h1>
@@ -406,6 +407,12 @@
 		</sup>
 	</xsl:template>
 
+	<xsl:template match="tei:hi[@rend = 'underline']">
+		<u>
+			<xsl:apply-templates/>
+		</u>
+	</xsl:template>
+
 	<xsl:template match="tei:pb">
 		<br/>
 		<hr align="left" width="40%"/>
@@ -488,7 +495,7 @@
 		<xsl:choose>
 			<xsl:when test="child::tei:pb">
 				<xsl:variable name="conID" select="@xml:id"/>
-				<p style="margin-left:30px">
+				<p style="margin-left:40px">
 					<b align="left">
 						<xsl:value-of select="@n"/>
 
@@ -562,17 +569,20 @@
 				<br/>
 			</xsl:otherwise>
 		</xsl:choose>
-		<xsl:if test="ancestor::tei:lg/tei:note[@corresp = $Id]">
-		<xsl:for-each select="key('altText', @xml:id)/tei:p">
-			<style>
-				.indented{
-				padding-left: 40pt;
-				padding-right: 40pt;
-				}</style>
-			<p class="indented" style="font-size:11px">
-				<xsl:apply-templates/>
-			</p>
-		</xsl:for-each>
+		<xsl:if test="//tei:note[@corresp = $Id]">
+			<br/>
+			<xsl:for-each select="key('altText', @xml:id)/tei:p">
+				<style>
+					.indent{
+						padding-left: 40pt;
+						padding-right: 40pt;
+					}</style>
+				<seg class="indent" style="font-size:11px">
+					<xsl:apply-templates/>
+					<br/>
+				</seg>
+				<br/>
+			</xsl:for-each>
 		</xsl:if>
 	</xsl:template>
 
@@ -615,7 +625,23 @@
 							<xsl:text xml:space="preserve">- some or all of this word is difficult to decipher &#10;</xsl:text>
 						</xsl:when>
 						<xsl:when test="@reason = 'abbrv'">
-							<xsl:text xml:space="preserve">- this reading involves an abbreviation that cannot be expanded with certainty &#10;</xsl:text>
+							<xsl:text xml:space="preserve">- this reading involves an abbreviation ("</xsl:text>
+							<xsl:choose>
+								<xsl:when
+									test="count(descendant::tei:abbr[@cert = 'medium' or 'low' or 'unknown']) = 1">
+									<xsl:value-of
+										select="descendant::tei:abbr[@cert = 'medium' or 'low' or 'unknown']"
+									/>
+								</xsl:when>
+								<xsl:when
+									test="count(descendant::tei:abbr[@cert = 'medium' or 'low' or 'unknown']) &gt; 1">
+									<xsl:for-each
+										select="descendant::tei:abbr[@cert = 'medium' or 'low' or 'unknown']">
+										<xsl:value-of select="self::*"/>
+									</xsl:for-each>
+								</xsl:when>
+							</xsl:choose>
+							<xsl:text xml:space="preserve">") that cannot be expanded with certainty &#10;</xsl:text>
 						</xsl:when>
 						<xsl:when test="@reason = 'damage'">
 							<xsl:text xml:space="preserve">- loss of vellum; some characters are lost and may have been supplied by an editor &#10;</xsl:text>
@@ -880,9 +906,9 @@
 				</xsl:otherwise>
 			</xsl:choose>
 		</xsl:variable>
-		<a id="{generate-id()}" lemma="{$lem}" lemmaRef="{$lemRef}" ana="{@ana}" hand="{$hand}"
-			ref="{$msref}" date="{$handDate}" medium="{$medium}" cert="{$certLvl}"
-			abbrRefs="{$abbrRef}"
+		<a id="{generate-id()}" onmouseover="hilite(this.id)" onmouseout="dhilite(this.id)"
+			lemma="{$lem}" lemmaRef="{$lemRef}" ana="{@ana}" hand="{$hand}" ref="{$msref}"
+			date="{$handDate}" medium="{$medium}" cert="{$certLvl}" abbrRefs="{$abbrRef}"
 			title="{$lem}: {$pos} {$src}&#10;{$hand}&#10;{$prob}{$certProb}&#10;Abbreviations: {$abbrs}&#10;{$gloss}"
 			style="text-decoration:none; color:#000000">
 			<xsl:if test="@lemma">
@@ -1797,7 +1823,7 @@
 					/><xsl:text>) </xsl:text></b>
 			</sub>
 		</xsl:if> -->
-		<h2>
+		<h2 style="text-align:center">
 			<xsl:value-of select="key('divTitle', @corresp)/tei:title"/>
 		</h2>
 		<xsl:apply-templates/>
