@@ -461,8 +461,9 @@
 
 	<xsl:template match="tei:cb">
 		<br/>
-		<b>Column:<xsl:text> </xsl:text>
+		<b>Col.:<xsl:text> </xsl:text>
 			<xsl:value-of select="@n"/></b>
+		<br/>
 	</xsl:template>
 
 	<xsl:template match="tei:lb">
@@ -619,13 +620,23 @@
 				<xsl:for-each select="descendant::*[@reason] | ancestor::*[@reason]">
 					<xsl:choose>
 						<xsl:when test="@reason = 'interp_obscure'">
-							<xsl:text xml:space="preserve">- the interpretation of this word, in itself or in context, is doubtful &#10;</xsl:text>
+							<xsl:text xml:space="preserve">- the interpretation of this word, in itself or in context, is doubtful</xsl:text>
+							<xsl:if test="descendant::tei:w//*[@cert = 'medium' or 'low' or 'unknown']">
+								<xsl:text>; there is a particular issue with</xsl:text>
+								<xsl:for-each
+									select="descendant::tei:w//*[@cert = 'medium' or 'low' or 'unknown']">
+									<xsl:text> "</xsl:text>
+									<xsl:value-of select="self::*"/>
+									<xsl:text>"</xsl:text>
+								</xsl:for-each>
+							</xsl:if>
+							<xsl:text>&#10;</xsl:text>
 						</xsl:when>
 						<xsl:when test="@reason = 'text_obscure'">
 							<xsl:text xml:space="preserve">- some or all of this word is difficult to decipher &#10;</xsl:text>
 						</xsl:when>
 						<xsl:when test="@reason = 'abbrv'">
-							<xsl:text xml:space="preserve">- this reading involves an abbreviation ("</xsl:text>
+							<xsl:text xml:space="preserve">- this reading involves one or more abbreviations ("</xsl:text>
 							<xsl:choose>
 								<xsl:when
 									test="count(descendant::tei:abbr[@cert = 'medium' or 'low' or 'unknown']) = 1">
@@ -637,7 +648,9 @@
 									test="count(descendant::tei:abbr[@cert = 'medium' or 'low' or 'unknown']) &gt; 1">
 									<xsl:for-each
 										select="descendant::tei:abbr[@cert = 'medium' or 'low' or 'unknown']">
+										<xsl-text> </xsl-text>
 										<xsl:value-of select="self::*"/>
+										<xsl-text> </xsl-text>
 									</xsl:for-each>
 								</xsl:when>
 							</xsl:choose>
@@ -971,6 +984,9 @@
 				<xsl:text/>
 			</xsl:when>
 			<xsl:when test="@ana = 'prep' and ancestor::tei:w[contains(@ana, 'prep, dpron')]">
+				<xsl:text/>
+			</xsl:when>
+			<xsl:when test="@ana = 'pron' and ancestor::tei:w[contains(@ana, 'pron, dpron')]">
 				<xsl:text/>
 			</xsl:when>
 			<xsl:when test="@ana = 'prep' and ancestor::tei:w[contains(@ana, 'prep, verb')]">
