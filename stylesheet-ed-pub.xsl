@@ -461,7 +461,7 @@
 
 	<xsl:template match="tei:cb">
 		<br/>
-		<b>Col.:<xsl:text> </xsl:text>
+		<b>Col.<xsl:text> </xsl:text>
 			<xsl:value-of select="@n"/></b>
 		<br/>
 	</xsl:template>
@@ -621,7 +621,8 @@
 					<xsl:choose>
 						<xsl:when test="@reason = 'interp_obscure'">
 							<xsl:text xml:space="preserve">- the interpretation of this word, in itself or in context, is doubtful</xsl:text>
-							<xsl:if test="descendant::tei:w//*[@cert = 'medium' or 'low' or 'unknown']">
+							<xsl:if
+								test="descendant::tei:w//*[@cert = 'medium' or 'low' or 'unknown']">
 								<xsl:text>; there is a particular issue with</xsl:text>
 								<xsl:for-each
 									select="descendant::tei:w//*[@cert = 'medium' or 'low' or 'unknown']">
@@ -777,7 +778,7 @@
 		<xsl:variable name="handRef">
 			<xsl:choose>
 				<xsl:when test="ancestor::tei:add">
-					<xsl:value-of select="ancestor::tei:add[@type = 'gloss']/@resp"/>
+					<xsl:value-of select="ancestor::tei:add/@resp"/>
 				</xsl:when>
 				<xsl:otherwise>
 					<xsl:choose>
@@ -1481,12 +1482,10 @@
 				<xsl:for-each select="tei:sic/descendant::tei:w[not(descendant::tei:w)]">
 					<xsl:variable name="alt" select="ancestor::tei:choice/tei:corr"/>
 					<a id="{generate-id()}"
-						title="MS: {self::*}&#10;- this reading is unintelligible and may be corrupt; an amended reading ('{$alt}') has been supplied.">
-						<xsl:if test="tei:sic//tei:w/@lemma">
+						title="MS: {self::*}&#10;- this reading is incongruous and may be corrupt; an amended reading ('{$alt}') has been supplied.">
+						<xsl:if test="@lemma">
 							<xsl:attribute name="href">
-								<xsl:value-of
-									select="child::tei:sic//tei:w[not(descendant::tei:w)]/@lemmaRef"
-								/>
+								<xsl:value-of select="@lemmaRef"/>
 							</xsl:attribute>
 							<xsl:attribute name="style">text-decoration:none;
 								color:#000000</xsl:attribute>
