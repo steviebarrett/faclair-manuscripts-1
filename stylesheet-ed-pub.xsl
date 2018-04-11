@@ -14,7 +14,7 @@
 	<xsl:key name="divTitle" match="*" use="@xml:id"/>
 	<xsl:key name="auth" match="*" use="@xml:id"/>
 	<xsl:key name="lang" match="*" use="@xml:id"/>
-	<xsl:key name="text" match="*" use="@xml:id"/>
+	<xsl:key name="text" match="*" use="@corresp"/>
 	<xsl:key name="altText" match="*" use="@corresp"/>
 
 	<xsl:attribute-set name="tblBorder">
@@ -109,8 +109,9 @@
 			<xsl:apply-templates select="tei:msDesc/tei:msContents/tei:summary"/>
 		</p>
 		<xsl:for-each select="tei:msDesc/tei:msContents/tei:msItem">
-			<h4>
-				<xsl:apply-templates select="tei:title"/>
+			<xsl:variable name="inc" select="key('text', @xml:id)//preceding::tei:lb[1]/@xml:id|@sameAs"/>
+			<h4 id="{ancestor::tei:TEI/@xml:id}msContents">
+				<a href="#{@xml:id}"><xsl:apply-templates select="tei:title"/></a>
 			</h4>
 			<xsl:if test="tei:locus">
 				<xsl:apply-templates select="tei:locus"/>
@@ -186,8 +187,9 @@
 					<xsl:variable name="ItemID" select="@xml:id"/>
 					<xsl:variable name="comDiv" select="ancestor::tei:div[@corresp = $ItemID]"/>
 					<xsl:variable name="itemHand" select="@resp"/>
+					<xsl:variable name="incChild" select="key('text', @xml:id)//preceding::tei:lb[1]/@xml:id|@sameAs"/>
 					<h5 style="margin-left:40px">
-						<xsl:apply-templates select="tei:title"/>
+						<a href="#{@xml:id}"><xsl:apply-templates select="tei:title"/></a>
 					</h5>
 					<p style="margin-left:40px">
 						<xsl:apply-templates select="tei:locus"/>
@@ -470,7 +472,7 @@
 		<xsl:choose>
 			<xsl:when test="ancestor::tei:p">
 				<sub>
-					<br/>
+					<br id="{@xml:id|@sameAs}"/>
 					<xsl:value-of select="@n"/>
 					<xsl:text>. </xsl:text>
 				</sub>
@@ -484,7 +486,7 @@
 			</xsl:when>
 			<xsl:otherwise>
 				<sub>
-					<br/>
+					<br id="{@xml:id|@sameAs}"/>
 					<xsl:value-of select="@n"/>
 					<xsl:text>. </xsl:text>
 				</sub>
@@ -558,19 +560,30 @@
 
 	<xsl:template match="tei:l">
 		<xsl:variable name="Id" select="@xml:id"/>
+		<xsl:variable name="MSlineID">
+			<xsl:choose>
+				<xsl:when test="descendant::tei:lb">
+					<xsl:value-of select="descendant::tei:lb[1]/@xml:id|@sameAs"/>
+				</xsl:when>
+				<xsl:when test="not(descendant::tei:lb)">
+					<xsl:value-of select="preceding::tei:lb[1]/@xml:id|@sameAs"/>
+				</xsl:when>
+			</xsl:choose>
+		</xsl:variable>
 		<xsl:choose>
-			<xsl:when test="ancestor::tei:lg[@type = 'prosediv'] and @n">
+			<xsl:when test="ancestor::tei:lg[@type = 'prosediv'] and attribute::n">
+				<br id="{$MSlineID}"/>
 				<xsl:value-of select="@n"/>
 				<xsl:text>. </xsl:text>
 				<xsl:apply-templates/>
-				<br/>
 			</xsl:when>
 			<xsl:otherwise>
+				<br id="{$MSlineID}"/>
 				<xsl:apply-templates/>
-				<br/>
 			</xsl:otherwise>
 		</xsl:choose>
 		<xsl:if test="//tei:note[@corresp = $Id]">
+			<br/>
 			<br/>
 			<xsl:for-each select="key('altText', @xml:id)/tei:p">
 				<style>
@@ -687,8 +700,13 @@
 			<xsl:if test="ancestor::tei:choice[descendant::tei:unclear]">
 				<xsl:variable name="selfID" select="@n"/>
 				<xsl:variable name="choiceID" select="ancestor::tei:unclear[parent::tei:choice]/@n"/>
-				<xsl:variable name="altChoice" select="ancestor::tei:choice/tei:unclear[not(@n=$choiceID)]//tei:w[@n=$selfID]"/>
-				<xsl:text xml:space="preserve">- there is a possible alternative to this reading ("</xsl:text><xsl:value-of select="$altChoice"/><xsl:text>"), </xsl:text><xsl:value-of select="$altChoice/@ana"/><xsl:text>&#10;</xsl:text>
+				<xsl:variable name="altChoice"
+					select="ancestor::tei:choice/tei:unclear[not(@n = $choiceID)]//tei:w[@n = $selfID]"/>
+				<xsl:text xml:space="preserve">- there is a possible alternative to this reading ("</xsl:text>
+				<xsl:value-of select="$altChoice"/>
+				<xsl:text>"), </xsl:text>
+				<xsl:value-of select="$altChoice/@ana"/>
+				<xsl:text>&#10;</xsl:text>
 			</xsl:if>
 			<xsl:if test="ancestor::tei:supplied">
 				<xsl:text xml:space="preserve">- this word has been supplied by an editor &#10;</xsl:text>
@@ -1862,6 +1880,8 @@
 	</xsl:template>
 
 	<xsl:template match="tei:div[@n]">
+		<xsl:variable name="contents" select="ancestor::tei:TEI//tei:msDesc/tei:msContents/tei:msItem/h4/@id"/>
+		<xsl:variable name="lineID" select="preceding::tei:lb[1]/@xml:id|@sameAs"/>
 		<!-- <xsl:if test="/@resp = not(preceding::tei:div/@resp or preceding::tei:handShift/@new)">
 			<sub>
 				<b>beg. <xsl:value-of select="key('hands', @resp)/tei:forename"
@@ -1871,7 +1891,8 @@
 					/><xsl:text>) </xsl:text></b>
 			</sub>
 		</xsl:if> -->
-		<h2 style="text-align:center">
+		<xsl:if test="@n and ancestor::tei:div"><p><a href="{$contents}">Back to MS contents</a></p></xsl:if>
+		<h2 style="text-align:center" id="{@corresp}">
 			<xsl:value-of select="key('divTitle', @corresp)/tei:title"/>
 		</h2>
 		<xsl:apply-templates/>
