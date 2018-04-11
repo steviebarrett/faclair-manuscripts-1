@@ -588,6 +588,7 @@
 	</xsl:template>
 
 	<xsl:template match="tei:w[not(descendant::tei:w)]">
+		<xsl:variable name="wordId" select="position()"/>
 		<xsl:variable name="lem">
 			<xsl:choose>
 				<xsl:when test="@lemma = 'UNKNOWN'">[lemma unknown]</xsl:when>
@@ -620,12 +621,12 @@
 				<xsl:for-each select="descendant::*[@reason] | ancestor::*[@reason]">
 					<xsl:choose>
 						<xsl:when test="@reason = 'interp_obscure'">
-							<xsl:text xml:space="preserve">- the interpretation of this word, in itself or in context, is doubtful</xsl:text>
+							<xsl:text xml:space="preserve">- the interpretation of this word, or its context, is doubtful</xsl:text>
 							<xsl:if
-								test="descendant::tei:w//*[@cert = 'medium' or 'low' or 'unknown']">
+								test="descendant::tei:unclear[@cert = 'medium' or 'low' or 'unknown']//tei:w[not(position() = $wordId)]">
 								<xsl:text>; there is a particular issue with</xsl:text>
 								<xsl:for-each
-									select="descendant::tei:w//*[@cert = 'medium' or 'low' or 'unknown']">
+									select="descendant::tei:unclear//tei:w[not(ancestor::tei:w) and not(position() = $wordId)]">
 									<xsl:text> "</xsl:text>
 									<xsl:value-of select="self::*"/>
 									<xsl:text>"</xsl:text>
@@ -634,28 +635,27 @@
 							<xsl:text>&#10;</xsl:text>
 						</xsl:when>
 						<xsl:when test="@reason = 'text_obscure'">
-							<xsl:text xml:space="preserve">- some or all of this word is difficult to decipher &#10;</xsl:text>
-						</xsl:when>
-						<xsl:when test="@reason = 'abbrv'">
-							<xsl:text xml:space="preserve">- this reading involves one or more abbreviations ("</xsl:text>
 							<xsl:choose>
-								<xsl:when
-									test="count(descendant::tei:abbr[@cert = 'medium' or 'low' or 'unknown']) = 1">
-									<xsl:value-of
-										select="descendant::tei:abbr[@cert = 'medium' or 'low' or 'unknown']"
-									/>
+								<xsl:when test="ancestor::tei:unclear[@reason = 'text_obscure']">
+									<xsl:text xml:space="preserve">- this word is difficult to decipher &#10;</xsl:text>
 								</xsl:when>
-								<xsl:when
-									test="count(descendant::tei:abbr[@cert = 'medium' or 'low' or 'unknown']) &gt; 1">
-									<xsl:for-each
-										select="descendant::tei:abbr[@cert = 'medium' or 'low' or 'unknown']">
-										<xsl-text> </xsl-text>
-										<xsl:value-of select="self::*"/>
-										<xsl-text> </xsl-text>
-									</xsl:for-each>
+								<xsl:when test="descendant::tei:unclear[@reason = 'text_obscure']">
+									<xsl:text xml:space="preserve">- parts of this word are difficult to decipher &#10;</xsl:text>
 								</xsl:when>
 							</xsl:choose>
-							<xsl:text xml:space="preserve">") that cannot be expanded with certainty &#10;</xsl:text>
+						</xsl:when>
+						<xsl:when test="@reason = 'abbrv'">
+							<xsl:text xml:space="preserve">- this reading involves one or more abbreviations </xsl:text>
+							<xsl:if test="descendant::tei:abbr[not(@cert = 'high')]">
+								<xsl:text>("</xsl:text>
+								<xsl:for-each select="descendant::tei:abbr[not(@cert = 'high')]">
+									<xsl:text> </xsl:text>
+									<xsl:value-of select="self::*"/>
+									<xsl:text> </xsl:text>
+								</xsl:for-each>
+								<xsl:text>") </xsl:text>
+							</xsl:if>
+							<xsl:text xml:space="preserve">that cannot be expanded with certainty &#10;</xsl:text>
 						</xsl:when>
 						<xsl:when test="@reason = 'damage'">
 							<xsl:text xml:space="preserve">- loss of vellum; some characters are lost and may have been supplied by an editor &#10;</xsl:text>
@@ -666,6 +666,18 @@
 					</xsl:choose>
 				</xsl:for-each>
 			</xsl:if>
+			<xsl:if
+				test="descendant::tei:abbr[not(@cert = 'high')] and not(ancestor::tei:unclear[@type = 'abbrv'])">
+				<xsl:text xml:space="preserve">- this reading involves one or more abbreviations </xsl:text>
+				<xsl:text>("</xsl:text>
+				<xsl:for-each select="descendant::tei:abbr[not(@cert = 'high')]">
+					<xsl:text> </xsl:text>
+					<xsl:value-of select="self::*"/>
+					<xsl:text> </xsl:text>
+				</xsl:for-each>
+				<xsl:text>") </xsl:text>
+				<xsl:text xml:space="preserve">that cannot be expanded with certainty &#10;</xsl:text>
+			</xsl:if>
 			<xsl:if test="ancestor::tei:choice/tei:corr">
 				<xsl:variable name="alt" select="ancestor::tei:choice/tei:sic"/>
 				<xsl:text xml:space="preserve">- this is an editorial emendation of the manuscript reading ("</xsl:text>
@@ -673,7 +685,10 @@
 				<xsl:text>")&#10;</xsl:text>
 			</xsl:if>
 			<xsl:if test="ancestor::tei:choice[descendant::tei:unclear]">
-				<xsl:text xml:space="preserve">- there is a possible alternative to this reading &#10;</xsl:text>
+				<xsl:variable name="selfID" select="@n"/>
+				<xsl:variable name="choiceID" select="ancestor::tei:unclear[parent::tei:choice]/@n"/>
+				<xsl:variable name="altChoice" select="ancestor::tei:choice/tei:unclear[not(@n=$choiceID)]//tei:w[@n=$selfID]"/>
+				<xsl:text xml:space="preserve">- there is a possible alternative to this reading ("</xsl:text><xsl:value-of select="$altChoice"/><xsl:text>"), </xsl:text><xsl:value-of select="$altChoice/@ana"/><xsl:text>&#10;</xsl:text>
 			</xsl:if>
 			<xsl:if test="ancestor::tei:supplied">
 				<xsl:text xml:space="preserve">- this word has been supplied by an editor &#10;</xsl:text>
@@ -730,17 +745,31 @@
 		</xsl:variable>
 		<xsl:variable name="certProb">
 			<xsl:if test="ancestor::*[@cert] or descendant::*[@cert]">
-				<xsl:for-each select="ancestor::*[@cert] | descendant::*[@cert]">
-					<xsl:choose>
-						<xsl:when test="@cert[parent::tei:unclear] = 'High'">Slight/possible
-							problems with this reading &#10;</xsl:when>
-						<xsl:when test="@cert = 'medium'">Moderate problems with this reading
-							&#10;</xsl:when>
-						<xsl:when test="@cert = 'low'">Serious problems with this reading
-							&#10;</xsl:when>
-					</xsl:choose>
-				</xsl:for-each>
-			</xsl:if>
+				<xsl:choose>
+					<xsl:when test="ancestor::*[@cert = 'low'] or descendant::*[@cert = 'low']">
+						<xsl:text>Serious problems with this reading
+					</xsl:text>
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:choose>
+							<xsl:when
+								test="ancestor::*[@cert = 'medium'] or descendant::*[@cert = 'medium']">
+								<xsl:text>Moderate problems with this reading
+						</xsl:text>
+							</xsl:when>
+							<xsl:otherwise>
+								<xsl:choose>
+									<xsl:when
+										test="ancestor::*[@cert = 'unknown'] or descendant::*[@cert = 'unknown']">
+										<xsl:text>Possible problems with this reading
+							</xsl:text>
+									</xsl:when>
+									<xsl:otherwise/>
+								</xsl:choose>
+							</xsl:otherwise>
+						</xsl:choose>
+					</xsl:otherwise>
+				</xsl:choose>&#10;</xsl:if>
 		</xsl:variable>
 		<xsl:variable name="abbrs">
 			<xsl:choose>
@@ -1674,13 +1703,13 @@
 
 	<xsl:template match="tei:note[@type = 'fn']">
 		<xsl:variable name="comDiv" select="ancestor::tei:div[not(ancestor::tei:div)]/@corresp"/>
-		<xsl:variable name="fnNum" select="count(preceding::tei:note[@type = 'fn' and ancestor::tei:div/@corresp = $comDiv]) + 1"/>
+		<xsl:variable name="fnNum"
+			select="count(preceding::tei:note[@type = 'fn' and ancestor::tei:div/@corresp = $comDiv]) + 1"/>
 		<sup>
 			<b>
-				<a id="{$comDiv}.ref{$fnNum}" href="#{$comDiv}.fn{$fnNum}" title="{descendant::tei:p}">
-					<xsl:value-of
-						select="$fnNum"
-					/>
+				<a id="{$comDiv}.ref{$fnNum}" href="#{$comDiv}.fn{$fnNum}"
+					title="{descendant::tei:p}">
+					<xsl:value-of select="$fnNum"/>
 				</a>
 			</b>
 		</sup>
@@ -1851,12 +1880,14 @@
 			<xsl:for-each select="descendant::tei:note[@type = 'fn']">
 				<xsl:variable name="comDiv"
 					select="ancestor::tei:div[not(ancestor::tei:div)]/@corresp"/>
-				<xsl:variable name="fnNum" select="count(preceding::tei:note[@type = 'fn' and ancestor::tei:div/@corresp = $comDiv]) + 1"/>
+				<xsl:variable name="fnNum"
+					select="count(preceding::tei:note[@type = 'fn' and ancestor::tei:div/@corresp = $comDiv]) + 1"/>
 				<p>
 					<b>
-						<a id="{$comDiv}.fn{$fnNum}" href="#{$comDiv}.ref{$fnNum}"><xsl:value-of
-							select="$fnNum"/>
-						<xsl:text>.</xsl:text></a>
+						<a id="{$comDiv}.fn{$fnNum}" href="#{$comDiv}.ref{$fnNum}">
+							<xsl:value-of select="$fnNum"/>
+							<xsl:text>.</xsl:text>
+						</a>
 					</b>
 					<xsl:text> </xsl:text>
 					<xsl:apply-templates select="child::tei:p"/>
