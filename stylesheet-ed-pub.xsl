@@ -1673,10 +1673,14 @@
 	</xsl:template> -->
 
 	<xsl:template match="tei:note[@type = 'fn']">
+		<xsl:variable name="comDiv" select="ancestor::tei:div[not(ancestor::tei:div)]/@corresp"/>
+		<xsl:variable name="fnNum" select="count(preceding::tei:note[@type = 'fn' and ancestor::tei:div/@corresp = $comDiv]) + 1"/>
 		<sup>
 			<b>
-				<a id="{generate-id()}" title="{descendant::tei:p}">
-					<xsl:value-of select="@n"/>
+				<a id="{$comDiv}.ref{$fnNum}" href="#{$comDiv}.fn{$fnNum}" title="{descendant::tei:p}">
+					<xsl:value-of
+						select="$fnNum"
+					/>
 				</a>
 			</b>
 		</sup>
@@ -1842,6 +1846,23 @@
 			<xsl:value-of select="key('divTitle', @corresp)/tei:title"/>
 		</h2>
 		<xsl:apply-templates/>
+		<xsl:if test="not(ancestor::tei:div) and descendant::tei:note[@type = 'fn']">
+			<h3>Notes</h3>
+			<xsl:for-each select="descendant::tei:note[@type = 'fn']">
+				<xsl:variable name="comDiv"
+					select="ancestor::tei:div[not(ancestor::tei:div)]/@corresp"/>
+				<xsl:variable name="fnNum" select="count(preceding::tei:note[@type = 'fn' and ancestor::tei:div/@corresp = $comDiv]) + 1"/>
+				<p>
+					<b>
+						<a id="{$comDiv}.fn{$fnNum}" href="#{$comDiv}.ref{$fnNum}"><xsl:value-of
+							select="$fnNum"/>
+						<xsl:text>.</xsl:text></a>
+					</b>
+					<xsl:text> </xsl:text>
+					<xsl:apply-templates select="child::tei:p"/>
+				</p>
+			</xsl:for-each>
+		</xsl:if>
 	</xsl:template>
 
 	<xsl:template match="tei:head">
