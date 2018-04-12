@@ -680,7 +680,7 @@
 				</xsl:for-each>
 			</xsl:if>
 			<xsl:if
-				test="descendant::tei:abbr[not(@cert = 'high')] and not(ancestor::tei:unclear[@type = 'abbrv'])">
+				test="descendant::tei:abbr[not(@cert = 'high')] and not(ancestor::tei:unclear[@reason = 'abbrv'])">
 				<xsl:text xml:space="preserve">- this reading involves one or more abbreviations </xsl:text>
 				<xsl:text>("</xsl:text>
 				<xsl:for-each select="descendant::tei:abbr[not(@cert = 'high')]">
