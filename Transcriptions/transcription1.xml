@@ -50,8 +50,9 @@
 					<msContents>
 						<summary>The <hi rend="italic">Book of Deer</hi> proper contains at least
 							excerpts of all four Gospels, as well as an office for the visitation of
-							the sick and the Apostles Creed. The Gaelic texts concern the foundation
-							of the monastery of Deer and its property claims.</summary>
+							the sick and the Apostles Creed. Gaelic texts added to the manuscript
+							later (in the late 11th or early 12th century) concern the foundation of
+							the monastery of Deer and its property claims.</summary>
 						<msItem xml:id="MS1.1" resp="Hand1">
 							<locus>fols 3r.10-3v.8</locus>
 							<title>The Foundation Legend</title>
@@ -113,21 +114,37 @@
 							<textLang mainLang="mga" otherLangs="gd" sameAs="MS1.lang"/>
 						</msItem>
 						<msItem xml:id="MS1.7" resp="Hand6">
-							<locus>fols 28v15, 85r18-19</locus>
-							<title>Old Gaelic in the Book of Deer Main Text</title>
+							<locus>fol. 28v15</locus>
+							<title>Office for the Visitation of the Sick: Old Gaelic Rubric</title>
 							<incipit> Hisund ...</incipit>
+							<explicit>... dau</explicit>
+							<filiation>
+								<p>No other versions of this textual material are known.</p>
+							</filiation>
+							<textLang mainLang="sga">
+								<note>
+									<p>This largely complies with the norms of late Old Gaelic in
+										grammar and phonology. The use of a conjugated preposition
+										in place of an infixed pronoun at <ref target="MS1.28v.15"
+											>fol. 28v15</ref> hints at the later part of the Old
+										Gaelic period (in line with the estimated period in which
+										the manuscript was created, 850×1000). </p>
+								</note>
+							</textLang>
+						</msItem>
+						<msItem xml:id="MS1.8" resp="Hand6">
+							<locus>fol. 85r17–19</locus>
+							<title>The Scribal Colophon</title>
+							<incipit> For chubus ...</incipit>
 							<explicit>... rodscribai</explicit>
 							<filiation>
 								<p>No other versions of this textual material are known.</p>
 							</filiation>
 							<textLang mainLang="sga">
 								<note>
-									<p>These two specimens largely comply with the norms of late Old
-										Gaelic in grammar and phonology. The use of a conjugated
-										preposition in place of an infixed pronoun at <ref
-											target="MS1.28v.15">fol. 28v15</ref> hints at the later
-										part of the Old Gaelic period (in line with the estimated
-										period in which the manuscript was created, 850×1000). </p>
+									<p>Like the rubric in the Office for the Visitation of the Sick
+										(text 7), this specimen largely complies with the norms of
+										late Old Gaelic in grammar and phonology. </p>
 								</note>
 							</textLang>
 						</msItem>
@@ -1738,9 +1755,8 @@
 					<name type="personal">
 						<w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun"><abbr
 								cert="high">m<g ref="g3">ai</g></abbr>c</w>
-						<w lemma="betha" lemmaRef="http://www.dil.ie/5779" ana="noun">
-							be<supplied resp="Forsyth2008a">th</supplied>ad
-						</w>
+						<w lemma="betha" lemmaRef="http://www.dil.ie/5779" ana="noun"> be<supplied
+								resp="Forsyth2008a">th</supplied>ad </w>
 					</name>
 					<space type="scribal"/>
 					<w lemma="ocus" lemmaRef="http://www.dil.ie/33484" ana="conj">
@@ -2616,6 +2632,8 @@
 						/><w lemma="sacrifis" lemmaRef="http://www.dil.ie/35931" ana="noun"
 						>sacorfice</w><space type="scribal"/><w lemma="do"
 						lemmaRef="http://www.dil.ie/17096" ana="prep, pron">dau</w></p>
+			</div>
+			<div n="8" type="prose" sameAs="MS1.8" resp="Hand6">
 				<pb n="fol.85r" xml:id="MS1.85r"/>
 				<lb n="17" xml:id="MS1.85r.17"/>
 				<p>

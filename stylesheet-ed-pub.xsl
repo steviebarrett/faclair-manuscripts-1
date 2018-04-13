@@ -109,9 +109,12 @@
 			<xsl:apply-templates select="tei:msDesc/tei:msContents/tei:summary"/>
 		</p>
 		<xsl:for-each select="tei:msDesc/tei:msContents/tei:msItem">
-			<xsl:variable name="inc" select="key('text', @xml:id)//preceding::tei:lb[1]/@xml:id|@sameAs"/>
+			<xsl:variable name="inc"
+				select="key('text', @xml:id)//preceding::tei:lb[1]/@xml:id | @sameAs"/>
 			<h4 id="{ancestor::tei:TEI/@xml:id}msContents">
-				<a href="#{@xml:id}"><xsl:apply-templates select="tei:title"/></a>
+				<a href="#{@xml:id}">
+					<xsl:apply-templates select="tei:title"/>
+				</a>
 			</h4>
 			<xsl:if test="tei:locus">
 				<xsl:apply-templates select="tei:locus"/>
@@ -187,9 +190,12 @@
 					<xsl:variable name="ItemID" select="@xml:id"/>
 					<xsl:variable name="comDiv" select="ancestor::tei:div[@corresp = $ItemID]"/>
 					<xsl:variable name="itemHand" select="@resp"/>
-					<xsl:variable name="incChild" select="key('text', @xml:id)//preceding::tei:lb[1]/@xml:id|@sameAs"/>
+					<xsl:variable name="incChild"
+						select="key('text', @xml:id)//preceding::tei:lb[1]/@xml:id | @sameAs"/>
 					<h5 style="margin-left:40px">
-						<a href="#{@xml:id}"><xsl:apply-templates select="tei:title"/></a>
+						<a href="#{@xml:id}">
+							<xsl:apply-templates select="tei:title"/>
+						</a>
 					</h5>
 					<p style="margin-left:40px">
 						<xsl:apply-templates select="tei:locus"/>
@@ -558,15 +564,21 @@
 		</xsl:choose>
 	</xsl:template>
 
+	<xsl:template match="tei:seg[@type = 'catchword']">
+		<p style="margin-right:90pc; text-align:center">
+			<xsl:apply-templates/>
+		</p>
+	</xsl:template>
+
 	<xsl:template match="tei:l">
 		<xsl:variable name="Id" select="@xml:id"/>
 		<xsl:variable name="MSlineID">
 			<xsl:choose>
 				<xsl:when test="descendant::tei:lb">
-					<xsl:value-of select="descendant::tei:lb[1]/@xml:id|@sameAs"/>
+					<xsl:value-of select="descendant::tei:lb[1]/@xml:id | @sameAs"/>
 				</xsl:when>
 				<xsl:when test="not(descendant::tei:lb)">
-					<xsl:value-of select="preceding::tei:lb[1]/@xml:id|@sameAs"/>
+					<xsl:value-of select="preceding::tei:lb[1]/@xml:id | @sameAs"/>
 				</xsl:when>
 			</xsl:choose>
 		</xsl:variable>
@@ -634,18 +646,25 @@
 				<xsl:for-each select="descendant::*[@reason] | ancestor::*[@reason]">
 					<xsl:choose>
 						<xsl:when test="@reason = 'interp_obscure'">
-							<xsl:text xml:space="preserve">- the interpretation of this word, or its context, is doubtful</xsl:text>
-							<xsl:if
-								test="descendant::tei:unclear[@cert = 'medium' or 'low' or 'unknown']//tei:w[not(position() = $wordId)]">
-								<xsl:text>; there is a particular issue with</xsl:text>
-								<xsl:for-each
-									select="descendant::tei:unclear//tei:w[not(ancestor::tei:w) and not(position() = $wordId)]">
-									<xsl:text> "</xsl:text>
-									<xsl:value-of select="self::*"/>
-									<xsl:text>"</xsl:text>
-								</xsl:for-each>
-							</xsl:if>
-							<xsl:text>&#10;</xsl:text>
+							<xsl:choose>
+								<xsl:when test="ancestor::tei:w and not(descendant::tei:w)">
+									<xsl:text xml:space="preserve">- some characters within this word remain unexplained.&#10;</xsl:text>
+								</xsl:when>
+								<xsl:otherwise>
+									<xsl:text xml:space="preserve">- the interpretation of this word, or its context, is doubtful</xsl:text>
+									<xsl:if
+										test="descendant::tei:unclear[@cert = 'medium' or 'low' or 'unknown']//tei:w[not(position() = $wordId)] or descendant::tei:w[@lemma = 'UNKNOWN']">
+										<xsl:text>; there is a particular issue with:</xsl:text>
+										<xsl:for-each
+											select="descendant::tei:unclear//tei:w[not(ancestor::tei:w) and not(position() = $wordId)] | descendant::tei:w[@lemma = 'UNKNOWN' and not(position() = $wordId)]">
+											<xsl:text> "</xsl:text>
+											<xsl:value-of select="self::*"/>
+											<xsl:text>" </xsl:text>
+										</xsl:for-each>
+									</xsl:if>
+									<xsl:text>&#10;</xsl:text>
+								</xsl:otherwise>
+							</xsl:choose>
 						</xsl:when>
 						<xsl:when test="@reason = 'text_obscure'">
 							<xsl:choose>
@@ -984,7 +1003,8 @@
 				</xsl:attribute>
 			</xsl:if>
 			<xsl:choose>
-				<xsl:when test="ancestor::*[@cert = 'low'] or descendant::*[@cert = 'low']">
+				<xsl:when
+					test="ancestor::*[@cert = 'low'] or descendant::*[@cert = 'low'] or @lemma = 'UNKNOWN'">
 					<xsl:attribute name="style">text-decoration:none; color:#ff0000</xsl:attribute>
 				</xsl:when>
 				<xsl:otherwise>
@@ -1017,7 +1037,14 @@
 				<xsl:text> </xsl:text>
 			</xsl:when>
 			<xsl:when test="@ana = 'part' and ancestor::tei:w[contains(@ana, 'part, verb')]">
-				<xsl:text> </xsl:text>
+				<xsl:choose>
+					<xsl:when test="ancestor::tei:w[contains(@lemmaRef, 'http://www.dil.ie/29104')]">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:text> </xsl:text>
+					</xsl:otherwise>
+				</xsl:choose>
 			</xsl:when>
 			<xsl:when test="@ana = 'part' and ancestor::tei:w[contains(@ana, 'part, pron, verb')]">
 				<xsl:text/>
@@ -1880,8 +1907,9 @@
 	</xsl:template>
 
 	<xsl:template match="tei:div[@n]">
-		<xsl:variable name="contents" select="ancestor::tei:TEI//tei:msDesc/tei:msContents/tei:msItem/h4/@id"/>
-		<xsl:variable name="lineID" select="preceding::tei:lb[1]/@xml:id|@sameAs"/>
+		<xsl:variable name="contents"
+			select="ancestor::tei:TEI//tei:msDesc/tei:msContents/tei:msItem/h4/@id"/>
+		<xsl:variable name="lineID" select="preceding::tei:lb[1]/@xml:id | @sameAs"/>
 		<!-- <xsl:if test="/@resp = not(preceding::tei:div/@resp or preceding::tei:handShift/@new)">
 			<sub>
 				<b>beg. <xsl:value-of select="key('hands', @resp)/tei:forename"
@@ -1891,7 +1919,11 @@
 					/><xsl:text>) </xsl:text></b>
 			</sub>
 		</xsl:if> -->
-		<xsl:if test="@n and ancestor::tei:div"><p><a href="{$contents}">Back to MS contents</a></p></xsl:if>
+		<xsl:if test="@n and ancestor::tei:div">
+			<p>
+				<a href="{$contents}">Back to MS contents</a>
+			</p>
+		</xsl:if>
 		<h2 style="text-align:center" id="{@corresp}">
 			<xsl:value-of select="key('divTitle', @corresp)/tei:title"/>
 		</h2>
