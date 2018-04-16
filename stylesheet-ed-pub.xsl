@@ -1416,13 +1416,24 @@
 				</xsl:otherwise>
 			</xsl:choose>
 		</xsl:variable>
+		<xsl:variable name="prob">
+			<xsl:if test="ancestor::tei:del">
+				<xsl:text xml:space="preserve">&#10;- characters deleted by </xsl:text>
+				<xsl:value-of select="key('hands', ancestor::tei:del/@resp)/tei:forename"/>
+				<xsl:text> </xsl:text>
+				<xsl:value-of select="key('hands', ancestor::tei:del/@resp)/tei:surname"/>
+				<xsl:text> (</xsl:text>
+				<xsl:value-of select="key('hands', ancestor::tei:del/@resp)/@xml:id"/>
+				<xsl:text>)&#10;</xsl:text>
+			</xsl:if>
+		</xsl:variable>
 		<xsl:choose>
 			<xsl:when test="ancestor::tei:w">
 				<xsl:apply-templates/>
 				<xsl:text> </xsl:text>
 			</xsl:when>
 			<xsl:otherwise>
-				<a id="{generate-id()}" title="Unexplained character(s)&#10;{$hand}" href="#"
+				<a id="{generate-id()}" title="Unexplained character(s)&#10;{$hand}{$prob}" href="#"
 					onclick="return false;" style="text-decoration:none; color:#000000">
 					<xsl:apply-templates/>
 				</a>
