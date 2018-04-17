@@ -653,10 +653,10 @@
 								<xsl:otherwise>
 									<xsl:text xml:space="preserve">- the interpretation of this word, or its context, is doubtful</xsl:text>
 									<xsl:if
-										test="descendant::tei:unclear[@cert = 'medium' or 'low' or 'unknown']//tei:w[not(position() = $wordId)] or descendant::tei:w[@lemma = 'UNKNOWN']">
+										test="descendant::tei:unclear[@cert = 'medium' or 'low' or 'unknown']//tei:w[not(position() = $wordId)] or descendant::tei:w[@lemma = 'UNKNOWN' and not(position() = $wordId)] | descendant::tei:w[descendant::tei:abbr[@cert = 'medium' or 'low' or 'unknown'] and not(position() = $wordId)]">
 										<xsl:text>; there is a particular issue with:</xsl:text>
 										<xsl:for-each
-											select="descendant::tei:unclear//tei:w[not(ancestor::tei:w) and not(position() = $wordId)] | descendant::tei:w[@lemma = 'UNKNOWN' and not(position() = $wordId)]">
+											select="descendant::tei:unclear//tei:w[not(ancestor::tei:w) and not(position() = $wordId)] | descendant::tei:w[@lemma = 'UNKNOWN' and not(position() = $wordId)] | descendant::tei:w[descendant::tei:abbr[@cert = 'medium' or 'low' or 'unknown'] and not(position() = $wordId)]">
 											<xsl:text> "</xsl:text>
 											<xsl:value-of select="self::*"/>
 											<xsl:text>" </xsl:text>
