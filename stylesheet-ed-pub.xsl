@@ -1061,6 +1061,9 @@
 			<xsl:when test="@ana = 'noun' and ancestor::tei:w[contains(@ana, 'noun, pron')]">
 				<xsl:text/>
 			</xsl:when>
+			<xsl:when test="@ana = 'noun' and ancestor::tei:w[contains(@ana, 'noun, adj')]">
+				<xsl:text/>
+			</xsl:when>
 			<xsl:when test="@ana = 'prep' and ancestor::tei:w[contains(@ana, 'prep, dpron')]">
 				<xsl:text/>
 			</xsl:when>
@@ -1813,6 +1816,15 @@
 						<xsl:apply-templates/>
 						<b>
 							<xsl:text> &gt;</xsl:text>
+						</b>
+					</xsl:when>
+					<xsl:when test="@place = 'margin, top">
+						<b>
+							<xsl:text>// </xsl:text>
+						</b>
+						<xsl:apply-templates/>
+						<b>
+							<xsl:text> \\</xsl:text>
 						</b>
 					</xsl:when>
 					<xsl:when test="@place = 'inline'">
