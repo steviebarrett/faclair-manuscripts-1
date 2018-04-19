@@ -17,6 +17,8 @@
 	<xsl:key name="text" match="*" use="@corresp"/>
 	<xsl:key name="altText" match="*" use="@corresp"/>
 
+	<xsl:param name="sicReplace" select="'alt'"/>
+
 	<xsl:attribute-set name="tblBorder">
 		<xsl:attribute name="border">solid 0.1mm black</xsl:attribute>
 	</xsl:attribute-set>
@@ -612,7 +614,7 @@
 		</xsl:if>
 	</xsl:template>
 
-	<xsl:template match="tei:w[not(descendant::tei:w)]">
+	<xsl:template name="word" match="tei:w[not(descendant::tei:w)]">
 		<xsl:variable name="wordId" select="count(preceding::*)"/>
 		<xsl:variable name="lem">
 			<xsl:choose>
@@ -622,6 +624,14 @@
 						<xsl:when test="ancestor::tei:name">
 							<xsl:value-of select="ancestor::tei:name/@type"/>
 							<xsl:text> name</xsl:text>
+						</xsl:when>
+						<xsl:when test="ancestor::tei:sic">
+							<xsl:variable name="alt" select="ancestor::tei:choice/tei:corr"/>
+							<xsl:text>MS: </xsl:text>
+							<xsl:value-of select="self::*&#10;"/>
+							<xsl:text>- this reading may be corrupt; an amended reading ('</xsl:text>
+							<xsl:value-of select="$alt"/>
+							<xsl:text>') has been supplied.</xsl:text>
 						</xsl:when>
 						<xsl:when test="@xml:lang">Language: <xsl:value-of
 								select="key('lang', @xml:lang)/text()"/></xsl:when>
@@ -639,6 +649,16 @@
 				</xsl:otherwise>
 			</xsl:choose>
 		</xsl:variable>
+		<xsl:variable name="sicLem">
+			<xsl:choose>
+				<xsl:when test="ancestor::tei:sic">
+					<xsl:text xml:space="preserve">MS: </xsl:text>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:text/>
+				</xsl:otherwise>
+			</xsl:choose>
+		</xsl:variable>
 		<xsl:variable name="lemRef" select="@lemmaRef"/>
 		<xsl:variable name="an" select="@ana"/>
 		<xsl:variable name="prob">
@@ -653,13 +673,14 @@
 								<xsl:otherwise>
 									<xsl:text xml:space="preserve">- the interpretation of this word, or its context, is doubtful</xsl:text>
 									<xsl:if
-										test="descendant::tei:unclear[@cert = 'medium' or 'low' or 'unknown']//tei:w[not(count(preceding::*) = $wordId)] or descendant::tei:w[@lemma = 'UNKNOWN' and not(count(preceding::*) = $wordId)] or descendant::tei:w[descendant::tei:abbr[not(@cert='high')] and not(count(preceding::*) = $wordId)]">
+										test="descendant::tei:unclear[@cert = 'medium' or 'low' or 'unknown']//tei:w[not(count(preceding::*) = $wordId)] or descendant::tei:w[@lemma = 'UNKNOWN' and not(count(preceding::*) = $wordId)] or descendant::tei:w[descendant::tei:abbr[not(@cert = 'high')] and not(count(preceding::*) = $wordId)]">
 										<xsl:text>; there is a particular issue with</xsl:text>
-										<xsl:if test="descendant::tei:unclear[@cert = 'medium' or 'low' or 'unknown']//tei:w[count(preceding::*) = $wordId] or descendant::tei:w[@lemma = 'UNKNOWN' and count(preceding::*) = $wordId] or self::*/descendant::tei:w[descendant::tei:abbr[not(@cert='high')] and count(preceding::*) = $wordId]">
+										<xsl:if
+											test="descendant::tei:unclear[@cert = 'medium' or 'low' or 'unknown']//tei:w[count(preceding::*) = $wordId] or descendant::tei:w[@lemma = 'UNKNOWN' and count(preceding::*) = $wordId] or self::*/descendant::tei:w[descendant::tei:abbr[not(@cert = 'high')] and count(preceding::*) = $wordId]">
 											<xsl:text xml:space="preserve"> this word and</xsl:text>
 										</xsl:if>
 										<xsl:for-each
-											select="descendant::tei:unclear//tei:w[not(ancestor::tei:w) and not(count(preceding::*) = $wordId)] | descendant::tei:w[@lemma = 'UNKNOWN' and not(count(preceding::*) = $wordId)] | descendant::tei:w[descendant::tei:abbr[not(@cert='high')] and not(count(preceding::*) = $wordId)]">
+											select="descendant::tei:unclear//tei:w[not(ancestor::tei:w) and not(count(preceding::*) = $wordId)] | descendant::tei:w[@lemma = 'UNKNOWN' and not(count(preceding::*) = $wordId)] | descendant::tei:w[descendant::tei:abbr[not(@cert = 'high')] and not(count(preceding::*) = $wordId)]">
 											<xsl:text> "</xsl:text>
 											<xsl:value-of select="self::*"/>
 											<xsl:text>" </xsl:text>
@@ -992,7 +1013,7 @@
 		<a id="{generate-id()}" onmouseover="hilite(this.id)" onmouseout="dhilite(this.id)"
 			lemma="{$lem}" lemmaRef="{$lemRef}" ana="{@ana}" hand="{$hand}" ref="{$msref}"
 			date="{$handDate}" medium="{$medium}" cert="{$certLvl}" abbrRefs="{$abbrRef}"
-			title="{$lem}: {$pos} {$src}&#10;{$hand}&#10;{$prob}{$certProb}&#10;Abbreviations: {$abbrs}&#10;{$gloss}"
+			title="{$sicLem}{$lem}: {$pos} {$src}&#10;{$hand}&#10;{$prob}{$certProb}&#10;Abbreviations: {$abbrs}&#10;{$gloss}"
 			style="text-decoration:none; color:#000000">
 			<xsl:if test="@lemma">
 				<xsl:attribute name="onclick">addSlip(this.id)</xsl:attribute>
@@ -1033,7 +1054,18 @@
 					</xsl:choose>
 				</xsl:otherwise>
 			</xsl:choose>
-			<xsl:apply-templates/>
+			<xsl:choose>
+				<xsl:when test="ancestor::tei:sic">
+					<sub>
+						<b>
+							<i>alt</i>
+						</b>
+					</sub>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:apply-templates/>
+				</xsl:otherwise>
+			</xsl:choose>
 		</a>
 		<xsl:choose>
 			<xsl:when test="not(ancestor::tei:w)">
@@ -1570,26 +1602,30 @@
 			<xsl:when test="child::tei:sic | tei:corr">
 				<xsl:text>{</xsl:text>
 				<xsl:apply-templates select="tei:corr"/>
-				<xsl:for-each select="tei:sic/descendant::tei:w[not(descendant::tei:w)]">
-					<xsl:variable name="alt" select="ancestor::tei:choice/tei:corr"/>
-					<a id="{generate-id()}"
-						title="MS: {self::*}&#10;- this reading is incongruous and may be corrupt; an amended reading ('{$alt}') has been supplied.">
-						<xsl:if test="@lemma">
-							<xsl:attribute name="href">
-								<xsl:value-of select="@lemmaRef"/>
-							</xsl:attribute>
-							<xsl:attribute name="style">text-decoration:none;
-								color:#000000</xsl:attribute>
-						</xsl:if>
-						<sub>
-							<b>
-								<i>alt</i>
-							</b>
-						</sub>
-					</a>
-					<xsl:text> </xsl:text>
-				</xsl:for-each>
-				<xsl:text>}</xsl:text>
+				<xsl:choose>
+					<xsl:when test="child::tei:sic[not(descendant::tei:w)]">
+						<xsl:for-each select="descendant::tei:c">
+							<xsl:variable name="alt" select="ancestor::tei:choice/tei:corr"/>
+							<a id="{generate-id()}"
+								title="MS: {self::*}&#10;- the intended reading cannot be identified; an amended reading ('{$alt}') has been supplied.">
+								<sub>
+									<b>
+										<i>
+											<xsl:text>alt</xsl:text>
+										</i>
+									</b>
+								</sub>
+							</a>
+							<xsl:text> </xsl:text>
+						</xsl:for-each>
+						<xsl:text>}</xsl:text>
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:apply-templates select="tei:sic"/>
+						<xsl:text> </xsl:text>
+						<xsl:text>}</xsl:text>
+					</xsl:otherwise>
+				</xsl:choose>
 			</xsl:when>
 			<xsl:when test="child::tei:unclear">
 				<xsl:text>{</xsl:text>
