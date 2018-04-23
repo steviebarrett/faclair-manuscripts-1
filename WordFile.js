@@ -77,7 +77,11 @@ function addSlip(id) {
 	var hnd = el.getAttribute('hand');
 	var date = el.getAttribute('date');
 	var prob = el.getAttribute('cert');
-	var abbr = el.getAttribute('abbrrefs');
+	var abbrArray = el.getAttribute('abbrrefs').split(" ");
+	var abbrList = abbrArray.join('</a></li><li><a>');
+	var abbrListFull = '<li><a>' + abbrList + '</a></li>';
+	var listID = 'li.' + id;
+	var abbr = '<ul id="' + listID + '" style="list-style: none;margin:0;padding:0;">' + abbrListFull + '</ul>';
 	var med = el.getAttribute('medium');
 //	OPTION 1
 //	var aTags = document.querySelectorAll("a");
@@ -239,6 +243,20 @@ function addSlip(id) {
 	rcol5.innerHTML = prob;
 	var rcol6 = row.insertCell(5);
 	rcol6.innerHTML = abbr;
+	var lineCount = rcol6.firstChild.childElementCount; 
+	var i;
+	for (i = 0; i < lineCount; i++) {
+	var abbrAnch = rcol6.firstChild.getElementsByTagName("li")[i].firstChild;
+	var abbrURL = abbrAnch.innerHTML;
+	var href = document.createAttribute("href");
+	var target = document.createAttribute("target");
+	href.value = 'https://' + abbrURL;
+	target.value = 'https://' + abbrURL;
+	abbrAnch.setAttributeNode(href);
+	abbrAnch.setAttributeNode(target);
+	var finText = abbrAnch.innerHTML.slice(23);
+	abbrAnch.innerHTML = finText;
+	};
 	var rcol7 = row.insertCell(6);
 	rcol7.innerHTML = hnd;
 	var rcol8 = row.insertCell(7);

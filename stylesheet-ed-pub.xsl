@@ -847,9 +847,18 @@
 		</xsl:variable>
 		<xsl:variable name="abbrRef">
 			<xsl:if test="descendant::tei:abbr or ancestor::tei:abbr">
+				<xsl:variable name="comWord" select="count(preceding::tei:w[not(descendant::tei:w)])"/>
 				<xsl:for-each select="descendant::tei:abbr/tei:g | ancestor::tei:abbr/tei:g">
 					<xsl:value-of select="key('abbrs', @ref)/@corresp"/>
-					<xsl:text>&#10;</xsl:text>
+					<xsl:choose>
+						<xsl:when
+							test="following::tei:g[ancestor::tei:w[count(preceding::tei:w[not(descendant::tei:w)]) = $comWord]]">
+							<xsl:text> </xsl:text>
+						</xsl:when>
+						<xsl:otherwise>
+							<xsl:text/>
+						</xsl:otherwise>
+					</xsl:choose>
 				</xsl:for-each>
 			</xsl:if>
 		</xsl:variable>
