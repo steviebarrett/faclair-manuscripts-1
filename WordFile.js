@@ -20,7 +20,7 @@ function createTable() {
 	var r1col5 = row1.insertCell(4);
 	r1col5.outerHTML = "<th><b>Issue(s)?</b></th>";
 	var r1col6 = row1.insertCell(5);
-	r1col6.outerHTML = "<th><b>Abbreviations</b></th>";
+	r1col6.outerHTML = "<th><b>Abbrevs</b></th>";
 	var r1col7 = row1.insertCell(6);
 	r1col7.outerHTML = "<th><b>Scribe</b></th>";
 	var r1col8 = row1.insertCell(7);
@@ -30,13 +30,13 @@ function createTable() {
 	var r1col10 = row1.insertCell(9);
 	r1col10.outerHTML = "<th><b>Lemma (eDIL)</b></th>";
 	var r1col11 = row1.insertCell(10);
-	r1col11.outerHTML = "<th><b>URL (eDIL)</b></th>";
+	r1col11.outerHTML = "<th><b>URI (eDIL)</b></th>";
 	var r1col12 = row1.insertCell(11);
 	r1col12.outerHTML = "<th><b>Lemma (Dwellys)</b></th>";
 	var r1col13 = row1.insertCell(12);
 	r1col13.outerHTML = "<th><b>HDSG Slip</b></th>";
 	var r1col14 = row1.insertCell(13);
-	r1col14.outerHTML = "<button>Download Table</button><br/><button onclick='delRow(this)'>Delete Row</button>";
+	r1col14.outerHTML = "<button onclick='getTable(slipTable)'>Download Table</button><br/><button onclick='delRow(this)'>Delete Row</button>";
 	var opened = window.open("", "FnaG MS Corpus Word Table");
 	opened.document.body.appendChild(table);
 	opened.document.head.appendChild(script);
@@ -44,8 +44,20 @@ function createTable() {
 	{ \
 	var i = r.parentNode.rowIndex; \
 	document.getElementById("slipTable").deleteRow(i); \
-	} \
+	}; \
+	function getTable(table) \
+	{ \
+	var table = document.getElementById("slipTable"); \
+	var html = table.outerHMTL; \
+	window.open("data:application/vnd.ms-excel, "); \
+	}; \
 	'
+	var type = document.createAttribute("type");
+	type.value = "text/javascript";
+	script.setAttributeNode(type);
+	var jquery = document.createAttribute("src");
+	jquery.value = "http://code.jquery.com/jquery-1.7.1.min.js";
+	script.setAttributeNode(jquery);
 }
 
 //function getContext(id) {
@@ -54,13 +66,13 @@ function createTable() {
 //	for (var x = 0; x < aTags.length; x++) {
 //		if (aTags[x] === el) {
 //			aTags[x - 1].outerHTML;
-			//1 before
+//1 before
 //			aTags[x - 2].outerHTML;
-			//2 before
+//2 before
 //			aTags[x + 1].outerHTML;
-			//1 after
+//1 after
 //			aTags[x + 2].outerHTML;
-			//2 after
+//2 after
 //		}
 //	}
 //}
@@ -83,151 +95,248 @@ function addSlip(id) {
 	var listID = 'li.' + id;
 	var abbr = '<ul id="' + listID + '" style="list-style: none;margin:0;padding:0;">' + abbrListFull + '</ul>';
 	var med = el.getAttribute('medium');
-//	OPTION 1
-//	var aTags = document.querySelectorAll("a");
-//	var x = 0; x < aTags.length; x++; 
-//	var context = aTags; {
-//		if (aTags[x] === el) {
-//			aTags[x - 1].outerHTML;
-			//1 before
-//			aTags[x - 2].outerHTML;
-			//2 before
-//			aTags[x + 1].outerHTML;
-			//1 after
-//			aTags[x + 2].outerHTML;
-			//2 after
-//		}
-//	};
-// 	OPTION 2
-//
-//	var el_plus_1 = el.nextElementSibling.outerHTML;
-//	var el_minus_1 = el.previousElementSibling.outerHTML;
-//	var el_plus_2 = el.nextElementSibling.nextElementSibling.outerHTML;
-//	var el_minus_2 = el.previousElementSibling.previousElementSibling.outerHTML;
-//	var context = el_minus_2.concat(' ', el_minus_1 ,' ',  '<b>'+form+'</b>' ,' ', el_plus_1 ,' ', el_plus_2);
-//
-//	OPTION 3
+	//	OPTION 1
+	//	var aTags = document.querySelectorAll("a");
+	//	var x = 0; x < aTags.length; x++;
+	//	var context = aTags; {
+	//		if (aTags[x] === el) {
+	//			aTags[x - 1].outerHTML;
+	//1 before
+	//			aTags[x - 2].outerHTML;
+	//2 before
+	//			aTags[x + 1].outerHTML;
+	//1 after
+	//			aTags[x + 2].outerHTML;
+	//2 after
+	//		}
+	//	};
+	// 	OPTION 2
+	//
+	//	var el_plus_1 = el.nextElementSibling.outerHTML;
+	//	var el_minus_1 = el.previousElementSibling.outerHTML;
+	//	var el_plus_2 = el.nextElementSibling.nextElementSibling.outerHTML;
+	//	var el_minus_2 = el.previousElementSibling.previousElementSibling.outerHTML;
+	//	var context = el_minus_2.concat(' ', el_minus_1 ,' ',  '<b>'+form+'</b>' ,' ', el_plus_1 ,' ', el_plus_2);
+	//
+	//	OPTION 3
 	var el_plus_1;
-		if (el == el.parentNode.lastElementChild) {
+	if (el == el.parentNode.lastElementChild) {
 		el_plus_1 = "";
-		}
-		else if (el.nextElementSibling == null) {
+	} else if (el.nextElementSibling == null) {
 		el_plus_1 = "";
-		}
-		else {el_plus_1 = el.nextElementSibling}
+	} else {
+		el_plus_1 = el.nextElementSibling
+	}
 	var el_minus_1;
-		if (el == el.parentNode.firstElementChild) {
-		el_minus_1 = "";	
-		}
-		if (el.previousElementSibling == null) {
+	if (el == el.parentNode.firstElementChild) {
 		el_minus_1 = "";
-		}
-		else {el_minus_1 = el.previousElementSibling}
+	}
+	if (el.previousElementSibling == null) {
+		el_minus_1 = "";
+	} else {
+		el_minus_1 = el.previousElementSibling
+	}
 	var el_plus_2;
-		if (el == el.parentNode.lastElementChild) {
+	if (el == el.parentNode.lastElementChild) {
 		el_plus_2 = "";
-		}
-		else if (el.nextElementSibling == el.parentNode.lastElementChild) {
-		el_plus_2 = "";	
-		}
-		else if (el.nextElementSibling.nextElementSibling == null) {
+	} else if (el.nextElementSibling == el.parentNode.lastElementChild) {
 		el_plus_2 = "";
-		}
-		else {el_plus_2 = el.nextElementSibling.nextElementSibling}
+	} else if (el.nextElementSibling.nextElementSibling == null) {
+		el_plus_2 = "";
+	} else {
+		el_plus_2 = el.nextElementSibling.nextElementSibling
+	}
 	var el_minus_2;
-		if (el == el.parentNode.firstElementChild) {
-		el_minus_2 = "";	
-		}
-		else if (el.previousElementSibling == el.parentNode.firstElementChild) {
-		el_minus_2 = "";	
-		}
-		else if (el.previousElementSibling.previousElementSibling == null) {
+	if (el == el.parentNode.firstElementChild) {
 		el_minus_2 = "";
-		}
-		else {el_minus_2 = el.previousElementSibling.previousElementSibling}
+	} else if (el.previousElementSibling == el.parentNode.firstElementChild) {
+		el_minus_2 = "";
+	} else if (el.previousElementSibling.previousElementSibling == null) {
+		el_minus_2 = "";
+	} else {
+		el_minus_2 = el.previousElementSibling.previousElementSibling
+	}
 	var el_plus_3;
-		if (el == el.parentNode.lastElementChild) {
+	if (el == el.parentNode.lastElementChild) {
 		el_plus_3 = "";
-		}
-		else if (el.nextElementSibling == el.parentNode.lastElementChild) {
-		el_plus_3 = "";	
-		}
-		else if (el.nextElementSibling.nextElementSibling.nextElementSibling == null) {
+	} else if (el.nextElementSibling == el.parentNode.lastElementChild) {
 		el_plus_3 = "";
-		}
-		else {el_plus_3 = el.nextElementSibling.nextElementSibling.nextElementSibling}
+	} else if (el.nextElementSibling.nextElementSibling.nextElementSibling == null) {
+		el_plus_3 = "";
+	} else {
+		el_plus_3 = el.nextElementSibling.nextElementSibling.nextElementSibling
+	}
 	var el_minus_3;
-		if (el == el.parentNode.firstElementChild) {
+	if (el == el.parentNode.firstElementChild) {
 		el_minus_3 = "";
-		}
-		else if (el.previousElementSibling == el.parentNode.firstElementChild) {
-		el_minus_3 = "";	
-		}
-		else if (el.previousElementSibling.previousElementSibling.previousElementSibling == null) {
+	} else if (el.previousElementSibling == el.parentNode.firstElementChild) {
 		el_minus_3 = "";
-		}
-		else {el_minus_3 = el.previousElementSibling.previousElementSibling.previousElementSibling}	
+	} else if (el.previousElementSibling.previousElementSibling.previousElementSibling == null) {
+		el_minus_3 = "";
+	} else {
+		el_minus_3 = el.previousElementSibling.previousElementSibling.previousElementSibling
+	}
+	var el_plus_4;
+	if (el == el.parentNode.lastElementChild) {
+		el_plus_4 = "";
+	} else if (el.nextElementSibling == el.parentNode.lastElementChild) {
+		el_plus_4 = "";
+	} else if (el.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling == null) {
+		el_plus_4 = "";
+	} else {
+		el_plus_4 = el.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling
+	}
+	var el_minus_4;
+	if (el == el.parentNode.firstElementChild) {
+		el_minus_4 = "";
+	} else if (el.previousElementSibling == el.parentNode.firstElementChild) {
+		el_minus_4 = "";
+	} else if (el.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling == null) {
+		el_minus_4 = "";
+	} else {
+		el_minus_4 = el.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling
+	}
+	var el_plus_5;
+	if (el == el.parentNode.lastElementChild) {
+		el_plus_5 = "";
+	} else if (el.nextElementSibling == el.parentNode.lastElementChild) {
+		el_plus_5 = "";
+	} else if (el.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling == null) {
+		el_plus_5 = "";
+	} else {
+		el_plus_5 = el.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling
+	}
+	var el_minus_5;
+	if (el == el.parentNode.firstElementChild) {
+		el_minus_5 = "";
+	} else if (el.previousElementSibling == el.parentNode.firstElementChild) {
+		el_minus_5 = "";
+	} else if (el.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling == null) {
+		el_minus_5 = "";
+	} else {
+		el_minus_5 = el.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling
+	}
 	var el_plus_1Id;
-		if (el_plus_1.id == null) {
-		el_plus_1Id = "";	
-		}
-		else {el_plus_1Id = el_plus_1.id}
+	if (el_plus_1.id == null) {
+		el_plus_1Id = "";
+	} else {
+		el_plus_1Id = el_plus_1.id
+	}
 	var el_minus_1Id;
-		if (el_minus_1.id == null) {
-		el_minus_1Id = "";	
-		}
-		else {el_minus_1Id = el_minus_1.id}
+	if (el_minus_1.id == null) {
+		el_minus_1Id = "";
+	} else {
+		el_minus_1Id = el_minus_1.id
+	}
 	var el_plus_2Id;
-		if (el_plus_2.id == null) {
-		el_plus_2Id = "";	
-		}
-		else {el_plus_2Id = el_plus_2.id}
+	if (el_plus_2.id == null) {
+		el_plus_2Id = "";
+	} else {
+		el_plus_2Id = el_plus_2.id
+	}
 	var el_minus_2Id;
-		if (el_minus_2.id == null) {
-		el_minus_2Id = "";	
-		}
-		else {el_minus_2Id = el_minus_2.id}
+	if (el_minus_2.id == null) {
+		el_minus_2Id = "";
+	} else {
+		el_minus_2Id = el_minus_2.id
+	}
 	var el_plus_3Id;
-		if (el_plus_3.id == null) {
-		el_plus_3Id = "";	
-		}
-		else {el_plus_3Id = el_plus_3.id}
+	if (el_plus_3.id == null) {
+		el_plus_3Id = "";
+	} else {
+		el_plus_3Id = el_plus_3.id
+	}
 	var el_minus_3Id;
-		if (el_minus_3.id == null) {
-		el_minus_3Id = "";	
-		}
-		else {el_minus_3Id = el_minus_3.id}	
+	if (el_minus_3.id == null) {
+		el_minus_3Id = "";
+	} else {
+		el_minus_3Id = el_minus_3.id
+	}
+	var el_plus_4Id;
+	if (el_plus_4.id == null) {
+		el_plus_4Id = "";
+	} else {
+		el_plus_4Id = el_plus_4.id
+	}
+	var el_minus_4Id;
+	if (el_minus_4.id == null) {
+		el_minus_4Id = "";
+	} else {
+		el_minus_4Id = el_minus_4.id
+	}
+	var el_plus_5Id;
+	if (el_plus_5.id == null) {
+		el_plus_5Id = "";
+	} else {
+		el_plus_5Id = el_plus_5.id
+	}
+	var el_minus_5Id;
+	if (el_minus_5.id == null) {
+		el_minus_5Id = "";
+	} else {
+		el_minus_5Id = el_minus_5.id
+	}
 	var el_plus_1node;
-		if (el_plus_1Id === "") {
+	if (el_plus_1Id === "") {
 		el_plus_1node = "";
-		}
-		else {el_plus_1node = document.getElementById(el_plus_1Id).outerHTML}
+	} else {
+		el_plus_1node = document.getElementById(el_plus_1Id).outerHTML
+	}
 	var el_minus_1node;
-		if (el_minus_1Id === "") {
+	if (el_minus_1Id === "") {
 		el_minus_1node = "";
-		}
-		else {el_minus_1node = document.getElementById(el_minus_1Id).outerHTML}
+	} else {
+		el_minus_1node = document.getElementById(el_minus_1Id).outerHTML
+	}
 	var el_plus_2node;
-		if (el_plus_2Id === "") {
+	if (el_plus_2Id === "") {
 		el_plus_2node = "";
-		}
-		else {el_plus_2node = document.getElementById(el_plus_2Id).outerHTML}
+	} else {
+		el_plus_2node = document.getElementById(el_plus_2Id).outerHTML
+	}
 	var el_minus_2node;
-		if (el_minus_2Id === "") {
+	if (el_minus_2Id === "") {
 		el_minus_2node = "";
-		}
-		else {el_minus_2node = document.getElementById(el_minus_2Id).outerHTML}	
+	} else {
+		el_minus_2node = document.getElementById(el_minus_2Id).outerHTML
+	}
 	var el_plus_3node;
-		if (el_plus_3Id === "") {
+	if (el_plus_3Id === "") {
 		el_plus_3node = "";
-		}
-		else {el_plus_3node = document.getElementById(el_plus_3Id).outerHTML}
+	} else {
+		el_plus_3node = document.getElementById(el_plus_3Id).outerHTML
+	}
 	var el_minus_3node;
-		if (el_minus_3Id === "") {
+	if (el_minus_3Id === "") {
 		el_minus_3node = "";
-		}
-		else {el_minus_3node = document.getElementById(el_minus_3Id).outerHTML}	
-	var context = el_minus_3node.concat(' ', el_minus_2node ,' ', el_minus_1node ,' ',  '<b>'+form+'</b>' ,' ', el_plus_1node ,' ', el_plus_2node ,' ', el_plus_3node);
+	} else {
+		el_minus_3node = document.getElementById(el_minus_3Id).outerHTML
+	}
+	var el_plus_4node;
+	if (el_plus_4Id === "") {
+		el_plus_4node = "";
+	} else {
+		el_plus_4node = document.getElementById(el_plus_4Id).outerHTML
+	}
+	var el_minus_4node;
+	if (el_minus_4Id === "") {
+		el_minus_4node = "";
+	} else {
+		el_minus_4node = document.getElementById(el_minus_4Id).outerHTML
+	}
+	var el_plus_5node;
+	if (el_plus_5Id === "") {
+		el_plus_5node = "";
+	} else {
+		el_plus_5node = document.getElementById(el_plus_5Id).outerHTML
+	}
+	var el_minus_5node;
+	if (el_minus_5Id === "") {
+		el_minus_5node = "";
+	} else {
+		el_minus_5node = document.getElementById(el_minus_5Id).outerHTML
+	}
+	var context = el_minus_5node.concat(' ', el_minus_4node, ' ', el_minus_3node, ' ', el_minus_2node, ' ', el_minus_1node, ' ', '<b>' + form + '</b>', ' ', el_plus_1node, ' ', el_plus_2node, ' ', el_plus_3node, ' ', el_plus_4node, ' ', el_plus_5node);
 	var msref = el.getAttribute('ref');
 	var row = createdTable.insertRow(-1);
 	row.style.fontSize = "small";
@@ -243,19 +352,19 @@ function addSlip(id) {
 	rcol5.innerHTML = prob;
 	var rcol6 = row.insertCell(5);
 	rcol6.innerHTML = abbr;
-	var lineCount = rcol6.firstChild.childElementCount; 
+	var lineCount = rcol6.firstChild.childElementCount;
 	var i;
 	for (i = 0; i < lineCount; i++) {
-	var abbrAnch = rcol6.firstChild.getElementsByTagName("li")[i].firstChild;
-	var abbrURL = abbrAnch.innerHTML;
-	var href = document.createAttribute("href");
-	var target = document.createAttribute("target");
-	href.value = 'https://' + abbrURL;
-	target.value = 'https://' + abbrURL;
-	abbrAnch.setAttributeNode(href);
-	abbrAnch.setAttributeNode(target);
-	var finText = abbrAnch.innerHTML.slice(23);
-	abbrAnch.innerHTML = finText;
+		var abbrAnch = rcol6.firstChild.getElementsByTagName("li")[i].firstChild;
+		var abbrURL = abbrAnch.innerHTML;
+		var href = document.createAttribute("href");
+		var target = document.createAttribute("target");
+		href.value = 'https://' + abbrURL;
+		target.value = 'https://' + abbrURL;
+		abbrAnch.setAttributeNode(href);
+		abbrAnch.setAttributeNode(target);
+		var finText = abbrAnch.innerHTML.slice(23);
+		abbrAnch.innerHTML = finText;
 	};
 	var rcol7 = row.insertCell(6);
 	rcol7.innerHTML = hnd;
@@ -267,6 +376,8 @@ function addSlip(id) {
 	rcol10.innerHTML = lem;
 	var rcol11 = row.insertCell(10);
 	rcol11.innerHTML = '<a target="' + lref + '" href="' + lref + '">' + lref + '</a>';
+	var finURI = rcol11.firstChild.innerHTML.slice(18);
+	rcol11.firstChild.innerHTML = finURI;
 	var rcol12 = row.insertCell(11);
 	rcol12.innerHTML = "";
 	var rcol13 = row.insertCell(12);
