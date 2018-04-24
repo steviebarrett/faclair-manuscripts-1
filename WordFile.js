@@ -49,7 +49,7 @@ function createTable() {
 	{ \
 	var table = document.getElementById("slipTable"); \
 	var html = table.outerHMTL; \
-	window.open("data:application/vnd.ms-excel, "); \
+	window.open("data:application/vnd.ms-excel, "  + $("#download").html()); \
 	}; \
 	'
 	var type = document.createAttribute("type");
@@ -89,7 +89,7 @@ function addSlip(id) {
 	var hnd = el.getAttribute('hand');
 	var date = el.getAttribute('date');
 	var prob = el.getAttribute('cert');
-	var abbrArray = el.getAttribute('abbrrefs').split(" ");
+	var abbrArray = el.getAttribute('abbrRefs1').split(" ");
 	var abbrList = abbrArray.join('</a></li><li><a>');
 	var abbrListFull = '<li><a>' + abbrList + '</a></li>';
 	var listID = 'li.' + id;
@@ -366,6 +366,11 @@ function addSlip(id) {
 		var finText = abbrAnch.innerHTML.slice(23);
 		abbrAnch.innerHTML = finText;
 	};
+	var abbrs1 = rcol6.firstChild.innerHTML;
+	var abbrArray2 = el.getAttribute('abbrRefs2').split(" ");
+	var abbrList2 = abbrArray2.join('</li><li>');
+	var abbrListFull2 = '<li>' + abbrList2 + '</li>';
+	rcol6.firstChild.innerHTML = abbrs1 + abbrListFull2;
 	var rcol7 = row.insertCell(6);
 	rcol7.innerHTML = hnd;
 	var rcol8 = row.insertCell(7);
