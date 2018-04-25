@@ -1089,7 +1089,7 @@
 				<xsl:when test="ancestor::tei:sic">
 					<sub>
 						<b>
-							<i>alt</i>
+							<i>/alt</i>
 						</b>
 					</sub><seg id="sic{$wordId}" hidden="hidden"><xsl:apply-templates/></seg>
 				</xsl:when>
@@ -1660,7 +1660,7 @@
 								<sub>
 									<b>
 										<i>
-											<xsl:text>alt</xsl:text>
+											<xsl:text>/alt</xsl:text>
 										</i>
 									</b>
 								</sub>
@@ -1697,7 +1697,7 @@
 							</xsl:if>
 							<sub>
 								<b>
-									<i>alt</i>
+									<i>/alt</i>
 								</b>
 							</sub>
 						</a>
@@ -1715,7 +1715,7 @@
 						</xsl:if>
 						<sub>
 							<b>
-								<i><xsl:text> </xsl:text>alt<xsl:text> </xsl:text></i>
+								<i><xsl:text> </xsl:text>/alt<xsl:text> </xsl:text></i>
 							</b>
 						</sub>
 					</a>

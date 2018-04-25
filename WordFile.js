@@ -65,7 +65,7 @@ function addSlip(id) {
 	var createdTable = opened.document.getElementById("slipTable");
 	var el = document.getElementById(id);
 	var form;
-	if(el.firstChild.innerText == "alt") { 
+	if(el.firstChild.innerText == "/alt") { 
 		form = document.getElementById("sic" + id).innerHTML;
 	}
 	else {
@@ -276,10 +276,8 @@ function addSlip(id) {
 	if (el_minus_1Id === "") {
 		el_minus_1node = "";
 	}
-		else if (el.firstChild.innerText == "alt") {
+		else if (el.firstChild.innerText == "/alt") {
 		var corrForm = document.getElementById(el_minus_1Id).outerHTML;
-		var altText = "alt";
-		corrForm.innerHTML = altText;
 		
 		el_minus_1node = "<sub><b>[<i>leg. </i>" + corrForm + "]</b></sub>";
 	}
