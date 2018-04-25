@@ -160,7 +160,7 @@ function addSlip(id) {
 		el_plus_5 = "";
 	} else if (el.nextElementSibling == el.parentNode.lastElementChild) {
 		el_plus_5 = "";
-	} else if (el.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling == null) {
+	} else if (el.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling == null) {
 		el_plus_5 = "";
 	} else {
 		el_plus_5 = el.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling
@@ -170,7 +170,7 @@ function addSlip(id) {
 		el_minus_5 = "";
 	} else if (el.previousElementSibling == el.parentNode.firstElementChild) {
 		el_minus_5 = "";
-	} else if (el.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling == null) {
+	} else if (el.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling == null) {
 		el_minus_5 = "";
 	} else {
 		el_minus_5 = el.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling
