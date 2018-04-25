@@ -1549,14 +1549,16 @@
 	</xsl:template>
 
 	<xsl:template match="tei:g">
+		<xsl:variable name="comWord" select="count(ancestor::tei:w[not(descendant::tei:w)]/preceding::tei:w[not(descendant::tei:w)])"/>
+		<xsl:variable name="position" select="count(preceding::tei:g[ancestor::tei:w[not(descendant::tei:w) and count(preceding::tei:w[not(descendant::tei:w)])=$comWord]])"/>
 		<xsl:choose>
 			<xsl:when test="ancestor::tei:abbr[@cert = 'low']">
-				<i>
+				<i id="{$position}">
 					<xsl:apply-templates/>
 				</i>
 			</xsl:when>
 			<xsl:otherwise>
-				<i>
+				<i id="{$position}">
 					<xsl:apply-templates/>
 				</i>
 			</xsl:otherwise>
