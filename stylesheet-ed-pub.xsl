@@ -855,14 +855,18 @@
 				</xsl:otherwise>
 			</xsl:choose>
 		</xsl:variable>
-		<xsl:variable name="abbrRef1">
+		<xsl:variable name="abbrRef">
 			<xsl:variable name="comWord" select="count(preceding::tei:w[not(descendant::tei:w)])"/>
-			<xsl:for-each
-				select="descendant::tei:abbr/descendant::tei:g[key('abbrs', @ref)/@corresp] | ancestor::tei:abbr/ancestor::tei:g[key('abbrs', @ref)/@corresp]">
+			<xsl:for-each select="descendant::tei:abbr//tei:g|ancestor::tei:abbr//tei:g">
+			<xsl:if test="key('abbrs', @ref)/@corresp">
 				<xsl:value-of select="key('abbrs', @ref)/@corresp"/>
+			</xsl:if>
+			<xsl:if test="key('abbrs', @ref)[not(@corresp)]">
+				<xsl:value-of select="key('abbrs', @ref)/tei:glyphName"/>
+			</xsl:if>
 				<xsl:choose>
 					<xsl:when
-						test="following::tei:g[key('abbrs', @ref)/@corresp and ancestor::tei:w[count(preceding::tei:w[not(descendant::tei:w)]) = $comWord]]">
+						test="following::tei:g/ancestor::tei:w[count(preceding::tei:w[not(descendant::tei:w)]) = $comWord]">
 						<xsl:text> </xsl:text>
 					</xsl:when>
 					<xsl:otherwise>
@@ -870,22 +874,6 @@
 					</xsl:otherwise>
 				</xsl:choose>
 			</xsl:for-each>
-		</xsl:variable>
-		<xsl:variable name="abbrRef2">
-			<xsl:variable name="comWord" select="count(preceding::tei:w[not(descendant::tei:w)])"/>
-			<xsl:for-each
-				select="descendant::tei:abbr//tei:g[key('abbrs', @ref)[not(@corresp)]] | ancestor::tei:abbr//tei:g[key('abbrs', @ref)[not(@corresp)]]">
-				<xsl:value-of select="key('abbrs', @ref)/tei:glyphName"/>
-			</xsl:for-each>
-			<xsl:choose>
-				<xsl:when
-					test="following::tei:g[key('abbrs', @ref)/tei:glyph[not(@corresp)] and ancestor::tei:w[count(preceding::tei:w[not(descendant::tei:w)]) = $comWord]]">
-					<xsl:text> </xsl:text>
-				</xsl:when>
-				<xsl:otherwise>
-					<xsl:text/>
-				</xsl:otherwise>
-			</xsl:choose>
 		</xsl:variable>
 		<xsl:variable name="certLvl">
 			<xsl:choose>
@@ -1046,8 +1034,7 @@
 		</xsl:variable>
 		<a id="{generate-id()}" onmouseover="hilite(this.id)" onmouseout="dhilite(this.id)"
 			lemma="{$lem}" lemmaRef="{$lemRef}" ana="{@ana}" hand="{$hand}" ref="{$msref}"
-			date="{$handDate}" medium="{$medium}" cert="{$certLvl}" abbrRefs1="{$abbrRef1}"
-			abbrRefs2="{$abbrRef2}"
+			date="{$handDate}" medium="{$medium}" cert="{$certLvl}" abbrRefs="{$abbrRef}"
 			title="{$lem}: {$pos} {$src}&#10;{$hand}&#10;{$prob}{$certProb}&#10;Abbreviations: {$abbrs}&#10;{$gloss}"
 			style="text-decoration:none; color:#000000">
 			<xsl:if test="ancestor::tei:sic">
@@ -1059,14 +1046,14 @@
 			<xsl:if test="@lemma">
 				<xsl:attribute name="onclick">addSlip(this.id)</xsl:attribute>
 			</xsl:if>
-			<xsl:if test="@lemmaRef">
+<!--			<xsl:if test="@lemmaRef">
 				<xsl:attribute name="href">
 					<xsl:value-of select="@lemmaRef"/>
 				</xsl:attribute>
 				<xsl:attribute name="target">
 					<xsl:value-of select="@lemmaRef"/>
 				</xsl:attribute>
-			</xsl:if>
+			</xsl:if> -->
 			<xsl:choose>
 				<xsl:when
 					test="ancestor::*[@cert = 'low'] or descendant::*[@cert = 'low'] or @lemma = 'UNKNOWN'">

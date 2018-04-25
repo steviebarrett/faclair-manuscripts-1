@@ -60,23 +60,6 @@ function createTable() {
 	script.setAttributeNode(jquery);
 }
 
-//function getContext(id) {
-//var el = document.getElementById(id);
-//	var aTags = document.querySelectorAll("a");
-//	for (var x = 0; x < aTags.length; x++) {
-//		if (aTags[x] === el) {
-//			aTags[x - 1].outerHTML;
-//1 before
-//			aTags[x - 2].outerHTML;
-//2 before
-//			aTags[x + 1].outerHTML;
-//1 after
-//			aTags[x + 2].outerHTML;
-//2 after
-//		}
-//	}
-//}
-
 function addSlip(id) {
 	var opened = window.open("", "FnaG MS Corpus Word Table");
 	var createdTable = opened.document.getElementById("slipTable");
@@ -89,36 +72,12 @@ function addSlip(id) {
 	var hnd = el.getAttribute('hand');
 	var date = el.getAttribute('date');
 	var prob = el.getAttribute('cert');
-	var abbrArray = el.getAttribute('abbrRefs1').split(" ");
+	var abbrArray = el.getAttribute('abbrRefs').split(" ");
 	var abbrList = abbrArray.join('</a></li><li><a>');
 	var abbrListFull = '<li><a>' + abbrList + '</a></li>';
 	var listID = 'li.' + id;
 	var abbr = '<ul id="' + listID + '" style="list-style: none;margin:0;padding:0;">' + abbrListFull + '</ul>';
 	var med = el.getAttribute('medium');
-	//	OPTION 1
-	//	var aTags = document.querySelectorAll("a");
-	//	var x = 0; x < aTags.length; x++;
-	//	var context = aTags; {
-	//		if (aTags[x] === el) {
-	//			aTags[x - 1].outerHTML;
-	//1 before
-	//			aTags[x - 2].outerHTML;
-	//2 before
-	//			aTags[x + 1].outerHTML;
-	//1 after
-	//			aTags[x + 2].outerHTML;
-	//2 after
-	//		}
-	//	};
-	// 	OPTION 2
-	//
-	//	var el_plus_1 = el.nextElementSibling.outerHTML;
-	//	var el_minus_1 = el.previousElementSibling.outerHTML;
-	//	var el_plus_2 = el.nextElementSibling.nextElementSibling.outerHTML;
-	//	var el_minus_2 = el.previousElementSibling.previousElementSibling.outerHTML;
-	//	var context = el_minus_2.concat(' ', el_minus_1 ,' ',  '<b>'+form+'</b>' ,' ', el_plus_1 ,' ', el_plus_2);
-	//
-	//	OPTION 3
 	var el_plus_1;
 	if (el == el.parentNode.lastElementChild) {
 		el_plus_1 = "";
@@ -356,6 +315,8 @@ function addSlip(id) {
 	var i;
 	for (i = 0; i < lineCount; i++) {
 		var abbrAnch = rcol6.firstChild.getElementsByTagName("li")[i].firstChild;
+		var URL = abbrAnch.innerHTML.startsWith("www.");
+		if (URL) {
 		var abbrURL = abbrAnch.innerHTML;
 		var href = document.createAttribute("href");
 		var target = document.createAttribute("target");
@@ -365,12 +326,13 @@ function addSlip(id) {
 		abbrAnch.setAttributeNode(target);
 		var finText = abbrAnch.innerHTML.slice(23);
 		abbrAnch.innerHTML = finText;
+		}
+		else {
+			var abbrName = abbrAnch.innerHTML;
+			var line = abbrAnch.parentNode;
+			line.innerHTML = abbrName;
+		}
 	};
-	var abbrs1 = rcol6.firstChild.innerHTML;
-	var abbrArray2 = el.getAttribute('abbrRefs2').split(" ");
-	var abbrList2 = abbrArray2.join('</li><li>');
-	var abbrListFull2 = '<li>' + abbrList2 + '</li>';
-	rcol6.firstChild.innerHTML = abbrs1 + abbrListFull2;
 	var rcol7 = row.insertCell(6);
 	rcol7.innerHTML = hnd;
 	var rcol8 = row.insertCell(7);
