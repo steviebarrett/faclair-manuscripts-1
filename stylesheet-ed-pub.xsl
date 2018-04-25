@@ -480,7 +480,7 @@
 		<xsl:choose>
 			<xsl:when test="ancestor::tei:p">
 				<sub>
-					<br id="{@xml:id|@sameAs}"/>
+					<br/>
 					<xsl:value-of select="@n"/>
 					<xsl:text>. </xsl:text>
 				</sub>
@@ -494,7 +494,7 @@
 			</xsl:when>
 			<xsl:otherwise>
 				<sub>
-					<br id="{@xml:id|@sameAs}"/>
+					<br/>
 					<xsl:value-of select="@n"/>
 					<xsl:text>. </xsl:text>
 				</sub>
@@ -619,7 +619,7 @@
 	</xsl:template>
 
 	<xsl:template name="word" match="tei:w[not(descendant::tei:w)]">
-		<xsl:variable name="wordId" select="count(preceding::*)"/>
+		<xsl:variable name="wordId" select="count(preceding::tei:w[not(descendant::tei:w)])"/>
 		<xsl:variable name="lem">
 			<xsl:choose>
 				<xsl:when test="@lemma = 'UNKNOWN'">[LEMMA UNKNOWN]</xsl:when>
@@ -860,7 +860,6 @@
 			</xsl:choose>
 		</xsl:variable>
 		<xsl:variable name="abbrRef">
-			<xsl:variable name="comWord" select="count(preceding::tei:w[not(descendant::tei:w)])"/>
 			<xsl:for-each select="descendant::tei:abbr//tei:g|ancestor::tei:abbr//tei:g">
 			<xsl:if test="key('abbrs', @ref)/@corresp">
 				<xsl:value-of select="key('abbrs', @ref)/@corresp"/>
@@ -870,7 +869,7 @@
 			</xsl:if>
 				<xsl:choose>
 					<xsl:when
-						test="following::tei:g/ancestor::tei:w[count(preceding::tei:w[not(descendant::tei:w)]) = $comWord]">
+						test="following::tei:g/ancestor::tei:w[count(preceding::tei:w[not(descendant::tei:w)]) = $wordId]">
 						<xsl:text> </xsl:text>
 					</xsl:when>
 					<xsl:otherwise>
@@ -1036,7 +1035,7 @@
 				</xsl:otherwise>
 			</xsl:choose>
 		</xsl:variable>
-		<a id="{generate-id()}" onmouseover="hilite(this.id)" onmouseout="dhilite(this.id)"
+		<a id="{$wordId}" onmouseover="hilite(this.id)" onmouseout="dhilite(this.id)"
 			lemma="{$lem}" lemmaRef="{$lemRef}" ana="{@ana}" hand="{$hand}" ref="{$msref}"
 			date="{$handDate}" medium="{$medium}" cert="{$certLvl}" abbrRefs="{$abbrRef}"
 			title="{$lem}: {$pos} {$src}&#10;{$hand}&#10;{$prob}{$certProb}&#10;Abbreviations: {$abbrs}&#10;{$gloss}"
@@ -1092,7 +1091,7 @@
 						<b>
 							<i>alt</i>
 						</b>
-					</sub>
+					</sub><seg id="sic{$wordId}" hidden="hidden"><xsl:apply-templates/></seg>
 				</xsl:when>
 				<xsl:otherwise>
 					<xsl:apply-templates/>

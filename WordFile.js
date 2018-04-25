@@ -10,7 +10,7 @@ function createTable() {
 	table.setAttributeNode(tblId);
 	var row1 = table.insertRow(0);
 	var r1col1 = row1.insertCell(0);
-	r1col1.outerHTML = "<th><b>MS Form</b></th>";
+	r1col1.outerHTML = "<th><b>Form</b></th>";
 	var r1col2 = row1.insertCell(1);
 	r1col2.outerHTML = "<th><b>MS Reference</b></th>";
 	var r1col3 = row1.insertCell(2);
@@ -64,7 +64,13 @@ function addSlip(id) {
 	var opened = window.open("", "FnaG MS Corpus Word Table");
 	var createdTable = opened.document.getElementById("slipTable");
 	var el = document.getElementById(id);
-	var form = el.outerHTML;
+	var form;
+	if(el.firstChild.innerText == "alt") { 
+		form = document.getElementById("sic" + id).innerHTML;
+	}
+	else {
+		form = el.outerHTML;
+	}
 	var lem = el.getAttribute('lemma');
 	var an = el.getAttribute('ana');
 	var msref = el.getAttribute('ref');
@@ -92,7 +98,8 @@ function addSlip(id) {
 	}
 	else if (el.previousElementSibling == null) {
 		el_minus_1 = "";
-	} else {
+	}
+	else {
 		el_minus_1 = el.previousElementSibling
 	}
 	var el_plus_2;
@@ -268,7 +275,15 @@ function addSlip(id) {
 	var el_minus_1node;
 	if (el_minus_1Id === "") {
 		el_minus_1node = "";
-	} else {
+	}
+		else if (el.firstChild.innerText == "alt") {
+		var corrForm = document.getElementById(el_minus_1Id).outerHTML;
+		var altText = "alt";
+		corrForm.innerHTML = altText;
+		
+		el_minus_1node = "<sub><b>[<i>leg. </i>" + corrForm + "]</b></sub>";
+	}
+	else {
 		el_minus_1node = document.getElementById(el_minus_1Id).outerHTML
 	}
 	var el_plus_2node;
