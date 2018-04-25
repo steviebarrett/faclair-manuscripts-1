@@ -571,6 +571,10 @@
 			<xsl:apply-templates/>
 		</p>
 	</xsl:template>
+	
+	<xsl:template match="tei:seg[@type = 'cfe']">
+		<xsl:text/>
+	</xsl:template>
 
 	<xsl:template match="tei:l">
 		<xsl:variable name="Id" select="@xml:id"/>
@@ -618,7 +622,7 @@
 		<xsl:variable name="wordId" select="count(preceding::*)"/>
 		<xsl:variable name="lem">
 			<xsl:choose>
-				<xsl:when test="@lemma = 'UNKNOWN'">[lemma unknown]</xsl:when>
+				<xsl:when test="@lemma = 'UNKNOWN'">[LEMMA UNKNOWN]</xsl:when>
 				<xsl:when test="not(@lemma)">
 					<xsl:choose>
 						<xsl:when test="ancestor::tei:name">

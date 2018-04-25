@@ -90,7 +90,7 @@ function addSlip(id) {
 	if (el == el.parentNode.firstElementChild) {
 		el_minus_1 = "";
 	}
-	if (el.previousElementSibling == null) {
+	else if (el.previousElementSibling == null) {
 		el_minus_1 = "";
 	} else {
 		el_minus_1 = el.previousElementSibling
@@ -120,6 +120,8 @@ function addSlip(id) {
 		el_plus_3 = "";
 	} else if (el.nextElementSibling == el.parentNode.lastElementChild) {
 		el_plus_3 = "";
+	} else if (el.nextElementSibling.nextElementSibling == null) {
+		el_plus_3 = "";
 	} else if (el.nextElementSibling.nextElementSibling.nextElementSibling == null) {
 		el_plus_3 = "";
 	} else {
@@ -129,6 +131,8 @@ function addSlip(id) {
 	if (el == el.parentNode.firstElementChild) {
 		el_minus_3 = "";
 	} else if (el.previousElementSibling == el.parentNode.firstElementChild) {
+		el_minus_3 = "";
+	} else if (el.previousElementSibling.previousElementSibling == null) {
 		el_minus_3 = "";
 	} else if (el.previousElementSibling.previousElementSibling.previousElementSibling == null) {
 		el_minus_3 = "";
@@ -140,6 +144,10 @@ function addSlip(id) {
 		el_plus_4 = "";
 	} else if (el.nextElementSibling == el.parentNode.lastElementChild) {
 		el_plus_4 = "";
+	} else if (el.nextElementSibling.nextElementSibling == null) {
+		el_plus_4 = "";
+	} else if (el.nextElementSibling.nextElementSibling.nextElementSibling == null) {
+		el_plus_4 = "";
 	} else if (el.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling == null) {
 		el_plus_4 = "";
 	} else {
@@ -149,6 +157,10 @@ function addSlip(id) {
 	if (el == el.parentNode.firstElementChild) {
 		el_minus_4 = "";
 	} else if (el.previousElementSibling == el.parentNode.firstElementChild) {
+		el_minus_4 = "";
+	} else if (el.previousElementSibling.previousElementSibling == null) {
+		el_minus_4 = "";
+	} else if (el.previousElementSibling.previousElementSibling.previousElementSibling == null) {
 		el_minus_4 = "";
 	} else if (el.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling == null) {
 		el_minus_4 = "";
@@ -160,6 +172,12 @@ function addSlip(id) {
 		el_plus_5 = "";
 	} else if (el.nextElementSibling == el.parentNode.lastElementChild) {
 		el_plus_5 = "";
+	} else if (el.nextElementSibling.nextElementSibling == null) {
+		el_plus_5 = "";
+	} else if (el.nextElementSibling.nextElementSibling.nextElementSibling == null) {
+		el_plus_5 = "";
+	} else if (el.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling == null) {
+		el_plus_5 = "";
 	} else if (el.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling == null) {
 		el_plus_5 = "";
 	} else {
@@ -170,6 +188,12 @@ function addSlip(id) {
 		el_minus_5 = "";
 	} else if (el.previousElementSibling == el.parentNode.firstElementChild) {
 		el_minus_5 = "";
+	} else if (el.previousElementSibling.previousElementSibling == null) {
+		el_minus_5 = "";
+	} else if (el.previousElementSibling.previousElementSibling.previousElementSibling == null) {
+		el_minus_5 = "";
+	} else if (el.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling == null) {
+		el_minus_5 = "";	
 	} else if (el.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling == null) {
 		el_minus_5 = "";
 	} else {
