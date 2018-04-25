@@ -625,14 +625,6 @@
 							<xsl:value-of select="ancestor::tei:name/@type"/>
 							<xsl:text> name</xsl:text>
 						</xsl:when>
-						<xsl:when test="ancestor::tei:sic">
-							<xsl:variable name="alt" select="ancestor::tei:choice/tei:corr"/>
-							<xsl:text>MS: </xsl:text>
-							<xsl:value-of select="self::*&#10;"/>
-							<xsl:text>- this reading may be corrupt; an amended reading ('</xsl:text>
-							<xsl:value-of select="$alt"/>
-							<xsl:text>') has been supplied.</xsl:text>
-						</xsl:when>
 						<xsl:when test="@xml:lang">Language: <xsl:value-of
 								select="key('lang', @xml:lang)/text()"/></xsl:when>
 						<xsl:otherwise>[no lemma entered]</xsl:otherwise>
@@ -652,7 +644,25 @@
 		<xsl:variable name="sicLem">
 			<xsl:choose>
 				<xsl:when test="ancestor::tei:sic">
+					<xsl:variable name="alt" select="ancestor::tei:choice/tei:corr"/>
 					<xsl:text xml:space="preserve">MS: </xsl:text>
+					<xsl:value-of select="self::*"/>
+					<xsl:if test="@ana">
+						<xsl:text>: </xsl:text>
+						<xsl:value-of select="@ana"/>
+					</xsl:if>
+					<xsl:text>&#10;</xsl:text>
+					<xsl:choose>
+						<xsl:when test="not(@lemma)">
+							<xsl:text>- this form cannot be interpreted</xsl:text>
+						</xsl:when>
+						<xsl:otherwise>
+							<xsl:text>- this form is corrupt/unclear</xsl:text>
+						</xsl:otherwise>
+					</xsl:choose>
+					<xsl:text>; an amended reading ('</xsl:text>
+					<xsl:value-of select="$alt"/>
+					<xsl:text>') has been supplied:&#10;&#10;</xsl:text>
 				</xsl:when>
 				<xsl:otherwise>
 					<xsl:text/>
@@ -734,7 +744,7 @@
 				<xsl:text>") </xsl:text>
 				<xsl:text xml:space="preserve">that cannot be expanded with certainty &#10;</xsl:text>
 			</xsl:if>
-			<xsl:if test="ancestor::tei:choice/tei:corr">
+			<xsl:if test="ancestor::tei:corr">
 				<xsl:variable name="alt" select="ancestor::tei:choice/tei:sic"/>
 				<xsl:text xml:space="preserve">- this is an editorial emendation of the manuscript reading ("</xsl:text>
 				<xsl:value-of select="$alt"/>
@@ -846,25 +856,27 @@
 			</xsl:choose>
 		</xsl:variable>
 		<xsl:variable name="abbrRef1">
-				<xsl:variable name="comWord" select="count(preceding::tei:w[not(descendant::tei:w)])"/>
-				<xsl:for-each select="descendant::tei:abbr/descendant::tei:g[key('abbrs', @ref)/@corresp] | ancestor::tei:abbr/ancestor::tei:g[key('abbrs', @ref)/@corresp]">
-					<xsl:value-of select="key('abbrs', @ref)/@corresp"/>
-					<xsl:choose>
-						<xsl:when
-							test="following::tei:g[key('abbrs', @ref)/@corresp and ancestor::tei:w[count(preceding::tei:w[not(descendant::tei:w)]) = $comWord]]">
-							<xsl:text> </xsl:text>
-						</xsl:when>
-						<xsl:otherwise>
-							<xsl:text/>
-						</xsl:otherwise>
-					</xsl:choose>
-				</xsl:for-each>
+			<xsl:variable name="comWord" select="count(preceding::tei:w[not(descendant::tei:w)])"/>
+			<xsl:for-each
+				select="descendant::tei:abbr/descendant::tei:g[key('abbrs', @ref)/@corresp] | ancestor::tei:abbr/ancestor::tei:g[key('abbrs', @ref)/@corresp]">
+				<xsl:value-of select="key('abbrs', @ref)/@corresp"/>
+				<xsl:choose>
+					<xsl:when
+						test="following::tei:g[key('abbrs', @ref)/@corresp and ancestor::tei:w[count(preceding::tei:w[not(descendant::tei:w)]) = $comWord]]">
+						<xsl:text> </xsl:text>
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:text/>
+					</xsl:otherwise>
+				</xsl:choose>
+			</xsl:for-each>
 		</xsl:variable>
 		<xsl:variable name="abbrRef2">
-				<xsl:variable name="comWord" select="count(preceding::tei:w[not(descendant::tei:w)])"/>
-			<xsl:for-each select="descendant::tei:abbr//tei:g[key('abbrs', @ref)[not(@corresp)]] | ancestor::tei:abbr//tei:g[key('abbrs', @ref)[not(@corresp)]]">
+			<xsl:variable name="comWord" select="count(preceding::tei:w[not(descendant::tei:w)])"/>
+			<xsl:for-each
+				select="descendant::tei:abbr//tei:g[key('abbrs', @ref)[not(@corresp)]] | ancestor::tei:abbr//tei:g[key('abbrs', @ref)[not(@corresp)]]">
 				<xsl:value-of select="key('abbrs', @ref)/tei:glyphName"/>
-				</xsl:for-each>
+			</xsl:for-each>
 			<xsl:choose>
 				<xsl:when
 					test="following::tei:g[key('abbrs', @ref)/tei:glyph[not(@corresp)] and ancestor::tei:w[count(preceding::tei:w[not(descendant::tei:w)]) = $comWord]]">
@@ -1034,9 +1046,16 @@
 		</xsl:variable>
 		<a id="{generate-id()}" onmouseover="hilite(this.id)" onmouseout="dhilite(this.id)"
 			lemma="{$lem}" lemmaRef="{$lemRef}" ana="{@ana}" hand="{$hand}" ref="{$msref}"
-			date="{$handDate}" medium="{$medium}" cert="{$certLvl}" abbrRefs1="{$abbrRef1}" abbrRefs2="{$abbrRef2}"
-			title="{$sicLem}{$lem}: {$pos} {$src}&#10;{$hand}&#10;{$prob}{$certProb}&#10;Abbreviations: {$abbrs}&#10;{$gloss}"
+			date="{$handDate}" medium="{$medium}" cert="{$certLvl}" abbrRefs1="{$abbrRef1}"
+			abbrRefs2="{$abbrRef2}"
+			title="{$lem}: {$pos} {$src}&#10;{$hand}&#10;{$prob}{$certProb}&#10;Abbreviations: {$abbrs}&#10;{$gloss}"
 			style="text-decoration:none; color:#000000">
+			<xsl:if test="ancestor::tei:sic">
+				<xsl:attribute name="title"><xsl:value-of select="$sicLem"/>&#10;<xsl:value-of
+						select="$hand"/>&#10;<xsl:value-of select="$prob"/><xsl:value-of
+						select="$certProb"/>&#10;<xsl:text>Abbreviations: </xsl:text><xsl:value-of
+						select="$abbrs"/>&#10;<xsl:value-of select="$gloss"/></xsl:attribute>
+			</xsl:if>
 			<xsl:if test="@lemma">
 				<xsl:attribute name="onclick">addSlip(this.id)</xsl:attribute>
 			</xsl:if>
@@ -1154,6 +1173,9 @@
 				<xsl:text/>
 			</xsl:when>
 			<xsl:when test="@ana = 'num' and ancestor::tei:w[contains(@ana, 'num, vnoun')]">
+				<xsl:text/>
+			</xsl:when>
+			<xsl:when test="@ana = 'vnoun' and ancestor::tei:w[contains(@ana, 'vnoun, noun')]">
 				<xsl:text/>
 			</xsl:when>
 			<xsl:when test="@ana = 'pref' and ancestor::tei:w[contains(@ana, 'pref, adj')]">
@@ -1487,13 +1509,26 @@
 				<xsl:text>)&#10;</xsl:text>
 			</xsl:if>
 		</xsl:variable>
+		<xsl:variable name="sicMessage">
+			<xsl:choose>
+				<xsl:when test="ancestor::tei:sic">
+					<xsl:text>: an amended reading ("</xsl:text>
+					<xsl:value-of select="ancestor::tei:choice/tei:corr"/>
+					<xsl:text>") has been supplied.</xsl:text>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:text/>
+				</xsl:otherwise>
+			</xsl:choose>
+		</xsl:variable>
 		<xsl:choose>
 			<xsl:when test="ancestor::tei:w">
 				<xsl:apply-templates/>
 				<xsl:text> </xsl:text>
 			</xsl:when>
 			<xsl:otherwise>
-				<a id="{generate-id()}" title="Unexplained character(s)&#10;{$hand}{$prob}" href="#"
+				<a id="{generate-id()}"
+					title="Unexplained character(s){$sicMessage}&#10;{$hand}{$prob}" href="#"
 					onclick="return false;" style="text-decoration:none; color:#000000">
 					<xsl:apply-templates/>
 				</a>
