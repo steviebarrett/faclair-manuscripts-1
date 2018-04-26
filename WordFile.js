@@ -65,10 +65,9 @@ function addSlip(id) {
 	var createdTable = opened.document.getElementById("slipTable");
 	var el = document.getElementById(id);
 	var form;
-	if(el.firstChild.innerText == "/alt") { 
+	if (el.firstChild.innerText == "/alt") {
 		form = document.getElementById("sic" + id).innerHTML;
-	}
-	else {
+	} else {
 		form = el.outerHTML;
 	}
 	var lem = el.getAttribute('lemma');
@@ -95,11 +94,9 @@ function addSlip(id) {
 	var el_minus_1;
 	if (el == el.parentNode.firstElementChild) {
 		el_minus_1 = "";
-	}
-	else if (el.previousElementSibling == null) {
+	} else if (el.previousElementSibling == null) {
 		el_minus_1 = "";
-	}
-	else {
+	} else {
 		el_minus_1 = el.previousElementSibling
 	}
 	var el_plus_2;
@@ -200,7 +197,7 @@ function addSlip(id) {
 	} else if (el.previousElementSibling.previousElementSibling.previousElementSibling == null) {
 		el_minus_5 = "";
 	} else if (el.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling == null) {
-		el_minus_5 = "";	
+		el_minus_5 = "";
 	} else if (el.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling == null) {
 		el_minus_5 = "";
 	} else {
@@ -275,13 +272,17 @@ function addSlip(id) {
 	var el_minus_1node;
 	if (el_minus_1Id === "") {
 		el_minus_1node = "";
-	}
-		else if (el.firstChild.innerText == "/alt") {
-		var corrForm = document.getElementById(el_minus_1Id).outerHTML;
-		
-		el_minus_1node = "<sub><b>[<i>leg. </i>" + corrForm + "]</b></sub>";
-	}
-	else {
+	} else if (el.firstChild.innerText == "/alt") {
+		if (el_minus_1.lastChild.nodeName = "seg") {
+			el_minus_1node = document.getElementById(el_minus_1Id).outerHTML
+		} else if (el_minus_1.lastChild.nodeName = "#text") {
+			var corrForm = document.getElementById(el_minus_1Id).outerHTML;
+			el_minus_1node = "<sub><b>[<i>leg. </i>" + corrForm + "]</b></sub>";
+		} else {
+			var corrForm = document.getElementById(el_minus_1Id).outerHTML;
+			el_minus_1node = "<sub><b>[<i>leg. </i>" + corrForm + "]</b></sub>";
+		}
+	} else {
 		el_minus_1node = document.getElementById(el_minus_1Id).outerHTML
 	}
 	var el_plus_2node;
@@ -354,17 +355,16 @@ function addSlip(id) {
 		var abbrAnch = rcol6.firstChild.getElementsByTagName("li")[i].firstChild;
 		var URL = abbrAnch.innerHTML.startsWith("www.");
 		if (URL) {
-		var abbrURL = abbrAnch.innerHTML;
-		var href = document.createAttribute("href");
-		var target = document.createAttribute("target");
-		href.value = 'https://' + abbrURL;
-		target.value = 'https://' + abbrURL;
-		abbrAnch.setAttributeNode(href);
-		abbrAnch.setAttributeNode(target);
-		var finText = abbrAnch.innerHTML.slice(23);
-		abbrAnch.innerHTML = finText;
-		}
-		else {
+			var abbrURL = abbrAnch.innerHTML;
+			var href = document.createAttribute("href");
+			var target = document.createAttribute("target");
+			href.value = 'https://' + abbrURL;
+			target.value = 'https://' + abbrURL;
+			abbrAnch.setAttributeNode(href);
+			abbrAnch.setAttributeNode(target);
+			var finText = abbrAnch.innerHTML.slice(23);
+			abbrAnch.innerHTML = finText;
+		} else {
 			var abbrName = abbrAnch.innerHTML;
 			var line = abbrAnch.parentNode;
 			line.innerHTML = abbrName;

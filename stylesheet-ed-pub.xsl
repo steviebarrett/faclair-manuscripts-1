@@ -661,7 +661,7 @@
 							<xsl:text>- this form cannot be interpreted</xsl:text>
 						</xsl:when>
 						<xsl:otherwise>
-							<xsl:text>- this form is corrupt/unclear</xsl:text>
+							<xsl:text>- this form is corrupt/unclear/implausible</xsl:text>
 						</xsl:otherwise>
 					</xsl:choose>
 					<xsl:text>; an amended reading ('</xsl:text>
