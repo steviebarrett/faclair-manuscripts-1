@@ -269,16 +269,14 @@ function addSlip(id) {
 	} else {
 		el_plus_1node = document.getElementById(el_plus_1Id).outerHTML
 	}
+	alert(el.previousElementSibling.innerText);
 	var el_minus_1node;
 	if (el_minus_1Id === "") {
 		el_minus_1node = "";
 	} else if (el.firstChild.innerText == "/alt") {
-		if (el_minus_1.lastChild.nodeName = "seg") {
+		if (el.previousElementSibling.lastChild.nodeName = "seg") {
 			el_minus_1node = document.getElementById(el_minus_1Id).outerHTML
-		} else if (el_minus_1.lastChild.nodeName = "#text") {
-			var corrForm = document.getElementById(el_minus_1Id).outerHTML;
-			el_minus_1node = "<sub><b>[<i>leg. </i>" + corrForm + "]</b></sub>";
-		} else {
+		}  else {
 			var corrForm = document.getElementById(el_minus_1Id).outerHTML;
 			el_minus_1node = "<sub><b>[<i>leg. </i>" + corrForm + "]</b></sub>";
 		}
