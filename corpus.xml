@@ -816,6 +816,17 @@
 					<note>A left-facing superscript semi-circle, standing for "-s", perhaps with a
 						preceding vowel or string.</note>
 				</glyph>
+				<glyph xml:id="g51" corresp="http://www.vanhamel.nl/codecs/X_(regular)">
+					<glyphName>x abbreviation</glyphName>
+					<note>An "x", standing either for the numeral 10 or for the characterd "dec" or
+						similar.</note>
+				</glyph>
+				<glyph xml:id="g52">
+					<glyphName>upward diagonal overstroke</glyphName>
+					<note>A stroke from the lower left of a character to the upper right, crossing
+						the character itself, standing for a string of subsequent characters. Found
+						with "n" thus far.</note>
+				</glyph>
 				<glyph xml:id="gn" corresp="n">
 					<glyphName/>
 					<note/>
@@ -1034,26 +1045,26 @@
 			</handNotes>
 		</profileDesc>
 		<revisionDesc>
-			<change when="2017-11-23" who="#EPT">Corpus header: Revised &lt;encodingDesc&gt; in line
+			<change when="2017-11-23" who="EPT">Corpus header: Revised &lt;encodingDesc&gt; in line
 				with changes in policy changes arising from work on Transcriptions 2 and 6. Merged
 				seperate &lt;encodingDesc&gt; elements.</change>
-			<change when="2017-11-16" who="#EPT">Corpus header: Revised &lt;encodingDesc&gt; in line
+			<change when="2017-11-16" who="EPT">Corpus header: Revised &lt;encodingDesc&gt; in line
 				with changes in policy changes arising from work on Transcription 1.</change>
-			<change when="2017-11-08" who="#EPT">Corpus header: New &lt;charDecl&gt; element. form
+			<change when="2017-11-08" who="EPT">Corpus header: New &lt;charDecl&gt; element. form
 				and checked over</change>
-			<change when="2017-11-06" who="#EPT, #MMC">Corpus header: Elements planned in template
+			<change when="2017-11-06" who="EPT, MMC">Corpus header: Elements planned in template
 				form and checked over</change>
-			<change when="2017-11-07" who="#EPT">Corpus header: Added content to elements</change>
+			<change when="2017-11-07" who="EPT">Corpus header: Added content to elements</change>
 		</revisionDesc>
 	</teiHeader>
 	<!-- <xi:include href="Transcriptions/transcription1.xml" parse="xml"/> -->
 	<!-- <xi:include href="Transcriptions/transcription2.xml" parse="xml"/> -->
 	<!-- <xi:include href="Transcriptions/transcription4.xml" parse="xml"/> -->
-	<!-- <xi:include href="Transcriptions/transcription5.xml" parse="xml"/> -->
+	<xi:include href="Transcriptions/transcription5.xml" parse="xml"/>
 	<!-- <xi:include href="Transcriptions/transcription6.xml" parse="xml"/> -->
 	<!-- <xi:include href="Transcriptions/transcription7.xml" parse="xml"/> -->
 	<!-- <xi:include href="Transcriptions/transcription9.xml" parse="xml"/> -->
 	<!-- <xi:include href="Transcriptions/transcription12.xml" parse="xml"/> -->
-	<xi:include href="Transcriptions/transcription13.xml" parse="xml"/>
+	<!-- <xi:include href="Transcriptions/transcription13.xml" parse="xml"/> -->
 	<!-- <xi:include href="Transcriptions/transcription14.xml" parse="xml"/> -->
 </teiCorpus>

@@ -704,6 +704,9 @@
 								</xsl:otherwise>
 							</xsl:choose>
 						</xsl:when>
+						<xsl:when test="@reason = 'char'">
+							<xsl:text xml:space="preserve">- a key character in this word ("</xsl:text><xsl:value-of select="text()"/><xsl:text xml:space="preserve">") is ambiguous.&#10;</xsl:text>
+						</xsl:when>
 						<xsl:when test="@reason = 'text_obscure'">
 							<xsl:choose>
 								<xsl:when test="ancestor::tei:unclear[@reason = 'text_obscure']">
@@ -2030,7 +2033,7 @@
 					/><xsl:text>) </xsl:text></b>
 			</sub>
 		</xsl:if> -->
-		<xsl:if test="@n and ancestor::tei:div">
+		<xsl:if test="@n and ancestor::tei:div or not(descendant::tei:div)">
 			<p>
 				<a href="{$contents}">Back to MS contents</a>
 			</p>
