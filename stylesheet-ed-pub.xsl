@@ -509,7 +509,6 @@
 				<p style="margin-left:40px">
 					<b align="left">
 						<xsl:value-of select="@n"/>
-
 						<xsl:text>. </xsl:text>
 					</b>
 					<xsl:text>  </xsl:text>
@@ -524,12 +523,11 @@
 					/>
 				</p>
 			</xsl:when>
-			<xsl:when test="descendant::tei:pb">
+			<!-- <xsl:when test="child::tei:l/descendant::tei:pb">
 				<xsl:variable name="conID" select="@xml:id"/>
 				<p style="margin-left:30px">
 					<b align="left">
 						<xsl:value-of select="@n"/>
-
 						<xsl:text>. </xsl:text>
 					</b>
 					<xsl:text>  </xsl:text>
@@ -543,7 +541,7 @@
 						select="descendant::*[preceding::tei:pb[ancestor::tei:lg[@xml:id = $conID]]]"
 					/>
 				</p>
-			</xsl:when>
+			</xsl:when> -->
 			<xsl:otherwise>
 				<xsl:choose>
 					<xsl:when test="@type = 'dúnad'">
@@ -593,10 +591,23 @@
 				<br id="{$MSlineID}"/>
 				<xsl:value-of select="@n"/>
 				<xsl:text>. </xsl:text>
-				<xsl:apply-templates/>
 			</xsl:when>
 			<xsl:otherwise>
 				<br id="{$MSlineID}"/>
+			</xsl:otherwise>
+		</xsl:choose>
+		<xsl:choose>
+			<xsl:when test="descendant::tei:pb">
+				<xsl:variable name="pbId" select="descendant::tei:pb/@xml:id"/>
+					<xsl:apply-templates
+						select="*[following::tei:pb[@xml:id = $pbId]]"
+					/>
+				<xsl:apply-templates select="child::tei:pb"/>
+					<xsl:apply-templates
+						select="*[preceding::tei:pb[@xml:id = $pbId]]"
+					/>
+			</xsl:when>
+			<xsl:otherwise>
 				<xsl:apply-templates/>
 			</xsl:otherwise>
 		</xsl:choose>
@@ -1557,18 +1568,9 @@
 	<xsl:template match="tei:g">
 		<xsl:variable name="comWord" select="count(ancestor::tei:w[not(descendant::tei:w)]/preceding::tei:w[not(descendant::tei:w)])"/>
 		<xsl:variable name="position" select="count(preceding::tei:g[ancestor::tei:w[not(descendant::tei:w) and count(preceding::tei:w[not(descendant::tei:w)])=$comWord]])"/>
-		<xsl:choose>
-			<xsl:when test="ancestor::tei:abbr[@cert = 'low']">
 				<i id="{$position}">
 					<xsl:apply-templates/>
 				</i>
-			</xsl:when>
-			<xsl:otherwise>
-				<i id="{$position}">
-					<xsl:apply-templates/>
-				</i>
-			</xsl:otherwise>
-		</xsl:choose>
 	</xsl:template>
 
 	<xsl:template match="tei:unclear">
