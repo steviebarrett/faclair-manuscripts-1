@@ -569,7 +569,7 @@
 			<xsl:apply-templates/>
 		</p>
 	</xsl:template>
-	
+
 	<xsl:template match="tei:seg[@type = 'cfe']">
 		<xsl:text/>
 	</xsl:template>
@@ -599,13 +599,9 @@
 		<xsl:choose>
 			<xsl:when test="descendant::tei:pb">
 				<xsl:variable name="pbId" select="descendant::tei:pb/@xml:id"/>
-					<xsl:apply-templates
-						select="*[following::tei:pb[@xml:id = $pbId]]"
-					/>
+				<xsl:apply-templates select="*[following::tei:pb[@xml:id = $pbId]]"/>
 				<xsl:apply-templates select="child::tei:pb"/>
-					<xsl:apply-templates
-						select="*[preceding::tei:pb[@xml:id = $pbId]]"
-					/>
+				<xsl:apply-templates select="*[preceding::tei:pb[@xml:id = $pbId]]"/>
 			</xsl:when>
 			<xsl:otherwise>
 				<xsl:apply-templates/>
@@ -716,7 +712,9 @@
 							</xsl:choose>
 						</xsl:when>
 						<xsl:when test="@reason = 'char'">
-							<xsl:text xml:space="preserve">- a key character in this word ("</xsl:text><xsl:value-of select="text()"/><xsl:text xml:space="preserve">") is ambiguous.&#10;</xsl:text>
+							<xsl:text xml:space="preserve">- a key character in this word ("</xsl:text>
+							<xsl:value-of select="text()"/>
+							<xsl:text xml:space="preserve">") is ambiguous.&#10;</xsl:text>
 						</xsl:when>
 						<xsl:when test="@reason = 'text_obscure'">
 							<xsl:choose>
@@ -831,6 +829,11 @@
 					<xsl:text>)&#10;</xsl:text>
 				</xsl:for-each>
 			</xsl:if>
+			<xsl:if test="@source">
+				<xsl:text xml:space="preserve">- this word cannot be identified with an existing dictionary headword, but it may be related to "</xsl:text>
+				<xsl:value-of select="@source"/>
+				<xsl:text xml:space="preserve">".&#10;</xsl:text>
+			</xsl:if>
 		</xsl:variable>
 		<xsl:variable name="certProb">
 			<xsl:if test="ancestor::*[@cert] or descendant::*[@cert]">
@@ -874,13 +877,13 @@
 			</xsl:choose>
 		</xsl:variable>
 		<xsl:variable name="abbrRef">
-			<xsl:for-each select="descendant::tei:abbr//tei:g|ancestor::tei:abbr//tei:g">
-			<xsl:if test="key('abbrs', @ref)/@corresp">
-				<xsl:value-of select="key('abbrs', @ref)/@corresp"/>
-			</xsl:if>
-			<xsl:if test="key('abbrs', @ref)[not(@corresp)]">
-				<xsl:value-of select="key('abbrs', @ref)/tei:glyphName"/>
-			</xsl:if>
+			<xsl:for-each select="descendant::tei:abbr//tei:g | ancestor::tei:abbr//tei:g">
+				<xsl:if test="key('abbrs', @ref)/@corresp">
+					<xsl:value-of select="key('abbrs', @ref)/@corresp"/>
+				</xsl:if>
+				<xsl:if test="key('abbrs', @ref)[not(@corresp)]">
+					<xsl:value-of select="key('abbrs', @ref)/tei:glyphName"/>
+				</xsl:if>
 				<xsl:choose>
 					<xsl:when
 						test="following::tei:g/ancestor::tei:w[count(preceding::tei:w[not(descendant::tei:w)]) = $wordId]">
@@ -1049,9 +1052,9 @@
 				</xsl:otherwise>
 			</xsl:choose>
 		</xsl:variable>
-		<a id="{$wordId}" onmouseover="hilite(this.id)" onmouseout="dhilite(this.id)"
-			lemma="{$lem}" lemmaRef="{$lemRef}" ana="{@ana}" hand="{$hand}" ref="{$msref}"
-			date="{$handDate}" medium="{$medium}" cert="{$certLvl}" abbrRefs="{$abbrRef}"
+		<a id="{$wordId}" onmouseover="hilite(this.id)" onmouseout="dhilite(this.id)" lemma="{$lem}"
+			lemmaRef="{$lemRef}" ana="{@ana}" hand="{$hand}" ref="{$msref}" date="{$handDate}"
+			medium="{$medium}" cert="{$certLvl}" abbrRefs="{$abbrRef}"
 			title="{$lem}: {$pos} {$src}&#10;{$hand}&#10;{$prob}{$certProb}&#10;Abbreviations: {$abbrs}&#10;{$gloss}"
 			style="text-decoration:none; color:#000000">
 			<xsl:if test="ancestor::tei:sic">
@@ -1063,7 +1066,7 @@
 			<xsl:if test="@lemma">
 				<xsl:attribute name="onclick">addSlip(this.id)</xsl:attribute>
 			</xsl:if>
-<!--			<xsl:if test="@lemmaRef">
+			<!--			<xsl:if test="@lemmaRef">
 				<xsl:attribute name="href">
 					<xsl:value-of select="@lemmaRef"/>
 				</xsl:attribute>
@@ -1105,7 +1108,10 @@
 						<b>
 							<i>/alt</i>
 						</b>
-					</sub><seg id="sic{$wordId}" hidden="hidden"><xsl:apply-templates/></seg>
+					</sub>
+					<seg id="sic{$wordId}" hidden="hidden">
+						<xsl:apply-templates/>
+					</seg>
 				</xsl:when>
 				<xsl:otherwise>
 					<xsl:apply-templates/>
@@ -1566,11 +1572,13 @@
 	</xsl:template>
 
 	<xsl:template match="tei:g">
-		<xsl:variable name="comWord" select="count(ancestor::tei:w[not(descendant::tei:w)]/preceding::tei:w[not(descendant::tei:w)])"/>
-		<xsl:variable name="position" select="count(preceding::tei:g[ancestor::tei:w[not(descendant::tei:w) and count(preceding::tei:w[not(descendant::tei:w)])=$comWord]])"/>
-				<i id="{$position}">
-					<xsl:apply-templates/>
-				</i>
+		<xsl:variable name="comWord"
+			select="count(ancestor::tei:w[not(descendant::tei:w)]/preceding::tei:w[not(descendant::tei:w)])"/>
+		<xsl:variable name="position"
+			select="count(preceding::tei:g[ancestor::tei:w[not(descendant::tei:w) and count(preceding::tei:w[not(descendant::tei:w)]) = $comWord]])"/>
+		<i id="{$position}">
+			<xsl:apply-templates/>
+		</i>
 	</xsl:template>
 
 	<xsl:template match="tei:unclear">

@@ -269,7 +269,6 @@ function addSlip(id) {
 	} else {
 		el_plus_1node = document.getElementById(el_plus_1Id).outerHTML
 	}
-	alert(el.previousElementSibling.innerText);
 	var el_minus_1node;
 	if (el_minus_1Id === "") {
 		el_minus_1node = "";
