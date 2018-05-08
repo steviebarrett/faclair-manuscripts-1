@@ -2,6 +2,7 @@ function createTable() {
 	var table = document.createElement("table");
 	document.getElementsByTagName("table");
 	var script = document.createElement("script");
+	var anchor = document.createElement("a");
 	var tblBorder = document.createAttribute ("border");
 	tblBorder.value = "solid 0.1mm black";
 	table.setAttributeNode(tblBorder);
@@ -36,22 +37,25 @@ function createTable() {
 	var r1col13 = row1.insertCell(12);
 	r1col13.outerHTML = "<th><b>HDSG Slip</b></th>";
 	var r1col14 = row1.insertCell(13);
-	r1col14.outerHTML = "<button onclick='getTable(slipTable)'>Download Table</button><br/><button onclick='delRow(this)'>Delete Row</button>";
+	r1col14.outerHTML = "<th><button onclick='delCol()'>Del Col</button><br/><button onclick='delRow(this)'>Del Row</button></th>";
 	var opened = window.open("", "FnaG MS Corpus Word Table");
 	opened.document.body.appendChild(table);
 	opened.document.head.appendChild(script);
-	script.innerHTML = 'function delRow(r) \
+	opened.document.body.appendChild(anchor);
+	anchor.outerHTML = "<a id='dlink'  style='display:none;'></a>";
+	script.innerHTML = "function delRow(r) \
 	{ \
-	var i = r.parentNode.rowIndex; \
-	document.getElementById("slipTable").deleteRow(i); \
+	var i = r.parentNode.parentNode.rowIndex; \
+	document.getElementById('slipTable').deleteRow(i); \
 	}; \
-	function getTable(table) \
-	{ \
-	var table = document.getElementById("slipTable"); \
-	var html = table.outerHMTL; \
-	window.open("data:application/vnd.ms-excel, "  + $("#download").html()); \
-	}; \
-	'
+	function delCol() { \
+	var rowCount = document.getElementById('slipTable').firstChild.childElementCount; \
+	for (j = 0; j < rowCount; j++) { \
+	var row = document.getElementsByTagName('tr')[j]; \
+	row.deleteCell(13); \
+	}\
+	}\
+	"; 
 	var type = document.createAttribute("type");
 	type.value = "text/javascript";
 	script.setAttributeNode(type);
@@ -384,6 +388,6 @@ function addSlip(id) {
 	var rcol13 = row.insertCell(12);
 	rcol13.innerHTML = "";
 	var rcol14 = row.insertCell(13);
-	rcol14.outerHTML = '<button onclick="delRow(this)">Delete Row</button>';
+	rcol14.outerHTML = '<td><button onclick="delRow(this)">Del Row</button></td>';
 	opened.document.table.appendChild(tr);
 }
