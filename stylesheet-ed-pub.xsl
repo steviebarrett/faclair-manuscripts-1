@@ -746,7 +746,7 @@
 			<xsl:choose>
 				<xsl:when test="ancestor::tei:sic">
 					<xsl:variable name="alt">
-						<xsl:for-each select="ancestor::tei:choice/tei:corr//tei:w">
+						<xsl:for-each select="ancestor::tei:choice/tei:corr//tei:w[not(descendant::tei:w)]">
 							<xsl:text> </xsl:text>
 							<xsl:value-of select="self::*"/>
 							<xsl:text> </xsl:text>

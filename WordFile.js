@@ -1,8 +1,8 @@
 var rowNo = 0;
 
-function newRow() { 
-	rowNo++ ; 
-	}
+function newRow() {
+	rowNo++;
+}
 
 function createTable() {
 	var table = document.createElement("table");
@@ -66,30 +66,30 @@ function createTable() {
 	}\
 	}\
 	function abbrHilite(id) { \
-		var ids = id.split(','); \
-		var formID = ids[0]; \
-		var rowID = ids[1]; \
-		var abbrID = ids[2]; \
-		var abbrSpl = abbrID.split('', 2);\
-		var abbrPOS = abbrSpl[1];\
-		var row = document.getElementById(rowID);\
-		var form = row.cells[0].children[0];\
-		var abbr = form.getElementsByTagName('i')[abbrPOS];\
-		abbr.style.backgroundColor = 'GreenYellow';\
+	var ids = id.split(','); \
+	var formID = ids[0]; \
+	var rowID = ids[1]; \
+	var abbrID = ids[2]; \
+	var abbrSpl = abbrID.split('', 2);\
+	var abbrPOS = abbrSpl[1];\
+	var row = document.getElementById(rowID);\
+	var form = row.cells[0].children[0];\
+	var abbr = form.getElementsByTagName('i')[abbrPOS];\
+	abbr.style.backgroundColor = 'GreenYellow';\
 	}; \
 	function abbrDeHilite(id) { \
-		var ids = id.split(','); \
-		var formID = ids[0]; \
-		var rowID = ids[1]; \
-		var abbrID = ids[2]; \
-		var abbrSpl = abbrID.split('', 2);\
-		var abbrPOS = abbrSpl[1];\
-		var row = document.getElementById(rowID);\
-		var form = row.cells[0].children[0];\
-		var abbr = form.getElementsByTagName('i')[abbrPOS];\
-		abbr.style.backgroundColor = 'White';\
+	var ids = id.split(','); \
+	var formID = ids[0]; \
+	var rowID = ids[1]; \
+	var abbrID = ids[2]; \
+	var abbrSpl = abbrID.split('', 2);\
+	var abbrPOS = abbrSpl[1];\
+	var row = document.getElementById(rowID);\
+	var form = row.cells[0].children[0];\
+	var abbr = form.getElementsByTagName('i')[abbrPOS];\
+	abbr.style.backgroundColor = 'White';\
 	}; \
-	"; 
+	";
 	var type = document.createAttribute("type");
 	type.value = "text/javascript";
 	script.setAttributeNode(type);
@@ -305,7 +305,7 @@ function addSlip(id) {
 	}
 	var el_minus_1node;
 	if (el_minus_1Id === "") {
-		el_minus_1node = ""; 
+		el_minus_1node = "";
 	} else {
 		el_minus_1node = document.getElementById(el_minus_1Id).outerHTML
 	}
@@ -370,21 +370,25 @@ function addSlip(id) {
 	rcol2.innerHTML = msref;
 	var textForm;
 	if (el.firstChild.innerText == "/alt") {
-	var sicForm = el.lastChild.innerHTML;
-	var altTag = rcol1.firstElementChild.firstElementChild;
-	altTag.setAttribute("hidden", "hidden");
-	rcol1.firstElementChild.innerHTML = sicForm;
-	}
-	if (el.firstChild.innerText == "/alt") {
-	var sicForm = el.lastChild.innerHTML;
-	textForm = sicForm;
+		var sicForm = el.lastChild.innerHTML;
+		var altTag = rcol1.firstElementChild.firstElementChild;
+		altTag.setAttribute("hidden", "hidden");
+		rcol1.firstElementChild.innerHTML = sicForm;
+		var sicNode = rcol1.firstElementChild.outerHTML;
+		textForm = sicNode;
 	} else {
-		textForm = form		
+		textForm = form
 	}
 	var context = el_minus_5node.concat(' ', el_minus_4node, ' ', el_minus_3node, ' ', el_minus_2node, ' ', el_minus_1node, ' ', '<b>' + textForm + '</b>', ' ', el_plus_1node, ' ', el_plus_2node, ' ', el_plus_3node, ' ', el_plus_4node, ' ', el_plus_5node);
 	var rcol3 = row.insertCell(2);
 	rcol3.innerHTML = context;
 	rcol3.style.fontSize = "smaller";
+	if (el.firstChild.innerText == "/alt") {
+		var choiceID = el.getAttribute("choicePOS").slice(3);
+		var corrID = "corr" + choiceID;
+		var corrForm = rcol3.querySelector("a[choicePOS=" + corrID +"]");
+		corrForm.setAttribute("hidden", "hidden");
+	}
 	var rcol4 = row.insertCell(3);
 	rcol4.innerHTML = med;
 	var rcol5 = row.insertCell(4);
