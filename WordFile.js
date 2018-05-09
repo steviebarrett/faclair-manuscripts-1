@@ -1,3 +1,9 @@
+var rowNo = 0;
+
+function newRow() { 
+	rowNo++ ; 
+	}
+
 function createTable() {
 	var table = document.createElement("table");
 	document.getElementsByTagName("table");
@@ -10,6 +16,10 @@ function createTable() {
 	tblId.value = "slipTable";
 	table.setAttributeNode(tblId);
 	var row1 = table.insertRow(0);
+	var rowID = document.createAttribute("id");
+	rowID.value = rowNo;
+	newRow();
+	row1.setAttributeNode(rowID);
 	var r1col1 = row1.insertCell(0);
 	r1col1.outerHTML = "<th><b>Form</b></th>";
 	var r1col2 = row1.insertCell(1);
@@ -55,6 +65,28 @@ function createTable() {
 	row.deleteCell(13); \
 	}\
 	}\
+	function abbrHilite(id) { \
+		var ids = id.split(','); \
+		var formID = ids[0]; \
+		var row = ids[1]; \
+		var abbrID = ids[2]; \
+		var abbrSpl = abbrID.split('', 2);\
+		var abbrPOS = abbrSpl[1];\
+		var form = document.getElementById(formID);\
+		var abbr = form.getElementsByTagName('i')[abbrPOS];\
+		abbr.style.backgroundColor = 'GreenYellow';\
+	}; \
+	function abbrDeHilite(id) { \
+				var ids = id.split(','); \
+		var formID = ids[0]; \
+		var row = ids[1]; \
+		var abbrID = ids[2]; \
+		var abbrSpl = abbrID.split('', 2);\
+		var abbrPOS = abbrSpl[1];\
+		var form = document.getElementById(formID);\
+		var abbr = form.getElementsByTagName('i')[abbrPOS];\
+		abbr.style.backgroundColor = 'White';\
+	}; \
 	"; 
 	var type = document.createAttribute("type");
 	type.value = "text/javascript";
@@ -68,6 +100,7 @@ function addSlip(id) {
 	var opened = window.open("", "FnaG MS Corpus Word Table");
 	var createdTable = opened.document.getElementById("slipTable");
 	var el = document.getElementById(id);
+	el.style.backgroundColor = "White";
 	var form;
 	if (el.firstChild.innerText == "/alt") {
 		form = document.getElementById("sic" + id).innerHTML;
@@ -337,13 +370,18 @@ function addSlip(id) {
 	var context = el_minus_5node.concat(' ', el_minus_4node, ' ', el_minus_3node, ' ', el_minus_2node, ' ', el_minus_1node, ' ', '<b>' + form + '</b>', ' ', el_plus_1node, ' ', el_plus_2node, ' ', el_plus_3node, ' ', el_plus_4node, ' ', el_plus_5node);
 	var msref = el.getAttribute('ref');
 	var row = createdTable.insertRow(-1);
-	row.style.fontSize = "small";
+	row.style.fontSize = "medium";
+	var rowID = document.createAttribute("id");
+	rowID.value = "r" + rowNo;
+	row.setAttributeNode(rowID);
+	newRow();
 	var rcol1 = row.insertCell(0);
 	rcol1.innerHTML = form;
 	var rcol2 = row.insertCell(1);
 	rcol2.innerHTML = msref;
 	var rcol3 = row.insertCell(2);
 	rcol3.innerHTML = context;
+	rcol3.style.fontSize = "smaller";
 	var rcol4 = row.insertCell(3);
 	rcol4.innerHTML = med;
 	var rcol5 = row.insertCell(4);
@@ -353,8 +391,18 @@ function addSlip(id) {
 	var lineCount = rcol6.firstChild.childElementCount;
 	var i;
 	for (i = 0; i < lineCount; i++) {
+		var rID = rcol6.parentNode.getAttribute("id");
+		var lineID = document.createAttribute("id");
+		lineID.value = id + "," + rID + ",l" + i;
+		rcol6.firstChild.getElementsByTagName("li")[i].setAttributeNode(lineID);
 		var abbrAnch = rcol6.firstChild.getElementsByTagName("li")[i].firstChild;
 		var URL = abbrAnch.innerHTML.startsWith("www.");
+		var hiliteLinkIn = document.createAttribute("onmouseover");
+		hiliteLinkIn.value = 'abbrHilite(this.id)';
+		rcol6.firstChild.getElementsByTagName("li")[i].setAttributeNode(hiliteLinkIn);
+		var hiliteLinkOut = document.createAttribute("onmouseout");
+		hiliteLinkOut.value = 'abbrDeHilite(this.id)';
+		rcol6.firstChild.getElementsByTagName("li")[i].setAttributeNode(hiliteLinkOut);
 		if (URL) {
 			var abbrURL = abbrAnch.innerHTML;
 			var href = document.createAttribute("href");

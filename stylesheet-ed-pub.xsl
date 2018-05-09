@@ -626,7 +626,8 @@
 	</xsl:template>
 
 	<xsl:template name="word" match="tei:w[not(descendant::tei:w)]">
-		<xsl:variable name="wordId" select="count(preceding::tei:w[not(descendant::tei:w)])"/>
+		<xsl:variable name="wordId" select="generate-id()"/>
+		<xsl:variable name="wordPOS" select="count(preceding::*)"/>
 		<xsl:variable name="lem">
 			<xsl:choose>
 				<xsl:when test="@lemma = 'UNKNOWN'">[LEMMA UNKNOWN]</xsl:when>
@@ -655,7 +656,11 @@
 		<xsl:variable name="sicLem">
 			<xsl:choose>
 				<xsl:when test="ancestor::tei:sic">
-					<xsl:variable name="alt" select="ancestor::tei:choice/tei:corr"/>
+					<xsl:variable name="alt">
+						<xsl:for-each select="ancestor::tei:choice/tei:corr//tei:w">
+							<xsl:text> </xsl:text><xsl:value-of select="self::*"/><xsl:text> </xsl:text>
+						</xsl:for-each>
+					</xsl:variable>
 					<xsl:text xml:space="preserve">MS: </xsl:text>
 					<xsl:value-of select="self::*"/>
 					<xsl:if test="@ana">
@@ -694,14 +699,14 @@
 								<xsl:otherwise>
 									<xsl:text xml:space="preserve">- the interpretation of this word, or its context, is doubtful</xsl:text>
 									<xsl:if
-										test="descendant::tei:unclear[@cert = 'medium' or 'low' or 'unknown']//tei:w[not(count(preceding::*) = $wordId)] or descendant::tei:w[@lemma = 'UNKNOWN' and not(count(preceding::*) = $wordId)] or descendant::tei:w[descendant::tei:abbr[not(@cert = 'high')] and not(count(preceding::*) = $wordId)]">
+										test="descendant::tei:unclear[@cert = 'medium' or 'low' or 'unknown']//tei:w[not(count(preceding::*) = $wordPOS)] or descendant::tei:w[@lemma = 'UNKNOWN' and not(count(preceding::*) = $wordPOS)] or descendant::tei:w[descendant::tei:abbr[not(@cert = 'high')] and not(count(preceding::*) = $wordPOS)]">
 										<xsl:text>; there is a particular issue with</xsl:text>
 										<xsl:if
-											test="descendant::tei:unclear[@cert = 'medium' or 'low' or 'unknown']//tei:w[count(preceding::*) = $wordId] or descendant::tei:w[@lemma = 'UNKNOWN' and count(preceding::*) = $wordId] or self::*/descendant::tei:w[descendant::tei:abbr[not(@cert = 'high')] and count(preceding::*) = $wordId]">
+											test="descendant::tei:unclear[@cert = 'medium' or 'low' or 'unknown']//tei:w[count(preceding::*) = $wordPOS] or descendant::tei:w[@lemma = 'UNKNOWN' and count(preceding::*) = $wordPOS] or self::*/descendant::tei:w[descendant::tei:abbr[not(@cert = 'high')] and count(preceding::*) = $wordPOS]">
 											<xsl:text xml:space="preserve"> this word and</xsl:text>
 										</xsl:if>
 										<xsl:for-each
-											select="descendant::tei:unclear//tei:w[not(ancestor::tei:w) and not(count(preceding::*) = $wordId)] | descendant::tei:w[@lemma = 'UNKNOWN' and not(count(preceding::*) = $wordId)] | descendant::tei:w[descendant::tei:abbr[not(@cert = 'high')] and not(count(preceding::*) = $wordId)]">
+											select="descendant::tei:unclear//tei:w[not(ancestor::tei:w) and not(count(preceding::*) = $wordPOS)] | descendant::tei:w[@lemma = 'UNKNOWN' and not(count(preceding::*) = $wordPOS)] | descendant::tei:w[descendant::tei:abbr[not(@cert = 'high')] and not(count(preceding::*) = $wordPOS)]">
 											<xsl:text> "</xsl:text>
 											<xsl:value-of select="self::*"/>
 											<xsl:text>" </xsl:text>
@@ -886,7 +891,7 @@
 				</xsl:if>
 				<xsl:choose>
 					<xsl:when
-						test="following::tei:g/ancestor::tei:w[count(preceding::tei:w[not(descendant::tei:w)]) = $wordId]">
+						test="following::tei:g/ancestor::tei:w[count(preceding::*) = $wordPOS]">
 						<xsl:text> </xsl:text>
 					</xsl:when>
 					<xsl:otherwise>
@@ -998,26 +1003,6 @@
 			</xsl:choose>
 		</xsl:variable>
 		<xsl:variable name="pos">
-			<!-- <xsl:choose>
-				<xsl:when test="contains(@ana, ',')">
-					<xsl:variable name="anastring" select="@ana/text()"/>
-					<xsl:variable name="item_1">
-						<xsl:value-of select="substring-before($anastring, ', ')"/>
-					</xsl:variable>
-					<xsl:variable name="item">
-						<xsl:value-of select="substring-after($anastring, ', ')"/>
-					</xsl:variable>
-					<xsl:variable name="items">
-						<xsl:for-each select="$item">
-							<xsl:value-of select="self::*"/><xsl:text>; </xsl:text>
-						</xsl:for-each>
-					</xsl:variable>
-					<xsl:value-of select="$item_1"/><xsl:text>; </xsl:text><xsl:value-of select="$items"/>
-				</xsl:when>
-				<xsl:otherwise>
-					<xsl:value-of select="key('pos', @ana)"/>
-				</xsl:otherwise>
-			</xsl:choose> -->
 			<xsl:value-of select="@ana"/>
 		</xsl:variable>
 		<xsl:variable name="src">
@@ -1052,7 +1037,7 @@
 				</xsl:otherwise>
 			</xsl:choose>
 		</xsl:variable>
-		<a id="{$wordId}" onmouseover="hilite(this.id)" onmouseout="dhilite(this.id)" lemma="{$lem}"
+		<a id="{$wordId}" pos="{$wordPOS}" onmouseover="hilite(this.id)" onmouseout="dhilite(this.id)" lemma="{$lem}"
 			lemmaRef="{$lemRef}" ana="{@ana}" hand="{$hand}" ref="{$msref}" date="{$handDate}"
 			medium="{$medium}" cert="{$certLvl}" abbrRefs="{$abbrRef}"
 			title="{$lem}: {$pos} {$src}&#10;{$hand}&#10;{$prob}{$certProb}&#10;Abbreviations: {$abbrs}&#10;{$gloss}"
@@ -1066,14 +1051,6 @@
 			<xsl:if test="@lemma">
 				<xsl:attribute name="onclick">addSlip(this.id)</xsl:attribute>
 			</xsl:if>
-			<!--			<xsl:if test="@lemmaRef">
-				<xsl:attribute name="href">
-					<xsl:value-of select="@lemmaRef"/>
-				</xsl:attribute>
-				<xsl:attribute name="target">
-					<xsl:value-of select="@lemmaRef"/>
-				</xsl:attribute>
-			</xsl:if> -->
 			<xsl:choose>
 				<xsl:when
 					test="ancestor::*[@cert = 'low'] or descendant::*[@cert = 'low'] or @lemma = 'UNKNOWN'">
@@ -1576,7 +1553,7 @@
 			select="count(ancestor::tei:w[not(descendant::tei:w)]/preceding::tei:w[not(descendant::tei:w)])"/>
 		<xsl:variable name="position"
 			select="count(preceding::tei:g[ancestor::tei:w[not(descendant::tei:w) and count(preceding::tei:w[not(descendant::tei:w)]) = $comWord]])"/>
-		<i id="{$position}">
+		<i id="l{$position}">
 			<xsl:apply-templates/>
 		</i>
 	</xsl:template>
@@ -1609,7 +1586,6 @@
 	<xsl:template match="tei:gap">
 		<xsl:variable name="gapReason">
 			<xsl:choose>
-
 				<xsl:when test="@reason = 'text_obscure'">
 					<xsl:text xml:space="preserve">illegible text; writing surface is intact</xsl:text>
 				</xsl:when>
