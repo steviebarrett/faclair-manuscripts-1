@@ -379,7 +379,21 @@ function addSlip(id) {
 	} else {
 		textForm = form
 	}
-	var context = el_minus_5node.concat(' ', el_minus_4node, ' ', el_minus_3node, ' ', el_minus_2node, ' ', el_minus_1node, ' ', '<b>' + textForm + '</b>', ' ', el_plus_1node, ' ', el_plus_2node, ' ', el_plus_3node, ' ', el_plus_4node, ' ', el_plus_5node);
+	var contextBeg
+	if ((el_minus_5.previousElementSibling == null ) || (el_minus_4.previousElementSibling == null ) || (el_minus_3.previousElementSibling == null ) || (el_minus_2.previousElementSibling == null ) || (el_minus_1.previousElementSibling == null )){
+		contextBeg = "";
+	}
+	else {
+		contextBeg = "... ";
+	}
+	var contextEnd
+	if ((el_plus_5.nextElementSibling == null ) || (el_plus_4.nextElementSibling == null ) || (el_plus_3.nextElementSibling == null ) || (el_plus_2.nextElementSibling == null ) || (el_plus_1.nextElementSibling == null )){
+		contextEnd = "";
+	}
+	else {
+		contextEnd = " ...";
+	}
+	var context = contextBeg.concat(el_minus_5node, ' ', el_minus_4node, ' ', el_minus_3node, ' ', el_minus_2node, ' ', el_minus_1node, ' ', '<b>' + textForm + '</b>', ' ', el_plus_1node, ' ', el_plus_2node, ' ', el_plus_3node, ' ', el_plus_4node, ' ', el_plus_5node, contextEnd);
 	var rcol3 = row.insertCell(2);
 	rcol3.innerHTML = context;
 	rcol3.style.fontSize = "smaller";
@@ -438,8 +452,10 @@ function addSlip(id) {
 	rcol11.innerHTML = '<a target="' + lref + '" href="' + lref + '">' + lref + '</a>';
 	var finURI = rcol11.firstChild.innerHTML.slice(18);
 	rcol11.firstChild.innerHTML = finURI;
+	var lemDW = el.getAttribute("lemmaDW");
+	var lemURLDW = el.getAttribute("lemmaRefDW");
 	var rcol12 = row.insertCell(11);
-	rcol12.innerHTML = "";
+	rcol12.innerHTML = '<a target="' + lemURLDW + '" href="' + lemURLDW + '">' + lemDW + '</a>';
 	var rcol13 = row.insertCell(12);
 	rcol13.innerHTML = "";
 	var rcol14 = row.insertCell(13);

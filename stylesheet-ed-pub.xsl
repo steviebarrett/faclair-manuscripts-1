@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:tei="http://www.tei-c.org/ns/1.0"
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema"
-	exclude-result-prefixes="xs" version="1.1">
+	exclude-result-prefixes="xs" version="1.0">
 	<xsl:strip-space elements="*"/>
 
 	<xsl:output method="html"/>
@@ -98,7 +98,7 @@
 			<xsl:apply-templates
 				select="parent::tei:fileDesc/tei:sourceDesc/tei:msDesc/tei:msIdentifier/tei:idno"/>
 		</xsl:variable>
-		<h3>Manuscript Details: <xsl:value-of select="$msref"/></h3>
+		<h3>Manuscript: <xsl:value-of select="$msref"/></h3>
 		<xsl:for-each select="tei:note/tei:p">
 			<p>
 				<xsl:apply-templates/>
@@ -107,6 +107,14 @@
 	</xsl:template>
 
 	<xsl:template match="tei:teiHeader/tei:fileDesc/tei:sourceDesc">
+		<h4>Hands</h4>
+		<xsl:for-each select="tei:msDesc/tei:physDesc/tei:handDesc/tei:handNote/tei:p">
+			<p>
+				<xsl:apply-templates/>
+			</p>
+		</xsl:for-each>
+		<h4>Contents</h4>
+		<h5>Summary</h5>
 		<p>
 			<xsl:apply-templates select="tei:msDesc/tei:msContents/tei:summary"/>
 		</p>
@@ -114,6 +122,8 @@
 			<xsl:variable name="inc"
 				select="key('text', @xml:id)//preceding::tei:lb[1]/@xml:id | @sameAs"/>
 			<h4 id="{ancestor::tei:TEI/@xml:id}msContents">
+				<xsl:value-of select="@n"/>
+				<xsl:text>: </xsl:text>
 				<a href="#{@xml:id}">
 					<xsl:apply-templates select="tei:title"/>
 				</a>
@@ -263,6 +273,12 @@
 					</p>
 				</xsl:for-each>
 			</xsl:if>
+			<h5>Text Summary</h5>
+			<xsl:for-each select="tei:note/tei:p">
+				<p>
+					<xsl:apply-templates/>
+				</p>
+			</xsl:for-each>
 			<h5>Filiation of Text</h5>
 			<xsl:for-each select="tei:filiation/tei:p">
 				<p>
@@ -624,7 +640,7 @@
 			</xsl:for-each>
 		</xsl:if>
 	</xsl:template>
-	
+
 	<xsl:template match="tei:choice">
 		<xsl:variable name="choicePOS" select="count(preceding::tei:choice)"/>
 		<xsl:choose>
@@ -635,8 +651,10 @@
 					<xsl:when test="child::tei:sic[not(descendant::tei:w)]">
 						<xsl:for-each select="descendant::tei:c">
 							<xsl:variable name="alt" select="ancestor::tei:choice/tei:corr"/>
+							<xsl:variable name="altSource"
+								select="ancestor::tei:choice/tei:corr/@resp"/>
 							<a id="{generate-id()}"
-								title="MS: {self::*}&#10;- the intended reading cannot be identified; an amended reading ('{$alt}') has been supplied.">
+								title="MS: {self::*}&#10;- the intended reading cannot be identified; an amended reading ('{$alt}') has been supplied by {$altSource}.">
 								<sub>
 									<b>
 										<i>
@@ -746,7 +764,8 @@
 			<xsl:choose>
 				<xsl:when test="ancestor::tei:sic">
 					<xsl:variable name="alt">
-						<xsl:for-each select="ancestor::tei:choice/tei:corr//tei:w[not(descendant::tei:w)]">
+						<xsl:for-each
+							select="ancestor::tei:choice/tei:corr//tei:w[not(descendant::tei:w)]">
 							<xsl:text> </xsl:text>
 							<xsl:value-of select="self::*"/>
 							<xsl:text> </xsl:text>
@@ -769,7 +788,9 @@
 					</xsl:choose>
 					<xsl:text>; an amended reading ('</xsl:text>
 					<xsl:value-of select="$alt"/>
-					<xsl:text>') has been supplied:&#10;&#10;</xsl:text>
+					<xsl:text>') has been supplied by </xsl:text>
+					<xsl:value-of select="ancestor::tei:choice/tei:corr/@resp"/>
+					<xsl:text>&#10;</xsl:text>
 				</xsl:when>
 				<xsl:otherwise>
 					<xsl:text/>
@@ -836,7 +857,26 @@
 							<xsl:text xml:space="preserve">that cannot be expanded with certainty &#10;</xsl:text>
 						</xsl:when>
 						<xsl:when test="@reason = 'damage'">
-							<xsl:text xml:space="preserve">- loss of vellum; some characters are lost and may have been supplied by an editor &#10;</xsl:text>
+							<xsl:text xml:space="preserve">- loss of vellum; some characters are lost and may have been supplied by an editor</xsl:text>
+							<xsl:if
+								test="descendant::*[@reason = 'damage']/@resp or ancestor::*[@reason = 'damage']/@resp">
+								<xsl:text>(</xsl:text>
+								<xsl:choose>
+									<xsl:when test="ancestor::*[@reason = 'damage']/@resp">
+										<xsl:value-of select="ancestor::*[@reason = 'damage']/@resp"
+										/>
+									</xsl:when>
+									<xsl:otherwise>
+										<xsl:value-of
+											select="descendant::*[@reason = 'damage']/@resp"/>
+									</xsl:otherwise>
+								</xsl:choose>
+								<xsl:text>)</xsl:text>
+							</xsl:if>
+							<xsl:text>&#10;</xsl:text>
+						</xsl:when>
+						<xsl:when test="@reason = 'met'">
+							<xsl:text xml:space="preserve">- this word is part of a metrically irregular line</xsl:text>
 						</xsl:when>
 						<xsl:when test="@reason = 'fold'">
 							<xsl:text xml:space="preserve">- the page edge is folded in the digital image; more text may be discernible by examining the manuscript in person &#10;</xsl:text>
@@ -858,7 +898,19 @@
 			</xsl:if>
 			<xsl:if test="ancestor::tei:corr">
 				<xsl:variable name="alt" select="ancestor::tei:choice/tei:sic"/>
-				<xsl:text xml:space="preserve">- this is an editorial emendation of the manuscript reading ("</xsl:text>
+				<xsl:text xml:space="preserve">- this is </xsl:text>
+				<xsl:choose>
+					<xsl:when
+						test="count(ancestor::tei:choice/tei:sic/descendant::tei:w[not(descendant::tei:w)]) &lt; count(ancestor::tei:choice/tei:corr/descendant::tei:w[not(descendant::tei:w)])">
+						<xsl:text>part of an</xsl:text>
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:text>an</xsl:text>
+					</xsl:otherwise>
+				</xsl:choose>
+				<xsl:text> editorial emendation (from </xsl:text>
+				<xsl:value-of select="ancestor::tei:corr/@resp"/>
+				<xsl:text>) of the manuscript reading ("</xsl:text>
 				<xsl:value-of select="$alt"/>
 				<xsl:text>")&#10;</xsl:text>
 			</xsl:if>
@@ -874,10 +926,14 @@
 				<xsl:text>&#10;</xsl:text>
 			</xsl:if>
 			<xsl:if test="ancestor::tei:supplied">
-				<xsl:text xml:space="preserve">- this word has been supplied by an editor &#10;</xsl:text>
+				<xsl:text xml:space="preserve">- this word has been supplied by an editor (</xsl:text>
+				<xsl:value-of select="ancestor::tei:supplied/@resp"/>
+				<xsl:text>) &#10;</xsl:text>
 			</xsl:if>
 			<xsl:if test="descendant::tei:supplied">
-				<xsl:text xml:space="preserve">- some characters have been supplied by an editor &#10;</xsl:text>
+				<xsl:text xml:space="preserve">- some characters have been supplied by an editor (</xsl:text>
+				<xsl:value-of select="descendant::tei:supplied/@resp"/>
+				<xsl:text>)&#10;</xsl:text>
 			</xsl:if>
 			<xsl:if test="@xml:lang">
 				<xsl:text xml:space="preserve">- this word is in a language other than Gaelic &#10;</xsl:text>
@@ -1075,9 +1131,7 @@
 			<xsl:value-of select="key('hands', $handRef)/tei:date"/>
 		</xsl:variable>
 		<xsl:variable name="shelfmark">
-			<xsl:value-of
-				select="ancestor::tei:TEI//tei:msIdentifier/@sameAs"
-			/>
+			<xsl:value-of select="ancestor::tei:TEI//tei:msIdentifier/@sameAs"/>
 		</xsl:variable>
 		<xsl:variable name="msref">
 			<xsl:variable name="pbpos">
@@ -1148,23 +1202,25 @@
 			</xsl:if>
 		</xsl:variable>
 		<a id="{$wordId}" pos="{$wordPOS}" onmouseover="hilite(this.id)"
-			onmouseout="dhilite(this.id)" lemma="{$lem}" lemmaRef="{$lemRef}" ana="{@ana}"
-			hand="{$hand}" ref="{$msref}" date="{$handDate}" medium="{$medium}" cert="{$certLvl}"
-			abbrRefs="{$abbrRef}"
+			onmouseout="dhilite(this.id)" lemma="{$lem}" lemmaRef="{$lemRef}" lemmaDW="{@lemmaDW}"
+			lemmaRefDW="{@lemmaRefDW}" ana="{@ana}" hand="{$hand}" ref="{$msref}" date="{$handDate}"
+			medium="{$medium}" cert="{$certLvl}" abbrRefs="{$abbrRef}"
 			title="{$lem}: {$pos} {$src}&#10;{$hand}&#10;{$prob}{$certProb}&#10;Abbreviations: {$abbrs}&#10;{$gloss}"
 			style="text-decoration:none; color:#000000">
 			<xsl:if test="ancestor::tei:sic">
-				<xsl:attribute name="title"><xsl:value-of select="$sicLem"/>&#10;<xsl:value-of
-						select="$hand"/>&#10;<xsl:value-of select="$prob"/><xsl:value-of
-						select="$certProb"/>&#10;<xsl:text>Abbreviations: </xsl:text><xsl:value-of
+				<xsl:attribute name="title"><xsl:value-of select="$sicLem"/><xsl:value-of
+						select="$prob"/><xsl:value-of select="$certProb"/><xsl:value-of
+						select="$hand"/>&#10;<xsl:text>Abbreviations: </xsl:text><xsl:value-of
 						select="$abbrs"/>&#10;<xsl:value-of select="$gloss"/></xsl:attribute>
 				<xsl:attribute name="choicePOS">
-					<xsl:text>sic</xsl:text><xsl:value-of select="$choicePOS"/>
+					<xsl:text>sic</xsl:text>
+					<xsl:value-of select="$choicePOS"/>
 				</xsl:attribute>
 			</xsl:if>
 			<xsl:if test="ancestor::tei:corr">
 				<xsl:attribute name="choicePOS">
-					<xsl:text>corr</xsl:text><xsl:value-of select="$choicePOS"/>
+					<xsl:text>corr</xsl:text>
+					<xsl:value-of select="$choicePOS"/>
 				</xsl:attribute>
 			</xsl:if>
 			<xsl:if test="@lemma">
@@ -1256,6 +1312,9 @@
 				<xsl:text/>
 			</xsl:when>
 			<xsl:when test="@ana = 'adj' and ancestor::tei:w[contains(@ana, 'adj, pron')]">
+				<xsl:text/>
+			</xsl:when>
+			<xsl:when test="@ana = 'adj' and ancestor::tei:w[contains(@ana, 'adj, dpron')]">
 				<xsl:text/>
 			</xsl:when>
 			<xsl:when test="@ana = 'conj' and ancestor::tei:w[contains(@ana, 'noun, verb')]">

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:tei="http://www.tei-c.org/ns/1.0"
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema"
-	exclude-result-prefixes="xs" version="1.1">
+	exclude-result-prefixes="xs" version="1.0">
 	<xsl:strip-space elements="*"/>
 
 	<xsl:output method="html"/>
@@ -37,12 +37,13 @@
 			<td>
 			<xsl:choose>
 				<xsl:when test="ancestor::tei:div//tei:handShift">
+					<xsl:variable name="handID" select="preceding::tei:handShift[1]/@new | preceding::tei:div[1]/@resp"/>
 					<xsl:value-of
 						select="key('hands', preceding::tei:handShift[1]/@new)/tei:forename | key('hands', preceding::tei:div[1])/tei:forename"/>
 					<xsl:text> </xsl:text>
 					<xsl:value-of
-						select="key('hands', preceding::tei:handShift[1]/@new)/tei:surname | key('hands', preceding::tei:div[1]/@resp, 5)/tei:surname"
-					/><xsl:text> (</xsl:text><xsl:value-of select="substring(preceding::tei:handShift[1]/@new, 5) | substring(preceding::tei:div[1]/@resp, 5)"/><xsl:text>)</xsl:text>
+						select="key('hands', preceding::tei:handShift[1]/@new)/tei:surname | key('hands', preceding::tei:div[1]/@resp)/tei:surname"
+					/><xsl:text> (</xsl:text><xsl:value-of select="substring($handID, 5)"/><xsl:text>)</xsl:text>
 				</xsl:when>
 				<xsl:otherwise>
 					<xsl:value-of
@@ -136,74 +137,74 @@
 						</th>
 					</tr>
 					<tr><th>Definite Article</th></tr>
-					<xsl:for-each select="//tei:w[not(descendant::tei:w) and @ana='art']">
-						<xsl:call-template name="contentRow"/>						
+					<xsl:for-each select="//tei:w[not(descendant::tei:w) and contains(@ana, 'art') and not(@ana='part')]">
 						<xsl:sort select="@lemma"/>
+						<xsl:call-template name="contentRow"/>						
 					</xsl:for-each>
 					<tr><th>Nouns</th></tr>
-					<xsl:for-each select="//tei:w[not(descendant::tei:w) and @ana='noun' or @ana='name' or @ana='title']">
+					<xsl:for-each select="//tei:w[not(descendant::tei:w) and contains(@ana, 'noun') or contains(@ana, 'name') or contains(@ana, 'title') and not(@ana='vnoun')]">
 						<xsl:sort select="@lemma"/>
 						<xsl:call-template name="contentRow"/>
 					</xsl:for-each>
 					<tr><th>Pronouns</th></tr>
-					<xsl:for-each select="//tei:w[not(descendant::tei:w) and @ana='pron' or @ana='dpron']">
-						<xsl:call-template name="contentRow"/>						
+					<xsl:for-each select="//tei:w[not(descendant::tei:w) and contains(@ana, 'pron')]">
 						<xsl:sort select="@lemma"/>
+						<xsl:call-template name="contentRow"/>						
+					</xsl:for-each>
+					<tr><th>Possessive Pronouns</th></tr>
+					<xsl:for-each select="//tei:w[not(descendant::tei:w) and contains(@ana, 'poss')]">
+						<xsl:sort select="@lemma"/>
+						<xsl:call-template name="contentRow"/>						
 					</xsl:for-each>
 					<tr><th>Adjectives</th></tr>
-					<xsl:for-each select="//tei:w[not(descendant::tei:w) and @ana='adj']">
-						<xsl:call-template name="contentRow"/>						
+					<xsl:for-each select="//tei:w[not(descendant::tei:w) and contains(@ana, 'adj')]">
 						<xsl:sort select="@lemma"/>
+						<xsl:call-template name="contentRow"/>						
 					</xsl:for-each>
 					<tr><th>Numbers</th></tr>
-					<xsl:for-each select="//tei:w[not(descendant::tei:w) and @ana='num']">
-						<xsl:call-template name="contentRow"/>						
+					<xsl:for-each select="//tei:w[not(descendant::tei:w) and contains(@ana, 'num')]">
 						<xsl:sort select="@lemma"/>
+						<xsl:call-template name="contentRow"/>						
 					</xsl:for-each>
 					<tr><th>Verbs</th></tr>
-					<xsl:for-each select="//tei:w[not(descendant::tei:w) and @ana='verb']">
-						<xsl:call-template name="contentRow"/>						
+					<xsl:for-each select="//tei:w[not(descendant::tei:w) and contains(@ana, 'verb')]">
 						<xsl:sort select="@lemma"/>
+						<xsl:call-template name="contentRow"/>						
 					</xsl:for-each>
 					<tr><th>Verbal Nouns</th></tr>
-					<xsl:for-each select="//tei:w[not(descendant::tei:w) and @ana='vnoun']">
-						<xsl:call-template name="contentRow"/>						
+					<xsl:for-each select="//tei:w[not(descendant::tei:w) and contains(@ana, 'vnoun')]">
 						<xsl:sort select="@lemma"/>
+						<xsl:call-template name="contentRow"/>						
 					</xsl:for-each>
 					<tr><th>Participles</th></tr>
-					<xsl:for-each select="//tei:w[not(descendant::tei:w) and @ana='ptcp']">
-						<xsl:call-template name="contentRow"/>						
+					<xsl:for-each select="//tei:w[not(descendant::tei:w) and contains(@ana, 'ptcp')]">
 						<xsl:sort select="@lemma"/>
+						<xsl:call-template name="contentRow"/>						
 					</xsl:for-each>
 					<tr><th>Adverbs</th></tr>
-					<xsl:for-each select="//tei:w[not(descendant::tei:w) and @ana='adv']">
-						<xsl:call-template name="contentRow"/>						
+					<xsl:for-each select="//tei:w[not(descendant::tei:w) and contains(@ana, 'adv')]">
 						<xsl:sort select="@lemma"/>
+						<xsl:call-template name="contentRow"/>						
 					</xsl:for-each>
 					<tr><th>Conjunctions</th></tr>
-					<xsl:for-each select="//tei:w[not(descendant::tei:w) and @ana='conj']">
-						<xsl:call-template name="contentRow"/>						
+					<xsl:for-each select="//tei:w[not(descendant::tei:w) and contains(@ana, 'conj')]">
 						<xsl:sort select="@lemma"/>
+						<xsl:call-template name="contentRow"/>						
 					</xsl:for-each>
 					<tr><th>Prepositions</th></tr>
-					<xsl:for-each select="//tei:w[not(descendant::tei:w) and @ana='prep']">
-						<xsl:call-template name="contentRow"/>						
+					<xsl:for-each select="//tei:w[not(descendant::tei:w) and contains(@ana, 'prep')]">
 						<xsl:sort select="@lemma"/>
+						<xsl:call-template name="contentRow"/>						
 					</xsl:for-each>
 					<tr><th>Particles</th></tr>
-					<xsl:for-each select="//tei:w[not(descendant::tei:w) and @ana='part']">
-						<xsl:call-template name="contentRow"/>						
+					<xsl:for-each select="//tei:w[not(descendant::tei:w) and contains(@ana, 'part')]">
 						<xsl:sort select="@lemma"/>
+						<xsl:call-template name="contentRow"/>						
 					</xsl:for-each>
 					<tr><th>Prefixes</th></tr>
-					<xsl:for-each select="//tei:w[not(descendant::tei:w) and @ana='pref']">
-						<xsl:call-template name="contentRow"/>						
+					<xsl:for-each select="//tei:w[not(descendant::tei:w) and contains(@ana, 'pref')]">
 						<xsl:sort select="@lemma"/>
-					</xsl:for-each>
-					<tr><th>Compounds</th></tr>
-					<xsl:for-each select="//tei:w[not(descendant::tei:w) and contains(@ana, ',')]">
 						<xsl:call-template name="contentRow"/>						
-						<xsl:sort select="@lemma"/>
 					</xsl:for-each>
 					<tr><th>Unidentified</th></tr>
 					<xsl:for-each select="//tei:w[not(descendant::tei:w) and not(@ana)]">
