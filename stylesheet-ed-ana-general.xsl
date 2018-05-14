@@ -25,188 +25,305 @@
 
 	<xsl:template name="contentRow">
 		<tr>
-		<td>
-			<xsl:apply-templates/>
-		</td>
-		<td>
-			<a href="{@lemmaRef}"><xsl:value-of select="@lemma"/></a>
-		</td>
-		<td>
-			<xsl:value-of select="@ana"/>
-		</td>
 			<td>
-			<xsl:choose>
-				<xsl:when test="ancestor::tei:div//tei:handShift">
-					<xsl:variable name="handID" select="preceding::tei:handShift[1]/@new | preceding::tei:div[1]/@resp"/>
-					<xsl:value-of
-						select="key('hands', preceding::tei:handShift[1]/@new)/tei:forename | key('hands', preceding::tei:div[1])/tei:forename"/>
-					<xsl:text> </xsl:text>
-					<xsl:value-of
-						select="key('hands', preceding::tei:handShift[1]/@new)/tei:surname | key('hands', preceding::tei:div[1]/@resp)/tei:surname"
-					/><xsl:text> (</xsl:text><xsl:value-of select="substring($handID, 5)"/><xsl:text>)</xsl:text>
-				</xsl:when>
-				<xsl:otherwise>
-					<xsl:value-of
-						select="key('hands', ancestor::tei:div[1]/@resp)/tei:forename"/>
-					<xsl:text> </xsl:text>
-					<xsl:value-of
-						select="key('hands', ancestor::tei:div[1]/@resp)/tei:surname"
-					/><xsl:text> (</xsl:text><xsl:value-of select="substring(ancestor::tei:div[1]/@resp, 5)"/><xsl:text>)</xsl:text>
-				</xsl:otherwise>
-			</xsl:choose>
-		</td>
-		<td>
-			<xsl:value-of select="ancestor::tei:div[@n][1]/@n"/>
-		</td>
-		<td>
-			<xsl:value-of select="preceding::tei:lb[1]/@xml:id | preceding::tei:lb[1]/@sameAs"/>
-		</td>
-		<td>
-			<xsl:choose>
-				<xsl:when test="ancestor::tei:div[@type='verse'][1] | ancestor::tei:div[@type='divprose'][1]">
-					<xsl:apply-templates select="ancestor::tei:l[1]"/>
-				</xsl:when>
-				<xsl:when test="ancestor::*[parent::tei:p]">
-					<xsl:apply-templates select="ancestor::*[parent::tei:p]/preceding::*[parent::tei:p or parent::tei:l and not(tei:lg|tei:note[@type='fn'])][8]"/>
-					<xsl:apply-templates select="ancestor::*[parent::tei:p]/preceding::*[parent::tei:p or parent::tei:l and not(tei:lg|tei:note[@type='fn'])][7]"/>
-					<xsl:apply-templates select="ancestor::*[parent::tei:p]/preceding::*[parent::tei:p or parent::tei:l and not(tei:lg|tei:note[@type='fn'])][6]"/>
-					<xsl:apply-templates select="ancestor::*[parent::tei:p]/preceding::*[parent::tei:p or parent::tei:l and not(tei:lg|tei:note[@type='fn'])][5]"/>
-					<xsl:apply-templates select="ancestor::*[parent::tei:p]/preceding::*[parent::tei:p or parent::tei:l and not(tei:lg|tei:note[@type='fn'])][4]"/>
-					<xsl:apply-templates select="ancestor::*[parent::tei:p]/preceding::*[parent::tei:p or parent::tei:l and not(tei:lg|tei:note[@type='fn'])][3]"/>
-					<xsl:apply-templates select="ancestor::*[parent::tei:p]/preceding::*[parent::tei:p or parent::tei:l and not(tei:lg|tei:note[@type='fn'])][2]"/>
-					<xsl:apply-templates select="ancestor::*[parent::tei:p]/preceding::*[parent::tei:p or parent::tei:l and not(tei:lg|tei:note[@type='fn'])][1]"/>
-					<b><xsl:apply-templates select="ancestor::*[parent::tei:p]"/></b>
-					<xsl:apply-templates select="ancestor::*[parent::tei:p]/following::*[parent::tei:p or parent::tei:l and not(tei:lg|tei:note[@type='fn'])][1]"/>
-					<xsl:apply-templates select="ancestor::*[parent::tei:p]/following::*[parent::tei:p or parent::tei:l and not(tei:lg|tei:note[@type='fn'])][2]"/>
-					<xsl:apply-templates select="ancestor::*[parent::tei:p]/following::*[parent::tei:p or parent::tei:l and not(tei:lg|tei:note[@type='fn'])][3]"/>
-					<xsl:apply-templates select="ancestor::*[parent::tei:p]/following::*[parent::tei:p or parent::tei:l and not(tei:lg|tei:note[@type='fn'])][4]"/>
-					<xsl:apply-templates select="ancestor::*[parent::tei:p]/following::*[parent::tei:p or parent::tei:l and not(tei:lg|tei:note[@type='fn'])][5]"/>
-					<xsl:apply-templates select="ancestor::*[parent::tei:p]/following::*[parent::tei:p or parent::tei:l and not(tei:lg|tei:note[@type='fn'])][6]"/>
-					<xsl:apply-templates select="ancestor::*[parent::tei:p]/following::*[parent::tei:p or parent::tei:l and not(tei:lg|tei:note[@type='fn'])][7]"/>
-					<xsl:apply-templates select="ancestor::*[parent::tei:p]/following::*[parent::tei:p or parent::tei:l and not(tei:lg|tei:note[@type='fn'])][8]"/>	
-				</xsl:when>
-				<xsl:otherwise>
-					<xsl:apply-templates select="preceding::*[parent::tei:p or parent::tei:l and not(tei:lg|tei:note[@type='fn'])][8]"/>
-					<xsl:apply-templates select="preceding::*[parent::tei:p or parent::tei:l and not(tei:lg|tei:note[@type='fn'])][7]"/>
-					<xsl:apply-templates select="preceding::*[parent::tei:p or parent::tei:l and not(tei:lg|tei:note[@type='fn'])][6]"/>
-					<xsl:apply-templates select="preceding::*[parent::tei:p or parent::tei:l and not(tei:lg|tei:note[@type='fn'])][5]"/>
-					<xsl:apply-templates select="preceding::*[parent::tei:p or parent::tei:l and not(tei:lg|tei:note[@type='fn'])][4]"/>
-					<xsl:apply-templates select="preceding::*[parent::tei:p or parent::tei:l and not(tei:lg|tei:note[@type='fn'])][3]"/>
-					<xsl:apply-templates select="preceding::*[parent::tei:p or parent::tei:l and not(tei:lg|tei:note[@type='fn'])][2]"/>
-					<xsl:apply-templates select="preceding::*[parent::tei:p or parent::tei:l and not(tei:lg|tei:note[@type='fn'])][1]"/>
-					<b><xsl:apply-templates/><xsl:text> </xsl:text></b>
-					<xsl:apply-templates select="following::*[parent::tei:p or parent::tei:l and not(tei:lg|tei:note[@type='fn'])][1]"/>
-					<xsl:apply-templates select="following::*[parent::tei:p or parent::tei:l and not(tei:lg|tei:note[@type='fn'])][2]"/>
-					<xsl:apply-templates select="following::*[parent::tei:p or parent::tei:l and not(tei:lg|tei:note[@type='fn'])][3]"/>
-					<xsl:apply-templates select="following::*[parent::tei:p or parent::tei:l and not(tei:lg|tei:note[@type='fn'])][4]"/>
-					<xsl:apply-templates select="following::*[parent::tei:p or parent::tei:l and not(tei:lg|tei:note[@type='fn'])][5]"/>
-					<xsl:apply-templates select="following::*[parent::tei:p or parent::tei:l and not(tei:lg|tei:note[@type='fn'])][6]"/>
-					<xsl:apply-templates select="following::*[parent::tei:p or parent::tei:l and not(tei:lg|tei:note[@type='fn'])][7]"/>
-					<xsl:apply-templates select="following::*[parent::tei:p or parent::tei:l and not(tei:lg|tei:note[@type='fn'])][8]"/>
-				</xsl:otherwise>
-			</xsl:choose>
-		</td>
-	</tr></xsl:template>
+				<xsl:value-of select="position()"/>
+			</td>
+			<td>
+				<xsl:apply-templates/>
+			</td>
+			<td>
+				<a href="{@lemmaRef}">
+					<xsl:value-of select="@lemma"/>
+				</a>
+			</td>
+			<td>
+				<xsl:value-of select="@ana"/>
+			</td>
+			<td>
+				<xsl:choose>
+					<xsl:when test="ancestor::tei:div//tei:handShift">
+						<xsl:variable name="handID"
+							select="preceding::tei:handShift[1]/@new | preceding::tei:div[1]/@resp"/>
+						<xsl:value-of
+							select="key('hands', preceding::tei:handShift[1]/@new)/tei:forename | key('hands', preceding::tei:div[1])/tei:forename"/>
+						<xsl:text> </xsl:text>
+						<xsl:value-of
+							select="key('hands', preceding::tei:handShift[1]/@new)/tei:surname | key('hands', preceding::tei:div[1]/@resp)/tei:surname"/>
+						<xsl:text> (</xsl:text>
+						<xsl:value-of select="substring($handID, 5)"/>
+						<xsl:text>)</xsl:text>
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:value-of select="key('hands', ancestor::tei:div[1]/@resp)/tei:forename"/>
+						<xsl:text> </xsl:text>
+						<xsl:value-of select="key('hands', ancestor::tei:div[1]/@resp)/tei:surname"/>
+						<xsl:text> (</xsl:text>
+						<xsl:value-of select="substring(ancestor::tei:div[1]/@resp, 5)"/>
+						<xsl:text>)</xsl:text>
+					</xsl:otherwise>
+				</xsl:choose>
+			</td>
+			<td>
+				<xsl:value-of select="ancestor::tei:div[@n][1]/@n"/>
+			</td>
+			<td>
+				<xsl:value-of select="preceding::tei:lb[1]/@xml:id | preceding::tei:lb[1]/@sameAs"/>
+				<xsl:if test="ancestor::tei:lg/@type = 'stanza'">
+					<xsl:text> (q.</xsl:text>
+					<xsl:value-of select="ancestor::tei:lg/@n"/>
+					<xsl:text>)</xsl:text>
+				</xsl:if>
+			</td>
+			<td>
+				<xsl:choose>
+					<xsl:when
+						test="ancestor::tei:div[@type = 'verse'][1] | ancestor::tei:div[@type = 'divprose'][1]">
+						<xsl:apply-templates select="ancestor::tei:l[1]"/>
+					</xsl:when>
+					<xsl:when test="ancestor::*[parent::tei:p]">
+						<xsl:apply-templates
+							select="ancestor::*[parent::tei:p]/preceding::*[parent::tei:p or parent::tei:l and not(tei:lg | tei:note[@type = 'fn'])][8]"/>
+						<xsl:apply-templates
+							select="ancestor::*[parent::tei:p]/preceding::*[parent::tei:p or parent::tei:l and not(tei:lg | tei:note[@type = 'fn'])][7]"/>
+						<xsl:apply-templates
+							select="ancestor::*[parent::tei:p]/preceding::*[parent::tei:p or parent::tei:l and not(tei:lg | tei:note[@type = 'fn'])][6]"/>
+						<xsl:apply-templates
+							select="ancestor::*[parent::tei:p]/preceding::*[parent::tei:p or parent::tei:l and not(tei:lg | tei:note[@type = 'fn'])][5]"/>
+						<xsl:apply-templates
+							select="ancestor::*[parent::tei:p]/preceding::*[parent::tei:p or parent::tei:l and not(tei:lg | tei:note[@type = 'fn'])][4]"/>
+						<xsl:apply-templates
+							select="ancestor::*[parent::tei:p]/preceding::*[parent::tei:p or parent::tei:l and not(tei:lg | tei:note[@type = 'fn'])][3]"/>
+						<xsl:apply-templates
+							select="ancestor::*[parent::tei:p]/preceding::*[parent::tei:p or parent::tei:l and not(tei:lg | tei:note[@type = 'fn'])][2]"/>
+						<xsl:apply-templates
+							select="ancestor::*[parent::tei:p]/preceding::*[parent::tei:p or parent::tei:l and not(tei:lg | tei:note[@type = 'fn'])][1]"/>
+						<b>
+							<xsl:apply-templates select="ancestor::*[parent::tei:p]"/>
+						</b>
+						<xsl:apply-templates
+							select="ancestor::*[parent::tei:p]/following::*[parent::tei:p or parent::tei:l and not(tei:lg | tei:note[@type = 'fn'])][1]"/>
+						<xsl:apply-templates
+							select="ancestor::*[parent::tei:p]/following::*[parent::tei:p or parent::tei:l and not(tei:lg | tei:note[@type = 'fn'])][2]"/>
+						<xsl:apply-templates
+							select="ancestor::*[parent::tei:p]/following::*[parent::tei:p or parent::tei:l and not(tei:lg | tei:note[@type = 'fn'])][3]"/>
+						<xsl:apply-templates
+							select="ancestor::*[parent::tei:p]/following::*[parent::tei:p or parent::tei:l and not(tei:lg | tei:note[@type = 'fn'])][4]"/>
+						<xsl:apply-templates
+							select="ancestor::*[parent::tei:p]/following::*[parent::tei:p or parent::tei:l and not(tei:lg | tei:note[@type = 'fn'])][5]"/>
+						<xsl:apply-templates
+							select="ancestor::*[parent::tei:p]/following::*[parent::tei:p or parent::tei:l and not(tei:lg | tei:note[@type = 'fn'])][6]"/>
+						<xsl:apply-templates
+							select="ancestor::*[parent::tei:p]/following::*[parent::tei:p or parent::tei:l and not(tei:lg | tei:note[@type = 'fn'])][7]"/>
+						<xsl:apply-templates
+							select="ancestor::*[parent::tei:p]/following::*[parent::tei:p or parent::tei:l and not(tei:lg | tei:note[@type = 'fn'])][8]"
+						/>
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:apply-templates
+							select="preceding::*[parent::tei:p or parent::tei:l and not(tei:lg | tei:note[@type = 'fn'])][8]"/>
+						<xsl:apply-templates
+							select="preceding::*[parent::tei:p or parent::tei:l and not(tei:lg | tei:note[@type = 'fn'])][7]"/>
+						<xsl:apply-templates
+							select="preceding::*[parent::tei:p or parent::tei:l and not(tei:lg | tei:note[@type = 'fn'])][6]"/>
+						<xsl:apply-templates
+							select="preceding::*[parent::tei:p or parent::tei:l and not(tei:lg | tei:note[@type = 'fn'])][5]"/>
+						<xsl:apply-templates
+							select="preceding::*[parent::tei:p or parent::tei:l and not(tei:lg | tei:note[@type = 'fn'])][4]"/>
+						<xsl:apply-templates
+							select="preceding::*[parent::tei:p or parent::tei:l and not(tei:lg | tei:note[@type = 'fn'])][3]"/>
+						<xsl:apply-templates
+							select="preceding::*[parent::tei:p or parent::tei:l and not(tei:lg | tei:note[@type = 'fn'])][2]"/>
+						<xsl:apply-templates
+							select="preceding::*[parent::tei:p or parent::tei:l and not(tei:lg | tei:note[@type = 'fn'])][1]"/>
+						<b>
+							<xsl:apply-templates/>
+							<xsl:text> </xsl:text>
+						</b>
+						<xsl:apply-templates
+							select="following::*[parent::tei:p or parent::tei:l and not(tei:lg | tei:note[@type = 'fn'])][1]"/>
+						<xsl:apply-templates
+							select="following::*[parent::tei:p or parent::tei:l and not(tei:lg | tei:note[@type = 'fn'])][2]"/>
+						<xsl:apply-templates
+							select="following::*[parent::tei:p or parent::tei:l and not(tei:lg | tei:note[@type = 'fn'])][3]"/>
+						<xsl:apply-templates
+							select="following::*[parent::tei:p or parent::tei:l and not(tei:lg | tei:note[@type = 'fn'])][4]"/>
+						<xsl:apply-templates
+							select="following::*[parent::tei:p or parent::tei:l and not(tei:lg | tei:note[@type = 'fn'])][5]"/>
+						<xsl:apply-templates
+							select="following::*[parent::tei:p or parent::tei:l and not(tei:lg | tei:note[@type = 'fn'])][6]"/>
+						<xsl:apply-templates
+							select="following::*[parent::tei:p or parent::tei:l and not(tei:lg | tei:note[@type = 'fn'])][7]"/>
+						<xsl:apply-templates
+							select="following::*[parent::tei:p or parent::tei:l and not(tei:lg | tei:note[@type = 'fn'])][8]"
+						/>
+					</xsl:otherwise>
+				</xsl:choose>
+			</td>
+		</tr>
+	</xsl:template>
 
 	<xsl:template match="/">
 		<html>
-			<head><h1>Report</h1></head>
+			<head>
+				<h1>Report</h1>
+			</head>
 			<body>
 				<table border="1px solid black" id="tbl">
 					<tr>
-						<th onclick="sortTable(0)">
+						<th>ID</th>
+						<th>
 							<b>Form</b>
 						</th>
-						<th onclick="sortTable(1)">
+						<th>
 							<b>Lemma</b>
 						</th>
-						<th onclick="sortTable(2)">
+						<th>
 							<b>Part of Speech</b>
 						</th>
-						<th onclick="sortTable(3)">
+						<th>
 							<b>Scribe</b>
 						</th>
-						<th onclick="sortTable(4)">
+						<th>
 							<b>Div</b>
 						</th>
-						<th onclick="sortTable(5)">
+						<th>
 							<b>Reference</b>
 						</th>
-						<th onclick="sortTable(6)">
+						<th>
 							<b>Context</b>
 						</th>
 					</tr>
-					<tr><th>Definite Article</th></tr>
-					<xsl:for-each select="//tei:w[not(descendant::tei:w) and contains(@ana, 'art') and not(@ana='part')]">
-						<xsl:sort select="@lemma"/>
-						<xsl:call-template name="contentRow"/>						
-					</xsl:for-each>
-					<tr><th>Nouns</th></tr>
-					<xsl:for-each select="//tei:w[not(descendant::tei:w) and contains(@ana, 'noun') or contains(@ana, 'name') or contains(@ana, 'title') and not(@ana='vnoun')]">
+					<tr>
+						<th>Definite Article</th>
+					</tr>
+					<xsl:for-each
+						select="//tei:w[not(descendant::tei:w) and contains(@ana, 'art') and not(contains(@ana, 'part'))]">
 						<xsl:sort select="@lemma"/>
 						<xsl:call-template name="contentRow"/>
 					</xsl:for-each>
-					<tr><th>Pronouns</th></tr>
-					<xsl:for-each select="//tei:w[not(descendant::tei:w) and contains(@ana, 'pron')]">
+					<tr>
+						<th>Nouns</th>
+					</tr>
+					<xsl:for-each
+						select="//tei:w[not(descendant::tei:w) and contains(@ana, 'noun') and not(contains(@ana, 'vnoun')) or contains(@ana, 'name') or contains(@ana, 'title')]">
 						<xsl:sort select="@lemma"/>
-						<xsl:call-template name="contentRow"/>						
+						<xsl:call-template name="contentRow"/>
 					</xsl:for-each>
-					<tr><th>Possessive Pronouns</th></tr>
-					<xsl:for-each select="//tei:w[not(descendant::tei:w) and contains(@ana, 'poss')]">
+					<tr>
+						<th>Pronouns</th>
+					</tr>
+					<xsl:for-each
+						select="//tei:w[not(descendant::tei:w) and contains(@ana, 'pron')]">
 						<xsl:sort select="@lemma"/>
-						<xsl:call-template name="contentRow"/>						
+						<xsl:call-template name="contentRow"/>
 					</xsl:for-each>
-					<tr><th>Adjectives</th></tr>
+					<tr>
+						<th>Possessive Pronouns</th>
+					</tr>
+					<xsl:for-each
+						select="//tei:w[not(descendant::tei:w) and contains(@ana, 'poss')]">
+						<xsl:sort select="@lemma"/>
+						<xsl:call-template name="contentRow"/>
+					</xsl:for-each>
+					<tr>
+						<th>Adjectives</th>
+					</tr>
 					<xsl:for-each select="//tei:w[not(descendant::tei:w) and contains(@ana, 'adj')]">
 						<xsl:sort select="@lemma"/>
-						<xsl:call-template name="contentRow"/>						
+						<xsl:call-template name="contentRow"/>
 					</xsl:for-each>
-					<tr><th>Numbers</th></tr>
+					<tr>
+						<th>Numbers</th>
+					</tr>
 					<xsl:for-each select="//tei:w[not(descendant::tei:w) and contains(@ana, 'num')]">
 						<xsl:sort select="@lemma"/>
-						<xsl:call-template name="contentRow"/>						
+						<xsl:call-template name="contentRow"/>
 					</xsl:for-each>
-					<tr><th>Verbs</th></tr>
-					<xsl:for-each select="//tei:w[not(descendant::tei:w) and contains(@ana, 'verb')]">
+					<tr>
+						<th>
+							<hi rend="italics">Attá</hi>
+						</th>
+					</tr>
+					<xsl:for-each
+						select="//tei:w[not(descendant::tei:w) and @lemmaRef = 'http://www.dil.ie/4927']">
+						<xsl:call-template name="contentRow"/>
+					</xsl:for-each>
+					<tr>
+						<th>
+							<hi rend="italics">Is</hi>
+						</th>
+					</tr>
+					<xsl:for-each
+						select="//tei:w[not(descendant::tei:w) and @lemmaRef = 'http://www.dil.ie/29104']">
 						<xsl:sort select="@lemma"/>
-						<xsl:call-template name="contentRow"/>						
+						<xsl:call-template name="contentRow"/>
 					</xsl:for-each>
-					<tr><th>Verbal Nouns</th></tr>
-					<xsl:for-each select="//tei:w[not(descendant::tei:w) and contains(@ana, 'vnoun')]">
+					<tr>
+						<th>Verbs</th>
+					</tr>
+					<xsl:for-each
+						select="//tei:w[not(descendant::tei:w) and contains(@ana, 'verb') and not(@lemmaRef = 'http://www.dil.ie/29104') and not(@lemmaRef = 'http://www.dil.ie/4927')]">
 						<xsl:sort select="@lemma"/>
-						<xsl:call-template name="contentRow"/>						
+						<xsl:call-template name="contentRow"/>
 					</xsl:for-each>
-					<tr><th>Participles</th></tr>
-					<xsl:for-each select="//tei:w[not(descendant::tei:w) and contains(@ana, 'ptcp')]">
+					<tr>
+						<th>Verbal Nouns</th>
+					</tr>
+					<xsl:for-each
+						select="//tei:w[not(descendant::tei:w) and contains(@ana, 'vnoun')]">
 						<xsl:sort select="@lemma"/>
-						<xsl:call-template name="contentRow"/>						
+						<xsl:call-template name="contentRow"/>
 					</xsl:for-each>
-					<tr><th>Adverbs</th></tr>
+					<tr>
+						<th>Participles</th>
+					</tr>
+					<xsl:for-each
+						select="//tei:w[not(descendant::tei:w) and contains(@ana, 'ptcp')]">
+						<xsl:sort select="@lemma"/>
+						<xsl:call-template name="contentRow"/>
+					</xsl:for-each>
+					<tr>
+						<th>Adverbs</th>
+					</tr>
 					<xsl:for-each select="//tei:w[not(descendant::tei:w) and contains(@ana, 'adv')]">
 						<xsl:sort select="@lemma"/>
-						<xsl:call-template name="contentRow"/>						
+						<xsl:call-template name="contentRow"/>
 					</xsl:for-each>
-					<tr><th>Conjunctions</th></tr>
-					<xsl:for-each select="//tei:w[not(descendant::tei:w) and contains(@ana, 'conj')]">
+					<tr>
+						<th>Conjunctions</th>
+					</tr>
+					<xsl:for-each
+						select="//tei:w[not(descendant::tei:w) and contains(@ana, 'conj')]">
 						<xsl:sort select="@lemma"/>
-						<xsl:call-template name="contentRow"/>						
+						<xsl:call-template name="contentRow"/>
 					</xsl:for-each>
-					<tr><th>Prepositions</th></tr>
-					<xsl:for-each select="//tei:w[not(descendant::tei:w) and contains(@ana, 'prep')]">
+					<tr>
+						<th>Prepositions</th>
+					</tr>
+					<xsl:for-each
+						select="//tei:w[not(descendant::tei:w) and contains(@ana, 'prep')]">
 						<xsl:sort select="@lemma"/>
-						<xsl:call-template name="contentRow"/>						
+						<xsl:call-template name="contentRow"/>
 					</xsl:for-each>
-					<tr><th>Particles</th></tr>
-					<xsl:for-each select="//tei:w[not(descendant::tei:w) and contains(@ana, 'part')]">
+					<tr>
+						<th>Particles</th>
+					</tr>
+					<xsl:for-each
+						select="//tei:w[not(descendant::tei:w) and contains(@ana, 'part')]">
 						<xsl:sort select="@lemma"/>
-						<xsl:call-template name="contentRow"/>						
+						<xsl:call-template name="contentRow"/>
 					</xsl:for-each>
-					<tr><th>Prefixes</th></tr>
-					<xsl:for-each select="//tei:w[not(descendant::tei:w) and contains(@ana, 'pref')]">
+					<tr>
+						<th>Prefixes</th>
+					</tr>
+					<xsl:for-each
+						select="//tei:w[not(descendant::tei:w) and contains(@ana, 'pref')]">
 						<xsl:sort select="@lemma"/>
-						<xsl:call-template name="contentRow"/>						
+						<xsl:call-template name="contentRow"/>
 					</xsl:for-each>
-					<tr><th>Unidentified</th></tr>
+					<tr>
+						<th>Unidentified</th>
+					</tr>
 					<xsl:for-each select="//tei:w[not(descendant::tei:w) and not(@ana)]">
 						<xsl:call-template name="contentRow"/>
 					</xsl:for-each>
@@ -282,7 +399,8 @@
 	</xsl:template>
 
 	<xsl:template match="tei:seg[@type = 'catchword']">
-			<xsl:text>   </xsl:text><xsl:apply-templates/>
+		<xsl:text>   </xsl:text>
+		<xsl:apply-templates/>
 	</xsl:template>
 
 	<xsl:template match="tei:seg[@type = 'cfe']">
@@ -326,7 +444,9 @@
 				<xsl:when test="ancestor::tei:sic">
 					<xsl:variable name="alt">
 						<xsl:for-each select="ancestor::tei:choice/tei:corr//tei:w">
-							<xsl:text> </xsl:text><xsl:value-of select="self::*"/><xsl:text> </xsl:text>
+							<xsl:text> </xsl:text>
+							<xsl:value-of select="self::*"/>
+							<xsl:text> </xsl:text>
 						</xsl:for-each>
 					</xsl:variable>
 					<xsl:text xml:space="preserve">MS: </xsl:text>
@@ -868,7 +988,7 @@
 	<xsl:template match="tei:name">
 		<xsl:apply-templates/>
 	</xsl:template>
-	
+
 	<xsl:template match="tei:date">
 		<a id="{generate-id()}" href="#" onclick="return false;"
 			style="text-decoration:none; color:#000000">
@@ -985,7 +1105,7 @@
 	</xsl:template>
 
 	<xsl:template match="tei:space[@type = 'force']"> &#160; </xsl:template>
-	
+
 	<xsl:template match="tei:space[@type = 'editorial']"> &#160; </xsl:template>
 
 	<xsl:template match="tei:space[@type = 'em']"> &#160;&#160;&#160;&#160; </xsl:template>
@@ -1318,7 +1438,7 @@
 	<xsl:template match="tei:handShift">
 		<xsl:text> </xsl:text>
 		<sub>
-				<b> beg. H<xsl:value-of select="substring(@new, 5)"/></b>
+			<b> beg. H<xsl:value-of select="substring(@new, 5)"/></b>
 		</sub>
 		<xsl:text> </xsl:text>
 	</xsl:template>

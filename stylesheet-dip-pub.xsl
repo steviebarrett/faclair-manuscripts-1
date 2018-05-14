@@ -505,152 +505,23 @@
 	</xsl:template>
 
 	<xsl:template match="tei:lb">
-		<xsl:choose>
-			<xsl:when test="ancestor::tei:p">
 				<sub>
 					<br/>
 					<xsl:value-of select="@n"/>
 					<xsl:text>. </xsl:text>
 				</sub>
-			</xsl:when>
-			<xsl:when test="ancestor::tei:lg or ancestor::tei:w[ancestor::tei:lg]">
-				<sub>
-					<xsl:text> </xsl:text>
-					<xsl:value-of select="@n"/>
-					<xsl:text>. </xsl:text>
-				</sub>
-			</xsl:when>
-			<xsl:otherwise>
-				<sub>
-					<br/>
-					<xsl:value-of select="@n"/>
-					<xsl:text>. </xsl:text>
-				</sub>
-			</xsl:otherwise>
-		</xsl:choose>
 	</xsl:template>
-
-	<xsl:template match="tei:lg">
-		<xsl:choose>
-			<xsl:when test="child::tei:pb">
-				<xsl:variable name="conID" select="@xml:id"/>
-				<p style="margin-left:40px">
-					<b align="left">
-						<xsl:value-of select="@n"/>
-						<xsl:text>. </xsl:text>
-					</b>
-					<xsl:text>  </xsl:text>
-					<xsl:apply-templates
-						select="descendant::tei:l[following::tei:pb[ancestor::tei:lg[@xml:id = $conID]]]"
-					/>
-				</p>
-				<xsl:apply-templates select="child::tei:pb"/>
-				<p style="margin-left:30px">
-					<xsl:apply-templates
-						select="descendant::tei:l[preceding::tei:pb[ancestor::tei:lg[@xml:id = $conID]]]"
-					/>
-				</p>
-			</xsl:when>
-			<!-- <xsl:when test="child::tei:l/descendant::tei:pb">
-				<xsl:variable name="conID" select="@xml:id"/>
-				<p style="margin-left:30px">
-					<b align="left">
-						<xsl:value-of select="@n"/>
-						<xsl:text>. </xsl:text>
-					</b>
-					<xsl:text>  </xsl:text>
-					<xsl:apply-templates
-						select="descendant::*[following::tei:pb[ancestor::tei:lg[@xml:id = $conID]]]"
-					/>
-				</p>
-				<xsl:apply-templates select="descendant::tei:pb"/>
-				<p style="margin-left:30px">
-					<xsl:apply-templates
-						select="descendant::*[preceding::tei:pb[ancestor::tei:lg[@xml:id = $conID]]]"
-					/>
-				</p>
-			</xsl:when> -->
-			<xsl:otherwise>
-				<xsl:choose>
-					<xsl:when test="@type = 'dúnad'">
-						<p style="margin-left:30px">
-							<xsl:apply-templates select="descendant::tei:l"/>
-						</p>
-					</xsl:when>
-					<xsl:otherwise>
-						<p style="margin-left:30px">
-							<b align="left">
-								<xsl:value-of select="@n"/>
-								<xsl:text>. </xsl:text>
-							</b>
-							<xsl:text>  </xsl:text>
-							<xsl:apply-templates select="descendant::tei:l"/>
-						</p>
-					</xsl:otherwise>
-				</xsl:choose>
-			</xsl:otherwise>
-		</xsl:choose>
+	
+	<xsl:template match="tei:space[@type='scribal']">
+		<xsl:text> </xsl:text>
 	</xsl:template>
 
 	<xsl:template match="tei:seg[@type = 'catchword']">
-		<p style="margin-right:90pc; text-align:center">
 			<xsl:apply-templates/>
-		</p>
 	</xsl:template>
 
 	<xsl:template match="tei:seg[@type = 'cfe']">
 		<xsl:text/>
-	</xsl:template>
-
-	<xsl:template match="tei:l">
-		<xsl:variable name="Id" select="@xml:id"/>
-		<xsl:variable name="MSlineID">
-			<xsl:choose>
-				<xsl:when test="descendant::tei:lb">
-					<xsl:value-of select="descendant::tei:lb[1]/@xml:id | @sameAs"/>
-				</xsl:when>
-				<xsl:when test="not(descendant::tei:lb)">
-					<xsl:value-of select="preceding::tei:lb[1]/@xml:id | @sameAs"/>
-				</xsl:when>
-			</xsl:choose>
-		</xsl:variable>
-		<xsl:choose>
-			<xsl:when test="ancestor::tei:lg[@type = 'prosediv'] and attribute::n">
-				<br id="{$MSlineID}"/>
-				<xsl:value-of select="@n"/>
-				<xsl:text>. </xsl:text>
-			</xsl:when>
-			<xsl:otherwise>
-				<br id="{$MSlineID}"/>
-			</xsl:otherwise>
-		</xsl:choose>
-		<xsl:choose>
-			<xsl:when test="descendant::tei:pb">
-				<xsl:variable name="pbId" select="descendant::tei:pb/@xml:id"/>
-				<xsl:apply-templates select="*[following::tei:pb[@xml:id = $pbId]]"/>
-				<xsl:apply-templates select="child::tei:pb"/>
-				<xsl:apply-templates select="*[preceding::tei:pb[@xml:id = $pbId]]"/>
-			</xsl:when>
-			<xsl:otherwise>
-				<xsl:apply-templates/>
-			</xsl:otherwise>
-		</xsl:choose>
-		<xsl:if test="//tei:note[@corresp = $Id]">
-			<br/>
-			<br/>
-			<xsl:for-each select="key('altText', @xml:id)/tei:p">
-				<style>
-					.indent{
-						padding-left: 40pt;
-						padding-right: 40pt;
-					}</style>
-				<seg class="indent" style="font-size:11px">
-					<xsl:apply-templates/>
-					<br/>
-				</seg>
-				<br/>
-			</xsl:for-each>
-		</xsl:if>
 	</xsl:template>
 
 	<xsl:template match="tei:choice">
@@ -1282,115 +1153,6 @@
 				</xsl:otherwise>
 			</xsl:choose>
 		</a>
-		<xsl:choose>
-			<xsl:when test="not(ancestor::tei:w)">
-				<xsl:text> </xsl:text>
-			</xsl:when>
-			<xsl:when test="@ana = 'part' and ancestor::tei:w[contains(@ana, 'part, verb')]">
-				<xsl:choose>
-					<xsl:when test="ancestor::tei:w[contains(@lemmaRef, 'http://www.dil.ie/29104')]">
-						<xsl:text/>
-					</xsl:when>
-					<xsl:otherwise>
-						<xsl:text> </xsl:text>
-					</xsl:otherwise>
-				</xsl:choose>
-			</xsl:when>
-			<xsl:when test="@ana = 'part' and ancestor::tei:w[contains(@ana, 'part, pron, verb')]">
-				<xsl:text/>
-			</xsl:when>
-			<xsl:when test="@ana = 'pron' and ancestor::tei:w[contains(@ana, 'part, pron, verb')]">
-				<xsl:text> </xsl:text>
-			</xsl:when>
-			<xsl:when test="@ana = 'pron' and ancestor::tei:w[@ana = 'pron, verb']">
-				<xsl:text/>
-			</xsl:when>
-			<xsl:when test="@ana = 'noun' and ancestor::tei:w[contains(@ana, 'noun, pron')]">
-				<xsl:text/>
-			</xsl:when>
-			<xsl:when test="@ana = 'noun' and ancestor::tei:w[contains(@ana, 'noun, adj')]">
-				<xsl:text/>
-			</xsl:when>
-			<xsl:when test="@ana = 'prep' and ancestor::tei:w[contains(@ana, 'prep, dpron')]">
-				<xsl:text/>
-			</xsl:when>
-			<xsl:when test="@ana = 'pron' and ancestor::tei:w[contains(@ana, 'pron, dpron')]">
-				<xsl:text/>
-			</xsl:when>
-			<xsl:when test="@ana = 'prep' and ancestor::tei:w[contains(@ana, 'prep, verb')]">
-				<xsl:text/>
-			</xsl:when>
-			<xsl:when test="@ana = 'noun' and ancestor::tei:w[contains(@ana, 'noun, dpron')]">
-				<xsl:text/>
-			</xsl:when>
-			<xsl:when test="@ana = 'adj' and ancestor::tei:w[contains(@ana, 'adj, pron')]">
-				<xsl:text/>
-			</xsl:when>
-			<xsl:when test="@ana = 'adj' and ancestor::tei:w[contains(@ana, 'adj, dpron')]">
-				<xsl:text/>
-			</xsl:when>
-			<xsl:when test="@ana = 'conj' and ancestor::tei:w[contains(@ana, 'noun, verb')]">
-				<xsl:text/>
-			</xsl:when>
-			<xsl:when test="@ana = 'verb' and ancestor::tei:w[contains(@ana, 'verb, pron')]">
-				<xsl:text/>
-			</xsl:when>
-			<xsl:when test="@ana = 'noun' and ancestor::tei:w[contains(@ana, 'noun, noun')]">
-				<xsl:text/>
-			</xsl:when>
-			<xsl:when
-				test="@ana = 'adj' and ancestor::tei:w[contains(@ana, 'adj, noun')] and following-sibling::tei:w[@ana = 'noun']">
-				<xsl:text/>
-			</xsl:when>
-			<xsl:when
-				test="@ana = 'adj' and ancestor::tei:w[contains(@ana, 'adj, adj')] and @n = '1'">
-				<xsl:text/>
-			</xsl:when>
-			<xsl:when test="@ana = 'num' and ancestor::tei:w[contains(@ana, 'num, noun')]">
-				<xsl:text/>
-			</xsl:when>
-			<xsl:when test="@ana = 'num' and ancestor::tei:w[contains(@ana, 'num, vnoun')]">
-				<xsl:text/>
-			</xsl:when>
-			<xsl:when test="@ana = 'vnoun' and ancestor::tei:w[contains(@ana, 'vnoun, noun')]">
-				<xsl:text/>
-			</xsl:when>
-			<xsl:when test="@ana = 'pref' and ancestor::tei:w[contains(@ana, 'pref, adj')]">
-				<xsl:text/>
-			</xsl:when>
-			<xsl:when test="@ana = 'pref' and ancestor::tei:w[contains(@ana, 'pref, noun')]">
-				<xsl:text/>
-			</xsl:when>
-			<xsl:when test="@ana = 'pron' and ancestor::tei:w[contains(@ana, 'pron, part')]">
-				<xsl:text/>
-			</xsl:when>
-			<xsl:when test="@ana = 'conj' and ancestor::tei:w[contains(@ana, 'conj, pron')]">
-				<xsl:text/>
-			</xsl:when>
-			<xsl:when test="@ana = 'conj' and ancestor::tei:w[contains(@ana, 'conj, verb')]">
-				<xsl:text/>
-			</xsl:when>
-			<xsl:when test="ancestor::tei:w and following::tei:pc[1]">
-				<xsl:text/>
-			</xsl:when>
-			<xsl:when test="self::tei:pc and ancestor::tei:w and following::tei:w">
-				<xsl:text/>
-			</xsl:when>
-			<xsl:when
-				test="@lemmaRef = 'http://www.dil.ie/33147' and following::tei:w[1]/@ana = 'pron'">
-				<xsl:text/>
-			</xsl:when>
-			<xsl:when test="not(following-sibling::*)">
-				<xsl:text> </xsl:text>
-			</xsl:when>
-			<xsl:when
-				test="@ana = 'pron' and ancestor::tei:w[contains(@ana, 'pron, pron')] and following-sibling::tei:w[@ana = 'pron']">
-				<xsl:text/>
-			</xsl:when>
-			<xsl:otherwise>
-				<xsl:text> </xsl:text>
-			</xsl:otherwise>
-		</xsl:choose>
 	</xsl:template>
 
 	<xsl:template match="tei:w[descendant::tei:w]">
@@ -1407,7 +1169,6 @@
 			style="text-decoration:none; color:#000000">
 			<xsl:apply-templates/>
 		</a>
-		<xsl:text> </xsl:text>
 	</xsl:template>
 
 	<xsl:template match="tei:num">
@@ -1415,7 +1176,6 @@
 			style="text-decoration:none; color:#000000">
 			<xsl:apply-templates/>
 		</a>
-		<xsl:text> </xsl:text>
 	</xsl:template>
 
 	<xsl:template match="tei:ref">
@@ -1513,14 +1273,12 @@
 					onclick="return false;" style="text-decoration:none; color:#000000">
 					<xsl:apply-templates/>
 				</a>
-				<xsl:text> </xsl:text>
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
 
 	<xsl:template match="tei:pc">
 		<xsl:apply-templates/>
-		<xsl:text> </xsl:text>
 	</xsl:template>
 
 	<xsl:template match="tei:space[@type = 'force']"> &#160; </xsl:template>

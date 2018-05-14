@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?xml-stylesheet type="text/xsl" href="../stylesheet-scribal+.xsl"?>
+
 <?xml-model href="file:/C:/Files/faclair-manuscripts/fnag_mss.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 <TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="MS2">
 	<teiHeader>
@@ -27,16 +27,17 @@
 			</publicationStmt>
 			<notesStmt>
 				<note>
-					<p><ref target="MS2">London, British Library, MS Egerton 2899,</ref> consists of
-						a 14th-century psalter and a 15th-century (?) martyrology owned by the
-						Campbells of Glenorchy through the 16th to the 18th century. In around 1500,
-						'Aingil De dom dhín', a Middle Gaelic verse <hi rend="italics">lorica</hi>
-						invoking the seven archangels and the twelve apostles, was inscribed on the
-						flyleaf. On the whole, beyond names of angels and apostles, it consists of
-						praise of their virtues and allusions to the dangers against which they
-						protect the poet. In terms of language, there are some interesting early
-						specimens and also some distinctive scribal traits that merit further
-						investigation as possible examples of Scottish dialectal influence.</p>
+					<p><ref type="ms" target="MS2">London, British Library, MS Egerton 2899,</ref>
+						consists of a 14th-century psalter and a 15th-century (?) martyrology owned
+						by the Campbells of Glenorchy through the 16th to the 18th century. In
+						around 1500, 'Aingil De dom dhín', a Middle Gaelic verse <hi rend="italics"
+							>lorica</hi> invoking the seven archangels and the twelve apostles, was
+						inscribed on the flyleaf. On the whole, beyond names of angels and apostles,
+						it consists of praise of their virtues and allusions to the dangers against
+						which they protect the poet. In terms of language, there are some
+						interesting early specimens and also some distinctive scribal traits that
+						merit further investigation as possible examples of Scottish dialectal
+						influence.</p>
 				</note>
 			</notesStmt>
 			<sourceDesc>
@@ -48,41 +49,112 @@
 					</msIdentifier>
 					<msContents>
 						<summary>'Aingil De dom dhín' is the only Gaelic text in the manuscript; the
-							martyrology shows a particular interest in Argyll saints but it is
-							entirely in Latin, as is the psalter.</summary>
+							martyrology shows a particular interest in Argyll saints (Flower <ref
+								type="bib">1926</ref>: 23) but it is entirely in Latin, as is the
+							psalter.</summary>
 						<msItem n="1" xml:id="MS2.1" resp="Hand7">
 							<locus>fol.iiir</locus>
 							<title>Aingeal de dom dhin</title>
 							<incipit>Aingeal de dom dhin</incipit>
 							<explicit>aingil dé dom dhin</explicit>
-							<note><p>TEXT SUMMARY HERE</p>
-								<p>TEXT SUMMARY HERE TOO</p></note>
+							<note><p comment="Content">The poem is a <hi rend="italics"
+									>lorica</hi>-style litany, invoking the protection of the seven
+									archangels (one for each day of the week) and the twelve
+									apostles, praising their merits, and alluding to the dangers
+									from which through them the dovotee is preserved. Some
+									manuscripts attribute the poem to Colum Cille (Flower <ref
+										type="bib">1926</ref>: 24) but these are all late witnesses.
+									Such an ascription is absent from earlier manuscripts, including
+										<ref type="ms" target="MS2">Egerton 2899</ref>, and there is
+									nothing in the text itself to particularly support it. It does,
+									however, have a tendency to be selected by early scribes
+									interested in Columban material (.i.e. the present scribe and
+									the compilers of <ref type="ms">Laud Misc. 615</ref>)</p>
+								<p comment="Structure">The poem is bipartite. qq1–18 (in the <ref
+										type="ms" target="MS2">Egerton 2899</ref> text) invoke the
+									protection of the seven archangels, while qq.19–30 invoke the
+									proetection of the twelve apostles.</p><p> O'Nolan (<ref
+										type="bib" target="ONolan1912">1912</ref>: 253) suggests
+									that these might have originally been two separate poems, as the
+									section on the archangels closes with a <hi rend="italics"
+										>dúnad</hi>. This seems plausible, as neither section
+									depends on the other for sense, and the final quatrain, bearing
+									a unifying <hi rend="italics">dúnad</hi>, does not relate
+									specifically to the second section. However, a <hi
+										rend="italics">dúnad</hi> need not always indicate the end
+									of a poem but can indicate merely a shift in topic. Also, as
+									shown below, all manuscript witnesses preserve at least some of
+									both sections. Thus, if they were originally separate, their
+									conjunction probably happened prior to the text's archetype and
+									nothing can be known of their independent textual history.
+									Nonetheless, the possibility of distinct origins should be borne
+									in mind when assessing the language.</p>
+								<p comment="Style"> The metre is <hi rend="italics">lethrannaigecht
+										mór</hi> (5<hi rend="sup">1</hi>5<hi rend="sup">1</hi>5<hi
+										rend="sup">1</hi>5<hi rend="sup">1</hi>; abcb). The
+									resulting short lines rarely come together within a quatrain to
+									form a long developed sentence and more often contain a discrete
+									prepositional phrase or short statement. The relentless interest
+									throughout is the glorifying of God, the archangels, and the
+									apostles, so the style remains distinctly panegyrical.</p>
+								<p comment="Social Context and Intended Readers"> There is no
+									glossing or annotation on 'Aingil De dom dhín' to indicate how
+									readers interacted with the text. As it is placed on the flyleaf
+									of a martyrology/psalter that was, or would shortly come to be,
+									in the possession of an aristocratic family, one might speculate
+									that the poem was used for devotional purposes. Just as the
+									martyrology identifies feast days through the year and the
+									psalter is drawn upon regularly in liturgical time, 'Aingil De
+									dom dhín' identifies a heavenly protector for each day of each
+									week. Whether the Campbells of Glenorchy and their associates
+									would have struggled with the poem's occasional early forms
+									should be considered, however; the poem could be more for
+									ornamental value. On the other hand, that secular 16th-century
+									Scottish elites were capable of appreciating Middle Gaelic texts
+									would be of sociolinguistic interest.</p>
+								<p comment="Studies and Editions"> The only edition of the text
+									(which does not draw on <ref type="ms" target="MS2">Egerton
+										2899</ref>) is that of Thomas O'Nolan (<ref type="bib"
+										target="ONolan1912">1912</ref>). Flower (<ref type="bib"
+										>1926</ref>: 23–24) comments briefly upon it in his entry on
+										<ref type="ms" target="MS2">Egerton 2899</ref> in his <hi
+										rend="italics">Catalogue of Irish Manuscripts in the British
+										Museum: Vol. 2</hi>. Ronald Black (<ref type="bib"
+										>2016</ref>: §128) repeats some of the essential details
+									from O'Nolan and Flower and comments on the hand in the context
+									of its contribution to <ref type="ms">Edinburgh, NLS, Adv. MS
+										72.1.31</ref> (<ref type="bib">2011</ref>: NLS Adv. MS
+									72.1.31). Any further extant work on the text is yet to be
+									identified.</p>
+							</note>
 							<filiation>
-								<p>Thomas O'Nolan (<ref target="ONolan1912">1912</ref>) has edited
-									'Aingil De dom dhín'. He did not use <ref target="MS2">Egerton
-										2899</ref>. Instead, he used eight Irish manuscripts: <list>
-										<item>Dublin, Royal Irish Academy, MS 23.P.16 (1230), 15th
-											cent., <hi rend="italics">An Leabhar Breac</hi></item>
-										<item>Oxford, Bodleian Library, MS Laud Misc. 615, 16th
-											century</item>
-										<item>Dublin, Royal Irish Academy, MS 23.G.23 (256), 17th
-											century</item>
-										<item>Dublin, Royal Irish Academy, MS 23.N.13 (???), date
-											unknown</item>
-										<item>Maynooth, St Patrick’s College, Murphy MS. 70, date
-											unknown</item>
-										<item>Maynooth, St Patrick’s College, Murphy MS. 39, date
-											unknown</item>
-										<item>Maynooth, St Patrick’s College, O’Renehan MS. 96, date
-											unknown</item>
+								<p>When Thomas O'Nolan (<ref target="ONolan1912">1912</ref>) edited
+									'Aingil De dom dhín', he did not use <ref type="ms" target="MS2"
+										>Egerton 2899</ref>. Instead, he used eight Irish
+									manuscripts: <list>
+										<item><ref type="ms">Dublin, Royal Irish Academy, MS 23.P.16
+												(1230)</ref>, 15th cent., <hi rend="italics">An
+												Leabhar Breac</hi></item>
+										<item><ref type="ms">Oxford, Bodleian Library, MS Laud Misc.
+												615</ref>, 16th century</item>
+										<item><ref type="ms">Dublin, Royal Irish Academy, MS 23.G.23
+												(256)</ref>, 17th century</item>
+										<item><ref type="ms">Dublin, Royal Irish Academy, MS 23.N.13
+												(???)</ref>, date unknown</item>
+										<item><ref type="ms">Maynooth, St Patrick’s College, Murphy
+												MS. 70</ref>, date unknown</item>
+										<item><ref type="ms">Maynooth, St Patrick’s College, Murphy
+												MS. 39</ref>, date unknown</item>
+										<item><ref type="ms">Maynooth, St Patrick’s College,
+												O’Renehan MS. 96</ref>, date unknown</item>
 										<item>A copy in the O’Curry Mss. (unspecified), 19th
 											century</item>
 									</list>
 								</p>
 								<p>The number and order of the quatrains in the different manuscript
 									versions varies quite significantly. This can be used to show
-										<ref target="MS2">Egerton 2899</ref>’s affiliation in the
-									tradition.</p>
+										<ref target="MS2">Egerton 2899</ref>’s affiliation within
+									the tradition.</p>
 								<p><table rows="10" cols="3">
 										<row role="label">
 											<cell role="data">Manuscript</cell>
@@ -90,39 +162,44 @@
 											<cell role="data">Quatrains</cell>
 										</row>
 										<row role="data">
-											<cell role="data">RIA 23.P.16 </cell>
+											<cell role="data"><ref type="ms">RIA 23.P.16</ref>
+											</cell>
 											<cell role="data">LB</cell>
 											<cell role="data"><hi>1–6, 8–31</hi></cell>
 										</row>
 										<row role="data">
-											<cell role="data">Laud Misc. 615</cell>
+											<cell role="data"><ref type="ms">Laud Misc.
+												615</ref></cell>
 											<cell role="data">L</cell>
 											<cell role="data"><hi>1–6, 8–31</hi></cell>
 										</row>
 										<row role="data">
-											<cell role="data">RIA 23.G.23 </cell>
+											<cell role="data"><ref type="ms">RIA 23.G.23</ref>
+											</cell>
 											<cell role="data">G</cell>
 											<cell role="data">1-31</cell>
 										</row>
 										<row role="data">
-											<cell role="data">RIA 23.N.13</cell>
+											<cell role="data"><ref type="ms">RIA
+												23.N.13</ref></cell>
 											<cell role="data">N</cell>
 											<cell role="data">1-31</cell>
 										</row>
 										<row role="data">
-											<cell role="data">Murphy 70</cell>
+											<cell role="data"><ref type="ms">Murphy 70</ref></cell>
 											<cell role="data">A</cell>
 											<cell role="data">1–16, 16a, 17–19, 16b, 20, 20a, 20b,
 												21–31</cell>
 										</row>
 										<row role="data">
-											<cell role="data">Murphy 39</cell>
+											<cell role="data"><ref type="ms">Murphy 39</ref></cell>
 											<cell role="data">B</cell>
 											<cell role="data">1–16, 16a, 17–19, 16b, 20, 20a, 20b,
 												21–31</cell>
 										</row>
 										<row role="data">
-											<cell role="data">O’Renehan 96</cell>
+											<cell role="data"><ref type="ms">O’Renehan
+												96</ref></cell>
 											<cell role="data">C</cell>
 											<cell role="data">1–16, 16a, 17–19, 16b, 20, 20a, 20b,
 												21–31</cell>
@@ -134,40 +211,173 @@
 											</cell>
 										</row>
 										<row role="data">
-											<cell role="data">Egerton 2899</cell>
+											<cell role="data"><ref target="MS2" type="ms">Egerton
+												2899</ref></cell>
 											<cell role="data">-</cell>
 											<cell role="data"><hi>1–6, 8–31</hi></cell>
 										</row>
 									</table></p>
-								<p>The <ref target="MS2">Egerton 2899</ref> text thus seems to align
-									structurally with the <hi rend="italics">Leabhar Breac</hi> and
-									Laud Misc. 615 texts. This is not particularly borne out by a
-									comparison between the <hi rend="italics">varia lectiones</hi>
-									in O'Nolan's edition and the present witness, however. While the
-										<ref target="MS2">Egerton 2899</ref> text never closely
-									aligns in any serious way with the others against the <hi
-										rend="italics">Leabhar Breac</hi> and Laud Misc. 615, it
-									often presents its own distinctive readings against them.</p>
+								<p>The <ref target="MS2">Egerton 2899</ref> text aligns structurally
+									with the <ref type="ms"><hi rend="italics">Leabhar
+										Breac</hi></ref> and <ref type="ms">Laud Misc. 615</ref>
+									texts. This is not particularly borne out by a comparison
+									between the <hi rend="italics">varia lectiones</hi> in O'Nolan's
+									edition and the present witness, however. While the <ref
+										target="MS2">Egerton 2899</ref> text does not consistently
+									align with the others against the <ref type="ms"><hi
+											rend="italics">Leabhar Breac</hi></ref> and <ref
+										type="ms">Laud Misc. 615</ref>, it often presents its own
+									distinctive readings against them.</p>
 								<p>It seems fairly likely that the omission of O'Nolan's q7 was a
-									mistake at a certain point in the tradition. O'Nolan's qq5–7
-									list seven archangels, describing each of them as a “guarantor”
-										(<hi rend="italics">cuir</hi>). O'Nolan's q8 (= the present
-									text's q7) then calls them “the seven guarantors on God's
-									behalf” ('Seacht cuir dar cend De'). Given that three of these
-									guarantors (Raphael, Painiel, and Gabriel) are enumerated in
-									O'Nolan's q7, it was almost certainly in the original
-									composition. The <hi rend="italics">Leabhar Breac</hi>, Laud
-									Misc. 615, and <ref target="MS2">Egerton 2899</ref> texts thus
-									all have a common ancestor somewhere below the archetype where
-									this omission occured. This archetype must have existed by the
-									period 1408×1411, when the <hi rend="italics">Leabhar Breac</hi>
+									mistake at a certain point in the tradition. That is, it is not
+									a later addition. O'Nolan's qq5–7 (represented by qq. 7 (= 5)
+									and 8 (= 7) in <ref target="MS2">Egerton 2899</ref>) list seven
+									archangels, describing each of them as a “guarantor” (<hi
+										rend="italics">cuir</hi>). O'Nolan's q8 (= q7 in the <ref
+										target="MS2">Egerton 2899</ref> text) then calls them “the
+									seven guarantors on God's behalf” ('Seacht cuir dar cend De').
+									Given that three of these guarantors (Raphael, Painiel, and
+									Gabriel) are enumerated in O'Nolan's q7, it was almost certainly
+									in the original composition. The <hi rend="italics">Leabhar
+										Breac</hi>, Laud Misc. 615, and <ref type="bib" target="MS2"
+										>Egerton 2899</ref> texts thus all have a common ancestor
+									somewhere below the archetype where this omission occured. This
+									archetype must have existed by the period 1408×1411, when the
+										<ref type="ms"><hi rend="italics">Leabhar Breac</hi></ref>
 									was produced.</p>
-								<p>From the evidence of textual history, attestation in the
-									manuscript record and language (see below), we can conclude that
-									the poem was originally composed in Ireland, probably in the
-									Middle Gaelic period.</p>
+								<p>As all other manuscripts of 'Aingil De dom dhín' are of Irish
+									provenance, it seems reasonable to conclude in the absence of
+									any other evidence that the poem was composed in Ireland. A
+									relatively early stratum in the language suggests it was
+									composed in the Middle Gaelic period.</p>
 							</filiation>
-							<textLang mainLang="mga" otherLangs="sga">
+							<textLang mainLang="mga">
+								<note comment="Orthography and Scribal Practices">
+									<p comment="Spelling System">
+										<list>
+											<head>Vowels</head>
+											<item> A mixture of "ea" and "e" is used (e.g. "deam<hi
+												rend="italics">h</hi>an" (<ref type="line"
+												target="MS2.1.29c">q29c</ref>), "spregad<hi
+												rend="italics">h</hi>" (<ref type="vline"
+												target="MS2.1.29d">q29d</ref>)), with "-ea-"
+												predominating. </item>
+											<item> There are no instances of "io" for "i". </item>
+											<item> There is occasional heterodox treatment of
+												dipthongs (e.g. "naei<hi rend="italics">m</hi>e"
+												(<ref target="MS2.1.12d">q12d</ref>), acc. (or
+												dat.) of <hi rend="italics">noíbe</hi>). Sometimes,
+												they are even simplified to a single vowel ("badal"
+												(<ref target="MS2.1.15d">q15d</ref>), nom. sing.
+												of <hi rend="italics">báegul</hi>). Otherwise, the
+												expected Middle Gaelic form of the dipthong is
+												typically used (e.g. "nae<hi rend="italics">m</hi>"
+												(<ref target="MS2.1.19c">q19c</ref>), nom. sing.
+												of <hi rend="italics">noíb</hi>; "taeb<hi
+												rend="italics">h</hi>" (<ref target="MS2.1.28b"
+												>q28b</ref>), dat. sing. of <hi rend="italics"
+												>taeb</hi>).</item>
+											<item> Unstressed final syllables occasionally show
+												signs of the confusion and simplification of the
+												vowel to /ə/ that characterised Middle Gaelic (e.g.
+												"mo [sh]laintisi a<hi rend="italics">ir</hi>" (<ref
+												target="MS2.1.9c">q9c</ref>), nom. sing. of <hi
+												rend="italics">sláinte</hi>). However, they tend
+												to remain appropriate to the grammatical case and
+												number (e.g. "go<hi rend="italics">m</hi> crid<hi
+												rend="italics">h</hi>e" (<ref target="MS2.1.28c"
+												>q28c</ref>), acc. sing. of <hi rend="italics"
+												>críde</hi>.</item>
+											<item>A distinctive feature of this hand is the use of
+												"y" for "i" (Black (<ref type="bib">2011</ref>: NLS
+												Adv. MS 72.1.31), particularly in non-Gaelic names.
+												This occurs in the present text: "symon" (<ref
+												target="MS2.1.20d">q20d</ref>).</item>
+										</list>
+										<list>
+											<head>Accents</head>
+											<item>Accents are used, but erratically (e.g. "Da apstal
+												dég de" (<ref target="MS2.1.19a">q19a</ref>, <hi
+												rend="italics">recte</hi> "Dá apstal dég dé"). </item>
+											<item>There is a specific editorial problem with "i".
+												The scribe routinely differentiates "i" from other
+												minims (even when "i" is not in a minim cluster)
+												through the use of an upward stroke that is
+												inditinguishable from his accent. It is thus not
+												possible to tell when, if ever, the scribe intended
+												to mark a long "i" as <hi rend="italics">í</hi>. </item>
+											<item>Accents are also quite erratically placed,
+												sometimes even appearing over neighbouring
+												consonants.</item>
+										</list>
+										<list>
+											<head>Consonants</head>
+											<item>Voiced and unvoiced dental stops in final position
+												are usually lenited (e.g. "gruad<hi rend="italics"
+												>h</hi>" (<ref target="MS2.1.14a">q14a</ref>);
+												"bit<hi rend="italics">h</hi>" (<ref
+												target="MS2.1.15d">q15d</ref>)), but sometimes not
+												(e.g. "urcanead" (<ref target="MS2.1.14a"
+												>q18a</ref>)).</item>
+											<item>Unaspirated voiceless velar stops in final
+												position are typically not lenited (e.g. "sluag"
+												(<ref target="MS2.1.d">q1d</ref>)), with only one
+												exception ("dluig<hi rend="italics">h</hi>" (<ref
+												target="MS2.1.4c">q4c</ref>)).</item>
+											<item>Aspirated voiceless velar stops (/k/) are
+												frequently used in place of aspirated voiceless
+												velar fricatives (/x/) at word end (e.g. "toseac[h]"
+												(<ref target="MS2.1.25b">q25b</ref>); "nac[h]"
+												(<ref target="MS2.1.10d">q10d</ref>)). While not
+												universal, this is occurs too regularly to be
+												explicable by accidental omission of lenition
+												marks.</item>
+											<item>Lenition of bilabial stop "b" in final position to
+												a labio-dental fricative is typically shown (e.g.
+												"cliabh" (<ref target="MS2.1.28c"
+												>q28c</ref>)).</item>
+											<item>Lenition of bilabial nasal "m" in final position
+												to a labio-dental fricative is sometimes shown (e.g.
+												"ad c<hi rend="italics">h</hi>iam<hi rend="italics"
+												>h</hi>" (<ref target="MS2.1.18d">q18d</ref>)) but
+												more often not (e.g. "niam<hi rend="italics">h</hi>"
+												(<ref target="MS2.1.6d">q6d</ref>)).</item>
+											<item>Final resonant "-nn" (/N/) is sometimes rendered
+												as Middle Gaelic hypercorrection "-nd". For example,
+												"ceand" is used throughout for <hi rend="italics"
+												>cenn</hi> (e.g. "cea<hi rend="italics">n</hi>d"
+												(<ref target="MS2.1.7a">q7a</ref>)); "-nd" is
+												generally preferred in the text overall by
+												6:1.</item>
+											<item>A dot, or sometimes a very small tick, is
+												occasionally placed over the "d" in final resonant
+												"-nd", giving "-nḋ" (e.g. "sgi<hi rend="italics"
+												>n</hi>ḋ" (<ref target="MS2.1.30a">q30a</ref>));
+												this appears to be indicating that it is part of a
+												consonant cluster and should not be taken as
+												lenition, even though it resembles a lenition mark
+												visually.</item>
+										</list>
+										<list>
+											<head>Initial Mutations</head>
+											<item>Lenition is marked (via a small tick) quite
+												sproradically (e.g. "mo c<hi rend="italics"
+												>h</hi>ul" (<ref target="MS2.1.22b">q22b</ref>),
+												"do<hi rend="italics">m</hi> d<hi rend="italics"
+												>h</hi>in" (<ref target="MS2.1.29c">q29c</ref>),
+												"a b<hi rend="italics">h</hi>arr" (<ref
+													target="MS2.1.5d">q5d</ref>), "mo [sh]laintisi" (<ref target="MS2.1.9c">q9c</ref>); but "mo comla" (<ref
+												target="MS2.1.25c">q25c</ref>), "os ma ci<hi
+												rend="italics">n</hi>d" (<ref target="MS2.1.25d"
+												>q25d</ref>)).</item>
+											<item>On two occasions, lenition is marked where
+												nasalisation would be expected ("na c<hi
+												rend="italics">h</hi>eall" (q2c), "of the
+												churches"; "na f<hi rend="italics">h</hi>eart"
+												(q10a), "of the virtues").</item>
+										</list>
+									</p>
+								</note>
 								<note>
 									<p> In the linguistic survey that follows, I focus on the <ref
 											target="MS2">Egerton 2899</ref> text of '<ref
@@ -283,45 +493,50 @@
 						</objectDesc>
 						<handDesc>
 							<handNote>
-								<p>A single hand (FnaG: <ref type="hand" target="Hand7">Hand7</ref>)
-									produces the entire text of 'Aingil De dom dhín'. This hand does
-									not appear anywhere else in <ref type="ms" target="MS2">Egerton
-										2899</ref> and the manuscript contains no explicit clues as
-									to the scribe's identity. Its cataloguers (BL <ref type="bib"
-										>n.d.</ref>: <hi rend="italics">sub num.</hi> Egerton MS
-									2899; Flower <ref type="bib">1926</ref>: 2) date the hand
-									palaeographically to around 1500. </p>
-								<p> Black (<ref type="bib">2011</ref>) has speculated that he may
-									have been a MacEwen, for two reasons: <list>
-										<item>The manuscript is associated with the Campbells of
-											Glenorchy (see below), to whom the MacEwens
-											traditionally provided scholars.</item>
-										<item>Certain unusual palaeographical features of this hand
-											(see below) are shared with Neil MacEwen (fl.
-											1630).</item>
-									</list>
-								</p>
-								<p> The same scribe is also the sole hand in the first fragment
-									(fols. 1–5) bound into the composite manuscript, <ref type="ms"
-										target="MS6">Edinburgh, NLS Adv., MS 72.1.31</ref>. This
-									fragment preserves at least 13 poems in his hand about or
-									attributed to Colum Cille, although its poor condition
-									frustrates close examination of many of them. The genre as whole
-									has been examined in detail by Herbert (<ref type="bib"
-										>2005</ref>). Four of these poems, as well as a text of
-									'Aingil De dom dhín', appear in Oxford, Bodleiain Library, MS.
-									Laud Misc 615, which Herbert and O'Sullivan (<ref type="bib"
-										>1973</ref>: 175) date to 1532×1545 and associate with the
-									circle of scholars working on Columban material for the Ó Néills
-									of Tyrone, NW Ireland. Furthermore, the page layout of the first
-									fragment in <ref type="ms" target="MS6">NLS Adv. 72.1.31</ref> —
-									oblong pages with long lines, often one quatrain per line —
-									resembles that of Laud Misc. 615. Indeed, the quatrains of
-									'Aingil De dom dhín' in <ref type="ms" target="MS2">Egerton
-										2899</ref> are each also set out one to a line. This might
-									suggest that the present scribe had intellectual contact with
-									scholars in the north of Ireland and drew on similar literary
-									resources.</p>
+								<note comment="The Scribe">
+									<p comment="Identification">A single hand (FnaG: <ref
+											type="hand" target="Hand7">Hand7</ref>) produces the
+										entire text of 'Aingil De dom dhín'. This hand does not
+										appear anywhere else in <ref type="ms" target="MS2">Egerton
+											2899</ref> and the manuscript contains no explicit clues
+										as to the scribe's identity. Its cataloguers (BL <ref
+											type="bib">n.d.</ref>: <hi rend="italics">sub num.</hi>
+										Egerton MS 2899; Flower <ref type="bib">1926</ref>: 23)
+										dates the hand palaeographically to c.1500. </p>
+									<p> Black (<ref type="bib">2011</ref>: NLS Adv. MS 72.1.31) has
+										speculated that he may have been a MacEwen, for two reasons: <list>
+											<item>The manuscript was in the possession of the
+												Campbells of Glenorchy by 1523 at latest (see
+												below); the MacEwens traditionally provided scholars
+												to this family.</item>
+											<item>Certain unusual palaeographical features of this
+												hand (see below) are shared with Neil MacEwen (fl.
+												1630).</item>
+										</list>
+									</p>
+									<p comment="Other Activities"> The same scribe is also the sole
+										hand in the first fragment (fols. 1–5) bound into the
+										composite manuscript, <ref type="ms" target="MS6">Edinburgh,
+											NLS Adv., MS 72.1.31</ref>. This fragment preserves at
+										least 13 poems in his hand about or attributed to Colum
+										Cille, although its poor condition frustrates close
+										examination of many of them. The genre as whole has been
+										examined in detail by Herbert (<ref type="bib">2005</ref>).
+										Four of these poems, as well as a text of 'Aingil De dom
+										dhín', appear in Oxford, Bodleiain Library, MS. Laud Misc
+										615, which Herbert and O'Sullivan (<ref type="bib"
+											>1973</ref>: 175) date to 1532×1545 and associate with
+										the circle of scholars working on Columban material for the
+										Ó Néills of Tyrone, NW Ireland. Furthermore, the page layout
+										of the first fragment in <ref type="ms" target="MS6">NLS
+											Adv. 72.1.31</ref> — oblong pages with long lines, often
+										one quatrain per line — resembles that of Laud Misc. 615.
+										Indeed, the quatrains of 'Aingil De dom dhín' in <ref
+											type="ms" target="MS2">Egerton 2899</ref> are each also
+										set out one to a line. This might suggest that the present
+										scribe had intellectual contact with scholars in the north
+										of Ireland and drew on similar literary resources.</p>
+								</note>
 							</handNote>
 						</handDesc>
 					</physDesc>
@@ -343,7 +558,8 @@
 								be from elsewhere.</p><p>It has been pointed out (<ref
 									target="Flower1926">1926</ref>: 23) that Colin's father, Duncan,
 								is attributed poetry in the <hi rend="italics">Book of the Dean of
-									Lismore</hi>, implying sustained interest in Gaelic literature
+									Lismore</hi> (<ref type="ms">Edinburgh, NLS, Adv. MS
+									72.1.37</ref>), implying sustained interest in Gaelic literature
 								on the part of this family.</p></provenance>
 						<acquisition><p>The manuscript was purchased for the British Museum's
 								collections from Sotheby's in February 1912. How it came to be up
@@ -359,9 +575,14 @@
 					highly corrupt forms have been supplied from O'Nolan's edition (<ref
 						target="ONolan1912">1912</ref>) using the &lt;corr&gt; element, which is
 					usually used for editorial interventions by personnel on the FnaG project.</p>
+				<p>The scribe regularly identifies the letter "i" with an un upward stroke above the
+					character resembling a length mark. Unfortunately, it is indistinguishable
+					visually from the length marks he adds to other characters. It is thus not
+					possible to tell when, if ever, he intended to add a length mark to an "i". For
+					this reason, all length marks on "i" have been removed in the transcription.</p>
 			</editorialDecl>
 			<metDecl>
-				<p>The poem's metre is <hi rend="italics">rannaigecht bec</hi> (5<hi rend="sup"
+				<p>The poem's metre is <hi rend="italics">leth-rannaigecht bec</hi> (5<hi rend="sup"
 						>1</hi>, 5<hi rend="sup">1</hi>, 5<hi rend="sup">1</hi>, 5<hi rend="sup"
 						>1</hi>). The text is laid out with one quatrain per line in <ref
 						target="MS2">Egerton 2899</ref>.</p>
@@ -415,7 +636,7 @@
 							lemmaRefED="http://www.dil.ie/16570" lemmaDW="dìon"
 							lemmaRefDW="http://www.faclair.com/ViewDictionaryEntry.aspx?ID=DF475B540C7AD098A6BFA6BB12507468"
 							ana="noun"><abbr cert="high">d<g ref="g4">h</g></abbr><abbr cert="high"
-									>í<g ref="g5">n</g></abbr></w>
+									>i<g ref="g5">n</g></abbr></w>
 					</l>
 					<l n="b" xml:id="MS2.1.1b">
 						<w lemma="fo" lemmaRef="http://www.dil.ie/22333" lemmaED="fo"
@@ -425,7 +646,7 @@
 							lemma="caingen" lemmaRef="http://www.dil.ie/7832" lemmaED="caingen"
 							lemmaRefED="http://www.dil.ie/7832" lemmaDW="caingeann"
 							lemmaRefDW="http://www.faclair.com/ViewDictionaryEntry.aspx?ID=579821F52FD54CBD2FF4E4CED93F6811"
-							ana="noun"><abbr cert="high">c<g ref="g4">h</g></abbr>aíngin</w><space
+							ana="noun"><abbr cert="high">c<g ref="g4">h</g></abbr>aingin</w><space
 							type="scribal"/><w lemma="clé" lemmaRef="http://www.dil.ie/9397"
 							lemmaED="clé" lemmaRefED="http://www.dil.ie/9397" lemmaDW="clè"
 							lemmaRefDW="http://www.faclair.com/ViewDictionaryEntry.aspx?ID=60FF93770E43370939182AAD0BEF49B3"
@@ -483,7 +704,7 @@
 					<l n="a" xml:id="MS2.1.2a"><w lemma="secht" lemmaRef="http://www.dil.ie/36788"
 							lemmaED="secht" lemmaRefED="http://www.dil.ie/36788" lemmaDW="seachd"
 							lemmaRefDW="http://www.faclair.com/ViewDictionaryEntry.aspx?ID=6059BBD796C0C55B84D37A174278EE06"
-							ana="num">Se<abbr cert="high"><g ref="#10">acht</g></abbr></w><space
+							ana="num">Se<abbr cert="high"><g ref="g10">acht</g></abbr></w><space
 							type="scribal"/><w lemma="archaingel" lemmaRef="http://www.dil.ie/4000"
 							lemmaED="archaingel" lemmaRefED="http://www.dil.ie/4000"
 							lemmaDW="àrd-aingeal"
@@ -569,11 +790,11 @@
 				<lg n="3" type="stanza" xml:id="MS2.1.3">
 					<l n="a" xml:id="MS2.1.3a"><lb n="3" xml:id="MS2.iiir.3"/>
 						<w lemma="secht" lemmaRef="http://www.dil.ie/36788" ana="num"> Se<abbr
-								cert="high"><g ref="#10">acht</g></abbr></w><space type="scribal"
+								cert="high"><g ref="g10">acht</g></abbr></w><space type="scribal"
 							/><w lemma="sinser" lemmaRef="http://www.dil.ie/37625" ana="noun">
 								s<abbr cert="high">i<g ref="g5">n</g></abbr>sir </w><space
 							type="scribal"/><w lemma="secht" lemmaRef="http://www.dil.ie/36788"
-							ana="num">se<abbr cert="high"><g ref="#10">acht</g></abbr></w><space
+							ana="num">se<abbr cert="high"><g ref="g10">acht</g></abbr></w><space
 							type="scribal"/><w lemma="slóg" lemmaRef="http://www.dil.ie/37981"
 							ana="noun">sloig</w>
 					</l>
@@ -584,11 +805,11 @@
 									ref="g4">h</g></abbr>illter</w><space type="scribal"/><w
 							lemma="mé" lemmaRef="http://www.dil.ie/31705" ana="pron">me</w><space
 							type="scribal"/><w lemma="tre" lemmaRef="http://www.dil.ie/41608"
-							ana="prep, pron">trí<abbr cert="high">b<g ref="g4">h</g></abbr></w>
+							ana="prep, pron">tri<abbr cert="high">b<g ref="g4">h</g></abbr></w>
 					</l>
 					<l n="c" xml:id="MS2.1.3c">
 						<w lemma="secht" lemmaRef="http://www.dil.ie/36788" ana="num">sea<abbr
-								cert="high"><g ref="#10">cht</g></abbr></w><space type="scribal"/><w
+								cert="high"><g ref="g10">cht</g></abbr></w><space type="scribal"/><w
 							lemma="scíath" lemmaRef="http://www.dil.ie/36454" ana="noun">sgei<abbr
 								cert="high">t<g ref="g4">h</g></abbr></w><space type="scribal"/><w
 							lemma="ar" lemmaRef="http://www.dil.ie/3902" ana="prep"><abbr
@@ -606,7 +827,7 @@
 							lemmaRef="http://www.dil.ie/6579" ana="noun">bra<abbr cert="high">t<g
 									ref="g4">h</g></abbr></w><lb n="4" xml:id="MS2.iiir.4"/><w
 							lemma="attá" lemmaRef="http://www.dil.ie/4927" ana="verb"
-							>bíd</w><pc>.</pc>
+							>bid</w><pc>.</pc>
 					</l>
 				</lg>
 				<lg n="4" type="stanza" xml:id="MS2.1.4">
@@ -656,14 +877,14 @@
 						<w lemma="de" lemmaRef="http://www.dil.ie/14787" ana="prep, pron">di<abbr
 								cert="high">b<g ref="g4">h</g></abbr>
 						</w><space type="scribal"/><name type="personal"><w ana="noun"
-							>míchel</w></name>
+							>michel</w></name>
 						<w lemma="mór" lemmaRef="http://www.dil.ie/32548" ana="adj">mor</w>
 					</l>
 					<l n="b" xml:id="MS2.1.5b">
 						<w lemma="a" lemmaRef="http://www.dil.ie/3" ana="poss">a</w><space
 							type="scribal"/><w lemma="glóir" lemmaRef="http://www.dil.ie/26118"
 							ana="noun">gloir</w><space type="scribal"/><w lemma="is"
-							lemmaRef="http://www.dil.ie/29104" ana="verb">ní</w><w lemma="glóir"
+							lemmaRef="http://www.dil.ie/29104" ana="verb">ni</w><w lemma="glóir"
 							lemmaRef="http://www.dil.ie/26118" ana="noun">gloir</w><space
 							type="scribal"/><w lemma="fann" lemmaRef="http://www.dil.ie/21294"
 							ana="adj"><supplied resp="EPT">fh</supplied>and</w><pc>.</pc>
@@ -695,7 +916,7 @@
 							xml:id="MS2.iiir.6"/><w lemma="a" lemmaRef="http://www.dil.ie/3"
 							ana="poss">a</w><space type="scribal"/><w lemma="barr"
 							lemmaRef="http://www.dil.ie/5416" ana="noun"><abbr cert="high">b<g
-									ref="g4">h</g></abbr><abbr cert="high">a<g ref="#13"
+									ref="g4">h</g></abbr><abbr cert="high">a<g ref="g13"
 								>rr</g></abbr></w><pc>.</pc>
 					</l>
 				</lg>
@@ -715,12 +936,16 @@
 									lemma="cech" lemmaRef="http://www.dil.ie/7528" ana="adj"
 									>cech</w><w n="3" lemma="gád" lemmaRef="http://www.dil.ie/25071"
 									ana="noun">ngád</w></corr>
-						</choice><space type="scribal"/><w lemma="ro, fethid"
-							lemmaRef="http://www.dil.ie/35364, http://www.dil.ie/21846"
-							ana="part, verb"><w lemma="ro" lemmaRef="http://www.dil.ie/35364"
-								ana="part, pron">r<abbr cert="high">o<g ref="g1">m</g></abbr></w><w
-								lemma="fethid" lemmaRef="http://www.dil.ie/21846" ana="verb"
-									>feí<abbr cert="high">t<g ref="g4">h</g></abbr></w></w>
+						</choice><space type="scribal"/><w lemma="ro, -m-, fethid"
+							lemmaRef="http://www.dil.ie/35364, http://www.dil.ie/31160, http://www.dil.ie/21846"
+							ana="part, pron, verb"><w lemma="ro, -m-"
+								lemmaRef="http://www.dil.ie/35364, http://www.dil.ie/31160"
+								ana="part, pron"><w lemma="ro" lemmaRef="http://www.dil.ie/35364"
+									ana="part, pron">ro</w><w lemma="-m-"
+									lemmaRef="http://www.dil.ie/31160" ana="pron"><abbr cert="high"
+											><g ref="g1">m</g></abbr></w></w><w lemma="fethid"
+								lemmaRef="http://www.dil.ie/21846" ana="verb">fei<abbr cert="high"
+										>t<g ref="g4">h</g></abbr></w></w>
 					</l>
 					<l n="c" xml:id="MS2.1.6c">
 						<w lemma="cor" lemmaRef="http://www.dil.ie/12406" ana="vnoun">cor</w><space
@@ -759,14 +984,14 @@
 							lemmaRef="http://www.dil.ie/15847" ana="noun">de</w>
 					</l>
 					<l n="b" xml:id="MS2.1.7b">
-						<w lemma="immar" lemmaRef="http://www.dil.ie/27721" ana="adv">m<abbr
+						<w lemma="immar" lemmaRef="http://www.dil.ie/27721" ana="conj">m<abbr
 								cert="high"><g ref="g8">ar</g></abbr></w><w lemma="a"
 							lemmaRef="http://www.dil.ie/5" ana="pron, verb">as</w><w lemma="maith"
 							lemmaRef="http://www.dil.ie/31438" ana="adj">fear<supplied resp="EPT"
 								>r</supplied></w><space type="scribal"/><w lemma="attá"
 							lemmaRef="http://www.dil.ie/4927" ana="verb">fuil</w><space
 							type="scribal"/><w lemma="fo" lemmaRef="http://www.dil.ie/22333"
-							ana="prep, pron">faí</w>
+							ana="prep, pron">fai</w>
 					</l>
 					<l n="c" xml:id="MS2.1.7c">
 						<w lemma="óen, cor"
@@ -789,7 +1014,7 @@
 									>a<g ref="g1">m</g></abbr></w><w lemma="cech"
 							lemmaRef="http://www.dil.ie/7528" ana="adj">ga<abbr cert="high">c<g
 									ref="g4">h</g></abbr></w><w lemma="lá"
-							lemmaRef="http://www.dil.ie/29234" ana="noun">laí</w>
+							lemmaRef="http://www.dil.ie/29234" ana="noun">lai</w>
 					</l>
 				</lg>
 				<lg n="8" type="stanza" xml:id="MS2.1.8">
@@ -844,7 +1069,7 @@
 					<l n="a" xml:id="MS2.1.9a"><lb n="9" xml:id="MS2.iiir.9"/>
 						<name type="personal"><w ana="noun">Raphael</w></name><space type="scribal"
 							/><w lemma="la" lemmaRef="http://www.dil.ie/29233" ana="prep, pron"
-								>le<abbr cert="high">a<g ref="#1">m</g></abbr></w><space
+								>le<abbr cert="high">a<g ref="g1">m</g></abbr></w><space
 							type="scribal"/><w lemma="do" lemmaRef="http://www.dil.ie/17096"
 							ana="prep">do</w><w lemma="ráith" lemmaRef="http://www.dil.ie/34769"
 							ana="noun">roi<abbr cert="high">t<g ref="g4">h</g></abbr></w>
@@ -873,7 +1098,7 @@
 						<w lemma="i" lemmaRef="http://www.dil.ie/26891" ana="prep">sa</w><w
 							lemma="mairt" lemmaRef="http://www.dil.ie/31417" ana="noun"><abbr
 								cert="high">m<g ref="g4">h</g></abbr><abbr cert="high"
-								>a<g>ir</g></abbr>t</w><space type="scribal"/><w lemma="is"
+								>a<g ref="g11">ir</g></abbr>t</w><space type="scribal"/><w lemma="is"
 							lemmaRef="http://www.dil.ie/29104" ana="verb">is</w><space
 							type="scribal"/><w lemma="do" lemmaRef="http://www.dil.ie/17096"
 							ana="prep, pron"> do </w><space type="scribal"/><w lemma="is"
@@ -885,7 +1110,7 @@
 				<lg n="10" type="stanza" xml:id="MS2.1.10">
 					<l n="a" xml:id="MS2.1.10a"><lb n="10" xml:id="MS2.iiir.10"/>
 						<name type="personal"><w ana="noun">Uriel</w></name><space type="scribal"/>
-						<w lemma="fíal" lemmaRef="http://www.dil.ie/21924" ana="adj">fíal</w><space
+						<w lemma="fíal" lemmaRef="http://www.dil.ie/21924" ana="adj">fial</w><space
 							type="scribal"/><w lemma="in" lemmaRef="http://www.dil.ie/28194"
 							ana="art">na</w><space type="scribal"/><choice>
 							<sic><w lemma="fert" lemmaRef="http://www.dil.ie/21749" ana="noun"><abbr
@@ -951,7 +1176,8 @@
 							lemmaRef="http://www.dil.ie/16570" ana="noun"><abbr cert="high">d<g
 									ref="g4">h</g></abbr>i<abbr cert="high">n</abbr></w>
 						<space type="scribal"/><w lemma="cach" lemmaRef="http://www.dil.ie/7528"
-							ana="adj">g<abbr cert="high"><g ref="g12">ach</g></abbr></w>
+							ana="adj">g<abbr cert="high"><g ref="g12">ac</g></abbr><supplied
+								resp="EPT">h</supplied></w>
 						<space type="scribal"/><w lemma="díardaín"
 							lemmaRef="http://www.dil.ie/15975" ana="noun">di<abbr cert="high">a<g
 									ref="g8">r</g></abbr>dain</w>
@@ -960,7 +1186,7 @@
 						<w lemma="ar" lemmaRef="http://www.dil.ie/3902" ana="prep"><abbr cert="high"
 									><g ref="g8">ar</g></abbr></w><w lemma="cach"
 							lemmaRef="http://www.dil.ie/7528" ana="adj">g<abbr cert="high"><g
-									ref="#12">ach</g></abbr></w><space type="scribal"/><w
+									ref="g12">ach</g></abbr></w><space type="scribal"/><w
 							lemma="gním" lemmaRef="http://www.dil.ie/26218" ana="noun">gn<abbr
 								cert="high">i<g ref="g1">m</g></abbr></w><space type="scribal"/><w
 							lemma="ocus" lemmaRef="http://www.dil.ie/33484" ana="conj">s</w><w
@@ -1023,7 +1249,7 @@
 							lemma="ocus" lemmaRef="http://www.dil.ie/33484" ana="conj">is</w><w
 							lemma="la" lemmaRef="http://www.dil.ie/29233" ana="prep">le</w><w
 							lemma="nert" lemmaRef="http://www.dil.ie/33116" ana="noun">ne<abbr
-								cert="high">a<g>r</g></abbr>t </w><pc>.</pc>
+								cert="high">a<g ref="g8">r</g></abbr>t </w><pc>.</pc>
 					</l>
 				</lg>
 				<lg n="13" type="stanza" xml:id="MS2.1.13">
@@ -1041,9 +1267,9 @@
 							lemmaRef="http://www.dil.ie/3902" ana="prep"><abbr cert="high">a<g
 									ref="g11">ir</g></abbr></w><space type="scribal"/><w
 							lemma="cach" lemmaRef="http://www.dil.ie/7528" ana="adj">g<abbr
-								cert="high"><g ref="g12">ach</g></abbr></w><space type="scribal"/><w
-							lemma="drong" lemmaRef="http://www.dil.ie/18811" ana="noun"
-							>droing</w><pc>.</pc>
+								cert="high"><g ref="g12">ac</g></abbr><supplied resp="EPT"
+								>h</supplied></w><space type="scribal"/><w lemma="drong"
+							lemmaRef="http://www.dil.ie/18811" ana="noun">droing</w><pc>.</pc>
 					</l>
 					<l n="c" xml:id="MS2.1.13c">
 						<w lemma="ar" lemmaRef="http://www.dil.ie/3902" ana="prep"><abbr cert="high"
@@ -1067,7 +1293,7 @@
 							ana="noun, noun"><w lemma="cath" lemmaRef="http://www.dil.ie/8344"
 								ana="noun">ca<abbr cert="high">t<g ref="g4">h</g></abbr></w><w
 								lemma="arm" lemmaRef="http://www.dil.ie/4184" ana="noun"><abbr
-									cert="high">a<g ref="#11">ir</g></abbr>m</w></w><space
+									cert="high">a<g ref="g11">ir</g></abbr>m</w></w><space
 							type="scribal"/><w lemma="corr" lemmaRef="http://www.dil.ie/12513"
 							ana="adj"><abbr cert="high">c<g ref="g4">h</g></abbr>uir<supplied
 								resp="EPT">r</supplied></w><pc>.</pc>
@@ -1094,10 +1320,11 @@
 					</l>
 					<l n="c" xml:id="MS2.1.14c">
 						<w lemma="cach" lemmaRef="http://www.dil.ie/7528" ana="adj">g<abbr
-								cert="high"><g ref="g10">ach</g></abbr></w><space type="scribal"/><w
-							lemma="domnach" lemmaRef="http://www.dil.ie/18124" ana="noun">d<abbr
-								cert="high">o<g ref="g1">m</g></abbr>naic<supplied resp="EPT"
-								>h</supplied></w><space type="scribal"/><w lemma="do"
+								cert="high"><g ref="g10">ac</g></abbr><supplied resp="EPT"
+								>h</supplied></w><space type="scribal"/><w lemma="domnach"
+							lemmaRef="http://www.dil.ie/18124" ana="noun">d<abbr cert="high">o<g
+									ref="g1">m</g></abbr>naic<supplied resp="EPT"
+							>h</supplied></w><space type="scribal"/><w lemma="do"
 							lemmaRef="http://www.dil.ie/17096" ana="prep, poss">d<abbr cert="high"
 									>o<g ref="g1">m</g></abbr></w><w lemma="dín"
 							lemmaRef="http://www.dil.ie/16570" ana="noun"><abbr cert="high">d<g
@@ -1112,10 +1339,7 @@
 								>h</g></abbr></w><space type="scribal"/><w lemma="ar"
 							lemmaRef="http://www.dil.ie/3902" ana="prep"><abbr cert="high">a<g
 									ref="g8">r</g></abbr></w><space type="scribal"/><w lemma="plág"
-							lemmaRef="http://www.dil.ie/34389" ana="noun"><choice>
-								<sic>plaig</sic>
-								<corr resp="EPT">plág</corr>
-							</choice></w>
+							lemmaRef="http://www.dil.ie/34389" ana="noun">plaig</w>
 					</l>
 				</lg>
 				<lg n="15" type="stanza" xml:id="MS2.1.15">
@@ -1200,18 +1424,20 @@
 				</lg>
 				<lg n="17" type="stanza" xml:id="MS2.1.17">
 					<l n="a" xml:id="MS2.1.17a"><lb n="17" xml:id="MS2.iiir.17"/>
-						<w lemma="ar" lemmaRef="http://www.dil.ie/3902" ana="prep"><abbr cert="high"
-									><g ref="g8">ar</g></abbr></w><w lemma="sant"
-							lemmaRef="http://www.dil.ie/36189" ana="noun">sa<abbr cert="high">i<g
-									ref="g5">n</g></abbr>t</w><space type="scribal"/><w lemma="imm"
-							lemmaRef="http://www.dil.ie/27635" ana="prep"><abbr cert="high">u<g
-									ref="g1">m</g></abbr></w><unclear reason="text_obscure"
-							cert="high" resp="EPT"><w lemma="ní" lemmaRef="http://www.dil.ie/33145"
-								ana="pron">ni</w></unclear><space type="scribal"/><space
-							type="scribal"/><w lemma="acht" lemmaRef="http://www.dil.ie/200"
-							ana="prep">ac<supplied resp="EPT">ht</supplied></w><space type="scribal"
-							/><w lemma="nem" lemmaRef="http://www.dil.ie/33070" ana="noun">ne<abbr
-								cert="high">a<g ref="g1">m</g></abbr></w>
+						<unclear reason="met" cert="medium" resp="EPT"><w lemma="ar"
+								lemmaRef="http://www.dil.ie/3902" ana="prep"><abbr cert="high"><g
+										ref="g8">ar</g></abbr></w><w lemma="sant"
+								lemmaRef="http://www.dil.ie/36189" ana="noun">sa<abbr cert="high"
+										>i<g ref="g5">n</g></abbr>t</w><space type="scribal"/><w
+								lemma="imm" lemmaRef="http://www.dil.ie/27635" ana="prep"><abbr
+									cert="high">u<g ref="g1">m</g></abbr></w><unclear
+								reason="text_obscure" cert="high" resp="EPT"><w lemma="ní"
+									lemmaRef="http://www.dil.ie/33145" ana="pron"
+								>ni</w></unclear><space type="scribal"/><space type="scribal"/><w
+								lemma="acht" lemmaRef="http://www.dil.ie/200" ana="prep">ac<supplied
+									resp="EPT">ht</supplied></w><space type="scribal"/><w
+								lemma="nem" lemmaRef="http://www.dil.ie/33070" ana="noun">ne<abbr
+									cert="high">a<g ref="g1">m</g></abbr></w></unclear>
 					</l>
 					<l n="b" xml:id="MS2.1.17b">
 						<w lemma="ar" lemmaRef="http://www.dil.ie/3902" ana="prep">
@@ -1219,7 +1445,7 @@
 							lemmaRef="http://www.dil.ie/33145" ana="pron">ni</w><space
 							type="scribal"/><w lemma="nach" lemmaRef="http://www.dil.ie/32908"
 							ana="part">nac<supplied resp="EPT">h</supplied></w><w lemma="attá"
-							lemmaRef="http://www.dil.ie/5276" ana="verb">bí</w><space type="scribal"
+							lemmaRef="http://www.dil.ie/4927" ana="verb">bi</w><space type="scribal"
 							/><w lemma="bal" lemmaRef="http://www.dil.ie/5276" ana="noun">bail</w>
 					</l>
 					<l n="c" xml:id="MS2.1.17c">
@@ -1238,7 +1464,7 @@
 							ana="prep">re</w><w lemma="bás" lemmaRef="http://www.dil.ie/5444"
 							ana="noun">báis</w><space type="scribal"/><w lemma="bán"
 							lemmaRef="http://www.dil.ie/5318" ana="adj"><abbr cert="high">ḃ<g
-									ref="g4">h</g></abbr>an</w>
+									ref="g4">h</g></abbr>a<supplied resp="EPT">i</supplied>n</w>
 					</l>
 				</lg>
 				<lg n="18" type="stanza" xml:id="MS2.1.18">
@@ -1251,17 +1477,20 @@
 					</l>
 					<l n="b" xml:id="MS2.1.18b">
 						<w lemma="ar" lemmaRef="http://www.dil.ie/3902" ana="prep"><abbr cert="high"
-									><g ref="g8">ar</g></abbr></w><w lemma="glé"
-							lemmaRef="http://www.dil.ie/26020" ana="adj">gle</w><w lemma="cáined"
-							lemmaRef="http://www.dil.ie/7825" ana="vnoun"><abbr cert="high">c<g
-									ref="g4">h</g></abbr>anead</w><space type="scribal"/><w
-							lemma="gin" lemmaRef="http://www.dil.ie/25866" ana="noun">gi<abbr
-								cert="high">n<g ref="g5">n</g></abbr></w>
+									><g ref="g8">ar</g></abbr></w><w lemma="glé, cáined"
+							lemmaRef="http://www.dil.ie/26020, http://www.dil.ie/7825"
+							ana="adj, vnoun"><w lemma="glé" lemmaRef="http://www.dil.ie/26020"
+								ana="adj">gle</w><w lemma="cáined" lemmaRef="http://www.dil.ie/7825"
+								ana="vnoun"><abbr cert="high">c<g ref="g4"
+							>h</g></abbr>anead</w></w><space type="scribal"/><w lemma="gin"
+							lemmaRef="http://www.dil.ie/25866" ana="noun">gi<abbr cert="high">n<g
+									ref="g5">n</g></abbr></w>
 					</l>
 					<l n="c" xml:id="MS2.1.18c">
 						<w lemma="ar" lemmaRef="http://www.dil.ie/3902" ana="prep">ar</w><w
 							lemma="cach" lemmaRef="http://www.dil.ie/7528" ana="adj">g<abbr
-								cert="high"><g ref="g12">ach</g></abbr></w><w lemma="caingen"
+								cert="high"><g ref="g12">ac</g></abbr><supplied resp="EPT"
+								>h</supplied></w><w lemma="caingen"
 							lemmaRef="http://www.dil.ie/7832" ana="noun"><supplied resp="EPT"
 								>c</supplied>aingin</w><space type="scribal"/><w lemma="clé"
 							lemmaRef="http://www.dil.ie/9397" ana="adj">cle</w>
@@ -1299,11 +1528,11 @@
 						<w lemma="co" lemmaRef="http://www.dil.ie/9788" ana="conj">go</w><w
 							lemma="do-roich" lemmaRef="http://www.dil.ie/18386" ana="verb"
 							>torset</w><space type="scribal"/><w lemma="indiu"
-							lemmaRef="http://www.dil.ie/28446" ana="adv">aníu</w>
+							lemmaRef="http://www.dil.ie/28446" ana="adv">aniu</w>
 					</l>
 					<l n="c" xml:id="MS2.1.19c">
 						<w lemma="in" lemmaRef="http://www.dil.ie/28194" ana="art"><abbr cert="high"
-									>i<g>n</g></abbr></w><space type="scribal"/><w lemma="cuire"
+									>i<g ref="g5">n</g></abbr></w><space type="scribal"/><w lemma="cuire"
 							lemmaRef="http://www.dil.ie/13652" ana="noun">cure</w><space
 							type="scribal"/><w lemma="noíb" lemmaRef="http://www.dil.ie/33244"
 							ana="adj">na<abbr cert="high">e<g ref="g1">m</g></abbr></w><space
@@ -1343,7 +1572,7 @@
 							lemmaRef="http://www.dil.ie/28194" ana="art">an</w><w lemma="fír, óg"
 							lemmaRef="http://www.dil.ie/22171, http://www.dil.ie/33562"
 							ana="adj, noun"><w lemma="fír" lemmaRef="http://www.dil.ie/22171"
-								ana="adj"><supplied resp="EPT">fh</supplied>ír</w><w lemma="óg"
+								ana="adj"><supplied resp="EPT">fh</supplied>ir</w><w lemma="óg"
 								lemmaRef="http://www.dil.ie/33562" ana="noun">og</w></w><space
 							type="scribal"/><w lemma="finn" lemmaRef="http://www.dil.ie/22134"
 							ana="adj"><abbr cert="high">f<g ref="g4">h</g></abbr>ind</w>
@@ -1366,7 +1595,7 @@
 							lemma="do" lemmaRef="http://www.dil.ie/17096" ana="prep, poss">d<abbr
 								cert="high">o<g ref="g1">m</g></abbr></w><w lemma="dín"
 							lemmaRef="http://www.dil.ie/16570" ana="noun"><abbr cert="high">d<g
-									ref="#4">h</g></abbr><abbr cert="high">i<g ref="#"
+									ref="g4">h</g></abbr><abbr cert="high">i<g ref="g4"
 							>n</g></abbr></w>
 					</l>
 					<l n="b" xml:id="MS2.1.21b">
@@ -1379,10 +1608,11 @@
 							lemmaRef="http://www.dil.ie/33783" ana="noun">nuilc</w>
 					</l>
 					<l n="c" xml:id="MS2.1.21c">
-						<w lemma="tar" lemmaRef="http://www.dil.ie/40049" ana="prep, pron"
-								>tair<space type="scribal"/><pc>.</pc><abbr cert="high"><g ref="g2"
-									>is</g></abbr></w><w lemma="fethid"
-							lemmaRef="http://www.dil.ie/21846" ana="verb">feí<abbr cert="high">t<g
+						<unclear reason="interp_obscure" cert="medium" resp="EPT"><w lemma="tar"
+								lemmaRef="http://www.dil.ie/40049" ana="prep, pron">tair<space
+									type="scribal"/>.<abbr cert="high"><g ref="g2"
+							>is</g></abbr></w></unclear><w lemma="fethid"
+							lemmaRef="http://www.dil.ie/21846" ana="verb">fei<abbr cert="high">t<g
 									ref="g4">h</g></abbr></w><add resp="Hand7" place="margin"><w
 								lemma="mé" lemmaRef="http://www.dil.ie/31705" ana="pron"
 							>me</w></add><w lemma="a" lemmaRef="http://www.dil.ie/2" ana="part"
@@ -1440,7 +1670,7 @@
 				<lg n="23" type="stanza" xml:id="MS2.1.23">
 					<l n="a" xml:id="MS2.1.23a"><lb n="23" xml:id="MS2.iiir.23"/>
 						<name type="personal"><w ana="noun">Lucas</w></name><space type="scribal"
-							/><w ana="pron, poss">d<abbr cert="high">o<g ref="g1">m</g></abbr></w><w
+							/><w ana="prep, poss">d<abbr cert="high">o<g ref="g1">m</g></abbr></w><w
 							lemma="leth" lemmaRef="http://www.dil.ie/30036" ana="noun">lei<abbr
 								cert="high">t<g ref="g4">h</g></abbr></w><w lemma="dess"
 							lemmaRef="http://www.dil.ie/15783" ana="adj">deis</w>
@@ -1475,7 +1705,7 @@
 											><g ref="g1">m</g>o</abbr></w></corr>
 						</choice><space type="scribal"/><w lemma="dín"
 							lemmaRef="http://www.dil.ie/16570" ana="noun">d<supplied resp="EPT"
-								>h</supplied>ín</w><w lemma="i" lemmaRef="http://www.dil.ie/26891"
+								>h</supplied>in</w><w lemma="i" lemmaRef="http://www.dil.ie/26891"
 							ana="prep, poss"><abbr cert="high">a<g ref="g1">m</g></abbr></w><w
 							lemma="dead" lemmaRef="http://www.dil.ie/14812" ana="noun">diai<abbr
 								cert="high">d<g ref="g4">h</g></abbr></w>
@@ -1500,17 +1730,18 @@
 									ref="g8">r</g></abbr></w>
 					</l>
 					<l n="c" xml:id="MS2.1.24c">
-						<w lemma="immar" lemmaRef="http://www.dil.ie/27721" ana="conj">mar</w><w
-							lemma="do-icc" lemmaRef="http://www.dil.ie/17788" ana="verb"
-							>tísat</w><space type="scribal"/><w lemma="ech"
-							lemmaRef="http://www.dil.ie/19508" ana="noun">eac<supplied resp="EPT"
-								>h</supplied></w><space type="scribal"/><w lemma="úr"
+						<unclear reason="interp_obscure" cert="medium" resp="EPT"><w lemma="immar"
+								lemmaRef="http://www.dil.ie/27721" ana="conj">mar</w><w
+								lemma="do-icc" lemmaRef="http://www.dil.ie/17788" ana="verb"
+								>tisa</w><w lemma="tech" lemmaRef="http://www.dil.ie/40265"
+								ana="noun">t<space type="scribal"/>eac<supplied resp="EPT"
+									>h</supplied></w></unclear><space type="scribal"/><w lemma="úr"
 							lemmaRef="http://www.dil.ie/43210" ana="adj">ur</w>
 					</l>
 					<l n="d" xml:id="MS2.1.24d">
 						<w lemma="fo" lemmaRef="http://www.dil.ie/22333" ana="prep, pron">f<abbr
 								cert="high">u<g ref="g1">m</g></abbr></w><space type="scribal"/><w
-							lemma="do-icc" lemmaRef="http://www.dil.ie/17788" ana="verb"><abbr
+							lemma="tís" lemmaRef="http://www.dil.ie/40973" ana="adv"><abbr
 								cert="high">t<g ref="g4">h</g></abbr>is </w><w lemma="lám"
 							lemmaRef="http://www.dil.ie/29507" ana="noun">lam</w><w lemma="fri"
 							lemmaRef="http://www.dil.ie/24329" ana="prep">ri</w><w lemma="lár"
@@ -1541,9 +1772,10 @@
 							lemma="comla" lemmaRef="http://www.dil.ie/11379" ana="noun"
 							>comla</w><space type="scribal"/><w lemma="nach"
 							lemmaRef="http://www.dil.ie/32909" ana="conj">n<abbr cert="high"><g
-									ref="g12">ach</g></abbr></w><space type="scribal"/><w
-							lemma="gand" lemmaRef="http://www.dil.ie/25351" ana="adj">ga<abbr
-								cert="high">n<g ref="g5">n</g></abbr></w>
+									ref="g12">ac</g></abbr><supplied resp="EPT"
+							>h</supplied></w><space type="scribal"/><w lemma="gand"
+							lemmaRef="http://www.dil.ie/25351" ana="adj">ga<abbr cert="high">n<g
+									ref="g5">n</g></abbr></w>
 					</l>
 					<l n="d" xml:id="MS2.1.25d">
 						<w lemma="do" lemmaRef="http://www.dil.ie/17096" ana="prep, poss">d<abbr
@@ -1622,7 +1854,7 @@
 											>a<g ref="g1">m</g><g ref="g4">h</g></abbr></w></w><w
 								lemma="gaibid" lemmaRef="http://www.dil.ie/25119" ana="verb"
 								>gabsat</w></w><space type="scribal"/><w lemma="gae"
-							lemmaRef="http://www.dil.ie/25080" ana="noun">gaí</w>
+							lemmaRef="http://www.dil.ie/25080" ana="noun">gai</w>
 					</l>
 					<l n="c" xml:id="MS2.1.27c">
 						<w lemma="spirut" lemmaRef="http://www.dil.ie/38630" ana="noun"
@@ -1636,8 +1868,9 @@
 							lemma="lúirech" lemmaRef="http://www.dil.ie/31029" ana="noun"
 								>lurec<supplied resp="EPT">h</supplied></w><space type="scribal"/><w
 							lemma="cach" lemmaRef="http://www.dil.ie/7528" ana="adj">ga<abbr
-								cert="high"><g ref="g12">ch</g></abbr></w><w lemma="lá"
-							lemmaRef="http://www.dil.ie/29234" ana="noun">laí</w>
+								cert="high"><g ref="g12">c</g></abbr><supplied resp="EPT"
+								>h</supplied></w><w lemma="lá" lemmaRef="http://www.dil.ie/29234"
+							ana="noun">lai</w>
 					</l>
 				</lg>
 				<lg n="28" type="stanza" xml:id="MS2.1.28">
@@ -1672,12 +1905,12 @@
 							lemmaRef="http://www.dil.ie/12925" ana="noun">cri<abbr cert="high">d<g
 									ref="g4">h</g></abbr>e</w><space type="scribal"/><w lemma="co"
 							lemmaRef="http://www.dil.ie/9786" ana="prep, poss">g<abbr cert="high"
-									>o<g ref="g1">m</g></abbr></w><w lemma="clab"
+									>o<g ref="g1">m</g></abbr></w><w lemma="clíab"
 							lemmaRef="http://www.dil.ie/9470" ana="noun">cliab<abbr cert="high"
 								>h</abbr></w>
 					</l>
 					<l n="d" xml:id="MS2.1.28d">
-						<w lemma="rí" lemmaRef="http://www.dil.ie/35181" ana="noun">ríg</w><space
+						<w lemma="rí" lemmaRef="http://www.dil.ie/35181" ana="noun">rig</w><space
 							type="scribal"/><w lemma="nem" lemmaRef="http://www.dil.ie/33070"
 							ana="noun">n<abbr cert="high">i<g ref="g1">m</g></abbr>e</w><space
 							type="scribal"/><w lemma="in" lemmaRef="http://www.dil.ie/28194"
@@ -1734,8 +1967,7 @@
 							lemmaRef="http://www.dil.ie/22333" ana="prep, pron">f<abbr cert="high"
 									>a<g ref="g1">m</g></abbr></w><choice>
 							<sic><w lemma="scing" lemmaRef="http://www.dil.ie/36491" ana="noun"
-										>sg<abbr cert="medium">i<g ref="g5">n</g></abbr><abbr
-										cert="high">d<g ref="g4">h</g></abbr></w></sic>
+										>sg<abbr cert="medium">i<g ref="g5">n</g></abbr>ḋ</w></sic>
 							<corr resp="EPT"><w lemma="scing" lemmaRef="http://www.dil.ie/36491"
 									ana="noun">sging</w></corr>
 						</choice>

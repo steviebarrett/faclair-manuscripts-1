@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?xml-model href="file:/C:/Files/faclair-manuscripts/fnag_mss.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
-<?xml-stylesheet type="text/xsl" href="stylesheet-ed-pub.xsl"?>
+<?xml-stylesheet type="text/xsl" href="stylesheet-ed-ana-abbrs.xsl"?>
 <teiCorpus xmlns="http://www.tei-c.org/ns/1.0" xmlns:xi="http://www.w3.org/2001/XInclude">
 	<teiHeader>
 		<fileDesc>
@@ -778,8 +778,7 @@
 					<note>A subscript "i", resembling an us-symbol (;), standing for "i", perhaps
 						plus a further string.</note>
 				</glyph>
-				<glyph xml:id="g44"
-					corresp="www.vanhamel.nl/codecs/S_insular_with_cross_stroke">
+				<glyph xml:id="g44" corresp="www.vanhamel.nl/codecs/S_insular_with_cross_stroke">
 					<glyphName>s with cross-stroke</glyphName>
 					<note>A long insular "s" with a cross-stroke pointing towards the bottom right,
 						standing for "s", a vowel, and often an "r".</note>
@@ -823,6 +822,10 @@
 					<note>A stroke from the lower left of a character to the upper right, crossing
 						the character itself, standing for a string of subsequent characters. Found
 						with "n" thus far.</note>
+				</glyph>
+				<glyph xml:id="g53">
+					<glyphName>double character</glyphName>
+					<note>The same character repeated, standing for that character capitalised</note>
 				</glyph>
 				<glyph xml:id="gn" corresp="n">
 					<glyphName/>
@@ -899,9 +902,8 @@
 					<region cert="medium">Argyll</region>
 					<note><p>This is the scribe of '<ref target="#T2">Aingil Dé dom dhín</ref>' in
 								<ref target="#MS2">London, BL MS. Egerton 2899</ref> and a set of
-							Columban poems in Edinburgh, NLS Adv. MS 72.1.31. Black has
-							suggested that he was a MacEwen working for the Campbells of
-							Glenorchy.</p>
+							Columban poems in Edinburgh, NLS Adv. MS 72.1.31. Black has suggested
+							that he was a MacEwen working for the Campbells of Glenorchy.</p>
 						<p>On the whole, the scribe follows the conventions of medieval Gaelic
 							orthography and restricts himself to the most conventional
 							abbreviations.</p>
