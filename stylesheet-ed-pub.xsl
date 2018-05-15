@@ -2,6 +2,7 @@
 <xsl:stylesheet xmlns:tei="http://www.tei-c.org/ns/1.0"
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema"
 	exclude-result-prefixes="xs" version="1.0">
+	<xsl:include href="stylesheet-dip-comp.xsl"/>
 	<xsl:strip-space elements="*"/>
 
 	<xsl:output method="html"/>
@@ -16,7 +17,7 @@
 	<xsl:key name="lang" match="*" use="@xml:id"/>
 	<xsl:key name="text" match="*" use="@corresp"/>
 	<xsl:key name="altText" match="*" use="@corresp"/>
-
+	
 	<xsl:param name="sicReplace" select="'alt'"/>
 
 	<xsl:attribute-set name="tblBorder">
@@ -37,14 +38,16 @@
 				<!-- <xsl:apply-templates select="tei:teiCorpus/tei:teiHeader"/> -->
 				<xsl:for-each select="tei:teiCorpus/tei:TEI">
 					<br/>
-					<xsl:apply-templates/>
+					<xsl:call-template name="tempEd"/>
 					<br/>
+					<h3>Diplomatic Text</h3>
+					<xsl:apply-templates mode="dip"/>
 				</xsl:for-each>
 			</body>
 		</html>
 	</xsl:template>
 
-	<xsl:template match="tei:teiCorpus/tei:TEI">
+	<xsl:template name="tempEd" match="tei:teiCorpus/tei:TEI">
 		<br/>
 		<xsl:apply-templates/>
 	</xsl:template>
@@ -683,7 +686,7 @@
 						<xsl:choose>
 							<xsl:when test="tei:sic/descendant::tei:w">
 								<xsl:for-each select="tei:sic/descendant::tei:w">
-									<xsl:call-template name="word"/>
+									<xsl:call-template name="word_ed"/>
 								</xsl:for-each>
 							</xsl:when>
 							<xsl:otherwise>
@@ -744,7 +747,7 @@
 		</xsl:choose>
 	</xsl:template>
 
-	<xsl:template name="word" match="tei:w[not(descendant::tei:w)]">
+	<xsl:template name="word_ed" match="tei:w[not(descendant::tei:w)]">
 		<xsl:variable name="wordId" select="generate-id()"/>
 		<xsl:variable name="wordPOS" select="count(preceding::*)"/>
 		<xsl:variable name="lem">

@@ -393,7 +393,13 @@ function addSlip(id) {
 	else {
 		contextEnd = " ...";
 	}
-	var context = contextBeg.concat(el_minus_5node, ' ', el_minus_4node, ' ', el_minus_3node, ' ', el_minus_2node, ' ', el_minus_1node, ' ', '<b>' + textForm + '</b>', ' ', el_plus_1node, ' ', el_plus_2node, ' ', el_plus_3node, ' ', el_plus_4node, ' ', el_plus_5node, contextEnd);
+	var context
+	if (el.id.substr(8) =="dip") {
+		context = contextBeg.concat(el_minus_5node, el_minus_4node, el_minus_3node, el_minus_2node, el_minus_1node, '<b>' + textForm + '</b>', ' ', el_plus_1node, el_plus_2node, el_plus_3node, el_plus_4node, el_plus_5node, contextEnd);
+	}
+	else {
+	context = contextBeg.concat(el_minus_5node, ' ', el_minus_4node, ' ', el_minus_3node, ' ', el_minus_2node, ' ', el_minus_1node, ' ', '<b>' + textForm + '</b>', ' ', el_plus_1node, ' ', el_plus_2node, ' ', el_plus_3node, ' ', el_plus_4node, ' ', el_plus_5node, contextEnd);
+	}
 	var rcol3 = row.insertCell(2);
 	rcol3.innerHTML = context;
 	rcol3.style.fontSize = "smaller";
