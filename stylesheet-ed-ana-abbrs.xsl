@@ -12,7 +12,7 @@
 		<html>
 			<head>
 				<title> Report: <xsl:value-of
-						select="/tei:TEI/tei:teiHeader/tei:fileDesc/tei:titleStmt/tei:title"/>
+						select="ancestor::tei:TEI/tei:teiHeader/tei:fileDesc/tei:titleStmt/tei:title"/>
 				</title>
 			</head>
 			<body>

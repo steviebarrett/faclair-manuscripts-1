@@ -119,7 +119,16 @@
 	</xsl:template>
 
 	<xsl:template mode="dip" match="tei:space[@type = 'scribal']">
-		<a id="{generate-id()}_dip"><xsl:text>&#160;</xsl:text></a>
+		<xsl:choose>
+			<xsl:when test="ancestor::tei:w[not(descendant::tei:w)]">
+				<xsl:text>&#160;</xsl:text>
+			</xsl:when>
+			<xsl:otherwise>
+				<a id="{generate-id()}_dip">
+					<xsl:text>&#160;</xsl:text>
+				</a>
+			</xsl:otherwise>
+		</xsl:choose>
 	</xsl:template>
 
 	<xsl:template mode="dip" match="tei:seg[@type = 'catchword']">
@@ -735,12 +744,37 @@
 	</xsl:template>
 
 	<xsl:template mode="dip" match="tei:pc">
-		<xsl:apply-templates mode="dip"/>
+		<a id="{generate-id()}_dip" style="text-decoration:none; color:#000000" href="#"
+			onclick="return false;">
+			<xsl:apply-templates mode="dip"/>
+		</a>
 	</xsl:template>
 
-	<xsl:template mode="dip" match="tei:space[@type = 'force']"> &#160; </xsl:template>
+	<xsl:template mode="dip" match="tei:space[@type = 'force']">
+		<xsl:choose>
+			<xsl:when test="ancestor::tei:w[not(descendant::tei:w)]">
+				<xsl:text>&#160;</xsl:text>
+			</xsl:when>
+			<xsl:otherwise>
+				<a id="{generate-id()}_dip">
+					<xsl:text>&#160;</xsl:text>
+				</a>
+			</xsl:otherwise>
+		</xsl:choose>
+	</xsl:template>
 
-	<xsl:template mode="dip" match="tei:space[@type = 'em']"> &#160;&#160;&#160;&#160; </xsl:template>
+	<xsl:template mode="dip" match="tei:space[@type = 'em']">
+		<xsl:choose>
+			<xsl:when test="ancestor::tei:w[not(descendant::tei:w)]">
+				<xsl:text>&#160;&#160;&#160;&#160;</xsl:text>
+			</xsl:when>
+			<xsl:otherwise>
+				<a id="{generate-id()}_dip">
+					<xsl:text>&#160;&#160;&#160;&#160;</xsl:text>
+				</a>
+			</xsl:otherwise>
+		</xsl:choose>
+		 </xsl:template>
 
 	<xsl:template mode="dip" match="tei:supplied">
 		<xsl:text/>
