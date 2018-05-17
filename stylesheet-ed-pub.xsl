@@ -17,7 +17,7 @@
 	<xsl:key name="lang" match="*" use="@xml:id"/>
 	<xsl:key name="text" match="*" use="@corresp"/>
 	<xsl:key name="altText" match="*" use="@corresp"/>
-	
+
 	<xsl:param name="sicReplace" select="'alt'"/>
 
 	<xsl:attribute-set name="tblBorder">
@@ -112,13 +112,21 @@
 	<xsl:template match="tei:teiHeader/tei:fileDesc/tei:sourceDesc">
 		<h4>Hands</h4>
 		<xsl:for-each select="tei:msDesc/tei:physDesc/tei:handDesc/tei:handNote/tei:note">
-			<xsl:if test="@comment"><h5><xsl:value-of select="@comment"/></h5></xsl:if>
+			<xsl:if test="@comment">
+				<h5>
+					<xsl:value-of select="@comment"/>
+				</h5>
+			</xsl:if>
 			<xsl:for-each select="tei:p">
-			<xsl:if test="@comment"><h6><xsl:value-of select="@comment"/></h6></xsl:if>
+				<xsl:if test="@comment">
+					<h6>
+						<xsl:value-of select="@comment"/>
+					</h6>
+				</xsl:if>
 				<p style="font-size: small">
-				<xsl:apply-templates/>
-			</p>
-		</xsl:for-each>
+					<xsl:apply-templates/>
+				</p>
+			</xsl:for-each>
 		</xsl:for-each>
 		<h4>Contents</h4>
 		<h5>Summary</h5>
@@ -203,7 +211,7 @@
 						<xsl:text>); </xsl:text>
 					</xsl:if>
 				</xsl:for-each>
-				
+
 			</xsl:if>
 			<xsl:if test="child::tei:msItem">
 				<xsl:for-each select="child::tei:msItem">
@@ -283,7 +291,11 @@
 			</xsl:if>
 			<h5>Text Summary</h5>
 			<xsl:for-each select="tei:note/tei:p">
-				<xsl:if test="@comment"><h6><xsl:value-of select="@comment"/></h6></xsl:if>
+				<xsl:if test="@comment">
+					<h6>
+						<xsl:value-of select="@comment"/>
+					</h6>
+				</xsl:if>
 				<p style="font-size: small">
 					<xsl:apply-templates/>
 				</p>
@@ -295,12 +307,23 @@
 				</p>
 			</xsl:for-each>
 			<br/>
-			<h5>Language</h5>
-			<xsl:for-each select="tei:textLang/tei:note/tei:p">
-				<xsl:if test="@comment"><xsl:value-of select="@comment"/></xsl:if>
-				<p style="font-size: small">
-					<xsl:apply-templates/>
-				</p>
+			<h5>Language and Style</h5>
+			<xsl:for-each select="tei:textLang/tei:note">
+				<xsl:if test="@comment">
+					<h6>
+						<xsl:value-of select="@comment"/>
+					</h6>
+				</xsl:if>
+				<xsl:for-each select="tei:p">
+					<xsl:if test="@comment">
+						<h7>
+							<xsl:value-of select="@comment"/>
+						</h7>
+					</xsl:if>
+					<p style="font-size: small">
+						<xsl:apply-templates/>
+					</p>
+				</xsl:for-each>
 			</xsl:for-each>
 			<br/>
 		</xsl:for-each>
@@ -396,7 +419,9 @@
 		<ul>
 			<xsl:for-each select="tei:head">
 				<li style="font-size: small;list-style: none">
-					<b><xsl:apply-templates/></b>
+					<b>
+						<xsl:apply-templates/>
+					</b>
 				</li>
 			</xsl:for-each>
 			<xsl:for-each select="tei:item">
@@ -850,10 +875,12 @@
 						</xsl:when>
 						<xsl:when test="@reason = 'text_obscure'">
 							<xsl:choose>
-								<xsl:when test="@reason = 'text_obscure' and descendant::tei:w[not(descendant::tei:w)]">
+								<xsl:when
+									test="@reason = 'text_obscure' and descendant::tei:w[not(descendant::tei:w)]">
 									<xsl:text xml:space="preserve">- this word is difficult to decipher &#10;</xsl:text>
 								</xsl:when>
-								<xsl:when test="@reason = 'text_obscure' and ancestor::tei:w[not(descendant::tei:w)]">
+								<xsl:when
+									test="@reason = 'text_obscure' and ancestor::tei:w[not(descendant::tei:w)]">
 									<xsl:text xml:space="preserve">- parts of this word are difficult to decipher &#10;</xsl:text>
 								</xsl:when>
 							</xsl:choose>
@@ -1422,9 +1449,8 @@
 	</xsl:template>
 
 	<xsl:template match="tei:ref">
-		<a onclick="refDetails()">
-			<xsl:apply-templates/>
-		</a>
+		<a id="ref{count(preceding::*)}" onclick="refDetails(this.id)"><xsl:apply-templates/></a>
+		<seg id="ref{count(preceding::*)}_tbl" style="display:none"><b>REF TEXT HERE</b></seg>
 	</xsl:template>
 
 	<xsl:template match="tei:c">
