@@ -1771,6 +1771,24 @@
 							<xsl:text> &gt; </xsl:text>
 						</b>
 					</xsl:when>
+					<xsl:when test="@place = 'margin, top'">
+						<b>
+							<xsl:text>// </xsl:text>
+						</b>
+						<xsl:apply-templates/>
+						<b>
+							<xsl:text> \\</xsl:text>
+						</b>
+					</xsl:when>
+					<xsl:when test="@place = 'inline'">
+						<b>
+							<xsl:text>| </xsl:text>
+						</b>
+						<xsl:apply-templates/>
+						<b>
+							<xsl:text> |</xsl:text>
+						</b>
+					</xsl:when>
 				</xsl:choose>
 			</xsl:otherwise>
 		</xsl:choose>

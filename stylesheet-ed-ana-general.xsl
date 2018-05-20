@@ -19,11 +19,39 @@
 
 	<xsl:param name="sicReplace" select="'alt'"/>
 
+	<xsl:variable name="wordPOS" select="count(preceding::*)"/>
+
 	<xsl:attribute-set name="tblBorder">
 		<xsl:attribute name="border">solid 0.1mm black</xsl:attribute>
 	</xsl:attribute-set>
 
 	<xsl:template name="contentRow">
+		<xsl:variable name="comDiv" select="ancestor::tei:div[last()]/@corresp"/>
+		<xsl:variable name="handRef">
+			<xsl:choose>
+				<xsl:when test="ancestor::tei:add">
+					<xsl:value-of select="ancestor::tei:add/@resp"/>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:choose>
+						<xsl:when test="ancestor::tei:div[@resp]//tei:handShift">
+							<xsl:choose>
+								<xsl:when
+									test="preceding::tei:handShift[1]/ancestor::tei:div[last()]/@corresp = $comDiv">
+									<xsl:value-of select="preceding::tei:handShift[1]/@new"/>
+								</xsl:when>
+								<xsl:otherwise>
+									<xsl:value-of select="ancestor::tei:div[@resp]/@resp"/>
+								</xsl:otherwise>
+							</xsl:choose>
+						</xsl:when>
+						<xsl:otherwise>
+							<xsl:value-of select="ancestor::tei:div[@resp]/@resp"/>
+						</xsl:otherwise>
+					</xsl:choose>
+				</xsl:otherwise>
+			</xsl:choose>
+		</xsl:variable>
 		<tr>
 			<td>
 				<xsl:value-of select="position()"/>
@@ -40,31 +68,15 @@
 				<xsl:value-of select="@ana"/>
 			</td>
 			<td>
-				<xsl:choose>
-					<xsl:when test="ancestor::tei:div//tei:handShift">
-						<xsl:variable name="handID"
-							select="preceding::tei:handShift[1]/@new | preceding::tei:div[1]/@resp"/>
-						<xsl:value-of
-							select="key('hands', preceding::tei:handShift[1]/@new)/tei:forename | key('hands', preceding::tei:div[1])/tei:forename"/>
-						<xsl:text> </xsl:text>
-						<xsl:value-of
-							select="key('hands', preceding::tei:handShift[1]/@new)/tei:surname | key('hands', preceding::tei:div[1]/@resp)/tei:surname"/>
-						<xsl:text> (</xsl:text>
-						<xsl:value-of select="substring($handID, 5)"/>
-						<xsl:text>)</xsl:text>
-					</xsl:when>
-					<xsl:otherwise>
-						<xsl:value-of select="key('hands', ancestor::tei:div[1]/@resp)/tei:forename"/>
-						<xsl:text> </xsl:text>
-						<xsl:value-of select="key('hands', ancestor::tei:div[1]/@resp)/tei:surname"/>
-						<xsl:text> (</xsl:text>
-						<xsl:value-of select="substring(ancestor::tei:div[1]/@resp, 5)"/>
-						<xsl:text>)</xsl:text>
-					</xsl:otherwise>
-				</xsl:choose>
+				<xsl:value-of select="key('hands', $handRef)/tei:forename"/>
+				<xsl:text> </xsl:text>
+				<xsl:value-of select="key('hands', $handRef)/tei:surname"/>
+				<xsl:text> (</xsl:text>
+				<xsl:value-of select="substring($handRef, 5)"/>
+				<xsl:text>)</xsl:text>
 			</td>
 			<td>
-				<xsl:value-of select="ancestor::tei:div[@n][1]/@n"/>
+				<xsl:value-of select="key('hands', $handRef)/tei:date"/>
 			</td>
 			<td>
 				<xsl:value-of select="preceding::tei:lb[1]/@xml:id | preceding::tei:lb[1]/@sameAs"/>
@@ -78,88 +90,118 @@
 				<xsl:choose>
 					<xsl:when
 						test="ancestor::tei:div[@type = 'verse'][1] | ancestor::tei:div[@type = 'divprose'][1]">
-						<xsl:apply-templates select="ancestor::tei:l[1]"/>
-					</xsl:when>
-					<xsl:when test="ancestor::*[parent::tei:p]">
+						<xsl:variable name="comLine" select="ancestor::tei:l/@xml:id"/>
 						<xsl:apply-templates
-							select="ancestor::*[parent::tei:p]/preceding::*[parent::tei:p or parent::tei:l and not(tei:lg | tei:note[@type = 'fn'])][8]"/>
-						<xsl:apply-templates
-							select="ancestor::*[parent::tei:p]/preceding::*[parent::tei:p or parent::tei:l and not(tei:lg | tei:note[@type = 'fn'])][7]"/>
-						<xsl:apply-templates
-							select="ancestor::*[parent::tei:p]/preceding::*[parent::tei:p or parent::tei:l and not(tei:lg | tei:note[@type = 'fn'])][6]"/>
-						<xsl:apply-templates
-							select="ancestor::*[parent::tei:p]/preceding::*[parent::tei:p or parent::tei:l and not(tei:lg | tei:note[@type = 'fn'])][5]"/>
-						<xsl:apply-templates
-							select="ancestor::*[parent::tei:p]/preceding::*[parent::tei:p or parent::tei:l and not(tei:lg | tei:note[@type = 'fn'])][4]"/>
-						<xsl:apply-templates
-							select="ancestor::*[parent::tei:p]/preceding::*[parent::tei:p or parent::tei:l and not(tei:lg | tei:note[@type = 'fn'])][3]"/>
-						<xsl:apply-templates
-							select="ancestor::*[parent::tei:p]/preceding::*[parent::tei:p or parent::tei:l and not(tei:lg | tei:note[@type = 'fn'])][2]"/>
-						<xsl:apply-templates
-							select="ancestor::*[parent::tei:p]/preceding::*[parent::tei:p or parent::tei:l and not(tei:lg | tei:note[@type = 'fn'])][1]"/>
-						<b>
-							<xsl:apply-templates select="ancestor::*[parent::tei:p]"/>
+							select="ancestor-or-self::*[parent::tei:l]/preceding::*[parent::tei:l[@xml:id = $comLine]]"/>
+						<b style="background-color:aqua">
+							<xsl:apply-templates select="ancestor-or-self::*[parent::tei:l]"/>
 						</b>
 						<xsl:apply-templates
-							select="ancestor::*[parent::tei:p]/following::*[parent::tei:p or parent::tei:l and not(tei:lg | tei:note[@type = 'fn'])][1]"/>
-						<xsl:apply-templates
-							select="ancestor::*[parent::tei:p]/following::*[parent::tei:p or parent::tei:l and not(tei:lg | tei:note[@type = 'fn'])][2]"/>
-						<xsl:apply-templates
-							select="ancestor::*[parent::tei:p]/following::*[parent::tei:p or parent::tei:l and not(tei:lg | tei:note[@type = 'fn'])][3]"/>
-						<xsl:apply-templates
-							select="ancestor::*[parent::tei:p]/following::*[parent::tei:p or parent::tei:l and not(tei:lg | tei:note[@type = 'fn'])][4]"/>
-						<xsl:apply-templates
-							select="ancestor::*[parent::tei:p]/following::*[parent::tei:p or parent::tei:l and not(tei:lg | tei:note[@type = 'fn'])][5]"/>
-						<xsl:apply-templates
-							select="ancestor::*[parent::tei:p]/following::*[parent::tei:p or parent::tei:l and not(tei:lg | tei:note[@type = 'fn'])][6]"/>
-						<xsl:apply-templates
-							select="ancestor::*[parent::tei:p]/following::*[parent::tei:p or parent::tei:l and not(tei:lg | tei:note[@type = 'fn'])][7]"/>
-						<xsl:apply-templates
-							select="ancestor::*[parent::tei:p]/following::*[parent::tei:p or parent::tei:l and not(tei:lg | tei:note[@type = 'fn'])][8]"
+							select="ancestor-or-self::*[parent::tei:l]/following::*[parent::tei:l[@xml:id = $comLine]]"
 						/>
 					</xsl:when>
 					<xsl:otherwise>
-						<xsl:apply-templates
-							select="preceding::*[parent::tei:p or parent::tei:l and not(tei:lg | tei:note[@type = 'fn'])][8]"/>
-						<xsl:apply-templates
-							select="preceding::*[parent::tei:p or parent::tei:l and not(tei:lg | tei:note[@type = 'fn'])][7]"/>
-						<xsl:apply-templates
-							select="preceding::*[parent::tei:p or parent::tei:l and not(tei:lg | tei:note[@type = 'fn'])][6]"/>
-						<xsl:apply-templates
-							select="preceding::*[parent::tei:p or parent::tei:l and not(tei:lg | tei:note[@type = 'fn'])][5]"/>
-						<xsl:apply-templates
-							select="preceding::*[parent::tei:p or parent::tei:l and not(tei:lg | tei:note[@type = 'fn'])][4]"/>
-						<xsl:apply-templates
-							select="preceding::*[parent::tei:p or parent::tei:l and not(tei:lg | tei:note[@type = 'fn'])][3]"/>
-						<xsl:apply-templates
-							select="preceding::*[parent::tei:p or parent::tei:l and not(tei:lg | tei:note[@type = 'fn'])][2]"/>
-						<xsl:apply-templates
-							select="preceding::*[parent::tei:p or parent::tei:l and not(tei:lg | tei:note[@type = 'fn'])][1]"/>
-						<b>
-							<xsl:apply-templates/>
-							<xsl:text> </xsl:text>
-						</b>
-						<xsl:apply-templates
-							select="following::*[parent::tei:p or parent::tei:l and not(tei:lg | tei:note[@type = 'fn'])][1]"/>
-						<xsl:apply-templates
-							select="following::*[parent::tei:p or parent::tei:l and not(tei:lg | tei:note[@type = 'fn'])][2]"/>
-						<xsl:apply-templates
-							select="following::*[parent::tei:p or parent::tei:l and not(tei:lg | tei:note[@type = 'fn'])][3]"/>
-						<xsl:apply-templates
-							select="following::*[parent::tei:p or parent::tei:l and not(tei:lg | tei:note[@type = 'fn'])][4]"/>
-						<xsl:apply-templates
-							select="following::*[parent::tei:p or parent::tei:l and not(tei:lg | tei:note[@type = 'fn'])][5]"/>
-						<xsl:apply-templates
-							select="following::*[parent::tei:p or parent::tei:l and not(tei:lg | tei:note[@type = 'fn'])][6]"/>
-						<xsl:apply-templates
-							select="following::*[parent::tei:p or parent::tei:l and not(tei:lg | tei:note[@type = 'fn'])][7]"/>
-						<xsl:apply-templates
-							select="following::*[parent::tei:p or parent::tei:l and not(tei:lg | tei:note[@type = 'fn'])][8]"
-						/>
+						<xsl:variable name="start">
+							<xsl:if
+								test="preceding::tei:lb[1][ancestor::tei:div[last()]/@corresp = $comDiv]/@xml:id">
+								<xsl:value-of select="preceding::tei:lb[1]/@xml:id"/>
+							</xsl:if>
+							<xsl:if
+								test="preceding::tei:lb[1][ancestor::tei:div[last()]/@corresp = $comDiv]/@sameAs">
+								<xsl:value-of select="preceding::tei:lb[1]/@sameAs"/>
+							</xsl:if>
+						</xsl:variable>
+						<xsl:variable name="end">
+							<xsl:if
+								test="following::tei:lb[1][ancestor::tei:div[last()]/@corresp = $comDiv]/@xml:id">
+								<xsl:value-of
+									select="following::tei:lb[1][ancestor::tei:div[last()]/@corresp = $comDiv]/@xml:id"
+								/>
+							</xsl:if>
+							<xsl:if
+								test="following::tei:lb[1][ancestor::tei:div[last()]/@corresp = $comDiv]/@sameAs">
+								<xsl:value-of
+									select="following::tei:lb[1][ancestor::tei:div[last()]/@corresp = $comDiv]/@sameAs"
+								/>
+							</xsl:if>
+						</xsl:variable>
+						<xsl:choose>
+							<xsl:when
+								test="not(following::tei:lb[ancestor::tei:div[last()]/@corresp = $comDiv])">
+								<xsl:choose>
+									<xsl:when
+										test="preceding::tei:lb[1][ancestor::tei:div[last()]/@corresp = $comDiv]/@xml:id">
+										<xsl:if
+											test="ancestor-or-self::*[parent::tei:p]/preceding::*[parent::tei:p and preceding::tei:lb[1]/@xml:id = $start]">
+											<xsl:apply-templates
+												select="ancestor-or-self::*[parent::tei:p]/preceding::*[parent::tei:p and preceding::tei:lb[1]/@xml:id = $start]"
+											/>
+										</xsl:if>
+									</xsl:when>
+									<xsl:when
+										test="preceding::tei:lb[1][ancestor::tei:div[last()]/@corresp = $comDiv]/@sameAs">
+										<xsl:if
+											test="ancestor-or-self::*[parent::tei:p]/preceding::*[parent::tei:p and preceding::tei:lb[1]/@sameAs = $start]">
+											<xsl:apply-templates
+												select="ancestor-or-self::*[parent::tei:p]/preceding::*[parent::tei:p and preceding::tei:lb[1]/@sameAs = $start]"
+											/>
+										</xsl:if>
+									</xsl:when>
+								</xsl:choose>
+								<b style="background-color:aqua">
+									<xsl:apply-templates select="ancestor-or-self::*[parent::tei:p]"
+									/>
+								</b>
+								<xsl:if
+									test="ancestor-or-self::*[parent::tei:p]/following::*[parent::tei:p[parent::tei:div[@corresp = $comDiv]]]">
+									<xsl:apply-templates
+										select="ancestor-or-self::*[parent::tei:p]/following::*[parent::tei:p[parent::tei:div[@corresp = $comDiv]]]"
+									/>
+								</xsl:if>
+							</xsl:when>
+							<xsl:otherwise>
+								<xsl:choose>
+									<xsl:when
+										test="preceding::tei:lb[1][ancestor::tei:div[last()]/@corresp = $comDiv]/@xml:id">
+										<xsl:apply-templates
+											select="ancestor-or-self::*[parent::tei:p]/preceding::*[parent::tei:p and preceding::tei:lb/@xml:id = $start]"
+										/>
+									</xsl:when>
+									<xsl:when
+										test="preceding::tei:lb[1][ancestor::tei:div[last()]/@corresp = $comDiv]/@sameAs">
+										<xsl:apply-templates
+											select="ancestor-or-self::*[parent::tei:p]/preceding::*[parent::tei:p and preceding::tei:lb/@sameAs = $start]"
+										/>
+									</xsl:when>
+								</xsl:choose>
+								<b style="background-color:aqua">
+									<xsl:apply-templates select="ancestor-or-self::*[parent::tei:p]"
+									/>
+								</b>
+								<xsl:choose>
+									<xsl:when
+										test="following::tei:lb[1][ancestor::tei:div[last()]/@corresp = $comDiv]/@xml:id">
+										<xsl:apply-templates
+											select="ancestor-or-self::*[parent::tei:p]/following::*[parent::tei:p and following::tei:lb/@xml:id = $end]"
+										/>
+									</xsl:when>
+									<xsl:when
+										test="following::tei:lb[1][ancestor::tei:div[last()]/@corresp = $comDiv]/@sameAs">
+										<xsl:apply-templates
+											select="ancestor-or-self::*[parent::tei:p]/following::*[parent::tei:p and following::tei:lb/@sameAs = $end]"
+										/>
+									</xsl:when>
+								</xsl:choose>
+							</xsl:otherwise>
+						</xsl:choose>
 					</xsl:otherwise>
 				</xsl:choose>
 			</td>
 		</tr>
+	</xsl:template>
+
+	<xsl:template match="tei:note[@type = 'fn']">
+		<xsl:text/>
 	</xsl:template>
 
 	<xsl:template match="/">
@@ -184,7 +226,7 @@
 							<b>Scribe</b>
 						</th>
 						<th>
-							<b>Div</b>
+							<b>Date</b>
 						</th>
 						<th>
 							<b>Reference</b>
@@ -358,31 +400,37 @@
 
 	<xsl:template match="tei:pb">
 		<sub>
-			<b>
-				<xsl:text>page beg. </xsl:text>
-				<xsl:value-of select="@n"/>
-				<xsl:text> </xsl:text>
-			</b>
+			<i>
+				<b>
+					<xsl:text>ms. p. </xsl:text>
+					<xsl:value-of select="@n"/>
+					<xsl:text> </xsl:text>
+				</b>
+			</i>
 		</sub>
 	</xsl:template>
 
 	<xsl:template match="tei:cb">
 		<sub>
-			<b>
-				<xsl:text>col. beg. </xsl:text>
-				<xsl:value-of select="@n"/>
-				<xsl:text> </xsl:text>
-			</b>
+			<i>
+				<b>
+					<xsl:text>col. </xsl:text>
+					<xsl:value-of select="@n"/>
+					<xsl:text> </xsl:text>
+				</b>
+			</i>
 		</sub>
 	</xsl:template>
 
 	<xsl:template match="tei:lb">
 		<sub>
-			<b>
-				<xsl:text>ms. line beg. </xsl:text>
-				<xsl:value-of select="@n"/>
-				<xsl:text> </xsl:text>
-			</b>
+			<i>
+				<b>
+					<xsl:text>ms. line </xsl:text>
+					<xsl:value-of select="@n"/>
+					<xsl:text> </xsl:text>
+				</b>
+			</i>
 		</sub>
 	</xsl:template>
 
@@ -413,7 +461,32 @@
 
 	<xsl:template name="word" match="tei:w[not(descendant::tei:w)]">
 		<xsl:variable name="wordId" select="generate-id()"/>
-		<xsl:variable name="wordPOS" select="count(preceding::*)"/>
+		<xsl:variable name="handRef">
+			<xsl:choose>
+				<xsl:when test="ancestor::tei:add">
+					<xsl:value-of select="ancestor::tei:add/@resp"/>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:choose>
+						<xsl:when test="ancestor::tei:div[@resp]//tei:handShift">
+							<xsl:variable name="comDiv" select="ancestor::tei:div[@resp]/@corresp"/>
+							<xsl:choose>
+								<xsl:when
+									test="preceding::tei:handShift[1]/ancestor::tei:div[@resp]/@corresp = $comDiv">
+									<xsl:value-of select="preceding::tei:handShift[1]/@new"/>
+								</xsl:when>
+								<xsl:otherwise>
+									<xsl:value-of select="ancestor::tei:div[@resp]/@resp"/>
+								</xsl:otherwise>
+							</xsl:choose>
+						</xsl:when>
+						<xsl:otherwise>
+							<xsl:value-of select="ancestor::tei:div[@resp]/@resp"/>
+						</xsl:otherwise>
+					</xsl:choose>
+				</xsl:otherwise>
+			</xsl:choose>
+		</xsl:variable>
 		<xsl:variable name="lem">
 			<xsl:choose>
 				<xsl:when test="@lemma = 'UNKNOWN'">[LEMMA UNKNOWN]</xsl:when>
@@ -679,32 +752,6 @@
 				<xsl:when
 					test="ancestor-or-self::*[@cert = 'low'] or descendant-or-self::*[@cert = 'low']"
 					>Severe</xsl:when>
-			</xsl:choose>
-		</xsl:variable>
-		<xsl:variable name="handRef">
-			<xsl:choose>
-				<xsl:when test="ancestor::tei:add">
-					<xsl:value-of select="ancestor::tei:add/@resp"/>
-				</xsl:when>
-				<xsl:otherwise>
-					<xsl:choose>
-						<xsl:when test="ancestor::tei:div[@resp]//tei:handShift">
-							<xsl:variable name="comDiv" select="ancestor::tei:div[@resp]/@corresp"/>
-							<xsl:choose>
-								<xsl:when
-									test="preceding::tei:handShift[1]/ancestor::tei:div[@resp]/@corresp = $comDiv">
-									<xsl:value-of select="preceding::tei:handShift[1]/@new"/>
-								</xsl:when>
-								<xsl:otherwise>
-									<xsl:value-of select="ancestor::tei:div[@resp]/@resp"/>
-								</xsl:otherwise>
-							</xsl:choose>
-						</xsl:when>
-						<xsl:otherwise>
-							<xsl:value-of select="ancestor::tei:div[@resp]/@resp"/>
-						</xsl:otherwise>
-					</xsl:choose>
-				</xsl:otherwise>
 			</xsl:choose>
 		</xsl:variable>
 		<xsl:variable name="hand">
@@ -1126,11 +1173,7 @@
 	</xsl:template>
 
 	<xsl:template match="tei:g">
-		<xsl:variable name="comWord"
-			select="count(ancestor::tei:w[not(descendant::tei:w)]/preceding::tei:w[not(descendant::tei:w)])"/>
-		<xsl:variable name="position"
-			select="count(preceding::tei:g[ancestor::tei:w[not(descendant::tei:w) and count(preceding::tei:w[not(descendant::tei:w)]) = $comWord]])"/>
-		<i id="l{$position}">
+		<i>
 			<xsl:apply-templates/>
 		</i>
 	</xsl:template>
@@ -1387,6 +1430,24 @@
 						<xsl:apply-templates/>
 						<b>
 							<xsl:text> &gt; </xsl:text>
+						</b>
+					</xsl:when>
+					<xsl:when test="@place = 'margin, top'">
+						<b>
+							<xsl:text> // </xsl:text>
+						</b>
+						<xsl:apply-templates/>
+						<b>
+							<xsl:text> \\ </xsl:text>
+						</b>
+					</xsl:when>
+					<xsl:when test="@place = 'inline'">
+						<b>
+							<xsl:text> | </xsl:text>
+						</b>
+						<xsl:apply-templates/>
+						<b>
+							<xsl:text> | </xsl:text>
 						</b>
 					</xsl:when>
 				</xsl:choose>
