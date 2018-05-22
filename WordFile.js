@@ -75,7 +75,18 @@ function createTable() {
 	var row = document.getElementById(rowID);\
 	var form = row.cells[0].children[0];\
 	var abbr = form.getElementsByTagName('i')[abbrPOS];\
-	abbr.style.backgroundColor = 'GreenYellow';\
+	if (abbr.getAttribute('cert') == 'high'){\
+	abbr.style.backgroundColor = 'LawnGreen';\
+	} \
+	else if (abbr.getAttribute('cert') == 'medium') {\
+	abbr.style.backgroundColor = 'Gold';\
+	} \
+	else if (abbr.getAttribute('cert') == 'low') {\
+	abbr.style.backgroundColor = 'Salmon';\
+	} \
+	else {\
+	abbr.style.backgroundColor = 'Silver';\
+	} \
 	}; \
 	function abbrDeHilite(id) { \
 	var ids = id.split(','); \
