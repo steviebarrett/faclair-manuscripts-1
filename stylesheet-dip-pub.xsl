@@ -50,7 +50,7 @@
 	</xsl:template>
 
 	<xsl:template match="tei:body">
-		<xsl:apply-templates/>
+<xsl:apply-templates/>
 	</xsl:template>
 
 	<xsl:template match="tei:teiHeader">
@@ -503,13 +503,13 @@
 			<xsl:value-of select="@n"/></b>
 		<br/>
 	</xsl:template>
-
+	
 	<xsl:template match="tei:lb">
-				<sub>
-					<br/>
-					<xsl:value-of select="@n"/>
-					<xsl:text>. </xsl:text>
-				</sub>
+		<sub>
+			<br id="{generate-id()}_dip"/>
+			<xsl:value-of select="@n"/>
+			<xsl:text>. </xsl:text>
+		</sub>
 	</xsl:template>
 	
 	<xsl:template match="tei:space[@type='scribal']">
@@ -1559,16 +1559,7 @@
 	<xsl:template match="tei:div[@n]">
 		<xsl:variable name="contents"
 			select="ancestor::tei:TEI//tei:msDesc/tei:msContents/tei:msItem/h4/@id"/>
-		<xsl:variable name="lineID" select="preceding::tei:lb[1]/@xml:id | @sameAs"/>
-		<!-- <xsl:if test="/@resp = not(preceding::tei:div/@resp or preceding::tei:handShift/@new)">
-			<sub>
-				<b>beg. <xsl:value-of select="key('hands', @resp)/tei:forename"
-						/><xsl:text> </xsl:text><xsl:value-of
-						select="key('hands', @resp)/tei:surname"
-						/><xsl:text> (</xsl:text><xsl:value-of select="@resp"
-					/><xsl:text>) </xsl:text></b>
-			</sub>
-		</xsl:if> -->
+		<xsl:variable name="divID" select="@corresp"/>
 		<xsl:if test="@n and ancestor::tei:div or not(descendant::tei:div)">
 			<p>
 				<a href="{$contents}">Back to MS contents</a>
