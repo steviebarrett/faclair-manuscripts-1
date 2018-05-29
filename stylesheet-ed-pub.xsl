@@ -32,7 +32,7 @@
 				<script src="hilites.js"/>
 			</head>
 			<body>
-				<h1>
+				<h1 style="text-align:center; font-size:20px">
 					<xsl:value-of select="tei:teiCorpus//tei:title"/>
 				</h1>
 				<!-- <xsl:apply-templates select="tei:teiCorpus/tei:teiHeader"/> -->
@@ -40,7 +40,7 @@
 					<br/>
 					<xsl:call-template name="tempEd"/>
 					<br/>
-					<h3>Diplomatic Text</h3>
+					<h3 style="font-size:16px">Diplomatic Text</h3>
 					<xsl:apply-templates mode="dip"/>
 				</xsl:for-each>
 			</body>
@@ -61,10 +61,10 @@
 	</xsl:template>
 
 	<xsl:template match="tei:teiHeader/tei:fileDesc/tei:titleStmt">
-		<h2>
+		<h2 style="font-size:18px">
 			<xsl:apply-templates select="tei:title"/>
 		</h2>
-		<h3>Publication Details</h3>
+		<h3 style="font-size:16px">Publication Details</h3>
 		<xsl:for-each select="tei:respStmt">
 			<xsl:apply-templates select="tei:name"/>
 			<xsl:text> (</xsl:text>
@@ -79,10 +79,10 @@
 	</xsl:template>
 
 	<xsl:template match="tei:teiHeader/tei:fileDesc/tei:publicationStmt">
-		<p style="font-size: small">
+		<p style="font-size:12px">
 			<xsl:apply-templates select="tei:availability"/>
 		</p>
-		<p style="font-size: small">
+		<p style="font-size:12px">
 			<xsl:for-each select="ancestor::tei:teiCorpus/tei:teiHeader//tei:address/tei:addrLine">
 				<xsl:apply-templates/>
 				<br/>
@@ -101,35 +101,33 @@
 			<xsl:apply-templates
 				select="parent::tei:fileDesc/tei:sourceDesc/tei:msDesc/tei:msIdentifier/tei:idno"/>
 		</xsl:variable>
-		<h3>Manuscript: <xsl:value-of select="$msref"/></h3>
+		<u><h3 style="font-size:16px">Manuscript: <xsl:value-of select="$msref"/></h3></u>
 		<xsl:for-each select="tei:note/tei:p">
-			<p style="font-size: small">
+			<p style="font-size:10px">
 				<xsl:apply-templates/>
 			</p>
 		</xsl:for-each>
 	</xsl:template>
 
 	<xsl:template match="tei:teiHeader/tei:fileDesc/tei:sourceDesc">
-		<h4>Hands</h4>
+		<h4 style="font-size:16px">Hands</h4>
 		<xsl:for-each select="tei:msDesc/tei:physDesc/tei:handDesc/tei:handNote/tei:note">
-			<xsl:if test="@comment">
 				<h5>
-					<xsl:value-of select="@comment"/>
+					<xsl:value-of select="key('hands', parent::tei:handNote/@corresp)/tei:forename"/><xsl:text> </xsl:text><xsl:value-of select="key('hands', parent::tei:handNote/@corresp)/tei:surname"/><xsl:text> (</xsl:text><xsl:value-of select="parent::tei:handNote/@corresp"/><xsl:text>)</xsl:text>
 				</h5>
-			</xsl:if>
 			<xsl:for-each select="tei:p">
 				<xsl:if test="@comment">
 					<h6>
 						<xsl:value-of select="@comment"/>
 					</h6>
 				</xsl:if>
-				<p style="font-size: small">
+				<p style="font-size:10px">
 					<xsl:apply-templates/>
 				</p>
 			</xsl:for-each>
 		</xsl:for-each>
-		<h4>Contents</h4>
-		<h5>Summary</h5>
+		<h4 style="font-size:16px">Contents</h4>
+		<h5 style="font-size:14px">Summary</h5>
 		<p style="font-size: small">
 			<xsl:apply-templates select="tei:msDesc/tei:msContents/tei:summary"/>
 		</p>
@@ -220,7 +218,7 @@
 					<xsl:variable name="itemHand" select="@resp"/>
 					<xsl:variable name="incChild"
 						select="key('text', @xml:id)//preceding::tei:lb[1]/@xml:id | @sameAs"/>
-					<h5 style="margin-left:40px">
+					<h5 style="margin-left:40px;font-size:14px">
 						<a href="#{@xml:id}">
 							<xsl:apply-templates select="tei:title"/>
 						</a>
@@ -289,114 +287,114 @@
 					</p>
 				</xsl:for-each>
 			</xsl:if>
-			<h5>Text Summary</h5>
+			<h5 style="font-size:14px">Text Summary</h5>
 			<xsl:for-each select="tei:note/tei:p">
 				<xsl:if test="@comment">
-					<h6>
+					<h6 style="font-size:12px">
 						<xsl:value-of select="@comment"/>
 					</h6>
 				</xsl:if>
-				<p style="font-size: small">
+				<p style="font-size:10px">
 					<xsl:apply-templates/>
 				</p>
 			</xsl:for-each>
 			<h5>Filiation of Text</h5>
 			<xsl:for-each select="tei:filiation/tei:p">
-				<p style="font-size: small">
+				<p style="font-size:10px">
 					<xsl:apply-templates/>
 				</p>
 			</xsl:for-each>
 			<br/>
-			<h5>Language and Style</h5>
+			<h5 style="font-size:14px">Language and Style</h5>
 			<xsl:for-each select="tei:textLang/tei:note">
 				<xsl:if test="@comment">
-					<h6>
+					<h6 style="font-size:12px">
 						<xsl:value-of select="@comment"/>
 					</h6>
 				</xsl:if>
 				<xsl:for-each select="tei:p">
 					<xsl:if test="@comment">
-						<h7>
+						<b><h7 style="font-size:10px">
 							<xsl:value-of select="@comment"/>
-						</h7>
+						</h7></b>
 					</xsl:if>
-					<p style="font-size: small">
+					<p style="font-size:10px">
 						<xsl:apply-templates/>
 					</p>
 				</xsl:for-each>
 			</xsl:for-each>
 			<br/>
 		</xsl:for-each>
-		<h4>Physical Description of Manuscrpt</h4>
+		<h4 style="font-size:16px">Physical Description of Manuscrpt</h4>
 		<xsl:if test="tei:msDesc/tei:physDesc/tei:p">
-			<p style="font-size: small">
+			<p style="font-size:10px">
 				<xsl:apply-templates select="tei:msDesc/tei:physDesc/tei:p"/>
 			</p>
 		</xsl:if>
-		<h5> Writing Surface </h5>
-		<p style="font-size: small">
+		<h5 style="font-size:14px"> Writing Surface </h5>
+		<p style="font-size:10px">
 			<xsl:apply-templates
 				select="tei:msDesc/tei:physDesc/tei:objectDesc/tei:supportDesc/tei:support/tei:p"/>
 		</p>
-		<h5> Foliation </h5>
-		<p style="font-size: small">
+		<h5 style="font-size:14px"> Foliation </h5>
+		<p style="font-size:10px">
 			<xsl:apply-templates
 				select="tei:msDesc/tei:physDesc/tei:objectDesc/tei:supportDesc/tei:foliation/tei:p"
 			/>
 		</p>
-		<h5> Condition </h5>
-		<p style="font-size: small">
+		<h5 style="font-size:14px"> Condition </h5>
+		<p style="font-size:10px">
 			<xsl:apply-templates
 				select="tei:msDesc/tei:physDesc/tei:objectDesc/tei:supportDesc/tei:condition/tei:p"
 			/>
 		</p>
-		<h5> Layout of Page </h5>
-		<p style="font-size: small">
+		<h5 style="font-size:14px"> Layout of Page </h5>
+		<p style="font-size:10px">
 			<xsl:apply-templates
 				select="tei:msDesc/tei:physDesc/tei:objectDesc/tei:layoutDesc/tei:p"/>
 		</p>
-		<h4> History of the Manuscript </h4>
-		<h5>Summary</h5>
-		<p style="font-size: small">
+		<h4 style="font-size:16px"> History of the Manuscript </h4>
+		<h5 style="font-size:14px">Summary</h5>
+		<p style="font-size:10px">
 			<xsl:apply-templates select="tei:msDesc/tei:history/tei:summary/tei:p"/>
 		</p>
-		<h5>Origin</h5>
-		<p style="font-size: small">
+		<h5 style="font-size:14px">Origin</h5>
+		<p style="font-size:10px">
 			<xsl:apply-templates select="tei:msDesc/tei:history/tei:origin/tei:p"/>
 		</p>
-		<h5>Subsequent History</h5>
-		<p style="font-size: small">
+		<h5 style="font-size:14px">Subsequent History</h5>
+		<p style="font-size:10px">
 			<xsl:apply-templates select="tei:msDesc/tei:history/tei:provenance/tei:p"/>
 		</p>
-		<h5>Acquisition</h5>
-		<p style="font-size: small">
+		<h5 style="font-size:14px">Acquisition</h5>
+		<p style="font-size:10px">
 			<xsl:apply-templates select="tei:msDesc/tei:history/tei:acquisition/tei:p"/>
 		</p>
 	</xsl:template>
 
 	<xsl:template match="tei:teiHeader/tei:encodingDesc">
-		<h3>Encoding of this Transcription</h3>
-		<h4>Issues</h4>
-		<p style="font-size: small">
+		<h3 style="font-size:16px">Encoding of this Transcription</h3>
+		<h4 style="font-size:16px">Issues</h4>
+		<p style="font-size:10px">
 			<xsl:apply-templates select="tei:editorialDecl/tei:p"/>
 		</p>
 		<xsl:if test="tei:metDecl">
-			<h4>Metrics</h4>
-			<p style="font-size: small">
+			<h4 style="font-size:16px">Metrics</h4>
+			<p style="font-size:10px">
 				<xsl:apply-templates select="tei:metDecl/tei:p"/>
 			</p>
 		</xsl:if>
-		<h4>Referencing of this Transcription</h4>
-		<p style="font-size: small">
+		<h4 style="font-size:16px">Referencing of this Transcription</h4>
+		<p style="font-size:10px">
 			<xsl:apply-templates select="tei:refsDecl/tei:p"/>
 		</p>
 	</xsl:template>
 
 	<xsl:template match="tei:teiHeader/tei:profileDesc/tei:textClass">
-		<h3>Keywords</h3>
+		<h3 style="font-size:16px">Keywords</h3>
 		<ul style="margin-left:30px">
 			<xsl:for-each select="tei:keywords/tei:term">
-				<li>
+				<li style="font-size:10px">
 					<xsl:apply-templates/>
 				</li>
 			</xsl:for-each>
@@ -404,31 +402,32 @@
 	</xsl:template>
 
 	<xsl:template match="tei:teiHeader/tei:revisionDesc">
-		<h3>Revision History</h3>
+		<h3 style="font-size:16px">Revision History</h3>
+		<ul style="margin-left:30px">
 		<xsl:for-each select="tei:change">
-			<b>
+			<li style="font-size:10px"><b>
 				<xsl:value-of select="@when"/>
 				<xsl:text>: </xsl:text>
 			</b>
 			<xsl:apply-templates/>
-			<br/>
+			</li>
 		</xsl:for-each>
+		</ul>
 	</xsl:template>
 
 	<xsl:template match="tei:list">
 		<ul>
 			<xsl:for-each select="tei:head">
-				<li style="font-size: small;list-style: none">
+				<li style="font-size:10px;list-style: none">
 					<b>
 						<xsl:apply-templates/>
 					</b>
 				</li>
 			</xsl:for-each>
 			<xsl:for-each select="tei:item">
-				<li style="margin-left:30px;font-size: small">
+				<li style="margin-left:30px;font-size:10px">
 					<xsl:apply-templates/>
 				</li>
-				<br/>
 			</xsl:for-each>
 		</ul>
 	</xsl:template>
@@ -453,6 +452,16 @@
 			</xsl:for-each>
 		</table>
 		<br/>
+	</xsl:template>
+	
+	<xsl:template match="tei:quote">
+		<blockquote style="margin-left:40px;font-size: small">
+			<xsl:apply-templates/>
+		</blockquote>
+	</xsl:template>
+	
+	<xsl:template match="tei:quote/tei:l">
+		<xsl:apply-templates/><br/>
 	</xsl:template>
 
 	<xsl:template match="tei:hi[@rend = 'italics']">
@@ -601,6 +610,11 @@
 			<xsl:otherwise>
 				<xsl:choose>
 					<xsl:when test="@type = 'dúnad'">
+						<p style="margin-left:30px">
+							<xsl:apply-templates select="descendant::tei:l"/>
+						</p>
+					</xsl:when>
+					<xsl:when test="@type = 'sig'">
 						<p style="margin-left:30px">
 							<xsl:apply-templates select="descendant::tei:l"/>
 						</p>
