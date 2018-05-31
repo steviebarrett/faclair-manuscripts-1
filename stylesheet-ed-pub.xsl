@@ -51,7 +51,7 @@
 							<xsl:variable name="transcrID" select="ancestor::tei:TEI/@xml:id"/>
 							<xsl:variable name="msID" select="@target"/>
 							<xsl:if test="not(preceding::tei:ref[@target = $msID])">
-								<li style="font-size:10px;list-style: none">
+								<li style="font-size:11px;list-style: none">
 									<xsl:call-template name="mssBib"/>
 								</li>
 							</xsl:if>
@@ -64,7 +64,7 @@
 							<xsl:variable name="bibID" select="@target"/>
 							<xsl:if
 								test="not(preceding::tei:ref[@target = $bibID]) and key('bib', @target)/ancestor::tei:listBibl[@type = 'primLit']">
-								<li style="font-size:10px;list-style: none">
+								<li style="font-size:11px;list-style: none">
 									<xsl:call-template name="litBib"/>
 								</li>
 							</xsl:if>
@@ -77,7 +77,7 @@
 							<xsl:variable name="bibID" select="@target"/>
 							<xsl:if
 								test="not(preceding::tei:ref[@target = $bibID]) and key('bib', @target)/ancestor::tei:listBibl[@type = 'secLit']">
-								<li style="font-size:10px;list-style: none">
+								<li style="font-size:11px;list-style: none">
 									<xsl:call-template name="litBib"/>
 								</li>
 							</xsl:if>
@@ -286,7 +286,7 @@
 				<xsl:value-of select="$contrs_a"/>
 				<xsl:text>'</xsl:text>
 				<xsl:value-of select="key('bib', @target)/tei:monogr/tei:title"/>
-				<xsl:text>', </xsl:text>
+				<xsl:text>', unpubl. report, </xsl:text>
 				<xsl:value-of select="key('bib', @target)/tei:monogr/tei:imprint/tei:pubPlace"/>
 				<xsl:text>: </xsl:text>
 				<xsl:value-of select="key('bib', @target)/tei:monogr/tei:imprint/tei:publisher"/>
@@ -348,11 +348,10 @@
 			<xsl:apply-templates
 				select="parent::tei:fileDesc/tei:sourceDesc/tei:msDesc/tei:msIdentifier/tei:idno"/>
 		</xsl:variable>
-		<u>
 			<h3 style="font-size:16px">Manuscript: <xsl:value-of select="$msref"/></h3>
-		</u>
+		<button onclick="createTable()">Collect Slips</button>
 		<xsl:for-each select="tei:note/tei:p">
-			<p style="font-size:10px">
+			<p style="font-size:11px">
 				<xsl:apply-templates/>
 			</p>
 		</xsl:for-each>
@@ -375,20 +374,20 @@
 						<xsl:value-of select="@comment"/>
 					</h6>
 				</xsl:if>
-				<p style="font-size:10px">
+				<p style="font-size:11px">
 					<xsl:apply-templates/>
 				</p>
 			</xsl:for-each>
 		</xsl:for-each>
 		<h4 style="font-size:16px">Contents</h4>
 		<h5 style="font-size:14px">Summary</h5>
-		<p style="font-size: small">
+		<p  style="text-decoration:none;color:#000000;font-size:11px">
 			<xsl:apply-templates select="tei:msDesc/tei:msContents/tei:summary"/>
 		</p>
 		<xsl:for-each select="tei:msDesc/tei:msContents/tei:msItem">
 			<xsl:variable name="inc"
 				select="key('text', @xml:id)//preceding::tei:lb[1]/@xml:id | @sameAs"/>
-			<h4 id="{ancestor::tei:TEI/@xml:id}msContents">
+			<h4 id="{ancestor::tei:TEI/@xml:id}msContents" style="font-size:16px">
 				<xsl:value-of select="@n"/>
 				<xsl:text>: </xsl:text>
 				<a href="#{@xml:id}">
@@ -396,71 +395,71 @@
 				</a>
 			</h4>
 			<xsl:if test="tei:locus">
-				<xsl:apply-templates select="tei:locus"/>
+				<a style="text-decoration:none;color:#000000;font-size:11px"><xsl:apply-templates select="tei:locus"/></a>
 				<br/>
 			</xsl:if>
 			<xsl:if test="tei:incipit">
-				<xsl:text>Beg. "</xsl:text>
+				<a style="text-decoration:none;color:#000000;font-size:11px"><xsl:text>Beg. "</xsl:text>
 				<xsl:apply-templates select="tei:incipit"/>
-				<xsl:text>"</xsl:text>
+				<xsl:text>"</xsl:text></a>
 				<br/>
 			</xsl:if>
 			<xsl:if test="tei:explicit">
-				<xsl:text>Ends. "</xsl:text>
+				<a style="text-decoration:none;color:#000000;font-size:11px"><xsl:text>Ends. "</xsl:text>
 				<xsl:apply-templates select="tei:explicit"/>
-				<xsl:text>"</xsl:text>
+				<xsl:text>"</xsl:text></a>
 				<br/>
 			</xsl:if>
 			<xsl:if test="not(child::tei:msItem)">
 				<xsl:variable name="ItemID" select="@xml:id"/>
 				<xsl:variable name="comDiv" select="ancestor::tei:div[@corresp = $ItemID]"/>
 				<xsl:variable name="itemHand" select="@resp"/>
-				<xsl:text>Main scribe: </xsl:text>
+				<a style="text-decoration:none;color:#000000;font-size:11px"><xsl:text>Main scribe: </xsl:text>
 				<xsl:value-of select="key('hands', @resp)/tei:forename"/>
 				<xsl:text> </xsl:text>
 				<xsl:value-of select="key('hands', @resp)/tei:surname"/>
 				<xsl:text> (</xsl:text>
 				<xsl:value-of select="@resp"/>
-				<xsl:text>)</xsl:text>
+				<xsl:text>)</xsl:text></a>
 				<br/>
-				<xsl:text>Other hands: </xsl:text>
+				<a style="text-decoration:none;color:#000000;font-size:11px"><xsl:text>Other hands: </xsl:text></a>
 				<xsl:for-each select="//tei:handShift[ancestor::tei:div[@corresp = $ItemID]]">
 					<xsl:if
 						test="not(@new = preceding::tei:handShift[ancestor::tei:div[@corresp = $ItemID]]/@new) and not(@new = $itemHand) or not(preceding::tei:handShift[ancestor::tei:div[@corresp = $ItemID]])">
-						<xsl:value-of select="key('hands', @new)/tei:forename"/>
+						<a style="text-decoration:none;color:#000000;font-size:11px"><xsl:value-of select="key('hands', @new)/tei:forename"/>
 						<xsl:text> </xsl:text>
 						<xsl:value-of select="key('hands', @new)/tei:surname"/>
 						<xsl:text> (</xsl:text>
 						<xsl:value-of select="@new"/>
-						<xsl:text>); </xsl:text>
+						<xsl:text>); </xsl:text></a>
 					</xsl:if>
 				</xsl:for-each>
 				<br/>
-				<xsl:text>Additions/emendations: </xsl:text>
+				<a style="text-decoration:none;color:#000000;font-size:11px"><xsl:text>Additions/emendations: </xsl:text></a>
 				<xsl:for-each
 					select="//tei:add[@type = 'insertion'][ancestor::tei:div[@corresp = $ItemID]] | //tei:del[ancestor::tei:div[@corresp = $ItemID]]">
 					<xsl:if
 						test="not(@resp = preceding::tei:add[@type = 'insertion'][ancestor::tei:div[@corresp = $ItemID]]/@resp | preceding::tei:del[ancestor::tei:div[@corresp = $ItemID]]/@resp) and not(@resp = $itemHand) or not(preceding::tei:add[@type = 'insertion'][ancestor::tei:div[@corresp = $ItemID]] | preceding::tei:del[ancestor::tei:div[@corresp = $ItemID]])">
-						<xsl:value-of select="key('hands', @resp)/tei:forename"/>
+						<a style="text-decoration:none;color:#000000;font-size:11px"><xsl:value-of select="key('hands', @resp)/tei:forename"/>
 						<xsl:text> </xsl:text>
 						<xsl:value-of select="key('hands', @resp)/tei:surname"/>
 						<xsl:text> (</xsl:text>
 						<xsl:value-of select="@resp"/>
-						<xsl:text>); </xsl:text>
+						<xsl:text>); </xsl:text></a>
 					</xsl:if>
 				</xsl:for-each>
 				<br/>
-				<xsl:text>Glossing: </xsl:text>
+				<a style="text-decoration:none;color:#000000;font-size:11px"><xsl:text>Glossing: </xsl:text></a>
 				<xsl:for-each
 					select="//tei:add[@type = 'gloss'][ancestor::tei:div[@corresp = $ItemID]]">
 					<xsl:if
 						test="not(@resp = preceding::tei:add[@type = 'gloss'][ancestor::tei:div[@corresp = $ItemID]]/@resp) and not(@resp = $itemHand) or not(preceding::tei:add[@type = 'gloss'][ancestor::tei:div[@corresp = $ItemID]])">
-						<xsl:value-of select="key('hands', @resp)/tei:forename"/>
+						<a style="text-decoration:none;color:#000000;font-size:11px"><xsl:value-of select="key('hands', @resp)/tei:forename"/>
 						<xsl:text> </xsl:text>
 						<xsl:value-of select="key('hands', @resp)/tei:surname"/>
 						<xsl:text> (</xsl:text>
 						<xsl:value-of select="@resp"/>
-						<xsl:text>); </xsl:text>
+						<xsl:text>); </xsl:text></a>
 					</xsl:if>
 				</xsl:for-each>
 
@@ -480,47 +479,47 @@
 					<p style="font-size: smaller">
 						<xsl:apply-templates select="tei:locus"/>
 						<br/>
-						<xsl:text>Beg. "</xsl:text>
+						<a style="text-decoration:none;color:#000000;font-size:11px"><xsl:text>Beg. "</xsl:text>
 						<xsl:apply-templates select="tei:incipit"/>
-						<xsl:text>"</xsl:text>
+						<xsl:text>"</xsl:text></a>
 						<br/>
-						<xsl:text>Ends. "</xsl:text>
+						<a style="text-decoration:none;color:#000000;font-size:11px"><xsl:text>Ends. "</xsl:text>
 						<xsl:apply-templates select="tei:explicit"/>
-						<xsl:text>"</xsl:text>
+						<xsl:text>"</xsl:text></a>
 						<br/>
-						<xsl:text>Main scribe: </xsl:text>
+						<a style="text-decoration:none;color:#000000;font-size:11px"><xsl:text>Main scribe: </xsl:text>
 						<xsl:value-of select="key('hands', @resp)/tei:forename"/>
 						<xsl:text> </xsl:text>
 						<xsl:value-of select="key('hands', @resp)/tei:surname"/>
 						<xsl:text> (</xsl:text>
 						<xsl:value-of select="@resp"/>
-						<xsl:text>)</xsl:text>
+						<xsl:text>)</xsl:text></a>
 						<br/>
 						<xsl:text>Other hands: </xsl:text>
 						<xsl:for-each
 							select="//tei:handShift[ancestor::tei:div[@corresp = $ItemID]]">
 							<xsl:if
 								test="not(@new = preceding::tei:handShift[ancestor::tei:div[@corresp = $ItemID]]/@new) and not(@new = $itemHand) or not(preceding::tei:handShift[ancestor::tei:div[@corresp = $ItemID]])">
-								<xsl:value-of select="key('hands', @new)/tei:forename"/>
+								<a style="text-decoration:none;color:#000000;font-size:11px"><xsl:value-of select="key('hands', @new)/tei:forename"/>
 								<xsl:text> </xsl:text>
 								<xsl:value-of select="key('hands', @new)/tei:surname"/>
 								<xsl:text> (</xsl:text>
 								<xsl:value-of select="@new"/>
-								<xsl:text>); </xsl:text>
+								<xsl:text>); </xsl:text></a>
 							</xsl:if>
 						</xsl:for-each>
 						<br/>
-						<xsl:text>Additions/emendations: </xsl:text>
+						<a style="text-decoration:none;color:#000000;font-size:11px"><xsl:text>Additions/emendations: </xsl:text></a>
 						<xsl:for-each
 							select="//tei:add[@type = 'insertion'][ancestor::tei:div[@corresp = $ItemID]] | //tei:del[ancestor::tei:div[@corresp = $ItemID]]">
 							<xsl:if
 								test="not(@resp = preceding::tei:add[@type = 'insertion'][ancestor::tei:div[@corresp = $ItemID]]/@resp | preceding::tei:del[ancestor::tei:div[@corresp = $ItemID]]/@resp) and not(@resp = $itemHand) or not(preceding::tei:add[@type = 'insertion'][ancestor::tei:div[@corresp = $ItemID]] | preceding::tei:del[ancestor::tei:div[@corresp = $ItemID]])">
-								<xsl:value-of select="key('hands', @resp)/tei:forename"/>
+								<a style="text-decoration:none;color:#000000;font-size:11px"><xsl:value-of select="key('hands', @resp)/tei:forename"/>
 								<xsl:text> </xsl:text>
 								<xsl:value-of select="key('hands', @resp)/tei:surname"/>
 								<xsl:text> (</xsl:text>
 								<xsl:value-of select="@resp"/>
-								<xsl:text>); </xsl:text>
+								<xsl:text>); </xsl:text></a>
 							</xsl:if>
 						</xsl:for-each>
 						<br/>
@@ -529,12 +528,12 @@
 							select="//tei:add[@type = 'gloss'][ancestor::tei:div[@corresp = $ItemID]]">
 							<xsl:if
 								test="not(@resp = preceding::tei:add[@type = 'gloss'][ancestor::tei:div[@corresp = $ItemID]]/@resp) and not(@resp = $itemHand) or not(preceding::tei:add[@type = 'gloss'][ancestor::tei:div[@corresp = $ItemID]])">
-								<xsl:value-of select="key('hands', @resp)/tei:forename"/>
+								<a style="text-decoration:none;color:#000000;font-size:11px"><xsl:value-of select="key('hands', @resp)/tei:forename"/>
 								<xsl:text> </xsl:text>
 								<xsl:value-of select="key('hands', @resp)/tei:surname"/>
 								<xsl:text> (</xsl:text>
 								<xsl:value-of select="@resp"/>
-								<xsl:text>); </xsl:text>
+								<xsl:text>); </xsl:text></a>
 							</xsl:if>
 						</xsl:for-each>
 						<br/>
@@ -548,13 +547,13 @@
 						<xsl:value-of select="@comment"/>
 					</h6>
 				</xsl:if>
-				<p style="font-size:10px">
+				<p style="font-size:11px">
 					<xsl:apply-templates/>
 				</p>
 			</xsl:for-each>
 			<h5>Filiation of Text</h5>
 			<xsl:for-each select="tei:filiation/tei:p">
-				<p style="font-size:10px">
+				<p style="font-size:11px">
 					<xsl:apply-templates/>
 				</p>
 			</xsl:for-each>
@@ -569,12 +568,12 @@
 				<xsl:for-each select="tei:p">
 					<xsl:if test="@comment">
 						<b>
-							<h7 style="font-size:10px">
+							<h7 style="font-size:11px">
 								<xsl:value-of select="@comment"/>
 							</h7>
 						</b>
 					</xsl:if>
-					<p style="font-size:10px">
+					<p style="font-size:11px">
 						<xsl:apply-templates/>
 					</p>
 				</xsl:for-each>
@@ -583,47 +582,47 @@
 		</xsl:for-each>
 		<h4 style="font-size:16px">Physical Description of Manuscrpt</h4>
 		<xsl:if test="tei:msDesc/tei:physDesc/tei:p">
-			<p style="font-size:10px">
+			<p style="font-size:11px">
 				<xsl:apply-templates select="tei:msDesc/tei:physDesc/tei:p"/>
 			</p>
 		</xsl:if>
 		<h5 style="font-size:14px"> Writing Surface </h5>
-		<p style="font-size:10px">
+		<p style="font-size:11px">
 			<xsl:apply-templates
 				select="tei:msDesc/tei:physDesc/tei:objectDesc/tei:supportDesc/tei:support/tei:p"/>
 		</p>
 		<h5 style="font-size:14px"> Foliation </h5>
-		<p style="font-size:10px">
+		<p style="font-size:11px">
 			<xsl:apply-templates
 				select="tei:msDesc/tei:physDesc/tei:objectDesc/tei:supportDesc/tei:foliation/tei:p"
 			/>
 		</p>
 		<h5 style="font-size:14px"> Condition </h5>
-		<p style="font-size:10px">
+		<p style="font-size:11px">
 			<xsl:apply-templates
 				select="tei:msDesc/tei:physDesc/tei:objectDesc/tei:supportDesc/tei:condition/tei:p"
 			/>
 		</p>
 		<h5 style="font-size:14px"> Layout of Page </h5>
-		<p style="font-size:10px">
+		<p style="font-size:11px">
 			<xsl:apply-templates
 				select="tei:msDesc/tei:physDesc/tei:objectDesc/tei:layoutDesc/tei:p"/>
 		</p>
 		<h4 style="font-size:16px"> History of the Manuscript </h4>
 		<h5 style="font-size:14px">Summary</h5>
-		<p style="font-size:10px">
+		<p style="font-size:11px">
 			<xsl:apply-templates select="tei:msDesc/tei:history/tei:summary/tei:p"/>
 		</p>
 		<h5 style="font-size:14px">Origin</h5>
-		<p style="font-size:10px">
+		<p style="font-size:11px">
 			<xsl:apply-templates select="tei:msDesc/tei:history/tei:origin/tei:p"/>
 		</p>
 		<h5 style="font-size:14px">Subsequent History</h5>
-		<p style="font-size:10px">
+		<p style="font-size:11px">
 			<xsl:apply-templates select="tei:msDesc/tei:history/tei:provenance/tei:p"/>
 		</p>
 		<h5 style="font-size:14px">Acquisition</h5>
-		<p style="font-size:10px">
+		<p style="font-size:11px">
 			<xsl:apply-templates select="tei:msDesc/tei:history/tei:acquisition/tei:p"/>
 		</p>
 	</xsl:template>
@@ -631,17 +630,17 @@
 	<xsl:template match="tei:teiHeader/tei:encodingDesc">
 		<h3 style="font-size:16px">Encoding of this Transcription</h3>
 		<h4 style="font-size:16px">Issues</h4>
-		<p style="font-size:10px">
+		<p style="font-size:11px">
 			<xsl:apply-templates select="tei:editorialDecl/tei:p"/>
 		</p>
 		<xsl:if test="tei:metDecl">
 			<h4 style="font-size:16px">Metrics</h4>
-			<p style="font-size:10px">
+			<p style="font-size:11px">
 				<xsl:apply-templates select="tei:metDecl/tei:p"/>
 			</p>
 		</xsl:if>
 		<h4 style="font-size:16px">Referencing of this Transcription</h4>
-		<p style="font-size:10px">
+		<p style="font-size:11px">
 			<xsl:apply-templates select="tei:refsDecl/tei:p"/>
 		</p>
 	</xsl:template>
@@ -650,7 +649,7 @@
 		<h3 style="font-size:16px">Keywords</h3>
 		<ul style="margin-left:30px">
 			<xsl:for-each select="tei:keywords/tei:term">
-				<li style="font-size:10px">
+				<li style="font-size:11px">
 					<xsl:apply-templates/>
 				</li>
 			</xsl:for-each>
@@ -661,7 +660,7 @@
 		<h3 style="font-size:16px">Revision History</h3>
 		<ul style="margin-left:30px">
 			<xsl:for-each select="tei:change">
-				<li style="font-size:10px">
+				<li style="font-size:11px">
 					<b>
 						<xsl:value-of select="@when"/>
 						<xsl:text>: </xsl:text>
@@ -675,14 +674,14 @@
 	<xsl:template match="tei:list">
 		<ul>
 			<xsl:for-each select="tei:head">
-				<li style="font-size:10px;list-style: none">
+				<li style="font-size:11px;list-style: none">
 					<b>
 						<xsl:apply-templates/>
 					</b>
 				</li>
 			</xsl:for-each>
 			<xsl:for-each select="tei:item">
-				<li style="margin-left:30px;font-size:10px">
+				<li style="margin-left:30px;font-size:11px">
 					<xsl:apply-templates/>
 				</li>
 			</xsl:for-each>
@@ -690,7 +689,7 @@
 	</xsl:template>
 
 	<xsl:template match="tei:table">
-		<table style="margin-left:30px">
+		<table style="margin-left:30px;font-size:11px">
 			<tr>
 				<xsl:for-each select="tei:row[@role = 'label']/tei:cell">
 					<th style="bold; font-size: small">
@@ -2210,7 +2209,7 @@
 					select="ancestor::tei:div[not(ancestor::tei:div)]/@corresp"/>
 				<xsl:variable name="fnNum"
 					select="count(preceding::tei:note[@type = 'fn' and ancestor::tei:div/@corresp = $comDiv]) + 1"/>
-				<p>
+				<p style="font-size:11px">
 					<b>
 						<a id="{$comDiv}.fn{$fnNum}" href="#{$comDiv}.ref{$fnNum}">
 							<xsl:value-of select="$fnNum"/>
