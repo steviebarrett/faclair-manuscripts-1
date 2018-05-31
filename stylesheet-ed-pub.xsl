@@ -57,26 +57,13 @@
 							</xsl:if>
 						</xsl:for-each>
 					</ul>
-					<h4>Primary Literature</h4>
+					<h4>Works Cited</h4>
 					<ul>
 						<xsl:for-each select="descendant::tei:ref[@type = 'bib']">
 							<xsl:variable name="transcrID" select="ancestor::tei:TEI/@xml:id"/>
 							<xsl:variable name="bibID" select="@target"/>
 							<xsl:if
-								test="not(preceding::tei:ref[@target = $bibID]) and key('bib', @target)/ancestor::tei:listBibl[@type = 'primLit']">
-								<li style="font-size:11px;list-style: none">
-									<xsl:call-template name="litBib"/>
-								</li>
-							</xsl:if>
-						</xsl:for-each>
-					</ul>
-					<h4>Secondary Literature</h4>
-					<ul>
-						<xsl:for-each select="descendant::tei:ref[@type = 'bib']">
-							<xsl:variable name="transcrID" select="ancestor::tei:TEI/@xml:id"/>
-							<xsl:variable name="bibID" select="@target"/>
-							<xsl:if
-								test="not(preceding::tei:ref[@target = $bibID]) and key('bib', @target)/ancestor::tei:listBibl[@type = 'secLit']">
+								test="not(preceding::tei:ref[@target = $bibID])">
 								<li style="font-size:11px;list-style: none">
 									<xsl:call-template name="litBib"/>
 								</li>
@@ -127,6 +114,8 @@
 						<xsl:text> </xsl:text>
 						<xsl:value-of select="tei:name/tei:surname"/>
 						<xsl:value-of select="$rsp"/>
+						<xsl:if test="$rspCount = 1 or $rspCount > 2"><xsl:text>, </xsl:text></xsl:if>
+						<xsl:if test="$rspCount = 2"><xsl:text> </xsl:text></xsl:if>
 					</xsl:when>
 					<xsl:otherwise>
 						<xsl:choose>
@@ -137,18 +126,18 @@
 								<xsl:text>), </xsl:text>
 								<xsl:value-of select="tei:name/tei:forename"/>
 								<xsl:value-of select="$rsp"/>
+								<xsl:text>, </xsl:text>
 							</xsl:when>
 							<xsl:otherwise>
 								<xsl:value-of select="tei:name"/>
 								<xsl:text> (</xsl:text>
 								<xsl:value-of select="$bibDate"/>
 								<xsl:text>)</xsl:text>
+								<xsl:text>, </xsl:text>
 							</xsl:otherwise>
 						</xsl:choose>
 					</xsl:otherwise>
 				</xsl:choose>
-				<xsl:if test="$rspCount = 1 or $rspCount > 2"><xsl:text>, </xsl:text></xsl:if>
-				<xsl:if test="$rspCount = 2"><xsl:text> </xsl:text></xsl:if>
 			</xsl:when>
 			<xsl:when test="position() > 1">
 				<xsl:choose>
@@ -1780,7 +1769,7 @@
 			<seg id="ref{count(preceding::*)}_exp" style="display:none;background-color:white">
 				<xsl:for-each select="//tei:lb[@xml:id = $refID]">
 					<br/>
-					<xsl:call-template name="dipMSline"/>
+					 <xsl:call-template name="dipMSline"/>
 					<br/>
 					<br/>
 				</xsl:for-each>
