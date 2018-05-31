@@ -10,6 +10,7 @@
 	<xsl:key name="abbrs" match="*" use="@xml:id"/>
 	<xsl:key name="hands" match="*" use="@xml:id"/>
 	<xsl:key name="mss" match="*" use="@xml:id"/>
+	<xsl:key name="bib" match="*" use="@xml:id"/>
 	<xsl:key name="pos" match="*" use="@xml:id"/>
 	<xsl:key name="probs" match="*" use="@xml:id"/>
 	<xsl:key name="divTitle" match="*" use="@xml:id"/>
@@ -42,9 +43,243 @@
 					<br/>
 					<h3 style="font-size:16px">Diplomatic Text</h3>
 					<xsl:apply-templates mode="dip"/>
+					<h3 style="font-size:16px">Bibliography</h3>
+					<h4 style="font-size:14px">Manuscripts</h4>
+					<ul>
+						<xsl:for-each select="descendant::tei:ref[@type = 'ms']">
+							<xsl:sort select="tei:settlement"/>
+							<xsl:variable name="transcrID" select="ancestor::tei:TEI/@xml:id"/>
+							<xsl:variable name="msID" select="@target"/>
+							<xsl:if test="not(preceding::tei:ref[@target = $msID])">
+								<li style="font-size:10px;list-style: none">
+									<xsl:call-template name="mssBib"/>
+								</li>
+							</xsl:if>
+						</xsl:for-each>
+					</ul>
+					<h4>Primary Literature</h4>
+					<ul>
+						<xsl:for-each select="descendant::tei:ref[@type = 'bib']">
+							<xsl:variable name="transcrID" select="ancestor::tei:TEI/@xml:id"/>
+							<xsl:variable name="bibID" select="@target"/>
+							<xsl:if
+								test="not(preceding::tei:ref[@target = $bibID]) and key('bib', @target)/ancestor::tei:listBibl[@type = 'primLit']">
+								<li style="font-size:10px;list-style: none">
+									<xsl:call-template name="litBib"/>
+								</li>
+							</xsl:if>
+						</xsl:for-each>
+					</ul>
+					<h4>Secondary Literature</h4>
+					<ul>
+						<xsl:for-each select="descendant::tei:ref[@type = 'bib']">
+							<xsl:variable name="transcrID" select="ancestor::tei:TEI/@xml:id"/>
+							<xsl:variable name="bibID" select="@target"/>
+							<xsl:if
+								test="not(preceding::tei:ref[@target = $bibID]) and key('bib', @target)/ancestor::tei:listBibl[@type = 'secLit']">
+								<li style="font-size:10px;list-style: none">
+									<xsl:call-template name="litBib"/>
+								</li>
+							</xsl:if>
+						</xsl:for-each>
+					</ul>
 				</xsl:for-each>
 			</body>
 		</html>
+	</xsl:template>
+
+	<xsl:template name="mssBib" match="tei:listBibl[@type = 'mss']/tei:msDesc/tei:msIdentifier">
+		<xsl:value-of select="key('bib', @target)/tei:settlement"/>
+		<xsl:text>, </xsl:text>
+		<xsl:value-of select="key('bib', @target)/tei:repository"/>
+		<xsl:text>, </xsl:text>
+		<xsl:value-of select="key('bib', @target)/tei:idno"/>
+		<xsl:text>.</xsl:text>
+	</xsl:template>
+
+	<xsl:template name="rspStmt">
+		<xsl:variable name="bibDate" select="ancestor::tei:biblStruct//tei:imprint/tei:date"/>
+		<xsl:variable name="rspCount" select="count(parent::*/descendant::tei:respStmt)"/>
+		<xsl:variable name="rsp">
+			<xsl:for-each select="tei:resp">
+				<xsl:choose>
+					<xsl:when test="text() = 'author'">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when test="text() = 'editor'">
+						<xsl:text> (ed.)</xsl:text>
+					</xsl:when>
+					<xsl:when test="text() = 'translator'">
+						<xsl:text> (tr.)</xsl:text>
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:text/>
+					</xsl:otherwise>
+				</xsl:choose>
+			</xsl:for-each>
+		</xsl:variable>
+		<xsl:choose>
+			<xsl:when test="position() = 1">
+				<xsl:choose>
+					<xsl:when test="tei:name/tei:surname">
+						<xsl:value-of select="tei:name/tei:surname"/>
+						<xsl:text> (</xsl:text>
+						<xsl:value-of select="$bibDate"/>
+						<xsl:text>), </xsl:text>
+						<xsl:value-of select="tei:name/tei:forename"/>
+						<xsl:value-of select="$rsp"/>
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:value-of select="tei:name"/>
+						<xsl:text> (</xsl:text>
+						<xsl:value-of select="$bibDate"/>
+						<xsl:text>)</xsl:text>
+					</xsl:otherwise>
+				</xsl:choose>
+				<xsl:text>, </xsl:text>
+			</xsl:when>
+			<xsl:when test="position() > 1">
+				<xsl:choose>
+					<xsl:when test="position() &lt; $rspCount">
+						<xsl:value-of select="tei:name/tei:forename"/>
+						<xsl:text> </xsl:text>
+						<xsl:value-of select="tei:name/tei:surname"/>
+						<xsl:value-of select="$rsp"/>
+						<xsl:text>, </xsl:text>
+					</xsl:when>
+					<xsl:when test="position() = $rspCount">
+						<xsl:text>and </xsl:text>
+						<xsl:value-of select="tei:name/tei:forename"/>
+						<xsl:text> </xsl:text>
+						<xsl:value-of select="tei:name/tei:surname"/>
+						<xsl:value-of select="$rsp"/>
+						<xsl:text>, </xsl:text>
+					</xsl:when>
+				</xsl:choose>
+			</xsl:when>
+		</xsl:choose>
+	</xsl:template>
+
+	<xsl:template name="litBib">
+		<xsl:variable name="contrs_a">
+			<xsl:if test="key('bib', @target)/tei:analytic">
+				<xsl:for-each select="key('bib', @target)/tei:analytic/tei:respStmt">
+					<xsl:call-template name="rspStmt"/>
+				</xsl:for-each>
+			</xsl:if>
+			<xsl:if test="not(key('bib', @target)/tei:analytic)">
+				<xsl:for-each select="key('bib', @target)/tei:monogr/tei:respStmt">
+					<xsl:call-template name="rspStmt"/>
+				</xsl:for-each>
+			</xsl:if>
+		</xsl:variable>
+		<xsl:variable name="contrs_m">
+			<xsl:for-each select="key('bib', @target)[tei:analytic]/tei:monogr/tei:respStmt">
+				<xsl:call-template name="rspStmt"/>
+			</xsl:for-each>
+		</xsl:variable>
+		<xsl:choose>
+			<xsl:when test="key('bib', @target)/@type = 'book'">
+				<xsl:value-of select="$contrs_a"/>
+				<i>
+					<xsl:value-of select="key('bib', @target)/tei:monogr/tei:title"/>
+				</i>
+				<xsl:if
+					test="key('bib', @target)/tei:monogr/tei:imprint/tei:biblScope[@unit = 'volume']">
+					<xsl:text>, vol. </xsl:text>
+					<xsl:value-of
+						select="key('bib', @target)/tei:monogr/tei:imprint/tei:biblScope[@unit = 'volume']"
+					/>
+				</xsl:if>
+				<xsl:if test="key('bib', @target)/tei:series">
+					<xsl:text>, </xsl:text>
+					<xsl:value-of select="key('bib', @target)/tei:series/tei:title"/>
+					<xsl:if test="key('bib', @target)/tei:series/tei:biblScope[@unit = 'volume']">
+						<xsl:text> </xsl:text>
+						<xsl:value-of
+							select="key('bib', @target)/tei:series/tei:biblScope[@unit = 'volume']"
+						/>
+					</xsl:if>
+				</xsl:if>
+				<xsl:text>, </xsl:text>
+				<xsl:value-of select="key('bib', @target)/tei:monogr/tei:imprint/tei:pubPlace"/>
+				<xsl:text>: </xsl:text>
+				<xsl:value-of select="key('bib', @target)/tei:monogr/tei:imprint/tei:publisher"/>
+			</xsl:when>
+			<xsl:when test="key('bib', @target)/@type = 'journalArticle'">
+				<xsl:value-of select="$contrs_a"/>
+				<xsl:text>'</xsl:text>
+				<xsl:value-of select="key('bib', @target)/tei:analytic/tei:title"/>
+				<xsl:text>', </xsl:text>
+				<i>
+					<xsl:value-of select="key('bib', @target)/tei:monogr/tei:title"/>
+				</i>
+				<xsl:text> </xsl:text>
+				<xsl:value-of
+					select="key('bib', @target)/tei:monogr/tei:imprint/tei:biblScope[@unit = 'volume']"/>
+				<xsl:if
+					test="key('bib', @target)/tei:monogr/tei:imprint/tei:biblScope[@unit = 'issue']">
+					<xsl:text>:</xsl:text>
+					<xsl:value-of
+						select="key('bib', @target)/tei:monogr/tei:imprint/tei:biblScope[@unit = 'issue']"
+					/>
+				</xsl:if>
+				<xsl:text>, </xsl:text>
+				<xsl:value-of
+					select="key('bib', @target)/tei:monogr/tei:imprint/tei:biblScope[@unit = 'page']"
+				/>
+			</xsl:when>
+			<xsl:when test="key('bib', @target)/@type = 'bookSection'">
+				<xsl:value-of select="$contrs_a"/>
+				<xsl:text>'</xsl:text>
+				<xsl:value-of select="key('bib', @target)/tei:analytic/tei:title"/>
+				<xsl:text>', in </xsl:text>
+				<xsl:value-of select="$contrs_m"/>
+				<i>
+					<xsl:value-of select="key('bib', @target)/tei:monogr/tei:title"/>
+				</i>
+				<xsl:if test="key('bib', @target)/tei:series">
+					<xsl:text>, </xsl:text>
+					<xsl:value-of select="key('bib', @target)/tei:series/tei:title"/>
+					<xsl:if test="key('bib', @target)/tei:series/tei:biblScope[@unit = 'volume']">
+						<xsl:text> </xsl:text>
+						<xsl:value-of
+							select="key('bib', @target)/tei:series/tei:biblScope[@unit = 'volume']"
+						/>
+					</xsl:if>
+				</xsl:if>
+				<xsl:text>, </xsl:text>
+				<xsl:value-of select="key('bib', @target)/tei:monogr/tei:imprint/tei:pubPlace"/>
+				<xsl:text>: </xsl:text>
+				<xsl:value-of select="key('bib', @target)/tei:monogr/tei:imprint/tei:publisher"/>
+				<xsl:text>, </xsl:text>
+				<xsl:value-of
+					select="key('bib', @target)/tei:monogr/tei:imprint/tei:biblScope[@unit = 'page']"
+				/>
+			</xsl:when>
+			<xsl:when test="key('bib', @target)/@type = 'webpage'">
+				<xsl:value-of select="$contrs_a"/>
+				<i>
+					<xsl:value-of select="key('bib', @target)/tei:monogr/tei:title"/>
+				</i>
+				<xsl:text>, &lt;</xsl:text>
+				<xsl:value-of
+					select="key('bib', @target)/tei:monogr/tei:imprint/tei:note[@type = 'url']"/>
+				<xsl:text>&gt;, accessed </xsl:text>
+				<xsl:value-of
+					select="key('bib', @target)/tei:monogr/tei:imprint/tei:note[@type = 'accessed']"
+				/>
+			</xsl:when>
+			<xsl:when test="key('bib', @target)/@type = 'report'">
+				<xsl:value-of select="$contrs_a"/>
+				<xsl:text>'</xsl:text>
+				<xsl:value-of select="key('bib', @target)/tei:monogr/tei:title"/>
+				<xsl:text>', </xsl:text>
+				<xsl:value-of select="key('bib', @target)/tei:monogr/tei:imprint/tei:pubPlace"/>
+				<xsl:text>: </xsl:text>
+				<xsl:value-of select="key('bib', @target)/tei:monogr/tei:imprint/tei:publisher"/>
+			</xsl:when>
+		</xsl:choose>
 	</xsl:template>
 
 	<xsl:template name="tempEd" match="tei:teiCorpus/tei:TEI">
@@ -101,7 +336,9 @@
 			<xsl:apply-templates
 				select="parent::tei:fileDesc/tei:sourceDesc/tei:msDesc/tei:msIdentifier/tei:idno"/>
 		</xsl:variable>
-		<u><h3 style="font-size:16px">Manuscript: <xsl:value-of select="$msref"/></h3></u>
+		<u>
+			<h3 style="font-size:16px">Manuscript: <xsl:value-of select="$msref"/></h3>
+		</u>
 		<xsl:for-each select="tei:note/tei:p">
 			<p style="font-size:10px">
 				<xsl:apply-templates/>
@@ -112,9 +349,14 @@
 	<xsl:template match="tei:teiHeader/tei:fileDesc/tei:sourceDesc">
 		<h4 style="font-size:16px">Hands</h4>
 		<xsl:for-each select="tei:msDesc/tei:physDesc/tei:handDesc/tei:handNote/tei:note">
-				<h5>
-					<xsl:value-of select="key('hands', parent::tei:handNote/@corresp)/tei:forename"/><xsl:text> </xsl:text><xsl:value-of select="key('hands', parent::tei:handNote/@corresp)/tei:surname"/><xsl:text> (</xsl:text><xsl:value-of select="parent::tei:handNote/@corresp"/><xsl:text>)</xsl:text>
-				</h5>
+			<h5>
+				<xsl:value-of select="key('hands', parent::tei:handNote/@corresp)/tei:forename"/>
+				<xsl:text> </xsl:text>
+				<xsl:value-of select="key('hands', parent::tei:handNote/@corresp)/tei:surname"/>
+				<xsl:text> (</xsl:text>
+				<xsl:value-of select="parent::tei:handNote/@corresp"/>
+				<xsl:text>)</xsl:text>
+			</h5>
 			<xsl:for-each select="tei:p">
 				<xsl:if test="@comment">
 					<h6>
@@ -314,9 +556,11 @@
 				</xsl:if>
 				<xsl:for-each select="tei:p">
 					<xsl:if test="@comment">
-						<b><h7 style="font-size:10px">
-							<xsl:value-of select="@comment"/>
-						</h7></b>
+						<b>
+							<h7 style="font-size:10px">
+								<xsl:value-of select="@comment"/>
+							</h7>
+						</b>
 					</xsl:if>
 					<p style="font-size:10px">
 						<xsl:apply-templates/>
@@ -404,14 +648,15 @@
 	<xsl:template match="tei:teiHeader/tei:revisionDesc">
 		<h3 style="font-size:16px">Revision History</h3>
 		<ul style="margin-left:30px">
-		<xsl:for-each select="tei:change">
-			<li style="font-size:10px"><b>
-				<xsl:value-of select="@when"/>
-				<xsl:text>: </xsl:text>
-			</b>
-			<xsl:apply-templates/>
-			</li>
-		</xsl:for-each>
+			<xsl:for-each select="tei:change">
+				<li style="font-size:10px">
+					<b>
+						<xsl:value-of select="@when"/>
+						<xsl:text>: </xsl:text>
+					</b>
+					<xsl:apply-templates/>
+				</li>
+			</xsl:for-each>
 		</ul>
 	</xsl:template>
 
@@ -453,15 +698,16 @@
 		</table>
 		<br/>
 	</xsl:template>
-	
+
 	<xsl:template match="tei:quote">
 		<blockquote style="margin-left:40px;font-size: small">
 			<xsl:apply-templates/>
 		</blockquote>
 	</xsl:template>
-	
+
 	<xsl:template match="tei:quote/tei:l">
-		<xsl:apply-templates/><br/>
+		<xsl:apply-templates/>
+		<br/>
 	</xsl:template>
 
 	<xsl:template match="tei:hi[@rend = 'italics']">
@@ -567,6 +813,26 @@
 		</xsl:choose>
 	</xsl:template>
 
+	<xsl:template name="dipMSline">
+		<xsl:variable name="comDiv" select="ancestor::tei:div[1]/@corresp"/>
+		<xsl:variable name="lineID">
+			<xsl:choose>
+				<xsl:when test="@xml:id">
+					<xsl:value-of select="preceding::tei:lb[1]/@xml:id"/>
+				</xsl:when>
+				<xsl:when test="@sameAs">
+					<xsl:value-of select="preceding::tei:lb[1]/@sameAs"/>
+				</xsl:when>
+			</xsl:choose>
+		</xsl:variable>
+		<xsl:apply-templates
+			select="//*[parent::tei:p or parent::tei:l and ancestor::tei:div[1][@corresp = $comDiv] and preceding::tei:lb[1]/@xml:id = $lineID]"
+			mode="dip"/>
+		<xsl:apply-templates
+			select="//*[parent::tei:p or parent::tei:l and ancestor::tei:div[1][@corresp = $comDiv] and preceding::tei:lb[1]/@sameAs = $lineID]"
+			mode="dip"/>
+	</xsl:template>
+
 	<xsl:template match="tei:lg">
 		<xsl:choose>
 			<xsl:when test="child::tei:pb">
@@ -644,7 +910,7 @@
 		<xsl:text/>
 	</xsl:template>
 
-	<xsl:template match="tei:l">
+	<xsl:template match="tei:l" name="line">
 		<xsl:variable name="Id" select="@xml:id"/>
 		<xsl:variable name="MSlineID">
 			<xsl:choose>
@@ -1463,8 +1729,46 @@
 	</xsl:template>
 
 	<xsl:template match="tei:ref">
-		<a id="ref{count(preceding::*)}" onclick="refDetails(this.id)"><xsl:apply-templates/></a>
-		<seg id="ref{count(preceding::*)}_tbl" style="display:none"><b>REF TEXT HERE</b></seg>
+		<xsl:variable name="refID" select="@target"/>
+		<a id="ref{count(preceding::*)}" onclick="refDetails(this.id)" exp="0">
+			<xsl:apply-templates/>
+		</a>
+		<xsl:if test="@type = 'bib'">
+			<seg id="ref{count(preceding::*)}_exp" style="display:none;background-color:silver">
+				<xsl:text> [</xsl:text>
+				<b>
+					<xsl:call-template name="litBib"/>
+				</b>
+				<xsl:text>] </xsl:text>
+			</seg>
+		</xsl:if>
+		<xsl:if test="@type = 'ms'">
+			<seg id="ref{count(preceding::*)}_exp" style="display:none;background-color:silver">
+				<xsl:text> [</xsl:text>
+				<b>
+					<xsl:call-template name="mssBib"/>
+				</b>
+				<xsl:text>] </xsl:text>
+			</seg>
+		</xsl:if>
+		<xsl:if test="@type = 'text_ed_line'">
+			<seg id="ref{count(preceding::*)}_exp" style="display:none;background-color:white">
+				<xsl:for-each select="//tei:l[@xml:id = $refID]">
+					<br/>
+					<xsl:call-template name="line"/>
+					<br/>
+				</xsl:for-each>
+			</seg>
+		</xsl:if>
+		<xsl:if test="@type = 'text_dip_line'">
+			<seg id="ref{count(preceding::*)}_exp" style="display:none;background-color:white">
+				<xsl:for-each select="//tei:lb[@xml:id = $refID]">
+					<br/>
+					<xsl:call-template name="dipMSline"/>
+					<br/>
+				</xsl:for-each>
+			</seg>
+		</xsl:if>
 	</xsl:template>
 
 	<xsl:template match="tei:c">
