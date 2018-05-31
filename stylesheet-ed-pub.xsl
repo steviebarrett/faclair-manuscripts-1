@@ -121,22 +121,34 @@
 		<xsl:choose>
 			<xsl:when test="position() = 1">
 				<xsl:choose>
-					<xsl:when test="tei:name/tei:surname">
-						<xsl:value-of select="tei:name/tei:surname"/>
-						<xsl:text> (</xsl:text>
-						<xsl:value-of select="$bibDate"/>
-						<xsl:text>), </xsl:text>
+					<xsl:when
+						test="ancestor::tei:monogr and ancestor::tei:biblStruct[child::tei:analytic]">
 						<xsl:value-of select="tei:name/tei:forename"/>
+						<xsl:text> </xsl:text>
+						<xsl:value-of select="tei:name/tei:surname"/>
 						<xsl:value-of select="$rsp"/>
 					</xsl:when>
 					<xsl:otherwise>
-						<xsl:value-of select="tei:name"/>
-						<xsl:text> (</xsl:text>
-						<xsl:value-of select="$bibDate"/>
-						<xsl:text>)</xsl:text>
+						<xsl:choose>
+							<xsl:when test="tei:name/tei:surname">
+								<xsl:value-of select="tei:name/tei:surname"/>
+								<xsl:text> (</xsl:text>
+								<xsl:value-of select="$bibDate"/>
+								<xsl:text>), </xsl:text>
+								<xsl:value-of select="tei:name/tei:forename"/>
+								<xsl:value-of select="$rsp"/>
+							</xsl:when>
+							<xsl:otherwise>
+								<xsl:value-of select="tei:name"/>
+								<xsl:text> (</xsl:text>
+								<xsl:value-of select="$bibDate"/>
+								<xsl:text>)</xsl:text>
+							</xsl:otherwise>
+						</xsl:choose>
 					</xsl:otherwise>
 				</xsl:choose>
-				<xsl:text>, </xsl:text>
+				<xsl:if test="$rspCount = 1 or $rspCount > 2"><xsl:text>, </xsl:text></xsl:if>
+				<xsl:if test="$rspCount = 2"><xsl:text> </xsl:text></xsl:if>
 			</xsl:when>
 			<xsl:when test="position() > 1">
 				<xsl:choose>
@@ -263,8 +275,8 @@
 					<xsl:value-of select="key('bib', @target)/tei:monogr/tei:title"/>
 				</i>
 				<xsl:text>, &lt;</xsl:text>
-				<xsl:value-of
-					select="key('bib', @target)/tei:monogr/tei:imprint/tei:note[@type = 'url']"/>
+				<a href="{key('bib', @target)/tei:monogr/tei:imprint/tei:note[@type = 'url']}"><xsl:value-of
+					select="key('bib', @target)/tei:monogr/tei:imprint/tei:note[@type = 'url']"/></a>
 				<xsl:text>&gt;, accessed </xsl:text>
 				<xsl:value-of
 					select="key('bib', @target)/tei:monogr/tei:imprint/tei:note[@type = 'accessed']"
@@ -818,20 +830,24 @@
 		<xsl:variable name="lineID">
 			<xsl:choose>
 				<xsl:when test="@xml:id">
-					<xsl:value-of select="preceding::tei:lb[1]/@xml:id"/>
+					<xsl:value-of select="@xml:id"/>
 				</xsl:when>
 				<xsl:when test="@sameAs">
-					<xsl:value-of select="preceding::tei:lb[1]/@sameAs"/>
+					<xsl:value-of select="@sameAs"/>
 				</xsl:when>
 			</xsl:choose>
 		</xsl:variable>
+		<br/>
 		<xsl:apply-templates
-			select="//*[parent::tei:p or parent::tei:l and ancestor::tei:div[1][@corresp = $comDiv] and preceding::tei:lb[1]/@xml:id = $lineID]"
+			select="//*[parent::tei:p[ancestor::tei:div[1][@corresp = $comDiv]] or parent::tei:l[ancestor::tei:div[1][@corresp = $comDiv]] and preceding::tei:lb[1]/@xml:id = $lineID and not(tei:lb)]"
 			mode="dip"/>
 		<xsl:apply-templates
-			select="//*[parent::tei:p or parent::tei:l and ancestor::tei:div[1][@corresp = $comDiv] and preceding::tei:lb[1]/@sameAs = $lineID]"
+			select="//*[parent::tei:p[ancestor::tei:div[1][@corresp = $comDiv]] or parent::tei:l[ancestor::tei:div[1][@corresp = $comDiv]] and preceding::tei:lb[1]/@sameAs = $lineID and not(tei:lb)]"
 			mode="dip"/>
+		<br/>
 	</xsl:template>
+
+	<xsl:template name="edMSline"/> 
 
 	<xsl:template match="tei:lg">
 		<xsl:choose>
@@ -1730,9 +1746,9 @@
 
 	<xsl:template match="tei:ref">
 		<xsl:variable name="refID" select="@target"/>
-		<a id="ref{count(preceding::*)}" onclick="refDetails(this.id)" exp="0">
+		<u><a id="ref{count(preceding::*)}" onclick="refDetails(this.id)" exp="0">
 			<xsl:apply-templates/>
-		</a>
+		</a></u>
 		<xsl:if test="@type = 'bib'">
 			<seg id="ref{count(preceding::*)}_exp" style="display:none;background-color:silver">
 				<xsl:text> [</xsl:text>
@@ -1757,6 +1773,7 @@
 					<br/>
 					<xsl:call-template name="line"/>
 					<br/>
+					<br/>
 				</xsl:for-each>
 			</seg>
 		</xsl:if>
@@ -1765,6 +1782,7 @@
 				<xsl:for-each select="//tei:lb[@xml:id = $refID]">
 					<br/>
 					<xsl:call-template name="dipMSline"/>
+					<br/>
 					<br/>
 				</xsl:for-each>
 			</seg>
