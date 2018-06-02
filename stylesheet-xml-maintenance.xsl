@@ -9,11 +9,13 @@
 	<xsl:template match="node()|@*">
 		<xsl:copy>
 			<xsl:apply-templates select="node()|@*"/>
+			<xsl:if test="tei:w[not(descendant::tei:w) and @lemmaRef]">
+				<xsl:if test="contains(@lemmaRef, 'dil.ie')">
+					<xsl:attribute name="lemmaED"><xsl:value-of select="@lemma"/></xsl:attribute>
+					<xsl:attribute name="lemmaRefED"><xsl:value-of select="@lemmaRef"/></xsl:attribute>
+				</xsl:if>
+			</xsl:if>
 		</xsl:copy>
-	</xsl:template>
-	
-	<xsl:template match="//tei:abbr[descendant::tei:g[@ref='g8' and text()='r'] and //text()='ar']/*">
-		<xsl:text>&lt;g ref=&quot;g8&quot;&gt;ar&lt;/g&gt;</xsl:text>
 	</xsl:template>
 
 </xsl:stylesheet>

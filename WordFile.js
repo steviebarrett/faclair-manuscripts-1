@@ -15,6 +15,9 @@ function createTable() {
 	var tblId = document.createAttribute ("id");
 	tblId.value = "slipTable";
 	table.setAttributeNode(tblId);
+	var tblStyle = document.createAttribute("style");
+	tblStyle.value = "font-size:12px";
+	table.setAttributeNode(tblStyle);
 	var row1 = table.insertRow(0);
 	var rowID = document.createAttribute("id");
 	rowID.value = rowNo;
@@ -41,11 +44,11 @@ function createTable() {
 	var r1col10 = row1.insertCell(9);
 	r1col10.outerHTML = "<th><b>Lemma (eDIL)</b></th>";
 	var r1col11 = row1.insertCell(10);
-	r1col11.outerHTML = "<th><b>URI (eDIL)</b></th>";
+	r1col11.outerHTML = "<th><b>Lemma (Dwellys)</b></th>";
 	var r1col12 = row1.insertCell(11);
-	r1col12.outerHTML = "<th><b>Lemma (Dwellys)</b></th>";
+	r1col12.outerHTML = "<th><b>HDSG Slip</b></th>";
 	var r1col13 = row1.insertCell(12);
-	r1col13.outerHTML = "<th><b>HDSG Slip</b></th>";
+	r1col13.outerHTML = "<th><b>URI</b></th>";
 	var r1col14 = row1.insertCell(13);
 	r1col14.outerHTML = "<th><button onclick='delCol()'>Del Col</button><br/><button onclick='delRow(this)'>Del Row</button></th>";
 	var opened = window.open("", "FnaG MS Corpus Word Table");
@@ -391,25 +394,22 @@ function addSlip(id) {
 		textForm = form
 	}
 	var contextBeg
-	if ((el_minus_5.previousElementSibling == null ) || (el_minus_4.previousElementSibling == null ) || (el_minus_3.previousElementSibling == null ) || (el_minus_2.previousElementSibling == null ) || (el_minus_1.previousElementSibling == null )){
+	if ((el_minus_5.previousElementSibling == null) || (el_minus_4.previousElementSibling == null) || (el_minus_3.previousElementSibling == null) || (el_minus_2.previousElementSibling == null) || (el_minus_1.previousElementSibling == null)) {
 		contextBeg = "";
-	}
-	else {
+	} else {
 		contextBeg = "... ";
 	}
 	var contextEnd
-	if ((el_plus_5.nextElementSibling == null ) || (el_plus_4.nextElementSibling == null ) || (el_plus_3.nextElementSibling == null ) || (el_plus_2.nextElementSibling == null ) || (el_plus_1.nextElementSibling == null )){
+	if ((el_plus_5.nextElementSibling == null) || (el_plus_4.nextElementSibling == null) || (el_plus_3.nextElementSibling == null) || (el_plus_2.nextElementSibling == null) || (el_plus_1.nextElementSibling == null)) {
 		contextEnd = "";
-	}
-	else {
+	} else {
 		contextEnd = " ...";
 	}
 	var context
-	if (el.id.substr(8) =="dip") {
+	if (el.id.substr(8) == "dip") {
 		context = contextBeg.concat(el_minus_5node, el_minus_4node, el_minus_3node, el_minus_2node, el_minus_1node, '<b>' + textForm + '</b>', el_plus_1node, el_plus_2node, el_plus_3node, el_plus_4node, el_plus_5node, contextEnd);
-	}
-	else {
-	context = contextBeg.concat(el_minus_5node, ' ', el_minus_4node, ' ', el_minus_3node, ' ', el_minus_2node, ' ', el_minus_1node, ' ', '<b>' + textForm + '</b>', ' ', el_plus_1node, ' ', el_plus_2node, ' ', el_plus_3node, ' ', el_plus_4node, ' ', el_plus_5node, contextEnd);
+	} else {
+		context = contextBeg.concat(el_minus_5node, ' ', el_minus_4node, ' ', el_minus_3node, ' ', el_minus_2node, ' ', el_minus_1node, ' ', '<b>' + textForm + '</b>', ' ', el_plus_1node, ' ', el_plus_2node, ' ', el_plus_3node, ' ', el_plus_4node, ' ', el_plus_5node, contextEnd);
 	}
 	var rcol3 = row.insertCell(2);
 	rcol3.innerHTML = context;
@@ -417,7 +417,7 @@ function addSlip(id) {
 	if (el.firstChild.innerText == "/alt") {
 		var choiceID = el.getAttribute("choicePOS").slice(3);
 		var corrID = "corr" + choiceID;
-		var corrForm = rcol3.querySelector("a[choicePOS=" + corrID +"]");
+		var corrForm = rcol3.querySelector("a[choicePOS=" + corrID + "]");
 		corrForm.setAttribute("hidden", "hidden");
 	}
 	var rcol4 = row.insertCell(3);
@@ -463,18 +463,27 @@ function addSlip(id) {
 	rcol8.innerHTML = date;
 	var rcol9 = row.insertCell(8);
 	rcol9.innerHTML = an;
+	var lrefED = el.getAttribute("lemmaRefED");
+	var lemED = el.getAttribute("lemmaED");
 	var rcol10 = row.insertCell(9);
-	rcol10.innerHTML = lem;
-	var rcol11 = row.insertCell(10);
-	rcol11.innerHTML = '<a target="' + lref + '" href="' + lref + '">' + lref + '</a>';
-	var finURI = rcol11.firstChild.innerHTML.slice(18);
-	rcol11.firstChild.innerHTML = finURI;
+	rcol10.innerHTML = '<a target="' + lrefED + '" href="' + lrefED + '">' + lemED + '</a>';
 	var lemDW = el.getAttribute("lemmaDW");
 	var lemURLDW = el.getAttribute("lemmaRefDW");
+	var rcol11 = row.insertCell(10);
+	rcol11.innerHTML = '<a target="' + lemURLDW + '" href="' + lemURLDW + '">' + lemDW + '</a>';
 	var rcol12 = row.insertCell(11);
-	rcol12.innerHTML = '<a target="' + lemURLDW + '" href="' + lemURLDW + '">' + lemDW + '</a>';
+	rcol12.innerHTML = "";
 	var rcol13 = row.insertCell(12);
-	rcol13.innerHTML = "";
+	rcol13.innerHTML = '<a target="' + lref + '" href="' + lref + '">' + lref + '</a>';
+	var finURIED;
+	if (rcol13.firstChild.innerHTML.slice(11, 17) == "dil.ie") {
+		finURIED = rcol13.firstChild.innerHTML.slice(18);
+	} else if (rcol13.firstChild.innerHTML.slice(11, 22) == "faclair.com") {
+		finURIED = rcol13.firstChild.innerHTML.slice(51);
+	} else if (rcol12.firstChild.innerHTML.slice(6, 17) == "dasg.ac.uk") {
+		finURIED = rcol13.firstChild.innerHTML.slice(36);
+		}
+	rcol13.firstChild.innerHTML = finURIED;
 	var rcol14 = row.insertCell(13);
 	rcol14.outerHTML = '<td><button onclick="delRow(this)">Del Row</button></td>';
 	opened.document.table.appendChild(tr);
