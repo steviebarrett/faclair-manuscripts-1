@@ -33,7 +33,7 @@
 				<script src="hilites.js"/>
 			</head>
 			<body>
-				<h1 style="text-align:center; font-size:20px">
+				<h1 style="text-align:center; font-size:18px">
 					<xsl:value-of select="tei:teiCorpus//tei:title"/>
 				</h1>
 				<!-- <xsl:apply-templates select="tei:teiCorpus/tei:teiHeader"/> -->
@@ -41,10 +41,10 @@
 					<br/>
 					<xsl:call-template name="tempEd"/>
 					<br/>
-					<h3 style="font-size:16px">Diplomatic Text</h3>
+					<h2 style="text-align:center;font-size:18px">Diplomatic Text</h2>
 					<xsl:apply-templates mode="dip"/>
-					<h3 style="font-size:16px">Bibliography</h3>
-					<h4 style="font-size:14px">Manuscripts</h4>
+					<h3 style="font-size:18px">Bibliography</h3>
+					<h4 style="font-size:16px">Manuscripts</h4>
 					<ul>
 						<xsl:for-each select="descendant::tei:ref[@type = 'ms']">
 							<xsl:sort select="tei:settlement"/>
@@ -57,7 +57,7 @@
 							</xsl:if>
 						</xsl:for-each>
 					</ul>
-					<h4>Works Cited</h4>
+					<h4 style="font-size:16px">Works Cited</h4>
 					<ul>
 						<xsl:for-each select="descendant::tei:ref[@type = 'bib']">
 							<xsl:variable name="transcrID" select="ancestor::tei:TEI/@xml:id"/>
@@ -1529,7 +1529,7 @@
 		</xsl:variable>
 		<a id="{$wordId}" pos="{$wordPOS}" onmouseover="hilite(this.id)"
 			onmouseout="dhilite(this.id)" lemma="{$lem}" lemmaRef="{$lemRef}" lemmaED="{@lemmaED}" lemmaRefED="{@lemmaRefED}" lemmaDW="{@lemmaDW}"
-			lemmaRefDW="{@lemmaRefDW}" ana="{@ana}" hand="{$hand}" ref="{$msref}" date="{$handDate}"
+			lemmaRefDW="{@lemmaRefDW}" lemmaSL="{@lemmaSL}" slipID="{@slipID}" ana="{@ana}" hand="{$hand}" ref="{$msref}" date="{$handDate}"
 			medium="{$medium}" cert="{$certLvl}" abbrRefs="{$abbrRef}"
 			title="{$lem}: {$pos} {$src}&#10;{$hand}&#10;{$prob}{$certProb}&#10;Abbreviations: {$abbrs}&#10;{$gloss}"
 			style="text-decoration:none; color:#000000">
@@ -1616,6 +1616,9 @@
 			<xsl:when test="@ana = 'pron' and ancestor::tei:w[contains(@ana, 'part, pron, verb')]">
 				<xsl:text> </xsl:text>
 			</xsl:when>
+			<xsl:when test="@ana = 'part' and ancestor::tei:w[contains(@ana, 'part, noun')]">
+				<xsl:text/>
+			</xsl:when>
 			<xsl:when test="@ana = 'pron' and ancestor::tei:w[@ana = 'pron, verb']">
 				<xsl:text/>
 			</xsl:when>
@@ -1670,6 +1673,9 @@
 				<xsl:text/>
 			</xsl:when>
 			<xsl:when test="@ana = 'pref' and ancestor::tei:w[contains(@ana, 'pref, adj')]">
+				<xsl:text/>
+			</xsl:when>
+			<xsl:when test="@ana = 'adj' and ancestor::tei:w[contains(@ana, 'adj, prep')]">
 				<xsl:text/>
 			</xsl:when>
 			<xsl:when test="@ana = 'pref' and ancestor::tei:w[contains(@ana, 'pref, noun')]">
@@ -2173,15 +2179,6 @@
 		<xsl:variable name="contents"
 			select="ancestor::tei:TEI//tei:msDesc/tei:msContents/tei:msItem/h4/@id"/>
 		<xsl:variable name="lineID" select="preceding::tei:lb[1]/@xml:id | @sameAs"/>
-		<!-- <xsl:if test="/@resp = not(preceding::tei:div/@resp or preceding::tei:handShift/@new)">
-			<sub>
-				<b>beg. <xsl:value-of select="key('hands', @resp)/tei:forename"
-						/><xsl:text> </xsl:text><xsl:value-of
-						select="key('hands', @resp)/tei:surname"
-						/><xsl:text> (</xsl:text><xsl:value-of select="@resp"
-					/><xsl:text>) </xsl:text></b>
-			</sub>
-		</xsl:if> -->
 		<xsl:if test="@n and ancestor::tei:div or not(descendant::tei:div)">
 			<p>
 				<a href="{$contents}">Back to MS contents</a>
@@ -2192,7 +2189,7 @@
 		</h2>
 		<xsl:apply-templates/>
 		<xsl:if test="not(ancestor::tei:div) and descendant::tei:note[@type = 'fn']">
-			<h3>Notes</h3>
+			<h3 style="font-size:16px">Notes</h3>
 			<xsl:for-each select="descendant::tei:note[@type = 'fn']">
 				<xsl:variable name="comDiv"
 					select="ancestor::tei:div[not(ancestor::tei:div)]/@corresp"/>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?xml-model href="file:/C:/Files/faclair-manuscripts/fnag_mss.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+
 <?xml-stylesheet type="text/xsl" href="stylesheet-ed-pub.xsl"?>
 <teiCorpus xmlns="http://www.tei-c.org/ns/1.0" xmlns:xi="http://www.w3.org/2001/XInclude">
 	<teiHeader>
@@ -84,10 +85,17 @@
 						</msIdentifier>
 					</msDesc>
 					<msDesc>
+						<msIdentifier xml:id="MS15">
+							<settlement>Dublin</settlement>
+							<repository>Royal Irish Academy</repository>
+							<idno type="shelfmark">MS. A.v.2 (744)</idno>
+						</msIdentifier>
+					</msDesc>
+					<msDesc>
 						<msIdentifier xml:id="LaudMisc615">
 							<settlement>Oxford</settlement>
-							<repository>Laud Misc.</repository>
-							<idno type="shelfmark">MS. 615</idno>
+							<repository>Bodleian Library</repository>
+							<idno type="shelfmark">MS. Laud Misc. 615</idno>
 						</msIdentifier>
 					</msDesc>
 					<msDesc>
@@ -1127,6 +1135,13 @@
 					<region>Sleat (?)</region>
 					<note/>
 				</handNote>
+				<handNote xml:id="Hand22">
+					<forename>Cathal</forename>
+					<surname>Mac Mhuirich</surname>
+					<date>17</date>
+					<region>Western Isles/Skye</region>
+					<note/>
+				</handNote>
 				<handNote xml:id="Hand999">
 					<forename>an unidentfied</forename>
 					<surname>hand</surname>
@@ -1154,10 +1169,10 @@
 		</revisionDesc>
 	</teiHeader>
 	<!-- <xi:include href="Transcriptions/transcription1.xml" parse="xml"/> -->
-	<!-- <xi:include href="Transcriptions/transcription2.xml" parse="xml"/> -->
+	<xi:include href="Transcriptions/transcription2.xml" parse="xml"/>
 	<!-- <xi:include href="Transcriptions/transcription4.xml" parse="xml"/> -->
 	<!-- <xi:include href="Transcriptions/transcription5.xml" parse="xml"/> -->
-	<xi:include href="Transcriptions/transcription6.xml" parse="xml"/>
+	<!-- <xi:include href="Transcriptions/transcription6.xml" parse="xml"/> -->
 	<!-- <xi:include href="Transcriptions/transcription7.xml" parse="xml"/> -->
 	<!-- <xi:include href="Transcriptions/transcription8.xml" parse="xml"/> -->
 	<!-- <xi:include href="Transcriptions/transcription9.xml" parse="xml"/> -->
