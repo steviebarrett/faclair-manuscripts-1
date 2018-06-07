@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?xml-model href="file:/C:/Files/faclair-manuscripts/fnag_mss.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
-
-<?xml-stylesheet type="text/xsl" href="stylesheet-ed-pub.xsl"?>
+<?xml-stylesheet type="text/xsl" href="stylesheet-ed-ana-specific.xsl"?>
 <teiCorpus xmlns="http://www.tei-c.org/ns/1.0" xmlns:xi="http://www.w3.org/2001/XInclude">
 	<teiHeader>
 		<fileDesc>
@@ -178,7 +176,7 @@
 							<respStmt>
 								<resp>editor</resp>
 								<name><forename>William
-									Mackay</forename><surname>MacKenzie</surname></name>
+										Mackay</forename><surname>MacKenzie</surname></name>
 							</respStmt>
 							<imprint>
 								<pubPlace>London</pubPlace>
@@ -511,7 +509,10 @@
 					<biblStruct type="webpage" xml:id="eDIL2013">
 						<monogr>
 							<title level="m">Electronic Dictionary of the Irish Language</title>
-							<respStmt><resp>author</resp><name>eDIL</name></respStmt>
+							<respStmt>
+								<resp>author</resp>
+								<name>eDIL</name>
+							</respStmt>
 							<imprint>
 								<date>2013</date>
 								<note type="accessed">2018-05-30</note>
@@ -1168,15 +1169,15 @@
 			<change when="2017-11-07" who="EPT">Corpus header: Added content to elements</change>
 		</revisionDesc>
 	</teiHeader>
-	<!-- <xi:include href="Transcriptions/transcription1.xml" parse="xml"/> -->
+	<xi:include href="Transcriptions/transcription1.xml" parse="xml"/>
 	<xi:include href="Transcriptions/transcription2.xml" parse="xml"/>
-	<!-- <xi:include href="Transcriptions/transcription4.xml" parse="xml"/> -->
-	<!-- <xi:include href="Transcriptions/transcription5.xml" parse="xml"/> -->
-	<!-- <xi:include href="Transcriptions/transcription6.xml" parse="xml"/> -->
-	<!-- <xi:include href="Transcriptions/transcription7.xml" parse="xml"/> -->
-	<!-- <xi:include href="Transcriptions/transcription8.xml" parse="xml"/> -->
-	<!-- <xi:include href="Transcriptions/transcription9.xml" parse="xml"/> -->
-	<!-- <xi:include href="Transcriptions/transcription12.xml" parse="xml"/> -->
-	<!-- <xi:include href="Transcriptions/transcription13.xml" parse="xml"/> -->
-	<!-- <xi:include href="Transcriptions/transcription14.xml" parse="xml"/> -->
+	<xi:include href="Transcriptions/transcription4.xml" parse="xml"/>
+	<xi:include href="Transcriptions/transcription5.xml" parse="xml"/>
+	<xi:include href="Transcriptions/transcription6.xml" parse="xml"/>
+	<xi:include href="Transcriptions/transcription7.xml" parse="xml"/>
+	<xi:include href="Transcriptions/transcription8.xml" parse="xml"/>
+	<xi:include href="Transcriptions/transcription9.xml" parse="xml"/>
+	<xi:include href="Transcriptions/transcription12.xml" parse="xml"/>
+	<xi:include href="Transcriptions/transcription13.xml" parse="xml"/>
+	<xi:include href="Transcriptions/transcription14.xml" parse="xml"/>
 </teiCorpus>

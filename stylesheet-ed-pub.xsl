@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:tei="http://www.tei-c.org/ns/1.0"
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema"
-	exclude-result-prefixes="xs" version="1.0">
+	exclude-result-prefixes="xs" version="2.0">
 	<xsl:include href="stylesheet-dip-comp.xsl"/>
 	<xsl:strip-space elements="*"/>
 
@@ -34,10 +34,9 @@
 			</head>
 			<body>
 				<h1 style="text-align:center; font-size:18px">
-					<xsl:value-of select="tei:teiCorpus//tei:title"/>
+					<xsl:value-of select="tei:teiCorpus/tei:teiHeader/tei:fileDesc/tei:titleStmt/tei:title"/>
 				</h1>
-				<!-- <xsl:apply-templates select="tei:teiCorpus/tei:teiHeader"/> -->
-				<xsl:for-each select="tei:teiCorpus/tei:TEI">
+				<xsl:for-each select="//tei:TEI">
 					<br/>
 					<xsl:call-template name="tempEd"/>
 					<br/>
@@ -1744,7 +1743,7 @@
 			<xsl:apply-templates/>
 		</a></u>
 		<xsl:if test="@type = 'bib'">
-			<seg id="ref{count(preceding::*)}_exp" style="display:none;background-color:silver">
+			<seg id="ref{count(preceding::*)}_exp" style="background-color:silver" hidden="hidden">
 				<xsl:text> [</xsl:text>
 				<b>
 					<xsl:call-template name="litBib"/>
@@ -1753,7 +1752,7 @@
 			</seg>
 		</xsl:if>
 		<xsl:if test="@type = 'ms'">
-			<seg id="ref{count(preceding::*)}_exp" style="display:none;background-color:silver">
+			<seg id="ref{count(preceding::*)}_exp" style="background-color:silver" hidden="hidden">
 				<xsl:text> [</xsl:text>
 				<b>
 					<xsl:call-template name="mssBib"/>
@@ -1762,23 +1761,25 @@
 			</seg>
 		</xsl:if>
 		<xsl:if test="@type = 'text_ed_line'">
-			<seg id="ref{count(preceding::*)}_exp" style="display:none;background-color:white">
-				<xsl:for-each select="//tei:l[@xml:id = $refID]">
+			<seg id="ref{count(preceding::*)}_exp" style="background-color:white" hidden="hidden">
+				<!-- <xsl:for-each select="//tei:l[@xml:id = $refID]">
 					<br/>
 					<xsl:call-template name="line"/>
 					<br/>
 					<br/>
-				</xsl:for-each>
+				</xsl:for-each> -->
+				<xsl:text> </xsl:text><a href="#{@target}">Go to text</a>
 			</seg>
 		</xsl:if>
 		<xsl:if test="@type = 'text_dip_line'">
-			<seg id="ref{count(preceding::*)}_exp" style="display:none;background-color:white">
-				<xsl:for-each select="//tei:lb[@xml:id = $refID]">
+			<seg id="ref{count(preceding::*)}_exp" style="background-color:white" hidden="hidden">
+				<!-- <xsl:for-each select="//tei:lb[@xml:id = $refID]">
 					<br/>
 					 <xsl:call-template name="dipMSline"/>
 					<br/>
 					<br/>
-				</xsl:for-each>
+				</xsl:for-each> -->
+				<xsl:text> </xsl:text><a href="#{@target}_dip">Go to text</a>
 			</seg>
 		</xsl:if>
 	</xsl:template>
