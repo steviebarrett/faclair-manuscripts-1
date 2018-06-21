@@ -16,7 +16,7 @@ function createTable() {
 	tblId.value = "slipTable";
 	table.setAttributeNode(tblId);
 	var tblStyle = document.createAttribute("style");
-	tblStyle.value = "font-size:12px";
+	tblStyle.value = "font-size:20px";
 	table.setAttributeNode(tblStyle);
 	var row1 = table.insertRow(0);
 	var rowID = document.createAttribute("id");
@@ -373,7 +373,7 @@ function addSlip(id) {
 	}
 	var msref = el.getAttribute('ref');
 	var row = createdTable.insertRow(-1);
-	row.style.fontSize = "medium";
+	row.style.fontSize = "20px";
 	var rowID = document.createAttribute("id");
 	rowID.value = "r" + rowNo;
 	row.setAttributeNode(rowID);

@@ -7,7 +7,6 @@
 
 	<xsl:key name="hands" match="*" use="@xml:id"/>
 	<xsl:key name="text" match="*" use="@corresp"/>
-	<xsl:key name="text" match="*" use="@xml:id"/>
 
 	<xsl:template match="/">
 		<xsl:variable name="wordCount"

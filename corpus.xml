@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="file:/C:/Files/faclair-manuscripts/fnag_mss.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
-<?xml-stylesheet type="text/xsl" href="stylesheet-ed-ana-specific.xsl"?>
+
+<?xml-stylesheet type="text/xsl" href="stylesheet-ed-pub.xsl"?>
 <teiCorpus xmlns="http://www.tei-c.org/ns/1.0" xmlns:xi="http://www.w3.org/2001/XInclude">
 	<teiHeader>
 		<fileDesc>
@@ -52,6 +53,13 @@
 							<settlement>London</settlement>
 							<repository>British Library</repository>
 							<idno type="shelfmark">MS. Egerton 2899</idno>
+						</msIdentifier>
+					</msDesc>
+					<msDesc>
+						<msIdentifier xml:id="MS3">
+							<settlement>Edinburgh</settlement>
+							<repository>NLS</repository>
+							<idno type="shelfmark">Adv. MS. 72.2.11</idno>
 						</msIdentifier>
 					</msDesc>
 					<msDesc>
@@ -444,7 +452,7 @@
 							</respStmt>
 						</analytic>
 						<monogr>
-							<title level="m">The Celtic Lamguages</title>
+							<title level="m">The Celtic Languages</title>
 							<respStmt>
 								<resp>editor</resp>
 								<name><forename>Martin J.</forename><surname>Ball</surname></name>
@@ -926,6 +934,15 @@
 					<note>The same character repeated, standing for that character
 						capitalised</note>
 				</glyph>
+				<glyph xml:id="g54">
+					<glyphName>colon</glyphName>
+					<note>A colon (":"); apparently a general purpose abbreviation for short
+						strings, used especially by Alasdair Mac Mhaighstir Alasdair.</note>
+				</glyph>
+				<glyph xml:id="g55">
+					<glyphName>da with stroke</glyphName>
+					<note>Numeral "2", with a diagonal stroke across; stands for "dai".</note>
+				</glyph>
 				<glyph xml:id="gn" corresp="n">
 					<glyphName/>
 					<note/>
@@ -1143,6 +1160,13 @@
 					<region>Western Isles/Skye</region>
 					<note/>
 				</handNote>
+				<handNote xml:id="Hand23">
+					<forename>Alasdair</forename>
+					<surname>Mac Mhaighstir Alasdair</surname>
+					<date>18</date>
+					<region>Western Highlands</region>
+					<note/>
+				</handNote>
 				<handNote xml:id="Hand999">
 					<forename>an unidentfied</forename>
 					<surname>hand</surname>
@@ -1169,15 +1193,15 @@
 			<change when="2017-11-07" who="EPT">Corpus header: Added content to elements</change>
 		</revisionDesc>
 	</teiHeader>
-	<xi:include href="Transcriptions/transcription1.xml" parse="xml"/>
+	<!-- <xi:include href="Transcriptions/transcription1.xml" parse="xml"/> -->
 	<xi:include href="Transcriptions/transcription2.xml" parse="xml"/>
-	<xi:include href="Transcriptions/transcription4.xml" parse="xml"/>
-	<xi:include href="Transcriptions/transcription5.xml" parse="xml"/>
-	<xi:include href="Transcriptions/transcription6.xml" parse="xml"/>
-	<xi:include href="Transcriptions/transcription7.xml" parse="xml"/>
-	<xi:include href="Transcriptions/transcription8.xml" parse="xml"/>
-	<xi:include href="Transcriptions/transcription9.xml" parse="xml"/>
-	<xi:include href="Transcriptions/transcription12.xml" parse="xml"/>
-	<xi:include href="Transcriptions/transcription13.xml" parse="xml"/>
-	<xi:include href="Transcriptions/transcription14.xml" parse="xml"/>
+	<!-- <xi:include href="Transcriptions/transcription4.xml" parse="xml"/> -->
+	<!-- <xi:include href="Transcriptions/transcription5.xml" parse="xml"/> -->
+	<!-- <xi:include href="Transcriptions/transcription6.xml" parse="xml"/>-->
+	<!-- <xi:include href="Transcriptions/transcription7.xml" parse="xml"/> -->
+	<!-- <xi:include href="Transcriptions/transcription8.xml" parse="xml"/> -->
+	<!-- <xi:include href="Transcriptions/transcription9.xml" parse="xml"/> -->
+	<!-- <xi:include href="Transcriptions/transcription12.xml" parse="xml"/> -->
+	<!-- <xi:include href="Transcriptions/transcription13.xml" parse="xml"/> -->
+	<!-- <xi:include href="Transcriptions/transcription14.xml" parse="xml"/> -->
 </teiCorpus>

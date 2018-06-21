@@ -236,8 +236,7 @@
 						</th>
 					</tr>
 					<xsl:for-each
-						select="//tei:w[not(descendant::tei:w) and not(@xml:lang) and not(ancestor::tei:name) and @ana='verb' and following::tei:w[1][@ana='pron' and not(ancestor::tei:w)]]">
-						<xsl:sort select="@lemma"/>
+						select="//tei:w[not(descendant::tei:w) and not(@xml:lang) and @ana= 'verb']">
 						<xsl:call-template name="contentRow"/>
 					</xsl:for-each>
 				</table>
