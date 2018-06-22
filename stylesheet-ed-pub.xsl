@@ -888,6 +888,11 @@
 							<xsl:apply-templates select="descendant::tei:l"/>
 						</p>
 					</xsl:when>
+					<xsl:when test="@type='catchword'">
+						<p style="margin-left:30px">
+							<xsl:apply-templates select="descendant::tei:l"/>
+						</p>
+					</xsl:when>
 					<xsl:otherwise>
 						<p style="margin-left:30px">
 							<b align="left">
