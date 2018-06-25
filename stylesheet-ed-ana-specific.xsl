@@ -236,7 +236,7 @@
 						</th>
 					</tr>
 					<xsl:for-each
-						select="//tei:w[not(descendant::tei:w) and not(@xml:lang) and @ana= 'verb']">
+						select="//tei:w[not(descendant::tei:w) and not(@xml:lang) and @lemmaRef= 'http://www.dil.ie/31438']">
 						<xsl:call-template name="contentRow"/>
 					</xsl:for-each>
 				</table>
