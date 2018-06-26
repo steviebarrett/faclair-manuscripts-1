@@ -34,39 +34,69 @@
 			<text>
 				<body>
 					<xsl:for-each
-						select="//tei:w[not(descendant::tei:w) and not(@xml:lang) and @lemmaRef]">
-						<xsl:sort select="@lemma"/>
+						select="//tei:w[not(descendant::tei:w) and not(@xml:lang) and @lemmaRef and @lemmaRefDW]">
 						<xsl:variable name="wordID" select="@lemmaRef"/>
 						<xsl:if
-							test="not(@lemmaRef = preceding::tei:w[not(descendant::tei:w)]/@lemmaRef) and not(contains(@ana, ',')) and not(//tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree/tei:w/@corresp = $wordID)">
-							<entryFree>
-								<xsl:variable name="wordID" select="@lemmaRef"/>
-								<xsl:attribute name="n">
-									<xsl:value-of
-										select="count(//tei:w[not(descendant::tei:w) and not(@xml:lang) and @lemmaRef = $wordID])"
-									/>
-								</xsl:attribute>
-								<w>
-									<xsl:attribute name="lemma">
-										<xsl:value-of select="@lemma"/>
-									</xsl:attribute>
-									<xsl:attribute name="corresp">
-										<xsl:value-of select="@lemmaRef"/>
-									</xsl:attribute>
-									<xsl:attribute name="ana">
-										<xsl:value-of select="@ana"/>
-									</xsl:attribute>
-									<xsl:attribute name="lemmaDW"/>
-									<xsl:attribute name="lemmaRefDW"/>
-								</w>
-								<gen/>
-								<iType/>
-							</entryFree>
+							test="not(@lemmaRefDW = preceding::tei:w[not(descendant::tei:w)]/@lemmaRefDW) and not(@lemmaRef = preceding::tei:w[not(descendant::tei:w)]/@lemmaRef) and not(//tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree/@corresp = $wordID) and not(contains(@ana, ','))">
+							<xsl:call-template name="entry"/>
+						</xsl:if>
+					</xsl:for-each>
+					<xsl:for-each
+						select="//tei:w[not(descendant::tei:w) and not(@xml:lang) and @lemmaRef and not(@lemmaRefDW)]">
+						<xsl:variable name="wordID" select="@lemmaRef"/>
+						<xsl:if
+							test="not(@lemmaRef = preceding::tei:w[not(descendant::tei:w)]/@lemmaRef) and not(//tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree/@corresp = $wordID) and not(contains(@ana, ','))">
+							<xsl:call-template name="entry"/>
 						</xsl:if>
 					</xsl:for-each>
 				</body>
 			</text>
 		</TEI>
+	</xsl:template>
+	
+	<xsl:template name="entry">
+		<entryFree>
+			<xsl:attribute name="corresp">
+				<xsl:value-of select="@lemmaRef"/>
+			</xsl:attribute>
+			<xsl:variable name="wordID" select="@lemmaRef"/>
+			<xsl:attribute name="n">
+				<xsl:value-of
+					select="count(//tei:w[not(descendant::tei:w) and not(@xml:lang) and @lemmaRef = $wordID])"
+				/>
+			</xsl:attribute>
+			<xsl:value-of select="@lemma"/>
+			<link source="eDIL">
+				<xsl:attribute name="target"><xsl:value-of select="@lemmaRef"/></xsl:attribute>
+			</link>
+			<pos>
+				<xsl:attribute name="ana"><xsl:value-of select="@ana"/></xsl:attribute>
+			</pos>
+			<xsl:choose>
+				<xsl:when test="not(@lemmaDW)">
+					<orth source="DW"/>
+				</xsl:when>
+				<xsl:when test="@lemmaDW">
+					<orth source="DW">
+						<xsl:value-of select="@lemmaDW"/>
+					</orth>
+				</xsl:when>
+			</xsl:choose>
+			<xsl:choose>
+				<xsl:when test="not(@lemmaRefDW)">
+					<link source="DW"/>
+				</xsl:when>
+				<xsl:when test="@lemmaRefDW">
+					<link source="DW">
+						<xsl:attribute name="target">
+							<xsl:value-of select="@lemmaRefDW"/>
+						</xsl:attribute>
+					</link>
+				</xsl:when>
+			</xsl:choose>
+			<gen/>
+			<iType/>
+		</entryFree>
 	</xsl:template>
 
 </xsl:stylesheet>
