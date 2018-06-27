@@ -18,6 +18,7 @@
 	<xsl:key name="lang" match="*" use="@xml:id"/>
 	<xsl:key name="text" match="*" use="@corresp"/>
 	<xsl:key name="altText" match="*" use="@corresp"/>
+	<xsl:key name="hwData" match="*" use="@corresp"/>
 
 	<xsl:param name="sicReplace" select="'alt'"/>
 
@@ -36,7 +37,7 @@
 				<h1 style="text-align:center; font-size:18px">
 					<xsl:value-of select="tei:teiCorpus/tei:teiHeader/tei:fileDesc/tei:titleStmt/tei:title"/>
 				</h1>
-				<xsl:for-each select="//tei:TEI">
+				<xsl:for-each select="//tei:TEI[not(@xml:id='hwData')]">
 					<br/>
 					<xsl:call-template name="tempEd"/>
 					<br/>
@@ -292,7 +293,7 @@
 	</xsl:template>
 
 	<xsl:template match="tei:teiHeader">
-		<xsl:apply-templates/>
+		<xsl:if test="not(ancestor::tei:TEI[@xml:id='hwData'])"><xsl:apply-templates/></xsl:if>
 	</xsl:template>
 
 	<xsl:template match="tei:teiHeader/tei:fileDesc/tei:titleStmt">
@@ -1531,9 +1532,35 @@
 				<xsl:value-of select="count(ancestor::tei:choice/preceding::tei:choice)"/>
 			</xsl:if>
 		</xsl:variable>
+		<xsl:variable name="DWlem">
+			<xsl:value-of select="key('hwData', @lemmaRef)/tei:w/@lemmaDW"/>
+		</xsl:variable>
+		<xsl:variable name="DWref">
+			<xsl:value-of select="key('hwData', @lemmaRef)/tei:w/@lemmaRefDW"/>
+		</xsl:variable>
+		<xsl:variable name="EDlem">
+			<xsl:choose>
+				<xsl:when test="contains(@lemmaRef, 'dil.ie')">
+					<xsl:value-of select="@lemma"/>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:value-of select="@lemmaED"/>
+				</xsl:otherwise>
+			</xsl:choose>
+		</xsl:variable>
+		<xsl:variable name="EDref">
+			<xsl:choose>
+				<xsl:when test="contains(@lemmaRef, 'dil.ie')">
+					<xsl:value-of select="@lemmaRef"/>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:value-of select="@lemmaRefED"/>
+				</xsl:otherwise>
+			</xsl:choose>
+		</xsl:variable>
 		<a id="{$wordId}" pos="{$wordPOS}" onmouseover="hilite(this.id)"
-			onmouseout="dhilite(this.id)" lemma="{$lem}" lemmaRef="{$lemRef}" lemmaED="{@lemmaED}" lemmaRefED="{@lemmaRefED}" lemmaDW="{@lemmaDW}"
-			lemmaRefDW="{@lemmaRefDW}" lemmaSL="{@lemmaSL}" slipID="{@slipID}" ana="{@ana}" hand="{$hand}" ref="{$msref}" date="{$handDate}"
+			onmouseout="dhilite(this.id)" lemma="{$lem}" lemmaRef="{$lemRef}" lemmaED="{$EDlem}" lemmaRefED="{$EDref}" lemmaDW="{$DWlem}"
+			lemmaRefDW="{$DWref}" lemmaSL="{@lemmaSL}" slipID="{@slipID}" ana="{@ana}" hand="{$hand}" ref="{$msref}" date="{$handDate}"
 			medium="{$medium}" cert="{$certLvl}" abbrRefs="{$abbrRef}"
 			title="{$lem}: {$pos} {$src}&#10;{$hand}&#10;{$prob}{$certProb}&#10;Abbreviations: {$abbrs}&#10;{$gloss}"
 			style="text-decoration:none; color:#000000">
@@ -1663,6 +1690,9 @@
 				<xsl:text/>
 			</xsl:when>
 			<xsl:when test="@ana = 'noun' and ancestor::tei:w[contains(@ana, 'noun, noun')]">
+				<xsl:text/>
+			</xsl:when>
+			<xsl:when test="@ana = 'vnoun' and ancestor::tei:w[contains(@ana, 'vnoun, vnoun')]">
 				<xsl:text/>
 			</xsl:when>
 			<xsl:when

@@ -9,6 +9,7 @@
 	</xsl:template>
 
 	<xsl:template name="hwData">
+		<?xml-model href="fnag_mss2.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 		<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="hwData">
 			<teiHeader>
 				<fileDesc>
@@ -31,14 +32,7 @@
 			<text>
 				<body>
 					<xsl:for-each
-						select="//tei:w[not(descendant::tei:w) and not(@xml:lang) and @lemmaRef and @lemmaRefDW]">
-								<xsl:if
-									test="not(@lemmaRefDW = preceding::tei:w[not(descendant::tei:w)]/@lemmaRefDW) and not(@lemmaRef = preceding::tei:w[not(descendant::tei:w)]/@lemmaRef) and not(contains(@ana, ','))">
-									<xsl:call-template name="entry"/>
-								</xsl:if>	
-					</xsl:for-each>
-					<xsl:for-each
-						select="//tei:w[not(descendant::tei:w) and not(@xml:lang) and @lemmaRef and not(@lemmaRefDW)]">
+						select="//tei:w[not(descendant::tei:w) and not(@xml:lang) and not(@type='data') and @lemmaRef]">
 						<xsl:if
 							test="not(@lemmaRef = preceding::tei:w[not(descendant::tei:w)]/@lemmaRef) and not(contains(@ana, ','))">
 							<xsl:call-template name="entry"/>
@@ -54,41 +48,32 @@
 			<xsl:attribute name="corresp">
 				<xsl:value-of select="@lemmaRef"/>
 			</xsl:attribute>
-			<xsl:variable name="wordID" select="@lemmaRef"/>
 			<xsl:attribute name="n">
+				<xsl:variable name="wordID" select="@lemmaRef"/>
 				<xsl:value-of
 					select="count(//tei:w[not(descendant::tei:w) and not(@xml:lang) and @lemmaRef = $wordID])"
 				/>
 			</xsl:attribute>
-			<xsl:value-of select="@lemma"/>
-				<link source="eDIL">
-					<xsl:attribute name="target"><xsl:value-of select="@lemmaRef"/></xsl:attribute>
-				</link>
-				<pos>
-					<xsl:attribute name="ana"><xsl:value-of select="@ana"/></xsl:attribute>
-				</pos>
-					<xsl:choose>
-					<xsl:when test="not(@lemmaDW)">
-						<orth source="DW"/>
-					</xsl:when>
-					<xsl:when test="@lemmaDW">
-						<orth source="DW">
-							<xsl:value-of select="@lemmaDW"/>
-						</orth>
-					</xsl:when>
-				</xsl:choose>
-			<xsl:choose>
-				<xsl:when test="not(@lemmaRefDW)">
-					<link source="DW"/>
-				</xsl:when>
-				<xsl:when test="@lemmaRefDW">
-					<link source="DW">
-						<xsl:attribute name="target">
-							<xsl:value-of select="@lemmaRefDW"/>
-						</xsl:attribute>
-					</link>
-				</xsl:when>
-			</xsl:choose>
+			<w>
+				<xsl:attribute name="type">
+					<xsl:text>data</xsl:text>
+				</xsl:attribute>
+				<xsl:attribute name="lemma">
+					<xsl:value-of select="@lemma"/>
+				</xsl:attribute>
+				<xsl:attribute name="lemmaRef">
+					<xsl:value-of select="@lemmaRef"/>
+				</xsl:attribute>
+				<xsl:attribute name="ana">
+					<xsl:value-of select="@ana"/>
+				</xsl:attribute>
+				<xsl:attribute name="lemmaDW">
+					<xsl:text/>
+				</xsl:attribute>
+				<xsl:attribute name="lemmaRefDW">
+					<xsl:text/>
+				</xsl:attribute>
+			</w>
 			<gen/>
 			<iType/>
 		</entryFree>
