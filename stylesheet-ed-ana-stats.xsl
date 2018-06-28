@@ -6,7 +6,8 @@
 
 	<xsl:output method="html"/>
 
-	<xsl:key name="hands" match="*" use="@xml:id"/>
+	<xsl:key name="handToText" match="*" use="@resp"/>
+	<xsl:key name="handToHS" match="*" use="@new"/>
 	<xsl:key name="text" match="*" use="@corresp"/>
 
 	<xsl:template match="/">
@@ -125,11 +126,39 @@
 							<xsl:for-each select="//tei:w[not(descendant::tei:w) and not(@type='data')]">
 								<xsl:sort order="descending" select="count(descendant::tei:g)"/>
 								<xsl:if test="position() &lt; 6">
-									<xsl:value-of select="position()"/><xsl:text>. </xsl:text><xsl:apply-templates/><xsl:text> (</xsl:text><xsl:value-of select="count(descendant::tei:g)"/><xsl:text>)</xsl:text><br/>
+									<xsl:value-of select="position()"/><xsl:text>. </xsl:text><xsl:call-template name="word_ed"></xsl:call-template><xsl:text> (</xsl:text><xsl:value-of select="count(descendant::tei:g)"/><xsl:text>)</xsl:text><br/>
 								</xsl:if>
 							</xsl:for-each>
 						</td>
 					</tr>
+				</table>
+				<br/>
+				<table>
+					<tr>
+						<th>Scribe</th>
+						<th>Date</th>
+						<th>Word Count</th>
+					</tr>
+					<xsl:for-each select="tei:teiCorpus/tei:teiHeader//tei:handNote">
+						<xsl:sort order="ascending" select="tei:date"/>
+						<xsl:variable name="HandID" select="@xml:id"/>
+						<xsl:variable name="comDiv" select="ancestor::tei:div[1]/@corresp"/>
+							<tr>
+								<td>
+									<xsl:value-of select="tei:forename"/><xsl:text> </xsl:text><xsl:value-of select="tei:surname"/><xsl:text> (</xsl:text><xsl:value-of select="@xml:id"/><xsl:text>)</xsl:text>
+								</td>
+								<td>
+									<xsl:value-of select="tei:date"/><sup>th</sup><xsl:text> cent.</xsl:text>
+								</td>
+								<td>
+									<xsl:variable name="proseCount"><xsl:value-of select="count(key('handToText', @xml:id)/tei:p/descendant::tei:w[not(descendant::tei:w) and not(@xml:lang) and not(@type='data') and not(preceding::tei:handShift[1][ancestor::tei:div[1][@corresp=$comDiv]]) and not(ancestor::tei:add[not(@resp=$HandID)])])"/></xsl:variable>
+									<xsl:variable name="lgCount"><xsl:value-of select="count(key('handToText', @xml:id)/tei:lg/descendant::tei:w[not(descendant::tei:w) and not(@xml:lang) and not(@type='data') and not(preceding::tei:handShift[1][ancestor::tei:div[1][@corresp=$comDiv]]) and not(ancestor::tei:add[not(@resp=$HandID)])])"/></xsl:variable>
+									<xsl:variable name="hsCount"><xsl:value-of select="count(key('handToHS', @xml:id)/following::tei:w[not(descendant::tei:w) and not(@xml:lang) and not(@type='data') and not(preceding::tei:handShift[1][not(@new=$HandID)])])"/></xsl:variable>
+									<xsl:variable name="addCount"><xsl:value-of select="count(//tei:w[not(ancestor::tei:add[not(@resp=$HandID)]) and ancestor::tei:add[@resp=$HandID] and ancestor::tei:div[1][not(@resp=$HandID)]])"/></xsl:variable>
+									<xsl:value-of select="$proseCount + $lgCount + $hsCount + $addCount"/>
+								</td>
+							</tr>
+					</xsl:for-each>
 				</table>
 			</body>
 		</html>
