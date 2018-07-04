@@ -1412,19 +1412,19 @@
 				<xsl:otherwise>
 					<xsl:choose>
 						<xsl:when test="ancestor::tei:div[@resp]//tei:handShift">
-							<xsl:variable name="comDiv" select="ancestor::tei:div[@resp]/@corresp"/>
+							<xsl:variable name="comDiv" select="ancestor::tei:div[1]/@corresp"/>
 							<xsl:choose>
 								<xsl:when
-									test="preceding::tei:handShift[1]/ancestor::tei:div[@resp]/@corresp = $comDiv">
+									test="preceding::tei:handShift[1]/ancestor::tei:div[1]/@corresp = $comDiv">
 									<xsl:value-of select="preceding::tei:handShift[1]/@new"/>
 								</xsl:when>
 								<xsl:otherwise>
-									<xsl:value-of select="ancestor::tei:div[@resp]/@resp"/>
+									<xsl:value-of select="ancestor::tei:div[1]/@resp"/>
 								</xsl:otherwise>
 							</xsl:choose>
 						</xsl:when>
 						<xsl:otherwise>
-							<xsl:value-of select="ancestor::tei:div[@resp]/@resp"/>
+							<xsl:value-of select="ancestor::tei:div[1]/@resp"/>
 						</xsl:otherwise>
 					</xsl:choose>
 				</xsl:otherwise>
@@ -1677,6 +1677,9 @@
 			<xsl:when test="@ana = 'noun' and ancestor::tei:w[contains(@ana, 'noun, ptcp')]">
 				<xsl:text/>
 			</xsl:when>
+			<xsl:when test="@ana = 'adj' and ancestor::tei:w[contains(@ana, 'adj, ptcp')]">
+				<xsl:text/>
+			</xsl:when>
 			<xsl:when test="@ana = 'adj' and ancestor::tei:w[contains(@ana, 'adj, pron')]">
 				<xsl:text/>
 			</xsl:when>
@@ -1837,10 +1840,10 @@
 				<xsl:otherwise>
 					<xsl:choose>
 						<xsl:when test="ancestor::tei:div[@resp]//tei:handShift">
-							<xsl:variable name="comDiv" select="ancestor::tei:div[@resp]/@corresp"/>
+							<xsl:variable name="comDiv" select="ancestor::tei:div[1]/@corresp"/>
 							<xsl:choose>
 								<xsl:when
-									test="preceding::tei:handShift[1]/ancestor::tei:div[@resp]/@corresp = $comDiv">
+									test="preceding::tei:handShift[1]/ancestor::tei:div[1]/@corresp = $comDiv">
 									<xsl:value-of select="preceding::tei:handShift[1]/@new"/>
 								</xsl:when>
 								<xsl:otherwise>
@@ -1849,7 +1852,7 @@
 							</xsl:choose>
 						</xsl:when>
 						<xsl:otherwise>
-							<xsl:value-of select="ancestor::tei:div[@resp]/@resp"/>
+							<xsl:value-of select="ancestor::tei:div[1]/@resp"/>
 						</xsl:otherwise>
 					</xsl:choose>
 				</xsl:otherwise>

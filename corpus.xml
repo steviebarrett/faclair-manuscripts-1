@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="file:/C:/Files/faclair-manuscripts/fnag_mss2.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
-<?xml-stylesheet type="text/xsl" href="stylesheet-ed-pub.xsl"?>
+<?xml-stylesheet type="text/xsl" href="stylesheet-ed-ana-stemGen.xsl"?>
 <teiCorpus xmlns="http://www.tei-c.org/ns/1.0" xmlns:xi="http://www.w3.org/2001/XInclude">
 	<teiHeader>
 		<fileDesc>
@@ -957,7 +957,7 @@
 				<handNote xml:id="Hand1">
 					<forename>[unk.]</forename>
 					<surname>[unk.]</surname>
-					<date from="1100" to="1150">12</date>
+					<date from="1100" to="1150" min="1100">12</date>
 					<region cert="high">NE Scotland</region>
 					<note><p>Hand A in the Gaelic Notes in the Book of Deer</p>
 						<p>Jackson (1972): (p.12) Writing commences small, then varies in size.
@@ -970,7 +970,7 @@
 				<handNote xml:id="Hand2">
 					<forename>[unk.]</forename>
 					<surname>[unk.]</surname>
-					<date from="1100" to="1150">12</date>
+					<date from="1100" to="1150" min="1100">12</date>
 					<region cert="high">NE Scotland</region>
 					<note><p>Hand B in the Gaelic Notes in the Book of Deer</p><p>Jackson (1972):
 							(p.13) Similar to A; makes much use of margins to keep his text
@@ -980,7 +980,7 @@
 				<handNote xml:id="Hand3">
 					<forename>[unk.]</forename>
 					<surname>[unk.]</surname>
-					<date from="1100" to="1150">12</date>
+					<date from="1100" to="1150" min="1100">12</date>
 					<region cert="high">NE Scotland</region>
 					<note><p>Hand C in the Gaelic Notes in the Book of Deer</p><p>Jackson (1972):
 							(p.13) Uses paler and browner ink. Writing is spidery. More use of
@@ -990,7 +990,7 @@
 				<handNote xml:id="Hand4">
 					<forename>[unk.]</forename>
 					<surname>[unk.]</surname>
-					<date from="1100" to="1150">12</date>
+					<date from="1100" to="1150" min="1100">12</date>
 					<region cert="high">NE Scotland</region>
 					<note><p>Hand D in the Gaelic Notes in the Book of Deer</p><p>Jackson (1972):
 							(p.14) Less formal. More use of m-suspension and abbreviations for <hi
@@ -1001,7 +1001,7 @@
 				<handNote xml:id="Hand5">
 					<forename>[unk.]</forename>
 					<surname>[unk.]</surname>
-					<date from="1100" to="1150">12</date>
+					<date from="1100" to="1150" min="1100">12</date>
 					<region cert="high">NE Scotland</region>
 					<note><p>Hand E in the Gaelic Notes in the Book of Deer</p><p>Jackson (1972):
 							(p.15): Wrote the Charter of David I. (p.16) A continental hand, with
@@ -1010,14 +1010,14 @@
 				<handNote xml:id="Hand6">
 					<forename>[unk.]</forename>
 					<surname>[unk.]</surname>
-					<date cert="medium" from="0900" to="1000">10</date>
+					<date cert="medium" from="0900" to="1000" min="900">10</date>
 					<region cert="high">NE Scotland</region>
 					<note>Scribe of main text in the Book of Deer</note>
 				</handNote>
 				<handNote xml:id="Hand7">
 					<forename>[unk.]</forename>
 					<surname cert="medium">MacEwen (?)</surname>
-					<date from="1450" to="1550">15/16</date>
+					<date from="1450" to="1550" min="1499">15/16</date>
 					<region cert="medium">Argyll</region>
 					<note><p>This is the scribe of '<ref target="T2">Aingil Dé dom dhín</ref>' in
 								<ref target="MS2">London, BL MS. Egerton 2899</ref> and a set of
@@ -1051,56 +1051,56 @@
 				<handNote xml:id="Hand8">
 					<forename>Eoghan</forename>
 					<surname>Mac Pháil</surname>
-					<date cert="high" from="1600" to="1650">17</date>
+					<date cert="high" from="1600" to="1650" min="1600">17</date>
 					<region cert="high">W Scotland</region>
 					<note/>
 				</handNote>
 				<handNote xml:id="Hand9">
 					<forename>Eoghan</forename>
 					<surname>Mac Gilleoin</surname>
-					<date cert="medium" from="1650" to="1700">17</date>
+					<date cert="medium" from="1650" to="1700" min="1600">17</date>
 					<region cert="high">SW Scotland</region>
 					<note/>
 				</handNote>
 				<handNote xml:id="Hand10">
 					<forename>Niall</forename>
 					<surname>MacMhuirich</surname>
-					<date cert="medium" from="1600" to="1660">17/18</date>
+					<date cert="medium" from="1600" to="1660" min="1699">17/18</date>
 					<region cert="high">W Scotland</region>
 					<note/>
 				</handNote>
 				<handNote xml:id="Hand11">
 					<forename>Domnall</forename>
 					<surname>MacMhuirich</surname>
-					<date type="floruit" cert="medium" from="1707" to="1745">18</date>
+					<date type="floruit" cert="medium" from="1707" to="1745" min="1700">18</date>
 					<region cert="high">W Scotland</region>
 					<note/>
 				</handNote>
 				<handNote xml:id="Hand12">
 					<forename>[unk.]</forename>
 					<surname>[unk.]</surname>
-					<date type="floruit" cert="medium" from="1500" to="1590">16</date>
+					<date type="floruit" cert="medium" from="1500" to="1590" min="1500">16</date>
 					<region cert="high">W Scotland</region>
 					<note>Hand M in NLS Adv. MS 72.1.33.</note>
 				</handNote>
 				<handNote xml:id="Hand13">
 					<forename>Lachlan Mór</forename>
 					<surname>MacLean</surname>
-					<date type="floruit" cert="medium" from="1577" to="1598">16</date>
+					<date type="floruit" cert="medium" from="1577" to="1598" min="1500">16</date>
 					<region cert="high">Isle of Mull</region>
 					<note/>
 				</handNote>
 				<handNote xml:id="Hand14">
 					<forename>James</forename>
 					<surname>Beaton</surname>
-					<date type="floruit" cert="medium" from="1613" to="1621">17</date>
+					<date type="floruit" cert="medium" from="1613" to="1621" min="1600">17</date>
 					<region/>
 					<note>Black's Hand K (NLS Adv. 72.1.33)</note>
 				</handNote>
 				<handNote xml:id="Hand15">
 					<forename>[unk.]</forename>
 					<surname>[unk.]</surname>
-					<date type="floruit" cert="low" from="1590" to="1700">17</date>
+					<date type="floruit" cert="low" from="1590" to="1700" min="1600">17</date>
 					<region/>
 					<note>Like James Beaton's, this hand makes occasional brief interventions in
 						Transcription 5.2 (NLS Adv. MS. 72.1.33). It is mucher neater than James
@@ -1110,35 +1110,35 @@
 				<handNote xml:id="Hand16">
 					<forename>Rev. John</forename>
 					<surname>Beaton</surname>
-					<date type="life" cert="medium" from="1640" to="1715">17</date>
+					<date type="life" cert="medium" from="1640" to="1715" min="1600">17</date>
 					<region/>
 					<note>Black's Hand S (NLS Adv. 72.1.33)</note>
 				</handNote>
 				<handNote xml:id="Hand17">
 					<forename>Neil</forename>
 					<surname>Beaton</surname>
-					<date type="floruit" cert="medium" from="1656" to="1656">17</date>
+					<date type="floruit" cert="medium" from="1656" to="1656" min="1600">17</date>
 					<region/>
 					<note>Black's Hand D (NLS Adv. 72.1.33)</note>
 				</handNote>
 				<handNote xml:id="Hand18">
 					<forename>Dubhghall Albanach</forename>
 					<surname>mac mhic Cathail</surname>
-					<date type="floruit" cert="medium" from="1467" to="1467">15</date>
+					<date type="floruit" cert="medium" from="1467" to="1467" min="1400">15</date>
 					<region/>
 					<note/>
 				</handNote>
 				<handNote xml:id="Hand19">
 					<forename>Cairbre</forename>
 					<surname>Ó Ceanmain</surname>
-					<date type="floruit" cert="high" from="1560" to="1563">16</date>
+					<date type="floruit" cert="high" from="1560" to="1563" min="1500">16</date>
 					<region/>
 					<note>EUL La. III.21</note>
 				</handNote>
 				<handNote xml:id="Hand20">
 					<forename>Eoin</forename>
 					<surname>mac Domhnaill Ó Conchubhair</surname>
-					<date type="life" cert="medium" from="1541" to="1601">16</date>
+					<date type="life" cert="medium" from="1541" to="1601" min="1500">16</date>
 					<region>SW Scotland</region>
 					<region>Ireland</region>
 					<note><p xml:space="preserve">
@@ -1152,21 +1152,21 @@
 				<handNote xml:id="Hand21">
 					<forename>Domhnall Gorm</forename>
 					<surname>?Mac Domhnaill</surname>
-					<date>16/17</date>
+					<date min="1599">16/17</date>
 					<region>Sleat (?)</region>
 					<note/>
 				</handNote>
 				<handNote xml:id="Hand22">
 					<forename>Cathal</forename>
 					<surname>Mac Mhuirich</surname>
-					<date>17</date>
+					<date min="1600">17</date>
 					<region>Western Isles/Skye</region>
 					<note/>
 				</handNote>
 				<handNote xml:id="Hand23">
 					<forename>Alasdair</forename>
 					<surname>Mac Mhaighstir Alasdair</surname>
-					<date>18</date>
+					<date min="1700">18</date>
 					<region>Western Highlands</region>
 					<note/>
 				</handNote>
@@ -1196,18 +1196,18 @@
 			<change when="2017-11-07" who="EPT">Corpus header: Added content to elements</change>
 		</revisionDesc>
 	</teiHeader>
-	<!-- <xi:include href="Transcriptions/transcription1.xml" parse="xml"/> -->
-		<!-- <xi:include href="Transcriptions/transcription2.xml" parse="xml"/> -->
-		<xi:include href="Transcriptions/transcription3.xml" parse="xml"/>
-		<!-- <xi:include href="Transcriptions/transcription4.xml" parse="xml"/> -->
-	<!-- <xi:include href="Transcriptions/transcription5.xml" parse="xml"/> -->
-	<!-- <xi:include href="Transcriptions/transcription6.xml" parse="xml"/> -->
-	<!-- <xi:include href="Transcriptions/transcription7.xml" parse="xml"/> -->
-	<!-- <xi:include href="Transcriptions/transcription8.xml" parse="xml"/> -->
-	<!-- <xi:include href="Transcriptions/transcription9.xml" parse="xml"/> -->
-	<!-- <xi:include href="Transcriptions/transcription12.xml" parse="xml"/> -->
-	<!-- <xi:include href="Transcriptions/transcription13.xml" parse="xml"/> -->
-	<!-- <xi:include href="Transcriptions/transcription14.xml" parse="xml"/> -->
-	<!-- <xi:include href="Transcriptions/transcription16.xml" parse="xml"/> -->
+	<xi:include href="Transcriptions/transcription1.xml" parse="xml"/>
+	<xi:include href="Transcriptions/transcription2.xml" parse="xml"/>
+	<xi:include href="Transcriptions/transcription3.xml" parse="xml"/>
+	<xi:include href="Transcriptions/transcription4.xml" parse="xml"/>
+	<xi:include href="Transcriptions/transcription5.xml" parse="xml"/>
+	<xi:include href="Transcriptions/transcription6.xml" parse="xml"/>
+	<xi:include href="Transcriptions/transcription7.xml" parse="xml"/>
+	<xi:include href="Transcriptions/transcription8.xml" parse="xml"/>
+	<xi:include href="Transcriptions/transcription9.xml" parse="xml"/>
+	<xi:include href="Transcriptions/transcription12.xml" parse="xml"/> 
+	<xi:include href="Transcriptions/transcription13.xml" parse="xml"/>
+	<xi:include href="Transcriptions/transcription14.xml" parse="xml"/>
+	 <xi:include href="Transcriptions/transcription16.xml" parse="xml"/> 
 		<xi:include href="hwData.xml" parse="xml"/>
 </teiCorpus>
