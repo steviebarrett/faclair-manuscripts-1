@@ -277,7 +277,7 @@
 					<xsl:for-each
 						select="//tei:w[not(descendant::tei:w) and not(@type = 'data') and not(@xml:lang) and not(@source) and contains(@ana, 'noun') and key('hwData', @lemmaRef)/descendant::tei:gen/text()] | //tei:w[not(descendant::tei:w) and not(@type = 'data') and not(@xml:lang) and not(@source) and contains(@ana, 'noun') and key('hwData', @lemmaRef)/descendant::tei:iType/text()]">
 						<xsl:sort
-							select="translate(@lemma, 'AÁÀBCDEÉÈFGHIÍÌJKLMNOÓÒPQRSTUÚÙVWXYZ', 'aáàbcdeéèfghiíìjklmnoóòpqrstuúùvwxyz')"/>
+							select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
 						<xsl:call-template name="contentRow"/>
 					</xsl:for-each>
 				</table>
