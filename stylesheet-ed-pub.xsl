@@ -1730,6 +1730,9 @@
 			<xsl:when test="@ana = 'pron' and ancestor::tei:w[contains(@ana, 'pron, part')]">
 				<xsl:text/>
 			</xsl:when>
+			<xsl:when test="@ana = 'part' and ancestor::tei:w[contains(@ana, 'part, part')]">
+				<xsl:text/>
+			</xsl:when>
 			<xsl:when test="@ana = 'conj' and ancestor::tei:w[contains(@ana, 'conj, pron')]">
 				<xsl:text/>
 			</xsl:when>
