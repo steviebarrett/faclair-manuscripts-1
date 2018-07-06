@@ -3,7 +3,6 @@
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema"
 	exclude-result-prefixes="xs" version="2.0">
 	<xsl:include href="stylesheet-dip-comp.xsl"/>
-	<!-- <xsl:include href="stylesheet-ed-pub-word2.xsl"/> -->
 	<xsl:strip-space elements="*"/>
 
 	<xsl:output method="html"/>
@@ -26,8 +25,8 @@
 	<xsl:attribute-set name="tblBorder">
 		<xsl:attribute name="border">solid 0.1mm black</xsl:attribute>
 	</xsl:attribute-set>
-	
-	<xsl:template match="/">
+
+	<xsl:template mode="word" match="/">
 		<html>
 			<head>
 				<script src="WordFile.js"/>
@@ -76,56 +75,7 @@
 		</html>
 	</xsl:template>
 
-	<!-- <xsl:template match="/" mode="word">
-		<html>
-			<head>
-				<script src="WordFile.js"/>
-				<script src="ref.js"/>
-				<script src="hilites.js"/>
-			</head>
-			<body>
-				<h1 style="text-align:center; font-size:18px">
-					<xsl:value-of select="tei:teiCorpus/tei:teiHeader/tei:fileDesc/tei:titleStmt/tei:title"/>
-				</h1>
-				<xsl:for-each select="//tei:TEI[not(@xml:id='hwData')]">
-					<br/>
-					<xsl:call-template name="tempEd"/>
-					<br/>
-					<h2 style="text-align:center;font-size:18px">Diplomatic Text</h2>
-					<xsl:apply-templates mode="dip"/>
-					<h3 style="font-size:18px">Bibliography</h3>
-					<h4 style="font-size:16px">Manuscripts</h4>
-					<ul>
-						<xsl:for-each select="descendant::tei:ref[@type = 'ms']">
-							<xsl:sort select="tei:settlement"/>
-							<xsl:variable name="transcrID" select="ancestor::tei:TEI/@xml:id"/>
-							<xsl:variable name="msID" select="@target"/>
-							<xsl:if test="not(preceding::tei:ref[@target = $msID])">
-								<li style="font-size:11px;list-style: none">
-									<xsl:call-template name="mssBib"/>
-								</li>
-							</xsl:if>
-						</xsl:for-each>
-					</ul>
-					<h4 style="font-size:16px">Works Cited</h4>
-					<ul>
-						<xsl:for-each select="descendant::tei:ref[@type = 'bib']">
-							<xsl:variable name="transcrID" select="ancestor::tei:TEI/@xml:id"/>
-							<xsl:variable name="bibID" select="@target"/>
-							<xsl:if
-								test="not(preceding::tei:ref[@target = $bibID])">
-								<li style="font-size:11px;list-style: none">
-									<xsl:call-template name="litBib"/>
-								</li>
-							</xsl:if>
-						</xsl:for-each>
-					</ul>
-				</xsl:for-each>
-			</body>
-		</html>
-	</xsl:template> -->
-
-	<xsl:template name="mssBib" match="tei:listBibl[@type = 'mss']/tei:msDesc/tei:msIdentifier">
+	<xsl:template mode="word" name="mssBib" match="tei:listBibl[@type = 'mss']/tei:msDesc/tei:msIdentifier">
 		<xsl:value-of select="key('bib', @target)/tei:settlement"/>
 		<xsl:text>, </xsl:text>
 		<xsl:value-of select="key('bib', @target)/tei:repository"/>
@@ -333,20 +283,20 @@
 		</xsl:choose>
 	</xsl:template>
 
-	<xsl:template name="tempEd" match="tei:teiCorpus/tei:TEI">
+	<xsl:template mode="word" name="tempEd" match="tei:teiCorpus/tei:TEI">
 		<br/>
 		<xsl:apply-templates/>
 	</xsl:template>
 
-	<xsl:template match="tei:body">
+	<xsl:template mode="word" match="tei:body">
 		<xsl:apply-templates/>
 	</xsl:template>
 
-	<xsl:template match="tei:teiHeader">
+	<xsl:template mode="word" match="tei:teiHeader">
 		<xsl:if test="not(ancestor::tei:TEI[@xml:id='hwData'])"><xsl:apply-templates/></xsl:if>
 	</xsl:template>
 
-	<xsl:template match="tei:teiHeader/tei:fileDesc/tei:titleStmt">
+	<xsl:template mode="word" match="tei:teiHeader/tei:fileDesc/tei:titleStmt">
 		<h2 style="font-size:18px">
 			<xsl:apply-templates select="tei:title"/>
 		</h2>
@@ -360,11 +310,11 @@
 		</xsl:for-each>
 	</xsl:template>
 
-	<xsl:template match="tei:teiHeader/tei:fileDesc/tei:extent">
+	<xsl:template mode="word" match="tei:teiHeader/tei:fileDesc/tei:extent">
 		<xsl:apply-templates/>
 	</xsl:template>
 
-	<xsl:template match="tei:teiHeader/tei:fileDesc/tei:publicationStmt">
+	<xsl:template mode="word" match="tei:teiHeader/tei:fileDesc/tei:publicationStmt">
 		<p style="font-size:12px">
 			<xsl:apply-templates select="tei:availability"/>
 		</p>
@@ -376,7 +326,7 @@
 		</p>
 	</xsl:template>
 
-	<xsl:template match="tei:teiHeader/tei:fileDesc/tei:notesStmt">
+	<xsl:template mode="word" match="tei:teiHeader/tei:fileDesc/tei:notesStmt">
 		<xsl:variable name="msref">
 			<xsl:apply-templates
 				select="parent::tei:fileDesc/tei:sourceDesc/tei:msDesc/tei:msIdentifier/tei:settlement"/>
@@ -396,7 +346,7 @@
 		</xsl:for-each>
 	</xsl:template>
 
-	<xsl:template match="tei:teiHeader/tei:fileDesc/tei:sourceDesc">
+	<xsl:template mode="word" match="tei:teiHeader/tei:fileDesc/tei:sourceDesc">
 		<h4 style="font-size:16px">Hands</h4>
 		<xsl:for-each select="tei:msDesc/tei:physDesc/tei:handDesc/tei:handNote/tei:note">
 			<h5>
@@ -666,7 +616,7 @@
 		</p>
 	</xsl:template>
 
-	<xsl:template match="tei:teiHeader/tei:encodingDesc">
+	<xsl:template mode="word" match="tei:teiHeader/tei:encodingDesc">
 		<h3 style="font-size:16px">Encoding of this Transcription</h3>
 		<h4 style="font-size:16px">Issues</h4>
 		<p style="font-size:11px">
@@ -684,7 +634,7 @@
 		</p>
 	</xsl:template>
 
-	<xsl:template match="tei:teiHeader/tei:profileDesc/tei:textClass">
+	<xsl:template mode="word" match="tei:teiHeader/tei:profileDesc/tei:textClass">
 		<h3 style="font-size:16px">Keywords</h3>
 		<ul style="margin-left:30px">
 			<xsl:for-each select="tei:keywords/tei:term">
@@ -695,7 +645,7 @@
 		</ul>
 	</xsl:template>
 
-	<xsl:template match="tei:teiHeader/tei:revisionDesc">
+	<xsl:template mode="word" match="tei:teiHeader/tei:revisionDesc">
 		<h3 style="font-size:16px">Revision History</h3>
 		<ul style="margin-left:30px">
 			<xsl:for-each select="tei:change">
@@ -710,7 +660,7 @@
 		</ul>
 	</xsl:template>
 
-	<xsl:template match="tei:list">
+	<xsl:template mode="word" match="tei:list">
 		<ul>
 			<xsl:for-each select="tei:head">
 				<li style="font-size:11px;list-style: none">
@@ -727,7 +677,7 @@
 		</ul>
 	</xsl:template>
 
-	<xsl:template match="tei:table">
+	<xsl:template mode="word" match="tei:table">
 		<table style="margin-left:30px;font-size:11px">
 			<tr>
 				<xsl:for-each select="tei:row[@role = 'label']/tei:cell">
@@ -749,42 +699,42 @@
 		<br/>
 	</xsl:template>
 
-	<xsl:template match="tei:quote">
+	<xsl:template mode="word" match="tei:quote">
 		<blockquote style="margin-left:40px;font-size: small">
 			<xsl:apply-templates/>
 		</blockquote>
 	</xsl:template>
 
-	<xsl:template match="tei:quote/tei:l">
+	<xsl:template mode="word" match="tei:quote/tei:l">
 		<xsl:apply-templates/>
 		<br/>
 	</xsl:template>
 
-	<xsl:template match="tei:hi[@rend = 'italics']">
+	<xsl:template mode="word" match="tei:hi[@rend = 'italics']">
 		<i>
 			<xsl:apply-templates/>
 		</i>
 	</xsl:template>
 
-	<xsl:template match="tei:hi[@rend = 'bold']">
+	<xsl:template mode="word" match="tei:hi[@rend = 'bold']">
 		<b>
 			<xsl:apply-templates/>
 		</b>
 	</xsl:template>
 
-	<xsl:template match="tei:hi[@rend = 'sup']">
+	<xsl:template mode="word" match="tei:hi[@rend = 'sup']">
 		<sup>
 			<xsl:apply-templates/>
 		</sup>
 	</xsl:template>
 
-	<xsl:template match="tei:hi[@rend = 'underline' and not(descendant::tei:w)]">
+	<xsl:template mode="word" match="tei:hi[@rend = 'underline' and not(descendant::tei:w)]">
 		<u>
 			<xsl:apply-templates/>
 		</u>
 	</xsl:template>
 
-	<xsl:template match="tei:pb">
+	<xsl:template mode="word" match="tei:pb">
 		<br/>
 		<hr align="left" width="40%"/>
 		<xsl:choose>
@@ -830,14 +780,14 @@
 		<br/>
 	</xsl:template>
 
-	<xsl:template match="tei:cb">
+	<xsl:template mode="word" match="tei:cb">
 		<br/>
 		<b>Col.<xsl:text> </xsl:text>
 			<xsl:value-of select="@n"/></b>
 		<br/>
 	</xsl:template>
 
-	<xsl:template match="tei:lb">
+	<xsl:template mode="word" match="tei:lb">
 		<xsl:choose>
 			<xsl:when test="ancestor::tei:p">
 				<sub>
@@ -887,7 +837,7 @@
 
 	<xsl:template name="edMSline"/> 
 
-	<xsl:template match="tei:lg">
+	<xsl:template mode="word" match="tei:lg">
 		<xsl:choose>
 			<xsl:when test="child::tei:pb">
 				<xsl:variable name="conID" select="@xml:id"/>
@@ -959,17 +909,17 @@
 		</xsl:choose>
 	</xsl:template>
 
-	<xsl:template match="tei:seg[@type = 'catchword']">
+	<xsl:template mode="word" match="tei:seg[@type = 'catchword']">
 		<p style="margin-right:90pc; text-align:center">
 			<xsl:apply-templates/>
 		</p>
 	</xsl:template>
 
-	<xsl:template match="tei:seg[@type = 'cfe']">
+	<xsl:template mode="word" match="tei:seg[@type = 'cfe']">
 		<xsl:text/>
 	</xsl:template>
 
-	<xsl:template match="tei:l" name="line">
+	<xsl:template mode="word" match="tei:l" name="line">
 		<xsl:variable name="Id" select="@xml:id"/>
 		<xsl:variable name="MSlineID">
 			<xsl:choose>
@@ -1020,7 +970,7 @@
 		</xsl:if>
 	</xsl:template>
 
-	<xsl:template match="tei:choice">
+	<xsl:template mode="word" match="tei:choice">
 		<xsl:variable name="choicePOS" select="count(preceding::tei:choice)"/>
 		<xsl:choose>
 			<xsl:when test="child::tei:sic | tei:corr">
@@ -1111,7 +1061,7 @@
 		</xsl:choose>
 	</xsl:template>
 
-	<xsl:template name="word_ed" match="tei:w[not(descendant::tei:w)]">
+	<xsl:template mode="word" name="word_ed" match="tei:w[not(descendant::tei:w)]">
 		<xsl:variable name="wordId" select="generate-id()"/>
 		<xsl:variable name="wordPOS" select="count(preceding::*)"/>
 		<xsl:variable name="lem">
@@ -1608,6 +1558,16 @@
 				</xsl:otherwise>
 			</xsl:choose>
 		</xsl:variable>
+		<xsl:variable name="msLine">
+			<xsl:choose>
+				<xsl:when test="preceding::tei:lb[1]/@sameAs">
+					<xsl:value-of select="preceding::tei:lb[1]/@sameAs"/>
+				</xsl:when>
+				<xsl:when test="preceding::tei:lb[1]/@xml:id">
+					<xsl:value-of select="preceding::tei:lb[1]/@xml:id"/>
+				</xsl:when>
+			</xsl:choose>
+		</xsl:variable>
 		<a id="{$wordId}" pos="{$wordPOS}" onmouseover="hilite(this.id)"
 			onmouseout="dhilite(this.id)" lemma="{$lem}" lemmaRef="{$lemRef}" lemmaED="{$EDlem}" lemmaRefED="{$EDref}" lemmaDW="{$DWlem}"
 			lemmaRefDW="{$DWref}" lemmaSL="{@lemmaSL}" slipID="{@slipID}" ana="{@ana}" hand="{$hand}" ref="{$msref}" date="{$handDate}"
@@ -1629,9 +1589,6 @@
 					<xsl:text>corr</xsl:text>
 					<xsl:value-of select="$choicePOS"/>
 				</xsl:attribute>
-			</xsl:if>
-			<xsl:if test="@lemma">
-				<xsl:attribute name="onclick">addSlip(this.id)</xsl:attribute>
 			</xsl:if>
 			<xsl:choose>
 				<xsl:when
@@ -1661,6 +1618,12 @@
 					</xsl:choose>
 				</xsl:otherwise>
 			</xsl:choose>
+			<xsl:attribute name="href">
+				<xsl:value-of select="corpus.html/$msLine"/>
+			</xsl:attribute>
+			<xsl:attribute name="onclick">
+				<xsl:value-of select="corpus.html/$msLine"/>
+			</xsl:attribute>
 			<xsl:choose>
 				<xsl:when test="ancestor::tei:sic">
 					<sub>
@@ -1812,16 +1775,16 @@
 		</xsl:choose>
 	</xsl:template>
 
-	<xsl:template match="tei:w[descendant::tei:w]">
+	<xsl:template mode="word" match="tei:w[descendant::tei:w]">
 		<xsl:apply-templates/>
 		<xsl:text> </xsl:text>
 	</xsl:template>
 
-	<xsl:template match="tei:name">
+	<xsl:template mode="word" match="tei:name">
 		<xsl:apply-templates/>
 	</xsl:template>
 
-	<xsl:template match="tei:date">
+	<xsl:template mode="word" match="tei:date">
 		<a id="{generate-id()}" href="#" onclick="return false;"
 			style="text-decoration:none; color:#000000">
 			<xsl:apply-templates/>
@@ -1829,7 +1792,7 @@
 		<xsl:text> </xsl:text>
 	</xsl:template>
 
-	<xsl:template match="tei:num">
+	<xsl:template mode="word" match="tei:num">
 		<a id="{generate-id()}" href="#" onclick="return false;"
 			style="text-decoration:none; color:#000000">
 			<xsl:apply-templates/>
@@ -1837,7 +1800,7 @@
 		<xsl:text> </xsl:text>
 	</xsl:template>
 
-	<xsl:template match="tei:ref">
+	<xsl:template mode="word" match="tei:ref">
 		<xsl:variable name="refID" select="@target"/>
 		<u><a id="ref{count(preceding::*)}" onclick="refDetails(this.id)" exp="0">
 			<xsl:apply-templates/>
@@ -1884,7 +1847,7 @@
 		</xsl:if>
 	</xsl:template>
 
-	<xsl:template match="tei:c">
+	<xsl:template mode="word" match="tei:c">
 		<xsl:variable name="handRef">
 			<xsl:choose>
 				<xsl:when test="ancestor::tei:add">
@@ -1978,16 +1941,16 @@
 		</xsl:choose>
 	</xsl:template>
 
-	<xsl:template match="tei:pc">
+	<xsl:template mode="word" match="tei:pc">
 		<xsl:apply-templates/>
 		<xsl:text> </xsl:text>
 	</xsl:template>
 
-	<xsl:template match="tei:space[@type = 'force']"> &#160; </xsl:template>
+	<xsl:template mode="word" match="tei:space[@type = 'force']"> &#160; </xsl:template>
 
-	<xsl:template match="tei:space[@type = 'em']"> &#160;&#160;&#160;&#160; </xsl:template>
+	<xsl:template mode="word" match="tei:space[@type = 'em']"> &#160;&#160;&#160;&#160; </xsl:template>
 
-	<xsl:template match="tei:supplied">
+	<xsl:template mode="word" match="tei:supplied">
 		<xsl:choose>
 			<xsl:when test="descendant::tei:w">
 				<xsl:text>[ </xsl:text>
@@ -2002,7 +1965,7 @@
 		</xsl:choose>
 	</xsl:template>
 
-	<xsl:template match="tei:g">
+	<xsl:template mode="word" match="tei:g">
 		<xsl:variable name="comWord"
 			select="count(ancestor::tei:w[not(descendant::tei:w)]/preceding::tei:w[not(descendant::tei:w)])"/>
 		<xsl:variable name="position"
@@ -2012,7 +1975,7 @@
 		</i>
 	</xsl:template>
 
-	<xsl:template match="tei:unclear">
+	<xsl:template mode="word" match="tei:unclear">
 		<xsl:choose>
 			<xsl:when test="descendant::tei:w">
 				<xsl:text>{ </xsl:text>
@@ -2037,7 +2000,7 @@
 		</xsl:choose>
 	</xsl:template>
 
-	<xsl:template match="tei:gap">
+	<xsl:template mode="word" match="tei:gap">
 		<xsl:variable name="gapReason">
 			<xsl:choose>
 				<xsl:when test="@reason = 'text_obscure'">
@@ -2083,13 +2046,13 @@
 		</xsl:choose>
 	</xsl:template>
 
-	<xsl:template match="tei:del">
+	<xsl:template mode="word" match="tei:del">
 		<del rend="strikethrough">
 			<xsl:apply-templates/>
 		</del>
 	</xsl:template>
 
-	<xsl:template match="tei:note[@type = 'fn']">
+	<xsl:template mode="word" match="tei:note[@type = 'fn']">
 		<xsl:variable name="comDiv" select="ancestor::tei:div[not(ancestor::tei:div)]/@corresp"/>
 		<xsl:variable name="fnNum"
 			select="count(preceding::tei:note[@type = 'fn' and ancestor::tei:div/@corresp = $comDiv]) + 1"/>
@@ -2104,7 +2067,7 @@
 		<xsl:text> </xsl:text>
 	</xsl:template>
 
-	<xsl:template match="tei:add[@type = 'insertion']">
+	<xsl:template mode="word" match="tei:add[@type = 'insertion']">
 		<xsl:choose>
 			<xsl:when test="ancestor::tei:w">
 				<xsl:choose>
@@ -2225,7 +2188,7 @@
 		</xsl:choose>
 	</xsl:template>
 
-	<xsl:template match="tei:add[@type = 'gloss']">
+	<xsl:template mode="word" match="tei:add[@type = 'gloss']">
 		<xsl:choose>
 			<xsl:when test="@place = 'above'">
 				<b>
@@ -2266,7 +2229,7 @@
 		</xsl:choose>
 	</xsl:template>
 
-	<xsl:template match="tei:handShift">
+	<xsl:template mode="word" match="tei:handShift">
 		<xsl:text> </xsl:text>
 		<sub>
 			<i>
@@ -2276,7 +2239,7 @@
 		<xsl:text> </xsl:text>
 	</xsl:template>
 
-	<xsl:template match="tei:div[@n]">
+	<xsl:template mode="word" match="tei:div[@n]">
 		<xsl:variable name="contents"
 			select="ancestor::tei:TEI//tei:msDesc/tei:msContents/tei:msItem/h4/@id"/>
 		<xsl:variable name="lineID" select="preceding::tei:lb[1]/@xml:id | @sameAs"/>
@@ -2310,7 +2273,7 @@
 		</xsl:if>
 	</xsl:template>
 
-	<xsl:template match="tei:head">
+	<xsl:template mode="word" match="tei:head">
 		<xsl:apply-templates/>
 	</xsl:template>
 

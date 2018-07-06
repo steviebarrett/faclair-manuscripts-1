@@ -3,7 +3,6 @@
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema"
 	exclude-result-prefixes="xs" version="2.0">
 	<xsl:include href="stylesheet-dip-comp.xsl"/>
-	<!-- <xsl:include href="stylesheet-ed-pub-word2.xsl"/> -->
 	<xsl:strip-space elements="*"/>
 
 	<xsl:output method="html"/>
@@ -26,7 +25,7 @@
 	<xsl:attribute-set name="tblBorder">
 		<xsl:attribute name="border">solid 0.1mm black</xsl:attribute>
 	</xsl:attribute-set>
-	
+
 	<xsl:template match="/">
 		<html>
 			<head>
@@ -75,55 +74,6 @@
 			</body>
 		</html>
 	</xsl:template>
-
-	<!-- <xsl:template match="/" mode="word">
-		<html>
-			<head>
-				<script src="WordFile.js"/>
-				<script src="ref.js"/>
-				<script src="hilites.js"/>
-			</head>
-			<body>
-				<h1 style="text-align:center; font-size:18px">
-					<xsl:value-of select="tei:teiCorpus/tei:teiHeader/tei:fileDesc/tei:titleStmt/tei:title"/>
-				</h1>
-				<xsl:for-each select="//tei:TEI[not(@xml:id='hwData')]">
-					<br/>
-					<xsl:call-template name="tempEd"/>
-					<br/>
-					<h2 style="text-align:center;font-size:18px">Diplomatic Text</h2>
-					<xsl:apply-templates mode="dip"/>
-					<h3 style="font-size:18px">Bibliography</h3>
-					<h4 style="font-size:16px">Manuscripts</h4>
-					<ul>
-						<xsl:for-each select="descendant::tei:ref[@type = 'ms']">
-							<xsl:sort select="tei:settlement"/>
-							<xsl:variable name="transcrID" select="ancestor::tei:TEI/@xml:id"/>
-							<xsl:variable name="msID" select="@target"/>
-							<xsl:if test="not(preceding::tei:ref[@target = $msID])">
-								<li style="font-size:11px;list-style: none">
-									<xsl:call-template name="mssBib"/>
-								</li>
-							</xsl:if>
-						</xsl:for-each>
-					</ul>
-					<h4 style="font-size:16px">Works Cited</h4>
-					<ul>
-						<xsl:for-each select="descendant::tei:ref[@type = 'bib']">
-							<xsl:variable name="transcrID" select="ancestor::tei:TEI/@xml:id"/>
-							<xsl:variable name="bibID" select="@target"/>
-							<xsl:if
-								test="not(preceding::tei:ref[@target = $bibID])">
-								<li style="font-size:11px;list-style: none">
-									<xsl:call-template name="litBib"/>
-								</li>
-							</xsl:if>
-						</xsl:for-each>
-					</ul>
-				</xsl:for-each>
-			</body>
-		</html>
-	</xsl:template> -->
 
 	<xsl:template name="mssBib" match="tei:listBibl[@type = 'mss']/tei:msDesc/tei:msIdentifier">
 		<xsl:value-of select="key('bib', @target)/tei:settlement"/>
@@ -838,16 +788,26 @@
 	</xsl:template>
 
 	<xsl:template match="tei:lb">
+		<xsl:variable name="lineID">
+			<xsl:choose>
+				<xsl:when test="@sameAs">
+					<xsl:value-of select="@sameAs"/>
+				</xsl:when>
+				<xsl:when test="@xml:id">
+					<xsl:value-of select="@xml:id"/>
+				</xsl:when>
+			</xsl:choose>
+		</xsl:variable>
 		<xsl:choose>
 			<xsl:when test="ancestor::tei:p">
 				<sub>
-					<br/>
+					<br id="{$lineID}"/>
 					<xsl:value-of select="@n"/>
 					<xsl:text>. </xsl:text>
 				</sub>
 			</xsl:when>
 			<xsl:when test="ancestor::tei:lg or ancestor::tei:w[ancestor::tei:lg]">
-				<sub>
+				<sub id="{$lineID}">
 					<xsl:text> </xsl:text>
 					<xsl:value-of select="@n"/>
 					<xsl:text>. </xsl:text>
@@ -855,7 +815,7 @@
 			</xsl:when>
 			<xsl:otherwise>
 				<sub>
-					<br/>
+					<br id="{$lineID}"/>
 					<xsl:value-of select="@n"/>
 					<xsl:text>. </xsl:text>
 				</sub>
@@ -1608,8 +1568,18 @@
 				</xsl:otherwise>
 			</xsl:choose>
 		</xsl:variable>
+		<xsl:variable name="msLine">
+			<xsl:choose>
+				<xsl:when test="preceding::tei:lb[1]/@sameAs">
+					<xsl:value-of select="preceding::tei:lb[1]/@sameAs"/>
+				</xsl:when>
+				<xsl:when test="preceding::tei:lb[1]/@xml:id">
+					<xsl:value-of select="preceding::tei:lb[1]/@xml:id"/>
+				</xsl:when>
+			</xsl:choose>
+		</xsl:variable>
 		<a id="{$wordId}" pos="{$wordPOS}" onmouseover="hilite(this.id)"
-			onmouseout="dhilite(this.id)" lemma="{$lem}" lemmaRef="{$lemRef}" lemmaED="{$EDlem}" lemmaRefED="{$EDref}" lemmaDW="{$DWlem}"
+			onmouseout="dhilite(this.id)" href="//{ancestor::tei:TEI/@xml:id}/corpus.html/#{$msLine}" target="_blank" lemma="{$lem}" lemmaRef="{$lemRef}" lemmaED="{$EDlem}" lemmaRefED="{$EDref}" lemmaDW="{$DWlem}"
 			lemmaRefDW="{$DWref}" lemmaSL="{@lemmaSL}" slipID="{@slipID}" ana="{@ana}" hand="{$hand}" ref="{$msref}" date="{$handDate}"
 			medium="{$medium}" cert="{$certLvl}" abbrRefs="{$abbrRef}"
 			title="{$lem}: {$pos} {$src}&#10;{$hand}&#10;{$prob}{$certProb}&#10;Abbreviations: {$abbrs}&#10;{$gloss}"
@@ -1629,9 +1599,6 @@
 					<xsl:text>corr</xsl:text>
 					<xsl:value-of select="$choicePOS"/>
 				</xsl:attribute>
-			</xsl:if>
-			<xsl:if test="@lemma">
-				<xsl:attribute name="onclick">addSlip(this.id)</xsl:attribute>
 			</xsl:if>
 			<xsl:choose>
 				<xsl:when

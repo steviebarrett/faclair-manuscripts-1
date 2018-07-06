@@ -5,10 +5,6 @@ function newRow() {
 }
 
 function createTable() {
-	var title = document.createElement("title");
-	var d = new Date();
-	var uuid = d.getTime(); 
-	title.innerHTML = "eSlips" + uuid;
 	var table = document.createElement("table");
 	document.getElementsByTagName("table");
 	var script = document.createElement("script");
@@ -56,7 +52,6 @@ function createTable() {
 	var r1col14 = row1.insertCell(13);
 	r1col14.outerHTML = "<th><button onclick='delCol()' style='width:75px'>Del Col</button><br/><button onclick='delRow(this)' style='width:75px'>Del Row</button></th>";
 	var opened = window.open("", "FnaG MS Corpus Word Table");
-	opened.document.body.appendChild(title);
 	opened.document.body.appendChild(table);
 	opened.document.head.appendChild(script);
 	opened.document.body.appendChild(anchor);
@@ -107,6 +102,25 @@ function createTable() {
 	var form = row.cells[0].children[0];\
 	var abbr = form.getElementsByTagName('i')[abbrPOS];\
 	abbr.style.backgroundColor = 'White';\
+	}; \
+	function addComment() { \
+	var thisTable = opened.document.getElementById('slipTable'); \
+	var row2 = thisTable.insertRow(-1); \
+	row2.style.fontSize = '12px'; \
+	var d = new Date(); \
+	var r2col1 = row2.insertCell(0); \
+	r2col1.innerHTML = d.getTime(); \
+	var r2col2 = row2.insertCell(1); \
+	r2col2.innerHTML = '<b>Initials:</b>'; \
+	var r2col3 = row2.insertCell(2); \
+	r2col3.innerHTML = '<input type='text'/>'; \
+	var r2col4 = row2.insertCell(3); \
+	r2col4.innerHTML = '<b>Comment:</b>'; \
+	var r2col5 = row2.insertCell(4); \
+	var span = document.createAttribute('colSpan'); \
+	span.value = '9'; \
+	r2col5.setAttributeNode(span); \
+	r2col5.innerHTML = '<input type='text' size='123'/>'; \
 	}; \
 	";
 	var type = document.createAttribute("type");
@@ -492,23 +506,6 @@ function addSlip(id) {
 		}
 	rcol13.firstChild.innerHTML = finURIED;
 	var rcol14 = row.insertCell(13);
-	rcol14.outerHTML = '<td><button onclick="delRow(this)" style="width:75px">Del Row</button></td>';
-		var row2 = createdTable.insertRow(-1);
-	row2.style.fontSize = '12px';
-	var d = new Date();
-	var r2col1 = row2.insertCell(0);
-	r2col1.innerHTML = d.getTime();
-	var r2col2 = row2.insertCell(1);
-	r2col2.innerHTML = '<b>Initials:</b>';
-	var r2col3 = row2.insertCell(2);
-	r2col3.innerHTML = '<input type="text"/>';
-	var r2col4 = row2.insertCell(3);
-	r2col4.innerHTML = '<b>Comment:</b>';
-	var r2col5 = row2.insertCell(4);
-	var span = document.createAttribute("colSpan");
-	span.value = "9";
-	r2col5.setAttributeNode(span);
-	r2col5.innerHTML = '<input type="text" size="143"/>';
+	rcol14.outerHTML = '<td><button onclick="delRow(this)" style="width:75px">Del Row</button><br/><button onclick="addComment()" style="font-size:12px; width:75px">Comment</button></td>';
 	opened.document.table.appendChild(tr);	
-
 }
