@@ -30,7 +30,7 @@
 	<xsl:template match="/">
 		<html>
 			<head>
-				<script src="WordFile.js"/>
+				<script src="WordFile_2.js"/>
 				<script src="ref.js"/>
 				<script src="hilites.js"/>
 			</head>

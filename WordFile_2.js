@@ -68,6 +68,14 @@ function createTable() {
 	row.deleteCell(13); \
 	}\
 	};\
+	function saveComment(r) \
+	{ \
+	commentID = r.parentNode.parentNode.id; \
+	initText = document.getElementById(commentID + 'init').value; \
+	document.getElementById(commentID).childNodes[2].innerHTML = initText; \
+	inputText = document.getElementById(commentID + 'input').value; \
+	document.getElementById(commentID).childNodes[4].innerHTML = inputText; \
+	}; \
 	function abbrHilite(id) { \
 	var ids = id.split(','); \
 	var formID = ids[0]; \
@@ -103,24 +111,53 @@ function createTable() {
 	var abbr = form.getElementsByTagName('i')[abbrPOS];\
 	abbr.style.backgroundColor = 'White';\
 	}; \
-	function addComment() { \
-	var thisTable = opened.document.getElementById('slipTable'); \
-	var row2 = thisTable.insertRow(-1); \
+	function addComment(r) { \
+	wordRowID = r.parentNode.parentNode.id; \
+	wordRowPos = document.getElementById(wordRowID).rowIndex; \
+	var thisTable = document.getElementById('slipTable'); \
+	var row2 = thisTable.insertRow(wordRowPos + 1); \
 	row2.style.fontSize = '12px'; \
 	var d = new Date(); \
 	var r2col1 = row2.insertCell(0); \
-	r2col1.innerHTML = d.getTime(); \
+	var ts = d.getTime(); \
+	r2col1.innerHTML = ts; \
+	var commentID = document.createAttribute('id'); \
+	commentID.value = ts; \
+	row2.setAttributeNode(commentID); \
 	var r2col2 = row2.insertCell(1); \
 	r2col2.innerHTML = '<b>Initials:</b>'; \
 	var r2col3 = row2.insertCell(2); \
-	r2col3.innerHTML = '<input type='text'/>'; \
+	r2col3.innerHTML = '<input/>'; \
+	var initID = document.createAttribute('id'); \
+	initID.value = commentID.value + 'init';\
+	r2col3.childNodes[0].setAttributeNode(initID); \
 	var r2col4 = row2.insertCell(3); \
 	r2col4.innerHTML = '<b>Comment:</b>'; \
 	var r2col5 = row2.insertCell(4); \
 	var span = document.createAttribute('colSpan'); \
 	span.value = '9'; \
 	r2col5.setAttributeNode(span); \
-	r2col5.innerHTML = '<input type='text' size='123'/>'; \
+	r2col5.innerHTML = '<input/>'; \
+	var inputSize = document.createAttribute('size'); \
+	inputSize.value = '158'; \
+	r2col5.firstChild.setAttributeNode(inputSize); \
+	var inputID = document.createAttribute('id'); \
+	inputID.value = commentID.value + 'input';\
+	r2col5.childNodes[0].setAttributeNode(inputID); \
+	var r2col6 = row2.insertCell(5); \
+	r2col6.innerHTML = '<button>Del.</button><br/><button>Save</button>'; \
+	var delOnClick = document.createAttribute('onclick'); \
+	delOnClick.value = 'delRow(this)'; \
+	r2col6.childNodes[0].setAttributeNode(delOnClick); \
+	var delStyle = document.createAttribute('style'); \
+	delStyle.value = 'width:75px'; \
+	r2col6.childNodes[0].setAttributeNode(delStyle); \
+	var saveOnClick = document.createAttribute('onclick'); \
+	saveOnClick.value = 'saveComment(this)'; \
+	r2col6.childNodes[2].setAttributeNode(saveOnClick); \
+	var saveStyle = document.createAttribute('style'); \
+	saveStyle.value = 'width:75px;'; \
+	r2col6.childNodes[2].setAttributeNode(saveStyle); \
 	}; \
 	";
 	var type = document.createAttribute("type");
@@ -506,6 +543,7 @@ function addSlip(id) {
 		}
 	rcol13.firstChild.innerHTML = finURIED;
 	var rcol14 = row.insertCell(13);
-	rcol14.outerHTML = '<td><button onclick="delRow(this)" style="width:75px">Del Row</button><br/><button onclick="addComment()" style="font-size:12px; width:75px">Comment</button></td>';
+	rcol14.outerHTML = '<td><button onclick="delRow(this)" style="width:75px">Del Row</button><br/><button onclick="addComment(this)" style="font-size:12px; width:75px">Comment</button></td>';
 	opened.document.table.appendChild(tr);	
+
 }
