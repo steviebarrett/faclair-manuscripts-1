@@ -1038,6 +1038,7 @@
 
 	<xsl:template mode="dip" match="tei:div[@n]">
 		<xsl:apply-templates mode="dip"/>
+		<table/><button id="{generate-id()}" onclick="textComment(this.id)">Add Comment</button>
 	</xsl:template>
 
 	<xsl:template mode="dip" match="tei:head">

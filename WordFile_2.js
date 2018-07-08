@@ -125,7 +125,7 @@ function createTable() {
 	commentID.value = ts; \
 	row2.setAttributeNode(commentID); \
 	var r2col2 = row2.insertCell(1); \
-	r2col2.innerHTML = '<b>Initials:</b>'; \
+	r2col2.innerHTML = '<b>Name:</b>'; \
 	var r2col3 = row2.insertCell(2); \
 	r2col3.innerHTML = '<input/>'; \
 	var initID = document.createAttribute('id'); \
