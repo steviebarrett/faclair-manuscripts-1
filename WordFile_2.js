@@ -220,9 +220,9 @@ function createTable() {
 	var type = document.createAttribute("type");
 	type.value = "text/javascript";
 	script.setAttributeNode(type);
-	var jquery = document.createAttribute("src");
-	jquery.value = "http://code.jquery.com/jquery-1.7.1.min.js";
-	script.setAttributeNode(jquery);
+	var lang = document.createAttribute("language");
+	lang.value = "javascript";
+	script.setAttributeNode(lang);
 }
 
 function addSlip(id) {
