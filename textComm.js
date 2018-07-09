@@ -4,11 +4,10 @@ function newRow() {
 	rowNo++;
 }
 
-var d = new Date();
-var utc = d.getTime();
-var ts = d.toUTCString();
-
 function editComment(r){
+	var d = new Date();
+	var utc = d.getTime();
+	var ts = d.toUTCString();
 	var rowID = r.parentNode.parentNode.id;
 	var tblID = r.parentNode.parentNode.parentNode.parentNode.id;
 	var id = tblID.slice(0, 7);
@@ -27,6 +26,9 @@ function editComment(r){
 }
 
 function saveComment(r){
+	var d = new Date();
+	var utc = d.getTime();
+	var ts = d.toUTCString();
 	var rowID = r.parentNode.parentNode.id;
 	var tblID = r.parentNode.parentNode.parentNode.parentNode.id;
 	var id = tblID.slice(0, 7);
@@ -57,6 +59,9 @@ function saveComment(r){
 }
 
 function delRow(r){
+	var d = new Date();
+	var utc = d.getTime();
+	var ts = d.toUTCString();
 	var tblID = r.parentNode.parentNode.parentNode.parentNode.id; 
 	var i = r.parentNode.parentNode.rowIndex;
 	document.getElementById(tblID).deleteRow(i);
@@ -70,6 +75,9 @@ function delRow(r){
 }
 
 function textComment (id){
+	var d = new Date();
+	var utc = d.getTime();
+	var ts = d.toUTCString();
 	var button = document.getElementById(id);
 	var table = button.previousElementSibling;
 	var tableID = id + "tbl";

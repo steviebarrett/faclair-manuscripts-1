@@ -59,7 +59,7 @@
 	</xsl:template>
 
 	<xsl:template mode="dip" match="tei:pb">
-		<table/><button id="{generate-id()}" onclick="textComment(this.id)" style="font-size:11px">Add Comment</button>
+		<table/><button id="{generate-id()}" onclick="textComment(this.id)" style="font-size:12px">Add Comment</button>
 		<br/>
 		<hr align="left" width="40%"/>
 		<xsl:choose>
@@ -101,6 +101,7 @@
 				</seg>
 			</xsl:otherwise>
 		</xsl:choose>
+		<button onclick="createTable()">Collect Slips</button>
 		<br/>
 	</xsl:template>
 
@@ -1039,7 +1040,7 @@
 
 	<xsl:template mode="dip" match="tei:div[@n]">
 		<xsl:apply-templates mode="dip"/>
-		<table/><button id="{generate-id()}" onclick="textComment(this.id)">Add Comment</button>
+		<table/><button id="{generate-id()}" onclick="textComment(this.id)" style="font-size:12px">Add Comment</button>
 	</xsl:template>
 
 	<xsl:template mode="dip" match="tei:head">

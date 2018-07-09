@@ -73,18 +73,34 @@ function createTable() {
 	};\
 	function saveComment(r) \
 	{ \
+	var d = new Date(); \
+	var utc = d.getTime(); \
+	var ts = d.toUTCString(); \
 	var commentID = r.parentNode.parentNode.id; \
 	var initText = document.getElementById(commentID + 'init').value; \
 	document.getElementById(commentID).childNodes[2].innerHTML = initText; \
 	var inputText = document.getElementById(commentID + 'input').value; \
 	document.getElementById(commentID).childNodes[4].innerHTML = inputText; \
 	document.getElementById(commentID).style.backgroundColor = 'Azure'; \
+	if (document.getElementById(commentID).childNodes[3].hasAttribute('class')) \
+	{ \
+	document.getElementById(commentID).childNodes[3].innerHTML = '<b>Comment (<a>ed.</a>): </b>'; \
+	var edts = document.createAttribute('title'); \
+	edts.value = 'edited at ' + ts; \
+	document.getElementById(commentID).childNodes[3].childNodes[0].childNodes[1].setAttributeNode(edts); \
+	var edHilite = document.createAttribute('style'); \
+	edHilite.value = 'background-color:Khaki'; \
+	document.getElementById(commentID).childNodes[3].childNodes[0].childNodes[1].setAttributeNode(edHilite); \
+	} \
 	r.textContent = 'Edit'; \
 	r.setAttribute('onclick', 'editComment(this)'); \
 	}; \
 	function editComment(r){ \
+	var d = new Date(); \
+	var utc = d.getTime(); \
+	var ts = d.toUTCString(); \
 	var row = r.parentNode.parentNode; \
-	var commentID = r.parentNode.parentNode.id ; \
+	var commentID = r.parentNode.parentNode.id; \
 	var initText = row.childNodes[2].textContent; \
 	var inputText = row.childNodes[4].textContent; \
 	var initCell = row.childNodes[2]; \
@@ -104,6 +120,9 @@ function createTable() {
 	inputID.value = commentID + 'input'; \
 	inputCell.childNodes[0].setAttributeNode(inputID); \
 	row.style.backgroundColor = 'Khaki'; \
+	var edTag = document.createAttribute('class'); \
+	edTag.value = 'ed'; \
+	row.childNodes[3].setAttributeNode(edTag) ; \
 	r.textContent = 'Save'; \
 	r.setAttribute('onclick', 'saveComment(this)'); \
 	}; \
@@ -143,6 +162,9 @@ function createTable() {
 	abbr.style.backgroundColor = 'White';\
 	}; \
 	function addComment(r) { \
+	var d = new Date(); \
+	var utc = d.getTime(); \
+	var ts = d.toUTCString(); \
 	wordRowID = r.parentNode.parentNode.id; \
 	wordRowPos = document.getElementById(wordRowID).rowIndex; \
 	var thisTable = document.getElementById('slipTable'); \
@@ -151,17 +173,16 @@ function createTable() {
 	row2.style.fontSize = '12px'; \
 	var d = new Date(); \
 	var r2col1 = row2.insertCell(0); \
-	var utcts = d.getTime(); \
 	r2col1.innerHTML = ts; \
 	var commentID = document.createAttribute('id'); \
-	commentID.value = utcts; \
+	commentID.value = utc; \
 	row2.setAttributeNode(commentID); \
 	var r2col2 = row2.insertCell(1); \
 	r2col2.innerHTML = '<b>Name:</b>'; \
 	var r2col3 = row2.insertCell(2); \
 	r2col3.innerHTML = '<input/>'; \
 	var initID = document.createAttribute('id'); \
-	initID.value = commentID.value + 'init';\
+	initID.value = commentID.value + 'init'; \
 	r2col3.childNodes[0].setAttributeNode(initID); \
 	var r2col4 = row2.insertCell(3); \
 	r2col4.innerHTML = '<b>Comment:</b>'; \
@@ -171,10 +192,10 @@ function createTable() {
 	r2col5.setAttributeNode(span); \
 	r2col5.innerHTML = '<input/>'; \
 	var inputSize = document.createAttribute('size'); \
-	inputSize.value = '150'; \
+	inputSize.value = '160'; \
 	r2col5.firstChild.setAttributeNode(inputSize); \
 	var inputID = document.createAttribute('id'); \
-	inputID.value = commentID.value + 'input';\
+	inputID.value = commentID.value + 'input'; \
 	r2col5.childNodes[0].setAttributeNode(inputID); \
 	var r2col6 = row2.insertCell(5); \
 	r2col6.innerHTML = '<button>Del.</button><br/><button>Save</button>'; \
@@ -188,7 +209,7 @@ function createTable() {
 	saveOnClick.value = 'saveComment(this)'; \
 	r2col6.childNodes[2].setAttributeNode(saveOnClick); \
 	var saveStyle = document.createAttribute('style'); \
-	saveStyle.value = 'width:75px;'; \
+	saveStyle.value = 'width:75px'; \
 	r2col6.childNodes[2].setAttributeNode(saveStyle); \
 	}; \
 	";
