@@ -59,6 +59,7 @@
 	</xsl:template>
 
 	<xsl:template mode="dip" match="tei:pb">
+		<table/><button id="{generate-id()}" onclick="textComment(this.id)" style="font-size:11px">Add Comment</button>
 		<br/>
 		<hr align="left" width="40%"/>
 		<xsl:choose>

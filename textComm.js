@@ -82,7 +82,7 @@ function textComment (id){
 	newRow();
 	nextRow.setAttributeNode(row);
 	var rowID = row.value;
-	nextRow.style.fontSize = '12px'; 
+	nextRow.style.fontSize = '10px'; 
 	var col1 = nextRow.insertCell(0);
 	col1.innerHTML = ts;
 	var col2 = nextRow.insertCell(1);

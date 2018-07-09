@@ -56,7 +56,10 @@ function createTable() {
 	opened.document.head.appendChild(script);
 	opened.document.body.appendChild(anchor);
 	anchor.outerHTML = "<a id='dlink'  style='display:none;'></a>";
-	script.innerHTML = "function delRow(r) \
+	script.innerHTML = "var d = new Date(); \
+	var utc = d.getTime(); \
+	var ts = d.toUTCString(); \
+	function delRow(r) \
 	{ \
 	var i = r.parentNode.parentNode.rowIndex; \
 	document.getElementById('slipTable').deleteRow(i); \
@@ -70,11 +73,39 @@ function createTable() {
 	};\
 	function saveComment(r) \
 	{ \
-	commentID = r.parentNode.parentNode.id; \
-	initText = document.getElementById(commentID + 'init').value; \
+	var commentID = r.parentNode.parentNode.id; \
+	var initText = document.getElementById(commentID + 'init').value; \
 	document.getElementById(commentID).childNodes[2].innerHTML = initText; \
-	inputText = document.getElementById(commentID + 'input').value; \
+	var inputText = document.getElementById(commentID + 'input').value; \
 	document.getElementById(commentID).childNodes[4].innerHTML = inputText; \
+	document.getElementById(commentID).style.backgroundColor = 'Azure'; \
+	r.textContent = 'Edit'; \
+	r.setAttribute('onclick', 'editComment(this)'); \
+	}; \
+	function editComment(r){ \
+	var row = r.parentNode.parentNode; \
+	var commentID = r.parentNode.parentNode.id ; \
+	var initText = row.childNodes[2].textContent; \
+	var inputText = row.childNodes[4].textContent; \
+	var initCell = row.childNodes[2]; \
+	var inputCell = row.childNodes[4]; \
+	initCell.innerHTML = '<input/>'; \
+	var initVal = document.createAttribute('value'); \
+	initVal.value = initText; \
+	initCell.childNodes[0].setAttributeNode(initVal); \
+	var initID = document.createAttribute('id'); \
+	initID.value = commentID + 'init'; \
+	initCell.childNodes[0].setAttributeNode(initID); \
+	inputCell.innerHTML = '<input/>'; \
+	var inputVal = document.createAttribute('value'); \
+	inputVal.value = inputText; \
+	inputCell.childNodes[0].setAttributeNode(inputVal); \
+	var inputID = document.createAttribute('id'); \
+	inputID.value = commentID + 'input'; \
+	inputCell.childNodes[0].setAttributeNode(inputID); \
+	row.style.backgroundColor = 'Khaki'; \
+	r.textContent = 'Save'; \
+	r.setAttribute('onclick', 'saveComment(this)'); \
 	}; \
 	function abbrHilite(id) { \
 	var ids = id.split(','); \
@@ -116,13 +147,14 @@ function createTable() {
 	wordRowPos = document.getElementById(wordRowID).rowIndex; \
 	var thisTable = document.getElementById('slipTable'); \
 	var row2 = thisTable.insertRow(wordRowPos + 1); \
+	row2.setAttribute('class', 'comment');\
 	row2.style.fontSize = '12px'; \
 	var d = new Date(); \
 	var r2col1 = row2.insertCell(0); \
-	var ts = d.getTime(); \
+	var utcts = d.getTime(); \
 	r2col1.innerHTML = ts; \
 	var commentID = document.createAttribute('id'); \
-	commentID.value = ts; \
+	commentID.value = utcts; \
 	row2.setAttributeNode(commentID); \
 	var r2col2 = row2.insertCell(1); \
 	r2col2.innerHTML = '<b>Name:</b>'; \
@@ -139,7 +171,7 @@ function createTable() {
 	r2col5.setAttributeNode(span); \
 	r2col5.innerHTML = '<input/>'; \
 	var inputSize = document.createAttribute('size'); \
-	inputSize.value = '158'; \
+	inputSize.value = '150'; \
 	r2col5.firstChild.setAttributeNode(inputSize); \
 	var inputID = document.createAttribute('id'); \
 	inputID.value = commentID.value + 'input';\
