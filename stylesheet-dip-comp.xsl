@@ -161,14 +161,13 @@
 							<xsl:text> name</xsl:text>
 						</xsl:when>
 						<xsl:when test="@xml:lang">Language: <xsl:value-of
-								select="key('lang', @xml:lang)/text()"/></xsl:when>
+							select="key('lang', @xml:lang)/text()"/></xsl:when>
 						<xsl:otherwise>[no lemma entered]</xsl:otherwise>
 					</xsl:choose>
 				</xsl:when>
 				<xsl:otherwise>
 					<xsl:choose>
-						<xsl:when test="ancestor::tei:name"><xsl:value-of select="@lemma"/>
-								(<xsl:value-of select="ancestor::tei:name/@type"/> name)</xsl:when>
+						<xsl:when test="ancestor::tei:name"><xsl:value-of select="@lemma"/><xsl:text> (</xsl:text><xsl:value-of select="ancestor::tei:name/@type"/><xsl:text> name)</xsl:text></xsl:when>
 						<xsl:otherwise>
 							<xsl:value-of select="@lemma"/>
 						</xsl:otherwise>
@@ -582,9 +581,35 @@
 				<xsl:value-of select="count(ancestor::tei:choice/preceding::tei:choice)"/>
 			</xsl:if>
 		</xsl:variable>
+		<xsl:variable name="DWlem">
+			<xsl:value-of select="key('hwData', @lemmaRef)/tei:w/@lemmaDW"/>
+		</xsl:variable>
+		<xsl:variable name="DWref">
+			<xsl:value-of select="key('hwData', @lemmaRef)/tei:w/@lemmaRefDW"/>
+		</xsl:variable>
+		<xsl:variable name="EDlem">
+			<xsl:choose>
+				<xsl:when test="contains(@lemmaRef, 'dil.ie')">
+					<xsl:value-of select="@lemma"/>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:value-of select="@lemmaED"/>
+				</xsl:otherwise>
+			</xsl:choose>
+		</xsl:variable>
+		<xsl:variable name="EDref">
+			<xsl:choose>
+				<xsl:when test="contains(@lemmaRef, 'dil.ie')">
+					<xsl:value-of select="@lemmaRef"/>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:value-of select="@lemmaRefED"/>
+				</xsl:otherwise>
+			</xsl:choose>
+		</xsl:variable>
 		<a id="{$wordId}" pos="{$wordPOS}" onmouseover="hilite(this.id)"
-			onmouseout="dhilite(this.id)" lemma="{$lem}" lemmaRef="{$lemRef}" lemmaDW="{@lemmaDW}"
-			lemmaRefDW="{@lemmaRefDW}" ana="{@ana}" hand="{$hand}" ref="{$msref}" date="{$handDate}"
+			onmouseout="dhilite(this.id)" lemma="{$lem}" lemmaRef="{$lemRef}" lemmaDW="{$DWlem}"
+			lemmaRefDW="{$DWref}" lemmaED="{$EDlem}" lemmaRefED="{$EDref}" lemmaSL="{@lemmaSL}" ana="{@ana}" hand="{$hand}" ref="{$msref}" date="{$handDate}"
 			medium="{$medium}" cert="{$certLvl}" abbrRefs="{$abbrRef}"
 			title="{$lem}: {$pos} {$src}&#10;{$hand}&#10;{$prob}{$certProb}&#10;Abbreviations: {$abbrs}&#10;{$gloss}"
 			style="text-decoration:none; color:#000000">

@@ -1270,8 +1270,7 @@
 				</xsl:when>
 				<xsl:otherwise>
 					<xsl:choose>
-						<xsl:when test="ancestor::tei:name"><xsl:value-of select="@lemma"/>
-								(<xsl:value-of select="ancestor::tei:name/@type"/> name)</xsl:when>
+						<xsl:when test="ancestor::tei:name"><xsl:value-of select="@lemma"/><xsl:text> (</xsl:text><xsl:value-of select="ancestor::tei:name/@type"/><xsl:text> name)</xsl:text></xsl:when>
 						<xsl:otherwise>
 							<xsl:value-of select="@lemma"/>
 						</xsl:otherwise>

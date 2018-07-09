@@ -6,7 +6,10 @@ function newRow() {
 
 function createTable() {
 	var table = document.createElement("table");
-	document.getElementsByTagName("table");
+	var title = document.createElement("title");
+	var d = new Date();
+	var uuid = d.getTime(); 
+	title.innerHTML = "eSlips" + uuid;
 	var script = document.createElement("script");
 	var anchor = document.createElement("a");
 	var tblBorder = document.createAttribute ("border");
@@ -53,6 +56,7 @@ function createTable() {
 	r1col14.outerHTML = "<th><button onclick='delCol()' style='width:75px'>Del Col</button><br/><button onclick='delRow(this)' style='width:75px'>Del Row</button></th>";
 	var opened = window.open("", "FnaG MS Corpus Word Table");
 	opened.document.body.appendChild(table);
+	opened.document.head.appendChild(title);
 	opened.document.head.appendChild(script);
 	opened.document.body.appendChild(anchor);
 	anchor.outerHTML = "<a id='dlink'  style='display:none;'></a>";
