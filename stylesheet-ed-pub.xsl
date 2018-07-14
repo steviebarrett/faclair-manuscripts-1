@@ -1916,6 +1916,9 @@
 			<xsl:when test="@ana = 'num' and ancestor::tei:w[contains(@ana, 'num, noun')]">
 				<xsl:text/>
 			</xsl:when>
+			<xsl:when test="@ana = 'num' and ancestor::tei:w[contains(@ana, 'num, adj')]">
+				<xsl:text/>
+			</xsl:when>
 			<xsl:when test="@ana = 'num' and ancestor::tei:w[contains(@ana, 'num, vnoun')]">
 				<xsl:text/>
 			</xsl:when>
@@ -1935,6 +1938,9 @@
 				<xsl:text/>
 			</xsl:when>
 			<xsl:when test="@ana = 'pron' and ancestor::tei:w[contains(@ana, 'pron, part')]">
+				<xsl:text/>
+			</xsl:when>
+			<xsl:when test="@ana = 'adv' and ancestor::tei:w[contains(@ana, 'adv, part')]">
 				<xsl:text/>
 			</xsl:when>
 			<xsl:when test="@ana = 'part' and ancestor::tei:w[contains(@ana, 'part, part')]">
