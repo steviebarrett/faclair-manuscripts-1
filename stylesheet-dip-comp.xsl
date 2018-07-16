@@ -771,10 +771,7 @@
 	</xsl:template>
 
 	<xsl:template mode="dip" match="tei:pc">
-		<a id="{generate-id()}_dip" style="text-decoration:none; color:#000000" href="#"
-			onclick="return false;">
 			<xsl:apply-templates mode="dip"/>
-		</a>
 	</xsl:template>
 
 	<xsl:template mode="dip" match="tei:space[@type = 'force']">
@@ -812,7 +809,7 @@
 			select="count(ancestor::tei:w[not(descendant::tei:w)]/preceding::tei:w[not(descendant::tei:w)])"/>
 		<xsl:variable name="position"
 			select="count(preceding::tei:g[ancestor::tei:w[not(descendant::tei:w) and count(preceding::tei:w[not(descendant::tei:w)]) = $comWord]])"/>
-		<i id="l{$position}">
+		<i id="l{$position}" class="{ancestor::tei:abbr/@cert}">
 			<xsl:apply-templates mode="dip"/>
 		</i>
 	</xsl:template>

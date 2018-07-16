@@ -35,7 +35,7 @@ function createTable() {
 	var r1col4 = row1.insertCell(3);
 	r1col4.outerHTML = "<th><b>Text Form</b></th>";
 	var r1col5 = row1.insertCell(4);
-	r1col5.outerHTML = "<th><b>Issue(s)?</b></th>";
+	r1col5.outerHTML = "<th><b>Issues?</b></th>";
 	var r1col6 = row1.insertCell(5);
 	r1col6.outerHTML = "<th><b>Abbrevs</b></th>";
 	var r1col7 = row1.insertCell(6);
@@ -138,15 +138,15 @@ function createTable() {
 	var abbrSpl = abbrID.split('', 2);\
 	var abbrPOS = abbrSpl[1];\
 	var row = document.getElementById(rowID);\
-	var form = row.cells[0].children[0];\
+	var form = row.cells[0].childNodes[0];\
 	var abbr = form.getElementsByTagName('i')[abbrPOS];\
-	if (abbr.getAttribute('cert') == 'high'){\
+	if (abbr.getAttribute('class') == 'high'){\
 	abbr.style.backgroundColor = 'LawnGreen';\
 	} \
-	else if (abbr.getAttribute('cert') == 'medium') {\
+	else if (abbr.getAttribute('class') == 'medium') {\
 	abbr.style.backgroundColor = 'Gold';\
 	} \
-	else if (abbr.getAttribute('cert') == 'low') {\
+	else if (abbr.getAttribute('class') == 'low') {\
 	abbr.style.backgroundColor = 'Salmon';\
 	} \
 	else {\
@@ -161,7 +161,7 @@ function createTable() {
 	var abbrSpl = abbrID.split('', 2);\
 	var abbrPOS = abbrSpl[1];\
 	var row = document.getElementById(rowID);\
-	var form = row.cells[0].children[0];\
+	var form = row.cells[0].childNodes[0];\
 	var abbr = form.getElementsByTagName('i')[abbrPOS];\
 	abbr.style.backgroundColor = 'White';\
 	}; \

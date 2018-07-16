@@ -951,7 +951,11 @@
 				</seg>
 			</xsl:otherwise>
 		</xsl:choose>
-		<button class="cs" onclick="createTable();beginCS(this)">Collect Slips</button><button class="ws" onclick="createTable();beginWS(this)">Headword Search</button><button class="es" onclick="endSearch(this)" hidden="hidden" style="background-color:red"><b>End Search</b></button>
+		<button class="cs" onclick="createTable();beginCS(this)">Collect Slips</button>
+		<button class="ws" onclick="createTable();beginWS(this)">Headword Search</button>
+		<button class="es" onclick="endSearch(this)" hidden="hidden" style="background-color:red">
+			<b>End Search</b>
+		</button>
 		<br/>
 	</xsl:template>
 
@@ -1280,7 +1284,12 @@
 				</xsl:when>
 				<xsl:otherwise>
 					<xsl:choose>
-						<xsl:when test="ancestor::tei:name"><xsl:value-of select="@lemma"/><xsl:text> (</xsl:text><xsl:value-of select="ancestor::tei:name/@type"/><xsl:text> name)</xsl:text></xsl:when>
+						<xsl:when test="ancestor::tei:name">
+							<xsl:value-of select="@lemma"/>
+							<xsl:text> (</xsl:text>
+							<xsl:value-of select="ancestor::tei:name/@type"/>
+							<xsl:text> name)</xsl:text>
+						</xsl:when>
 						<xsl:otherwise>
 							<xsl:value-of select="@lemma"/>
 						</xsl:otherwise>
@@ -1597,6 +1606,7 @@
 								<xsl:when test="ancestor-or-self::tei:supplied"> supp. word </xsl:when>
 								<xsl:when test="descendant-or-self::tei:supplied"> supp. char(s) </xsl:when>
 								<xsl:when test="@source"> new vocab. </xsl:when>
+								<xsl:when test="@lemma='LEMMA UNKNOWN'"> headword unknown </xsl:when>
 							</xsl:choose>
 						</xsl:otherwise>
 					</xsl:choose>
@@ -1910,7 +1920,7 @@
 				<xsl:text/>
 			</xsl:when>
 			<xsl:when
-				test="@ana = 'adj' and ancestor::tei:w[contains(@ana, 'adj, adj')] and @n = '1'">
+				test="@ana = 'adj' and ancestor::tei:w[contains(@ana, 'adj, adj')]">
 				<xsl:text/>
 			</xsl:when>
 			<xsl:when test="@ana = 'num' and ancestor::tei:w[contains(@ana, 'num, noun')]">
@@ -2146,8 +2156,15 @@
 	</xsl:template>
 
 	<xsl:template match="tei:pc">
-		<xsl:apply-templates/>
-		<xsl:text> </xsl:text>
+		<xsl:choose>
+			<xsl:when test="ancestor::tei:w">
+				<xsl:text/>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:apply-templates/>
+				<xsl:text> </xsl:text>
+			</xsl:otherwise>
+		</xsl:choose>
 	</xsl:template>
 
 	<xsl:template match="tei:space[@type = 'force']"> &#160; </xsl:template>
@@ -2174,7 +2191,7 @@
 			select="count(ancestor::tei:w[not(descendant::tei:w)]/preceding::tei:w[not(descendant::tei:w)])"/>
 		<xsl:variable name="position"
 			select="count(preceding::tei:g[ancestor::tei:w[not(descendant::tei:w) and count(preceding::tei:w[not(descendant::tei:w)]) = $comWord]])"/>
-		<i id="l{$position}" cert="{ancestor::tei:abbr/@cert}">
+		<i id="l{$position}" class="{ancestor::tei:abbr/@cert}">
 			<xsl:apply-templates/>
 		</i>
 	</xsl:template>
