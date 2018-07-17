@@ -140,13 +140,13 @@ function createTable() {
 	var row = document.getElementById(rowID);\
 	var form = row.cells[0].childNodes[0];\
 	var abbr = form.getElementsByTagName('i')[abbrPOS];\
-	if (abbr.getAttribute('class') == 'high'){\
+	if (abbr.getAttribute('cert') == 'high'){\
 	abbr.style.backgroundColor = 'LawnGreen';\
 	} \
-	else if (abbr.getAttribute('class') == 'medium') {\
+	else if (abbr.getAttribute('cert') == 'medium') {\
 	abbr.style.backgroundColor = 'Gold';\
 	} \
-	else if (abbr.getAttribute('class') == 'low') {\
+	else if (abbr.getAttribute('cert') == 'low') {\
 	abbr.style.backgroundColor = 'Salmon';\
 	} \
 	else {\
