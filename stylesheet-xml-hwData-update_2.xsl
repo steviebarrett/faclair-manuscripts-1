@@ -36,10 +36,8 @@
 			<text>
 				<body>
 					<xsl:for-each
-						select="//tei:teiCorpus//tei:w[not(descendant::tei:w) and not(@xml:lang) and not(@type = 'data') and @lemmaRef and not(@lemmaRefDW)]">
+						select="//tei:teiCorpus//tei:w[not(descendant::tei:w) and not(@lemmaRef = preceding::tei:w[not(descendant::tei:w)]/@lemmaRef) and not(@type = 'data') and @lemmaRef]">
 						<xsl:variable name="wordID" select="@lemmaRef"/>
-						<xsl:if
-							test="not(@lemmaRef = preceding::tei:w[not(descendant::tei:w)]/@lemmaRef) or @lemmaRef = preceding::tei:w[not(descendant::tei:w) and contains(@ana, ',') and not(preceding::tei:w[@lemmaRef = $wordID and not(contains(@ana, ','))])]/@lemmaRef">
 							<entryFree>
 								<xsl:attribute name="corresp">
 									<xsl:value-of select="@lemmaRef"/>
@@ -51,7 +49,7 @@
 								</xsl:attribute>
 								<xsl:if
 									test="not(//tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree[@corresp = $wordID])">
-									<xsl:attribute name="class">
+									<xsl:attribute name="source">
 										<xsl:text>new</xsl:text>
 									</xsl:attribute>
 								</xsl:if>
@@ -85,7 +83,6 @@
 									select="//tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree[@corresp = $wordID]/tei:iType"
 								/>
 							</entryFree>
-						</xsl:if>
 					</xsl:for-each>
 				</body>
 			</text>
