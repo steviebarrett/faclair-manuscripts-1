@@ -1203,7 +1203,7 @@
 					<xsl:otherwise>
 						<xsl:choose>
 							<xsl:when test="tei:sic/descendant::tei:w">
-								<xsl:for-each select="tei:sic/descendant::tei:w">
+								<xsl:for-each select="tei:sic/descendant::tei:w[not(descendant::tei:w)]">
 									<xsl:call-template name="word_ed"/>
 								</xsl:for-each>
 							</xsl:when>
