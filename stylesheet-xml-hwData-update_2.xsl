@@ -49,6 +49,11 @@
 										select="count(//tei:w[not(descendant::tei:w) and not(@xml:lang) and @lemmaRef = $wordID])"
 									/>
 								</xsl:attribute>
+								<xsl:if test="not(//tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree[@corresp = $wordID])">
+									<xsl:attribute name="class">
+										<xsl:text>new</xsl:text>
+									</xsl:attribute>
+								</xsl:if>
 								<w>
 									<xsl:attribute name="type">
 										<xsl:text>data</xsl:text>
