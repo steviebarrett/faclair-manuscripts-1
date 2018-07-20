@@ -36,10 +36,10 @@
 			<text>
 				<body>
 					<xsl:for-each
-						select="//tei:teiCorpus//tei:w[not(descendant::tei:w) and not(@xml:lang) and not(@type='data') and @lemmaRef and not(@lemmaRefDW)]">
+						select="//tei:teiCorpus//tei:w[not(descendant::tei:w) and not(@xml:lang) and not(@type = 'data') and @lemmaRef and not(@lemmaRefDW)]">
 						<xsl:variable name="wordID" select="@lemmaRef"/>
 						<xsl:if
-							test="not(@lemmaRef = preceding::tei:w[not(descendant::tei:w)]/@lemmaRef) and not(contains(@ana, ','))">
+							test="not(@lemmaRef = preceding::tei:w[not(descendant::tei:w)]/@lemmaRef) or @lemmaRef = preceding::tei:w[not(descendant::tei:w) and contains(@ana, ',') and not(preceding::tei:w[@lemmaRef = $wordID and not(contains(@ana, ','))])]/@lemmaRef">
 							<entryFree>
 								<xsl:attribute name="corresp">
 									<xsl:value-of select="@lemmaRef"/>
@@ -49,7 +49,8 @@
 										select="count(//tei:w[not(descendant::tei:w) and not(@xml:lang) and @lemmaRef = $wordID])"
 									/>
 								</xsl:attribute>
-								<xsl:if test="not(//tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree[@corresp = $wordID])">
+								<xsl:if
+									test="not(//tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree[@corresp = $wordID])">
 									<xsl:attribute name="class">
 										<xsl:text>new</xsl:text>
 									</xsl:attribute>
@@ -68,14 +69,21 @@
 										<xsl:value-of select="@ana"/>
 									</xsl:attribute>
 									<xsl:attribute name="lemmaDW">
-										<xsl:value-of select="//tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree[@corresp = $wordID]/tei:w/@lemmaDW"/>
+										<xsl:value-of
+											select="//tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree[@corresp = $wordID]/tei:w/@lemmaDW"
+										/>
 									</xsl:attribute>
 									<xsl:attribute name="lemmaRefDW">
-										<xsl:value-of select="//tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree[@corresp = $wordID]/tei:w/@lemmaRefDW"/>
+										<xsl:value-of
+											select="//tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree[@corresp = $wordID]/tei:w/@lemmaRefDW"
+										/>
 									</xsl:attribute>
 								</w>
-								<xsl:copy-of select="//tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree[@corresp = $wordID]/tei:gen"/>
-								<xsl:copy-of select="//tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree[@corresp = $wordID]/tei:iType"/>
+								<xsl:copy-of
+									select="//tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree[@corresp = $wordID]/tei:gen"/>
+								<xsl:copy-of
+									select="//tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree[@corresp = $wordID]/tei:iType"
+								/>
 							</entryFree>
 						</xsl:if>
 					</xsl:for-each>
@@ -110,12 +118,15 @@
 				</xsl:attribute>
 				<xsl:attribute name="lemmaDW">
 					<xsl:variable name="wordID" select="@lemmaRef"/>
-					<xsl:value-of select="//tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree[@corresp = $wordID]/tei:w/@lemmaDW"/>
+					<xsl:value-of
+						select="//tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree[@corresp = $wordID]/tei:w/@lemmaDW"
+					/>
 				</xsl:attribute>
 				<xsl:attribute name="lemmaRefDW">
 					<xsl:variable name="wordID" select="@lemmaRef"/>
 					<xsl:choose>
-						<xsl:when test="contains(//tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree[@corresp = $wordID]/tei:w/@lemmaRefDW, 'faclair')">
+						<xsl:when
+							test="contains(//tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree[@corresp = $wordID]/tei:w/@lemmaRefDW, 'faclair')">
 							<xsl:value-of select="@lemmaRefDW"/>
 						</xsl:when>
 						<xsl:otherwise>
