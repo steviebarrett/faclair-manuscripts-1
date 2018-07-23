@@ -148,7 +148,7 @@
 									<xsl:value-of select="tei:forename"/><xsl:text> </xsl:text><xsl:value-of select="tei:surname"/><xsl:text> (</xsl:text><xsl:value-of select="@xml:id"/><xsl:text>)</xsl:text>
 								</td>
 								<td>
-									<xsl:value-of select="tei:date"/><xsl:if test="not(text() = 'unknown')"><sup>th</sup><xsl:text> cent.</xsl:text></xsl:if>
+									<xsl:value-of select="tei:date"/><xsl:if test="not(@xml:id='Hand999')"><sup>th</sup><xsl:text> cent.</xsl:text></xsl:if>
 								</td>
 								<td>
 									<xsl:variable name="proseCount"><xsl:value-of select="count(key('handToText', @xml:id)/tei:p/descendant::tei:w[not(descendant::tei:w) and not(@xml:lang) and not(@type='data') and not(preceding::tei:handShift[1][ancestor::tei:div[1][@corresp=$comDiv] and not(@new=$HandID)]) and not(ancestor::tei:add)])"/></xsl:variable>

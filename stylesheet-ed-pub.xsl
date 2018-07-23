@@ -30,7 +30,7 @@
 	<xsl:template match="/">
 		<html>
 			<head>
-				<script src="WordFile_2.js"/>
+				<script src="WordFile.js"/>
 				<script src="ref.js"/>
 				<script src="hilites.js"/>
 				<script src="textComm.js"/>
@@ -951,7 +951,7 @@
 				</seg>
 			</xsl:otherwise>
 		</xsl:choose>
-		<button class="cs" onclick="createTable();beginCS(this)">Collect Slips</button>
+		<button class="cs" onclick="createTable();beginCS(this)">Collect e-Slips</button>
 		<button class="ws" onclick="createTable();beginWS(this)">Headword Search</button>
 		<button class="es" onclick="endSearch(this)" hidden="hidden" style="background-color:red">
 			<b>End Search</b>
