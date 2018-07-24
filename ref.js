@@ -5,6 +5,7 @@ if (document.getElementById(id).hasAttribute("exp"))
 	var refExp = document.getElementById(refID);
 	refExp.hidden = "";
 	document.getElementById(id).removeAttribute("exp");
+	refExp.style.backgroundColor = "Aquamarine";
 	return;
 }
 else
@@ -13,6 +14,7 @@ else
 	var refExp = document.getElementById(refID);
 	refExp.hidden = "hidden";
 	document.getElementById(id).setAttribute("exp", "0");
+	refExp.style.backgroundColor = "";
 	return;
 }
 }

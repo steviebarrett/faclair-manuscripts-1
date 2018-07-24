@@ -688,7 +688,7 @@ function wordSearch(id) {
 	var arr =[];
 	var i;
 	for (i = 0; i < words.length; i++) {
-		if (words[i].getAttribute("lemmaRef") == lref && words[i].getAttribute("class") == "dip") {
+		if (words[i].getAttribute("lemmaRef") == lref && words[i].getAttribute("class") !== "dip") {
 			arr.push(words[i].id);
 			continue;
 		} else {
