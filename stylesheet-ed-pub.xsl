@@ -370,12 +370,25 @@
 	</xsl:template>
 
 	<xsl:template match="tei:teiHeader/tei:fileDesc/tei:extent">
-		<xsl:apply-templates/>
+		<xsl:variable name="fileID" select="ancestor::tei:TEI[1]/@xml:id"/>
+		<xsl:value-of
+			select="count(//tei:w[not(descendant::tei:w) and ancestor::tei:TEI[1][@xml:id = $fileID]])"/>
+		<xsl:text> words</xsl:text>
 	</xsl:template>
 
-	<xsl:template match="tei:teiHeader/tei:fileDesc/tei:publicationStmt">
+	<xsl:template
+		match="tei:teiHeader/tei:fileDesc/tei:publicationStmt/tei:availability/tei:licence">
 		<p style="font-size:12px">
-			<xsl:apply-templates select="tei:availability"/>
+			<xsl:choose>
+				<xsl:when test="parent::tei:availability/@status = 'restricted'">
+					<xsl:value-of
+						select="ancestor::tei:teiCorpus/tei:teiHeader//tei:publicationStmt/tei:availability/tei:licence/tei:p"
+					/>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:apply-templates select="tei:p"/>
+				</xsl:otherwise>
+			</xsl:choose>
 		</p>
 		<p style="font-size:12px">
 			<xsl:for-each select="ancestor::tei:teiCorpus/tei:teiHeader//tei:address/tei:addrLine">
@@ -389,10 +402,10 @@
 		<xsl:variable name="msref">
 			<xsl:apply-templates
 				select="parent::tei:fileDesc/tei:sourceDesc/tei:msDesc/tei:msIdentifier/tei:settlement"/>
-			<xsl:text> </xsl:text>
+			<xsl:text>, </xsl:text>
 			<xsl:apply-templates
 				select="parent::tei:fileDesc/tei:sourceDesc/tei:msDesc/tei:msIdentifier/tei:repository"/>
-			<xsl:text> </xsl:text>
+			<xsl:text>, </xsl:text>
 			<xsl:apply-templates
 				select="parent::tei:fileDesc/tei:sourceDesc/tei:msDesc/tei:msIdentifier/tei:idno"/>
 		</xsl:variable>
@@ -434,9 +447,11 @@
 		</xsl:for-each>
 		<h4 style="font-size:16px">Contents</h4>
 		<h5 style="font-size:14px">Summary</h5>
-		<p style="text-decoration:none;color:#000000;font-size:11px">
-			<xsl:apply-templates select="tei:msDesc/tei:msContents/tei:summary"/>
-		</p>
+		<xsl:for-each select="tei:msDesc/tei:msContents/tei:summary/tei:p">
+			<p style="text-decoration:none;color:#000000;font-size:11px">
+				<xsl:apply-templates/>
+			</p>
+		</xsl:for-each>
 		<table/>
 		<button id="{generate-id()}" onclick="textComment(this.id)" style="font-size:12px">Add
 			Comment</button>
@@ -538,9 +553,74 @@
 						</a>
 					</xsl:if>
 				</xsl:for-each>
-
 			</xsl:if>
 			<xsl:if test="child::tei:msItem">
+				<xsl:variable name="ItemID" select="@xml:id"/>
+				<xsl:variable name="comDiv" select="ancestor::tei:div[@corresp = $ItemID]"/>
+				<xsl:variable name="itemHand" select="@resp"/>
+				<a style="text-decoration:none;color:#000000;font-size:11px">
+					<xsl:text>Main scribe: </xsl:text>
+					<xsl:value-of select="key('hands', @resp)/tei:forename"/>
+					<xsl:text> </xsl:text>
+					<xsl:value-of select="key('hands', @resp)/tei:surname"/>
+					<xsl:text> (</xsl:text>
+					<xsl:value-of select="@resp"/>
+					<xsl:text>)</xsl:text>
+				</a>
+				<br/>
+				<a style="text-decoration:none;color:#000000;font-size:11px">
+					<xsl:text>Other hands: </xsl:text>
+				</a>
+				<xsl:for-each select="//tei:handShift[ancestor::tei:div[@corresp = $ItemID]]">
+					<xsl:if
+						test="not(@new = preceding::tei:handShift[ancestor::tei:div[@corresp = $ItemID]]/@new) and not(@new = $itemHand) or not(preceding::tei:handShift[ancestor::tei:div[@corresp = $ItemID]])">
+						<a style="text-decoration:none;color:#000000;font-size:11px">
+							<xsl:value-of select="key('hands', @new)/tei:forename"/>
+							<xsl:text> </xsl:text>
+							<xsl:value-of select="key('hands', @new)/tei:surname"/>
+							<xsl:text> (</xsl:text>
+							<xsl:value-of select="@new"/>
+							<xsl:text>); </xsl:text>
+						</a>
+					</xsl:if>
+				</xsl:for-each>
+				<br/>
+				<a style="text-decoration:none;color:#000000;font-size:11px">
+					<xsl:text>Additions/emendations: </xsl:text>
+				</a>
+				<xsl:for-each
+					select="//tei:add[@type = 'insertion'][ancestor::tei:div[@corresp = $ItemID]] | //tei:del[ancestor::tei:div[@corresp = $ItemID]]">
+					<xsl:if
+						test="not(@resp = preceding::tei:add[@type = 'insertion'][ancestor::tei:div[@corresp = $ItemID]]/@resp | preceding::tei:del[ancestor::tei:div[@corresp = $ItemID]]/@resp) and not(@resp = $itemHand) or not(preceding::tei:add[@type = 'insertion'][ancestor::tei:div[@corresp = $ItemID]] | preceding::tei:del[ancestor::tei:div[@corresp = $ItemID]])">
+						<a style="text-decoration:none;color:#000000;font-size:11px">
+							<xsl:value-of select="key('hands', @resp)/tei:forename"/>
+							<xsl:text> </xsl:text>
+							<xsl:value-of select="key('hands', @resp)/tei:surname"/>
+							<xsl:text> (</xsl:text>
+							<xsl:value-of select="@resp"/>
+							<xsl:text>); </xsl:text>
+						</a>
+					</xsl:if>
+				</xsl:for-each>
+				<br/>
+				<a style="text-decoration:none;color:#000000;font-size:11px">
+					<xsl:text>Glossing: </xsl:text>
+				</a>
+				<xsl:for-each
+					select="//tei:add[@type = 'gloss'][ancestor::tei:div[@corresp = $ItemID]]">
+					<xsl:if
+						test="not(@resp = preceding::tei:add[@type = 'gloss'][ancestor::tei:div[@corresp = $ItemID]]/@resp) and not(@resp = $itemHand) or not(preceding::tei:add[@type = 'gloss'][ancestor::tei:div[@corresp = $ItemID]])">
+						<a style="text-decoration:none;color:#000000;font-size:11px">
+							<xsl:value-of select="key('hands', @resp)/tei:forename"/>
+							<xsl:text> </xsl:text>
+							<xsl:value-of select="key('hands', @resp)/tei:surname"/>
+							<xsl:text> (</xsl:text>
+							<xsl:value-of select="@resp"/>
+							<xsl:text>); </xsl:text>
+						</a>
+					</xsl:if>
+				</xsl:for-each>
+				<xsl:for-each select="self::*"><xsl:call-template name="textCommentary"/></xsl:for-each>
 				<xsl:for-each select="child::tei:msItem">
 					<xsl:variable name="ItemID" select="@xml:id"/>
 					<xsl:variable name="comDiv" select="ancestor::tei:div[@corresp = $ItemID]"/>
@@ -631,58 +711,9 @@
 					<table/>
 					<button id="{generate-id()}" onclick="textComment(this.id)"
 						style="font-size:12px">Add Comment</button>
+					<xsl:call-template name="textCommentary"/>
 				</xsl:for-each>
 			</xsl:if>
-			<h5 style="font-size:14px">Text Summary</h5>
-			<xsl:for-each select="tei:note/tei:p">
-				<xsl:if test="@comment">
-					<h6 style="font-size:12px">
-						<xsl:value-of select="@comment"/>
-					</h6>
-				</xsl:if>
-				<p style="font-size:11px">
-					<xsl:apply-templates/>
-				</p>
-				<table/>
-				<button id="{generate-id()}" onclick="textComment(this.id)" style="font-size:12px"
-					>Add Comment</button>
-			</xsl:for-each>
-			<h5>Filiation of Text</h5>
-			<xsl:for-each select="tei:filiation/tei:p">
-				<p style="font-size:11px">
-					<xsl:apply-templates/>
-				</p>
-				<table/>
-				<button id="{generate-id()}" onclick="textComment(this.id)" style="font-size:12px"
-					>Add Comment</button>
-			</xsl:for-each>
-			<br/>
-			<h5 style="font-size:14px">Language and Style</h5>
-			<xsl:for-each select="tei:textLang/tei:note">
-				<xsl:if test="@comment">
-					<h6 style="font-size:12px">
-						<xsl:value-of select="@comment"/>
-					</h6>
-				</xsl:if>
-				<xsl:for-each select="tei:p">
-					<xsl:if test="@comment">
-						<b>
-							<h7 style="font-size:11px">
-								<xsl:value-of select="@comment"/>
-							</h7>
-						</b>
-					</xsl:if>
-					<p style="font-size:11px">
-						<xsl:apply-templates/>
-					</p>
-					<table/>
-					<button id="{generate-id()}" onclick="textComment(this.id)"
-						style="font-size:12px">Add Comment</button>
-					<br/>
-					<br/>
-				</xsl:for-each>
-			</xsl:for-each>
-			<br/>
 		</xsl:for-each>
 		<h4 style="font-size:16px">Physical Description of Manuscrpt</h4>
 		<xsl:if test="tei:msDesc/tei:physDesc/tei:p">
@@ -772,32 +803,112 @@
 				Comment</button>
 		</xsl:for-each>
 	</xsl:template>
+	
+	<xsl:template name="textCommentary">
+		<xsl:if test="tei:note"><h5 style="font-size:14px">Text Summary</h5>
+		<xsl:for-each select="tei:note/tei:p">
+			<xsl:if test="@comment">
+				<h6 style="font-size:12px">
+					<xsl:value-of select="@comment"/>
+				</h6>
+			</xsl:if>
+			<p style="font-size:11px">
+				<xsl:apply-templates/>
+			</p>
+			<table/>
+			<button id="{generate-id()}" onclick="textComment(this.id)" style="font-size:12px"
+				>Add Comment</button>
+		</xsl:for-each></xsl:if>
+		<xsl:if test="tei:filiation"><h5>Filiation of Text</h5>
+		<xsl:for-each select="tei:filiation/tei:p">
+			<p style="font-size:11px">
+				<xsl:apply-templates/>
+			</p>
+			<table/>
+			<button id="{generate-id()}" onclick="textComment(this.id)" style="font-size:12px"
+				>Add Comment</button>
+		</xsl:for-each>
+		<br/></xsl:if>
+		<xsl:if test="tei:textLang"><h5 style="font-size:14px">Language and Style</h5>
+		<xsl:for-each select="tei:textLang/tei:note">
+			<xsl:if test="@comment">
+				<h6 style="font-size:12px">
+					<xsl:value-of select="@comment"/>
+				</h6>
+			</xsl:if>
+			<xsl:for-each select="tei:p">
+				<xsl:if test="@comment">
+					<b>
+						<h7 style="font-size:11px">
+							<xsl:value-of select="@comment"/>
+						</h7>
+					</b>
+				</xsl:if>
+				<p style="font-size:11px">
+					<xsl:apply-templates/>
+				</p>
+				<table/>
+				<button id="{generate-id()}" onclick="textComment(this.id)"
+					style="font-size:12px">Add Comment</button>
+				<br/>
+				<br/>
+			</xsl:for-each>
+		</xsl:for-each>
+		<br/></xsl:if>
+	</xsl:template>
 
 	<xsl:template match="tei:teiHeader/tei:encodingDesc">
 		<h3 style="font-size:16px">Encoding of this Transcription</h3>
 		<h4 style="font-size:16px">Issues</h4>
-		<p style="font-size:11px">
-			<xsl:apply-templates select="tei:editorialDecl/tei:p"/>
-		</p>
-		<table/>
-		<button id="{generate-id()}" onclick="textComment(this.id)" style="font-size:12px">Add
-			Comment</button>
-		<xsl:if test="tei:metDecl">
-			<h4 style="font-size:16px">Metrics</h4>
+		<xsl:for-each select="tei:editorialDecl/tei:p">
+			<xsl:if test="@comment">
+			<b>
+				<h7 style="font-size:11px">
+					<xsl:value-of select="@comment"/>
+				</h7>
+			</b>
+		</xsl:if>
 			<p style="font-size:11px">
-				<xsl:apply-templates select="tei:metDecl/tei:p"/>
+			<xsl:apply-templates/>
 			</p>
 			<table/>
 			<button id="{generate-id()}" onclick="textComment(this.id)" style="font-size:12px">Add
 				Comment</button>
+		</xsl:for-each>
+		<xsl:if test="tei:metDecl">
+			<h4 style="font-size:16px">Metrics</h4>
+			<xsl:for-each select="tei:metDecl/tei:p">
+				<xsl:if test="@comment">
+					<b>
+						<h7 style="font-size:11px">
+							<xsl:value-of select="@comment"/>
+						</h7>
+					</b>
+				</xsl:if>
+				<p style="font-size:11px">
+					<xsl:apply-templates/>
+				</p>
+				<table/>
+				<button id="{generate-id()}" onclick="textComment(this.id)" style="font-size:12px">Add
+					Comment</button>
+			</xsl:for-each>
 		</xsl:if>
 		<h4 style="font-size:16px">Referencing of this Transcription</h4>
-		<p style="font-size:11px">
-			<xsl:apply-templates select="tei:refsDecl/tei:p"/>
-		</p>
-		<table/>
-		<button id="{generate-id()}" onclick="textComment(this.id)" style="font-size:12px">Add
-			Comment</button>
+		<xsl:for-each select="tei:refsDecl/tei:p">
+			<xsl:if test="@comment">
+				<b>
+					<h7 style="font-size:11px">
+						<xsl:value-of select="@comment"/>
+					</h7>
+				</b>
+			</xsl:if>
+			<p style="font-size:11px">
+				<xsl:apply-templates/>
+			</p>
+			<table/>
+			<button id="{generate-id()}" onclick="textComment(this.id)" style="font-size:12px">Add
+				Comment</button>
+		</xsl:for-each>
 	</xsl:template>
 
 	<xsl:template match="tei:teiHeader/tei:profileDesc/tei:textClass">
@@ -2011,7 +2122,8 @@
 
 	<xsl:template match="tei:ref">
 		<xsl:variable name="newID">
-				<xsl:value-of select="generate-id()"/><xsl:value-of select="count(preceding::*)"/>
+			<xsl:value-of select="generate-id()"/>
+			<xsl:value-of select="count(preceding::*)"/>
 		</xsl:variable>
 		<xsl:variable name="refPOS" select="count(preceding::*)"/>
 		<xsl:variable name="refID" select="@target"/>
@@ -2039,50 +2151,70 @@
 			</seg>
 		</xsl:if>
 		<xsl:if test="@type = 'text_ed_line'">
-			<xsl:variable name="comDiv" select="//tei:l[@xml:id = $refID]/ancestor::tei:div[1]/@corresp"/>
+			<xsl:variable name="comDiv"
+				select="//tei:l[@xml:id = $refID]/ancestor::tei:div[1]/@corresp"/>
 			<seg id="ref{$refPOS}_exp" style="background-color:white" hidden="hidden">
 				<br/>
 				<br/>
-				<xsl:for-each select="//tei:l[@xml:id = $refID]/descendant::tei:w[not(descendant::tei:w)]">
-						<xsl:choose>
-							<xsl:when test="ancestor::tei:sic">
-								<xsl:text/>
-							</xsl:when>
-							<xsl:otherwise>
-								<xsl:choose>
-									<xsl:when test="ancestor::*[@cert] or descendant::*[@cert]">
-										<xsl:choose>
-											<xsl:when test="ancestor::*[@cert = 'low'] or descendant::*[@cert = 'low']">
-												<a style="text-decoration:none; color:#ff0000"><xsl:apply-templates select="text()|self::*//*/text()"/></a><xsl:text> </xsl:text>
-											</xsl:when>
-											<xsl:when test="ancestor::*[@cert = 'medium'] or descendant::*[@cert = 'low']">
-												<a style="text-decoration:none; color:#ff9900"><xsl:apply-templates select="text()|self::*//*/text()"/></a><xsl:text> </xsl:text>
-											</xsl:when>
-											<xsl:otherwise>
-													<xsl:apply-templates select="text()|self::*//*/text()"/><xsl:text> </xsl:text>
-											</xsl:otherwise>
-										</xsl:choose>
-									</xsl:when>
-									<xsl:otherwise>
-										<xsl:choose>
-											<xsl:when test="ancestor::tei:supplied">
-												<xsl:text>[</xsl:text><xsl:apply-templates select="text()|self::*//*/text()"/><xsl:text>] </xsl:text>
-											</xsl:when>
-											<xsl:otherwise>
-												<xsl:choose>
-													<xsl:when test="ancestor::tei:add">
-														<xsl:text>+</xsl:text><xsl:apply-templates select="text()|self::*//*/text()"/><xsl:text>+ </xsl:text>
-													</xsl:when>
-													<xsl:otherwise>
-														<xsl:apply-templates select="text()|self::*//*/text()"/><xsl:text> </xsl:text>
-													</xsl:otherwise>
-												</xsl:choose>												
-											</xsl:otherwise>
-										</xsl:choose>
-									</xsl:otherwise>
-								</xsl:choose>
-							</xsl:otherwise>
-						</xsl:choose>
+				<xsl:for-each
+					select="//tei:l[@xml:id = $refID]/descendant::tei:w[not(descendant::tei:w)]">
+					<xsl:choose>
+						<xsl:when test="ancestor::tei:sic">
+							<xsl:text/>
+						</xsl:when>
+						<xsl:otherwise>
+							<xsl:choose>
+								<xsl:when test="ancestor::*[@cert] or descendant::*[@cert]">
+									<xsl:choose>
+										<xsl:when
+											test="ancestor::*[@cert = 'low'] or descendant::*[@cert = 'low']">
+											<a style="text-decoration:none; color:#ff0000">
+												<xsl:apply-templates
+												select="text() | self::*//*/text()"/>
+											</a>
+											<xsl:text> </xsl:text>
+										</xsl:when>
+										<xsl:when
+											test="ancestor::*[@cert = 'medium'] or descendant::*[@cert = 'low']">
+											<a style="text-decoration:none; color:#ff9900">
+												<xsl:apply-templates
+												select="text() | self::*//*/text()"/>
+											</a>
+											<xsl:text> </xsl:text>
+										</xsl:when>
+										<xsl:otherwise>
+											<xsl:apply-templates select="text() | self::*//*/text()"/>
+											<xsl:text> </xsl:text>
+										</xsl:otherwise>
+									</xsl:choose>
+								</xsl:when>
+								<xsl:otherwise>
+									<xsl:choose>
+										<xsl:when test="ancestor::tei:supplied">
+											<xsl:text>[</xsl:text>
+											<xsl:apply-templates select="text() | self::*//*/text()"/>
+											<xsl:text>] </xsl:text>
+										</xsl:when>
+										<xsl:otherwise>
+											<xsl:choose>
+												<xsl:when test="ancestor::tei:add">
+												<xsl:text>+</xsl:text>
+												<xsl:apply-templates
+												select="text() | self::*//*/text()"/>
+												<xsl:text>+ </xsl:text>
+												</xsl:when>
+												<xsl:otherwise>
+												<xsl:apply-templates
+												select="text() | self::*//*/text()"/>
+												<xsl:text> </xsl:text>
+												</xsl:otherwise>
+											</xsl:choose>
+										</xsl:otherwise>
+									</xsl:choose>
+								</xsl:otherwise>
+							</xsl:choose>
+						</xsl:otherwise>
+					</xsl:choose>
 				</xsl:for-each>
 				<br/>
 				<br/>
@@ -2090,11 +2222,13 @@
 			</seg>
 		</xsl:if>
 		<xsl:if test="@type = 'text_dip_line'">
-			<xsl:variable name="comDiv" select="//tei:lb[@xml:id = $refID or @sameAs = $refID]/ancestor::tei:div[1]/@corresp"/>
+			<xsl:variable name="comDiv"
+				select="//tei:lb[@xml:id = $refID or @sameAs = $refID]/ancestor::tei:div[1]/@corresp"/>
 			<seg id="ref{$refPOS}_exp" style="background-color:white" hidden="hidden">
 				<br/>
-				 <br/>
-				<xsl:for-each select="//tei:w[not(descendant::tei:w) and preceding::tei:lb[1][@xml:id = $refID or @sameAs = $refID] and ancestor::tei:div[1][@corresp = $comDiv]]">
+				<br/>
+				<xsl:for-each
+					select="//tei:w[not(descendant::tei:w) and preceding::tei:lb[1][@xml:id = $refID or @sameAs = $refID] and ancestor::tei:div[1][@corresp = $comDiv]]">
 					<xsl:choose>
 						<xsl:when test="ancestor::tei:corr">
 							<xsl:text/>
@@ -2103,14 +2237,37 @@
 							<xsl:choose>
 								<xsl:when test="ancestor::*[@cert] or descendant::*[@cert]">
 									<xsl:choose>
-										<xsl:when test="ancestor::*[@cert = 'low'] or descendant::*[@cert = 'low']">
-											<a style="text-decoration:none; color:#ff0000"><xsl:apply-templates select="text()|self::*//*[not(name(self::*) = 'supplied')]/text()"/></a><xsl:if test="count(following::tei:space[1][@type='scribal']/preceding::*) &lt; count(following::tei:w[1]/preceding::*)"><xsl:text> </xsl:text></xsl:if>
+										<xsl:when
+											test="ancestor::*[@cert = 'low'] or descendant::*[@cert = 'low']">
+											<a style="text-decoration:none; color:#ff0000">
+												<xsl:apply-templates
+												select="text() | self::*//*[not(name(self::*) = 'supplied')]/text()"
+												/>
+											</a>
+											<xsl:if
+												test="count(following::tei:space[1][@type = 'scribal']/preceding::*) &lt; count(following::tei:w[1]/preceding::*)">
+												<xsl:text> </xsl:text>
+											</xsl:if>
 										</xsl:when>
-										<xsl:when test="ancestor::*[@cert = 'medium'] or descendant::*[@cert = 'low']">
-											<a style="text-decoration:none; color:#ff9900"><xsl:apply-templates select="text()|self::*//*[not(name(self::*) = 'supplied')]/text()"/></a><xsl:if test="count(following::tei:space[1][@type='scribal']/preceding::*) &lt; count(following::tei:w[1]/preceding::*)"><xsl:text> </xsl:text></xsl:if>
+										<xsl:when
+											test="ancestor::*[@cert = 'medium'] or descendant::*[@cert = 'low']">
+											<a style="text-decoration:none; color:#ff9900">
+												<xsl:apply-templates
+												select="text() | self::*//*[not(name(self::*) = 'supplied')]/text()"
+												/>
+											</a>
+											<xsl:if
+												test="count(following::tei:space[1][@type = 'scribal']/preceding::*) &lt; count(following::tei:w[1]/preceding::*)">
+												<xsl:text> </xsl:text>
+											</xsl:if>
 										</xsl:when>
 										<xsl:otherwise>
-											<xsl:apply-templates select="text()|self::*//*[not(name(self::*) = 'supplied')]/text()"/><xsl:if test="count(following::tei:space[1][@type='scribal']/preceding::*) &lt; count(following::tei:w[1]/preceding::*)"><xsl:text> </xsl:text></xsl:if>
+											<xsl:apply-templates
+												select="text() | self::*//*[not(name(self::*) = 'supplied')]/text()"/>
+											<xsl:if
+												test="count(following::tei:space[1][@type = 'scribal']/preceding::*) &lt; count(following::tei:w[1]/preceding::*)">
+												<xsl:text> </xsl:text>
+											</xsl:if>
 										</xsl:otherwise>
 									</xsl:choose>
 								</xsl:when>
@@ -2122,12 +2279,24 @@
 										<xsl:otherwise>
 											<xsl:choose>
 												<xsl:when test="ancestor::tei:add">
-													<xsl:text>+</xsl:text><xsl:apply-templates select="text()|self::*//*[not(name(self::*) = 'supplied')]/text()"/><xsl:text>+</xsl:text><xsl:if test="count(following::tei:space[1][@type='scribal']/preceding::*) &lt; count(following::tei:w[1]/preceding::*)"><xsl:text> </xsl:text></xsl:if>
+												<xsl:text>+</xsl:text>
+												<xsl:apply-templates
+												select="text() | self::*//*[not(name(self::*) = 'supplied')]/text()"/>
+												<xsl:text>+</xsl:text>
+												<xsl:if
+												test="count(following::tei:space[1][@type = 'scribal']/preceding::*) &lt; count(following::tei:w[1]/preceding::*)">
+												<xsl:text> </xsl:text>
+												</xsl:if>
 												</xsl:when>
 												<xsl:otherwise>
-													<xsl:apply-templates select="text()|self::*//*[not(name(self::*) = 'supplied')]/text()"/><xsl:if test="count(following::tei:space[1][@type='scribal']/preceding::*) &lt; count(following::tei:w[1]/preceding::*)"><xsl:text> </xsl:text></xsl:if>
+												<xsl:apply-templates
+												select="text() | self::*//*[not(name(self::*) = 'supplied')]/text()"/>
+												<xsl:if
+												test="count(following::tei:space[1][@type = 'scribal']/preceding::*) &lt; count(following::tei:w[1]/preceding::*)">
+												<xsl:text> </xsl:text>
+												</xsl:if>
 												</xsl:otherwise>
-											</xsl:choose>												
+											</xsl:choose>
 										</xsl:otherwise>
 									</xsl:choose>
 								</xsl:otherwise>

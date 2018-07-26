@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
-	schematypens="http://purl.oclc.org/dsdl/schematron"?>
-<?xml-stylesheet type="text/xsl" href="../stylesheet-ed-ana-general.xsl"?>
-<?xml-model href="../fnag_mss.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="../fnag_mss2.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 <TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="T8">
 	<teiHeader>
 		<fileDesc>
@@ -21,8 +18,8 @@
 			<extent>24 words </extent>
 			<publicationStmt>
 				<authority sameAs="authority"/>
-				<availability status="restricted">
-					<p>For internal use by the Faclair na Gàidhlig/DASG projects</p>
+				<availability sameAs="availability" status="restricted">
+					<licence/>
 				</availability>
 				<idno>T8</idno>
 			</publicationStmt>
@@ -47,7 +44,7 @@
 					<msIdentifier sameAs="MS8">
 						<settlement>Oxford</settlement>
 						<repository>Bodleian Library</repository>
-						<idno type="shelfmark">MS. Arch. Selden B.24</idno>
+						<idno type="shelfmark">Arch. Selden B.24</idno>
 					</msIdentifier>
 					<msContents>
 						<summary>
@@ -161,11 +158,10 @@
 								<p>There are no other known manuscript versions of this quatrain,
 									nor any known context from which it might have come.</p>
 							</filiation>
-							<textLang mainLang="hsg">
-								<note><p>Given the shortness, ambiguity, and lacunose nature of the
+							<textLang mainLang="ghc">
+								<note comment="Orthography and Scribal Practices"><p>Given the shortness, ambiguity, and lacunose nature of the
 										text, the linguistic observations that can be made about it
-										are naturally limited.</p><p
-										comment="Orthography and Scribal Practices"><list>
+										are naturally limited.</p><p><list>
 											<head>Orthography</head>
 											<item>Long "í" is consistently "io".</item>
 											<item>The preposition <hi rend="italics">ar</hi>
