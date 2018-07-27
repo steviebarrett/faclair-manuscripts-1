@@ -1,0 +1,491 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+
+<?xml-stylesheet type="text/xsl" href="stylesheet.xsl"?>
+<teiCorpus xmlns="http://www.tei-c.org/ns/1.0">
+	<teiHeader>
+		<fileDesc>
+			<titleStmt>
+				<title>Faclair na Gaìdhlig: Medieval and Early Modern Manuscript Corpus</title>
+				<respStmt>
+					<name xml:id="EPT">Eystein P. Thanisch</name>
+					<resp>Transcriber</resp>
+				</respStmt>
+				<respStmt>
+					<name xml:id="WGI">William Gillies</name>
+					<resp>Overseer</resp>
+				</respStmt>
+				<respStmt>
+					<name xml:id="MMC">Mark McConville</name>
+					<resp>Tech Support and TEI Advice</resp>
+				</respStmt>
+			</titleStmt>
+			<publicationStmt>
+				<authority xml:id="authority">
+					<address>
+						<addrLine>Faclair na Gàidhlig,</addrLine>
+						<addrLine>Fàs,</addrLine>
+						<addrLine>Sabhal Mòr Ostaig,</addrLine>
+						<addrLine>Sleat,</addrLine>
+						<addrLine>Isle of Skye</addrLine>
+						<addrLine>IV44 8RQ</addrLine>
+					</address>
+				</authority>
+				<availability status="restricted" xml:id="availability">
+					<p>For internal use by the Faclair na Gàidhlig/DASG projects</p>
+				</availability>
+			</publicationStmt>
+			<sourceDesc>
+				<listBibl>
+					<msDesc>
+						<msIdentifier xml:id="MS1">
+							<settlement>Cambridge</settlement>
+							<repository>Cambidge University Library</repository>
+							<idno type="shelfmark">MS. I.i.6.32</idno>
+							<msName>The Book of Deer</msName>
+						</msIdentifier>
+					</msDesc>
+					<msDesc>
+						<msIdentifier xml:id="MS2">
+							<settlement>London</settlement>
+							<repository>British Library</repository>
+							<idno type="shelfmark">MS. Egerton 2899</idno>
+						</msIdentifier>
+					</msDesc>
+				</listBibl>
+				<listBibl>
+					<head>Editions</head>
+					<biblStruct type="bookSection" xml:id="ONolan1912"
+						corresp="http://zotero.org/users/2484668/items/YWUK9V32">
+						<analytic>
+							<title level="a">Imchlód Aingel</title>
+							<author><forename>Thomas</forename><surname>O'Nolan</surname></author>
+						</analytic>
+						<monogr>
+							<title level="m">Miscellany presented to Kuno Meyer</title>
+							<imprint>
+								<pubPlace>Halle</pubPlace>
+								<biblScope unit="page">253-257</biblScope>
+								<publisher>Max Niemeyer</publisher>
+								<date>1912</date>
+							</imprint>
+						</monogr>
+					</biblStruct>
+					<biblStruct type="journalArticle" xml:id="Best1952"
+						corresp="http://zotero.org/users/2484668/items/AY8LIWXS">
+						<analytic>
+							<title level="a">Some Irish Charms</title>
+							<author><forename>R. I.</forename><surname>Best</surname></author>
+						</analytic>
+						<monogr>
+							<title level="j">Ériu</title>
+							<idno type="ISSN">0332-0758</idno>
+							<imprint>
+								<biblScope unit="volume">16</biblScope>
+								<biblScope unit="page">27-32</biblScope>
+								<date>1952</date>
+								<note type="accessed">2017-11-03T23:31:31Z</note>
+								<note type="url">http://www.jstor.org/stable/30007383</note>
+							</imprint>
+						</monogr>
+					</biblStruct>
+					<biblStruct type="book" xml:id="Jackson1972"
+						corresp="http://zotero.org/users/2484668/items/NKNENZVR">
+						<monogr>
+							<title level="m">The Gaelic notes in the Book of Deer</title>
+							<author><forename>Kenneth
+								Hurlstone</forename><surname>Jackson</surname></author>
+							<imprint>
+								<pubPlace>Cambridge</pubPlace>
+								<publisher>Cambridge University Press</publisher>
+								<date>1972</date>
+							</imprint>
+						</monogr>
+					</biblStruct>
+					<biblStruct type="bookSection" xml:id="Ó_Maolalaigh2008"
+						corresp="http://zotero.org/users/2484668/items/MBAU88MP">
+						<analytic>
+							<title level="a">The property records: Diplomatic Edition, including
+								accents</title>
+						</analytic>
+						<monogr>
+							<title level="m">Studies in the Book of Deer</title>
+							<editor><forename>Roibeard</forename><surname>Ó
+								Maolalaigh</surname></editor>
+							<editor><forename>Katherine</forename><surname>Forsyth</surname></editor>
+							<imprint>
+								<pubPlace>Dublin</pubPlace>
+								<biblScope unit="page">119-130</biblScope>
+								<publisher>Four Courts Press</publisher>
+								<date>2008</date>
+							</imprint>
+						</monogr>
+					</biblStruct>
+					<biblStruct type="bookSection" xml:id="Forsyth2008a"
+						corresp="http://zotero.org/users/2484668/items/AKA77DDF">
+						<analytic>
+							<title level="a">The property records: text and translation</title>
+							<respStmt>
+								<resp>translator</resp>
+								<persName><forename>Katherine</forename><surname>Forsyth</surname></persName>
+							</respStmt>
+							<respStmt>
+								<resp>translator</resp>
+								<persName><forename>Dauvit</forename><surname>Broun</surname></persName>
+							</respStmt>
+							<respStmt>
+								<resp>translator</resp>
+								<persName><forename>Thomas
+									O.</forename><surname>Clancy</surname></persName>
+							</respStmt>
+						</analytic>
+						<monogr>
+							<title level="m">Studies on the Book of Deer</title>
+							<imprint>
+								<pubPlace>Dublin</pubPlace>
+								<biblScope unit="page">131-144</biblScope>
+								<publisher>Four Courts Press</publisher>
+								<date>2008</date>
+							</imprint>
+						</monogr>
+					</biblStruct>
+				</listBibl>
+				<listBibl>
+					<head>Secondary Literature</head>
+					<biblStruct type="bookSection" xml:id="Ó_Maolalaigh2008a"
+						corresp="http://zotero.org/users/2484668/items/8SEQ87D5">
+						<analytic>
+							<title level="a">On the possible functions of the accents in the Gaelic
+								Notes in the Book of Deer</title>
+							<author><forename>Roibeard</forename><surname>Ó
+								Maolalaigh</surname></author>
+							<author><forename>Heidi
+								Ann</forename><surname>Lazar-Meyn</surname></author>
+						</analytic>
+						<monogr>
+							<title level="m">Studies on the Book of Deer</title>
+							<imprint>
+								<pubPlace>Dublin</pubPlace>
+								<biblScope unit="page">145-78</biblScope>
+								<publisher>Four Courts Press</publisher>
+								<date>2008</date>
+							</imprint>
+						</monogr>
+					</biblStruct>
+					<biblStruct type="book" xml:id="Forsyth2008b"
+						corresp="http://zotero.org/users/2484668/items/9MRPW9FQ">
+						<monogr>
+							<title level="m">Studies on the Book of Deer</title>
+							<idno type="callNumber">m09/.26383, YC.2010.a.1376</idno>
+							<editor><forename>Katherine</forename><surname>Forsyth</surname></editor>
+							<edition>[New ed.]..</edition>
+							<imprint>
+								<pubPlace>Dublin</pubPlace>
+								<publisher>Four Courts Press</publisher>
+								<date>2008</date>
+							</imprint>
+						</monogr>
+					</biblStruct>
+					<biblStruct type="book" xml:id="OGrady1926"
+						corresp="http://zotero.org/users/2484668/items/TKH8EX69">
+						<monogr>
+							<title level="m">Catalogue of Irish manuscripts in the British Museum:
+								Vol. 1</title>
+							<idno type="callNumber">NRR</idno>
+							<author><forename>Standish
+								Hayes</forename><surname>O'Grady</surname></author>
+							<imprint>
+								<pubPlace>London</pubPlace>
+								<publisher>British Museum. Department of Manuscripts</publisher>
+								<date>1926</date>
+							</imprint>
+						</monogr>
+					</biblStruct>
+					<biblStruct type="bookSection" xml:id="Ó_Maolalaigh2008b"
+						corresp="http://zotero.org/users/2484668/items/G62Z8IIB">
+						<analytic>
+							<title level="a">The Scotticisation of Gaelic: a reassessment of the
+								language and orthography of the Gaelic Notes in the Book of
+								Deer</title>
+							<author><forename>Roibeard</forename><surname>Ó
+								Maolalaigh</surname></author>
+						</analytic>
+						<monogr>
+							<title level="m">Studies on the Book of Deer</title>
+							<editor><forename>Katherine</forename><surname>Forsyth</surname></editor>
+							<imprint>
+								<pubPlace>Dublin</pubPlace>
+								<biblScope unit="page">179-265</biblScope>
+								<publisher>Four Courts Press</publisher>
+								<date>2008</date>
+							</imprint>
+						</monogr>
+					</biblStruct>
+					<biblStruct type="book" xml:id="Flower1926"
+						corresp="http://zotero.org/users/2484668/items/6ID2AT39">
+						<monogr>
+							<title level="m">Catalogue of Irish manuscripts in the British Museum:
+								Vol. 2</title>
+							<idno type="callNumber">NRR</idno>
+							<author><forename>Robin</forename><surname>Flower</surname></author>
+							<editor><forename>Myles</forename><surname>Dillon</surname></editor>
+							<imprint>
+								<pubPlace>London</pubPlace>
+								<publisher>British Museum. Department of Manuscripts</publisher>
+								<date>1926</date>
+							</imprint>
+						</monogr>
+					</biblStruct>
+					<biblStruct type="book" xml:id="Flower1953"
+						corresp="http://zotero.org/users/2484668/items/3A5G573A">
+						<monogr>
+							<title level="m">Catalogue of Irish manuscripts in the British Museum:
+								Vol. 3</title>
+							<idno type="callNumber">NRR</idno>
+							<author><forename>Robin</forename><surname>Flower</surname></author>
+							<editor><forename>Myles</forename><surname>Dillon</surname></editor>
+							<imprint>
+								<pubPlace>London</pubPlace>
+								<publisher>British Museum. Department of Manuscripts</publisher>
+								<date>1953</date>
+							</imprint>
+						</monogr>
+					</biblStruct>
+					<biblStruct type="report" xml:id="Black2017"
+						corresp="http://zotero.org/users/2484668/items/JXYZZ883">
+						<monogr>
+							<title level="m">Report on ‘Classical’ Gaelic Manuscripts</title>
+							<author><forename>Ronald</forename><surname>Black</surname></author>
+							<imprint>
+								<pubPlace>Teangue</pubPlace>
+								<date>2017</date>
+							</imprint>
+						</monogr>
+					</biblStruct>
+					<biblStruct type="report" xml:id="Black"
+						corresp="http://zotero.org/users/2484668/items/DSEKWEIE">
+						<monogr>
+							<title level="m">Catalogue of Gaelic Manuscripts in the National Library
+								of Scotland</title>
+							<author><forename>Ronald</forename><surname>Black</surname></author>
+							<imprint>
+								<pubPlace>Edinburgh</pubPlace>
+							</imprint>
+						</monogr>
+					</biblStruct>
+					<biblStruct type="journalArticle" xml:id="Tuomi2013"
+						corresp="http://zotero.org/users/2484668/items/47GYCEBA">
+						<analytic>
+							<title level="a">Parchment, Praxis, and Performance of Charms in Early
+								Medieval Ireland</title>
+							<idno type="DOI">10.7592/Incantatio2013_Tuomi</idno>
+							<author><forename>Ilona</forename><surname>Tuomi</surname></author>
+						</analytic>
+						<monogr>
+							<title level="j">Incantatio</title>
+							<imprint>
+								<biblScope unit="volume">3</biblScope>
+								<biblScope unit="page">60-85</biblScope>
+								<date>2013</date>
+							</imprint>
+						</monogr>
+					</biblStruct>
+					<biblStruct type="book" xml:id="Bannerman2015"
+						corresp="http://zotero.org/users/2484668/items/6AN45CV2">
+						<monogr>
+							<title level="m">The Beatons: a medical kindred in the classical Gaelic
+								tradition</title>
+							<title type="short">The Beatons</title>
+							<idno type="ISBN">978-1-906566-92-0</idno>
+							<idno type="callNumber">PB8.216.106/5</idno>
+							<author><forename>John</forename><surname>Bannerman</surname></author>
+							<imprint>
+								<pubPlace>Edinburgh</pubPlace>
+								<publisher>John Donald</publisher>
+								<date>2015</date>
+							</imprint>
+						</monogr>
+					</biblStruct>
+					<biblStruct type="journalArticle" xml:id="Gillies2011"
+						corresp="http://zotero.org/users/2484668/items/R5KDWMTG">
+						<analytic>
+							<title level="a">The Gaelic of Niall MacMhuirich</title>
+							<author><forename>William</forename><surname>Gillies</surname></author>
+						</analytic>
+						<monogr>
+							<title level="j">Transactions of the Gaelic Society of Inverness</title>
+							<imprint>
+								<biblScope unit="volume">65</biblScope>
+								<biblScope unit="page">69-95</biblScope>
+								<date>2011</date>
+							</imprint>
+						</monogr>
+					</biblStruct>
+				</listBibl>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<projectDesc>
+				<p>The corpus presents a sample of medieval and early modern Gaelic manuscript
+					materials from Scotland.</p>
+			</projectDesc>
+			<samplingDecl>
+				<p>Manuscripts materials are selected with a view to ensuring representation of all
+					periods, dialects, registers, orthographies, genres, and topics for which
+					materials for which materials are extant.</p>
+			</samplingDecl>
+			<editorialDecl>
+				<correction>
+					<p>Where a manuscript form appears to be a misspelling with no linguistic
+						significance, the spelling is corrected using the &lt;sic&gt; and
+						&lt;corr&gt; elements. Where characters are difficult to read due to damage
+						to the script or due to physical damage, one or more provisional readings
+						are provided using the &lt;unclear&gt; element, with a @cert level.</p>
+				</correction>
+				<normalization>
+					<p>As this project is about supplying the forms used by Gaelic scribes, as well
+						as authors, in Scotland, manuscript forms will usually not be normalized and
+						never normalized silently. As stated above, normalization will only be
+						carried out in cases of clear and potentially misleading scribal error.
+						Where available, lemma data will be added to the &lt;w&gt; element using the
+						@lemma attribute.</p>
+					<p>Word (&lt;w&gt;), sentence (&lt;s&gt;), and verse (&lt;l&gt; and &lt;lg&gt;)
+						division will be normalised where the manuscript can be securely
+						interpreted. Where interpretation is in doubt, the best approximation of
+						scribal word division will be retained pending better interpretation.</p>
+				</normalization>
+				<punctuation>
+					<p>Scribal punctuation is followed at all times. Rendering may vary in the
+						published forms of transcriptions. For example, a scribe may delete text by
+						placing dots beneath it; this text would be placed within the &lt;del&gt;
+						element and rendered with a strikethrough. Also, a later addition by a
+						scribe using an insertion mark will be represented with the &lt;add&gt;
+						element but the insertion mark itself will not be represented.</p>
+				</punctuation>
+				<segmentation>
+					<p>Segmentation differs depending on whether the text is prose or verse</p>
+					<p>All texts, at the lowest level, are segemented by word (&lt;w&gt;). Some
+						words are divided into morphemes (&lt;m&gt;). A morpheme is here defined as
+						a unit that could constitute a lemma in its own right, which cannot be
+						subdivided into further lemmata, and which is conventionally considered to
+						be part of a larger word. Examples include preverbal particles and emphatic
+						suffixes.</p>
+					<p>Prose texts are then segemented by sentence (&lt;s&gt;), using a combination
+						of editorial interpretation and scribal layout.</p>
+					<p>Verse texts are segmented by line (&lt;l&gt;) and stanza (&lt;lg&gt;).</p>
+					<p>A transcription file (a &lt;text&gt; in the &lt;teiCorpus&gt;) corresponds to
+						a physical manuscript. If multiple texts are being transcribed from the same
+						manuscript, then the &lt;div1&gt; element will be used to subdivide them
+						within the file. If one text contains another text (e.g. a prose text with a
+						verse citation), then &lt;div2&gt; will be used to segment this text.</p>
+					<p>The &lt;lb/&gt; element, with attribute @n, will be used to indicate a new
+						line in the manuscript. This is a distinct and seperate segementation system
+						from &lt;l&gt;, which segments metrical lines. To publish a diplomatic
+						edition of a verse text, use &lt;lb/&gt;; to publish a metrically analysed
+						version of the text, use &lt;lg&gt; and &lt;l&gt;.</p>
+					<p>Sections of text in other languages (e.g. Latin) appear in some
+						transcriptions. These will be segemented at the &lt;s&gt; or &lt;w&gt;
+						level, as appropriate, using the @lang attribute. If a section of text or a
+						scribal addition is in a form of Gaelic that is clearly very distinct from
+						that used in the main text (e.g. a Scottish Gaelic annotation on a Classical
+						Gaelic poem), then this will be indicated in the @lang attribute. Otherwise,
+						each text's linguistic profile will be set out in the &lt;profileDesc&gt; in
+						the &lt;teiHeader&gt;.</p>
+				</segmentation>
+			</editorialDecl>
+			<tagsDecl>
+				<!-- tags used in the transcriptions -->
+			</tagsDecl>
+		</encodingDesc>
+		<profileDesc>
+			<handNotes>
+				<handNote xml:id="Hand1">
+					<forename>[unknown}</forename>
+					<surname>[unknown}</surname>
+					<date from="1100" to="1150">1100-1150</date>
+					<region cert="high">NE Scotland</region>
+					<note>Hand A in the Book of Deer Gaelic Notes</note>
+				</handNote>
+				<handNote xml:id="Hand2">
+					<forename>[unknown}</forename>
+					<surname>[unknown}</surname>
+					<date from="1100" to="1150">1100-1150</date>
+					<region cert="high">NE Scotland</region>
+					<note>Hand B in the Book of Deer Gaelic Notes</note>
+				</handNote>
+				<handNote xml:id="Hand3">
+					<forename>[unknown}</forename>
+					<surname>[unknown}</surname>
+					<date from="1100" to="1150">1100-1150</date>
+					<region cert="high">NE Scotland</region>
+					<note>Hand C in the Book of Deer Gaelic Notes</note>
+				</handNote>
+				<handNote xml:id="Hand4">
+					<forename>[unknown}</forename>
+					<surname>[unknown}</surname>
+					<date from="1100" to="1150">1100-1150</date>
+					<region cert="high">NE Scotland</region>
+					<note>Hand D in the Book of Deer Gaelic Notes</note>
+				</handNote>
+				<handNote xml:id="Hand5">
+					<forename>[unknown}</forename>
+					<surname>[unknown}</surname>
+					<date from="1100" to="1150">1100-1150</date>
+					<region cert="high">NE Scotland</region>
+					<note>Hand E in the Book of Deer Gaelic Notes</note>
+				</handNote>
+				<handNote xml:id="Hand6">
+					<forename>[unknown}</forename>
+					<surname>[unknown}</surname>
+					<date cert="medium" from="0900" to="1000">900-1000</date>
+					<region cert="high">NE Scotland</region>
+					<note>Scribe of main text in the Book of Deer</note>
+				</handNote>
+				<handNote xml:id="Hand7">
+					<forename>[unknown]</forename>
+					<surname cert="medium">MacEwen</surname>
+					<date from="1450" to="1550">fl. 1500</date>
+					<region cert="medium">Argyll</region>
+					<note><p>This is the scribe of '<ref target="#T2">Aingil Dé dom dhín</ref>' in
+								<ref target="#MS2">London, BL MS. Egerton 2899</ref> and a set of
+							poems about St Columba in Edinburgh, NLS Adv. MS 72.1.31. Black has
+							suggested that he was a MacEwen working for the Campbells of
+							Glenorchy.</p>
+						<p>On the whole, the scribe follows the conventions of medieval Gaelic
+							orthography and restricts himself to the most conventional
+							abbreviations.</p>
+						<p>The scribe displays a curious attitude towards lenition, often omitting
+							it from monosyllables ending with /X'/ (e.g. <hi rend="italics"
+							>nac</hi>, <ref target="#T2.1.1d">q1d</ref> not <hi rend="italics"
+								>nach</hi>. At the same time, lenition markers are added where
+							lenition would not normally be written (e.g. <hi rend="italics"
+								>mainḋir</hi>, <ref target="#T2.1.2b">q2b</ref>. There is also one
+							occasion where lenition is used to indicate eclipsis (<ref
+								target="#T2.1.10a">q10a</ref>). The absence of lenition from final
+							/X'/ may be designed to represent Scottish Gaelic pronounciation in some
+							way, but I am yet to find a way of making sense of the feature along
+							these lines.</p>
+						<p>He also tends to add a hair-stroke flick towards the upper right above
+							the letter “i”, in the absence of any other diacritic. This closely
+							resembles an acute accent but is probably meant merely as a minim
+							marker. Examination of words in which “i” really should have an acute
+							accent (e.g. <ref target="#T2-1-17b">q17b</ref>, “nac bí”; <ref
+								target="#T2-1-24c">q24c</ref>, “tísat”) reveals no reliable visual
+							indicator of when the flick is an accent or not, so accents on “i” are
+							included in the diplomatic text simply when they would be expected in
+							mainstream Classical Gaelic orthography.</p>
+					</note>
+				</handNote>
+			</handNotes>
+		</profileDesc>
+		<revisionDesc>
+			<change when="2017-11-06" who="#EPT, #MMC">Corpus header: Elements planned in template
+				form and checked over</change>
+			<change when="2017-11-07" who="#EPT">Corpus header: Added content to elements</change>
+		</revisionDesc>
+	</teiHeader>
+	<xi:include href="transcription1.xml" parse="xml"/>
+	<xi:include href="transcription2.xml" parse="xml"/>
+</teiCorpus>

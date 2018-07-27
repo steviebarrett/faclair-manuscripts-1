@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?> <!-- Required for all TEI documents. -->
+<?xml-model href="../fnag_mss2.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?> <!-- Relative filepath to the schema 
+	("fnag_mss2.rng"); it is required. Update if another schema is used or if this file is moved. -->
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="TN">
+	<!-- Root element for this transcription file: @xmlns required in all cases (identifies this as a TEI document); @xml:id = T + [transcription number] 
+		(e.g. T4). This is the unique id number for this file. -->
+	<teiHeader>
+		<!-- Contains the header (i.e. introduction) to this transcription file. The current standard stylesheet (stylesheet-ed-pub.xsl) presents 
+			the material in a different order from that in which it is presented, inserts some headings, formats the text of the introduction, 
+			and retrieves some data automically.  The guidelines that follow take this into account. -->
+		<fileDesc>
+			<!-- This broad-ranging element contains the bulk of the introductory material in the header. -->
+			<titleStmt>
+				<!-- Contains key information about how the file was created. -->
+				<title>Transcription N</title>
+				<!-- The title of the file (displayed to reader); N = transcription number (as in <TEI>; e.g. Transcription 4). -->
+				<respStmt corresp="WGI">
+					<!-- Information on an individual who has contributed to this transcrition file; @corresp should contain a 
+						unique three letter code designating that person, which will point to a central directory of contributors in the corpus file. -->
+					<name>William Gillies</name>
+					<!-- The contributor's full name (displayed to reader). -->
+					<resp>Reviewer</resp>
+					<!-- Brief (one word) description of their contribution. -->
+				</respStmt>
+				<!-- If multiple individuals have been involved, further <respStmt> elements can be added here. -->
+			</titleStmt>
+			<extent/>
+			<!-- *No action needed* Number of words in the transcription(s) contained in this file; calculated automatically 
+				and displayed to reader. -->
+			<publicationStmt>
+				<!-- Infromation on copyright etc. -->
+				<authority sameAs="authority"/>
+				<!-- *No action needed* This element will automatically import details of the FnaG project from the corpus file. -->
+				<availability status="restricted" sameAs="availability">
+					<licence/>
+					<!-- By default, this element imports a standard statement from the corpus file restricting 
+						this file to internal FnaG/DASG use ("For internal use by the Faclair na Gàidhlig/DASG projects."). 
+						If the status of this file is different: (1) remove "@status="restricted" from the parent <availability> 
+						element; (2) add a <p> element as a child of <licence>; (3) Detail the file's availability within this <p> 
+						element. Removing the "restricted" status does not necessarily mean the file is not still restricted, 
+						as this status is not visible to the reader anyway.-->
+				</availability>
+				<idno/>
+				<!-- The unique id for this transcription file, as above (e.g. "T4"); visible to reader. -->
+			</publicationStmt>
+			<notesStmt>
+				<note>
+					<p/>
+					<!-- A short summary of the trasnscription file: the manuscript's history, what has been transcribed from it, 
+						why it might be of interest. Like an Abstract. -->
+					<!-- Further <p> elements can be added to create further paragraphs; however, 
+						this summary should be kept as brief as possible. -->
+				</note>
+			</notesStmt>
+			<sourceDesc>
+				<!-- Contains information about the manuscript and its contents. -->
+				<msDesc>
+					<!-- Co-terminous with <sourceDesc>; the sole "source" is an "ms". -->
+					<msIdentifier sameAs="MSN">
+						<!-- Contains basic information designating which manuscript is being transcribed in this file. @sameAs = 
+							the unique id for this manuscript (MS + N, with N being the same number as in TN above). 
+							This points to a central directory of manuscripts stored in the corpus file. If the manuscript 
+							being transcribed is new to the project, an entry for it will need to be created in this directory. -->
+						<settlement/>
+						<!-- The town/city/region where the manuscript is located, according to its standard designation 
+							(e.g. "Edinburgh" in Edinburgh, NLS Adv. 72.1.1). A following comma will be inserted automatically during processing. -->
+						<repository/>
+						<!-- The library where this manuscript is located (e.g. "NLS Adv." in Edinburgh, NLS Adv., 72.1.1).  A following 
+							comma will be inserted automatically during processing. -->
+						<idno type="shelfmark"/>
+						<!-- The shelfmark within that library. -->
+					</msIdentifier>
+					<msContents>
+						<!-- Contains a catalogue of texts transcribed from this manuscript and analyses of them. -->
+						<summary>
+							<p/>
+							<!-- A summary of the contents of the manuscript and why they are included in the corpus. -->
+							<!-- Further paragraphs can be added by adding further <p> elements. However, again, this summary should be kept brief. -->
+						</summary>
+						<msItem n="itemN" xml:id="itemID" resp="HandXXX">
+							<!-- Contains information/analysis of an individual text transcribed from the manuscript. It corresponds to a <div> element 
+								in the <body> (below). -->
+							<!-- @n = a serial number for this text within those transcribed from the manuscript in manuscript order
+								(e.g. if the text is the first to be transcribed in order of appearance within the manuscript, then "n="1""). If this item is a child of <msItem> (i.e. a 
+								a subdivision in a text), then the number should be preceded by parent <msItem> @n attribute plus "." (e.g. for the second subdivision of the first trancribed text
+								in the manuscript, "n="1.2""). -->
+							<!-- @xml:id = a unique id for this text. It is composed of the MS unique id and @n, separated by points (e.g. if the MS is MS4 and this is text @n, 
+							then "xml:id = "MS4.1""; if this is MS4 and this is the second sub-division of the first transcribed text, then "xml:id = "MS4.1.2""). -->
+							<!-- @resp points to an id identifying the main scribe; the hand responsible for most of the text. This in turn points to a 
+								central database of hands kept in the corpus file, containing all known details relating to each hand. The id is in the form "Hand" plus a number. (e.g.
+								"resp="Hand18""). If the manuscript is new to the corpus, the corpus file should be checked for any pre-existing record of the scribe. If present, the pre-existing 
+								id shoud be used. If not, an entry should be created for the hand in the corpus file, along with a unique id.-->
+							<!-- If this text contains sub-divisions (child <div> elements), then corresponding 
+								child <msItem> elements can be inserted here as children of an enclosing <msItem> element. This might be done to represent poems
+								in a prosimetric text, for example. Any of the child elements of <msItem> set out here can be added for either the parent or child
+								<msItem> element (i.e. for either the text as a whole or its subdivisions). However, any can also be omitted if this seems expedient.
+								For example, it may not be necessary to conduct a language study (<textLang>) of both the text overall and of its individual components.
+								If a child element of <msItem> is not needed, then remove it completely.-->
+							<locus/>
+							<!-- Page/folio reference for this text, entered as a single string (e.g. "fols 7v16-8r31". -->
+							<title/>
+							<!-- The title of the text (possibly a title or incipit from the manuscript, possibly of the transcriber's devising. -->
+							<incipit/>
+							<!-- The first few words of the text, as it appears in this manuscript. A metrical line, if poetry. -->
+							<explicit/>
+							<!-- The last few words of the text, as it appears in this manuscript. A metrical line, if poetry.  -->
+							<note>
+								<!-- Each of the child <p> elements define a sub-section for comments on the designated topic. The @comment attribute (counter-intuitively) 
+									contains the section's sub-heading. Further paragraphs can be added in each section by adding further <p> elements. Adding a <p> 
+									element without a @comment attribute will be appear without a sub-heading and thus under the most recent sub-heading. 
+									<p comment="X"> will create a new paragraph with the sub-heading "X". @comment attributes added to <p> elements that are children 
+									of <note> will of the same level. -->
+								<p comment="Content"/>
+								<!-- Describe the content/subject-matter/narrative/argument of this text. The @comment attribute (counter-intuitively) 
+									contains the section's sub-heading. -->
+								<p comment="Style"/>
+								<!-- Broadly describe the literary style of this text (more details will be added below). The @comment attribute (counter-intuitively) 
+									contains the section's sub-heading. -->
+								<p comment="Social Context and Intended Readers"/>
+								<!-- Describe the intended readership/audience of this text and the impact it is meant to have. 
+									The @comment attribute (counter-intuitively) contains the section's sub-heading. -->
+								<p comment="Studies and Editions"/>
+								<!-- Note any previous work done on this text. The @comment attribute (counter-intuitively) contains the section's sub-heading. -->
+							</note>
+							<filiation>
+								<p/>
+								<!-- Commentary on the textual history and relationships of this item. -->
+								<!-- Further paragraphs can be added by adding further <p> elements. -->
+							</filiation>
+							<textLang mainLang="XXX" otherLangs="XXX"><!-- Contains analysis of the item's language and orthography. The @mainLang attribute is used to 
+								designate the overall language of the text; it must contain a registered XML language tag (see https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry).
+								If a mixture of languages are present, a comma-separated list of additional language texts can be placed in @otherLangs. 
+								If @otherLangs is not needed, remove it completely. -->
+								<note comment="Orthography and Scribal Practices">
+									<p/>
+									<!-- Introductory text to the language/orthography section, summarising findings or flagging up any methodological issues. -->
+									<!-- Further paragraphs can be added by adding further <p> elements. -->
+									<p><!-- <p> with <list> children is a set of lists of distinctive features of spelling and other scribal practices in this text. -->
+										<list>
+											<!-- Contains a bullet-pointed list. Each bullet-point is created by an <item> child element. -->
+											<head>Spelling System</head>
+											<!-- A heading for the bullet-point list (<list>). -->
+											<item/>
+											<!-- A bullet-point; text for the item is contained in the <item> element. -->
+											<!-- Further bullet points can be added to the list by adding further <item> elements. -->
+										</list><list>
+											<!-- Contains a bullet-pointed list. Each bullet-point is created by an <item> child element. -->
+											<head>Scribal Practices</head>
+											<!-- A heading for the bullet-point list (<list>). -->
+											<item/>
+											<!-- A bullet-point; text for the item is contained in the <item> element. -->
+											<!-- Further bullet points can be added to the list by adding further <item> elements. -->
+										</list></p>
+									<!-- The above structure can be made more detailed. Instead, insert a <p> element with the @comment "Spelling System", 
+										then add a <list> for different aspects of the spelling system (indicated in the <head> child; e.g. "Vowels", "Consonants" etc.). 
+										Another <p> element will then need to be added for Scribal Practices.-->
+									<!-- Paragraphs of continuous prose can also be added as <p> children of <note> -->
+								</note>
+								<note comment="Language">
+									<!-- The same guidelines set out in relation to "<note comment="Orthography and Scribal Practices">" apply here too. -->
+									<p comment="Nominal System">
+										<list>
+											<item/>
+										</list></p>
+									<p comment="Verbal System">
+										<list>
+											<item/>
+										</list></p>
+									<p comment="Pronouns and Pronominals"><list>
+											<item/>
+										</list></p>
+									<p comment="Syntax"><list>
+											<item/>
+										</list></p>
+									<p comment="Lexis"><list>
+											<item/>
+										</list></p>
+									<p comment="Conclusions"><list>
+											<item/>
+										</list></p><!-- Paragraphs of continuous prose can also  be added as <p> children of <note> --></note>
+								<note comment="Style">
+									<p/> <!-- More detailed commentary on the text's style is included here, making reference to the preceding language analysis. -->
+									<!-- Further paragraphs can be added by adding further <p> elements. -->
+								</note>
+							</textLang>
+						</msItem>
+					</msContents>
+					<physDesc>
+						<!-- Contains elements detailing the physical characteristics of the manuscript. NB: This concerns now concerns the whole manuscript, 
+						not a particular text. However, if large swathes of the manuscript contain material of no relevance to FnaG (e.g. not in Gaelic), then the particular 
+						physical characteristics of those parts of the manuscript can be described very briefly.-->
+						<objectDesc>
+							<!-- Contains elements detailing the materials and dimensions of the manuscript. -->
+							<supportDesc>
+								<!-- Contains elements giving details on the manuscript's pages. -->
+								<support>
+									<!-- Describe the page/folio (material, shape, dimensions etc.) -->
+									<p/>
+									<!-- Further paragraphs can be added by adding further <p> elements. -->
+								</support>
+								<foliation>
+									<!-- Further paragraphs can be added by adding further <p> elements. -->
+									<p/>
+									<!-- Further paragraphs can be added by adding further <p> elements. -->
+								</foliation>
+								<condition>
+									<!-- Describe the condition of the manuscript and flag up any general issues. -->
+									<p/>
+									<!-- Further paragraphs can be added by adding further <p> elements. -->
+								</condition>
+							</supportDesc>
+							<layoutDesc>
+								<!-- Describe the layout(s) used on the manuscript pages. -->
+								<p/>
+								<!-- Further paragraphs can be added by adding further <p> elements. -->
+							</layoutDesc>
+						</objectDesc>
+						<handDesc>
+							<!-- Contains elements detailing the hands involved in the manuscript. NB: This will actually appear 
+								at the beginning of the introduction (after the Summary) but TEI requires the material to be placed here in the code. -->
+							<handNote corresp="HandXXX">
+								<!-- Contains notes on a particular hand; @corresp points to the unique id for that hand (cf. <msItem> @resp attribute, above) -->
+								<note> 
+									<p comment="The Scribe"/>
+									<!-- Observations on the hand's activity in this manuscript and on the scribe's career and 
+										biography, if the hand has been identified (if not, theories and possibilities can be detailed here too). The hand's orthographic 
+										characteristics will be covered in more detail in the linguistic analysis (reminder: this will *follow* this section after processing) but features of particular note can summarised here too. -->
+									<!-- Further paragraphs can be added by adding further <p> elements. @comment, as above, contains the sub-heading. -->
+									<p comment="Other Activities"/>
+									<!-- Details of other manuscripts in which the hand also appears. -->
+									<!-- Further paragraphs can be added by adding further <p> elements. @comment, as above, contains the sub-heading. -->
+								</note>
+							</handNote>
+							<!-- If multiple hands are involved, then further <handNote> (+ children) elements can be added here. -->
+						</handDesc>
+					</physDesc>
+					<history> <!-- Contains elements detailing the history of the manuscript. NB: After processing, this will appear after <layoutDesc>. -->
+						<origin> 
+							<p/> <!-- The manuscript's date and place of creation. --> 
+							<!-- Further paragraphs can be added by adding further <p> elements. @comment, as above, contains the sub-heading. -->
+						</origin>
+						<provenance>
+							<p/> <!-- Slightly abusing the term "Provenance", this section is about the manuscript's su --> 
+							<!-- Further paragraphs can be added by adding further <p> elements. @comment, as above, contains the sub-heading. -->
+						</provenance>
+						<acquisition>
+							<p/> <!-- How the manuscript entered its present state of ownership/preservation --> 
+							<!-- Further paragraphs can be added by adding further <p> elements. @comment, as above, contains the sub-heading. -->
+						</acquisition>
+					</history>
+				</msDesc>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc> <!-- Contains elements giving different sorts of information on how the transcriptions are encoded and presented. -->
+			<editorialDecl>
+				<p/> <!-- Notes on any special conventions that were adopted when making the transcription. If not relevant, leave empty. --> 
+				<!-- Further paragraphs can be added by adding further <p> elements. @comment, as above, contains the sub-heading. -->
+				<!-- If different conventions were adopted in different texts within the transcription, sub-headings can be used to separate notes
+					each text.-->
+			</editorialDecl>
+			<metDecl> 
+				<p/> <!-- If poetry, notes on metrics. If not relevant, leave empty. -->
+				<!-- Further paragraphs can be added by adding further <p> elements. @comment, as above, contains the sub-heading. -->
+				<!-- If multiple poems with different metres are involved, sub-headings can be used to separate notes
+					each poem.-->
+			</metDecl>
+			<refsDecl> 
+				<p/> <!-- Notes on any particular conventions to be adopted when referencing texts in this transcription file. If not relevant, 
+					leave empty-->
+				<!-- Further paragraphs can be added by adding further <p> elements. @comment, as above, contains the sub-heading. -->
+				<!-- If different conventions were adopted in different texts within the transcription, sub-headings can be used to separate notes
+					each text.-->
+			</refsDecl>
+		</encodingDesc>
+		<profileDesc>
+			<!-- Contains data classifying this transcription file generically, in the context of the corpus. -->
+			<textClass> <!-- Contains data classifying this transcription file generically, in the context of the corpus. --> 
+				<keywords> <!-- Contains a list of keywords; possible search terms that would usefully retrieve this 
+						transcription file. -->
+					<term/> <!-- A keyword -->
+					<!-- Further keywords can be added by adding <term> elements here. -->
+				</keywords>
+			</textClass>
+		</profileDesc>
+		<revisionDesc> <!-- Keeps a record of major changes made to the transcription file. -->
+			<change when="yyyy-mm-dd" who="XXX"/><!-- Details of a major revision. @when is the date of the change; @who is the three 
+					letter ID for the main person responsible. --> 
+		</revisionDesc>
+	</teiHeader>
+	<text> <!-- This element must enclose <body> for <body> to be included in <teiCorpus> (the root element of the corpus file, in which this file will 
+			appear via <xi:include>. -->
+		<body> <!-- This element encloses the main text of the transcription, as opposed to the header (<teiHeader>). -->
+			<div n="N" type="ZZZ" resp="HandXXX" corresp="NNN"> <!-- Each text (corresponding to an <msItem> in <teiHeader>) is placed within
+					a <div>. A <div> can be placed within another <div>. @n is the serial number for the text (as in <msItem>); @type can be 
+					"verse", "prose", or "divProse";  @resp contains the unique id for the main scribe of this text; @corresp contains the unique 
+					id for the text (<msItem> @xml:id) -->
+			<!-- From this point onwards, how the elements are structured depends on the type of text. This is covered in the User Documentation. -->
+			</div>
+			<!-- Subsequent texts can be added by adding further <div> elements here. -->
+		</body>
+		<!-- A bibliography will be automatically generated here from citations made elsewhere in the file (see User Documentation). -->
+	</text>
+</TEI>

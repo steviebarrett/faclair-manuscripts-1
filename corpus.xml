@@ -1,0 +1,1216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="file:/C:/Files/faclair-manuscripts/fnag_mss2.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-stylesheet type="text/xsl" href="stylesheet-ed-pub.xsl"?>
+<teiCorpus xmlns="http://www.tei-c.org/ns/1.0" xmlns:xi="http://www.w3.org/2001/XInclude">
+	<teiHeader>
+		<fileDesc>
+			<titleStmt>
+				<title>Faclair na Gaìdhlig: Medieval and Early Modern Manuscript Corpus</title>
+				<respStmt>
+					<name xml:id="EPT">Eystein P. Thanisch</name>
+					<resp>Transcriber</resp>
+				</respStmt>
+				<respStmt>
+					<name xml:id="WGI">William Gillies</name>
+					<resp>Overseer</resp>
+				</respStmt>
+				<respStmt>
+					<name xml:id="MMC">Mark McConville</name>
+					<resp>Tech Support and TEI Advice</resp>
+				</respStmt>
+			</titleStmt>
+			<publicationStmt>
+				<authority xml:id="authority">
+					<address>
+						<addrLine>Faclair na Gàidhlig</addrLine>
+						<addrLine>Fàs</addrLine>
+						<addrLine>Sabhal Mòr Ostaig</addrLine>
+						<addrLine>Sleat</addrLine>
+						<addrLine>Isle of Skye</addrLine>
+						<addrLine>IV44 8RQ</addrLine>
+						<addrLine><email>mail@faclair.ac.uk</email></addrLine>
+						<addrLine><num>01471 888 273</num>
+						</addrLine>
+					</address>
+				</authority>
+				<availability status="restricted" xml:id="availability">
+					<licence><p>For internal use by the Faclair na Gàidhlig/DASG projects.</p></licence>
+				</availability>
+			</publicationStmt>
+			<sourceDesc>
+				<listBibl type="mss">
+					<msDesc>
+						<msIdentifier xml:id="MS1">
+							<settlement>Cambridge</settlement>
+							<repository>Cambidge University Library</repository>
+							<idno type="shelfmark">MS. I.i.6.32</idno>
+							<msName>The Book of Deer</msName>
+						</msIdentifier>
+					</msDesc>
+					<msDesc>
+						<msIdentifier xml:id="MS2">
+							<settlement>London</settlement>
+							<repository>British Library</repository>
+							<idno type="shelfmark">MS. Egerton 2899</idno>
+						</msIdentifier>
+					</msDesc>
+					<msDesc>
+						<msIdentifier xml:id="MS3">
+							<settlement>Edinburgh</settlement>
+							<repository>NLS</repository>
+							<idno type="shelfmark">Adv. MS. 72.2.11</idno>
+						</msIdentifier>
+					</msDesc>
+					<msDesc>
+						<msIdentifier xml:id="MS6">
+							<settlement>Edinburgh</settlement>
+							<repository>NLS Adv.</repository>
+							<idno type="shelfmark">MS. 72.1.31</idno>
+						</msIdentifier>
+					</msDesc>
+					<msDesc>
+						<msIdentifier xml:id="MS7">
+							<settlement>Edinburgh</settlement>
+							<repository>NLS Adv.</repository>
+							<idno type="shelfmark">MS. 72.2.2</idno>
+						</msIdentifier>
+					</msDesc>
+					<msDesc>
+						<msIdentifier xml:id="MS8">
+							<settlement>Oxford</settlement>
+							<repository>Bodleian Library</repository>
+							<idno type="shelfmark">MS. Arch. Seld. B.24</idno>
+						</msIdentifier>
+					</msDesc>
+					<msDesc>
+						<msIdentifier xml:id="MS9">
+							<settlement>Edinburgh</settlement>
+							<repository>NLS Adv.</repository>
+							<idno type="shelfmark">MS. 72.1.50</idno>
+						</msIdentifier>
+					</msDesc>
+					<msDesc>
+						<msIdentifier xml:id="MS15">
+							<settlement>Dublin</settlement>
+							<repository>Royal Irish Academy</repository>
+							<idno type="shelfmark">MS. A.v.2 (744)</idno>
+						</msIdentifier>
+					</msDesc>
+					<msDesc>
+						<msIdentifier xml:id="LaudMisc615">
+							<settlement>Oxford</settlement>
+							<repository>Bodleian Library</repository>
+							<idno type="shelfmark">MS. Laud Misc. 615</idno>
+						</msIdentifier>
+					</msDesc>
+					<msDesc>
+						<msIdentifier xml:id="BDL">
+							<settlement>Edinburgh</settlement>
+							<repository>NLS Adv.</repository>
+							<idno type="shelfmark">MS. 72.1.37</idno>
+						</msIdentifier>
+					</msDesc>
+					<msDesc>
+						<msIdentifier xml:id="RIA23P16">
+							<settlement>Dublin</settlement>
+							<repository>Royal Irish Academy</repository>
+							<idno type="shelfmark">MS. 23.P.16 (1230)</idno>
+						</msIdentifier>
+					</msDesc>
+					<msDesc>
+						<msIdentifier xml:id="RIA23G23">
+							<settlement>Dublin</settlement>
+							<repository>Royal Irish Academy</repository>
+							<idno type="shelfmark">MS. 23.G.23 (256)</idno>
+						</msIdentifier>
+					</msDesc>
+					<msDesc>
+						<msIdentifier xml:id="RIA23N13">
+							<settlement>Dublin</settlement>
+							<repository>Royal Irish Academy</repository>
+							<idno type="shelfmark">MS. 23.N.13 (???)</idno>
+						</msIdentifier>
+					</msDesc>
+					<msDesc>
+						<msIdentifier xml:id="MaynoothMurphy70">
+							<settlement>Maynooth</settlement>
+							<repository>St Patrick's College</repository>
+							<idno type="shelfmark">Murphy MS. 70</idno>
+						</msIdentifier>
+					</msDesc>
+					<msDesc>
+						<msIdentifier xml:id="MaynoothMurphy39">
+							<settlement>Maynooth</settlement>
+							<repository>St Patrick's College</repository>
+							<idno type="shelfmark">Murphy MS. 39</idno>
+						</msIdentifier>
+					</msDesc>
+					<msDesc>
+						<msIdentifier xml:id="MaynoothORenehan96">
+							<settlement>Maynooth</settlement>
+							<repository>St Patrick's College</repository>
+							<idno type="shelfmark">O'Renehan MS. 96</idno>
+						</msIdentifier>
+					</msDesc>
+				</listBibl>
+				<listBibl type="lit">
+					<biblStruct type="book" xml:id="Boffey1997">
+						<monogr>
+							<title>The Works of Geoffrey Chaucer and The Kingis Quair: A Facsimile
+								of Bodleian Library, Oxford, MS. Arch. Selden. B.24</title>
+							<respStmt>
+								<resp>editor</resp>
+								<name><forename>Julia</forename><surname>Boffey</surname></name>
+							</respStmt>
+							<respStmt>
+								<resp>editor</resp>
+								<name><forename>A. S. G</forename><surname>Edwards</surname></name>
+							</respStmt>
+							<respStmt>
+								<resp>editor</resp>
+								<name><forename>B.C.</forename><surname>Barker-Benfield</surname></name>
+							</respStmt>
+							<imprint>
+								<pubPlace>Cambridge</pubPlace>
+								<publisher>DS Brewer</publisher>
+								<date>1997</date>
+							</imprint>
+						</monogr>
+					</biblStruct>
+					<biblStruct type="book" xml:id="MacKenzie1939">
+						<monogr>
+							<title level="m">The Kingis Quair</title>
+							<respStmt>
+								<resp>editor</resp>
+								<name><forename>William
+										Mackay</forename><surname>MacKenzie</surname></name>
+							</respStmt>
+							<imprint>
+								<pubPlace>London</pubPlace>
+								<publisher>Faber &amp; Faber</publisher>
+								<date>1939</date>
+							</imprint>
+						</monogr>
+					</biblStruct>
+					<biblStruct type="journalArticle" xml:id="Black1978">
+						<analytic>
+							<title level="a">A Sixteenth-Century Gaelic Letter</title>
+						</analytic>
+						<monogr>
+							<title level="j">Scottish Gaelic Studies</title>
+							<respStmt>
+								<resp>editor</resp>
+								<name><forename>Ronald</forename><surname>Black</surname></name>
+							</respStmt>
+							<imprint>
+								<biblScope unit="volume">13</biblScope>
+								<biblScope unit="page">56-65</biblScope>
+								<date>1978</date>
+							</imprint>
+						</monogr>
+					</biblStruct>
+					<biblStruct type="journalArticle" xml:id="Gillies1978">
+						<analytic>
+							<title>The Gaelic poems of Sir Duncan Campbell of Glenorchy (I)</title>
+							<respStmt>
+								<resp>author</resp>
+								<name><forename>William</forename><surname>Gillies</surname></name>
+							</respStmt>
+						</analytic>
+						<monogr>
+							<title level="j">Scottish Gaelic Studies</title>
+							<imprint>
+								<biblScope unit="volume">13</biblScope>
+								<biblScope unit="issue">1</biblScope>
+								<biblScope unit="page">18-45</biblScope>
+								<date>1978</date>
+							</imprint>
+						</monogr>
+					</biblStruct>
+					<biblStruct type="journalArticle" xml:id="Gillies1981">
+						<analytic>
+							<title>The Gaelic poems of Sir Duncan Campbell of Glenorchy (II)</title>
+							<respStmt>
+								<resp>author</resp>
+								<name><forename>William</forename><surname>Gillies</surname></name>
+							</respStmt>
+						</analytic>
+						<monogr>
+							<title level="j">Scottish Gaelic Studies</title>
+							<imprint>
+								<biblScope unit="volume">13</biblScope>
+								<biblScope unit="issue">2</biblScope>
+								<biblScope unit="page">263-288</biblScope>
+								<date>1981</date>
+							</imprint>
+						</monogr>
+					</biblStruct>
+					<biblStruct type="bookSection" xml:id="ONolan1912">
+						<analytic>
+							<title level="a">Imchlód Aingel</title>
+							<respStmt>
+								<resp>editor</resp>
+								<name><forename>Thomas</forename><surname>O'Nolan</surname></name>
+							</respStmt>
+						</analytic>
+						<monogr>
+							<title level="m">Miscellany presented to Kuno Meyer</title>
+							<respStmt>
+								<resp>editor</resp>
+								<name><forename>Osborn</forename><surname>Bergin</surname></name>
+							</respStmt>
+							<respStmt>
+								<resp>editor</resp>
+								<name><forename>Carl</forename><surname>Marstrander</surname></name>
+							</respStmt>
+							<imprint>
+								<pubPlace>Halle</pubPlace>
+								<biblScope unit="page">253-57</biblScope>
+								<publisher>Max Niemeyer</publisher>
+								<date>1912</date>
+							</imprint>
+						</monogr>
+					</biblStruct>
+					<biblStruct type="journalArticle" xml:id="Miller2012">
+						<analytic>
+							<title level="a">Chaucer Abroad, Chaucer at Home: MS Arch. Selden B. 24
+								as the "Scottish Ellesmere"</title>
+							<title type="short">Chaucer Abroad, Chaucer at Home</title>
+							<respStmt>
+								<resp>author</resp>
+								<name><forename>T. S.</forename><surname>Miller</surname></name>
+							</respStmt>
+						</analytic>
+						<monogr>
+							<title level="j">The Chaucer Review</title>
+							<idno type="ISSN">1528-4204</idno>
+							<imprint>
+								<biblScope unit="volume">47</biblScope>
+								<biblScope unit="issue">1</biblScope>
+								<biblScope unit="page">25-47</biblScope>
+								<date>2012</date>
+								<note type="accessed">2018-05-25T18:30:37Z</note>
+								<note type="url">https://muse.jhu.edu/article/480686</note>
+							</imprint>
+						</monogr>
+					</biblStruct>
+					<biblStruct type="book" xml:id="MacDonald1904">
+						<monogr>
+							<title>The Clan Donald</title>
+							<respStmt>
+								<resp>author</resp>
+								<name><forename>Angus</forename><surname>MacDonald</surname></name>
+							</respStmt>
+							<respStmt>
+								<resp>author</resp>
+								<name><forename>Archibald</forename><surname>MacDonald</surname></name>
+							</respStmt>
+							<imprint>
+								<publisher>The Northern Counties Publishing Company</publisher>
+								<biblScope unit="volume">III</biblScope>
+								<pubPlace>Inverness</pubPlace>
+								<date>1904</date>
+								<note type="accessed">2018-05-25T18:58:10Z</note>
+								<note type="url">http://archive.org/details/clandonald03macd</note>
+							</imprint>
+						</monogr>
+					</biblStruct>
+					<biblStruct type="book" xml:id="Hunt1895">
+						<monogr>
+							<title>A Summary Catalogue of Western Manuscripts in the Bodleian
+								Library at Oxford</title>
+							<respStmt>
+								<resp>contributor</resp>
+								<name><forename>Richard
+									William</forename><surname>Hunt</surname></name>
+							</respStmt>
+							<respStmt>
+								<resp>contributor</resp>
+								<name><forename>Falconer</forename><surname>Madan</surname></name>
+							</respStmt>
+							<imprint>
+								<pubPlace>Oxford</pubPlace>
+								<publisher>Clarendon Press</publisher>
+								<date>1895</date>
+								<note type="accessed">2018-05-28T14:13:29Z</note>
+								<note type="url"
+									>http://purl.ox.ac.uk/uuid/54ec44343a7442b49308585518caef93</note>
+							</imprint>
+						</monogr>
+					</biblStruct>
+					<biblStruct type="journalArticle" xml:id="Brown1899">
+						<analytic>
+							<title level="a">The Authorship of "The Kingis Quair"</title>
+							<respStmt>
+								<resp>author</resp>
+								<name><forename>J. T. T.</forename><surname>Brown</surname></name>
+							</respStmt>
+						</analytic>
+						<monogr>
+							<title level="m">Transactions of the Glasgow Archaeological
+								Society</title>
+							<imprint>
+								<biblScope unit="volume">3</biblScope>
+								<biblScope unit="issue">1</biblScope>
+								<biblScope unit="page">93-166</biblScope>
+								<date>1899</date>
+								<note type="accessed">2018-05-28T14:22:06Z</note>
+								<note type="url">http://www.jstor.org/stable/24680618</note>
+							</imprint>
+						</monogr>
+					</biblStruct>
+					<biblStruct type="journalArticle" xml:id="Black1976">
+						<analytic>
+							<title level="a">The Genius of Cathal Mac Mhuirich</title>
+							<respStmt>
+								<resp>author</resp>
+								<name><forename>Ronald</forename><surname>Black</surname></name>
+							</respStmt>
+						</analytic>
+						<monogr>
+							<title level="j">Transactions of the Gaelic Society of Inverness</title>
+							<imprint>
+								<biblScope unit="volume">50</biblScope>
+								<biblScope unit="page">327-66</biblScope>
+								<date>1976</date>
+							</imprint>
+						</monogr>
+					</biblStruct>
+					<biblStruct type="bookSection" xml:id="Herbert2005">
+						<analytic>
+							<title level="a">Becoming an Exile: Colum Cille in Middle-Irish
+								Poetry</title>
+							<respStmt>
+								<resp>author</resp>
+								<name><forename>Maíre</forename><surname>Herbert</surname></name>
+							</respStmt>
+						</analytic>
+						<monogr>
+							<title level="m">Heroic Poets and Poetic Heroes in Celtic Tradition: A
+								Festschrift for Patrick K. Ford</title>
+							<respStmt>
+								<resp>editor</resp>
+								<name><forename>Joseph F.</forename><surname>Nagy</surname></name>
+							</respStmt>
+							<respStmt>
+								<resp>editor</resp>
+								<name><forename>L. E.</forename><surname>Jones</surname></name>
+							</respStmt>
+							<imprint>
+								<pubPlace>Dublin</pubPlace>
+								<publisher>Four Courts Press</publisher>
+								<date>2005</date>
+								<biblScope unit="page">131-40</biblScope>
+							</imprint>
+						</monogr>
+						<series><title level="s">CSANA Yearbook</title><biblScope unit="volume"
+								>3-4</biblScope></series>
+					</biblStruct>
+					<biblStruct type="book" xml:id="Flower1926">
+						<monogr>
+							<title level="m">Catalogue of Irish manuscripts in the British Museum:
+								Vol. 2</title>
+							<respStmt>
+								<resp>author</resp>
+								<name><forename>Robin</forename><surname>Flower</surname></name>
+							</respStmt>
+							<imprint>
+								<pubPlace>London</pubPlace>
+								<publisher>British Museum</publisher>
+								<date>1926</date>
+							</imprint>
+						</monogr>
+					</biblStruct>
+					<biblStruct type="journalArticle" xml:id="Herbert1973">
+						<analytic>
+							<title level="a">The Provenance of Laud Misc. 615</title>
+							<respStmt>
+								<resp>author</resp>
+								<name><forename>Máire</forename><surname>Herbert</surname></name>
+							</respStmt>
+							<respStmt>
+								<resp>author</resp>
+								<name><forename>Anne</forename><surname>O'Sullivan</surname></name>
+							</respStmt>
+						</analytic>
+						<monogr>
+							<title level="j">Celtica</title>
+							<imprint>
+								<biblScope unit="volume">10</biblScope>
+								<biblScope unit="page">174-92</biblScope>
+								<date>1973</date>
+							</imprint>
+						</monogr>
+					</biblStruct>
+					<biblStruct type="bookSection" xml:id="Gillies2010">
+						<analytic>
+							<title level="a">Scottish Gaelic</title>
+							<respStmt>
+								<resp>author</resp>
+								<name><forename>William</forename><surname>Gillies</surname></name>
+							</respStmt>
+						</analytic>
+						<monogr>
+							<title level="m">The Celtic Languages</title>
+							<respStmt>
+								<resp>editor</resp>
+								<name><forename>Martin J.</forename><surname>Ball</surname></name>
+							</respStmt>
+							<respStmt>
+								<resp>editor</resp>
+								<name><forename>Nicole</forename><surname>Müller</surname></name>
+							</respStmt>
+							<edition>2</edition>
+							<imprint>
+								<pubPlace>London</pubPlace>
+								<biblScope unit="page">230-304</biblScope>
+								<publisher>Routledge</publisher>
+								<date>2010</date>
+							</imprint>
+						</monogr>
+						<series><title level="s">Routledge Language Family Series</title></series>
+					</biblStruct>
+					<biblStruct type="report" xml:id="Black2017">
+						<monogr>
+							<title level="m">Report on ‘Classical’ Gaelic Manuscripts</title>
+							<respStmt>
+								<resp>author</resp>
+								<name><forename>Ronald</forename><surname>Black</surname></name>
+							</respStmt>
+							<imprint>
+								<pubPlace>Teangue</pubPlace>
+								<publisher>Faclair na Gaìdhlig</publisher>
+								<date>2017</date>
+							</imprint>
+						</monogr>
+					</biblStruct>
+					<biblStruct type="webpage" xml:id="Black2011">
+						<monogr>
+							<title level="m">Catalogue of Gaelic Manuscripts in the National Library
+								of Scotland</title>
+							<respStmt>
+								<resp>author</resp>
+								<name><forename>Ronald</forename><surname>Black</surname></name>
+							</respStmt>
+							<imprint>
+								<date>2011</date>
+								<note type="accessed">2018-05-30</note>
+								<note type="url">https://www.isos.dias.ie</note>
+							</imprint>
+						</monogr>
+					</biblStruct>
+					<biblStruct type="webpage" xml:id="BL2016">
+						<monogr>
+							<title level="m">Explore Archives and Manuscripts</title>
+							<respStmt>
+								<resp>author</resp>
+								<name>British Library</name>
+							</respStmt>
+							<imprint>
+								<date>2016</date>
+								<note type="accessed">2018-05-30</note>
+								<note type="url">http://searcharchives.bl.uk</note>
+							</imprint>
+						</monogr>
+					</biblStruct>
+					<biblStruct type="webpage" xml:id="eDIL2013">
+						<monogr>
+							<title level="m">Electronic Dictionary of the Irish Language</title>
+							<respStmt>
+								<resp>author</resp>
+								<name>eDIL</name>
+							</respStmt>
+							<imprint>
+								<date>2013</date>
+								<note type="accessed">2018-05-30</note>
+								<note type="url">http://www.dil.ie</note>
+							</imprint>
+						</monogr>
+					</biblStruct>
+				</listBibl>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<projectDesc>
+				<p>The corpus presents a sample of medieval and early modern Gaelic manuscript
+					materials from Scotland.</p>
+			</projectDesc>
+			<samplingDecl>
+				<p>Manuscripts materials are selected with a view to ensuring representation of all
+					periods, dialects, registers, orthographies, genres, and topics for which
+					materials for which materials are extant.</p>
+			</samplingDecl>
+			<editorialDecl>
+				<correction>
+					<p>Where a manuscript form appears to be a misspelling with no linguistic
+						significance, the spelling is corrected using the &lt;add&gt; element if one
+						or more characters have been omitted or the &lt;sic&gt; and &lt;corr&gt;
+						elements for variant characters or more complex emendations. The &lt;add&gt;
+						element is also used for later scribal additions; the type of addition is
+						determined by the @resp attribute.Where characters are difficult to read due
+						to damage to the script or due to physical damage, one or more provisional
+						readings are provided using the &lt;unclear&gt; element, with a @cert
+						level.</p>
+				</correction>
+				<normalization>
+					<p>As this project is about supplying the forms used by Gaelic scribes, as well
+						as authors, in Scotland, manuscript forms will usually not be normalized and
+						never normalized silently. As stated above, normalization will only be
+						carried out in cases of clear and potentially misleading scribal error.
+						Where available, lemma data will be added to the &lt;w&gt; element using the
+						@lemma attribute. A reference to the most appropriate dictionary will be
+						added using @lemmaRef. Where a word contains multiple potential lemmata
+						(e.g. a compound verb), it will be encoded as a single word containing
+						several words (i.e. with outer and inner &lt;w&gt; elements). For more
+						details, see below. Words that contain multipel syntactic units but where
+						these units might be expected to appear within the dictionary entry on that
+						word (e.g. conjugated prepositions) will remain within a single &lt;w&gt;
+						element.</p>
+					<p>Both scribal and analytic word division will be encoded; which is to be
+						displayed will be determined by the stylesheet. The the &lt;space/&gt;
+						element will be used to represent scribal or orthographic word division. The
+						word (&lt;w&gt;) element will be used to indicate editorial word division.
+						Verse (&lt;l&gt; and &lt;lg&gt;) division will be normalised where the metre
+						can be securely interpreted from the manuscript text of a poem.</p>
+				</normalization>
+				<punctuation>
+					<p>Scribal punctuation is followed at all times. Rendering may vary in the
+						published forms of transcriptions. For example, a scribe may delete text by
+						placing dots beneath it; this text would be placed within the &lt;del&gt;
+						element and rendered with a strikethrough. Also, a later addition by a
+						scribe using an insertion mark will be represented with the &lt;add&gt;
+						element but the insertion mark itself will not be represented.</p>
+				</punctuation>
+				<segmentation>
+					<p>Segmentation differs depending on whether the text is prose or verse</p>
+					<p>All texts, at the lowest level, are segemented by word (&lt;w&gt;). Some
+						compound words (e.g. conjunct verbs with preverbal particles or some
+						compound nouns) are further segmented by &lt;w&gt; elements within the outer
+						&lt;w&gt; element. The inner &lt;w&gt; element encloses a morpheme that
+						could constitute a lemma in its own right and which cannot be subdivided
+						into further lemmata. This is done in cases where both the compound word as
+						a whole could also constitute a lemma. For example, <hi rend="italic"
+							>do-beir</hi> is both a lemma in eDIL and contains the <hi rend="italic"
+							>do-</hi> preverbal particle, which is a lemma in eDIL in its own right.
+						In such cases, in the outer &lt;w&gt; element, the @lemma, @lemmaRef, and
+						@ana attributes will include data for all the lemmata contained in the inner
+						&lt;w&gt; element elements seperated by whitepace. Very occasionally, three
+						levels of &lt;w&gt; elements might be needed to capture all the potential
+						lemmata in a word.</p>
+					<p>Similarly, proper names are enclosed in the &lt;name&gt; element with the
+						@type attribute, then the names' components are enclosed in one or more
+						inner &lt;w&gt; elements. This means that names can be excluded from search
+						but, if they are included, their components can be retrieved in the same way
+						as other nouns.</p>
+					<p>Prose texts are not segmented by sentence. This will be an arbitrary decision
+						in many cases (punctuation and capitals being absent) and it is unnecessary,
+						since context in the DASG Corpus is determined by word count rather than by
+						sentence segmentation. If a prose text is clearly organised into units (e.g.
+						some medical texts consist of commentary around propositions), then the
+						&lt;ab&gt; element will be used to delineate these..</p>
+					<p>Verse texts are segmented by line (&lt;l&gt;) and stanza (&lt;lg&gt;).</p>
+					<p>Slips created by Ronald Black during the HDSG project are currently being
+						digitised by DASG and it is an aim of this project to integrate this
+						material into the metadata on the corpus. Thus, segments that have also been
+						transcribed on a slip will be contained in the &lt;seg&gt; element and a
+						link provided to the corresponding digitised slip.</p>
+					<p>A transcription file (a &lt;text&gt; in the &lt;teiCorpus&gt;) corresponds to
+						a physical manuscript. If multiple texts are being transcribed from the same
+						manuscript, then the &lt;div1&gt; element will be used to subdivide them
+						within the file. If one text contains another text (e.g. a prose text with a
+						verse citation), then &lt;div2&gt; and so on will be used to segment this
+						text.</p>
+					<p>The &lt;lb/&gt; element, with attribute @n, will be used to indicate a new
+						line in the manuscript. This is a distinct and seperate segementation system
+						from &lt;l&gt;, which segments metrical lines. To publish a diplomatic
+						edition of a verse text, use &lt;lb/&gt;; to publish a metrically analysed
+						version of the text, use &lt;lg&gt; and &lt;l&gt;.</p>
+					<p>Sections of text in other languages (e.g. Latin) appear in some
+						transcriptions. Other languages will be indicated at the &lt;w&gt; level
+						using the @lang attribute. If a &lt;w&gt; element has no @lang attribute, it
+						can be assumed to be Gaelic of some sort. Each Gaelic text's linguistic
+						profile will be set out in the relevant &lt;msItem&gt; and under
+						&lt;langUsage&gt; in the &lt;teiHeader&gt;. As much commentary as possible
+						will be provided on the different linguistic strata in each text but it is
+						expected that more will be discovered in the course of analysis.</p>
+				</segmentation>
+			</editorialDecl>
+			<classDecl>
+				<taxonomy xml:id="POS">
+					<gloss xml:id="conj">conj.</gloss>
+					<gloss xml:id="noun">noun</gloss>
+					<gloss xml:id="pron">pronoun</gloss>
+					<gloss xml:id="pronom">pronom.</gloss>
+					<gloss xml:id="verb">verb</gloss>
+					<gloss xml:id="part">particle</gloss>
+					<gloss xml:id="adj">adjective</gloss>
+					<gloss xml:id="poss">poss. pron</gloss>
+					<gloss xml:id="art">article</gloss>
+					<gloss xml:id="dpron">dem. pronoun</gloss>
+					<gloss xml:id="abbr">abbreviation</gloss>
+					<gloss xml:id="adv">adverb</gloss>
+					<gloss xml:id="num">numeral</gloss>
+					<gloss xml:id="vnoun">verbal noun</gloss>
+					<gloss xml:id="pref">prefix</gloss>
+					<gloss xml:id="intj">interjection</gloss>
+					<gloss xml:id="tit">title</gloss>
+					<gloss xml:id="ptcp">participle</gloss>
+					<gloss xml:id="name">name</gloss>
+					<gloss xml:id="prep">preposition</gloss>
+				</taxonomy>
+				<taxonomy xml:id="probs">
+					<gloss xml:id="interp_obscure">- the interpretation of this word is
+						doubtful.</gloss>
+					<gloss xml:id="text_obscure">- some characters in this word are difficult to
+						decipher.</gloss>
+					<gloss xml:id="abbrv">- this word is based on the doubtful expansion of an
+						abbreviation.</gloss>
+					<gloss xml:id="damage">- loss of vellum means some characters have had to be
+						supplied.</gloss>
+				</taxonomy>
+				<taxonomy xml:id="lang">
+					<gloss xml:id="la">Latin</gloss>
+					<gloss xml:id="sco">Scots</gloss>
+					<gloss xml:id="hbo">Ancient Hebrew</gloss>
+					<gloss xml:id="und">unknown</gloss>
+				</taxonomy>
+			</classDecl>
+			<charDecl>
+				<glyph xml:id="g0">
+					<glyphName>UNKNOWN</glyphName>
+					<note>The scribal abbreviation is unknown. This will probably be because the
+						manuscript is now illegible and an edition is being used. The editor will
+						have indicated that an abbreviation has been expanded but given no
+						details.</note>
+				</glyph>
+				<glyph xml:id="g1" corresp="www.vanhamel.nl/codecs/M_stroke">
+					<glyphName>m-stroke</glyphName>
+					<note>A horizontal line with a downwards hook, standing for "-m".</note>
+				</glyph>
+				<glyph xml:id="g2" corresp="www.vanhamel.nl/codecs/Ocus,_et_(Tironian_note)">
+					<glyphName> Tironian et/ocus</glyphName>
+					<note>Resembles a "7"; may stand for "ocus" and variants or "et" and
+						variants.</note>
+				</glyph>
+				<glyph xml:id="g3" corresp="www.vanhamel.nl/codecs/Suspension_stroke">
+					<glyphName>suspension stroke</glyphName>
+					<note>A horizontal (superscript or mid-level) stroke that may stand for any
+						character(s).</note>
+				</glyph>
+				<glyph xml:id="g4" corresp="www.vanhamel.nl/codecs/Spiritus_asper">
+					<glyphName>spiritus asper</glyphName>
+					<note>Also known as <hi rend="italic">spiritus asper</hi>; adds an "-h" to
+						consonants (i.e. aspirates).</note>
+				</glyph>
+				<glyph xml:id="g5" corresp="www.vanhamel.nl/codecs/Suspension_stroke">
+					<glyphName>n-stroke</glyphName>
+					<note>A horizontal line, standing for -n. Often indistinguishable from a <ref
+							target="#g3">generic suspension stroke</ref></note>
+				</glyph>
+				<glyph xml:id="g6" corresp="www.vanhamel.nl/codecs/I_(superscript_rounded)">
+					<glyphName>superscript rounded i</glyphName>
+					<note>An anti-clockwise loop on top of a consonant, usually representing "-ir"
+						but with some variability in the vowel.</note>
+				</glyph>
+				<glyph xml:id="g7" corresp="www.vanhamel.nl/codecs/Us_(symbol)">
+					<glyphName>us-symbol (;)</glyphName>
+					<note>Resembles a semi-colon (;). Stands for "-us" or "-as". Can be modified
+						with addition of subscript "i" (to "-uis" or "-ais").</note>
+				</glyph>
+				<glyph xml:id="g8" corresp="www.vanhamel.nl/codecs/Ar_(with_stroke)">
+					<glyphName>ar (with stroke)</glyphName>
+					<note>An "a" with a descender (very like "q"), with a cross-stroke across the
+						descender, standing for "ar".</note>
+				</glyph>
+				<glyph xml:id="g9">
+					<glyphName>suspension dot</glyphName>
+					<note>An "." that stands for potentially any string of characters..</note>
+				</glyph>
+				<glyph xml:id="g10"
+					corresp="www.vanhamel.nl/codecs/S_(insular)_with_suspension_stroke">
+					<glyphName>s with suspension stroke (acht/sed)</glyphName>
+					<note>An "s" with a horizontal superscript stroke on top. Originally for Latin
+						"sed" but used to represent "(a)ch(t)" in Gaelic contexts.</note>
+				</glyph>
+				<glyph xml:id="g11" corresp="www.vanhamel.nl/codecs/Air_(symbol_with_superscript)">
+					<glyphName>air-symbol (with superscript)</glyphName>
+					<note>An ar abbreviation, with a superscript "i", standing for "air".</note>
+				</glyph>
+				<glyph xml:id="g12" corresp="www.vanhamel.nl/codecs/C_(superscript)">
+					<glyphName>c (superscript)</glyphName>
+					<note>A superscript c, standing for "[vowel]c(h)". Sometimes vowl is added (e.g.
+						m+superscript "ic" for "mic").</note>
+				</glyph>
+				<glyph xml:id="g13" corresp="www.vanhamel.nl/codecs/Arr_(double_stroke)">
+					<glyphName>arr (double stroke)</glyphName>
+					<note>Like the ar abbreviation, but with two cross-strokes on the descender
+						instead of one; stands for "arr".</note>
+				</glyph>
+				<glyph xml:id="g14" corresp="www.vanhamel.nl/codecs/Suspension_stroke_(double)">
+					<glyphName>double n-stroke</glyphName>
+					<note>A double n-stroke, standing for "-nn".</note>
+				</glyph>
+				<glyph xml:id="g15" corresp="www.vanhamel.nl/codecs/O_(superscript)">
+					<glyphName>o (superscript)</glyphName>
+					<note>Superscript o, representing "or" or "ro".</note>
+				</glyph>
+				<glyph xml:id="g16" corresp="www.vanhamel.nl/codecs/U_(superscript_v)">
+					<glyphName>u/v (superscript)</glyphName>
+					<note>Superscript u or v, representing "ur" or "ru". <hi rend="bold">NB:</hi>
+						Currently merged with <hi rend="italics"><ref
+								target="http://www.vanhamel.nl/codecs/Suspension_stroke_(wavy)"
+								>suspension stroke (wavy)</ref></hi></note>
+				</glyph>
+				<glyph xml:id="g17" corresp="www.vanhamel.nl/codecs/A_(superscript)">
+					<glyphName>a (superscript)</glyphName>
+					<note>A superscript "a", looking more like a superscript "r", standing for
+						"ra".</note>
+				</glyph>
+				<glyph xml:id="g18" corresp="www.vanhamel.nl/codecs/Est_(superscript)">
+					<glyphName>est-abbreviation</glyphName>
+					<note>Resembles a "2"; stands for Latin "est" or Gaelic orthographic equivalents
+						(e.g. "easd").</note>
+				</glyph>
+				<glyph xml:id="g19" corresp="www.vanhamel.nl/codecs/Uir_(subscript_ir)">
+					<glyphName>uir (subscript ir)</glyphName>
+					<note>A "u" with a descender with cross-stroke and a superscript "i"; stands for
+						"uir".</note>
+				</glyph>
+				<glyph xml:id="g20" corresp="www.vanhamel.nl/codecs/E_(superscript)">
+					<glyphName>e (superscript)</glyphName>
+					<note>A superscript "e", standing for "-er", "-re", or "-e".</note>
+				</glyph>
+				<glyph xml:id="g21" corresp="www.vanhamel.nl/codecs/Er_(vertical_tilde)">
+					<glyphName>er (vertical tilde)</glyphName>
+					<note>A vertical tilde (i.e. a zig-zag), standing for "-e(a)r".</note>
+				</glyph>
+				<glyph xml:id="g22" corresp="www.vanhamel.nl/codecs/Err_(inverted_tildes)">
+					<glyphName>err (inverted tildes)</glyphName>
+					<note>Two vertical tildes, standing for "-e(a)rr".</note>
+				</glyph>
+				<glyph xml:id="g23" corresp="www.vanhamel.nl/codecs/Suspension_stroke_(double)">
+					<glyphName>double n-stroke</glyphName>
+					<note>Two superscript cross-strokes, standing for either "-nn" or an expansion
+						containing two of the same consonant.</note>
+				</glyph>
+				<glyph xml:id="g24" corresp="www.vanhamel.nl/codecs/D_(superscript)">
+					<glyphName>d (superscript)</glyphName>
+					<note>A superscript "d", standing for a vowel + d.</note>
+				</glyph>
+				<glyph xml:id="g25" corresp="www.vanhamel.nl/codecs/I_(superscript)">
+					<glyphName>i (superscript)</glyphName>
+					<note>A superscript "i", standing for "-ri" or "-ir".</note>
+				</glyph>
+				<glyph xml:id="g26" corresp="www.vanhamel.nl/codecs/2_(Arabic_numeral)">
+					<glyphName>2 (Arabic numeral)</glyphName>
+					<note>The Arabic numeral "2", standing for "dá" or "da" in Gaelic contexts and
+						"duo" in Latin contexts. Similar to <hi rend="italics">est
+							abbreviation.</hi></note>
+				</glyph>
+				<glyph xml:id="g27">
+					<glyphName>[none]</glyphName>
+					<note>There is no visual indicator of an abbreviation but it is apparent for
+						some reason that a word has been abbreviated.</note>
+				</glyph>
+				<glyph xml:id="g28" corresp="www.vanhamel.nl/codecs/Con_(reversed_c)">
+					<glyphName>con (reversed c)</glyphName>
+					<note>A backwards "c", standing for "con".</note>
+				</glyph>
+				<glyph xml:id="g29" corresp="www.vanhamel.nl/codecs/T_(superscript)">
+					<glyphName>t (superscript)</glyphName>
+					<note>A superscript "t", standing for "tr" or "rt".</note>
+				</glyph>
+				<glyph xml:id="g30" corresp="www.vanhamel.nl/codecs/Q_(regular)">
+					<glyphName>q (regular)</glyphName>
+					<note>Latin "q", standing for "cu".</note>
+				</glyph>
+				<glyph xml:id="g31">
+					<glyphName>l (superscript)</glyphName>
+					<note>Superscript "l", standing for "vowel + l" or "l + vowel".</note>
+				</glyph>
+				<glyph xml:id="g32" corresp="www.vanhamel.nl/codecs/Et_reliqua">
+					<glyphName>et reliqua</glyphName>
+					<note>Ligatures tironian et and rl with cross stroke, standing for either "et
+						reliqua" or "ocus araile".</note>
+				</glyph>
+				<glyph xml:id="g33" corresp="www.vanhamel.nl/codecs/M_(vertical)">
+					<glyphName>m (vertical)</glyphName>
+					<note>A descending zig-zag attached to the preceding letter, standing for
+						"-m".</note>
+				</glyph>
+				<glyph xml:id="g34" corresp="www.vanhamel.nl/codecs/Pro_(p_with_tail)">
+					<glyphName>pro (p with tail)</glyphName>
+					<note>A "p" with a back-pointing tail on the descender.</note>
+				</glyph>
+				<glyph xml:id="g35">
+					<glyphName>ligature</glyphName>
+					<note>Two letters are placed together as a ligature, with text to be inserted in
+						between.</note>
+				</glyph>
+				<glyph xml:id="g36" corresp="www.vanhamel.nl/codecs/Per_(p_with_cross_stroke)">
+					<glyphName>p with cross-stroke</glyphName>
+					<note>A "p" with a subscript suspension stroke, normally standing for
+						"per"/"par/"por".</note>
+				</glyph>
+				<glyph xml:id="g37" corresp="www.vanhamel.nl/codecs/Ac_(ligature)">
+					<glyphName>ac ligature</glyphName>
+					<note>Various combinations of "a" and "c".</note>
+				</glyph>
+				<glyph xml:id="g38" corresp="www.vanhamel.nl/codecs/Ur_(symbol)">
+					<glyphName>ur symbol</glyphName>
+					<note>A "u" with a descender and cross-stroke, standing for "ur".</note>
+				</glyph>
+				<glyph xml:id="g39" corresp="www.vanhamel.nl/codecs/Eile_(ee)">
+					<glyphName>Eile (ee)</glyphName>
+					<note>Double e, sometimes with acute accents, standing for "eile".</note>
+				</glyph>
+				<glyph xml:id="g40">
+					<glyphName>superscript b</glyphName>
+					<note>A superscript b, standing for "b" plus a vowel before or after.</note>
+				</glyph>
+				<glyph xml:id="g41" corresp="www.vanhamel.nl/codecs/L_with_suspension_stroke">
+					<glyphName>l with suspension stroke</glyphName>
+					<note>l with a suspension stroke mid-line, representing a vowel following the
+						l.</note>
+				</glyph>
+				<glyph xml:id="g42" corresp="www.vanhamel.nl/codecs/S_(superscript)">
+					<glyphName>superscript s</glyphName>
+					<note>A superscript "s", often a majuscule "s" without the lower leftward loop,
+						standing for a string ending in "s".</note>
+				</glyph>
+				<glyph xml:id="g43" corresp="www.vanhamel.nl/codecs/I_(subscript)">
+					<glyphName>subscript i</glyphName>
+					<note>A subscript "i", resembling an us-symbol (;), standing for "i", perhaps
+						plus a further string.</note>
+				</glyph>
+				<glyph xml:id="g44" corresp="www.vanhamel.nl/codecs/S_insular_with_cross_stroke">
+					<glyphName>s with cross-stroke</glyphName>
+					<note>A long insular "s" with a cross-stroke pointing towards the bottom right,
+						standing for "s", a vowel, and often an "r".</note>
+				</glyph>
+				<glyph xml:id="g45" corresp="www.vanhamel.nl/codecs/Vel_(l_with_stroke)">
+					<glyphName>l with suspension stroke (vel)</glyphName>
+					<note>An "l" with a suspension stroke, standing for Latin "vel" or Gaelic
+						"no".</note>
+				</glyph>
+				<glyph xml:id="g46" corresp="www.vanhamel.nl/codecs/Ir_(cross_stroke)">
+					<glyphName>ir (cross stroke)</glyphName>
+					<note>An "i" set below the inner writing tracks, with a cross-stroke, standing
+						for "ir". The cross-stroke can be doubled to form "irr".</note>
+				</glyph>
+				<glyph xml:id="g47" corresp="www.vanhamel.nl/codecs/B_with_cross_stroke">
+					<glyphName>b with cross-stroke</glyphName>
+					<note>A "b" with a cross-stroke through the ascender, standing for "ben".</note>
+				</glyph>
+				<glyph xml:id="g48">
+					<glyphName>uir (curly descender with cross-stroke)</glyphName>
+					<note>A curly, left-facing descender (not unlike a us-symbol) with a
+						cross-stroke, standing for "-uir", or perhaps "-air".</note>
+				</glyph>
+				<glyph xml:id="g49" corresp="www.vanhamel.nl/codecs/Cath_(.k.)">
+					<glyphName>k abbreviation</glyphName>
+					<note>The letter "k", standing mostly for "cath" but somethings for
+						"kalends".</note>
+				</glyph>
+				<glyph xml:id="g50" corresp="www.vanhamel.nl/codecs/Apostrophe_(superscript)">
+					<glyphName>apostrophe</glyphName>
+					<note>A left-facing superscript semi-circle, standing for "-s", perhaps with a
+						preceding vowel or string.</note>
+				</glyph>
+				<glyph xml:id="g51" corresp="www.vanhamel.nl/codecs/X_(regular)">
+					<glyphName>x abbreviation</glyphName>
+					<note>An "x", standing either for the numeral 10 or for the characterd "dec" or
+						similar.</note>
+				</glyph>
+				<glyph xml:id="g52">
+					<glyphName>upward diagonal overstroke</glyphName>
+					<note>A stroke from the lower left of a character to the upper right, crossing
+						the character itself, standing for a string of subsequent characters. Found
+						with "n" thus far.</note>
+				</glyph>
+				<glyph xml:id="g53">
+					<glyphName>double character</glyphName>
+					<note>The same character repeated, standing for that character
+						capitalised</note>
+				</glyph>
+				<glyph xml:id="g54">
+					<glyphName>colon</glyphName>
+					<note>A colon (":"); apparently a general purpose abbreviation for short
+						strings, used especially by Alasdair Mac Mhaighstir Alasdair.</note>
+				</glyph>
+				<glyph xml:id="g55">
+					<glyphName>da with stroke</glyphName>
+					<note>Numeral "2", with a diagonal stroke across; stands for "dai".</note>
+				</glyph>
+				<glyph xml:id="g56">
+					<glyphName>cc digraph</glyphName>
+					<note>Double "c", either standing for "cc" or "g", or occasionally words beginning with "cc" (i.e. eclipsed "c").</note>
+				</glyph>
+				<glyph xml:id="gn" corresp="n">
+					<glyphName/>
+					<note/>
+				</glyph>
+			</charDecl>
+		</encodingDesc>
+		<profileDesc>
+			<handNotes>
+				<handNote xml:id="Hand1">
+					<forename>[unk.]</forename>
+					<surname>[unk.]</surname>
+					<date from="1100" to="1150" min="1100">12</date>
+					<region cert="high">NE Scotland</region>
+					<note><p>Hand A in the Gaelic Notes in the Book of Deer</p>
+						<p>Jackson (1972): (p.12) Writing commences small, then varies in size.
+							(p.13) It could date from the early to mid-12th century and must date
+							from after 1038 at the earliest, as this is when Máel Snechta, whose
+							grant he records, became mormaer of Moray. (p.16) Contemporary with B;
+							late 11th/early 12th centuries?</p>
+					</note>
+				</handNote>
+				<handNote xml:id="Hand2">
+					<forename>[unk.]</forename>
+					<surname>[unk.]</surname>
+					<date from="1100" to="1150" min="1100">12</date>
+					<region cert="high">NE Scotland</region>
+					<note><p>Hand B in the Gaelic Notes in the Book of Deer</p><p>Jackson (1972):
+							(p.13) Similar to A; makes much use of margins to keep his text
+							together. (p.16) Contemporary with A; late 11th/early 12th
+							centuries?</p></note>
+				</handNote>
+				<handNote xml:id="Hand3">
+					<forename>[unk.]</forename>
+					<surname>[unk.]</surname>
+					<date from="1100" to="1150" min="1100">12</date>
+					<region cert="high">NE Scotland</region>
+					<note><p>Hand C in the Gaelic Notes in the Book of Deer</p><p>Jackson (1972):
+							(p.13) Uses paler and browner ink. Writing is spidery. More use of
+							lenition marks. (p.15) Later than A and B. (p.16) "lateish in the
+							period" [what is the period?]</p></note>
+				</handNote>
+				<handNote xml:id="Hand4">
+					<forename>[unk.]</forename>
+					<surname>[unk.]</surname>
+					<date from="1100" to="1150" min="1100">12</date>
+					<region cert="high">NE Scotland</region>
+					<note><p>Hand D in the Gaelic Notes in the Book of Deer</p><p>Jackson (1972):
+							(p.14) Less formal. More use of m-suspension and abbreviations for <hi
+								rend="italics">mac</hi> and <hi rend="italics">meic</hi>. Use of
+							continental "g" (<hi rend="italics">fer leiginn</hi>). (p.15) Later than
+							A and C [and therefore B?]. (p.16) No earlier than 1131.</p></note>
+				</handNote>
+				<handNote xml:id="Hand5">
+					<forename>[unk.]</forename>
+					<surname>[unk.]</surname>
+					<date from="1100" to="1150" min="1100">12</date>
+					<region cert="high">NE Scotland</region>
+					<note><p>Hand E in the Gaelic Notes in the Book of Deer</p><p>Jackson (1972):
+							(p.15): Wrote the Charter of David I. (p.16) A continental hand, with
+							Hiberno-Saxon influences. (p.16) Late in the period.</p></note>
+				</handNote>
+				<handNote xml:id="Hand6">
+					<forename>[unk.]</forename>
+					<surname>[unk.]</surname>
+					<date cert="medium" from="0900" to="1000" min="900">10</date>
+					<region cert="high">NE Scotland</region>
+					<note>Scribe of main text in the Book of Deer</note>
+				</handNote>
+				<handNote xml:id="Hand7">
+					<forename>[unk.]</forename>
+					<surname cert="medium">MacEwen (?)</surname>
+					<date from="1450" to="1550" min="1499">15/16</date>
+					<region cert="medium">Argyll</region>
+					<note><p>This is the scribe of '<ref target="T2">Aingil Dé dom dhín</ref>' in
+								<ref target="MS2">London, BL MS. Egerton 2899</ref> and a set of
+							Columban poems in Edinburgh, NLS Adv. MS 72.1.31. Black has suggested
+							that he was a MacEwen working for the Campbells of Glenorchy.</p>
+						<p>On the whole, the scribe follows the conventions of medieval Gaelic
+							orthography and restricts himself to the most conventional
+							abbreviations.</p>
+						<p>The scribe displays a curious attitude towards lenition, often omitting
+							it from monosyllables ending with /X'/ (e.g. <hi rend="italic">nac</hi>,
+								<ref target="#T2.1.1d">q1d</ref> not <hi rend="italic">nach</hi>. At
+							the same time, lenition markers are added where lenition would not
+							normally be written (e.g. <hi rend="italic">mainḋir</hi>, <ref
+								target="#T2.1.2b">q2b</ref>. There is also one occasion where
+							lenition is used to indicate eclipsis (<ref target="#T2.1.10a"
+								>q10a</ref>). The absence of lenition from final /X'/ may be
+							designed to represent Scottish Gaelic pronounciation in some way, but I
+							am yet to find a way of making sense of the feature along these
+							lines.</p>
+						<p>He also tends to add a hair-stroke flick towards the upper right above
+							the letter “i”, in the absence of any other diacritic. This closely
+							resembles an acute accent but is probably meant merely as a minim
+							marker. Examination of words in which “i” really should have an acute
+							accent (e.g. <ref target="#T2-1-17b">q17b</ref>, “nac bí”; <ref
+								target="#T2-1-24c">q24c</ref>, “tísat”) reveals no reliable visual
+							indicator of when the flick is an accent or not, so accents on “i” are
+							included in the diplomatic text simply when they would be expected in
+							mainstream Classical Gaelic orthography.</p>
+					</note>
+				</handNote>
+				<handNote xml:id="Hand8">
+					<forename>Eoghan</forename>
+					<surname>Mac Pháil</surname>
+					<date cert="high" from="1600" to="1650" min="1600">17</date>
+					<region cert="high">W Scotland</region>
+					<note/>
+				</handNote>
+				<handNote xml:id="Hand9">
+					<forename>Eoghan</forename>
+					<surname>Mac Gilleoin</surname>
+					<date cert="medium" from="1650" to="1700" min="1600">17</date>
+					<region cert="high">SW Scotland</region>
+					<note/>
+				</handNote>
+				<handNote xml:id="Hand10">
+					<forename>Niall</forename>
+					<surname>MacMhuirich</surname>
+					<date cert="medium" from="1600" to="1660" min="1699">17/18</date>
+					<region cert="high">W Scotland</region>
+					<note/>
+				</handNote>
+				<handNote xml:id="Hand11">
+					<forename>Domnall</forename>
+					<surname>MacMhuirich</surname>
+					<date type="floruit" cert="medium" from="1707" to="1745" min="1700">18</date>
+					<region cert="high">W Scotland</region>
+					<note/>
+				</handNote>
+				<handNote xml:id="Hand12">
+					<forename>[unk.]</forename>
+					<surname>[unk.]</surname>
+					<date type="floruit" cert="medium" from="1500" to="1590" min="1500">16</date>
+					<region cert="high">W Scotland</region>
+					<note>Hand M in NLS Adv. MS 72.1.33.</note>
+				</handNote>
+				<handNote xml:id="Hand13">
+					<forename>Lachlan Mór</forename>
+					<surname>MacLean</surname>
+					<date type="floruit" cert="medium" from="1577" to="1598" min="1500">16</date>
+					<region cert="high">Isle of Mull</region>
+					<note/>
+				</handNote>
+				<handNote xml:id="Hand14">
+					<forename>James</forename>
+					<surname>Beaton</surname>
+					<date type="floruit" cert="medium" from="1613" to="1621" min="1600">17</date>
+					<region/>
+					<note>Black's Hand K (NLS Adv. 72.1.33)</note>
+				</handNote>
+				<handNote xml:id="Hand15">
+					<forename>[unk.]</forename>
+					<surname>[unk.]</surname>
+					<date type="floruit" cert="low" from="1590" to="1700" min="1600">17</date>
+					<region/>
+					<note>Like James Beaton's, this hand makes occasional brief interventions in
+						Transcription 5.2 (NLS Adv. MS. 72.1.33). It is mucher neater than James
+						Beaton's and the main scribes, with each stroke an angular block strongly
+						distinguished from the others.</note>
+				</handNote>
+				<handNote xml:id="Hand16">
+					<forename>Rev. John</forename>
+					<surname>Beaton</surname>
+					<date type="life" cert="medium" from="1640" to="1715" min="1600">17</date>
+					<region/>
+					<note>Black's Hand S (NLS Adv. 72.1.33)</note>
+				</handNote>
+				<handNote xml:id="Hand17">
+					<forename>Neil</forename>
+					<surname>Beaton</surname>
+					<date type="floruit" cert="medium" from="1656" to="1656" min="1600">17</date>
+					<region/>
+					<note>Black's Hand D (NLS Adv. 72.1.33)</note>
+				</handNote>
+				<handNote xml:id="Hand18">
+					<forename>Dubhghall Albanach</forename>
+					<surname>mac mhic Cathail</surname>
+					<date type="floruit" cert="medium" from="1467" to="1467" min="1400">15</date>
+					<region/>
+					<note/>
+				</handNote>
+				<handNote xml:id="Hand19">
+					<forename>Cairbre</forename>
+					<surname>Ó Ceanmain</surname>
+					<date type="floruit" cert="high" from="1560" to="1563" min="1500">16</date>
+					<region/>
+					<note>EUL La. III.21</note>
+				</handNote>
+				<handNote xml:id="Hand20">
+					<forename>Eoin</forename>
+					<surname>mac Domhnaill Ó Conchubhair</surname>
+					<date type="life" cert="medium" from="1541" to="1601" min="1500">16</date>
+					<region>SW Scotland</region>
+					<region>Ireland</region>
+					<note><p xml:space="preserve">
+						- "a good, clear hand varying in size from average to large" (Black, 2011)
+						- tendency to use accents frequently (related to stress patterns in Latinate vocab?); difficult to distinguish from hairstrokes on "i" in minim clusters.
+						- subtle use of word division (e.g. copula plus prep. as well as copula plus pronoun).
+						- flexible use of abbreviations (e.g. sed-abbreviation for "echt"; tironian et for "it").
+					</p>
+					</note>
+				</handNote>
+				<handNote xml:id="Hand21">
+					<forename>Domhnall Gorm</forename>
+					<surname>?Mac Domhnaill</surname>
+					<date min="1599">16/17</date>
+					<region>Sleat (?)</region>
+					<note/>
+				</handNote>
+				<handNote xml:id="Hand22">
+					<forename>Cathal</forename>
+					<surname>Mac Mhuirich</surname>
+					<date min="1600">17</date>
+					<region>Western Isles/Skye</region>
+					<note/>
+				</handNote>
+				<handNote xml:id="Hand23">
+					<forename>Alasdair</forename>
+					<surname>Mac Mhaighstir Alasdair</surname>
+					<date min="1700">18</date>
+					<region>Western Highlands</region>
+					<note/>
+				</handNote>
+				<handNote xml:id="Hand999">
+					<forename>an unidentfied</forename>
+					<surname>hand</surname>
+					<date>unknown</date>
+					<region>unknown</region>
+					<note>This hand not only cannot be associated with a known scribe but cannot
+						even be grouped in confidence with other interventions. This is probably
+						because not enough has been written in this hand for a sound palaeographical
+						analysis to be made. Note that this tag is a generic placeholder rather than
+						an effort to identify a single hand.</note>
+				</handNote>
+			</handNotes>
+		</profileDesc>
+		<revisionDesc>
+			<change when="2017-11-23" who="EPT">Corpus header: Revised &lt;encodingDesc&gt; in line
+				with changes in policy changes arising from work on Transcriptions 2 and 6. Merged
+				seperate &lt;encodingDesc&gt; elements.</change>
+			<change when="2017-11-16" who="EPT">Corpus header: Revised &lt;encodingDesc&gt; in line
+				with changes in policy changes arising from work on Transcription 1.</change>
+			<change when="2017-11-08" who="EPT">Corpus header: New &lt;charDecl&gt; element. form
+				and checked over</change>
+			<change when="2017-11-06" who="EPT, MMC">Corpus header: Elements planned in template
+				form and checked over</change>
+			<change when="2017-11-07" who="EPT">Corpus header: Added content to elements</change>
+		</revisionDesc>
+	</teiHeader>
+	<!-- <xi:include href="Transcriptions/transcription1.xml" parse="xml"/> -->
+	<!-- <xi:include href="Transcriptions/transcription2.xml" parse="xml"/> -->
+	<!-- <xi:include href="Transcriptions/transcription3.xml" parse="xml"/> -->
+	<xi:include href="Transcriptions/transcription4.xml" parse="xml"/>
+	<!-- <xi:include href="Transcriptions/transcription5.xml" parse="xml"/> -->
+	<!-- <xi:include href="Transcriptions/transcription6.xml" parse="xml"/> -->
+	<!-- <xi:include href="Transcriptions/transcription7.xml" parse="xml"/> -->
+	<!-- <xi:include href="Transcriptions/transcription8.xml" parse="xml"/> -->
+	<!-- <xi:include href="Transcriptions/transcription9.xml" parse="xml"/> -->
+	<!-- <xi:include href="Transcriptions/transcription10.xml" parse="xml"/> -->
+	<!-- <xi:include href="Transcriptions/transcription11.xml" parse="xml"/> -->
+	<!-- <xi:include href="Transcriptions/transcription12.xml" parse="xml"/> -->
+	<!-- <xi:include href="Transcriptions/transcription13.xml" parse="xml"/> -->
+	<!-- <xi:include href="Transcriptions/transcription14.xml" parse="xml"/> -->
+	<!-- <xi:include href="Transcriptions/transcription15.xml" parse="xml"/> -->
+	<!-- <xi:include href="Transcriptions/transcription16.xml" parse="xml"/> -->
+	<xi:include href="hwData.xml" parse="xml"/>
+</teiCorpus>
