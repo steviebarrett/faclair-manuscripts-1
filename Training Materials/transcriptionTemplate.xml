@@ -1,25 +1,20 @@
-<?xml version="1.0" encoding="UTF-8"?> <!-- Required for all TEI documents. -->
-<?xml-model href="../fnag_mss2.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?> <!-- Relative filepath to the schema ("fnag_mss2.rng"); it is required. Update if another schema is used or if this file is moved. -->
-<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="TN"> <!-- Root element for this transcription file: @xmlns required in all cases (identifies this as a TEI document); @xml:id = T + [transcription number] (e.g. T8). This is the unique id number for this file. -->
-<teiHeader> <!-- Contains the header (i.e. introduction) to this transcription file. -->
-		<fileDesc> <!-- This broad-ranging element contains the bulk of the introductory material in the header. -->
-			<titleStmt> <!-- Contains key information about how the file was created. -->
-				<title>Transcription N</title> <!--  -->
-				<respStmt corresp="XXX">
-					<name/>
-					<resp>Transcriber</resp>
-					<resp/>
-				</respStmt>
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../fnag_mss2.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="TN">
+	<teiHeader>
+		<fileDesc>
+			<titleStmt>
+				<title>Transcription N</title>
 				<respStmt corresp="WGI">
 					<name>William Gillies</name>
-					<resp>Manuscripts Consultant</resp>
+					<resp>Reviewer</resp>
 				</respStmt>
 			</titleStmt>
 			<extent/>
 			<publicationStmt>
 				<authority sameAs="authority"/>
-				<availability status="restricted">
-					<p/>
+				<availability status="restricted" sameAs="availability">
+					<licence/>
 				</availability>
 				<idno/>
 			</publicationStmt>
@@ -30,7 +25,7 @@
 			</notesStmt>
 			<sourceDesc>
 				<msDesc>
-					<msIdentifier sameAs="MSXXX">
+					<msIdentifier sameAs="MSN">
 						<settlement/>
 						<repository/>
 						<idno type="shelfmark"/>
@@ -39,7 +34,7 @@
 						<summary>
 							<p/>
 						</summary>
-						<msItem n="N" xml:id="ID" resp="HandXXX">
+						<msItem n="itemN" xml:id="itemID" resp="HandXXX">
 							<locus/>
 							<title/>
 							<incipit/>
@@ -53,39 +48,58 @@
 							<filiation>
 								<p/>
 							</filiation>
-							<textLang mainLang="hsg">
-								<note><p/><p
-										comment="Orthography and Scribal Practices"><list>
-											<head>Orthography</head>
+							<textLang mainLang="XXX" otherLangs="XXX">
+								<note comment="Orthography and Scribal Practices">
+									<p/>
+									<p>
+										<list>
+											<head>Spelling System</head>
 											<item/>
 										</list><list>
 											<head>Scribal Practices</head>
 											<item/>
-										</list></p></note><note comment="Language">
+										</list></p>
+								</note>
+								<note comment="Language">
 									<p comment="Nominal System">
 										<list>
 											<item/>
-										</list></p><p comment="Verbal System">
+										</list></p>
+									<p comment="Verbal System">
 										<list>
 											<item/>
-										</list></p><p comment="Pronouns and Pronominals"><list>
+										</list></p>
+									<p comment="Pronouns and Pronominals"><list>
 											<item/>
-										</list></p><p comment="Syntax"><list>
+										</list></p>
+									<p comment="Syntax"><list>
 											<item/>
-										</list></p><p comment="Lexis"><list>
+										</list></p>
+									<p comment="Lexis"><list>
 											<item/>
-										</list></p><p comment="Conclusions"><list>
+										</list></p>
+									<p comment="Conclusions"><list>
 											<item/>
-										</list></p></note><note comment="Style"><p/></note>
+										</list></p>
+								</note>
+								<note comment="Style">
+									<p/> 
+								</note>
 							</textLang>
 						</msItem>
 					</msContents>
 					<physDesc>
 						<objectDesc>
 							<supportDesc>
-								<support><p/></support>
-								<foliation><p/></foliation>
-								<condition><p/></condition>
+								<support>
+									<p/>
+								</support>
+								<foliation>
+									<p/>
+								</foliation>
+								<condition>
+									<p/>
+								</condition>
 							</supportDesc>
 							<layoutDesc>
 								<p/>
@@ -93,39 +107,52 @@
 						</objectDesc>
 						<handDesc>
 							<handNote corresp="HandXXX">
-								<note comment="The Scribe">
-									<p/>
-									<p/>
-									<p comment="Other Activities"/>
+								<note> 
+									<p comment="The Scribe"/>
+									<p comment="Other Activities"/>								
 								</note>
 							</handNote>
 						</handDesc>
 					</physDesc>
-					<history>
-						<origin>
-							<p/>
+					<history> 
+						<origin> 
+							<p/> 
 						</origin>
-						<provenance><p/></provenance>
-						<acquisition><p/></acquisition>
+						<provenance>
+							<p/>
+						</provenance>
+						<acquisition>
+							<p/>
+						</acquisition>
 					</history>
 				</msDesc>
 			</sourceDesc>
 		</fileDesc>
+		<encodingDesc>
+			<editorialDecl>
+				<p/>  
+			</editorialDecl>
+			<metDecl> 
+				<p/> 
+			</metDecl>
+			<refsDecl> 
+				<p/> 
+			</refsDecl>
+		</encodingDesc>
 		<profileDesc>
-			<textClass>
+			<textClass> 
 				<keywords>
 					<term/>
 				</keywords>
 			</textClass>
 		</profileDesc>
 		<revisionDesc>
-			<change/>
+			<change when="yyyy-mm-dd" who="XXX"/> 
 		</revisionDesc>
 	</teiHeader>
-	<text>
+	<text> 
 		<body>
-			<div>
-				
+			<div n="N" type="ZZZ" resp="HandXXX" corresp="NNN"> 
 			</div>
 		</body>
 	</text>

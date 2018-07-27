@@ -94,7 +94,8 @@
 								child <msItem> elements can be inserted here as children of an enclosing <msItem> element. This might be done to represent poems
 								in a prosimetric text, for example. Any of the child elements of <msItem> set out here can be added for either the parent or child
 								<msItem> element (i.e. for either the text as a whole or its subdivisions). However, any can also be omitted if this seems expedient.
-								For example, it may not be necessary to conduct a language study (<textLang>) of both the text overall and of its individual components.-->
+								For example, it may not be necessary to conduct a language study (<textLang>) of both the text overall and of its individual components.
+								If a child element of <msItem> is not needed, then remove it completely.-->
 							<locus/>
 							<!-- Page/folio reference for this text, entered as a single string (e.g. "fols 7v16-8r31". -->
 							<title/>
@@ -297,5 +298,6 @@
 			</div>
 			<!-- Subsequent texts can be added by adding further <div> elements here. -->
 		</body>
+		<!-- A bibliography will be automatically generated here from citations made elsewhere in the file (see User Documentation). -->
 	</text>
 </TEI>
