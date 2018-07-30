@@ -16,7 +16,11 @@
 		<sourceDesc>
 			<listBibl type="mss">
 				<msDesc>
-					<msIdentifier/>
+					<msIdentifier>
+						<settlement/>
+						<repository/>
+						<idno type="shelfmark"/>
+					</msIdentifier>
 				</msDesc>
 			</listBibl>
 			<listBibl type="lit">
@@ -162,5 +166,5 @@
 		<change when="yyyy-mm-dd" who="XXX"/> 
 	</revisionDesc>
 </teiHeader>
-	<xi:include href="transcriptionTemplate.xml" parse="xml"/> 
+	<xi:include href="example.xml" parse="xml"/> 
 </teiCorpus>

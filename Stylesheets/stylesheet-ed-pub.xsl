@@ -29,10 +29,10 @@
 	<xsl:template match="/">
 		<html>
 			<head>
-				<script src="WordFile.js"/>
-				<script src="ref.js"/>
-				<script src="hilites.js"/>
-				<script src="textComm.js"/>
+				<script src="JS_FIles/WordFile.js"/>
+				<script src="JS_FIles/ref.js"/>
+				<script src="JS_FIles/hilites.js"/>
+				<script src="JS_FIles/textComm.js"/>
 			</head>
 			<body>
 				<h1 style="text-align:center; font-size:18px">
