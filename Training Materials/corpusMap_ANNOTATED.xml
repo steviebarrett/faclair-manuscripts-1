@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?> <!-- Required for all TEI documents. -->
+<?xml-model href="file:/C:/Files/faclair-manuscripts/fnag_mss2.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?> <!-- Relative filepath to the schema 
+	("fnag_mss2.rng"); it is required. Update if another schema is used or if this file is moved. -->
+<teiCorpus xmlns="http://www.tei-c.org/ns/1.0" xmlns:xi="http://www.w3.org/2001/XInclude">
+	<!-- Root element for the corpus file: @xmlns required in all cases. -->
+	<teiHeader>
+		<!-- Contains the header for the entire corpus; i.e., data that could potentially be of relevance to any of the transcription files. Points in the corpus file where transcribers might need to add 
+			data are indicated with the words "USER INPUT". -->
+		<!-- Any data already in the corpus file quite possibly relates to multiple texts or transcription files in the corpus. It should not be changed or removed without very thorough
+				consultation and checking. -->
+		<fileDesc>
+			<!-- Contains data relating to the corpus; in all honesty, in the context of this project, the names of these high-level corpus header 
+			elements are not of great significance. TEI conventions demand that certain data appears under certain headers but it is not 
+			always obvious which ones.-->
+			<titleStmt>
+				<!-- Contains information about the creation of the corpus. -->
+				<title>Faclair na Gaìdhlig: Medieval and Early Modern Manuscript Corpus</title>
+				<!-- The corpus title. -->
+				<respStmt xml:id="UUU">
+					<!-- Describes the contribution of an individual to the corpus; @xml:id contains their unique three-letter id. This is pointed to by @resp and 
+							@corresp attributes elsewhere. -->
+					<name/>
+					<!-- The contributor's name -->
+					<resp/>
+					<!-- Their contribution -->
+				</respStmt>
+				<!-- Further contributors can be acknowledged by adding further <respStmt> elements. -->
+			</titleStmt>
+			<publicationStmt>
+				<!-- Contains information on the publication and availabilty of the corpus -->
+				<authority/>
+				<!-- FnaG project details -->
+				<availability>
+					<!-- Information on the availability of transcription files and data -->
+					<p/>
+					<!-- The default statement on the availability of texts; it restricts them to internal FnaG/DASG use. -->
+				</availability>
+			</publicationStmt>
+			<sourceDesc>
+				<!-- The corpus bibliography. -->
+				<listBibl type="mss">
+					<!-- A list of manuscripts relevant to the corpus; this should include both manuscripts from which transcriptions have been made
+							and manuscripts that have merely been cited. -->
+					<msDesc xml:id="VVV">
+						<!-- Contains information on a manuscript; if the manuscript corresponds to a transcription file, then @xml:id = "MS" + the transcription
+								file's number. It should be the same as the value of <msIdentifier> @sameAs in the corresponding transcription file.  If the manuscript 
+								does not correspond to a transcription file, then it should be given a unique (within the context of the project) id formed of an abbreviated reference to its respository 
+								plus its standard shelfmark, with further codes added until the id is likely to be unique (e.g. Dublin, Royal Irish Academy MS 23 P 12 (536) 
+								could safely take the id "RIA23P12"). -->
+						<msIdentifier>
+							<!-- Identifying information on the manuscript. -->
+							<settlement/>
+							<!-- The town/city/region where the manuscript is located, according to its standard designation 
+							(e.g. "Edinburgh" in Edinburgh, NLS Adv. 72.1.1). A following comma will be inserted automatically during processing. -->
+							<repository/>
+							<!-- The library where this manuscript is located (e.g. "NLS Adv." in Edinburgh, NLS Adv., 72.1.1).  A following 
+							comma will be inserted automatically during processing. -->
+							<idno type="shelfmark"/>
+							<!-- The shelfmark within that library. -->
+						</msIdentifier>
+					</msDesc>
+					<!-- USER INPUT: To add a new manuscript that has been, add another <msDesc> element + children here and fill in the details. -->
+				</listBibl>
+				<listBibl type="lit">
+					<!-- A list of primary and secondary literature relevant to the corpus. -->
+					<biblStruct type="book" xml:id="WWW">
+						<!-- A monograph in the bibliography; @xml:id should contain a unique id for this bibliography item. It can be based on
+										[first] author's surname + publication date, plus an alphabetic serial code if the initially resulting code is not unique -->
+						<monogr>
+							<title/>
+							<!-- The title of the monograph -->
+							<respStmt>
+								<!-- An individual responsible for the monograph. -->
+								<name>
+									<!-- The individual's name -->
+									<forename/>
+									<!-- The individual's forename -->
+									<surname/>
+									<!-- The individual's surname -->
+								</name>
+								<resp/>
+								<!-- The nature of their contribution: "author", "editor", "translator", or "contributor". -->
+							</respStmt>
+							<!-- If there are multiple authors, or a translator or suchlike, add further<respStmt> elements + children here -->
+							<imprint>
+								<!-- Publication details for the monograph -->
+								<pubPlace/>
+								<!-- Settlement where the monograph was published -->
+								<publisher/>
+								<!-- Publisher of the monograph -->
+								<date/>
+								<!-- Date of the publication of the monograph -->
+							</imprint>
+						</monogr>
+					</biblStruct>
+					<biblStruct type="article" xml:id="XXX">
+						<!-- A journal article in the bibliography; @xml:id should contain a unique id for this bibliography item. It can be based on
+										[first] author's surname + publication date, plus an alphabetic serial code if the initially resulting code is not unique -->
+						<analytic>
+							<!-- Details of the journal article -->
+							<title level="a"/>
+							<!-- Title of the journal article -->
+							<respStmt>
+								<!-- An individual responsible for the journal article. -->
+								<name>
+									<forename/>
+									<!-- The individual's forename -->
+									<surname/>
+									<!-- The individual's surname -->
+								</name>
+								<resp/>
+								<!-- The nature of their contribution:  "author", "editor", "translator", or "contributor". -->
+							</respStmt>
+							<!-- If there are multiple contributors, add further<respStmt> elements + children here -->
+						</analytic>
+						<monogr>
+							<!-- Details of the journals -->
+							<title level="j"/>
+							<!-- Title of the journal -->
+							<imprint>
+								<!-- Publication details of the journal article -->
+								<biblScope unit="volume"/>
+								<!-- The journal volume number -->
+								<biblScope unit="page"/>
+								<!-- Page span of the journal article -->
+								<date/>
+								<!-- publication date of the journal -->
+							</imprint>
+						</monogr>
+					</biblStruct>
+					<biblStruct type="bookSection" xml:id="YYY">
+						<!-- A section from a multi-authored book in the bibliography; @xml:id should contain a unique id for this bibliography item. It can be based on
+										[first] author's surname + publication date, plus an alphabetic serial code if the initially resulting code is not unique -->
+						<analytic>
+							<!-- Details of the book section -->
+							<title level="a"/>
+							<!-- The title of the book section -->
+							<respStmt>
+								<!-- An individual responsible for the book section. -->
+								<name>
+									<forename/>
+									<!-- The individual's forename -->
+									<surname/>
+									<!-- The individual's surname -->
+								</name>
+								<resp/>
+								<!-- The nature of their contribution:  "author", "editor", "translator", or "contributor". -->
+							</respStmt>
+							<!-- If there are multiple contributors, add further<respStmt> elements + children here -->
+						</analytic>
+						<monogr>
+							<title level="m"/>
+							<!-- The title of multi-authored book -->
+							<respStmt>
+								<!-- An individual responsible for the overall book (e.g. editor) -->
+								<name>
+									<forename/>
+									<!-- The individual's forename -->
+									<surname/>
+									<!-- The individual's surname -->
+								</name>
+								<resp/>
+								<!-- The nature of their contribution:  "author", "editor", "translator", or "contributor". -->
+							</respStmt>
+							<!-- If there are multiple contributors, add further<respStmt> elements + children here -->
+							<imprint>
+								<!-- Publication details for the book section -->
+								<pubPlace/>
+								<!-- Settlement where the multi-authored book was published -->
+								<biblScope unit="page"/>
+								<!-- Page span of the book section -->
+								<publisher/>
+								<!-- Publisher of the multi-authored book -->
+								<date/>
+								<!-- Date of the publication of the multi-authored book -->
+							</imprint>
+						</monogr>
+					</biblStruct>
+					<biblStruct type="webpage" xml:id="ZZZ">
+						<!-- A webpage in the bibliography; @xml:id should contain a unique id for this bibliography item. It can be based on
+										[first] author's surname + publication date, plus an alphabetic serial code if the initially resulting code is not unique -->
+						<monogr>
+							<title level="m"/>
+							<!-- Title of the webpage -->
+							<respStmt>
+								<!-- An individual responsible for the website (e.g. editor) -->
+								<resp/>
+								<name>
+									<forename/>
+									<!-- The individual's forename -->
+									<surname/>
+									<!-- The individual's surname -->
+								</name>
+							</respStmt>
+							<!-- If there are multiple contributors, add further<respStmt> elements + children here -->
+							<imprint>
+								<!-- Publication details for the website -->
+								<date/>
+								<!-- Date of the website's creation or latest relevant major update -->
+								<note type="accessed"/>
+								<!-- Date on which the website was last accessed -->
+								<note type="url"/>
+								<!-- URL for the website -->
+							</imprint>
+						</monogr>
+					</biblStruct>
+					<!-- USER INPUT: To add another bibliography item, either (a) add the relevant <biblStruct> element + children and fill in the 
+					details or (b) export, copy, and paste one or more <biblStruct> elements from a Zotero bibliography -->
+					<!-- The order in which items are added to the bibliography within corpus.xml is not important. The stylesheet will generate and
+						sort bibliographies automatically. Thus, new entries can simply be added at the end. -->
+				</listBibl>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<!-- Information on the conventions adopted when compiling the corpus and making the transcriptions -->
+			<projectDesc>
+				<!-- An overview of the FnaG mss project -->
+				<p/>
+			</projectDesc>
+			<samplingDecl>
+				<!-- The principles according to which material is selected for transcription -->
+				<p/>
+			</samplingDecl>
+			<editorialDecl>
+				<!-- Contains elements describing the editorial principles applied in the course of transcription on the project -->
+				<correction>
+					<!-- Description of the circumstances under which the manuscript text might be amended in the transcription and how this is shown. -->
+					<p/>
+				</correction>
+				<normalization>
+					<!-- Description of the circumstances under which spelling in the manuscript text might be normalised in the transcription and how this is shown. -->
+					<p/>
+				</normalization>
+				<punctuation>
+					<!-- Description of any circumstances under which punctuation is added to the transcription -->
+					<p/>
+				</punctuation>
+				<segmentation>
+					<!-- Policies regarding page, column, line, and word division -->
+					<p/>
+				</segmentation>
+			</editorialDecl>
+			<classDecl>
+				<!-- Keys to codes used in the mark up of transcriptions -->
+				<taxonomy xml:id="POS">
+					<!-- Codes used to mark up part of speech -->
+					<gloss xml:id="aaa"/>
+					<!-- A part of speech (e.g. noun); the code is contained in @xml:id -->
+					<!-- USER INPUT: If another part of speech needs to be added, add another <gloss> element here. -->
+				</taxonomy>
+				<taxonomy xml:id="probs">
+					<!-- Codes used to mark up problems with transcribing text -->
+					<gloss xml:id="bbb"/>
+					<!-- A problem (e.g. text_obscure); the code is contained in @xml:id -->
+					<!-- USER INPUT: If another problem record needs to be added, add another <gloss> element here. -->
+				</taxonomy>
+				<taxonomy xml:id="lang">
+					<!-- Language codes (see https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) -->
+					<gloss xml:id="ccc"/>
+					<!-- A problem (e.g. text_obscure); the code is contained in @xml:id -->
+					<!-- USER INPUT: If another language code needs to be added, add another <gloss> element here. -->
+				</taxonomy>
+			</classDecl>
+			<charDecl>
+				<!-- A key to codes used to represent special characters in the manuscript (e.g. abbreviations, ligatures) -->
+				<glyph xml:id="gn" corresp="www.vanhamel.nl/codecs/XXX">
+					<!-- A special character; @xml:id contains the code used to indicate this character in
+				<g> elements in the transcriptions; @corresp contains the URL for an entry (if present) on this special character in the Tiodscadal na Nod database.-->
+					<glyphName/>
+					<!-- A name for the special character; use the name from Tiodscadal na Nod if possible -->
+					<note/>
+					<!-- A description of the special character and what it can stand for -->
+				</glyph>
+				<!-- USER INPUT: If another special character needs to be added, add another <glyph> + children here. -->
+			</charDecl>
+		</encodingDesc>
+		<profileDesc>
+			<!-- Contains information on the hands/scribes involved in the corpus' manuscripts -->
+			<handNotes>
+				<!-- Hands appearing in the corpus -->
+				<handNote xml:id="DDD">
+					<!-- A hand appearing in one or more manuscripts in the corpus; @xml:id is a unique id for each hand, = "Hand" + a serial number. There
+							is also a special id, Hand999, for hands that cannot be identified (NB: this does not simply mean that the scribe is anonymous; it means 
+							the sample is too brief or illegible for it to be grouped with any other hand; anonymous hands should have their own record/id) -->
+					<forename/>
+					<!-- The scribe's first name [and sobriquet] (if known; if not known, "unk.") -->
+					<surname/>
+					<!-- The scribe's surname/patronymic (if known; if not known, "unk.") -->
+					<date from="yyyy" to="yyyy" min="yyyy" type="zzz" cert="xxx"/><!-- The scribe's dating; the <date> element should contain a single number indicating the century in which the 
+					scribe was active (e.g. "15"; NB: his whole career, not just when the material being transcribed was produced). If his period of professional activity spanned multiple 
+					centuries, each should be given separared by a slash (e.g. "15/16"). -->
+					<!-- The @from and @to attributes contain specific dates: ideally the scribe's birth-date and death-date but possibly a terminus ad quem
+					and a terminus post quem. If no specific dates can be given, indicate the century/centuries estimated. For example, if the scribe's century is "15", then @from = "1400" 
+					and @to = "1500". @min indicates the earliest date within the estimated range (e.g. If a scribe is active between 1450 and 1454, his century would be "15", @from = "1450", 
+					@to = "1454", and @min = "1400")-->
+					<!-- @type indicates whether this date is a "floruit" or a "lifespan". @cert indicates the level of certainty with which these dates have been given ("high",
+					"medium", "low", "unknown"). -->
+					<region cert="xxx"/>
+					<!-- The geographical region(s) in which their scribal activity seems to have taken place; no system is currently in place for describing regions. This will be reviewed
+							once more hands are in the corpus. -->
+					<note>
+						<p/>
+						<!-- The scribe's biography, interests, and palaeographic/orthographic traits are summarised here -->
+						<!-- Further paragraphs can be added by adding further <p> elements -->
+					</note>
+				</handNote>
+			</handNotes>
+		</profileDesc>
+		<revisionDesc>
+			<!-- Keeps a record of major changes made to the corpus as a whole or to the corpus file. -->
+			<change when="yyyy-mm-dd" who="XXX"/>
+			<!-- Details of a major revision. @when is the date of the change; @who is the three 
+					letter ID for the main person responsible. -->
+		</revisionDesc>
+	</teiHeader>
+	<xi:include href="transcriptionTemplate.xml" parse="xml"/>
+	<!-- <xi:include> points to a transcription file; a stylesheet applied to the corpus file will also be applied to any files
+										pointed to by an <xi:include> element at this point. This allows data from the corpus file to be used when 
+										transforming the transcription files. @href contains a relative filepath to the transcription file (in this example,
+										"transcriptionTemplate.xml" would have to be in the same folder as the corpus file). @parse indicates what sort
+										of file is being included (currently, only XML (i.e. TEI) files are included). -->
+	<xi:include href="hwData.xml" parse="xml"/>
+	<!-- hwData.xml is included in all instances, as this provides additional dictionary references and morphological data. -->
+</teiCorpus>

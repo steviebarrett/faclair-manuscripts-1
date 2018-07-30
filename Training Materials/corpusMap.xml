@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="file:/C:/Files/faclair-manuscripts/fnag_mss2.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<teiCorpus xmlns="http://www.tei-c.org/ns/1.0" xmlns:xi="http://www.w3.org/2001/XInclude">
+<teiHeader>
+	<fileDesc>
+		<titleStmt>
+			<title>Faclair na Gaìdhlig: Medieval and Early Modern Manuscript Corpus</title>
+			<respStmt>
+				<name/>
+				<resp/>
+			</respStmt>
+		</titleStmt>
+		<publicationStmt>
+			<authority/>
+		</publicationStmt>
+		<sourceDesc>
+			<listBibl type="mss">
+				<msDesc>
+					<msIdentifier>
+						<settlement/>
+						<repository/>
+						<idno type="shelfmark"/>
+					</msIdentifier>
+				</msDesc>
+			</listBibl>
+			<listBibl type="lit">
+				<biblStruct type="book" xml:id="WWW">
+					<monogr>
+						<title/>
+						<respStmt>
+							<name>
+								<forename/>
+								<surname/>
+							</name>
+							<resp/>
+						</respStmt>
+						<imprint>
+							<pubPlace/>
+							<publisher/>
+							<date/>
+						</imprint>
+					</monogr>
+				</biblStruct>
+				<biblStruct type="article"  xml:id="XXX">
+					<analytic>
+						<title level="a"/>
+					</analytic>
+					<monogr>
+						<title level="j"/>
+						<respStmt>
+							<name/>
+							<resp/>
+						</respStmt>
+						<imprint>
+							<biblScope unit="volume"/>
+							<biblScope unit="page"/>
+							<date/>
+						</imprint>
+					</monogr>
+				</biblStruct>
+				<biblStruct type="bookSection"  xml:id="YYY">
+					<analytic>
+						<title level="a"/>
+						<respStmt>
+							<resp/>
+							<name>
+								<forename/>
+								<surname/>
+							</name>
+						</respStmt>
+					</analytic>
+					<monogr>
+						<title level="m"/>
+						<respStmt>
+							<resp/>
+							<name>
+								<forename/>
+								<surname/>
+							</name>
+						</respStmt>
+						<respStmt>
+							<resp/>
+							<name>
+								<forename/>
+								<surname/>
+							</name>
+						</respStmt>
+						<imprint>
+							<pubPlace/>
+							<biblScope unit="page"/>
+							<publisher/>
+							<date/>
+						</imprint>
+					</monogr>
+				</biblStruct>
+				<biblStruct type="webpage" xml:id="ZZZ">
+					<monogr>
+						<title level="m"/>
+						<respStmt>
+							<resp/>
+							<name/>
+						</respStmt>
+						<imprint>
+							<date/>
+							<note type="accessed"/>
+							<note type="url"/>
+						</imprint>
+					</monogr>
+				</biblStruct>
+			</listBibl>
+		</sourceDesc>
+	</fileDesc>
+	<encodingDesc>
+		<projectDesc>
+			<p/>
+		</projectDesc>
+		<samplingDecl>
+			<p/>
+		</samplingDecl>
+		<editorialDecl>
+			<correction>
+				<p/>
+			</correction>
+			<normalization>
+				<p/>
+			</normalization>
+			<punctuation>
+				<p/>
+			</punctuation>
+			<segmentation>
+				<p/>
+			</segmentation>
+		</editorialDecl>
+		<classDecl>
+			<taxonomy xml:id="POS">
+				<gloss  xml:id="aaa"/>
+			</taxonomy>
+			<taxonomy xml:id="probs">
+				<gloss xml:id="bbb"/>
+			</taxonomy>
+			<taxonomy xml:id="lang">
+				<gloss xml:id="ccc"/>
+			</taxonomy>
+		</classDecl>
+		<charDecl>
+			<glyph>
+				<glyphName xml:id="gn" corresp="www.vanhamel.nl/codecs/XXX"/>
+				<note/>
+			</glyph>
+		</charDecl>
+	</encodingDesc>
+	<profileDesc>
+		<handNotes>
+			<handNote xml:id="DDD">
+				<forename/>
+				<surname/>
+				<date from="yyyy" to="yyyy"/>
+				<region cert="x"/>
+				<note>
+					<p/>
+				</note>
+			</handNote>
+		</handNotes>
+	</profileDesc>
+	<revisionDesc>
+		<change when="yyyy-mm-dd" who="XXX"/> 
+	</revisionDesc>
+</teiHeader>
+	<xi:include href="example.xml" parse="xml"/> 
+</teiCorpus>
