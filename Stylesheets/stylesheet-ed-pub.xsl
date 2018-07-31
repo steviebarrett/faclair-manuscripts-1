@@ -1056,7 +1056,7 @@
 							select="key('hands', ancestor::tei:div/@resp)/tei:forename"
 							/><xsl:text> </xsl:text><xsl:value-of
 							select="key('hands', ancestor::tei:div/@resp)/tei:surname"
-							/><xsl:text> (</xsl:text><xsl:value-of select="ancestor::tei:div/@resp"
+							/><xsl:text> (</xsl:text><xsl:value-of select="ancestor::tei:div[1]/@resp"
 						/><xsl:text>) </xsl:text></b>
 				</seg>
 			</xsl:otherwise>
@@ -2097,7 +2097,7 @@
 	</xsl:template>
 
 	<xsl:template match="tei:w[descendant::tei:w]">
-		<xsl:apply-templates/>
+		<xsl:apply-templates/><xsl:text> </xsl:text>
 	</xsl:template>
 
 	<xsl:template match="tei:name">
