@@ -1056,7 +1056,7 @@
 							select="key('hands', ancestor::tei:div/@resp)/tei:forename"
 							/><xsl:text> </xsl:text><xsl:value-of
 							select="key('hands', ancestor::tei:div/@resp)/tei:surname"
-							/><xsl:text> (</xsl:text><xsl:value-of select="ancestor::tei:div/@resp"
+							/><xsl:text> (</xsl:text><xsl:value-of select="ancestor::tei:div[1]/@resp"
 						/><xsl:text>) </xsl:text></b>
 				</seg>
 			</xsl:otherwise>
@@ -1231,6 +1231,10 @@
 
 	<xsl:template match="tei:seg[@type = 'cfe']">
 		<xsl:text/>
+	</xsl:template>
+	
+	<xsl:template match="tei:seg[@type = 'title']">
+		<b><xsl:apply-templates/></b>
 	</xsl:template>
 
 	<xsl:template match="tei:l" name="line">
@@ -1894,13 +1898,13 @@
 			lemmaRefED="{$EDref}" lemmaDW="{$DWlem}" lemmaRefDW="{$DWref}" lemmaSL="{@lemmaSL}"
 			slipID="{@slipID}" ana="{@ana}" hand="{$hand}" ref="{$msref}" date="{$handDate}"
 			medium="{$medium}" cert="{$certLvl}" abbrRefs="{$abbrRef}" lineID="{$lineID}"
-			title="{$lem}: {$pos} {$src}&#10;{$hand}&#10;{$prob}{$certProb}&#10;Abbreviations: {$abbrs}&#10;{$gloss}"
+			title="{$lem}: {$pos} {$src}&#10;{$hand}&#10;{$prob}{$certProb}&#10;Abbreviations: {$abbrs}&#10;{$gloss}&#10;{@comment}"
 			style="text-decoration:none; color:#000000" class="ed">
 			<xsl:if test="ancestor::tei:sic">
 				<xsl:attribute name="title"><xsl:value-of select="$sicLem"/><xsl:value-of
 						select="$prob"/><xsl:value-of select="$certProb"/><xsl:value-of
 						select="$hand"/>&#10;<xsl:text>Abbreviations: </xsl:text><xsl:value-of
-						select="$abbrs"/>&#10;<xsl:value-of select="$gloss"/></xsl:attribute>
+							select="$abbrs"/>&#10;<xsl:value-of select="$gloss"/>&#10;<xsl:value-of select="@comment"/></xsl:attribute>
 				<xsl:attribute name="choicePOS">
 					<xsl:text>sic</xsl:text>
 					<xsl:value-of select="$choicePOS"/>
@@ -2097,7 +2101,7 @@
 	</xsl:template>
 
 	<xsl:template match="tei:w[descendant::tei:w]">
-		<xsl:apply-templates/>
+		<xsl:apply-templates/><xsl:text> </xsl:text>
 	</xsl:template>
 
 	<xsl:template match="tei:name">

@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="../Schemas/fnag_mss2.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
-<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="TN">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="transcription17">
 	<teiHeader>
 		<fileDesc>
 			<titleStmt>
-				<title>Transcription N</title>
-				<respStmt corresp="XXX">
-					<name/>
-					<resp/>
-				</respStmt>
+				<title>Transcription 17</title>
 				<respStmt corresp="WGI">
 					<name>William Gillies</name>
 					<resp>Reviewer</resp>
+				</respStmt>
+				<respStmt corresp="EPT">
+					<name>Eystein Thanisch</name>
+					<resp>Transcriber</resp>
 				</respStmt>
 			</titleStmt>
 			<extent/>
@@ -29,15 +29,68 @@
 			</notesStmt>
 			<sourceDesc>
 				<msDesc>
-					<msIdentifier sameAs="MSN">
-						<settlement/>
-						<repository/>
-						<idno type="shelfmark"/>
+					<msIdentifier sameAs="MS17">
+						<settlement>Edinburgh</settlement>
+						<repository>NLS</repository>
+						<idno type="shelfmark">Adv. MS 72.1.4</idno>
 					</msIdentifier>
 					<msContents>
 						<summary>
 							<p/>
 						</summary>
+						<msItem n="1" xml:id="MS17.1" resp="Hand24">
+							<locus>fol. 24<hi rend="sup">r</hi></locus>
+							<title>Definitions</title>
+							<incipit>Re sine ...</incipit>
+							<explicit>... co haicidach</explicit>
+							<note>
+								<p comment="Content"/>
+								<p comment="Style"/>
+								<p comment="Social Context and Intended Readers"/>
+								<p comment="Studies and Editions"/>
+							</note>
+							<filiation>
+								<p/>
+							</filiation>
+							<textLang mainLang="XXX" otherLangs="XXX">
+								<note comment="Orthography and Scribal Practices">
+									<p/>
+									<p>
+										<list>
+											<head>Spelling System</head>
+											<item/>
+										</list><list>
+											<head>Scribal Practices</head>
+											<item/>
+										</list></p>
+								</note>
+								<note comment="Language">
+									<p comment="Nominal System">
+										<list>
+											<item/>
+										</list></p>
+									<p comment="Verbal System">
+										<list>
+											<item/>
+										</list></p>
+									<p comment="Pronouns and Pronominals"><list>
+										<item/>
+									</list></p>
+									<p comment="Syntax"><list>
+										<item/>
+									</list></p>
+									<p comment="Lexis"><list>
+										<item/>
+									</list></p>
+									<p comment="Conclusions"><list>
+										<item/>
+									</list></p>
+								</note>
+								<note comment="Style">
+									<p/> 
+								</note>
+							</textLang>
+						</msItem>
 						<msItem n="itemN" xml:id="itemID" resp="HandXXX">
 							<locus/>
 							<title/>
@@ -110,7 +163,7 @@
 							</layoutDesc>
 						</objectDesc>
 						<handDesc>
-							<handNote corresp="HandXXX">
+							<handNote corresp="Hand24">
 								<note> 
 									<p comment="The Scribe"/>
 									<p comment="Other Activities"/>								
