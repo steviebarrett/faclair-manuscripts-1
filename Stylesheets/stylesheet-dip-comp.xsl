@@ -650,7 +650,6 @@
 
 	<xsl:template mode="dip" match="tei:w[descendant::tei:w]">
 		<xsl:apply-templates mode="dip"/>
-		<xsl:text> </xsl:text>
 	</xsl:template>
 
 	<xsl:template mode="dip" match="tei:name">
