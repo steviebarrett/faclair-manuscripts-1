@@ -120,7 +120,7 @@
 		</sub>
 	</xsl:template>
 
-	<xsl:template mode="dip" match="tei:space[@type = 'scribal']">
+	<xsl:template mode="dip" match="tei:space[@type = 'scribal' or @type = 'editorial']">
 		<xsl:choose>
 			<xsl:when test="ancestor::tei:w[not(descendant::tei:w)]">
 				<xsl:text>&#160;</xsl:text>
@@ -773,7 +773,7 @@
 			<xsl:apply-templates mode="dip"/>
 	</xsl:template>
 
-	<xsl:template mode="dip" match="tei:space[@type = 'force']">
+	<!-- <xsl:template mode="dip" match="tei:space[@type = 'force']">
 		<xsl:choose>
 			<xsl:when test="ancestor::tei:w[not(descendant::tei:w)]">
 				<xsl:text>&#160;</xsl:text>
@@ -784,7 +784,7 @@
 				</a>
 			</xsl:otherwise>
 		</xsl:choose>
-	</xsl:template>
+	</xsl:template> -->
 
 	<xsl:template mode="dip" match="tei:space[@type = 'em']">
 		<xsl:choose>

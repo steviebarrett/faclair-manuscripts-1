@@ -2429,6 +2429,14 @@
 	<xsl:template match="tei:space[@type = 'force']"> &#160; </xsl:template>
 
 	<xsl:template match="tei:space[@type = 'em']"> &#160;&#160;&#160;&#160; </xsl:template>
+	
+	<xsl:template match="tei:space[@type = 'scribal']">
+		<xsl:text/>
+	</xsl:template>
+	
+	<xsl:template match="tei:space[@type = 'editorial']">
+		<xsl:text/>
+	</xsl:template>
 
 	<xsl:template match="tei:supplied">
 		<xsl:choose>
