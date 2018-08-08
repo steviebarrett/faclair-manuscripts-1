@@ -1236,6 +1236,10 @@
 	<xsl:template match="tei:seg[@type = 'title']">
 		<b><xsl:apply-templates/></b>
 	</xsl:template>
+	
+	<xsl:template match="tei:seg[@type='gloss']">
+		<xsl:apply-templates/>
+	</xsl:template>
 
 	<xsl:template match="tei:l" name="line">
 		<xsl:variable name="Id" select="@xml:id"/>
@@ -1289,7 +1293,6 @@
 	</xsl:template>
 
 	<xsl:template match="tei:choice">
-		<xsl:variable name="choicePOS" select="count(preceding::tei:choice)"/>
 		<xsl:choose>
 			<xsl:when test="child::tei:sic | tei:corr">
 				<xsl:text>{</xsl:text>
@@ -1703,31 +1706,47 @@
 		</xsl:variable>
 		<xsl:variable name="certLvl">
 			<xsl:choose>
-				<xsl:when
-					test="ancestor-or-self::tei:unclear[@cert = 'high'] or descendant-or-self::tei:unclear[@cert = 'high']"
-					>slight</xsl:when>
-				<xsl:when
-					test="ancestor-or-self::*[@cert = 'medium'] or descendant-or-self::*[@cert = 'medium']"
-					>moderate</xsl:when>
-				<xsl:when
-					test="ancestor-or-self::*[@cert = 'low'] or descendant-or-self::*[@cert = 'low']"
-					>severe</xsl:when>
-				<xsl:otherwise>
+				<xsl:when test="ancestor::*[@cert] or descendant::*[@cert]">
 					<xsl:choose>
-						<xsl:when test="ancestor::tei:sic"> sic </xsl:when>
-						<xsl:when test="ancestor::tei:corr"> leg. </xsl:when>
-						<xsl:otherwise>
-							<xsl:choose>
-								<xsl:when test="ancestor-or-self::tei:supplied"> supp. word </xsl:when>
-								<xsl:when test="descendant-or-self::tei:supplied"> supp. char(s) </xsl:when>
-								<xsl:when test="@source"> new vocab. </xsl:when>
-								<xsl:when test="@lemma = 'LEMMA UNKNOWN'"> headword unknown
-								</xsl:when>
-							</xsl:choose>
-						</xsl:otherwise>
+						<xsl:when
+							test="ancestor-or-self::tei:unclear[@cert = 'high'] or descendant-or-self::tei:unclear[@cert = 'high']"
+							><xsl:text xml:space="preserve"> slight;</xsl:text></xsl:when>
+						<xsl:when
+							test="ancestor-or-self::*[@cert = 'medium'] or descendant-or-self::*[@cert = 'medium']"
+							><xsl:text xml:space="preserve"> moderate;</xsl:text></xsl:when>
+						<xsl:when
+							test="ancestor-or-self::*[@cert = 'low'] or descendant-or-self::*[@cert = 'low']"
+							><xsl:text xml:space="preserve"> severe;</xsl:text></xsl:when>
 					</xsl:choose>
-				</xsl:otherwise>
+				</xsl:when>
 			</xsl:choose>
+			<xsl:choose>
+						<xsl:when test="ancestor::tei:choice">
+							<xsl:choose>
+								<xsl:when test="ancestor::tei:sic"><xsl:text xml:space="preserve"> sic;</xsl:text></xsl:when>
+								<xsl:when test="ancestor::tei:corr"><xsl:text xml:space="preserve"> leg.;</xsl:text></xsl:when>
+							</xsl:choose>
+						</xsl:when>
+			</xsl:choose>
+							<xsl:choose>
+								<xsl:when test="ancestor-or-self::tei:supplied"><xsl:text xml:space="preserve"> supp. word;</xsl:text></xsl:when>
+								<xsl:when test="descendant-or-self::tei:supplied"><xsl:text xml:space="preserve"> supp. char(s);</xsl:text></xsl:when>
+							</xsl:choose>
+								<xsl:if test="@source"><xsl:text xml:space="preserve"> new vocab.</xsl:text></xsl:if>
+								<xsl:if test="@lemma = 'UNKNOWN'"><xsl:text xml:space="preserve"> headword unknown;</xsl:text>
+								</xsl:if>
+			<xsl:if test="ancestor::tei:add">
+				<xsl:text xml:space="preserve"> added;</xsl:text>
+			</xsl:if>
+			<xsl:if test="ancestor::tei:del">
+				<xsl:text xml:space="preserve"> del.;</xsl:text>
+			</xsl:if>
+			<xsl:if test="descendant::tei:add">
+				<xsl:text xml:space="preserve">char(s) added;</xsl:text>
+			</xsl:if>
+			<xsl:if test="descendant::tei:del">
+				<xsl:text xml:space="preserve">char(s) del.;</xsl:text>
+			</xsl:if>
 		</xsl:variable>
 		<xsl:variable name="handRef">
 			<xsl:choose>
@@ -1813,7 +1832,7 @@
 			<xsl:choose>
 				<xsl:when test="ancestor::tei:div/@type = 'verse'">Verse</xsl:when>
 				<xsl:when
-					test="ancestor::tei:div/@type = 'prose' or ancestor::tei:div/@type = 'divprose'"
+					test="ancestor::tei:div/@type = 'prose' or ancestor::tei:div/@type = 'divProse'"
 					>Prose</xsl:when>
 			</xsl:choose>
 		</xsl:variable>
@@ -1834,18 +1853,25 @@
 		</xsl:variable>
 		<xsl:variable name="gloss">
 			<xsl:choose>
-				<xsl:when test="descendant::tei:add[@type = 'gloss']">
-					<xsl:for-each select="descendant::tei:add[@type = 'gloss']">
-						<xsl:text>A gloss ("</xsl:text>
-						<xsl:value-of select="self::*"/>
-						<xsl:text>") has been added by </xsl:text>
-						<xsl:value-of select="key('hands', @resp)/tei:forename"/>
+				<xsl:when test="ancestor::tei:seg[@type = 'gloss'] and not(ancestor::tei:add[@type='gloss'])">
+						<xsl:text>A gloss has been added by </xsl:text>
+					<xsl:value-of select="key('hands', ancestor::tei:seg[@type='gloss']/tei:add[@type='gloss']/@resp)/tei:forename"/>
 						<xsl:text> </xsl:text>
-						<xsl:value-of select="key('hands', @resp)/tei:surname"/>
+					<xsl:value-of select="key('hands', ancestor::tei:seg[@type='gloss']/tei:add[@type='gloss']/@resp)/tei:surname"/>
 						<xsl:text> (</xsl:text>
-						<xsl:value-of select="@resp"/>
-						<xsl:text>)</xsl:text>
-					</xsl:for-each>
+					<xsl:value-of select="ancestor::tei:seg[@type='gloss']/tei:add[@type='gloss']/@resp"/>
+					<xsl:text>): "</xsl:text><xsl:apply-templates mode="dip" select="ancestor::tei:seg[@type='gloss']/tei:add[@type='gloss']/child::*"/><xsl:text>"</xsl:text>
+				</xsl:when>
+				<xsl:when test="ancestor::tei:add[@type='gloss']">
+					<xsl:text>This has been added as a gloss </xsl:text>
+					<xsl:if test="ancestor::tei:seg[@type='gloss']">
+						<xsl:text>on "</xsl:text><xsl:apply-templates mode="dip" select="ancestor::tei:seg[@type='gloss']/child::*[not(ancestor-or-self::tei:add[@type='gloss'])]"/><xsl:text>" </xsl:text>
+					</xsl:if>
+					<xsl:text>by </xsl:text><xsl:value-of select="key('hands', ancestor::tei:add[@type='gloss']/@resp)/tei:forename"/>
+					<xsl:text> </xsl:text>
+					<xsl:value-of select="key('hands', ancestor::tei:add[@type='gloss']/@resp)/tei:surname"/>
+					<xsl:text> (</xsl:text>
+					<xsl:value-of select="ancestor::tei:add[@type='gloss']/@resp"/><xsl:text>).</xsl:text>
 				</xsl:when>
 				<xsl:otherwise>
 					<xsl:text/>
@@ -1893,7 +1919,7 @@
 				</xsl:when>
 			</xsl:choose>
 		</xsl:variable>
-		<a id="{$wordId}" pos="{$wordPOS}" onclick="addSlip(this.id)" href="null" onmouseover="hilite(this.id)"
+		<a id="{$wordId}" pos="{$wordPOS}" onclick="addSlip(this.id)" onmouseover="hilite(this.id)"
 			onmouseout="dhilite(this.id)" lemma="{$lem}" lemmaRef="{$lemRef}" lemmaED="{$EDlem}"
 			lemmaRefED="{$EDref}" lemmaDW="{$DWlem}" lemmaRefDW="{$DWref}" lemmaSL="{@lemmaSL}"
 			slipID="{@slipID}" ana="{@ana}" hand="{$hand}" ref="{$msref}" date="{$handDate}"
@@ -2409,6 +2435,34 @@
 					onclick="return false;" style="text-decoration:none; color:#000000">
 					<xsl:apply-templates/>
 				</a>
+				<xsl:choose>
+					<xsl:when
+						test="ancestor::*[@cert = 'low'] or descendant::*[@cert = 'low'] or @lemma = 'UNKNOWN'">
+						<xsl:attribute name="style">text-decoration:none; color:#ff0000</xsl:attribute>
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:choose>
+							<xsl:when
+								test="ancestor::*[@cert = 'medium'] or descendant::*[@cert = 'medium']">
+								<xsl:attribute name="style">text-decoration:none;
+									color:#ff9900</xsl:attribute>
+							</xsl:when>
+							<xsl:otherwise>
+								<xsl:choose>
+									<xsl:when
+										test="ancestor::tei:unclear[@cert = 'high'] or descendant::tei:unclear[@cert = 'high']">
+										<xsl:attribute name="style">text-decoration:none;
+											color:#cccc00</xsl:attribute>
+									</xsl:when>
+									<xsl:otherwise>
+										<xsl:attribute name="style">text-decoration:none;
+											color:#000000</xsl:attribute>
+									</xsl:otherwise>
+								</xsl:choose>
+							</xsl:otherwise>
+						</xsl:choose>
+					</xsl:otherwise>
+				</xsl:choose>
 				<xsl:text> </xsl:text>
 			</xsl:otherwise>
 		</xsl:choose>
@@ -2420,8 +2474,36 @@
 				<xsl:text/>
 			</xsl:when>
 			<xsl:otherwise>
-				<xsl:apply-templates/>
-				<xsl:text> </xsl:text>
+				<a>
+				<xsl:choose>
+					<xsl:when
+						test="ancestor::*[@cert = 'low'] or descendant::*[@cert = 'low'] or @lemma = 'UNKNOWN'">
+						<xsl:attribute name="style">text-decoration:none; color:#ff0000</xsl:attribute>
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:choose>
+							<xsl:when
+								test="ancestor::*[@cert = 'medium'] or descendant::*[@cert = 'medium']">
+								<xsl:attribute name="style">text-decoration:none;
+									color:#ff9900</xsl:attribute>
+							</xsl:when>
+							<xsl:otherwise>
+								<xsl:choose>
+									<xsl:when
+										test="ancestor::tei:unclear[@cert = 'high'] or descendant::tei:unclear[@cert = 'high']">
+										<xsl:attribute name="style">text-decoration:none;
+											color:#cccc00</xsl:attribute>
+									</xsl:when>
+									<xsl:otherwise>
+										<xsl:attribute name="style">text-decoration:none;
+											color:#000000</xsl:attribute>
+									</xsl:otherwise>
+								</xsl:choose>
+							</xsl:otherwise>
+						</xsl:choose>
+					</xsl:otherwise>
+				</xsl:choose>
+					<xsl:apply-templates/></a><xsl:text> </xsl:text>
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
@@ -2561,56 +2643,65 @@
 				<xsl:choose>
 					<xsl:when test="@place = 'above'">
 						<b>
-							<xsl:text>\ </xsl:text>
+							<xsl:text>\</xsl:text>
 						</b>
 						<xsl:apply-templates/>
 						<b>
-							<xsl:text> /</xsl:text>
+							<xsl:text>/</xsl:text>
 						</b>
 					</xsl:when>
 					<xsl:when test="@place = 'below'">
 						<b>
-							<xsl:text>/ </xsl:text>
+							<xsl:text>/</xsl:text>
 						</b>
 						<xsl:apply-templates/>
 						<b>
-							<xsl:text> \</xsl:text>
+							<xsl:text>\</xsl:text>
 						</b>
 					</xsl:when>
 					<xsl:when test="@place = 'margin, right'">
 						<b>
-							<xsl:text>&lt; </xsl:text>
+							<xsl:text>&lt;</xsl:text>
 						</b>
 						<xsl:apply-templates/>
 						<b>
-							<xsl:text> &lt;</xsl:text>
+							<xsl:text>&lt;</xsl:text>
 						</b>
 					</xsl:when>
 					<xsl:when test="@place = 'margin, left'">
 						<b>
-							<xsl:text>&gt; </xsl:text>
+							<xsl:text>&gt;</xsl:text>
 						</b>
 						<xsl:apply-templates/>
 						<b>
-							<xsl:text> &gt;</xsl:text>
+							<xsl:text>&gt;</xsl:text>
 						</b>
 					</xsl:when>
 					<xsl:when test="@place = 'margin, top'">
 						<b>
-							<xsl:text>// </xsl:text>
+							<xsl:text>\\</xsl:text>
 						</b>
 						<xsl:apply-templates/>
 						<b>
-							<xsl:text> \\</xsl:text>
+							<xsl:text>//</xsl:text>
+						</b>
+					</xsl:when>
+					<xsl:when test="@place = 'margin, bottom'">
+						<b>
+							<xsl:text>\\</xsl:text>
+						</b>
+						<xsl:apply-templates/>
+						<b>
+							<xsl:text>//</xsl:text>
 						</b>
 					</xsl:when>
 					<xsl:when test="@place = 'inline'">
 						<b>
-							<xsl:text>| </xsl:text>
+							<xsl:text>|</xsl:text>
 						</b>
 						<xsl:apply-templates/>
 						<b>
-							<xsl:text> |</xsl:text>
+							<xsl:text>|</xsl:text>
 						</b>
 					</xsl:when>
 				</xsl:choose>
@@ -2619,38 +2710,38 @@
 				<xsl:choose>
 					<xsl:when test="@place = 'above'">
 						<b>
-							<xsl:text> \ </xsl:text>
+							<xsl:text>\ </xsl:text>
 						</b>
 						<xsl:apply-templates/>
 						<b>
-							<xsl:text> / </xsl:text>
+							<xsl:text>/ </xsl:text>
 						</b>
 					</xsl:when>
 					<xsl:when test="@place = 'below'">
 						<b>
-							<xsl:text> / </xsl:text>
+							<xsl:text>/ </xsl:text>
 						</b>
 						<xsl:apply-templates/>
 						<b>
-							<xsl:text> \ </xsl:text>
+							<xsl:text>\ </xsl:text>
 						</b>
 					</xsl:when>
 					<xsl:when test="@place = 'margin, right'">
 						<b>
-							<xsl:text> &lt; </xsl:text>
+							<xsl:text>&lt; </xsl:text>
 						</b>
 						<xsl:apply-templates/>
 						<b>
-							<xsl:text> &lt; </xsl:text>
+							<xsl:text>&lt; </xsl:text>
 						</b>
 					</xsl:when>
 					<xsl:when test="@place = 'margin, left'">
 						<b>
-							<xsl:text> &gt; </xsl:text>
+							<xsl:text>&gt; </xsl:text>
 						</b>
 						<xsl:apply-templates/>
 						<b>
-							<xsl:text> &gt; </xsl:text>
+							<xsl:text>&gt; </xsl:text>
 						</b>
 					</xsl:when>
 					<xsl:when test="@place = 'margin, top'">
@@ -2659,7 +2750,16 @@
 						</b>
 						<xsl:apply-templates/>
 						<b>
-							<xsl:text> \\</xsl:text>
+							<xsl:text>\\ </xsl:text>
+						</b>
+					</xsl:when>
+					<xsl:when test="@place = 'margin, bottom'">
+						<b>
+							<xsl:text>\\ </xsl:text>
+						</b>
+						<xsl:apply-templates/>
+						<b>
+							<xsl:text>// </xsl:text>
 						</b>
 					</xsl:when>
 					<xsl:when test="@place = 'inline'">
@@ -2668,7 +2768,7 @@
 						</b>
 						<xsl:apply-templates/>
 						<b>
-							<xsl:text> |</xsl:text>
+							<xsl:text>| </xsl:text>
 						</b>
 					</xsl:when>
 				</xsl:choose>
@@ -2712,6 +2812,33 @@
 				<xsl:apply-templates/>
 				<b>
 					<xsl:text> &gt; </xsl:text>
+				</b>
+			</xsl:when>
+			<xsl:when test="@place = 'margin, top'">
+				<b>
+					<xsl:text>// gl. </xsl:text>
+				</b>
+				<xsl:apply-templates/>
+				<b>
+					<xsl:text> \\</xsl:text>
+				</b>
+			</xsl:when>
+			<xsl:when test="@place = 'margin, bottom'">
+				<b>
+					<xsl:text>\\ gl. </xsl:text>
+				</b>
+				<xsl:apply-templates/>
+				<b>
+					<xsl:text> //</xsl:text>
+				</b>
+			</xsl:when>
+			<xsl:when test="@place = 'inline'">
+				<b>
+					<xsl:text>| gl. </xsl:text>
+				</b>
+				<xsl:apply-templates/>
+				<b>
+					<xsl:text> |</xsl:text>
 				</b>
 			</xsl:when>
 		</xsl:choose>
