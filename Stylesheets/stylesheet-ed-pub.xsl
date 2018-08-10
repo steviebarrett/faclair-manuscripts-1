@@ -22,9 +22,9 @@
 
 	<xsl:param name="sicReplace" select="'alt'"/>
 
-	<xsl:attribute-set name="tblBorder">
+	<!-- <xsl:attribute-set name="tblBorder">
 		<xsl:attribute name="border">solid 0.1mm black</xsl:attribute>
-	</xsl:attribute-set>
+	</xsl:attribute-set> -->
 
 	<xsl:template match="/">
 		<html>
@@ -953,38 +953,77 @@
 
 	<xsl:template match="tei:list">
 		<ul>
+			<xsl:if test="child::tei:item[@n]">
+				<xsl:attribute name="style">
+					<xsl:text>list-style-type:none</xsl:text>
+				</xsl:attribute>
+			</xsl:if>
 			<xsl:for-each select="tei:head">
-				<li style="font-size:11px;list-style: none">
-					<b>
-						<xsl:apply-templates/>
-					</b>
-				</li>
+				<xsl:choose>
+					<xsl:when test="@n">
+						<li style="margin-left:30px;font-size:11px">
+							<b>
+								<xsl:value-of select="@n"/>
+								<xsl:text>.  </xsl:text>
+								<xsl:apply-templates/>
+							</b>
+						</li>
+					</xsl:when>
+					<xsl:otherwise>
+						<li style="font-size:11px;list-style: none">
+							<b>
+								<xsl:apply-templates/>
+							</b>
+						</li>
+					</xsl:otherwise>
+				</xsl:choose>
 			</xsl:for-each>
 			<xsl:for-each select="tei:item">
-				<li style="margin-left:30px;font-size:11px">
-					<xsl:apply-templates/>
-				</li>
+				<xsl:choose>
+					<xsl:when test="@n">
+						<li style="margin-left:30px;font-size:11px">
+							<xsl:value-of select="@n"/>
+							<xsl:text>.  </xsl:text>
+							<xsl:apply-templates/>
+						</li>
+					</xsl:when>
+					<xsl:otherwise>
+						<li style="margin-left:30px;font-size:11px">
+							<xsl:apply-templates/>
+						</li>
+					</xsl:otherwise>
+				</xsl:choose>
 			</xsl:for-each>
 		</ul>
 	</xsl:template>
 
 	<xsl:template match="tei:table">
-		<table style="margin-left:30px;font-size:11px">
-			<tr>
-				<xsl:for-each select="tei:row[@role = 'label']/tei:cell">
-					<th style="bold; font-size: small">
-						<xsl:apply-templates/>
-					</th>
-				</xsl:for-each>
-			</tr>
-			<xsl:for-each select="tei:row[@role = 'data']">
-				<tr style="font-size: small">
-					<xsl:for-each select="tei:cell">
-						<td>
-							<xsl:apply-templates/>
-						</td>
-					</xsl:for-each>
-				</tr>
+		<table style="margin-left:30px;font-size:11px" border="1">
+			<xsl:for-each select="tei:row">
+				<xsl:if test="@role = 'label'">
+					<tr>
+						<xsl:for-each select="tei:cell">
+							<th style="bold; font-size: small">
+								<xsl:if test="@cols">
+									<xsl:attribute name="colSpan" select="@cols"/>
+								</xsl:if>
+								<xsl:apply-templates/>
+							</th>
+						</xsl:for-each>
+					</tr>
+				</xsl:if>
+				<xsl:if test="@role = 'data'">
+					<tr style="font-size: small">
+						<xsl:for-each select="tei:cell">
+							<td>
+								<xsl:if test="@cols">
+									<xsl:attribute name="colSpan" select="@cols"/>
+								</xsl:if>
+								<xsl:apply-templates/>
+							</td>
+						</xsl:for-each>
+					</tr>
+				</xsl:if>
 			</xsl:for-each>
 		</table>
 		<br/>
@@ -1008,10 +1047,23 @@
 		</sup>
 	</xsl:template>
 
+	<xsl:template match="tei:hi[@rend = 'sub']">
+		<sub>
+			<xsl:apply-templates/>
+		</sub>
+	</xsl:template>
+
 	<xsl:template match="tei:hi[@rend = 'underline' and not(descendant::tei:w)]">
 		<u>
 			<xsl:apply-templates/>
 		</u>
+	</xsl:template>
+
+	<xsl:template match="tei:hi[contains(@rend, 'colour:')]">
+		<xsl:variable name="colour" select="substring(@rend, 8)"/>
+		<seg style="text-decoration:none;color:{$colour}">
+			<xsl:apply-templates/>
+		</seg>
 	</xsl:template>
 
 	<xsl:template match="tei:pb">
@@ -1244,12 +1296,19 @@
 	</xsl:template>
 
 	<xsl:template match="tei:quote">
-		<br/><br/><button id="{generate-id()}" onclick="textComment(this.id)" style="font-size:12px">Add
+		<br/>
+		<br/>
+		<button id="{generate-id()}" onclick="textComment(this.id)" style="font-size:12px">Add
 			Comment</button>
 		<xsl:choose>
 			<xsl:when test="child::tei:l">
-				<br/><br/><xsl:for-each select="child::tei:l">
-					<l style="margin-left: 40px;font-size:12px"><xsl:apply-templates/></l><br/>
+				<br/>
+				<br/>
+				<xsl:for-each select="child::tei:l">
+					<l style="margin-left: 40px;font-size:12px">
+						<xsl:apply-templates/>
+					</l>
+					<br/>
 				</xsl:for-each>
 			</xsl:when>
 			<xsl:otherwise>
