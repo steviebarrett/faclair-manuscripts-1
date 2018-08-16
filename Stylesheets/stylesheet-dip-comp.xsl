@@ -59,7 +59,9 @@
 	</xsl:template>
 
 	<xsl:template mode="dip" match="tei:pb">
-		<table/><button id="{generate-id()}" onclick="textComment(this.id)" style="font-size:12px">Add Comment</button>
+		<table/>
+		<button id="{generate-id()}" onclick="textComment(this.id)" style="font-size:12px">Add
+			Comment</button>
 		<br/>
 		<hr align="left" width="40%"/>
 		<xsl:choose>
@@ -120,7 +122,7 @@
 		</sub>
 	</xsl:template>
 
-	<xsl:template mode="dip" match="tei:space[@type = 'scribal']">
+	<xsl:template mode="dip" match="tei:space[@type = 'scribal' or @type = 'editorial']">
 		<xsl:choose>
 			<xsl:when test="ancestor::tei:w[not(descendant::tei:w)]">
 				<xsl:text>&#160;</xsl:text>
@@ -161,13 +163,18 @@
 							<xsl:text> name</xsl:text>
 						</xsl:when>
 						<xsl:when test="@xml:lang">Language: <xsl:value-of
-							select="key('lang', @xml:lang)/text()"/></xsl:when>
+								select="key('lang', @xml:lang)/text()"/></xsl:when>
 						<xsl:otherwise>[no lemma entered]</xsl:otherwise>
 					</xsl:choose>
 				</xsl:when>
 				<xsl:otherwise>
 					<xsl:choose>
-						<xsl:when test="ancestor::tei:name"><xsl:value-of select="@lemma"/><xsl:text> (</xsl:text><xsl:value-of select="ancestor::tei:name/@type"/><xsl:text> name)</xsl:text></xsl:when>
+						<xsl:when test="ancestor::tei:name">
+							<xsl:value-of select="@lemma"/>
+							<xsl:text> (</xsl:text>
+							<xsl:value-of select="ancestor::tei:name/@type"/>
+							<xsl:text> name)</xsl:text>
+						</xsl:when>
 						<xsl:otherwise>
 							<xsl:value-of select="@lemma"/>
 						</xsl:otherwise>
@@ -558,18 +565,83 @@
 		</xsl:variable>
 		<xsl:variable name="gloss">
 			<xsl:choose>
-				<xsl:when test="descendant::tei:add[@type = 'gloss']">
-					<xsl:for-each select="descendant::tei:add[@type = 'gloss']">
-						<xsl:text>A gloss ("</xsl:text>
-						<xsl:value-of select="self::*"/>
-						<xsl:text>") has been added by </xsl:text>
-						<xsl:value-of select="key('hands', @resp)/tei:forename"/>
-						<xsl:text> </xsl:text>
-						<xsl:value-of select="key('hands', @resp)/tei:surname"/>
-						<xsl:text> (</xsl:text>
-						<xsl:value-of select="@resp"/>
-						<xsl:text>)</xsl:text>
+				<xsl:when
+					test="ancestor::tei:seg[@type = 'gloss'] and not(ancestor::tei:add[@type = 'gloss'])">
+					<xsl:text>A gloss has been added by </xsl:text>
+					<xsl:value-of
+						select="key('hands', ancestor::tei:seg[@type = 'gloss']/tei:add[@type = 'gloss']/@resp)/tei:forename"/>
+					<xsl:text> </xsl:text>
+					<xsl:value-of
+						select="key('hands', ancestor::tei:seg[@type = 'gloss']/tei:add[@type = 'gloss']/@resp)/tei:surname"/>
+					<xsl:text> (</xsl:text>
+					<xsl:value-of
+						select="ancestor::tei:seg[@type = 'gloss']/tei:add[@type = 'gloss']/@resp"/>
+					<xsl:text>): "</xsl:text>
+					<xsl:for-each
+						select="ancestor::tei:seg[@type = 'gloss']/tei:add[@type = 'gloss']/descendant::*">
+						<xsl:if test="self::tei:w[not(descendant::tei:w)]">
+							<xsl:value-of select="self::*"/>
+						</xsl:if>
+						<xsl:if test="self::tei:c">
+							<xsl:value-of select="self::*"/>
+						</xsl:if>
+						<xsl:if test="self::tei:pc">
+							<xsl:value-of select="self::*"/>
+						</xsl:if>
+						<xsl:if test="self::tei:date">
+							<xsl:value-of select="self::*"/>
+						</xsl:if>
+						<xsl:if test="self::tei:num">
+							<xsl:value-of select="self::*"/>
+						</xsl:if>
+						<xsl:if test="self::tei:space[@type = 'scribal' or @type = 'force']">
+							<xsl:text> </xsl:text>
+						</xsl:if>
+						<xsl:if test="self::tei:space[@type = 'em']">
+							<xsl:text>   </xsl:text>
+						</xsl:if>
 					</xsl:for-each>
+					<xsl:text>"</xsl:text>
+				</xsl:when>
+				<xsl:when test="ancestor::tei:add[@type = 'gloss']">
+					<xsl:text>This has been added as a gloss </xsl:text>
+					<xsl:if test="ancestor::tei:seg[@type = 'gloss']">
+						<xsl:text>on "</xsl:text>
+						<xsl:for-each
+							select="ancestor::tei:seg[@type = 'gloss']/child::*[not(ancestor-or-self::tei:add[@type = 'gloss'])]">
+							<xsl:if test="self::tei:w[not(descendant::tei:w)]">
+								<xsl:value-of select="self::*"/>
+							</xsl:if>
+							<xsl:if test="self::tei:c">
+								<xsl:value-of select="self::*"/>
+							</xsl:if>
+							<xsl:if test="self::tei:pc">
+								<xsl:value-of select="self::*"/>
+							</xsl:if>
+							<xsl:if test="self::tei:date">
+								<xsl:value-of select="self::*"/>
+							</xsl:if>
+							<xsl:if test="self::tei:num">
+								<xsl:value-of select="self::*"/>
+							</xsl:if>
+							<xsl:if test="self::tei:space[@type = 'scribal' or @type = 'force']">
+								<xsl:text> </xsl:text>
+							</xsl:if>
+							<xsl:if test="self::tei:space[@type = 'em']">
+								<xsl:text>   </xsl:text>
+							</xsl:if>
+						</xsl:for-each>
+						<xsl:text>" </xsl:text>
+					</xsl:if>
+					<xsl:text>by </xsl:text>
+					<xsl:value-of
+						select="key('hands', ancestor::tei:add[@type = 'gloss']/@resp)/tei:forename"/>
+					<xsl:text> </xsl:text>
+					<xsl:value-of
+						select="key('hands', ancestor::tei:add[@type = 'gloss']/@resp)/tei:surname"/>
+					<xsl:text> (</xsl:text>
+					<xsl:value-of select="ancestor::tei:add[@type = 'gloss']/@resp"/>
+					<xsl:text>).</xsl:text>
 				</xsl:when>
 				<xsl:otherwise>
 					<xsl:text/>
@@ -609,8 +681,9 @@
 		</xsl:variable>
 		<a class="dip" id="{$wordId}" pos="{$wordPOS}" onmouseover="hilite(this.id)"
 			onmouseout="dhilite(this.id)" lemma="{$lem}" lemmaRef="{$lemRef}" lemmaDW="{$DWlem}"
-			lemmaRefDW="{$DWref}" lemmaED="{$EDlem}" lemmaRefED="{$EDref}" lemmaSL="{@lemmaSL}" ana="{@ana}" hand="{$hand}" ref="{$msref}" date="{$handDate}"
-			medium="{$medium}" cert="{$certLvl}" abbrRefs="{$abbrRef}"
+			lemmaRefDW="{$DWref}" lemmaED="{$EDlem}" lemmaRefED="{$EDref}" lemmaSL="{@lemmaSL}"
+			ana="{@ana}" hand="{$hand}" ref="{$msref}" date="{$handDate}" medium="{$medium}"
+			cert="{$certLvl}" abbrRefs="{$abbrRef}"
 			title="{$lem}: {$pos} {$src}&#10;{$hand}&#10;{$prob}{$certProb}&#10;Abbreviations: {$abbrs}&#10;{$gloss}"
 			style="text-decoration:none; color:#000000">
 			<xsl:if test="@lemma">
@@ -650,7 +723,6 @@
 
 	<xsl:template mode="dip" match="tei:w[descendant::tei:w]">
 		<xsl:apply-templates mode="dip"/>
-		<xsl:text> </xsl:text>
 	</xsl:template>
 
 	<xsl:template mode="dip" match="tei:name">
@@ -758,7 +830,6 @@
 		<xsl:choose>
 			<xsl:when test="ancestor::tei:w">
 				<xsl:apply-templates mode="dip"/>
-				<xsl:text> </xsl:text>
 			</xsl:when>
 			<xsl:otherwise>
 				<a id="{generate-id()}_dip"
@@ -766,15 +837,82 @@
 					onclick="return false;" style="text-decoration:none; color:#000000">
 					<xsl:apply-templates mode="dip"/>
 				</a>
+				<xsl:choose>
+					<xsl:when
+						test="ancestor::*[@cert = 'low'] or descendant::*[@cert = 'low'] or @lemma = 'UNKNOWN'">
+						<xsl:attribute name="style">text-decoration:none;
+							color:#ff0000</xsl:attribute>
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:choose>
+							<xsl:when
+								test="ancestor::*[@cert = 'medium'] or descendant::*[@cert = 'medium']">
+								<xsl:attribute name="style">text-decoration:none;
+									color:#ff9900</xsl:attribute>
+							</xsl:when>
+							<xsl:otherwise>
+								<xsl:choose>
+									<xsl:when
+										test="ancestor::tei:unclear[@cert = 'high'] or descendant::tei:unclear[@cert = 'high']">
+										<xsl:attribute name="style">text-decoration:none;
+											color:#cccc00</xsl:attribute>
+									</xsl:when>
+									<xsl:otherwise>
+										<xsl:attribute name="style">text-decoration:none;
+											color:#000000</xsl:attribute>
+									</xsl:otherwise>
+								</xsl:choose>
+							</xsl:otherwise>
+						</xsl:choose>
+					</xsl:otherwise>
+				</xsl:choose>
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
 
 	<xsl:template mode="dip" match="tei:pc">
-			<xsl:apply-templates mode="dip"/>
+		<xsl:choose>
+			<xsl:when test="ancestor::tei:w">
+				<xsl:apply-templates mode="dip"/>
+			</xsl:when>
+			<xsl:otherwise>
+				<a>
+				<xsl:choose>
+					<xsl:when
+						test="ancestor::*[@cert = 'low'] or descendant::*[@cert = 'low'] or @lemma = 'UNKNOWN'">
+						<xsl:attribute name="style">text-decoration:none;
+							color:#ff0000</xsl:attribute>
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:choose>
+							<xsl:when
+								test="ancestor::*[@cert = 'medium'] or descendant::*[@cert = 'medium']">
+								<xsl:attribute name="style">text-decoration:none;
+									color:#ff9900</xsl:attribute>
+							</xsl:when>
+							<xsl:otherwise>
+								<xsl:choose>
+									<xsl:when
+										test="ancestor::tei:unclear[@cert = 'high'] or descendant::tei:unclear[@cert = 'high']">
+										<xsl:attribute name="style">text-decoration:none;
+											color:#cccc00</xsl:attribute>
+									</xsl:when>
+									<xsl:otherwise>
+										<xsl:attribute name="style">text-decoration:none;
+											color:#000000</xsl:attribute>
+									</xsl:otherwise>
+								</xsl:choose>
+							</xsl:otherwise>
+						</xsl:choose>
+					</xsl:otherwise>
+				</xsl:choose>
+					<xsl:apply-templates mode="dip"/>
+				</a>
+			</xsl:otherwise>
+		</xsl:choose>
 	</xsl:template>
 
-	<xsl:template mode="dip" match="tei:space[@type = 'force']">
+	<!-- <xsl:template mode="dip" match="tei:space[@type = 'force']">
 		<xsl:choose>
 			<xsl:when test="ancestor::tei:w[not(descendant::tei:w)]">
 				<xsl:text>&#160;</xsl:text>
@@ -785,7 +923,7 @@
 				</a>
 			</xsl:otherwise>
 		</xsl:choose>
-	</xsl:template>
+	</xsl:template> -->
 
 	<xsl:template mode="dip" match="tei:space[@type = 'em']">
 		<xsl:choose>
@@ -798,7 +936,7 @@
 				</a>
 			</xsl:otherwise>
 		</xsl:choose>
-		 </xsl:template>
+	</xsl:template>
 
 	<xsl:template mode="dip" match="tei:supplied">
 		<xsl:text/>
@@ -912,56 +1050,65 @@
 				<xsl:choose>
 					<xsl:when test="@place = 'above'">
 						<b>
-							<xsl:text>\ </xsl:text>
+							<xsl:text>\</xsl:text>
 						</b>
 						<xsl:apply-templates mode="dip"/>
 						<b>
-							<xsl:text> /</xsl:text>
+							<xsl:text>/</xsl:text>
 						</b>
 					</xsl:when>
 					<xsl:when test="@place = 'below'">
 						<b>
-							<xsl:text>/ </xsl:text>
+							<xsl:text>/</xsl:text>
 						</b>
 						<xsl:apply-templates mode="dip"/>
 						<b>
-							<xsl:text> \</xsl:text>
+							<xsl:text>\</xsl:text>
 						</b>
 					</xsl:when>
 					<xsl:when test="@place = 'margin, right'">
 						<b>
-							<xsl:text>&lt; </xsl:text>
+							<xsl:text>&lt;</xsl:text>
 						</b>
 						<xsl:apply-templates mode="dip"/>
 						<b>
-							<xsl:text> &lt;</xsl:text>
+							<xsl:text>&lt;</xsl:text>
 						</b>
 					</xsl:when>
 					<xsl:when test="@place = 'margin, left'">
 						<b>
-							<xsl:text>&gt; </xsl:text>
+							<xsl:text>&gt;</xsl:text>
 						</b>
 						<xsl:apply-templates mode="dip"/>
 						<b>
-							<xsl:text> &gt;</xsl:text>
+							<xsl:text>&gt;</xsl:text>
 						</b>
 					</xsl:when>
 					<xsl:when test="@place = 'margin, top'">
 						<b>
-							<xsl:text>// </xsl:text>
+							<xsl:text>//</xsl:text>
 						</b>
 						<xsl:apply-templates mode="dip"/>
 						<b>
-							<xsl:text> \\</xsl:text>
+							<xsl:text>\\</xsl:text>
+						</b>
+					</xsl:when>
+					<xsl:when test="@place = 'margin, bottom'">
+						<b>
+							<xsl:text>\\</xsl:text>
+						</b>
+						<xsl:apply-templates/>
+						<b>
+							<xsl:text>//</xsl:text>
 						</b>
 					</xsl:when>
 					<xsl:when test="@place = 'inline'">
 						<b>
-							<xsl:text>| </xsl:text>
+							<xsl:text>|</xsl:text>
 						</b>
 						<xsl:apply-templates mode="dip"/>
 						<b>
-							<xsl:text> |</xsl:text>
+							<xsl:text>|</xsl:text>
 						</b>
 					</xsl:when>
 				</xsl:choose>
@@ -1004,6 +1151,33 @@
 							<xsl:text> &gt; </xsl:text>
 						</b>
 					</xsl:when>
+					<xsl:when test="@place = 'margin, top'">
+						<b>
+							<xsl:text> // </xsl:text>
+						</b>
+						<xsl:apply-templates mode="dip"/>
+						<b>
+							<xsl:text> \\ </xsl:text>
+						</b>
+					</xsl:when>
+					<xsl:when test="@place = 'margin, bottom'">
+						<b>
+							<xsl:text> \\ </xsl:text>
+						</b>
+						<xsl:apply-templates/>
+						<b>
+							<xsl:text> // </xsl:text>
+						</b>
+					</xsl:when>
+					<xsl:when test="@place = 'inline'">
+						<b>
+							<xsl:text> | </xsl:text>
+						</b>
+						<xsl:apply-templates mode="dip"/>
+						<b>
+							<xsl:text> | </xsl:text>
+						</b>
+					</xsl:when>
 				</xsl:choose>
 			</xsl:otherwise>
 		</xsl:choose>
@@ -1017,7 +1191,7 @@
 				</b>
 				<xsl:apply-templates mode="dip"/>
 				<b>
-					<xsl:text> / </xsl:text>
+					<xsl:text>/ </xsl:text>
 				</b>
 			</xsl:when>
 			<xsl:when test="@place = 'below'">
@@ -1026,7 +1200,7 @@
 				</b>
 				<xsl:apply-templates mode="dip"/>
 				<b>
-					<xsl:text> \ </xsl:text>
+					<xsl:text>\ </xsl:text>
 				</b>
 			</xsl:when>
 			<xsl:when test="@place = 'margin, right'">
@@ -1035,7 +1209,7 @@
 				</b>
 				<xsl:apply-templates mode="dip"/>
 				<b>
-					<xsl:text> &lt;  </xsl:text>
+					<xsl:text>&lt;  </xsl:text>
 				</b>
 			</xsl:when>
 			<xsl:when test="@place = 'margin, left'">
@@ -1045,6 +1219,33 @@
 				<xsl:apply-templates mode="dip"/>
 				<b>
 					<xsl:text> &gt; </xsl:text>
+				</b>
+			</xsl:when>
+			<xsl:when test="@place = 'margin, top'">
+				<b>
+					<xsl:text> // gl. </xsl:text>
+				</b>
+				<xsl:apply-templates/>
+				<b>
+					<xsl:text> \\ </xsl:text>
+				</b>
+			</xsl:when>
+			<xsl:when test="@place = 'margin, bottom'">
+				<b>
+					<xsl:text> \\ gl. </xsl:text>
+				</b>
+				<xsl:apply-templates/>
+				<b>
+					<xsl:text> // </xsl:text>
+				</b>
+			</xsl:when>
+			<xsl:when test="@place = 'inline'">
+				<b>
+					<xsl:text> | gl. </xsl:text>
+				</b>
+				<xsl:apply-templates/>
+				<b>
+					<xsl:text> | </xsl:text>
 				</b>
 			</xsl:when>
 		</xsl:choose>
@@ -1062,7 +1263,9 @@
 
 	<xsl:template mode="dip" match="tei:div[@n]">
 		<xsl:apply-templates mode="dip"/>
-		<table/><button id="{generate-id()}" onclick="textComment(this.id)" style="font-size:12px">Add Comment</button>
+		<table/>
+		<button id="{generate-id()}" onclick="textComment(this.id)" style="font-size:12px">Add
+			Comment</button>
 	</xsl:template>
 
 	<xsl:template mode="dip" match="tei:head">
