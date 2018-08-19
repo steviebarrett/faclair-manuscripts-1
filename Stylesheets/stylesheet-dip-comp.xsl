@@ -835,37 +835,37 @@
 				<a id="{generate-id()}_dip"
 					title="Unexplained character(s){$sicMessage}&#10;{$hand}{$prob}" href="#"
 					onclick="return false;" style="text-decoration:none; color:#000000">
+					<xsl:choose>
+						<xsl:when
+							test="ancestor::*[@cert = 'low'] or descendant::*[@cert = 'low'] or @lemma = 'UNKNOWN'">
+							<xsl:attribute name="style">text-decoration:none;
+								color:#ff0000</xsl:attribute>
+						</xsl:when>
+						<xsl:otherwise>
+							<xsl:choose>
+								<xsl:when
+									test="ancestor::*[@cert = 'medium'] or descendant::*[@cert = 'medium']">
+									<xsl:attribute name="style">text-decoration:none;
+										color:#ff9900</xsl:attribute>
+								</xsl:when>
+								<xsl:otherwise>
+									<xsl:choose>
+										<xsl:when
+											test="ancestor::tei:unclear[@cert = 'high'] or descendant::tei:unclear[@cert = 'high']">
+											<xsl:attribute name="style">text-decoration:none;
+												color:#cccc00</xsl:attribute>
+										</xsl:when>
+										<xsl:otherwise>
+											<xsl:attribute name="style">text-decoration:none;
+												color:#000000</xsl:attribute>
+										</xsl:otherwise>
+									</xsl:choose>
+								</xsl:otherwise>
+							</xsl:choose>
+						</xsl:otherwise>
+					</xsl:choose>
 					<xsl:apply-templates mode="dip"/>
 				</a>
-				<xsl:choose>
-					<xsl:when
-						test="ancestor::*[@cert = 'low'] or descendant::*[@cert = 'low'] or @lemma = 'UNKNOWN'">
-						<xsl:attribute name="style">text-decoration:none;
-							color:#ff0000</xsl:attribute>
-					</xsl:when>
-					<xsl:otherwise>
-						<xsl:choose>
-							<xsl:when
-								test="ancestor::*[@cert = 'medium'] or descendant::*[@cert = 'medium']">
-								<xsl:attribute name="style">text-decoration:none;
-									color:#ff9900</xsl:attribute>
-							</xsl:when>
-							<xsl:otherwise>
-								<xsl:choose>
-									<xsl:when
-										test="ancestor::tei:unclear[@cert = 'high'] or descendant::tei:unclear[@cert = 'high']">
-										<xsl:attribute name="style">text-decoration:none;
-											color:#cccc00</xsl:attribute>
-									</xsl:when>
-									<xsl:otherwise>
-										<xsl:attribute name="style">text-decoration:none;
-											color:#000000</xsl:attribute>
-									</xsl:otherwise>
-								</xsl:choose>
-							</xsl:otherwise>
-						</xsl:choose>
-					</xsl:otherwise>
-				</xsl:choose>
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
