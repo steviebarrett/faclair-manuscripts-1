@@ -29,7 +29,8 @@
   
   <xsl:template match="tei:TEI">
     <li>
-      <xsl:value-of select="tei:fileDesc/tei:titleStmt/tei:title"/>
+      Yes.
+      <!-- <xsl:value-of select="tei:fileDesc/tei:titleStmt/tei:title"/> -->
     </li>
   </xsl:template>
 	
