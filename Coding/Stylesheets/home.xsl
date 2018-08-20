@@ -15,11 +15,22 @@
 				</title>
 			</head>
 			<body>
-				<xsl:value-of select="tei:teiCorpus/tei:teiHeader/tei:fileDesc/tei:titleStmt/tei:title"/>
+			  <h1><xsl:value-of select="tei:teiCorpus/tei:teiHeader/tei:fileDesc/tei:titleStmt/tei:title"/></h1>
+			  <ul>
+			    <xsl:apply-templates select="tei:teiCorpus/tei:TEI"/>
+			  </ul>
+			  
+			  
 			</body>
 		</html>
 		
 		
 	</xsl:template>
+  
+  <xsl:template match="tei:TEI">
+    <li>
+      <xsl:value-of select="tei:fileDesc/tei:titleStmt/tei:title"/>
+    </li>
+  </xsl:template>
 	
 </xsl:stylesheet>
