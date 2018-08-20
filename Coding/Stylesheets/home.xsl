@@ -31,7 +31,7 @@
     <li>
       Yes.
       <xsl:value-of select="@corresp"/>
-      <xsl:value-of select="document(@corresp)/tei:TEI/tei:fileDesc/tei:titleStmt/tei:title"/>
+      <xsl:value-of select="document(@corresp)/tei:TEI/tei:teiHeader/tei:fileDesc/tei:titleStmt/tei:title"/>
       <!-- <xsl:value-of select="tei:fileDesc/tei:titleStmt/tei:title"/> -->
     </li>
   </xsl:template>
