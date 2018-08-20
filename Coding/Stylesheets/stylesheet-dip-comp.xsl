@@ -103,7 +103,10 @@
 				</seg>
 			</xsl:otherwise>
 		</xsl:choose>
-		<button onclick="createTable()">Collect Slips</button>
+		<button class="cs" onclick="createTable();beginCS(this)">Collect e-Slips</button>
+		<button class="ws" onclick="createTable();beginWS(this)">Headword Search</button>
+		<button class="es" onclick="endSearch(this)" hidden="hidden" style="background-color:red">
+			<b>End Search</b></button>
 		<br/>
 	</xsl:template>
 
