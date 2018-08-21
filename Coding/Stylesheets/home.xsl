@@ -28,7 +28,9 @@
   <xsl:template match="tei:TEI">
     <li>
       <a>
-        <xsl:attribute name="href" select="@corresp"/>
+        <xsl:attribute name="href">
+          <xsl:value-of select="@corresp"/>
+        </xsl:attribute>
         <xsl:value-of select="document(@corresp)/tei:TEI/tei:teiHeader/tei:fileDesc/tei:titleStmt/tei:title"/>
       </a>
     </li>
