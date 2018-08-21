@@ -18,8 +18,11 @@
         <div id="abstract">
           <xsl:apply-templates select="tei:TEI/tei:teiHeader/tei:fileDesc/tei:notesStmt/tei:note/tei:p"/>
         </div>
+        <div id="edited">
+          <xsl:apply-templates select="tei:TEI/tei:text/tei:body" mode="edited"/>
+        </div>
         <div id="diplomatic">
-          <xsl:apply-templates select="tei:TEI/tei:text/tei:body"/>
+          <xsl:apply-templates select="tei:TEI/tei:text/tei:body" mode="diplomatic"/>
         </div>
       </body>
     </html>
@@ -31,8 +34,16 @@
     </p>
   </xsl:template>
 
-  <xsl:template match="tei:body">
-    <xsl:apply-templates/>
+  <xsl:template match="tei:body" mode="edited">
+    <div style="color:red;">
+      <xsl:apply-templates/>
+    </div>
+  </xsl:template>
+  
+  <xsl:template match="tei:body" mode="diplomatic">
+    <div style="color:green;">
+      <xsl:apply-templates/>
+    </div>
   </xsl:template>
 
 
