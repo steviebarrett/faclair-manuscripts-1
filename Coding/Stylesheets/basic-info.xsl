@@ -5,10 +5,21 @@
 	exclude-result-prefixes="xs"
 	version="1.0">
   
+  <xsl:output method="html"/>
+  
   <xsl:template match="/">
-    <h1>
-      <xsl:value-of select="tei:TEI/tei:teiHeader/tei:fileDesc/tei:titleStmt/tei:title"/>
-    </h1>
+    <html>
+      <head>
+        <title>
+          <xsl:value-of select="tei:TEI/tei:teiHeader/tei:fileDesc/tei:titleStmt/tei:title"/>
+        </title>
+      </head>
+      <body>
+      <h1>
+        <xsl:value-of select="tei:TEI/tei:teiHeader/tei:fileDesc/tei:titleStmt/tei:title"/>
+      </h1>
+      </body>
+    </html>  
   </xsl:template>
   
   
