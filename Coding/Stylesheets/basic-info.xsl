@@ -15,10 +15,16 @@
           <xsl:value-of select="tei:TEI/tei:teiHeader/tei:fileDesc/tei:titleStmt/tei:title"/>
         </h1>
         <div id="abstract">
-          <xsl:apply-templates select="tei:TEI/tei:teiHeader/tei:fileDesc/tei:notesStmt/tei:note"/>
+          <xsl:apply-templates select="tei:TEI/tei:teiHeader/tei:fileDesc/tei:notesStmt/tei:note/tei:p"/>
         </div>
       </body>
     </html>
+  </xsl:template>
+  
+  <xsl:template match="tei:p">
+    <p>
+      <xsl:apply-templates/>
+    </p>
   </xsl:template>
 
 
