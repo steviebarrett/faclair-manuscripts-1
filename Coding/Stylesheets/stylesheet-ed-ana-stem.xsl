@@ -249,7 +249,7 @@
 						<xsl:text>sga = Old Gaelic; mga = Middle Gaelic; hsg = Hiberno-Scottish Gaelic (i.e. Classical Gaelic); gd = Scottish Gaelic; ga = Irish Gaelic.</xsl:text>
 					</tr>
 					<xsl:for-each
-						select="//tei:w[not(descendant::tei:w) and not(@type = 'data') and not(@xml:lang) and not(@source) and contains(@ana, 'noun') and key('hwData', @lemmaRef)/descendant::tei:iType[text()='d']]">
+						select="//tei:w[not(descendant::tei:w) and not(@type = 'data') and not(@xml:lang) and not(@source) and contains(@ana, 'noun') and key('hwData', @lemmaRef)/descendant::tei:iType[text()='u']]">
 						<xsl:sort
 							select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
 						<xsl:call-template name="contentRow"/>

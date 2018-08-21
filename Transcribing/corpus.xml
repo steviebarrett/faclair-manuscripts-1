@@ -11,12 +11,20 @@
 					<resp>Transcriber</resp>
 				</respStmt>
 				<respStmt>
+					<name xml:id="MMA">Martina Maher</name>
+					<resp>Transcriber</resp>
+				</respStmt>
+				<respStmt>
 					<name xml:id="WGI">William Gillies</name>
 					<resp>Overseer</resp>
 				</respStmt>
 				<respStmt>
 					<name xml:id="MMC">Mark McConville</name>
-					<resp>Tech Support and TEI Advice</resp>
+					<resp>Developer</resp>
+				</respStmt>
+				<respStmt>
+					<name xml:id="SBA">Stephen Barrett</name>
+					<resp>Developer</resp>
 				</respStmt>
 			</titleStmt>
 			<publicationStmt>
@@ -922,7 +930,7 @@
 					<note>An "x", standing either for the numeral 10 or for the characterd "dec" or
 						similar.</note>
 				</glyph>
-				<glyph xml:id="g52">
+				<glyph xml:id="g52" corresp="https://vanhamel.nl/codecs/I_with_acute_diacritic_(disambiguation)">
 					<glyphName>upward diagonal overstroke</glyphName>
 					<note>A stroke from the lower left of a character to the upper right, crossing
 						the character itself, standing for a string of subsequent characters. Found
@@ -1228,7 +1236,7 @@
 		</revisionDesc>
 	</teiHeader>
   
-  <TEI corresp="Transcriptions/transcription1.xml"/>
+	<TEI corresp="Transcriptions/transcription1.xml"/>
   <TEI corresp="Transcriptions/transcription2.xml"/>  
   <TEI corresp="Transcriptions/transcription3.xml"/>
   <TEI corresp="Transcriptions/transcription4.xml"/>
@@ -1241,13 +1249,13 @@
   
 	<!-- <xi:include href="Transcriptions/transcription1.xml" parse="xml"/> -->
 	<!-- <xi:include href="Transcriptions/transcription2.xml" parse="xml"/> -->
-		<!-- <xi:include href="Transcriptions/transcription3.xml" parse="xml"/> -->
-		<!-- <xi:include href="Transcriptions/transcription4.xml" parse="xml"/> -->
-		<!-- <xi:include href="Transcriptions/transcription5.xml" parse="xml"/> -->
-		<!-- <xi:include href="Transcriptions/transcription6.xml" parse="xml"/> -->
-		<!-- <xi:include href="Transcriptions/transcription7.xml" parse="xml"/> -->
-		<!-- <xi:include href="Transcriptions/transcription8.xml" parse="xml"/> -->
-		<xi:include href="Transcriptions/transcription9.xml" parse="xml"/>
+	<!-- <xi:include href="Transcriptions/transcription3.xml" parse="xml"/> -->
+	<!-- <xi:include href="Transcriptions/transcription4.xml" parse="xml"/> -->
+	<!-- <xi:include href="Transcriptions/transcription5.xml" parse="xml"/> -->
+	<!-- <xi:include href="Transcriptions/transcription6.xml" parse="xml"/> -->
+	<!-- <xi:include href="Transcriptions/transcription7.xml" parse="xml"/> -->
+	<!-- <xi:include href="Transcriptions/transcription8.xml" parse="xml"/> -->
+	<!-- <xi:include href="Transcriptions/transcription9.xml" parse="xml"/> -->
 	<!-- <xi:include href="Transcriptions/transcription10.xml" parse="xml"/> -->
 	<!-- <xi:include href="Transcriptions/transcription11.xml" parse="xml"/> -->
 	<!-- <xi:include href="Transcriptions/transcription12.xml" parse="xml"/> -->
@@ -1256,10 +1264,5 @@
 	<!-- <xi:include href="Transcriptions/transcription15.xml" parse="xml"/> -->
 	<!-- <xi:include href="Transcriptions/transcription16.xml" parse="xml"/> -->
 	<!-- <xi:include href="Transcriptions/transcription17.xml" parse="xml"/> -->
-	<xi:include href="hwData.xml" parse="xml"/>
-  
-  
-  
-  
-  
+	<!-- <xi:include href="hwData.xml" parse="xml"/> -->
 </teiCorpus>

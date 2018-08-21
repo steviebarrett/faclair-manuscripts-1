@@ -9,7 +9,7 @@
 	</xsl:template>
 
 	<xsl:template name="hwData">
-		<?xml-model href="fnag_mss2.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+		<?xml-model href="Schemas/fnag_mss2.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 		<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="hwData">
 			<teiHeader>
 				<fileDesc>
