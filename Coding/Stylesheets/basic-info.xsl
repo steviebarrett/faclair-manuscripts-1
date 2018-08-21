@@ -46,8 +46,9 @@
 
   <xsl:template match="tei:div">
     <xsl:value-of select="@n"/>
+    <xsl:variable name="link" select="@corresp"/>
     <h2>
-      <xsl:value-of select="tei:msItem[@xml:id=./@corresp]/tei:title"/>
+      <xsl:value-of select="tei:msItem[@xml:id=$link]/tei:title"/>
     </h2>
     <xsl:apply-templates/>
   </xsl:template>
