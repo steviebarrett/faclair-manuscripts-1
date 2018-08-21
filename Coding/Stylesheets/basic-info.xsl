@@ -60,7 +60,9 @@
       <xsl:attribute name="id">
         <xsl:value-of select="generate-id()"/>
       </xsl:attribute>
-      <xsl:attribute name="title">hmmmmm</xsl:attribute>
+      <xsl:attribute name="title">
+        <xsl:value-of select="@lemma"/>
+      </xsl:attribute>
       <xsl:apply-templates/>
     </span>
   </xsl:template>
