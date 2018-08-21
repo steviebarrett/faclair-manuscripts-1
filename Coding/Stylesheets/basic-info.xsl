@@ -41,9 +41,12 @@
   </xsl:template>
   
   <xsl:template match="tei:body" mode="diplomatic">
-    <div style="color:green;">
-      <xsl:apply-templates/>
-    </div>
+      <xsl:apply-templates select="tei:div"/>
+  </xsl:template>
+
+  <xsl:template match="tei:div">
+    <xsl:value-of select="@n"/>
+    <xsl:apply-templates/>
   </xsl:template>
 
 
