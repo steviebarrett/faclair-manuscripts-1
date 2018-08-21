@@ -46,6 +46,9 @@
 
   <xsl:template match="tei:div">
     <xsl:value-of select="@n"/>
+    <h2>
+      <xsl:value-of select="@corresp"/>
+    </h2>
     <xsl:apply-templates/>
   </xsl:template>
 
