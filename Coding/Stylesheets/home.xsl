@@ -19,8 +19,6 @@
 			  <ul>
 			    <xsl:apply-templates select="tei:teiCorpus/tei:TEI"/>
 			  </ul>
-			  
-			  
 			</body>
 		</html>
 		
@@ -29,8 +27,10 @@
   
   <xsl:template match="tei:TEI">
     <li>
-      <xsl:value-of select="document(@corresp)/tei:TEI/tei:teiHeader/tei:fileDesc/tei:titleStmt/tei:title"/>
-      <!-- <xsl:value-of select="tei:fileDesc/tei:titleStmt/tei:title"/> -->
+      <a>
+        <xsl:attribute name="href" select="@corresp"/>
+        <xsl:value-of select="document(@corresp)/tei:TEI/tei:teiHeader/tei:fileDesc/tei:titleStmt/tei:title"/>
+      </a>
     </li>
   </xsl:template>
 	
