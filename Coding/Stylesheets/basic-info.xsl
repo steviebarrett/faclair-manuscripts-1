@@ -82,58 +82,34 @@
         </xsl:if>
         <xsl:text>&#10;</xsl:text>
         <xsl:variable name="commonDiv" select="ancestor::tei:div[1]/@corresp"/>
-        <xsl:choose>
-          <xsl:when test="ancestor::tei:add">
-            <xsl:value-of select="ancestor::tei:add/@resp"/>
-          </xsl:when>
-          <xsl:when test="ancestor::tei:div[1]//tei:handShift and preceding::tei:handShift[1]/ancestor::tei:div[@resp]/@corresp = $commonDiv">
-            <xsl:value-of select="preceding::tei:handShift[1]/@new"/>
-          </xsl:when>
-          <xsl:otherwise>
-            <xsl:value-of select="ancestor::tei:div[1]/@resp"/>
-          </xsl:otherwise>
-        </xsl:choose>
-        
-        
-        
+        <xsl:variable name="hand">
+          <xsl:choose>
+            <xsl:when test="ancestor::tei:add">
+              <xsl:value-of select="ancestor::tei:add/@resp"/>
+            </xsl:when>
+            <xsl:when test="ancestor::tei:div[1]//tei:handShift and preceding::tei:handShift[1]/ancestor::tei:div[@resp]/@corresp = $commonDiv">
+              <xsl:value-of select="preceding::tei:handShift[1]/@new"/>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:value-of select="ancestor::tei:div[1]/@resp"/>
+            </xsl:otherwise>
+          </xsl:choose>
+        </xsl:variable>
+        <xsl:value-of select="document('../corpus.xml')/tei:teiCorpus/tei:header/tei:profileDesc/tei:handNotes/tei:handNote[@xml:id=$hand]/tei:forename"/>
+        <xsl:text> </xsl:text>
+        <xsl:value-of select="document('../corpus.xml')/tei:teiCorpus/tei:header/tei:profileDesc/tei:handNotes/tei:handNote[@xml:id=$hand]/tei:surname"/>
+        <xsl:text> (</xsl:text>
+        <xsl:value-of select="substring($hand, 5)"/>
+        <xsl:text>); </xsl:text>
         
         
       </xsl:attribute>
       <xsl:apply-templates/>
     </span>
   </xsl:template>
-  
-  
-  <xsl:variable name="handRef">
-    <xsl:choose>
-      <xsl:when test="ancestor::tei:add">
-        <xsl:value-of select="ancestor::tei:add/@resp"/>
-      </xsl:when>
-      <xsl:otherwise>
-        <xsl:choose>
-          <xsl:when test="ancestor::tei:div[@resp]//tei:handShift">
-            <xsl:variable name="comDiv" select="ancestor::tei:div[@resp]/@corresp"/>
-            <xsl:choose>
-              <xsl:when
-                test="preceding::tei:handShift[1]/ancestor::tei:div[@resp]/@corresp = $comDiv">
-                <xsl:value-of select="preceding::tei:handShift[1]/@new"/>
-              </xsl:when>
-              <xsl:otherwise>
-                <xsl:value-of select="ancestor::tei:div[@resp]/@resp"/>
-              </xsl:otherwise>
-            </xsl:choose>
-          </xsl:when>
-          <xsl:otherwise>
-            <xsl:value-of select="ancestor::tei:div[@resp]/@resp"/>
-          </xsl:otherwise>
-        </xsl:choose>
-      </xsl:otherwise>
-    </xsl:choose>
-  </xsl:variable>
-  
-  
-  
-  
+    
+    
+    <!--
   <xsl:variable name="hand">
     <xsl:choose>
       <xsl:when test="descendant::tei:handShift">
@@ -162,7 +138,7 @@
       </xsl:otherwise>
     </xsl:choose>
   </xsl:variable>
-  
+  -->
   
   
   
