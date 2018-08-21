@@ -48,11 +48,16 @@
     <xsl:value-of select="@n"/>
     <xsl:variable name="link" select="@corresp"/>
     <h2>
-      <xsl:value-of select="//tei:msItem[@xml:id=$link]/tei:title"/>
+      <xsl:value-of select="//tei:msItem[@xml:id=$link]/tei:title"/> <!-- MM: check this path -->
     </h2>
-    <xsl:apply-templates/>
+    <xsl:apply-templates mode="diplomatic"/>
   </xsl:template>
 
+  <xsl:template mode="diplomatic" match="tei:w[not(descendant::tei:w)]"> <!-- remember type="data" -->
+    <xsl:text>[</xsl:text>
+    <xsl:apply-templates/>
+    <xsl:text>]</xsl:text>
+  </xsl:template>
 
 
 </xsl:stylesheet>
