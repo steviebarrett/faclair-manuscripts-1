@@ -17,6 +17,9 @@
         <div id="abstract">
           <xsl:apply-templates select="tei:TEI/tei:teiHeader/tei:fileDesc/tei:notesStmt/tei:note/tei:p"/>
         </div>
+        <div id="diplomatic">
+          <xsl:apply-templates select="tei:TEI/tei:text/tei:body"/>
+        </div>
       </body>
     </html>
   </xsl:template>
@@ -25,6 +28,10 @@
     <p>
       <xsl:apply-templates/>
     </p>
+  </xsl:template>
+
+  <xsl:template match="tei:body">
+    <xsl:apply-templates/>
   </xsl:template>
 
 
