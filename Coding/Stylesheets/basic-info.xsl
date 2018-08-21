@@ -66,12 +66,23 @@
             <xsl:value-of select="@lemma"/>
             <xsl:text> [</xsl:text>
             <xsl:value-of select="ancestor::tei:name/@type"/>
-            <xsl:text>] </xsl:text>
+            <xsl:text> name]</xsl:text>
           </xsl:when>
           <xsl:otherwise>
             <xsl:value-of select="@lemma"/>
           </xsl:otherwise>
         </xsl:choose>
+        <xsl:text>: </xsl:text>
+        <xsl:value-of select="@ana"/>
+        <xsl:text> </xsl:text>
+        <xsl:if test="@source">
+          <xsl:text>(from </xsl:text>
+          <xsl:value-of select="@source"/>
+          <xsl:text>)</xsl:text>
+        </xsl:if>
+        
+        
+        
       </xsl:attribute>
       <xsl:apply-templates/>
     </span>
