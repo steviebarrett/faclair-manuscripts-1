@@ -81,7 +81,17 @@
           <xsl:text>)</xsl:text>
         </xsl:if>
         <xsl:text>&#10;</xsl:text>
-        <xsl:value-of select="ancestor::tei:div[1]/@resp"/>
+        <xsl:choose>
+          <xsl:when test="ancestor::tei:add">
+            <xsl:value-of select="ancestor::tei:add/@resp"/>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:value-of select="ancestor::tei:div[1]/@resp"/>
+          </xsl:otherwise>
+        </xsl:choose>
+        
+        
+        
         
         
       </xsl:attribute>
