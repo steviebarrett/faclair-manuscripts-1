@@ -81,9 +81,13 @@
           <xsl:text>)</xsl:text>
         </xsl:if>
         <xsl:text>&#10;</xsl:text>
+        <xsl:variable name="commonDiv" select="ancestor::tei:div[1]/@corresp"/>
         <xsl:choose>
           <xsl:when test="ancestor::tei:add">
             <xsl:value-of select="ancestor::tei:add/@resp"/>
+          </xsl:when>
+          <xsl:when test="ancestor::tei:div[1]//tei:handShift and preceding::tei:handShift[1]/ancestor::tei:div[@resp]/@corresp = $commonDiv">
+            <xsl:value-of select="preceding::tei:handShift[1]/@new"/>
           </xsl:when>
           <xsl:otherwise>
             <xsl:value-of select="ancestor::tei:div[1]/@resp"/>
