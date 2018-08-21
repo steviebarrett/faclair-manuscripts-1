@@ -95,9 +95,9 @@
             </xsl:otherwise>
           </xsl:choose>
         </xsl:variable>
-        <xsl:value-of select="document('../corpus.xml')/tei:teiCorpus/tei:header/tei:profileDesc/tei:handNotes/tei:handNote[@xml:id=$hand]/tei:forename"/>
+        <xsl:value-of select="document('../corpus.xml')/tei:teiCorpus/tei:teiHeader/tei:profileDesc/tei:handNotes/tei:handNote[@xml:id=$hand]/tei:forename"/>
         <xsl:text> </xsl:text>
-        <xsl:value-of select="document('../corpus.xml')/tei:teiCorpus/tei:header/tei:profileDesc/tei:handNotes/tei:handNote[@xml:id=$hand]/tei:surname"/>
+        <xsl:value-of select="document('../corpus.xml')/tei:teiCorpus/tei:teiHeader/tei:profileDesc/tei:handNotes/tei:handNote[@xml:id=$hand]/tei:surname"/>
         <xsl:text> (</xsl:text>
         <xsl:value-of select="substring($hand, 5)"/>
         <xsl:text>); </xsl:text>
