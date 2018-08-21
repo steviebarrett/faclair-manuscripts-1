@@ -108,9 +108,10 @@
           <xsl:value-of select="document('../../Transcribing/corpus.xml')/tei:teiCorpus/tei:teiHeader/tei:profileDesc/tei:handNotes/tei:handNote[@xml:id=$new]/tei:surname"/>
           <xsl:text> (</xsl:text>
           <xsl:value-of select="substring($new, 5)"/>
-          <xsl:text>); </xsl:text>
+          <xsl:text>); </xsl:text>  
         </xsl:for-each>
-        
+        <xsl:text>&#10;</xsl:text>
+        <xsl:value-of select="count(preceding::*)"/>
         
         
       </xsl:attribute>
@@ -119,37 +120,7 @@
   </xsl:template>
     
     
-<!--
-  <xsl:variable name="hand">
-    <xsl:choose>
-      <xsl:when test="descendant::tei:handShift">
-        <xsl:value-of select="key('hands', $handRef)/tei:forename"/>
-        <xsl:text> </xsl:text>
-        <xsl:value-of select="key('hands', $handRef)/tei:surname"/>
-        <xsl:text> (</xsl:text>
-        <xsl:value-of select="substring($handRef, 5)"/>
-        <xsl:text>); </xsl:text>
-        <xsl:for-each select="descendant::tei:handShift">
-          <xsl:value-of select="key('hands', @new)/tei:forename"/>
-          <xsl:text> </xsl:text>
-          <xsl:value-of select="key('hands', @new)/tei:surname"/>
-          <xsl:text> (</xsl:text>
-          <xsl:value-of select="substring(@new, 5)"/>
-          <xsl:text>); </xsl:text>
-        </xsl:for-each>
-      </xsl:when>
-      <xsl:otherwise>
-        <xsl:value-of select="key('hands', $handRef)/tei:forename"/>
-        <xsl:text> </xsl:text>
-        <xsl:value-of select="key('hands', $handRef)/tei:surname"/>
-        <xsl:text> (</xsl:text>
-        <xsl:value-of select="substring($handRef, 5)"/>
-        <xsl:text>) </xsl:text>
-      </xsl:otherwise>
-    </xsl:choose>
-  </xsl:variable>
-  -->
-  
+
   
   
   
