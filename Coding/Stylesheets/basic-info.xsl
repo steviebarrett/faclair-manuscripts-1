@@ -36,7 +36,7 @@
 
   <xsl:template match="tei:body" mode="edited">
     <div style="color:red;">
-      <xsl:apply-templates/>
+      <xsl:apply-templates mode="edited"/>
     </div>
   </xsl:template>
   
