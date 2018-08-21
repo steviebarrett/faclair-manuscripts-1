@@ -56,9 +56,13 @@
   </xsl:template>
 
   <xsl:template mode="diplomatic" match="tei:w[not(descendant::tei:w)]"> <!-- remember type="data" -->
-    <xsl:text>[</xsl:text>
-    <xsl:apply-templates/>
-    <xsl:text>]</xsl:text>
+    <span class="diplomatic-word">
+      <xsl:attribute name="id">
+        <xsl:value-of select="generate-id()"/>
+      </xsl:attribute>
+      <xsl:attribute name="title">hmmmmm</xsl:attribute>
+      <xsl:apply-templates/>
+    </span>
   </xsl:template>
 
 
