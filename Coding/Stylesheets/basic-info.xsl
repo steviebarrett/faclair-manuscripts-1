@@ -45,9 +45,11 @@
   </xsl:template>
 
   <xsl:template match="tei:div">
-    <xsl:value-of select="@n"/>
+    
     <xsl:variable name="link" select="@corresp"/>
     <h2>
+      <xsl:value-of select="@n"/>
+      <xsl:text>. </xsl:text>
       <xsl:value-of select="//tei:msItem[@xml:id=$link]/tei:title"/> <!-- MM: check this path -->
     </h2>
     <xsl:apply-templates mode="diplomatic"/>
