@@ -10,29 +10,9 @@
         <title>
           <xsl:value-of select="tei:TEI/tei:teiHeader/tei:fileDesc/tei:titleStmt/tei:title"/>
         </title>
-        <!--
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script>
-          $(function() {
-            $('#clear-slips-button').on('click', function() {
-              console.log('pressed');
-            });
-            
-            $('.word').on('click', function(){
-              var abbrevs = ""; 
-              $.each($(this).contents().find('.abbreviation-glyph'), function(i, v) {
-                abbrevs = abbrevs + $(this).html() + ' ';
-              });
-              $('#slips-table > tbody').append('<tr><td>'+ $(this).html() + '</td><td>' + abbrevs + '</td></tr>');
-            });
-            
-          });
-        </script>
-        -->
-        <style>
-          body {font-family: Helvetica; font-size: 12pt;}
-          .abbreviation-glyph {font-style: italic;}
-        </style>
+        <script src="../../Coding/Scripts/mss.js"></script>
+        <link rel="stylesheet" type="text/css" href="../../Coding/Stylesheets/mss.css"/>
       </head>
       <body>
         <h1 id="#top">
@@ -158,24 +138,18 @@
     </li>
   </xsl:template>
   
-  
-  <xsl:template match="tei:body" mode="edited">
-    <div style="color:red;">
-      <xsl:apply-templates mode="edited"/>
-    </div>
-  </xsl:template>
-  
   <xsl:template match="tei:body" mode="diplomatic">
       <xsl:apply-templates select="tei:div" mode="diplomatic"/>
   </xsl:template>
 
   <xsl:template match="tei:div" mode="diplomatic">
     <xsl:variable name="link" select="@corresp"/>
-    <h2>
+    <h4>
+      <xsl:text>Text </xsl:text>
       <xsl:value-of select="@n"/>
       <xsl:text>. </xsl:text>
       <xsl:value-of select="//tei:msItem[@xml:id=$link]/tei:title"/> <!-- MM: check this path -->
-    </h2>
+    </h4>
     <xsl:apply-templates mode="diplomatic"/>
   </xsl:template>
   
@@ -190,12 +164,22 @@
   </xsl:template>
   
   <xsl:template mode="diplomatic" match="tei:pb">
-    <hr/>
-    <h3>Page header</h3>
+    <h4>
+      <xsl:text>Page </xsl:text>
+      <xsl:value-of select="@n"/>
+      <xsl:text>: </xsl:text>
+    </h4>
   </xsl:template>
   
   
-  
+  <xsl:template mode="diplomatic" match="tei:name">
+    <span class="name">
+      <xsl:attribute name="id">
+        <xsl:value-of select="generate-id()"/>
+      </xsl:attribute>
+      <xsl:apply-templates mode="diplomatic"/>
+    </span>
+  </xsl:template>
   
   
   
@@ -203,12 +187,11 @@
     
     <xsl:variable name="wordPOS" select="count(preceding::*)"/>
     
-    
-    
-    <span class="word diplomatic-word">
+    <span class="word">
       <xsl:attribute name="id">
         <xsl:value-of select="generate-id()"/>
       </xsl:attribute>
+      
       <xsl:attribute name="title">
         <xsl:choose>
           <xsl:when test="ancestor::tei:name">
@@ -496,6 +479,11 @@
     </span>
   </xsl:template>
   
+  <xsl:template match="tei:body" mode="edited">
+    <div style="color:red;">
+      <xsl:apply-templates mode="edited"/>
+    </div>
+  </xsl:template>
   
 
 
