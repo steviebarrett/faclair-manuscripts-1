@@ -5,17 +5,23 @@ $(function() {
     if ($(this).parent().hasClass('name')) {
       $(this).css('background-color', 'green');  
       $(this).siblings().css('color', 'green');
+      $(this).siblings().css('text-decoration', 'underline');
     }
     else {
       $(this).css('background-color', 'blue');
+      if ($(this).parent().hasClass('compound')) {  
+        $(this).siblings().css('color', 'blue');
+        $(this).siblings().css('text-decoration', 'underline');
+      }
     }
   });
 
   $('.word').mouseleave(function(){
     $(this).css('background-color', 'white');
     $(this).css('color', 'black');
-    if ($(this).parent().hasClass('name')) {
+    if ($(this).parent().hasClass('name') || $(this).parent().hasClass('compound')) {
       $(this).siblings().css('color', 'black');
+      $(this).siblings().css('text-decoration', 'none');
     }
   });
 

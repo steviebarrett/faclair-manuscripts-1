@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tei="http://www.tei-c.org/ns/1.0" exclude-result-prefixes="xs" version="1.0">
 
+  <!-- 'add', 'choice|unclear', 'supplied' elements in diplomatic transcription? -->
+
   <xsl:strip-space elements="*"/>
   <xsl:output method="html"/>
 
@@ -177,21 +179,45 @@
       <xsl:attribute name="id">
         <xsl:value-of select="generate-id()"/>
       </xsl:attribute>
+      <xsl:attribute name="data-type">
+        <xsl:value-of select="@type"/>
+      </xsl:attribute>
       <xsl:apply-templates mode="diplomatic"/>
     </span>
   </xsl:template>
   
   
-  
-  <xsl:template mode="diplomatic" match="tei:w[not(descendant::tei:w)]"> <!-- remember type="data" -->
+  <xsl:template mode="diplomatic" match="tei:w"> <!-- remember type="data" -->
+    <xsl:choose>
+      <xsl:when test="child::tei:w">
+        <span class="compound">
+          <xsl:attribute name="id">
+            <xsl:value-of select="generate-id()"/>
+          </xsl:attribute>
+          <xsl:apply-templates mode="diplomatic"/>
+        </span>
+      </xsl:when>
+      <xsl:otherwise>
+        <span class="word">
+          <xsl:attribute name="id">
+            <xsl:value-of select="generate-id()"/>
+          </xsl:attribute>
+          <xsl:attribute name="data-headword">
+            <xsl:value-of select="@lemma"/>
+          </xsl:attribute>
+          <xsl:attribute name="data-dil">
+            <xsl:value-of select="@lemmaRef"/>
+          </xsl:attribute>
+          <xsl:attribute name="data-pos">
+            <xsl:value-of select="@ana"/>
+          </xsl:attribute>
+          <xsl:apply-templates mode="diplomatic"/>
+        </span>
+      </xsl:otherwise>
+    </xsl:choose>
     
-    <xsl:variable name="wordPOS" select="count(preceding::*)"/>
     
-    <span class="word">
-      <xsl:attribute name="id">
-        <xsl:value-of select="generate-id()"/>
-      </xsl:attribute>
-      
+      <!--
       <xsl:attribute name="title">
         <xsl:choose>
           <xsl:when test="ancestor::tei:name">
@@ -244,8 +270,7 @@
         </xsl:for-each>
         <xsl:text>&#10;</xsl:text>
         <xsl:text> </xsl:text>
-        <!-- PROBLEMS -->
-        <xsl:for-each select="descendant::*[@reason='interp_obscure'] | ancestor::*[@reason='interp_obscure']"> <!-- MM: "unclear" elements only??? -->
+        <xsl:for-each select="descendant::*[@reason='interp_obscure'] | ancestor::*[@reason='interp_obscure']"> 
           <xsl:choose>
             <xsl:when test="ancestor::tei:w and not(descendant::tei:w)">
               <xsl:text xml:space="preserve">- some characters within this word remain unexplained.&#10;</xsl:text>
@@ -325,14 +350,10 @@
         <xsl:for-each select="descendant::*[@reason='fold'] | ancestor::*[@reason='fold']">
           <xsl:text xml:space="preserve">- the page edge is folded in the digital image; more text may be discernible by examining the manuscript in person &#10;</xsl:text>
         </xsl:for-each>
-        
-        
-        
-        
       </xsl:attribute>
+      -->
       
-      <xsl:apply-templates mode="diplomatic"/>
-    </span>
+      
   </xsl:template>
 
 
@@ -478,6 +499,10 @@
       <xsl:apply-templates mode="diplomatic"/>
     </span>
   </xsl:template>
+  
+  
+  
+  
   
   <xsl:template match="tei:body" mode="edited">
     <div style="color:red;">
