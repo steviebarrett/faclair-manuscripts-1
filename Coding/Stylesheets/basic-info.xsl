@@ -10,22 +10,152 @@
         <title>
           <xsl:value-of select="tei:TEI/tei:teiHeader/tei:fileDesc/tei:titleStmt/tei:title"/>
         </title>
+        <!--
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script>
+          $(function() {
+            $('#clear-slips-button').on('click', function() {
+              console.log('pressed');
+            });
+            
+            $('.word').on('click', function(){
+              var abbrevs = ""; 
+              $.each($(this).contents().find('.abbreviation-glyph'), function(i, v) {
+                abbrevs = abbrevs + $(this).html() + ' ';
+              });
+              $('#slips-table > tbody').append('<tr><td>'+ $(this).html() + '</td><td>' + abbrevs + '</td></tr>');
+            });
+            
+          });
+        </script>
+        -->
+        <style>
+          body {font-family: Helvetica; font-size: 12pt;}
+          .abbreviation-glyph {font-style: italic;}
+        </style>
       </head>
       <body>
-        <h1>
+        <h1 id="#top">
           <xsl:value-of select="tei:TEI/tei:teiHeader/tei:fileDesc/tei:titleStmt/tei:title"/>
         </h1>
+        <div id="page-menu">
+          Contents:
+          <ul>
+            <li><a href="#header-information">header information</a></li>
+            <li><a href="#diplomatic-transcription">diplomatic transcription</a></li>
+            <li><a href="#undiplomatic-transcription">undiplomatic transcription</a></li>
+          </ul>
+        </div>
+        <hr/><hr/>
+        <div id="header-information">
+          <h2>Header information</h2>
+          <a href="#top">Back to top</a>
+          <xsl:apply-templates select="tei:TEI/tei:teiHeader"/>
+        </div>    
+        <hr/><hr/>
+        <div id="diplomatic-transcription">
+          <h2>Diplomatic transcription</h2>
+          <a href="#top">Back to top</a>
+          <xsl:apply-templates select="tei:TEI/tei:text/tei:body" mode="diplomatic"/>
+        </div>
+        <hr/><hr/>
+        <div id="undiplomatic-transcription">
+          <h2>Undiplomatic transcription</h2>
+          <a href="#top">Back to top</a>
+          <xsl:apply-templates select="tei:TEI/tei:text/tei:body" mode="edited"/>
+        </div>
+        <hr/><hr/>
+        <!--
+        <p>
+          <button id="clear-slips-button">Clear slips</button>
+        </p>
+        <table id="slips-table" border="1">
+          <thead>
+            <tr><th>Form</th><th>Abbreviations</th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        -->
+        <!--
         <div id="abstract">
           <xsl:apply-templates select="tei:TEI/tei:teiHeader/tei:fileDesc/tei:notesStmt/tei:note/tei:p"/>
         </div>
-        <div id="edited">
-          <xsl:apply-templates select="tei:TEI/tei:text/tei:body" mode="edited"/>
-        </div>
-        <div id="diplomatic">
-          <xsl:apply-templates select="tei:TEI/tei:text/tei:body" mode="diplomatic"/>
-        </div>
+        
+        
+        -->
+        
       </body>
     </html>
+  </xsl:template>
+  
+  <xsl:template match="tei:teiHeader">
+    <h3>Authors:</h3>
+    <ul>
+      <xsl:apply-templates select="tei:fileDesc/tei:titleStmt/tei:respStmt"/>
+    </ul>
+    <h3>Abstract:</h3>
+    <xsl:apply-templates select="tei:fileDesc/tei:notesStmt/tei:note[1]"/>
+    <h3>Manuscript:</h3>
+    <xsl:apply-templates select="tei:fileDesc/tei:sourceDesc/tei:msDesc"/>
+    <h3>Language:</h3>
+    <xsl:apply-templates select="tei:profileDesc/tei:langUsage"/>
+    <h3>Keywords:</h3>
+    <ul>
+      <xsl:for-each select="tei:profileDesc/tei:textClass/tei:keywords/tei:term">
+        <li>
+          <xsl:value-of select="."/>
+        </li>
+      </xsl:for-each>
+    </ul>
+  </xsl:template>
+  
+  <xsl:template match="tei:respStmt">
+    <li>
+      <xsl:value-of select="tei:name"/>
+      <xsl:text>: </xsl:text>
+      <xsl:for-each select="tei:resp">
+        <xsl:value-of select="."/>
+        <xsl:text> </xsl:text>
+      </xsl:for-each>
+    </li>
+  </xsl:template>
+  
+  <xsl:template match="tei:p">
+    <p>
+      <xsl:apply-templates/>
+    </p>
+  </xsl:template>
+  
+  <xsl:template match="tei:hi[@rend = 'italic']">
+    <i>
+      <xsl:apply-templates/>
+    </i>
+  </xsl:template>
+  
+  <xsl:template match="tei:msDesc">
+    <p>
+      <xsl:text>ID: </xsl:text>
+      <xsl:value-of select="tei:msIdentifier/tei:repository"/>
+      <xsl:text> </xsl:text>
+      <xsl:value-of select="tei:msIdentifier/tei:idno"/>
+    </p>
+    <p>
+      <xsl:apply-templates select="tei:msContents/tei:summary"/>
+      <ul>
+        <xsl:apply-templates select="tei:msContents/tei:msItem"/>
+      </ul>
+    </p>
+    <p>
+      <xsl:apply-templates select="tei:history/tei:provenance"/>
+    </p>
+  </xsl:template>
+  
+  <xsl:template match="tei:msItem">
+    <li>
+      <xsl:value-of select="tei:locus"/>
+      <xsl:text>: </xsl:text>
+      <xsl:value-of select="tei:title"/>
+    </li>
   </xsl:template>
   
   
@@ -49,11 +179,7 @@
     <xsl:apply-templates mode="diplomatic"/>
   </xsl:template>
   
-  <xsl:template match="tei:p">
-    <p>
-      <xsl:apply-templates/>
-    </p>
-  </xsl:template>
+  
   
   <xsl:template mode="diplomatic" match="tei:lb"> <!-- MM: line breaks inside words? -->
     <sub>
@@ -65,6 +191,7 @@
   
   <xsl:template mode="diplomatic" match="tei:pb">
     <hr/>
+    <h3>Page header</h3>
   </xsl:template>
   
   
@@ -78,7 +205,7 @@
     
     
     
-    <span class="diplomatic-word">
+    <span class="word diplomatic-word">
       <xsl:attribute name="id">
         <xsl:value-of select="generate-id()"/>
       </xsl:attribute>
@@ -343,8 +470,31 @@
   </xsl:variable>
 -->
 
+  <xsl:template mode="diplomatic" match="tei:abbr">
+    <span class="abbreviation">
+      <xsl:attribute name="id">
+        <xsl:value-of select="generate-id()"/>
+      </xsl:attribute>
+      <xsl:apply-templates mode="diplomatic"/>
+    </span>
+  </xsl:template>
 
-  
+
+  <xsl:template mode="diplomatic" match="tei:g">
+    <!--
+    <xsl:variable name="comWord"
+      select="count(ancestor::tei:w[not(descendant::tei:w)]/preceding::tei:w[not(descendant::tei:w)])"/>
+    <xsl:variable name="position"
+      select="count(preceding::tei:g[ancestor::tei:w[not(descendant::tei:w) and count(preceding::tei:w[not(descendant::tei:w)]) = $comWord]])"/>
+      -->
+    <!-- <i id="l{$position}" cert="{ancestor::tei:abbr/@cert}"> -->
+    <span class="abbreviation-glyph">
+      <xsl:attribute name="id">
+        <xsl:value-of select="generate-id()"/>
+      </xsl:attribute>
+      <xsl:apply-templates mode="diplomatic"/>
+    </span>
+  </xsl:template>
   
   
 
