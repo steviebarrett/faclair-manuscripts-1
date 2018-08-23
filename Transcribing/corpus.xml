@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="Schemas/fnag_mss2.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
-<?xml-stylesheet type="text/xsl" href="../Coding/Stylesheets/home.xsl"?>
+<?xml-stylesheet type="text/xsl" href="../Coding/Stylesheets/stylesheet-ed-pub.xsl"?>
 <teiCorpus xmlns="http://www.tei-c.org/ns/1.0" xmlns:xi="http://www.w3.org/2001/XInclude">
 	<teiHeader>
 		<fileDesc>
@@ -850,7 +850,7 @@
 					<glyphName>pro (p with tail)</glyphName>
 					<note>A "p" with a back-pointing tail on the descender.</note>
 				</glyph>
-				<glyph xml:id="g35">
+				<glyph xml:id="l1">
 					<glyphName>ligature</glyphName>
 					<note>Two letters are placed together as a ligature, with text to be inserted in
 						between.</note>
@@ -860,7 +860,7 @@
 					<note>A "p" with a subscript suspension stroke, normally standing for
 						"per"/"par/"por".</note>
 				</glyph>
-				<glyph xml:id="g37" corresp="www.vanhamel.nl/codecs/Ac_(ligature)">
+				<glyph xml:id="l3" corresp="www.vanhamel.nl/codecs/Ac_(ligature)">
 					<glyphName>ac ligature</glyphName>
 					<note>Various combinations of "a" and "c".</note>
 				</glyph>
@@ -930,7 +930,7 @@
 					<note>An "x", standing either for the numeral 10 or for the characterd "dec" or
 						similar.</note>
 				</glyph>
-				<glyph xml:id="g52" corresp="https://vanhamel.nl/codecs/I_with_acute_diacritic_(disambiguation)">
+				<glyph xml:id="g52" corresp="www.vanhamel.nl/codecs/I_with_acute_diacritic_(disambiguation)">
 					<glyphName>upward diagonal overstroke</glyphName>
 					<note>A stroke from the lower left of a character to the upper right, crossing
 						the character itself, standing for a string of subsequent characters. Found
@@ -951,16 +951,20 @@
 					<note>Numeral "2", with a diagonal stroke across; stands for "dai".</note>
 				</glyph>
 				<glyph xml:id="g56">
-					<glyphName>cc digraph</glyphName>
-					<note>Double "c", either standing for "cc" or "g", or occasionally words beginning with "cc" (i.e. eclipsed "c").</note>
+					<glyphName>cc abbreviation</glyphName>
+					<note>Double "c", standing for an abbreviation for a word starting with "cc".</note>
 				</glyph>
-				<glyph xml:id="g57" corresp="http://www.vanhamel.nl/codecs/He_(ligature)">
+				<glyph xml:id="l2" corresp="http://www.vanhamel.nl/codecs/He_(ligature)">
 					<glyphName>He ligature</glyphName>
 					<note>An "h" with an "e" atop its ascender.</note>
 				</glyph>
 				<glyph xml:id="g58">
 					<glyphName>il abbreviation</glyphName>
 					<note>Superscript "il", standing for various strings including those letters (e.g. "m<hi rend="italics">aille</hi>"). O'Brien 1913: n.225.</note>
+				</glyph>
+				<glyph xml:id="l4" corresp="https://vanhamel.nl/codecs/Re_(ligature_with_short_e)">
+					<glyphName>re ligature</glyphName>
+					<note>"r" run into "e", the former perhaps resembling "s".</note>
 				</glyph>
 				<glyph xml:id="gn" corresp="n">
 					<glyphName/>
@@ -1236,7 +1240,7 @@
 		</revisionDesc>
 	</teiHeader>
   
-	<TEI corresp="Transcriptions/transcription1.xml"/>
+	<!-- <TEI corresp="Transcriptions/transcription1.xml"/>
   <TEI corresp="Transcriptions/transcription2.xml"/>  
   <TEI corresp="Transcriptions/transcription3.xml"/>
   <TEI corresp="Transcriptions/transcription4.xml"/>
@@ -1250,24 +1254,24 @@
   <TEI corresp="Transcriptions/transcription14.xml"/>
   <TEI corresp="Transcriptions/transcription15.xml"/>
   <TEI corresp="Transcriptions/transcription16.xml"/>
-  <TEI corresp="Transcriptions/transcription17.xml"/>
+  <TEI corresp="Transcriptions/transcription17.xml"/> -->
   
 	<!-- <xi:include href="Transcriptions/transcription1.xml" parse="xml"/> -->
-	<!-- <xi:include href="Transcriptions/transcription2.xml" parse="xml"/> -->
-	<!-- <xi:include href="Transcriptions/transcription3.xml" parse="xml"/> -->
-	<!-- <xi:include href="Transcriptions/transcription4.xml" parse="xml"/> -->
-	<!-- <xi:include href="Transcriptions/transcription5.xml" parse="xml"/> -->
-	<!-- <xi:include href="Transcriptions/transcription6.xml" parse="xml"/> -->
-	<!-- <xi:include href="Transcriptions/transcription7.xml" parse="xml"/> -->
-	<!-- <xi:include href="Transcriptions/transcription8.xml" parse="xml"/> -->
-	<!-- <xi:include href="Transcriptions/transcription9.xml" parse="xml"/> -->
+		<!-- <xi:include href="Transcriptions/transcription2.xml" parse="xml"/> -->
+		<!-- <xi:include href="Transcriptions/transcription3.xml" parse="xml"/> -->
+		<!-- <xi:include href="Transcriptions/transcription4.xml" parse="xml"/> -->
+		<!-- <xi:include href="Transcriptions/transcription5.xml" parse="xml"/> -->
+		<!-- <xi:include href="Transcriptions/transcription6.xml" parse="xml"/> -->
+		<!-- <xi:include href="Transcriptions/transcription7.xml" parse="xml"/> -->
+		<!-- <xi:include href="Transcriptions/transcription8.xml" parse="xml"/> -->
+		<!-- <xi:include href="Transcriptions/transcription9.xml" parse="xml"/> -->
 	<!-- <xi:include href="Transcriptions/transcription10.xml" parse="xml"/> -->
 	<!-- <xi:include href="Transcriptions/transcription11.xml" parse="xml"/> -->
 	<!-- <xi:include href="Transcriptions/transcription12.xml" parse="xml"/> -->
 	<!-- <xi:include href="Transcriptions/transcription13.xml" parse="xml"/> -->
-	<!-- <xi:include href="Transcriptions/transcription14.xml" parse="xml"/> -->
+	<xi:include href="Transcriptions/transcription14.xml" parse="xml"/>
 	<!-- <xi:include href="Transcriptions/transcription15.xml" parse="xml"/> -->
 	<!-- <xi:include href="Transcriptions/transcription16.xml" parse="xml"/> -->
 	<!-- <xi:include href="Transcriptions/transcription17.xml" parse="xml"/> -->
-	<!-- <xi:include href="hwData.xml" parse="xml"/> -->
+	<xi:include href="hwData.xml" parse="xml"/>
 </teiCorpus>
