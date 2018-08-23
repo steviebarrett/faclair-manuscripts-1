@@ -950,9 +950,12 @@
 			select="count(ancestor::tei:w[not(descendant::tei:w)]/preceding::tei:w[not(descendant::tei:w)])"/>
 		<xsl:variable name="position"
 			select="count(preceding::tei:g[ancestor::tei:w[not(descendant::tei:w) and count(preceding::tei:w[not(descendant::tei:w)]) = $comWord]])"/>
-		<i id="l{$position}" cert="{ancestor::tei:abbr/@cert}">
-			<xsl:apply-templates mode="dip"/>
-		</i>
+		<xsl:if test="contains(@ref, 'g')"><i class="glyph" id="l{$position}" cert="{ancestor::tei:abbr/@cert}">
+			<xsl:apply-templates/>
+		</i></xsl:if>
+		<xsl:if test="contains(@ref, 'l')"><span class="glyph" id="l{$position}" cert="{ancestor::tei:abbr/@cert}">
+			<xsl:apply-templates/>
+		</span></xsl:if>
 	</xsl:template>
 
 	<xsl:template mode="dip" match="tei:unclear">

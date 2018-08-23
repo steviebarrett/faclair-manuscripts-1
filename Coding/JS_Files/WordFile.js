@@ -145,7 +145,8 @@ function createTable() {
 	var abbrPOS = abbrSpl[1];\
 	var row = document.getElementById(rowID);\
 	var form = row.cells[0].childNodes[0];\
-	var abbr = form.getElementsByTagName('i')[abbrPOS];\
+	var abbr = form.getElementsByClassName('glyph')[abbrPOS];\
+	if (abbr.hasAttribute('id')) {\
 	if (abbr.getAttribute('cert') == 'high'){\
 	abbr.style.backgroundColor = 'LawnGreen';\
 	} \
@@ -158,6 +159,10 @@ function createTable() {
 	else {\
 	abbr.style.backgroundColor = 'Silver';\
 	} \
+	} \
+	else {\
+	abbr.style.backgroundColor = 'white';\
+	} \
 	}; \
 	function abbrDeHilite(id) { \
 	var ids = id.split(','); \
@@ -168,7 +173,7 @@ function createTable() {
 	var abbrPOS = abbrSpl[1];\
 	var row = document.getElementById(rowID);\
 	var form = row.cells[0].childNodes[0];\
-	var abbr = form.getElementsByTagName('i')[abbrPOS];\
+	var abbr = form.getElementsByClassName('glyph')[abbrPOS];\
 	abbr.style.backgroundColor = 'White';\
 	}; \
 	function addComment(r) { \
@@ -240,8 +245,18 @@ function addSlip(id) {
 	var lem = el.getAttribute('lemma');
 	var an = el.getAttribute('ana');
 	var msref = el.getAttribute('ref');
-	var lref = el.getAttribute('lemmaRef');
-	var hnd = el.getAttribute('hand');
+	var lref = el.getAttribute('lemmaRef'); 
+	var handString = el.getAttribute('hand')
+	var hnd;
+	if (handString.includes(";")) {
+		var handArray = handString.split("; ");
+		var handList = handArray.join('</li><li>');
+		var handListFull = '<li>' + handList + '</li>';
+		var hnd = '<ul style="list-style: none;margin:0;padding:0;">' + handListFull + '</ul>';
+	}
+	else {
+	hnd = el.getAttribute('hand')
+	}
 	var date = el.getAttribute('date');
 	var prob = el.getAttribute('cert');
 	var abbrArray = el.getAttribute('abbrRefs').split(" ");
@@ -611,8 +626,12 @@ function addSlip(id) {
 }
 
 function beginCS(b) {
-	b.style.backgroundColor = "MediumSpringGreen";
-	b.innerHTML = "<b>Collect e-Slips</b>";
+	var csButtons = document.querySelectorAll("button[class=cs]");
+	var r;
+	for (r = 0; r < csButtons.length; r++) {
+		csButtons[r].style.backgroundColor = "MediumSpringGreen";
+		csButtons[r].innerHTML = "<b>Collect e-Slips</b>";
+	}
 	var wsButtons = document.querySelectorAll("button[class=ws]");
 	var y;
 	for (y = 0; y < wsButtons.length; y++) {
@@ -632,8 +651,12 @@ function beginCS(b) {
 }
 
 function beginWS(b) {
-	b.style.backgroundColor = "MediumSpringGreen";
-	b.innerHTML = "<b>Headword Search</b>";
+	var wsButtons = document.querySelectorAll("button[class=ws]");
+	var r;
+	for (r = 0; r < wsButtons.length; r++) {
+		wsButtons[r].style.backgroundColor = "MediumSpringGreen";
+		wsButtons[r].innerHTML = "<b>Headword Search</b>";
+	}
 	var csButtons = document.querySelectorAll("button[class=cs]");
 	var y;
 	for (y = 0; y < csButtons.length; y++) {
@@ -677,7 +700,11 @@ function endSearch(b) {
 			wsButtons[j].innerHTML = bText;
 		}
 	}
-	b.setAttribute("hidden", "true");
+	var esButtons = document.querySelectorAll("button[class=es]");
+	var i;
+	for (i = 0; i < esButtons.length; i++) {
+		esButtons[i].setAttribute("hidden", "true");
+	}
 	alert("Mode reset. Make sure to save or print any open e-slip table. Select either ''Collect e-Slips'' or ''Headword Search'' to begin a new table.");
 }
 
@@ -714,7 +741,17 @@ function wordSearch(id) {
 		var an = el.getAttribute('ana');
 		var msref = el.getAttribute('ref');
 		var lref = el.getAttribute('lemmaRef');
-		var hnd = el.getAttribute('hand');
+		var handString = el.getAttribute('hand')
+		var hnd;
+		if (handString.includes(";")) {
+			var handArray = handString.split("; ");
+			var handList = handArray.join('</li><li>');
+			var handListFull = '<li>' + handList + '</li>';
+			var hnd = '<ul style="list-style: none;margin:0;padding:0;">' + handListFull + '</ul>';
+		}
+		else {
+			hnd = el.getAttribute('hand')
+		}
 		var date = el.getAttribute('date');
 		var prob = el.getAttribute('cert');
 		var med = el.getAttribute('medium');
