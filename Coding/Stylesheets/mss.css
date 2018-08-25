@@ -1,12 +1,32 @@
+html {
+  height: 100%;
+}
+
 body {
   font-family: Helvetica; 
   font-size: 12pt;
+  width: 90%;
+  height: 100%;
+  overflow: hidden;
 }
 
+#left-panel {
+  float: left;
+  width: 50%;
+  height: 100%;
+  overflow: auto;
+}
 
+#right-panel {
 
+  height: 100%;
+  overflow: auto;
+}
 
+.chunk {
+  cursor: pointer;
+}
 
- .abbreviation-glyph {font-style: italic;}
+.glyph {font-style: italic;}
  
 
