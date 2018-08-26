@@ -17,10 +17,10 @@ $(function() {
   });
 
   $('.chunk').click(function(){
-    $('#right-panel').html(makeDescription($(this)));
+    $('#right-panel').html(makeDescription($(this),false));
   });
 
-  function makeDescription(span) {
+  function makeDescription(span, rec) {
     html = '<span style="color:red;">' + $(span).text() + '</span><ul>';
     if ($(span).hasClass('name')) {
       html = html + '<li>is the name of a ';
@@ -41,7 +41,7 @@ $(function() {
       html += '<li>is a syntactically complex form containing the following elements:';      
       html += '<ul>';
       $(span).children('.word, .name').each(function() {
-        html = html + '<li>' + makeDescription($(this)) + '</li>';
+        html = html + '<li>' + makeDescription($(this),true) + '</li>';
       });
       html += '</ul>';
       html += '</li>';
@@ -49,14 +49,35 @@ $(function() {
     else {
       html += '<li>is a syntactically simple form</li>';
     }
-    if ($(span).find('.glyph').length>0) {
+    if (!rec && $(span).find('.glyph').length>0) {
       html += '<li>contains the following scribal abbreviations:<ul>';
       $(span).find('.glyph').each(function() {
-        html = html + '<li>' + getGlyphInfo($(this).attr('data-glyphref')) + '</li>';
+        html = html + '<li>' + $(this).attr('data-glyphref') + '</li>';
+        /* 
+        html += '<li>'; 
+        $.ajax({
+          type: "GET",
+          url: "../corpus.xml",
+          dataType: "xml",
+          success: function(xml) {
+            $(xml).find('glyph').each(function() {
+              if ($(this).attr('xml:id') == $(span).attr('data-glyphref')) {
+                console.log('Dunnit!');
+                console.log($(this).attr('corresp'));
+                html += $(this).attr('corresp');
+              }
+            });
+          },       
+          error: function() {
+            alert("The XML File could not be processed correctly.");
+          }
+        });
+        
+        html += '</li>';
+         */
       });
       html += '</ul></li>';
     }
-    
     html += '</ul>';
     return html;
   }
@@ -109,20 +130,5 @@ $(function() {
     }
   }
   
-  function getGlyphInfo(gid) {
-    //open corpus.xml and get XML element
-    /* 
-    <glyph xml:id="g1" corresp="www.vanhamel.nl/codecs/M_stroke">
-					<glyphName>m-stroke</glyphName>
-					<note>A horizontal line with a downwards hook, standing for "-m".</note>
-				</glyph>
-  */
-    $.get('../corpus.xml', function(d){
-      glyph = $(d).find('#'+gid).children('glyphName');
-      return glyph;
-    });
-  
-  }
-
   
 });
