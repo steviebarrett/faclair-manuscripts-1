@@ -3182,7 +3182,7 @@
 			</xsl:if>Add Comment</button>
 			<br/>
 			<table/>
-			<button id="{generate-id()}" onclick="textComment(this.id)" style="font-size:12px">Add
+			<button id="{generate-id()} + 'x'" onclick="textComment(this.id)" style="font-size:12px">Add
 				Comment</button>
 		</xsl:if>
 		<xsl:if test="not(ancestor::tei:div) and descendant::tei:note[@type = 'fn']">
