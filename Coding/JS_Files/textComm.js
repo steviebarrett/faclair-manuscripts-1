@@ -4,13 +4,13 @@ function newRow() {
 	rowNo++;
 }
 
-function editComment(r){
+function editComment(r) {
 	var d = new Date();
 	var utc = d.getTime();
 	var ts = d.toUTCString();
 	var rowID = r.parentNode.parentNode.id;
 	var tblID = r.parentNode.parentNode.parentNode.parentNode.id;
-	var id = tblID.slice(0, 7);
+	var id = tblID.split("t", 1);
 	var initID = id + rowID + "init";
 	var inputID = id + rowID + "input";
 	var initCell = document.getElementById(rowID).childNodes[2];
@@ -25,15 +25,18 @@ function editComment(r){
 	document.getElementById(rowID).childNodes[3].setAttribute("id", id + rowID + "ed");
 }
 
-function saveComment(r){
+function saveComment(r) {
 	var d = new Date();
 	var utc = d.getTime();
 	var ts = d.toUTCString();
 	var rowID = r.parentNode.parentNode.id;
 	var tblID = r.parentNode.parentNode.parentNode.parentNode.id;
-	var id = tblID.slice(0, 7);
+	alert(tblID);
+	var id = tblID.split("t", 1);
+	alert(id);
 	var initID = id + rowID + "init";
 	var inputID = id + rowID + "input";
+	alert(inputID);
 	var inputCell = document.getElementById(inputID).parentNode;
 	var initText = document.getElementById(initID).value;
 	document.getElementById(initID).parentNode.innerHTML = initText;
@@ -44,37 +47,35 @@ function saveComment(r){
 	inputCell.setAttributeNode(span);
 	var rowPos = document.getElementById(tblID).childNodes[0].childNodes.length;
 	if (rowPos % 2 == 0) {
-	document.getElementById(rowID).style.backgroundColor = "Lavender";
-	}
-	else {
-	document.getElementById(rowID).style.backgroundColor = "Azure";
+		document.getElementById(rowID).style.backgroundColor = "Lavender";
+	} else {
+		document.getElementById(rowID).style.backgroundColor = "Azure";
 	}
 	r.textContent = "Edit";
 	r.setAttribute("onclick", "editComment(this)");
-	if (document.getElementById(rowID).childNodes[3].hasAttribute("id"))
-	{	
-	var commentRub = document.getElementById(rowID).childNodes[3];
-	commentRub.innerHTML = "<b>Comment (<a style='background-color:Khaki' title='edited at " + ts +"'>ed.</a>):</b>";
+	if (document.getElementById(rowID).childNodes[3].hasAttribute("id")) {
+		var commentRub = document.getElementById(rowID).childNodes[3];
+		commentRub.innerHTML = "<b>Comment (<a style='background-color:Khaki' title='edited at " + ts + "'>ed.</a>):</b>";
 	}
 }
 
-function delRow(r){
+function delRow(r) {
 	var d = new Date();
 	var utc = d.getTime();
 	var ts = d.toUTCString();
-	var tblID = r.parentNode.parentNode.parentNode.parentNode.id; 
+	var tblID = r.parentNode.parentNode.parentNode.parentNode.id;
 	var i = r.parentNode.parentNode.rowIndex;
 	document.getElementById(tblID).deleteRow(i);
-	};
-	function delCol() {
+};
+function delCol() {
 	var rowCount = document.getElementById(tblID).firstChild.childElementCount;
 	for (j = 0; j < rowCount; j++) {
-	var row = document.getElementsByTagName("tr")[j];
-	row.deleteCell(5);
+		var row = document.getElementsByTagName("tr")[j];
+		row.deleteCell(5);
 	}
 }
 
-function textComment (id){
+function textComment (id) {
 	var d = new Date();
 	var utc = d.getTime();
 	var ts = d.toUTCString();
@@ -90,7 +91,7 @@ function textComment (id){
 	newRow();
 	nextRow.setAttributeNode(row);
 	var rowID = row.value;
-	nextRow.style.fontSize = '10px'; 
+	nextRow.style.fontSize = '10px';
 	var col1 = nextRow.insertCell(0);
 	col1.innerHTML = ts;
 	var col2 = nextRow.insertCell(1);
@@ -122,7 +123,6 @@ function textComment (id){
 	saveOnClick.value = "saveComment(this)";
 	col6.childNodes[2].setAttributeNode(saveOnClick);
 	var saveStyle = document.createAttribute("style");
-	saveStyle.value = "width:75px;"; 
+	saveStyle.value = "width:75px;";
 	col6.childNodes[2].setAttributeNode(saveStyle);
-
 }
