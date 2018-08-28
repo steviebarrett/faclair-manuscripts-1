@@ -59,14 +59,53 @@
 	</xsl:template>
 
 	<xsl:template mode="dip" match="tei:pb">
-		<table/>
-		<button id="{generate-id()}" onclick="textComment(this.id)" style="font-size:12px">Add
-			Comment</button>
-		<br/>
+		<xsl:variable name="comDiv" select="ancestor::tei:div[1]/@corresp"/>
+		<xsl:if
+			test="ancestor::tei:div[1][@type = 'prose'] and preceding::tei:lb[ancestor::tei:div/@corresp = $comDiv]">
+			<xsl:variable name="lineID">
+				<xsl:choose>
+					<xsl:when test="preceding::tei:pb[1]/@xml:id"><xsl:value-of select="preceding::tei:pb[1]/@xml:id"/></xsl:when>
+					<xsl:when test="preceding::tei:pb[1]/@sameAs"><xsl:value-of select="preceding::tei:pb[1]/@sameAs"/></xsl:when>
+				</xsl:choose>
+				<xsl:text>.</xsl:text>
+				<xsl:value-of select="preceding::tei:lb[1]/@n + 1"/>
+			</xsl:variable>
+			<xsl:text xml:space="preserve"> </xsl:text>
+			<button id="plus{$lineID}_dip" onclick="revealComment(this.id)" style="font-size:12px">
+				<xsl:if test="ancestor::tei:w">
+					<xsl:attribute name="onmouseover">
+						<xsl:text>disableWordFunctions(this.id)</xsl:text>
+					</xsl:attribute>
+					<xsl:attribute name="onmouseout">
+						<xsl:text>enableWordFunctions(this.id)</xsl:text>
+					</xsl:attribute>
+				</xsl:if>
+				<b>+</b>
+			</button>
+			<br id="plus{$lineID}br_dip" hidden="hidden"/>
+			<table hidden="hidden">
+				<xsl:if test="ancestor::tei:w">
+					<xsl:attribute name="onmouseover">
+						<xsl:text>disableWordFunctions(this.id)</xsl:text>
+					</xsl:attribute>
+					<xsl:attribute name="onmouseout">
+						<xsl:text>enableWordFunctions(this.id)</xsl:text>
+					</xsl:attribute>
+				</xsl:if>
+			</table>
+			<button id="{generate-id()}_dip" onclick="textComment(this.id)" style="font-size:12px"
+				hidden="hidden"><xsl:if test="ancestor::tei:w">
+					<xsl:attribute name="onmouseover">
+						<xsl:text>disableWordFunctions(this.id)</xsl:text>
+					</xsl:attribute>
+					<xsl:attribute name="onmouseout">
+						<xsl:text>enableWordFunctions(this.id)</xsl:text>
+					</xsl:attribute>
+				</xsl:if>Add Comment</button>
+		</xsl:if>
 		<hr align="left" width="40%"/>
 		<xsl:choose>
 			<xsl:when test="ancestor::tei:div[1]//tei:handShift">
-				<xsl:variable name="comDiv" select="ancestor::tei:div[1]/@xml:id"/>
 				<xsl:choose>
 					<xsl:when
 						test="preceding::tei:handShift/ancestor::tei:div[1]/@corresp = $comDiv">
@@ -106,7 +145,8 @@
 		<button class="cs" onclick="createTable();beginCS(this)">Collect e-Slips</button>
 		<button class="ws" onclick="createTable();beginWS(this)">Headword Search</button>
 		<button class="es" onclick="endSearch(this)" hidden="hidden" style="background-color:red">
-			<b>End Search</b></button>
+			<b>End Search</b>
+		</button>
 		<br/>
 	</xsl:template>
 
@@ -118,6 +158,65 @@
 	</xsl:template>
 
 	<xsl:template mode="dip" match="tei:lb">
+		<xsl:variable name="lineID">
+			<xsl:choose>
+				<xsl:when test="@sameAs">
+					<xsl:value-of select="@sameAs"/>
+				</xsl:when>
+				<xsl:when test="@xml:id">
+					<xsl:value-of select="@xml:id"/>
+				</xsl:when>
+			</xsl:choose>
+		</xsl:variable>
+		<xsl:variable name="comDiv" select="ancestor::tei:div[1]/@corresp"/>
+		<xsl:variable name="comPage">
+			<xsl:choose>
+				<xsl:when test="preceding::tei:pb[1]/@xml:id">
+					<xsl:value-of select="preceding::tei:pb[1]/@xml:id"/>
+				</xsl:when>
+				<xsl:when test="preceding::tei:pb[1]/@sameAs">
+					<xsl:value-of select="preceding::tei:pb[1]/@sameAs"/>
+				</xsl:when>
+			</xsl:choose>
+		</xsl:variable>
+		<xsl:variable name="divPosition"
+			select="count(preceding::tei:lb[ancestor::tei:div[@corresp = $comDiv]]) + 1"/>
+		<xsl:variable name="pagePosition"
+			select="count(preceding::tei:lb[preceding::tei:pb[@* = $comPage]]) + 1"/>
+		<xsl:if test="$divPosition > 1 and $pagePosition > 1">
+			<xsl:text xml:space="preserve"> </xsl:text>
+			<button id="plus{$lineID}_dip" onclick="revealComment(this.id)" style="font-size:12px">
+				<xsl:if test="ancestor::tei:w">
+					<xsl:attribute name="onmouseover">
+						<xsl:text>disableWordFunctions(this.id)</xsl:text>
+					</xsl:attribute>
+					<xsl:attribute name="onmouseout">
+						<xsl:text>enableWordFunctions(this.id)</xsl:text>
+					</xsl:attribute>
+				</xsl:if>
+				<b>+</b>
+			</button>
+			<br id="plus{$lineID}br_dip" hidden="hidden"/>
+			<table hidden="hidden">
+				<xsl:if test="ancestor::tei:w">
+					<xsl:attribute name="onmouseover">
+						<xsl:text>disableWordFunctions(this.id)</xsl:text>
+					</xsl:attribute>
+					<xsl:attribute name="onmouseout">
+						<xsl:text>enableWordFunctions(this.id)</xsl:text>
+					</xsl:attribute>
+				</xsl:if>
+			</table>
+			<button id="{generate-id()}_dip" onclick="textComment(this.id)" style="font-size:12px"
+				hidden="hidden"><xsl:if test="ancestor::tei:w">
+					<xsl:attribute name="onmouseover">
+						<xsl:text>disableWordFunctions(this.id)</xsl:text>
+					</xsl:attribute>
+					<xsl:attribute name="onmouseout">
+						<xsl:text>enableWordFunctions(this.id)</xsl:text>
+					</xsl:attribute>
+				</xsl:if>Add Comment</button>
+		</xsl:if>
 		<sub>
 			<br id="{generate-id()}_dip"/>
 			<xsl:value-of select="@n"/>
@@ -880,35 +979,35 @@
 			</xsl:when>
 			<xsl:otherwise>
 				<a>
-				<xsl:choose>
-					<xsl:when
-						test="ancestor::*[@cert = 'low'] or descendant::*[@cert = 'low'] or @lemma = 'UNKNOWN'">
-						<xsl:attribute name="style">text-decoration:none;
-							color:#ff0000</xsl:attribute>
-					</xsl:when>
-					<xsl:otherwise>
-						<xsl:choose>
-							<xsl:when
-								test="ancestor::*[@cert = 'medium'] or descendant::*[@cert = 'medium']">
-								<xsl:attribute name="style">text-decoration:none;
-									color:#ff9900</xsl:attribute>
-							</xsl:when>
-							<xsl:otherwise>
-								<xsl:choose>
-									<xsl:when
-										test="ancestor::tei:unclear[@cert = 'high'] or descendant::tei:unclear[@cert = 'high']">
-										<xsl:attribute name="style">text-decoration:none;
-											color:#cccc00</xsl:attribute>
-									</xsl:when>
-									<xsl:otherwise>
-										<xsl:attribute name="style">text-decoration:none;
-											color:#000000</xsl:attribute>
-									</xsl:otherwise>
-								</xsl:choose>
-							</xsl:otherwise>
-						</xsl:choose>
-					</xsl:otherwise>
-				</xsl:choose>
+					<xsl:choose>
+						<xsl:when
+							test="ancestor::*[@cert = 'low'] or descendant::*[@cert = 'low'] or @lemma = 'UNKNOWN'">
+							<xsl:attribute name="style">text-decoration:none;
+								color:#ff0000</xsl:attribute>
+						</xsl:when>
+						<xsl:otherwise>
+							<xsl:choose>
+								<xsl:when
+									test="ancestor::*[@cert = 'medium'] or descendant::*[@cert = 'medium']">
+									<xsl:attribute name="style">text-decoration:none;
+										color:#ff9900</xsl:attribute>
+								</xsl:when>
+								<xsl:otherwise>
+									<xsl:choose>
+										<xsl:when
+											test="ancestor::tei:unclear[@cert = 'high'] or descendant::tei:unclear[@cert = 'high']">
+											<xsl:attribute name="style">text-decoration:none;
+												color:#cccc00</xsl:attribute>
+										</xsl:when>
+										<xsl:otherwise>
+											<xsl:attribute name="style">text-decoration:none;
+												color:#000000</xsl:attribute>
+										</xsl:otherwise>
+									</xsl:choose>
+								</xsl:otherwise>
+							</xsl:choose>
+						</xsl:otherwise>
+					</xsl:choose>
 					<xsl:apply-templates mode="dip"/>
 				</a>
 			</xsl:otherwise>
@@ -950,12 +1049,16 @@
 			select="count(ancestor::tei:w[not(descendant::tei:w)]/preceding::tei:w[not(descendant::tei:w)])"/>
 		<xsl:variable name="position"
 			select="count(preceding::tei:g[ancestor::tei:w[not(descendant::tei:w) and count(preceding::tei:w[not(descendant::tei:w)]) = $comWord]])"/>
-		<xsl:if test="contains(@ref, 'g')"><i class="glyph" id="l{$position}" cert="{ancestor::tei:abbr/@cert}">
-			<xsl:apply-templates/>
-		</i></xsl:if>
-		<xsl:if test="contains(@ref, 'l')"><span class="glyph" id="l{$position}" cert="{ancestor::tei:abbr/@cert}">
-			<xsl:apply-templates/>
-		</span></xsl:if>
+		<xsl:if test="contains(@ref, 'g')">
+			<i class="glyph" id="l{$position}" cert="{ancestor::tei:abbr/@cert}">
+				<xsl:apply-templates/>
+			</i>
+		</xsl:if>
+		<xsl:if test="contains(@ref, 'l')">
+			<span class="glyph" id="l{$position}" cert="{ancestor::tei:abbr/@cert}">
+				<xsl:apply-templates/>
+			</span>
+		</xsl:if>
 	</xsl:template>
 
 	<xsl:template mode="dip" match="tei:unclear">
@@ -1268,10 +1371,62 @@
 	</xsl:template>
 
 	<xsl:template mode="dip" match="tei:div[@n]">
+		<xsl:variable name="comDiv" select="@corresp"/>
+		<xsl:variable name="divLines"
+			select="count(preceding::tei:lb[ancestor::tei:div[@corresp = $comDiv]]) + 1"/>
 		<xsl:apply-templates mode="dip"/>
-		<table/>
-		<button id="{generate-id()}" onclick="textComment(this.id)" style="font-size:12px">Add
-			Comment</button>
+		<xsl:variable name="lineID">
+			<xsl:value-of select="ancestor::tei:TEI//tei:msIdentifier/@sameAs"/>
+			<xsl:text>.</xsl:text>
+			<xsl:choose>
+				<xsl:when
+					test="descendant::tei:pb[not(following::tei:pb[ancestor::tei:div[@corresp = $comDiv]])]/@xml:id">
+					<xsl:value-of
+						select="substring-after(descendant::tei:pb[not(following::tei:pb[ancestor::tei:div[@corresp = $comDiv]])]/@xml:id, '.')"
+					/>
+				</xsl:when>
+				<xsl:when
+					test="descendant::tei:pb[not(following::tei:pb[ancestor::tei:div[@corresp = $comDiv]])]/@sameAs">
+					<xsl:value-of
+						select="substring-after(descendant::tei:pb[not(following::tei:pb[ancestor::tei:div[@corresp = $comDiv]])]/@sameAs, '.')"
+					/>
+				</xsl:when>
+			</xsl:choose>
+			<xsl:text>.</xsl:text>
+			<xsl:value-of select="descendant::tei:lb[not(following::tei:lb[ancestor::tei:div[@corresp = $comDiv]])]/@n + 1"/>
+		</xsl:variable>
+		<xsl:text xml:space="preserve"> </xsl:text>
+		<button id="plus{$lineID}_dip" onclick="revealComment(this.id)" style="font-size:12px">
+			<xsl:if test="ancestor::tei:w">
+				<xsl:attribute name="onmouseover">
+					<xsl:text>disableWordFunctions(this.id)</xsl:text>
+				</xsl:attribute>
+				<xsl:attribute name="onmouseout">
+					<xsl:text>enableWordFunctions(this.id)</xsl:text>
+				</xsl:attribute>
+			</xsl:if>
+			<b>+</b>
+		</button>
+		<br id="plus{$lineID}br_dip" hidden="hidden"/>
+		<table hidden="hidden">
+			<xsl:if test="ancestor::tei:w">
+				<xsl:attribute name="onmouseover">
+					<xsl:text>disableWordFunctions(this.id)</xsl:text>
+				</xsl:attribute>
+				<xsl:attribute name="onmouseout">
+					<xsl:text>enableWordFunctions(this.id)</xsl:text>
+				</xsl:attribute>
+			</xsl:if>
+		</table>
+		<button id="{generate-id()}_dip" onclick="textComment(this.id)" style="font-size:12px"
+			hidden="hidden"><xsl:if test="ancestor::tei:w">
+				<xsl:attribute name="onmouseover">
+					<xsl:text>disableWordFunctions(this.id)</xsl:text>
+				</xsl:attribute>
+				<xsl:attribute name="onmouseout">
+					<xsl:text>enableWordFunctions(this.id)</xsl:text>
+				</xsl:attribute>
+			</xsl:if>Add Comment</button>
 	</xsl:template>
 
 	<xsl:template mode="dip" match="tei:head">

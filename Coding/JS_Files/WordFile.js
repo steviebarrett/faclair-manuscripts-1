@@ -245,7 +245,7 @@ function addSlip(id) {
 	var lem = el.getAttribute('lemma');
 	var an = el.getAttribute('ana');
 	var msref = el.getAttribute('ref');
-	var lref = el.getAttribute('lemmaRef'); 
+	var lref = el.getAttribute('lemmaRef');
 	var handString = el.getAttribute('hand')
 	var hnd;
 	if (handString.includes(";")) {
@@ -253,9 +253,8 @@ function addSlip(id) {
 		var handList = handArray.join('</li><li>');
 		var handListFull = '<li>' + handList + '</li>';
 		var hnd = '<ul style="list-style: none;margin:0;padding:0;">' + handListFull + '</ul>';
-	}
-	else {
-	hnd = el.getAttribute('hand')
+	} else {
+		hnd = el.getAttribute('hand')
 	}
 	var date = el.getAttribute('date');
 	var prob = el.getAttribute('cert');
@@ -514,6 +513,20 @@ function addSlip(id) {
 	newRow();
 	var rcol1 = row.insertCell(0);
 	rcol1.innerHTML = form;
+	var formChildren = rcol1.childNodes[0].childNodes.length;
+	var x;
+	for (x = formChildren -1; x >= 0; x--) {
+		if (rcol1.childNodes[0].childNodes[x].tagName == "BUTTON") {
+			rcol1.childNodes[0].removeChild(rcol1.childNodes[0].childNodes[x]);
+			continue;
+		} else if (rcol1.childNodes[0].childNodes[x].tagName == "TABLE") {
+			rcol1.childNodes[0].removeChild(rcol1.childNodes[0].childNodes[x]);
+			continue;
+		} else if (rcol1.childNodes[0].childNodes[x].tagName == "BR") {
+			rcol1.childNodes[0].removeChild(rcol1.childNodes[0].childNodes[x]);
+			continue;
+		}
+	}
 	var rcol2 = row.insertCell(1);
 	rcol2.innerHTML = msref;
 	var textForm;
@@ -553,6 +566,43 @@ function addSlip(id) {
 		var corrID = "corr" + choiceID;
 		var corrForm = rcol3.querySelector("a[choicePOS=" + corrID + "]");
 		corrForm.setAttribute("hidden", "hidden");
+	}
+	var contextChildren = row.childNodes[2].childNodes;
+	var contextChildrenCount = row.childNodes[2].childNodes.length;
+	var w;
+	for (w = contextChildrenCount - 1; w >= 0; w--) {
+		var contextNode = contextChildren[w];
+		if (contextNode.tagName == "BUTTON") {
+			row.childNodes[2].removeChild(row.childNodes[2].childNodes[w]);
+			continue;
+		} else if (contextNode.tagName == "TABLE") {
+			row.childNodes[2].removeChild(row.childNodes[2].childNodes[w]);
+			continue;
+		}
+		continue;
+	}
+	var contextWords = row.childNodes[2].getElementsByTagName("a");
+	var contextWordsCount = contextWords.length;
+	var y;
+	for (y = contextWordsCount -1; y >= 0; y--) {
+		var contextWord = contextWords[y];
+		var contextWordNodes = contextWords[y].childNodes;
+		var contextWordNodeCount = contextWord.childNodes.length;
+		var z;
+		for (z = contextWordNodeCount -1; z >= 0; z--) {
+			var contextWordNode = contextWordNodes[z];
+			if (contextWordNode.tagName == "BUTTON") {
+				contextWord.removeChild(contextWord.childNodes[z]);
+				continue;
+			} else if (contextWordNode.tagName == "TABLE") {
+				contextWord.removeChild(contextWord.childNodes[z]);
+				continue;
+			} else if (contextWordNode.tagName == "BR") {
+				contextWord.removeChild(contextWord.childNodes[z]);
+				continue;
+			}
+			continue;
+		}
 	}
 	var rcol4 = row.insertCell(3);
 	rcol4.innerHTML = med;
@@ -679,11 +729,11 @@ function endSearch(b) {
 	var csButtons = document.querySelectorAll("button[class=cs]");
 	var y;
 	for (y = 0; y < csButtons.length; y++) {
-		if (csButtons[y].hasAttribute("disabled"))
-		{csButtons[y].removeAttribute("disabled");}
+		if (csButtons[y].hasAttribute("disabled")) {
+			csButtons[y].removeAttribute("disabled");
+		}
 		csButtons[y].style.backgroundColor = "";
-		if (csButtons[y].childNodes[0].tagName = "b")
-		{
+		if (csButtons[y].childNodes[0].tagName = "b") {
 			var bText = csButtons[y].childNodes[0].textContent;
 			csButtons[y].innerHTML = bText;
 		}
@@ -691,11 +741,11 @@ function endSearch(b) {
 	var wsButtons = document.querySelectorAll("button[class=ws]");
 	var j;
 	for (j = 0; j < wsButtons.length; j++) {
-		if (wsButtons[j].hasAttribute("disabled"))
-		{wsButtons[j].removeAttribute("disabled");}
+		if (wsButtons[j].hasAttribute("disabled")) {
+			wsButtons[j].removeAttribute("disabled");
+		}
 		wsButtons[j].style.backgroundColor = "";
-		if (wsButtons[j].childNodes[0].tagName = "b")
-		{
+		if (wsButtons[j].childNodes[0].tagName = "b") {
 			var bText = wsButtons[j].childNodes[0].textContent;
 			wsButtons[j].innerHTML = bText;
 		}
@@ -748,8 +798,7 @@ function wordSearch(id) {
 			var handList = handArray.join('</li><li>');
 			var handListFull = '<li>' + handList + '</li>';
 			var hnd = '<ul style="list-style: none;margin:0;padding:0;">' + handListFull + '</ul>';
-		}
-		else {
+		} else {
 			hnd = el.getAttribute('hand')
 		}
 		var date = el.getAttribute('date');
@@ -762,6 +811,20 @@ function wordSearch(id) {
 		var abbr = '<ul id="' + listID + '" style="list-style: none;margin:0;padding:0;">' + abbrListFull + '</ul>';
 		var cell1 = row.insertCell(0);
 		cell1.innerHTML = form;
+		var formChildren = cell1.childNodes[0].childNodes.length;
+		var x;
+		for (x = formChildren -1; x >= 0; x--) {
+			if (cell1.childNodes[0].childNodes[x].tagName == "BUTTON") {
+				cell1.childNodes[0].removeChild(cell1.childNodes[0].childNodes[x]);
+				continue;
+			} else if (cell1.childNodes[0].childNodes[x].tagName == "TABLE") {
+				cell1.childNodes[0].removeChild(cell1.childNodes[0].childNodes[x]);
+				continue;
+			} else if (cell1.childNodes[0].childNodes[x].tagName == "BR") {
+				cell1.childNodes[0].removeChild(cell1.childNodes[0].childNodes[x]);
+				continue;
+			}
+		}
 		var cell2 = row.insertCell(1);
 		cell2.innerHTML = msref;
 		var cell3 = row.insertCell(2);
@@ -1035,12 +1098,50 @@ function wordSearch(id) {
 			context = contextBeg.concat(el_minus_5node, ' ', el_minus_4node, ' ', el_minus_3node, ' ', el_minus_2node, ' ', el_minus_1node, ' ', '<b>' + textForm + '</b>', ' ', el_plus_1node, ' ', el_plus_2node, ' ', el_plus_3node, ' ', el_plus_4node, ' ', el_plus_5node, contextEnd);
 		}
 		cell3.innerHTML = context;
+		var contextChildren = row.childNodes[2].childNodes.length;
+		var contextWords = row.childNodes[2].getElementsByTagName("a");
+		var contextWordsCount = contextWords.length;
+		var y;
+		for (y = contextWordsCount -1; y >= 0; y--) {
+			var contextWord = contextWords[y];
+			var contextWordNodes = contextWords[y].childNodes;
+			var contextWordNodeCount = contextWord.childNodes.length;
+			var z;
+			for (z = contextWordNodeCount -1; z >= 0; z--) {
+				var contextWordNode = contextWordNodes[z];
+				if (contextWordNode.tagName == "BUTTON") {
+					contextWord.removeChild(contextWord.childNodes[z]);
+					continue;
+				} else if (contextWordNode.tagName == "TABLE") {
+					contextWord.removeChild(contextWord.childNodes[z]);
+					continue;
+				} else if (contextWordNode.tagName == "BR") {
+					contextWord.removeChild(contextWord.childNodes[z]);
+					continue;
+				}
+				continue;
+			}
+		}
 		cell3.style.fontSize = "smaller";
 		if (el.firstChild.innerText == "/alt") {
 			var choiceID = el.getAttribute("choicePOS").slice(3);
 			var corrID = "corr" + choiceID;
 			var corrForm = cell3.querySelector("a[choicePOS=" + corrID + "]");
 			corrForm.setAttribute("hidden", "hidden");
+		}
+		var contextChildren = row.childNodes[2].childNodes;
+		var contextChildrenCount = row.childNodes[2].childNodes.length;
+		var w;
+		for (w = contextChildrenCount - 1; w >= 0; w--) {
+			var contextNode = contextChildren[w];
+			if (contextNode.tagName == "BUTTON") {
+				row.childNodes[2].removeChild(row.childNodes[2].childNodes[w]);
+				continue;
+			} else if (contextNode.tagName == "TABLE") {
+				row.childNodes[2].removeChild(row.childNodes[2].childNodes[w]);
+				continue;
+			}
+			continue;
 		}
 		var cell4 = row.insertCell(3);
 		cell4.innerHTML = med;
