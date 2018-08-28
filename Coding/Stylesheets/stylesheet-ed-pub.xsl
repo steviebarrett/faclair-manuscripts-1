@@ -3128,7 +3128,7 @@
 			<xsl:value-of select="key('divTitle', @corresp)/tei:title"/>
 		</h2>
 		<xsl:apply-templates/>
-		<xsl:if test="@type = 'prose'">
+		<xsl:if test="@type = 'prose' and not(descendant::tei:div)">
 		<xsl:variable name="lineID">
 			<xsl:value-of select="ancestor::tei:TEI//tei:msIdentifier/@sameAs"/>
 			<xsl:text>.</xsl:text>
@@ -3182,7 +3182,7 @@
 			</xsl:if>Add Comment</button>
 			<br/>
 			<table/>
-			<button id="{generate-id()}" onclick="textComment(this.id)" style="font-size:12px">Add
+			<button id="{generate-id()} + 'x'" onclick="textComment(this.id)" style="font-size:12px">Add
 				Comment</button>
 		</xsl:if>
 		<xsl:if test="not(ancestor::tei:div) and descendant::tei:note[@type = 'fn']">
