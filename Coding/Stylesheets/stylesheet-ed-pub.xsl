@@ -2066,7 +2066,7 @@
 			<xsl:choose>
 				<xsl:when test="ancestor::tei:div/@type = 'verse'">Verse</xsl:when>
 				<xsl:when
-					test="ancestor::tei:div/@type = 'prose' or ancestor::tei:div/@type = 'divProse'"
+					test="ancestor::tei:div/@type = 'prose' or ancestor::tei:div/@type = 'divprose'"
 					>Prose</xsl:when>
 			</xsl:choose>
 		</xsl:variable>
@@ -2533,7 +2533,7 @@
 											</xsl:if>
 										</xsl:when>
 										<xsl:when
-											test="ancestor::*[@cert = 'medium'] or descendant::*[@cert = 'low']">
+											test="ancestor::*[@cert = 'medium'] or descendant::*[@cert = 'medium']">
 											<a style="text-decoration:none; color:#ff9900">
 												<xsl:apply-templates
 												select="text() | self::*//*[not(name(self::*) = 'supplied')]/text()"
