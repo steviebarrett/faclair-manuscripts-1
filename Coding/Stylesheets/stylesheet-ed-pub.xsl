@@ -1545,6 +1545,27 @@
 							<xsl:text> </xsl:text>
 						</xsl:for-each>
 						<xsl:text>}</xsl:text>
+						<xsl:variable name="incr">
+							<xsl:choose>
+								<xsl:when test="following::*[1]/self::tei:space">
+									1
+								</xsl:when>
+								<xsl:otherwise>
+									0
+								</xsl:otherwise>
+							</xsl:choose>
+						</xsl:variable>
+						<xsl:choose>
+							<xsl:when test="following::*[1 + $incr]/self::tei:pc">
+								<xsl:text/>
+							</xsl:when>
+							<xsl:when test="following::*[1 + $incr]/self::tei:note[@type='fn']">
+								<xsl:text/>
+							</xsl:when>
+							<xsl:otherwise>
+								<xsl:text> </xsl:text>
+							</xsl:otherwise>
+						</xsl:choose>
 					</xsl:when>
 					<xsl:otherwise>
 						<xsl:choose>
@@ -1560,6 +1581,27 @@
 						</xsl:choose>
 						<xsl:text> </xsl:text>
 						<xsl:text>}</xsl:text>
+						<xsl:variable name="incr">
+							<xsl:choose>
+								<xsl:when test="following::*[1]/self::tei:space">
+									1
+								</xsl:when>
+								<xsl:otherwise>
+									0
+								</xsl:otherwise>
+							</xsl:choose>
+						</xsl:variable>
+						<xsl:choose>
+							<xsl:when test="following::*[1 + $incr]/self::tei:pc">
+								<xsl:text/>
+							</xsl:when>
+							<xsl:when test="following::*[1 + $incr]/self::tei:note[@type='fn']">
+								<xsl:text/>
+							</xsl:when>
+							<xsl:otherwise>
+								<xsl:text> </xsl:text>
+							</xsl:otherwise>
+						</xsl:choose>
 					</xsl:otherwise>
 				</xsl:choose>
 			</xsl:when>
@@ -1607,7 +1649,28 @@
 						</sub>
 					</a>
 				</xsl:for-each>
-				<xsl:text>} </xsl:text>
+				<xsl:text>}</xsl:text>
+				<xsl:variable name="incr">
+					<xsl:choose>
+						<xsl:when test="following::*[1]/self::tei:space">
+							1
+						</xsl:when>
+						<xsl:otherwise>
+							0
+						</xsl:otherwise>
+					</xsl:choose>
+				</xsl:variable>
+				<xsl:choose>
+					<xsl:when test="following::*[1 + $incr]/self::tei:pc">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when test="following::*[1 + $incr]/self::tei:note[@type='fn']">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:text> </xsl:text>
+					</xsl:otherwise>
+				</xsl:choose>
 			</xsl:when>
 		</xsl:choose>
 	</xsl:template>
