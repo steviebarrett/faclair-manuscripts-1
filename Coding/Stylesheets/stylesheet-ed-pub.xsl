@@ -2247,7 +2247,7 @@
 		<xsl:choose>
 			<xsl:when test="not(ancestor::tei:w)">
 				<xsl:choose>
-					<xsl:when test="following::*[1][child::text()]/name() = 'pc'">
+					<xsl:when test="following::*[1][child::text()]/name() = 'pc' or following::*[1][child::text()]/name() = 'note' and following::*[1][child::text()]/@type = 'fn'">
 						<xsl:text/>
 					</xsl:when>
 					<xsl:otherwise>
@@ -2409,7 +2409,7 @@
 	<xsl:template match="tei:w[descendant::tei:w]">
 		<xsl:apply-templates/>
 		<xsl:choose>
-			<xsl:when test="following::*[1][child::text()]/name() = 'pc'">
+			<xsl:when test="following::*[1][child::text()]/name() = 'pc' or following::*[1][child::text()]/name() = 'note' and following::*[1][child::text()]/@type = 'fn'">
 				<xsl:text/>
 			</xsl:when>
 			<xsl:otherwise>
@@ -2427,7 +2427,14 @@
 			style="text-decoration:none; color:#000000">
 			<xsl:apply-templates/>
 		</a>
-		<xsl:text> </xsl:text>
+		<xsl:choose>
+			<xsl:when test="following::*[1][child::text()]/name() = 'pc' or following::*[1][child::text()]/name() = 'note' and following::*[1][child::text()]/@type = 'fn'">
+				<xsl:text/>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:text> </xsl:text>
+			</xsl:otherwise>
+		</xsl:choose>
 	</xsl:template>
 
 	<xsl:template match="tei:num">
@@ -2435,7 +2442,14 @@
 			style="text-decoration:none; color:#000000">
 			<xsl:apply-templates/>
 		</a>
-		<xsl:text> </xsl:text>
+		<xsl:choose>
+			<xsl:when test="following::*[1][child::text()]/name() = 'pc' or following::*[1][child::text()]/name() = 'note' and following::*[1][child::text()]/@type = 'fn'">
+				<xsl:text/>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:text> </xsl:text>
+			</xsl:otherwise>
+		</xsl:choose>
 	</xsl:template>
 
 	<xsl:template match="tei:ref">
@@ -2749,7 +2763,14 @@
 					</xsl:choose>
 					<xsl:apply-templates/>
 				</a>
-				<xsl:text> </xsl:text>
+				<xsl:choose>
+					<xsl:when test="following::*[1][child::text()]/name() = 'pc' or following::*[1][child::text()]/name() = 'note' and following::*[1][child::text()]/@type = 'fn'">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:text> </xsl:text>
+					</xsl:otherwise>
+				</xsl:choose>
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
@@ -2792,7 +2813,14 @@
 					</xsl:choose>
 					<xsl:apply-templates/>
 				</a>
-				<xsl:text> </xsl:text>
+				<xsl:choose>
+					<xsl:when test="following::*[1][child::text()]/name() = 'pc' or following::*[1][child::text()]/name() = 'note' and following::*[1][child::text()]/@type = 'fn'">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:text> </xsl:text>
+					</xsl:otherwise>
+				</xsl:choose>
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
@@ -2814,7 +2842,15 @@
 			<xsl:when test="descendant::tei:w">
 				<xsl:text>[ </xsl:text>
 				<xsl:apply-templates/>
-				<xsl:text>] </xsl:text>
+				<xsl:text>]</xsl:text>
+				<xsl:choose>
+					<xsl:when test="following::*[1][child::text()]/name() = 'pc' or following::*[1][child::text()]/name() = 'note' and following::*[1][child::text()]/@type = 'fn'">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:text> </xsl:text>
+					</xsl:otherwise>
+				</xsl:choose>
 			</xsl:when>
 			<xsl:otherwise>
 				<xsl:text>[</xsl:text>
@@ -2846,7 +2882,15 @@
 			<xsl:when test="descendant::tei:w">
 				<xsl:text>{ </xsl:text>
 				<xsl:apply-templates/>
-				<xsl:text>} </xsl:text>
+				<xsl:text>}</xsl:text>
+				<xsl:choose>
+					<xsl:when test="following::*[1][child::text()]/name() = 'pc' or following::*[1][child::text()]/name() = 'note' and following::*[1][child::text()]/@type = 'fn'">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:text> </xsl:text>
+					</xsl:otherwise>
+				</xsl:choose>
 			</xsl:when>
 			<xsl:when test="ancestor::tei:w">
 				<xsl:text>{</xsl:text>
@@ -2856,7 +2900,15 @@
 			<xsl:when test="descendant::tei:date">
 				<xsl:text> {</xsl:text>
 				<xsl:apply-templates/>
-				<xsl:text>} </xsl:text>
+				<xsl:text>}</xsl:text>
+				<xsl:choose>
+					<xsl:when test="following::*[1][child::text()]/name() = 'pc' or following::*[1][child::text()]/name() = 'note' and following::*[1][child::text()]/@type = 'fn'">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:text> </xsl:text>
+					</xsl:otherwise>
+				</xsl:choose>
 			</xsl:when>
 			<xsl:when test="ancestor::tei:date">
 				<xsl:text>{</xsl:text>
@@ -2896,7 +2948,6 @@
 						</b>
 					</sub>
 				</a>
-				<xsl:text> </xsl:text>
 			</xsl:when>
 			<xsl:otherwise>
 				<a id="{generate-id()}" title="{@extent}, {$gapReason}" href="#"
@@ -2907,7 +2958,6 @@
 						</b>
 					</sub>
 				</a>
-				<xsl:text> </xsl:text>
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
@@ -2930,7 +2980,14 @@
 				</a>
 			</b>
 		</sup>
-		<xsl:text> </xsl:text>
+		<xsl:choose>
+			<xsl:when test="following::*[1][child::text()]/name() = 'pc'">
+				<xsl:text/>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:text> </xsl:text>
+			</xsl:otherwise>
+		</xsl:choose>
 	</xsl:template>
 
 	<xsl:template match="tei:add[@type = 'insertion']">
@@ -3080,7 +3137,7 @@
 				</b>
 				<xsl:apply-templates/>
 				<b>
-					<xsl:text> / </xsl:text>
+					<xsl:text> /</xsl:text>
 				</b>
 			</xsl:when>
 			<xsl:when test="@place = 'below'">
@@ -3089,7 +3146,7 @@
 				</b>
 				<xsl:apply-templates/>
 				<b>
-					<xsl:text> \ </xsl:text>
+					<xsl:text> \</xsl:text>
 				</b>
 			</xsl:when>
 			<xsl:when test="@place = 'margin, right'">
@@ -3098,7 +3155,7 @@
 				</b>
 				<xsl:apply-templates/>
 				<b>
-					<xsl:text> &lt;  </xsl:text>
+					<xsl:text> &lt;</xsl:text>
 				</b>
 			</xsl:when>
 			<xsl:when test="@place = 'margin, left'">
@@ -3107,7 +3164,7 @@
 				</b>
 				<xsl:apply-templates/>
 				<b>
-					<xsl:text> &gt; </xsl:text>
+					<xsl:text> &gt;</xsl:text>
 				</b>
 			</xsl:when>
 			<xsl:when test="@place = 'margin, top'">
@@ -3141,13 +3198,11 @@
 	</xsl:template>
 
 	<xsl:template match="tei:handShift">
-		<xsl:text> </xsl:text>
 		<sub>
 			<i>
-				<b> beg. H<xsl:value-of select="substring(@new, 5)"/></b>
+				<b>-beg. H<xsl:value-of select="substring(@new, 5)"/>-</b>
 			</i>
 		</sub>
-		<xsl:text> </xsl:text>
 	</xsl:template>
 
 	<xsl:template match="tei:div[@n]">
