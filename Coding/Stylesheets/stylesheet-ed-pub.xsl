@@ -2249,6 +2249,9 @@
 					</xsl:otherwise>
 				</xsl:choose>
 			</xsl:when>
+			<xsl:when test="@ana = 'prep' and ancestor::tei:w[contains(@ana, 'prep, part, verb')]">
+				<xsl:text/>
+			</xsl:when>
 			<xsl:when test="@ana = 'part' and ancestor::tei:w[contains(@ana, 'part, pron, verb')]">
 				<xsl:text/>
 			</xsl:when>
