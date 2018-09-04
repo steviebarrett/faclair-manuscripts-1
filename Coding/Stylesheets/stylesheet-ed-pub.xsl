@@ -1073,13 +1073,18 @@
 			test="ancestor::tei:div[1][@type = 'prose'] and preceding::tei:lb[ancestor::tei:div/@corresp = $comDiv]">
 			<xsl:variable name="lineID">
 				<xsl:choose>
-					<xsl:when test="preceding::tei:pb[1]/@xml:id"><xsl:value-of select="preceding::tei:pb[1]/@xml:id"/></xsl:when>
-					<xsl:when test="preceding::tei:pb[1]/@sameAs"><xsl:value-of select="preceding::tei:pb[1]/@sameAs"/></xsl:when>
+					<xsl:when test="preceding::tei:pb[1]/@xml:id">
+						<xsl:value-of select="preceding::tei:pb[1]/@xml:id"/>
+					</xsl:when>
+					<xsl:when test="preceding::tei:pb[1]/@sameAs">
+						<xsl:value-of select="preceding::tei:pb[1]/@sameAs"/>
+					</xsl:when>
 				</xsl:choose>
 				<xsl:text>.</xsl:text>
 				<xsl:value-of select="preceding::tei:lb[1]/@n + 1"/>
 			</xsl:variable>
-			<xsl:text xml:space="preserve"> </xsl:text><button id="plus{$lineID}" onclick="revealComment(this.id)" style="font-size:12px">
+			<xsl:text xml:space="preserve"> </xsl:text>
+			<button id="plus{$lineID}" onclick="revealComment(this.id)" style="font-size:12px">
 				<xsl:if test="ancestor::tei:w">
 					<xsl:attribute name="onmouseover">
 						<xsl:text>disableWordFunctions(this.id)</xsl:text>
@@ -1191,11 +1196,13 @@
 						</xsl:when>
 					</xsl:choose>
 				</xsl:variable>
-				<xsl:variable name="divPosition" select="count(preceding::tei:lb[ancestor::tei:div[@corresp = $comDiv]]) + 1"/>
-				<xsl:variable name="pagePosition" select="count(preceding::tei:lb[preceding::tei:pb[@* = $comPage]]) + 1"/>
-				<xsl:if
-					test="$divPosition > 1 and $pagePosition > 1">
-					<xsl:text xml:space="preserve"> </xsl:text><button id="plus{$lineID}" onclick="revealComment(this.id)"
+				<xsl:variable name="divPosition"
+					select="count(preceding::tei:lb[ancestor::tei:div[@corresp = $comDiv]]) + 1"/>
+				<xsl:variable name="pagePosition"
+					select="count(preceding::tei:lb[preceding::tei:pb[@* = $comPage]]) + 1"/>
+				<xsl:if test="$divPosition > 1 and $pagePosition > 1">
+					<xsl:text xml:space="preserve"> </xsl:text>
+					<button id="plus{$lineID}" onclick="revealComment(this.id)"
 						style="font-size:12px">
 						<xsl:if test="ancestor::tei:w">
 							<xsl:attribute name="onmouseover">
@@ -1296,8 +1303,8 @@
 					/>
 				</p>
 				<table/>
-				<button id="{generate-id()}" onclick="textComment(this.id)" style="font-size:12px">Add
-					Comment</button>
+				<button id="{generate-id()}" onclick="textComment(this.id)" style="font-size:12px"
+					>Add Comment</button>
 			</xsl:when>
 			<!-- <xsl:when test="child::tei:l/descendant::tei:pb">
 				<xsl:variable name="conID" select="@xml:id"/>
@@ -1345,8 +1352,8 @@
 							<xsl:apply-templates select="descendant::tei:l"/>
 						</p>
 						<table/>
-						<button id="{generate-id()}" onclick="textComment(this.id)" style="font-size:12px">Add
-							Comment</button>
+						<button id="{generate-id()}" onclick="textComment(this.id)"
+							style="font-size:12px">Add Comment</button>
 					</xsl:otherwise>
 				</xsl:choose>
 			</xsl:otherwise>
@@ -1427,7 +1434,8 @@
 				<xsl:apply-templates select="*[following::tei:pb[@xml:id = $pbId]]"/>
 				<xsl:apply-templates select="child::tei:pb"/>
 				<xsl:apply-templates select="*[preceding::tei:pb[@xml:id = $pbId]]"/>
-				<xsl:text xml:space="preserve"> </xsl:text><button id="plus{$Id}" onclick="revealComment(this.id)" style="font-size:12px">
+				<xsl:text xml:space="preserve"> </xsl:text>
+				<button id="plus{$Id}" onclick="revealComment(this.id)" style="font-size:12px">
 					<xsl:if test="ancestor::tei:w">
 						<xsl:attribute name="onmouseover">
 							<xsl:text>disableWordFunctions(this.id)</xsl:text>
@@ -1461,7 +1469,8 @@
 			</xsl:when>
 			<xsl:otherwise>
 				<xsl:apply-templates/>
-				<xsl:text xml:space="preserve"> </xsl:text><button id="plus{$Id}" onclick="revealComment(this.id)" style="font-size:12px">
+				<xsl:text xml:space="preserve"> </xsl:text>
+				<button id="plus{$Id}" onclick="revealComment(this.id)" style="font-size:12px">
 					<xsl:if test="ancestor::tei:w">
 						<xsl:attribute name="onmouseover">
 							<xsl:text>disableWordFunctions(this.id)</xsl:text>
@@ -1536,6 +1545,27 @@
 							<xsl:text> </xsl:text>
 						</xsl:for-each>
 						<xsl:text>}</xsl:text>
+						<xsl:variable name="incr">
+							<xsl:choose>
+								<xsl:when test="following::*[1]/self::tei:space">
+									1
+								</xsl:when>
+								<xsl:otherwise>
+									0
+								</xsl:otherwise>
+							</xsl:choose>
+						</xsl:variable>
+						<xsl:choose>
+							<xsl:when test="following::*[1 + $incr]/self::tei:pc">
+								<xsl:text/>
+							</xsl:when>
+							<xsl:when test="following::*[1 + $incr]/self::tei:note[@type='fn']">
+								<xsl:text/>
+							</xsl:when>
+							<xsl:otherwise>
+								<xsl:text> </xsl:text>
+							</xsl:otherwise>
+						</xsl:choose>
 					</xsl:when>
 					<xsl:otherwise>
 						<xsl:choose>
@@ -1551,6 +1581,27 @@
 						</xsl:choose>
 						<xsl:text> </xsl:text>
 						<xsl:text>}</xsl:text>
+						<xsl:variable name="incr">
+							<xsl:choose>
+								<xsl:when test="following::*[1]/self::tei:space">
+									1
+								</xsl:when>
+								<xsl:otherwise>
+									0
+								</xsl:otherwise>
+							</xsl:choose>
+						</xsl:variable>
+						<xsl:choose>
+							<xsl:when test="following::*[1 + $incr]/self::tei:pc">
+								<xsl:text/>
+							</xsl:when>
+							<xsl:when test="following::*[1 + $incr]/self::tei:note[@type='fn']">
+								<xsl:text/>
+							</xsl:when>
+							<xsl:otherwise>
+								<xsl:text> </xsl:text>
+							</xsl:otherwise>
+						</xsl:choose>
 					</xsl:otherwise>
 				</xsl:choose>
 			</xsl:when>
@@ -1598,7 +1649,28 @@
 						</sub>
 					</a>
 				</xsl:for-each>
-				<xsl:text>} </xsl:text>
+				<xsl:text>}</xsl:text>
+				<xsl:variable name="incr">
+					<xsl:choose>
+						<xsl:when test="following::*[1]/self::tei:space">
+							1
+						</xsl:when>
+						<xsl:otherwise>
+							0
+						</xsl:otherwise>
+					</xsl:choose>
+				</xsl:variable>
+				<xsl:choose>
+					<xsl:when test="following::*[1 + $incr]/self::tei:pc">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when test="following::*[1 + $incr]/self::tei:note[@type='fn']">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:text> </xsl:text>
+					</xsl:otherwise>
+				</xsl:choose>
 			</xsl:when>
 		</xsl:choose>
 	</xsl:template>
@@ -2237,11 +2309,21 @@
 		</a>
 		<xsl:choose>
 			<xsl:when test="not(ancestor::tei:w)">
-				<xsl:text> </xsl:text>
-			</xsl:when>
-			<xsl:when test="@ana = 'part' and ancestor::tei:w[contains(@ana, 'part, verb')]">
+				<xsl:variable name="incr">
+					<xsl:choose>
+						<xsl:when test="following::*[1]/self::tei:space">
+							1
+						</xsl:when>
+						<xsl:otherwise>
+							0
+						</xsl:otherwise>
+					</xsl:choose>
+				</xsl:variable>
 				<xsl:choose>
-					<xsl:when test="ancestor::tei:w[contains(@lemmaRef, 'http://www.dil.ie/29104')]">
+					<xsl:when test="following::*[1 + $incr]/self::tei:pc">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when test="following::*[1 + $incr]/self::tei:note[@type='fn']">
 						<xsl:text/>
 					</xsl:when>
 					<xsl:otherwise>
@@ -2249,138 +2331,180 @@
 					</xsl:otherwise>
 				</xsl:choose>
 			</xsl:when>
-			<xsl:when test="@ana = 'part' and ancestor::tei:w[contains(@ana, 'part, pron, verb')]">
-				<xsl:text/>
-			</xsl:when>
-			<xsl:when test="@ana = 'pron' and ancestor::tei:w[contains(@ana, 'part, pron, verb')]">
-				<xsl:text> </xsl:text>
-			</xsl:when>
-			<xsl:when test="@ana = 'part' and ancestor::tei:w[contains(@ana, 'part, noun')]">
-				<xsl:text/>
-			</xsl:when>
-			<xsl:when test="@ana = 'pron' and ancestor::tei:w[@ana = 'pron, verb']">
-				<xsl:text/>
-			</xsl:when>
-			<xsl:when test="@ana = 'noun' and ancestor::tei:w[contains(@ana, 'noun, pron')]">
-				<xsl:text/>
-			</xsl:when>
-			<xsl:when test="@ana = 'noun' and ancestor::tei:w[contains(@ana, 'noun, adj')]">
-				<xsl:text/>
-			</xsl:when>
-			<xsl:when test="@ana = 'prep' and ancestor::tei:w[contains(@ana, 'prep, dpron')]">
-				<xsl:text/>
-			</xsl:when>
-			<xsl:when test="@ana = 'pron' and ancestor::tei:w[contains(@ana, 'pron, dpron')]">
-				<xsl:text/>
-			</xsl:when>
-			<xsl:when test="@ana = 'pron' and ancestor::tei:w[contains(@ana, 'pron, pron')]">
-				<xsl:text/>
-			</xsl:when>
-			<xsl:when test="@ana = 'prep' and ancestor::tei:w[contains(@ana, 'prep, verb')]">
-				<xsl:text/>
-			</xsl:when>
-			<xsl:when test="@ana = 'noun' and ancestor::tei:w[contains(@ana, 'noun, dpron')]">
-				<xsl:text/>
-			</xsl:when>
-			<xsl:when test="@ana = 'noun' and ancestor::tei:w[contains(@ana, 'noun, ptcp')]">
-				<xsl:text/>
-			</xsl:when>
-			<xsl:when test="@ana = 'adj' and ancestor::tei:w[contains(@ana, 'adj, ptcp')]">
-				<xsl:text/>
-			</xsl:when>
-			<xsl:when test="@ana = 'adj' and ancestor::tei:w[contains(@ana, 'adj, pron')]">
-				<xsl:text/>
-			</xsl:when>
-			<xsl:when test="@ana = 'adj' and ancestor::tei:w[contains(@ana, 'adj, dpron')]">
-				<xsl:text/>
-			</xsl:when>
-			<xsl:when test="@ana = 'conj' and ancestor::tei:w[contains(@ana, 'noun, verb')]">
-				<xsl:text/>
-			</xsl:when>
-			<xsl:when test="@ana = 'verb' and ancestor::tei:w[contains(@ana, 'verb, pron')]">
-				<xsl:text/>
-			</xsl:when>
-			<xsl:when test="@ana = 'noun' and ancestor::tei:w[contains(@ana, 'noun, noun')]">
-				<xsl:text/>
-			</xsl:when>
-			<xsl:when test="@ana = 'vnoun' and ancestor::tei:w[contains(@ana, 'vnoun, vnoun')]">
-				<xsl:text/>
-			</xsl:when>
-			<xsl:when
-				test="@ana = 'adj' and ancestor::tei:w[contains(@ana, 'adj, noun')] and following-sibling::tei:w[@ana = 'noun']">
-				<xsl:text/>
-			</xsl:when>
-			<xsl:when test="@ana = 'adj' and ancestor::tei:w[contains(@ana, 'adj, adj')]">
-				<xsl:text/>
-			</xsl:when>
-			<xsl:when test="@ana = 'num' and ancestor::tei:w[contains(@ana, 'num, noun')]">
-				<xsl:text/>
-			</xsl:when>
-			<xsl:when test="@ana = 'num' and ancestor::tei:w[contains(@ana, 'num, adj')]">
-				<xsl:text/>
-			</xsl:when>
-			<xsl:when test="@ana = 'num' and ancestor::tei:w[contains(@ana, 'num, vnoun')]">
-				<xsl:text/>
-			</xsl:when>
-			<xsl:when test="@ana = 'vnoun' and ancestor::tei:w[contains(@ana, 'vnoun, noun')]">
-				<xsl:text/>
-			</xsl:when>
-			<xsl:when test="@ana = 'adj' and ancestor::tei:w[contains(@ana, 'adj, vnoun')]">
-				<xsl:text/>
-			</xsl:when>
-			<xsl:when test="@ana = 'pref' and ancestor::tei:w[contains(@ana, 'pref, adj')]">
-				<xsl:text/>
-			</xsl:when>
-			<xsl:when test="@ana = 'pref' and ancestor::tei:w[contains(@ana, 'pref, ptcp')]">
-				<xsl:text/>
-			</xsl:when>
-			<xsl:when test="@ana = 'adj' and ancestor::tei:w[contains(@ana, 'adj, prep')]">
-				<xsl:text/>
-			</xsl:when>
-			<xsl:when test="@ana = 'pref' and ancestor::tei:w[contains(@ana, 'pref, noun')]">
-				<xsl:text/>
-			</xsl:when>
-			<xsl:when test="@ana = 'pron' and ancestor::tei:w[contains(@ana, 'pron, part')]">
-				<xsl:text/>
-			</xsl:when>
-			<xsl:when test="@ana = 'adv' and ancestor::tei:w[contains(@ana, 'adv, part')]">
-				<xsl:text/>
-			</xsl:when>
-			<xsl:when test="@ana = 'part' and ancestor::tei:w[contains(@ana, 'part, part')]">
-				<xsl:text/>
-			</xsl:when>
-			<xsl:when test="@ana = 'conj' and ancestor::tei:w[contains(@ana, 'conj, pron')]">
-				<xsl:text/>
-			</xsl:when>
-			<xsl:when test="@ana = 'conj' and ancestor::tei:w[contains(@ana, 'conj, verb')]">
-				<xsl:text/>
-			</xsl:when>
-			<xsl:when test="ancestor::tei:w and following::tei:pc[1]">
-				<xsl:text/>
-			</xsl:when>
-			<xsl:when test="self::tei:pc and ancestor::tei:w and following::tei:w">
-				<xsl:text/>
-			</xsl:when>
-			<xsl:when
-				test="@lemmaRef = 'http://www.dil.ie/33147' and following::tei:w[1]/@ana = 'pron'">
-				<xsl:text/>
-			</xsl:when>
-			<xsl:when test="not(following-sibling::*)">
-				<xsl:text> </xsl:text>
-			</xsl:when>
-			<xsl:when
-				test="@ana = 'pron' and ancestor::tei:w[contains(@ana, 'pron, pron')] and following-sibling::tei:w[@ana = 'pron']">
-				<xsl:text/>
-			</xsl:when>
 			<xsl:otherwise>
-				<xsl:text> </xsl:text>
+				<xsl:choose>
+					<xsl:when test="@ana = 'part' and ancestor::tei:w[contains(@ana, 'part, verb')]">
+						<xsl:choose>
+							<xsl:when
+								test="ancestor::tei:w[contains(@lemmaRef, 'http://www.dil.ie/29104')]">
+								<xsl:text/>
+							</xsl:when>
+							<xsl:otherwise>
+								<xsl:text> </xsl:text>
+							</xsl:otherwise>
+						</xsl:choose>
+					</xsl:when>
+					<xsl:when
+						test="@ana = 'part' and ancestor::tei:w[contains(@ana, 'part, pron, verb')]">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when
+						test="@ana = 'pron' and ancestor::tei:w[contains(@ana, 'part, pron, verb')]">
+						<xsl:text> </xsl:text>
+					</xsl:when>
+					<xsl:when test="@ana = 'part' and ancestor::tei:w[contains(@ana, 'part, noun')]">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when test="@ana = 'pron' and ancestor::tei:w[@ana = 'pron, verb']">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when test="@ana = 'noun' and ancestor::tei:w[contains(@ana, 'noun, pron')]">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when test="@ana = 'noun' and ancestor::tei:w[contains(@ana, 'noun, adj')]">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when
+						test="@ana = 'prep' and ancestor::tei:w[contains(@ana, 'prep, dpron')]">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when
+						test="@ana = 'pron' and ancestor::tei:w[contains(@ana, 'pron, dpron')]">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when test="@ana = 'pron' and ancestor::tei:w[contains(@ana, 'pron, pron')]">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when test="@ana = 'prep' and ancestor::tei:w[contains(@ana, 'prep, verb')]">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when
+						test="@ana = 'noun' and ancestor::tei:w[contains(@ana, 'noun, dpron')]">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when test="@ana = 'noun' and ancestor::tei:w[contains(@ana, 'noun, ptcp')]">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when test="@ana = 'adj' and ancestor::tei:w[contains(@ana, 'adj, ptcp')]">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when test="@ana = 'adj' and ancestor::tei:w[contains(@ana, 'adj, pron')]">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when test="@ana = 'adj' and ancestor::tei:w[contains(@ana, 'adj, dpron')]">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when test="@ana = 'conj' and ancestor::tei:w[contains(@ana, 'noun, verb')]">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when test="@ana = 'verb' and ancestor::tei:w[contains(@ana, 'verb, pron')]">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when test="@ana = 'noun' and ancestor::tei:w[contains(@ana, 'noun, noun')]">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when
+						test="@ana = 'vnoun' and ancestor::tei:w[contains(@ana, 'vnoun, vnoun')]">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when
+						test="@ana = 'adj' and ancestor::tei:w[contains(@ana, 'adj, noun')] and following-sibling::tei:w[@ana = 'noun']">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when test="@ana = 'adj' and ancestor::tei:w[contains(@ana, 'adj, adj')]">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when test="@ana = 'num' and ancestor::tei:w[contains(@ana, 'num, noun')]">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when test="@ana = 'num' and ancestor::tei:w[contains(@ana, 'num, adj')]">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when test="@ana = 'num' and ancestor::tei:w[contains(@ana, 'num, vnoun')]">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when
+						test="@ana = 'vnoun' and ancestor::tei:w[contains(@ana, 'vnoun, noun')]">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when test="@ana = 'adj' and ancestor::tei:w[contains(@ana, 'adj, vnoun')]">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when test="@ana = 'pref' and ancestor::tei:w[contains(@ana, 'pref, adj')]">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when test="@ana = 'pref' and ancestor::tei:w[contains(@ana, 'pref, ptcp')]">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when test="@ana = 'adj' and ancestor::tei:w[contains(@ana, 'adj, prep')]">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when test="@ana = 'pref' and ancestor::tei:w[contains(@ana, 'pref, noun')]">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when test="@ana = 'pron' and ancestor::tei:w[contains(@ana, 'pron, part')]">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when test="@ana = 'adv' and ancestor::tei:w[contains(@ana, 'adv, part')]">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when test="@ana = 'part' and ancestor::tei:w[contains(@ana, 'part, part')]">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when test="@ana = 'conj' and ancestor::tei:w[contains(@ana, 'conj, pron')]">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when test="@ana = 'conj' and ancestor::tei:w[contains(@ana, 'conj, verb')]">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when test="ancestor::tei:w and following::tei:pc[1]">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when test="self::tei:pc and ancestor::tei:w and following::tei:w">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when
+						test="@lemmaRef = 'http://www.dil.ie/33147' and following::tei:w[1]/@ana = 'pron'">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when test="not(following-sibling::*)">
+						<xsl:text> </xsl:text>
+					</xsl:when>
+					<xsl:when
+						test="@ana = 'pron' and ancestor::tei:w[contains(@ana, 'pron, pron')] and following-sibling::tei:w[@ana = 'pron']">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:text> </xsl:text>
+					</xsl:otherwise>
+				</xsl:choose>
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
 
 	<xsl:template match="tei:w[descendant::tei:w]">
 		<xsl:apply-templates/>
-		<xsl:text> </xsl:text>
+		<xsl:variable name="incr">
+			<xsl:choose>
+				<xsl:when test="following::*[1]/self::tei:space">
+					1
+				</xsl:when>
+				<xsl:otherwise>
+					0
+				</xsl:otherwise>
+			</xsl:choose>
+		</xsl:variable>
+		<xsl:choose>
+			<xsl:when test="following::*[1 + $incr]/self::tei:pc">
+				<xsl:text/>
+			</xsl:when>
+			<xsl:when test="following::*[1 + $incr]/self::tei:note[@type='fn']">
+				<xsl:text/>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:text> </xsl:text>
+			</xsl:otherwise>
+		</xsl:choose>
 	</xsl:template>
 
 	<xsl:template match="tei:name">
@@ -2392,7 +2516,27 @@
 			style="text-decoration:none; color:#000000">
 			<xsl:apply-templates/>
 		</a>
-		<xsl:text> </xsl:text>
+		<xsl:variable name="incr">
+			<xsl:choose>
+				<xsl:when test="following::*[1]/self::tei:space">
+					1
+				</xsl:when>
+				<xsl:otherwise>
+					0
+				</xsl:otherwise>
+			</xsl:choose>
+		</xsl:variable>
+		<xsl:choose>
+			<xsl:when test="following::*[1 + $incr]/self::tei:pc">
+				<xsl:text/>
+			</xsl:when>
+			<xsl:when test="following::*[1 + $incr]/self::tei:note[@type='fn']">
+				<xsl:text/>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:text> </xsl:text>
+			</xsl:otherwise>
+		</xsl:choose>
 	</xsl:template>
 
 	<xsl:template match="tei:num">
@@ -2400,7 +2544,27 @@
 			style="text-decoration:none; color:#000000">
 			<xsl:apply-templates/>
 		</a>
-		<xsl:text> </xsl:text>
+		<xsl:variable name="incr">
+			<xsl:choose>
+				<xsl:when test="following::*[1]/self::tei:space">
+					1
+				</xsl:when>
+				<xsl:otherwise>
+					0
+				</xsl:otherwise>
+			</xsl:choose>
+		</xsl:variable>
+		<xsl:choose>
+			<xsl:when test="following::*[1 + $incr]/self::tei:pc">
+				<xsl:text/>
+			</xsl:when>
+			<xsl:when test="following::*[1 + $incr]/self::tei:note[@type='fn']">
+				<xsl:text/>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:text> </xsl:text>
+			</xsl:otherwise>
+		</xsl:choose>
 	</xsl:template>
 
 	<xsl:template match="tei:ref">
@@ -2714,7 +2878,27 @@
 					</xsl:choose>
 					<xsl:apply-templates/>
 				</a>
-				<xsl:text> </xsl:text>
+				<xsl:variable name="incr">
+					<xsl:choose>
+						<xsl:when test="following::*[1]/self::tei:space">
+							1
+						</xsl:when>
+						<xsl:otherwise>
+							0
+						</xsl:otherwise>
+					</xsl:choose>
+				</xsl:variable>
+				<xsl:choose>
+					<xsl:when test="following::*[1 + $incr]/self::tei:pc">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when test="following::*[1 + $incr]/self::tei:note[@type='fn']">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:text> </xsl:text>
+					</xsl:otherwise>
+				</xsl:choose>
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
@@ -2757,7 +2941,27 @@
 					</xsl:choose>
 					<xsl:apply-templates/>
 				</a>
-				<xsl:text> </xsl:text>
+				<xsl:variable name="incr">
+					<xsl:choose>
+						<xsl:when test="following::*[1]/self::tei:space">
+							1
+						</xsl:when>
+						<xsl:otherwise>
+							0
+						</xsl:otherwise>
+					</xsl:choose>
+				</xsl:variable>
+				<xsl:choose>
+					<xsl:when test="following::*[1 + $incr]/self::tei:pc">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when test="following::*[1 + $incr]/self::tei:note[@type='fn']">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:text> </xsl:text>
+					</xsl:otherwise>
+				</xsl:choose>
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
@@ -2779,7 +2983,28 @@
 			<xsl:when test="descendant::tei:w">
 				<xsl:text>[ </xsl:text>
 				<xsl:apply-templates/>
-				<xsl:text>] </xsl:text>
+				<xsl:text>]</xsl:text>
+				<xsl:variable name="incr">
+					<xsl:choose>
+						<xsl:when test="following::*[1]/self::tei:space">
+							1
+						</xsl:when>
+						<xsl:otherwise>
+							0
+						</xsl:otherwise>
+					</xsl:choose>
+				</xsl:variable>
+				<xsl:choose>
+					<xsl:when test="following::*[1 + $incr]/self::tei:pc">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when test="following::*[1 + $incr]/self::tei:note[@type='fn']">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:text> </xsl:text>
+					</xsl:otherwise>
+				</xsl:choose>
 			</xsl:when>
 			<xsl:otherwise>
 				<xsl:text>[</xsl:text>
@@ -2811,7 +3036,28 @@
 			<xsl:when test="descendant::tei:w">
 				<xsl:text>{ </xsl:text>
 				<xsl:apply-templates/>
-				<xsl:text>} </xsl:text>
+				<xsl:text>}</xsl:text>
+				<xsl:variable name="incr">
+					<xsl:choose>
+						<xsl:when test="following::*[1]/self::tei:space">
+							1
+						</xsl:when>
+						<xsl:otherwise>
+							0
+						</xsl:otherwise>
+					</xsl:choose>
+				</xsl:variable>
+				<xsl:choose>
+					<xsl:when test="following::*[1 + $incr]/self::tei:pc">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when test="following::*[1 + $incr]/self::tei:note[@type='fn']">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:text> </xsl:text>
+					</xsl:otherwise>
+				</xsl:choose>
 			</xsl:when>
 			<xsl:when test="ancestor::tei:w">
 				<xsl:text>{</xsl:text>
@@ -2821,9 +3067,61 @@
 			<xsl:when test="descendant::tei:date">
 				<xsl:text> {</xsl:text>
 				<xsl:apply-templates/>
-				<xsl:text>} </xsl:text>
+				<xsl:text>}</xsl:text>
+				<xsl:variable name="incr">
+					<xsl:choose>
+						<xsl:when test="following::*[1]/self::tei:space">
+							1
+						</xsl:when>
+						<xsl:otherwise>
+							0
+						</xsl:otherwise>
+					</xsl:choose>
+				</xsl:variable>
+				<xsl:choose>
+					<xsl:when test="following::*[1 + $incr]/self::tei:pc">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when test="following::*[1 + $incr]/self::tei:note[@type='fn']">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:text> </xsl:text>
+					</xsl:otherwise>
+				</xsl:choose>
 			</xsl:when>
 			<xsl:when test="ancestor::tei:date">
+				<xsl:text>{</xsl:text>
+				<xsl:apply-templates/>
+				<xsl:text>}</xsl:text>
+			</xsl:when>
+			<xsl:when test="descendant::tei:num">
+				<xsl:text> {</xsl:text>
+				<xsl:apply-templates/>
+				<xsl:text>}</xsl:text>
+				<xsl:variable name="incr">
+					<xsl:choose>
+						<xsl:when test="following::*[1]/self::tei:space">
+							1
+						</xsl:when>
+						<xsl:otherwise>
+							0
+						</xsl:otherwise>
+					</xsl:choose>
+				</xsl:variable>
+				<xsl:choose>
+					<xsl:when test="following::*[1 + $incr]/self::tei:pc">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when test="following::*[1 + $incr]/self::tei:note[@type='fn']">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:text> </xsl:text>
+					</xsl:otherwise>
+				</xsl:choose>
+			</xsl:when>
+			<xsl:when test="ancestor::tei:num">
 				<xsl:text>{</xsl:text>
 				<xsl:apply-templates/>
 				<xsl:text>}</xsl:text>
@@ -2861,7 +3159,6 @@
 						</b>
 					</sub>
 				</a>
-				<xsl:text> </xsl:text>
 			</xsl:when>
 			<xsl:otherwise>
 				<a id="{generate-id()}" title="{@extent}, {$gapReason}" href="#"
@@ -2872,7 +3169,6 @@
 						</b>
 					</sub>
 				</a>
-				<xsl:text> </xsl:text>
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
@@ -2895,7 +3191,27 @@
 				</a>
 			</b>
 		</sup>
-		<xsl:text> </xsl:text>
+		<xsl:variable name="incr">
+			<xsl:choose>
+				<xsl:when test="following::*[1]/self::tei:space">
+					1
+				</xsl:when>
+				<xsl:otherwise>
+					0
+				</xsl:otherwise>
+			</xsl:choose>
+		</xsl:variable>
+		<xsl:choose>
+			<xsl:when test="following::*[1 + $incr]/self::tei:pc">
+				<xsl:text/>
+			</xsl:when>
+			<xsl:when test="following::*[1 + $incr]/self::tei:note[@type='fn']">
+				<xsl:text/>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:text> </xsl:text>
+			</xsl:otherwise>
+		</xsl:choose>
 	</xsl:template>
 
 	<xsl:template match="tei:add[@type = 'insertion']">
@@ -3045,7 +3361,7 @@
 				</b>
 				<xsl:apply-templates/>
 				<b>
-					<xsl:text> / </xsl:text>
+					<xsl:text> /</xsl:text>
 				</b>
 			</xsl:when>
 			<xsl:when test="@place = 'below'">
@@ -3054,7 +3370,7 @@
 				</b>
 				<xsl:apply-templates/>
 				<b>
-					<xsl:text> \ </xsl:text>
+					<xsl:text> \</xsl:text>
 				</b>
 			</xsl:when>
 			<xsl:when test="@place = 'margin, right'">
@@ -3063,7 +3379,7 @@
 				</b>
 				<xsl:apply-templates/>
 				<b>
-					<xsl:text> &lt;  </xsl:text>
+					<xsl:text> &lt;</xsl:text>
 				</b>
 			</xsl:when>
 			<xsl:when test="@place = 'margin, left'">
@@ -3072,7 +3388,7 @@
 				</b>
 				<xsl:apply-templates/>
 				<b>
-					<xsl:text> &gt; </xsl:text>
+					<xsl:text> &gt;</xsl:text>
 				</b>
 			</xsl:when>
 			<xsl:when test="@place = 'margin, top'">
@@ -3106,13 +3422,11 @@
 	</xsl:template>
 
 	<xsl:template match="tei:handShift">
-		<xsl:text> </xsl:text>
 		<sub>
 			<i>
-				<b> beg. H<xsl:value-of select="substring(@new, 5)"/></b>
+				<b>-beg. H<xsl:value-of select="substring(@new, 5)"/>-</b>
 			</i>
 		</sub>
-		<xsl:text> </xsl:text>
 	</xsl:template>
 
 	<xsl:template match="tei:div[@n]">
@@ -3129,61 +3443,64 @@
 		</h2>
 		<xsl:apply-templates/>
 		<xsl:if test="@type = 'prose' and not(descendant::tei:div)">
-		<xsl:variable name="lineID">
-			<xsl:value-of select="ancestor::tei:TEI//tei:msIdentifier/@sameAs"/>
-			<xsl:text>.</xsl:text>
-			<xsl:choose>
-				<xsl:when
-					test="descendant::tei:pb[not(following::tei:pb[ancestor::tei:div[@corresp = $comDiv]])]/@xml:id">
-					<xsl:value-of
-						select="substring-after(descendant::tei:pb[not(following::tei:pb[ancestor::tei:div[@corresp = $comDiv]])]/@xml:id, '.')"
-					/>
-				</xsl:when>
-				<xsl:when
-					test="descendant::tei:pb[not(following::tei:pb[ancestor::tei:div[@corresp = $comDiv]])]/@sameAs">
-					<xsl:value-of
-						select="substring-after(descendant::tei:pb[not(following::tei:pb[ancestor::tei:div[@corresp = $comDiv]])]/@sameAs, '.')"
-					/>
-				</xsl:when>
-			</xsl:choose>
-			<xsl:text>.</xsl:text>
-			<xsl:value-of select="descendant::tei:lb[not(following::tei:lb[ancestor::tei:div[@corresp = $comDiv]])]/@n + 1"/>
-		</xsl:variable>
-		<xsl:text xml:space="preserve"> </xsl:text><button id="plus{$lineID}" onclick="revealComment(this.id)" style="font-size:12px">
-			<xsl:if test="ancestor::tei:w">
-				<xsl:attribute name="onmouseover">
-					<xsl:text>disableWordFunctions(this.id)</xsl:text>
-				</xsl:attribute>
-				<xsl:attribute name="onmouseout">
-					<xsl:text>enableWordFunctions(this.id)</xsl:text>
-				</xsl:attribute>
-			</xsl:if>
-			<b>+</b>
-		</button>
-		<br id="plus{$lineID}br" hidden="hidden"/>
-		<table hidden="hidden">
-			<xsl:if test="ancestor::tei:w">
-				<xsl:attribute name="onmouseover">
-					<xsl:text>disableWordFunctions(this.id)</xsl:text>
-				</xsl:attribute>
-				<xsl:attribute name="onmouseout">
-					<xsl:text>enableWordFunctions(this.id)</xsl:text>
-				</xsl:attribute>
-			</xsl:if>
-		</table>
-		<button id="{generate-id()}" onclick="textComment(this.id)" style="font-size:12px"
-			hidden="hidden"><xsl:if test="ancestor::tei:w">
-				<xsl:attribute name="onmouseover">
-					<xsl:text>disableWordFunctions(this.id)</xsl:text>
-				</xsl:attribute>
-				<xsl:attribute name="onmouseout">
-					<xsl:text>enableWordFunctions(this.id)</xsl:text>
-				</xsl:attribute>
-			</xsl:if>Add Comment</button>
+			<xsl:variable name="lineID">
+				<xsl:value-of select="ancestor::tei:TEI//tei:msIdentifier/@sameAs"/>
+				<xsl:text>.</xsl:text>
+				<xsl:choose>
+					<xsl:when
+						test="descendant::tei:pb[not(following::tei:pb[ancestor::tei:div[@corresp = $comDiv]])]/@xml:id">
+						<xsl:value-of
+							select="substring-after(descendant::tei:pb[not(following::tei:pb[ancestor::tei:div[@corresp = $comDiv]])]/@xml:id, '.')"
+						/>
+					</xsl:when>
+					<xsl:when
+						test="descendant::tei:pb[not(following::tei:pb[ancestor::tei:div[@corresp = $comDiv]])]/@sameAs">
+						<xsl:value-of
+							select="substring-after(descendant::tei:pb[not(following::tei:pb[ancestor::tei:div[@corresp = $comDiv]])]/@sameAs, '.')"
+						/>
+					</xsl:when>
+				</xsl:choose>
+				<xsl:text>.</xsl:text>
+				<xsl:value-of
+					select="descendant::tei:lb[not(following::tei:lb[ancestor::tei:div[@corresp = $comDiv]])]/@n + 1"
+				/>
+			</xsl:variable>
+			<xsl:text xml:space="preserve"> </xsl:text>
+			<button id="plus{$lineID}" onclick="revealComment(this.id)" style="font-size:12px">
+				<xsl:if test="ancestor::tei:w">
+					<xsl:attribute name="onmouseover">
+						<xsl:text>disableWordFunctions(this.id)</xsl:text>
+					</xsl:attribute>
+					<xsl:attribute name="onmouseout">
+						<xsl:text>enableWordFunctions(this.id)</xsl:text>
+					</xsl:attribute>
+				</xsl:if>
+				<b>+</b>
+			</button>
+			<br id="plus{$lineID}br" hidden="hidden"/>
+			<table hidden="hidden">
+				<xsl:if test="ancestor::tei:w">
+					<xsl:attribute name="onmouseover">
+						<xsl:text>disableWordFunctions(this.id)</xsl:text>
+					</xsl:attribute>
+					<xsl:attribute name="onmouseout">
+						<xsl:text>enableWordFunctions(this.id)</xsl:text>
+					</xsl:attribute>
+				</xsl:if>
+			</table>
+			<button id="{generate-id()}" onclick="textComment(this.id)" style="font-size:12px"
+				hidden="hidden"><xsl:if test="ancestor::tei:w">
+					<xsl:attribute name="onmouseover">
+						<xsl:text>disableWordFunctions(this.id)</xsl:text>
+					</xsl:attribute>
+					<xsl:attribute name="onmouseout">
+						<xsl:text>enableWordFunctions(this.id)</xsl:text>
+					</xsl:attribute>
+				</xsl:if>Add Comment</button>
 			<br/>
 			<table/>
-			<button id="{generate-id()} + 'x'" onclick="textComment(this.id)" style="font-size:12px">Add
-				Comment</button>
+			<button id="{generate-id()} + 'x'" onclick="textComment(this.id)" style="font-size:12px"
+				>Add Comment</button>
 		</xsl:if>
 		<xsl:if test="not(ancestor::tei:div) and descendant::tei:note[@type = 'fn']">
 			<h3 style="font-size:16px">Notes</h3>
@@ -3203,8 +3520,8 @@
 					<xsl:apply-templates select="child::tei:p"/>
 				</p>
 				<table/>
-				<button id="{generate-id()}" onclick="textComment(this.id)" style="font-size:10px">Add
-					Comment</button>
+				<button id="{generate-id()}" onclick="textComment(this.id)" style="font-size:10px"
+					>Add Comment</button>
 			</xsl:for-each>
 		</xsl:if>
 	</xsl:template>
