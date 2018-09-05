@@ -3466,11 +3466,11 @@
 		<xsl:choose>
 			<xsl:when test="@place = 'above'">
 				<b>
-					<xsl:text>\ gl. </xsl:text>
+					<sub><xsl:text>\ gl. </xsl:text></sub>
 				</b>
 				<xsl:apply-templates/>
 				<b>
-					<xsl:text>/</xsl:text>
+					<sub><xsl:text>/</xsl:text></sub>
 				</b>
 				<xsl:variable name="incr">
 					<xsl:choose>
@@ -3492,11 +3492,11 @@
 			</xsl:when>
 			<xsl:when test="@place = 'below'">
 				<b>
-					<xsl:text>/ gl. </xsl:text>
+					<sub><xsl:text>/ gl. </xsl:text></sub>
 				</b>
 				<xsl:apply-templates/>
 				<b>
-					<xsl:text>\</xsl:text>
+					<sub><xsl:text>\</xsl:text></sub>
 				</b>
 				<xsl:variable name="incr">
 					<xsl:choose>
@@ -3518,11 +3518,11 @@
 			</xsl:when>
 			<xsl:when test="@place = 'margin, right'">
 				<b>
-					<xsl:text>&lt; gl. </xsl:text>
+					<sub><xsl:text>&lt; gl. </xsl:text></sub>
 				</b>
 				<xsl:apply-templates/>
 				<b>
-					<xsl:text>&lt;</xsl:text>
+					<sub><xsl:text>&lt;</xsl:text></sub>
 				</b>
 				<xsl:variable name="incr">
 					<xsl:choose>
@@ -3544,11 +3544,11 @@
 			</xsl:when>
 			<xsl:when test="@place = 'margin, left'">
 				<b>
-					<xsl:text>&gt; gl. </xsl:text>
+					<sub><xsl:text>&gt; gl. </xsl:text></sub>
 				</b>
 				<xsl:apply-templates/>
 				<b>
-					<xsl:text>&gt;</xsl:text>
+					<sub><xsl:text>&gt;</xsl:text></sub>
 				</b>
 				<xsl:variable name="incr">
 					<xsl:choose>
@@ -3570,11 +3570,11 @@
 			</xsl:when>
 			<xsl:when test="@place = 'margin, top'">
 				<b>
-					<xsl:text>// gl. </xsl:text>
+					<sub><xsl:text>// gl. </xsl:text></sub>
 				</b>
 				<xsl:apply-templates/>
 				<b>
-					<xsl:text>\\</xsl:text>
+					<sub><xsl:text>\\</xsl:text></sub>
 				</b>
 				<xsl:variable name="incr">
 					<xsl:choose>
@@ -3596,11 +3596,11 @@
 			</xsl:when>
 			<xsl:when test="@place = 'margin, bottom'">
 				<b>
-					<xsl:text>\\ gl. </xsl:text>
+					<sub><xsl:text>\\ gl. </xsl:text></sub>
 				</b>
 				<xsl:apply-templates/>
 				<b>
-					<xsl:text>//</xsl:text>
+					<sub><xsl:text>//</xsl:text></sub>
 				</b>
 				<xsl:variable name="incr">
 					<xsl:choose>
@@ -3622,11 +3622,11 @@
 			</xsl:when>
 			<xsl:when test="@place = 'inline'">
 				<b>
-					<xsl:text>| gl. </xsl:text>
+					<sub><xsl:text>| gl. </xsl:text></sub>
 				</b>
 				<xsl:apply-templates/>
 				<b>
-					<xsl:text>|</xsl:text>
+					<sub><xsl:text>|</xsl:text></sub>
 				</b>
 				<xsl:variable name="incr">
 					<xsl:choose>
