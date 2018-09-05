@@ -781,11 +781,20 @@
 				</xsl:otherwise>
 			</xsl:choose>
 		</xsl:variable>
+		<xsl:variable name="lineID">
+			<xsl:value-of select="ancestor::tei:TEI//tei:msIdentifier/@sameAs"/>
+			<xsl:value-of select="preceding::tei:pb[1]/@n"/>
+			<xsl:if
+				test="count(preceding::tei:pb[1]/following::tei:cb[1]/preceding::*) &lt; $wordPOS">
+				<xsl:value-of select="preceding::tei:cb[1]/@n"/>
+			</xsl:if>
+			<xsl:value-of select="preceding::tei:lb[1]/@n"/>
+		</xsl:variable>
 		<a class="dip" id="{$wordId}" pos="{$wordPOS}" onmouseover="hilite(this.id)"
 			onmouseout="dhilite(this.id)" lemma="{$lem}" lemmaRef="{$lemRef}" lemmaDW="{$DWlem}"
 			lemmaRefDW="{$DWref}" lemmaED="{$EDlem}" lemmaRefED="{$EDref}" lemmaSL="{@lemmaSL}"
 			ana="{@ana}" hand="{$hand}" ref="{$msref}" date="{$handDate}" medium="{$medium}"
-			cert="{$certLvl}" abbrRefs="{$abbrRef}"
+			cert="{$certLvl}" abbrRefs="{$abbrRef}" msLine="{$lineID}_dip"
 			title="{$lem}: {$pos} {$src}&#10;{$hand}&#10;{$prob}{$certProb}&#10;Abbreviations: {$abbrs}&#10;{$gloss}"
 			style="text-decoration:none; color:#000000">
 			<xsl:if test="@lemma">

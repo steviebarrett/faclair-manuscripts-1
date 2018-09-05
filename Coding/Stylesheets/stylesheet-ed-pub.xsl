@@ -1235,14 +1235,57 @@
 							</xsl:attribute>
 						</xsl:if>Add Comment</button>
 				</xsl:if>
-				<sub>
 					<br id="{$lineID}"/>
+				<span>
+					<xsl:if test="@sameAs"><xsl:attribute name="msRef">
+						<xsl:variable name="elPOS" select="count(preceding::*)"/>
+						<xsl:variable name="lID">
+							<xsl:if
+								test="ancestor::tei:div[1]/@type = 'prose' or ancestor::tei:div/@type = 'divprose'">
+								<xsl:value-of select="ancestor::tei:TEI//tei:msIdentifier/@sameAs"/>
+								<xsl:value-of select="preceding::tei:pb[1]/@n"/>
+								<xsl:if
+									test="count(preceding::tei:pb[1]/following::tei:cb[1]/preceding::*) &lt; $elPOS">
+									<xsl:value-of select="preceding::tei:cb[1]/@n"/>
+								</xsl:if>
+								<xsl:value-of select="preceding::tei:lb[1]/@n"/>
+							</xsl:if>
+							<xsl:if test="ancestor::tei:div[1]/@type = 'verse'">
+								<xsl:value-of select="ancestor::tei:TEI//tei:msIdentifier/@sameAs"/>
+								<xsl:value-of select="translate(ancestor::tei:div[1]/@n, '.', '')"/>
+								<xsl:value-of select="ancestor::tei:lg[1]/@n"/>
+								<xsl:value-of select="ancestor::tei:l[1]/@n"/>
+							</xsl:if>
+						</xsl:variable>
+						<xsl:value-of select="$lID"/>
+					</xsl:attribute></xsl:if>
+				<sub>
 					<xsl:value-of select="@n"/>
 					<xsl:text>. </xsl:text>
 				</sub>
+				</span>
 			</xsl:when>
 			<xsl:when test="ancestor::tei:lg or ancestor::tei:w[ancestor::tei:lg]">
-				<sub id="{$lineID}">
+				<xsl:variable name="elPOS" select="count(preceding::*)"/>
+				<xsl:variable name="lID">
+					<xsl:if
+						test="ancestor::tei:div[1]/@type = 'prose' or ancestor::tei:div/@type = 'divprose'">
+						<xsl:value-of select="ancestor::tei:TEI//tei:msIdentifier/@sameAs"/>
+						<xsl:value-of select="preceding::tei:pb[1]/@n"/>
+						<xsl:if
+							test="count(preceding::tei:pb[1]/following::tei:cb[1]/preceding::*) &lt; $elPOS">
+							<xsl:value-of select="preceding::tei:cb[1]/@n"/>
+						</xsl:if>
+						<xsl:value-of select="preceding::tei:lb[1]/@n"/>
+					</xsl:if>
+					<xsl:if test="ancestor::tei:div[1]/@type = 'verse'">
+						<xsl:value-of select="ancestor::tei:TEI//tei:msIdentifier/@sameAs"/>
+						<xsl:value-of select="translate(ancestor::tei:div[1]/@n, '.', '')"/>
+						<xsl:value-of select="ancestor::tei:lg[1]/@n"/>
+						<xsl:value-of select="ancestor::tei:l[1]/@n"/>
+					</xsl:if>
+				</xsl:variable>
+				<sub id="{$lineID}" msLine="{$lID}">
 					<xsl:text> </xsl:text>
 					<xsl:value-of select="@n"/>
 					<xsl:text>. </xsl:text>
@@ -1361,7 +1404,26 @@
 	</xsl:template>
 
 	<xsl:template match="tei:seg[@type = 'catchword']">
-		<p style="margin-right:90pc; text-align:center">
+		<xsl:variable name="elPOS" select="count(preceding::*)"/>
+		<xsl:variable name="lineID">
+			<xsl:if
+				test="ancestor::tei:div[1]/@type = 'prose' or ancestor::tei:div/@type = 'divprose'">
+				<xsl:value-of select="ancestor::tei:TEI//tei:msIdentifier/@sameAs"/>
+				<xsl:value-of select="preceding::tei:pb[1]/@n"/>
+				<xsl:if
+					test="count(preceding::tei:pb[1]/following::tei:cb[1]/preceding::*) &lt; $elPOS">
+					<xsl:value-of select="preceding::tei:cb[1]/@n"/>
+				</xsl:if>
+				<xsl:value-of select="preceding::tei:lb[1]/@n"/>
+			</xsl:if>
+			<xsl:if test="ancestor::tei:div[1]/@type = 'verse'">
+				<xsl:value-of select="ancestor::tei:TEI//tei:msIdentifier/@sameAs"/>
+				<xsl:value-of select="translate(ancestor::tei:div[1]/@n, '.', '')"/>
+				<xsl:value-of select="ancestor::tei:lg[1]/@n"/>
+				<xsl:value-of select="ancestor::tei:l[1]/@n"/>
+			</xsl:if>
+		</xsl:variable>
+		<p style="margin-right:90pc; text-align:center" msLine="{$lineID}">
 			<xsl:apply-templates/>
 		</p>
 	</xsl:template>
@@ -1371,12 +1433,50 @@
 	</xsl:template>
 
 	<xsl:template match="tei:seg[@type = 'title']">
-		<b>
+		<xsl:variable name="elPOS" select="count(preceding::*)"/>
+		<xsl:variable name="lineID">
+			<xsl:if
+				test="ancestor::tei:div[1]/@type = 'prose' or ancestor::tei:div/@type = 'divprose'">
+				<xsl:value-of select="ancestor::tei:TEI//tei:msIdentifier/@sameAs"/>
+				<xsl:value-of select="preceding::tei:pb[1]/@n"/>
+				<xsl:if
+					test="count(preceding::tei:pb[1]/following::tei:cb[1]/preceding::*) &lt; $elPOS">
+					<xsl:value-of select="preceding::tei:cb[1]/@n"/>
+				</xsl:if>
+				<xsl:value-of select="preceding::tei:lb[1]/@n"/>
+			</xsl:if>
+			<xsl:if test="ancestor::tei:div[1]/@type = 'verse'">
+				<xsl:value-of select="ancestor::tei:TEI//tei:msIdentifier/@sameAs"/>
+				<xsl:value-of select="translate(ancestor::tei:div[1]/@n, '.', '')"/>
+				<xsl:value-of select="ancestor::tei:lg[1]/@n"/>
+				<xsl:value-of select="ancestor::tei:l[1]/@n"/>
+			</xsl:if>
+		</xsl:variable>
+		<b msLine="{$lineID}">
 			<xsl:apply-templates/>
 		</b>
 	</xsl:template>
 
 	<xsl:template match="tei:seg[@type = 'gloss']">
+		<xsl:variable name="elPOS" select="count(preceding::*)"/>
+		<xsl:variable name="lineID">
+			<xsl:if
+				test="ancestor::tei:div[1]/@type = 'prose' or ancestor::tei:div/@type = 'divprose'">
+				<xsl:value-of select="ancestor::tei:TEI//tei:msIdentifier/@sameAs"/>
+				<xsl:value-of select="preceding::tei:pb[1]/@n"/>
+				<xsl:if
+					test="count(preceding::tei:pb[1]/following::tei:cb[1]/preceding::*) &lt; $elPOS">
+					<xsl:value-of select="preceding::tei:cb[1]/@n"/>
+				</xsl:if>
+				<xsl:value-of select="preceding::tei:lb[1]/@n"/>
+			</xsl:if>
+			<xsl:if test="ancestor::tei:div[1]/@type = 'verse'">
+				<xsl:value-of select="ancestor::tei:TEI//tei:msIdentifier/@sameAs"/>
+				<xsl:value-of select="translate(ancestor::tei:div[1]/@n, '.', '')"/>
+				<xsl:value-of select="ancestor::tei:lg[1]/@n"/>
+				<xsl:value-of select="ancestor::tei:l[1]/@n"/>
+			</xsl:if>
+		</xsl:variable>
 		<xsl:apply-templates/>
 	</xsl:template>
 
@@ -1522,9 +1622,28 @@
 	</xsl:template>
 
 	<xsl:template match="tei:choice">
+		<xsl:variable name="elPOS" select="count(preceding::*)"/>
+		<xsl:variable name="lineID">
+			<xsl:if
+				test="ancestor::tei:div[1]/@type = 'prose' or ancestor::tei:div/@type = 'divprose'">
+				<xsl:value-of select="ancestor::tei:TEI//tei:msIdentifier/@sameAs"/>
+				<xsl:value-of select="preceding::tei:pb[1]/@n"/>
+				<xsl:if
+					test="count(preceding::tei:pb[1]/following::tei:cb[1]/preceding::*) &lt; $elPOS">
+					<xsl:value-of select="preceding::tei:cb[1]/@n"/>
+				</xsl:if>
+				<xsl:value-of select="preceding::tei:lb[1]/@n"/>
+			</xsl:if>
+			<xsl:if test="ancestor::tei:div[1]/@type = 'verse'">
+				<xsl:value-of select="ancestor::tei:TEI//tei:msIdentifier/@sameAs"/>
+				<xsl:value-of select="translate(ancestor::tei:div[1]/@n, '.', '')"/>
+				<xsl:value-of select="ancestor::tei:lg[1]/@n"/>
+				<xsl:value-of select="ancestor::tei:l[1]/@n"/>
+			</xsl:if>
+		</xsl:variable>
 		<xsl:choose>
 			<xsl:when test="child::tei:sic | tei:corr">
-				<xsl:text>{</xsl:text>
+				<span msLine="{$lineID}"><xsl:text>{</xsl:text></span>
 				<xsl:apply-templates select="tei:corr"/>
 				<xsl:choose>
 					<xsl:when test="child::tei:sic[not(descendant::tei:w)]">
@@ -1533,7 +1652,7 @@
 							<xsl:variable name="altSource"
 								select="ancestor::tei:choice/tei:corr/@resp"/>
 							<a id="{generate-id()}"
-								title="MS: {self::*}&#10;- the intended reading cannot be identified; an amended reading ('{$alt}') has been supplied by {$altSource}.">
+								title="MS: {self::*}&#10;- the intended reading cannot be identified; an amended reading ('{$alt}') has been supplied by {$altSource}." msLine="{$lineID}">
 								<sub>
 									<b>
 										<i>
@@ -1559,7 +1678,7 @@
 								<xsl:text/>
 							</xsl:when>
 							<xsl:otherwise>
-								<xsl:text> </xsl:text>
+								<span msLine="{$lineID}"><xsl:text> </xsl:text></span>
 							</xsl:otherwise>
 						</xsl:choose>
 					</xsl:when>
@@ -1575,8 +1694,8 @@
 								<xsl:apply-templates select="tei:sic"/>
 							</xsl:otherwise>
 						</xsl:choose>
-						<xsl:text> </xsl:text>
-						<xsl:text>}</xsl:text>
+						<span msLine="{$lineID}"><xsl:text> </xsl:text></span>
+						<span msLine="{$lineID}"><xsl:text>}</xsl:text></span>
 						<xsl:variable name="incr">
 							<xsl:choose>
 								<xsl:when test="following::*[1]/self::tei:space"> 1 </xsl:when>
@@ -1591,72 +1710,9 @@
 								<xsl:text/>
 							</xsl:when>
 							<xsl:otherwise>
-								<xsl:text> </xsl:text>
+								<span msLine="{$lineID}"><xsl:text> </xsl:text></span>
 							</xsl:otherwise>
 						</xsl:choose>
-					</xsl:otherwise>
-				</xsl:choose>
-			</xsl:when>
-			<xsl:when test="child::tei:unclear">
-				<xsl:text>{</xsl:text>
-				<xsl:for-each select="tei:unclear[@n = '1']/descendant::*[@n]">
-					<xsl:variable name="wpos" select="@n"/>
-					<xsl:apply-templates select="self::*"/>
-					<xsl:if
-						test="ancestor::tei:choice/tei:unclear[@n = '2']/descendant::*/@n = $wpos">
-						<a id="{generate-id()}"
-							title="Or, {ancestor::tei:choice/tei:unclear[@n = '2']/descendant::tei:w[@n = $wpos]} ({ancestor::tei:choice/tei:unclear[@n = '2']/descendant::tei:w[@n = $wpos]/@ana})&#10;{key('probs', ancestor::tei:unclear/@reason)}">
-							<xsl:if
-								test="ancestor::tei:choice/tei:unclear[@n = '2']/descendant::*[@n = $wpos]/@lemma">
-								<xsl:attribute name="href">
-									<xsl:value-of
-										select="ancestor::tei:choice/tei:unclear[@n = '2']/descendant::*[@n = $wpos]/@lemmaRef"
-									/>
-								</xsl:attribute>
-								<xsl:attribute name="style">text-decoration:none;
-									color:#000000</xsl:attribute>
-							</xsl:if>
-							<sub>
-								<b>
-									<i>/alt</i>
-								</b>
-							</sub>
-						</a>
-					</xsl:if>
-				</xsl:for-each>
-				<xsl:for-each
-					select="tei:unclear[@n = '2']/*[@n > ancestor::tei:choice/tei:unclear[@n = '1']//tei:w//@n]">
-					<a id="{generate-id()}" title="{self::*}">
-						<xsl:if test="@lemma">
-							<xsl:attribute name="href">
-								<xsl:value-of select="@lemmaRef"/>
-							</xsl:attribute>
-							<xsl:attribute name="style">text-decoration:none;
-								color:#000000</xsl:attribute>
-						</xsl:if>
-						<sub>
-							<b>
-								<i><xsl:text> </xsl:text>/alt<xsl:text> </xsl:text></i>
-							</b>
-						</sub>
-					</a>
-				</xsl:for-each>
-				<xsl:text>}</xsl:text>
-				<xsl:variable name="incr">
-					<xsl:choose>
-						<xsl:when test="following::*[1]/self::tei:space"> 1 </xsl:when>
-						<xsl:otherwise> 0 </xsl:otherwise>
-					</xsl:choose>
-				</xsl:variable>
-				<xsl:choose>
-					<xsl:when test="following::*[1 + $incr]/self::tei:pc">
-						<xsl:text/>
-					</xsl:when>
-					<xsl:when test="following::*[1 + $incr]/self::tei:note[@type = 'fn']">
-						<xsl:text/>
-					</xsl:when>
-					<xsl:otherwise>
-						<xsl:text> </xsl:text>
 					</xsl:otherwise>
 				</xsl:choose>
 			</xsl:when>
@@ -2217,7 +2273,7 @@
 				</xsl:otherwise>
 			</xsl:choose>
 		</xsl:variable>
-		<xsl:variable name="lineID">
+		<xsl:variable name="lineRef">
 			<xsl:choose>
 				<xsl:when test="preceding::tei:lb[1]/@sameAs">
 					<xsl:value-of select="preceding::tei:lb[1]/@sameAs"/>
@@ -2227,11 +2283,30 @@
 				</xsl:when>
 			</xsl:choose>
 		</xsl:variable>
+		<xsl:variable name="lineID">
+			<xsl:if
+				test="ancestor::tei:div[1]/@type = 'prose' or ancestor::tei:div/@type = 'divprose'">
+				<xsl:value-of select="ancestor::tei:TEI//tei:msIdentifier/@sameAs"/>
+				<xsl:value-of select="preceding::tei:pb[1]/@n"/>
+				<xsl:if
+					test="count(preceding::tei:pb[1]/following::tei:cb[1]/preceding::*) &lt; $wordPOS">
+					<xsl:value-of select="preceding::tei:cb[1]/@n"/>
+				</xsl:if>
+				<xsl:value-of select="preceding::tei:lb[1]/@n"/>
+			</xsl:if>
+			<xsl:if test="ancestor::tei:div[1]/@type = 'verse'">
+				<xsl:value-of select="ancestor::tei:TEI//tei:msIdentifier/@sameAs"/>
+				<xsl:value-of select="translate(ancestor::tei:div[1]/@n, '.', '')"/>
+				<xsl:value-of select="ancestor::tei:lg[1]/@n"/>
+				<xsl:value-of select="ancestor::tei:l[1]/@n"/>
+			</xsl:if>
+		</xsl:variable>
 		<a id="{$wordId}" pos="{$wordPOS}" onclick="addSlip(this.id)" onmouseover="hilite(this.id)"
 			onmouseout="dhilite(this.id)" lemma="{$lem}" lemmaRef="{$lemRef}" lemmaED="{$EDlem}"
 			lemmaRefED="{$EDref}" lemmaDW="{$DWlem}" lemmaRefDW="{$DWref}" lemmaSL="{@lemmaSL}"
 			slipID="{@slipID}" ana="{@ana}" hand="{$hand}" ref="{$msref}" date="{$handDate}"
-			medium="{$medium}" cert="{$certLvl}" abbrRefs="{$abbrRef}" lineID="{$lineID}"
+			medium="{$medium}" cert="{$certLvl}" abbrRefs="{$abbrRef}" lineID="{$lineRef}"
+			msLine="{$lineID}"
 			title="{$lem}: {$pos} {$src}&#10;{$hand}&#10;{$prob}{$certProb}&#10;Abbreviations: {$abbrs}&#10;{$gloss}&#10;{@comment}"
 			style="text-decoration:none; color:#000000" class="ed">
 			<xsl:if test="ancestor::tei:sic">
@@ -2254,25 +2329,25 @@
 			<xsl:choose>
 				<xsl:when
 					test="ancestor::*[@cert = 'low'] or descendant::*[@cert = 'low'] or @lemma = 'UNKNOWN'">
-					<xsl:attribute name="style">text-decoration:none; color:#ff0000</xsl:attribute>
+					<xsl:attribute name="style">text-decoration:none; color:#ff0000<xsl:if test="ancestor::tei:del">;line-through</xsl:if></xsl:attribute>
 				</xsl:when>
 				<xsl:otherwise>
 					<xsl:choose>
 						<xsl:when
 							test="ancestor::*[@cert = 'medium'] or descendant::*[@cert = 'medium']">
 							<xsl:attribute name="style">text-decoration:none;
-								color:#ff9900</xsl:attribute>
+								color:#ff9900<xsl:if test="ancestor::tei:del">;line-through</xsl:if></xsl:attribute>
 						</xsl:when>
 						<xsl:otherwise>
 							<xsl:choose>
 								<xsl:when
 									test="ancestor::tei:unclear[@cert = 'high'] or descendant::tei:unclear[@cert = 'high']">
 									<xsl:attribute name="style">text-decoration:none;
-										color:#cccc00</xsl:attribute>
+										color:#cccc00<xsl:if test="ancestor::tei:del">;line-through</xsl:if></xsl:attribute>
 								</xsl:when>
 								<xsl:otherwise>
 									<xsl:attribute name="style">text-decoration:none;
-										color:#000000</xsl:attribute>
+										color:#000000<xsl:if test="ancestor::tei:del">;line-through</xsl:if></xsl:attribute>
 								</xsl:otherwise>
 							</xsl:choose>
 						</xsl:otherwise>
@@ -2334,7 +2409,7 @@
 								<xsl:text/>
 							</xsl:when>
 							<xsl:otherwise>
-								<xsl:text> </xsl:text>
+								<span msLine="{$lineID}"><xsl:text> </xsl:text></span>
 							</xsl:otherwise>
 						</xsl:choose>
 					</xsl:otherwise>
@@ -2349,7 +2424,7 @@
 								<xsl:text/>
 							</xsl:when>
 							<xsl:otherwise>
-								<xsl:text> </xsl:text>
+								<span msLine="{$lineID}"><xsl:text> </xsl:text></span>
 							</xsl:otherwise>
 						</xsl:choose>
 					</xsl:when>
@@ -2359,7 +2434,7 @@
 					</xsl:when>
 					<xsl:when
 						test="@ana = 'pron' and ancestor::tei:w[contains(@ana, 'part, pron, verb')]">
-						<xsl:text> </xsl:text>
+						<span msLine="{$lineID}"><xsl:text> </xsl:text></span>
 					</xsl:when>
 					<xsl:when test="@ana = 'part' and ancestor::tei:w[contains(@ana, 'part, noun')]">
 						<xsl:text/>
@@ -2477,14 +2552,14 @@
 						<xsl:text/>
 					</xsl:when>
 					<xsl:when test="not(following-sibling::*)">
-						<xsl:text> </xsl:text>
+						<span msLine="{$lineID}"><xsl:text> </xsl:text></span>
 					</xsl:when>
 					<xsl:when
 						test="@ana = 'pron' and ancestor::tei:w[contains(@ana, 'pron, pron')] and following-sibling::tei:w[@ana = 'pron']">
 						<xsl:text/>
 					</xsl:when>
 					<xsl:otherwise>
-						<xsl:text> </xsl:text>
+						<span msLine="{$lineID}"><xsl:text> </xsl:text></span>
 					</xsl:otherwise>
 				</xsl:choose>
 			</xsl:otherwise>
@@ -2492,6 +2567,25 @@
 	</xsl:template>
 
 	<xsl:template match="tei:w[descendant::tei:w]">
+		<xsl:variable name="elPOS" select="count(preceding::*)"/>
+		<xsl:variable name="lineID">
+			<xsl:if
+				test="ancestor::tei:div[1]/@type = 'prose' or ancestor::tei:div/@type = 'divprose'">
+				<xsl:value-of select="ancestor::tei:TEI//tei:msIdentifier/@sameAs"/>
+				<xsl:value-of select="preceding::tei:pb[1]/@n"/>
+				<xsl:if
+					test="count(preceding::tei:pb[1]/following::tei:cb[1]/preceding::*) &lt; $elPOS">
+					<xsl:value-of select="preceding::tei:cb[1]/@n"/>
+				</xsl:if>
+				<xsl:value-of select="preceding::tei:lb[1]/@n"/>
+			</xsl:if>
+			<xsl:if test="ancestor::tei:div[1]/@type = 'verse'">
+				<xsl:value-of select="ancestor::tei:TEI//tei:msIdentifier/@sameAs"/>
+				<xsl:value-of select="translate(ancestor::tei:div[1]/@n, '.', '')"/>
+				<xsl:value-of select="ancestor::tei:lg[1]/@n"/>
+				<xsl:value-of select="ancestor::tei:l[1]/@n"/>
+			</xsl:if>
+		</xsl:variable>
 		<xsl:apply-templates/>
 		<xsl:variable name="incr">
 			<xsl:choose>
@@ -2507,28 +2601,32 @@
 				<xsl:text/>
 			</xsl:when>
 			<xsl:otherwise>
-				<xsl:choose><xsl:when
-					test="ancestor::tei:unclear[count(descendant::tei:w[not(descendant::tei:w)]) = 1]">
-					<xsl:text/>
-				</xsl:when>
-				<xsl:when
-					test="ancestor::tei:supplied[count(descendant::tei:w[not(descendant::tei:w)]) = 1]">
-					<xsl:text/>
-				</xsl:when>
-				<xsl:when
-					test="ancestor::tei:add[count(descendant::tei:w[not(descendant::tei:w)]) = 1]">
-					<xsl:text/>
-				</xsl:when>
-				<xsl:when test="ancestor::tei:unclear and count(following-sibling::tei:w) = 0">
-					<xsl:text/>
-				</xsl:when>
-				<xsl:when test="ancestor::tei:supplied and count(following-sibling::tei:w) = 0">
-					<xsl:text/>
-				</xsl:when>
-				<xsl:when test="ancestor::tei:add and count(following-sibling::tei:w) = 0">
-					<xsl:text/>
-				</xsl:when>
-				<xsl:otherwise><xsl:text> </xsl:text></xsl:otherwise></xsl:choose>
+				<xsl:choose>
+					<xsl:when
+						test="ancestor::tei:unclear[count(descendant::tei:w[not(descendant::tei:w)]) = 1]">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when
+						test="ancestor::tei:supplied[count(descendant::tei:w[not(descendant::tei:w)]) = 1]">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when
+						test="ancestor::tei:add[count(descendant::tei:w[not(descendant::tei:w)]) = 1]">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when test="ancestor::tei:unclear and count(following-sibling::tei:w) = 0">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when test="ancestor::tei:supplied and count(following-sibling::tei:w) = 0">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when test="ancestor::tei:add and count(following-sibling::tei:w) = 0">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:otherwise>
+						<span msLine="{$lineID}"><xsl:text> </xsl:text></span>
+					</xsl:otherwise>
+				</xsl:choose>
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
@@ -2538,8 +2636,27 @@
 	</xsl:template>
 
 	<xsl:template match="tei:date">
+		<xsl:variable name="elPOS" select="count(preceding::*)"/>
+		<xsl:variable name="lineID">
+			<xsl:if
+				test="ancestor::tei:div[1]/@type = 'prose' or ancestor::tei:div/@type = 'divprose'">
+				<xsl:value-of select="ancestor::tei:TEI//tei:msIdentifier/@sameAs"/>
+				<xsl:value-of select="preceding::tei:pb[1]/@n"/>
+				<xsl:if
+					test="count(preceding::tei:pb[1]/following::tei:cb[1]/preceding::*) &lt; $elPOS">
+					<xsl:value-of select="preceding::tei:cb[1]/@n"/>
+				</xsl:if>
+				<xsl:value-of select="preceding::tei:lb[1]/@n"/>
+			</xsl:if>
+			<xsl:if test="ancestor::tei:div[1]/@type = 'verse'">
+				<xsl:value-of select="ancestor::tei:TEI//tei:msIdentifier/@sameAs"/>
+				<xsl:value-of select="translate(ancestor::tei:div[1]/@n, '.', '')"/>
+				<xsl:value-of select="ancestor::tei:lg[1]/@n"/>
+				<xsl:value-of select="ancestor::tei:l[1]/@n"/>
+			</xsl:if>
+		</xsl:variable>
 		<a id="{generate-id()}" href="#" onclick="return false;"
-			style="text-decoration:none; color:#000000">
+			style="text-decoration:none; color:#000000" msLine="{$lineID}">
 			<xsl:apply-templates/>
 		</a>
 		<xsl:variable name="incr">
@@ -2556,14 +2673,33 @@
 				<xsl:text/>
 			</xsl:when>
 			<xsl:otherwise>
-				<xsl:text> </xsl:text>
+				<span msLine="{$lineID}"><xsl:text> </xsl:text></span>
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
 
 	<xsl:template match="tei:num">
+		<xsl:variable name="elPOS" select="count(preceding::*)"/>
+		<xsl:variable name="lineID">
+			<xsl:if
+				test="ancestor::tei:div[1]/@type = 'prose' or ancestor::tei:div/@type = 'divprose'">
+				<xsl:value-of select="ancestor::tei:TEI//tei:msIdentifier/@sameAs"/>
+				<xsl:value-of select="preceding::tei:pb[1]/@n"/>
+				<xsl:if
+					test="count(preceding::tei:pb[1]/following::tei:cb[1]/preceding::*) &lt; $elPOS">
+					<xsl:value-of select="preceding::tei:cb[1]/@n"/>
+				</xsl:if>
+				<xsl:value-of select="preceding::tei:lb[1]/@n"/>
+			</xsl:if>
+			<xsl:if test="ancestor::tei:div[1]/@type = 'verse'">
+				<xsl:value-of select="ancestor::tei:TEI//tei:msIdentifier/@sameAs"/>
+				<xsl:value-of select="translate(ancestor::tei:div[1]/@n, '.', '')"/>
+				<xsl:value-of select="ancestor::tei:lg[1]/@n"/>
+				<xsl:value-of select="ancestor::tei:l[1]/@n"/>
+			</xsl:if>
+		</xsl:variable>
 		<a id="{generate-id()}" href="#" onclick="return false;"
-			style="text-decoration:none; color:#000000">
+			style="text-decoration:none; color:#000000" msLine="{$lineID}">
 			<xsl:apply-templates/>
 		</a>
 		<xsl:variable name="incr">
@@ -2580,7 +2716,7 @@
 				<xsl:text/>
 			</xsl:when>
 			<xsl:otherwise>
-				<xsl:text> </xsl:text>
+				<span msLine="{$lineID}"><xsl:text> </xsl:text></span>
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
@@ -2779,6 +2915,25 @@
 	</xsl:template>
 
 	<xsl:template match="tei:c">
+		<xsl:variable name="elPOS" select="count(preceding::*)"/>
+		<xsl:variable name="lineID">
+			<xsl:if
+				test="ancestor::tei:div[1]/@type = 'prose' or ancestor::tei:div/@type = 'divprose'">
+				<xsl:value-of select="ancestor::tei:TEI//tei:msIdentifier/@sameAs"/>
+				<xsl:value-of select="preceding::tei:pb[1]/@n"/>
+				<xsl:if
+					test="count(preceding::tei:pb[1]/following::tei:cb[1]/preceding::*) &lt; $elPOS">
+					<xsl:value-of select="preceding::tei:cb[1]/@n"/>
+				</xsl:if>
+				<xsl:value-of select="preceding::tei:lb[1]/@n"/>
+			</xsl:if>
+			<xsl:if test="ancestor::tei:div[1]/@type = 'verse'">
+				<xsl:value-of select="ancestor::tei:TEI//tei:msIdentifier/@sameAs"/>
+				<xsl:value-of select="translate(ancestor::tei:div[1]/@n, '.', '')"/>
+				<xsl:value-of select="ancestor::tei:lg[1]/@n"/>
+				<xsl:value-of select="ancestor::tei:l[1]/@n"/>
+			</xsl:if>
+		</xsl:variable>
 		<xsl:variable name="handRef">
 			<xsl:choose>
 				<xsl:when test="ancestor::tei:add">
@@ -2864,7 +3019,7 @@
 			<xsl:otherwise>
 				<a id="{generate-id()}"
 					title="Unexplained character(s){$sicMessage}&#10;{$hand}{$prob}" href="#"
-					onclick="return false;" style="text-decoration:none; color:#000000">
+					onclick="return false;" style="text-decoration:none; color:#000000" msLine="{$lineID}">
 					<xsl:choose>
 						<xsl:when
 							test="ancestor::*[@cert = 'low'] or descendant::*[@cert = 'low'] or @lemma = 'UNKNOWN'">
@@ -2910,7 +3065,7 @@
 						<xsl:text/>
 					</xsl:when>
 					<xsl:otherwise>
-						<xsl:text> </xsl:text>
+						<span msLine="{$lineID}"><xsl:text> </xsl:text></span>
 					</xsl:otherwise>
 				</xsl:choose>
 			</xsl:otherwise>
@@ -2918,12 +3073,31 @@
 	</xsl:template>
 
 	<xsl:template match="tei:pc">
+		<xsl:variable name="elPOS" select="count(preceding::*)"/>
+		<xsl:variable name="lineID">
+			<xsl:if
+				test="ancestor::tei:div[1]/@type = 'prose' or ancestor::tei:div/@type = 'divprose'">
+				<xsl:value-of select="ancestor::tei:TEI//tei:msIdentifier/@sameAs"/>
+				<xsl:value-of select="preceding::tei:pb[1]/@n"/>
+				<xsl:if
+					test="count(preceding::tei:pb[1]/following::tei:cb[1]/preceding::*) &lt; $elPOS">
+					<xsl:value-of select="preceding::tei:cb[1]/@n"/>
+				</xsl:if>
+				<xsl:value-of select="preceding::tei:lb[1]/@n"/>
+			</xsl:if>
+			<xsl:if test="ancestor::tei:div[1]/@type = 'verse'">
+				<xsl:value-of select="ancestor::tei:TEI//tei:msIdentifier/@sameAs"/>
+				<xsl:value-of select="translate(ancestor::tei:div[1]/@n, '.', '')"/>
+				<xsl:value-of select="ancestor::tei:lg[1]/@n"/>
+				<xsl:value-of select="ancestor::tei:l[1]/@n"/>
+			</xsl:if>
+		</xsl:variable>
 		<xsl:choose>
 			<xsl:when test="ancestor::tei:w">
 				<xsl:text/>
 			</xsl:when>
 			<xsl:otherwise>
-				<a>
+				<a msLine="{$lineID}">
 					<xsl:choose>
 						<xsl:when
 							test="ancestor::*[@cert = 'low'] or descendant::*[@cert = 'low'] or @lemma = 'UNKNOWN'">
@@ -2969,16 +3143,51 @@
 						<xsl:text/>
 					</xsl:when>
 					<xsl:otherwise>
-						<xsl:text> </xsl:text>
+						<span msLine="{$lineID}"><xsl:text> </xsl:text></span>
 					</xsl:otherwise>
 				</xsl:choose>
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
 
-	<xsl:template match="tei:space[@type = 'force']"> &#160; </xsl:template>
+	<xsl:template match="tei:space[@type = 'force']"><xsl:variable name="elPOS" select="count(preceding::*)"/>
+		<xsl:variable name="lineID">
+			<xsl:if
+				test="ancestor::tei:div[1]/@type = 'prose' or ancestor::tei:div/@type = 'divprose'">
+				<xsl:value-of select="ancestor::tei:TEI//tei:msIdentifier/@sameAs"/>
+				<xsl:value-of select="preceding::tei:pb[1]/@n"/>
+				<xsl:if
+					test="count(preceding::tei:pb[1]/following::tei:cb[1]/preceding::*) &lt; $elPOS">
+					<xsl:value-of select="preceding::tei:cb[1]/@n"/>
+				</xsl:if>
+				<xsl:value-of select="preceding::tei:lb[1]/@n"/>
+			</xsl:if>
+			<xsl:if test="ancestor::tei:div[1]/@type = 'verse'">
+				<xsl:value-of select="ancestor::tei:TEI//tei:msIdentifier/@sameAs"/>
+				<xsl:value-of select="translate(ancestor::tei:div[1]/@n, '.', '')"/>
+				<xsl:value-of select="ancestor::tei:lg[1]/@n"/>
+				<xsl:value-of select="ancestor::tei:l[1]/@n"/>
+			</xsl:if>
+		</xsl:variable><span msLine="{$lineID}">&#160;</span></xsl:template>
 
-	<xsl:template match="tei:space[@type = 'em']"> &#160;&#160;&#160;&#160; </xsl:template>
+	<xsl:template match="tei:space[@type = 'em']"><xsl:variable name="elPOS" select="count(preceding::*)"/><xsl:variable name="lineID">
+		<xsl:if
+			test="ancestor::tei:div[1]/@type = 'prose' or ancestor::tei:div/@type = 'divprose'">
+			<xsl:value-of select="ancestor::tei:TEI//tei:msIdentifier/@sameAs"/>
+			<xsl:value-of select="preceding::tei:pb[1]/@n"/>
+			<xsl:if
+				test="count(preceding::tei:pb[1]/following::tei:cb[1]/preceding::*) &lt; $elPOS">
+				<xsl:value-of select="preceding::tei:cb[1]/@n"/>
+			</xsl:if>
+			<xsl:value-of select="preceding::tei:lb[1]/@n"/>
+		</xsl:if>
+		<xsl:if test="ancestor::tei:div[1]/@type = 'verse'">
+			<xsl:value-of select="ancestor::tei:TEI//tei:msIdentifier/@sameAs"/>
+			<xsl:value-of select="translate(ancestor::tei:div[1]/@n, '.', '')"/>
+			<xsl:value-of select="ancestor::tei:lg[1]/@n"/>
+			<xsl:value-of select="ancestor::tei:l[1]/@n"/>
+		</xsl:if>
+	</xsl:variable><span msLine="{$lineID}">&#160;&#160;&#160;&#160;</span></xsl:template>
 
 	<xsl:template match="tei:space[@type = 'scribal']">
 		<xsl:text/>
@@ -2989,11 +3198,30 @@
 	</xsl:template>
 
 	<xsl:template match="tei:supplied">
+		<xsl:variable name="elPOS" select="count(preceding::*)"/>
+		<xsl:variable name="lineID">
+			<xsl:if
+				test="ancestor::tei:div[1]/@type = 'prose' or ancestor::tei:div/@type = 'divprose'">
+				<xsl:value-of select="ancestor::tei:TEI//tei:msIdentifier/@sameAs"/>
+				<xsl:value-of select="preceding::tei:pb[1]/@n"/>
+				<xsl:if
+					test="count(preceding::tei:pb[1]/following::tei:cb[1]/preceding::*) &lt; $elPOS">
+					<xsl:value-of select="preceding::tei:cb[1]/@n"/>
+				</xsl:if>
+				<xsl:value-of select="preceding::tei:lb[1]/@n"/>
+			</xsl:if>
+			<xsl:if test="ancestor::tei:div[1]/@type = 'verse'">
+				<xsl:value-of select="ancestor::tei:TEI//tei:msIdentifier/@sameAs"/>
+				<xsl:value-of select="translate(ancestor::tei:div[1]/@n, '.', '')"/>
+				<xsl:value-of select="ancestor::tei:lg[1]/@n"/>
+				<xsl:value-of select="ancestor::tei:l[1]/@n"/>
+			</xsl:if>
+		</xsl:variable>
 		<xsl:choose>
 			<xsl:when test="descendant::tei:w">
-				<xsl:text>[</xsl:text>
+				<span msLine="{$lineID}"><xsl:text>[</xsl:text></span>
 				<xsl:apply-templates/>
-				<xsl:text>]</xsl:text>
+				<span msLine="{$lineID}"><xsl:text>]</xsl:text></span>
 				<xsl:variable name="incr">
 					<xsl:choose>
 						<xsl:when test="following::*[1]/self::tei:space"> 1 </xsl:when>
@@ -3008,14 +3236,36 @@
 						<xsl:text/>
 					</xsl:when>
 					<xsl:otherwise>
-						<xsl:text> </xsl:text>
+						<span msLine="{$lineID}"><xsl:text> </xsl:text></span>
 					</xsl:otherwise>
 				</xsl:choose>
 			</xsl:when>
-			<xsl:otherwise>
-				<xsl:text>[</xsl:text>
+			<xsl:when test="ancestor::tei:w[not(descendant::tei:w)]">
+				<span><xsl:text>[</xsl:text></span>
 				<xsl:apply-templates/>
-				<xsl:text>]</xsl:text>
+				<span><xsl:text>]</xsl:text></span>
+			</xsl:when>
+			<xsl:otherwise>
+				<span msLine="{$lineID}"><xsl:text>[</xsl:text></span>
+				<xsl:apply-templates/>
+				<span msLine="{$lineID}"><xsl:text>]</xsl:text></span>
+				<xsl:variable name="incr">
+					<xsl:choose>
+						<xsl:when test="following::*[1]/self::tei:space"> 1 </xsl:when>
+						<xsl:otherwise> 0 </xsl:otherwise>
+					</xsl:choose>
+				</xsl:variable>
+				<xsl:choose>
+					<xsl:when test="following::*[1 + $incr]/self::tei:pc">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when test="following::*[1 + $incr]/self::tei:note[@type = 'fn']">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:otherwise>
+						<span msLine="{$lineID}"><xsl:text> </xsl:text></span>
+					</xsl:otherwise>
+				</xsl:choose>
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
@@ -3038,11 +3288,30 @@
 	</xsl:template>
 
 	<xsl:template match="tei:unclear">
+		<xsl:variable name="elPOS" select="count(preceding::*)"/>
+		<xsl:variable name="lineID">
+			<xsl:if
+				test="ancestor::tei:div[1]/@type = 'prose' or ancestor::tei:div/@type = 'divprose'">
+				<xsl:value-of select="ancestor::tei:TEI//tei:msIdentifier/@sameAs"/>
+				<xsl:value-of select="preceding::tei:pb[1]/@n"/>
+				<xsl:if
+					test="count(preceding::tei:pb[1]/following::tei:cb[1]/preceding::*) &lt; $elPOS">
+					<xsl:value-of select="preceding::tei:cb[1]/@n"/>
+				</xsl:if>
+				<xsl:value-of select="preceding::tei:lb[1]/@n"/>
+			</xsl:if>
+			<xsl:if test="ancestor::tei:div[1]/@type = 'verse'">
+				<xsl:value-of select="ancestor::tei:TEI//tei:msIdentifier/@sameAs"/>
+				<xsl:value-of select="translate(ancestor::tei:div[1]/@n, '.', '')"/>
+				<xsl:value-of select="ancestor::tei:lg[1]/@n"/>
+				<xsl:value-of select="ancestor::tei:l[1]/@n"/>
+			</xsl:if>
+		</xsl:variable>
 		<xsl:choose>
 			<xsl:when test="descendant::tei:w">
-				<xsl:text>{</xsl:text>
+				<span msLine="{$lineID}"><xsl:text>{</xsl:text></span>
 				<xsl:apply-templates/>
-				<xsl:text>}</xsl:text>
+				<span msLine="{$lineID}"><xsl:text>}</xsl:text></span>
 				<xsl:variable name="incr">
 					<xsl:choose>
 						<xsl:when test="following::*[1]/self::tei:space"> 1 </xsl:when>
@@ -3057,19 +3326,23 @@
 						<xsl:text/>
 					</xsl:when>
 					<xsl:otherwise>
-						<xsl:text> </xsl:text>
+						<span msLine="{$lineID}"><xsl:text> </xsl:text></span>
 					</xsl:otherwise>
 				</xsl:choose>
 			</xsl:when>
 			<xsl:when test="ancestor::tei:w">
-				<xsl:text>{</xsl:text>
+				<span><xsl:text>{</xsl:text></span>
 				<xsl:apply-templates/>
-				<xsl:text>}</xsl:text>
+				<span><xsl:text>}</xsl:text></span>
 			</xsl:when>
 			<xsl:when test="descendant::tei:date">
-				<xsl:text>{</xsl:text>
+				<span><xsl:if test="not(ancestor::tei:choice)"><xsl:attribute name="msLine">
+					<xsl:value-of select="$lineID"/>
+				</xsl:attribute></xsl:if><xsl:text>{</xsl:text></span>
 				<xsl:apply-templates/>
-				<xsl:text>}</xsl:text>
+				<span><xsl:if test="not(ancestor::tei:choice)"><xsl:attribute name="msLine">
+					<xsl:value-of select="$lineID"/>
+				</xsl:attribute></xsl:if><xsl:text>}</xsl:text></span>
 				<xsl:variable name="incr">
 					<xsl:choose>
 						<xsl:when test="following::*[1]/self::tei:space"> 1 </xsl:when>
@@ -3084,19 +3357,19 @@
 						<xsl:text/>
 					</xsl:when>
 					<xsl:otherwise>
-						<xsl:text> </xsl:text>
+						<span msLine="{$lineID}"><xsl:text> </xsl:text></span>
 					</xsl:otherwise>
 				</xsl:choose>
 			</xsl:when>
 			<xsl:when test="ancestor::tei:date">
-				<xsl:text>{</xsl:text>
+				<span><xsl:text>{</xsl:text></span>
 				<xsl:apply-templates/>
-				<xsl:text>}</xsl:text>
+				<span msLine="{$lineID}"><xsl:text>}</xsl:text></span>
 			</xsl:when>
 			<xsl:when test="descendant::tei:num">
-				<xsl:text>{</xsl:text>
+				<span msLine="{$lineID}"><xsl:text>{</xsl:text></span>
 				<xsl:apply-templates/>
-				<xsl:text>}</xsl:text>
+				<span msLine="{$lineID}"><xsl:text>}</xsl:text></span>
 				<xsl:variable name="incr">
 					<xsl:choose>
 						<xsl:when test="following::*[1]/self::tei:space"> 1 </xsl:when>
@@ -3111,19 +3384,38 @@
 						<xsl:text/>
 					</xsl:when>
 					<xsl:otherwise>
-						<xsl:text> </xsl:text>
+						<span msLine="{$lineID}"><xsl:text> </xsl:text></span>
 					</xsl:otherwise>
 				</xsl:choose>
 			</xsl:when>
 			<xsl:when test="ancestor::tei:num">
-				<xsl:text>{</xsl:text>
+				<span msLine="{$lineID}"><xsl:text>{</xsl:text></span>
 				<xsl:apply-templates/>
-				<xsl:text>}</xsl:text>
+				<span msLine="{$lineID}"><xsl:text>}</xsl:text></span>
 			</xsl:when>
 		</xsl:choose>
 	</xsl:template>
 
 	<xsl:template match="tei:gap">
+		<xsl:variable name="elPOS" select="count(preceding::*)"/>
+		<xsl:variable name="lineID">
+			<xsl:if
+				test="ancestor::tei:div[1]/@type = 'prose' or ancestor::tei:div/@type = 'divprose'">
+				<xsl:value-of select="ancestor::tei:TEI//tei:msIdentifier/@sameAs"/>
+				<xsl:value-of select="preceding::tei:pb[1]/@n"/>
+				<xsl:if
+					test="count(preceding::tei:pb[1]/following::tei:cb[1]/preceding::*) &lt; $elPOS">
+					<xsl:value-of select="preceding::tei:cb[1]/@n"/>
+				</xsl:if>
+				<xsl:value-of select="preceding::tei:lb[1]/@n"/>
+			</xsl:if>
+			<xsl:if test="ancestor::tei:div[1]/@type = 'verse'">
+				<xsl:value-of select="ancestor::tei:TEI//tei:msIdentifier/@sameAs"/>
+				<xsl:value-of select="translate(ancestor::tei:div[1]/@n, '.', '')"/>
+				<xsl:value-of select="ancestor::tei:lg[1]/@n"/>
+				<xsl:value-of select="ancestor::tei:l[1]/@n"/>
+			</xsl:if>
+		</xsl:variable>
 		<xsl:variable name="gapReason">
 			<xsl:choose>
 				<xsl:when test="@reason = 'text_obscure'">
@@ -3146,7 +3438,7 @@
 		<xsl:choose>
 			<xsl:when test="@extent = 'unknown'">
 				<a id="{generate-id()}" title="{concat(@extent, ' extent')}, {$gapReason}" href="#"
-					onclick="return false;" style="text-decoration:none; color:#000000">
+					onclick="return false;" style="text-decoration:none; color:#000000" msLine="{$lineID}">
 					<sub>
 						<b>
 							<i>-gap-</i>
@@ -3156,7 +3448,7 @@
 			</xsl:when>
 			<xsl:otherwise>
 				<a id="{generate-id()}" title="{@extent}, {$gapReason}" href="#"
-					onclick="return false;" style="text-decoration:none; color:#000000">
+					onclick="return false;" style="text-decoration:none; color:#000000" msLine="{$lineID}">
 					<sub>
 						<b>
 							<i>-gap-</i>
@@ -3168,9 +3460,36 @@
 	</xsl:template>
 
 	<xsl:template match="tei:del">
-		<del rend="strikethrough">
+		<xsl:variable name="elPOS" select="count(preceding::*)"/>
+		<xsl:variable name="lineID">
+			<xsl:if
+				test="ancestor::tei:div[1]/@type = 'prose' or ancestor::tei:div/@type = 'divprose'">
+				<xsl:value-of select="ancestor::tei:TEI//tei:msIdentifier/@sameAs"/>
+				<xsl:value-of select="preceding::tei:pb[1]/@n"/>
+				<xsl:if
+					test="count(preceding::tei:pb[1]/following::tei:cb[1]/preceding::*) &lt; $elPOS">
+					<xsl:value-of select="preceding::tei:cb[1]/@n"/>
+				</xsl:if>
+				<xsl:value-of select="preceding::tei:lb[1]/@n"/>
+			</xsl:if>
+			<xsl:if test="ancestor::tei:div[1]/@type = 'verse'">
+				<xsl:value-of select="ancestor::tei:TEI//tei:msIdentifier/@sameAs"/>
+				<xsl:value-of select="translate(ancestor::tei:div[1]/@n, '.', '')"/>
+				<xsl:value-of select="ancestor::tei:lg[1]/@n"/>
+				<xsl:value-of select="ancestor::tei:l[1]/@n"/>
+			</xsl:if>
+		</xsl:variable>
+		<span>
+			<xsl:if test="not(descendant::tei:w)">
+				<xsl:attribute name="style">
+					<xsl:text>line-through</xsl:text>
+				</xsl:attribute>
+				<xsl:attribute name="msLine">
+					<xsl:value-of select="$lineID"/>
+				</xsl:attribute>
+			</xsl:if>
 			<xsl:apply-templates/>
-		</del>
+		</span>
 	</xsl:template>
 
 	<xsl:template match="tei:note[@type = 'fn']">
@@ -3205,84 +3524,135 @@
 	</xsl:template>
 
 	<xsl:template match="tei:add[@type = 'insertion']">
+		<xsl:variable name="elPOS" select="count(preceding::*)"/>
+		<xsl:variable name="lineID">
+			<xsl:if
+				test="ancestor::tei:div[1]/@type = 'prose' or ancestor::tei:div/@type = 'divprose'">
+				<xsl:value-of select="ancestor::tei:TEI//tei:msIdentifier/@sameAs"/>
+				<xsl:value-of select="preceding::tei:pb[1]/@n"/>
+				<xsl:if
+					test="count(preceding::tei:pb[1]/following::tei:cb[1]/preceding::*) &lt; $elPOS">
+					<xsl:value-of select="preceding::tei:cb[1]/@n"/>
+				</xsl:if>
+				<xsl:value-of select="preceding::tei:lb[1]/@n"/>
+			</xsl:if>
+			<xsl:if test="ancestor::tei:div[1]/@type = 'verse'">
+				<xsl:value-of select="ancestor::tei:TEI//tei:msIdentifier/@sameAs"/>
+				<xsl:value-of select="translate(ancestor::tei:div[1]/@n, '.', '')"/>
+				<xsl:value-of select="ancestor::tei:lg[1]/@n"/>
+				<xsl:value-of select="ancestor::tei:l[1]/@n"/>
+			</xsl:if>
+		</xsl:variable>
 		<xsl:choose>
 			<xsl:when test="ancestor::tei:w">
 				<xsl:choose>
 					<xsl:when test="@place = 'above'">
-						<sub><b>
-							<xsl:text>\</xsl:text>
-						</b></sub>
+						<sub>
+							<b>
+								<xsl:text>\</xsl:text>
+							</b>
+						</sub>
 						<xsl:apply-templates/>
-						<sub><b>
-							<xsl:text>/</xsl:text>
-						</b></sub>
+						<sub>
+							<b>
+								<xsl:text>/</xsl:text>
+							</b>
+						</sub>
 					</xsl:when>
 					<xsl:when test="@place = 'below'">
-						<sub><b>
-							<xsl:text>/</xsl:text>
-						</b></sub>
+						<sub>
+							<b>
+								<xsl:text>/</xsl:text>
+							</b>
+						</sub>
 						<xsl:apply-templates/>
-						<sub><b>
-							<xsl:text>\</xsl:text>
-						</b></sub>
+						<sub>
+							<b>
+								<xsl:text>\</xsl:text>
+							</b>
+						</sub>
 					</xsl:when>
 					<xsl:when test="@place = 'margin, right'">
-						<sub><b>
-							<xsl:text>&lt;</xsl:text>
-						</b></sub>
+						<sub>
+							<b>
+								<xsl:text>&lt;</xsl:text>
+							</b>
+						</sub>
 						<xsl:apply-templates/>
-						<sub><b style="font:smaller">
-							<xsl:text>&lt;</xsl:text>
-						</b></sub>
+						<sub>
+							<b style="font:smaller">
+								<xsl:text>&lt;</xsl:text>
+							</b>
+						</sub>
 					</xsl:when>
 					<xsl:when test="@place = 'margin, left'">
-						<sub><b style="font:smaller">
-							<xsl:text>&gt;</xsl:text>
-						</b></sub>
+						<sub>
+							<b style="font:smaller">
+								<xsl:text>&gt;</xsl:text>
+							</b>
+						</sub>
 						<xsl:apply-templates/>
-						<sub><b style="font:smaller">
-							<xsl:text>&gt;</xsl:text>
-						</b></sub>
+						<sub>
+							<b style="font:smaller">
+								<xsl:text>&gt;</xsl:text>
+							</b>
+						</sub>
 					</xsl:when>
 					<xsl:when test="@place = 'margin, top'">
-						<sub><b>
-							<xsl:text>\\</xsl:text>
-						</b></sub>
+						<sub>
+							<b>
+								<xsl:text>\\</xsl:text>
+							</b>
+						</sub>
 						<xsl:apply-templates/>
-						<sub><b>
-							<xsl:text>//</xsl:text>
-						</b></sub>
+						<sub>
+							<b>
+								<xsl:text>//</xsl:text>
+							</b>
+						</sub>
 					</xsl:when>
 					<xsl:when test="@place = 'margin, bottom'">
-						<sub><b>
-							<xsl:text>\\</xsl:text>
-						</b></sub>
+						<sub>
+							<b>
+								<xsl:text>\\</xsl:text>
+							</b>
+						</sub>
 						<xsl:apply-templates/>
-						<sub><b>
-							<xsl:text>//</xsl:text>
-						</b></sub>
+						<sub>
+							<b>
+								<xsl:text>//</xsl:text>
+							</b>
+						</sub>
 					</xsl:when>
 					<xsl:when test="@place = 'inline'">
-						<sub><b style="font:smaller">
-							<xsl:text>|</xsl:text>
-						</b></sub>
+						<sub>
+							<b style="font:smaller">
+								<xsl:text>|</xsl:text>
+							</b>
+						</sub>
 						<xsl:apply-templates/>
-						<sub><b style="font:smaller">
-							<xsl:text>|</xsl:text>
-						</b></sub>
+						<sub >
+							<b style="font:smaller">
+								<xsl:text>|</xsl:text>
+							</b>
+						</sub>
 					</xsl:when>
 				</xsl:choose>
 			</xsl:when>
 			<xsl:otherwise>
 				<xsl:choose>
 					<xsl:when test="@place = 'above'">
-						<sub><b>
-							<xsl:text>\</xsl:text>
-						</b></sub>
+						<sub msLine="{$lineID}">
+							<b>
+								<xsl:text>\</xsl:text>
+							</b>
+						</sub>
 						<xsl:apply-templates/>
-						<sub><b>
-							<xsl:text>/</xsl:text>
-						</b></sub>
+						<sub msLine="{$lineID}">
+							<b>
+								<xsl:text>/</xsl:text>
+							</b>
+						</sub>
 						<xsl:variable name="incr">
 							<xsl:choose>
 								<xsl:when test="following::*[1]/self::tei:space"> 1 </xsl:when>
@@ -3297,18 +3667,22 @@
 								<xsl:text/>
 							</xsl:when>
 							<xsl:otherwise>
-								<xsl:text> </xsl:text>
+								<span msLine="{$lineID}"><xsl:text> </xsl:text></span>
 							</xsl:otherwise>
 						</xsl:choose>
 					</xsl:when>
 					<xsl:when test="@place = 'below'">
-						<sub><b>
-							<xsl:text>/</xsl:text>
-						</b></sub>
+						<sub msLine="{$lineID}">
+							<b>
+								<xsl:text>/</xsl:text>
+							</b>
+						</sub>
 						<xsl:apply-templates/>
-						<sub><b>
-							<xsl:text>\</xsl:text>
-						</b></sub>
+						<sub msLine="{$lineID}">
+							<b>
+								<xsl:text>\</xsl:text>
+							</b>
+						</sub>
 						<xsl:variable name="incr">
 							<xsl:choose>
 								<xsl:when test="following::*[1]/self::tei:space"> 1 </xsl:when>
@@ -3323,18 +3697,22 @@
 								<xsl:text/>
 							</xsl:when>
 							<xsl:otherwise>
-								<xsl:text> </xsl:text>
+								<span msLine="{$lineID}"><xsl:text> </xsl:text></span>
 							</xsl:otherwise>
 						</xsl:choose>
 					</xsl:when>
 					<xsl:when test="@place = 'margin, right'">
-						<sub><b style="font:smaller">
-							<xsl:text>&lt;</xsl:text>
-						</b></sub>
+						<sub msLine="{$lineID}">
+							<b style="font:smaller">
+								<xsl:text>&lt;</xsl:text>
+							</b>
+						</sub>
 						<xsl:apply-templates/>
-						<sub><b style="font:smaller">
-							<xsl:text>&lt;</xsl:text>
-						</b></sub>
+						<sub msLine="{$lineID}">
+							<b style="font:smaller">
+								<xsl:text>&lt;</xsl:text>
+							</b>
+						</sub>
 						<xsl:variable name="incr">
 							<xsl:choose>
 								<xsl:when test="following::*[1]/self::tei:space"> 1 </xsl:when>
@@ -3349,18 +3727,22 @@
 								<xsl:text/>
 							</xsl:when>
 							<xsl:otherwise>
-								<xsl:text> </xsl:text>
+								<span msLine="{$lineID}"><xsl:text> </xsl:text></span>
 							</xsl:otherwise>
 						</xsl:choose>
 					</xsl:when>
 					<xsl:when test="@place = 'margin, left'">
-						<sub><b style="font:smaller">
-							<xsl:text>&gt;</xsl:text>
-						</b></sub>
+						<sub msLine="{$lineID}">
+							<b style="font:smaller">
+								<xsl:text>&gt;</xsl:text>
+							</b>
+						</sub>
 						<xsl:apply-templates/>
-						<sub><b style="font:smaller">
-							<xsl:text>&gt;</xsl:text>
-						</b></sub>
+						<sub msLine="{$lineID}">
+							<b style="font:smaller">
+								<xsl:text>&gt;</xsl:text>
+							</b>
+						</sub>
 						<xsl:variable name="incr">
 							<xsl:choose>
 								<xsl:when test="following::*[1]/self::tei:space"> 1 </xsl:when>
@@ -3375,18 +3757,22 @@
 								<xsl:text/>
 							</xsl:when>
 							<xsl:otherwise>
-								<xsl:text> </xsl:text>
+								<span msLine="{$lineID}"><xsl:text> </xsl:text></span>
 							</xsl:otherwise>
 						</xsl:choose>
 					</xsl:when>
 					<xsl:when test="@place = 'margin, top'">
-						<sub><b>
-							<xsl:text>//</xsl:text>
-						</b></sub>
+						<sub msLine="{$lineID}">
+							<b>
+								<xsl:text>//</xsl:text>
+							</b>
+						</sub>
 						<xsl:apply-templates/>
-						<sub><b>
-							<xsl:text>\\</xsl:text>
-						</b></sub>
+						<sub msLine="{$lineID}">
+							<b>
+								<xsl:text>\\</xsl:text>
+							</b>
+						</sub>
 						<xsl:variable name="incr">
 							<xsl:choose>
 								<xsl:when test="following::*[1]/self::tei:space"> 1 </xsl:when>
@@ -3401,18 +3787,22 @@
 								<xsl:text/>
 							</xsl:when>
 							<xsl:otherwise>
-								<xsl:text> </xsl:text>
+								<span msLine="{$lineID}"><xsl:text> </xsl:text></span>
 							</xsl:otherwise>
 						</xsl:choose>
 					</xsl:when>
 					<xsl:when test="@place = 'margin, bottom'">
-						<sub><b>
-							<xsl:text>\\</xsl:text>
-						</b></sub>
+						<sub msLine="{$lineID}">
+							<b>
+								<xsl:text>\\</xsl:text>
+							</b>
+						</sub>
 						<xsl:apply-templates/>
-						<sub><b>
-							<xsl:text>//</xsl:text>
-						</b></sub>
+						<sub msLine="{$lineID}">
+							<b>
+								<xsl:text>//</xsl:text>
+							</b>
+						</sub>
 						<xsl:variable name="incr">
 							<xsl:choose>
 								<xsl:when test="following::*[1]/self::tei:space"> 1 </xsl:when>
@@ -3427,18 +3817,22 @@
 								<xsl:text/>
 							</xsl:when>
 							<xsl:otherwise>
-								<xsl:text> </xsl:text>
+								<span msLine="{$lineID}"><xsl:text> </xsl:text></span>
 							</xsl:otherwise>
 						</xsl:choose>
 					</xsl:when>
 					<xsl:when test="@place = 'inline'">
-						<sub><b style="font:smaller">
-							<xsl:text>|</xsl:text>
-						</b></sub>
+						<sub msLine="{$lineID}">
+							<b style="font:smaller">
+								<xsl:text>|</xsl:text>
+							</b>
+						</sub>
 						<xsl:apply-templates/>
-						<sub><b style="font:smaller">
-							<xsl:text>|</xsl:text>
-						</b></sub>
+						<sub msLine="{$lineID}">
+							<b style="font:smaller">
+								<xsl:text>|</xsl:text>
+							</b>
+						</sub>
 						<xsl:variable name="incr">
 							<xsl:choose>
 								<xsl:when test="following::*[1]/self::tei:space"> 1 </xsl:when>
@@ -3453,7 +3847,7 @@
 								<xsl:text/>
 							</xsl:when>
 							<xsl:otherwise>
-								<xsl:text> </xsl:text>
+								<span msLine="{$lineID}"><xsl:text> </xsl:text></span>
 							</xsl:otherwise>
 						</xsl:choose>
 					</xsl:when>
@@ -3463,15 +3857,38 @@
 	</xsl:template>
 
 	<xsl:template match="tei:add[@type = 'gloss']">
+		<xsl:variable name="elPOS" select="count(preceding::*)"/>
+		<xsl:variable name="lineID">
+			<xsl:if
+				test="ancestor::tei:div[1]/@type = 'prose' or ancestor::tei:div/@type = 'divprose'">
+				<xsl:value-of select="ancestor::tei:TEI//tei:msIdentifier/@sameAs"/>
+				<xsl:value-of select="preceding::tei:pb[1]/@n"/>
+				<xsl:if
+					test="count(preceding::tei:pb[1]/following::tei:cb[1]/preceding::*) &lt; $elPOS">
+					<xsl:value-of select="preceding::tei:cb[1]/@n"/>
+				</xsl:if>
+				<xsl:value-of select="preceding::tei:lb[1]/@n"/>
+			</xsl:if>
+			<xsl:if test="ancestor::tei:div[1]/@type = 'verse'">
+				<xsl:value-of select="ancestor::tei:TEI//tei:msIdentifier/@sameAs"/>
+				<xsl:value-of select="translate(ancestor::tei:div[1]/@n, '.', '')"/>
+				<xsl:value-of select="ancestor::tei:lg[1]/@n"/>
+				<xsl:value-of select="ancestor::tei:l[1]/@n"/>
+			</xsl:if>
+		</xsl:variable>
 		<xsl:choose>
 			<xsl:when test="@place = 'above'">
-				<sub><b>
-					<xsl:text>\ gl. </xsl:text>
-				</b></sub>
+				<sub msLine="{$lineID}">
+					<b>
+						<xsl:text>\ gl. </xsl:text>
+					</b>
+				</sub>
 				<xsl:apply-templates/>
-				<sub><b>
-					<xsl:text>/</xsl:text>
-				</b></sub>
+				<sub msLine="{$lineID}">
+					<b>
+						<xsl:text>/</xsl:text>
+					</b>
+				</sub>
 				<xsl:variable name="incr">
 					<xsl:choose>
 						<xsl:when test="following::*[1]/self::tei:space"> 1 </xsl:when>
@@ -3486,18 +3903,22 @@
 						<xsl:text/>
 					</xsl:when>
 					<xsl:otherwise>
-						<xsl:text> </xsl:text>
+						<span msLine="{$lineID}"><xsl:text> </xsl:text></span>
 					</xsl:otherwise>
 				</xsl:choose>
 			</xsl:when>
 			<xsl:when test="@place = 'below'">
-				<sub><b>
-					<xsl:text>/ gl. </xsl:text>
-				</b></sub>
+				<sub msLine="{$lineID}">
+					<b>
+						<xsl:text>/ gl. </xsl:text>
+					</b>
+				</sub>
 				<xsl:apply-templates/>
-				<sub><b>
-					<xsl:text>\</xsl:text>
-				</b></sub>
+				<sub msLine="{$lineID}">
+					<b>
+						<xsl:text>\</xsl:text>
+					</b>
+				</sub>
 				<xsl:variable name="incr">
 					<xsl:choose>
 						<xsl:when test="following::*[1]/self::tei:space"> 1 </xsl:when>
@@ -3512,18 +3933,22 @@
 						<xsl:text/>
 					</xsl:when>
 					<xsl:otherwise>
-						<xsl:text> </xsl:text>
+						<span msLine="{$lineID}"><xsl:text> </xsl:text></span>
 					</xsl:otherwise>
 				</xsl:choose>
 			</xsl:when>
 			<xsl:when test="@place = 'margin, right'">
-				<sub><b>
-					<xsl:text>&lt; gl. </xsl:text>
-				</b></sub>
+				<sub msLine="{$lineID}">
+					<b>
+						<xsl:text>&lt; gl. </xsl:text>
+					</b>
+				</sub>
 				<xsl:apply-templates/>
-				<sub><b>
-					<xsl:text>&lt;</xsl:text>
-				</b></sub>
+				<sub msLine="{$lineID}">
+					<b>
+						<xsl:text>&lt;</xsl:text>
+					</b>
+				</sub>
 				<xsl:variable name="incr">
 					<xsl:choose>
 						<xsl:when test="following::*[1]/self::tei:space"> 1 </xsl:when>
@@ -3538,18 +3963,22 @@
 						<xsl:text/>
 					</xsl:when>
 					<xsl:otherwise>
-						<xsl:text> </xsl:text>
+						<span msLine="{$lineID}"><xsl:text> </xsl:text></span>
 					</xsl:otherwise>
 				</xsl:choose>
 			</xsl:when>
 			<xsl:when test="@place = 'margin, left'">
-				<sub><b>
-					<xsl:text>&gt; gl. </xsl:text>
-				</b></sub>
+				<sub msLine="{$lineID}">
+					<b>
+						<xsl:text>&gt; gl. </xsl:text>
+					</b>
+				</sub>
 				<xsl:apply-templates/>
-				<sub><b>
-					<xsl:text>&gt;</xsl:text>
-				</b></sub>
+				<sub msLine="{$lineID}">
+					<b>
+						<xsl:text>&gt;</xsl:text>
+					</b>
+				</sub>
 				<xsl:variable name="incr">
 					<xsl:choose>
 						<xsl:when test="following::*[1]/self::tei:space"> 1 </xsl:when>
@@ -3564,18 +3993,22 @@
 						<xsl:text/>
 					</xsl:when>
 					<xsl:otherwise>
-						<xsl:text> </xsl:text>
+						<span msLine="{$lineID}"><xsl:text> </xsl:text></span>
 					</xsl:otherwise>
 				</xsl:choose>
 			</xsl:when>
 			<xsl:when test="@place = 'margin, top'">
-				<sub><b>
-					<xsl:text>// gl. </xsl:text>
-				</b></sub>
+				<sub msLine="{$lineID}">
+					<b>
+						<xsl:text>// gl. </xsl:text>
+					</b>
+				</sub>
 				<xsl:apply-templates/>
-				<sub><b>
-					<xsl:text>\\</xsl:text>
-				</b></sub>
+				<sub msLine="{$lineID}">
+					<b>
+						<xsl:text>\\</xsl:text>
+					</b>
+				</sub>
 				<xsl:variable name="incr">
 					<xsl:choose>
 						<xsl:when test="following::*[1]/self::tei:space"> 1 </xsl:when>
@@ -3590,18 +4023,22 @@
 						<xsl:text/>
 					</xsl:when>
 					<xsl:otherwise>
-						<xsl:text> </xsl:text>
+						<span msLine="{$lineID}"><xsl:text> </xsl:text></span>
 					</xsl:otherwise>
 				</xsl:choose>
 			</xsl:when>
 			<xsl:when test="@place = 'margin, bottom'">
-				<sub><b>
-					<xsl:text>\\ gl. </xsl:text>
-				</b></sub>
+				<sub msLine="{$lineID}">
+					<b>
+						<xsl:text>\\ gl. </xsl:text>
+					</b>
+				</sub>
 				<xsl:apply-templates/>
-				<sub><b>
-					<xsl:text>//</xsl:text>
-				</b></sub>
+				<sub msLine="{$lineID}">
+					<b>
+						<xsl:text>//</xsl:text>
+					</b>
+				</sub>
 				<xsl:variable name="incr">
 					<xsl:choose>
 						<xsl:when test="following::*[1]/self::tei:space"> 1 </xsl:when>
@@ -3616,18 +4053,22 @@
 						<xsl:text/>
 					</xsl:when>
 					<xsl:otherwise>
-						<xsl:text> </xsl:text>
+						<span msLine="{$lineID}"><xsl:text> </xsl:text></span>
 					</xsl:otherwise>
 				</xsl:choose>
 			</xsl:when>
 			<xsl:when test="@place = 'inline'">
-				<sub><b>
-					<xsl:text>| gl. </xsl:text>
-				</b></sub>
+				<sub msLine="{$lineID}">
+					<b>
+						<xsl:text>| gl. </xsl:text>
+					</b>
+				</sub>
 				<xsl:apply-templates/>
-				<sub><b>
-					<xsl:text>|</xsl:text>
-				</b></sub>
+				<sub msLine="{$lineID}">
+					<b>
+						<xsl:text>|</xsl:text>
+					</b>
+				</sub>
 				<xsl:variable name="incr">
 					<xsl:choose>
 						<xsl:when test="following::*[1]/self::tei:space"> 1 </xsl:when>
@@ -3642,7 +4083,7 @@
 						<xsl:text/>
 					</xsl:when>
 					<xsl:otherwise>
-						<xsl:text> </xsl:text>
+						<span msLine="{$lineID}"><xsl:text> </xsl:text></span>
 					</xsl:otherwise>
 				</xsl:choose>
 			</xsl:when>
@@ -3650,7 +4091,26 @@
 	</xsl:template>
 
 	<xsl:template match="tei:handShift">
-		<sub>
+		<xsl:variable name="elPOS" select="count(preceding::*)"/>
+		<xsl:variable name="lineID">
+			<xsl:if
+				test="ancestor::tei:div[1]/@type = 'prose' or ancestor::tei:div/@type = 'divprose'">
+				<xsl:value-of select="ancestor::tei:TEI//tei:msIdentifier/@sameAs"/>
+				<xsl:value-of select="preceding::tei:pb[1]/@n"/>
+				<xsl:if
+					test="count(preceding::tei:pb[1]/following::tei:cb[1]/preceding::*) &lt; $elPOS">
+					<xsl:value-of select="preceding::tei:cb[1]/@n"/>
+				</xsl:if>
+				<xsl:value-of select="preceding::tei:lb[1]/@n"/>
+			</xsl:if>
+			<xsl:if test="ancestor::tei:div[1]/@type = 'verse'">
+				<xsl:value-of select="ancestor::tei:TEI//tei:msIdentifier/@sameAs"/>
+				<xsl:value-of select="translate(ancestor::tei:div[1]/@n, '.', '')"/>
+				<xsl:value-of select="ancestor::tei:lg[1]/@n"/>
+				<xsl:value-of select="ancestor::tei:l[1]/@n"/>
+			</xsl:if>
+		</xsl:variable>
+		<sub msLine="{$lineID}">
 			<i>
 				<b>-beg. H<xsl:value-of select="substring(@new, 5)"/>-</b>
 			</i>
