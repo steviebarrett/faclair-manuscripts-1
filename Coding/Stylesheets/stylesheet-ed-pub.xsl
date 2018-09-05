@@ -3024,25 +3024,25 @@
 						<xsl:when
 							test="ancestor::*[@cert = 'low'] or descendant::*[@cert = 'low'] or @lemma = 'UNKNOWN'">
 							<xsl:attribute name="style">text-decoration:none;
-								color:#ff0000</xsl:attribute>
+								color:#ff0000<xsl:if test="ancestor::tei:del">;line-through</xsl:if></xsl:attribute>
 						</xsl:when>
 						<xsl:otherwise>
 							<xsl:choose>
 								<xsl:when
 									test="ancestor::*[@cert = 'medium'] or descendant::*[@cert = 'medium']">
 									<xsl:attribute name="style">text-decoration:none;
-										color:#ff9900</xsl:attribute>
+										color:#ff9900<xsl:if test="ancestor::tei:del">;line-through</xsl:if></xsl:attribute>
 								</xsl:when>
 								<xsl:otherwise>
 									<xsl:choose>
 										<xsl:when
 											test="ancestor::tei:unclear[@cert = 'high'] or descendant::tei:unclear[@cert = 'high']">
 											<xsl:attribute name="style">text-decoration:none;
-												color:#cccc00</xsl:attribute>
+												color:#cccc00<xsl:if test="ancestor::tei:del">;line-through</xsl:if></xsl:attribute>
 										</xsl:when>
 										<xsl:otherwise>
 											<xsl:attribute name="style">text-decoration:none;
-												color:#000000</xsl:attribute>
+												color:#000000<xsl:if test="ancestor::tei:del">;line-through</xsl:if></xsl:attribute>
 										</xsl:otherwise>
 									</xsl:choose>
 								</xsl:otherwise>
@@ -3102,25 +3102,25 @@
 						<xsl:when
 							test="ancestor::*[@cert = 'low'] or descendant::*[@cert = 'low'] or @lemma = 'UNKNOWN'">
 							<xsl:attribute name="style">text-decoration:none;
-								color:#ff0000</xsl:attribute>
+								color:#ff0000<xsl:if test="ancestor::tei:del">;line-through</xsl:if></xsl:attribute>
 						</xsl:when>
 						<xsl:otherwise>
 							<xsl:choose>
 								<xsl:when
 									test="ancestor::*[@cert = 'medium'] or descendant::*[@cert = 'medium']">
 									<xsl:attribute name="style">text-decoration:none;
-										color:#ff9900</xsl:attribute>
+										color:#ff9900<xsl:if test="ancestor::tei:del">;line-through</xsl:if></xsl:attribute>
 								</xsl:when>
 								<xsl:otherwise>
 									<xsl:choose>
 										<xsl:when
 											test="ancestor::tei:unclear[@cert = 'high'] or descendant::tei:unclear[@cert = 'high']">
 											<xsl:attribute name="style">text-decoration:none;
-												color:#cccc00</xsl:attribute>
+												color:#cccc00<xsl:if test="ancestor::tei:del">;line-through</xsl:if></xsl:attribute>
 										</xsl:when>
 										<xsl:otherwise>
 											<xsl:attribute name="style">text-decoration:none;
-												color:#000000</xsl:attribute>
+												color:#000000<xsl:if test="ancestor::tei:del">;line-through</xsl:if></xsl:attribute>
 										</xsl:otherwise>
 									</xsl:choose>
 								</xsl:otherwise>
@@ -3480,7 +3480,7 @@
 			</xsl:if>
 		</xsl:variable>
 		<span>
-			<xsl:if test="not(descendant::tei:w)">
+			<xsl:if test="not(descendant::tei:w) or not(descendant::tei:c) or not(descendant::tei:pc)">
 				<xsl:attribute name="style">
 					<xsl:text>line-through</xsl:text>
 				</xsl:attribute>
