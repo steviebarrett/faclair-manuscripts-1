@@ -3209,65 +3209,65 @@
 			<xsl:when test="ancestor::tei:w">
 				<xsl:choose>
 					<xsl:when test="@place = 'above'">
-						<b>
+						<sup><b>
 							<xsl:text>\</xsl:text>
-						</b>
+						</b></sup>
 						<xsl:apply-templates/>
-						<b>
+						<sup><b>
 							<xsl:text>/</xsl:text>
-						</b>
+						</b></sup>
 					</xsl:when>
 					<xsl:when test="@place = 'below'">
-						<b>
+						<sub><b>
 							<xsl:text>/</xsl:text>
-						</b>
+						</b></sub>
 						<xsl:apply-templates/>
-						<b>
+						<sub><b>
 							<xsl:text>\</xsl:text>
-						</b>
+						</b></sub>
 					</xsl:when>
 					<xsl:when test="@place = 'margin, right'">
-						<b>
+						<b style="font:smaller">
 							<xsl:text>&lt;</xsl:text>
 						</b>
 						<xsl:apply-templates/>
-						<b>
+						<b style="font:smaller">
 							<xsl:text>&lt;</xsl:text>
 						</b>
 					</xsl:when>
 					<xsl:when test="@place = 'margin, left'">
-						<b>
+						<b style="font:smaller">
 							<xsl:text>&gt;</xsl:text>
 						</b>
 						<xsl:apply-templates/>
-						<b>
+						<b style="font:smaller">
 							<xsl:text>&gt;</xsl:text>
 						</b>
 					</xsl:when>
 					<xsl:when test="@place = 'margin, top'">
-						<b>
+						<sup><b>
 							<xsl:text>\\</xsl:text>
-						</b>
+						</b></sup>
 						<xsl:apply-templates/>
-						<b>
+						<sup><b>
 							<xsl:text>//</xsl:text>
-						</b>
+						</b></sup>
 					</xsl:when>
 					<xsl:when test="@place = 'margin, bottom'">
-						<b>
+						<sub><b>
 							<xsl:text>\\</xsl:text>
-						</b>
+						</b></sub>
 						<xsl:apply-templates/>
-						<b>
+						<sub><b>
 							<xsl:text>//</xsl:text>
-						</b>
+						</b></sub>
 					</xsl:when>
 					<xsl:when test="@place = 'inline'">
-						<b>
+						<b style="font:smaller">
 							<xsl:text>|</xsl:text>
 						</b>
 						<xsl:apply-templates/>
-						<b>
+						<b style="font:smaller">
 							<xsl:text>|</xsl:text>
 						</b>
 					</xsl:when>
@@ -3276,13 +3276,13 @@
 			<xsl:otherwise>
 				<xsl:choose>
 					<xsl:when test="@place = 'above'">
-						<b>
+						<sup><b>
 							<xsl:text>\</xsl:text>
-						</b>
+						</b></sup>
 						<xsl:apply-templates/>
-						<b>
+						<sup><b>
 							<xsl:text>/</xsl:text>
-						</b>
+						</b></sup>
 						<xsl:variable name="incr">
 							<xsl:choose>
 								<xsl:when test="following::*[1]/self::tei:space"> 1 </xsl:when>
@@ -3302,13 +3302,13 @@
 						</xsl:choose>
 					</xsl:when>
 					<xsl:when test="@place = 'below'">
-						<b>
+						<sub><b>
 							<xsl:text>/</xsl:text>
-						</b>
+						</b></sub>
 						<xsl:apply-templates/>
-						<b>
+						<sub><b>
 							<xsl:text>\</xsl:text>
-						</b>
+						</b></sub>
 						<xsl:variable name="incr">
 							<xsl:choose>
 								<xsl:when test="following::*[1]/self::tei:space"> 1 </xsl:when>
@@ -3328,11 +3328,11 @@
 						</xsl:choose>
 					</xsl:when>
 					<xsl:when test="@place = 'margin, right'">
-						<b>
+						<b style="font:smaller">
 							<xsl:text>&lt;</xsl:text>
 						</b>
 						<xsl:apply-templates/>
-						<b>
+						<b style="font:smaller">
 							<xsl:text>&lt;</xsl:text>
 						</b>
 						<xsl:variable name="incr">
@@ -3354,11 +3354,11 @@
 						</xsl:choose>
 					</xsl:when>
 					<xsl:when test="@place = 'margin, left'">
-						<b>
+						<b style="font:smaller">
 							<xsl:text>&gt;</xsl:text>
 						</b>
 						<xsl:apply-templates/>
-						<b>
+						<b style="font:smaller">
 							<xsl:text>&gt;</xsl:text>
 						</b>
 						<xsl:variable name="incr">
@@ -3380,13 +3380,13 @@
 						</xsl:choose>
 					</xsl:when>
 					<xsl:when test="@place = 'margin, top'">
-						<b>
+						<sup><b>
 							<xsl:text>//</xsl:text>
-						</b>
+						</b></sup>
 						<xsl:apply-templates/>
-						<b>
+						<sup><b>
 							<xsl:text>\\</xsl:text>
-						</b>
+						</b></sup>
 						<xsl:variable name="incr">
 							<xsl:choose>
 								<xsl:when test="following::*[1]/self::tei:space"> 1 </xsl:when>
@@ -3406,13 +3406,13 @@
 						</xsl:choose>
 					</xsl:when>
 					<xsl:when test="@place = 'margin, bottom'">
-						<b>
+						<sub><b>
 							<xsl:text>\\</xsl:text>
-						</b>
+						</b></sub>
 						<xsl:apply-templates/>
-						<b>
+						<sub><b>
 							<xsl:text>//</xsl:text>
-						</b>
+						</b></sub>
 						<xsl:variable name="incr">
 							<xsl:choose>
 								<xsl:when test="following::*[1]/self::tei:space"> 1 </xsl:when>
@@ -3432,11 +3432,11 @@
 						</xsl:choose>
 					</xsl:when>
 					<xsl:when test="@place = 'inline'">
-						<b>
+						<b style="font:smaller">
 							<xsl:text>|</xsl:text>
 						</b>
 						<xsl:apply-templates/>
-						<b>
+						<b style="font:smaller">
 							<xsl:text>|</xsl:text>
 						</b>
 						<xsl:variable name="incr">
