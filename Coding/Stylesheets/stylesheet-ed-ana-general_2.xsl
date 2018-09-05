@@ -65,7 +65,45 @@
 				</a>
 			</td>
 			<td>
-				<xsl:apply-templates/>
+				<span>
+					<xsl:attribute name="style">
+						<xsl:if test="ancestor::*[@cert] or descendant::*[@cert]"><xsl:choose>
+							<xsl:when test="ancestor::*/@cert = 'low' or descendant::*/@cert = 'low'">
+								<xsl:text>color:#ff0000</xsl:text>
+							</xsl:when>
+							<xsl:when test="ancestor::*/@cert = 'medium' or descendant::*/@cert = 'medium'">
+								<xsl:text>color:#ff9900</xsl:text>
+							</xsl:when>
+							<xsl:otherwise>
+								<xsl:text/>
+							</xsl:otherwise>
+						</xsl:choose></xsl:if>
+					</xsl:attribute>
+					<xsl:apply-templates/>
+				</span>
+			</td>
+			<td>
+				<xsl:choose>
+					<xsl:when test="ancestor::tei:supplied">
+						<xsl:text>supp.</xsl:text>
+					</xsl:when>
+					<xsl:when
+						test="descendant::tei:supplied or descendant::tei:unclear[@reason = 'damage']">
+						<xsl:text>chars supp.</xsl:text>
+					</xsl:when>
+					<xsl:when test="ancestor::tei:unclear[@reason = 'interp_obscure']">
+						<xsl:text>meaning unclear</xsl:text>
+					</xsl:when>
+					<xsl:when test="ancestor::tei:unclear[@reason = 'text_obscure']">
+						<xsl:text>word unclear</xsl:text>
+					</xsl:when>
+					<xsl:when test="descendant::tei:abbr[not(@cert = 'high')]">
+						<xsl:text>exp. unclear</xsl:text>
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:text>none</xsl:text>
+					</xsl:otherwise>
+				</xsl:choose>
 			</td>
 			<td>
 				<xsl:choose>
@@ -134,7 +172,9 @@
 			<td>
 				<xsl:value-of select="preceding::tei:lb[1]/@n"/>
 			</td>
-			<td><xsl:value-of select="ancestor::tei:div[1]/@n"/></td>
+			<td>
+				<xsl:value-of select="ancestor::tei:div[1]/@n"/>
+			</td>
 			<td>
 				<xsl:choose>
 					<xsl:when test="ancestor::tei:lg/@type = 'stanza'">
@@ -157,22 +197,29 @@
 					<xsl:when test="ancestor::tei:div[1][@type = 'verse']">
 						<xsl:variable name="comLine" select="ancestor::tei:l/@xml:id"/>
 						<xsl:variable name="comVerse" select="ancestor::tei:lg/@xml:id"/>
-						<xsl:if test="not(preceding::tei:w[ancestor::tei:l[@xml:id=$comLine]]) and ancestor::tei:l/preceding::tei:l[ancestor::tei:lg[@xml:id=$comVerse]]">
+						<xsl:if
+							test="not(preceding::tei:w[ancestor::tei:l[@xml:id = $comLine]]) and ancestor::tei:l/preceding::tei:l[ancestor::tei:lg[@xml:id = $comVerse]]">
 							<sub>
 								<b>
-									<xsl:value-of select="preceding::tei:l[1][ancestor::tei:lg[@xml:id=$comVerse]]/@n"/>
+									<xsl:value-of
+										select="preceding::tei:l[1][ancestor::tei:lg[@xml:id = $comVerse]]/@n"/>
 									<xsl:text>. </xsl:text>
 								</b>
-							</sub><xsl:apply-templates select="preceding::tei:l[1][ancestor::tei:lg[@xml:id=$comVerse]]"/><br/>	
+							</sub>
+							<xsl:apply-templates
+								select="preceding::tei:l[1][ancestor::tei:lg[@xml:id = $comVerse]]"/>
+							<br/>
 						</xsl:if>
-						<xsl:if test="not(preceding::tei:w[ancestor::tei:l[@xml:id=$comLine]]) and ancestor::tei:l/preceding::tei:l[ancestor::tei:lg[@xml:id=$comVerse]] or not(following::tei:w[ancestor::tei:l[@xml:id=$comLine]]) and ancestor::tei:l/following::tei:l[ancestor::tei:lg[@xml:id=$comVerse]]">
+						<xsl:if
+							test="not(preceding::tei:w[ancestor::tei:l[@xml:id = $comLine]]) and ancestor::tei:l/preceding::tei:l[ancestor::tei:lg[@xml:id = $comVerse]] or not(following::tei:w[ancestor::tei:l[@xml:id = $comLine]]) and ancestor::tei:l/following::tei:l[ancestor::tei:lg[@xml:id = $comVerse]]">
 							<sub>
 								<b>
 									<xsl:value-of select="ancestor::tei:l/@n"/>
 									<xsl:text>. </xsl:text>
 								</b>
 							</sub>
-						</xsl:if><xsl:apply-templates
+						</xsl:if>
+						<xsl:apply-templates
 							select="ancestor-or-self::*[parent::tei:l]/preceding::*[parent::tei:l[@xml:id = $comLine]]"/>
 						<xsl:apply-templates select="ancestor-or-self::*[parent::tei:l]">
 							<xsl:with-param name="wordID">
@@ -180,14 +227,20 @@
 							</xsl:with-param>
 						</xsl:apply-templates>
 						<xsl:apply-templates
-							select="ancestor-or-self::*[parent::tei:l]/following::*[parent::tei:l[@xml:id = $comLine]]"
-						/><xsl:if test="not(following::tei:w[ancestor::tei:l[@xml:id=$comLine]]) and ancestor::tei:l/following::tei:l[ancestor::tei:lg[@xml:id=$comVerse]]">
-							<br/><sub>
+							select="ancestor-or-self::*[parent::tei:l]/following::*[parent::tei:l[@xml:id = $comLine]]"/>
+						<xsl:if
+							test="not(following::tei:w[ancestor::tei:l[@xml:id = $comLine]]) and ancestor::tei:l/following::tei:l[ancestor::tei:lg[@xml:id = $comVerse]]">
+							<br/>
+							<sub>
 								<b>
-									<xsl:value-of select="following::tei:l[1][ancestor::tei:lg[@xml:id=$comVerse]]/@n"/>
+									<xsl:value-of
+										select="following::tei:l[1][ancestor::tei:lg[@xml:id = $comVerse]]/@n"/>
 									<xsl:text>. </xsl:text>
 								</b>
-							</sub><xsl:apply-templates select="following::tei:l[1][ancestor::tei:lg[@xml:id=$comVerse]]"/>	
+							</sub>
+							<xsl:apply-templates
+								select="following::tei:l[1][ancestor::tei:lg[@xml:id = $comVerse]]"
+							/>
 						</xsl:if>
 					</xsl:when>
 					<xsl:otherwise>
@@ -351,6 +404,9 @@
 						</th>
 						<th>
 							<b>Form</b>
+						</th>
+						<th>
+							<b>Problem(s)</b>
 						</th>
 						<th>
 							<b>Abbrevs/Ligs</b>
@@ -536,7 +592,7 @@
 						</xsl:call-template>
 					</xsl:for-each>
 					<xsl:for-each
-						select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and @lemma='UNKNOWN']">
+						select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and @lemma = 'UNKNOWN']">
 						<xsl:call-template name="contentRow">
 							<xsl:with-param name="posID">
 								<xsl:text>unk</xsl:text>
@@ -1213,7 +1269,7 @@
 			</sub>
 		</xsl:if>
 	</xsl:template>
-	
+
 	<xsl:template match="tei:l">
 		<xsl:apply-templates/>
 	</xsl:template>
