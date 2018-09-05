@@ -1116,7 +1116,6 @@
 						</b>
 					</sub>
 				</a>
-				<xsl:text> </xsl:text>
 			</xsl:when>
 			<xsl:otherwise>
 				<a id="{generate-id()}_dip" title="{@extent}, {$gapReason}" href="#"
@@ -1127,7 +1126,6 @@
 						</b>
 					</sub>
 				</a>
-				<xsl:text> </xsl:text>
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
@@ -1150,7 +1148,6 @@
 				</a>
 			</b>
 		</sup>
-		<xsl:text> </xsl:text>
 	</xsl:template>
 
 	<xsl:template mode="dip" match="tei:add[@type = 'insertion']">
@@ -1367,7 +1364,6 @@
 				<b> beg. H<xsl:value-of select="substring(@new, 5)"/></b>
 			</i>
 		</sub>
-		<xsl:text> </xsl:text>
 	</xsl:template>
 
 	<xsl:template mode="dip" match="tei:div[@n]">
