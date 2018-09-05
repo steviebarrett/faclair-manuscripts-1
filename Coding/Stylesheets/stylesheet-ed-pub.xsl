@@ -2507,7 +2507,28 @@
 				<xsl:text/>
 			</xsl:when>
 			<xsl:otherwise>
-				<xsl:text> </xsl:text>
+				<xsl:choose><xsl:when
+					test="ancestor::tei:unclear[count(descendant::tei:w[not(descendant::tei:w)]) = 1]">
+					<xsl:text/>
+				</xsl:when>
+				<xsl:when
+					test="ancestor::tei:supplied[count(descendant::tei:w[not(descendant::tei:w)]) = 1]">
+					<xsl:text/>
+				</xsl:when>
+				<xsl:when
+					test="ancestor::tei:add[count(descendant::tei:w[not(descendant::tei:w)]) = 1]">
+					<xsl:text/>
+				</xsl:when>
+				<xsl:when test="ancestor::tei:unclear and count(following-sibling::tei:w) = 0">
+					<xsl:text/>
+				</xsl:when>
+				<xsl:when test="ancestor::tei:supplied and count(following-sibling::tei:w) = 0">
+					<xsl:text/>
+				</xsl:when>
+				<xsl:when test="ancestor::tei:add and count(following-sibling::tei:w) = 0">
+					<xsl:text/>
+				</xsl:when>
+				<xsl:otherwise><xsl:text> </xsl:text></xsl:otherwise></xsl:choose>
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
