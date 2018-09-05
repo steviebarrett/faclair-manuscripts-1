@@ -1547,19 +1547,15 @@
 						<xsl:text>}</xsl:text>
 						<xsl:variable name="incr">
 							<xsl:choose>
-								<xsl:when test="following::*[1]/self::tei:space">
-									1
-								</xsl:when>
-								<xsl:otherwise>
-									0
-								</xsl:otherwise>
+								<xsl:when test="following::*[1]/self::tei:space"> 1 </xsl:when>
+								<xsl:otherwise> 0 </xsl:otherwise>
 							</xsl:choose>
 						</xsl:variable>
 						<xsl:choose>
 							<xsl:when test="following::*[1 + $incr]/self::tei:pc">
 								<xsl:text/>
 							</xsl:when>
-							<xsl:when test="following::*[1 + $incr]/self::tei:note[@type='fn']">
+							<xsl:when test="following::*[1 + $incr]/self::tei:note[@type = 'fn']">
 								<xsl:text/>
 							</xsl:when>
 							<xsl:otherwise>
@@ -1583,19 +1579,15 @@
 						<xsl:text>}</xsl:text>
 						<xsl:variable name="incr">
 							<xsl:choose>
-								<xsl:when test="following::*[1]/self::tei:space">
-									1
-								</xsl:when>
-								<xsl:otherwise>
-									0
-								</xsl:otherwise>
+								<xsl:when test="following::*[1]/self::tei:space"> 1 </xsl:when>
+								<xsl:otherwise> 0 </xsl:otherwise>
 							</xsl:choose>
 						</xsl:variable>
 						<xsl:choose>
 							<xsl:when test="following::*[1 + $incr]/self::tei:pc">
 								<xsl:text/>
 							</xsl:when>
-							<xsl:when test="following::*[1 + $incr]/self::tei:note[@type='fn']">
+							<xsl:when test="following::*[1 + $incr]/self::tei:note[@type = 'fn']">
 								<xsl:text/>
 							</xsl:when>
 							<xsl:otherwise>
@@ -1652,19 +1644,15 @@
 				<xsl:text>}</xsl:text>
 				<xsl:variable name="incr">
 					<xsl:choose>
-						<xsl:when test="following::*[1]/self::tei:space">
-							1
-						</xsl:when>
-						<xsl:otherwise>
-							0
-						</xsl:otherwise>
+						<xsl:when test="following::*[1]/self::tei:space"> 1 </xsl:when>
+						<xsl:otherwise> 0 </xsl:otherwise>
 					</xsl:choose>
 				</xsl:variable>
 				<xsl:choose>
 					<xsl:when test="following::*[1 + $incr]/self::tei:pc">
 						<xsl:text/>
 					</xsl:when>
-					<xsl:when test="following::*[1 + $incr]/self::tei:note[@type='fn']">
+					<xsl:when test="following::*[1 + $incr]/self::tei:note[@type = 'fn']">
 						<xsl:text/>
 					</xsl:when>
 					<xsl:otherwise>
@@ -2309,25 +2297,46 @@
 		</a>
 		<xsl:choose>
 			<xsl:when test="not(ancestor::tei:w)">
-				<xsl:variable name="incr">
-					<xsl:choose>
-						<xsl:when test="following::*[1]/self::tei:space">
-							1
-						</xsl:when>
-						<xsl:otherwise>
-							0
-						</xsl:otherwise>
-					</xsl:choose>
-				</xsl:variable>
 				<xsl:choose>
-					<xsl:when test="following::*[1 + $incr]/self::tei:pc">
+					<xsl:when
+						test="ancestor::tei:unclear[count(descendant::tei:w[not(descendant::tei:w)]) = 1]">
 						<xsl:text/>
 					</xsl:when>
-					<xsl:when test="following::*[1 + $incr]/self::tei:note[@type='fn']">
+					<xsl:when
+						test="ancestor::tei:supplied[count(descendant::tei:w[not(descendant::tei:w)]) = 1]">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when
+						test="ancestor::tei:add[count(descendant::tei:w[not(descendant::tei:w)]) = 1]">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when test="ancestor::tei:unclear and count(following-sibling::tei:w) = 0">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when test="ancestor::tei:supplied and count(following-sibling::tei:w) = 0">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when test="ancestor::tei:add and count(following-sibling::tei:w) = 0">
 						<xsl:text/>
 					</xsl:when>
 					<xsl:otherwise>
-						<xsl:text> </xsl:text>
+						<xsl:variable name="incr">
+							<xsl:choose>
+								<xsl:when test="following::*[1]/self::tei:space"> 1 </xsl:when>
+								<xsl:otherwise> 0 </xsl:otherwise>
+							</xsl:choose>
+						</xsl:variable>
+						<xsl:choose>
+							<xsl:when test="following::*[1 + $incr]/self::tei:pc">
+								<xsl:text/>
+							</xsl:when>
+							<xsl:when test="following::*[1 + $incr]/self::tei:note[@type = 'fn']">
+								<xsl:text/>
+							</xsl:when>
+							<xsl:otherwise>
+								<xsl:text> </xsl:text>
+							</xsl:otherwise>
+						</xsl:choose>
 					</xsl:otherwise>
 				</xsl:choose>
 			</xsl:when>
@@ -2486,23 +2495,40 @@
 		<xsl:apply-templates/>
 		<xsl:variable name="incr">
 			<xsl:choose>
-				<xsl:when test="following::*[1]/self::tei:space">
-					1
-				</xsl:when>
-				<xsl:otherwise>
-					0
-				</xsl:otherwise>
+				<xsl:when test="following::*[1]/self::tei:space"> 1 </xsl:when>
+				<xsl:otherwise> 0 </xsl:otherwise>
 			</xsl:choose>
 		</xsl:variable>
 		<xsl:choose>
 			<xsl:when test="following::*[1 + $incr]/self::tei:pc">
 				<xsl:text/>
 			</xsl:when>
-			<xsl:when test="following::*[1 + $incr]/self::tei:note[@type='fn']">
+			<xsl:when test="following::*[1 + $incr]/self::tei:note[@type = 'fn']">
 				<xsl:text/>
 			</xsl:when>
 			<xsl:otherwise>
-				<xsl:text> </xsl:text>
+				<xsl:choose><xsl:when
+					test="ancestor::tei:unclear[count(descendant::tei:w[not(descendant::tei:w)]) = 1]">
+					<xsl:text/>
+				</xsl:when>
+				<xsl:when
+					test="ancestor::tei:supplied[count(descendant::tei:w[not(descendant::tei:w)]) = 1]">
+					<xsl:text/>
+				</xsl:when>
+				<xsl:when
+					test="ancestor::tei:add[count(descendant::tei:w[not(descendant::tei:w)]) = 1]">
+					<xsl:text/>
+				</xsl:when>
+				<xsl:when test="ancestor::tei:unclear and count(following-sibling::tei:w) = 0">
+					<xsl:text/>
+				</xsl:when>
+				<xsl:when test="ancestor::tei:supplied and count(following-sibling::tei:w) = 0">
+					<xsl:text/>
+				</xsl:when>
+				<xsl:when test="ancestor::tei:add and count(following-sibling::tei:w) = 0">
+					<xsl:text/>
+				</xsl:when>
+				<xsl:otherwise><xsl:text> </xsl:text></xsl:otherwise></xsl:choose>
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
@@ -2518,19 +2544,15 @@
 		</a>
 		<xsl:variable name="incr">
 			<xsl:choose>
-				<xsl:when test="following::*[1]/self::tei:space">
-					1
-				</xsl:when>
-				<xsl:otherwise>
-					0
-				</xsl:otherwise>
+				<xsl:when test="following::*[1]/self::tei:space"> 1 </xsl:when>
+				<xsl:otherwise> 0 </xsl:otherwise>
 			</xsl:choose>
 		</xsl:variable>
 		<xsl:choose>
 			<xsl:when test="following::*[1 + $incr]/self::tei:pc">
 				<xsl:text/>
 			</xsl:when>
-			<xsl:when test="following::*[1 + $incr]/self::tei:note[@type='fn']">
+			<xsl:when test="following::*[1 + $incr]/self::tei:note[@type = 'fn']">
 				<xsl:text/>
 			</xsl:when>
 			<xsl:otherwise>
@@ -2546,19 +2568,15 @@
 		</a>
 		<xsl:variable name="incr">
 			<xsl:choose>
-				<xsl:when test="following::*[1]/self::tei:space">
-					1
-				</xsl:when>
-				<xsl:otherwise>
-					0
-				</xsl:otherwise>
+				<xsl:when test="following::*[1]/self::tei:space"> 1 </xsl:when>
+				<xsl:otherwise> 0 </xsl:otherwise>
 			</xsl:choose>
 		</xsl:variable>
 		<xsl:choose>
 			<xsl:when test="following::*[1 + $incr]/self::tei:pc">
 				<xsl:text/>
 			</xsl:when>
-			<xsl:when test="following::*[1 + $incr]/self::tei:note[@type='fn']">
+			<xsl:when test="following::*[1 + $incr]/self::tei:note[@type = 'fn']">
 				<xsl:text/>
 			</xsl:when>
 			<xsl:otherwise>
@@ -2880,19 +2898,15 @@
 				</a>
 				<xsl:variable name="incr">
 					<xsl:choose>
-						<xsl:when test="following::*[1]/self::tei:space">
-							1
-						</xsl:when>
-						<xsl:otherwise>
-							0
-						</xsl:otherwise>
+						<xsl:when test="following::*[1]/self::tei:space"> 1 </xsl:when>
+						<xsl:otherwise> 0 </xsl:otherwise>
 					</xsl:choose>
 				</xsl:variable>
 				<xsl:choose>
 					<xsl:when test="following::*[1 + $incr]/self::tei:pc">
 						<xsl:text/>
 					</xsl:when>
-					<xsl:when test="following::*[1 + $incr]/self::tei:note[@type='fn']">
+					<xsl:when test="following::*[1 + $incr]/self::tei:note[@type = 'fn']">
 						<xsl:text/>
 					</xsl:when>
 					<xsl:otherwise>
@@ -2943,19 +2957,15 @@
 				</a>
 				<xsl:variable name="incr">
 					<xsl:choose>
-						<xsl:when test="following::*[1]/self::tei:space">
-							1
-						</xsl:when>
-						<xsl:otherwise>
-							0
-						</xsl:otherwise>
+						<xsl:when test="following::*[1]/self::tei:space"> 1 </xsl:when>
+						<xsl:otherwise> 0 </xsl:otherwise>
 					</xsl:choose>
 				</xsl:variable>
 				<xsl:choose>
 					<xsl:when test="following::*[1 + $incr]/self::tei:pc">
 						<xsl:text/>
 					</xsl:when>
-					<xsl:when test="following::*[1 + $incr]/self::tei:note[@type='fn']">
+					<xsl:when test="following::*[1 + $incr]/self::tei:note[@type = 'fn']">
 						<xsl:text/>
 					</xsl:when>
 					<xsl:otherwise>
@@ -2981,24 +2991,20 @@
 	<xsl:template match="tei:supplied">
 		<xsl:choose>
 			<xsl:when test="descendant::tei:w">
-				<xsl:text>[ </xsl:text>
+				<xsl:text>[</xsl:text>
 				<xsl:apply-templates/>
 				<xsl:text>]</xsl:text>
 				<xsl:variable name="incr">
 					<xsl:choose>
-						<xsl:when test="following::*[1]/self::tei:space">
-							1
-						</xsl:when>
-						<xsl:otherwise>
-							0
-						</xsl:otherwise>
+						<xsl:when test="following::*[1]/self::tei:space"> 1 </xsl:when>
+						<xsl:otherwise> 0 </xsl:otherwise>
 					</xsl:choose>
 				</xsl:variable>
 				<xsl:choose>
 					<xsl:when test="following::*[1 + $incr]/self::tei:pc">
 						<xsl:text/>
 					</xsl:when>
-					<xsl:when test="following::*[1 + $incr]/self::tei:note[@type='fn']">
+					<xsl:when test="following::*[1 + $incr]/self::tei:note[@type = 'fn']">
 						<xsl:text/>
 					</xsl:when>
 					<xsl:otherwise>
@@ -3034,24 +3040,20 @@
 	<xsl:template match="tei:unclear">
 		<xsl:choose>
 			<xsl:when test="descendant::tei:w">
-				<xsl:text>{ </xsl:text>
+				<xsl:text>{</xsl:text>
 				<xsl:apply-templates/>
 				<xsl:text>}</xsl:text>
 				<xsl:variable name="incr">
 					<xsl:choose>
-						<xsl:when test="following::*[1]/self::tei:space">
-							1
-						</xsl:when>
-						<xsl:otherwise>
-							0
-						</xsl:otherwise>
+						<xsl:when test="following::*[1]/self::tei:space"> 1 </xsl:when>
+						<xsl:otherwise> 0 </xsl:otherwise>
 					</xsl:choose>
 				</xsl:variable>
 				<xsl:choose>
 					<xsl:when test="following::*[1 + $incr]/self::tei:pc">
 						<xsl:text/>
 					</xsl:when>
-					<xsl:when test="following::*[1 + $incr]/self::tei:note[@type='fn']">
+					<xsl:when test="following::*[1 + $incr]/self::tei:note[@type = 'fn']">
 						<xsl:text/>
 					</xsl:when>
 					<xsl:otherwise>
@@ -3065,24 +3067,20 @@
 				<xsl:text>}</xsl:text>
 			</xsl:when>
 			<xsl:when test="descendant::tei:date">
-				<xsl:text> {</xsl:text>
+				<xsl:text>{</xsl:text>
 				<xsl:apply-templates/>
 				<xsl:text>}</xsl:text>
 				<xsl:variable name="incr">
 					<xsl:choose>
-						<xsl:when test="following::*[1]/self::tei:space">
-							1
-						</xsl:when>
-						<xsl:otherwise>
-							0
-						</xsl:otherwise>
+						<xsl:when test="following::*[1]/self::tei:space"> 1 </xsl:when>
+						<xsl:otherwise> 0 </xsl:otherwise>
 					</xsl:choose>
 				</xsl:variable>
 				<xsl:choose>
 					<xsl:when test="following::*[1 + $incr]/self::tei:pc">
 						<xsl:text/>
 					</xsl:when>
-					<xsl:when test="following::*[1 + $incr]/self::tei:note[@type='fn']">
+					<xsl:when test="following::*[1 + $incr]/self::tei:note[@type = 'fn']">
 						<xsl:text/>
 					</xsl:when>
 					<xsl:otherwise>
@@ -3096,24 +3094,20 @@
 				<xsl:text>}</xsl:text>
 			</xsl:when>
 			<xsl:when test="descendant::tei:num">
-				<xsl:text> {</xsl:text>
+				<xsl:text>{</xsl:text>
 				<xsl:apply-templates/>
 				<xsl:text>}</xsl:text>
 				<xsl:variable name="incr">
 					<xsl:choose>
-						<xsl:when test="following::*[1]/self::tei:space">
-							1
-						</xsl:when>
-						<xsl:otherwise>
-							0
-						</xsl:otherwise>
+						<xsl:when test="following::*[1]/self::tei:space"> 1 </xsl:when>
+						<xsl:otherwise> 0 </xsl:otherwise>
 					</xsl:choose>
 				</xsl:variable>
 				<xsl:choose>
 					<xsl:when test="following::*[1 + $incr]/self::tei:pc">
 						<xsl:text/>
 					</xsl:when>
-					<xsl:when test="following::*[1 + $incr]/self::tei:note[@type='fn']">
+					<xsl:when test="following::*[1 + $incr]/self::tei:note[@type = 'fn']">
 						<xsl:text/>
 					</xsl:when>
 					<xsl:otherwise>
@@ -3193,19 +3187,15 @@
 		</sup>
 		<xsl:variable name="incr">
 			<xsl:choose>
-				<xsl:when test="following::*[1]/self::tei:space">
-					1
-				</xsl:when>
-				<xsl:otherwise>
-					0
-				</xsl:otherwise>
+				<xsl:when test="following::*[1]/self::tei:space"> 1 </xsl:when>
+				<xsl:otherwise> 0 </xsl:otherwise>
 			</xsl:choose>
 		</xsl:variable>
 		<xsl:choose>
 			<xsl:when test="following::*[1 + $incr]/self::tei:pc">
 				<xsl:text/>
 			</xsl:when>
-			<xsl:when test="following::*[1 + $incr]/self::tei:note[@type='fn']">
+			<xsl:when test="following::*[1 + $incr]/self::tei:note[@type = 'fn']">
 				<xsl:text/>
 			</xsl:when>
 			<xsl:otherwise>
@@ -3219,134 +3209,253 @@
 			<xsl:when test="ancestor::tei:w">
 				<xsl:choose>
 					<xsl:when test="@place = 'above'">
-						<b>
+						<sub><b>
 							<xsl:text>\</xsl:text>
-						</b>
+						</b></sub>
 						<xsl:apply-templates/>
-						<b>
+						<sub><b>
 							<xsl:text>/</xsl:text>
-						</b>
+						</b></sub>
 					</xsl:when>
 					<xsl:when test="@place = 'below'">
-						<b>
+						<sub><b>
 							<xsl:text>/</xsl:text>
-						</b>
+						</b></sub>
 						<xsl:apply-templates/>
-						<b>
+						<sub><b>
 							<xsl:text>\</xsl:text>
-						</b>
+						</b></sub>
 					</xsl:when>
 					<xsl:when test="@place = 'margin, right'">
-						<b>
+						<sub><b>
 							<xsl:text>&lt;</xsl:text>
-						</b>
+						</b></sub>
 						<xsl:apply-templates/>
-						<b>
+						<sub><b style="font:smaller">
 							<xsl:text>&lt;</xsl:text>
-						</b>
+						</b></sub>
 					</xsl:when>
 					<xsl:when test="@place = 'margin, left'">
-						<b>
+						<sub><b style="font:smaller">
 							<xsl:text>&gt;</xsl:text>
-						</b>
+						</b></sub>
 						<xsl:apply-templates/>
-						<b>
+						<sub><b style="font:smaller">
 							<xsl:text>&gt;</xsl:text>
-						</b>
+						</b></sub>
 					</xsl:when>
 					<xsl:when test="@place = 'margin, top'">
-						<b>
+						<sub><b>
 							<xsl:text>\\</xsl:text>
-						</b>
+						</b></sub>
 						<xsl:apply-templates/>
-						<b>
+						<sub><b>
 							<xsl:text>//</xsl:text>
-						</b>
+						</b></sub>
 					</xsl:when>
 					<xsl:when test="@place = 'margin, bottom'">
-						<b>
+						<sub><b>
 							<xsl:text>\\</xsl:text>
-						</b>
+						</b></sub>
 						<xsl:apply-templates/>
-						<b>
+						<sub><b>
 							<xsl:text>//</xsl:text>
-						</b>
+						</b></sub>
 					</xsl:when>
 					<xsl:when test="@place = 'inline'">
-						<b>
+						<sub><b style="font:smaller">
 							<xsl:text>|</xsl:text>
-						</b>
+						</b></sub>
 						<xsl:apply-templates/>
-						<b>
+						<sub><b style="font:smaller">
 							<xsl:text>|</xsl:text>
-						</b>
+						</b></sub>
 					</xsl:when>
 				</xsl:choose>
 			</xsl:when>
 			<xsl:otherwise>
 				<xsl:choose>
 					<xsl:when test="@place = 'above'">
-						<b>
-							<xsl:text>\ </xsl:text>
-						</b>
+						<sub><b>
+							<xsl:text>\</xsl:text>
+						</b></sub>
 						<xsl:apply-templates/>
-						<b>
-							<xsl:text>/ </xsl:text>
-						</b>
+						<sub><b>
+							<xsl:text>/</xsl:text>
+						</b></sub>
+						<xsl:variable name="incr">
+							<xsl:choose>
+								<xsl:when test="following::*[1]/self::tei:space"> 1 </xsl:when>
+								<xsl:otherwise> 0 </xsl:otherwise>
+							</xsl:choose>
+						</xsl:variable>
+						<xsl:choose>
+							<xsl:when test="following::*[1 + $incr]/self::tei:pc">
+								<xsl:text/>
+							</xsl:when>
+							<xsl:when test="following::*[1 + $incr]/self::tei:note[@type = 'fn']">
+								<xsl:text/>
+							</xsl:when>
+							<xsl:otherwise>
+								<xsl:text> </xsl:text>
+							</xsl:otherwise>
+						</xsl:choose>
 					</xsl:when>
 					<xsl:when test="@place = 'below'">
-						<b>
-							<xsl:text>/ </xsl:text>
-						</b>
+						<sub><b>
+							<xsl:text>/</xsl:text>
+						</b></sub>
 						<xsl:apply-templates/>
-						<b>
-							<xsl:text>\ </xsl:text>
-						</b>
+						<sub><b>
+							<xsl:text>\</xsl:text>
+						</b></sub>
+						<xsl:variable name="incr">
+							<xsl:choose>
+								<xsl:when test="following::*[1]/self::tei:space"> 1 </xsl:when>
+								<xsl:otherwise> 0 </xsl:otherwise>
+							</xsl:choose>
+						</xsl:variable>
+						<xsl:choose>
+							<xsl:when test="following::*[1 + $incr]/self::tei:pc">
+								<xsl:text/>
+							</xsl:when>
+							<xsl:when test="following::*[1 + $incr]/self::tei:note[@type = 'fn']">
+								<xsl:text/>
+							</xsl:when>
+							<xsl:otherwise>
+								<xsl:text> </xsl:text>
+							</xsl:otherwise>
+						</xsl:choose>
 					</xsl:when>
 					<xsl:when test="@place = 'margin, right'">
-						<b>
-							<xsl:text>&lt; </xsl:text>
-						</b>
+						<sub><b style="font:smaller">
+							<xsl:text>&lt;</xsl:text>
+						</b></sub>
 						<xsl:apply-templates/>
-						<b>
-							<xsl:text>&lt; </xsl:text>
-						</b>
+						<sub><b style="font:smaller">
+							<xsl:text>&lt;</xsl:text>
+						</b></sub>
+						<xsl:variable name="incr">
+							<xsl:choose>
+								<xsl:when test="following::*[1]/self::tei:space"> 1 </xsl:when>
+								<xsl:otherwise> 0 </xsl:otherwise>
+							</xsl:choose>
+						</xsl:variable>
+						<xsl:choose>
+							<xsl:when test="following::*[1 + $incr]/self::tei:pc">
+								<xsl:text/>
+							</xsl:when>
+							<xsl:when test="following::*[1 + $incr]/self::tei:note[@type = 'fn']">
+								<xsl:text/>
+							</xsl:when>
+							<xsl:otherwise>
+								<xsl:text> </xsl:text>
+							</xsl:otherwise>
+						</xsl:choose>
 					</xsl:when>
 					<xsl:when test="@place = 'margin, left'">
-						<b>
-							<xsl:text>&gt; </xsl:text>
-						</b>
+						<sub><b style="font:smaller">
+							<xsl:text>&gt;</xsl:text>
+						</b></sub>
 						<xsl:apply-templates/>
-						<b>
-							<xsl:text>&gt; </xsl:text>
-						</b>
+						<sub><b style="font:smaller">
+							<xsl:text>&gt;</xsl:text>
+						</b></sub>
+						<xsl:variable name="incr">
+							<xsl:choose>
+								<xsl:when test="following::*[1]/self::tei:space"> 1 </xsl:when>
+								<xsl:otherwise> 0 </xsl:otherwise>
+							</xsl:choose>
+						</xsl:variable>
+						<xsl:choose>
+							<xsl:when test="following::*[1 + $incr]/self::tei:pc">
+								<xsl:text/>
+							</xsl:when>
+							<xsl:when test="following::*[1 + $incr]/self::tei:note[@type = 'fn']">
+								<xsl:text/>
+							</xsl:when>
+							<xsl:otherwise>
+								<xsl:text> </xsl:text>
+							</xsl:otherwise>
+						</xsl:choose>
 					</xsl:when>
 					<xsl:when test="@place = 'margin, top'">
-						<b>
-							<xsl:text>// </xsl:text>
-						</b>
+						<sub><b>
+							<xsl:text>//</xsl:text>
+						</b></sub>
 						<xsl:apply-templates/>
-						<b>
-							<xsl:text>\\ </xsl:text>
-						</b>
+						<sub><b>
+							<xsl:text>\\</xsl:text>
+						</b></sub>
+						<xsl:variable name="incr">
+							<xsl:choose>
+								<xsl:when test="following::*[1]/self::tei:space"> 1 </xsl:when>
+								<xsl:otherwise> 0 </xsl:otherwise>
+							</xsl:choose>
+						</xsl:variable>
+						<xsl:choose>
+							<xsl:when test="following::*[1 + $incr]/self::tei:pc">
+								<xsl:text/>
+							</xsl:when>
+							<xsl:when test="following::*[1 + $incr]/self::tei:note[@type = 'fn']">
+								<xsl:text/>
+							</xsl:when>
+							<xsl:otherwise>
+								<xsl:text> </xsl:text>
+							</xsl:otherwise>
+						</xsl:choose>
 					</xsl:when>
 					<xsl:when test="@place = 'margin, bottom'">
-						<b>
-							<xsl:text>\\ </xsl:text>
-						</b>
+						<sub><b>
+							<xsl:text>\\</xsl:text>
+						</b></sub>
 						<xsl:apply-templates/>
-						<b>
-							<xsl:text>// </xsl:text>
-						</b>
+						<sub><b>
+							<xsl:text>//</xsl:text>
+						</b></sub>
+						<xsl:variable name="incr">
+							<xsl:choose>
+								<xsl:when test="following::*[1]/self::tei:space"> 1 </xsl:when>
+								<xsl:otherwise> 0 </xsl:otherwise>
+							</xsl:choose>
+						</xsl:variable>
+						<xsl:choose>
+							<xsl:when test="following::*[1 + $incr]/self::tei:pc">
+								<xsl:text/>
+							</xsl:when>
+							<xsl:when test="following::*[1 + $incr]/self::tei:note[@type = 'fn']">
+								<xsl:text/>
+							</xsl:when>
+							<xsl:otherwise>
+								<xsl:text> </xsl:text>
+							</xsl:otherwise>
+						</xsl:choose>
 					</xsl:when>
 					<xsl:when test="@place = 'inline'">
-						<b>
-							<xsl:text>| </xsl:text>
-						</b>
+						<sub><b style="font:smaller">
+							<xsl:text>|</xsl:text>
+						</b></sub>
 						<xsl:apply-templates/>
-						<b>
-							<xsl:text>| </xsl:text>
-						</b>
+						<sub><b style="font:smaller">
+							<xsl:text>|</xsl:text>
+						</b></sub>
+						<xsl:variable name="incr">
+							<xsl:choose>
+								<xsl:when test="following::*[1]/self::tei:space"> 1 </xsl:when>
+								<xsl:otherwise> 0 </xsl:otherwise>
+							</xsl:choose>
+						</xsl:variable>
+						<xsl:choose>
+							<xsl:when test="following::*[1 + $incr]/self::tei:pc">
+								<xsl:text/>
+							</xsl:when>
+							<xsl:when test="following::*[1 + $incr]/self::tei:note[@type = 'fn']">
+								<xsl:text/>
+							</xsl:when>
+							<xsl:otherwise>
+								<xsl:text> </xsl:text>
+							</xsl:otherwise>
+						</xsl:choose>
 					</xsl:when>
 				</xsl:choose>
 			</xsl:otherwise>
@@ -3356,67 +3465,186 @@
 	<xsl:template match="tei:add[@type = 'gloss']">
 		<xsl:choose>
 			<xsl:when test="@place = 'above'">
-				<b>
-					<xsl:text> \ gl. </xsl:text>
-				</b>
+				<sub><b>
+					<xsl:text>\ gl. </xsl:text>
+				</b></sub>
 				<xsl:apply-templates/>
-				<b>
-					<xsl:text> /</xsl:text>
-				</b>
+				<sub><b>
+					<xsl:text>/</xsl:text>
+				</b></sub>
+				<xsl:variable name="incr">
+					<xsl:choose>
+						<xsl:when test="following::*[1]/self::tei:space"> 1 </xsl:when>
+						<xsl:otherwise> 0 </xsl:otherwise>
+					</xsl:choose>
+				</xsl:variable>
+				<xsl:choose>
+					<xsl:when test="following::*[1 + $incr]/self::tei:pc">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when test="following::*[1 + $incr]/self::tei:note[@type = 'fn']">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:text> </xsl:text>
+					</xsl:otherwise>
+				</xsl:choose>
 			</xsl:when>
 			<xsl:when test="@place = 'below'">
-				<b>
-					<xsl:text> / gl. </xsl:text>
-				</b>
+				<sub><b>
+					<xsl:text>/ gl. </xsl:text>
+				</b></sub>
 				<xsl:apply-templates/>
-				<b>
-					<xsl:text> \</xsl:text>
-				</b>
+				<sub><b>
+					<xsl:text>\</xsl:text>
+				</b></sub>
+				<xsl:variable name="incr">
+					<xsl:choose>
+						<xsl:when test="following::*[1]/self::tei:space"> 1 </xsl:when>
+						<xsl:otherwise> 0 </xsl:otherwise>
+					</xsl:choose>
+				</xsl:variable>
+				<xsl:choose>
+					<xsl:when test="following::*[1 + $incr]/self::tei:pc">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when test="following::*[1 + $incr]/self::tei:note[@type = 'fn']">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:text> </xsl:text>
+					</xsl:otherwise>
+				</xsl:choose>
 			</xsl:when>
 			<xsl:when test="@place = 'margin, right'">
-				<b>
-					<xsl:text> &lt; gl. </xsl:text>
-				</b>
+				<sub><b>
+					<xsl:text>&lt; gl. </xsl:text>
+				</b></sub>
 				<xsl:apply-templates/>
-				<b>
-					<xsl:text> &lt;</xsl:text>
-				</b>
+				<sub><b>
+					<xsl:text>&lt;</xsl:text>
+				</b></sub>
+				<xsl:variable name="incr">
+					<xsl:choose>
+						<xsl:when test="following::*[1]/self::tei:space"> 1 </xsl:when>
+						<xsl:otherwise> 0 </xsl:otherwise>
+					</xsl:choose>
+				</xsl:variable>
+				<xsl:choose>
+					<xsl:when test="following::*[1 + $incr]/self::tei:pc">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when test="following::*[1 + $incr]/self::tei:note[@type = 'fn']">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:text> </xsl:text>
+					</xsl:otherwise>
+				</xsl:choose>
 			</xsl:when>
 			<xsl:when test="@place = 'margin, left'">
-				<b>
-					<xsl:text> &gt; gl. </xsl:text>
-				</b>
+				<sub><b>
+					<xsl:text>&gt; gl. </xsl:text>
+				</b></sub>
 				<xsl:apply-templates/>
-				<b>
-					<xsl:text> &gt;</xsl:text>
-				</b>
+				<sub><b>
+					<xsl:text>&gt;</xsl:text>
+				</b></sub>
+				<xsl:variable name="incr">
+					<xsl:choose>
+						<xsl:when test="following::*[1]/self::tei:space"> 1 </xsl:when>
+						<xsl:otherwise> 0 </xsl:otherwise>
+					</xsl:choose>
+				</xsl:variable>
+				<xsl:choose>
+					<xsl:when test="following::*[1 + $incr]/self::tei:pc">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when test="following::*[1 + $incr]/self::tei:note[@type = 'fn']">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:text> </xsl:text>
+					</xsl:otherwise>
+				</xsl:choose>
 			</xsl:when>
 			<xsl:when test="@place = 'margin, top'">
-				<b>
+				<sub><b>
 					<xsl:text>// gl. </xsl:text>
-				</b>
+				</b></sub>
 				<xsl:apply-templates/>
-				<b>
-					<xsl:text> \\</xsl:text>
-				</b>
+				<sub><b>
+					<xsl:text>\\</xsl:text>
+				</b></sub>
+				<xsl:variable name="incr">
+					<xsl:choose>
+						<xsl:when test="following::*[1]/self::tei:space"> 1 </xsl:when>
+						<xsl:otherwise> 0 </xsl:otherwise>
+					</xsl:choose>
+				</xsl:variable>
+				<xsl:choose>
+					<xsl:when test="following::*[1 + $incr]/self::tei:pc">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when test="following::*[1 + $incr]/self::tei:note[@type = 'fn']">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:text> </xsl:text>
+					</xsl:otherwise>
+				</xsl:choose>
 			</xsl:when>
 			<xsl:when test="@place = 'margin, bottom'">
-				<b>
+				<sub><b>
 					<xsl:text>\\ gl. </xsl:text>
-				</b>
+				</b></sub>
 				<xsl:apply-templates/>
-				<b>
-					<xsl:text> //</xsl:text>
-				</b>
+				<sub><b>
+					<xsl:text>//</xsl:text>
+				</b></sub>
+				<xsl:variable name="incr">
+					<xsl:choose>
+						<xsl:when test="following::*[1]/self::tei:space"> 1 </xsl:when>
+						<xsl:otherwise> 0 </xsl:otherwise>
+					</xsl:choose>
+				</xsl:variable>
+				<xsl:choose>
+					<xsl:when test="following::*[1 + $incr]/self::tei:pc">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when test="following::*[1 + $incr]/self::tei:note[@type = 'fn']">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:text> </xsl:text>
+					</xsl:otherwise>
+				</xsl:choose>
 			</xsl:when>
 			<xsl:when test="@place = 'inline'">
-				<b>
+				<sub><b>
 					<xsl:text>| gl. </xsl:text>
-				</b>
+				</b></sub>
 				<xsl:apply-templates/>
-				<b>
-					<xsl:text> |</xsl:text>
-				</b>
+				<sub><b>
+					<xsl:text>|</xsl:text>
+				</b></sub>
+				<xsl:variable name="incr">
+					<xsl:choose>
+						<xsl:when test="following::*[1]/self::tei:space"> 1 </xsl:when>
+						<xsl:otherwise> 0 </xsl:otherwise>
+					</xsl:choose>
+				</xsl:variable>
+				<xsl:choose>
+					<xsl:when test="following::*[1 + $incr]/self::tei:pc">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when test="following::*[1 + $incr]/self::tei:note[@type = 'fn']">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:text> </xsl:text>
+					</xsl:otherwise>
+				</xsl:choose>
 			</xsl:when>
 		</xsl:choose>
 	</xsl:template>
