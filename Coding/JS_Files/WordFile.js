@@ -264,246 +264,9 @@ function addSlip(id) {
 	var listID = 'li.' + id;
 	var abbr = '<ul id="' + listID + '" style="list-style: none;margin:0;padding:0;">' + abbrListFull + '</ul>';
 	var med = el.getAttribute('medium');
-	var el_plus_1;
-	if (el == el.parentNode.lastElementChild) {
-		el_plus_1 = "";
-	} else if (el.nextElementSibling == null) {
-		el_plus_1 = "";
-	} else {
-		el_plus_1 = el.nextElementSibling
-	}
-	var el_minus_1;
-	if (el == el.parentNode.firstElementChild) {
-		el_minus_1 = "";
-	} else if (el.previousElementSibling == null) {
-		el_minus_1 = "";
-	} else {
-		el_minus_1 = el.previousElementSibling
-	}
-	var el_plus_2;
-	if (el == el.parentNode.lastElementChild) {
-		el_plus_2 = "";
-	} else if (el.nextElementSibling == el.parentNode.lastElementChild) {
-		el_plus_2 = "";
-	} else if (el.nextElementSibling.nextElementSibling == null) {
-		el_plus_2 = "";
-	} else {
-		el_plus_2 = el.nextElementSibling.nextElementSibling
-	}
-	var el_minus_2;
-	if (el == el.parentNode.firstElementChild) {
-		el_minus_2 = "";
-	} else if (el.previousElementSibling == el.parentNode.firstElementChild) {
-		el_minus_2 = "";
-	} else if (el.previousElementSibling.previousElementSibling == null) {
-		el_minus_2 = "";
-	} else {
-		el_minus_2 = el.previousElementSibling.previousElementSibling
-	}
-	var el_plus_3;
-	if (el == el.parentNode.lastElementChild) {
-		el_plus_3 = "";
-	} else if (el.nextElementSibling == el.parentNode.lastElementChild) {
-		el_plus_3 = "";
-	} else if (el.nextElementSibling.nextElementSibling == null) {
-		el_plus_3 = "";
-	} else if (el.nextElementSibling.nextElementSibling.nextElementSibling == null) {
-		el_plus_3 = "";
-	} else {
-		el_plus_3 = el.nextElementSibling.nextElementSibling.nextElementSibling
-	}
-	var el_minus_3;
-	if (el == el.parentNode.firstElementChild) {
-		el_minus_3 = "";
-	} else if (el.previousElementSibling == el.parentNode.firstElementChild) {
-		el_minus_3 = "";
-	} else if (el.previousElementSibling.previousElementSibling == null) {
-		el_minus_3 = "";
-	} else if (el.previousElementSibling.previousElementSibling.previousElementSibling == null) {
-		el_minus_3 = "";
-	} else {
-		el_minus_3 = el.previousElementSibling.previousElementSibling.previousElementSibling
-	}
-	var el_plus_4;
-	if (el == el.parentNode.lastElementChild) {
-		el_plus_4 = "";
-	} else if (el.nextElementSibling == el.parentNode.lastElementChild) {
-		el_plus_4 = "";
-	} else if (el.nextElementSibling.nextElementSibling == null) {
-		el_plus_4 = "";
-	} else if (el.nextElementSibling.nextElementSibling.nextElementSibling == null) {
-		el_plus_4 = "";
-	} else if (el.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling == null) {
-		el_plus_4 = "";
-	} else {
-		el_plus_4 = el.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling
-	}
-	var el_minus_4;
-	if (el == el.parentNode.firstElementChild) {
-		el_minus_4 = "";
-	} else if (el.previousElementSibling == el.parentNode.firstElementChild) {
-		el_minus_4 = "";
-	} else if (el.previousElementSibling.previousElementSibling == null) {
-		el_minus_4 = "";
-	} else if (el.previousElementSibling.previousElementSibling.previousElementSibling == null) {
-		el_minus_4 = "";
-	} else if (el.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling == null) {
-		el_minus_4 = "";
-	} else {
-		el_minus_4 = el.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling
-	}
-	var el_plus_5;
-	if (el == el.parentNode.lastElementChild) {
-		el_plus_5 = "";
-	} else if (el.nextElementSibling == el.parentNode.lastElementChild) {
-		el_plus_5 = "";
-	} else if (el.nextElementSibling.nextElementSibling == null) {
-		el_plus_5 = "";
-	} else if (el.nextElementSibling.nextElementSibling.nextElementSibling == null) {
-		el_plus_5 = "";
-	} else if (el.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling == null) {
-		el_plus_5 = "";
-	} else if (el.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling == null) {
-		el_plus_5 = "";
-	} else {
-		el_plus_5 = el.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling
-	}
-	var el_minus_5;
-	if (el == el.parentNode.firstElementChild) {
-		el_minus_5 = "";
-	} else if (el.previousElementSibling == el.parentNode.firstElementChild) {
-		el_minus_5 = "";
-	} else if (el.previousElementSibling.previousElementSibling == null) {
-		el_minus_5 = "";
-	} else if (el.previousElementSibling.previousElementSibling.previousElementSibling == null) {
-		el_minus_5 = "";
-	} else if (el.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling == null) {
-		el_minus_5 = "";
-	} else if (el.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling == null) {
-		el_minus_5 = "";
-	} else {
-		el_minus_5 = el.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling
-	}
-	var el_plus_1Id;
-	if (el_plus_1.id == null) {
-		el_plus_1Id = "";
-	} else {
-		el_plus_1Id = el_plus_1.id
-	}
-	var el_minus_1Id;
-	if (el_minus_1.id == null) {
-		el_minus_1Id = "";
-	} else {
-		el_minus_1Id = el_minus_1.id
-	}
-	var el_plus_2Id;
-	if (el_plus_2.id == null) {
-		el_plus_2Id = "";
-	} else {
-		el_plus_2Id = el_plus_2.id
-	}
-	var el_minus_2Id;
-	if (el_minus_2.id == null) {
-		el_minus_2Id = "";
-	} else {
-		el_minus_2Id = el_minus_2.id
-	}
-	var el_plus_3Id;
-	if (el_plus_3.id == null) {
-		el_plus_3Id = "";
-	} else {
-		el_plus_3Id = el_plus_3.id
-	}
-	var el_minus_3Id;
-	if (el_minus_3.id == null) {
-		el_minus_3Id = "";
-	} else {
-		el_minus_3Id = el_minus_3.id
-	}
-	var el_plus_4Id;
-	if (el_plus_4.id == null) {
-		el_plus_4Id = "";
-	} else {
-		el_plus_4Id = el_plus_4.id
-	}
-	var el_minus_4Id;
-	if (el_minus_4.id == null) {
-		el_minus_4Id = "";
-	} else {
-		el_minus_4Id = el_minus_4.id
-	}
-	var el_plus_5Id;
-	if (el_plus_5.id == null) {
-		el_plus_5Id = "";
-	} else {
-		el_plus_5Id = el_plus_5.id
-	}
-	var el_minus_5Id;
-	if (el_minus_5.id == null) {
-		el_minus_5Id = "";
-	} else {
-		el_minus_5Id = el_minus_5.id
-	}
-	var el_plus_1node;
-	if (el_plus_1Id === "") {
-		el_plus_1node = "";
-	} else {
-		el_plus_1node = document.getElementById(el_plus_1Id).outerHTML
-	}
-	var el_minus_1node;
-	if (el_minus_1Id === "") {
-		el_minus_1node = "";
-	} else {
-		el_minus_1node = document.getElementById(el_minus_1Id).outerHTML
-	}
-	var el_plus_2node;
-	if (el_plus_2Id === "") {
-		el_plus_2node = "";
-	} else {
-		el_plus_2node = document.getElementById(el_plus_2Id).outerHTML
-	}
-	var el_minus_2node;
-	if (el_minus_2Id === "") {
-		el_minus_2node = "";
-	} else {
-		el_minus_2node = document.getElementById(el_minus_2Id).outerHTML
-	}
-	var el_plus_3node;
-	if (el_plus_3Id === "") {
-		el_plus_3node = "";
-	} else {
-		el_plus_3node = document.getElementById(el_plus_3Id).outerHTML
-	}
-	var el_minus_3node;
-	if (el_minus_3Id === "") {
-		el_minus_3node = "";
-	} else {
-		el_minus_3node = document.getElementById(el_minus_3Id).outerHTML
-	}
-	var el_plus_4node;
-	if (el_plus_4Id === "") {
-		el_plus_4node = "";
-	} else {
-		el_plus_4node = document.getElementById(el_plus_4Id).outerHTML
-	}
-	var el_minus_4node;
-	if (el_minus_4Id === "") {
-		el_minus_4node = "";
-	} else {
-		el_minus_4node = document.getElementById(el_minus_4Id).outerHTML
-	}
-	var el_plus_5node;
-	if (el_plus_5Id === "") {
-		el_plus_5node = "";
-	} else {
-		el_plus_5node = document.getElementById(el_plus_5Id).outerHTML
-	}
-	var el_minus_5node;
-	if (el_minus_5Id === "") {
-		el_minus_5node = "";
-	} else {
-		el_minus_5node = document.getElementById(el_minus_5Id).outerHTML
-	}
+	var lineRef = el.getAttribute("msLine");
+	var context = document.querySelectorAll("*[msLine=" + lineRef + "]");
+	var contextLength = context.length;
 	var msref = el.getAttribute('ref');
 	var row = createdTable.insertRow(-1);
 	row.style.fontSize = "16px";
@@ -540,26 +303,13 @@ function addSlip(id) {
 	} else {
 		textForm = form
 	}
-	var contextBeg
-	if ((el_minus_5.previousElementSibling == null) || (el_minus_4.previousElementSibling == null) || (el_minus_3.previousElementSibling == null) || (el_minus_2.previousElementSibling == null) || (el_minus_1.previousElementSibling == null)) {
-		contextBeg = "";
-	} else {
-		contextBeg = "... ";
-	}
-	var contextEnd
-	if ((el_plus_5.nextElementSibling == null) || (el_plus_4.nextElementSibling == null) || (el_plus_3.nextElementSibling == null) || (el_plus_2.nextElementSibling == null) || (el_plus_1.nextElementSibling == null)) {
-		contextEnd = "";
-	} else {
-		contextEnd = " ...";
-	}
-	var context
-	if (el.id.substr(8) == "dip") {
-		context = contextBeg.concat(el_minus_5node, el_minus_4node, el_minus_3node, el_minus_2node, el_minus_1node, '<b>' + textForm + '</b>', el_plus_1node, el_plus_2node, el_plus_3node, el_plus_4node, el_plus_5node, contextEnd);
-	} else {
-		context = contextBeg.concat(el_minus_5node, ' ', el_minus_4node, ' ', el_minus_3node, ' ', el_minus_2node, ' ', el_minus_1node, ' ', '<b>' + textForm + '</b>', ' ', el_plus_1node, ' ', el_plus_2node, ' ', el_plus_3node, ' ', el_plus_4node, ' ', el_plus_5node, contextEnd);
-	}
 	var rcol3 = row.insertCell(2);
-	rcol3.innerHTML = context;
+	var q;
+	for (q = 0; q < contextLength; q++) {
+		var contextElement = context[q];
+		var contextElementCln = contextElement.cloneNode(true);
+		rcol3.appendChild(contextElementCln);
+	}
 	rcol3.style.fontSize = "smaller";
 	if (el.firstChild.innerText == "/alt") {
 		var choiceID = el.getAttribute("choicePOS").slice(3);
@@ -672,6 +422,9 @@ function addSlip(id) {
 	rcol13.firstChild.innerHTML = finURIED;
 	var rcol14 = row.insertCell(13);
 	rcol14.outerHTML = '<td><button onclick="delRow(this)" style="width:75px">Del Row</button><br/><button onclick="addComment(this)" style="font-size:12px; width:75px">Comment</button></td>';
+	var formPosition = el.getAttribute("pos");
+	var formInContext = row.childNodes[2].querySelector("a[pos='" + formPosition + "']");
+	formInContext.style.backgroundColor = "aqua";
 	// opened.document.table.appendChild(tr);
 }
 
@@ -765,7 +518,7 @@ function wordSearch(id) {
 	var arr =[];
 	var i;
 	for (i = 0; i < words.length; i++) {
-		if (words[i].getAttribute("lemmaRef") == lref && words[i].getAttribute("class") !== "dip") {
+		if (words[i].getAttribute("lemmaRef") == lref && words[i].getAttribute("class") == "dip") {
 			arr.push(words[i].id);
 			continue;
 		} else {
@@ -828,246 +581,9 @@ function wordSearch(id) {
 		var cell2 = row.insertCell(1);
 		cell2.innerHTML = msref;
 		var cell3 = row.insertCell(2);
-		var el_plus_1;
-		if (el == el.parentNode.lastElementChild) {
-			el_plus_1 = "";
-		} else if (el.nextElementSibling == null) {
-			el_plus_1 = "";
-		} else {
-			el_plus_1 = el.nextElementSibling
-		}
-		var el_minus_1;
-		if (el == el.parentNode.firstElementChild) {
-			el_minus_1 = "";
-		} else if (el.previousElementSibling == null) {
-			el_minus_1 = "";
-		} else {
-			el_minus_1 = el.previousElementSibling
-		}
-		var el_plus_2;
-		if (el == el.parentNode.lastElementChild) {
-			el_plus_2 = "";
-		} else if (el.nextElementSibling == el.parentNode.lastElementChild) {
-			el_plus_2 = "";
-		} else if (el.nextElementSibling.nextElementSibling == null) {
-			el_plus_2 = "";
-		} else {
-			el_plus_2 = el.nextElementSibling.nextElementSibling
-		}
-		var el_minus_2;
-		if (el == el.parentNode.firstElementChild) {
-			el_minus_2 = "";
-		} else if (el.previousElementSibling == el.parentNode.firstElementChild) {
-			el_minus_2 = "";
-		} else if (el.previousElementSibling.previousElementSibling == null) {
-			el_minus_2 = "";
-		} else {
-			el_minus_2 = el.previousElementSibling.previousElementSibling
-		}
-		var el_plus_3;
-		if (el == el.parentNode.lastElementChild) {
-			el_plus_3 = "";
-		} else if (el.nextElementSibling == el.parentNode.lastElementChild) {
-			el_plus_3 = "";
-		} else if (el.nextElementSibling.nextElementSibling == null) {
-			el_plus_3 = "";
-		} else if (el.nextElementSibling.nextElementSibling.nextElementSibling == null) {
-			el_plus_3 = "";
-		} else {
-			el_plus_3 = el.nextElementSibling.nextElementSibling.nextElementSibling
-		}
-		var el_minus_3;
-		if (el == el.parentNode.firstElementChild) {
-			el_minus_3 = "";
-		} else if (el.previousElementSibling == el.parentNode.firstElementChild) {
-			el_minus_3 = "";
-		} else if (el.previousElementSibling.previousElementSibling == null) {
-			el_minus_3 = "";
-		} else if (el.previousElementSibling.previousElementSibling.previousElementSibling == null) {
-			el_minus_3 = "";
-		} else {
-			el_minus_3 = el.previousElementSibling.previousElementSibling.previousElementSibling
-		}
-		var el_plus_4;
-		if (el == el.parentNode.lastElementChild) {
-			el_plus_4 = "";
-		} else if (el.nextElementSibling == el.parentNode.lastElementChild) {
-			el_plus_4 = "";
-		} else if (el.nextElementSibling.nextElementSibling == null) {
-			el_plus_4 = "";
-		} else if (el.nextElementSibling.nextElementSibling.nextElementSibling == null) {
-			el_plus_4 = "";
-		} else if (el.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling == null) {
-			el_plus_4 = "";
-		} else {
-			el_plus_4 = el.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling
-		}
-		var el_minus_4;
-		if (el == el.parentNode.firstElementChild) {
-			el_minus_4 = "";
-		} else if (el.previousElementSibling == el.parentNode.firstElementChild) {
-			el_minus_4 = "";
-		} else if (el.previousElementSibling.previousElementSibling == null) {
-			el_minus_4 = "";
-		} else if (el.previousElementSibling.previousElementSibling.previousElementSibling == null) {
-			el_minus_4 = "";
-		} else if (el.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling == null) {
-			el_minus_4 = "";
-		} else {
-			el_minus_4 = el.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling
-		}
-		var el_plus_5;
-		if (el == el.parentNode.lastElementChild) {
-			el_plus_5 = "";
-		} else if (el.nextElementSibling == el.parentNode.lastElementChild) {
-			el_plus_5 = "";
-		} else if (el.nextElementSibling.nextElementSibling == null) {
-			el_plus_5 = "";
-		} else if (el.nextElementSibling.nextElementSibling.nextElementSibling == null) {
-			el_plus_5 = "";
-		} else if (el.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling == null) {
-			el_plus_5 = "";
-		} else if (el.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling == null) {
-			el_plus_5 = "";
-		} else {
-			el_plus_5 = el.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling
-		}
-		var el_minus_5;
-		if (el == el.parentNode.firstElementChild) {
-			el_minus_5 = "";
-		} else if (el.previousElementSibling == el.parentNode.firstElementChild) {
-			el_minus_5 = "";
-		} else if (el.previousElementSibling.previousElementSibling == null) {
-			el_minus_5 = "";
-		} else if (el.previousElementSibling.previousElementSibling.previousElementSibling == null) {
-			el_minus_5 = "";
-		} else if (el.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling == null) {
-			el_minus_5 = "";
-		} else if (el.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling == null) {
-			el_minus_5 = "";
-		} else {
-			el_minus_5 = el.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling
-		}
-		var el_plus_1Id;
-		if (el_plus_1.id == null) {
-			el_plus_1Id = "";
-		} else {
-			el_plus_1Id = el_plus_1.id
-		}
-		var el_minus_1Id;
-		if (el_minus_1.id == null) {
-			el_minus_1Id = "";
-		} else {
-			el_minus_1Id = el_minus_1.id
-		}
-		var el_plus_2Id;
-		if (el_plus_2.id == null) {
-			el_plus_2Id = "";
-		} else {
-			el_plus_2Id = el_plus_2.id
-		}
-		var el_minus_2Id;
-		if (el_minus_2.id == null) {
-			el_minus_2Id = "";
-		} else {
-			el_minus_2Id = el_minus_2.id
-		}
-		var el_plus_3Id;
-		if (el_plus_3.id == null) {
-			el_plus_3Id = "";
-		} else {
-			el_plus_3Id = el_plus_3.id
-		}
-		var el_minus_3Id;
-		if (el_minus_3.id == null) {
-			el_minus_3Id = "";
-		} else {
-			el_minus_3Id = el_minus_3.id
-		}
-		var el_plus_4Id;
-		if (el_plus_4.id == null) {
-			el_plus_4Id = "";
-		} else {
-			el_plus_4Id = el_plus_4.id
-		}
-		var el_minus_4Id;
-		if (el_minus_4.id == null) {
-			el_minus_4Id = "";
-		} else {
-			el_minus_4Id = el_minus_4.id
-		}
-		var el_plus_5Id;
-		if (el_plus_5.id == null) {
-			el_plus_5Id = "";
-		} else {
-			el_plus_5Id = el_plus_5.id
-		}
-		var el_minus_5Id;
-		if (el_minus_5.id == null) {
-			el_minus_5Id = "";
-		} else {
-			el_minus_5Id = el_minus_5.id
-		}
-		var el_plus_1node;
-		if (el_plus_1Id === "") {
-			el_plus_1node = "";
-		} else {
-			el_plus_1node = document.getElementById(el_plus_1Id).outerHTML
-		}
-		var el_minus_1node;
-		if (el_minus_1Id === "") {
-			el_minus_1node = "";
-		} else {
-			el_minus_1node = document.getElementById(el_minus_1Id).outerHTML
-		}
-		var el_plus_2node;
-		if (el_plus_2Id === "") {
-			el_plus_2node = "";
-		} else {
-			el_plus_2node = document.getElementById(el_plus_2Id).outerHTML
-		}
-		var el_minus_2node;
-		if (el_minus_2Id === "") {
-			el_minus_2node = "";
-		} else {
-			el_minus_2node = document.getElementById(el_minus_2Id).outerHTML
-		}
-		var el_plus_3node;
-		if (el_plus_3Id === "") {
-			el_plus_3node = "";
-		} else {
-			el_plus_3node = document.getElementById(el_plus_3Id).outerHTML
-		}
-		var el_minus_3node;
-		if (el_minus_3Id === "") {
-			el_minus_3node = "";
-		} else {
-			el_minus_3node = document.getElementById(el_minus_3Id).outerHTML
-		}
-		var el_plus_4node;
-		if (el_plus_4Id === "") {
-			el_plus_4node = "";
-		} else {
-			el_plus_4node = document.getElementById(el_plus_4Id).outerHTML
-		}
-		var el_minus_4node;
-		if (el_minus_4Id === "") {
-			el_minus_4node = "";
-		} else {
-			el_minus_4node = document.getElementById(el_minus_4Id).outerHTML
-		}
-		var el_plus_5node;
-		if (el_plus_5Id === "") {
-			el_plus_5node = "";
-		} else {
-			el_plus_5node = document.getElementById(el_plus_5Id).outerHTML
-		}
-		var el_minus_5node;
-		if (el_minus_5Id === "") {
-			el_minus_5node = "";
-		} else {
-			el_minus_5node = document.getElementById(el_minus_5Id).outerHTML
-		}
+		var lineRef = el.getAttribute("msLine");
+		var context = document.querySelectorAll("*[msLine=" + lineRef + "]");
+		var contextLength = context.length;
 		var textForm;
 		if (el.firstChild.innerText == "/alt") {
 			var sicForm = el.lastChild.innerHTML;
@@ -1079,25 +595,12 @@ function wordSearch(id) {
 		} else {
 			textForm = form
 		}
-		var contextBeg
-		if ((el_minus_5.previousElementSibling == null) || (el_minus_4.previousElementSibling == null) || (el_minus_3.previousElementSibling == null) || (el_minus_2.previousElementSibling == null) || (el_minus_1.previousElementSibling == null)) {
-			contextBeg = "";
-		} else {
-			contextBeg = "... ";
+		var q;
+		for (q = 0; q < contextLength; q++) {
+		var contextElement = context[q];
+		var contextElementCln = contextElement.cloneNode(true);
+		cell3.appendChild(contextElementCln);
 		}
-		var contextEnd
-		if ((el_plus_5.nextElementSibling == null) || (el_plus_4.nextElementSibling == null) || (el_plus_3.nextElementSibling == null) || (el_plus_2.nextElementSibling == null) || (el_plus_1.nextElementSibling == null)) {
-			contextEnd = "";
-		} else {
-			contextEnd = " ...";
-		}
-		var context
-		if (el.id.substr(8) == "dip") {
-			context = contextBeg.concat(el_minus_5node, el_minus_4node, el_minus_3node, el_minus_2node, el_minus_1node, '<b>' + textForm + '</b>', el_plus_1node, el_plus_2node, el_plus_3node, el_plus_4node, el_plus_5node, contextEnd);
-		} else {
-			context = contextBeg.concat(el_minus_5node, ' ', el_minus_4node, ' ', el_minus_3node, ' ', el_minus_2node, ' ', el_minus_1node, ' ', '<b>' + textForm + '</b>', ' ', el_plus_1node, ' ', el_plus_2node, ' ', el_plus_3node, ' ', el_plus_4node, ' ', el_plus_5node, contextEnd);
-		}
-		cell3.innerHTML = context;
 		var contextChildren = row.childNodes[2].childNodes.length;
 		var contextWords = row.childNodes[2].getElementsByTagName("a");
 		var contextWordsCount = contextWords.length;
@@ -1213,6 +716,9 @@ function wordSearch(id) {
 		cell13.firstChild.innerHTML = finURIED;
 		var cell14 = row.insertCell(13);
 		cell14.outerHTML = '<td><button onclick="delRow(this)" style="width:75px">Del Row</button><br/><button onclick="addComment(this)" style="font-size:12px; width:75px">Comment</button></td>';
+		var formPosition = el.getAttribute("pos");
+	var formInContext = row.childNodes[2].querySelector("a[pos='" + formPosition + "']");
+	formInContext.style.backgroundColor = "aqua";
 		continue;
 	}
 }
