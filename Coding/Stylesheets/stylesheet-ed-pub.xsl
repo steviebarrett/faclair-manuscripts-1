@@ -132,7 +132,16 @@
 		<xsl:value-of select="key('bib', @target)/tei:repository"/>
 		<xsl:text>, </xsl:text>
 		<xsl:value-of select="key('bib', @target)/tei:idno"/>
-		<xsl:text>.</xsl:text>
+		<xsl:choose>
+			<xsl:when test="key('bib', @target)/tei:msName">
+				<xsl:text>, </xsl:text>
+				<xsl:value-of select="key('bib', @target)/tei:msName"/>
+				<xsl:text>.</xsl:text>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:text>.</xsl:text>
+			</xsl:otherwise>
+		</xsl:choose>
 	</xsl:template>
 
 	<xsl:template name="rspStmt">
@@ -3333,9 +3342,9 @@
 				</xsl:choose>
 			</xsl:when>
 			<xsl:when test="ancestor::tei:w[not(descendant::tei:w)]">
-					<xsl:text>[</xsl:text>
+				<xsl:text>[</xsl:text>
 				<xsl:apply-templates/>
-					<xsl:text>]</xsl:text>
+				<xsl:text>]</xsl:text>
 			</xsl:when>
 			<xsl:otherwise>
 				<span msLine="{$lineID}">
