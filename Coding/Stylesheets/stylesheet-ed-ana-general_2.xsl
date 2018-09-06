@@ -108,10 +108,8 @@
 			<td>
 				<xsl:choose>
 					<xsl:when test="descendant::tei:g">
-						<ul style="list-style: none;margin:0;padding:0;">
 							<xsl:for-each select="descendant::tei:g">
-								<li>
-									<xsl:if test="count(ancestor::tei:w/descendant::tei:g) > 1">
+									<xsl:if test="count(ancestor::tei:w[not(descendant::tei:w)]/descendant::tei:g) > 1">
 										<b>|</b>
 									</xsl:if>
 									<a>
@@ -125,9 +123,7 @@
 									<xsl:if test="count(ancestor::tei:w/descendant::tei:g) > 1">
 										<b>|</b>
 									</xsl:if>
-								</li>
 							</xsl:for-each>
-						</ul>
 					</xsl:when>
 					<xsl:otherwise>
 						<xsl:text>none</xsl:text>
@@ -182,7 +178,7 @@
 						<xsl:value-of select="ancestor::tei:lg/@n"/>
 						<xsl:value-of select="ancestor::tei:l/@n"/>
 					</xsl:when>
-					<xsl:when test="ancestor::tei:lg[@type = 'proseDiv']/@n">
+					<xsl:when test="ancestor::tei:lg[@type = 'prosediv']/@n">
 						<xsl:text>§</xsl:text>
 						<xsl:value-of select="ancestor::tei:lg/@n"/>
 						<xsl:value-of select="ancestor::tei:l/@n"/>
