@@ -2638,6 +2638,10 @@
 		</xsl:variable>
 		<xsl:choose>
 			<xsl:when test="following::*[1 + $incr]/self::tei:pc">
+			<xsl:when test="@ana = 'prep' and ancestor::tei:w[contains(@ana, 'prep, part, verb')]">
+				<xsl:text/>
+			</xsl:when>
+			<xsl:when test="@ana = 'part' and ancestor::tei:w[contains(@ana, 'part, pron, verb')]">
 				<xsl:text/>
 			</xsl:when>
 			<xsl:when test="following::*[1 + $incr]/self::tei:note[@type = 'fn']">
