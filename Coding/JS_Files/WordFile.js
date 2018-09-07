@@ -429,8 +429,12 @@ function addSlip(id) {
 	var rcol14 = row.insertCell(13);
 	rcol14.outerHTML = '<td><button onclick="delRow(this)" style="width:75px">Del Row</button><br/><button onclick="addComment(this)" style="font-size:12px; width:75px">Comment</button></td>';
 	var formPosition = el.getAttribute("pos");
-	var formInContext = row.childNodes[2].querySelector("a[pos='" + formPosition + "']");
-	formInContext.style.backgroundColor = "aqua";
+	var formInContext = row.childNodes[2].querySelectorAll("a[pos='" + formPosition + "']");
+	var formInContextCount = formInContext.length
+	var fic;
+	for (fic = 0; fic < formInContextCount; fic++) {
+		formInContext[fic].style.backgroundColor = "aqua";
+	}
 	// opened.document.table.appendChild(tr);
 }
 
@@ -729,8 +733,12 @@ function wordSearch(id) {
 		var cell14 = row.insertCell(13);
 		cell14.outerHTML = '<td><button onclick="delRow(this)" style="width:75px">Del Row</button><br/><button onclick="addComment(this)" style="font-size:12px; width:75px">Comment</button></td>';
 		var formPosition = el.getAttribute("pos");
-		var formInContext = row.childNodes[2].querySelector("a[pos='" + formPosition + "']");
-		formInContext.style.backgroundColor = "aqua";
+		var formInContext = row.childNodes[2].querySelectorAll("a[pos='" + formPosition + "']");
+		var formInContextCount = formInContext.length
+		var fic;
+		for (fic = 0; fic < formInContextCount; fic++) {
+			formInContext[fic].style.backgroundColor = "aqua";
+		}
 		continue;
 	}
 }

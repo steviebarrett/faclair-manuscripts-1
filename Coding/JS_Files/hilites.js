@@ -8,7 +8,12 @@ function hilite(id) {
 			wComps[x].style.backgroundColor = "PaleTurquoise";
 		}
 	}
-	document.getElementById(id).style.backgroundColor = "aqua";
+	var wordFrags = document.querySelectorAll("a[id="+id+"]");
+	var wordFragsCount = wordFrags.length;
+	var wfs;
+	for(wfs=0;wfs<wordFragsCount;wfs++){
+		wordFrags[wfs].style.backgroundColor = "aqua";
+	}
 }
 function dhilite(id) {
 	if (document.getElementById(id).hasAttribute("data-compoundWord")) {
@@ -20,5 +25,10 @@ function dhilite(id) {
 			wComps[x].style.backgroundColor = "white";
 		}
 	}
-	document.getElementById(id).style.backgroundColor = "white";
+	var wordFrags = document.querySelectorAll("a[id="+id+"]");
+	var wordFragsCount = wordFrags.length;
+	var wfs;
+	for(wfs=0;wfs<wordFragsCount;wfs++){
+		wordFrags[wfs].style.backgroundColor = "white";
+	}
 }
