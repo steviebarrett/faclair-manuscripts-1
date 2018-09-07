@@ -1335,10 +1335,10 @@
 			<xsl:when test="child::tei:pb">
 				<xsl:variable name="conID" select="@xml:id"/>
 				<p style="margin-left:40px">
-					<b align="left">
+					<xsl:if test="@n"><b align="left">
 						<xsl:value-of select="@n"/>
 						<xsl:text>. </xsl:text>
-					</b>
+					</b></xsl:if>
 					<xsl:text>  </xsl:text>
 					<xsl:apply-templates
 						select="descendant::tei:l[following::tei:pb[ancestor::tei:lg[@xml:id = $conID]]]"
@@ -1349,6 +1349,9 @@
 					<xsl:apply-templates
 						select="descendant::tei:l[preceding::tei:pb[ancestor::tei:lg[@xml:id = $conID]]]"
 					/>
+					<xsl:if test="@type='prosediv'">
+						<br/>
+					</xsl:if>
 				</p>
 				<table/>
 				<button id="{generate-id()}" onclick="textComment(this.id)" style="font-size:12px"
@@ -1392,12 +1395,15 @@
 					</xsl:when>
 					<xsl:otherwise>
 						<p style="margin-left:30px">
-							<b align="left">
+							<xsl:if test="@n"><b align="left">
 								<xsl:value-of select="@n"/>
 								<xsl:text>. </xsl:text>
-							</b>
+							</b></xsl:if>
 							<xsl:text>  </xsl:text>
 							<xsl:apply-templates select="descendant::tei:l"/>
+							<xsl:if test="@type='prosediv'">
+								<br/>
+							</xsl:if>
 						</p>
 						<table/>
 						<button id="{generate-id()}" onclick="textComment(this.id)"
@@ -1852,6 +1858,9 @@
 									<xsl:text xml:space="preserve">- parts of this word are difficult to decipher &#10;</xsl:text>
 								</xsl:when>
 							</xsl:choose>
+						</xsl:when>
+						<xsl:when test="@reason= 'other_mark'">
+							<xsl:text xml:space="preserve">- there are additional pen-strokes that cannot be accounted for and may be significant &#10;</xsl:text>
 						</xsl:when>
 						<xsl:when test="@reason = 'abbrv'">
 							<xsl:text xml:space="preserve">- this reading involves one or more abbreviations </xsl:text>
