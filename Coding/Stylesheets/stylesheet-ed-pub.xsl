@@ -1349,6 +1349,9 @@
 					<xsl:apply-templates
 						select="descendant::tei:l[preceding::tei:pb[ancestor::tei:lg[@xml:id = $conID]]]"
 					/>
+					<xsl:if test="@type='prosediv'">
+						<br/>
+					</xsl:if>
 				</p>
 				<table/>
 				<button id="{generate-id()}" onclick="textComment(this.id)" style="font-size:12px"
@@ -1398,6 +1401,9 @@
 							</b></xsl:if>
 							<xsl:text>  </xsl:text>
 							<xsl:apply-templates select="descendant::tei:l"/>
+							<xsl:if test="@type='prosediv'">
+								<br/>
+							</xsl:if>
 						</p>
 						<table/>
 						<button id="{generate-id()}" onclick="textComment(this.id)"
