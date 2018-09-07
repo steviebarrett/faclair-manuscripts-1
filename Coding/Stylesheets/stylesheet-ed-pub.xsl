@@ -1335,10 +1335,10 @@
 			<xsl:when test="child::tei:pb">
 				<xsl:variable name="conID" select="@xml:id"/>
 				<p style="margin-left:40px">
-					<b align="left">
+					<xsl:if test="@n"><b align="left">
 						<xsl:value-of select="@n"/>
 						<xsl:text>. </xsl:text>
-					</b>
+					</b></xsl:if>
 					<xsl:text>  </xsl:text>
 					<xsl:apply-templates
 						select="descendant::tei:l[following::tei:pb[ancestor::tei:lg[@xml:id = $conID]]]"
@@ -1392,10 +1392,10 @@
 					</xsl:when>
 					<xsl:otherwise>
 						<p style="margin-left:30px">
-							<b align="left">
+							<xsl:if test="@n"><b align="left">
 								<xsl:value-of select="@n"/>
 								<xsl:text>. </xsl:text>
-							</b>
+							</b></xsl:if>
 							<xsl:text>  </xsl:text>
 							<xsl:apply-templates select="descendant::tei:l"/>
 						</p>
