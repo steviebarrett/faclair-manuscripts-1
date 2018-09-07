@@ -2514,6 +2514,12 @@
 					<xsl:when test="@ana = 'noun' and ancestor::tei:w[contains(@ana, 'noun, pron')]">
 						<xsl:text/>
 					</xsl:when>
+					<xsl:when test="@ana = 'pron' and ancestor::tei:w[contains(@ana, 'pron, emph')]">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when test="@ana = 'noun' and ancestor::tei:w[contains(@ana, 'noun, emph')]">
+						<xsl:text/>
+					</xsl:when>
 					<xsl:when test="@ana = 'noun' and ancestor::tei:w[contains(@ana, 'noun, adj')]">
 						<xsl:text/>
 					</xsl:when>
