@@ -62,6 +62,8 @@ function disableWordFunctions(id) {
 	if(document.getElementById(id).parentNode.tagName == "A"){
 	var word = document.getElementById(id).parentNode;
 	word.setAttribute("onclick", "");
+	word.setAttribute("onmouseover", "");
+	word.setAttribute("onmouseout", "");
 	}
 	else{
 		return;
@@ -84,4 +86,6 @@ function enableWordFunctions(id) {
 	else{
 		return;
 	}
+	word.setAttribute("onmouseover", "hilite(this.id)");
+	word.setAttribute("onmouseout", "dhilite(this.id)");
 }

@@ -288,9 +288,6 @@ function addSlip(id) {
 		} else if (rcol1.childNodes[0].childNodes[x].tagName == "BR") {
 			rcol1.childNodes[0].removeChild(rcol1.childNodes[0].childNodes[x]);
 			continue;
-		} else if (rcol1.childNodes[0].childNodes[x].getAttribute("class") == "pb") {
-			rcol1.childNodes[0].removeChild(rcol1.childNodes[0].childNodes[x]);
-			continue;
 		}
 	}
 	var rcol2 = row.insertCell(1);
@@ -356,6 +353,12 @@ function addSlip(id) {
 			}
 			continue;
 		}
+	}
+	var pbNodes = opened.document.querySelectorAll("*[class=pb]");
+	var pbNodesCount = pbNodes.length;
+	var pbn;
+	for (pbn = 0; pbn < pbNodesCount; pbn++) {
+		pbNodes[pbn].parentNode.removeChild(pbNodes[pbn]);
 	}
 	var rcol4 = row.insertCell(3);
 	rcol4.innerHTML = med;
@@ -579,9 +582,6 @@ function wordSearch(id) {
 			} else if (cell1.childNodes[0].childNodes[x].tagName == "BR") {
 				cell1.childNodes[0].removeChild(cell1.childNodes[0].childNodes[x]);
 				continue;
-			} else if (cell1.childNodes[0].childNodes[x].tagName.getAttribute("class") == "pb") {
-				cell1.childNodes[0].removeChild(cell1.childNodes[0].childNodes[x]);
-				continue;
 			}
 		}
 		var cell2 = row.insertCell(1);
@@ -630,6 +630,12 @@ function wordSearch(id) {
 				}
 				continue;
 			}
+		}
+		var pbNodes = opened.document.querySelectorAll("*[class=pb]");
+		var pbNodesCount = pbNodes.length;
+		var pbn;
+		for (pbn = 0; pbn < pbNodesCount; pbn++) {
+			pbNodes[pbn].parentNode.removeChild(pbNodes[pbn]);
 		}
 		cell3.style.fontSize = "smaller";
 		if (el.firstChild.innerText == "/alt") {
