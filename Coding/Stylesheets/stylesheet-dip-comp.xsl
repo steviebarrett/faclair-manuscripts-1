@@ -156,8 +156,10 @@
 
 	<xsl:template mode="dip" match="tei:cb">
 		<br/>
+		<br/>
 		<b>Col.<xsl:text> </xsl:text>
 			<xsl:value-of select="@n"/></b>
+		<br/>
 		<br/>
 	</xsl:template>
 
