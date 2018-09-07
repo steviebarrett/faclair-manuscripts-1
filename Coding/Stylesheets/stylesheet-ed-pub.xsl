@@ -1853,6 +1853,9 @@
 								</xsl:when>
 							</xsl:choose>
 						</xsl:when>
+						<xsl:when test="@reason= 'other_mark'">
+							<xsl:text xml:space="preserve">- there are additional pen-strokes that cannot be accounted for and may be significant &#10;</xsl:text>
+						</xsl:when>
 						<xsl:when test="@reason = 'abbrv'">
 							<xsl:text xml:space="preserve">- this reading involves one or more abbreviations </xsl:text>
 							<xsl:if test="descendant::tei:abbr[not(@cert = 'high')]">
