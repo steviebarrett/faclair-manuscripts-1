@@ -288,6 +288,9 @@ function addSlip(id) {
 		} else if (rcol1.childNodes[0].childNodes[x].tagName == "BR") {
 			rcol1.childNodes[0].removeChild(rcol1.childNodes[0].childNodes[x]);
 			continue;
+		} else if (rcol1.childNodes[0].childNodes[x].getAttribute("class") == "pb") {
+			rcol1.childNodes[0].removeChild(rcol1.childNodes[0].childNodes[x]);
+			continue;
 		}
 	}
 	var rcol2 = row.insertCell(1);
@@ -576,6 +579,9 @@ function wordSearch(id) {
 			} else if (cell1.childNodes[0].childNodes[x].tagName == "BR") {
 				cell1.childNodes[0].removeChild(cell1.childNodes[0].childNodes[x]);
 				continue;
+			} else if (cell1.childNodes[0].childNodes[x].tagName.getAttribute("class") == "pb") {
+				cell1.childNodes[0].removeChild(cell1.childNodes[0].childNodes[x]);
+				continue;
 			}
 		}
 		var cell2 = row.insertCell(1);
@@ -597,9 +603,9 @@ function wordSearch(id) {
 		}
 		var q;
 		for (q = 0; q < contextLength; q++) {
-		var contextElement = context[q];
-		var contextElementCln = contextElement.cloneNode(true);
-		cell3.appendChild(contextElementCln);
+			var contextElement = context[q];
+			var contextElementCln = contextElement.cloneNode(true);
+			cell3.appendChild(contextElementCln);
 		}
 		var contextChildren = row.childNodes[2].childNodes.length;
 		var contextWords = row.childNodes[2].getElementsByTagName("a");
@@ -717,8 +723,8 @@ function wordSearch(id) {
 		var cell14 = row.insertCell(13);
 		cell14.outerHTML = '<td><button onclick="delRow(this)" style="width:75px">Del Row</button><br/><button onclick="addComment(this)" style="font-size:12px; width:75px">Comment</button></td>';
 		var formPosition = el.getAttribute("pos");
-	var formInContext = row.childNodes[2].querySelector("a[pos='" + formPosition + "']");
-	formInContext.style.backgroundColor = "aqua";
+		var formInContext = row.childNodes[2].querySelector("a[pos='" + formPosition + "']");
+		formInContext.style.backgroundColor = "aqua";
 		continue;
 	}
 }
