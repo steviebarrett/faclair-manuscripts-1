@@ -108,10 +108,8 @@
 			<td>
 				<xsl:choose>
 					<xsl:when test="descendant::tei:g">
-						<ul style="list-style: none;margin:0;padding:0;">
 							<xsl:for-each select="descendant::tei:g">
-								<li>
-									<xsl:if test="count(ancestor::tei:w/descendant::tei:g) > 1">
+									<xsl:if test="count(ancestor::tei:w[not(descendant::tei:w)]/descendant::tei:g) > 1">
 										<b>|</b>
 									</xsl:if>
 									<a>
@@ -125,9 +123,7 @@
 									<xsl:if test="count(ancestor::tei:w/descendant::tei:g) > 1">
 										<b>|</b>
 									</xsl:if>
-								</li>
 							</xsl:for-each>
-						</ul>
 					</xsl:when>
 					<xsl:otherwise>
 						<xsl:text>none</xsl:text>
@@ -182,7 +178,7 @@
 						<xsl:value-of select="ancestor::tei:lg/@n"/>
 						<xsl:value-of select="ancestor::tei:l/@n"/>
 					</xsl:when>
-					<xsl:when test="ancestor::tei:lg[@type = 'proseDiv']/@n">
+					<xsl:when test="ancestor::tei:lg[@type = 'prosediv']/@n">
 						<xsl:text>§</xsl:text>
 						<xsl:value-of select="ancestor::tei:lg/@n"/>
 						<xsl:value-of select="ancestor::tei:l/@n"/>
@@ -441,7 +437,7 @@
 					</tr>
 					<xsl:for-each
 						select="//tei:w[not(descendant::tei:w) and contains(@ana, 'art') and not(@type = 'data') and not(contains(@ana, 'part'))]">
-						<xsl:sort select="@lemma"/>
+						<xsl:sort select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
 						<xsl:call-template name="contentRow">
 							<xsl:with-param name="posID">
 								<xsl:text>art</xsl:text>
@@ -450,7 +446,7 @@
 					</xsl:for-each>
 					<xsl:for-each
 						select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(ancestor::tei:name) and contains(@ana, 'noun') and not(@type = 'data') and not(contains(@ana, 'vnoun')) and not(@xml:lang)]">
-						<xsl:sort select="@lemma"/>
+						<xsl:sort select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
 						<xsl:call-template name="contentRow">
 							<xsl:with-param name="posID">
 								<xsl:text>noun</xsl:text>
@@ -459,7 +455,7 @@
 					</xsl:for-each>
 					<xsl:for-each
 						select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and contains(@ana, 'pron')]">
-						<xsl:sort select="@lemma"/>
+						<xsl:sort select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
 						<xsl:call-template name="contentRow">
 							<xsl:with-param name="posID">
 								<xsl:text>pron</xsl:text>
@@ -468,7 +464,7 @@
 					</xsl:for-each>
 					<xsl:for-each
 						select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and contains(@ana, 'poss')]">
-						<xsl:sort select="@lemma"/>
+						<xsl:sort select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
 						<xsl:call-template name="contentRow">
 							<xsl:with-param name="posID">
 								<xsl:text>poss</xsl:text>
@@ -477,7 +473,7 @@
 					</xsl:for-each>
 					<xsl:for-each
 						select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and contains(@ana, 'adj')]">
-						<xsl:sort select="@lemma"/>
+						<xsl:sort select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
 						<xsl:call-template name="contentRow">
 							<xsl:with-param name="posID">
 								<xsl:text>adj</xsl:text>
@@ -486,7 +482,7 @@
 					</xsl:for-each>
 					<xsl:for-each
 						select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and contains(@ana, 'num')]">
-						<xsl:sort select="@lemma"/>
+						<xsl:sort select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
 						<xsl:call-template name="contentRow">
 							<xsl:with-param name="posID">
 								<xsl:text>num</xsl:text>
@@ -503,7 +499,6 @@
 					</xsl:for-each>
 					<xsl:for-each
 						select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and @lemmaRef = 'http://www.dil.ie/29104']">
-						<xsl:sort select="@lemma"/>
 						<xsl:call-template name="contentRow">
 							<xsl:with-param name="posID">
 								<xsl:text>cop</xsl:text>
@@ -512,7 +507,7 @@
 					</xsl:for-each>
 					<xsl:for-each
 						select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and contains(@ana, 'verb') and not(@lemmaRef = 'http://www.dil.ie/29104') and not(@lemmaRef = 'http://www.dil.ie/4927')]">
-						<xsl:sort select="@lemma"/>
+						<xsl:sort select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
 						<xsl:call-template name="contentRow">
 							<xsl:with-param name="posID">
 								<xsl:text>verb</xsl:text>
@@ -521,7 +516,7 @@
 					</xsl:for-each>
 					<xsl:for-each
 						select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and contains(@ana, 'vnoun')]">
-						<xsl:sort select="@lemma"/>
+						<xsl:sort select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
 						<xsl:call-template name="contentRow">
 							<xsl:with-param name="posID">
 								<xsl:text>vn</xsl:text>
@@ -530,7 +525,7 @@
 					</xsl:for-each>
 					<xsl:for-each
 						select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and contains(@ana, 'ptcp')]">
-						<xsl:sort select="@lemma"/>
+						<xsl:sort select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
 						<xsl:call-template name="contentRow">
 							<xsl:with-param name="posID">
 								<xsl:text>ptcp</xsl:text>
@@ -539,7 +534,7 @@
 					</xsl:for-each>
 					<xsl:for-each
 						select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and contains(@ana, 'adv')]">
-						<xsl:sort select="@lemma"/>
+						<xsl:sort select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
 						<xsl:call-template name="contentRow">
 							<xsl:with-param name="posID">
 								<xsl:text>adv</xsl:text>
@@ -548,7 +543,7 @@
 					</xsl:for-each>
 					<xsl:for-each
 						select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and contains(@ana, 'conj')]">
-						<xsl:sort select="@lemma"/>
+						<xsl:sort select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
 						<xsl:call-template name="contentRow">
 							<xsl:with-param name="posID">
 								<xsl:text>conj</xsl:text>
@@ -557,7 +552,7 @@
 					</xsl:for-each>
 					<xsl:for-each
 						select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and contains(@ana, 'prep')]">
-						<xsl:sort select="@lemma"/>
+						<xsl:sort select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
 						<xsl:call-template name="contentRow">
 							<xsl:with-param name="posID">
 								<xsl:text>prep</xsl:text>
@@ -566,7 +561,7 @@
 					</xsl:for-each>
 					<xsl:for-each
 						select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and contains(@ana, 'part')]">
-						<xsl:sort select="@lemma"/>
+						<xsl:sort select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
 						<xsl:call-template name="contentRow">
 							<xsl:with-param name="posID">
 								<xsl:text>part</xsl:text>
@@ -575,7 +570,7 @@
 					</xsl:for-each>
 					<xsl:for-each
 						select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and contains(@ana, 'interrog')]">
-						<xsl:sort select="@lemma"/>
+						<xsl:sort select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
 						<xsl:call-template name="contentRow">
 							<xsl:with-param name="posID">
 								<xsl:text>int</xsl:text>
@@ -584,7 +579,7 @@
 					</xsl:for-each>
 					<xsl:for-each
 						select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and contains(@ana, 'pref')]">
-						<xsl:sort select="@lemma"/>
+						<xsl:sort select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
 						<xsl:call-template name="contentRow">
 							<xsl:with-param name="posID">
 								<xsl:text>pref</xsl:text>
