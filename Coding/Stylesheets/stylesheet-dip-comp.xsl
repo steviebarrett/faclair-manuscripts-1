@@ -348,7 +348,7 @@
 								</xsl:when>
 							</xsl:choose>
 						</xsl:when>
-						<xsl:when test="@reason= 'other_mark'">
+						<xsl:when test="@reason = 'other_mark'">
 							<xsl:text xml:space="preserve">- there are additional pen-strokes that cannot be accounted for and may be significant &#10;</xsl:text>
 						</xsl:when>
 						<xsl:when test="@reason = 'abbrv'">
@@ -824,7 +824,8 @@
 			</xsl:if>
 			<xsl:if test="not($compWordID = '')">
 				<xsl:attribute name="data-compoundWord">
-					<xsl:value-of select="$compWordID"/><xsl:text>_dip</xsl:text>
+					<xsl:value-of select="$compWordID"/>
+					<xsl:text>_dip</xsl:text>
 				</xsl:attribute>
 			</xsl:if>
 			<xsl:if test="@lemma">
@@ -1331,18 +1332,25 @@
 		</span>
 	</xsl:template>
 
-	<xsl:template mode="dip" match="tei:note[@type = 'fn']">
+	<xsl:template mode="dip" match="tei:note">
 		<xsl:variable name="comDiv" select="ancestor::tei:div[not(ancestor::tei:div)]/@corresp"/>
 		<xsl:variable name="fnNum"
 			select="count(preceding::tei:note[@type = 'fn' and ancestor::tei:div/@corresp = $comDiv]) + 1"/>
-		<sup>
-			<b>
-				<a id="{$comDiv}.ref{$fnNum}" href="#{$comDiv}.fn{$fnNum}"
-					title="{descendant::tei:p}">
-					<xsl:value-of select="$fnNum"/>
-				</a>
-			</b>
-		</sup>
+		<xsl:choose>
+			<xsl:when test="@type = 'fn_dip'">
+				<sup>
+					<b>
+						<a id="{$comDiv}.ref{$fnNum}" href="#{$comDiv}.fn{$fnNum}"
+							title="{descendant::tei:p}">
+							<xsl:value-of select="$fnNum"/>
+						</a>
+					</b>
+				</sup>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:text/>
+			</xsl:otherwise>
+		</xsl:choose>
 	</xsl:template>
 
 	<xsl:template mode="dip" match="tei:add[@type = 'insertion']">
