@@ -1351,6 +1351,7 @@
 					/>
 					<xsl:if test="@type='prosediv'">
 						<br/>
+						<br/>
 					</xsl:if>
 				</p>
 				<table/>
@@ -1402,6 +1403,7 @@
 							<xsl:text>  </xsl:text>
 							<xsl:apply-templates select="descendant::tei:l"/>
 							<xsl:if test="@type='prosediv'">
+								<br/>
 								<br/>
 							</xsl:if>
 						</p>
