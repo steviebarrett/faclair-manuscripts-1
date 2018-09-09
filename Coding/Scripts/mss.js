@@ -21,7 +21,7 @@ $(function() {
   });
 
   function makeDescription(span, rec) {
-    html = '<span style="color:red;">' + $(span).text() + '</span><ul>';
+    html = '<span style="color:red;">' + $(span).html() + '</span><ul>'; // IDs are no longer unique to document!
     if ($(span).hasClass('name')) {
       html = html + '<li>is the name of a ';
       if ($(span).attr('data-nametype')=='personal') {
@@ -32,7 +32,7 @@ $(function() {
       }
     }
     if ($(span).attr('data-pos')) {
-      html = html + '<li>is ' + expand($(span).attr('data-pos')) + '</li>';
+      html = html + '<li>is a ' + eval('pos_' + $(span).attr('data-pos')) + '</li>';
     }
     if ($(span).attr('data-headword')) {
       html = html + '<li>is a form of the headword <a href="' + $(span).attr('data-edil') + '" target="_new">' + $(span).attr('data-headword') + '</a></li>';
@@ -50,31 +50,12 @@ $(function() {
       html += '<li>is a syntactically simple form</li>';
     }
     if (!rec && $(span).find('.glyph').length>0) {
-      html += '<li>contains the following scribal abbreviations:<ul>';
+      html += '<li>contains the following scribal abbreviations:<ul id="abbreviationList">';
       $(span).find('.glyph').each(function() {
-        html = html + '<li>' + $(this).attr('data-glyphref') + '</li>';
-        /* 
-        html += '<li>'; 
-        $.ajax({
-          type: "GET",
-          url: "../corpus.xml",
-          dataType: "xml",
-          success: function(xml) {
-            $(xml).find('glyph').each(function() {
-              if ($(this).attr('xml:id') == $(span).attr('data-glyphref')) {
-                console.log('Dunnit!');
-                console.log($(this).attr('corresp'));
-                html += $(this).attr('corresp');
-              }
-            });
-          },       
-          error: function() {
-            alert("The XML File could not be processed correctly.");
-          }
-        });
-        
-        html += '</li>';
-         */
+        var g = eval('glyph_' + $(this).attr('data-glyphref'));
+        txt = '<a href="http://' + g.url + '" target="_new" data-src="' + $(this).attr('id') + '">' + g.name;
+        txt = txt + '</a>: ' + g.description;
+        html = html + '<li class="glyphItem">' + txt +'</li>';
       });
       html += '</ul></li>';
     }
@@ -82,7 +63,25 @@ $(function() {
     return html;
   }
 
+  $('.glyphItem').mouseenter(function(){
+    console.log('bum');
+    alert('boo');
+    //console.log($(this).attr('data-src'));
+    //goo = $(this).attr('data-src');
+    //gee = '#' + goo;
+    $(this).css('color', 'white');
+    $(this).css('background-color', 'red');
+    return false;
+  });
 
+/*
+  $('.glyphLink').mouseleave(function(){
+    goo = $(this).attr('data-src');
+    gee = '#' + goo;
+    $(gee).css('color', 'black');
+    $(gee).css('background-color', 'white');
+  });  
+*/
 
 /*
    

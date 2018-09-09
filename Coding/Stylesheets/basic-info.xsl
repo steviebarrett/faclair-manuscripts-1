@@ -67,11 +67,30 @@
         <div id="abstract">
           <xsl:apply-templates select="tei:TEI/tei:teiHeader/tei:fileDesc/tei:notesStmt/tei:note/tei:p"/>
         </div>
-        
-        
         -->
         </div>
         <div id="right-panel">Word info goes here</div>
+        <script>
+          <xsl:for-each select="document('../../Transcribing/corpus.xml')/tei:teiCorpus/tei:teiHeader/tei:encodingDesc/tei:charDecl/tei:glyph">
+            <xsl:text>var glyph_</xsl:text>
+            <xsl:value-of select="@xml:id"/>
+            <xsl:text>={</xsl:text>
+            <xsl:text>url:"</xsl:text>
+            <xsl:value-of select="@corresp"/>
+            <xsl:text>",name:"</xsl:text>
+            <xsl:value-of select="tei:glyphName"/>
+            <xsl:text>",description:"</xsl:text>
+            <xsl:value-of select="normalize-space(translate(tei:note, '&quot;', ''))"/>
+            <xsl:text>"};&#10;</xsl:text>            
+          </xsl:for-each>
+          <xsl:for-each select="document('../../Transcribing/corpus.xml')/tei:teiCorpus/tei:teiHeader/tei:encodingDesc/tei:classDecl/tei:taxonomy[@xml:id='POS']/tei:gloss">
+            <xsl:text>var pos_</xsl:text>
+            <xsl:value-of select="@xml:id"/>
+            <xsl:text>='</xsl:text>
+            <xsl:value-of select="."/>
+            <xsl:text>';&#10;</xsl:text>            
+          </xsl:for-each>
+        </script>
       </body>
     </html>
   </xsl:template>
