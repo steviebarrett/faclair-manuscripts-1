@@ -21,7 +21,7 @@ $(function() {
   });
 
   function makeDescription(span, rec) {
-    html = '<span style="color:red;">' + $(span).html() + '</span><ul>'; // IDs are no longer unique to document!
+    html = '<span style="color:red;">' + $(span).text() + '</span><ul>';
     if ($(span).hasClass('name')) {
       html = html + '<li>is the name of a ';
       if ($(span).attr('data-nametype')=='personal') {
@@ -32,7 +32,10 @@ $(function() {
       }
     }
     if ($(span).attr('data-pos')) {
-      html = html + '<li>is a ' + eval('pos_' + $(span).attr('data-pos')) + '</li>';
+      var poss = $(span).attr('data-pos').split(', ');
+      for (var i = 0; i < poss.length; i++) { 
+        html = html + '<li>is a ' + eval('pos_' + poss[i]) + '</li>';
+      }
     }
     if ($(span).attr('data-headword')) {
       html = html + '<li>is a form of the headword <a href="' + $(span).attr('data-edil') + '" target="_new">' + $(span).attr('data-headword') + '</a></li>';
@@ -64,8 +67,6 @@ $(function() {
   }
 
   $('.glyphItem').mouseenter(function(){
-    console.log('bum');
-    alert('boo');
     //console.log($(this).attr('data-src'));
     //goo = $(this).attr('data-src');
     //gee = '#' + goo;
@@ -99,35 +100,6 @@ $(function() {
 
    */
 
-  function expand(pos) {
-    if (pos == 'conj') {
-      return 'a conjunction';
-    }
-    else if (pos == 'poss') {
-      return 'a possessive article';
-    }
-    else if (pos == 'prep') {
-      return 'a preposition';
-    }
-    else if (pos == 'adj') {
-      return 'an adjective';
-    }
-    else if (pos == 'pron') {
-      return 'a pronoun';
-    }
-    else if (pos == 'part') {
-      return 'a particle';
-    }
-    else if (pos == 'art') {
-      return 'an article';
-    }
-    else if (pos == 'prep, pron') {
-      return 'a prepositional pronoun';
-    }
-    else {
-      return 'a ' + pos;
-    }
-  }
   
   
 });
