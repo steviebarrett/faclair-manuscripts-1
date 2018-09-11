@@ -167,7 +167,9 @@
 
   <xsl:template mode="diplomatic" match="tei:lb">
     <!-- MM: line breaks inside words? -->
-    <br id="{generate-id()}_dip" data-number="{@n}"/>
+    <span class="lineBreak" data-number="{@n}">
+      <br id="{generate-id()}_dip" data-number="{@n}"/>
+    </span>
   </xsl:template>
 
   <xsl:template mode="diplomatic" match="tei:pb">

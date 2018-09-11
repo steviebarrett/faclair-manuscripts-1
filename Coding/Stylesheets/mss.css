@@ -31,6 +31,8 @@ body {
  
 #data {display: none;}
 
-br::after {
-  content: "mm. "; /* disny work */ 
+.lineBreak::after {
+  content: attr(data-number) ". ";
+  color: green;
+  /*  content: attr(data-number) ". " ;  disny work */ 
 }
