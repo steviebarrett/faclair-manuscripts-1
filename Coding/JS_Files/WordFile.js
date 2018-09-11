@@ -374,7 +374,7 @@ function addSlip(id) {
 		lineID.value = id + "," + rID + ",l" + i;
 		rcol6.firstChild.getElementsByTagName("li")[i].setAttributeNode(lineID);
 		var abbrAnch = rcol6.firstChild.getElementsByTagName("li")[i].firstChild;
-		var URL = abbrAnch.innerHTML.startsWith("www.");
+		var URL = abbrAnch.innerHTML.startsWith("http://www.");
 		var hiliteLinkIn = document.createAttribute("onmouseover");
 		hiliteLinkIn.value = 'abbrHilite(this.id)';
 		rcol6.firstChild.getElementsByTagName("li")[i].setAttributeNode(hiliteLinkIn);
@@ -385,11 +385,11 @@ function addSlip(id) {
 			var abbrURL = abbrAnch.innerHTML;
 			var href = document.createAttribute("href");
 			var target = document.createAttribute("target");
-			href.value = 'https://' + abbrURL;
-			target.value = 'https://' + abbrURL;
+			href.value = abbrURL;
+			target.value = abbrURL;
 			abbrAnch.setAttributeNode(href);
 			abbrAnch.setAttributeNode(target);
-			var finText = abbrAnch.innerHTML.slice(23);
+			var finText = abbrAnch.innerHTML.slice(30);
 			abbrAnch.innerHTML = finText;
 		} else {
 			var abbrName = abbrAnch.innerHTML;
@@ -676,7 +676,7 @@ function wordSearch(id) {
 			lineID.value = id + "," + rID + ",l" + j;
 			cell6.firstChild.getElementsByTagName("li")[j].setAttributeNode(lineID);
 			var abbrAnch = cell6.firstChild.getElementsByTagName("li")[j].firstChild;
-			var URL = abbrAnch.innerHTML.startsWith("www.");
+			var URL = abbrAnch.innerHTML.startsWith("http://www.");
 			var hiliteLinkIn = document.createAttribute("onmouseover");
 			hiliteLinkIn.value = 'abbrHilite(this.id)';
 			cell6.firstChild.getElementsByTagName("li")[j].setAttributeNode(hiliteLinkIn);
@@ -687,11 +687,11 @@ function wordSearch(id) {
 				var abbrURL = abbrAnch.innerHTML;
 				var href = document.createAttribute("href");
 				var target = document.createAttribute("target");
-				href.value = 'https://' + abbrURL;
-				target.value = 'https://' + abbrURL;
+				href.value = abbrURL;
+				target.value = abbrURL;
 				abbrAnch.setAttributeNode(href);
 				abbrAnch.setAttributeNode(target);
-				var finText = abbrAnch.innerHTML.slice(23);
+				var finText = abbrAnch.innerHTML.slice(30);
 				abbrAnch.innerHTML = finText;
 				continue;
 			} else {
