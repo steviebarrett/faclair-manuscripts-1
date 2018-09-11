@@ -15,8 +15,8 @@ function editComment(r) {
 	var inputID = id + rowID + "input";
 	var initCell = document.getElementById(rowID).childNodes[2];
 	var inputCell = document.getElementById(rowID).childNodes[4];
-	var initText = document.getElementById(rowID).childNodes[2].textContent;
-	var inputText = document.getElementById(rowID).childNodes[4].textContent;
+	var initText = document.getElementById(rowID).childNodes[2].innerHTML;
+	var inputText = document.getElementById(rowID).childNodes[4].innerHTML;
 	initCell.innerHTML = "<input id='" + initID + "' value='" + initText + "'/>";
 	inputCell.innerHTML = "<input id='" + inputID + "' value='" + inputText + "'/>";
 	r.textContent = "Save";
@@ -31,12 +31,9 @@ function saveComment(r) {
 	var ts = d.toUTCString();
 	var rowID = r.parentNode.parentNode.id;
 	var tblID = r.parentNode.parentNode.parentNode.parentNode.id;
-	alert(tblID);
 	var id = tblID.split("t", 1);
-	alert(id);
 	var initID = id + rowID + "init";
 	var inputID = id + rowID + "input";
-	alert(inputID);
 	var inputCell = document.getElementById(inputID).parentNode;
 	var initText = document.getElementById(initID).value;
 	document.getElementById(initID).parentNode.innerHTML = initText;
