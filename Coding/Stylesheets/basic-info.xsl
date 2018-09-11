@@ -418,7 +418,9 @@
     </span>
   </xsl:template>
 
-
+  <xsl:template mode="diplomatic" match="tei:space">
+    <xsl:text> </xsl:text>
+  </xsl:template>
 
 
 
@@ -438,7 +440,9 @@
     <xsl:apply-templates mode="semi-diplomatic"/>
   </xsl:template>
 
-  <xsl:template mode="semi-diplomatic" match="tei:space">
+  <xsl:template match="tei:w[not(ancestor::tei:w or ancestor::tei:name)] | tei:name[ancestor::tei:name]" mode="semi-diplomatic">
+    <xsl:text> </xsl:text>
+    <xsl:apply-templates mode="semi-diplomatic"/>
     <xsl:text> </xsl:text>
   </xsl:template>
   
