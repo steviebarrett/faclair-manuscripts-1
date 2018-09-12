@@ -1,22 +1,16 @@
 $(function() {
 
   $('.chunk').mouseenter(function(){
-    if ($(this).hasClass('name')) {
-      $(this).css('color', 'white');
-      $(this).css('background-color', 'green');
-    }
-    else {
-      $(this).css('color', 'white');
-      $(this).css('background-color', 'blue');
-    }
+    $(this).css('text-decoration', 'underline', 'text-decoration-color', 'blue');
   });
 
   $('.chunk').mouseleave(function(){
-    $(this).css('color', 'black');
-    $(this).css('background-color', 'white');
+    $(this).css('text-decoration', 'none');
   });
 
   $('.chunk').click(function(){
+    $('*').css('background-color', 'white');
+    $(this).css('background-color', 'yellow');
     $('#right-panel').html(makeDescription($(this),false));
   });
 
@@ -40,10 +34,10 @@ $(function() {
     if ($(span).attr('data-headword')) {
       html = html + '<li>is a form of the headword <a href="' + $(span).attr('data-edil') + '" target="_new">' + $(span).attr('data-headword') + '</a></li>';
     }
-    if ($(span).children('.word, .name').length>1) {
+    if ($(span).children('.word').length>1) {
       html += '<li>is a syntactically complex form containing the following elements:';      
       html += '<ul>';
-      $(span).children('.word, .name').each(function() {
+      $(span).children('.word').each(function() {
         html = html + '<li>' + makeDescription($(this),true) + '</li>';
       });
       html += '</ul>';
@@ -62,43 +56,53 @@ $(function() {
       });
       html += '</ul></li>';
     }
+    if (!rec && $(span).find('.unclear').length>0) {
+      html += '<li>contains the following unclear sequences:<ul id="unclearList">';
+      $(span).find('.unclear').each(function() {
+        html = html + '<li><span style="color: green;">{</span>' + $(this).text() + '<span style="color: green;">}</span> – ';
+        html = html + 'certainty: ' + $(this).attr('data-cert') + ', reason: ' + $(this).attr('data-reason');
+        html += '</li>';
+      });
+      html += '</ul></li>';
+    }
+    if (!rec && $(span).find('.deletion').length>0) {
+      html += '<li>contains the following deleted sequences:<ul id="deletionList">';
+      $(span).find('.deletion').each(function() {
+        html = html + '<li><span style="color: green;">[</span>' + $(this).text() + '<span style="color: green;">]</span> – ';
+        html = html + 'deleted by: ' + $(this).attr('data-hand');
+        html += '</li>';
+      });
+      html += '</ul></li>';
+    }
+    if (!rec && $(span).find('.addition').length>0) {
+      html += '<li>contains the following added sequences:<ul id="additionList">';
+      $(span).find('.addition').each(function() {
+        html = html + '<li><span style="color: green;">[</span>' + $(this).text() + '<span style="color: green;">]</span> – ';
+        html = html + 'added by: ' + $(this).attr('data-hand') + ', place: ' + $(this).attr('data-place') + ', type: ' + $(this).attr('data-type');
+        html += '</li>';
+      });
+      html += '</ul></li>';
+    }
+    if (!rec && $(span).parents('.addition').length>0) {
+      html += '<li>is part of the addition ';
+      html = html + '<span style="color:red;">' + $(span).parents('.addition').text() + '</span> ';
+      html = html + '[' + 'added by: ' + $(span).parents('.addition').attr('data-hand') + ', place: ' + $(span).parents('.addition').attr('data-place') + ', type: ' + $(span).parents('.addition').attr('data-type') + ']';
+      html += '</li>';
+    }
+    if (!rec && $(span).find('.supplied').length>0) {
+      html += '<li>contains the following supplied sequences:<ul id="suppliedList">';
+      $(span).find('.supplied').each(function() {
+        html = html + '<li><span style="color: green;">[</span>' + $(this).text() + '<span style="color: green;">]</span> ';
+        html += '</li>';
+      });
+      html += '</ul></li>';
+    }
+    html = html + '<li>Location: ' + $(span).prev('.lineBreak').attr('id') + '</li>'; // note working yet
+    
     html += '</ul>';
     return html;
   }
 
-  $('.glyphItem').mouseenter(function(){
-    //console.log($(this).attr('data-src'));
-    //goo = $(this).attr('data-src');
-    //gee = '#' + goo;
-    $(this).css('color', 'white');
-    $(this).css('background-color', 'red');
-    return false;
-  });
-
-/*
-  $('.glyphLink').mouseleave(function(){
-    goo = $(this).attr('data-src');
-    gee = '#' + goo;
-    $(gee).css('color', 'black');
-    $(gee).css('background-color', 'white');
-  });  
-*/
-
-/*
-   
-  $('#clear-slips-button').on('click', function() {
-    console.log('pressed');
-  });
-            
-  $('.word').on('click', function(){
-    var abbrevs = ""; 
-    $.each($(this).contents().find('.abbreviation-glyph'), function(i, v) {
-      abbrevs = abbrevs + $(this).html() + ' ';
-    });
-    $('#slips-table > tbody').append('<tr><td>'+ $(this).html() + '</td><td>' + abbrevs + '</td></tr>');
-  });
-
-   */
 
   
   

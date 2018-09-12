@@ -18,21 +18,69 @@ body {
 }
 
 #right-panel {
-
   height: 100%;
   overflow: auto;
+  padding: 20px;
+}
+
+div.textDivision {
+  border: 2px solid gray;
+  padding: 5px;
 }
 
 .chunk {
   cursor: pointer;
 }
 
-.glyph {font-style: italic;}
- 
+.glyph {
+  /*  font-style: italic; */
+  color: green;  
+}
+
 #data {display: none;}
 
 .lineBreak::after {
   content: attr(data-number) ". ";
-  color: green;
+  color: gray;
+  font-size: x-small;
   /*  content: attr(data-number) ". " ;  disny work */ 
+}
+
+.unclear::before {
+  content: "{" ;
+  color: green;
+}
+
+.unclear::after {
+  content: "}";
+  color: green;
+}
+
+.deletion {
+  text-decoration: line-through ;
+  color: green;
+}
+
+.addition::before {
+  content: "[" ;
+  color: green;
+}
+
+.addition::after {
+  content: "]";
+  color: green;
+}
+
+.supplied::before {
+  content: "[[" ;
+  color: green;
+}
+
+.supplied::after {
+  content: "]]";
+  color: green;
+}
+
+.supplied {
+  color: green;
 }
