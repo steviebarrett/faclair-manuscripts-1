@@ -1,15 +1,15 @@
 $(function() {
 
   $('.chunk').mouseenter(function(){
-    $(this).css('text-decoration', 'underline', 'text-decoration-color', 'blue');
+    $(this).css('text-decoration', 'underline');
   });
 
   $('.chunk').mouseleave(function(){
-    $(this).css('text-decoration', 'none');
+    $(this).css('text-decoration', 'inherit');
   });
 
   $('.chunk').click(function(){
-    $('*').css('background-color', 'white');
+    $('*').css('background-color', 'inherit');
     $(this).css('background-color', 'yellow');
     $('#right-panel').html(makeDescription($(this),false));
   });

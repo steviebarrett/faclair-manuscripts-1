@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tei="http://www.tei-c.org/ns/1.0" exclude-result-prefixes="xs" version="1.0">
 
-  <!-- 'add', 'choice|unclear', 'supplied' elements in diplomatic transcription? -->
-
   <xsl:strip-space elements="*"/>
   <xsl:output method="html"/>
 
@@ -18,7 +16,7 @@
       </head>
       <body>
         <div id="left-panel">
-          <h1 id="#top">
+          <h1 id="top">
             <xsl:value-of select="tei:TEI/tei:teiHeader/tei:fileDesc/tei:titleStmt/tei:title"/>
           </h1>
           <div id="page-menu"> Contents: <ul>
@@ -154,8 +152,17 @@
   </xsl:template>
 
   <xsl:template match="tei:div" mode="diplomatic">
+    <div style="color: gray; font-size: small; margin-top: 20px;">
+      <xsl:text>[start of text </xsl:text>
+      <xsl:value-of select="@n"/>
+      <xsl:text>]</xsl:text>
+    </div>
     <xsl:apply-templates mode="diplomatic"/>
-    <p style="color:gray; font-size: x-small;">[end of section]</p>
+    <div style="color: gray; font-size: small; margin-top: 20px;">
+      <xsl:text>[end of text </xsl:text>
+      <xsl:value-of select="@n"/>
+      <xsl:text>]</xsl:text>
+    </div>
     <!--
     <div class="textDivision" data-number="{@n}" type="{@type}" data-id="{@corresp}" data-hand="{@resp}">
       <xsl:apply-templates mode="diplomatic"/>
@@ -175,7 +182,7 @@
 
   <xsl:template mode="diplomatic" match="tei:pb">
     <div style="color: gray; font-size: small; margin-top: 20px;">
-      <xsl:text>[page </xsl:text>
+      <xsl:text>[start of page </xsl:text>
       <xsl:value-of select="@n"/>
       <xsl:text>]</xsl:text>
     </div>

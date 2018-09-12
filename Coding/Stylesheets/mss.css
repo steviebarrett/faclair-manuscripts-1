@@ -8,6 +8,9 @@ body {
   width: 90%;
   height: 100%;
   overflow: hidden;
+  background-color: white;
+  color: black;
+  text-decoration: inherit;
 }
 
 #left-panel {
@@ -23,13 +26,17 @@ body {
   padding: 20px;
 }
 
-div.textDivision {
-  border: 2px solid gray;
-  padding: 5px;
-}
-
 .chunk {
   cursor: pointer;
+  background-color: inherit;
+  text-decoration: inherit;
+  color: inherit;
+}
+
+.word, .name {
+  background-color: inherit;
+  text-decoration: inherit;
+  color: inherit;
 }
 
 .glyph {
@@ -46,39 +53,20 @@ div.textDivision {
   /*  content: attr(data-number) ". " ;  disny work */ 
 }
 
-.unclear::before {
-  content: "{" ;
-  color: green;
-}
-
-.unclear::after {
-  content: "}";
-  color: green;
+.unclear {
+  color: gray;
 }
 
 .deletion {
-  text-decoration: line-through ;
-  color: green;
+  vertical-align: sub;
+  color: gray;
+  font-size: small;
 }
 
-.addition::before {
-  content: "[" ;
-  color: green;
-}
-
-.addition::after {
-  content: "]";
-  color: green;
-}
-
-.supplied::before {
-  content: "[[" ;
-  color: green;
-}
-
-.supplied::after {
-  content: "]]";
-  color: green;
+.addition {
+  vertical-align: super;  
+  font-size: small;
+  color: gray;
 }
 
 .supplied {
