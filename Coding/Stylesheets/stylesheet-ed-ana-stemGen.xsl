@@ -61,6 +61,9 @@
 				</a>
 			</td>
 			<td>
+				<xsl:value-of select="@ana"/>
+			</td>
+			<td>
 				<xsl:choose>
 					<xsl:when test="count(key('hwData', @lemmaRef)/descendant::tei:iType) = 1">
 						<xsl:value-of select="key('hwData', @lemmaRef)/descendant::tei:iType"/>
@@ -71,18 +74,24 @@
 						<xsl:for-each select="key('hwData', @lemmaRef)/descendant::tei:iType">
 							<xsl:choose>
 								<xsl:when test="position() &lt; $stemCount">
-									<xsl:value-of select="self::*"/>
-									<xsl:text> (</xsl:text>
-									<xsl:value-of select="@xml:lang"/>
-									<xsl:text>)</xsl:text>
-									<xsl:text>; </xsl:text>
+									<xsl:if
+										test="key('hwData', @lemmaRef)/descendant::tei:iType/@xml:lang">
+										<xsl:value-of select="self::*"/>
+										<xsl:text> (</xsl:text>
+										<xsl:value-of select="@xml:lang"/>
+										<xsl:text>)</xsl:text>
+										<xsl:text>; </xsl:text>
+									</xsl:if>
 								</xsl:when>
 								<xsl:when test="position() = $stemCount">
 									<xsl:value-of select="self::*"/>
-									<xsl:text> (</xsl:text>
-									<xsl:value-of select="@xml:lang"/>
-									<xsl:text>)</xsl:text>
-									<xsl:text>.</xsl:text>
+									<xsl:if
+										test="key('hwData', @lemmaRef)/descendant::tei:iType/@xml:lang">
+										<xsl:text> (</xsl:text>
+										<xsl:value-of select="@xml:lang"/>
+										<xsl:text>)</xsl:text>
+										<xsl:text>.</xsl:text>
+									</xsl:if>
 								</xsl:when>
 							</xsl:choose>
 						</xsl:for-each>
@@ -119,14 +128,31 @@
 				</xsl:choose>
 			</td>
 			<td>
+				<xsl:value-of select="key('hands', $handRef)/tei:forename"/>
+				<xsl:text> </xsl:text>
+				<xsl:value-of select="key('hands', $handRef)/tei:surname"/>
+				<xsl:text> (</xsl:text>
+				<xsl:value-of select="substring($handRef, 5)"/>
+				<xsl:text>)</xsl:text>
+			</td>
+			<td>
 				<xsl:value-of select="key('hands', $handRef)/tei:date"/>
 			</td>
 			<td>
-				<xsl:value-of select="preceding::tei:lb[1]/@xml:id | preceding::tei:lb[1]/@sameAs"/>
-				<xsl:if test="ancestor::tei:lg/@type = 'stanza'">
-					<xsl:text> (q.</xsl:text>
-					<xsl:value-of select="ancestor::tei:lg/@n"/>
-					<xsl:text>)</xsl:text>
+				<xsl:value-of select="ancestor::tei:div[1]/@corresp"/>
+			</td>
+			<td>
+				<xsl:if test="ancestor::tei:div[1]/@type = 'verse'">
+					<xsl:value-of select="ancestor::tei:lg[1]/@n"/>
+					<xsl:value-of select="tei:l/@n"/>
+				</xsl:if>
+				<xsl:if test="ancestor::tei:div[1]/@type = 'divprose'">
+					<xsl:value-of select="ancestor::tei:lg[1]/@n"/>
+				</xsl:if>
+				<xsl:if test="ancestor::tei:div[1]/@type = 'prose'">
+					<xsl:value-of select="preceding::tei:pb[1]/@n"/>
+					<xsl:text>.</xsl:text>
+					<xsl:value-of select="preceding::tei:lb[1]/@n"/>
 				</xsl:if>
 			</td>
 			<td>
@@ -256,23 +282,32 @@
 							<b>Lemma</b>
 						</th>
 						<th>
+							<b>POS</b>
+						</th>
+						<th>
 							<b>Stem</b>
 						</th>
 						<th>
 							<b>Gender</b>
 						</th>
 						<th>
+							<b>Scribe</b>
+						</th>
+						<th>
 							<b>Date</b>
 						</th>
 						<th>
-							<b>Reference</b>
+							<b>Text</b>
+						</th>
+						<th>
+							<b>Line</b>
 						</th>
 						<th>
 							<b>Context</b>
 						</th>
 					</tr>
 					<tr>
-						<xsl:text>sga = Old Gaelic; mga = Middle Gaelic; hsg = Hiberno-Scottish Gaelic (i.e. Classical Gaelic); gd = Scottish Gaelic; ga = Irish Gaelic.</xsl:text>
+						<xsl:text>sga = Old Gaelic; mga = Middle Gaelic; ghc = Hiberno-Scottish Gaelic (i.e. Classical Gaelic); gd = Scottish Gaelic; ga = Irish Gaelic.</xsl:text>
 					</tr>
 					<xsl:for-each
 						select="//tei:w[not(descendant::tei:w) and not(@type = 'data') and not(@xml:lang) and not(@source) and contains(@ana, 'noun') and key('hwData', @lemmaRef)/descendant::tei:gen/text()] | //tei:w[not(descendant::tei:w) and not(@type = 'data') and not(@xml:lang) and not(@source) and contains(@ana, 'noun') and key('hwData', @lemmaRef)/descendant::tei:iType/text()]">
