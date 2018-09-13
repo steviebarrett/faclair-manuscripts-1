@@ -77,8 +77,7 @@
 			</xsl:when>
 			<xsl:otherwise>
 				<xsl:variable name="comDiv" select="ancestor::tei:div[1]/@corresp"/>
-				<xsl:if
-					test="ancestor::tei:div[1][@type = 'prose'] and preceding::tei:lb[ancestor::tei:div/@corresp = $comDiv]">
+				<xsl:if test="preceding::tei:lb[ancestor::tei:div/@corresp = $comDiv]">
 					<xsl:variable name="lineID">
 						<xsl:choose>
 							<xsl:when test="preceding::tei:pb[1]/@xml:id">
@@ -211,7 +210,7 @@
 			select="count(preceding::tei:lb[ancestor::tei:div[@corresp = $comDiv]]) + 1"/>
 		<xsl:variable name="pagePosition"
 			select="count(preceding::tei:lb[preceding::tei:pb[@* = $comPage]]) + 1"/>
-		<xsl:if test="$divPosition > 1 and $pagePosition > 1 or $divPosition = 1 and not(preceding::tei:lb[1]/ancestor::tei:div[1]/@corresp = $comDiv)">
+		<xsl:if test="$divPosition > 1 and $pagePosition > 1">
 			<xsl:text xml:space="preserve"> </xsl:text>
 			<button id="plus{$lineID}_dip" onclick="revealComment(this.id)" style="font-size:12px">
 				<xsl:if test="ancestor::tei:w">
@@ -245,20 +244,34 @@
 					</xsl:attribute>
 				</xsl:if>Add Comment</button>
 		</xsl:if>
+		<xsl:if test="preceding::tei:seg[@type = 'margNote' and following::tei:lb[1]/@* = $lineID]">
+			<hr style="border-top: dotted 1px;"/>
+			<xsl:for-each
+				select="preceding::tei:seg[@type = 'margNote' and following::tei:lb[1]/@* = $lineID]">
+				<br/>
+				<br/>
+				<xsl:choose>
+					<xsl:when test="child::tei:addSpan/@type = 'gloss'">
+						<b><xsl:if test="child::tei:addSpan/@n"><xsl:value-of
+									select="child::tei:addSpan/@n"
+							/><xsl:text> </xsl:text></xsl:if>Marg. Gloss</b>
+						<br/>
+					</xsl:when>
+					<xsl:when test="child::tei:addSpan/@type = 'insertion'">
+						<b><xsl:if test="child::tei:addSpan/@n"><xsl:value-of
+									select="child::tei:addSpan/@n"
+							/><xsl:text> </xsl:text></xsl:if>Marg. Add.</b>
+						<br/>
+					</xsl:when>
+				</xsl:choose>
+				<xsl:apply-templates mode="dip" select="child::*"/>
+				<br/>
+			</xsl:for-each>
+			<hr style="border-top: dotted 1px;"/>
+		</xsl:if>
 		<sub>
-			<br id="{generate-id()}_dip"/>			
-			<xsl:if test="preceding::tei:addSpan">
-				<xsl:variable name="asID" select="preceding::tei:addSpan[1]/@spanTo"/>
-				<xsl:if test="following::tei:anchor[1]/@xml:id = $asID">
-					<br/>
-					<xsl:value-of select="preceding::tei:addSpan[1]/@place"/>
-					<xsl:if test="preceding::tei:addSpan[1]/@n">
-						<xsl:text> #</xsl:text>
-						<xsl:value-of select="preceding::tei:addSpan[1]/@n"/>
-					</xsl:if>
-					<xsl:text>: </xsl:text>
-				</xsl:if>
-			</xsl:if><xsl:value-of select="@n"/>
+			<br id="{generate-id()}_dip"/>
+			<xsl:value-of select="@n"/>
 			<xsl:text>. </xsl:text>
 		</sub>
 	</xsl:template>
@@ -1781,6 +1794,18 @@
 		</xsl:choose>
 	</xsl:template>
 
+	<xsl:template mode="dip" match="tei:seg[@type = 'margNote']">
+		<sub>
+			<b>
+				<xsl:text>marg. </xsl:text>
+				<xsl:if test="child::tei:addSpan/@n">
+					<xsl:value-of select="child::tei:addSpan/@n"/>
+					<xsl:text> </xsl:text>
+				</xsl:if>
+			</b>
+		</sub>
+	</xsl:template>
+
 	<xsl:template mode="dip" match="tei:handShift">
 		<xsl:variable name="elPOS" select="count(preceding::*)"/>
 		<xsl:variable name="lineID">
@@ -1810,7 +1835,7 @@
 		<xsl:variable name="divLines"
 			select="count(preceding::tei:lb[ancestor::tei:div[@corresp = $comDiv]]) + 1"/>
 		<xsl:apply-templates mode="dip"/>
-		<!-- <xsl:variable name="lineID">
+		<xsl:variable name="lineID">
 			<xsl:value-of select="ancestor::tei:TEI//tei:msIdentifier/@sameAs"/>
 			<xsl:text>.</xsl:text>
 			<xsl:choose>
@@ -1832,7 +1857,7 @@
 				select="descendant::tei:lb[not(following::tei:lb[ancestor::tei:div[@corresp = $comDiv]])]/@n + 1"
 			/>
 		</xsl:variable>
-		<xsl:text xml:space="preserve"> </xsl:text>
+		<!-- <xsl:text xml:space="preserve"> </xsl:text>
 		<button id="plus{$lineID}_dip" onclick="revealComment(this.id)" style="font-size:12px">
 			<xsl:if test="ancestor::tei:w">
 				<xsl:attribute name="onmouseover">
