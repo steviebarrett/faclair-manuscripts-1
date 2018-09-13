@@ -2628,6 +2628,9 @@
 					<xsl:when test="@ana = 'conj' and ancestor::tei:w[contains(@ana, 'conj, verb')]">
 						<xsl:text/>
 					</xsl:when>
+					<xsl:when test="@ana = 'interrog' and ancestor::tei:w[contains(@ana, 'interrog, prep')]">
+						<xsl:text/>
+					</xsl:when>
 					<xsl:when test="ancestor::tei:w and following::tei:pc[1]">
 						<xsl:text/>
 					</xsl:when>
