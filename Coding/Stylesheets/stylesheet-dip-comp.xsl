@@ -246,6 +246,17 @@
 				</xsl:if>Add Comment</button>
 		</xsl:if>
 		<sub>
+			<xsl:if test="preceding::tei:addSpan">
+				<xsl:variable name="asID" select="preceding::tei:addSpan[1]/@xml:id"/>
+				<xsl:if test="following::tei:anchor[1]/@spanTo = $asID">
+					<xsl:value-of select="preceding::tei:addSpan[1]/@place"/>
+					<xsl:if test="preceding::tei:addSpan[1]/@n">
+						<xsl:text> #</xsl:text>
+						<xsl:value-of select="preceding::tei:addSpan[1]/@n"/>
+					</xsl:if>
+					<xsl:text>: </xsl:text>
+				</xsl:if>
+			</xsl:if>
 			<br id="{generate-id()}_dip"/>
 			<xsl:value-of select="@n"/>
 			<xsl:text>. </xsl:text>
@@ -260,9 +271,24 @@
 				</xsl:otherwise>
 			</xsl:choose>
 		</xsl:variable>
-		<xsl:if test="following::tei:addSpan[following::tei:lb[1][@xml:id = $nextLine]] or following::tei:addSpan and not(following::tei:lb[1]/ancestor::tei:div[1]/@corresp = $comDiv)">
-			
-		</xsl:if>
+		<xsl:for-each select="following::tei:addSpan[following::tei:lb[1][@xml:id = $nextLine]] or following::tei:addSpan[not(following::tei:lb/ancestor::tei:div[1]/@corresp = $comDiv)]">
+			<xsl:variable name="asID" select="@xml:id"/>
+			<xsl:for-each select="following::*[following::tei:anchor/@spanTo = $asID and parent::tei:l or following::tei:anchor/@spanTo = $asID and parent::tei:p]">
+				<br/>
+				<xsl:if test="@type = 'insertion'">
+					<b>Marg. Add.<xsl:if test="@n"><xsl:text> </xsl:text><xsl:value-of select="@n"/></xsl:if>:</b>
+				</xsl:if>
+				<xsl:if test="@type = 'gloss'">
+					<b>Marg. Gl.<xsl:if test="@n"><xsl:text> </xsl:text><xsl:value-of select="@n"/></xsl:if>:</b>
+				</xsl:if>
+				<brs/>
+				<xsl:apply-templates/>
+			</xsl:for-each>
+		</xsl:for-each>
+	</xsl:template>
+	
+	<xsl:template match="tei:anchor[@spanTo]">
+		<br id="{generate-id()}_dip"/>
 	</xsl:template>
 
 	<xsl:template mode="dip" match="tei:space[@type = 'scribal' or @type = 'editorial']">
@@ -1784,8 +1810,12 @@
 	</xsl:template>
 	
 	<xsl:template match="tei:addSpan">
-		<xsl:if test="@type='insertion'"><sub><i><b><xsl:text xml:space="preserve"> marg. add. </xsl:text></b></i></sub></xsl:if>
-		<xsl:if test="@type='gloss'"><sub><i><b><xsl:text xml:space="preserve"> marg. gl. </xsl:text></b></i></sub></xsl:if>
+		<xsl:variable name="asID" select="@xml:id"/>
+		<xsl:if test="@type='insertion'"><sub><i><b><xsl:text xml:space="preserve"> marg. add. </xsl:text><xsl:value-of select="@n"/></b></i></sub></xsl:if>
+		<xsl:if test="@type='gloss'"><sub><i><b><xsl:text xml:space="preserve"> marg. gl. </xsl:text><xsl:value-of select="@n"/></b></i></sub></xsl:if>
+		<xsl:for-each select="following::*[following::tei:anchor/@spanTo = $asID]">
+			<seg hidden="hidden"><xsl:apply-templates/></seg>
+		</xsl:for-each>
 	</xsl:template>
 
 	<xsl:template mode="dip" match="tei:handShift">
