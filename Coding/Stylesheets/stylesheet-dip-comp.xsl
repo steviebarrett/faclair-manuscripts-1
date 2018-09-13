@@ -263,11 +263,6 @@
 		</sub>
 	</xsl:template>
 
-	<xsl:template mode="dip" match="tei:anchor[@spanTo]">
-		<br/>
-		<br/>
-	</xsl:template>
-
 	<xsl:template mode="dip" match="tei:space[@type = 'scribal' or @type = 'editorial']">
 		<xsl:variable name="elPOS" select="count(preceding::*)"/>
 		<xsl:variable name="lineID">
@@ -1784,32 +1779,6 @@
 				</b>
 			</xsl:when>
 		</xsl:choose>
-	</xsl:template>
-
-	<xsl:template mode="dip" match="tei:addSpan">
-		<xsl:variable name="asID" select="@xml:id"/>
-		<br/>
-		<br/>
-		<xsl:if test="@type = 'insertion'">
-			<sub>
-				<i>
-					<b>
-						<xsl:text xml:space="preserve"> marg. add. </xsl:text>
-						<xsl:value-of select="@n"/>
-					</b>
-				</i>
-			</sub>
-		</xsl:if>
-		<xsl:if test="@type = 'gloss'">
-			<sub>
-				<i>
-					<b>
-						<xsl:text xml:space="preserve"> marg. gl. </xsl:text>
-						<xsl:value-of select="@n"/>
-					</b>
-				</i>
-			</sub>
-		</xsl:if>
 	</xsl:template>
 
 	<xsl:template mode="dip" match="tei:handShift">
