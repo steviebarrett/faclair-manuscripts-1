@@ -1310,15 +1310,24 @@
 					</xsl:if>
 					<sub>
 						<xsl:if test="preceding::tei:addSpan">
-							<xsl:variable name="asID" select="preceding::tei:addSpan[1]/@xml:id"/>
-							<xsl:if test="following::tei:anchor[1]/@spanTo = $asID">
+							<xsl:variable name="asID" select="preceding::tei:addSpan[1]/@spanTo"/>
+							<xsl:if test="following::tei:anchor[1]/@xml:id = $asID">
 								<xsl:value-of select="preceding::tei:addSpan[1]/@place"/>
 								<xsl:if test="preceding::tei:addSpan[1]/@n">
-									<xsl:text> #</xsl:text>
-									<xsl:value-of select="preceding::tei:addSpan[1]/@n"/>
-								</xsl:if>
-								<xsl:text>: </xsl:text>
+									<b>
+										<xsl:value-of select="preceding::tei:addSpan[1]/@place"/>
+									</b>
+									<xsl:if test="preceding::tei:addSpan[1]/@n">
+										<b>
+											<xsl:text> #</xsl:text>
+											<xsl:value-of select="preceding::tei:addSpan[1]/@n"/>
+										</b>
+									</xsl:if>
+									<b>
+										<xsl:text>: </xsl:text>
+									</b>
 							</xsl:if>
+						</xsl:if>
 						</xsl:if>
 						<xsl:value-of select="@n"/>
 						<xsl:text>. </xsl:text>
@@ -1347,14 +1356,20 @@
 				</xsl:variable>
 				<sub id="{$lineID}" msLine="{$lID}">
 					<xsl:if test="preceding::tei:addSpan">
-						<xsl:variable name="asID" select="preceding::tei:addSpan[1]/@xml:id"/>
-						<xsl:if test="following::tei:anchor[1]/@spanTo = $asID">
-							<xsl:value-of select="preceding::tei:addSpan[1]/@place"/>
+						<xsl:variable name="asID" select="preceding::tei:addSpan[1]/@spanTo"/>
+						<xsl:if test="following::tei:anchor[1]/@xml:id = $asID">
+							<b>
+								<xsl:value-of select="preceding::tei:addSpan[1]/@place"/>
+							</b>
 							<xsl:if test="preceding::tei:addSpan[1]/@n">
-								<xsl:text> #</xsl:text>
-								<xsl:value-of select="preceding::tei:addSpan[1]/@n"/>
+								<b>
+									<xsl:text> #</xsl:text>
+									<xsl:value-of select="preceding::tei:addSpan[1]/@n"/>
+								</b>
 							</xsl:if>
-							<xsl:text>:</xsl:text>
+							<b>
+								<xsl:text>: </xsl:text>
+							</b>
 						</xsl:if>
 					</xsl:if>
 					<xsl:text> </xsl:text>
@@ -1363,18 +1378,24 @@
 				</sub>
 			</xsl:when>
 			<xsl:otherwise>
-				<xsl:if test="preceding::tei:addSpan">
-					<xsl:variable name="asID" select="preceding::tei:addSpan[1]/@xml:id"/>
-					<xsl:if test="following::tei:anchor[1]/@spanTo = $asID">
-						<xsl:value-of select="preceding::tei:addSpan[1]/@place"/>
-						<xsl:if test="preceding::tei:addSpan[1]/@n">
-							<xsl:text> #</xsl:text>
-							<xsl:value-of select="preceding::tei:addSpan[1]/@n"/>
-						</xsl:if>
-						<xsl:text>: </xsl:text>
-					</xsl:if>
-				</xsl:if>
 				<sub>
+					<xsl:if test="preceding::tei:addSpan">
+						<xsl:variable name="asID" select="preceding::tei:addSpan[1]/@spanTo"/>
+						<xsl:if test="following::tei:anchor[1]/@xml:id = $asID">
+							<b>
+								<xsl:value-of select="preceding::tei:addSpan[1]/@place"/>
+							</b>
+							<xsl:if test="preceding::tei:addSpan[1]/@n">
+								<b>
+									<xsl:text> #</xsl:text>
+									<xsl:value-of select="preceding::tei:addSpan[1]/@n"/>
+								</b>
+							</xsl:if>
+							<b>
+								<xsl:text>: </xsl:text>
+							</b>
+						</xsl:if>
+					</xsl:if>
 					<br id="{$lineID}"/>
 					<xsl:value-of select="@n"/>
 					<xsl:text>. </xsl:text>

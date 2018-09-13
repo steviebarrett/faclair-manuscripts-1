@@ -211,7 +211,7 @@
 			select="count(preceding::tei:lb[ancestor::tei:div[@corresp = $comDiv]]) + 1"/>
 		<xsl:variable name="pagePosition"
 			select="count(preceding::tei:lb[preceding::tei:pb[@* = $comPage]]) + 1"/>
-		<xsl:if test="$divPosition > 1 and $pagePosition > 1">
+		<xsl:if test="$divPosition > 1 and $pagePosition > 1 or $divPosition = 1 and not(preceding::tei:lb[1]/ancestor::tei:div[1]/@corresp = $comDiv)">
 			<xsl:text xml:space="preserve"> </xsl:text>
 			<button id="plus{$lineID}_dip" onclick="revealComment(this.id)" style="font-size:12px">
 				<xsl:if test="ancestor::tei:w">
@@ -246,9 +246,11 @@
 				</xsl:if>Add Comment</button>
 		</xsl:if>
 		<sub>
+			<br id="{generate-id()}_dip"/>			
 			<xsl:if test="preceding::tei:addSpan">
-				<xsl:variable name="asID" select="preceding::tei:addSpan[1]/@xml:id"/>
-				<xsl:if test="following::tei:anchor[1]/@spanTo = $asID">
+				<xsl:variable name="asID" select="preceding::tei:addSpan[1]/@spanTo"/>
+				<xsl:if test="following::tei:anchor[1]/@xml:id = $asID">
+					<br/>
 					<xsl:value-of select="preceding::tei:addSpan[1]/@place"/>
 					<xsl:if test="preceding::tei:addSpan[1]/@n">
 						<xsl:text> #</xsl:text>
@@ -256,46 +258,9 @@
 					</xsl:if>
 					<xsl:text>: </xsl:text>
 				</xsl:if>
-			</xsl:if>
-			<br id="{generate-id()}_dip"/>
-			<xsl:value-of select="@n"/>
+			</xsl:if><xsl:value-of select="@n"/>
 			<xsl:text>. </xsl:text>
 		</sub>
-		<xsl:variable name="nextLine">
-			<xsl:choose>
-				<xsl:when test="following::tei:lb[1]/ancestor::tei:div[1]/@corresp = $comDiv">
-					<xsl:value-of select="following::tei:lb[1]/@xml:id"/>
-				</xsl:when>
-				<xsl:otherwise>
-					<xsl:text>END</xsl:text>
-				</xsl:otherwise>
-			</xsl:choose>
-		</xsl:variable>
-		<xsl:if
-			test="following::tei:addSpan[following::tei:lb[1][@xml:id = $nextLine or $nextLine = 'END']]">
-			<xsl:for-each select="following::tei:addSpan[following::tei:lb[1][@xml:id = $nextLine]]">
-				<xsl:variable name="asID" select="@xml:id"/>
-				<br/>
-				<br/>
-				<xsl:if test="@type = 'insertion'">
-					<b>Marg. Add.<xsl:if test="@n"><xsl:text> </xsl:text><xsl:value-of select="@n"
-							/></xsl:if>:</b>
-				</xsl:if>
-				<xsl:if test="@type = 'gloss'">
-					<b>Marg. Gl.<xsl:if test="@n"><xsl:text> </xsl:text><xsl:value-of select="@n"
-							/></xsl:if>:</b>
-				</xsl:if>
-				<br/>
-					<xsl:if test="parent::tei:l or parent::tei:p">
-						<xsl:apply-templates select="following::*[following::tei:anchor/@spanTo = $asID and parent::tei:l] or following::*[following::tei:anchor/@spanTo = $asID and parent::tei:p]"/>
-					</xsl:if>
-			</xsl:for-each>
-		</xsl:if>
-	</xsl:template>
-
-	<xsl:template match="tei:anchor[@spanTo]">
-		<br/>
-		<br/>
 	</xsl:template>
 
 	<xsl:template mode="dip" match="tei:space[@type = 'scribal' or @type = 'editorial']">
@@ -1816,35 +1781,6 @@
 		</xsl:choose>
 	</xsl:template>
 
-	<xsl:template match="tei:addSpan">
-		<xsl:variable name="asID" select="@xml:id"/>
-		<xsl:if test="@type = 'insertion'">
-			<sub>
-				<i>
-					<b>
-						<xsl:text xml:space="preserve"> marg. add. </xsl:text>
-						<xsl:value-of select="@n"/>
-					</b>
-				</i>
-			</sub>
-		</xsl:if>
-		<xsl:if test="@type = 'gloss'">
-			<sub>
-				<i>
-					<b>
-						<xsl:text xml:space="preserve"> marg. gl. </xsl:text>
-						<xsl:value-of select="@n"/>
-					</b>
-				</i>
-			</sub>
-		</xsl:if>
-		<xsl:for-each select="following::*[following::tei:anchor/@spanTo = $asID]">
-			<seg hidden="hidden">
-				<xsl:apply-templates mode="dip"/>
-			</seg>
-		</xsl:for-each>
-	</xsl:template>
-
 	<xsl:template mode="dip" match="tei:handShift">
 		<xsl:variable name="elPOS" select="count(preceding::*)"/>
 		<xsl:variable name="lineID">
@@ -1874,7 +1810,7 @@
 		<xsl:variable name="divLines"
 			select="count(preceding::tei:lb[ancestor::tei:div[@corresp = $comDiv]]) + 1"/>
 		<xsl:apply-templates mode="dip"/>
-		<xsl:variable name="lineID">
+		<!-- <xsl:variable name="lineID">
 			<xsl:value-of select="ancestor::tei:TEI//tei:msIdentifier/@sameAs"/>
 			<xsl:text>.</xsl:text>
 			<xsl:choose>
@@ -1927,7 +1863,7 @@
 				<xsl:attribute name="onmouseout">
 					<xsl:text>enableWordFunctions(this.id)</xsl:text>
 				</xsl:attribute>
-			</xsl:if>Add Comment</button>
+			</xsl:if>Add Comment</button>-->
 	</xsl:template>
 
 	<xsl:template mode="dip" match="tei:head">
