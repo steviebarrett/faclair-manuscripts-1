@@ -77,8 +77,7 @@
 			</xsl:when>
 			<xsl:otherwise>
 				<xsl:variable name="comDiv" select="ancestor::tei:div[1]/@corresp"/>
-				<xsl:if
-					test="ancestor::tei:div[1][@type = 'prose'] and preceding::tei:lb[ancestor::tei:div/@corresp = $comDiv]">
+				<xsl:if test="preceding::tei:lb[ancestor::tei:div/@corresp = $comDiv]">
 					<xsl:variable name="lineID">
 						<xsl:choose>
 							<xsl:when test="preceding::tei:pb[1]/@xml:id">
@@ -245,6 +244,31 @@
 					</xsl:attribute>
 				</xsl:if>Add Comment</button>
 		</xsl:if>
+		<xsl:if test="preceding::tei:seg[@type = 'margNote' and following::tei:lb[1]/@* = $lineID]">
+			<hr style="border-top: dotted 1px;"/>
+			<xsl:for-each
+				select="preceding::tei:seg[@type = 'margNote' and following::tei:lb[1]/@* = $lineID]">
+				<br/>
+				<br/>
+				<xsl:choose>
+					<xsl:when test="child::tei:addSpan/@type = 'gloss'">
+						<b><xsl:if test="child::tei:addSpan/@n"><xsl:value-of
+									select="child::tei:addSpan/@n"
+							/><xsl:text> </xsl:text></xsl:if>Marg. Gloss</b>
+						<br/>
+					</xsl:when>
+					<xsl:when test="child::tei:addSpan/@type = 'insertion'">
+						<b><xsl:if test="child::tei:addSpan/@n"><xsl:value-of
+									select="child::tei:addSpan/@n"
+							/><xsl:text> </xsl:text></xsl:if>Marg. Add.</b>
+						<br/>
+					</xsl:when>
+				</xsl:choose>
+				<xsl:apply-templates mode="dip" select="child::*"/>
+				<br/>
+			</xsl:for-each>
+			<hr style="border-top: dotted 1px;"/>
+		</xsl:if>
 		<sub>
 			<br id="{generate-id()}_dip"/>
 			<xsl:value-of select="@n"/>
@@ -281,7 +305,7 @@
 	</xsl:template>
 
 	<xsl:template mode="dip" match="tei:seg[@type = 'cfe']">
-		<xsl:apply-templates/>
+		<xsl:apply-templates mode="dip"/>
 	</xsl:template>
 
 	<xsl:template mode="dip" match="tei:choice">
@@ -1194,12 +1218,12 @@
 			select="count(preceding::tei:g[ancestor::tei:w[not(descendant::tei:w) and count(preceding::tei:w[not(descendant::tei:w)]) = $comWord]])"/>
 		<xsl:if test="contains(@ref, 'g')">
 			<i class="glyph" id="l{$position}" cert="{ancestor::tei:abbr/@cert}">
-				<xsl:apply-templates/>
+				<xsl:apply-templates mode="dip"/>
 			</i>
 		</xsl:if>
 		<xsl:if test="contains(@ref, 'l')">
 			<span class="glyph" id="l{$position}" cert="{ancestor::tei:abbr/@cert}">
-				<xsl:apply-templates/>
+				<xsl:apply-templates mode="dip"/>
 			</span>
 		</xsl:if>
 	</xsl:template>
@@ -1351,7 +1375,7 @@
 		</xsl:variable>
 		<span msLine="{$lineID}_dip">
 			<del rend="strikethrough">
-				<xsl:apply-templates/>
+				<xsl:apply-templates mode="dip"/>
 			</del>
 		</span>
 	</xsl:template>
@@ -1439,7 +1463,7 @@
 						<b>
 							<xsl:text>\\</xsl:text>
 						</b>
-						<xsl:apply-templates/>
+						<xsl:apply-templates mode="dip"/>
 						<b>
 							<xsl:text>//</xsl:text>
 						</b>
@@ -1572,7 +1596,7 @@
 							</xsl:if>
 							<xsl:text> \\ </xsl:text>
 						</b>
-						<xsl:apply-templates/>
+						<xsl:apply-templates mode="dip"/>
 						<b>
 							<xsl:if test="not(ancestor::tei:del)">
 								<xsl:attribute name="msLine">
@@ -1714,7 +1738,7 @@
 					</xsl:if>
 					<xsl:text> // gl. </xsl:text>
 				</b>
-				<xsl:apply-templates/>
+				<xsl:apply-templates mode="dip"/>
 				<b>
 					<xsl:if test="not(ancestor::tei:del)">
 						<xsl:attribute name="msLine">
@@ -1735,7 +1759,7 @@
 					</xsl:if>
 					<xsl:text> \\ gl. </xsl:text>
 				</b>
-				<xsl:apply-templates/>
+				<xsl:apply-templates mode="dip"/>
 				<b>
 					<xsl:if test="not(ancestor::tei:del)">
 						<xsl:attribute name="msLine">
@@ -1756,7 +1780,7 @@
 					</xsl:if>
 					<xsl:text> | gl. </xsl:text>
 				</b>
-				<xsl:apply-templates/>
+				<xsl:apply-templates mode="dip"/>
 				<b>
 					<xsl:if test="not(ancestor::tei:del)">
 						<xsl:attribute name="msLine">
@@ -1768,6 +1792,18 @@
 				</b>
 			</xsl:when>
 		</xsl:choose>
+	</xsl:template>
+
+	<xsl:template mode="dip" match="tei:seg[@type = 'margNote']">
+		<sub>
+			<b>
+				<xsl:text>marg. </xsl:text>
+				<xsl:if test="child::tei:addSpan/@n">
+					<xsl:value-of select="child::tei:addSpan/@n"/>
+					<xsl:text> </xsl:text>
+				</xsl:if>
+			</b>
+		</sub>
 	</xsl:template>
 
 	<xsl:template mode="dip" match="tei:handShift">
@@ -1821,7 +1857,7 @@
 				select="descendant::tei:lb[not(following::tei:lb[ancestor::tei:div[@corresp = $comDiv]])]/@n + 1"
 			/>
 		</xsl:variable>
-		<xsl:text xml:space="preserve"> </xsl:text>
+		<!-- <xsl:text xml:space="preserve"> </xsl:text>
 		<button id="plus{$lineID}_dip" onclick="revealComment(this.id)" style="font-size:12px">
 			<xsl:if test="ancestor::tei:w">
 				<xsl:attribute name="onmouseover">
@@ -1852,7 +1888,7 @@
 				<xsl:attribute name="onmouseout">
 					<xsl:text>enableWordFunctions(this.id)</xsl:text>
 				</xsl:attribute>
-			</xsl:if>Add Comment</button>
+			</xsl:if>Add Comment</button>-->
 	</xsl:template>
 
 	<xsl:template mode="dip" match="tei:head">
