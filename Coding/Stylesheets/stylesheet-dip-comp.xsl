@@ -261,41 +261,11 @@
 			<xsl:value-of select="@n"/>
 			<xsl:text>. </xsl:text>
 		</sub>
-		<xsl:variable name="nextLine">
-			<xsl:choose>
-				<xsl:when test="following::tei:lb[1]/ancestor::tei:div[1]/@corresp = $comDiv">
-					<xsl:value-of select="following::tei:lb[1]/@xml:id"/>
-				</xsl:when>
-				<xsl:otherwise>
-					<xsl:text>END</xsl:text>
-				</xsl:otherwise>
-			</xsl:choose>
-		</xsl:variable>
-		<xsl:if
-			test="following::tei:addSpan[following::tei:lb[1][@xml:id = $nextLine or $nextLine = 'END']]">
-			<xsl:for-each select="following::tei:addSpan[following::tei:lb[1][@xml:id = $nextLine]]">
-				<xsl:variable name="asID" select="@xml:id"/>
-				<br/>
-				<xsl:if test="@type = 'insertion'">
-					<b>Marg. Add.<xsl:if test="@n"><xsl:text> </xsl:text><xsl:value-of select="@n"
-							/></xsl:if>:</b>
-				</xsl:if>
-				<xsl:if test="@type = 'gloss'">
-					<b>Marg. Gl.<xsl:if test="@n"><xsl:text> </xsl:text><xsl:value-of select="@n"
-							/></xsl:if>:</b>
-				</xsl:if>
-				<br/>
-				<xsl:for-each select="following::*[following::tei:anchor/@spanTo = $asID]">
-					<xsl:if test="parent::tei:l or parent::tei:p">
-						<xsl:apply-templates/>
-					</xsl:if>
-				</xsl:for-each>
-			</xsl:for-each>
-		</xsl:if>
 	</xsl:template>
 
-	<xsl:template match="tei:anchor[@spanTo]">
-		<br id="{generate-id()}_dip"/>
+	<xsl:template mode="dip" match="tei:anchor[@spanTo]">
+		<br/>
+		<br/>
 	</xsl:template>
 
 	<xsl:template mode="dip" match="tei:space[@type = 'scribal' or @type = 'editorial']">
@@ -1816,8 +1786,10 @@
 		</xsl:choose>
 	</xsl:template>
 
-	<xsl:template match="tei:addSpan">
+	<xsl:template mode="dip" match="tei:addSpan">
 		<xsl:variable name="asID" select="@xml:id"/>
+		<br/>
+		<br/>
 		<xsl:if test="@type = 'insertion'">
 			<sub>
 				<i>
@@ -1838,11 +1810,6 @@
 				</i>
 			</sub>
 		</xsl:if>
-		<xsl:for-each select="following::*[following::tei:anchor/@spanTo = $asID]">
-			<seg hidden="hidden">
-				<xsl:apply-templates/>
-			</seg>
-		</xsl:for-each>
 	</xsl:template>
 
 	<xsl:template mode="dip" match="tei:handShift">
