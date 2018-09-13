@@ -1346,12 +1346,34 @@
 					</xsl:if>
 				</xsl:variable>
 				<sub id="{$lineID}" msLine="{$lID}">
+					<xsl:if test="preceding::tei:addSpan">
+						<xsl:variable name="asID" select="preceding::tei:addSpan[1]/@xml:id"/>
+						<xsl:if test="following::tei:anchor[1]/@spanTo = $asID">
+							<xsl:value-of select="preceding::tei:addSpan[1]/@place"/>
+							<xsl:if test="preceding::tei:addSpan[1]/@n">
+								<xsl:text> #</xsl:text>
+								<xsl:value-of select="preceding::tei:addSpan[1]/@n"/>
+							</xsl:if>
+							<xsl:text>:</xsl:text>
+						</xsl:if>
+					</xsl:if>
 					<xsl:text> </xsl:text>
 					<xsl:value-of select="@n"/>
 					<xsl:text>. </xsl:text>
 				</sub>
 			</xsl:when>
 			<xsl:otherwise>
+				<xsl:if test="preceding::tei:addSpan">
+					<xsl:variable name="asID" select="preceding::tei:addSpan[1]/@xml:id"/>
+					<xsl:if test="following::tei:anchor[1]/@spanTo = $asID">
+						<xsl:value-of select="preceding::tei:addSpan[1]/@place"/>
+						<xsl:if test="preceding::tei:addSpan[1]/@n">
+							<xsl:text> #</xsl:text>
+							<xsl:value-of select="preceding::tei:addSpan[1]/@n"/>
+						</xsl:if>
+						<xsl:text>: </xsl:text>
+					</xsl:if>
+				</xsl:if>
 				<sub>
 					<br id="{$lineID}"/>
 					<xsl:value-of select="@n"/>
