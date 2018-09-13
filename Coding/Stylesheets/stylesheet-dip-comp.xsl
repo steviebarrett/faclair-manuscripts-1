@@ -250,6 +250,19 @@
 			<xsl:value-of select="@n"/>
 			<xsl:text>. </xsl:text>
 		</sub>
+		<xsl:variable name="nextLine">
+			<xsl:choose>
+				<xsl:when test="following::tei:lb[1]/ancestor::tei:div[1]/@corresp = $comDiv">
+					<xsl:value-of select="following::tei:lb[1]/@xml:id"/>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:text>END</xsl:text>
+				</xsl:otherwise>
+			</xsl:choose>
+		</xsl:variable>
+		<xsl:if test="following::tei:addSpan[following::tei:lb[1][@xml:id = $nextLine]] or following::tei:addSpan and not(following::tei:lb[1]/ancestor::tei:div[1]/@corresp = $comDiv)">
+			
+		</xsl:if>
 	</xsl:template>
 
 	<xsl:template mode="dip" match="tei:space[@type = 'scribal' or @type = 'editorial']">
@@ -1768,6 +1781,11 @@
 				</b>
 			</xsl:when>
 		</xsl:choose>
+	</xsl:template>
+	
+	<xsl:template match="tei:addSpan">
+		<xsl:if test="@type='insertion'"><sub><i><b><xsl:text xml:space="preserve"> marg. add. </xsl:text></b></i></sub></xsl:if>
+		<xsl:if test="@type='gloss'"><sub><i><b><xsl:text xml:space="preserve"> marg. gl. </xsl:text></b></i></sub></xsl:if>
 	</xsl:template>
 
 	<xsl:template mode="dip" match="tei:handShift">
