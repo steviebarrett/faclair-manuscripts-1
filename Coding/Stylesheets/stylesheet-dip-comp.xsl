@@ -297,7 +297,7 @@
 	</xsl:template>
 
 	<xsl:template mode="dip" match="tei:seg[@type = 'cfe']">
-		<xsl:apply-templates/>
+		<xsl:apply-templates mode="dip"/>
 	</xsl:template>
 
 	<xsl:template mode="dip" match="tei:choice">
@@ -1210,12 +1210,12 @@
 			select="count(preceding::tei:g[ancestor::tei:w[not(descendant::tei:w) and count(preceding::tei:w[not(descendant::tei:w)]) = $comWord]])"/>
 		<xsl:if test="contains(@ref, 'g')">
 			<i class="glyph" id="l{$position}" cert="{ancestor::tei:abbr/@cert}">
-				<xsl:apply-templates/>
+				<xsl:apply-templates mode="dip"/>
 			</i>
 		</xsl:if>
 		<xsl:if test="contains(@ref, 'l')">
 			<span class="glyph" id="l{$position}" cert="{ancestor::tei:abbr/@cert}">
-				<xsl:apply-templates/>
+				<xsl:apply-templates mode="dip"/>
 			</span>
 		</xsl:if>
 	</xsl:template>
@@ -1367,7 +1367,7 @@
 		</xsl:variable>
 		<span msLine="{$lineID}_dip">
 			<del rend="strikethrough">
-				<xsl:apply-templates/>
+				<xsl:apply-templates mode="dip"/>
 			</del>
 		</span>
 	</xsl:template>
@@ -1455,7 +1455,7 @@
 						<b>
 							<xsl:text>\\</xsl:text>
 						</b>
-						<xsl:apply-templates/>
+						<xsl:apply-templates mode="dip"/>
 						<b>
 							<xsl:text>//</xsl:text>
 						</b>
@@ -1588,7 +1588,7 @@
 							</xsl:if>
 							<xsl:text> \\ </xsl:text>
 						</b>
-						<xsl:apply-templates/>
+						<xsl:apply-templates mode="dip"/>
 						<b>
 							<xsl:if test="not(ancestor::tei:del)">
 								<xsl:attribute name="msLine">
@@ -1730,7 +1730,7 @@
 					</xsl:if>
 					<xsl:text> // gl. </xsl:text>
 				</b>
-				<xsl:apply-templates/>
+				<xsl:apply-templates mode="dip"/>
 				<b>
 					<xsl:if test="not(ancestor::tei:del)">
 						<xsl:attribute name="msLine">
@@ -1751,7 +1751,7 @@
 					</xsl:if>
 					<xsl:text> \\ gl. </xsl:text>
 				</b>
-				<xsl:apply-templates/>
+				<xsl:apply-templates mode="dip"/>
 				<b>
 					<xsl:if test="not(ancestor::tei:del)">
 						<xsl:attribute name="msLine">
@@ -1772,7 +1772,7 @@
 					</xsl:if>
 					<xsl:text> | gl. </xsl:text>
 				</b>
-				<xsl:apply-templates/>
+				<xsl:apply-templates mode="dip"/>
 				<b>
 					<xsl:if test="not(ancestor::tei:del)">
 						<xsl:attribute name="msLine">
