@@ -9,7 +9,7 @@ $(function() {
   });
 
   $('.chunk').click(function(){
-    $('*').css('background-color', 'inherit');
+    $('.chunk').css('background-color', 'inherit');
     $(this).css('background-color', 'yellow');
     $('#right-panel').html(makeDescription($(this),false));
   });

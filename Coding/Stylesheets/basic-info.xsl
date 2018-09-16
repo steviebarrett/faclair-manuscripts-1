@@ -5,13 +5,14 @@
   <xsl:output method="html"/>
 
   <xsl:template match="/">
-    <html>
+    <html xml:id="{@xml:id}">
       <head>
         <title>
           <xsl:value-of select="tei:TEI/tei:teiHeader/tei:fileDesc/tei:titleStmt/tei:title"/>
         </title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"/>
         <script src="../../Coding/Scripts/mss.js"/>
+        <script src="../../Coding/Scripts/comments.js"/>
         <link rel="stylesheet" type="text/css" href="../../Coding/Stylesheets/mss.css"/>
       </head>
       <body>
@@ -155,7 +156,10 @@
     <div style="color: gray; font-size: small; margin-top: 20px;">
       <xsl:text>[start of text </xsl:text>
       <xsl:value-of select="@n"/>
-      <xsl:text>]</xsl:text>
+      <xsl:text>] </xsl:text>
+      <a href="#" class="addComment" title="Leave comment on this text" data-n="{@n}">[+]</a>
+      <xsl:text> </xsl:text>
+      <a href="#" class="viewComment" title="View comments on this text" data-n="{@n}">[?]</a>
     </div>
     <xsl:apply-templates mode="diplomatic"/>
     <div style="color: gray; font-size: small; margin-top: 20px;">
