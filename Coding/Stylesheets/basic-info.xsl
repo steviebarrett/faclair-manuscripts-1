@@ -5,7 +5,7 @@
   <xsl:output method="html"/>
 
   <xsl:template match="/">
-    <html xml:id="{@xml:id}">
+    <html data-docid="{tei:TEI/@xml:id}">
       <head>
         <title>
           <xsl:value-of select="tei:TEI/tei:teiHeader/tei:fileDesc/tei:titleStmt/tei:title"/>
