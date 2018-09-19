@@ -77,7 +77,6 @@
 			</xsl:when>
 			<xsl:otherwise>
 				<xsl:variable name="comDiv" select="ancestor::tei:div[1]/@corresp"/>
-				<xsl:if test="preceding::tei:lb[ancestor::tei:div/@corresp = $comDiv]">
 					<xsl:variable name="lineID">
 						<xsl:choose>
 							<xsl:when test="preceding::tei:pb[1]/@xml:id">
@@ -123,7 +122,6 @@
 								<xsl:text>enableWordFunctions(this.id)</xsl:text>
 							</xsl:attribute>
 						</xsl:if>Add Comment</button>
-				</xsl:if>
 				<hr align="left" width="40%"/>
 				<xsl:choose>
 					<xsl:when test="ancestor::tei:div[1]//tei:handShift">
@@ -206,11 +204,14 @@
 				</xsl:when>
 			</xsl:choose>
 		</xsl:variable>
+		<xsl:variable name="comCol" select="preceding::tei:cb[1]/@xml:id"/>
 		<xsl:variable name="divPosition"
-			select="count(preceding::tei:lb[ancestor::tei:div[@corresp = $comDiv]]) + 1"/>
+			select="count(preceding::tei:lb[ancestor::tei:div[1][@corresp = $comDiv]]) + 1"/>
 		<xsl:variable name="pagePosition"
-			select="count(preceding::tei:lb[preceding::tei:pb[@* = $comPage]]) + 1"/>
-		<xsl:if test="$pagePosition > 1">
+			select="count(preceding::tei:lb[preceding::tei:pb[1][@* = $comPage]]) + 1"/>
+		<xsl:variable name="colPosition"
+			select="count(preceding::tei:lb[preceding::tei:cb[1][@* = $comCol]]) + 1"/>
+		<xsl:if test="$pagePosition > 1 and $comCol > 1">
 			<xsl:text xml:space="preserve"> </xsl:text>
 			<button id="plus{$lineID}_dip" onclick="revealComment(this.id)" style="font-size:12px">
 				<xsl:if test="ancestor::tei:w">
