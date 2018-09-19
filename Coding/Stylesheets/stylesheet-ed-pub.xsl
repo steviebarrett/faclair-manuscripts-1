@@ -1685,8 +1685,12 @@
 	</xsl:template>
 
 	<xsl:template match="tei:seg[@type = 'margNote']">
-		<xsl:variable name="encLineID"
-			select="preceding::tei:lb[1]/@xml:id or preceding::tei:lb[1]/@sameAs"/>
+		<xsl:variable name="encLineID">
+			<xsl:choose>
+				<xsl:when test="preceding::tei:lb[1]/@xml:id"><xsl:value-of select="preceding::tei:lb[1]/@xml:id"/></xsl:when>
+				<xsl:when test="preceding::tei:lb[1]/@sameAs"><xsl:value-of select="preceding::tei:lb[1]/@sameAs"/></xsl:when>
+			</xsl:choose>
+		</xsl:variable>
 		<xsl:variable name="mnCount" select="count(//tei:seg[@type = 'margNote' and preceding::tei:lb[1]/@* = $encLineID])"/>
 		<sub>
 			<b>
