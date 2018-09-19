@@ -1690,8 +1690,7 @@
 		<sub>
 			<b>
 				<i><xsl:text> </xsl:text>~m<xsl:if
-						test="count(//tei:seg[@type = 'margNote']/preceding::tei:lb[1]/@* = $encLineID) > 1"
-							><xsl:text>#</xsl:text><xsl:value-of
+						test="count(//tei:seg[@type = 'margNote']/preceding::tei:lb[1][@* = $encLineID]) > 1"><xsl:text>#</xsl:text><xsl:value-of
 							select="count(preceding::tei:seg[@type = 'margNote' and preceding::tei:lb[1]/@* = $encLineID]) + 1"
 						/></xsl:if>~<xsl:text> </xsl:text></i>
 			</b>
