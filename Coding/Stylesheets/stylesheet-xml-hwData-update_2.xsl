@@ -36,7 +36,7 @@
 			<text>
 				<body>
 					<xsl:for-each
-						select="//tei:teiCorpus//tei:w[not(descendant::tei:w) and not(@lemmaRef = preceding::tei:w[not(descendant::tei:w)]/@lemmaRef) and not(@type = 'data') and @lemmaRef]">
+						select="//tei:w[not(descendant::tei:w) and not(@lemmaRef = preceding::tei:w[not(descendant::tei:w)]/@lemmaRef) and not(@type = 'data') and @lemmaRef]">
 						<xsl:variable name="wordID" select="@lemmaRef"/>
 							<entryFree>
 								<xsl:attribute name="corresp">
