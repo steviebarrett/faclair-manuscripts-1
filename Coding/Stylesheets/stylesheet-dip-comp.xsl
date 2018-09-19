@@ -244,38 +244,31 @@
 					</xsl:attribute>
 				</xsl:if>Add Comment</button>
 		</xsl:if>
-		<xsl:if test="preceding::tei:addSpan[following::tei:lb[1]/@* = $lineID]">
-			<hr style="border-top: dotted 5px;"/>
-			<xsl:for-each
-				select="preceding::tei:addSpan[following::tei:lb[1]/@* = $lineID]">
-				<xsl:variable name="asID" select="@spanTo"/>
-				<span style="margin-left:40px"><br/>
-				<br/>
-				<xsl:choose>
-					<xsl:when test="@type = 'gloss'">
-						<b>Marg. Gl.<xsl:if test="count(//tei:addSpan[following::tei:lb[1]/@* = $lineID and @type = 'gloss']) > 1"><xsl:text> </xsl:text><xsl:value-of
-							select="count(preceding::tei:addSpan[following::tei:lb[1]/@* = $lineID and @type = 'gloss']) + 1"
-						/></xsl:if></b>
-						<br/>
-					</xsl:when>
-					<xsl:when test="@type = 'insertion'">
-						<b>Marg. Add.<xsl:if test="count(//tei:addSpan[following::tei:lb[1]/@* = $lineID and @type = 'insertion']) > 1"><xsl:text> </xsl:text><xsl:value-of
-							select="count(preceding::tei:addSpan[following::tei:lb[1]/@* = $lineID and @type = 'insertion']) + 1"
-						/></xsl:if></b>
-						<br/>
-					</xsl:when>
-				</xsl:choose>
-				<xsl:for-each select="//*[preceding::tei:addSpan[@spanTo = $asID] and count(following::tei:anchor[1]/preceding::*) &lt; count(following::tei:addSpan[1]/preceding::*)]">
-				<xsl:if test="parent::tei:l or parent::tei:p">
-					<xsl:apply-templates mode="dip"/>
-				</xsl:if>
-				</xsl:for-each>
-				<br/>
-				</span>
-			</xsl:for-each>
-			<hr style="border-top: dotted 5px;"/>
-		</xsl:if>
 		<sub>
+			<xsl:if test="preceding::tei:addSpan">
+				<xsl:variable name="asID" select="preceding::tei:addSpan[1]/@spanTo"/>
+				<xsl:variable name="encLineID"
+					select="preceding::tei:addSpan[1]/preceding::tei:lb[1]/@xml:id or preceding::tei:addSpan[1]/preceding::tei:lb[1]/@sameAs"/>
+				<xsl:if test="following::tei:anchor[1]/@xml:id = $asID">
+					<b>
+						<xsl:value-of select="preceding::tei:addSpan[1]/@place"/>
+					</b>
+					<xsl:if test="count(//tei:addSpan[preceding::tei:lb[1]/@* = $encLineID]) > 1">
+						<b>
+							<xsl:text> #</xsl:text>
+							<xsl:value-of
+								select="count(preceding::tei:addSpan[preceding::tei:lb[1]/@* = $encLineID]) + 1"
+							/>
+						</b>
+					</xsl:if>
+					<b>
+						<xsl:text>: </xsl:text>
+					</b>
+				</xsl:if>
+			</xsl:if>
+			<br id="{$lineID}"/>
+			<xsl:value-of select="@n"/>
+			<xsl:text>. </xsl:text>
 			<br id="{generate-id()}_dip"/>
 			<xsl:value-of select="@n"/>
 			<xsl:text>. </xsl:text>
@@ -1798,22 +1791,6 @@
 				</b>
 			</xsl:when>
 		</xsl:choose>
-	</xsl:template>
-
-	<xsl:template mode="dip" match="tei:addSpan">
-		<sub>
-			<b>
-				<xsl:text>marg. </xsl:text>
-				<xsl:if test="@n">
-					<xsl:value-of select="@n"/>
-					<xsl:text> </xsl:text>
-				</xsl:if>
-			</b>
-		</sub>
-	</xsl:template>
-	
-	<xsl:template match="//*[preceding::tei:addSpan and count(following::tei:anchor[1]/preceding::*) &lt; count(following::tei:addSpan[1]/preceding::*)]">
-		<xsl:text/>
 	</xsl:template>
 
 	<xsl:template mode="dip" match="tei:handShift">
