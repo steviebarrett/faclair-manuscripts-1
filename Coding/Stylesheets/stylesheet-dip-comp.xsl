@@ -210,7 +210,7 @@
 			select="count(preceding::tei:lb[ancestor::tei:div[@corresp = $comDiv]]) + 1"/>
 		<xsl:variable name="pagePosition"
 			select="count(preceding::tei:lb[preceding::tei:pb[@* = $comPage]]) + 1"/>
-		<xsl:if test="$divPosition > 1 and $pagePosition > 1">
+		<xsl:if test="$pagePosition > 1">
 			<xsl:text xml:space="preserve"> </xsl:text>
 			<button id="plus{$lineID}_dip" onclick="revealComment(this.id)" style="font-size:12px">
 				<xsl:if test="ancestor::tei:w">
@@ -289,9 +289,6 @@
 					</b>
 				</xsl:if>
 			</xsl:if>
-			<br id="{$lineID}"/>
-			<xsl:value-of select="@n"/>
-			<xsl:text>. </xsl:text>
 			<br id="{generate-id()}_dip"/>
 			<xsl:value-of select="@n"/>
 			<xsl:text>. </xsl:text>
@@ -1858,8 +1855,7 @@
 		<xsl:variable name="comDiv" select="@corresp"/>
 		<xsl:variable name="divLines"
 			select="count(preceding::tei:lb[ancestor::tei:div[@corresp = $comDiv]]) + 1"/>
-		<xsl:apply-templates mode="dip"/>
-		<xsl:variable name="lineID">
+		<!-- <xsl:variable name="lineID">
 			<xsl:value-of select="ancestor::tei:TEI//tei:msIdentifier/@sameAs"/>
 			<xsl:text>.</xsl:text>
 			<xsl:choose>
@@ -1881,7 +1877,6 @@
 				select="descendant::tei:lb[not(following::tei:lb[ancestor::tei:div[@corresp = $comDiv]])]/@n + 1"
 			/>
 		</xsl:variable>
-		<xsl:text xml:space="preserve"> </xsl:text>
 		<xsl:if
 			test="not(preceding::*[preceding::tei:lb[1]/@* = $lineID and not(ancestor::tei:div[@corresp = $comDiv])])">
 			<button id="plus{$lineID}_dip" onclick="revealComment(this.id)" style="font-size:12px">
@@ -1896,7 +1891,8 @@
 				<b>+</b>
 			</button>
 			<br id="plus{$lineID}br_dip" hidden="hidden"/>
-		</xsl:if>
+		</xsl:if> -->
+		<xsl:apply-templates mode="dip"/>
 		<!-- <table hidden="hidden">
 			<xsl:if test="ancestor::tei:w">
 				<xsl:attribute name="onmouseover">
