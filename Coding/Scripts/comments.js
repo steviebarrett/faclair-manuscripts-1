@@ -13,10 +13,10 @@ $(function() {
         Save a comment
      */
     $('.saveComment').on('click', function() {
-        var docid = $('html').attr('data-docid');
+        var docid = $('html').attr('data-docid');   //the MS ID
         var formId = $(this).parent().attr('id');
         var parts = formId.split('__');
-        var sid = parts[1];
+        var sid = parts[1];                         //the section ID
         var user = $(this).siblings('select').val();
         var comment = $(this).siblings('input').val();
         $.getJSON('/ajax/manuscripts.php?action=saveComment&docid='+docid+'&sid='+sid+'&user='+user+'&comment='+comment, function(data) {
@@ -28,8 +28,8 @@ $(function() {
         Get comments
      */
     $('.viewComment').on('click', function() {
-        var docid = $('html').attr('data-docid');
-        var sid = $(this).attr('data-n');
+        var docid = $('html').attr('data-docid');   //the MS IS
+        var sid = $(this).attr('data-n');           //the section ID
         $('#cv__'+sid).toggle();
         var html = '<ul>';
         $.getJSON('/ajax/manuscripts.php?action=getComment&docid='+docid+'&sid='+sid, function(data) {
