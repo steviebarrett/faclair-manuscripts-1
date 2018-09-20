@@ -33,9 +33,12 @@ $(function() {
         $('#cv__'+sid).toggle();
         var html = '<ul>';
         $.getJSON('/ajax/manuscripts.php?action=getComment&docid='+docid+'&sid='+sid, function(data) {
-            $.each(data, function(key, val) {
+            $.each(data, function(k, v) {
+                $.each(v, function (key, val) {
+                    html += '<li>' + key + ' : ' + val + '</li>';
+                });
                 /*html += '<li>' + val.comment + ' (' + val.user + ') - ' + val.last_updated + '</li>';*/
-                html += '<li>' + key + ' : ' + val + '</li>';
+
             });
             html += '</ul>';
             $('#cv__'+sid).html(html);
