@@ -2709,7 +2709,17 @@
 					</seg>
 				</xsl:when>
 				<xsl:otherwise>
-					<xsl:apply-templates/>
+					<xsl:choose><xsl:when test="child::tei:pb">
+						<xsl:variable name="pageID" select="descendant::tei:pb/@xml:id"/>
+						<xsl:apply-templates select="child::*[following::tei:pb/@xml:id = $pageID]"/>
+						<xsl:apply-templates select="descendant::tei:pb"/>
+						<xsl:apply-templates select="child::*[preceding::tei:pb/@xml:id = $pageID]"/>
+					</xsl:when><xsl:when test="child::tei:cb">
+						<xsl:variable name="colID" select="descendant::tei:cb/@xml:id"/>
+						<xsl:apply-templates select="child::*[following::tei:cb/@xml:id = $colID]"/>
+						<xsl:apply-templates select="descendant::tei:cb"/>
+						<xsl:apply-templates select="child::*[preceding::tei:cb/@xml:id = $colID]"/>
+					</xsl:when><xsl:otherwise><xsl:apply-templates/></xsl:otherwise></xsl:choose>
 				</xsl:otherwise>
 			</xsl:choose>
 		</a>
