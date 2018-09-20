@@ -35,10 +35,8 @@ $(function() {
         $.getJSON('/ajax/manuscripts.php?action=getComment&docid='+docid+'&sid='+sid, function(data) {
             $.each(data, function(k, v) {
                 $.each(v, function (key, val) {
-                    html += '<li>' + key + ' : ' + val.comment + '</li>';
+                    html += '<li>' + val.comment + ' (' + val.user + ') - ' + val.last_updated + '</li>';
                 });
-                /*html += '<li>' + val.comment + ' (' + val.user + ') - ' + val.last_updated + '</li>';*/
-
             });
             html += '</ul>';
             $('#cv__'+sid).html(html);
