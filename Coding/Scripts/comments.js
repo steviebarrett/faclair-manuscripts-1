@@ -6,7 +6,7 @@ $(function() {
      */
     $('.addComment').on('click', function () {
         var sid = $(this).attr('data-n');
-        $('#cf|'+sid).toggle();
+        $('#cf__'+sid).toggle();
     });
 
     /*
