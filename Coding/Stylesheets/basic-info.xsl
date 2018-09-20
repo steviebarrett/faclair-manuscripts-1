@@ -165,7 +165,7 @@
           <option value="wg">Willie</option>
         </select>
         <input type="text"/>
-        <button>save</button>
+        <button class="saveComment">save</button>
       </div>
       <xsl:text> </xsl:text>
       <a href="#" class="viewComment" title="View comments on this text" data-n="{@n}">[?]</a>

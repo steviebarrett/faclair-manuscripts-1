@@ -13,7 +13,7 @@ $(function() {
         Save a comment
      */
     $('.saveComment').on('click', function() {
-        var docid = $(html).attr('data-docid');
+        var docid = $('html').attr('data-docid');
         var formId = $(this).parent().attr('id');
         var parts = formId.split('__');
         var sid = parts[1];
@@ -28,7 +28,7 @@ $(function() {
         Get comments
      */
     $('.viewComment').on('click', function() {
-        var docid = $(html).attr('data-docid');
+        var docid = $('html').attr('data-docid');
         var sid = $(this).attr('data-n');
         $('#cv__'+sid).toggle();
         var html = '<ul>';
