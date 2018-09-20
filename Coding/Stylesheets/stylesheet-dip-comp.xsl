@@ -256,6 +256,16 @@
 				</xsl:when>
 			</xsl:choose>
 		</xsl:variable>
+		<xsl:variable name="precLineID">
+			<xsl:choose>
+				<xsl:when test="preceding::tei:lb[1]/@sameAs">
+					<xsl:value-of select="preceding::tei:lb[1]/@sameAs"/>
+				</xsl:when>
+				<xsl:when test="preceding::tei:lb[1]/@xml:id">
+					<xsl:value-of select="preceding::tei:lb[1]/@xml:id"/>
+				</xsl:when>
+			</xsl:choose>
+		</xsl:variable>
 		<xsl:variable name="comDiv" select="ancestor::tei:div[1]/@corresp"/>
 		<xsl:variable name="comPage">
 			<xsl:choose>
@@ -274,47 +284,10 @@
 			select="count(preceding::tei:lb[preceding::tei:pb[1][@* = $comPage]]) + 1"/>
 		<xsl:variable name="colPosition"
 			select="count(preceding::tei:lb[preceding::tei:cb[1][@* = $comCol]]) + 1"/>
-			<xsl:choose>
-				<xsl:when
-					test="preceding::tei:pb[1]/following::tei:cb[1][following::tei:lb/@* = $lineID]">
-					<xsl:if test="$colPosition > 1">
-						<xsl:text xml:space="preserve"> </xsl:text>
-						<button id="plus{$lineID}_dip" onclick="revealComment(this.id)"
-							style="font-size:12px">
-							<xsl:if test="ancestor::tei:w">
-								<xsl:attribute name="onmouseover">
-									<xsl:text>disableWordFunctions(this.id)</xsl:text>
-								</xsl:attribute>
-								<xsl:attribute name="onmouseout">
-									<xsl:text>enableWordFunctions(this.id)</xsl:text>
-								</xsl:attribute>
-							</xsl:if>
-							<b>+</b>
-						</button>
-						<br id="plus{$lineID}br_dip" hidden="hidden"/>
-						<table hidden="hidden">
-							<xsl:if test="ancestor::tei:w">
-								<xsl:attribute name="onmouseover">
-									<xsl:text>disableWordFunctions(this.id)</xsl:text>
-								</xsl:attribute>
-								<xsl:attribute name="onmouseout">
-									<xsl:text>enableWordFunctions(this.id)</xsl:text>
-								</xsl:attribute>
-							</xsl:if>
-						</table>
-						<button id="{generate-id()}_dip" onclick="textComment(this.id)"
-							style="font-size:12px" hidden="hidden"><xsl:if test="ancestor::tei:w">
-								<xsl:attribute name="onmouseover">
-									<xsl:text>disableWordFunctions(this.id)</xsl:text>
-								</xsl:attribute>
-								<xsl:attribute name="onmouseout">
-									<xsl:text>enableWordFunctions(this.id)</xsl:text>
-								</xsl:attribute>
-							</xsl:if>Add Comment</button>
-					</xsl:if>
-				</xsl:when>
-				<xsl:otherwise>
-					<xsl:if test="$pagePosition > 1">
+		<xsl:choose>
+			<xsl:when
+				test="preceding::tei:pb[1]/following::tei:cb[1][following::tei:lb/@* = $lineID]">
+				<xsl:if test="$colPosition > 1">
 					<xsl:text xml:space="preserve"> </xsl:text>
 					<button id="plus{$lineID}_dip" onclick="revealComment(this.id)"
 						style="font-size:12px">
@@ -348,35 +321,74 @@
 								<xsl:text>enableWordFunctions(this.id)</xsl:text>
 							</xsl:attribute>
 						</xsl:if>Add Comment</button>
-					</xsl:if>
-				</xsl:otherwise>
-			</xsl:choose>
-		
-		<xsl:variable name="encLineID"
-			select="preceding::tei:addSpan[1]/preceding::tei:lb[1]/@xml:id or preceding::tei:addSpan[1]/preceding::tei:lb[1]/@sameAs"/>
+				</xsl:if>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:if test="$pagePosition > 1">
+					<xsl:text xml:space="preserve"> </xsl:text>
+					<button id="plus{$lineID}_dip" onclick="revealComment(this.id)"
+						style="font-size:12px">
+						<xsl:if test="ancestor::tei:w">
+							<xsl:attribute name="onmouseover">
+								<xsl:text>disableWordFunctions(this.id)</xsl:text>
+							</xsl:attribute>
+							<xsl:attribute name="onmouseout">
+								<xsl:text>enableWordFunctions(this.id)</xsl:text>
+							</xsl:attribute>
+						</xsl:if>
+						<b>+</b>
+					</button>
+					<br id="plus{$lineID}br_dip" hidden="hidden"/>
+					<table hidden="hidden">
+						<xsl:if test="ancestor::tei:w">
+							<xsl:attribute name="onmouseover">
+								<xsl:text>disableWordFunctions(this.id)</xsl:text>
+							</xsl:attribute>
+							<xsl:attribute name="onmouseout">
+								<xsl:text>enableWordFunctions(this.id)</xsl:text>
+							</xsl:attribute>
+						</xsl:if>
+					</table>
+					<button id="{generate-id()}_dip" onclick="textComment(this.id)"
+						style="font-size:12px" hidden="hidden"><xsl:if test="ancestor::tei:w">
+							<xsl:attribute name="onmouseover">
+								<xsl:text>disableWordFunctions(this.id)</xsl:text>
+							</xsl:attribute>
+							<xsl:attribute name="onmouseout">
+								<xsl:text>enableWordFunctions(this.id)</xsl:text>
+							</xsl:attribute>
+						</xsl:if>Add Comment</button>
+				</xsl:if>
+			</xsl:otherwise>
+		</xsl:choose>
 		<xsl:if
-			test="preceding::tei:seg[@type = 'margNote' and preceding::tei:lb[1]/@* = $encLineID]">
+			test="preceding::tei:seg[@type = 'margNote' and following::tei:lb[1]/@* = $lineID]">
 			<hr style="border-top: dotted 3px;"/>
 			<xsl:for-each
-				select="//tei:seg[@type = 'margNote' and preceding::tei:lb[1]/@* = $encLineID]">
+				select="//tei:seg[@type = 'margNote' and following::tei:lb[1]/@* = $lineID]">
 				<br/>
-				<b>Marg. <xsl:if
-						test="count(//tei:seg[@type = 'margNote' and preceding::tei:lb[1]/@* = $encLineID]) > 1">
-						<xsl:text> </xsl:text>
-						<xsl:value-of select="position()"/>
-					</xsl:if>
-				</b>
+				<br/>
+				<b>Marg.</b>
+				<xsl:if
+					test="count(preceding::tei:seg[@type = 'margNote' and following::tei:lb[1]/@* = $lineID]) > 1">
+					<xsl:text> </xsl:text>
+					<xsl:value-of select="position()"/>
+				</xsl:if>
 				<br/>
 				<span style="margin-left:40px">
 					<xsl:apply-templates mode="dip" select="child::*"/>
 				</span>
-				<button id="{generate-id()}" onclick="textComment(this.id)" style="font-size:12px"
-					>Add Comment</button>
+				<br/>
+				<table/>
+				<button id="{generate-id()}" onclick="textComment(this.id)"
+					style="font-size:12px">Add Comment</button>
 				<br/>
 				<br/>
 			</xsl:for-each>
 			<hr style="border-top: dotted 3px;"/>
 		</xsl:if>
+		<xsl:variable name="encLineID"
+			select="preceding::tei:addSpan[1]/preceding::tei:lb[1]/@xml:id or preceding::tei:addSpan[1]/preceding::tei:lb[1]/@sameAs"/>
 		<sub>
 			<xsl:if test="preceding::tei:addSpan">
 				<xsl:variable name="asID" select="preceding::tei:addSpan[1]/@spanTo"/>

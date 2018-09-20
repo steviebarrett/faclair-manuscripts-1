@@ -1396,6 +1396,8 @@
 							<span style="margin-left:40px">
 								<xsl:apply-templates select="child::*"/>
 							</span>
+							<br/>
+							<table/>
 							<button id="{generate-id()}" onclick="textComment(this.id)"
 								style="font-size:12px">Add Comment</button>
 							<br/>
@@ -1508,19 +1510,39 @@
 				<b align="left">
 					<xsl:value-of select="@n"/>
 					<xsl:text>. </xsl:text>
-				</b>
-				<xsl:text>  </xsl:text>
-				<p style="margin-left:30px">
-					<xsl:apply-templates
-						select="descendant::*[parent::tei:l and following::tei:pb[ancestor::tei:lg[@xml:id = $conID]]]"
-					/>
-				</p>
-				<xsl:apply-templates select="descendant::tei:pb"/>
-				<p style="margin-left:30px">
-					<xsl:apply-templates
-						select="descendant::*[parent::tei:l and preceding::tei:pb[ancestor::tei:lg[@xml:id = $conID]]]"
-					/>
-				</p>
+				</b><xsl:text>  </xsl:text>
+				<xsl:for-each select="child::tei:l">
+					<xsl:choose>
+						<xsl:when test="child::tei:pb">
+							<xsl:variable name="pageID">
+								<xsl:choose>
+									<xsl:when test="child::tei:pb/@xml:id">
+										<xsl:value-of select="child::tei:pb/@xml:id"/>
+									</xsl:when>
+									<xsl:when test="child::tei:pb/@sameAs">
+										<xsl:value-of select="child::tei:pb/@sameAs"/>
+									</xsl:when>
+								</xsl:choose>
+							</xsl:variable>
+							<p style="margin-left:30px">
+								<xsl:apply-templates
+									select="child::*[following::tei:pb/@* = $pageID]"
+								/>
+							</p>
+							<xsl:apply-templates select="child::tei:pb"/>
+							<p style="margin-left:30px">
+								<xsl:apply-templates
+									select="child::*[preceding::tei:pb/@* = $pageID]"
+								/>
+							</p>
+						</xsl:when>
+						<xsl:otherwise>
+							<p style="margin-left:30px">
+							<xsl:apply-templates/>
+							</p>
+						</xsl:otherwise>
+					</xsl:choose>
+				</xsl:for-each>
 				<table/>
 				<button id="{generate-id()}" onclick="textComment(this.id)" style="font-size:12px"
 					>Add Comment</button>
