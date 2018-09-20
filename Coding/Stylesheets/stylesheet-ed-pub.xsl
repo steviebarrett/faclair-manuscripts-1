@@ -1480,6 +1480,7 @@
 				<table/>
 				<button id="{generate-id()}" onclick="textComment(this.id)" style="font-size:12px"
 					>Add Comment</button>
+				<br/>
 				<xsl:if test="descendant::tei:seg[@type = 'margNote']">
 					<hr style="border-top: dotted 3px;"/>
 					<xsl:for-each select="descendant::tei:seg[@type = 'margNote']">
@@ -1601,6 +1602,7 @@
 						<table/>
 						<button id="{generate-id()}" onclick="textComment(this.id)"
 							style="font-size:12px">Add Comment</button>
+					<br/>
 					</xsl:otherwise>
 				</xsl:choose>
 			</xsl:otherwise>
