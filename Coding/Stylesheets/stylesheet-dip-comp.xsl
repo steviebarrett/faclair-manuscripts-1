@@ -323,6 +323,49 @@
 						</xsl:if>Add Comment</button>
 				</xsl:if>
 			</xsl:when>
+			<xsl:when test="ancestor::tei:seg[@type = 'margNote']">
+				<xsl:variable name="segPOS" select="count(ancestor::tei:seg[@type = 'margNote']/preceding::tei:seg[@type = 'margNote'])"/>
+				<xsl:choose>
+					<xsl:when test="preceding::tei:lb[count(ancestor::tei:seg[@type = 'margNote']/preceding::tei:seg[@type = 'margNote'])]">
+						<xsl:text xml:space="preserve"> </xsl:text>
+						<button id="plus{$lineID}_dip" onclick="revealComment(this.id)"
+							style="font-size:12px">
+							<xsl:if test="ancestor::tei:w">
+								<xsl:attribute name="onmouseover">
+									<xsl:text>disableWordFunctions(this.id)</xsl:text>
+								</xsl:attribute>
+								<xsl:attribute name="onmouseout">
+									<xsl:text>enableWordFunctions(this.id)</xsl:text>
+								</xsl:attribute>
+							</xsl:if>
+							<b>+</b>
+						</button>
+						<br id="plus{$lineID}br_dip" hidden="hidden"/>
+						<table hidden="hidden">
+							<xsl:if test="ancestor::tei:w">
+								<xsl:attribute name="onmouseover">
+									<xsl:text>disableWordFunctions(this.id)</xsl:text>
+								</xsl:attribute>
+								<xsl:attribute name="onmouseout">
+									<xsl:text>enableWordFunctions(this.id)</xsl:text>
+								</xsl:attribute>
+							</xsl:if>
+						</table>
+						<button id="{generate-id()}_dip" onclick="textComment(this.id)"
+							style="font-size:12px" hidden="hidden"><xsl:if test="ancestor::tei:w">
+								<xsl:attribute name="onmouseover">
+									<xsl:text>disableWordFunctions(this.id)</xsl:text>
+								</xsl:attribute>
+								<xsl:attribute name="onmouseout">
+									<xsl:text>enableWordFunctions(this.id)</xsl:text>
+								</xsl:attribute>
+							</xsl:if>Add Comment</button>
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:text/>
+					</xsl:otherwise>
+				</xsl:choose>
+			</xsl:when>
 			<xsl:otherwise>
 				<xsl:if test="$pagePosition > 1">
 					<xsl:text xml:space="preserve"> </xsl:text>
@@ -376,7 +419,39 @@
 				</xsl:if>
 				<br/>
 				<span style="margin-left:40px">
-					<xsl:apply-templates mode="dip" select="child::*"/>
+					<xsl:apply-templates mode="dip" select="child::*"/><xsl:text xml:space="preserve"> </xsl:text>
+					<button id="plus{$lineID}_dip" onclick="revealComment(this.id)"
+						style="font-size:12px">
+						<xsl:if test="ancestor::tei:w">
+							<xsl:attribute name="onmouseover">
+								<xsl:text>disableWordFunctions(this.id)</xsl:text>
+							</xsl:attribute>
+							<xsl:attribute name="onmouseout">
+								<xsl:text>enableWordFunctions(this.id)</xsl:text>
+							</xsl:attribute>
+						</xsl:if>
+						<b>+</b>
+					</button>
+					<br id="plus{$lineID}br_dip" hidden="hidden"/>
+					<table hidden="hidden">
+						<xsl:if test="ancestor::tei:w">
+							<xsl:attribute name="onmouseover">
+								<xsl:text>disableWordFunctions(this.id)</xsl:text>
+							</xsl:attribute>
+							<xsl:attribute name="onmouseout">
+								<xsl:text>enableWordFunctions(this.id)</xsl:text>
+							</xsl:attribute>
+						</xsl:if>
+					</table>
+					<button id="{generate-id()}_dip" onclick="textComment(this.id)"
+						style="font-size:12px" hidden="hidden"><xsl:if test="ancestor::tei:w">
+							<xsl:attribute name="onmouseover">
+								<xsl:text>disableWordFunctions(this.id)</xsl:text>
+							</xsl:attribute>
+							<xsl:attribute name="onmouseout">
+								<xsl:text>enableWordFunctions(this.id)</xsl:text>
+							</xsl:attribute>
+						</xsl:if>Add Comment</button>
 				</span>
 				<br/>
 				<table/>
