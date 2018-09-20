@@ -158,7 +158,7 @@
       <xsl:value-of select="@n"/>
       <xsl:text>] </xsl:text>
       <a href="#" class="addComment" title="Leave comment on this text" data-n="{@n}">[+]</a>
-      <div class="commentForm" id="cf|{@n}">
+      <div class="commentForm" id="cf__{@n}">
         <select>
           <option value="et">Eystein</option>
           <option value="mm">Martina</option>
@@ -169,7 +169,7 @@
       </div>
       <xsl:text> </xsl:text>
       <a href="#" class="viewComment" title="View comments on this text" data-n="{@n}">[?]</a>
-      <div class="commentView" id="cv|{@n}">
+      <div class="commentView" id="cv__{@n}">
       </div>
     </div>
     <xsl:apply-templates mode="diplomatic"/>
