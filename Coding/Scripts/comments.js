@@ -27,7 +27,7 @@ $(function() {
             } else { //there was an error saving the comment
                 feedbackHtml = '<em>There was an error saving the comment';
             }
-            $('#'+formId).html(feedbackHtml);
+            $('#'+formId).hide();
         });
     });
 
