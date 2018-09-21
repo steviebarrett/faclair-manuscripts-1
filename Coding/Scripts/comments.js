@@ -46,7 +46,7 @@ $(function() {
         var docid = $('html').attr('data-docid');   //the MS IS
         var sid = $(this).attr('data-n');           //the section ID
         $('#cv__'+sid).toggle();
-        var html = '<div id="cv__"'+sid+'><ul>';
+        var html = '<div id="cv__'+sid+'"><ul>';
         $.getJSON('/ajax/manuscripts.php?action=getComment&docid='+docid+'&sid='+sid, function(data) {
             $.each(data, function(k, v) {
                 $.each(v, function (key, val) {
