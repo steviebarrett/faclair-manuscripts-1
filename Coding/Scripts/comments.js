@@ -46,14 +46,14 @@ $(function() {
         var docid = $('html').attr('data-docid');   //the MS IS
         var sid = $(this).attr('data-n');           //the section ID
         $('#commentsList').toggle();
-        var html = '<div class="commentView" id="cv__"'+sid+'><ul>';
+        var html = '<ul>';
         $.getJSON('/ajax/manuscripts.php?action=getComment&docid='+docid+'&sid='+sid, function(data) {
             $.each(data, function(k, v) {
                 $.each(v, function (key, val) {
                     html += '<li>' + val.comment + ' (' + val.user + ') - ' + val.last_updated + '</li>';
                 });
             });
-            html += '</ul></div>';
+            html += '</ul>';
             $('#commentsList').html(html);
             console.log(data);
         });
