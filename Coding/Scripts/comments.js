@@ -45,21 +45,18 @@ $(function() {
     $('.viewComment').on('click', function() {
         var docid = $('html').attr('data-docid');   //the MS IS
         var sid = $(this).attr('data-n');           //the section ID
-        if ($('#cv__'+sid).length) {    //comments already populated, so hide them on second click
-            $('#cv__'+sid).hide()
-        } else {                        //comments not loaded yet, so get them
-            var html = '<div id="cv__' + sid + '"><ul>';
-            $.getJSON('/ajax/manuscripts.php?action=getComment&docid=' + docid + '&sid=' + sid, function (data) {
-                $.each(data, function (k, v) {
-                    $.each(v, function (key, val) {
-                        html += '<li>' + val.comment + ' (' + val.user + ') - ' + val.last_updated + '</li>';
-                    });
+        $('#commentsList').toggle();
+        var html = '<div class="commentView" id="cv__"'+sid+'><ul>';
+        $.getJSON('/ajax/manuscripts.php?action=getComment&docid='+docid+'&sid='+sid, function(data) {
+            $.each(data, function(k, v) {
+                $.each(v, function (key, val) {
+                    html += '<li>' + val.comment + ' (' + val.user + ') - ' + val.last_updated + '</li>';
                 });
-                html += '</ul></div>';
-                $('#right-panel').html(html);
-                console.log(data);
             });
-        }
+            html += '</ul></div>';
+            $('#commentsList').html(html);
+            console.log(data);
+        });
     });
 
 });
