@@ -170,8 +170,6 @@
       </div>
       <xsl:text> </xsl:text>
       <a href="#" class="viewComment" title="View comments on this text" data-n="{@n}">[?]</a>
-      <div class="commentView" id="cv__{@n}">
-      </div>
     </div>
     <xsl:apply-templates mode="diplomatic"/>
     <div style="color: gray; font-size: small; margin-top: 20px;">

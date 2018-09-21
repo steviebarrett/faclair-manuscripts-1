@@ -19,8 +19,15 @@ $(function() {
         var sid = parts[1];                         //the section ID
         var user = $(this).siblings('select').val();
         var comment = $(this).siblings('input').val();
+        var feedbackHtml = '';
         $.getJSON('/ajax/manuscripts.php?action=saveComment&docid='+docid+'&sid='+sid+'&user='+user+'&comment='+comment, function(data) {
-            console.log(data.saved)
+            console.log(data);
+            if (data == true) {
+                feedbackHtml = '<strong>Your comment has been saved</strong>';
+            } else { //there was an error saving the comment
+                feedbackHtml = '<em>There was an error saving the comment';
+            }
+            $('#'+formId).html(feedbackHtml);
         });
     });
 
@@ -39,14 +46,14 @@ $(function() {
         var docid = $('html').attr('data-docid');   //the MS IS
         var sid = $(this).attr('data-n');           //the section ID
         $('#cv__'+sid).toggle();
-        var html = '<ul>';
+        var html = '<div class="commentView" id="cv__"'+sid+'><ul>';
         $.getJSON('/ajax/manuscripts.php?action=getComment&docid='+docid+'&sid='+sid, function(data) {
             $.each(data, function(k, v) {
                 $.each(v, function (key, val) {
                     html += '<li>' + val.comment + ' (' + val.user + ') - ' + val.last_updated + '</li>';
                 });
             });
-            html += '</ul>';
+            html += '</ul></div>';
             $('#right-panel').html(html);
             console.log(data);
         });
