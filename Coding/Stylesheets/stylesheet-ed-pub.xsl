@@ -1457,7 +1457,7 @@
 
 	<xsl:template match="tei:lg">
 		<xsl:choose>
-			<xsl:when test="child::tei:pb">
+			<xsl:when test="child::tei:pb and not(child::tei:l/child::tei:pb)">
 				<xsl:variable name="conID" select="@xml:id"/>
 				<p style="margin-left:40px">
 					<xsl:if test="@n">
@@ -1517,57 +1517,64 @@
 					<xsl:variable name="Id" select="@xml:id"/>
 					<xsl:choose>
 						<xsl:when test="child::tei:pb">
-							<xsl:variable name="pageID">
-								<xsl:choose>
-									<xsl:when test="child::tei:pb/@xml:id">
-										<xsl:value-of select="child::tei:pb/@xml:id"/>
-									</xsl:when>
-									<xsl:when test="child::tei:pb/@sameAs">
-										<xsl:value-of select="child::tei:pb/@sameAs"/>
-									</xsl:when>
-								</xsl:choose>
-							</xsl:variable>
-							<p style="margin-left:30px">
-								<xsl:apply-templates
-									select="child::*[following::tei:pb[1]/@* = $pageID]"/>
-								<xsl:apply-templates select="child::tei:pb"/>
-								<xsl:apply-templates
-									select="child::*[preceding::tei:pb[1][@xml:id = $pageID]]"/>
-								<xsl:text xml:space="preserve"> </xsl:text>
-								<button id="plus{$Id}_1" onclick="revealComment(this.id)"
-									style="font-size:12px">
-									<xsl:if test="ancestor::tei:w">
-										<xsl:attribute name="onmouseover">
-											<xsl:text>disableWordFunctions(this.id)</xsl:text>
-										</xsl:attribute>
-										<xsl:attribute name="onmouseout">
-											<xsl:text>enableWordFunctions(this.id)</xsl:text>
-										</xsl:attribute>
-									</xsl:if>
-									<b>+</b>
-								</button>
-								<br id="plus{$Id}br" hidden="hidden"/>
-								<table hidden="hidden">
-									<xsl:if test="ancestor::tei:w">
-										<xsl:attribute name="onmouseover">
-											<xsl:text>disableWordFunctions(this.id)</xsl:text>
-										</xsl:attribute>
-										<xsl:attribute name="onmouseout">
-											<xsl:text>enableWordFunctions(this.id)</xsl:text>
-										</xsl:attribute>
-									</xsl:if>
-								</table>
-								<button id="{generate-id()}" onclick="textComment(this.id)"
-									style="font-size:12px" hidden="hidden"><xsl:if
-										test="ancestor::tei:w">
-										<xsl:attribute name="onmouseover">
-											<xsl:text>disableWordFunctions(this.id)</xsl:text>
-										</xsl:attribute>
-										<xsl:attribute name="onmouseout">
-											<xsl:text>enableWordFunctions(this.id)</xsl:text>
-										</xsl:attribute>
-									</xsl:if>Add Comment</button>
-							</p>
+							<xsl:for-each select="child::tei:pb">
+								<xsl:variable name="pageID">
+									<xsl:choose>
+										<xsl:when test="@xml:id">
+											<xsl:value-of select="@xml:id"/>
+										</xsl:when>
+										<xsl:when test="@sameAs">
+											<xsl:value-of select="@sameAs"/>
+										</xsl:when>
+									</xsl:choose>
+								</xsl:variable>
+								<p style="margin-left:30px">
+									<xsl:apply-templates
+										select="parent::tei:l/child::*[following::tei:pb[1]/@* = $pageID]"
+									/>
+								</p>
+								<xsl:apply-templates/>
+								<xsl:if test="not(following::tei:pb[parent::tei:l[@xml:id = $Id]])">
+									<p style="margin-left:30px">
+										<xsl:apply-templates
+											select="parent::tei:l/child::*[preceding::tei:pb[1][@* = $pageID]]"/>
+										<xsl:text xml:space="preserve"> </xsl:text>
+										<button id="plus{$Id}_1" onclick="revealComment(this.id)"
+											style="font-size:12px">
+											<xsl:if test="ancestor::tei:w">
+												<xsl:attribute name="onmouseover">
+												<xsl:text>disableWordFunctions(this.id)</xsl:text>
+												</xsl:attribute>
+												<xsl:attribute name="onmouseout">
+												<xsl:text>enableWordFunctions(this.id)</xsl:text>
+												</xsl:attribute>
+											</xsl:if>
+											<b>+</b>
+										</button>
+										<br id="plus{$Id}br" hidden="hidden"/>
+										<table hidden="hidden">
+											<xsl:if test="ancestor::tei:w">
+												<xsl:attribute name="onmouseover">
+												<xsl:text>disableWordFunctions(this.id)</xsl:text>
+												</xsl:attribute>
+												<xsl:attribute name="onmouseout">
+												<xsl:text>enableWordFunctions(this.id)</xsl:text>
+												</xsl:attribute>
+											</xsl:if>
+										</table>
+										<button id="{generate-id()}" onclick="textComment(this.id)"
+											style="font-size:12px" hidden="hidden"><xsl:if
+												test="ancestor::tei:w">
+												<xsl:attribute name="onmouseover">
+												<xsl:text>disableWordFunctions(this.id)</xsl:text>
+												</xsl:attribute>
+												<xsl:attribute name="onmouseout">
+												<xsl:text>enableWordFunctions(this.id)</xsl:text>
+												</xsl:attribute>
+											</xsl:if>Add Comment</button>
+									</p>
+								</xsl:if>
+							</xsl:for-each>
 						</xsl:when>
 						<xsl:otherwise>
 							<p style="margin-left:30px">
@@ -2709,7 +2716,27 @@
 					</seg>
 				</xsl:when>
 				<xsl:otherwise>
-					<xsl:apply-templates/>
+					<xsl:choose>
+						<xsl:when test="child::tei:pb">
+							<xsl:variable name="pageID" select="descendant::tei:pb/@xml:id"/>
+							<xsl:apply-templates
+								select="child::*[following::tei:pb/@xml:id = $pageID]"/>
+							<xsl:apply-templates select="descendant::tei:pb"/>
+							<xsl:apply-templates
+								select="child::*[preceding::tei:pb/@xml:id = $pageID]"/>
+						</xsl:when>
+						<xsl:when test="child::tei:cb">
+							<xsl:variable name="colID" select="descendant::tei:cb/@xml:id"/>
+							<xsl:apply-templates
+								select="child::*[following::tei:cb/@xml:id = $colID]"/>
+							<xsl:apply-templates select="descendant::tei:cb"/>
+							<xsl:apply-templates
+								select="child::*[preceding::tei:cb/@xml:id = $colID]"/>
+						</xsl:when>
+						<xsl:otherwise>
+							<xsl:apply-templates/>
+						</xsl:otherwise>
+					</xsl:choose>
 				</xsl:otherwise>
 			</xsl:choose>
 		</a>
