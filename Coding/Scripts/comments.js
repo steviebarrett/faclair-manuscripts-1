@@ -22,7 +22,7 @@ $(function() {
         var feedbackHtml = '';
         $.getJSON('/ajax/manuscripts.php?action=saveComment&docid='+docid+'&sid='+sid+'&user='+user+'&comment='+comment, function(data) {
             console.log(data);
-            if (data == true) {
+            if (data.saved == true) {
                 feedbackHtml = '<strong>Your comment has been saved</strong>';
             } else { //there was an error saving the comment
                 feedbackHtml = '<em>There was an error saving the comment';
@@ -46,7 +46,7 @@ $(function() {
         var docid = $('html').attr('data-docid');   //the MS IS
         var sid = $(this).attr('data-n');           //the section ID
         $('#cv__'+sid).toggle();
-        var html = '<div class="commentView" id="cv__"'+sid+'><ul>';
+        var html = '<div id="cv__"'+sid+'><ul>';
         $.getJSON('/ajax/manuscripts.php?action=getComment&docid='+docid+'&sid='+sid, function(data) {
             $.each(data, function(k, v) {
                 $.each(v, function (key, val) {
