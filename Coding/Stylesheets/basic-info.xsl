@@ -162,6 +162,7 @@
       <a href="#" class="addComment" title="Leave comment on this text" data-n="{@n}">[+]</a>
       <div class="commentForm" id="cf__{@n}">
         <select>
+          <option value="">--Select a user--</option>
           <option value="et">Eystein</option>
           <option value="mm">Martina</option>
           <option value="wg">Willie</option>

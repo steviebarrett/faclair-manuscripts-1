@@ -27,8 +27,11 @@ $(function() {
             } else { //there was an error saving the comment
                 feedbackHtml = '<em>There was an error saving the comment';
             }
-            $('#'+formId).hide();
         });
+        //reset the form elements
+        $('#'+formId).hide();
+        $(this).siblings('select').val(''); //reset the user
+        $(this).siblings('input').val(''); //reset the comment
     });
 
     /*
