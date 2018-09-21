@@ -20,8 +20,16 @@ $(function() {
         var user = $(this).siblings('select').val();
         var comment = $(this).siblings('input').val();
         $.getJSON('/ajax/manuscripts.php?action=saveComment&docid='+docid+'&sid='+sid+'&user='+user+'&comment='+comment, function(data) {
-            console.log(data)
+            console.log(data.saved)
         });
+    });
+
+    /*
+        Cancel comment entry
+     */
+    $('.cancelComment').on('click', function () {
+        var formId = $(this).parent().attr('id');
+        $('#'+formId).hide();
     });
 
     /*
@@ -39,7 +47,7 @@ $(function() {
                 });
             });
             html += '</ul>';
-            $('#cv__'+sid).html(html);
+            $('#right-panel').html(html);
             console.log(data);
         });
     });

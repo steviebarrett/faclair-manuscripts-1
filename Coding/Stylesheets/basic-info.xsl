@@ -166,6 +166,7 @@
         </select>
         <input type="text"/>
         <button class="saveComment">save</button>
+        <button class="cancelComment">cancel</button>
       </div>
       <xsl:text> </xsl:text>
       <a href="#" class="viewComment" title="View comments on this text" data-n="{@n}">[?]</a>
