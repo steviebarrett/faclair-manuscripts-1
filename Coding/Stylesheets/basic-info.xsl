@@ -50,8 +50,9 @@
           <hr/>
           <hr/>
         </div>
-        <div id="right-panel">Word info goes here</div>
-        <div id="commentsList"></div>
+        <div id="right-panel">
+          <div id="commentsList"></div>
+        </div>
         <script>
           <xsl:for-each select="document('../../Transcribing/corpus.xml')/tei:teiCorpus/tei:teiHeader/tei:encodingDesc/tei:charDecl/tei:glyph">
             <xsl:text>var glyph_</xsl:text>
