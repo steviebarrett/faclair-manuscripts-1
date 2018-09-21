@@ -51,6 +51,7 @@ $(function() {
         $('#commentsList').toggle();
         var html = '<ul>';
         $.getJSON('/ajax/manuscripts.php?action=getComment&docid='+docid+'&sid='+sid, function(data) {
+            console.log(data);
             $.each(data, function(k, v) {
                 $.each(v, function (key, val) {
                     html += '<li>' + val.comment + ' (' + val.user + ') - ' + val.last_updated + '</li>';
@@ -58,7 +59,6 @@ $(function() {
             });
             html += '</ul>';
             $('#commentsList').html(html);
-            console.log(data);
         });
     });
 
