@@ -899,6 +899,78 @@
 			</xsl:when>
 		</xsl:choose>
 	</xsl:template>
+	
+	<xsl:template match="tei:supplied">
+		<xsl:param name="wordID"/>
+		<xsl:choose>
+			<xsl:when test="descendant::tei:w">
+				<xsl:text>[ </xsl:text>
+				<span>
+					<xsl:apply-templates>
+						<xsl:with-param name="wordID">
+							<xsl:value-of select="$wordID"/>
+						</xsl:with-param>
+					</xsl:apply-templates>
+				</span>
+				<xsl:text>] </xsl:text>
+			</xsl:when>
+			<xsl:when test="ancestor::tei:w">
+				<xsl:text>[</xsl:text>
+				<span>
+					<xsl:apply-templates>
+						<xsl:with-param name="wordID">
+							<xsl:value-of select="$wordID"/>
+						</xsl:with-param>
+					</xsl:apply-templates>
+				</span>
+				<xsl:text>]</xsl:text>
+			</xsl:when>
+			<xsl:when test="descendant::tei:date">
+				<xsl:text> [</xsl:text>
+				<span>
+					<xsl:apply-templates>
+						<xsl:with-param name="wordID">
+							<xsl:value-of select="$wordID"/>
+						</xsl:with-param>
+					</xsl:apply-templates>
+				</span>
+				<xsl:text>] </xsl:text>
+			</xsl:when>
+			<xsl:when test="ancestor::tei:num">
+				<xsl:text> [</xsl:text>
+				<span>
+					<xsl:apply-templates>
+						<xsl:with-param name="wordID">
+							<xsl:value-of select="$wordID"/>
+						</xsl:with-param>
+					</xsl:apply-templates>
+				</span>
+				<xsl:text>] </xsl:text>
+			</xsl:when>
+			<xsl:when test="ancestor::tei:date">
+				<xsl:text>[</xsl:text>
+				<span>
+					<xsl:apply-templates>
+						<xsl:with-param name="wordID">
+							<xsl:value-of select="$wordID"/>
+						</xsl:with-param>
+					</xsl:apply-templates>
+				</span>
+				<xsl:text>]</xsl:text>
+			</xsl:when>
+			<xsl:when test="descendant::tei:num">
+				<xsl:text> [</xsl:text>
+				<span>
+					<xsl:apply-templates>
+						<xsl:with-param name="wordID">
+							<xsl:value-of select="$wordID"/>
+						</xsl:with-param>
+					</xsl:apply-templates>
+				</span>
+				<xsl:text>] </xsl:text>
+			</xsl:when>
+		</xsl:choose>
+	</xsl:template>
 
 	<xsl:template match="tei:choice">
 		<xsl:param name="wordID"/>
