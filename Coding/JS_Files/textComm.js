@@ -98,8 +98,6 @@ function textComment (id) {
 	table.setAttributeNode(tableIDattr);
 	var nextRow = table.insertRow(0);
 	var sessionID = document.getElementById("root").getAttribute("n");
-	alert(sessionID);
-	alert(rowNo);
 	var row = document.createAttribute("id");
 	row.value = rowNo + "." + sessionID;
 	newRow();
