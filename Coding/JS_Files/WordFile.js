@@ -55,6 +55,7 @@ function createTable() {
 	var r1col14 = row1.insertCell(13);
 	r1col14.outerHTML = "<th><button onclick='delCol()' style='width:75px'>Del Col</button><br/><button onclick='delRow(this)' style='width:75px'>Del Row</button></th>";
 	var opened = window.open("", "FnaG MS Corpus Word Table");
+	opened.document.getElementByTagName("html").setAttribute("id", "root");
 	opened.document.body.appendChild(table);
 	opened.document.head.appendChild(title);
 	opened.document.head.appendChild(script);

@@ -27,7 +27,7 @@
 	</xsl:attribute-set> -->
 
 	<xsl:template match="/">
-		<html>
+		<html id="root">
 			<head>
 				<script src="../Coding/JS_FIles/WordFile.js"/>
 				<script src="../Coding/JS_FIles/ref.js"/>
@@ -35,7 +35,7 @@
 				<script src="../Coding/JS_FIles/textComm.js"/>
 				<script src="../Coding/JS_FIles/ilTextComm.js"/>
 			</head>
-			<body>
+			<body onload="getSessionID()">
 				<h1 style="text-align:center; font-size:18px">
 					<xsl:value-of
 						select="tei:teiCorpus/tei:teiHeader/tei:fileDesc/tei:titleStmt/tei:title"/>

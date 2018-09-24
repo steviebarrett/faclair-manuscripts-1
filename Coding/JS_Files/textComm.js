@@ -4,6 +4,20 @@ function newRow() {
 	rowNo++;
 }
 
+function getSessionID() {
+	if(document.getElementById("root").hasAttribute("n")){
+		var prevSessionID = document.getElementById("root").getAttribute("n");
+		var sessionID = Number(prevSessionID) + 1;
+		document.getElementById("root").setAttribute("n", sessionID);
+	}
+	else{
+		var sessionIDattr = document.createAttribute("n");
+		sessionIDattr.value = "1";
+		document.getElementById("root").setAttributeNode(sessionIDattr);
+		var sessionID = "1";
+	}
+}
+
 function editComment(r) {
 	var d = new Date();
 	var utc = d.getTime();
@@ -83,8 +97,11 @@ function textComment (id) {
 	tableIDattr.value = tableID;
 	table.setAttributeNode(tableIDattr);
 	var nextRow = table.insertRow(0);
+	var sessionID = document.getElementById("root").getAttribute("n");
+	alert(sessionID);
+	alert(rowNo);
 	var row = document.createAttribute("id");
-	row.value = rowNo;
+	row.value = rowNo + "." + sessionID;
 	newRow();
 	nextRow.setAttributeNode(row);
 	var rowID = row.value;
