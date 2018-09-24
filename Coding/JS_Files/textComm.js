@@ -102,6 +102,7 @@ function textComment (id) {
 	row.value = rowNo + "." + sessionID;
 	newRow();
 	nextRow.setAttributeNode(row);
+	nextRow.setAttribute("class", "commentRow");
 	var rowID = row.value;
 	nextRow.style.fontSize = '10px';
 	var col1 = nextRow.insertCell(0);
