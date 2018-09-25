@@ -45,7 +45,19 @@
 					<xsl:call-template name="tempEd"/>
 					<br/>
 					<h2 style="text-align:center;font-size:18px">Diplomatic Text</h2>
-					<xsl:apply-templates mode="dip"/>
+					<xsl:for-each select="//tei:TEI[not(@xml:id = 'hwData')]">
+						<xsl:choose>
+							<xsl:when test="descendant::tei:div/key('divTitle', @corresp)/tei:locus/@n">
+								<xsl:for-each select="//tei:div[not(descendant::tei:div)]">
+									<xsl:sort select="key('divTitle', @corresp)/tei:locus/@n"/>
+									<xsl:apply-templates mode="dip"/>
+								</xsl:for-each>
+							</xsl:when>
+							<xsl:otherwise>
+								<xsl:apply-templates mode="dip"/>
+							</xsl:otherwise>
+						</xsl:choose>
+					</xsl:for-each>
 					<h3 style="font-size:18px">Bibliography</h3>
 					<h4 style="font-size:16px">Manuscripts</h4>
 					<ul>
