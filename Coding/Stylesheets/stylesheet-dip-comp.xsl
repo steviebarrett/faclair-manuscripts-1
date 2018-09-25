@@ -286,7 +286,7 @@
 			select="count(preceding::tei:lb[preceding::tei:cb[1][@* = $comCol]]) + 1"/>
 		<xsl:choose>
 			<xsl:when
-				test="preceding::tei:pb[1]/following::tei:cb[1][following::tei:lb/@* = $lineID]">
+				test="preceding::tei:pb[1]/following::tei:cb[1][following::tei:lb/@* = $lineID] and not(ancestor::tei:seg[@type='margNote'])">
 				<xsl:if test="$colPosition > 1">
 					<xsl:text xml:space="preserve"> </xsl:text>
 					<button id="plus{$lineID}_dip" onclick="revealComment(this.id)"
