@@ -48,7 +48,6 @@ $(function() {
     $('.viewComment').on('click', function() {
         var docid = $('html').attr('data-docid');   //the MS IS
         var sid = $(this).attr('data-n');           //the section ID
-        //$('#commentsList').toggle();
         var html = '<ul>';
         $.getJSON('/ajax/manuscripts.php?action=getComment&docid='+docid+'&sid='+sid, function(data) {
             console.log(data);

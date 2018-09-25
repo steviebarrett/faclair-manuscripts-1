@@ -51,7 +51,6 @@
           <hr/>
         </div>
         <div id="right-panel">
-          <div id="commentsList"></div>
         </div>
         <script>
           <xsl:for-each select="document('../../Transcribing/corpus.xml')/tei:teiCorpus/tei:teiHeader/tei:encodingDesc/tei:charDecl/tei:glyph">
