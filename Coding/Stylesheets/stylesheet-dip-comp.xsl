@@ -326,7 +326,7 @@
 			<xsl:when test="ancestor::tei:seg[@type = 'margNote']">
 				<xsl:variable name="segPOS" select="count(ancestor::tei:seg[@type = 'margNote']/preceding::tei:seg[@type = 'margNote'])"/>
 				<xsl:choose>
-					<xsl:when test="preceding::tei:lb[count(ancestor::tei:seg[@type = 'margNote']/preceding::tei:seg[@type = 'margNote'])]">
+					<xsl:when test="preceding::tei:lb[count(ancestor::tei:seg[@type = 'margNote']/preceding::tei:seg[@type = 'margNote']) = $segPOS]">
 						<xsl:text xml:space="preserve"> </xsl:text>
 						<button id="plus{$lineID}_dip" onclick="revealComment(this.id)"
 							style="font-size:12px">
