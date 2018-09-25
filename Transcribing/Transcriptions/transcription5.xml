@@ -142,7 +142,15 @@
 								<textLang mainLang="ghc" otherLangs="gd"/>
 							</msItem>
 						</msItem>
-						<msItem n="2" xml:id="MS5.2" resp="Hand12">
+						<msItem n="2" xml:id="MS5.2" resp="Hand17">
+							<locus>pp.9-30</locus>
+							<title>Text 2: On Anatomy</title>
+							<incipit>Adeir Galen ...</incipit>
+							<explicit>... finit amen</explicit>
+							<filiation/>
+							<textLang mainLang="ghc"/>
+						</msItem>
+						<msItem n="2" xml:id="MS5.3" resp="Hand12">
 							<locus>pp.37-40</locus>
 							<title>Text 2: The Gaelic Colliget</title>
 							<incipit>[Q]uod male incipitur ...</incipit>
@@ -150,7 +158,7 @@
 							<filiation/>
 							<textLang mainLang="ghc"/>
 						</msItem>
-						<msItem n="3" xml:id="MS5.3" resp="Hand13">
+						<msItem n="3" xml:id="MS5.4" resp="Hand13">
 							<locus>insert; folded around leaf pp.37-38</locus>
 							<title>Text 3: MacLean's Letter to his Physician</title>
 							<incipit>Mile beannacht ...</incipit>
@@ -2361,17 +2369,20 @@
 					</p>
 				</div>
 			</div>
-			<div n="2" type="divprose" resp="Hand12" corresp="MS5.2">
+			<div n="2" type="divprose" corresp="MS5.2" resp="Hand17">
+				<!-- On Anatomy, p.9 -->
+			</div>
+			<div n="3" type="divprose" resp="Hand12" corresp="MS5.3">
 				<pb n="37" xml:id="MS5.37"/>
-				<lg n="1" type="prosediv" xml:id="MS5.2.1">
-					<l xml:lang="la" xml:id="MS5.2.1a"><lb n="1" xml:id="MS5.37.1"/>
+				<lg n="1" type="prosediv" xml:id="MS5.3.1">
+					<l xml:lang="la" xml:id="MS5.3.1a"><lb n="1" xml:id="MS5.37.1"/>
 						<w xml:lang="la"><supplied resp="EPT">Q</supplied>uod</w><space
 							type="scribal"/><w xml:lang="la">male</w><space type="scribal"/><w
 							xml:lang="la">incipitur</w><pc>,</pc><space type="scribal"/><w
 							xml:lang="la">male</w><pc>,</pc><space type="scribal"/><w xml:lang="la"
 							>finitur</w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.1b">
+					<l xml:lang="ghc" xml:id="MS5.3.1b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><space
 							type="scribal"/><w lemma="cech" lemmaRef="http://www.dil.ie/7528"
 							ana="adj">ga<abbr cert="high">c<g ref="g4">h</g></abbr></w><space
@@ -2394,16 +2405,16 @@
 									>er</g></abbr></w><space type="scribal"/>
 					</l>
 				</lg>
-				<lg n="2" type="prosediv" xml:id="MS5.2.2">
+				<lg n="2" type="prosediv" xml:id="MS5.3.2">
 					<l xml:lang="la">
-						<w xml:lang="la" xml:id="MS5.2.2a">Omne</w><space type="scribal"/><w
+						<w xml:lang="la" xml:id="MS5.3.2a">Omne</w><space type="scribal"/><w
 							xml:lang="la">bon<abbr cert="high">u<g ref="g1"
 							>m</g></abbr></w><pc>,</pc><space type="scribal"/><w xml:lang="la"
 							>a</w><w xml:lang="la">sumo</w><space type="scribal"/><w xml:lang="la"
 							>deo</w><space type="scribal"/><w xml:lang="la"><abbr cert="medium">p<g
 									ref="g3">ro</g></abbr>cedit</w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.2b"><w lemma=".i."
+					<l xml:lang="ghc" xml:id="MS5.3.2b"><w lemma=".i."
 							lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><lb n="3"
 							xml:id="MS5.37.3"/><w lemma="cech" lemmaRef="http://www.dil.ie/7528"
 							ana="adj">ga<abbr cert="high">c<g ref="g4">h</g></abbr></w><space
@@ -2419,14 +2430,14 @@
 							>tic</w><pc>.</pc><space type="scribal"/>
 					</l>
 				</lg>
-				<lg n="3" type="prosediv" xml:id="MS5.2.3">
-					<l xml:lang="la" xml:id="MS5.2.3a">
+				<lg n="3" type="prosediv" xml:id="MS5.3.3">
+					<l xml:lang="la" xml:id="MS5.3.3a">
 						<w xml:lang="la">Sine</w><space type="scribal"/><w xml:lang="la"
 							>ipso</w><space type="scribal"/><w xml:lang="la">nihil</w><space
 							type="scribal"/><w xml:lang="la">est</w><pc>.</pc><space type="scribal"
 							/><w xml:lang="la">fact<abbr cert="high">u<g ref="g1">m</g></abbr></w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.3b">
+					<l xml:lang="ghc" xml:id="MS5.3.3b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><space
 							type="scribal"/><w lemma="ní" lemmaRef="http://www.dil.ie/33147"
 							ana="adv">ni</w><w lemma="do-gní" lemmaRef="http://www.dil.ie/17752"
@@ -2443,8 +2454,8 @@
 							/><pc>.</pc><space type="scribal"/>
 					</l>
 				</lg>
-				<lg n="4" type="prosediv" xml:id="MS5.2.4">
-					<l xml:lang="la" xml:id="MS5.2.4a">
+				<lg n="4" type="prosediv" xml:id="MS5.3.4">
+					<l xml:lang="la" xml:id="MS5.3.4a">
 						<w xml:lang="la">Uirtutes</w><space type="scribal"/><w xml:lang="la"
 							>non</w><w xml:lang="la">ledun<abbr cert="high">t<g ref="g16"
 								>ur</g></abbr></w><space type="scribal"/><pc>,</pc><w xml:lang="la"
@@ -2453,7 +2464,7 @@
 									ref="g1">m</g></abbr></w><space type="scribal"/><w xml:lang="la"
 								>organor<abbr cert="high">u<g ref="g1">m</g></abbr></w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.4b">
+					<l xml:lang="ghc" xml:id="MS5.3.4b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><space
 							type="scribal"/><w lemma="ní" lemmaRef="http://www.dil.ie/33147"
 							ana="adv">ni</w><w lemma="gortaigid" lemmaRef="http://www.dil.ie/26430"
@@ -2474,8 +2485,8 @@
 							>ain</g></abbr></w><pc>.</pc><space type="scribal"/>
 					</l>
 				</lg>
-				<lg n="5" type="prosediv" xml:id="MS5.2.5">
-					<l xml:lang="la" xml:id="MS5.2.5a"><w xml:lang="la">Albedo</w><lb n="6"
+				<lg n="5" type="prosediv" xml:id="MS5.3.5">
+					<l xml:lang="la" xml:id="MS5.3.5a"><w xml:lang="la">Albedo</w><lb n="6"
 							xml:id="MS5.37.6"/><w xml:lang="la"><abbr cert="high">e<g ref="g3"
 									>st</g></abbr></w><space type="scribal"/><w xml:lang="la"
 							>succeptibilis</w><space type="scribal"/><w xml:lang="la"><abbr
@@ -2484,7 +2495,7 @@
 							xml:lang="la">et</w><space type="scribal"/><w xml:lang="la">ni<abbr
 								cert="high">g<g ref="g20">er</g></abbr>do</w><space type="scribal"
 							/><w xml:lang="la">nulli</w></l>
-					<l xml:lang="ghc" xml:id="MS5.2.5b"><w lemma=".i."
+					<l xml:lang="ghc" xml:id="MS5.3.5b"><w lemma=".i."
 							lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><space
 							type="scribal"/><w lemma="is" lemmaRef="http://www.dil.ie/29104"
 							ana="verb">as</w><w lemma="í" lemmaRef="http://www.dil.ie/26895"
@@ -2517,8 +2528,8 @@
 									ref="g4">h</g></abbr>ath</w><pc>.</pc><space type="scribal"
 						/></l>
 				</lg>
-				<lg n="6" type="prosediv" xml:id="MS5.2.6">
-					<l xml:lang="la" xml:id="MS5.2.6a">
+				<lg n="6" type="prosediv" xml:id="MS5.3.6">
+					<l xml:lang="la" xml:id="MS5.3.6a">
 						<w xml:lang="la">Cere<abbr>b<g ref="g16">ru</g></abbr>m</w><pc>.</pc><w
 							xml:lang="la"><abbr cert="medium">h<g ref="g7"
 							>abitus</g></abbr></w><pc>.</pc><space type="scribal"/><w xml:lang="la"
@@ -2542,7 +2553,7 @@
 							/><w xml:lang="la">gubernand<abbr cert="high">u<g ref="g1"
 							>m</g></abbr></w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.6b">
+					<l xml:lang="ghc" xml:id="MS5.3.6b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><space
 							type="scribal"/><w lemma="attá" lemmaRef="http://www.dil.ie/4927"
 							ana="verb">ata</w><space type="scribal"/><w>foi<abbr cert="high">r<g
@@ -2579,8 +2590,8 @@
 								cert="medium">g<g ref="g24">ud</g></abbr></w><pc>.</pc>
 					</l>
 				</lg>
-				<lg n="7" type="prosediv" xml:id="MS5.2.7">
-					<l xml:lang="la" xml:id="MS5.2.7a">
+				<lg n="7" type="prosediv" xml:id="MS5.3.7">
+					<l xml:lang="la" xml:id="MS5.3.7a">
 						<w xml:lang="la">Nullum</w><space type="scribal"/><w xml:lang="la"
 								>passiu<abbr cert="high">u<g ref="g1">m</g></abbr></w><space
 							type="scribal"/><w xml:lang="la"><abbr cert="high">e<g ref="g3"
@@ -2589,7 +2600,7 @@
 									>n<g ref="g3">ost</g>ri</abbr></w><space type="scribal"/><w
 							xml:lang="la">mutatiu<abbr cert="high">u<g ref="g1">m</g></abbr></w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.7b">
+					<l xml:lang="ghc" xml:id="MS5.3.7b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><lb
 							n="11" xml:id="MS5.37.11"/><w lemma="ní"
 							lemmaRef="http://www.dil.ie/33147" ana="adv">ni</w><space type="scribal"
@@ -2609,14 +2620,14 @@
 							/><w lemma="corp" lemmaRef="http://www.dil.ie/12497" ana="noun">corp</w>
 					</l>
 				</lg>
-				<lg n="8" type="prosediv" xml:id="MS5.2.8">
-					<l xml:lang="la" xml:id="MS5.2.8a">
+				<lg n="8" type="prosediv" xml:id="MS5.3.8">
+					<l xml:lang="la" xml:id="MS5.3.8a">
 						<w xml:lang="la">Morbi</w><space type="scribal"/><w xml:lang="la"
 							>pestilenciales</w><space type="scribal"/><w xml:lang="la"
 							>fiunt</w><space type="scribal"/><w xml:lang="la">ex</w><w xml:lang="la"
 								>ae<pc>-</pc><lb n="12" xml:id="MS5.37.12"/>re</w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.8b"><w lemma=".i."
+					<l xml:lang="ghc" xml:id="MS5.3.8b"><w lemma=".i."
 							lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><space
 							type="scribal"/><w lemma="do, do-gní"
 							lemmaRef="http://www.dil.ie/17098, http://www.dil.ie/17752"
@@ -2633,8 +2644,8 @@
 							lemmaRef="http://www.dil.ie/33364" ana="prep, art">ón</w><w lemma="aer"
 							lemmaRef="http://www.dil.ie/632" ana="noun">aer</w><pc>.</pc></l>
 				</lg>
-				<lg n="9" type="prosediv" xml:id="MS5.2.9">
-					<l xml:lang="la" xml:id="MS5.2.9a">
+				<lg n="9" type="prosediv" xml:id="MS5.3.9">
+					<l xml:lang="la" xml:id="MS5.3.9a">
 						<w xml:lang="la">Aer</w><space type="scribal"/><w xml:lang="la"
 							>immutat</w><space type="scribal"/><w xml:lang="la">cor<abbr cert="high"
 									>p<g ref="g7">us</g></abbr></w><space type="scribal"/><w
@@ -2644,7 +2655,7 @@
 									>m</g></abbr></w><lb n="13" xml:id="MS5.37.13"/><w xml:lang="la"
 								>comp<abbr cert="medium">l<g ref="g3">ex</g></abbr>ionem</w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.9b"><w lemma=".i."
+					<l xml:lang="ghc" xml:id="MS5.3.9b"><w lemma=".i."
 							lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><space
 							type="scribal"/><w lemma="con-imchloí"
 							lemmaRef="http://www.dil.ie/12191" ana="verb">c<abbr cert="medium">l<g
@@ -2663,8 +2674,8 @@
 							lemmaRef="http://www.dil.ie/20990" ana="pron">fein</w><pc>.</pc>
 					</l>
 				</lg>
-				<lg n="10" type="prosediv" xml:id="MS5.2.10">
-					<l xml:lang="la" xml:id="MS5.2.10a">
+				<lg n="10" type="prosediv" xml:id="MS5.3.10">
+					<l xml:lang="la" xml:id="MS5.3.10a">
 						<w xml:lang="la">Malus</w><space type="scribal"/><w xml:lang="la"
 							>aer</w><add type="gloss" place="margin, right" resp="Hand12"
 							><c>TNA</c></add><lb n="14" xml:id="MS5.37.14"/><w xml:lang="la"
@@ -2678,7 +2689,7 @@
 							>cibus</w><space type="scribal"/><w xml:lang="la">corrup<abbr
 								cert="high">t<g ref="g7">us</g></abbr></w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.10b"><w lemma=".i."
+					<l xml:lang="ghc" xml:id="MS5.3.10b"><w lemma=".i."
 							lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><w lemma="mór"
 							lemmaRef="http://www.dil.ie/32548" ana="adj">mo</w><w lemma="tromaigid"
 							lemmaRef="http://www.dil.ie/42034" ana="verb"><abbr cert="high">t<g
@@ -2701,8 +2712,8 @@
 									ref="g16">ru</g></abbr>ail<abbr cert="medium">l<g ref="g3"
 									>igth</g></abbr>i</w></l>
 				</lg>
-				<lg n="11" type="prosediv" xml:id="MS5.2.11">
-					<l xml:lang="la" xml:id="MS5.2.11a">
+				<lg n="11" type="prosediv" xml:id="MS5.3.11">
+					<l xml:lang="la" xml:id="MS5.3.11a">
 						<w xml:lang="la">duo</w><space type="scribal"/><w xml:lang="la"
 							>sunt</w><space type="scribal"/><w xml:lang="la">in</w><space
 							type="scribal"/><w xml:lang="la">nobis</w><w xml:lang="la"
@@ -2710,7 +2721,7 @@
 							type="scribal"/><w xml:lang="la">et</w><space type="scribal"/><w
 							xml:lang="la">calor</w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.11b">
+					<l xml:lang="ghc" xml:id="MS5.3.11b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><w
 							lemma="attá" lemmaRef="http://www.dil.ie/4927" ana="verb">a<abbr
 								cert="high">t<g ref="g24">aid</g></abbr></w><space type="scribal"
@@ -2729,8 +2740,8 @@
 								cert="medium">t<g ref="g9">eas</g></abbr></w>
 					</l>
 				</lg>
-				<lg n="12" type="prosediv" xml:id="MS5.2.12">
-					<l xml:lang="la" xml:id="MS5.2.12a">
+				<lg n="12" type="prosediv" xml:id="MS5.3.12">
+					<l xml:lang="la" xml:id="MS5.3.12a">
 						<w xml:lang="la">Unum</w><space type="scribal"/><w>quod<abbr cert="low">q<g
 									ref="g7">uod</g></abbr></w><space type="scribal"/><w
 							xml:lang="la"><abbr cert="high">p<g ref="g34">ro</g></abbr>p<abbr
@@ -2742,7 +2753,7 @@
 							/><w xml:lang="la">finaliter</w><space type="scribal"/><w xml:lang="la"
 								>ordina<abbr cert="high">t<g ref="g16">ur</g></abbr></w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.12b">
+					<l xml:lang="ghc" xml:id="MS5.3.12b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><w
 							lemma="cech" lemmaRef="http://www.dil.ie/7528" ana="adj"><abbr
 								cert="high">g<g ref="g12">ach</g></abbr></w><space type="scribal"
@@ -2774,8 +2785,8 @@
 					</l>
 
 				</lg>
-				<lg n="13" type="prosediv" xml:id="MS5.2.13">
-					<l xml:lang="la" xml:id="MS5.2.13a">
+				<lg n="13" type="prosediv" xml:id="MS5.3.13">
+					<l xml:lang="la" xml:id="MS5.3.13a">
 						<w xml:lang="la"><abbr cert="high">O<g ref="g3">mn</g></abbr>is</w><space
 							type="scribal"/><w xml:lang="la">p<abbr cert="medium"
 								>a<g>rtita</g></abbr>s</w><space type="scribal"/><w xml:lang="la"
@@ -2786,7 +2797,7 @@
 							xml:lang="la">o<abbr cert="high">p<g ref="g3">er</g></abbr>ation<abbr
 								cert="high">e<g ref="g1">m</g></abbr></w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.13b">
+					<l xml:lang="ghc" xml:id="MS5.3.13b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><w
 							lemma="cech" lemmaRef="http://www.dil.ie/7528" ana="adj"><abbr
 								cert="high">g<g ref="g12">ac</g><g ref="g4">h</g></abbr></w><space
@@ -2813,8 +2824,8 @@
 							lemmaRef="http://www.dil.ie/19325" ana="pron">he</w><pc>.</pc>
 					</l>
 				</lg>
-				<lg n="14" type="prosediv" xml:id="MS5.2.14">
-					<l xml:lang="la" xml:id="MS5.2.14a">
+				<lg n="14" type="prosediv" xml:id="MS5.3.14">
+					<l xml:lang="la" xml:id="MS5.3.14a">
 						<w xml:lang="la">Quot</w><space type="scribal"/><w xml:lang="la"
 							>fatigat</w><space type="scribal"/><w xml:lang="la">calorem</w><space
 							type="scribal"/><w xml:lang="la">na<abbr cert="high">t<g ref="g16"
@@ -2822,7 +2833,7 @@
 								resp="Hand12"><c>TNA</c></add><lb n="20" xml:id="MS5.37.20"
 							/>alem</w><space type="scribal"/><w xml:lang="la">fortificat</w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.14b">
+					<l xml:lang="ghc" xml:id="MS5.3.14b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><w
 							lemma="cech" lemmaRef="http://www.dil.ie/7528" ana="adj"><abbr
 								cert="high">g<g ref="g12">ac</g><g ref="g4">h</g></abbr></w><space
@@ -2845,8 +2856,8 @@
 							ana="pron">é</w>
 					</l>
 				</lg>
-				<lg n="15" type="prosediv" xml:id="MS5.2.15">
-					<l xml:lang="la" xml:id="MS5.2.15a">
+				<lg n="15" type="prosediv" xml:id="MS5.3.15">
+					<l xml:lang="la" xml:id="MS5.3.15a">
 						<w xml:lang="la">Nihil</w><w xml:lang="la"><abbr cert="high">q<g ref="g15"
 									>uo</g></abbr>d</w><add type="gloss" place="margin, right"
 							resp="Hand12">TNA</add><lb n="21" xml:id="MS5.37.21"/><w xml:lang="la"
@@ -2859,7 +2870,7 @@
 								>us</g></abbr>dem</w><space type="scribal"/><w xml:lang="la"
 								>fortificati<abbr cert="high">u<g ref="g1">m</g></abbr></w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.15b"><w lemma=".i."
+					<l xml:lang="ghc" xml:id="MS5.3.15b"><w lemma=".i."
 							lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><w lemma="cech"
 							lemmaRef="http://www.dil.ie/7528" ana="adj"><abbr cert="high">g<g
 									ref="g12">ach</g></abbr></w><space type="scribal"/><w lemma="ní"
@@ -2880,8 +2891,8 @@
 								>ua<abbr cert="high">d<g ref="g4">h</g></abbr>a</w><pc>.</pc>
 					</l>
 				</lg>
-				<lg n="16" type="prosediv" xml:id="MS5.2.16">
-					<l xml:lang="la" xml:id="MS5.2.16a">
+				<lg n="16" type="prosediv" xml:id="MS5.3.16">
+					<l xml:lang="la" xml:id="MS5.3.16a">
 						<w xml:lang="la"><abbr cert="high">O<g ref="g3">mn</g></abbr>im</w><space
 							type="scribal"/><w xml:lang="la">enim</w><space type="scribal"/><w
 							xml:lang="la">membror<abbr cert="high">u<g ref="g1"
@@ -2892,7 +2903,7 @@
 									>m<g ref="g3">en</g></abbr>t<abbr cert="high">u<g ref="g1"
 								>m</g></abbr></w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.16b"><w lemma=".i."
+					<l xml:lang="ghc" xml:id="MS5.3.16b"><w lemma=".i."
 							lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><lb n="23"
 							xml:id="MS5.37.23"/><w lemma="is" lemmaRef="http://www.dil.ie/29104"
 							ana="verb">Is</w><w lemma="í" lemmaRef="http://www.dil.ie/26895"
@@ -2910,8 +2921,8 @@
 							ana="noun"><abbr cert="high">b<g ref="g4">h</g></abbr>all</w><pc>.</pc>
 					</l>
 				</lg>
-				<lg n="17" type="prosediv" xml:id="MS5.2.17">
-					<l xml:lang="la" xml:id="MS5.2.17a">
+				<lg n="17" type="prosediv" xml:id="MS5.3.17">
+					<l xml:lang="la" xml:id="MS5.3.17a">
 						<w xml:lang="la">Febres</w><space type="scribal"/><w xml:lang="la"><abbr
 								cert="low">q<g ref="g7">uales</g></abbr></w><space type="scribal"
 							/><w xml:lang="la">in</w><w>pu<abbr cert="high">t<g ref="g25"
@@ -2923,7 +2934,7 @@
 							type="scribal"/><w xml:lang="la">comisceri</w><space type="scribal"/><w
 							xml:lang="la">non</w><space type="scribal"/><w xml:lang="la">possunt</w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.17b">
+					<l xml:lang="ghc" xml:id="MS5.3.17b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><space
 							type="scribal"/><w lemma="in" lemmaRef="http://www.dil.ie/28194"
 							ana="art">na</w><space type="scribal"/><w lemma="fíabras"
@@ -2960,15 +2971,15 @@
 							lemmaRef="http://www.dil.ie/978" ana="adj">oili</w>
 					</l>
 				</lg>
-				<lg n="18" type="prosediv" xml:id="MS5.2.18">
-					<l xml:lang="la" xml:id="MS5.2.18a">
+				<lg n="18" type="prosediv" xml:id="MS5.3.18">
+					<l xml:lang="la" xml:id="MS5.3.18a">
 						<w xml:lang="la">Nulla</w><space type="scribal"/><w xml:lang="la"
 							>febris</w><space type="scribal"/><w xml:lang="la">sanguinea</w><lb
 							n="26" xml:id="MS5.37.26"/><w xml:lang="la"><abbr cert="high">h<g
 									ref="g3">abe</g>t</abbr></w><space type="scribal"/><w
 							xml:lang="la">paroxis<abbr cert="high">m<g ref="g1">um</g></abbr></w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.18b">
+					<l xml:lang="ghc" xml:id="MS5.3.18b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><space
 							type="scribal"/><w lemma="ní" lemmaRef="http://www.dil.ie/33147"
 							ana="adv">ni</w><space type="scribal"/><w lemma="attá"
@@ -2990,8 +3001,8 @@
 									>us</g></abbr></w><pc>.</pc>
 					</l>
 				</lg>
-				<lg n="19" type="prosediv" xml:id="MS5.2.19">
-					<l xml:lang="la" xml:id="MS5.2.19a">
+				<lg n="19" type="prosediv" xml:id="MS5.3.19">
+					<l xml:lang="la" xml:id="MS5.3.19a">
 						<w xml:lang="la">Non</w><space type="scribal"/><w xml:lang="la"><abbr
 								cert="high">e<g ref="g3">st</g></abbr></w><space type="scribal"/><w
 							xml:lang="la">in<pc>-</pc><add type="gloss" place="margin, right"
@@ -3000,7 +3011,7 @@
 							type="scribal"/><w xml:lang="la">sanguinis</w><space type="scribal"/><w
 							xml:lang="la">euacuatiua</w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.19b"><w lemma=".i."
+					<l xml:lang="ghc" xml:id="MS5.3.19b"><w lemma=".i."
 							lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><space
 							type="scribal"/><w lemma="ní" lemmaRef="http://www.dil.ie/33147"
 							ana="adv">ni</w><space type="scribal"/><w lemma="fo-gaib"
@@ -3020,8 +3031,8 @@
 									ref="g21">earg</g></abbr></w>
 					</l>
 				</lg>
-				<lg n="20" type="prosediv" xml:id="MS5.2.20">
-					<l xml:lang="la" xml:id="MS5.2.20a">
+				<lg n="20" type="prosediv" xml:id="MS5.3.20">
+					<l xml:lang="la" xml:id="MS5.3.20a">
 						<w xml:lang="la">In</w><space type="scribal"/><w xml:lang="la"
 							>peccato</w><space type="scribal"/><w xml:lang="la"><abbr cert="medium"
 									>q<g ref="g16">ua</g></abbr>litatis</w><space type="scribal"/><w
@@ -3030,7 +3041,7 @@
 									>r</g></abbr></w><space type="scribal"/><w xml:lang="la"
 							>phlebothomia</w><lb n="29" xml:id="MS5.37.29"/>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.20b">
+					<l xml:lang="ghc" xml:id="MS5.3.20b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><space
 							type="scribal"/><w lemma="ní" lemmaRef="http://www.dil.ie/33147"
 							ana="adv">ni</w><w lemma="dligid" lemmaRef="http://www.dil.ie/17037"
@@ -3052,8 +3063,8 @@
 							>us</g></abbr>a</w></unclear>
 					</l>
 				</lg>
-				<lg n="21" type="prosediv" xml:id="MS5.2.21">
-					<l xml:lang="la" xml:id="MS5.2.21a">
+				<lg n="21" type="prosediv" xml:id="MS5.3.21">
+					<l xml:lang="la" xml:id="MS5.3.21a">
 						<w xml:lang="la"><abbr cert="medium">Q<g ref="g7">uis</g></abbr></w><space
 							type="scribal"/><w xml:lang="la">eueniunt</w><space type="scribal"/><w
 							xml:lang="la">ab</w><w xml:lang="la">u<pc>-</pc><lb n="30"
@@ -3064,7 +3075,7 @@
 							>uno</w><space type="scribal"/><w>diminui<abbr cert="high">t<g ref="g16"
 									>ur</g></abbr></w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.21b">
+					<l xml:lang="ghc" xml:id="MS5.3.21b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><space
 							type="scribal"/><w lemma="in" lemmaRef="http://www.dil.ie/28194"
 							ana="art">na</w><w lemma="ní" lemmaRef="http://www.dil.ie/33146"
@@ -3098,8 +3109,8 @@
 							lemmaRef="http://www.dil.ie/14080" ana="num">.ii.</w>
 					</l>
 				</lg>
-				<lg n="22" type="prosediv" xml:id="MS5.2.22">
-					<l xml:lang="la" xml:id="MS5.2.22a">
+				<lg n="22" type="prosediv" xml:id="MS5.3.22">
+					<l xml:lang="la" xml:id="MS5.3.22a">
 						<w xml:lang="la">Nullum</w><space type="scribal"/><w xml:lang="la"
 							>membrorum</w><pb n="38" xml:id="MS5.38"/><lb n="1" xml:id="MS5.38.1"
 							/><w xml:lang="la">na<abbr cert="high">t<g ref="g16"
@@ -3111,7 +3122,7 @@
 							type="scribal"/><w xml:lang="la"><abbr cert="high"><g ref="g28"
 								>con</g></abbr><abbr cert="high">t<g ref="g16">ra</g></abbr>rium</w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.22b">
+					<l xml:lang="ghc" xml:id="MS5.3.22b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><add
 							type="insertion" place="above" resp="Hand12"><w lemma="ní"
 								lemmaRef="http://www.dil.ie/33147" ana="adv">ni</w></add><w
@@ -3147,8 +3158,8 @@
 								cert="medium"><g ref="g28">con</g><g ref="g16">ar</g></abbr></w>
 					</l>
 				</lg>
-				<lg n="23" type="prosediv" xml:id="MS5.2.23">
-					<l xml:lang="la" xml:id="MS5.2.23a">
+				<lg n="23" type="prosediv" xml:id="MS5.3.23">
+					<l xml:lang="la" xml:id="MS5.3.23a">
 						<w xml:lang="la">Quod<lb n="3" xml:id="MS5.38.3"/>cun<abbr cert="medium">q<g
 									ref="g7">ue</g></abbr></w><space type="scribal"/><w
 							xml:lang="la">pulm<abbr cert="high">o<g ref="g5">n</g></abbr>i</w><space
@@ -3161,7 +3172,7 @@
 								cert="high">e<g ref="g3">st</g></abbr></w><space type="scribal"/><w
 							xml:lang="la">remedi<abbr cert="high">u<g ref="g1">m</g></abbr></w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.23b"><w lemma=".i."
+					<l xml:lang="ghc" xml:id="MS5.3.23b"><w lemma=".i."
 							lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><w lemma="cech"
 							lemmaRef="http://www.dil.ie/7528" ana="adj"><abbr cert="high">g<g
 									ref="g12">ac</g><g ref="g4">h</g></abbr></w><space
@@ -3184,8 +3195,8 @@
 							ana="prep, pron">do</w><pc>.</pc>
 					</l>
 				</lg>
-				<lg n="24" type="prosediv" xml:id="MS5.2.24">
-					<l xml:lang="la" xml:id="MS5.2.24a">
+				<lg n="24" type="prosediv" xml:id="MS5.3.24">
+					<l xml:lang="la" xml:id="MS5.3.24a">
 						<w xml:lang="la">In</w><space type="scribal"/><w xml:lang="la"><abbr
 								cert="high">o<g ref="g3">mn</g>i</abbr></w><space type="scribal"/><w
 							xml:lang="la">euacuation<abbr cert="high">e<g ref="g1"
@@ -3194,7 +3205,7 @@
 									>e<g ref="g3">st</g></abbr></w><lb n="5" xml:id="MS5.38.5"/><w
 							xml:lang="la">uenenosi<abbr cert="high">t<g ref="g21">er</g></abbr></w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.24b">
+					<l xml:lang="ghc" xml:id="MS5.3.24b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><w
 							lemma="cech" lemmaRef="http://www.dil.ie/7528" ana="adj"><abbr
 								cert="high">g<g ref="g12">ach</g></abbr></w><space type="scribal"
@@ -3210,8 +3221,8 @@
 							ana="adj"><abbr cert="medium">n<g ref="g3">eir</g>t</abbr></w>
 					</l>
 				</lg>
-				<lg n="25" type="prosediv" xml:id="MS5.2.25">
-					<l xml:lang="la" xml:id="MS5.2.25a">
+				<lg n="25" type="prosediv" xml:id="MS5.3.25">
+					<l xml:lang="la" xml:id="MS5.3.25a">
 						<w xml:lang="la">Que<space type="scribal"/>cun<abbr cert="medium">q<g
 									ref="g7">ue</g></abbr></w><space type="scribal"/><w
 							xml:lang="la">c<abbr cert="high">o<g ref="g1">m</g></abbr>p<abbr
@@ -3226,7 +3237,7 @@
 							type="scribal"/><w xml:lang="la">longioris</w><space type="scribal"/><w
 							xml:lang="la">uitae</w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.25b">
+					<l xml:lang="ghc" xml:id="MS5.3.25b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><w
 							lemma="cech" lemmaRef="http://www.dil.ie/7528" ana="adj">ga<abbr
 								cert="high">c<g ref="g4">h</g></abbr></w><space type="scribal"/><w
@@ -3254,8 +3265,8 @@
 									ref="g2">eat</g><g ref="g4">h</g></abbr>a</w><pc>.</pc>
 					</l>
 				</lg>
-				<lg n="26" type="prosediv" xml:id="MS5.2.26">
-					<l xml:lang="la" xml:id="MS5.2.26a">
+				<lg n="26" type="prosediv" xml:id="MS5.3.26">
+					<l xml:lang="la" xml:id="MS5.3.26a">
 						<w xml:lang="la">humid<abbr cert="high">u<g ref="g1">m</g></abbr></w><space
 							type="scribal"/><w xml:lang="la">unctuos<abbr cert="high">u<g ref="g1"
 									>m</g></abbr></w><space type="scribal"/><w xml:lang="la"
@@ -3264,7 +3275,7 @@
 							>causa</w><space type="scribal"/><w xml:lang="la">longitudinis</w><space
 							type="scribal"/><w xml:lang="la">uitae</w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.26b">
+					<l xml:lang="ghc" xml:id="MS5.3.26b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><w
 							lemma="is" lemmaRef="http://www.dil.ie/29104" ana="verb">is</w><w
 							lemma="í" lemmaRef="http://www.dil.ie/26895" ana="pron">i</w><space
@@ -3285,15 +3296,15 @@
 								cert="high"><g ref="g2">eat</g><g ref="g4">h</g></abbr>a</w>
 					</l>
 				</lg>
-				<lg n="27" type="prosediv" xml:id="MS5.2.27">
-					<l xml:lang="la" xml:id="MS5.2.27a">
+				<lg n="27" type="prosediv" xml:id="MS5.3.27">
+					<l xml:lang="la" xml:id="MS5.3.27a">
 						<w xml:lang="la">Spiri<abbr cert="high">t<g ref="g7">us</g></abbr></w><space
 							type="scribal"/><w xml:lang="la"><abbr cert="high">e<g ref="g3"
 								>st</g></abbr></w><space type="scribal"/><w xml:lang="la">cor<abbr
 								cert="high">p<g ref="g7">us</g></abbr></w><space type="scribal"/><w
 							xml:lang="la">subtile</w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.27b">
+					<l xml:lang="ghc" xml:id="MS5.3.27b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><space
 							type="scribal"/><w lemma="is" lemmaRef="http://www.dil.ie/29104"
 							ana="verb">is</w><w lemma="ed" lemmaRef="http://www.dil.ie/19657"
@@ -3309,8 +3320,8 @@
 							ana="adj">se<abbr cert="high">i<g ref="g1">m</g></abbr>h</w>
 					</l>
 				</lg>
-				<lg n="28" type="prosediv" xml:id="MS5.2.28">
-					<l xml:lang="la" xml:id="MS5.2.28a">
+				<lg n="28" type="prosediv" xml:id="MS5.3.28">
+					<l xml:lang="la" xml:id="MS5.3.28a">
 						<w xml:lang="la">Spiri<abbr cert="high">t<g ref="g7">us</g></abbr></w><space
 							type="scribal"/><w xml:lang="la">et</w><space type="scribal"/><w
 							xml:lang="la">caliditas</w><space type="scribal"/><w xml:lang="la"><abbr
@@ -3319,7 +3330,7 @@
 								>i</del><add place="above" type="insertion" resp="Hand12"
 							>e</add>s</w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.28b">
+					<l xml:lang="ghc" xml:id="MS5.3.28b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><space
 							type="scribal"/><w lemma="is" lemmaRef="http://www.dil.ie/29104"
 							ana="verb">is</w><w lemma="dá" lemmaRef="http://www.dil.ie/14080"
@@ -3338,8 +3349,8 @@
 									ref="g3">eas</g></abbr></w><lb n="10" xml:id="MS5.38.10"/>
 					</l>
 				</lg>
-				<lg n="29" type="prosediv" xml:id="MS5.2.29">
-					<l xml:lang="la" xml:id="MS5.2.29a">
+				<lg n="29" type="prosediv" xml:id="MS5.3.29">
+					<l xml:lang="la" xml:id="MS5.3.29a">
 						<w xml:lang="la"><abbr cert="high">O<g ref="g3">mn</g></abbr>is</w><space
 							type="scribal"/><w xml:lang="la">motus</w><space type="scribal"/><w
 							xml:lang="la">na<abbr cert="high">t<g ref="g16"
@@ -3357,7 +3368,7 @@
 							>magis</w><lb n="9" xml:id="MS5.38.11"/><w xml:lang="la">fortifica<abbr
 								cert="high">t<g ref="g16">ur</g></abbr></w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.29b">
+					<l xml:lang="ghc" xml:id="MS5.3.29b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><space
 							type="scribal"/><w lemma="cech" lemmaRef="http://www.dil.ie/7528"
 							ana="adj"><abbr cert="high">g<g ref="g12">ac</g><g ref="g4"
@@ -3390,8 +3401,8 @@
 							lemmaRef="http://www.dil.ie/19325" ana="pron">he</w><pc>.</pc>
 					</l>
 				</lg>
-				<lg n="30" type="prosediv" xml:id="MS5.2.30">
-					<l xml:lang="la" xml:id="MS5.2.30a">
+				<lg n="30" type="prosediv" xml:id="MS5.3.30">
+					<l xml:lang="la" xml:id="MS5.3.30a">
 						<w xml:lang="la"><abbr cert="high">O<g ref="g3">mn</g></abbr>is</w><lb
 							n="12" xml:id="MS5.38.12"/><w xml:lang="la">causa</w><space
 							type="scribal"/><w xml:lang="la"><abbr cert="high">p<g ref="g25"
@@ -3399,7 +3410,7 @@
 								cert="high"><g ref="g7">us</g></abbr></w><space type="scribal"/><w
 							xml:lang="la">influit</w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.30b">
+					<l xml:lang="ghc" xml:id="MS5.3.30b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><w
 							lemma="cech" lemmaRef="http://www.dil.ie/7528" ana="adj"><abbr
 								cert="high">g<g ref="g12">ac</g><g ref="g4">h</g></abbr></w><space
@@ -3418,16 +3429,16 @@
 							ana="verb"><abbr cert="high">t<g ref="g4">h</g></abbr>silis</w>
 					</l>
 				</lg>
-				<lg n="31" type="prosediv" xml:id="MS5.2.31">
+				<lg n="31" type="prosediv" xml:id="MS5.3.31">
 					<l xml:lang="la">
-						<w xml:lang="la" xml:id="MS5.2.31a">In</w><space type="scribal"/><w>fu<abbr
+						<w xml:lang="la" xml:id="MS5.3.31a">In</w><space type="scribal"/><w>fu<abbr
 								cert="high">t<g ref="g16">ur</g></abbr>is</w><space type="scribal"
 								/><w><abbr cert="high">e<g ref="g3">st</g></abbr></w><lb n="13"
 							xml:id="MS5.38.13"/><w xml:lang="la">inde<abbr cert="high">t<g ref="g21"
 									>er</g></abbr>minata</w><space type="scribal"/><w xml:lang="la"
 								><abbr cert="high">v<g ref="g21">er</g></abbr>itas</w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.31b">
+					<l xml:lang="ghc" xml:id="MS5.3.31b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><w
 							lemma="attá" lemmaRef="http://www.dil.ie/4927" ana="verb">ata</w><w
 							lemma="in" lemmaRef="http://www.dil.ie/28194" ana="art">an</w><w
@@ -3451,8 +3462,8 @@
 							ana="verb">dtainig</w><pc>.</pc>
 					</l>
 				</lg>
-				<lg n="32" type="prosediv" xml:id="MS5.2.32">
-					<l xml:lang="la" xml:id="MS5.2.32a">
+				<lg n="32" type="prosediv" xml:id="MS5.3.32">
+					<l xml:lang="la" xml:id="MS5.3.32a">
 						<w xml:lang="la">Nichil</w><w xml:lang="la"><abbr cert="high">e<g ref="g3"
 									>st</g></abbr></w><space type="scribal"/><w xml:lang="la"
 								>nu<abbr cert="high">t<g ref="g21">ri</g></abbr>ment<abbr
@@ -3466,7 +3477,7 @@
 							>cum</w><w xml:lang="la">nu<abbr cert="high">t<g ref="g25"
 							>ri</g></abbr>to</w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.32b">
+					<l xml:lang="ghc" xml:id="MS5.3.32b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><space
 							type="scribal"/><w lemma="is" lemmaRef="http://www.dil.ie/29104"
 							ana="verb">ni</w><space type="scribal"/><w lemma="ní"
@@ -3493,8 +3504,8 @@
 							ana="verb">oil<abbr cert="medium">t<g ref="g21">ear</g></abbr></w>
 					</l>
 				</lg>
-				<lg n="33" type="prosediv" xml:id="MS5.2.33">
-					<l xml:lang="la" xml:id="MS5.2.33a">
+				<lg n="33" type="prosediv" xml:id="MS5.3.33">
+					<l xml:lang="la" xml:id="MS5.3.33a">
 						<w xml:lang="la">In</w><space type="scribal"/><w xml:lang="la">habentib<abbr
 								cert="high"><g ref="g7">us</g></abbr></w><space type="scribal"/><w
 							xml:lang="la">simile</w><space type="scribal"/><w xml:lang="la"
@@ -3503,7 +3514,7 @@
 								cert="high">t<g ref="g16">ra</g></abbr>nsit<abbr cert="high"><g
 									ref="g7">us</g></abbr></w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.33b">
+					<l xml:lang="ghc" xml:id="MS5.3.33b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><space
 							type="scribal"/><w lemma="is" lemmaRef="http://www.dil.ie/29104"
 							ana="verb">is</w><w lemma="airassa" lemmaRef="http://www.dil.ie/1599"
@@ -3520,8 +3531,8 @@
 								>cos<abbr cert="high">m<g ref="g3">ail</g></abbr>is</w>
 					</l>
 				</lg>
-				<lg n="34" type="prosediv" xml:id="MS5.2.34">
-					<l xml:lang="la" xml:id="MS5.2.34a">
+				<lg n="34" type="prosediv" xml:id="MS5.3.34">
+					<l xml:lang="la" xml:id="MS5.3.34a">
 						<w xml:lang="la">Spissu<del resp="Hand15">m</del><del resp="Hand15"><add
 									place="above" type="insertion" resp="Hand12">is</add></del><add
 								place="above" type="insertion" resp="Hand15">s</add></w><space
@@ -3533,7 +3544,7 @@
 								cert="high">m<g ref="g3">en</g></abbr>t<abbr cert="high">u<g
 									ref="g1">m</g></abbr></w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.34b">
+					<l xml:lang="ghc" xml:id="MS5.3.34b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><space
 							type="scribal"/><w lemma="is" lemmaRef="http://www.dil.ie/29104"
 							ana="verb">as</w><w lemma="í" lemmaRef="http://www.dil.ie/26895"
@@ -3554,8 +3565,8 @@
 							>ain</g></abbr></w><pc>.</pc>
 					</l>
 				</lg>
-				<lg n="35" type="prosediv" xml:id="MS5.2.35">
-					<l xml:lang="la" xml:id="MS5.2.35a">
+				<lg n="35" type="prosediv" xml:id="MS5.3.35">
+					<l xml:lang="la" xml:id="MS5.3.35a">
 						<w xml:lang="la">Cib<abbr cert="high"><g ref="g7">us</g></abbr></w><space
 							type="scribal"/><w xml:lang="la">facili<abbr cert="high"><g ref="g7"
 									>us</g></abbr></w><space type="scribal"/><w xml:lang="la"
@@ -3565,7 +3576,7 @@
 							type="scribal"/><w xml:lang="la">pot<abbr cert="high"><g ref="g7"
 								>us</g></abbr></w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.35b">
+					<l xml:lang="ghc" xml:id="MS5.3.35b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><w
 							lemma="is" lemmaRef="http://www.dil.ie/29104" ana="verb">is</w><w
 							lemma="airassa" lemmaRef="http://www.dil.ie/1599" ana="adj"><supplied
@@ -3585,8 +3596,8 @@
 									ref="g4">h</g></abbr></w><pc>.</pc>
 					</l>
 				</lg>
-				<lg n="36" type="prosediv" xml:id="MS5.2.36">
-					<l xml:lang="la" xml:id="MS5.2.36a">
+				<lg n="36" type="prosediv" xml:id="MS5.3.36">
+					<l xml:lang="la" xml:id="MS5.3.36a">
 						<w xml:lang="la">Dig<abbr cert="high"><g ref="g18"
 							>est</g></abbr>io</w><space type="scribal"/><w xml:lang="la"
 							>fit</w><space type="scribal"/><w xml:lang="la"><abbr cert="high">p<g
@@ -3594,7 +3605,7 @@
 							xml:lang="la">inspissati<abbr cert="high">o<g ref="g5"
 							>n</g></abbr>em</w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.36b">
+					<l xml:lang="ghc" xml:id="MS5.3.36b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><space
 							type="scribal"/><w lemma="cech" lemmaRef="http://www.dil.ie/7528"
 							ana="adj"><abbr cert="high">g<g ref="g12">ac</g><g ref="g4"
@@ -3611,8 +3622,8 @@
 							ana="verb">teid</w><pc>.</pc>
 					</l>
 				</lg>
-				<lg n="37" type="prosediv" xml:id="MS5.2.37">
-					<l xml:lang="la" xml:id="MS5.2.37a">
+				<lg n="37" type="prosediv" xml:id="MS5.3.37">
+					<l xml:lang="la" xml:id="MS5.3.37a">
 						<w xml:lang="la">Dig<abbr cert="high"><g ref="g18"
 							>est</g></abbr>io</w><space type="scribal"/><w xml:lang="la"
 							>incidit</w><space type="scribal"/><pc>,</pc><space type="scribal"/><w
@@ -3620,7 +3631,7 @@
 							xml:lang="la">et</w><space type="scribal"/><w xml:lang="la"
 							>subtiliat</w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.37b">
+					<l xml:lang="ghc" xml:id="MS5.3.37b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><space
 							type="scribal"/><w lemma="is" lemmaRef="http://www.dil.ie/29104"
 							ana="verb">is</w><w lemma="ed" lemmaRef="http://www.dil.ie/19657"
@@ -3679,8 +3690,8 @@
 									ref="g4">h</g></abbr></w>
 					</l>
 				</lg>
-				<lg n="38" type="prosediv" xml:id="MS5.2.38">
-					<l xml:lang="la" xml:id="MS5.2.38a">
+				<lg n="38" type="prosediv" xml:id="MS5.3.38">
+					<l xml:lang="la" xml:id="MS5.3.38a">
 						<w xml:lang="la">Dig<abbr cert="high"><g ref="g18"/></abbr>io</w><space
 							type="scribal"/><w xml:lang="la">nihil</w><space type="scribal"/><w
 							xml:lang="la">ailiud</w><space type="scribal"/><w><abbr cert="high">e<g
@@ -3693,7 +3704,7 @@
 								cert="high">u<g ref="g1">m</g></abbr></w><space type="scribal"/><w
 							xml:lang="la">ex<lb n="23" xml:id="MS5.38.23"/>pulsioni</w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.38b">
+					<l xml:lang="ghc" xml:id="MS5.3.38b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><space
 							type="scribal"/><w lemma="is" lemmaRef="http://www.dil.ie/29104"
 							ana="verb">ni</w><add type="insertion" place="above" resp="Hand12"><w
@@ -3725,8 +3736,8 @@
 										>ad</g><g ref="g4">h</g></abbr></add></w><pc>.</pc>
 					</l>
 				</lg>
-				<lg n="39" type="prosediv" xml:id="MS5.2.39">
-					<l xml:lang="la" xml:id="MS5.2.39a">
+				<lg n="39" type="prosediv" xml:id="MS5.3.39">
+					<l xml:lang="la" xml:id="MS5.3.39a">
 						<w xml:lang="la">Per</w><w xml:lang="la">ca<lb n="24" xml:id="MS5.38.24"
 								/><add type="gloss" place="margin, right" resp="Hand14"
 								><c>TNA</c></add>lid<abbr cert="high">u<g ref="g1"
@@ -3748,7 +3759,7 @@
 							resp="Hand12">"</add><add type="insertion" place="above" resp="Hand12"
 							>"</add>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.39b">
+					<l xml:lang="ghc" xml:id="MS5.3.39b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><w
 							lemma="is" lemmaRef="http://www.dil.ie/29104" ana="verb">is</w><space
 							type="scribal"/><w lemma="tre" lemmaRef="http://www.dil.ie/41608"
@@ -3784,8 +3795,8 @@
 								cert="high">n<g ref="g5">n</g></abbr></w><pc>.</pc>
 					</l>
 				</lg>
-				<lg n="40" type="prosediv" xml:id="MS5.2.40">
-					<l xml:lang="la" xml:id="MS5.2.40a">
+				<lg n="40" type="prosediv" xml:id="MS5.3.40">
+					<l xml:lang="la" xml:id="MS5.3.40a">
 						<w xml:lang="la">Illud</w><space type="scribal"/><w xml:lang="la"><abbr
 								cert="high">p<g ref="g36">er</g></abbr></w><w xml:lang="la"><abbr
 								cert="high">q<g ref="g15">uo</g>d</abbr></w><space type="scribal"
@@ -3799,7 +3810,7 @@
 							>respectu</w><space type="scribal"/><w xml:lang="la">spirit<abbr
 								cert="high">u<g ref="g7">us</g></abbr></w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.40b">
+					<l xml:lang="ghc" xml:id="MS5.3.40b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><w
 							lemma="cech" lemmaRef="http://www.dil.ie/7528" ana="adj"><abbr
 								cert="high">g<g ref="g3">ac</g><g ref="g4">h</g></abbr></w><space
@@ -3827,14 +3838,14 @@
 							>spirad</w><pc>.</pc>
 					</l>
 				</lg>
-				<lg n="41" type="prosediv" xml:id="MS5.2.41">
-					<l xml:lang="la" xml:id="MS5.2.41a">
+				<lg n="41" type="prosediv" xml:id="MS5.3.41">
+					<l xml:lang="la" xml:id="MS5.3.41a">
 						<w xml:lang="la">Cor<abbr cert="high">p<g ref="g7">us</g></abbr></w><space
 							type="scribal"/><w xml:lang="la">repletum</w><space type="scribal"/><w
 							xml:lang="la"><abbr cert="high">n<g ref="g3">on</g></abbr></w><space
 							type="scribal"/><w xml:lang="la">famescit</w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.41b">
+					<l xml:lang="ghc" xml:id="MS5.3.41b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><w
 							lemma="cach" lemmaRef="http://www.dil.ie/7528" ana="adj"><abbr
 								cert="high">g<g ref="g12">ac</g><g ref="g4">h</g></abbr></w><space
@@ -3852,8 +3863,8 @@
 							ana="pron">he</w><pc>.</pc>
 					</l>
 				</lg>
-				<lg n="42" type="prosediv" xml:id="MS5.2.42">
-					<l xml:lang="la" xml:id="MS5.2.42a">
+				<lg n="42" type="prosediv" xml:id="MS5.3.42">
+					<l xml:lang="la" xml:id="MS5.3.42a">
 						<w xml:lang="la">Qualia</w><space type="scribal"/><w xml:lang="la">de<abbr
 								cert="high">p<g ref="g36">er</g></abbr>dita</w><space type="scribal"
 							/><w xml:lang="la"><abbr cert="high">s<g ref="g3"
@@ -3862,7 +3873,7 @@
 									>o<g ref="g7">bligatus</g></abbr></w><space type="scribal"/><w
 							xml:lang="la">restuare</w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.42b">
+					<l xml:lang="ghc" xml:id="MS5.3.42b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><lb
 							n="29" xml:id="MS5.38.29"/><w lemma="is"
 							lemmaRef="http://www.dil.ie/29104" ana="verb">is</w><space
@@ -3889,8 +3900,8 @@
 								cert="high"><g ref="g1">m</g><g ref="g4">h</g></abbr></w><pc>.</pc>
 					</l>
 				</lg>
-				<lg n="43" type="prosediv" xml:id="MS5.2.43">
-					<l xml:lang="la" xml:id="MS5.2.43a">
+				<lg n="43" type="prosediv" xml:id="MS5.3.43">
+					<l xml:lang="la" xml:id="MS5.3.43a">
 						<w xml:lang="la">N<unclear reason="text_obscure" cert="high" resp="EPT"
 								>ullu</unclear><pc>-</pc><lb n="30" xml:id="MS5.38.30"/><abbr
 								cert="high">u<g ref="g1">m</g></abbr></w><space type="scribal"/><w
@@ -3907,7 +3918,7 @@
 									ref="g25">ri</g></abbr><abbr cert="high">t<g ref="g16"
 								>ur</g></abbr></w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.43b">
+					<l xml:lang="ghc" xml:id="MS5.3.43b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><space
 							type="scribal"/><w lemma="ní" lemmaRef="http://www.dil.ie/33147"
 							ana="adv">ni</w><w lemma="gaibid" lemmaRef="http://www.dil.ie/25119"
@@ -3934,13 +3945,13 @@
 					</l>
 				</lg>
 				<pb n="39" xml:id="MS5.39"/>
-				<lg n="44" type="prosediv" xml:id="MS5.2.44">
-					<l xml:lang="la" xml:id="MS5.2.44a"><lb n="1" xml:id="MS5.39.1"/>
+				<lg n="44" type="prosediv" xml:id="MS5.3.44">
+					<l xml:lang="la" xml:id="MS5.3.44a"><lb n="1" xml:id="MS5.39.1"/>
 						<w>Na<abbr cert="high">t<g ref="g16">ur</g></abbr>ale</w><space
 							type="scribal"/><w><abbr cert="high">e<g ref="g3"
 							>st</g></abbr></w><space type="scribal"/><w xml:lang="la">mori</w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.44b">
+					<l xml:lang="ghc" xml:id="MS5.3.44b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><space
 							type="scribal"/><w lemma="ní" lemmaRef="http://www.dil.ie/33147"
 							ana="adv">ni</w><space type="scribal"/><w lemma="fétaid"
@@ -3957,8 +3968,8 @@
 							>aduire</g></abbr></w><pc>.</pc>
 					</l>
 				</lg>
-				<lg n="45" type="prosediv" xml:id="MS5.2.45">
-					<l xml:lang="la" xml:id="MS5.2.45a">
+				<lg n="45" type="prosediv" xml:id="MS5.3.45">
+					<l xml:lang="la" xml:id="MS5.3.45a">
 						<w xml:lang="la">Quod</w><space type="scribal"/><w xml:lang="la"><abbr
 								cert="high">m<g ref="g3">a</g>x<g ref="g3">im</g>a</abbr></w><space
 							type="scribal"/><w xml:lang="la">indendi<pc>=</pc><lb n="2"
@@ -3975,7 +3986,7 @@
 								>m</g></abbr></w></del><space type="scribal"/><w xml:lang="la"
 							>ab</w><w xml:lang="la">ea</w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.45b">
+					<l xml:lang="ghc" xml:id="MS5.3.45b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><w
 							lemma="cech" lemmaRef="http://www.dil.ie/7528" ana="adj"><abbr
 								cert="high">g<g ref="g12">ac</g><g ref="g4">h</g></abbr></w><space
@@ -4005,8 +4016,8 @@
 							ana="pron">hé</w><pc>.</pc>
 					</l>
 				</lg>
-				<lg n="46" type="prosediv" xml:id="MS5.2.46">
-					<l xml:lang="la" xml:id="MS5.2.46a">
+				<lg n="46" type="prosediv" xml:id="MS5.3.46">
+					<l xml:lang="la" xml:id="MS5.3.46a">
 						<w xml:lang="la">Cib<abbr cert="high"><g ref="g7">us</g></abbr></w><space
 							type="scribal"/><w xml:lang="la"><abbr cert="high">e<g ref="g3"
 								>st</g></abbr></w><space type="scribal"/><w xml:lang="la"><abbr
@@ -4025,7 +4036,7 @@
 									ref="g1">m</g></abbr>bris</w><space type="scribal"/><w
 							xml:lang="la">assimulari</w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.46b"><w lemma=".i."
+					<l xml:lang="ghc" xml:id="MS5.3.46b"><w lemma=".i."
 							lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><w lemma="is"
 							lemmaRef="http://www.dil.ie/29104" ana="verb">is</w><w lemma="ed"
 							lemmaRef="http://www.dil.ie/19657" ana="pron"><abbr cert="medium"><g
@@ -4066,8 +4077,8 @@
 									ref="g12">eac</g><g ref="g4">h</g></abbr></w>
 					</l>
 				</lg>
-				<lg n="47" type="prosediv" xml:id="MS5.2.47">
-					<l xml:lang="la" xml:id="MS5.2.47a">
+				<lg n="47" type="prosediv" xml:id="MS5.3.47">
+					<l xml:lang="la" xml:id="MS5.3.47a">
 						<w xml:lang="la">Inp<pc>=</pc><lb n="6" xml:id="MS5.39.6"
 							/>ossibile</w><space type="scribal"/><w xml:lang="la"><abbr cert="high"
 									>e<g ref="g3">st</g></abbr></w><space type="scribal"/><w
@@ -4080,7 +4091,7 @@
 							xml:lang="la"><abbr cert="high">g<g ref="g15">ro</g></abbr>ss<abbr
 								cert="high">u<g ref="g1">m</g></abbr></w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.47b">
+					<l xml:lang="ghc" xml:id="MS5.3.47b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><space
 							type="scribal"/><w lemma="ní" lemmaRef="http://www.dil.ie/33147"
 							ana="adv">ni</w><space type="scribal"/><w lemma="fétaid"
@@ -4101,8 +4112,8 @@
 								cert="high">i<g ref="g1">m</g><g ref="g4">h</g></abbr></w><pc>.</pc>
 					</l>
 				</lg>
-				<lg n="48" type="prosediv" xml:id="MS5.2.48">
-					<l xml:lang="la" xml:id="MS5.2.48a">
+				<lg n="48" type="prosediv" xml:id="MS5.3.48">
+					<l xml:lang="la" xml:id="MS5.3.48a">
 						<w xml:lang="la">Si</w><w xml:lang="la">radix</w><space type="scribal"/><w
 							xml:lang="la">malea</w><space type="scribal"/><w xml:lang="la">se</w><w
 							xml:lang="la">habet</w><space type="scribal"/><w xml:lang="la">et</w><w
@@ -4111,7 +4122,7 @@
 							xml:lang="la">malae</w><space type="scribal"/><w xml:lang="la"
 							>se</w><space type="scribal"/><w xml:lang="la">habet</w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.48b">
+					<l xml:lang="ghc" xml:id="MS5.3.48b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><w
 							lemma="día n-" lemmaRef="http://www.dil.ie/15846" ana="conj"><abbr
 								cert="high"><g ref="g26">da</g></abbr></w><space type="scribal"/><w
@@ -4133,13 +4144,13 @@
 							ana="adj">holc</w>
 					</l>
 				</lg>
-				<lg n="49" type="prosediv" xml:id="MS5.2.49">
-					<l xml:lang="la" xml:id="MS5.2.49a">
+				<lg n="49" type="prosediv" xml:id="MS5.3.49">
+					<l xml:lang="la" xml:id="MS5.3.49a">
 						<w xml:lang="la">Nil</w><lb n="9" xml:id="MS5.39.9"/><w xml:lang="la"
 								>nu<abbr cert="high">t<g ref="g25">ri</g></abbr>t</w><space
 							type="scribal"/><w xml:lang="la">nisi</w><w xml:lang="la">dulce</w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.49b">
+					<l xml:lang="ghc" xml:id="MS5.3.49b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><space
 							type="scribal"/><w lemma="ní" lemmaRef="http://www.dil.ie/33147"
 							ana="adv">ni</w><space type="scribal"/><w lemma="ailid"
@@ -4155,8 +4166,8 @@
 							>milis</w><pc>.</pc>
 					</l>
 				</lg>
-				<lg n="50" type="prosediv" xml:id="MS5.2.50">
-					<l xml:lang="la" xml:id="MS5.2.50a">
+				<lg n="50" type="prosediv" xml:id="MS5.3.50">
+					<l xml:lang="la" xml:id="MS5.3.50a">
 						<w xml:lang="la"><abbr cert="high">h<g ref="g21">er</g></abbr>ba</w><w
 							xml:lang="la">mala</w><pc>,</pc><space type="scribal"/><w xml:lang="la"
 								>cit<abbr cert="high">i<g ref="g7">us</g></abbr></w><space
@@ -4166,7 +4177,7 @@
 								><c>TNA</c></add>u<abbr cert="high">a<g ref="g1"
 							>m</g></abbr></w><space type="scribal"/><w xml:lang="la">bona</w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.50b">
+					<l xml:lang="ghc" xml:id="MS5.3.50b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><space
 							type="scribal"/><w lemma="is" lemmaRef="http://www.dil.ie/29104"
 							ana="verb">is</w><w lemma="toísech" lemmaRef="http://www.dil.ie/41302"
@@ -4191,8 +4202,8 @@
 								>h</g></abbr></w><pc>.</pc>
 					</l>
 				</lg>
-				<lg n="51" type="prosediv" xml:id="MS5.2.51">
-					<l xml:lang="la" xml:id="MS5.2.51a">
+				<lg n="51" type="prosediv" xml:id="MS5.3.51">
+					<l xml:lang="la" xml:id="MS5.3.51a">
 						<w xml:lang="la">Quod</w><space type="scribal"/><w xml:lang="la">na<abbr
 								cert="high">t<g ref="g16">ur</g></abbr>ali<abbr cert="high">t<g
 									ref="g21">er</g></abbr></w><lb n="10" xml:id="MS5.39.10"/><w
@@ -4205,7 +4216,7 @@
 							type="scribal"/><w xml:lang="la">ae<abbr cert="high">g<g ref="g16"
 									>ru</g></abbr>m</w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.51b">
+					<l xml:lang="ghc" xml:id="MS5.3.51b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><w
 							lemma="cech" lemmaRef="http://www.dil.ie/7528" ana="adj"><abbr
 								cert="high">g<g ref="g12">ac</g><g ref="g4">h</g></abbr></w><space
@@ -4233,8 +4244,8 @@
 									>an</g></abbr></w><pc>.</pc>
 					</l>
 				</lg>
-				<lg n="52" type="prosediv" xml:id="MS5.2.52">
-					<l xml:lang="la" xml:id="MS5.2.52a">
+				<lg n="52" type="prosediv" xml:id="MS5.3.52">
+					<l xml:lang="la" xml:id="MS5.3.52a">
 						<w xml:lang="la">Cor<abbr cert="high">p<g ref="g7">us</g></abbr></w><space
 							type="scribal"/><w xml:lang="la">in</w><space type="scribal"/><w
 							xml:lang="la">meliori</w><space type="scribal"/><w xml:lang="la">fo<abbr
@@ -4246,7 +4257,7 @@
 								cert="high"><g ref="g28">con</g></abbr><abbr cert="high">s<g
 									ref="g21">er</g></abbr>uari</w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.52b">
+					<l xml:lang="ghc" xml:id="MS5.3.52b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><lb
 							n="12" xml:id="MS5.39.12"/><w lemma="in"
 							lemmaRef="http://www.dil.ie/28194" ana="art">an</w><space type="scribal"
@@ -4270,8 +4281,8 @@
 									>éad</g></abbr></w><pc>.</pc>
 					</l>
 				</lg>
-				<lg n="53" type="prosediv" xml:id="MS5.2.53">
-					<l xml:lang="la" xml:id="MS5.2.53a">
+				<lg n="53" type="prosediv" xml:id="MS5.3.53">
+					<l xml:lang="la" xml:id="MS5.3.53a">
 						<w xml:lang="la">Facile</w><space type="scribal"/><w xml:lang="la"><abbr
 								cert="high">e<g ref="g3">st</g></abbr></w><space type="scribal"/><w
 							xml:lang="la">de</w><space type="scribal"/><abbr><w xml:lang="la"
@@ -4279,7 +4290,7 @@
 							xml:id="MS5.39.13"/><w xml:lang="la">a</w><w xml:lang="la"
 							>puncto</w><space type="scribal"/>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.53b">
+					<l xml:lang="ghc" xml:id="MS5.3.53b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><abbr
 							cert="medium"><w lemma="is" lemmaRef="http://www.dil.ie/29104"
 								ana="verb">is</w><w lemma="airassa"
@@ -4298,8 +4309,8 @@
 							>onc</w></add><pc>.</pc>
 					</l>
 				</lg>
-				<lg n="54" type="prosediv" xml:id="MS5.2.54">
-					<l xml:lang="la" xml:id="MS5.2.54a">
+				<lg n="54" type="prosediv" xml:id="MS5.3.54">
+					<l xml:lang="la" xml:id="MS5.3.54a">
 						<w xml:lang="la"><abbr cert="medium">d<g ref="g7"
 							>ehibitus</g></abbr></w><space type="scribal"/><w xml:lang="la"
 								>exersiti<abbr cert="high">u<g ref="g1">m</g></abbr></w><space
@@ -4311,7 +4322,7 @@
 									ref="g34">ro</g></abbr>p<abbr cert="high">t<g ref="g21"
 								>er</g></abbr></w><space type="scribal"/><w xml:lang="la">duo</w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.54b">
+					<l xml:lang="ghc" xml:id="MS5.3.54b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><w
 							lemma="dligid" lemmaRef="http://www.dil.ie/17037" ana="verb">d<abbr
 								cert="high">l<g ref="g3">eg</g><g ref="g16">ur</g></abbr></w><space
@@ -4406,8 +4417,8 @@
 										>ad</g><g ref="g4">h</g></abbr></w></unclear><pc>.</pc>
 					</l>
 				</lg>
-				<lg n="55" type="prosediv" xml:id="MS5.2.55">
-					<l xml:lang="la" xml:id="MS5.2.55a">
+				<lg n="55" type="prosediv" xml:id="MS5.3.55">
+					<l xml:lang="la" xml:id="MS5.3.55a">
 						<w xml:lang="la">Quod</w><lb n="17" xml:id="MS5.39.17"/><w xml:lang="la"
 								>un<abbr cert="high">u<g ref="g1">m</g></abbr></w><space
 							type="scribal"/><w xml:lang="la">et</w><w xml:lang="la">idem</w><space
@@ -4419,7 +4430,7 @@
 									ref="g1">m</g></abbr></w><space type="scribal"/><w xml:lang="la"
 							>causa</w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.55b">
+					<l xml:lang="ghc" xml:id="MS5.3.55b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><w
 							lemma="cech" lemmaRef="http://www.dil.ie/7528" ana="adj"><abbr
 								cert="high">g<g ref="g12">ac</g><g ref="g4">h</g></abbr></w><space
@@ -4448,8 +4459,8 @@
 							ana="pron">he</w>
 					</l>
 				</lg>
-				<lg n="56" type="prosediv" xml:id="MS5.2.56">
-					<l xml:lang="la" xml:id="MS5.2.56a">
+				<lg n="56" type="prosediv" xml:id="MS5.3.56">
+					<l xml:lang="la" xml:id="MS5.3.56a">
 						<w xml:lang="la">E<abbr cert="high">x<g ref="g21">er</g></abbr>siti<abbr
 								cert="high">u<g ref="g1">m</g></abbr></w><space type="scribal"
 							/><unclear reason="abbrv" cert="low" resp="EPT"><c>ē</c></unclear><space
@@ -4458,7 +4469,7 @@
 									>p<g ref="g7">us</g></abbr></w><space type="scribal"/><w
 							xml:lang="la">cor<abbr cert="high">p<g ref="g7">us</g></abbr></w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.56b">
+					<l xml:lang="ghc" xml:id="MS5.3.56b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><space
 							type="scribal"/><w lemma="téigid" lemmaRef="http://www.dil.ie/40359"
 							ana="verb">tei<abbr cert="high">g<g ref="g4">h</g></abbr>i<abbr
@@ -4472,8 +4483,8 @@
 									cert="high">u<g ref="g19">ir</g></abbr>p</w></unclear>
 					</l>
 				</lg>
-				<lg n="57" type="prosediv" xml:id="MS5.2.57">
-					<l xml:lang="la" xml:id="MS5.2.57a"><lb n="19" xml:id="MS5.39.19"/>
+				<lg n="57" type="prosediv" xml:id="MS5.3.57">
+					<l xml:lang="la" xml:id="MS5.3.57a"><lb n="19" xml:id="MS5.39.19"/>
 						<w xml:lang="la"><abbr cert="high">Q<g ref="g25">uies</g></abbr></w><space
 							type="scribal"/><w xml:lang="la">disposio</w><space type="scribal"/><w
 							xml:lang="la"><abbr cert="high"><g ref="g28">con</g></abbr><abbr
@@ -4481,7 +4492,7 @@
 							/><w xml:lang="la">e<abbr cert="high">x<g ref="g21"
 							>er</g></abbr>citio</w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.57b">
+					<l xml:lang="ghc" xml:id="MS5.3.57b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><space
 							type="scribal"/><w lemma="amlaid" lemmaRef="http://www.dil.ie/3145"
 							ana="adv"><abbr cert="high">a<g ref="g1">m</g><g ref="g4"
@@ -4505,8 +4516,8 @@
 							>ur</g></abbr></w><pc>.</pc>
 					</l>
 				</lg>
-				<lg n="58" type="prosediv" xml:id="MS5.2.58">
-					<l xml:lang="la" xml:id="MS5.2.58a"><lb n="20" xml:id="MS5.39.20"/>
+				<lg n="58" type="prosediv" xml:id="MS5.3.58">
+					<l xml:lang="la" xml:id="MS5.3.58a"><lb n="20" xml:id="MS5.39.20"/>
 						<w xml:lang="la">S<abbr cert="high">o<g ref="g1">m</g></abbr><abbr
 								cert="high">n<g ref="g7">us</g></abbr></w><space type="scribal"/><w
 							xml:lang="la">et</w><w xml:lang="la"><abbr cert="high">q<g ref="g25"
@@ -4520,7 +4531,7 @@
 								cert="high">t<g ref="g16">ur</g></abbr>aili<abbr cert="high">u<g
 									ref="g1">m</g></abbr></w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.58b">
+					<l xml:lang="ghc" xml:id="MS5.3.58b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><abbr
 							cert="medium"><w lemma="is" lemmaRef="http://www.dil.ie/29104"
 								ana="verb">is</w><w lemma="ed" lemmaRef="http://www.dil.ie/19657"
@@ -4552,8 +4563,8 @@
 								resp="EPT">d</supplied>a</w><pc>.</pc>
 					</l>
 				</lg>
-				<lg n="59" type="prosediv" xml:id="MS5.2.59">
-					<l xml:lang="la" xml:id="MS5.2.59a">
+				<lg n="59" type="prosediv" xml:id="MS5.3.59">
+					<l xml:lang="la" xml:id="MS5.3.59a">
 						<w xml:lang="la">Null<abbr cert="high">u<g ref="g1">m</g></abbr></w><add
 							type="insertion" place="above" resp="Hand12"><w xml:lang="la">o<abbr
 									cert="high">p<g ref="g7">us</g></abbr></w><w xml:lang="la"><abbr
@@ -4563,7 +4574,7 @@
 								xml:id="MS5.39.22"/><supplied resp="EPT">en</supplied>t<abbr
 								cert="high">u<g ref="g1">m</g></abbr></w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.59b">
+					<l xml:lang="ghc" xml:id="MS5.3.59b">
 						<supplied resp="EPT"><w lemma=".i." lemmaRef="http://www.dil.ie/26892"
 								ana="abbr">.i.</w></supplied><w lemma="cech"
 							lemmaRef="http://www.dil.ie/7528" ana="adj"><abbr cert="high">g<g
@@ -4586,8 +4597,8 @@
 									ref="g12">ec</g><g ref="g4">h</g></abbr></w>
 					</l>
 				</lg>
-				<lg n="60" type="prosediv" xml:id="MS5.2.60">
-					<l xml:lang="la" xml:id="MS5.2.60a">
+				<lg n="60" type="prosediv" xml:id="MS5.3.60">
+					<l xml:lang="la" xml:id="MS5.3.60a">
 						<w xml:lang="la">No<del resp="Hand12">d</del>n</w><w xml:lang="la"><abbr
 								cert="high">o<g ref="g7">bligatus</g></abbr></w><space
 							type="scribal"/><w xml:lang="la">ad<abbr cert="high">t<g ref="g21"
@@ -4598,7 +4609,7 @@
 									>er</g></abbr></w><space type="scribal"/><w xml:lang="la"
 								>euacuaci<abbr cert="high">o<g ref="g5">n</g></abbr>i</w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.60b">
+					<l xml:lang="ghc" xml:id="MS5.3.60b">
 						<choice>
 							<sic><w lemma="fri" lemmaRef="http://www.dil.ie/24329" ana="prep"
 								>ri</w></sic>
@@ -4623,8 +4634,8 @@
 								cert="medium">m<g ref="g3">uig</g></abbr>ti</w><pc>.</pc>
 					</l>
 				</lg>
-				<lg n="61" type="prosediv" xml:id="MS5.2.61">
-					<l xml:lang="la" xml:id="MS5.2.61a">
+				<lg n="61" type="prosediv" xml:id="MS5.3.61">
+					<l xml:lang="la" xml:id="MS5.3.61a">
 						<w xml:lang="la">Cor<abbr cert="high">p<g ref="g7">us</g></abbr></w><lb
 							n="24" xml:id="MS5.39.24"/><w xml:lang="la">laps<abbr cert="high">u<g
 									ref="g1">m</g></abbr></w><space type="scribal"/><w xml:lang="la"
@@ -4634,7 +4645,7 @@
 							>a</w><w xml:lang="la">suo</w><space type="scribal"/><w xml:lang="la"
 							>simile</w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.61b">
+					<l xml:lang="ghc" xml:id="MS5.3.61b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><w
 							lemma="cech" lemmaRef="http://www.dil.ie/7528" ana="adj"><abbr
 								cert="high">g<g ref="g12">ac</g><g ref="g4">h</g></abbr></w><space
@@ -4656,15 +4667,15 @@
 									ref="g3">aili</g><g ref="g7">us</g></abbr></w><pc>.</pc>
 					</l>
 				</lg>
-				<lg n="62" type="prosediv" xml:id="MS5.2.62">
-					<l xml:lang="la" xml:id="MS5.2.62a">
+				<lg n="62" type="prosediv" xml:id="MS5.3.62">
+					<l xml:lang="la" xml:id="MS5.3.62a">
 						<w xml:lang="la">Sincopis</w><space type="scribal"/><w xml:lang="la"><abbr
 								cert="high">e<g ref="g3">st</g></abbr></w><space type="scribal"/><w
 							xml:lang="la">cas<abbr cert="high">s<g ref="g7">us</g></abbr></w><space
 							type="scribal"/><w>i<supplied resp="EPT">n</supplied></w><w
 							xml:lang="la">virtut<abbr cert="high">i<g ref="g42">bus</g></abbr></w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.62b">
+					<l xml:lang="ghc" xml:id="MS5.3.62b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><space
 							type="scribal"/><abbr><w lemma="is" lemmaRef="http://www.dil.ie/29104"
 								ana="verb">is</w><w lemma="ed" lemmaRef="http://www.dil.ie/19657"
@@ -4683,8 +4694,8 @@
 							lemma="í" lemmaRef="http://www.dil.ie/26895" ana="pron">i</w><pc>.</pc>
 					</l>
 				</lg>
-				<lg n="63" type="prosediv" xml:id="MS5.2.63">
-					<l xml:lang="la" xml:id="MS5.2.63a">
+				<lg n="63" type="prosediv" xml:id="MS5.3.63">
+					<l xml:lang="la" xml:id="MS5.3.63a">
 						<w xml:lang="la">N<lb n="26" xml:id="MS5.39.26"/>un<abbr cert="high"><g
 									ref="g1">u</g></abbr><abbr cert="high">a<g ref="g1"
 							>m</g></abbr></w><space type="scribal"/><w xml:lang="la">in</w><w
@@ -4692,7 +4703,7 @@
 							>statu</w><space type="scribal"/><w xml:lang="la"><abbr cert="high">p<g
 									ref="g36">er</g></abbr>manet</w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.63b">
+					<l xml:lang="ghc" xml:id="MS5.3.63b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><w
 							lemma="ní" lemmaRef="http://www.dil.ie/33147" ana="adv">ni</w><w
 							lemma="fétaid" lemmaRef="http://www.dil.ie/21805" ana="verb">h<abbr
@@ -4708,8 +4719,8 @@
 									cert="medium">d<g ref="g3">aid</g></abbr></w></w>
 					</l>
 				</lg>
-				<lg n="64" type="prosediv" xml:id="MS5.2.64">
-					<l xml:lang="la" xml:id="MS5.2.64a">
+				<lg n="64" type="prosediv" xml:id="MS5.3.64">
+					<l xml:lang="la" xml:id="MS5.3.64a">
 						<w xml:lang="la">Magna</w><space type="scribal"/><w xml:lang="la"><abbr
 								cert="high">v<g ref="g21">er</g></abbr>icundia</w><add type="gloss"
 							place="margin, right" resp="Hand12"><c>TNA</c></add><lb n="27"
@@ -4723,7 +4734,7 @@
 							type="scribal"/><w xml:lang="la">ad</w><w xml:lang="la">sincop<abbr
 								cert="high">e<g ref="g1">m</g></abbr></w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.64b">
+					<l xml:lang="ghc" xml:id="MS5.3.64b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><w
 							lemma="is" lemmaRef="http://www.dil.ie/29104" ana="verb">is</w><space
 							type="scribal"/><w lemma="mór" lemmaRef="http://www.dil.ie/32548"
@@ -4762,8 +4773,8 @@
 								cert="medium">p<g ref="g3">is</g></abbr></w><pc>.</pc>
 					</l>
 				</lg>
-				<lg n="65" type="prosediv" xml:id="MS5.2.65">
-					<l xml:lang="la" xml:id="MS5.2.65a">
+				<lg n="65" type="prosediv" xml:id="MS5.3.65">
+					<l xml:lang="la" xml:id="MS5.3.65a">
 						<w xml:lang="la">Euacutio</w><space type="scribal"/><w xml:lang="la"><abbr
 								cert="high">d<g ref="g3">ehibitus</g></abbr></w><space
 							type="scribal"/><w xml:lang="la">cess<abbr cert="high">a<g ref="g11"
@@ -4774,7 +4785,7 @@
 							>exierit</w><space type="scribal"/><w>su<abbr cert="high">p<g ref="g36"
 									>er</g></abbr><space type="scribal"/>abundantia</w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.65b">
+					<l xml:lang="ghc" xml:id="MS5.3.65b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><space
 							type="scribal"/><w lemma="dligid" lemmaRef="http://www.dil.ie/17037"
 							ana="verb">d<abbr cert="medium">l<g ref="g3">eag</g><g ref="g16"
@@ -4804,8 +4815,8 @@
 							>l</g></abbr>i</w><pc>.</pc>
 					</l>
 				</lg>
-				<lg n="66" type="prosediv" xml:id="MS5.2.66">
-					<l xml:lang="la" xml:id="MS5.2.66a">
+				<lg n="66" type="prosediv" xml:id="MS5.3.66">
+					<l xml:lang="la" xml:id="MS5.3.66a">
 						<w xml:lang="la">Meil<abbr cert="high">i<g ref="g7">us</g></abbr></w><w
 							xml:lang="la"><abbr cert="high">e<g ref="g3">st</g></abbr></w><space
 							type="scribal"/><w xml:lang="la">residi<abbr cert="high">u<g ref="g1"
@@ -4818,7 +4829,7 @@
 								>ex<abbr cert="high">q<g ref="g25">ui</g></abbr>site</w><space
 							type="scribal"/><w xml:lang="la">euacuare</w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.66b">
+					<l xml:lang="ghc" xml:id="MS5.3.66b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><w
 							lemma="is" lemmaRef="http://www.dil.ie/29104" ana="verb">is</w><space
 							type="scribal"/><w lemma="maith" lemmaRef="http://www.dil.ie/31438"
@@ -4854,8 +4865,8 @@
 					</l>
 				</lg>
 				<pb n="40" xml:id="MS5.40"/>
-				<lg n="67" type="prosediv" xml:id="MS5.2.67">
-					<l xml:lang="la" xml:id="MS5.2.67a"><lb n="1" xml:id="MS5.40.1"/>
+				<lg n="67" type="prosediv" xml:id="MS5.3.67">
+					<l xml:lang="la" xml:id="MS5.3.67a"><lb n="1" xml:id="MS5.40.1"/>
 						<w xml:lang="la">O<abbr cert="high"><g ref="g3">mn</g>is</abbr></w><space
 							type="scribal"/><w xml:lang="la"><abbr cert="high">s<g ref="g40"
 								>ub</g></abbr>ita</w><space type="scribal"/><w xml:lang="la"
@@ -4863,7 +4874,7 @@
 									>st</g></abbr></w><space type="scribal"/><w><abbr cert="high"
 									>p<g ref="g34">ro</g></abbr>hibita</w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.67b">
+					<l xml:lang="ghc" xml:id="MS5.3.67b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><space
 							type="scribal"/><w lemma="attá" lemmaRef="http://www.dil.ie/4927"
 							ana="verb">ata</w><space type="scribal"/><w lemma="cech"
@@ -4880,8 +4891,8 @@
 								cert="high">t<g ref="g16">ur</g></abbr>misgi</w>
 					</l>
 				</lg>
-				<lg n="68" type="prosediv" xml:id="MS5.2.68">
-					<l xml:lang="la" xml:id="MS5.2.68a"><lb n="2" xml:id="MS5.40.2"/>
+				<lg n="68" type="prosediv" xml:id="MS5.3.68">
+					<l xml:lang="la" xml:id="MS5.3.68a"><lb n="2" xml:id="MS5.40.2"/>
 						<w xml:lang="la">Medi<abbr cert="high">c<g ref="g7">us</g></abbr></w><add
 							type="insertion" place="above" resp="Hand12"><w xml:lang="la"><abbr
 									cert="high">d<g ref="g7">ehibitus</g></abbr></w></add><w
@@ -4891,7 +4902,7 @@
 							>m</g></abbr></w><space type="scribaL"/><w xml:lang="la">euacu<abbr
 								cert="high"><g ref="g8">ar</g></abbr>e</w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.68b">
+					<l xml:lang="ghc" xml:id="MS5.3.68b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><space
 							type="scribal"/><w lemma="dligid" lemmaRef="http://www.dil.ie/17037"
 							ana="verb">d<abbr cert="high">l<g ref="g3">ig</g></abbr>i<abbr
@@ -4911,8 +4922,8 @@
 							lemmaRef="http://www.dil.ie/32281" ana="adj">min</w><pc>.</pc>
 					</l>
 				</lg>
-				<lg n="69" type="prosediv" xml:id="MS5.2.69">
-					<l xml:lang="la" xml:id="MS5.2.69a">
+				<lg n="69" type="prosediv" xml:id="MS5.3.69">
+					<l xml:lang="la" xml:id="MS5.3.69a">
 						<w xml:lang="la">In</w><space type="scribal"/><w xml:lang="la">a<abbr
 								cert="high">p<g ref="g3">os</g></abbr>temate</w><space
 							type="scribal"/><w xml:lang="la">ma<abbr cert="high">t<g ref="g16"
@@ -4926,7 +4937,7 @@
 							>exire</w><space type="scribal"/><w xml:lang="la">sani<abbr cert="high"
 									>e<g ref="g1">m</g></abbr></w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.69b">
+					<l xml:lang="ghc" xml:id="MS5.3.69b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><space
 							type="scribal"/><w lemma="in" lemmaRef="http://www.dil.ie/28194"
 							ana="art">an</w><w lemma="tan" lemmaRef="http://www.dil.ie/40004"
@@ -4954,8 +4965,8 @@
 							lemmaRef="http://www.dil.ie/42968" ana="adj">uili</w><pc>.</pc>
 					</l>
 				</lg>
-				<lg n="70" type="prosediv" xml:id="MS5.2.70">
-					<l xml:lang="la" xml:id="MS5.2.70a">
+				<lg n="70" type="prosediv" xml:id="MS5.3.70">
+					<l xml:lang="la" xml:id="MS5.3.70a">
 						<w xml:lang="la">Q<abbr cert="high"><g ref="g3">ua</g></abbr><abbr
 								cert="high">n<g ref="g3">do</g></abbr></w><space type="scribal"/><w
 							xml:lang="la">mala</w><space type="scribal"/><w xml:lang="la">ma<abbr
@@ -4969,7 +4980,7 @@
 								cert="high">g<g ref="g21">er</g></abbr></w><space type="scribal"/><w
 							xml:lang="la"><abbr cert="high">q<g ref="g25">ui</g></abbr>escit</w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.70b">
+					<l xml:lang="ghc" xml:id="MS5.3.70b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><space
 							type="scribal"/><w lemma="in" lemmaRef="http://www.dil.ie/28194"
 							ana="art">an</w><w lemma="úar" lemmaRef="http://www.dil.ie/42763"
@@ -5011,8 +5022,8 @@
 									>d<g ref="g4">h</g></abbr></w>
 					</l>
 				</lg>
-				<lg n="71" type="prosediv" xml:id="MS5.2.71">
-					<l xml:lang="la" xml:id="MS5.2.71a">
+				<lg n="71" type="prosediv" xml:id="MS5.3.71">
+					<l xml:lang="la" xml:id="MS5.3.71a">
 						<w xml:lang="la">In</w><space type="scribal"/><w xml:lang="la"><abbr
 								cert="high">p<g ref="g3">re</g></abbr><add type="gloss"
 								place="above" resp="Hand15">pre</add><abbr cert="high">s<g ref="g21"
@@ -5030,7 +5041,7 @@
 								>uis<abbr cert="high">q<g ref="g7">ue</g></abbr></w><space
 							type="scribal"/><w xml:lang="la">ad</w><w xml:lang="la">sincopem</w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.71b">
+					<l xml:lang="ghc" xml:id="MS5.3.71b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><w
 							lemma="i" lemmaRef="http://www.dil.ie/26891" ana="prep">a</w><w
 							lemma="réimm" lemmaRef="http://www.dil.ie/34959" ana="vnoun">re<abbr
@@ -5058,8 +5069,8 @@
 									ref="g3">is</g></abbr></w><pc>.</pc>
 					</l>
 				</lg>
-				<lg n="72" type="prosedov" xml:id="MS5.2.72">
-					<l xml:lang="la" xml:id="MS5.2.72a">
+				<lg n="72" type="prosedov" xml:id="MS5.3.72">
+					<l xml:lang="la" xml:id="MS5.3.72a">
 						<w xml:lang="la">Ali<abbr cert="high">q<g ref="g3">ua</g></abbr><abbr
 								cert="high">n<g ref="g3">do</g></abbr></w><space type="scribal"/><w
 							xml:lang="la"><abbr cert="high">o<g ref="g7"
@@ -5071,7 +5082,7 @@
 							type="scribal"/><w xml:lang="la">ad</w><w xml:lang="la">sincop<abbr
 								cert="high">e<g ref="g1">m</g></abbr></w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.72b">
+					<l xml:lang="ghc" xml:id="MS5.3.72b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><space
 							type="scribal"/><w lemma="is" lemmaRef="http://www.dil.ie/29104"
 							ana="verb">is</w><w lemma="éicen" lemmaRef="http://www.dil.ie/19711"
@@ -5093,8 +5104,8 @@
 									ref="g3">is</g></abbr></w>
 					</l>
 				</lg>
-				<lg n="73" type="prosediv" xml:id="MS5.2.73">
-					<l xml:lang="la" xml:id="MS5.2.73a"><lb n="11" xml:id="MS5.40.11"/>
+				<lg n="73" type="prosediv" xml:id="MS5.3.73">
+					<l xml:lang="la" xml:id="MS5.3.73a"><lb n="11" xml:id="MS5.40.11"/>
 						<w xml:lang="la">In</w><space type="scribal"/><w xml:lang="la">et</w><space
 							type="scribal"/><w xml:lang="la">phlebothomia</w><space type="scribal"
 							/><w xml:lang="la"><abbr cert="high">o<g ref="g7"
@@ -5105,7 +5116,7 @@
 							type="scribal"/><w xml:lang="la">deffect<abbr cert="high">u<g ref="g1"
 									>m</g></abbr></w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.73b">
+					<l xml:lang="ghc" xml:id="MS5.3.73b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><lb
 							n="12" xml:id="MS5.40.12"/><w lemma="i"
 							lemmaRef="http://www.dil.ie/26891" ana="prep">a</w><w lemma="leiciud"
@@ -5138,8 +5149,8 @@
 								cert="high">p<g ref="g3">is</g></abbr></w><pc>.</pc>
 					</l>
 				</lg>
-				<lg n="74" type="prosediv" xml:id="MS5.2.74">
-					<l xml:lang="la" xml:id="MS5.2.74a">
+				<lg n="74" type="prosediv" xml:id="MS5.3.74">
+					<l xml:lang="la" xml:id="MS5.3.74a">
 						<w xml:lang="la">Euac<add type="gloss" place="margin, right" resp="Hand12"
 									><c>TNA</c></add><lb n="13" xml:id="MS5.40.13"/>uatio</w><space
 							type="scribal"/><w xml:lang="la"><abbr cert="high">p<g ref="g36"
@@ -5155,7 +5166,7 @@
 								cert="high">i<g ref="g5">n</g></abbr>cop<abbr cert="high">e<g
 									ref="g1">m</g></abbr></w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.74b">
+					<l xml:lang="ghc" xml:id="MS5.3.74b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><w
 							lemma="in" lemmaRef="http://www.dil.ie/28194" ana="art">an</w><w
 							lemma="folmugud" lemmaRef="http://www.dil.ie/23148" ana="vnoun"><abbr
@@ -5192,8 +5203,8 @@
 							>leis</w><pc>.</pc>
 					</l>
 				</lg>
-				<lg n="75" type="prosediv" xml:id="MS5.2.75">
-					<l xml:lang="la" xml:id="MS5.2.75a">
+				<lg n="75" type="prosediv" xml:id="MS5.3.75">
+					<l xml:lang="la" xml:id="MS5.3.75a">
 						<w xml:lang="la">Phlebo<abbr cert="high">t<g ref="g4"
 							>h</g></abbr>omia</w><space type="scribal"/><w xml:lang="la">in<abbr
 								cert="high">c<g ref="g16">ru</g></abbr>dat</w><space type="scribal"
@@ -5206,7 +5217,7 @@
 							/><w xml:lang="la">euacuat</w><space type="scribal"/><w xml:lang="la"
 							>eos</w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.75b">
+					<l xml:lang="ghc" xml:id="MS5.3.75b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><space
 							type="scribal"/><w lemma="cuired" lemmaRef="http://www.dil.ie/13653"
 							ana="vnoun">cui<abbr cert="medium">r<g ref="g3">id</g><g ref="g4"
@@ -5240,8 +5251,8 @@
 								cert="high">i<g ref="g29">at</g></abbr></w><pc>.</pc>
 					</l>
 				</lg>
-				<lg n="76" type="prosediv" xml:id="MS5.2.76">
-					<l xml:lang="la" xml:id="MS5.2.76a">
+				<lg n="76" type="prosediv" xml:id="MS5.3.76">
+					<l xml:lang="la" xml:id="MS5.3.76a">
 						<w xml:lang="la">Solutiua</w><space type="scribal"/><w xml:lang="la"
 								>uen<abbr cert="high">t<g ref="g25">ri</g></abbr>s</w><space
 							type="scribal"/><w xml:lang="la">et</w><w xml:lang="la">uomi<abbr
@@ -5251,7 +5262,7 @@
 								>phle<pc>=</pc><add type="gloss" place="margin, right" resp="Hand12"
 									><c>TNA</c></add><lb n="17" xml:id="MS5.40.17"/>bothomia</w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.76b">
+					<l xml:lang="ghc" xml:id="MS5.3.76b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><space
 							type="scribal"/><w lemma="dligid" lemmaRef="http://www.dil.ie/17037"
 							ana="verb">d<abbr cert="medium">l<g ref="g3">eag</g><g ref="g16"
@@ -5279,8 +5290,8 @@
 								>n</g></abbr></w><pc>.</pc>
 					</l>
 				</lg>
-				<lg n="77" type="prosediv" xml:id="MS5.2.77">
-					<l xml:lang="la" xml:id="MS5.2.77a">
+				<lg n="77" type="prosediv" xml:id="MS5.3.77">
+					<l xml:lang="la" xml:id="MS5.3.77a">
 						<w xml:lang="la">Phleb<add type="gloss" place="margin, right" resp="Hand12"
 									><c>TNA</c></add><lb n="18" xml:id="MS5.40.18"
 							/>othomia</w><space type="scribal"/><w xml:lang="la"><abbr cert="high"
@@ -5296,7 +5307,7 @@
 							>or</g></abbr>es</w><space type="scribal"/><w xml:lang="la">pecc<abbr
 								cert="high">a<g ref="g5">n</g></abbr>t</w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.77b">
+					<l xml:lang="ghc" xml:id="MS5.3.77b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><space
 							type="scribal"/><w lemma="in" lemmaRef="http://www.dil.ie/28194"
 							ana="art">an</w><space type="scribal"/><w lemma="úar"
@@ -5329,8 +5340,8 @@
 									ref="g3">eig</g></abbr>in</w><pc>.</pc>
 					</l>
 				</lg>
-				<lg n="78" type="prosediv" xml:id="MS5.2.78">
-					<l xml:lang="la" xml:id="MS5.2.78a">
+				<lg n="78" type="prosediv" xml:id="MS5.3.78">
+					<l xml:lang="la" xml:id="MS5.3.78a">
 						<w xml:lang="la">Levis</w><space type="scribal"/><w xml:lang="la"
 									>medic<abbr>i<g>n</g></abbr>a</w><space type="scribal"/><w
 							xml:lang="la"><abbr cert="high">d<g ref="g7"
@@ -5339,7 +5350,7 @@
 								>er</g></abbr>e</w><space type="scribal"/><w xml:lang="la"
 								>fortior<abbr cert="high">e<g ref="g1">m</g></abbr></w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.78b">
+					<l xml:lang="ghc" xml:id="MS5.3.78b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><w
 							lemma="dligid" lemmaRef="http://www.dil.ie/17037" ana="verb">d<abbr
 								cert="medium">l<g ref="g3">eag</g><g ref="g16"
@@ -5366,13 +5377,13 @@
 									ref="g25">ir</g></abbr>e</w><pc>.</pc>
 					</l>
 				</lg>
-				<lg n="79" type="prosediv" xml:id="MS5.2.79">
-					<l xml:lang="la" xml:id="MS5.2.79a">
+				<lg n="79" type="prosediv" xml:id="MS5.3.79">
+					<l xml:lang="la" xml:id="MS5.3.79a">
 						<w xml:lang="la">O<abbr cert="high"><g ref="g3">mn</g>i</abbr>a</w><space
 							type="scribal"/><w xml:lang="la">dulcia</w><space type="scribal"/><w
 							xml:lang="la">nu<abbr cert="high">t<g ref="g25">ri</g></abbr>unt</w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.79b">
+					<l xml:lang="ghc" xml:id="MS5.3.79b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><space
 							type="scribal"/><w lemma="cech" lemmaRef="http://www.dil.ie/7528"
 							ana="adj"><abbr cert="high">g<g ref="g12">ac</g><g ref="g4"
@@ -5387,8 +5398,8 @@
 							ana="verb">oilis</w><pc>.</pc>
 					</l>
 				</lg>
-				<lg n="80" type="prosediv" xml:id="MS5.2.80">
-					<l xml:lang="la" xml:id="MS5.2.80a">
+				<lg n="80" type="prosediv" xml:id="MS5.3.80">
+					<l xml:lang="la" xml:id="MS5.3.80a">
 						<w xml:lang="la"><abbr cert="high">O<g ref="g3">mn</g>e</abbr></w><space
 							type="scribal"/><w xml:lang="la">nu<abbr cert="high">t<g ref="g25"
 									>ri</g></abbr>ment<abbr>u<g ref="g1">m</g></abbr></w><space
@@ -5399,7 +5410,7 @@
 								cert="high">o<g ref="g1">m</g></abbr>p<abbr cert="low">l<g ref="g3"
 									>et</g></abbr>ione</w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.80b">
+					<l xml:lang="ghc" xml:id="MS5.3.80b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><w
 							lemma="cech" lemmaRef="http://www.dil.ie/7528" ana="adj"><abbr
 								cert="high">g<g ref="g12">ac</g><g ref="g4">h</g></abbr></w><w
@@ -5420,15 +5431,15 @@
 								>eit</g></abbr></w><pc>.</pc>
 					</l>
 				</lg>
-				<lg n="81" type="prosediv" xml:id="MS5.2.81">
-					<l xml:lang="la" xml:id="MS5.2.81a">
+				<lg n="81" type="prosediv" xml:id="MS5.3.81">
+					<l xml:lang="la" xml:id="MS5.3.81a">
 						<w xml:lang="la"><abbr cert="high">O<g ref="g3">mn</g>ia</abbr></w><space
 							type="scribal"/><w xml:lang="la">an<abbr cert="high">i<g ref="g1"
 								>m</g></abbr>alia</w><space type="scribal"/><w xml:lang="la">nu<abbr
 								cert="high">t<g ref="g25">ri</g></abbr>unt</w><space type="scribal"
 							/><w xml:lang="la">a</w><w xml:lang="la">dulci</w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.81b">
+					<l xml:lang="ghc" xml:id="MS5.3.81b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><w
 							lemma="cech" lemmaRef="http://www.dil.ie/7528" ana="adj"><abbr
 								cert="high">g<g ref="g12">ac</g><g ref="g4">h</g></abbr></w><w
@@ -5445,14 +5456,14 @@
 							lemmaRef="http://www.dil.ie/32244" ana="adj">milis</w>
 					</l>
 				</lg>
-				<lg n="82" type="prosediv" xml:id="MS5.2.82">
-					<l xml:lang="la" xml:id="MS5.2.82a">
+				<lg n="82" type="prosediv" xml:id="MS5.3.82">
+					<l xml:lang="la" xml:id="MS5.3.82a">
 						<w xml:lang="la">Omne</w><space type="scribal"/><w xml:lang="la"
 								>unctuos<abbr cert="high">u<g ref="g1">m</g></abbr></w><space
 							type="scribal"/><w xml:lang="la">haebetat</w><space type="scribal"/><w
 							xml:lang="la">sens<abbr cert="high">u<g ref="g1">m</g></abbr></w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.82b">
+					<l xml:lang="ghc" xml:id="MS5.3.82b">
 						<supplied resp="EPT"><w lemma=".i." lemmaRef="http://www.dil.ie/26892"
 								ana="abbr">.i.</w></supplied><w lemma="cech"
 							lemmaRef="http://www.dil.ie/7528" ana="adj"><abbr cert="high">g<g
@@ -5475,8 +5486,8 @@
 								cert="high">f<g ref="g3">ein</g></abbr></w><pc>.</pc>
 					</l>
 				</lg>
-				<lg n="83" type="prosediv" xml:id="MS5.2.83">
-					<l xml:lang="la" xml:id="MS5.2.83a">
+				<lg n="83" type="prosediv" xml:id="MS5.3.83">
+					<l xml:lang="la" xml:id="MS5.3.83a">
 						<w xml:lang="la">Acet<abbr cert="high">u<g ref="g1">m</g></abbr></w><space
 							type="scribal"/><w xml:lang="la">choleram</w><space type="scribal"/><w
 							xml:lang="la">rubi<abbr cert="high">a<g ref="g1">m</g></abbr></w><space
@@ -5489,7 +5500,7 @@
 								resp="Hand14"><abbr cert="high">e<g ref="g5"
 							>n</g></abbr></add>tat</w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.83b">
+					<l xml:lang="ghc" xml:id="MS5.3.83b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><lb
 							n="25" xml:id="MS5.40.25"/><w lemma="traethaid"
 							lemmaRef="http://www.dil.ie/41555" ana="verb">traoit<abbr cert="high"
@@ -5515,15 +5526,15 @@
 									ref="g9">ub</g></abbr></w>
 					</l>
 				</lg>
-				<lg n="84" type="prosediv" xml:id="MS5.2.84">
-					<l xml:lang="la" xml:id="MS5.2.84a">
+				<lg n="84" type="prosediv" xml:id="MS5.3.84">
+					<l xml:lang="la" xml:id="MS5.3.84a">
 						<w xml:lang="la">In</w><space type="scribal"/><w xml:lang="la"><abbr
 								cert="high">t<g ref="g21">er</g></abbr>tianis</w><pc>,</pc><space
 							type="scribal"/><w xml:lang="la">compedit</w><space type="scribal"/><w
 							xml:lang="la">oximel</w><lb n="26" xml:id="MS5.40.26"/><w xml:lang="la"
 								>simp<abbr cert="medium">l<g ref="g3">um</g></abbr></w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.84b">
+					<l xml:lang="ghc" xml:id="MS5.3.84b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><space
 							type="scribal"/><w lemma="imchubaid" lemmaRef="http://www.dil.ie/27420"
 							ana="adj">i<abbr cert="high">o<g ref="g1">m</g><g ref="g30"
@@ -5536,13 +5547,13 @@
 									ref="g21">er</g></abbr>tiana</w><pc>.</pc>
 					</l>
 				</lg>
-				<lg n="85" type="prosediv" xml:id="MS5.2.85">
-					<l xml:lang="la" xml:id="MS5.2.85a">
+				<lg n="85" type="prosediv" xml:id="MS5.3.85">
+					<l xml:lang="la" xml:id="MS5.3.85a">
 						<w xml:lang="la">Acet<abbr cert="high">u<g ref="g1">m</g></abbr></w><space
 							type="scribal"/><w xml:lang="la">nocet</w><space type="scribal"/><w
 							xml:lang="la"><abbr cert="high">n<g ref="g21">er</g></abbr>vis</w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.85b">
+					<l xml:lang="ghc" xml:id="MS5.3.85b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><space
 							type="scribal"/><w lemma="airchóitid" lemmaRef="http://www.dil.ie/1741"
 							ana="verb">urr<pc>=</pc><lb n="27" xml:id="MS5.40.27"/>coid<abbr
@@ -5559,8 +5570,8 @@
 								>h</g></abbr></w><pc>.</pc>
 					</l>
 				</lg>
-				<lg n="86" type="prosediv" xml:id="MS5.2.86">
-					<l xml:lang="la" xml:id="MS5.2.86a">
+				<lg n="86" type="prosediv" xml:id="MS5.3.86">
+					<l xml:lang="la" xml:id="MS5.3.86a">
 						<w xml:lang="la">In</w><space type="scribal"/><w xml:lang="la"
 							>stuidio</w><space type="scribal"/><w xml:lang="la">virtus</w><space
 							type="scribal"/><w>ai<abbr>n<g>m</g>alis</abbr></w><space type="scribal"
@@ -5569,7 +5580,7 @@
 								>na<abbr cert="high">t<g ref="g16">ur</g></abbr>alis</w><space
 							type="scribal"/><w xml:lang="la">debilis</w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.86b">
+					<l xml:lang="ghc" xml:id="MS5.3.86b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><space
 							type="scribal"/><w lemma="i" lemmaRef="http://www.dil.ie/26891"
 							ana="prep">a</w><w lemma="aimser" lemmaRef="http://www.dil.ie/1149"
@@ -5598,15 +5609,15 @@
 								cert="high">n<g ref="g16">aduire</g></abbr></w>
 					</l>
 				</lg>
-				<lg n="87" type="prosediv" xml:id="MS5.2.87">
-					<l xml:lang="la" xml:id="MS5.2.87a">
+				<lg n="87" type="prosediv" xml:id="MS5.3.87">
+					<l xml:lang="la" xml:id="MS5.3.87a">
 						<w xml:lang="la">Fortior</w><space type="scribal"/><w xml:lang="la"><abbr
 								cert="high">e<g ref="g3">st</g></abbr></w><space type="scribal"/><w
 							xml:lang="la">ainmalis</w><space type="scribal"/><w xml:lang="la"
 							>dissolutio</w><space type="scribal"/><w xml:lang="la">quam</w><space
 							type="scribal"/><w xml:lang="la">corporalis</w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.87b">
+					<l xml:lang="ghc" xml:id="MS5.3.87b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><space
 							type="scribal"/><w lemma="is" lemmaRef="http://www.dil.ie/29104"
 							ana="verb">is</w><space type="scribal"/><w lemma="láitir"
@@ -5628,8 +5639,8 @@
 									ref="g4">h</g></abbr>uirp</w><pc>.</pc>
 					</l>
 				</lg>
-				<lg n="88" type="prosediv" xml:id="MS5.2.88">
-					<l xml:lang="la" xml:id="MS5.2.88a">
+				<lg n="88" type="prosediv" xml:id="MS5.3.88">
+					<l xml:lang="la" xml:id="MS5.3.88a">
 						<w xml:lang="la">Calidiora</w><space type="scribal"/><w xml:lang="la"
 								>calidiori<abbr cert="high">b<g ref="g7">us</g></abbr></w><space
 							type="scribal"/><w xml:lang="la">indigent</w><space type="scribal"/><w
@@ -5641,7 +5652,7 @@
 							xml:lang="la">indigent</w><space type="scribal"/><w xml:lang="la"
 							>auxilis</w>
 					</l>
-					<l xml:lang="ghc" xml:id="MS5.2.88b">
+					<l xml:lang="ghc" xml:id="MS5.3.88b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w><space
 							type="scribal"/><w lemma="in" lemmaRef="http://www.dil.ie/28194"
 							ana="art">na</w><space type="scribal"/><w lemma="corp"
@@ -5678,15 +5689,15 @@
 									ref="g10">acht</g></abbr></w><pc/>
 					</l>
 				</lg>
-				<lg type="prosediv" xml:id="MS5.2.89">
-					<l xml:lang="la" xml:id="MS5.2.89a">Finis <space type="scribal"/>
+				<lg type="prosediv" xml:id="MS5.3.89">
+					<l xml:lang="la" xml:id="MS5.3.89a">Finis <space type="scribal"/>
 						<w lemma="ar" lemmaRef="http://www.dil.ie/3902" ana="prep"><abbr cert="high"
 									><g ref="g8">ar</g></abbr></w><space type="scribal"/><name
 							type="text"><w ana="noun"><abbr cert="high">c<g ref="g4"
 								>h</g></abbr>oilligeat</w></name></l>
 				</lg>
 			</div>
-			<div n="3" type="prose" corresp="MS5.3" resp="Hand13">
+			<div n="4" type="prose" corresp="MS5.4" resp="Hand13">
 				<p>
 					<pb n="insert" xml:id="MS5.insert1"/>
 					<lb n="1" xml:id="MS5.insert1.1"/>
