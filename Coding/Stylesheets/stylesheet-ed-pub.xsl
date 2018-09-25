@@ -1429,39 +1429,28 @@
 				<sub>
 					<xsl:if
 						test="preceding::tei:seg[@type = 'margNote' and following::tei:lb[1]/@* = $lineID]">
-						<hr style="border-top: dotted 3px;"/>
-						<xsl:for-each
-							select="//tei:seg[@type = 'margNote' and following::tei:lb[1]/@* = $lineID]">
-							<br/>
-							<br/>
-							<b>Marg.</b>
-							<xsl:if
-								test="count(preceding::tei:seg[@type = 'margNote' and following::tei:lb[1]/@* = $lineID]) > 1">
-								<xsl:text> </xsl:text>
-								<xsl:value-of select="position()"/>
-							</xsl:if>
-							<br/>
-							<span style="margin-left:40px">
-								<xsl:apply-templates select="child::*"/>
-							</span>
-							<br/>
-							<table/>
-							<button id="{generate-id()}" onclick="textComment(this.id)"
-								style="font-size:12px">Add Comment</button>
-							<br/>
-							<br/>
-						</xsl:for-each>
-						<hr style="border-top: dotted 3px;"/>
+						<b>
+							<xsl:text>m</xsl:text>
+						</b>
+						<xsl:if test="count(//tei:seg[@type='margNote' and following::tei:lb[1]/@* = $lineID]) > 1">
+							<b>
+								<xsl:text>#</xsl:text>
+								<xsl:value-of select="count(preceding::tei:seg[@type='margNote' and following::tei:lb[1]/@* = $lineID]) + 1"/>
+							</b>
+						</xsl:if>
+						<b>
+							<xsl:text>: </xsl:text>
+						</b>
 					</xsl:if>
 					<xsl:if test="preceding::tei:addSpan">
 						<xsl:variable name="asID" select="preceding::tei:addSpan[1]/@spanTo"/>
 						<xsl:if test="following::tei:anchor[1]/@xml:id = $asID">
 							<b>
-								<xsl:value-of select="preceding::tei:addSpan[1]/@place"/>
+								<xsl:text>m</xsl:text>
 							</b>
 							<xsl:if test="preceding::tei:addSpan[1]/@n">
 								<b>
-									<xsl:text> #</xsl:text>
+									<xsl:text>#</xsl:text>
 									<xsl:value-of select="preceding::tei:addSpan[1]/@n"/>
 								</b>
 							</xsl:if>
@@ -1683,7 +1672,7 @@
 		<sub>
 			<b>
 				<i><xsl:text> </xsl:text>~m<xsl:if test="$mnCount > 1"
-							><xsl:text>#</xsl:text><xsl:value-of select="$mnCount + 1"
+					><xsl:text>#</xsl:text><xsl:value-of select="count(preceding::tei:seg[@type = 'margNote' and preceding::tei:lb[1]/@* = $encLineID]) + 1"
 					/></xsl:if>~<xsl:text> </xsl:text></i>
 			</b>
 		</sub>
