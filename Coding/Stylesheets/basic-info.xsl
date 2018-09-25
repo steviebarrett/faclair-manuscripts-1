@@ -50,7 +50,9 @@
           <hr/>
           <hr/>
         </div>
-        <div id="right-panel">Word info goes here</div>
+        <div id="right-panel">
+          <div id="commentsList"></div>
+        </div>
         <script>
           <xsl:for-each select="document('../../Transcribing/corpus.xml')/tei:teiCorpus/tei:teiHeader/tei:encodingDesc/tei:charDecl/tei:glyph">
             <xsl:text>var glyph_</xsl:text>
@@ -158,6 +160,17 @@
       <xsl:value-of select="@n"/>
       <xsl:text>] </xsl:text>
       <a href="#" class="addComment" title="Leave comment on this text" data-n="{@n}">[+]</a>
+      <div class="commentForm" id="cf__{@n}">
+        <select>
+          <option value="">-- Select a user --</option>
+          <option value="et">Eystein</option>
+          <option value="mm">Martina</option>
+          <option value="wg">Willie</option>
+        </select>
+        <input type="text"/>
+        <button class="saveComment">save</button>
+        <button class="cancelComment">cancel</button>
+      </div>
       <xsl:text> </xsl:text>
       <a href="#" class="viewComment" title="View comments on this text" data-n="{@n}">[?]</a>
     </div>
