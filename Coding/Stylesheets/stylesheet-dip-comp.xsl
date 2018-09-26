@@ -465,6 +465,7 @@
 		<xsl:variable name="encLineID"
 			select="preceding::tei:addSpan[1]/preceding::tei:lb[1]/@xml:id or preceding::tei:addSpan[1]/preceding::tei:lb[1]/@sameAs"/>
 		<sub>
+			<br id="{generate-id()}_dip"/>
 			<xsl:if test="preceding::tei:addSpan">
 				<xsl:variable name="asID" select="preceding::tei:addSpan[1]/@spanTo"/>
 				<xsl:if test="following::tei:anchor[1]/@xml:id = $asID">
@@ -484,7 +485,6 @@
 					</b>
 				</xsl:if>
 			</xsl:if>
-			<br id="{generate-id()}_dip"/>
 			<xsl:value-of select="@n"/>
 			<xsl:text>. </xsl:text>
 		</sub>
