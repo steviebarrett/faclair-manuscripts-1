@@ -324,9 +324,9 @@
 				</xsl:if>
 			</xsl:when>
 			<xsl:when test="ancestor::tei:seg[@type = 'margNote']">
-				<xsl:variable name="segPOS" select="count(ancestor::tei:seg[@type = 'margNote']/preceding::tei:seg[@type = 'margNote'])"/>
+				<!-- <xsl:variable name="segPOS" select="count(ancestor::tei:seg[@type = 'margNote']/preceding::tei:seg[@type = 'margNote'])"/> -->
 				<xsl:choose>
-					<xsl:when test="preceding::tei:lb[count(ancestor::tei:seg[@type = 'margNote']/preceding::tei:seg[@type = 'margNote']) = $segPOS]">
+					<xsl:when test="@n > 1">
 						<xsl:text xml:space="preserve"> </xsl:text>
 						<button id="plus{$lineID}_dip" onclick="revealComment(this.id)"
 							style="font-size:12px">
@@ -360,9 +360,6 @@
 									<xsl:text>enableWordFunctions(this.id)</xsl:text>
 								</xsl:attribute>
 							</xsl:if>Add Comment</button>
-					</xsl:when>
-					<xsl:when test="not(preceding::tei:lb[count(ancestor::tei:seg[@type='margNote']/preceding::tei:seg[@type='margNote']) = $segPOS])">
-						<xsl:text/>
 					</xsl:when>
 					<xsl:otherwise>
 						<xsl:text/>
