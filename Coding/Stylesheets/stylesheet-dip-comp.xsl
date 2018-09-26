@@ -286,7 +286,7 @@
 			select="count(preceding::tei:lb[preceding::tei:cb[1][@* = $comCol]]) + 1"/>
 		<xsl:choose>
 			<xsl:when
-				test="preceding::tei:pb[1]/following::tei:cb[1][following::tei:lb/@* = $lineID]">
+				test="preceding::tei:pb[1]/following::tei:cb[1][following::tei:lb/@* = $lineID] and not(ancestor::tei:seg[@type='margNote'])">
 				<xsl:if test="$colPosition > 1">
 					<xsl:text xml:space="preserve"> </xsl:text>
 					<button id="plus{$lineID}_dip" onclick="revealComment(this.id)"
@@ -324,9 +324,9 @@
 				</xsl:if>
 			</xsl:when>
 			<xsl:when test="ancestor::tei:seg[@type = 'margNote']">
-				<xsl:variable name="segPOS" select="count(ancestor::tei:seg[@type = 'margNote']/preceding::tei:seg[@type = 'margNote'])"/>
+				<!-- <xsl:variable name="segPOS" select="count(ancestor::tei:seg[@type = 'margNote']/preceding::tei:seg[@type = 'margNote'])"/> -->
 				<xsl:choose>
-					<xsl:when test="preceding::tei:lb[count(ancestor::tei:seg[@type = 'margNote']/preceding::tei:seg[@type = 'margNote']) = $segPOS]">
+					<xsl:when test="@n > 1">
 						<xsl:text xml:space="preserve"> </xsl:text>
 						<button id="plus{$lineID}_dip" onclick="revealComment(this.id)"
 							style="font-size:12px">

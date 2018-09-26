@@ -1356,6 +1356,15 @@
 						</xsl:attribute>
 					</xsl:if>
 					<sub>
+						<xsl:if
+							test="ancestor::tei:seg[@type = 'margNote' and following::tei:lb[1]/@* = $lineID]">
+							<b>
+								<xsl:text>m</xsl:text>
+							</b>
+							<b>
+								<xsl:text>: </xsl:text>
+							</b>
+						</xsl:if>
 						<xsl:if test="preceding::tei:addSpan">
 							<xsl:variable name="asID" select="preceding::tei:addSpan[1]/@spanTo"/>
 							<xsl:if test="following::tei:anchor[1]/@xml:id = $asID">
@@ -1403,6 +1412,15 @@
 					</xsl:if>
 				</xsl:variable>
 				<sub id="{$lineID}" msLine="{$lID}">
+					<xsl:if
+						test="ancestor::tei:seg[@type = 'margNote']">
+						<b>
+							<xsl:text>m</xsl:text>
+						</b>
+						<b>
+							<xsl:text>: </xsl:text>
+						</b>
+					</xsl:if>
 					<xsl:if test="preceding::tei:addSpan">
 						<xsl:variable name="asID" select="preceding::tei:addSpan[1]/@spanTo"/>
 						<xsl:if test="following::tei:anchor[1]/@xml:id = $asID">
@@ -1428,40 +1446,23 @@
 			<xsl:otherwise>
 				<sub>
 					<xsl:if
-						test="preceding::tei:seg[@type = 'margNote' and following::tei:lb[1]/@* = $lineID]">
-						<hr style="border-top: dotted 3px;"/>
-						<xsl:for-each
-							select="//tei:seg[@type = 'margNote' and following::tei:lb[1]/@* = $lineID]">
-							<br/>
-							<br/>
-							<b>Marg.</b>
-							<xsl:if
-								test="count(preceding::tei:seg[@type = 'margNote' and following::tei:lb[1]/@* = $lineID]) > 1">
-								<xsl:text> </xsl:text>
-								<xsl:value-of select="position()"/>
-							</xsl:if>
-							<br/>
-							<span style="margin-left:40px">
-								<xsl:apply-templates select="child::*"/>
-							</span>
-							<br/>
-							<table/>
-							<button id="{generate-id()}" onclick="textComment(this.id)"
-								style="font-size:12px">Add Comment</button>
-							<br/>
-							<br/>
-						</xsl:for-each>
-						<hr style="border-top: dotted 3px;"/>
+						test="ancestor::tei:seg[@type = 'margNote']">
+						<b>
+							<xsl:text>m</xsl:text>
+						</b>
+						<b>
+							<xsl:text>: </xsl:text>
+						</b>
 					</xsl:if>
 					<xsl:if test="preceding::tei:addSpan">
 						<xsl:variable name="asID" select="preceding::tei:addSpan[1]/@spanTo"/>
 						<xsl:if test="following::tei:anchor[1]/@xml:id = $asID">
 							<b>
-								<xsl:value-of select="preceding::tei:addSpan[1]/@place"/>
+								<xsl:text>m</xsl:text>
 							</b>
 							<xsl:if test="preceding::tei:addSpan[1]/@n">
 								<b>
-									<xsl:text> #</xsl:text>
+									<xsl:text>#</xsl:text>
 									<xsl:value-of select="preceding::tei:addSpan[1]/@n"/>
 								</b>
 							</xsl:if>
@@ -1556,27 +1557,6 @@
 						onmouseover="disableWordFunctions(this.id)"
 						onmouseout="enableWordFunctions(this.id)" style="color:#000000"/>
 					<xsl:apply-templates select="descendant::tei:l"/>
-					<xsl:if test="descendant::tei:seg[@type = 'margNote']">
-						<hr style="border-top: dotted 3px;"/>
-						<xsl:for-each select="descendant::tei:seg[@type = 'margNote']">
-							<br/>
-							<b>Marg.</b>
-							<xsl:if
-								test="count(ancestor::tei:lg[1]/descendant::tei:seg[@type = 'margNote']) > 1">
-								<xsl:text> </xsl:text>
-								<xsl:value-of select="position()"/>
-							</xsl:if>
-							<br/>
-							<span style="margin-left:40px">
-								<xsl:apply-templates select="child::*"/>
-							</span>
-							<button id="{generate-id()}" onclick="textComment(this.id)"
-								style="font-size:12px">Add Comment</button>
-							<br/>
-							<br/>
-						</xsl:for-each>
-						<hr style="border-top: dotted 3px;"/>
-					</xsl:if>
 					<xsl:if test="@type = 'prosediv'">
 						<br/>
 						<br/>
@@ -1683,10 +1663,11 @@
 		<sub>
 			<b>
 				<i><xsl:text> </xsl:text>~m<xsl:if test="$mnCount > 1"
-							><xsl:text>#</xsl:text><xsl:value-of select="$mnCount + 1"
+					><xsl:text>#</xsl:text><xsl:value-of select="count(preceding::tei:seg[@type = 'margNote' and preceding::tei:lb[1]/@* = $encLineID]) + 1"
 					/></xsl:if>~<xsl:text> </xsl:text></i>
 			</b>
 		</sub>
+		<xsl:apply-templates/>
 	</xsl:template>
 
 	<xsl:template match="tei:quote">
