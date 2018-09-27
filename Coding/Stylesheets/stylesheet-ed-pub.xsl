@@ -2470,10 +2470,44 @@
 				<xsl:value-of select="ancestor::tei:l[1]/@n"/>
 			</xsl:if>
 		</xsl:variable>
+		<xsl:variable name="slLemma">
+			<xsl:choose>
+				<xsl:when test="@lemmaSL">
+					<xsl:value-of select="@lemmaSL"/>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:choose>
+						<xsl:when test="ancestor::tei:w/@lemmaSL">
+							<xsl:value-of select="ancestor::tei:w/@lemmaSL"/>
+						</xsl:when>
+						<xsl:otherwise>
+							<xsl:text/>
+						</xsl:otherwise>
+					</xsl:choose>
+				</xsl:otherwise>
+			</xsl:choose>
+		</xsl:variable>
+		<xsl:variable name="slRef">
+			<xsl:choose>
+				<xsl:when test="@slipRef">
+					<xsl:value-of select="@slipRef"/>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:choose>
+						<xsl:when test="ancestor::tei:w/@slipRef">
+							<xsl:value-of select="ancestor::tei:w/@slipRef"/>
+						</xsl:when>
+						<xsl:otherwise>
+							<xsl:text/>
+						</xsl:otherwise>
+					</xsl:choose>
+				</xsl:otherwise>
+			</xsl:choose>
+		</xsl:variable>
 		<a id="{$wordId}" pos="{$wordPOS}" onclick="addSlip(this.id)" onmouseover="hilite(this.id)"
 			onmouseout="dhilite(this.id)" lemma="{$lem}" lemmaRef="{$lemRef}" lemmaED="{$EDlem}"
-			lemmaRefED="{$EDref}" lemmaDW="{$DWlem}" lemmaRefDW="{$DWref}" lemmaSL="{@lemmaSL}"
-			slipRef="{@slipRef}" ana="{@ana}" hand="{$hand}" ref="{$msref}" date="{$handDate}"
+			lemmaRefED="{$EDref}" lemmaDW="{$DWlem}" lemmaRefDW="{$DWref}" lemmaSL="{$slLemma}"
+			slipRef="{$slRef}" ana="{@ana}" hand="{$hand}" ref="{$msref}" date="{$handDate}"
 			medium="{$medium}" cert="{$certLvl}" abbrRefs="{$abbrRef}" lineID="{$lineRef}"
 			title="{$lem}: {$pos} {$src}&#10;{$hand}&#10;{$prob}{$certProb}&#10;Abbreviations: {$abbrs}&#10;{$gloss}&#10;{@comment}"
 			style="text-decoration:none; color:#000000" class="ed">
