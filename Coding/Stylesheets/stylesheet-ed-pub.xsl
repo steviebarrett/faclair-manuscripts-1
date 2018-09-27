@@ -47,7 +47,8 @@
 					<h2 style="text-align:center;font-size:18px">Diplomatic Text</h2>
 					<xsl:for-each select="//tei:TEI[not(@xml:id = 'hwData')]">
 						<xsl:choose>
-							<xsl:when test="descendant::tei:div/key('divTitle', @corresp)/tei:locus/@n">
+							<xsl:when
+								test="descendant::tei:div/key('divTitle', @corresp)/tei:locus/@n">
 								<xsl:for-each select="//tei:div[not(descendant::tei:div)]">
 									<xsl:sort select="key('divTitle', @corresp)/tei:locus/@n"/>
 									<xsl:apply-templates mode="dip"/>
@@ -1412,8 +1413,7 @@
 					</xsl:if>
 				</xsl:variable>
 				<sub id="{$lineID}" msLine="{$lID}">
-					<xsl:if
-						test="ancestor::tei:seg[@type = 'margNote']">
+					<xsl:if test="ancestor::tei:seg[@type = 'margNote']">
 						<b>
 							<xsl:text>m</xsl:text>
 						</b>
@@ -1445,8 +1445,7 @@
 			</xsl:when>
 			<xsl:otherwise>
 				<sub>
-					<xsl:if
-						test="ancestor::tei:seg[@type = 'margNote']">
+					<xsl:if test="ancestor::tei:seg[@type = 'margNote']">
 						<b>
 							<xsl:text>m</xsl:text>
 						</b>
@@ -1663,8 +1662,9 @@
 		<sub>
 			<b>
 				<i><xsl:text> </xsl:text>~m<xsl:if test="$mnCount > 1"
-					><xsl:text>#</xsl:text><xsl:value-of select="count(preceding::tei:seg[@type = 'margNote' and preceding::tei:lb[1]/@* = $encLineID]) + 1"
-					/></xsl:if>~<xsl:text> </xsl:text></i>
+							><xsl:text>#</xsl:text><xsl:value-of
+							select="count(preceding::tei:seg[@type = 'margNote' and preceding::tei:lb[1]/@* = $encLineID]) + 1"
+						/></xsl:if>~<xsl:text> </xsl:text></i>
 			</b>
 		</sub>
 		<xsl:apply-templates/>
@@ -2473,7 +2473,7 @@
 		<a id="{$wordId}" pos="{$wordPOS}" onclick="addSlip(this.id)" onmouseover="hilite(this.id)"
 			onmouseout="dhilite(this.id)" lemma="{$lem}" lemmaRef="{$lemRef}" lemmaED="{$EDlem}"
 			lemmaRefED="{$EDref}" lemmaDW="{$DWlem}" lemmaRefDW="{$DWref}" lemmaSL="{@lemmaSL}"
-			slipID="{@slipID}" ana="{@ana}" hand="{$hand}" ref="{$msref}" date="{$handDate}"
+			slipRef="{@slipRef}" ana="{@ana}" hand="{$hand}" ref="{$msref}" date="{$handDate}"
 			medium="{$medium}" cert="{$certLvl}" abbrRefs="{$abbrRef}" lineID="{$lineRef}"
 			title="{$lem}: {$pos} {$src}&#10;{$hand}&#10;{$prob}{$certProb}&#10;Abbreviations: {$abbrs}&#10;{$gloss}&#10;{@comment}"
 			style="text-decoration:none; color:#000000" class="ed">
@@ -4471,18 +4471,32 @@
 		</sub>
 	</xsl:template>
 
-	<xsl:template match="tei:div[@n]">
+	<xsl:template match="tei:div">
 		<xsl:variable name="comDiv" select="@corresp"/>
 		<xsl:variable name="contents"
 			select="ancestor::tei:TEI//tei:msDesc/tei:msContents/tei:msItem/h4/@id"/>
-		<xsl:if test="@n and ancestor::tei:div or not(descendant::tei:div)">
-			<p>
-				<a href="{$contents}">Back to MS contents</a>
-			</p>
+		<xsl:if
+			test="not(preceding::tei:div[@corresp = $comDiv]) and not(ancestor::tei:div[@corresp = $comDiv])">
+			<h2 style="text-align:center" id="{@corresp}">
+				<xsl:value-of select="key('divTitle', @corresp)/tei:title"/>
+			</h2>
 		</xsl:if>
-		<h2 style="text-align:center" id="{@corresp}">
-			<xsl:value-of select="key('divTitle', @corresp)/tei:title"/>
-		</h2>
+		<xsl:choose>
+			<xsl:when test="ancestor::tei:div">
+				<xsl:if test="not(descendant::tei:div)">
+					<p>
+						<a href="{$contents}">Back to MS contents</a>
+					</p>
+				</xsl:if>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:if test="not(descendant::tei:div)">
+					<p>
+						<a href="{$contents}">Back to MS contents</a>
+					</p>
+				</xsl:if>
+			</xsl:otherwise>
+		</xsl:choose>
 		<xsl:apply-templates/>
 		<xsl:if test="@type = 'prose' and not(descendant::tei:div)">
 			<xsl:variable name="lineID">
@@ -4490,21 +4504,21 @@
 				<xsl:text>.</xsl:text>
 				<xsl:choose>
 					<xsl:when
-						test="descendant::tei:pb[not(following::tei:pb[ancestor::tei:div[@corresp = $comDiv]])]/@xml:id">
+						test="descendant::tei:pb[not(following::tei:pb[ancestor::tei:div[1][@corresp = $comDiv]])]/@xml:id">
 						<xsl:value-of
-							select="substring-after(descendant::tei:pb[not(following::tei:pb[ancestor::tei:div[@corresp = $comDiv]])]/@xml:id, '.')"
+							select="substring-after(descendant::tei:pb[not(following::tei:pb[ancestor::tei:div[1][@corresp = $comDiv]])]/@xml:id, '.')"
 						/>
 					</xsl:when>
 					<xsl:when
-						test="descendant::tei:pb[not(following::tei:pb[ancestor::tei:div[@corresp = $comDiv]])]/@sameAs">
+						test="descendant::tei:pb[not(following::tei:pb[ancestor::tei:div[1][@corresp = $comDiv]])]/@sameAs">
 						<xsl:value-of
-							select="substring-after(descendant::tei:pb[not(following::tei:pb[ancestor::tei:div[@corresp = $comDiv]])]/@sameAs, '.')"
+							select="substring-after(descendant::tei:pb[not(following::tei:pb[ancestor::tei:div[1][@corresp = $comDiv]])]/@sameAs, '.')"
 						/>
 					</xsl:when>
 				</xsl:choose>
 				<xsl:text>.</xsl:text>
 				<xsl:value-of
-					select="descendant::tei:lb[not(following::tei:lb[ancestor::tei:div[@corresp = $comDiv]])]/@n + 1"
+					select="descendant::tei:lb[not(following::tei:lb[ancestor::tei:div[1][@corresp = $comDiv]])]/@n + 1"
 				/>
 			</xsl:variable>
 			<xsl:text xml:space="preserve"> </xsl:text>
