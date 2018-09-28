@@ -3004,76 +3004,83 @@
 		</xsl:variable>
 		<xsl:variable name="refPOS" select="count(preceding::*)"/>
 		<xsl:variable name="refID" select="@target"/>
-		<u>
-			<a id="ref{$refPOS}" onclick="refDetails(this.id)" exp="0">
-				<xsl:apply-templates/>
-			</a>
-		</u>
-		<xsl:if test="@type = 'bib'">
-			<seg id="ref{$refPOS}_exp" style="background-color:silver" hidden="hidden">
-				<xsl:text> [</xsl:text>
-				<b>
-					<xsl:call-template name="litBib"/>
-				</b>
-				<xsl:text>] </xsl:text>
-			</seg>
-		</xsl:if>
-		<xsl:if test="@type = 'ms'">
-			<seg id="ref{$refPOS}_exp" style="background-color:silver" hidden="hidden">
-				<xsl:text> [</xsl:text>
-				<b>
-					<xsl:call-template name="mssBib"/>
-				</b>
-				<xsl:text>] </xsl:text>
-			</seg>
-		</xsl:if>
-		<xsl:if test="@type = 'text_ed_line'">
-			<xsl:variable name="comDiv"
-				select="//tei:l[@xml:id = $refID]/ancestor::tei:div[1]/@corresp"/>
-			<seg id="ref{$refPOS}_exp" style="background-color:white" hidden="hidden">
-				<br/>
-				<br/>
-				<xsl:for-each
-					select="//tei:l[@xml:id = $refID]/descendant::tei:w[not(descendant::tei:w)]">
-					<xsl:choose>
-						<xsl:when test="ancestor::tei:sic">
-							<xsl:text/>
-						</xsl:when>
-						<xsl:otherwise>
+		<xsl:choose>
+			<xsl:when test="@type = 'slip'">
+				<a href="{concat('https://dasg.ac.uk/slips/index.php?id=', @target)}"><xsl:apply-templates/></a>
+			</xsl:when>
+			<xsl:otherwise>
+				<u>
+					<a id="ref{$refPOS}" onclick="refDetails(this.id)" exp="0">
+						<xsl:apply-templates/>
+					</a>
+				</u>
+				<xsl:if test="@type = 'bib'">
+					<seg id="ref{$refPOS}_exp" style="background-color:silver" hidden="hidden">
+						<xsl:text> [</xsl:text>
+						<b>
+							<xsl:call-template name="litBib"/>
+						</b>
+						<xsl:text>] </xsl:text>
+					</seg>
+				</xsl:if>
+				<xsl:if test="@type = 'ms'">
+					<seg id="ref{$refPOS}_exp" style="background-color:silver" hidden="hidden">
+						<xsl:text> [</xsl:text>
+						<b>
+							<xsl:call-template name="mssBib"/>
+						</b>
+						<xsl:text>] </xsl:text>
+					</seg>
+				</xsl:if>
+				<xsl:if test="@type = 'text_ed_line'">
+					<xsl:variable name="comDiv"
+						select="//tei:l[@xml:id = $refID]/ancestor::tei:div[1]/@corresp"/>
+					<seg id="ref{$refPOS}_exp" style="background-color:white" hidden="hidden">
+						<br/>
+						<br/>
+						<xsl:for-each
+							select="//tei:l[@xml:id = $refID]/descendant::tei:w[not(descendant::tei:w)]">
 							<xsl:choose>
-								<xsl:when test="ancestor::*[@cert] or descendant::*[@cert]">
-									<xsl:choose>
-										<xsl:when
-											test="ancestor::*[@cert = 'low'] or descendant::*[@cert = 'low']">
-											<a style="text-decoration:none; color:#ff0000">
-												<xsl:apply-templates
-												select="text() | self::*//*/text()"/>
-											</a>
-											<xsl:text> </xsl:text>
-										</xsl:when>
-										<xsl:when
-											test="ancestor::*[@cert = 'medium'] or descendant::*[@cert = 'low']">
-											<a style="text-decoration:none; color:#ff9900">
-												<xsl:apply-templates
-												select="text() | self::*//*/text()"/>
-											</a>
-											<xsl:text> </xsl:text>
-										</xsl:when>
-										<xsl:otherwise>
-											<xsl:apply-templates select="text() | self::*//*/text()"/>
-											<xsl:text> </xsl:text>
-										</xsl:otherwise>
-									</xsl:choose>
+								<xsl:when test="ancestor::tei:sic">
+									<xsl:text/>
 								</xsl:when>
 								<xsl:otherwise>
 									<xsl:choose>
-										<xsl:when test="ancestor::tei:supplied">
-											<xsl:text>[</xsl:text>
-											<xsl:apply-templates select="text() | self::*//*/text()"/>
-											<xsl:text>] </xsl:text>
+										<xsl:when test="ancestor::*[@cert] or descendant::*[@cert]">
+											<xsl:choose>
+												<xsl:when
+												test="ancestor::*[@cert = 'low'] or descendant::*[@cert = 'low']">
+												<a style="text-decoration:none; color:#ff0000">
+												<xsl:apply-templates
+												select="text() | self::*//*/text()"/>
+												</a>
+												<xsl:text> </xsl:text>
+												</xsl:when>
+												<xsl:when
+												test="ancestor::*[@cert = 'medium'] or descendant::*[@cert = 'low']">
+												<a style="text-decoration:none; color:#ff9900">
+												<xsl:apply-templates
+												select="text() | self::*//*/text()"/>
+												</a>
+												<xsl:text> </xsl:text>
+												</xsl:when>
+												<xsl:otherwise>
+												<xsl:apply-templates
+												select="text() | self::*//*/text()"/>
+												<xsl:text> </xsl:text>
+												</xsl:otherwise>
+											</xsl:choose>
 										</xsl:when>
 										<xsl:otherwise>
 											<xsl:choose>
+												<xsl:when test="ancestor::tei:supplied">
+												<xsl:text>[</xsl:text>
+												<xsl:apply-templates
+												select="text() | self::*//*/text()"/>
+												<xsl:text>] </xsl:text>
+												</xsl:when>
+												<xsl:otherwise>
+												<xsl:choose>
 												<xsl:when test="ancestor::tei:add">
 												<xsl:text>+</xsl:text>
 												<xsl:apply-templates
@@ -3085,76 +3092,76 @@
 												select="text() | self::*//*/text()"/>
 												<xsl:text> </xsl:text>
 												</xsl:otherwise>
+												</xsl:choose>
+												</xsl:otherwise>
 											</xsl:choose>
 										</xsl:otherwise>
 									</xsl:choose>
 								</xsl:otherwise>
 							</xsl:choose>
-						</xsl:otherwise>
-					</xsl:choose>
-				</xsl:for-each>
-				<br/>
-				<br/>
-				<!-- <a href="#{@target}">Go to text</a> -->
-			</seg>
-		</xsl:if>
-		<xsl:if test="@type = 'text_dip_line'">
-			<xsl:variable name="comDiv"
-				select="//tei:lb[@xml:id = $refID or @sameAs = $refID]/ancestor::tei:div[1]/@corresp"/>
-			<seg id="ref{$refPOS}_exp" style="background-color:white" hidden="hidden">
-				<br/>
-				<br/>
-				<xsl:for-each
-					select="//tei:w[not(descendant::tei:w) and preceding::tei:lb[1][@xml:id = $refID or @sameAs = $refID] and ancestor::tei:div[1][@corresp = $comDiv]]">
-					<xsl:choose>
-						<xsl:when test="ancestor::tei:corr">
-							<xsl:text/>
-						</xsl:when>
-						<xsl:otherwise>
+						</xsl:for-each>
+						<br/>
+						<br/>
+						<!-- <a href="#{@target}">Go to text</a> -->
+					</seg>
+				</xsl:if>
+				<xsl:if test="@type = 'text_dip_line'">
+					<xsl:variable name="comDiv"
+						select="//tei:lb[@xml:id = $refID or @sameAs = $refID]/ancestor::tei:div[1]/@corresp"/>
+					<seg id="ref{$refPOS}_exp" style="background-color:white" hidden="hidden">
+						<br/>
+						<br/>
+						<xsl:for-each
+							select="//tei:w[not(descendant::tei:w) and preceding::tei:lb[1][@xml:id = $refID or @sameAs = $refID] and ancestor::tei:div[1][@corresp = $comDiv]]">
 							<xsl:choose>
-								<xsl:when test="ancestor::*[@cert] or descendant::*[@cert]">
-									<xsl:choose>
-										<xsl:when
-											test="ancestor::*[@cert = 'low'] or descendant::*[@cert = 'low']">
-											<a style="text-decoration:none; color:#ff0000">
-												<xsl:apply-templates
-												select="text() | self::*//*[not(name(self::*) = 'supplied')]/text()"
-												/>
-											</a>
-											<xsl:if
-												test="count(following::tei:space[1][@type = 'scribal']/preceding::*) &lt; count(following::tei:w[1]/preceding::*)">
-												<xsl:text> </xsl:text>
-											</xsl:if>
-										</xsl:when>
-										<xsl:when
-											test="ancestor::*[@cert = 'medium'] or descendant::*[@cert = 'medium']">
-											<a style="text-decoration:none; color:#ff9900">
-												<xsl:apply-templates
-												select="text() | self::*//*[not(name(self::*) = 'supplied')]/text()"
-												/>
-											</a>
-											<xsl:if
-												test="count(following::tei:space[1][@type = 'scribal']/preceding::*) &lt; count(following::tei:w[1]/preceding::*)">
-												<xsl:text> </xsl:text>
-											</xsl:if>
-										</xsl:when>
-										<xsl:otherwise>
-											<xsl:apply-templates
-												select="text() | self::*//*[not(name(self::*) = 'supplied')]/text()"/>
-											<xsl:if
-												test="count(following::tei:space[1][@type = 'scribal']/preceding::*) &lt; count(following::tei:w[1]/preceding::*)">
-												<xsl:text> </xsl:text>
-											</xsl:if>
-										</xsl:otherwise>
-									</xsl:choose>
+								<xsl:when test="ancestor::tei:corr">
+									<xsl:text/>
 								</xsl:when>
 								<xsl:otherwise>
 									<xsl:choose>
-										<xsl:when test="ancestor::tei:supplied">
-											<xsl:text/>
+										<xsl:when test="ancestor::*[@cert] or descendant::*[@cert]">
+											<xsl:choose>
+												<xsl:when
+												test="ancestor::*[@cert = 'low'] or descendant::*[@cert = 'low']">
+												<a style="text-decoration:none; color:#ff0000">
+												<xsl:apply-templates
+												select="text() | self::*//*[not(name(self::*) = 'supplied')]/text()"
+												/>
+												</a>
+												<xsl:if
+												test="count(following::tei:space[1][@type = 'scribal']/preceding::*) &lt; count(following::tei:w[1]/preceding::*)">
+												<xsl:text> </xsl:text>
+												</xsl:if>
+												</xsl:when>
+												<xsl:when
+												test="ancestor::*[@cert = 'medium'] or descendant::*[@cert = 'medium']">
+												<a style="text-decoration:none; color:#ff9900">
+												<xsl:apply-templates
+												select="text() | self::*//*[not(name(self::*) = 'supplied')]/text()"
+												/>
+												</a>
+												<xsl:if
+												test="count(following::tei:space[1][@type = 'scribal']/preceding::*) &lt; count(following::tei:w[1]/preceding::*)">
+												<xsl:text> </xsl:text>
+												</xsl:if>
+												</xsl:when>
+												<xsl:otherwise>
+												<xsl:apply-templates
+												select="text() | self::*//*[not(name(self::*) = 'supplied')]/text()"/>
+												<xsl:if
+												test="count(following::tei:space[1][@type = 'scribal']/preceding::*) &lt; count(following::tei:w[1]/preceding::*)">
+												<xsl:text> </xsl:text>
+												</xsl:if>
+												</xsl:otherwise>
+											</xsl:choose>
 										</xsl:when>
 										<xsl:otherwise>
 											<xsl:choose>
+												<xsl:when test="ancestor::tei:supplied">
+												<xsl:text/>
+												</xsl:when>
+												<xsl:otherwise>
+												<xsl:choose>
 												<xsl:when test="ancestor::tei:add">
 												<xsl:text>+</xsl:text>
 												<xsl:apply-templates
@@ -3173,21 +3180,23 @@
 												<xsl:text> </xsl:text>
 												</xsl:if>
 												</xsl:otherwise>
+												</xsl:choose>
+												</xsl:otherwise>
 											</xsl:choose>
 										</xsl:otherwise>
 									</xsl:choose>
 								</xsl:otherwise>
 							</xsl:choose>
-						</xsl:otherwise>
-					</xsl:choose>
-				</xsl:for-each>
-				<br/>
-				<br/>
-				<!-- <br/> -->
-				<!-- <a href="#{@target}_dip">Go to text</a> -->
-				<!-- <br/> -->
-			</seg>
-		</xsl:if>
+						</xsl:for-each>
+						<br/>
+						<br/>
+						<!-- <br/> -->
+						<!-- <a href="#{@target}_dip">Go to text</a> -->
+						<!-- <br/> -->
+					</seg>
+				</xsl:if>
+			</xsl:otherwise>
+		</xsl:choose>
 	</xsl:template>
 
 	<xsl:template match="tei:c">
