@@ -1267,12 +1267,19 @@
 	<xsl:template match="tei:lb">
 		<xsl:variable name="lineID">
 			<xsl:choose>
-				<xsl:when test="@sameAs">
-					<xsl:value-of select="@sameAs"/>
+				<xsl:when test="ancestor::tei:w[not(descendant::tei:w)]">
+					<xsl:text>null</xsl:text>
 				</xsl:when>
-				<xsl:when test="@xml:id">
-					<xsl:value-of select="@xml:id"/>
-				</xsl:when>
+				<xsl:otherwise>
+					<xsl:choose>
+						<xsl:when test="@sameAs">
+							<xsl:value-of select="@sameAs"/>
+						</xsl:when>
+						<xsl:when test="@xml:id">
+							<xsl:value-of select="@xml:id"/>
+						</xsl:when>
+					</xsl:choose>
+				</xsl:otherwise>
 			</xsl:choose>
 		</xsl:variable>
 		<xsl:choose>
@@ -1412,7 +1419,17 @@
 						<xsl:value-of select="ancestor::tei:l[1]/@n"/>
 					</xsl:if>
 				</xsl:variable>
-				<sub id="{$lineID}" msLine="{$lID}">
+				<sub id="{$lineID}">
+					<xsl:attribute name="msLine">
+						<xsl:choose>
+							<xsl:when test="ancestor::tei:w[not(descendant::tei:w)]">
+								<xsl:text>null</xsl:text>
+							</xsl:when>
+							<xsl:otherwise>
+								<xsl:value-of select="$lID"/>	
+							</xsl:otherwise>
+						</xsl:choose>
+					</xsl:attribute>
 					<xsl:if test="ancestor::tei:seg[@type = 'margNote']">
 						<b>
 							<xsl:text>m</xsl:text>
@@ -2461,7 +2478,14 @@
 					test="count(preceding::tei:pb[1]/following::tei:cb[1]/preceding::*) &lt; $wordPOS">
 					<xsl:value-of select="preceding::tei:cb[1]/@n"/>
 				</xsl:if>
-				<xsl:value-of select="preceding::tei:lb[1]/@n"/>
+				<xsl:choose>
+					<xsl:when test="ancestor::tei:corr">
+						<xsl:value-of select="preceding::tei:lb[2]/@n"/>
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:value-of select="preceding::tei:lb[1]/@n"/>
+					</xsl:otherwise>
+				</xsl:choose>
 			</xsl:if>
 			<xsl:if test="ancestor::tei:div[1]/@type = 'verse'">
 				<xsl:value-of select="ancestor::tei:TEI//tei:msIdentifier/@sameAs"/>
@@ -3006,7 +3030,9 @@
 		<xsl:variable name="refID" select="@target"/>
 		<xsl:choose>
 			<xsl:when test="@type = 'slip'">
-				<a href="{concat('https://dasg.ac.uk/slips/index.php?id=', @target)}"><xsl:apply-templates/></a>
+				<a href="{concat('https://dasg.ac.uk/slips/index.php?id=', @target)}">
+					<xsl:apply-templates/>
+				</a>
 			</xsl:when>
 			<xsl:otherwise>
 				<u>

@@ -311,12 +311,6 @@ function addSlip(id) {
 		rcol3.appendChild(contextElementCln);
 	}
 	rcol3.style.fontSize = "smaller";
-	if (el.firstChild.innerText == "/alt") {
-		var choiceID = el.getAttribute("choicePOS").slice(3);
-		var corrID = "corr" + choiceID;
-		var corrForm = rcol3.querySelector("a[choicePOS=" + corrID + "]");
-		corrForm.setAttribute("hidden", "hidden");
-	}
 	var contextChildren = row.childNodes[2].childNodes;
 	var contextChildrenCount = row.childNodes[2].childNodes.length;
 	var w;
@@ -642,12 +636,6 @@ function wordSearch(id) {
 			pbNodes[pbn].parentNode.removeChild(pbNodes[pbn]);
 		}
 		cell3.style.fontSize = "smaller";
-		if (el.firstChild.innerText == "/alt") {
-			var choiceID = el.getAttribute("choicePOS").slice(3);
-			var corrID = "corr" + choiceID;
-			var corrForm = cell3.querySelector("a[choicePOS=" + corrID + "]");
-			corrForm.setAttribute("hidden", "hidden");
-		}
 		var contextChildren = row.childNodes[2].childNodes;
 		var contextChildrenCount = row.childNodes[2].childNodes.length;
 		var w;
