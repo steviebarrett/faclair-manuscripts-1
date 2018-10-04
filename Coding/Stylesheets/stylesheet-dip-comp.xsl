@@ -1124,6 +1124,19 @@
 			cert="{$certLvl}" abbrRefs="{$abbrRef}"
 			title="{$lem}: {$pos} {$src}&#10;{$hand}&#10;{$prob}{$certProb}&#10;Abbreviations: {$abbrs}&#10;{$gloss}"
 			style="text-decoration:none; color:#000000">
+			<xsl:if test="contains(@lemmaRef, 'dasg.ac.uk')">
+				<xsl:attribute name="slipRef">
+					<xsl:value-of select="@lemmaRef"/>
+				</xsl:attribute>
+				<xsl:attribute name="lemmaSL">
+					<xsl:value-of select="@lemma"/>
+				</xsl:attribute>
+			</xsl:if>
+			<xsl:if test="not(ancestor::tei:del)">
+				<xsl:attribute name="msLine">
+					<xsl:value-of select="$lineID"/>
+				</xsl:attribute>
+			</xsl:if>
 			<xsl:if test="not(ancestor::tei:del)">
 				<xsl:attribute name="msLine">
 					<xsl:value-of select="$lineID"/>
