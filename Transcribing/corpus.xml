@@ -42,7 +42,8 @@
 					</address>
 				</authority>
 				<availability status="restricted" xml:id="availability">
-					<licence><p>For internal use by the Faclair na Gàidhlig/DASG projects.</p></licence>
+					<licence><p>For internal use by the Faclair na Gàidhlig/DASG
+						projects.</p></licence>
 				</availability>
 			</publicationStmt>
 			<sourceDesc>
@@ -105,6 +106,13 @@
 						</msIdentifier>
 					</msDesc>
 					<msDesc>
+						<msIdentifier xml:id="MS14">
+							<settlement>Edinburgh</settlement>
+							<repository>NLS Adv.</repository>
+							<idno type="shelfmark">MS. 72.1.2</idno>
+						</msIdentifier>
+					</msDesc>
+					<msDesc>
 						<msIdentifier xml:id="MS15">
 							<settlement>Dublin</settlement>
 							<repository>Royal Irish Academy</repository>
@@ -112,10 +120,24 @@
 						</msIdentifier>
 					</msDesc>
 					<msDesc>
+						<msIdentifier xml:id="MS17">
+							<settlement>Edinburgh</settlement>
+							<repository>National Library of Scotland</repository>
+							<idno type="shelfmark">Adv. MS. 72.1.4</idno>
+						</msIdentifier>
+					</msDesc>
+					<msDesc>
 						<msIdentifier xml:id="LaudMisc615">
 							<settlement>Oxford</settlement>
 							<repository>Bodleian Library</repository>
 							<idno type="shelfmark">MS. Laud Misc. 615</idno>
+						</msIdentifier>
+					</msDesc>
+					<msDesc>
+						<msIdentifier xml:id="NLS72127">
+							<settlement>Edinburgh</settlement>
+							<repository>National Library of Scotland</repository>
+							<idno type="shelfmark">Adv. MS. 72.1.27</idno>
 						</msIdentifier>
 					</msDesc>
 					<msDesc>
@@ -166,6 +188,13 @@
 							<settlement>Maynooth</settlement>
 							<repository>St Patrick's College</repository>
 							<idno type="shelfmark">O'Renehan MS. 96</idno>
+						</msIdentifier>
+					</msDesc>
+					<msDesc>
+						<msIdentifier xml:id="JRIr35">
+							<settlement>Manchester</settlement>
+							<repository>John Rylands Library</repository>
+							<idno type="shelfmark">Ir. MS. 35</idno>
 						</msIdentifier>
 					</msDesc>
 				</listBibl>
@@ -740,7 +769,8 @@
 					<note>An "a" with a descender (very like "q"), with a cross-stroke across the
 						descender, standing for "ar".</note>
 				</glyph>
-				<glyph xml:id="g9" corresp="https://www.vanhamel.nl/codecs/Enclosing_punctus_(critical_sign)">
+				<glyph xml:id="g9"
+					corresp="https://www.vanhamel.nl/codecs/Enclosing_punctus_(critical_sign)">
 					<glyphName>suspension dot</glyphName>
 					<note>An "." that stands for potentially any string of characters..</note>
 				</glyph>
@@ -750,7 +780,8 @@
 					<note>An "s" with a horizontal superscript stroke on top. Originally for Latin
 						"sed" but used to represent "(a)ch(t)" in Gaelic contexts.</note>
 				</glyph>
-				<glyph xml:id="g11" corresp="https://www.vanhamel.nl/codecs/Air_(symbol_with_superscript)">
+				<glyph xml:id="g11"
+					corresp="https://www.vanhamel.nl/codecs/Air_(symbol_with_superscript)">
 					<glyphName>air-symbol (with superscript)</glyphName>
 					<note>An ar abbreviation, with a superscript "i", standing for "air".</note>
 				</glyph>
@@ -764,7 +795,8 @@
 					<note>Like the ar abbreviation, but with two cross-strokes on the descender
 						instead of one; stands for "arr".</note>
 				</glyph>
-				<glyph xml:id="g14" corresp="https://www.vanhamel.nl/codecs/Suspension_stroke_(double)">
+				<glyph xml:id="g14"
+					corresp="https://www.vanhamel.nl/codecs/Suspension_stroke_(double)">
 					<glyphName>double n-stroke</glyphName>
 					<note>A double n-stroke, standing for "-nn".</note>
 				</glyph>
@@ -806,7 +838,8 @@
 					<glyphName>err (inverted tildes)</glyphName>
 					<note>Two vertical tildes, standing for "-e(a)rr".</note>
 				</glyph>
-				<glyph xml:id="g23" corresp="https://www.vanhamel.nl/codecs/Suspension_stroke_(double)">
+				<glyph xml:id="g23"
+					corresp="https://www.vanhamel.nl/codecs/Suspension_stroke_(double)">
 					<glyphName>double n-stroke</glyphName>
 					<note>Two superscript cross-strokes, standing for either "-nn" or an expansion
 						containing two of the same consonant.</note>
@@ -862,14 +895,16 @@
 				</glyph>
 				<glyph xml:id="g35">
 					<glyphName>arabic numeral 9</glyphName>
-					<note>As 'na'/'noi'/'naoi', etc. see for example Edinburgh, NLS MS 72.2.11, p.8, ll.14, 15, 32, 34, 35, 36.</note>
+					<note>As 'na'/'noi'/'naoi', etc. see for example Edinburgh, NLS MS 72.2.11, p.8,
+						ll.14, 15, 32, 34, 35, 36.</note>
 				</glyph>
 				<glyph xml:id="l1">
 					<glyphName>ligature</glyphName>
 					<note>Two letters are placed together as a ligature, with text to be inserted in
 						between.</note>
 				</glyph>
-				<glyph xml:id="g36" corresp="https://www.vanhamel.nl/codecs/Per_(p_with_cross_stroke)">
+				<glyph xml:id="g36"
+					corresp="https://www.vanhamel.nl/codecs/Per_(p_with_cross_stroke)">
 					<glyphName>p with cross-stroke</glyphName>
 					<note>A "p" with a subscript suspension stroke, normally standing for
 						"per"/"par/"por".</note>
@@ -890,7 +925,8 @@
 					<glyphName>superscript b</glyphName>
 					<note>A superscript b, standing for "b" plus a vowel before or after.</note>
 				</glyph>
-				<glyph xml:id="g41" corresp="https://www.vanhamel.nl/codecs/L_with_suspension_stroke">
+				<glyph xml:id="g41"
+					corresp="https://www.vanhamel.nl/codecs/L_with_suspension_stroke">
 					<glyphName>l with suspension stroke</glyphName>
 					<note>l with a suspension stroke mid-line, representing a vowel following the
 						l.</note>
@@ -905,7 +941,8 @@
 					<note>A subscript "i", resembling an us-symbol (;), standing for "i", perhaps
 						plus a further string.</note>
 				</glyph>
-				<glyph xml:id="g44" corresp="https://www.vanhamel.nl/codecs/S_insular_with_cross_stroke">
+				<glyph xml:id="g44"
+					corresp="https://www.vanhamel.nl/codecs/S_insular_with_cross_stroke">
 					<glyphName>s with cross-stroke</glyphName>
 					<note>A long insular "s" with a cross-stroke pointing towards the bottom right,
 						standing for "s", a vowel, and often an "r".</note>
@@ -934,7 +971,8 @@
 					<note>The letter "k", standing mostly for "cath" but somethings for
 						"kalends".</note>
 				</glyph>
-				<glyph xml:id="g50" corresp="https://www.vanhamel.nl/codecs/Apostrophe_(superscript)">
+				<glyph xml:id="g50"
+					corresp="https://www.vanhamel.nl/codecs/Apostrophe_(superscript)">
 					<glyphName>apostrophe</glyphName>
 					<note>A left-facing superscript semi-circle, standing for "-s", perhaps with a
 						preceding vowel or string.</note>
@@ -944,7 +982,8 @@
 					<note>An "x", standing either for the numeral 10 or for the characterd "dec" or
 						similar.</note>
 				</glyph>
-				<glyph xml:id="g52" corresp="https://www.vanhamel.nl/codecs/I_with_acute_diacritic_(disambiguation)">
+				<glyph xml:id="g52"
+					corresp="https://www.vanhamel.nl/codecs/I_with_acute_diacritic_(disambiguation)">
 					<glyphName>upward diagonal overstroke</glyphName>
 					<note>A stroke from the lower left of a character to the upper right, crossing
 						the character itself, standing for a string of subsequent characters. Found
@@ -966,7 +1005,8 @@
 				</glyph>
 				<glyph xml:id="g56">
 					<glyphName>cc abbreviation</glyphName>
-					<note>Double "c", standing for an abbreviation for a word starting with "cc".</note>
+					<note>Double "c", standing for an abbreviation for a word starting with
+						"cc".</note>
 				</glyph>
 				<glyph xml:id="l2" corresp="https://www.vanhamel.nl/codecs/He_(ligature)">
 					<glyphName>He ligature</glyphName>
@@ -974,7 +1014,8 @@
 				</glyph>
 				<glyph xml:id="g58">
 					<glyphName>il abbreviation</glyphName>
-					<note>Superscript "il", standing for various strings including those letters (e.g. "m<hi rend="italics">aille</hi>"). O'Brien 1913: n.225.</note>
+					<note>Superscript "il", standing for various strings including those letters
+						(e.g. "m<hi rend="italics">aille</hi>"). O'Brien 1913: n.225.</note>
 				</glyph>
 				<glyph xml:id="l4" corresp="https://vanhamel.nl/codecs/Re_(ligature_with_short_e)">
 					<glyphName>re ligature</glyphName>
@@ -1110,35 +1151,40 @@
 				<handNote xml:id="Hand11">
 					<forename>Domnall</forename>
 					<surname>MacMhuirich</surname>
-					<date type="floruit" cert="medium" from="1707" to="1745" min="1700" max="1800">18</date>
+					<date type="floruit" cert="medium" from="1707" to="1745" min="1700" max="1800"
+						>18</date>
 					<region cert="high">W Scotland</region>
 					<note/>
 				</handNote>
 				<handNote xml:id="Hand12">
 					<forename>[unk.]</forename>
 					<surname>[unk.]</surname>
-					<date type="floruit" cert="medium" from="1500" to="1590" min="1500" max="1600">16</date>
+					<date type="floruit" cert="medium" from="1500" to="1590" min="1500" max="1600"
+						>16</date>
 					<region cert="high">W Scotland</region>
 					<note>Hand M in NLS Adv. MS 72.1.33.</note>
 				</handNote>
 				<handNote xml:id="Hand13">
 					<forename>Lachlan Mór</forename>
 					<surname>MacLean</surname>
-					<date type="floruit" cert="medium" from="1577" to="1598" min="1500" max="1600">16</date>
+					<date type="floruit" cert="medium" from="1577" to="1598" min="1500" max="1600"
+						>16</date>
 					<region cert="high">Isle of Mull</region>
 					<note/>
 				</handNote>
 				<handNote xml:id="Hand14">
 					<forename>James</forename>
 					<surname>Beaton</surname>
-					<date type="floruit" cert="medium" from="1613" to="1621" min="1600" max="1700">17</date>
+					<date type="floruit" cert="medium" from="1613" to="1621" min="1600" max="1700"
+						>17</date>
 					<region/>
 					<note>Black's Hand K (NLS Adv. 72.1.33)</note>
 				</handNote>
 				<handNote xml:id="Hand15">
 					<forename>[unk.]</forename>
 					<surname>[unk.]</surname>
-					<date type="floruit" cert="low" from="1590" to="1700" min="1600" max="1700">17</date>
+					<date type="floruit" cert="low" from="1590" to="1700" min="1600" max="1700"
+						>17</date>
 					<region/>
 					<note>Like James Beaton's, this hand makes occasional brief interventions in
 						Transcription 5.2 (NLS Adv. MS. 72.1.33). It is mucher neater than James
@@ -1148,35 +1194,40 @@
 				<handNote xml:id="Hand16">
 					<forename>Rev. John</forename>
 					<surname>Beaton</surname>
-					<date type="life" cert="medium" from="1640" to="1715" min="1600" max="1700">17</date>
+					<date type="life" cert="medium" from="1640" to="1715" min="1600" max="1700"
+						>17</date>
 					<region/>
 					<note>Black's Hand S (NLS Adv. 72.1.33)</note>
 				</handNote>
 				<handNote xml:id="Hand17">
 					<forename>Neil</forename>
 					<surname>Beaton</surname>
-					<date type="floruit" cert="medium" from="1656" to="1656" min="1600" max="1700">17</date>
+					<date type="floruit" cert="medium" from="1656" to="1656" min="1600" max="1700"
+						>17</date>
 					<region/>
 					<note>Black's Hand D (NLS Adv. 72.1.33)</note>
 				</handNote>
 				<handNote xml:id="Hand18">
 					<forename>Dubhghall Albanach</forename>
 					<surname>mac mhic Cathail</surname>
-					<date type="floruit" cert="medium" from="1467" to="1467" min="1400" max="1500">15</date>
+					<date type="floruit" cert="medium" from="1467" to="1467" min="1400" max="1500"
+						>15</date>
 					<region/>
 					<note/>
 				</handNote>
 				<handNote xml:id="Hand19">
 					<forename>Cairbre</forename>
 					<surname>Ó Ceanmain</surname>
-					<date type="floruit" cert="high" from="1560" to="1563" min="1500" max="1600">16</date>
+					<date type="floruit" cert="high" from="1560" to="1563" min="1500" max="1600"
+						>16</date>
 					<region/>
 					<note>EUL La. III.21</note>
 				</handNote>
 				<handNote xml:id="Hand20">
 					<forename>Eoin</forename>
 					<surname>mac Domhnaill Ó Conchubhair</surname>
-					<date type="life" cert="medium" from="1541" to="1601" min="1500" max="1600">16</date>
+					<date type="life" cert="medium" from="1541" to="1601" min="1500" max="1600"
+						>16</date>
 					<region>SW Scotland</region>
 					<region>Ireland</region>
 					<note><p xml:space="preserve">
@@ -1213,13 +1264,21 @@
 					<surname>unk.</surname>
 					<date type="floruit" min="1500" max="1600">16</date>
 					<region cert="medium">Islay</region>
-					<note><p>Hand 2 in NLS Adv. 72.1.4 and Hand 5 in NLS Adv. 72.1.5.</p></note>
+					<note><p>This individual is unidentified but they appear to have been a
+							physician active in Islay in the 16th century. In <ref type="mss"
+								target="JRIr35">John Rylands MS. Ir 35</ref> (fol. 67<hi rend="sup"
+								>r</hi>), he records a series of treatments performed there and
+							makes reference to the same region in <ref target="NLS72127" type="mss"
+								>NLS Adv. 72.1.27</ref>, fol. 3<hi rend="sup">v</hi>. They also add
+							frequent notes to <ref type="mss" target="MS14">NLS Adv. 72.1.2</ref>.
+							In each case, Hand24 is interacting with a Beaton manuscript alongside
+							Beaton scribes and glossators so they were evidently closely associated
+							with this family, if not a member themselves.</p></note>
 				</handNote>
 				<handNote xml:id="Hand25">
 					<forename>Maol-Sheachlainn</forename>
 					<surname>mac Iollainn Mhic an Leagha Ruaidh</surname>
 					<date type="floruit" min="1401" max="1599" from="1512" to="1512">15/16</date>
-					<region cert="medium">Islay</region>
 					<region cert="high">Sligo</region>
 					<region cert="high">Kildare</region>
 					<note><p>Hand 4 in NLS Adv. 72.1.4</p></note>
@@ -1237,10 +1296,10 @@
 					<date>unknown</date>
 					<region>unknown</region>
 					<note><p>This hand not only cannot be associated with a known scribe but cannot
-						even be grouped in confidence with other interventions. This is probably
-						because not enough has been written in this hand for a sound palaeographical
-						analysis to be made. Note that this tag is a generic placeholder rather than
-						an effort to identify a single hand.</p></note>
+							even be grouped in confidence with other interventions. This is probably
+							because not enough has been written in this hand for a sound
+							palaeographical analysis to be made. Note that this tag is a generic
+							placeholder rather than an effort to identify a single hand.</p></note>
 				</handNote>
 				<handNote>
 					<forename/>
@@ -1264,7 +1323,7 @@
 			<change when="2017-11-07" who="EPT">Corpus header: Added content to elements</change>
 		</revisionDesc>
 	</teiHeader>
-  
+
 	<!-- <TEI corresp="Transcriptions/transcription1.xml"/>
   <TEI corresp="Transcriptions/transcription2.xml"/>  
   <TEI corresp="Transcriptions/transcription3.xml"/>
@@ -1280,10 +1339,10 @@
   <TEI corresp="Transcriptions/transcription15.xml"/>
   <TEI corresp="Transcriptions/transcription16.xml"/>
   <TEI corresp="Transcriptions/transcription17.xml"/> -->
-  
+
 
 	<!-- <xi:include href="Transcriptions/transcription1.xml" parse="xml"/> -->
-		<!-- <xi:include href="Transcriptions/transcription2.xml" parse="xml"/> -->
+	<!-- <xi:include href="Transcriptions/transcription2.xml" parse="xml"/> -->
 	<!-- <xi:include href="Transcriptions/transcription3.xml" parse="xml"/> -->
 	<!-- <xi:include href="Transcriptions/transcription4.xml" parse="xml"/> -->
 	<!-- <xi:include href="Transcriptions/transcription5.xml" parse="xml"/> -->
