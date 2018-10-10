@@ -26,6 +26,10 @@ body {
   padding: 20px;
 }
 
+#headerInformation, #diplomaticTranscription, #semiDiplomaticTranscription {
+  display: none;
+}
+
 .chunk {
   cursor: pointer;
   background-color: inherit;
@@ -40,8 +44,8 @@ body {
 }
 
 .glyph {
-  /*  font-style: italic; */
-  color: green;  
+  font-style: italic;
+  /* color: green; */  
 }
 
 #data {display: none;}
@@ -50,7 +54,6 @@ body {
   content: attr(data-number) ". ";
   color: gray;
   font-size: x-small;
-  /*  content: attr(data-number) ". " ;  disny work */ 
 }
 
 .unclear {

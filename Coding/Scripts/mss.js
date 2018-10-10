@@ -1,5 +1,23 @@
 $(function() {
 
+  $('#showHeader').click(function(){
+    $('#headerInformation').show();
+    $('#diplomaticTranscription').hide();
+    $('#semiDiplomaticTranscription').hide();
+  });
+  
+  $('#showDiplomatic').click(function(){
+    $('#headerInformation').hide();
+    $('#diplomaticTranscription').show();
+    $('#semiDiplomaticTranscription').hide();
+  });
+  
+  $('#showSemiDiplomatic').click(function(){
+    $('#headerInformation').hide();
+    $('#diplomaticTranscription').hide();
+    $('#semiDiplomaticTranscription').show();
+  });  
+  
   $('.chunk').mouseenter(function(){
     $(this).css('text-decoration', 'underline');
   });

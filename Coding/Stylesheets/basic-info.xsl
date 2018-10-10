@@ -21,30 +21,27 @@
             <xsl:value-of select="tei:TEI/tei:teiHeader/tei:fileDesc/tei:titleStmt/tei:title"/>
           </h1>
           <div id="page-menu"> Contents: <ul>
-              <li><a href="#header-information">header information</a></li>
-              <li><a href="#diplomatic-transcription">diplomatic transcription</a></li>
-              <li><a href="#semi-diplomatic-transcription">semi-diplomatic transcription</a></li>
+              <li><a href="#" id="showHeader">header information</a></li>
+              <li><a href="#" id="showDiplomatic">diplomatic transcription</a></li>
+              <li><a href="#" id="showSemiDiplomatic">semi-diplomatic transcription</a></li>
             </ul>
           </div>
           <hr/>
           <hr/>
-          <div id="header-information">
+          <div id="headerInformation">
             <h2>Header information</h2>
-            <a href="#top">Back to top</a>
             <xsl:apply-templates select="tei:TEI/tei:teiHeader"/>
           </div>
           <hr/>
           <hr/>
-          <div id="diplomatic-transcription">
+          <div id="diplomaticTranscription">
             <h2>Diplomatic transcription</h2>
-            <a href="#top">Back to top</a>
             <xsl:apply-templates select="tei:TEI/tei:text/tei:body" mode="diplomatic"/>
           </div>
           <hr/>
           <hr/>
-          <div id="semi-diplomatic-transcription">
+          <div id="semiDiplomaticTranscription">
             <h2>Semi-diplomatic transcription</h2>
-            <a href="#top">Back to top</a>
             <xsl:apply-templates select="tei:TEI/tei:text/tei:body" mode="semi-diplomatic"/>
           </div>
           <hr/>
@@ -179,21 +176,6 @@
       <xsl:value-of select="@n"/>
       <xsl:text>]</xsl:text>
     </div>
-    <!--
-    <div class="textDivision" data-number="{@n}" type="{@type}" data-id="{@corresp}" data-hand="{@resp}">
-      <xsl:apply-templates mode="diplomatic"/>
-    </div>
-    <p/>
-    <xsl:variable name="link" select="@corresp"/>
-    <p style="color: green;">
-      <xsl:text>[Start of text </xsl:text>
-      <xsl:value-of select="@n"/>
-      <xsl:text>: </xsl:text>
-      <xsl:value-of select="//tei:msItem[@xml:id = $link]/tei:title"/>
-      <xsl:text>]</xsl:text>
-    </p>
-    <xsl:apply-templates mode="diplomatic"/>
-    -->
   </xsl:template>
 
   <xsl:template mode="diplomatic" match="tei:pb">
@@ -206,6 +188,10 @@
 
   <xsl:template mode="diplomatic" match="tei:lb">
     <!-- MM: line breaks inside words? -->
+    <!--
+    <a href="#" class="addComment" title="Leave comment on this line">[+]</a>
+    <a href="#" class="viewComment" title="View comments on this line">[?]</a>
+    -->
     <span class="lineBreak" data-number="{@n}" id="{concat('line_',@xml:id)}">
       <br id="{generate-id()}_dip" data-number="{@n}"/>
     </span>
@@ -304,124 +290,6 @@
     </span>
   </xsl:template>
 
-
-  <!--
-  <xsl:variable name="problem">
-    
-      <xsl:if
-        test="descendant::tei:abbr[not(@cert = 'high')] and not(ancestor::tei:unclear[@reason = 'abbrv'])">
-        <xsl:text xml:space="preserve">- this reading involves one or more abbreviations </xsl:text>
-        <xsl:text>("</xsl:text>
-        <xsl:for-each select="descendant::tei:abbr[not(@cert = 'high')]">
-          <xsl:text> </xsl:text>
-          <xsl:value-of select="self::*"/>
-          <xsl:text> </xsl:text>
-        </xsl:for-each>
-        <xsl:text>") </xsl:text>
-        <xsl:text xml:space="preserve">that cannot be expanded with certainty &#10;</xsl:text>
-      </xsl:if>
-      <xsl:if test="ancestor::tei:corr">
-        <xsl:variable name="alt" select="ancestor::tei:choice/tei:sic"/>
-        <xsl:text xml:space="preserve">- this is </xsl:text>
-        <xsl:choose>
-          <xsl:when
-            test="count(ancestor::tei:choice/tei:sic/descendant::tei:w[not(descendant::tei:w)]) &lt; count(ancestor::tei:choice/tei:corr/descendant::tei:w[not(descendant::tei:w)])">
-            <xsl:text>part of an</xsl:text>
-          </xsl:when>
-          <xsl:otherwise>
-            <xsl:text>an</xsl:text>
-          </xsl:otherwise>
-        </xsl:choose>
-        <xsl:text> editorial emendation (from </xsl:text>
-        <xsl:value-of select="ancestor::tei:corr/@resp"/>
-        <xsl:text>) of the manuscript reading ("</xsl:text>
-        <xsl:value-of select="$alt"/>
-        <xsl:text>")&#10;</xsl:text>
-      </xsl:if>
-      <xsl:if test="ancestor::tei:choice[descendant::tei:unclear]">
-        <xsl:variable name="selfID" select="@n"/>
-        <xsl:variable name="choiceID" select="ancestor::tei:unclear[parent::tei:choice]/@n"/>
-        <xsl:variable name="altChoice"
-          select="ancestor::tei:choice/tei:unclear[not(@n = $choiceID)]//tei:w[@n = $selfID]"/>
-        <xsl:text xml:space="preserve">- there is a possible alternative to this reading ("</xsl:text>
-        <xsl:value-of select="$altChoice"/>
-        <xsl:text>"), </xsl:text>
-        <xsl:value-of select="$altChoice/@ana"/>
-        <xsl:text>&#10;</xsl:text>
-      </xsl:if>
-      <xsl:if test="ancestor::tei:supplied">
-        <xsl:text xml:space="preserve">- this word has been supplied by an editor (</xsl:text>
-        <xsl:value-of select="ancestor::tei:supplied/@resp"/>
-        <xsl:text>) &#10;</xsl:text>
-      </xsl:if>
-      <xsl:if test="descendant::tei:supplied">
-        <xsl:text xml:space="preserve">- some characters have been supplied by an editor (</xsl:text>
-        <xsl:value-of select="descendant::tei:supplied/@resp"/>
-        <xsl:text>)&#10;</xsl:text>
-      </xsl:if>
-      
-    <xsl:if test="@xml:lang">
-      <xsl:text xml:space="preserve">- this word is in a language other than Gaelic &#10;</xsl:text>
-    </xsl:if>
-    
-      <xsl:if test="ancestor::tei:del">
-        <xsl:text xml:space="preserve">- this word has been deleted by </xsl:text>
-        <xsl:value-of select="key('hands', ancestor::tei:del/@resp)/tei:forename"/>
-        <xsl:text> </xsl:text>
-        <xsl:value-of select="key('hands', ancestor::tei:del/@resp)/tei:surname"/>
-        <xsl:text> (</xsl:text>
-        <xsl:value-of select="key('hands', ancestor::tei:del/@resp)/@xml:id"/>
-        <xsl:text>)&#10;</xsl:text>
-      </xsl:if>
-      <xsl:if test="descendant::tei:del">
-        <xsl:for-each select="descendant::tei:del">
-          <xsl:text xml:space="preserve">- characters have been deleted by </xsl:text>
-          
-          <xsl:value-of select="key('hands', @resp)/tei:forename"/>
-          <xsl:text> </xsl:text>
-          <xsl:value-of select="key('hands', @resp)/tei:surname"/>
-          <xsl:text> (</xsl:text>
-          <xsl:value-of select="key('hands', @resp)/@xml:id"/>
-          
-          <xsl:text>)&#10;</xsl:text>
-        </xsl:for-each>
-      </xsl:if>
-      <xsl:if test="ancestor::tei:add[@type = 'insertion']">
-        <xsl:text xml:space="preserve">- this word has been added by </xsl:text>
-        
-        <xsl:value-of
-          select="key('hands', ancestor::tei:add[@type = 'insertion']/@resp)/tei:forename"/>
-        <xsl:text> </xsl:text>
-        <xsl:value-of
-          select="key('hands', ancestor::tei:add[@type = 'insertion']/@resp)/tei:surname"/>
-        <xsl:text> (</xsl:text>
-        <xsl:value-of
-          select="key('hands', ancestor::tei:add[@type = 'insertion']/@resp)/@xml:id"/>
-         
-        <xsl:text>)&#10;</xsl:text>
-      </xsl:if>
-      <xsl:if test="descendant::tei:add[@type = 'insertion']">
-        <xsl:for-each select="descendant::tei:add[@type = 'insertion']">
-          <xsl:text xml:space="preserve">- characters have been added by </xsl:text>
-          
-          <xsl:value-of select="key('hands', @resp)/tei:forename"/>
-          <xsl:text> </xsl:text>
-          <xsl:value-of select="key('hands', @resp)/tei:surname"/>
-          <xsl:text> (</xsl:text>
-          <xsl:value-of select="key('hands', @resp)/@xml:id"/>
-          
-          <xsl:text>)&#10;</xsl:text>
-        </xsl:for-each>
-      </xsl:if>
-     
-    <xsl:if test="@source">  
-      <xsl:text xml:space="preserve">- this word cannot be identified with an existing dictionary headword, but it may be related to "</xsl:text>
-      <xsl:value-of select="@source"/>
-      <xsl:text xml:space="preserve">".&#10;</xsl:text>
-    </xsl:if>
-  </xsl:variable>
--->
-
   <xsl:template mode="diplomatic" match="tei:abbr">
     <span class="abbreviation">
       <xsl:attribute name="id">
@@ -483,31 +351,130 @@
     <xsl:apply-templates mode="diplomatic" select="tei:corr"/>
   </xsl:template>
 
-
-
+  <!-- SEMI-DIPLOMATIC -->
 
   <xsl:template match="tei:body" mode="semi-diplomatic">
     <xsl:apply-templates select="tei:div" mode="semi-diplomatic"/>
   </xsl:template>
-  
+    
   <xsl:template match="tei:div" mode="semi-diplomatic">
-    <xsl:variable name="link" select="@corresp"/>
-    <h4>
-      <xsl:text>Text </xsl:text>
+    <div style="color: gray; font-size: small; margin-top: 20px;">
+      <xsl:text>[start of text </xsl:text>
       <xsl:value-of select="@n"/>
-      <xsl:text>. </xsl:text>
-      <xsl:value-of select="//tei:msItem[@xml:id = $link]/tei:title"/>
-      <!-- MM: check this path -->
-    </h4>
+      <xsl:text>] </xsl:text>
+    </div>
     <xsl:apply-templates mode="semi-diplomatic"/>
+    <div style="color: gray; font-size: small; margin-top: 20px;">
+      <xsl:text>[end of text </xsl:text>
+      <xsl:value-of select="@n"/>
+      <xsl:text>]</xsl:text>
+    </div>
   </xsl:template>
 
+  <xsl:template mode="semi-diplomatic" match="tei:name[not(ancestor::tei:name)]"> <!-- a name which is NOT part of a larger name -->
+    <span class="word name chunk">
+      <xsl:attribute name="id">
+        <xsl:value-of select="generate-id()"/>
+      </xsl:attribute>
+      <xsl:attribute name="data-nametype">
+        <xsl:value-of select="@type"/>
+      </xsl:attribute>
+      <xsl:choose>
+        <xsl:when test="count(child::tei:w | child::tei:name) = 1">
+          <xsl:attribute name="data-headword">
+            <xsl:value-of select="tei:w/@lemma"/>
+          </xsl:attribute>
+          <xsl:attribute name="data-pos">
+            <xsl:value-of select="tei:w/@ana"/>
+          </xsl:attribute>
+          <xsl:attribute name="data-edil">
+            <xsl:value-of select="tei:w/@lemmaRef"/>
+          </xsl:attribute>
+          <xsl:apply-templates mode="semi-diplomatic"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:apply-templates mode="semi-diplomatic"/>
+        </xsl:otherwise>
+      </xsl:choose>
+    </span>
+    <xsl:text> </xsl:text>
+  </xsl:template>
+  
+  <xsl:template mode="semi-diplomatic" match="tei:name"> <!-- a name which IS part of a larger name -->
+    <span class="word name">
+      <xsl:attribute name="id">
+        <xsl:value-of select="generate-id()"/>
+      </xsl:attribute>
+      <xsl:attribute name="data-nametype">
+        <xsl:value-of select="@type"/>
+      </xsl:attribute>
+      <xsl:choose>
+        <xsl:when test="count(child::tei:w | child::tei:name) = 1">
+          <xsl:attribute name="data-headword">
+            <xsl:value-of select="tei:w/@lemma"/>
+          </xsl:attribute>
+          <xsl:attribute name="data-edil">
+            <xsl:value-of select="tei:w/@lemmaRef"/>
+          </xsl:attribute>
+          <xsl:value-of select="child::*[1]"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:apply-templates mode="semi-diplomatic"/>
+        </xsl:otherwise>
+      </xsl:choose>
+    </span>
+    <xsl:text> </xsl:text>
+  </xsl:template>
+  
+  <xsl:template mode="semi-diplomatic" match="tei:w[not(ancestor::tei:w or ancestor::tei:name)]"> <!-- a word which is NOT part of a larger word or name -->
+    <span class="word chunk">
+      <xsl:attribute name="id">
+        <xsl:value-of select="generate-id()"/>
+      </xsl:attribute>
+      <xsl:if test="count(child::tei:w | child::tei:name) = 0"> <!-- a syntactically simple word -->
+        <xsl:attribute name="data-headword">
+          <xsl:value-of select="@lemma"/>
+        </xsl:attribute>
+        <xsl:attribute name="data-pos">
+          <xsl:value-of select="@ana"/>
+        </xsl:attribute>
+        <xsl:attribute name="data-edil">
+          <xsl:value-of select="@lemmaRef"/>
+        </xsl:attribute>
+      </xsl:if>
+      <xsl:apply-templates mode="semi-diplomatic"/>
+    </span>
+    <xsl:text> </xsl:text>
+  </xsl:template>
+  
+  <xsl:template mode="semi-diplomatic" match="tei:w"> <!-- a word which IS part of a larger word or name -->
+    <span class="word">
+      <xsl:attribute name="id">
+        <xsl:value-of select="generate-id()"/>
+      </xsl:attribute>
+      <xsl:if test="count(child::tei:w | child::tei:name) = 0"> <!-- a syntactically simple word -->
+        <xsl:attribute name="data-headword">
+          <xsl:value-of select="@lemma"/>
+        </xsl:attribute>
+        <xsl:attribute name="data-pos">
+          <xsl:value-of select="@ana"/>
+        </xsl:attribute>
+        <xsl:attribute name="data-edil">
+          <xsl:value-of select="@lemmaRef"/>
+        </xsl:attribute>
+      </xsl:if>
+      <xsl:apply-templates mode="semi-diplomatic"/>
+    </span>
+    <xsl:text> </xsl:text>
+  </xsl:template>
+
+<!-- 
   <xsl:template match="tei:w | tei:name" mode="semi-diplomatic">
     <xsl:text> </xsl:text>
     <xsl:apply-templates mode="semi-diplomatic"/>
     <xsl:text> </xsl:text>
   </xsl:template>
-  
+  -->
 
 
 </xsl:stylesheet>
