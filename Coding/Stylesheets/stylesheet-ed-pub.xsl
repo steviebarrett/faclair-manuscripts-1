@@ -1686,6 +1686,10 @@
 		</sub>
 		<xsl:apply-templates/>
 	</xsl:template>
+	
+	<xsl:template match="tei:seg[@type = 'MSdef']">
+		<xsl:apply-templates/>
+	</xsl:template>
 
 	<xsl:template match="tei:quote">
 		<br/>
