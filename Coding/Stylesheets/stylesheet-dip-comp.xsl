@@ -535,6 +535,10 @@
 			</b>
 		</sub>
 	</xsl:template>
+	
+	<xsl:template match="tei:seg[@type = 'MSdef']">
+		<xsl:apply-templates/>
+	</xsl:template>
 
 	<xsl:template mode="dip" match="tei:choice">
 		<xsl:apply-templates mode="dip" select="tei:sic"/>
