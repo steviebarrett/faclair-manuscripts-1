@@ -45,7 +45,7 @@ function createTable() {
 	var r1col9 = row1.insertCell(8);
 	r1col9.outerHTML = "<th><b>PoS</b></th>";
 	var r1col10 = row1.insertCell(9);
-	r1col10.outerHTML = "<th><b>Lemma (eDIL)</b></th>";
+	r1col10.outerHTML = "<th><b>Lemma (eDIL/Teanglann)</b></th>";
 	var r1col11 = row1.insertCell(10);
 	r1col11.outerHTML = "<th><b>Lemma (Dwellys)</b></th>";
 	var r1col12 = row1.insertCell(11);
@@ -418,6 +418,8 @@ function addSlip(id) {
 		finURIED = rcol13.firstChild.innerHTML.slice(51);
 	} else if (rcol12.firstChild.innerHTML.slice(6, 17) == "dasg.ac.uk") {
 		finURIED = rcol13.firstChild.innerHTML.slice(36);
+	} else if (rcol13.firstChild.innerHTML.slice(8, 24) == "www.teanglann.ie") {
+		finURIED = "TG_" + rcol13.firstChild.innerHTML.slice(32);
 	}
 	rcol13.firstChild.innerHTML = finURIED;
 	var rcol14 = row.insertCell(13);
@@ -716,6 +718,8 @@ function wordSearch(id) {
 			finURIED = cell13.firstChild.innerHTML.slice(51);
 		} else if (cell12.firstChild.innerHTML.slice(6, 17) == "dasg.ac.uk") {
 			finURIED = cell13.firstChild.innerHTML.slice(36);
+		} else if (rcol13.firstChild.innerHTML.slice(8, 24) == "www.teanglann.ie") {
+		finURIED = "TG_" + rcol13.firstChild.innerHTML.slice(32);
 		}
 		cell13.firstChild.innerHTML = finURIED;
 		var cell14 = row.insertCell(13);

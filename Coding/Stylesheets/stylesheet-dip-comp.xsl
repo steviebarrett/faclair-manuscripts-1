@@ -1058,7 +1058,7 @@
 		</xsl:variable>
 		<xsl:variable name="EDlem">
 			<xsl:choose>
-				<xsl:when test="contains(@lemmaRef, 'dil.ie')">
+				<xsl:when test="contains(@lemmaRef, 'dil.ie') or contains(@lemmaRef, 'teanglann.ie')">
 					<xsl:value-of select="@lemma"/>
 				</xsl:when>
 				<xsl:otherwise>
@@ -1068,7 +1068,7 @@
 		</xsl:variable>
 		<xsl:variable name="EDref">
 			<xsl:choose>
-				<xsl:when test="contains(@lemmaRef, 'dil.ie')">
+				<xsl:when test="contains(@lemmaRef, 'dil.ie') or contains(@lemmaRef, 'teanglann.ie')">
 					<xsl:value-of select="@lemmaRef"/>
 				</xsl:when>
 				<xsl:otherwise>
