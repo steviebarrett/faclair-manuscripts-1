@@ -192,6 +192,20 @@
     <a href="#" class="addComment" title="Leave comment on this line">[+]</a>
     <a href="#" class="viewComment" title="View comments on this line">[?]</a>
     -->
+    <a href="#" class="addComment" title="Leave comment on this line" data-s="lb" data-n="{@xml:id}">[+]</a>
+    <div class="commentForm" id="{concat('cf__lb__',@xml:id)}">
+      <select>
+        <option value="">-- Select a user --</option>
+        <option value="et">Eystein</option>
+        <option value="mm">Martina</option>
+        <option value="wg">Willie</option>
+      </select>
+      <input type="text"/>
+      <button class="saveComment">save</button>
+      <button class="cancelComment">cancel</button>
+    </div>
+    <xsl:text> </xsl:text>
+    <a href="#" class="viewComment" title="View comments on this line" data-s="lb" data-n="{@xml:id}">[?]</a>
     <span class="lineBreak" data-number="{@n}" id="{concat('line_',@xml:id)}">
       <br id="{generate-id()}_dip" data-number="{@n}"/>
     </span>
