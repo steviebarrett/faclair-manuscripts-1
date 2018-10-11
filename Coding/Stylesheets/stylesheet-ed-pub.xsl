@@ -445,29 +445,72 @@
 
 	<xsl:template match="tei:teiHeader/tei:fileDesc/tei:sourceDesc">
 		<h4 style="font-size:16px">Hands</h4>
-		<xsl:for-each select="tei:msDesc/tei:physDesc/tei:handDesc/tei:handNote/tei:note">
-			<h5>
-				<xsl:value-of select="key('hands', parent::tei:handNote/@corresp)/tei:forename"/>
-				<xsl:text> </xsl:text>
-				<xsl:value-of select="key('hands', parent::tei:handNote/@corresp)/tei:surname"/>
-				<xsl:text> (</xsl:text>
-				<xsl:value-of select="parent::tei:handNote/@corresp"/>
-				<xsl:text>)</xsl:text>
-			</h5>
-			<xsl:for-each select="tei:p">
-				<xsl:if test="@comment">
-					<h6>
-						<xsl:value-of select="@comment"/>
-					</h6>
-				</xsl:if>
-				<p style="font-size:11px">
-					<xsl:apply-templates/>
-				</p>
-				<table/>
-				<button id="{generate-id()}" onclick="textComment(this.id)" style="font-size:12px"
-					>Add Comment</button>
-			</xsl:for-each>
-		</xsl:for-each>
+		<xsl:choose>
+			<xsl:when test="tei:msDesc/tei:physDesc/tei:handDesc/tei:handNote/tei:note/tei:p/text()">
+				<xsl:for-each select="tei:msDesc/tei:physDesc/tei:handDesc/tei:handNote/tei:note">
+					<h5>
+						<xsl:value-of
+							select="key('hands', parent::tei:handNote/@corresp)/tei:forename"/>
+						<xsl:text> </xsl:text>
+						<xsl:value-of
+							select="key('hands', parent::tei:handNote/@corresp)/tei:surname"/>
+						<xsl:text> (</xsl:text>
+						<xsl:value-of select="parent::tei:handNote/@corresp"/>
+						<xsl:text>)</xsl:text>
+					</h5>
+					<xsl:for-each select="tei:p">
+						<xsl:if test="@comment">
+							<h6>
+								<xsl:value-of select="@comment"/>
+							</h6>
+						</xsl:if>
+						<p style="font-size:11px">
+							<xsl:apply-templates/>
+						</p>
+						<table/>
+						<button id="{generate-id()}" onclick="textComment(this.id)"
+							style="font-size:12px">Add Comment</button>
+					</xsl:for-each>
+				</xsl:for-each>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:for-each select="ancestor::tei:TEI/descendant::tei:div[not(descendant::tei:div)]">
+					<xsl:variable name="handID" select="@resp"/>
+					<xsl:if test="not(preceding::tei:div[not(descendant::tei:div)]/@resp = $handID)">
+						<h5>
+							<xsl:value-of select="key('hands', @resp)/tei:forename"/>
+							<xsl:text> </xsl:text>
+							<xsl:value-of select="key('hands', @resp)/tei:surname"/>
+							<xsl:text> (</xsl:text>
+							<xsl:value-of select="@resp"/>
+							<xsl:text>)</xsl:text>
+						</h5>
+						<xsl:text>Century: </xsl:text>
+						<xsl:value-of select="key('hands', @resp)/tei:date"/>
+						<xsl:if test="key('hands', @resp)/tei:date/@cert = 'low'">
+							<xsl:text> (?)</xsl:text>
+						</xsl:if>
+						<br/>
+						<xsl:text>Region: </xsl:text>
+						<xsl:for-each select="key('hands', @resp)/tei:region">
+							<xsl:apply-templates/>
+							<xsl:choose>
+								<xsl:when
+									test="not(following::tei:region[ancestor::tei:handNote[@xml:id = $handID]])">
+									<xsl:text>.</xsl:text>
+								</xsl:when>
+								<xsl:otherwise>
+									<xsl:text>, </xsl:text>
+								</xsl:otherwise>
+							</xsl:choose>
+						</xsl:for-each>
+						<xsl:for-each select="key('hands', @resp)/tei:note/tei:p">
+							<p style="font-size:11px"><xsl:apply-templates/></p>
+						</xsl:for-each>
+					</xsl:if>
+				</xsl:for-each>
+			</xsl:otherwise>
+		</xsl:choose>
 		<h4 style="font-size:16px">Contents</h4>
 		<h5 style="font-size:14px">Summary</h5>
 		<xsl:for-each select="tei:msDesc/tei:msContents/tei:summary/tei:p">
@@ -1426,7 +1469,7 @@
 								<xsl:text>null</xsl:text>
 							</xsl:when>
 							<xsl:otherwise>
-								<xsl:value-of select="$lID"/>	
+								<xsl:value-of select="$lID"/>
 							</xsl:otherwise>
 						</xsl:choose>
 					</xsl:attribute>
@@ -1686,7 +1729,7 @@
 		</sub>
 		<xsl:apply-templates/>
 	</xsl:template>
-	
+
 	<xsl:template match="tei:seg[@type = 'MSdef']">
 		<xsl:apply-templates/>
 	</xsl:template>
@@ -2445,7 +2488,8 @@
 		</xsl:variable>
 		<xsl:variable name="EDlem">
 			<xsl:choose>
-				<xsl:when test="contains(@lemmaRef, 'dil.ie') or contains(@lemmaRef, 'teanglann.ie')">
+				<xsl:when
+					test="contains(@lemmaRef, 'dil.ie') or contains(@lemmaRef, 'teanglann.ie')">
 					<xsl:value-of select="@lemma"/>
 				</xsl:when>
 				<xsl:otherwise>
@@ -2455,7 +2499,8 @@
 		</xsl:variable>
 		<xsl:variable name="EDref">
 			<xsl:choose>
-				<xsl:when test="contains(@lemmaRef, 'dil.ie') or contains(@lemmaRef, 'teanglann.ie')">
+				<xsl:when
+					test="contains(@lemmaRef, 'dil.ie') or contains(@lemmaRef, 'teanglann.ie')">
 					<xsl:value-of select="@lemmaRef"/>
 				</xsl:when>
 				<xsl:otherwise>
