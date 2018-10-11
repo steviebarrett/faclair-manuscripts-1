@@ -32,7 +32,6 @@ $(function() {
             }
         });
         //reset the form elements
-  //      $('#'+formId).hide();
         $(this).siblings('select').val(''); //reset the user
         $(this).siblings('input').val(''); //reset the comment
         $(this).parent().bPopup().close();   //close the popup
@@ -42,8 +41,9 @@ $(function() {
         Cancel comment entry
      */
     $('.cancelComment').on('click', function () {
-        var formId = $(this).parent().attr('id');
-        $('#'+formId).hide();
+        $(this).siblings('select').val(''); //reset the user
+        $(this).siblings('input').val(''); //reset the comment
+        $(this).parent().bPopup().close();   //close the popup
     });
 
     /*
