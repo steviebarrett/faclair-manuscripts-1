@@ -5,8 +5,9 @@ $(function() {
         Show/hide comment form
      */
     $('.addComment').on('click', function () {
-        var sid = $(this).attr('data-n');
         var s = $(this).attr('data-s');
+        var sid = $(this).attr('data-n');
+        sid = str.replace(/\./g, '\\.');
         $('#cf__' + s + '__' + sid).toggle();
     });
 
