@@ -476,7 +476,7 @@
 			<xsl:otherwise>
 				<xsl:for-each select="ancestor::tei:TEI/descendant::tei:div[not(descendant::tei:div)]">
 					<xsl:variable name="handID" select="@resp"/>
-					<xsl:if test="not(preceding::tei:div[not(descendant::tei:div)]/@resp = $handID)">
+					<xsl:if test="not(preceding::tei:div[not(descendant::tei:div)]/@resp = $handID) and not(ancestor::tei:TEI/descendant::tei:handNote[@xml:id = $handID])">
 						<h5>
 							<xsl:value-of select="key('hands', @resp)/tei:forename"/>
 							<xsl:text> </xsl:text>
