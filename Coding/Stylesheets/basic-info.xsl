@@ -203,8 +203,8 @@
         <option value="et">Eystein</option>
         <option value="mm">Martina</option>
         <option value="wg">Willie</option>
-      </select><br/>
-      <input type="text"/><br/>
+      </select><br/><br/>
+      <input type="text" size="25"/><br/><br/>
       <button class="saveComment">save</button>
       <button class="cancelComment">cancel</button>
     </div>
