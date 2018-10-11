@@ -6,7 +6,8 @@ $(function() {
      */
     $('.addComment').on('click', function () {
         var sid = $(this).attr('data-n');
-        $('#cf__'+sid).toggle();
+        var s = $(this).attr('data-s');
+        $('#cf__' + s + '__' + sid).toggle();
     });
 
     /*
@@ -16,16 +17,17 @@ $(function() {
         var docid = $('html').attr('data-docid');   //the MS ID
         var formId = $(this).parent().attr('id');
         var parts = formId.split('__');
-        var sid = parts[1];                         //the section ID
+        var s = parts[1];                           //the section type (e.g. div or lb)
+        var sid = parts[2];                         //the section ID
         var user = $(this).siblings('select').val();
         var comment = $(this).siblings('input').val();
         var feedbackHtml = '';
-        $.getJSON('/ajax/manuscripts.php?action=saveComment&docid='+docid+'&sid='+sid+'&user='+user+'&comment='+comment, function(data) {
+        $.getJSON('/ajax/manuscripts.php?action=saveComment&docid='+docid+'&s='+s+'&sid='+sid+'&user='+user+'&comment='+comment, function(data) {
             console.log(data);
             if (data.saved == true) {
                 feedbackHtml = '<strong>Your comment has been saved</strong>';
             } else { //there was an error saving the comment
-                feedbackHtml = '<em>There was an error saving the comment';
+                feedbackHtml = '<em>There was an error saving the comment</em>';
             }
         });
         //reset the form elements
@@ -46,10 +48,11 @@ $(function() {
         Get comments
      */
     $('.viewComment').on('click', function() {
-        var docid = $('html').attr('data-docid');   //the MS IS
+        var docid = $('html').attr('data-docid');   //the MS ID
+        var s = $(this).attr('data-s');             //the section type (e.g. div/lb)
         var sid = $(this).attr('data-n');           //the section ID
         var html = '<ul>';
-        $.getJSON('/ajax/manuscripts.php?action=getComment&docid='+docid+'&sid='+sid, function(data) {
+        $.getJSON('/ajax/manuscripts.php?action=getComment&docid='+docid+'&s='+s+'&sid='+sid, function(data) {
             console.log(data);
             $.each(data, function(k, v) {
                 $.each(v, function (key, val) {

@@ -155,8 +155,8 @@
       <xsl:text>[start of text </xsl:text>
       <xsl:value-of select="@n"/>
       <xsl:text>] </xsl:text>
-      <a href="#" class="addComment" title="Leave comment on this text" data-n="{@n}">[+]</a>
-      <div class="commentForm" id="cf__{@n}">
+      <a href="#" class="addComment" title="Leave comment on this text" data-s="div" data-n="{@n}">[+]</a>
+      <div class="commentForm" id="cf__div__{@n}">
         <select>
           <option value="">-- Select a user --</option>
           <option value="et">Eystein</option>
@@ -168,7 +168,7 @@
         <button class="cancelComment">cancel</button>
       </div>
       <xsl:text> </xsl:text>
-      <a href="#" class="viewComment" title="View comments on this text" data-n="{@n}">[?]</a>
+      <a href="#" class="viewComment" title="View comments on this text" data-s="div" data-n="{@n}">[?]</a>
     </div>
     <xsl:apply-templates mode="diplomatic"/>
     <div style="color: gray; font-size: small; margin-top: 20px;">
