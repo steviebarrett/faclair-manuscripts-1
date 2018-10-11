@@ -192,6 +192,9 @@
     <a href="#" class="addComment" title="Leave comment on this line">[+]</a>
     <a href="#" class="viewComment" title="View comments on this line">[?]</a>
     -->
+    <span class="lineBreak" data-number="{@n}" id="{concat('line_',@xml:id)}">
+      <br id="{generate-id()}_dip" data-number="{@n}"/>
+    </span>
     <a href="#" class="addComment" title="Leave comment on this line" data-s="lb" data-n="{@xml:id}">[+]</a>
     <div class="commentForm" id="{concat('cf__lb__',@xml:id)}">
       <select>
@@ -206,9 +209,6 @@
     </div>
     <xsl:text> </xsl:text>
     <a href="#" class="viewComment" title="View comments on this line" data-s="lb" data-n="{@xml:id}">[?]</a>
-    <span class="lineBreak" data-number="{@n}" id="{concat('line_',@xml:id)}">
-      <br id="{generate-id()}_dip" data-number="{@n}"/>
-    </span>
   </xsl:template>
 
   <xsl:template mode="diplomatic" match="tei:name[not(ancestor::tei:name)]"> <!-- a name which is NOT part of a larger name -->
