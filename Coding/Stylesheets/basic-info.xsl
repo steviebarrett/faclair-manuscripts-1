@@ -13,6 +13,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"/>
         <script src="../../Coding/Scripts/mss.js"/>
         <script src="../../Coding/Scripts/comments.js"/>
+        <script src="/js/bpopup.min.js"/>
         <link rel="stylesheet" type="text/css" href="../../Coding/Stylesheets/mss.css"/>
       </head>
       <body>
