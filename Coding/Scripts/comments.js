@@ -7,7 +7,7 @@ $(function() {
     $('.addComment').on('click', function () {
         var s = $(this).attr('data-s');
         var sid = $(this).attr('data-n');
-        sid = str.replace(/\./g, '\\.');
+        sid = sid.replace(/\./g, '\\.');
         $('#cf__' + s + '__' + sid).toggle();
     });
 
