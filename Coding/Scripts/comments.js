@@ -32,11 +32,10 @@ $(function() {
             }
         });
         //reset the form elements
-        $('#'+formId).hide();
+  //      $('#'+formId).hide();
         $(this).siblings('select').val(''); //reset the user
         $(this).siblings('input').val(''); //reset the comment
-        var bPopup = $('#cf__' + s + '__' + sid).bPopup();
-        bPopup.close();   //close the popup
+        $('#'+formId).bPopup().close();   //close the popup
     });
 
     /*
