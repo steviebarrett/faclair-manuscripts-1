@@ -35,7 +35,7 @@ $(function() {
         $('#'+formId).hide();
         $(this).siblings('select').val(''); //reset the user
         $(this).siblings('input').val(''); //reset the comment
-        $('.bClose').closePopup();      //close the popup
+        $('#cf__' + s + '__' + sid).bPopup().close();   //close the popup
     });
 
     /*
