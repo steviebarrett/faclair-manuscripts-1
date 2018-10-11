@@ -485,13 +485,13 @@
 							<xsl:value-of select="@resp"/>
 							<xsl:text>)</xsl:text>
 						</h5>
-						<xsl:text>Century: </xsl:text>
+						<span style="font-size:11px"><xsl:text>Century: </xsl:text>
 						<xsl:value-of select="key('hands', @resp)/tei:date"/>
 						<xsl:if test="key('hands', @resp)/tei:date/@cert = 'low'">
 							<xsl:text> (?)</xsl:text>
-						</xsl:if>
+						</xsl:if></span>
 						<br/>
-						<xsl:text>Region: </xsl:text>
+					<span style="font-size:11px"><xsl:text>Region: </xsl:text>
 						<xsl:for-each select="key('hands', @resp)/tei:region">
 							<xsl:apply-templates/>
 							<xsl:choose>
@@ -503,7 +503,7 @@
 									<xsl:text>, </xsl:text>
 								</xsl:otherwise>
 							</xsl:choose>
-						</xsl:for-each>
+						</xsl:for-each></span>
 						<xsl:for-each select="key('hands', @resp)/tei:note/tei:p">
 							<p style="font-size:11px"><xsl:apply-templates/></p>
 						</xsl:for-each>
