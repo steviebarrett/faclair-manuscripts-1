@@ -1729,8 +1729,12 @@
 		</sub>
 		<xsl:apply-templates/>
 	</xsl:template>
-
-	<xsl:template match="tei:seg[@type = 'MSdef']">
+	
+	<xsl:template match="tei:seg[@type = 'MSDef']">
+		<xsl:apply-templates/>
+	</xsl:template>
+	
+	<xsl:template match="tei:seg[@type = 'MSDefd']">
 		<xsl:apply-templates/>
 	</xsl:template>
 
