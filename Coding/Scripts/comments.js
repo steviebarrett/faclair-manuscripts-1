@@ -11,7 +11,7 @@ $(function() {
             $.each(v, function (key, val) {
                 var section = val.section;
                 var sectionId = val.sectionId;
-                $('a[data-s$=section][data-n$=sectionId]').css('color', 'red');
+                $('a[data-s$=section][data-n$=sectionId]').hide();
                 console.log(key + ' - ' + val + '\n');
             });
         });
