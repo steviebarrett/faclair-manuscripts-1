@@ -9,6 +9,9 @@ $(function() {
         console.log(data);
         $.each(data, function(k, v) {
             $.each(v, function (key, val) {
+                var section = val.section;
+                var sectionId = val.sectionId;
+                $('a[data-s$=section][data-n$=sectionId]').css('color', 'red');
                 console.log(key + ' - ' + val + '\n');
             });
         });
