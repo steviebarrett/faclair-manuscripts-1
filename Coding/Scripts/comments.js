@@ -4,6 +4,7 @@ $(function() {
     /*
         Flag the sections that have comments
      */
+    var docid = $('html').attr('data-docid');   //the MS ID
     $.getJSON('/ajax/manuscripts.php?action=getPopulatedSections&docid='+docid, function(data) {
         console.log(data);
         $.each(data, function(k, v) {
