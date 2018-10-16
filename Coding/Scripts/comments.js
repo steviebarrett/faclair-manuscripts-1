@@ -10,8 +10,8 @@ $(function() {
         $.each(data, function(k, v) {
             $.each(v, function (key, val) {
                 var section = val.section;
-                var sectionId = val.sectionId;
-                $('a[data-s=section][data-n=sectionId]').hide();
+                var sectionId = val.section_id;
+                $('a[data-s=section][data-n=sectionId]').css('color', 'red');
                 console.log(key + ' - ' + val + '\n');
             });
         });
