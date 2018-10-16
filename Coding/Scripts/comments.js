@@ -2,6 +2,18 @@
 $(function() {
 
     /*
+        Flag the sections that have comments
+     */
+    $.getJSON('/ajax/manuscripts.php?action=getPopulatedSections&docid='+docid, function(data) {
+        console.log(data);
+        $.each(data, function(k, v) {
+            $.each(v, function (key, val) {
+                console.log(key + ' - ' + val + '\n');
+            });
+        });
+    });
+
+    /*
         Show/hide comment form
      */
     $('.addComment').on('click', function () {
@@ -33,7 +45,7 @@ $(function() {
         });
         //reset the form elements
         $(this).siblings('select').val(''); //reset the user
-        $(this).siblings('input').val(''); //reset the comment
+        $(this).siblings('textarea').val(''); //reset the comment
         $(this).parent().bPopup().close();   //close the popup
     });
 
@@ -42,7 +54,7 @@ $(function() {
      */
     $('.cancelComment').on('click', function () {
         $(this).siblings('select').val(''); //reset the user
-        $(this).siblings('input').val(''); //reset the comment
+        $(this).siblings('textarea').val(''); //reset the comment
         $(this).parent().bPopup().close();   //close the popup
     });
 
