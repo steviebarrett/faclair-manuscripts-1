@@ -474,9 +474,11 @@
 				</xsl:for-each>
 			</xsl:when>
 			<xsl:otherwise>
-				<xsl:for-each select="ancestor::tei:TEI/descendant::tei:div[not(descendant::tei:div)]">
+				<xsl:for-each
+					select="ancestor::tei:TEI/descendant::tei:div[not(descendant::tei:div)]">
 					<xsl:variable name="handID" select="@resp"/>
-					<xsl:if test="not(preceding::tei:div[not(descendant::tei:div)]/@resp = $handID) and not(ancestor::tei:TEI/descendant::tei:handNote[@xml:id = $handID])">
+					<xsl:if
+						test="not(preceding::tei:div[not(descendant::tei:div)]/@resp = $handID) and not(ancestor::tei:TEI/descendant::tei:handNote[@xml:id = $handID])">
 						<h5>
 							<xsl:value-of select="key('hands', @resp)/tei:forename"/>
 							<xsl:text> </xsl:text>
@@ -485,27 +487,33 @@
 							<xsl:value-of select="@resp"/>
 							<xsl:text>)</xsl:text>
 						</h5>
-						<span style="font-size:11px"><xsl:text>Century: </xsl:text>
-						<xsl:value-of select="key('hands', @resp)/tei:date"/>
-						<xsl:if test="key('hands', @resp)/tei:date/@cert = 'low'">
-							<xsl:text> (?)</xsl:text>
-						</xsl:if></span>
+						<span style="font-size:11px">
+							<xsl:text>Century: </xsl:text>
+							<xsl:value-of select="key('hands', @resp)/tei:date"/>
+							<xsl:if test="key('hands', @resp)/tei:date/@cert = 'low'">
+								<xsl:text> (?)</xsl:text>
+							</xsl:if>
+						</span>
 						<br/>
-					<span style="font-size:11px"><xsl:text>Region: </xsl:text>
-						<xsl:for-each select="key('hands', @resp)/tei:region">
-							<xsl:apply-templates/>
-							<xsl:choose>
-								<xsl:when
-									test="not(following::tei:region[ancestor::tei:handNote[@xml:id = $handID]])">
-									<xsl:text>.</xsl:text>
-								</xsl:when>
-								<xsl:otherwise>
-									<xsl:text>, </xsl:text>
-								</xsl:otherwise>
-							</xsl:choose>
-						</xsl:for-each></span>
+						<span style="font-size:11px">
+							<xsl:text>Region: </xsl:text>
+							<xsl:for-each select="key('hands', @resp)/tei:region">
+								<xsl:apply-templates/>
+								<xsl:choose>
+									<xsl:when
+										test="not(following::tei:region[ancestor::tei:handNote[@xml:id = $handID]])">
+										<xsl:text>.</xsl:text>
+									</xsl:when>
+									<xsl:otherwise>
+										<xsl:text>, </xsl:text>
+									</xsl:otherwise>
+								</xsl:choose>
+							</xsl:for-each>
+						</span>
 						<xsl:for-each select="key('hands', @resp)/tei:note/tei:p">
-							<p style="font-size:11px"><xsl:apply-templates/></p>
+							<p style="font-size:11px">
+								<xsl:apply-templates/>
+							</p>
 						</xsl:for-each>
 					</xsl:if>
 				</xsl:for-each>
@@ -1729,11 +1737,11 @@
 		</sub>
 		<xsl:apply-templates/>
 	</xsl:template>
-	
+
 	<xsl:template match="tei:seg[@type = 'MSDef']">
 		<xsl:apply-templates/>
 	</xsl:template>
-	
+
 	<xsl:template match="tei:seg[@type = 'MSDefd']">
 		<xsl:apply-templates/>
 	</xsl:template>
@@ -2485,10 +2493,24 @@
 			</xsl:if>
 		</xsl:variable>
 		<xsl:variable name="DWlem">
-			<xsl:value-of select="key('hwData', @lemmaRef)/tei:w/@lemmaDW"/>
+			<xsl:choose>
+				<xsl:when test="@lemmaDW">
+					<xsl:value-of select="@lemmaDW"/>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:value-of select="key('hwData', @lemmaRef)/tei:w/@lemmaDW"/>
+				</xsl:otherwise>
+			</xsl:choose>
 		</xsl:variable>
 		<xsl:variable name="DWref">
-			<xsl:value-of select="key('hwData', @lemmaRef)/tei:w/@lemmaRefDW"/>
+			<xsl:choose>
+				<xsl:when test="@lemmaRefDW">
+					<xsl:value-of select="@lemmaRefDW"/>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:value-of select="key('hwData', @lemmaRef)/tei:w/@lemmaRefDW"/>
+				</xsl:otherwise>
+			</xsl:choose>
 		</xsl:variable>
 		<xsl:variable name="EDlem">
 			<xsl:choose>
@@ -2581,11 +2603,12 @@
 				</xsl:otherwise>
 			</xsl:choose>
 		</xsl:variable>
-		<a id="{$wordId}" pos="{$wordPOS}" href="{$lemRef}" target="_blank" onmouseover="hilite(this.id)"
-			onmouseout="dhilite(this.id)" lemma="{$lem}" lemmaRef="{$lemRef}" lemmaED="{$EDlem}"
-			lemmaRefED="{$EDref}" lemmaDW="{$DWlem}" lemmaRefDW="{$DWref}" lemmaSL="{$slLemma}"
-			slipRef="{$slRef}" ana="{@ana}" hand="{$hand}" ref="{$msref}" date="{$handDate}"
-			medium="{$medium}" cert="{$certLvl}" abbrRefs="{$abbrRef}" lineID="{$lineRef}"
+		<a id="{$wordId}" pos="{$wordPOS}" href="{$lemRef}" target="_blank"
+			onmouseover="hilite(this.id)" onmouseout="dhilite(this.id)" lemma="{$lem}"
+			lemmaRef="{$lemRef}" lemmaED="{$EDlem}" lemmaRefED="{$EDref}" lemmaDW="{$DWlem}"
+			lemmaRefDW="{$DWref}" lemmaSL="{$slLemma}" slipRef="{$slRef}" ana="{@ana}"
+			hand="{$hand}" ref="{$msref}" date="{$handDate}" medium="{$medium}" cert="{$certLvl}"
+			abbrRefs="{$abbrRef}" lineID="{$lineRef}"
 			title="{$lem}: {$pos} {$src}&#10;{$hand}&#10;{$prob}{$certProb}&#10;Abbreviations: {$abbrs}&#10;{$gloss}&#10;{@comment}"
 			style="text-decoration:none; color:#000000" class="ed">
 			<xsl:if test="contains(@lemmaRef, 'dasg.ac.uk')">

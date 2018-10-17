@@ -1059,10 +1059,24 @@
 			</xsl:if>
 		</xsl:variable>
 		<xsl:variable name="DWlem">
-			<xsl:value-of select="key('hwData', @lemmaRef)/tei:w/@lemmaDW"/>
+			<xsl:choose>
+				<xsl:when test="@lemmaDW">
+					<xsl:value-of select="@lemmaDW"/>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:value-of select="key('hwData', @lemmaRef)/tei:w/@lemmaDW"/>
+				</xsl:otherwise>
+			</xsl:choose>
 		</xsl:variable>
 		<xsl:variable name="DWref">
-			<xsl:value-of select="key('hwData', @lemmaRef)/tei:w/@lemmaRefDW"/>
+			<xsl:choose>
+				<xsl:when test="@lemmaRefDW">
+					<xsl:value-of select="@lemmaRefDW"/>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:value-of select="key('hwData', @lemmaRef)/tei:w/@lemmaRefDW"/>
+				</xsl:otherwise>
+			</xsl:choose>
 		</xsl:variable>
 		<xsl:variable name="EDlem">
 			<xsl:choose>
