@@ -1059,10 +1059,24 @@
 			</xsl:if>
 		</xsl:variable>
 		<xsl:variable name="DWlem">
-			<xsl:value-of select="key('hwData', @lemmaRef)/tei:w/@lemmaDW"/>
+			<xsl:choose>
+				<xsl:when test="@lemmaDW">
+					<xsl:value-of select="@lemmaDW"/>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:value-of select="key('hwData', @lemmaRef)/tei:w/@lemmaDW"/>
+				</xsl:otherwise>
+			</xsl:choose>
 		</xsl:variable>
 		<xsl:variable name="DWref">
-			<xsl:value-of select="key('hwData', @lemmaRef)/tei:w/@lemmaRefDW"/>
+			<xsl:choose>
+				<xsl:when test="@lemmaRefDW">
+					<xsl:value-of select="@lemmaRefDW"/>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:value-of select="key('hwData', @lemmaRef)/tei:w/@lemmaRefDW"/>
+				</xsl:otherwise>
+			</xsl:choose>
 		</xsl:variable>
 		<xsl:variable name="EDlem">
 			<xsl:choose>
@@ -1125,7 +1139,7 @@
 				</xsl:otherwise>
 			</xsl:choose>
 		</xsl:variable>
-		<a class="dip" id="{$wordId}" pos="{$wordPOS}" onmouseover="hilite(this.id)"
+		<a class="dip" id="{$wordId}" pos="{$wordPOS}" href="{$lemRef}" target="_blank" onmouseover="hilite(this.id)"
 			onmouseout="dhilite(this.id)" lemma="{$lem}" lemmaRef="{$lemRef}" lemmaDW="{$DWlem}"
 			lemmaRefDW="{$DWref}" lemmaED="{$EDlem}" lemmaRefED="{$EDref}" lemmaSL="{$slLemma}" slipRef="{$slRef}"
 			ana="{@ana}" hand="{$hand}" ref="{$msref}" date="{$handDate}" medium="{$medium}"
@@ -1156,9 +1170,6 @@
 					<xsl:value-of select="$compWordID"/>
 					<xsl:text>_dip</xsl:text>
 				</xsl:attribute>
-			</xsl:if>
-			<xsl:if test="@lemma">
-				<xsl:attribute name="onclick">addSlip(this.id)</xsl:attribute>
 			</xsl:if>
 			<xsl:choose>
 				<xsl:when
