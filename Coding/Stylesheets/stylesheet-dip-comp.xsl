@@ -1125,7 +1125,7 @@
 				</xsl:otherwise>
 			</xsl:choose>
 		</xsl:variable>
-		<a class="dip" id="{$wordId}" pos="{$wordPOS}" onmouseover="hilite(this.id)"
+		<a class="dip" id="{$wordId}" pos="{$wordPOS}" href="{$lemRef}" target="_blank" onmouseover="hilite(this.id)"
 			onmouseout="dhilite(this.id)" lemma="{$lem}" lemmaRef="{$lemRef}" lemmaDW="{$DWlem}"
 			lemmaRefDW="{$DWref}" lemmaED="{$EDlem}" lemmaRefED="{$EDref}" lemmaSL="{$slLemma}" slipRef="{$slRef}"
 			ana="{@ana}" hand="{$hand}" ref="{$msref}" date="{$handDate}" medium="{$medium}"
@@ -1156,9 +1156,6 @@
 					<xsl:value-of select="$compWordID"/>
 					<xsl:text>_dip</xsl:text>
 				</xsl:attribute>
-			</xsl:if>
-			<xsl:if test="@lemma">
-				<xsl:attribute name="onclick">addSlip(this.id)</xsl:attribute>
 			</xsl:if>
 			<xsl:choose>
 				<xsl:when

@@ -2581,7 +2581,7 @@
 				</xsl:otherwise>
 			</xsl:choose>
 		</xsl:variable>
-		<a id="{$wordId}" pos="{$wordPOS}" onclick="addSlip(this.id)" onmouseover="hilite(this.id)"
+		<a id="{$wordId}" pos="{$wordPOS}" href="{$lemRef}" target="_blank" onmouseover="hilite(this.id)"
 			onmouseout="dhilite(this.id)" lemma="{$lem}" lemmaRef="{$lemRef}" lemmaED="{$EDlem}"
 			lemmaRefED="{$EDref}" lemmaDW="{$DWlem}" lemmaRefDW="{$DWref}" lemmaSL="{$slLemma}"
 			slipRef="{$slRef}" ana="{@ana}" hand="{$hand}" ref="{$msref}" date="{$handDate}"

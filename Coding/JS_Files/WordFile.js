@@ -450,6 +450,8 @@ function beginCS(b) {
 	var i;
 	for (i = 0; i < words.length; i++) {
 		words[i].setAttribute("onclick", "addSlip(this.id)");
+		words[i].removeAttribute("target");
+		words[i].removeAttribute("href");
 	}
 	var esButtons = document.querySelectorAll("button[class=es]");
 	var j;
@@ -475,6 +477,8 @@ function beginWS(b) {
 	var i;
 	for (i = 0; i < words.length; i++) {
 		words[i].setAttribute("onclick", "wordSearch(this.id)");
+		words[i].removeAttribute("href");
+		words[i].removeAttribute("target");
 	}
 	var esButtons = document.querySelectorAll("button[class=es]");
 	var j;
@@ -514,12 +518,22 @@ function endSearch(b) {
 	for (i = 0; i < esButtons.length; i++) {
 		esButtons[i].setAttribute("hidden", "true");
 	}
+	var words = document.querySelectorAll("a[lemmaRef]");
+	var i;
+	for (i = 0; i < words.length; i++) {
+		var lemRef = words[i].getAttribute("lemmaRef");
+		var newHref = document.createAttribute("href");
+		newHref.value = lemRef
+		words[i].setAttributeNode(newHref);
+		words[i].setAttribute("target", "_blank");
+		words[i].removeAttribute("onclick");
+	}
 	alert("Mode reset. Make sure to save or print any open e-slip table. Select either ''Collect e-Slips'' or ''Headword Search'' to begin a new table.");
 }
 
 function wordSearch(id) {
 	var el = document.getElementById(id);
-	var lref = el.attributes[6].value;
+	var lref = el.getAttribute("lemmaRef");
 	var words = document.querySelectorAll("a[lemmaRef]");
 	var arr =[];
 	var i;
