@@ -4,10 +4,12 @@ $(function() {
     /*
         Flag the sections that have comments
      */
+
+    $('a').css('color', 'green');  //delete me
+
     var docid = $('html').attr('data-docid');   //the MS ID
     $.getJSON('/ajax/manuscripts.php?action=getPopulatedSections&docid='+docid, function(data) {
         console.log(data);
-        $('a').css('color', 'green');  //delete me
         $.each(data, function(k, v) {
             $.each(v, function (key, val) {
                 var section = val.section;
