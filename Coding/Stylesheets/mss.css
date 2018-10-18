@@ -89,7 +89,14 @@ body {
   border: 2px solid black;
 }
 
-.commentForm > textarea
+.commentsList {
+  list-style-type: none;
+  padding: 5px;
+}
+
+.viewComment {
+  display: none;
+}
 
 #commentsList {
   display: none;

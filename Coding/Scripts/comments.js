@@ -70,7 +70,7 @@ $(function() {
         var docid = $('html').attr('data-docid');   //the MS ID
         var s = $(this).attr('data-s');             //the section type (e.g. div/lb)
         var sid = $(this).attr('data-n');           //the section ID
-        var html = '<ul>';
+        var html = '<ul class="commentsList">';
         $.getJSON('/ajax/manuscripts.php?action=getComment&docid='+docid+'&s='+s+'&sid='+sid, function(data) {
             $.each(data, function(k, v) {
                 $.each(v, function (key, val) {
@@ -100,7 +100,7 @@ $(function() {
                 var section = val.section;
                 var sectionId = val.section_id;
                 sectionId = sectionId.replace(/\./g, '\\.');
-                $('a[data-s='+section+'][data-n='+sectionId+'][class="viewComment"]').css('color', 'red' );
+                $('a[data-s='+section+'][data-n='+sectionId+'][class="viewComment"]').show();
             });
         });
     });
