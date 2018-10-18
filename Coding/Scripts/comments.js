@@ -7,7 +7,7 @@ $(function() {
     var docid = $('html').attr('data-docid');   //the MS ID
     $.getJSON('/ajax/manuscripts.php?action=getPopulatedSections&docid='+docid, function(data) {
         console.log(data);
-        $('a[data-s="lb"][data-n="MS1.3r.10"]').css('color', 'green');  //delete me
+        $('a[data-s="lb"][data-n="MS1\\.3r\\.10"]').css('color', 'green');  //delete me
         $.each(data, function(k, v) {
             $.each(v, function (key, val) {
                 var section = val.section;
