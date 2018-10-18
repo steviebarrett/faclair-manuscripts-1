@@ -104,6 +104,10 @@ $(function() {
                 var section = val.section;
                 var sectionId = val.section_id;
                 sectionId = sectionId.replace(/\./g, '\\.');
+                //remove greyedOut class if there is a non-deleted comment here
+                if (val.deleted == 0) {
+                    $('a[data-s='+section+'][data-n='+sectionId+'][class="viewComment"]').removeClass('greyedOut');
+                }
                 $('a[data-s='+section+'][data-n='+sectionId+'][class="viewComment"]').show();
             });
         });

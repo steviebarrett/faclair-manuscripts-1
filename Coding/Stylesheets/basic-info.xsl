@@ -169,7 +169,7 @@
         <button class="cancelComment">cancel</button>
       </div>
       <xsl:text> </xsl:text>
-      <a href="#" class="viewComment" title="View comments on this text" data-s="div" data-n="{@n}">[?]</a>
+      <a href="#" class="viewComment greyedOut" title="View comments on this text" data-s="div" data-n="{@n}">[?]</a>
     </div>
     <xsl:apply-templates mode="diplomatic"/>
     <div style="color: gray; font-size: small; margin-top: 20px;">
@@ -209,7 +209,7 @@
       <button class="cancelComment">cancel</button>
     </div>
     <xsl:text> </xsl:text>
-    <a href="#" class="viewComment" title="View comments on this line" data-s="lb" data-n="{@xml:id}">[?]</a>
+    <a href="#" class="viewComment greyedOut" title="View comments on this line" data-s="lb" data-n="{@xml:id}">[?]</a>
   </xsl:template>
 
   <xsl:template mode="diplomatic" match="tei:name[not(ancestor::tei:name)]"> <!-- a name which is NOT part of a larger name -->
