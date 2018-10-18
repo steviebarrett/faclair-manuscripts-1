@@ -349,19 +349,29 @@ function addSlip(id) {
 			continue;
 		}
 	}
-	var pbNodes = opened.document.querySelectorAll("*[class=pb] td.form");
+	var pbNodes = opened.document.querySelectorAll("td[class=form] > a > *[class=pb], td[class=form] > a > *[class=pbHead]");
 	var pbNodesCount = pbNodes.length;
 	var pbn;
 	for (pbn = 0; pbn < pbNodesCount; pbn++) {
 		pbNodes[pbn].parentNode.removeChild(pbNodes[pbn]);
 	}
-	var cbNodes = opened.document.querySelectorAll("*[class=cb] td.form");
+	if (rcol3.getElementsByClassName("pbRef").length > 0) {
+		var pbWRefTxt = rcol3.getElementsByClassName("pbRef")[0].innerHTML;
+		var pbUnit = rcol3.getElementsByClassName("pbRef")[0].getAttribute("prefix");
+		rcol3.getElementsByClassName("pbHead")[0].innerHTML = "<sub><b>" + " " + pbUnit + pbWRefTxt + "</sub></b>";
+	}
+	var cbNodes = opened.document.querySelectorAll("td[class=form] > a > *[class=cb], td[class=form] > a > *[class=cbHead]");
 	var cbNodesCount = cbNodes.length;
 	var cbn;
 	for (cbn = 0; cbn < cbNodesCount; pbn++) {
 		cbNodes[cbn].parentNode.removeChild(cbNodes[cbn]);
 	}
-	var lbNodes = opened.document.querySelectorAll("*[class=lb] td.form");
+	if (rcol3.getElementsByClassName("pbRef").length > 0) {
+		var cbWRefTxt = rcol3.getElementsByClassName("cbRef")[0].innerHTML;
+		var cbUnit = rcol3.getElementsByClassName("cbRef")[0].getAttribute("prefix");
+		rcol3.getElementsByClassName("cbHead")[0].innerHTML = "<sub><b>" + " " + cbUnit + cbWRefTxt + "</sub></b>";
+	}
+	var lbNodes = opened.document.querySelectorAll("td[class=form] > a > *[class=lb], td[class=form] > a > *[class=lbHead]");
 	var lbNodesCount = lbNodes.length;
 	var lbn;
 	for (lbn = 0; lbn < lbNodesCount; lbn++) {
@@ -597,6 +607,7 @@ function wordSearch(id) {
 		var abbr = '<ul id="' + listID + '" style="list-style: none;margin:0;padding:0;">' + abbrListFull + '</ul>';
 		var cell1 = row.insertCell(0);
 		cell1.innerHTML = form;
+		cell1.setAttribute("class", "form");
 		var formChildren = cell1.childNodes[0].childNodes.length;
 		var x;
 		for (x = formChildren -1; x >= 0; x--) {
@@ -658,11 +669,23 @@ function wordSearch(id) {
 				continue;
 			}
 		}
-		var pbNodes = opened.document.querySelectorAll("*[class=pb]");
+		var pbNodes = opened.document.querySelectorAll("td[class=form] > a > *[class=pb]");
 		var pbNodesCount = pbNodes.length;
 		var pbn;
 		for (pbn = 0; pbn < pbNodesCount; pbn++) {
 			pbNodes[pbn].parentNode.removeChild(pbNodes[pbn]);
+		}
+		var cbNodes = opened.document.querySelectorAll("td[class=form] > a > *[class=cb]");
+		var cbNodesCount = cbNodes.length;
+		var cbn;
+		for (cbn = 0; cbn < cbNodesCount; pbn++) {
+			cbNodes[cbn].parentNode.removeChild(cbNodes[cbn]);
+		}
+		var lbNodes = opened.document.querySelectorAll("td[class=form] > a > *[class=lb]");
+		var lbNodesCount = lbNodes.length;
+		var lbn;
+		for (lbn = 0; lbn < lbNodesCount; lbn++) {
+			lbNodes[lbn].parentNode.removeChild(lbNodes[lbn]);
 		}
 		cell3.style.fontSize = "smaller";
 		var contextChildren = row.childNodes[2].childNodes;
@@ -746,7 +769,7 @@ function wordSearch(id) {
 		} else if (cell12.firstChild.innerHTML.slice(6, 17) == "dasg.ac.uk") {
 			finURIED = cell13.firstChild.innerHTML.slice(36);
 		} else if (rcol13.firstChild.innerHTML.slice(8, 24) == "www.teanglann.ie") {
-		finURIED = "TG_" + rcol13.firstChild.innerHTML.slice(32);
+			finURIED = "TG_" + rcol13.firstChild.innerHTML.slice(32);
 		}
 		cell13.firstChild.innerHTML = finURIED;
 		var cell14 = row.insertCell(13);
