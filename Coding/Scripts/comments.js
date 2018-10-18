@@ -51,11 +51,17 @@ $(function() {
      */
     $('.deleteComment').on('click', function () {
         var parts = $(this).attr('id').split('__');
-        var docid = parts[0];
+        var docid = parts[0];                       //the manuscript ID
         var s = parts[1];                           //the section type (e.g. div or lb)
         var sid = parts[2];                         //the section ID
-
-
+        $.getJSON('/ajax/manuscripts.php?action=deleteComment&docid='+docid+'&s='+s+'&sid='+sid, function(data) {
+            console.log(data);
+            if (data.deleted == true) {
+                feedbackHtml = '<strong>The comment has been deleted</strong>';
+            } else { //there was an error deleting the comment
+                feedbackHtml = '<em>There was an error deleting the comment</em>';
+            }
+        });
     });
     /*
         Get comments
