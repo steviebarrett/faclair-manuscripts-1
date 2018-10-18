@@ -103,7 +103,7 @@ $(function() {
                 var section = val.section;
                 var sectionId = val.section_id;
                 sectionId = sectionId.replace(/\./g, '\\.');
-                $('a[data-s='+section+'][data-n='+sectionId+'][class="viewComment"]').show();
+                $('a[data-s='+section+'][data-n='+sectionId+']').attr('class', 'viewComment').show();
                /* //remove greyedOut class if there is a non-deleted comment here
                 if (val.deleted == 0) {
                     $('a[data-s='+section+'][data-n='+sectionId+'][class="viewComment"]').removeClass('greyedOut');
