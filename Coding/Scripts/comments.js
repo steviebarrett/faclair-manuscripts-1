@@ -72,15 +72,12 @@ $(function() {
     $('#updateContent').on('click', function () {
         var docid = $('html').attr('data-docid');   //the MS ID
         $.getJSON('/ajax/manuscripts.php?action=getPopulatedSections&docid='+docid, function(data) {
-            console.log(data);
             $.each(data, function(k, v) {
                 $.each(v, function (key, val) {
                     var section = val.section;
-                    var sectionId = val.section_id
+                    var sectionId = val.section_id;
                     sectionId = sectionId.replace(/\./g, '\\.');
-               //     $('a[data-s='+section+']').css('color', 'red' );
-                    $('a[data-s='+section+'][data-n='+sectionId+']').css('color', 'red' );
-                    console.log(key + ' - ' + val + '\n');
+                    $('a[data-s='+section+'][data-n='+sectionId+']').hasClass('viewComment').css('color', 'red' );
                 });
             });
         });
