@@ -51,10 +51,8 @@ $(function() {
      */
     $('body').on('click', '.deleteComment', function () {   //event delegation as the calling tag is AJAX generated
         var parts = $(this).attr('id').split('__');
-        var docid = parts[0];                       //the manuscript ID
-        var s = parts[1];                           //the section type (e.g. div or lb)
-        var sid = parts[2];                         //the section ID
-        $.getJSON('/ajax/manuscripts.php?action=deleteComment&docid='+docid+'&s='+s+'&sid='+sid, function(data) {
+        var cid = parts[1];     //the DB comment ID
+        $.getJSON('/ajax/manuscripts.php?action=deleteComment&cid='+cid, function(data) {
             console.log(data);
             if (data.deleted == true) {
                 feedbackHtml = '<strong>The comment has been deleted</strong>';
@@ -75,7 +73,7 @@ $(function() {
             $.each(data, function(k, v) {
                 $.each(v, function (key, val) {
                     html += '<li>' + val.comment + ' (' + val.user + ') - ' + val.last_updated;
-                    html += ' <a id="' + docid + '__' + s + '__' + sid + '" class="deleteComment" href="#">X</a>';  //the delete link
+                    html += ' <a id="cid__' + val.comment_id + '" class="deleteComment" href="#">X</a>';  //the delete link
                     html += '</li>';
                 });
             });
