@@ -73,7 +73,7 @@ $(function() {
             $.each(data, function(k, v) {
                 $.each(v, function (key, val) {
                     html += '<li>' + val.comment + ' (' + val.user + ') - ' + val.last_updated;
-                    html += ' <a id="cid__' + val.comment_id + '" class="deleteComment" href="#">X</a>';  //the delete link
+                    html += ' <a id="cid__' + val.id + '" class="deleteComment" href="#">X</a>';  //the delete link
                     html += '</li>';
                 });
             });
