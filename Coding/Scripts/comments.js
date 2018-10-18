@@ -60,6 +60,7 @@ $(function() {
             console.log(data);
             if (data.deleted == true) {
                 feedbackHtml = '<strong>The comment has been deleted</strong>';
+                console.log(data.empty);
             } else { //there was an error deleting the comment
                 feedbackHtml = '<em>There was an error deleting the comment</em>';
             }
