@@ -21,7 +21,7 @@ $(function() {
         var s = parts[1];                           //the section type (e.g. div or lb)
         var sid = parts[2];                         //the section ID
         var user = $(this).siblings('select').val();
-        var comment = $(this).siblings('input').val();
+        var comment = $(this).siblings('textarea').val();
         var feedbackHtml = '';
         $.getJSON('/ajax/manuscripts.php?action=saveComment&docid='+docid+'&s='+s+'&sid='+sid+'&user='+user+'&comment='+comment, function(data) {
             console.log(data);

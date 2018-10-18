@@ -165,7 +165,7 @@
           <option value="mm">Martina</option>
           <option value="wg">Willie</option>
         </select>
-        <input type="text"/>
+        <textarea></textarea><br/><br/>
         <button class="saveComment">save</button>
         <button class="cancelComment">cancel</button>
       </div>
