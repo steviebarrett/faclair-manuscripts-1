@@ -106,7 +106,7 @@ $(function() {
                 $('a[data-s='+section+'][data-n='+sectionId+']').attr('class', 'viewComment').show();
                 //remove greyedOut class if there is a non-deleted comment here
                 if (val.deleted == 0) {
-                    $('a[data-s='+section+'][data-n='+sectionId+']').attr('class', "viewComment"].removeClass('greyedOut');
+                    $('a[data-s='+section+'][data-n='+sectionId+']').attr('class', 'viewComment').removeClass('greyedOut');
                 }
             });
         });
