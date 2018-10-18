@@ -20,7 +20,8 @@ $(function() {
         var parts = formId.split('__');
         var s = parts[1];                           //the section type (e.g. div or lb)
         var sid = parts[2];                         //the section ID
-        $('a[data-s='+s+'][data-n='+sid+'][class="viewComment"]').show();   //show the viewComment link
+        var escapedSid = sid.replace(/\./g, '\\.');
+        $('a[data-s='+s+'][data-n='+escapedSid+'][class="viewComment"]').show();   //show the viewComment link
         var user = $(this).siblings('select').val();
         var comment = $(this).siblings('textarea').val();
         var feedbackHtml = '';
