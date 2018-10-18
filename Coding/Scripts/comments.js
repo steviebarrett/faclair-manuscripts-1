@@ -49,7 +49,7 @@ $(function() {
     /*
         Delete comment
      */
-    $('.deleteComment').on('click', function () {
+    $('body').on('click', '.deleteComment', function () {   //event delegation as the calling tag is AJAX generated
         var parts = $(this).attr('id').split('__');
         var docid = parts[0];                       //the manuscript ID
         var s = parts[1];                           //the section type (e.g. div or lb)
