@@ -50,6 +50,7 @@ $(function() {
         Delete comment
      */
     $('body').on('click', '.deleteComment', function () {   //event delegation as the calling tag is AJAX generated
+        $(this).hide();     //hide the delete link
         $(this).parent().addClass('greyedOut');   //fade the comment
         var parts = $(this).attr('id').split('__');
         var cid = parts[1];     //the DB comment ID
