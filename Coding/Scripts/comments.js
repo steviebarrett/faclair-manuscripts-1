@@ -47,6 +47,17 @@ $(function() {
     });
 
     /*
+        Delete comment
+     */
+    $('.deleteComment').on('click', function () {
+        var parts = $(this).attr('id').split('__');
+        var docid = parts[0];
+        var s = parts[1];                           //the section type (e.g. div or lb)
+        var sid = parts[2];                         //the section ID
+
+
+    });
+    /*
         Get comments
      */
     $('.viewComment').on('click', function() {
@@ -57,7 +68,9 @@ $(function() {
         $.getJSON('/ajax/manuscripts.php?action=getComment&docid='+docid+'&s='+s+'&sid='+sid, function(data) {
             $.each(data, function(k, v) {
                 $.each(v, function (key, val) {
-                    html += '<li>' + val.comment + ' (' + val.user + ') - ' + val.last_updated + '</li>';
+                    html += '<li>' + val.comment + ' (' + val.user + ') - ' + val.last_updated;
+                    html += ' <a id="' + docid + '__' + s + '__' + sid + '" class="deleteComment" href="#">X</a>';  //the delete link
+                    html += '</li>';
                 });
             });
             html += '</ul>';
@@ -68,17 +81,15 @@ $(function() {
     /*
         Flag the sections that have comments
      */
- //   $('#updateContent').on('click', function () {
-        var docid = $('html').attr('data-docid');   //the MS ID
-        $.getJSON('/ajax/manuscripts.php?action=getPopulatedSections&docid='+docid, function(data) {
-            $.each(data, function(k, v) {
-                $.each(v, function (key, val) {
-                    var section = val.section;
-                    var sectionId = val.section_id;
-                    sectionId = sectionId.replace(/\./g, '\\.');
-                    $('a[data-s='+section+'][data-n='+sectionId+'][class="viewComment"]').css('color', 'red' );
-                });
+    var docid = $('html').attr('data-docid');   //the MS ID
+    $.getJSON('/ajax/manuscripts.php?action=getPopulatedSections&docid='+docid, function(data) {
+        $.each(data, function(k, v) {
+            $.each(v, function (key, val) {
+                var section = val.section;
+                var sectionId = val.section_id;
+                sectionId = sectionId.replace(/\./g, '\\.');
+                $('a[data-s='+section+'][data-n='+sectionId+'][class="viewComment"]').css('color', 'red' );
             });
         });
- //   });
+    });
 });

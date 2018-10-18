@@ -18,7 +18,6 @@
       </head>
       <body>
         <div id="left-panel">
-          <a href="#" id="updateContent">update</a>
           <h1 id="top">
             <xsl:value-of select="tei:TEI/tei:teiHeader/tei:fileDesc/tei:titleStmt/tei:title"/>
           </h1>
