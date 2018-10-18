@@ -77,7 +77,7 @@ $(function() {
                     var section = val.section;
                     var sectionId = val.section_id;
                     sectionId = sectionId.replace(/\./g, '\\.');
-                    $('a[data-s='+section+'][data-n='+sectionId+']').hasClass('viewComment').css('color', 'red' );
+                    $('a[data-s='+section+'][data-n='+sectionId+'][class="viewComment"]').css('color', 'red' );
                 });
             });
         });
