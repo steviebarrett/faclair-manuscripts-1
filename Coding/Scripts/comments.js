@@ -2,25 +2,6 @@
 $(function() {
 
     /*
-        Flag the sections that have comments
-     */
-    $('a').hide();
-    $('a').css('color', 'green');  //delete me
-
-    var docid = $('html').attr('data-docid');   //the MS ID
-    $.getJSON('/ajax/manuscripts.php?action=getPopulatedSections&docid='+docid, function(data) {
-        console.log(data);
-        $.each(data, function(k, v) {
-            $.each(v, function (key, val) {
-                var section = val.section;
-                var sectionId = val.section_id
-                $('a[data-s=section][data-n=sectionId]').css('color', 'red' );
-                console.log(key + ' - ' + val + '\n');
-            });
-        });
-    });
-
-    /*
         Show/hide comment form
      */
     $('.addComment').on('click', function () {
@@ -84,5 +65,25 @@ $(function() {
             $('#right-panel').html(html);
         });
     });
+
+    /*
+        Flag the sections that have comments
+     */
+//    $('a').hide();
+    $('a').css('color', 'green');  //delete me
+
+    var docid = $('html').attr('data-docid');   //the MS ID
+    $.getJSON('/ajax/manuscripts.php?action=getPopulatedSections&docid='+docid, function(data) {
+        console.log(data);
+        $.each(data, function(k, v) {
+            $.each(v, function (key, val) {
+                var section = val.section;
+                var sectionId = val.section_id
+                $('a[data-s=section][data-n=sectionId]').css('color', 'red' );
+                console.log(key + ' - ' + val + '\n');
+            });
+        });
+    });
+
 
 });
