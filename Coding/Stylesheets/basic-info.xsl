@@ -164,7 +164,7 @@
           <option value="mm">Martina</option>
           <option value="wg">Willie</option>
         </select>
-        <textarea></textarea><br/><br/>
+        <textarea rows="7" cols="40"></textarea><br/><br/>
         <button class="saveComment">save</button>
         <button class="cancelComment">cancel</button>
       </div>
@@ -204,7 +204,7 @@
         <option value="mm">Martina</option>
         <option value="wg">Willie</option>
       </select><br/><br/>
-      <textarea></textarea><br/><br/>
+      <textarea rows="7" cols="40"></textarea><br/><br/>
       <button class="saveComment">save</button>
       <button class="cancelComment">cancel</button>
     </div>
