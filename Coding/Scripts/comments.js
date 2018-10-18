@@ -53,6 +53,7 @@ $(function() {
         var docid = $('html').attr('data-docid');   //the MS ID
         var s = $(this).attr('data-s');             //the section type (e.g. div/lb)
         var sid = $(this).attr('data-n');           //the section ID
+        console.log(sid);
         var html = '<ul>';
         $.getJSON('/ajax/manuscripts.php?action=getComment&docid='+docid+'&s='+s+'&sid='+sid, function(data) {
             console.log(data);
