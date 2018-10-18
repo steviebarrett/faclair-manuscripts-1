@@ -77,7 +77,7 @@ $(function() {
                 $.each(v, function (key, val) {
                     var section = val.section;
                     var sectionId = val.section_id
-               //     sectionId = sectionId.replace(/\./g, '\\.');
+                    sectionId = sectionId.replace(/\./g, '\\.');
                //     $('a[data-s='+section+']').css('color', 'red' );
                     $('a[data-s='+section+'][data-n='+sectionId+']').css('color', 'red' );
                     console.log(key + ' - ' + val + '\n');
