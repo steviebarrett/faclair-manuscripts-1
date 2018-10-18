@@ -96,19 +96,19 @@ $(function() {
     /*
         Flag the sections that have comments
      */
-    // var docid = $('html').attr('data-docid');   //the MS ID
-    // $.getJSON('/ajax/manuscripts.php?action=getPopulatedSections&docid='+docid, function(data) {
-    //     $.each(data, function(k, v) {
-    //         $.each(v, function (key, val) {
-    //             var section = val.section;
-    //             var sectionId = val.section_id;
-    //             sectionId = sectionId.replace(/\./g, '\\.');
-    //             $('a[data-s='+section+'][data-n='+sectionId+']').attr('class', 'viewComment').show();
-    //             //remove greyedOut class if there is a non-deleted comment here
-    //             if (val.deleted == 0) {
-    //                 $('a[data-s='+section+'][data-n='+sectionId+']').attr('class', 'viewComment').removeClass('greyedOut');
-    //             }
-    //         });
-    //     });
-    // });
+    var docid = $('html').attr('data-docid');   //the MS ID
+    $.getJSON('/ajax/manuscripts.php?action=getPopulatedSections&docid='+docid, function(data) {
+        $.each(data, function(k, v) {
+            $.each(v, function (key, val) {
+                var section = val.section;
+                var sectionId = val.section_id;
+                sectionId = sectionId.replace(/\./g, '\\.');
+                $('a[data-s='+section+'][data-n='+sectionId+']').show();
+                //remove greyedOut class if there is a non-deleted comment here
+                if (val.deleted == 0) {
+                    $('a[data-s='+section+'][data-n='+sectionId+']').removeClass('greyedOut');
+                }
+            });
+        });
+    });
 });
