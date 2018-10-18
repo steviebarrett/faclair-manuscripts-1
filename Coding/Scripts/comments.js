@@ -80,7 +80,8 @@ $(function() {
                     if (val.deleted == 1) {
                         displayClass = "greyedOut"; //fade deleted comments
                     }
-                    html += '<li class="'+ displayClass +'">' + val.comment + ' (' + val.user + ') - ' + val.last_updated;
+                    html += '<li class="'+ displayClass +'">' + val.comment + ' (' + val.user + ') - ';
+                    html += '<span class="greyedOut">' + val.last_updated + '</span>';
                     if (val.deleted == 0) {     //show the delete link
                         html += ' <a id="cid__' + val.id + '" class="deleteComment" href="#">X</a>';
                     }
@@ -98,6 +99,7 @@ $(function() {
     var docid = $('html').attr('data-docid');   //the MS ID
     $.getJSON('/ajax/manuscripts.php?action=getPopulatedSections&docid='+docid, function(data) {
         $.each(data, function(k, v) {
+            console.log(k.length);
             $.each(v, function (key, val) {
                 var section = val.section;
                 var sectionId = val.section_id;
