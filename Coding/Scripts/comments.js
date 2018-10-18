@@ -105,7 +105,7 @@ $(function() {
                 sectionId = sectionId.replace(/\./g, '\\.');
                 $('a[data-s='+section+'][data-n='+sectionId+']').show();
                 //remove greyedOut class if there is a non-deleted comment here
-                if (val.deleted == 0) {
+                if (val.deleted == "0") {
                     $('a[data-s='+section+'][data-n='+sectionId+']').removeClass('greyedOut');
                 }
             });
