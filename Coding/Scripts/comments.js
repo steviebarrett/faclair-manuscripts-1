@@ -99,7 +99,7 @@ $(function() {
     var docid = $('html').attr('data-docid');   //the MS ID
     $.getJSON('/ajax/manuscripts.php?action=getPopulatedSections&docid='+docid, function(data) {
         $.each(data, function(k, v) {
-            console.log(k.length);
+            console.log(data.length);
             $.each(v, function (key, val) {
                 var section = val.section;
                 var sectionId = val.section_id;
