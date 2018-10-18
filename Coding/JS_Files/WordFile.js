@@ -276,6 +276,7 @@ function addSlip(id) {
 	newRow();
 	var rcol1 = row.insertCell(0);
 	rcol1.innerHTML = form;
+	rcol1.setAttribute("class", "form");
 	var formChildren = rcol1.childNodes[0].childNodes.length;
 	var x;
 	for (x = formChildren -1; x >= 0; x--) {
@@ -348,11 +349,23 @@ function addSlip(id) {
 			continue;
 		}
 	}
-	var pbNodes = opened.document.querySelectorAll("*[class=pb]");
+	var pbNodes = opened.document.querySelectorAll("*[class=pb] td.form");
 	var pbNodesCount = pbNodes.length;
 	var pbn;
 	for (pbn = 0; pbn < pbNodesCount; pbn++) {
 		pbNodes[pbn].parentNode.removeChild(pbNodes[pbn]);
+	}
+	var cbNodes = opened.document.querySelectorAll("*[class=cb] td.form");
+	var cbNodesCount = cbNodes.length;
+	var cbn;
+	for (cbn = 0; cbn < cbNodesCount; pbn++) {
+		cbNodes[cbn].parentNode.removeChild(cbNodes[cbn]);
+	}
+	var lbNodes = opened.document.querySelectorAll("*[class=lb] td.form");
+	var lbNodesCount = lbNodes.length;
+	var lbn;
+	for (lbn = 0; lbn < lbNodesCount; lbn++) {
+		lbNodes[lbn].parentNode.removeChild(lbNodes[lbn]);
 	}
 	var rcol4 = row.insertCell(3);
 	rcol4.innerHTML = med;

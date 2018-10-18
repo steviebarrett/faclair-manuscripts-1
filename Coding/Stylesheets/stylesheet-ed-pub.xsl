@@ -1273,21 +1273,22 @@
 					onmouseout="enableWordFunctions(this.id)" style="color:#000000"/>
 			</xsl:when>
 			<xsl:otherwise>
-				<xsl:text> </xsl:text>
-				<sub>
-					<b>
-						<xsl:choose>
-							<xsl:when test="contains(@n, 'r') or contains(@n, 'v')"
-								>fol.<xsl:text> </xsl:text></xsl:when>
-							<xsl:otherwise>p.<xsl:text> </xsl:text></xsl:otherwise>
-						</xsl:choose>
-						<xsl:value-of select="@n"/>
-					</b>
-				</sub>
-				<xsl:text> </xsl:text>
+				<span class="pb">
+					<xsl:text> </xsl:text>
+					<sub>
+						<b>
+							<xsl:choose>
+								<xsl:when test="contains(@n, 'r') or contains(@n, 'v')"
+									>fol.<xsl:text> </xsl:text></xsl:when>
+								<xsl:otherwise>p.<xsl:text> </xsl:text></xsl:otherwise>
+							</xsl:choose>
+							<xsl:value-of select="@n"/>
+						</b>
+					</sub>
+					<xsl:text> </xsl:text>
+				</span>
 			</xsl:otherwise>
 		</xsl:choose>
-
 	</xsl:template>
 
 	<xsl:template match="tei:cb">
@@ -1303,14 +1304,16 @@
 				</span>
 			</xsl:when>
 			<xsl:otherwise>
-				<xsl:text> </xsl:text>
-				<sub>
-					<b>
-						<xsl:text>col. </xsl:text>
-						<xsl:value-of select="@n"/>
-					</b>
-				</sub>
-				<xsl:text> </xsl:text>
+				<span class="cb">
+					<xsl:text> </xsl:text>
+					<sub>
+						<b>
+							<xsl:text>col. </xsl:text>
+							<xsl:value-of select="@n"/>
+						</b>
+					</sub>
+					<xsl:text> </xsl:text>
+				</span>
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
@@ -1386,7 +1389,7 @@
 						</xsl:if>Add Comment</button>
 				</xsl:if>
 				<br id="{$lineID}"/>
-				<span>
+				<span class="lb">
 					<xsl:if test="@sameAs">
 						<xsl:attribute name="msRef">
 							<xsl:variable name="elPOS" select="count(preceding::*)"/>
@@ -1470,78 +1473,82 @@
 						<xsl:value-of select="ancestor::tei:l[1]/@n"/>
 					</xsl:if>
 				</xsl:variable>
-				<sub id="{$lineID}">
-					<xsl:attribute name="msLine">
-						<xsl:choose>
-							<xsl:when test="ancestor::tei:w[not(descendant::tei:w)]">
-								<xsl:text>null</xsl:text>
-							</xsl:when>
-							<xsl:otherwise>
-								<xsl:value-of select="$lID"/>
-							</xsl:otherwise>
-						</xsl:choose>
-					</xsl:attribute>
-					<xsl:if test="ancestor::tei:seg[@type = 'margNote']">
-						<b>
-							<xsl:text>m</xsl:text>
-						</b>
-						<b>
-							<xsl:text>: </xsl:text>
-						</b>
-					</xsl:if>
-					<xsl:if test="preceding::tei:addSpan">
-						<xsl:variable name="asID" select="preceding::tei:addSpan[1]/@spanTo"/>
-						<xsl:if test="following::tei:anchor[1]/@xml:id = $asID">
-							<b>
-								<xsl:value-of select="preceding::tei:addSpan[1]/@place"/>
-							</b>
-							<xsl:if test="preceding::tei:addSpan[1]/@n">
-								<b>
-									<xsl:text> #</xsl:text>
-									<xsl:value-of select="preceding::tei:addSpan[1]/@n"/>
-								</b>
-							</xsl:if>
-							<b>
-								<xsl:text>: </xsl:text>
-							</b>
-						</xsl:if>
-					</xsl:if>
-					<xsl:text> </xsl:text>
-					<xsl:value-of select="@n"/>
-					<xsl:text>. </xsl:text>
-				</sub>
-			</xsl:when>
-			<xsl:otherwise>
-				<sub>
-					<xsl:if test="ancestor::tei:seg[@type = 'margNote']">
-						<b>
-							<xsl:text>m</xsl:text>
-						</b>
-						<b>
-							<xsl:text>: </xsl:text>
-						</b>
-					</xsl:if>
-					<xsl:if test="preceding::tei:addSpan">
-						<xsl:variable name="asID" select="preceding::tei:addSpan[1]/@spanTo"/>
-						<xsl:if test="following::tei:anchor[1]/@xml:id = $asID">
+				<span class="lb">
+					<sub id="{$lineID}">
+						<xsl:attribute name="msLine">
+							<xsl:choose>
+								<xsl:when test="ancestor::tei:w[not(descendant::tei:w)]">
+									<xsl:text>null</xsl:text>
+								</xsl:when>
+								<xsl:otherwise>
+									<xsl:value-of select="$lID"/>
+								</xsl:otherwise>
+							</xsl:choose>
+						</xsl:attribute>
+						<xsl:if test="ancestor::tei:seg[@type = 'margNote']">
 							<b>
 								<xsl:text>m</xsl:text>
 							</b>
-							<xsl:if test="preceding::tei:addSpan[1]/@n">
-								<b>
-									<xsl:text>#</xsl:text>
-									<xsl:value-of select="preceding::tei:addSpan[1]/@n"/>
-								</b>
-							</xsl:if>
 							<b>
 								<xsl:text>: </xsl:text>
 							</b>
 						</xsl:if>
-					</xsl:if>
-					<br id="{$lineID}"/>
-					<xsl:value-of select="@n"/>
-					<xsl:text>. </xsl:text>
-				</sub>
+						<xsl:if test="preceding::tei:addSpan">
+							<xsl:variable name="asID" select="preceding::tei:addSpan[1]/@spanTo"/>
+							<xsl:if test="following::tei:anchor[1]/@xml:id = $asID">
+								<b>
+									<xsl:value-of select="preceding::tei:addSpan[1]/@place"/>
+								</b>
+								<xsl:if test="preceding::tei:addSpan[1]/@n">
+									<b>
+										<xsl:text> #</xsl:text>
+										<xsl:value-of select="preceding::tei:addSpan[1]/@n"/>
+									</b>
+								</xsl:if>
+								<b>
+									<xsl:text>: </xsl:text>
+								</b>
+							</xsl:if>
+						</xsl:if>
+						<xsl:text> </xsl:text>
+						<xsl:value-of select="@n"/>
+						<xsl:text>. </xsl:text>
+					</sub>
+				</span>
+			</xsl:when>
+			<xsl:otherwise>
+				<span class="lb">
+					<sub>
+						<xsl:if test="ancestor::tei:seg[@type = 'margNote']">
+							<b>
+								<xsl:text>m</xsl:text>
+							</b>
+							<b>
+								<xsl:text>: </xsl:text>
+							</b>
+						</xsl:if>
+						<xsl:if test="preceding::tei:addSpan">
+							<xsl:variable name="asID" select="preceding::tei:addSpan[1]/@spanTo"/>
+							<xsl:if test="following::tei:anchor[1]/@xml:id = $asID">
+								<b>
+									<xsl:text>m</xsl:text>
+								</b>
+								<xsl:if test="preceding::tei:addSpan[1]/@n">
+									<b>
+										<xsl:text>#</xsl:text>
+										<xsl:value-of select="preceding::tei:addSpan[1]/@n"/>
+									</b>
+								</xsl:if>
+								<b>
+									<xsl:text>: </xsl:text>
+								</b>
+							</xsl:if>
+						</xsl:if>
+						<br id="{$lineID}"/>
+						<xsl:value-of select="@n"/>
+						<xsl:text>. </xsl:text>
+					</sub>
+				</span>
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
@@ -2686,27 +2693,7 @@
 					</seg>
 				</xsl:when>
 				<xsl:otherwise>
-					<xsl:choose>
-						<xsl:when test="child::tei:pb">
-							<xsl:variable name="pageID" select="descendant::tei:pb/@xml:id"/>
-							<xsl:apply-templates
-								select="child::*[following::tei:pb/@xml:id = $pageID]"/>
-							<xsl:apply-templates select="descendant::tei:pb"/>
-							<xsl:apply-templates
-								select="child::*[preceding::tei:pb/@xml:id = $pageID]"/>
-						</xsl:when>
-						<xsl:when test="child::tei:cb">
-							<xsl:variable name="colID" select="descendant::tei:cb/@xml:id"/>
-							<xsl:apply-templates
-								select="child::*[following::tei:cb/@xml:id = $colID]"/>
-							<xsl:apply-templates select="descendant::tei:cb"/>
-							<xsl:apply-templates
-								select="child::*[preceding::tei:cb/@xml:id = $colID]"/>
-						</xsl:when>
-						<xsl:otherwise>
-							<xsl:apply-templates/>
-						</xsl:otherwise>
-					</xsl:choose>
+					<xsl:apply-templates/>
 				</xsl:otherwise>
 			</xsl:choose>
 		</a>
