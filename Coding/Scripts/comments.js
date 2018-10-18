@@ -50,14 +50,11 @@ $(function() {
         Get comments
      */
     $('.viewComment').on('click', function() {
-        console.log('clicked');
         var docid = $('html').attr('data-docid');   //the MS ID
         var s = $(this).attr('data-s');             //the section type (e.g. div/lb)
         var sid = $(this).attr('data-n');           //the section ID
         var html = '<ul>';
         $.getJSON('/ajax/manuscripts.php?action=getComment&docid='+docid+'&s='+s+'&sid='+sid, function(data) {
-            console.log('request');
-            console.log(data);
             $.each(data, function(k, v) {
                 $.each(v, function (key, val) {
                     html += '<li>' + val.comment + ' (' + val.user + ') - ' + val.last_updated + '</li>';
@@ -65,14 +62,13 @@ $(function() {
             });
             html += '</ul>';
             $('#right-panel').html(html);
-            console.log('finished');
         });
     });
 
     /*
         Flag the sections that have comments
      */
-    $('#updateContent').on('click', function () {
+ //   $('#updateContent').on('click', function () {
         var docid = $('html').attr('data-docid');   //the MS ID
         $.getJSON('/ajax/manuscripts.php?action=getPopulatedSections&docid='+docid, function(data) {
             $.each(data, function(k, v) {
@@ -84,5 +80,5 @@ $(function() {
                 });
             });
         });
-    });
+ //   });
 });
