@@ -27,6 +27,7 @@ $(function() {
         var feedbackHtml = '';
         $.getJSON('/ajax/manuscripts.php?action=saveComment&docid='+docid+'&s='+s+'&sid='+sid+'&user='+user+'&comment='+comment, function(data) {
             console.log(data);
+            $('a[data-s='+s+'][data-n='+sid+']').removeClass('greyedOut');
             if (data.saved == true) {
                 feedbackHtml = '<strong>Your comment has been saved</strong>';
             } else { //there was an error saving the comment
@@ -66,7 +67,7 @@ $(function() {
                         .done(function (cdata) {
                             console.log(cdata);
                             var sectionId = cdata.section_id.replace(/\./g, '\\.');
-                            $('a[data-s=' + cdata.section + '][data-n=' + sectionId + ']').addClass('greyedOut');  //fade the viewcComment link
+                            $('a[class="viewComment"][data-s=' + cdata.section + '][data-n=' + sectionId + ']').addClass('greyedOut');  //fade the viewcComment link
                         });
                 }
             })
