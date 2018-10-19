@@ -1143,6 +1143,7 @@
 	<xsl:template match="tei:pb">
 		<xsl:choose>
 			<xsl:when test="ancestor::tei:div[1][@type = 'prose']">
+				<span class="pbHead">
 				<xsl:variable name="comDiv" select="ancestor::tei:div[1]/@corresp"/>
 				<xsl:if test="preceding::tei:lb[ancestor::tei:div/@corresp = $comDiv]">
 					<xsl:variable name="lineID">
@@ -1235,7 +1236,7 @@
 						<seg align="left" id="word{count(ancestor::tei:w[1]/preceding::*)}_pb_tit"
 							class="pb" onmouseover="disableWordFunctions(this.id)"
 							onmouseout="enableWordFunctions(this.id)" style="color:#000000">
-							<b><xsl:value-of select="@n"/>: <xsl:value-of
+							<b><span class="pbRef"><xsl:value-of select="@n"/></span>: <xsl:value-of
 									select="key('hands', ancestor::tei:div/@resp)/tei:forename"
 									/><xsl:text> </xsl:text><xsl:value-of
 									select="key('hands', ancestor::tei:div/@resp)/tei:surname"
@@ -1271,6 +1272,7 @@
 				<br id="word{count(ancestor::tei:w[1]/preceding::*)}_pb_br2" class="pb"
 					onmouseover="disableWordFunctions(this.id)"
 					onmouseout="enableWordFunctions(this.id)" style="color:#000000"/>
+				</span>
 			</xsl:when>
 			<xsl:otherwise>
 				<span class="pb">
@@ -1294,11 +1296,11 @@
 	<xsl:template match="tei:cb">
 		<xsl:choose>
 			<xsl:when test="ancestor::tei:div[1]/@type = 'prose'">
-				<span class="cb">
+				<span class="cbHead">
 					<br/>
 					<br/>
 					<b>Col.<xsl:text> </xsl:text>
-						<xsl:value-of select="@n"/></b>
+						<span class="cbRef"><xsl:value-of select="@n"/></span></b>
 					<br/>
 					<br/>
 				</span>
@@ -1338,6 +1340,7 @@
 		</xsl:variable>
 		<xsl:choose>
 			<xsl:when test="ancestor::tei:p">
+				<span class="lbHead">
 				<xsl:variable name="comDiv" select="ancestor::tei:div[1]/@corresp"/>
 				<xsl:variable name="comPage">
 					<xsl:choose>
@@ -1447,9 +1450,10 @@
 								</xsl:if>
 							</xsl:if>
 						</xsl:if>
-						<xsl:value-of select="@n"/>
+						<span class="lbRef"><xsl:value-of select="@n"/></span>
 						<xsl:text>. </xsl:text>
 					</sub>
+				</span>
 				</span>
 			</xsl:when>
 			<xsl:when
