@@ -27,6 +27,12 @@ $(function() {
         var feedbackHtml = '';
         $.getJSON('/ajax/manuscripts.php?action=saveComment&docid='+docid+'&s='+s+'&sid='+sid+'&user='+user+'&comment='+comment, function(data) {
             console.log(data);
+            //add the comment to the list and show the viewComment link normally
+            var html = '<li>' + comment + ' (' + user + ') - ';
+            html += '<span class="greyedOut">' + new Date() + '</span>';
+            html += ' <a id="cid__' + data.id + '" class="deleteComment" href="#">X</a>';
+            html += '</li>';
+            $('.commentsList li:first').before(html);
             $('a[data-s='+s+'][data-n='+escapedSid+']').removeClass('greyedOut');
             if (data.saved == true) {
                 feedbackHtml = '<strong>Your comment has been saved</strong>';
