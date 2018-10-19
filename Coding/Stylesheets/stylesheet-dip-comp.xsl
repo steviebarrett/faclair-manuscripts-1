@@ -477,7 +477,7 @@
 		</xsl:if>
 		<xsl:variable name="encLineID"
 			select="preceding::tei:addSpan[1]/preceding::tei:lb[1]/@xml:id or preceding::tei:addSpan[1]/preceding::tei:lb[1]/@sameAs"/>
-		<sub>
+		<sub class="lbSub">
 			<br id="{generate-id()}_dip"/>
 			<xsl:if test="preceding::tei:addSpan">
 				<xsl:variable name="asID" select="preceding::tei:addSpan[1]/@spanTo"/>

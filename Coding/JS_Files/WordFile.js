@@ -358,7 +358,7 @@ function addSlip(id) {
 	if (rcol3.getElementsByClassName("pbRef").length > 0) {
 		var pbWRefTxt = rcol3.getElementsByClassName("pbRef")[0].innerHTML;
 		var pbUnit = rcol3.getElementsByClassName("pbRef")[0].getAttribute("prefix");
-		rcol3.getElementsByClassName("pbHead")[0].innerHTML = "<sub><b>" + " " + pbUnit + pbWRefTxt + "</sub></b>";
+		rcol3.getElementsByClassName("pbHead")[0].innerHTML = "<sub><b>" + " " + pbUnit + pbWRefTxt + "</b></sub>";
 	}
 	var cbNodes = opened.document.querySelectorAll("td[class=form] > a > *[class=cb], td[class=form] > a > *[class=cbHead]");
 	var cbNodesCount = cbNodes.length;
@@ -366,16 +366,26 @@ function addSlip(id) {
 	for (cbn = 0; cbn < cbNodesCount; pbn++) {
 		cbNodes[cbn].parentNode.removeChild(cbNodes[cbn]);
 	}
-	if (rcol3.getElementsByClassName("pbRef").length > 0) {
+	if (rcol3.getElementsByClassName("cbRef").length > 0) {
 		var cbWRefTxt = rcol3.getElementsByClassName("cbRef")[0].innerHTML;
 		var cbUnit = rcol3.getElementsByClassName("cbRef")[0].getAttribute("prefix");
-		rcol3.getElementsByClassName("cbHead")[0].innerHTML = "<sub><b>" + " " + cbUnit + cbWRefTxt + "</sub></b>";
+		rcol3.getElementsByClassName("cbHead")[0].innerHTML = "<sub><b>" + " " + cbUnit + cbWRefTxt + "</b></sub>";
 	}
-	var lbNodes = opened.document.querySelectorAll("td[class=form] > a > *[class=lb], td[class=form] > a > *[class=lbHead]");
+	var lbNodes = opened.document.querySelectorAll("td[class=form] > a > *[class=lb], td[class=form] > a > *[class=lbHead], td[class=form] > a > sub[class=lbSub]");
 	var lbNodesCount = lbNodes.length;
 	var lbn;
 	for (lbn = 0; lbn < lbNodesCount; lbn++) {
 		lbNodes[lbn].parentNode.removeChild(lbNodes[lbn]);
+	}
+	if (rcol3.getElementsByClassName("lbRef").length > 0) {
+		var lbWRefTxt = rcol3.getElementsByClassName("lbRef")[0].innerHTML;
+		rcol3.getElementsByClassName("lbHead")[0].innerHTML = "<sub>" + lbWRefTxt + " " + "</sub>";
+	}
+	var contextBrs = rcol3.getElementsByTagName("br");
+	var contextBrsCount = contextBrs.length;
+	var b;
+	for (b = 0; b < contextBrsCount; b++) {
+		contextBrs[b].parentNode.removeChild(contextBrs[b]);
 	}
 	var rcol4 = row.insertCell(3);
 	rcol4.innerHTML = med;
@@ -622,6 +632,12 @@ function wordSearch(id) {
 				continue;
 			}
 		}
+		var contextBrs = cell1.getElementsByTagName("br");
+		var contextBrsCount = contextBrs.length;
+		var b;
+		for (b = 0; b < contextBrsCount; b++) {
+			contextBrs[b].parentNode.removeChild(contextBrs[b]);
+		}
 		var cell2 = row.insertCell(1);
 		cell2.innerHTML = msref;
 		var cell3 = row.insertCell(2);
@@ -672,20 +688,43 @@ function wordSearch(id) {
 		var pbNodes = opened.document.querySelectorAll("td[class=form] > a > *[class=pb]");
 		var pbNodesCount = pbNodes.length;
 		var pbn;
+		var pbNodes = opened.document.querySelectorAll("td[class=form] > a > *[class=pb], td[class=form] > a > *[class=pbHead]");
+		var pbNodesCount = pbNodes.length;
+		var pbn;
 		for (pbn = 0; pbn < pbNodesCount; pbn++) {
 			pbNodes[pbn].parentNode.removeChild(pbNodes[pbn]);
 		}
-		var cbNodes = opened.document.querySelectorAll("td[class=form] > a > *[class=cb]");
+		if (cell3.getElementsByClassName("pbRef").length > 0) {
+			var pbWRefTxt = rcol3.getElementsByClassName("pbRef")[0].innerHTML;
+			var pbUnit = cell3.getElementsByClassName("pbRef")[0].getAttribute("prefix");
+			cell3.getElementsByClassName("pbHead")[0].innerHTML = "<sub><b>" + " " + pbUnit + pbWRefTxt + "</sub></b>";
+		}
+		var cbNodes = opened.document.querySelectorAll("td[class=form] > a > *[class=cb], td[class=form] > a > *[class=cbHead]");
 		var cbNodesCount = cbNodes.length;
 		var cbn;
 		for (cbn = 0; cbn < cbNodesCount; pbn++) {
 			cbNodes[cbn].parentNode.removeChild(cbNodes[cbn]);
 		}
-		var lbNodes = opened.document.querySelectorAll("td[class=form] > a > *[class=lb]");
+		if (cell3.getElementsByClassName("pbRef").length > 0) {
+			var cbWRefTxt = cell3.getElementsByClassName("cbRef")[0].innerHTML;
+			var cbUnit = cell3.getElementsByClassName("cbRef")[0].getAttribute("prefix");
+			cell3.getElementsByClassName("cbHead")[0].innerHTML = "<sub><b>" + " " + cbUnit + cbWRefTxt + "</sub></b>";
+		}
+		var lbNodes = opened.document.querySelectorAll("td[class=form] > a > *[class=lb], td[class=form] > a > *[class=lbHead], td[class=form] > a > sub[class=lbSub]");
 		var lbNodesCount = lbNodes.length;
 		var lbn;
 		for (lbn = 0; lbn < lbNodesCount; lbn++) {
 			lbNodes[lbn].parentNode.removeChild(lbNodes[lbn]);
+		}
+		if (rcol3.getElementsByClassName("lbRef").length > 0) {
+			var lbWRefTxt = rcol3.getElementsByClassName("lbRef")[0].innerHTML;
+			rcol3.getElementsByClassName("lbHead")[0].innerHTML = "<sub>" + lbWRefTxt + " " + "</sub>";
+		}
+		var contextBrs = cell3.getElementsByTagName("br");
+		var contextBrsCount = contextBrs.length;
+		var b;
+		for (b = 0; b < contextBrsCount; b++) {
+			contextBrs[b].parentNode.removeChild(contextBrs[b]);
 		}
 		cell3.style.fontSize = "smaller";
 		var contextChildren = row.childNodes[2].childNodes;
@@ -701,6 +740,12 @@ function wordSearch(id) {
 				continue;
 			}
 			continue;
+		}
+		var contextBrs = cell3.getElementsByTagName("br");
+		var contextBrsCount = contextBrs.length;
+		var b;
+		for (b = 0; b < contextBrsCount; b++) {
+			contextBrs[b].parentNode.removeChild(contextBrs[b].parentNode.contextBrs[b]);
 		}
 		var cell4 = row.insertCell(3);
 		cell4.innerHTML = med;
