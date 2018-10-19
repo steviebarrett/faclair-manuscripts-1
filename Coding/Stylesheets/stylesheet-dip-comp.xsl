@@ -550,11 +550,11 @@
 		</sub>
 	</xsl:template>
 	
-	<xsl:template match="tei:seg[@type = 'MSDef']">
+	<xsl:template mode="dip" match="tei:seg[@type = 'MSDef']">
 		<xsl:apply-templates/>
 	</xsl:template>
 	
-	<xsl:template match="tei:seg[@type = 'MSDefd']">
+	<xsl:template mode="dip" match="tei:seg[@type = 'MSDefd']">
 		<xsl:apply-templates/>
 	</xsl:template>
 
