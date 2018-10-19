@@ -60,15 +60,14 @@ $(function() {
         $.getJSON('/ajax/manuscripts.php?action=deleteComment&cid='+cid, function() {})
             .done(function(data) {
                 console.log(data);
-                if (data.deleted == true) {
-                    feedbackHtml = '<strong>The comment has been deleted</strong>';
-                    if (data.empty == true) { //if the number of deleted comments = the total number of comments
-                        $.getJSON('/ajax/manuscripts.php?action=getCommentInfo&cid='+cid, function () {})
-                            .done(function (cdata) {
-                                console.log(cdata);
-                                $('a[data-s='+cdata.section+'][data-n='+cdata.section_id+']').addClass('greyedOut');  //fade the viewcComment link
+                feedbackHtml = '<strong>The comment has been deleted</strong>';
+                if (data.empty == true) { //if the number of deleted comments = the total number of comments
+                    $.getJSON('/ajax/manuscripts.php?action=getCommentInfo&cid=' + cid, function () {
+                    })
+                        .done(function (cdata) {
+                            console.log(cdata);
+                            $('a[data-s=' + cdata.section + '][data-n=' + cdata.section_id + ']').addClass('greyedOut');  //fade the viewcComment link
                         });
-                    }
                 }
             })
             .fail(function() {
