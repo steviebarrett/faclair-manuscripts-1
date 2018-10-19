@@ -57,8 +57,8 @@ $(function() {
         var parts = $(this).attr('id').split('__');
         var cid = parts[1];     //the DB comment ID
         var feedbackHtml;
-        $.getJSON('/ajax/manuscripts.php?action=deleteComment&cid='+cid, function(data) {})
-            .done(function() {
+        $.getJSON('/ajax/manuscripts.php?action=deleteComment&cid='+cid, function() {})
+            .done(function(data) {
                 console.log(data);
                 if (data.deleted == true) {
                     feedbackHtml = '<strong>The comment has been deleted</strong>';
@@ -67,8 +67,8 @@ $(function() {
                     //         $('a[data-s='+cdata.section+'][data-n='+cdata.section_id+']').addClass('greyedOut');  //fade the viewcComment link
                     //     })
                     // }
-                    console.log(feedbackHtml);
-                    console.log(data.empty);
+                   // console.log(feedbackHtml);
+                   // console.log(data.empty);
                 }
             })
             .fail(function() {
