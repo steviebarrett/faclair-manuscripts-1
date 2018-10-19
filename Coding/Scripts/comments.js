@@ -57,9 +57,8 @@ $(function() {
         var parts = $(this).attr('id').split('__');
         var cid = parts[1];     //the DB comment ID
         var feedbackHtml;
-        $.getJSON('/ajax/manuscripts.php?action=deleteComment&cid='+cid, function() {
-        })
-            .done(function(data) {
+        $.getJSON('/ajax/manuscripts.php?action=deleteComment&cid='+cid, function(data) {})
+            .done(function() {
                 console.log(data);
                 if (data.deleted == true) {
                     feedbackHtml = '<strong>The comment has been deleted</strong>';
