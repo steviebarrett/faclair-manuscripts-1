@@ -70,7 +70,7 @@ $(function() {
                         });
                     }
                 }
-            });
+            })
             .fail(function() {
                 feedbackHtml = '<em>There was an error deleting the comment</em>';
             });
