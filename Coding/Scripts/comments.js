@@ -27,7 +27,7 @@ $(function() {
         var feedbackHtml = '';
         $.getJSON('/ajax/manuscripts.php?action=saveComment&docid='+docid+'&s='+s+'&sid='+sid+'&user='+user+'&comment='+comment, function(data) {
             console.log(data);
-            $('a[data-s='+s+'][data-n='+sid+']').removeClass('greyedOut');
+            $('a[data-s='+s+'][data-n='+escapedSid+']').removeClass('greyedOut');
             if (data.saved == true) {
                 feedbackHtml = '<strong>Your comment has been saved</strong>';
             } else { //there was an error saving the comment
