@@ -62,11 +62,11 @@ $(function() {
                 console.log(data);
                 feedbackHtml = '<strong>The comment has been deleted</strong>';
                 if (data.empty == true) { //if the number of deleted comments = the total number of comments
-                    $.getJSON('/ajax/manuscripts.php?action=getCommentInfo&cid=' + cid, function () {
-                    })
+                    $.getJSON('/ajax/manuscripts.php?action=getCommentInfo&cid=' + cid, function () {})
                         .done(function (cdata) {
                             console.log(cdata);
-                            $('a[data-s=' + cdata.section + '][data-n=' + cdata.section_id + ']').addClass('greyedOut');  //fade the viewcComment link
+                            var sectionId = cdata.section_id.replace(/\./g, '\\.');
+                            $('a[data-s=' + cdata.section + '][data-n=' + sectionId + ']').addClass('greyedOut');  //fade the viewcComment link
                         });
                 }
             })
