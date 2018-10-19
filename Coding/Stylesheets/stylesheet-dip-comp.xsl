@@ -61,6 +61,16 @@
 	<xsl:template mode="dip" match="tei:pb">
 		<xsl:variable name="comFile" select="ancestor::tei:TEI/@xml:id"/>
 		<xsl:variable name="comDiv" select="ancestor::tei:div[1]/@corresp"/>
+		<xsl:variable name="unit">
+			<xsl:choose>
+				<xsl:when test="contains(@n, 'r') or contains(@n, 'v')">
+					<xsl:text xml:space="preserve">fol. </xsl:text>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:text xml:space="preserve">p. </xsl:text>
+				</xsl:otherwise>
+			</xsl:choose>
+		</xsl:variable>
 		<xsl:variable name="lineID">
 			<xsl:choose>
 				<xsl:when test="preceding::tei:pb[1]/@xml:id">
@@ -75,6 +85,7 @@
 		</xsl:variable>
 		<xsl:choose>
 			<xsl:when test="ancestor::tei:w[not(descendant::tei:w)]">
+				<span class="pbHead">
 				<xsl:if test="preceding::tei:pb"><xsl:text xml:space="preserve"> </xsl:text>
 					<button id="plus{$lineID}_dip" onclick="revealComment(this.id)"
 						style="font-size:12px">
@@ -108,7 +119,6 @@
 								<xsl:text>enableWordFunctions(this.id)</xsl:text>
 							</xsl:attribute>
 						</xsl:if>Add Comment</button></xsl:if>
-				<span class="pb">
 					<hr align="left" width="40%"/>
 					<xsl:choose>
 						<xsl:when test="ancestor::tei:div[1]//tei:handShift">
@@ -116,7 +126,7 @@
 								<xsl:when
 									test="preceding::tei:handShift/ancestor::tei:div[1]/@corresp = $comDiv">
 									<seg align="left">
-										<b><xsl:value-of select="@n"/>: <xsl:value-of
+										<b><span class="pbRef" prefix="{$unit}"><xsl:value-of select="@n"/></span>: <xsl:value-of
 											select="key('hands', preceding::tei:handShift[1]/@new)/tei:forename"
 										/><xsl:text> </xsl:text><xsl:value-of
 											select="key('hands', preceding::tei:handShift[1]/@new)/tei:surname"
@@ -127,7 +137,7 @@
 								</xsl:when>
 								<xsl:otherwise>
 									<seg align="left">
-										<b><xsl:value-of select="@n"/>: <xsl:value-of
+										<b><span class="pbRef" prefix="{$unit}"><xsl:value-of select="@n"/></span>: <xsl:value-of
 											select="key('hands', ancestor::tei:div/@resp)/tei:forename"
 										/><xsl:text> </xsl:text><xsl:value-of
 											select="key('hands', ancestor::tei:div/@resp)/tei:surname"
@@ -140,7 +150,7 @@
 						</xsl:when>
 						<xsl:otherwise>
 							<seg align="left">
-								<b><xsl:value-of select="@n"/>: <xsl:value-of
+								<b><span class="pbRef" prefix="{$unit}"><xsl:value-of select="@n"/></span>: <xsl:value-of
 									select="key('hands', ancestor::tei:div/@resp)/tei:forename"
 								/><xsl:text> </xsl:text><xsl:value-of
 									select="key('hands', ancestor::tei:div/@resp)/tei:surname"
@@ -152,6 +162,7 @@
 				</span>
 			</xsl:when>
 			<xsl:otherwise>
+				<span class="pb">
 				<xsl:if test="preceding::tei:pb"><xsl:text xml:space="preserve"> </xsl:text>
 				<button id="plus{$lineID}_dip" onclick="revealComment(this.id)"
 					style="font-size:12px">
@@ -232,17 +243,18 @@
 					<b>End Search</b>
 				</button>
 				<br/>
+				</span>
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
 
 	<xsl:template mode="dip" match="tei:cb">
-		<br/>
+<span class="cbHead" prefix="col."><br/>
 		<br/>
 		<b>Col.<xsl:text> </xsl:text>
-			<xsl:value-of select="@n"/></b>
+			<span class="cbRef"><xsl:value-of select="@n"/></span></b>
 		<br/>
-		<br/>
+		<br/></span>
 	</xsl:template>
 
 	<xsl:template mode="dip" match="tei:lb">
@@ -284,6 +296,7 @@
 			select="count(preceding::tei:lb[preceding::tei:pb[1][@* = $comPage]]) + 1"/>
 		<xsl:variable name="colPosition"
 			select="count(preceding::tei:lb[preceding::tei:cb[1][@* = $comCol]]) + 1"/>
+		<span class="lbHead">
 		<xsl:choose>
 			<xsl:when
 				test="preceding::tei:pb[1]/following::tei:cb[1][following::tei:lb/@* = $lineID] and not(ancestor::tei:seg[@type='margNote'])">
@@ -464,7 +477,7 @@
 		</xsl:if>
 		<xsl:variable name="encLineID"
 			select="preceding::tei:addSpan[1]/preceding::tei:lb[1]/@xml:id or preceding::tei:addSpan[1]/preceding::tei:lb[1]/@sameAs"/>
-		<sub>
+		<sub class="lbSub">
 			<br id="{generate-id()}_dip"/>
 			<xsl:if test="preceding::tei:addSpan">
 				<xsl:variable name="asID" select="preceding::tei:addSpan[1]/@spanTo"/>
@@ -485,9 +498,10 @@
 					</b>
 				</xsl:if>
 			</xsl:if>
-			<xsl:value-of select="@n"/>
+			<span class="lbRef"><xsl:value-of select="@n"/></span>
 			<xsl:text>. </xsl:text>
 		</sub>
+		</span>
 	</xsl:template>
 
 	<xsl:template mode="dip" match="tei:space[@type = 'scribal' or @type = 'editorial']">
