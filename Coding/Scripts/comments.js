@@ -20,7 +20,6 @@ $(function() {
         var parts = formId.split('__');
         var s = parts[1];                           //the section type (e.g. div or lb)
         var sid = parts[2];                         //the section ID
-        updateComments(docid, s, sid);              //update the comments list to the current section
         var escapedSid = sid.replace(/\./g, '\\.');
         $('a[data-s='+s+'][data-n='+escapedSid+'][class="viewComment"]').show();   //show the viewComment link
         var user = $(this).siblings('select').val();
@@ -29,18 +28,21 @@ $(function() {
         $.getJSON('/ajax/manuscripts.php?action=saveComment&docid='+docid+'&s='+s+'&sid='+sid+'&user='+user+'&comment='+comment, function(data) {
             console.log(data);
             //add the comment to the list and show the viewComment link normally
-            var html = '<li>' + comment + ' (' + user + ') - ';
-            html += '<span class="greyedOut">' + new Date() + '</span>';
-            html += ' <a id="cid__' + data.id + '" class="deleteComment" href="#">X</a>';
-            html += '</li>';
-            $('.commentsList li:first').before(html);
-            $('a[data-s='+s+'][data-n='+escapedSid+']').removeClass('greyedOut');
+            // var html = '<li>' + comment + ' (' + user + ') - ';
+            // html += '<span class="greyedOut">' + new Date() + '</span>';
+            // html += ' <a id="cid__' + data.id + '" class="deleteComment" href="#">X</a>';
+            // html += '</li>';
+            // $('.commentsList li:first').before(html);
+            // $('a[data-s='+s+'][data-n='+escapedSid+']').removeClass('greyedOut');
             if (data.saved == true) {
                 feedbackHtml = '<strong>Your comment has been saved</strong>';
             } else { //there was an error saving the comment
                 feedbackHtml = '<em>There was an error saving the comment</em>';
             }
-        });
+        })
+            .done(function () {
+                updateComments(docid, s, sid);              //update the comments list to the current section
+            });
         //reset the form elements
         $(this).siblings('select').val(''); //reset the user
         $(this).siblings('textarea').val(''); //reset the comment
