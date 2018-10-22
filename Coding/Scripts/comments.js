@@ -21,7 +21,7 @@ $(function() {
         var s = parts[1];                           //the section type (e.g. div or lb)
         var sid = parts[2];                         //the section ID
         var escapedSid = sid.replace(/\./g, '\\.');
-        $('a[data-s='+s+'][data-n='+escapedSid+'][class="viewComment"]').show();   //show the viewComment link
+        //$('a[data-s='+s+'][data-n='+escapedSid+'][class="viewComment"]').show();   //show the viewComment link
         var user = $(this).siblings('select').val();
         var comment = $(this).siblings('textarea').val();
         var feedbackHtml = '';
@@ -41,7 +41,8 @@ $(function() {
             }
         })
             .done(function () {
-                $('a[data-s='+s+'][data-n='+escapedSid+']').removeClass('greyedOut');   //show the viewComment link
+                $('a[data-s='+s+'][data-n='+escapedSid+']').removeClass('greyedOut');   //remove the greyed out status of viewComment link
+                $('a[data-s='+s+'][data-n='+escapedSid+']').show();   //show the viewComment link
                 updateComments(docid, s, sid);              //update the comments list to the current section
             });
         //reset the form elements
