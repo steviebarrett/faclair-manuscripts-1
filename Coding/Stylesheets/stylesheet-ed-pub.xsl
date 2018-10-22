@@ -50,7 +50,7 @@
 							<xsl:when
 								test="descendant::tei:div/key('divTitle', @corresp)/tei:locus/@n">
 								<xsl:for-each select="//tei:div[not(descendant::tei:div)]">
-									<xsl:sort select="key('divTitle', @corresp)/tei:locus/@n"/>
+									<xsl:sort select="key('divTitle', @corresp)/tei:locus/@n" data-type="number"/>
 									<xsl:apply-templates mode="dip"/>
 								</xsl:for-each>
 							</xsl:when>
