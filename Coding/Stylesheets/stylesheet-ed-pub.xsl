@@ -50,7 +50,8 @@
 							<xsl:when
 								test="descendant::tei:div/key('divTitle', @corresp)/tei:locus/@n">
 								<xsl:for-each select="//tei:div[not(descendant::tei:div)]">
-									<xsl:sort select="key('divTitle', @corresp)/tei:locus/@n" data-type="number"/>
+									<xsl:sort select="key('divTitle', @corresp)/tei:locus/@n"
+										data-type="number"/>
 									<xsl:apply-templates mode="dip"/>
 								</xsl:for-each>
 							</xsl:when>
@@ -155,6 +156,20 @@
 				<xsl:text>.</xsl:text>
 			</xsl:otherwise>
 		</xsl:choose>
+	</xsl:template>
+
+	<xsl:template name="glyphNote">
+		<a>
+			<xsl:if test="key('bib', @target)/@corresp">
+				<xsl:attribute name="href" select="key('bib', @target)/@corresp"/>
+				<xsl:attribute name="target">
+					<xsl:text>_blank</xsl:text>
+				</xsl:attribute>
+			</xsl:if>
+			<xsl:value-of select="key('bib', @target)/tei:glyphName"/>
+		</a>
+		<xsl:text>: </xsl:text>
+		<xsl:value-of select="key('bib', @target)/tei:note"/>
 	</xsl:template>
 
 	<xsl:template name="rspStmt">
@@ -3109,6 +3124,7 @@
 	</xsl:template>
 
 	<xsl:template match="tei:ref">
+		<xsl:param name="gRef" select="@target"/>
 		<xsl:variable name="newID">
 			<xsl:value-of select="generate-id()"/>
 			<xsl:value-of select="count(preceding::*)"/>
@@ -3141,6 +3157,17 @@
 						<xsl:text> [</xsl:text>
 						<b>
 							<xsl:call-template name="mssBib"/>
+						</b>
+						<xsl:text>] </xsl:text>
+					</seg>
+				</xsl:if>
+				<xsl:if test="@type = 'glyph'">
+					<seg id="ref{$refPOS}_exp" style="background-color:silver" hidden="hidden">
+						<xsl:text> [</xsl:text>
+						<b>
+							<xsl:call-template name="glyphNote">
+								<xsl:with-param name="gRef"/>
+							</xsl:call-template>
 						</b>
 						<xsl:text>] </xsl:text>
 					</seg>
