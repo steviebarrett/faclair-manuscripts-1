@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="../Schemas/fnag_mss2.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 <?xml-stylesheet type="text/xsl" href="../../Coding/Stylesheets/basic-info.xsl"?>
-<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="transcription17">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="T17">
 	<teiHeader>
 		<fileDesc>
 			<titleStmt>
@@ -25,7 +25,15 @@
 			</publicationStmt>
 			<notesStmt>
 				<note>
-					<p/>
+					<p>This very compact, early sixteenth-century manuscript seems to have been a
+							<hi rend="italics">vade mecum</hi> used by the Islay Beatons but
+						possibly partly inscribed in Ireland. Its main components are a Latin text
+						of Psalm 118 (now Psalm 119) by Niall Mac Beathadh and a collection of
+						"medical definitions" by the Irish scribe, Maol Sheachlainn mac Iollainn
+						Mhic an Leagha Ruaidh. The latter also contextualises medicine as a whole
+						within cosmological and philosophical thought. Various maxims in a similar
+						vein have been added elswhere in the manuscript in other, mostly
+						Beaton-associated hands.</p>
 				</note>
 			</notesStmt>
 			<sourceDesc>
@@ -37,65 +45,25 @@
 					</msIdentifier>
 					<msContents>
 						<summary>
-							<p/>
+							<p>Apart from a very short colophon, Niall Mac Beathadh's text of Psalm
+								118 (119) is entirely in Latin, so the only the medico-philosophical
+								definitions are included in this transcription. These are often also
+								in Latin but with Gaelic translation and commentary. These consist
+								of a pair of definitions on fol. 24<hi rend="sup">r</hi>, an
+								isolated couplet on fol. 25<hi rend="sup">v</hi>, and the major
+								collection of definitions beginning on fol. 26<hi rend="sup"
+								>r</hi>.</p>
 						</summary>
 						<msItem n="1" xml:id="MS17.1" resp="Hand24">
 							<locus>fol. 24<hi rend="sup">r</hi></locus>
 							<title>Definitions 1</title>
 							<incipit>Re sine ...</incipit>
 							<explicit>... co haicidach</explicit>
-							<note>
-								<p comment="Content"/>
-								<p comment="Style"/>
-								<p comment="Social Context and Intended Readers"/>
-								<p comment="Studies and Editions"/>
-							</note>
-							<filiation>
-								<p/>
-							</filiation>
-							<textLang mainLang="XXX" otherLangs="XXX">
-								<note comment="Orthography and Scribal Practices">
-									<p/>
-									<p>
-										<list>
-											<head>Spelling System</head>
-											<item/>
-										</list><list>
-											<head>Scribal Practices</head>
-											<item/>
-										</list></p>
-								</note>
-								<note comment="Language">
-									<p comment="Nominal System">
-										<list>
-											<item/>
-										</list></p>
-									<p comment="Verbal System">
-										<list>
-											<item/>
-										</list></p>
-									<p comment="Pronouns and Pronominals"><list>
-											<item/>
-										</list></p>
-									<p comment="Syntax"><list>
-											<item/>
-										</list></p>
-									<p comment="Lexis"><list>
-											<item/>
-										</list></p>
-									<p comment="Conclusions"><list>
-											<item/>
-										</list></p>
-								</note>
-								<note comment="Style">
-									<p/>
-								</note>
-							</textLang>
 							<msItem n="1.1" xml:id="MS17.1.1" resp="Hand24">
 								<locus>fol. 24<hi rend="sup">r</hi>1–4</locus>
 								<title>Reason</title>
 								<incipit>Re sine ...</incipit>
-								<explicit>... is cuis ...</explicit>
+								<explicit>... is cuis</explicit>
 							</msItem>
 							<msItem n="1.2" xml:id="MS17.1.2" resp="Hand24">
 								<locus>fol. 24<hi rend="sup">r</hi>5–10</locus>
@@ -106,205 +74,82 @@
 							<msItem n="1.3" xml:id="MS17.1.3" resp="Hand24">
 								<locus>fol. 25<hi rend="sup">r</hi>6–11</locus>
 								<title>Medical Observation</title>
-								<incipit>Natura ...</incipit>
-								<explicit>... co haicidach</explicit>
+								<incipit>Medecinalis ...</incipit>
+								<explicit>... cedfaid</explicit>
 							</msItem>
 						</msItem>
 						<msItem n="2" xml:id="MS17.2" resp="Hand25">
-							<locus>25v1-5</locus>
-							<title>Note</title>
+							<locus>fol. 25<hi rend="sup">v</hi>1–5</locus>
+							<title>Misc. Note</title>
 							<incipit>Longa solent sperni ...</incipit>
 							<explicit>... in cait nuasin</explicit>
-							<note>
-								<p comment="Content"/>
-								<p comment="Style"/>
-								<p comment="Social Context and Intended Readers"/>
-								<p comment="Studies and Editions"/>
-							</note>
-							<filiation>
-								<p/>
-							</filiation>
-							<textLang mainLang="XXX" otherLangs="XXX">
-								<note comment="Orthography and Scribal Practices">
-									<p/>
-									<p>
-										<list>
-											<head>Spelling System</head>
-											<item/>
-										</list><list>
-											<head>Scribal Practices</head>
-											<item/>
-										</list></p>
-								</note>
-								<note comment="Language">
-									<p comment="Nominal System">
-										<list>
-											<item/>
-										</list></p>
-									<p comment="Verbal System">
-										<list>
-											<item/>
-										</list></p>
-									<p comment="Pronouns and Pronominals"><list>
-											<item/>
-										</list></p>
-									<p comment="Syntax"><list>
-											<item/>
-										</list></p>
-									<p comment="Lexis"><list>
-											<item/>
-										</list></p>
-									<p comment="Conclusions"><list>
-											<item/>
-										</list></p>
-								</note>
-								<note comment="Style">
-									<p/>
-								</note>
-							</textLang>
 						</msItem>
 						<msItem n="3" xml:id="MS17.3" resp="Hand25">
-							<locus>26r1-80v15</locus>
+							<locus>fol. 26<hi rend="sup">r</hi>1–80<hi rend="sup">v</hi>15</locus>
 							<title>Definitions 2</title>
 							<incipit>Quem scientia vivificat non moritur ...</incipit>
-							<explicit>...</explicit>
-							<note>
-								<p comment="Content"/>
-								<p comment="Style"/>
-								<p comment="Social Context and Intended Readers"/>
-								<p comment="Studies and Editions"/>
-							</note>
-							<filiation>
-								<p/>
-							</filiation>
-							<textLang mainLang="XXX" otherLangs="XXX">
-								<note comment="Orthography and Scribal Practices">
-									<p/>
-									<p>
-										<list>
-											<head>Spelling System</head>
-											<item/>
-										</list><list>
-											<head>Scribal Practices</head>
-											<item/>
-										</list></p>
-								</note>
-								<note comment="Language">
-									<p comment="Nominal System">
-										<list>
-											<item/>
-										</list></p>
-									<p comment="Verbal System">
-										<list>
-											<item/>
-										</list></p>
-									<p comment="Pronouns and Pronominals"><list>
-											<item/>
-										</list></p>
-									<p comment="Syntax"><list>
-											<item/>
-										</list></p>
-									<p comment="Lexis"><list>
-											<item/>
-										</list></p>
-									<p comment="Conclusions"><list>
-											<item/>
-										</list></p>
-								</note>
-								<note comment="Style">
-									<p/>
-								</note>
-							</textLang>
-						</msItem>
-						<msItem n="itemN" xml:id="itemID" resp="HandXXX">
-							<locus/>
-							<title/>
-							<incipit/>
-							<explicit/>
-							<note>
-								<p comment="Content"/>
-								<p comment="Style"/>
-								<p comment="Social Context and Intended Readers"/>
-								<p comment="Studies and Editions"/>
-							</note>
-							<filiation>
-								<p/>
-							</filiation>
-							<textLang mainLang="XXX" otherLangs="XXX">
-								<note comment="Orthography and Scribal Practices">
-									<p/>
-									<p>
-										<list>
-											<head>Spelling System</head>
-											<item/>
-										</list><list>
-											<head>Scribal Practices</head>
-											<item/>
-										</list></p>
-								</note>
-								<note comment="Language">
-									<p comment="Nominal System">
-										<list>
-											<item/>
-										</list></p>
-									<p comment="Verbal System">
-										<list>
-											<item/>
-										</list></p>
-									<p comment="Pronouns and Pronominals"><list>
-											<item/>
-										</list></p>
-									<p comment="Syntax"><list>
-											<item/>
-										</list></p>
-									<p comment="Lexis"><list>
-											<item/>
-										</list></p>
-									<p comment="Conclusions"><list>
-											<item/>
-										</list></p>
-								</note>
-								<note comment="Style">
-									<p/>
-								</note>
-							</textLang>
+							<explicit>... meigbetadh .i. mo sesi</explicit>
 						</msItem>
 					</msContents>
 					<physDesc>
 						<objectDesc>
 							<supportDesc>
 								<support>
-									<p/>
+									<p>Vellum; 6 × 4.5 cm (Black <ref target="Black2011" type="bib"
+											>2011</ref>); the manuscript is still in its original
+										leather skin, which appears to have been designed for
+										maximum protection and portability (McRoberts <ref
+											target="McRoberts1968" type="bib">1968</ref>: 171),
+										suggesting it was of practical use.</p>
 								</support>
 								<foliation>
-									<p/>
+									<p>Modern.</p>
 								</foliation>
 								<condition>
-									<p/>
+									<p>Mostly very good; there are a few short sections where the
+										writing surface is badly damaged (fols 42<hi rend="sup"
+											>r</hi>–43<hi rend="sup">r</hi>, fol. 82<hi rend="sup"
+											>v</hi>).</p>
 								</condition>
 							</supportDesc>
 							<layoutDesc>
-								<p/>
+								<p>Text is presented in continuous lines within a stout text block
+									that occupies most of each page. Words are often split across
+									manuscript lines. New definitions are often introduced with a
+									capital but otherwise the layout is uniform. Display script is
+									briefly employed on fol. 37<hi rend="sup">v</hi>.</p>
 							</layoutDesc>
 						</objectDesc>
 						<handDesc>
-							<handNote corresp="Hand24">
-								<note>
-									<p comment="The Scribe"/>
-									<p comment="Other Activities"/>
-								</note>
-							</handNote>
+							<p/>
 						</handDesc>
 					</physDesc>
 					<history>
 						<origin>
-							<p/>
+							<p>The hands of two known members of the Islay branch of the Beaton
+								medical family appear in the manuscript: Níall and his son, Níall
+								Óg. Another, unidentified hand (Hand24) elsewhere provides a
+								first-person account of medical activity in Islay. It thus seems
+								likely that the manuscript was at least partly written there.
+								However, the collection of "medical definitions", which makes up the
+								bulk of the manuscript, was written Maol Sheachlainn mac Iollainn
+								Mhic an Leagha Ruaidh and there is no evidence that he ever left
+								Ireland. Since there is also no evidence of scribal collaboration
+								within the manuscript between him and any of the Beatons, the
+								manuscript may well have begun its existence in Ireland.</p>
+							<p>Níall and Níall Óg were both active in the first half of the
+								sixteenth century (Bannerman <ref target="Bannerman2015" type="bib">2015</ref>: 142; Mac an Leagha Ruaidh's contribution seems to have
+								predated theirs. His statement that he is working for Níall Óg would suggests a similar period for his activity.</p>
 						</origin>
 						<provenance>
-							<p/>
+							<p>As noted above, large swathes of the manuscript may well have been
+								written in Ireland, but extensive work on it evidently also took
+								place in Islay.</p>
 						</provenance>
 						<acquisition>
-							<p/>
+							<p>The manuscript was purchased in 1736 by the Advocates Library from
+								Robert Freebairn. It may also have been owned by Rev. John Beaton
+								(Black <ref target="Black2011" type="bib">2011</ref>).</p>
 						</acquisition>
 					</history>
 				</msDesc>
@@ -331,6 +176,9 @@
 		<revisionDesc>
 			<change when="2018-08-02" who="EPT">Created file and added MS17.1 as example in user
 				documentation.</change>
+			<change when="2018-10-11" who="EPT">Finished transcription introduction of <hi
+					rend="italics">Definitions 2</hi> and added partial introduction to
+				transcription file.</change>
 		</revisionDesc>
 	</teiHeader>
 	<text>
@@ -772,9 +620,10 @@
 						<w lemma="día" lemmaRef="http://www.dil.ie/15847" ana="noun">dia</w>
 						<space type="scribal"/>
 						<w lemma="is" lemmaRef="http://www.dil.ie/29104" ana="verb">is</w>
-						<w lemma="cruthaigtheóir" lemmaRef="http://www.dil.ie/13282" ana="noun"><abbr
-								cert="high">c<g ref="g16">ru</g></abbr>t<abbr cert="medium">h<g
-									ref="g3">aighe</g></abbr><lb n="10" xml:id="MS17.26r.10"/>oir</w>
+						<w lemma="cruthaigtheóir" lemmaRef="http://www.dil.ie/13282" ana="noun"
+								><abbr cert="high">c<g ref="g16">ru</g></abbr>t<abbr cert="medium"
+									>h<g ref="g3">aighe</g></abbr><lb n="10" xml:id="MS17.26r.10"
+							/>oir</w>
 						<space type="scribal"/>
 						<w lemma="do" lemmaRef="http://www.dil.ie/17096" ana="prep, pron">duin</w>
 						<space type="scribal"/>
@@ -918,9 +767,7 @@
 						<w lemma="so" lemmaRef="http://www.dil.ie/38191" ana="dpron">so</w>
 						<space type="scribal"/>
 						<w lemma="ó" lemmaRef="http://www.dil.ie/33364" ana="prep, art">on</w>
-						<name type="personal">
-							<w ana="noun">estrol<abbr cert="medium">i<g ref="g5">n</g></abbr></w>
-						</name>
+						<w lemma="astrolaic" lemmaRef="http://www.dil.ie/4541" ana="noun">estrol<abbr cert="medium">i<g ref="g3">ch</g></abbr></w>
 						<space type="scribal"/>
 						<w lemma="ar" lemmaRef="http://www.dil.ie/3902" ana="prep"><abbr cert="high"
 									><g ref="g8">ar</g></abbr></w>
@@ -2138,7 +1985,7 @@
 						<w lemma="in" lemmaRef="http://www.dil.ie/28194" ana="art"><abbr cert="high"
 									>i<g ref="g5">n</g></abbr></w>
 						<w lemma="dúil" lemmaRef="http://www.dil.ie/19089" ana="noun">dui<add
-								type="insertion" place="above" resp="Hand24">l</add></w>
+								type="insertion" place="above" resp="Hand25">l</add></w>
 					</l>
 					<l xml:id="MS17.3.6b"><lb n="3" xml:id="MS17.28v.3"/>
 						<w xml:lang="la">Eli<abbr cert="high">m<g ref="g3">en</g></abbr>t<abbr
@@ -2227,7 +2074,7 @@
 						<w lemma="in" lemmaRef="http://www.dil.ie/28194" ana="art"><abbr cert="high"
 									>i<g ref="g5">n</g></abbr></w>
 						<w lemma="dúil" lemmaRef="http://www.dil.ie/19089" ana="noun">dui<add
-								type="insertion" place="above" resp="Hand24">l</add></w>
+								type="insertion" place="above" resp="Hand25">l</add></w>
 					</l>
 					<l xml:id="MS17.3.7b"><lb n="8" xml:id="MS17.28v.8"/>
 						<w xml:lang="la">Ele<abbr cert="high">m<g ref="g3">en</g></abbr>t<abbr
@@ -2335,7 +2182,7 @@
 						<w lemma="in" lemmaRef="http://www.dil.ie/28194" ana="art"><abbr cert="high"
 									>i<g ref="g5">n</g></abbr></w>
 						<w lemma="dúil" lemmaRef="http://www.dil.ie/19089" ana="noun">dui<add
-								type="insertion" place="above" resp="Hand24">l</add></w>
+								type="insertion" place="above" resp="Hand25">l</add></w>
 						<space type="scribal"/>
 						<unclear reason="interp_obscure" cert="high" resp="EPT"><w lemma="is"
 								lemmaRef="http://www.dil.ie/29104" ana="verb">is</w>
@@ -3357,7 +3204,7 @@
 						<w lemma="cech" lemmaRef="http://www.dil.ie/7528" ana="adj"><abbr
 								cert="high">g<g ref="g12">ach</g></abbr></w>
 						<w lemma="rét" lemmaRef="http://www.dil.ie/35158" ana="noun">r<abbr
-								cert="high"><g ref="l11">ao</g></abbr>d</w>
+								cert="high"><g ref="l5">ao</g></abbr>d</w>
 						<lb n="7" xml:id="MS17.31r.7"/>
 						<w lemma="ocus" lemmaRef="http://www.dil.ie/33484" ana="conj"><abbr
 								cert="high"><g ref="g2">agus</g></abbr></w>
@@ -3370,7 +3217,7 @@
 						<w lemma="cech" lemmaRef="http://www.dil.ie/7528" ana="adj"><abbr
 								cert="high">g<g ref="g12">ach</g></abbr></w>
 						<w lemma="rét" lemmaRef="http://www.dil.ie/35158" ana="noun">r<abbr
-								cert="high"><g ref="l11">ao</g></abbr>d</w>
+								cert="high"><g ref="l5">ao</g></abbr>d</w>
 						<space type="scribal"/>
 						<w lemma="fo" lemmaRef="http://www.dil.ie/22333" ana="prep, art">f<abbr
 								cert="high">o<g ref="g5">n</g></abbr></w>
@@ -4805,7 +4652,7 @@
 						<w xml:lang="la"><abbr cert="high">i<g ref="g5">n</g></abbr>diuisibi<abbr
 								cert="high">l<g ref="g3">is</g></abbr></w>
 					</l>
-					<l xml:id="MS17.3.35b">
+					<l xml:id="MS17.3.35b"><lb n="8" xml:id="MS17.34v.8"/>
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w>
 						<w ana="verb, pron"><w lemma="is" lemmaRef="http://www.dil.ie/29104"
 								ana="verb">IS</w>
@@ -4829,7 +4676,7 @@
 								cert="high"><g ref="l5">ao</g><g ref="g5">n</g></abbr>da</w>
 						<w lemma="in" lemmaRef="http://www.dil.ie/28194" ana="art"><abbr cert="high"
 									>i<g ref="g5">n</g></abbr></w>
-						<lb n="8" xml:id="MS17.34v.8"/>
+						<lb n="9" xml:id="MS17.34v.9"/>
 						<w lemma="ainimm" lemmaRef="http://www.dil.ie/1402" ana="noun">a<abbr
 								cert="high">n<g ref="g1">m</g></abbr>a</w>
 						<w lemma="dóenda" lemmaRef="http://www.dil.ie/17561" ana="adj"><abbr
@@ -4852,8 +4699,8 @@
 						<w lemma="immar" lemmaRef="http://www.dil.ie/27721" ana="conj"><abbr
 								cert="high">m<g ref="g3">ar</g></abbr></w>
 						<w lemma="a" lemmaRef="http://www.dil.ie/5" ana="pron">a</w>
-						<w lemma="rannaid" lemmaRef="http://www.dil.ie/34809" ana="verb">ro<lb n="9"
-								xml:id="MS17.34v.9"/><abbr cert="high">i<g ref="g14"
+						<w lemma="rannaid" lemmaRef="http://www.dil.ie/34809" ana="verb">ro<lb n="10"
+								xml:id="MS17.34v.10"/><abbr cert="high">i<g ref="g14"
 								>nn</g></abbr><abbr cert="high">t<g ref="g21">er</g></abbr></w>
 						<space type="scribal"/>
 						<w lemma="in" lemmaRef="http://www.dil.ie/28194" ana="art"><abbr cert="high"
@@ -4875,7 +4722,7 @@
 									>i<g ref="g5">n</g></abbr></w>
 						<w lemma="ainimm" lemmaRef="http://www.dil.ie/1402" ana="noun">tan<abbr
 								cert="high">u<g ref="g1">m</g></abbr></w>
-						<lb n="10" xml:id="MS17.34v.10"/>
+						<lb n="11" xml:id="MS17.34v.11"/>
 						<w lemma="do" lemmaRef="http://www.dil.ie/17096" ana="prep">do</w>
 						<w lemma="do, rannaid"
 							lemmaRef="http://www.dil.ie/17098, http://www.dil.ie/34809"
@@ -4912,7 +4759,7 @@
 						<w xml:lang="la"><abbr cert="high">a<g ref="g3">n</g>i<g ref="g3"
 								>m</g></abbr>e</w>
 						<space type="scribal"/>
-						<w xml:lang="la">ra<lb n="11" xml:id="MS17.34v.11"/>c<abbr cert="high">o<g
+						<w xml:lang="la">ra<lb n="12" xml:id="MS17.34v.12"/>c<abbr cert="high">o<g
 									ref="g5">n</g></abbr>nalis</w>
 						<space type="scribal"/>
 					</l>
@@ -4932,7 +4779,7 @@
 								cert="high">s<g ref="g3">al</g></abbr></w>
 						<space type="scribal"/>
 						<w lemma="díles" lemmaRef="http://www.dil.ie/16403" ana="adj">dilis</w>
-						<lb n="12" xml:id="MS17.34v.12"/>
+						<lb n="13" xml:id="MS17.34v.13"/>
 						<w lemma="in" lemmaRef="http://www.dil.ie/28194" ana="art"><abbr cert="high"
 									>i<g ref="g5">n</g></abbr></w>
 						<w lemma="ainimm" lemmaRef="http://www.dil.ie/1402" ana="noun">a<supplied
@@ -4972,8 +4819,8 @@
 						<w xml:lang="la"><abbr cert="high">i<g ref="g5">n</g></abbr>perfecta</w>
 						<pc>.</pc>
 						<w xml:lang="la"><abbr cert="high">p<g ref="g36">er</g></abbr><abbr
-								cert="high">f<g ref="g12">ec</g></abbr>tib<lb n="13"
-								xml:id="MS17.34v.13"/>ilis</w>
+								cert="high">f<g ref="g12">ec</g></abbr>tib<lb n="14"
+								xml:id="MS17.34v.14"/>ilis</w>
 						<space type="scribal"/>
 						<w xml:lang="la">uero</w>
 						<space type="scribal"/>
@@ -4991,7 +4838,7 @@
 							ana="part, verb"><w lemma="do" lemmaRef="http://www.dil.ie/17098"
 								ana="part">do</w><w lemma="cruthaigid"
 								lemmaRef="http://www.dil.ie/13279" ana="verb"><abbr cert="high">c<g
-										ref="g16">ru</g></abbr><lb n="14" xml:id="MS17.34v.14"
+										ref="g16">ru</g></abbr><lb n="15" xml:id="MS17.34v.15"
 									/>t<abbr cert="high">h<g ref="g3">aig</g></abbr>ed</w></w>
 						<space type="scribal"/>
 						<w lemma="in" lemmaRef="http://www.dil.ie/28194" ana="art"><abbr cert="high"
@@ -5014,7 +4861,7 @@
 						<space type="scribal"/>
 						<w lemma="ré" lemmaRef="http://www.dil.ie/34869" ana="prep">ria</w>
 						<w lemma="gabál" lemmaRef="http://www.dil.ie/25035" ana="vnoun">g<abbr
-								cert="high"><g ref="g3"/></abbr><lb n="15" xml:id="MS17.34v.15"
+								cert="high"><g ref="g3"/></abbr><lb n="16" xml:id="MS17.34v.16"
 								/>a<abbr cert="high">b<g ref="g3">ail</g></abbr></w>
 						<space type="scribal"/>
 						<w lemma="ecnae" lemmaRef="http://www.dil.ie/19605" ana="noun"><abbr
@@ -5034,7 +4881,7 @@
 					</l>
 				</lg>
 				<lg n="38" type="prosediv" xml:id="MS17.3.38">
-					<l xml:id="MS17.3.38a"><lb n="16" xml:id="MS17.34v.16"/>
+					<l xml:id="MS17.3.38a"><lb n="17" xml:id="MS17.34v.17"/>
 						<w lemma="immar" lemmaRef="http://www.dil.ie/27721" ana="conj">mar</w>
 						<w lemma="as-beir" lemmaRef="http://www.dil.ie/4383" ana="verb">a<abbr
 								cert="high">d<g ref="g3">eir</g></abbr></w>
@@ -5053,7 +4900,7 @@
 						<space type="scribal"/>
 						<w xml:lang="la">tabula</w>
 						<w xml:lang="la">rasa</w>
-						<lb n="15" sameAs="MS17.34v.15"/>
+						<lb n="16" sameAs="MS17.34v.16"/>
 						<pc>.\.</pc>
 						<w xml:lang="la"><abbr cert="high">i<g ref="g5">n</g></abbr></w>
 						<w xml:lang="la">qua</w>
@@ -5234,7 +5081,7 @@
 						<space type="scribal"/>
 						<w xml:lang="la"><abbr cert="high">u<g ref="g15">ero</g></abbr></w>
 						<w xml:lang="la">ul<lb n="9" sameAs="MS17.35r.9"/>t<abbr cert="high">i<g
-							ref="g1">m</g></abbr><space type="scribal"/>a</w>
+									ref="g1">m</g></abbr><space type="scribal"/>a</w>
 						<w xml:lang="la">e<abbr cert="high">i<g ref="g7">us</g></abbr>d<abbr
 								cert="high">e<g ref="g1">m</g></abbr></w>
 						<space type="scribal"/>
@@ -5382,7 +5229,8 @@
 						<w xml:lang="la">h<abbr cert="high">o<g ref="g3">mo</g></abbr></w>
 						<add type="insertion" place="inline" resp="Hand25"><w xml:lang="la"><abbr
 									cert="high"><g ref="g2">et</g></abbr></w></add>
-						<w xml:lang="la"><abbr cert="high">a<g ref="g3">n</g>i<g ref="g3">m</g></abbr>al</w>
+						<w xml:lang="la"><abbr cert="high">a<g ref="g3">n</g>i<g ref="g3"
+								>m</g></abbr>al</w>
 						<space type="scribal"/>
 						<w xml:lang="la">h<abbr cert="high">o<g ref="g5">n</g></abbr><lb n="1"
 								sameAs="MS17.35v.1"/><pc>.\.</pc>ora<abbr cert="high">n<g ref="g5"
@@ -5738,7 +5586,7 @@
 								cert="high"><g ref="g2">agus</g></abbr></w>
 						<w lemma="ní" lemmaRef="http://www.dil.ie/33147" ana="adv">ni</w>
 						<w lemma="maelaid" lemmaRef="http://www.dil.ie/31246" ana="verb"><abbr
-								cert="high"><g ref="g1">m</g></abbr><abbr cert="high"><g ref="l11"
+								cert="high"><g ref="g1">m</g></abbr><abbr cert="high"><g ref="l5"
 									>ao</g></abbr>l<lb n="12" xml:id="MS17.36r.12"/>a<abbr
 								cert="high">n<g ref="g5">n</g></abbr></w>
 						<space type="scribal"/>
@@ -5818,7 +5666,7 @@
 										cert="high"><g ref="g3">u</g>r</abbr><abbr cert="high"><g
 											ref="g10">acht</g></abbr>ur<abbr cert="high"><g ref="l3"
 											>ac</g><g ref="g4">h</g></abbr>ȧ</w></sic>
-							<corr><w lemma="corpurdachta" lemmaRef="http://www.dil.ie/12512"
+							<corr resp="EPT"><w lemma="corpurdachta" lemmaRef="http://www.dil.ie/12512"
 									ana="noun"><abbr cert="high">c<g ref="g3">orp</g></abbr><abbr
 										cert="high"><g ref="g3">u</g>r</abbr><abbr cert="high"><g
 											ref="g10">acht</g></abbr>a</w></corr>
@@ -6009,7 +5857,7 @@
 						<space type="scribal"/>
 						<w lemma="a" lemmaRef="http://www.dil.ie/3" ana="poss">a</w>
 						<w lemma="saethar" lemmaRef="http://www.dil.ie/35915" ana="noun"><abbr
-								cert="high">s<g ref="g4">h</g></abbr><abbr cert="high"><g ref="l11"
+								cert="high">s<g ref="g4">h</g></abbr><abbr cert="high"><g ref="l5"
 									>ao</g></abbr><abbr cert="high">t<g ref="g4">h</g></abbr><abbr
 								cert="high"><g ref="g11">air</g></abbr></w>
 						<space type="scribal"/>
