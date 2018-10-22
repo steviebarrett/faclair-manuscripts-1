@@ -20,6 +20,7 @@ $(function() {
         var parts = formId.split('__');
         var s = parts[1];                           //the section type (e.g. div or lb)
         var sid = parts[2];                         //the section ID
+        updateComments(docid, s, sid);              //update the comments list to the current section
         var escapedSid = sid.replace(/\./g, '\\.');
         $('a[data-s='+s+'][data-n='+escapedSid+'][class="viewComment"]').show();   //show the viewComment link
         var user = $(this).siblings('select').val();
@@ -89,25 +90,7 @@ $(function() {
         var docid = $('html').attr('data-docid');   //the MS ID
         var s = $(this).attr('data-s');             //the section type (e.g. div/lb)
         var sid = $(this).attr('data-n');           //the section ID
-        var html = '<ul class="commentsList">';
-        $.getJSON('/ajax/manuscripts.php?action=getComment&docid='+docid+'&s='+s+'&sid='+sid, function(data) {
-            $.each(data, function(k, v) {
-                $.each(v, function (key, val) {
-                    var displayClass = "";
-                    if (val.deleted == 1) {
-                        displayClass = "greyedOut"; //fade deleted comments
-                    }
-                    html += '<li class="'+ displayClass +'">' + val.comment + ' (' + val.user + ') - ';
-                    html += '<span class="greyedOut">' + val.last_updated + '</span>';
-                    if (val.deleted == 0) {     //show the delete link
-                        html += ' <a id="cid__' + val.id + '" class="deleteComment" href="#">X</a>';
-                    }
-                    html += '</li>';
-                });
-            });
-            html += '</ul>';
-            $('#right-panel').html(html);
-        });
+        updateComments(docid, s, sid);
     });
 
     /*
@@ -129,3 +112,28 @@ $(function() {
         });
     });
 });
+
+/*
+    Retrieve the comments from the database and update the HTML in the right-panel
+ */
+function updateComments(docid, s, sid) {
+    var html = '<ul class="commentsList">';
+    $.getJSON('/ajax/manuscripts.php?action=getComment&docid='+docid+'&s='+s+'&sid='+sid, function(data) {
+        $.each(data, function(k, v) {
+            $.each(v, function (key, val) {
+                var displayClass = "";
+                if (val.deleted == 1) {
+                    displayClass = "greyedOut"; //fade deleted comments
+                }
+                html += '<li class="'+ displayClass +'">' + val.comment + ' (' + val.user + ') - ';
+                html += '<span class="greyedOut">' + val.last_updated + '</span>';
+                if (val.deleted == 0) {     //show the delete link
+                    html += ' <a id="cid__' + val.id + '" class="deleteComment" href="#">X</a>';
+                }
+                html += '</li>';
+            });
+        });
+        html += '</ul>';
+        $('#right-panel').html(html);
+    });
+}
