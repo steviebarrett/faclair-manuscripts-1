@@ -2,6 +2,22 @@
 $(function() {
 
     /*
+            !!! TEST CODE - to be deleted !!!
+     */
+        $('.glyph').each(function() {
+           if ($(this).attr('data-glyphref').charAt(0) == 'l') {
+               $(this).css('color', 'green');
+               console.log($(this).attr('data-glyphref'));
+           }
+        });
+
+    /*
+            !!!
+     */
+
+
+
+    /*
         Show/hide comment form
      */
     $('.addComment').on('click', function () {
