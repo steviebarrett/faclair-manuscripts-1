@@ -33,7 +33,7 @@ $(function() {
             // html += ' <a id="cid__' + data.id + '" class="deleteComment" href="#">X</a>';
             // html += '</li>';
             // $('.commentsList li:first').before(html);
-            $('a[data-s='+s+'][data-n='+escapedSid+']').removeClass('greyedOut');
+
             if (data.saved == true) {
                 feedbackHtml = '<strong>Your comment has been saved</strong>';
             } else { //there was an error saving the comment
@@ -41,6 +41,7 @@ $(function() {
             }
         })
             .done(function () {
+                $('a[data-s='+s+'][data-n='+escapedSid+']').removeClass('greyedOut');   //show the viewComment link
                 updateComments(docid, s, sid);              //update the comments list to the current section
             });
         //reset the form elements
