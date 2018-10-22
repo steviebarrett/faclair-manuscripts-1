@@ -33,7 +33,7 @@ $(function() {
             // html += ' <a id="cid__' + data.id + '" class="deleteComment" href="#">X</a>';
             // html += '</li>';
             // $('.commentsList li:first').before(html);
-            // $('a[data-s='+s+'][data-n='+escapedSid+']').removeClass('greyedOut');
+            $('a[data-s='+s+'][data-n='+escapedSid+']').removeClass('greyedOut');
             if (data.saved == true) {
                 feedbackHtml = '<strong>Your comment has been saved</strong>';
             } else { //there was an error saving the comment
