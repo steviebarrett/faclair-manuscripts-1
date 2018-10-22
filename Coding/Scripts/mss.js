@@ -129,7 +129,6 @@ $(function() {
   $('.glyph').each(function() {
       if ($(this).attr('data-glyphref').charAt(0) == 'l') {
           $(this).css('font-style', 'normal');
-          console.log($(this).attr('data-glyphref'));
       }
   });
 
