@@ -132,4 +132,14 @@ $(function() {
       }
   });
 
+  /*
+    Restyle additions that are placed below in subscript
+    Added by SB
+   */
+  $('.addition').each(function() {
+      if ($(this).attr('data-place') == 'below') {
+        $(this).css('vertical-align', 'sub');
+      }
+  });
+
 });
