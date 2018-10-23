@@ -147,7 +147,7 @@ $(function() {
     Added by Sb
    */
   $('.marginalNoteLink').on('click', function() {
-    var id = $(this).attr('data-id');
+    var id = $(this).attr('data-id').replace(/\./g, '\\.');
     $('#'+id).toggle();
   });
 
