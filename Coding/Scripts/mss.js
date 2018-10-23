@@ -35,9 +35,13 @@ $(function() {
   function makeDescription(span, rec) {
     html = '<span style="color:red;">' + $(span).text() + '</span><ul>';
 
+    /* Added by SB to handle compound words - to be revised by MM */
+      console.log($(span).attr('data-compound'));
     if ($(span).attr('data-compound')=='1') {
       html = html + '<li>is a compound word</li>';
     }
+    /* /// */
+
     if ($(span).hasClass('name')) {
       html = html + '<li>is the name of a ';
       if ($(span).attr('data-nametype')=='personal') {
