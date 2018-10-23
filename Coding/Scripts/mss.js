@@ -34,6 +34,10 @@ $(function() {
 
   function makeDescription(span, rec) {
     html = '<span style="color:red;">' + $(span).text() + '</span><ul>';
+
+    if ($(span).attr('data-compound')=='1') {
+      html = html + '<li>is a compound word</li>';
+    }
     if ($(span).hasClass('name')) {
       html = html + '<li>is the name of a ';
       if ($(span).attr('data-nametype')=='personal') {

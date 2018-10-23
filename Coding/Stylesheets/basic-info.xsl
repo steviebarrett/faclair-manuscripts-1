@@ -299,6 +299,11 @@
       <xsl:attribute name="id">
         <xsl:value-of select="generate-id()"/>
       </xsl:attribute>
+      <xsl:if test="count(child::tei:w) != 0">  <!-- a compound word - added by SB - to be revised by MM -->
+        <xsl:attribute name="data-compound">
+          <xsl:value-of select="1"/>
+        </xsl:attribute>
+      </xsl:if>
       <xsl:if test="count(child::tei:w | child::tei:name) = 0"> <!-- a syntactically simple word -->
         <xsl:attribute name="data-headword">
           <xsl:value-of select="@lemma"/>
