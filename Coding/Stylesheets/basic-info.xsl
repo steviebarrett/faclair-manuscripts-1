@@ -365,12 +365,11 @@
     </span>
   </xsl:template>
 
-  <!-- Removed by SB as per requirement that <supplied> not to appear in diplomatic transcription -->
-  <!--xsl:template mode="diplomatic" match="tei:supplied">
+  <xsl:template mode="diplomatic" match="tei:supplied">
     <span class="supplied">
       <xsl:apply-templates mode="diplomatic"/>
     </span>
-  </xsl:template-->
+  </xsl:template>
   
   <xsl:template mode="diplomatic" match="tei:choice">  <!-- this needs work cf. lines 1249-53 of BoD -->
     <xsl:apply-templates mode="diplomatic" select="tei:corr"/>
