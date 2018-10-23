@@ -377,7 +377,7 @@
   </xsl:template>
   
   <xsl:template mode="diplomatic" match="tei:choice">  <!-- this needs work cf. lines 1249-53 of BoD -->
-    <xsl:apply-templates mode="diplomatic" select="tei:corr"/>
+    <xsl:apply-templates mode="diplomatic" select="tei:sic"/>
   </xsl:template>
 
   <!-- SEMI-DIPLOMATIC -->
