@@ -142,4 +142,14 @@ $(function() {
       }
   });
 
+  /*
+    Show/hide marginal notes
+    Added by Sb
+   */
+  $('.marginalNoteLink').on('click', function() {
+    var id = $(this).attr('data-id');
+    $('#'+id).toggle();
+  });
+
+
 });

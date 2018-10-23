@@ -180,11 +180,10 @@
   </xsl:template>
 
   <!-- Marginal notes - Added by SB-->
-  <xsl:template match="tei:seg" mode="diplomatic">
-    <div style="color:gray; margin-top: 20px">
-      <xsl:text>-------------------------------</xsl:text>
+  <xsl:template match="tei:seg[@type='margNote']" mode="diplomatic">
+    <a href="#" class="marginaLNoteLink" data-id="{@xml:id}">m</a>
+    <div class="marginalNote" id="{@xml:id}">
       <xsl:apply-templates mode="diplomatic"/>
-      <xsl:text>-------------------------------</xsl:text>
     </div>
   </xsl:template>
 
