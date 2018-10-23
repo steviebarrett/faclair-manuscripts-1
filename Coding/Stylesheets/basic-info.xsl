@@ -179,6 +179,15 @@
     </div>
   </xsl:template>
 
+  <!-- Marginal notes - Added by SB-->
+  <xsl:template match="tei:seg" mode="diplomatic">
+    <div style="color:gray; margin-top: 20px">
+      <xsl:text>-------------------------------</xsl:text>
+      <xsl:apply-templates mode="diplomatic"/>
+      <xsl:text>-------------------------------</xsl:text>
+    </div>
+  </xsl:template>
+
   <xsl:template mode="diplomatic" match="tei:pb">
     <div style="color: gray; font-size: small; margin-top: 20px;">
       <xsl:text>[start of page </xsl:text>
