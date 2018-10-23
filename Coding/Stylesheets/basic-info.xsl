@@ -179,6 +179,10 @@
     </div>
   </xsl:template>
 
+
+  <!-- ignore notes in diplomatic edition - Added by SB -->
+  <xsl:template mode="diplomatic" match="tei:note"/>
+
   <!-- Marginal notes - Added by SB-->
   <xsl:template match="tei:seg[@type='margNote']" mode="diplomatic">
     <xsl:text> </xsl:text>
