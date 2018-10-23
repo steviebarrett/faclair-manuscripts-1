@@ -181,7 +181,7 @@
 
   <!-- Marginal notes - Added by SB-->
   <xsl:template match="tei:seg[@type='margNote']" mode="diplomatic">
-    <xml:text> </xml:text>
+    <xsl:text> </xsl:text>
     <a href="#" class="marginaLNoteLink" data-id="{@xml:id}">m</a>
     <div class="marginalNote" id="{@xml:id}">
       <xsl:apply-templates mode="diplomatic"/>
