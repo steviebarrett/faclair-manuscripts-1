@@ -15,7 +15,7 @@ body {
 
 #left-panel {
   float: left;
-  width: 50%;
+  width: 60%;
   height: 100%;
   overflow: auto;
 }
@@ -30,11 +30,28 @@ body {
   display: none;
 }
 
+a {
+  font-family: Helvetica;
+}
+
+a:link, a:visited {
+  color: blue;
+  background-color: white;
+  text-decoration: none;
+}
+
+a:hover {
+  color: white;
+  background-color: blue;
+  text-decoration: none;
+}
+
 .chunk {
   cursor: pointer;
   background-color: inherit;
   text-decoration: inherit;
   color: inherit;
+  font-family: "Times New Roman", serif;
 }
 
 .word, .name {
@@ -43,9 +60,12 @@ body {
   color: inherit;
 }
 
-.glyph {
+.expansion {
   font-style: italic;
-  font-family: "Times New Roman", serif;
+}
+
+.ligature {
+  color: orange;
 }
 
 #data {display: none;}
@@ -54,6 +74,7 @@ body {
   content: attr(data-number) ". ";
   color: gray;
   font-size: x-small;
+  font-family: Helvetica;
 }
 
 .unclear {
@@ -63,16 +84,49 @@ body {
 .deletion {
   text-decoration: line-through;
   text-decoration-style: double;
+  color: purple;
 }
 
 .addition {
-  vertical-align: super;  
-  font-size: small;
-  color: gray;
+  color: blue;
 }
 
-.supplied {
+.above {
+  vertical-align: super;
+}
+
+.below {
+  vertical-align: sub;
+}
+
+.correction {
+  color:red;
+}
+
+.suppliedDiplo {
   display: none;
+}
+
+.suppliedSemi {
+  color: brown;;
+}
+
+.damagedDiplo {
+  color: black;
+  background-color: black;
+}
+
+.damagedSemi {
+  color: brown;
+}
+
+.obscureTextDiplo {
+  color: black;
+  background-color: gray;
+}
+
+.obscureTextSemi {
+  color: brown;
 }
 
 .marginalNoteLink {
@@ -109,6 +163,11 @@ body {
 
 .viewComment {
   display: none;
+  font-size: x-small;
+}
+
+.addComment {
+  font-size: x-small;
 }
 
 #commentsList {

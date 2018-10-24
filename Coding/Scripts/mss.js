@@ -70,10 +70,20 @@ $(function() {
     }
     else {
       html += '<li>is a syntactically simple form</li>';
+    }    
+    if (!rec && $(span).find('.expansion').length>0) {
+      html += '<li>contains the following scribal expansions:<ul id="expansionList">';
+      $(span).find('.expansion').each(function() {
+        var g = eval('glyph_' + $(this).attr('data-glyphref'));
+        txt = '<a href="http://' + g.url + '" target="_new" data-src="' + $(this).attr('id') + '">' + g.name;
+        txt = txt + '</a>: ' + g.description;
+        html = html + '<li class="glyphItem">' + txt +'</li>';
+      });
+      html += '</ul></li>';
     }
-    if (!rec && $(span).find('.glyph').length>0) {
-      html += '<li>contains the following scribal abbreviations:<ul id="abbreviationList">';
-      $(span).find('.glyph').each(function() {
+    if (!rec && $(span).find('.ligature').length>0) {
+      html += '<li>contains the following scribal ligatures:<ul id="ligatureList">';
+      $(span).find('.ligature').each(function() {
         var g = eval('glyph_' + $(this).attr('data-glyphref'));
         txt = '<a href="http://' + g.url + '" target="_new" data-src="' + $(this).attr('id') + '">' + g.name;
         txt = txt + '</a>: ' + g.description;
@@ -114,40 +124,74 @@ $(function() {
       html = html + '[' + 'added by: ' + $(span).parents('.addition').attr('data-hand') + ', place: ' + $(span).parents('.addition').attr('data-place') + ', type: ' + $(span).parents('.addition').attr('data-type') + ']';
       html += '</li>';
     }
-    if (!rec && $(span).find('.supplied').length>0) {
-      html += '<li>contains the following supplied sequences:<ul id="suppliedList">';
-      $(span).find('.supplied').each(function() {
+    if (!rec && $(span).find('.suppliedDiplo').length>0) {
+      html += '<li>contains the following supplied sequences:<ul>';
+      $(span).find('.suppliedDiplo').each(function() {
         html = html + '<li><span style="color: green;">[</span>' + $(this).text() + '<span style="color: green;">]</span> ';
         html += '</li>';
       });
       html += '</ul></li>';
     }
-    html = html + '<li>Location: ' + $(span).prev('.lineBreak').attr('id') + '</li>'; // note working yet
-    
+    if (!rec && $(span).find('.suppliedSemi').length>0) {
+      html += '<li>contains the following supplied sequences:<ul>';
+      $(span).find('.suppliedSemi').each(function() {
+        html = html + '<li><span style="color: green;">[</span>' + $(this).text() + '<span style="color: green;">]</span> ';
+        html += '</li>';
+      });
+      html += '</ul></li>';
+    }
+    if (!rec && $(span).find('.damagedDiplo').length>0) {
+      html += '<li>contains the following damaged sequences:<ul>';
+      $(span).find('.damagedDiplo').each(function() {
+        html = html + '<li><span style="color: green;">[</span>' + $(this).text() + '<span style="color: green;">]</span> ';
+        html += '</li>';
+      });
+      html += '</ul></li>';
+    }
+    if (!rec && $(span).find('.damagedSemi').length>0) {
+      html += '<li>contains the following damaged sequences:<ul>';
+      $(span).find('.damagedSemi').each(function() {
+        html = html + '<li><span style="color: green;">[</span>' + $(this).text() + '<span style="color: green;">]</span> ';
+        html += '</li>';
+      });
+      html += '</ul></li>';
+    }
+    if (!rec && $(span).find('.obscureTextDiplo').length>0) { // not working yet
+      html += '<li>contains the following sequences of obscured text:<ul>';
+      $(span).find('.obscureTextDiplo').each(function() {
+        html = html + '<li><span style="color: green;">[</span>' + $(this).text() + '<span style="color: green;">]</span> ';
+        html += '</li>';
+      });
+      html += '</ul></li>';
+    }
+    if (!rec && $(span).hasClass('obscureTextDiplo')) {  // or this
+      html += '<li>contains the following sequences of obscured text:<ul>';
+      html = html + '<li><span style="color: green;">[</span>' + $(span).text() + '<span style="color: green;">]</span> ';
+      html += '</li>';
+      html += '</ul></li>';
+    }
+    if (!rec && $(span).find('.obscureTextSemi').length>0) { // or this
+      html += '<li>contains the following sequences of obscured text:<ul>';
+      $(span).find('.obscureTextSemi').each(function() {
+        html = html + '<li><span style="color: green;">[</span>' + $(this).text() + '<span style="color: green;">]</span> ';
+        html += '</li>';
+      });
+      html += '</ul></li>';
+    }
+    if ($(span).parents('.correction').length>0 && $(span).parents('.correction').attr('data-edited')) {
+      html += '<li>should probably be: ';
+      html += $(span).parents('.correction').attr('data-edited');
+      //html += makeDescription($(span).parents('.correctionDiplo').children('.edited'),false); // disny work
+      html += '</li>';
+    }
+    else if ($(span).parents('.correction').length>0 && $(span).parents('.correction').attr('data-original')) {
+      html += '<li>corrected from: ';
+      html += $(span).parents('.correction').attr('data-original');
+      html += '</li>';
+    }
     html += '</ul>';
     return html;
   }
-
-
-  /*
-    Restyle glyphs that are ligatures in normal font (not italics)
-    Added by SB
-  */
-  $('.glyph').each(function() {
-      if ($(this).attr('data-glyphref').charAt(0) == 'l') {
-          $(this).css('font-style', 'normal');
-      }
-  });
-
-  /*
-    Restyle additions that are placed below in subscript
-    Added by SB
-   */
-  $('.addition').each(function() {
-      if ($(this).attr('data-place') == 'below') {
-        $(this).css('vertical-align', 'sub');
-      }
-  });
 
   /*
     Show/hide marginal notes
