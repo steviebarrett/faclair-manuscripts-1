@@ -190,13 +190,14 @@
   <xsl:template mode="diplomatic" match="tei:lb">
     <span class="lineBreak" data-number="{@n}" id="{concat('line_',@xml:id)}">
       <br/>
+      <a href="#" class="addComment" title="Leave comment on this line" data-s="lb" data-n="{@xml:id}">[+]</a>
+      <div class="commentForm" id="{concat('cf__lb__',@xml:id)}">
+        <xsl:call-template name="commentForm"/>
+      </div>
+      <xsl:text> </xsl:text>
+      <a href="#" class="viewComment greyedOut" title="View comments on this line" data-s="lb" data-n="{@xml:id}">[?]</a>
+      <xsl:text> </xsl:text>
     </span>
-    <a href="#" class="addComment" title="Leave comment on this line" data-s="lb" data-n="{@xml:id}">[+]</a>
-    <div class="commentForm" id="{concat('cf__lb__',@xml:id)}">
-      <xsl:call-template name="commentForm"/>
-    </div>
-    <xsl:text> </xsl:text>
-    <a href="#" class="viewComment greyedOut" title="View comments on this line" data-s="lb" data-n="{@xml:id}">[?]</a>
   </xsl:template>
 
   <xsl:template mode="diplomatic" match="tei:name[not(ancestor::tei:name)]"> <!-- a name which is NOT part of a larger name -->

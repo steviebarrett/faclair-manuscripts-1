@@ -31,9 +31,19 @@ $(function() {
     $(this).css('background-color', 'yellow');
     $('#right-panel').html(makeDescription($(this),false));
   });
+  
+  function clean(str) { // remove form content from headword strings at linebreaks
+    var i = str.indexOf('[+]');
+    if (i != -1) {
+      var j = str.indexOf('[?]');
+      str2 = str.slice(0,i) + str.slice(j+4, str.length);
+      return str2;
+    }
+    else return str;
+  }
 
   function makeDescription(span, rec) {
-    html = '<span style="color:red;">' + $(span).text() + '</span><ul>';
+    html = '<span style="color:red;">' + clean($(span).text()) + '</span><ul>';
     if ($(span).hasClass('name')) {
       html = html + '<li>is the name of a ';
       if ($(span).attr('data-nametype')=='personal') {
