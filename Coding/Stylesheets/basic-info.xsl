@@ -592,5 +592,11 @@
     </span>
   </xsl:template>
   
+  <xsl:template mode="semi-diplomatic" match="tei:pc">
+    <xsl:text> </xsl:text>
+    <xsl:value-of select="."/>
+    <xsl:text> </xsl:text>
+  </xsl:template>
+  
 
 </xsl:stylesheet>

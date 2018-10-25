@@ -34,9 +34,15 @@ $(function() {
   
   function clean(str) { // remove form content from headword strings at linebreaks
     var i = str.indexOf('[+]');
+    var k = str.indexOf(' (');
     if (i != -1) {
       var j = str.indexOf('[?]');
       str2 = str.slice(0,i) + str.slice(j+4, str.length);
+      return str2;
+    }
+    else if (k != -1) {
+      var j = str.indexOf(') ');
+      str2 = str.slice(0,k) + str.slice(j+2, str.length);
       return str2;
     }
     else return str;
