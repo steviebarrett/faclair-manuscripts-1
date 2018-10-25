@@ -205,17 +205,24 @@
         <xsl:value-of select="@type"/>
       </xsl:attribute>
       <xsl:choose>
-        <xsl:when test="count(child::tei:w | child::tei:name) = 1">
-          <xsl:attribute name="data-headword">
-            <xsl:value-of select="tei:w/@lemma"/>
-          </xsl:attribute>
-          <xsl:attribute name="data-pos">
-            <xsl:value-of select="tei:w/@ana"/>
-          </xsl:attribute>
-          <xsl:attribute name="data-edil">
-            <xsl:value-of select="tei:w/@lemmaRef"/>
-          </xsl:attribute>
-          <xsl:apply-templates mode="diplomatic"/>
+        <xsl:when test="count(child::tei:w | child::tei:name) = 1"> <!-- name/w -->
+          <xsl:choose>
+            <xsl:when test="tei:w/tei:w"> <!-- T12, line p.96r line 3 'trenmhoir' name/w/w+ -->
+              <xsl:apply-templates mode="diplomatic" select="tei:w/tei:w"/>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:attribute name="data-headword">
+                <xsl:value-of select="tei:w/@lemma"/>
+              </xsl:attribute>
+              <xsl:attribute name="data-pos">
+                <xsl:value-of select="tei:w/@ana"/>
+              </xsl:attribute>
+              <xsl:attribute name="data-edil">
+                <xsl:value-of select="tei:w/@lemmaRef"/>
+              </xsl:attribute>
+              <xsl:apply-templates mode="diplomatic"/>
+            </xsl:otherwise>
+          </xsl:choose>
         </xsl:when>
         <xsl:otherwise>
           <xsl:apply-templates mode="diplomatic"/>
@@ -265,11 +272,6 @@
 
   <xsl:template mode="diplomatic" match="tei:w"> <!-- a word which IS part of a larger word or name -->
     <span class="word">
-      <xsl:if test="count(child::tei:w) != 0">  <!-- a compound word - added by SB - to be revised by MM -->
-        <xsl:attribute name="data-compound">
-          <xsl:value-of select="1"/>
-        </xsl:attribute>
-      </xsl:if>
       <xsl:if test="count(child::tei:w | child::tei:name) = 0"> <!-- a syntactically simple word -->
         <xsl:attribute name="data-headword">
           <xsl:value-of select="@lemma"/>
@@ -407,21 +409,29 @@
       <xsl:attribute name="data-nametype">
         <xsl:value-of select="@type"/>
       </xsl:attribute>
+      
       <xsl:choose>
-        <xsl:when test="count(child::tei:w | child::tei:name) = 1">
-          <xsl:attribute name="data-headword">
-            <xsl:value-of select="tei:w/@lemma"/>
-          </xsl:attribute>
-          <xsl:attribute name="data-pos">
-            <xsl:value-of select="tei:w/@ana"/>
-          </xsl:attribute>
-          <xsl:attribute name="data-edil">
-            <xsl:value-of select="tei:w/@lemmaRef"/>
-          </xsl:attribute>
-          <xsl:apply-templates mode="semi-diplomatic"/>
+        <xsl:when test="count(child::tei:w | child::tei:name) = 1"> <!-- name/w -->
+          <xsl:choose>
+            <xsl:when test="tei:w/tei:w"> <!-- T12, line p.96r line 3 'trenmhoir' name/w/w+ -->
+              <xsl:apply-templates mode="semi-diplomatic" select="tei:w/tei:w"/>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:attribute name="data-headword">
+                <xsl:value-of select="tei:w/@lemma"/>
+              </xsl:attribute>
+              <xsl:attribute name="data-pos">
+                <xsl:value-of select="tei:w/@ana"/>
+              </xsl:attribute>
+              <xsl:attribute name="data-edil">
+                <xsl:value-of select="tei:w/@lemmaRef"/>
+              </xsl:attribute>
+              <xsl:apply-templates mode="semidiplomatic"/>
+            </xsl:otherwise>
+          </xsl:choose>
         </xsl:when>
         <xsl:otherwise>
-          <xsl:apply-templates mode="semi-diplomatic"/>
+          <xsl:apply-templates mode="semidiplomatic"/>
         </xsl:otherwise>
       </xsl:choose>
     </span>
