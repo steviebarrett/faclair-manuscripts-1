@@ -551,7 +551,7 @@
 	</xsl:template>
 
 	<xsl:template mode="dip" match="tei:seg[@type = 'cfe']">
-		<xsl:apply-templates mode="dip"/>
+		<span class="cfe"><xsl:apply-templates mode="dip"/></span>
 	</xsl:template>
 
 	<xsl:template mode="dip" match="tei:seg[@type = 'margNote']">
