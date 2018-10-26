@@ -732,6 +732,12 @@ function wordSearch(id) {
 		// for (b = 0; b < contextBrsCount; b++) {
 		//	contextBrs[b].parentNode.removeChild(contextBrs[b].parentNode.contextBrs[b]);
 		// }
+		var cfeSpan = opened.document.querySelectorAll("td[class=form] > a > span[class=cfe]");
+		var cfeSpanCount = cfeSpan.length;
+		var cfe;
+		for (cfe = 0; cfe < cfeSpanCount; cfe++) {
+		cfeSpan[cfe].parentNode.removeChild(cfeSpan[cfe]);
+		}
 		cell3.style.fontSize = "smaller";
 		var contextChildren = row.childNodes[2].childNodes;
 		var contextChildrenCount = row.childNodes[2].childNodes.length;
