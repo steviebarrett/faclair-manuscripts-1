@@ -534,7 +534,7 @@
 		</xsl:variable>
 		<xsl:choose>
 			<xsl:when test="ancestor::tei:w[not(descendant::tei:w)]">
-				<span msLine="{$lineID}_dip">
+				<span class="space" msLine="{$lineID}_dip">
 					<xsl:text>&#160;</xsl:text>
 				</span>
 			</xsl:when>
@@ -1526,7 +1526,7 @@
 		</xsl:variable>
 		<xsl:choose>
 			<xsl:when test="ancestor::tei:w[not(descendant::tei:w)]">
-				<xsl:text>&#160;&#160;&#160;&#160;</xsl:text>
+				<span class="space" msLine="{$lineID}_dip">&#160;&#160;&#160;&#160;</span>
 			</xsl:when>
 			<xsl:otherwise>
 				<a id="{generate-id()}_dip" msLine="{$lineID}_dip">

@@ -387,6 +387,12 @@ function addSlip(id) {
 	for (cfe = 0; cfe < cfeSpanCount; cfe++) {
 		cfeSpan[cfe].parentNode.removeChild(cfeSpan[cfe]);
 	}
+	var spaceSpan = opened.document.querySelectorAll("td[class=form] > a > span[class=space]");
+	var spaceSpanCount = spaceSpan.length;
+	var space;
+	for (space = 0; space < spaceSpanCount; space++) {
+		spaceSpan[space].parentNode.removeChild(spaceSpan[space]);
+	}
 	var contextBrs = rcol3.getElementsByTagName("br");
 	var contextBrsCount = contextBrs.length;
 	var b;
@@ -736,7 +742,13 @@ function wordSearch(id) {
 		var cfeSpanCount = cfeSpan.length;
 		var cfe;
 		for (cfe = 0; cfe < cfeSpanCount; cfe++) {
-		cfeSpan[cfe].parentNode.removeChild(cfeSpan[cfe]);
+			cfeSpan[cfe].parentNode.removeChild(cfeSpan[cfe]);
+		}
+		var spaceSpan = opened.document.querySelectorAll("td[class=form] > a > span[class=space]");
+		var spaceSpanCount = spaceSpan.length;
+		var space;
+		for (space = 0; space < spaceSpanCount; space++) {
+			spaceSpan[space].parentNode.removeChild(spaceSpan[space]);
 		}
 		cell3.style.fontSize = "smaller";
 		var contextChildren = row.childNodes[2].childNodes;
