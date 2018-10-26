@@ -381,6 +381,12 @@ function addSlip(id) {
 		var lbWRefTxt = rcol3.getElementsByClassName("lbRef")[0].innerHTML;
 		rcol3.getElementsByClassName("lbHead")[0].innerHTML = "<sub>" + lbWRefTxt + " " + "</sub>";
 	}
+	var cfeSpan = opened.document.querySelectorAll("td[class=form] > a > span[class=cfe]");
+	var cfeSpanCount = cfeSpan.length;
+	var cfe;
+	for (cfe = 0; cfe < cfeSpanCount; cfe++) {
+		cfeSpan[cfe].parentNode.removeChild(cfeSpan[cfe]);
+	}
 	var contextBrs = rcol3.getElementsByTagName("br");
 	var contextBrsCount = contextBrs.length;
 	var b;
