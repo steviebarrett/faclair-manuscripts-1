@@ -895,13 +895,13 @@
 				<w type="data" lemma="taeb" lemmaRef="http://www.dil.ie/39454" ana="noun"
 					lemmaDW="taobh"
 					lemmaRefDW="http://www.faclair.com/ViewDictionaryEntry.aspx?ID=CE82C5D10A2F909C6E12101FEC23A822"/>
-				<gen xml:lang="sga">o</gen>
-				<gen xml:lang="mga" n="1">ā</gen>
-				<gen xml:lang="mga" n="2">u</gen>
+				<iType xml:lang="sga">o</iType>
+				<iType xml:lang="mga" n="1">ā</iType>
+				<iType xml:lang="mga" n="2">u</iType>
 				<gen xml:lang="gd">f</gen>
-				<iType xml:lang="sga">m</iType>
-				<iType xml:lang="mga" n="1">f</iType>
-				<iType xml:lang="mga" n="2">m</iType>
+				<gen xml:lang="sga">m</gen>
+				<gen xml:lang="mga" n="1">f</gen>
+				<gen xml:lang="mga" n="2">m</gen>
 			</entryFree>
 			<entryFree corresp="http://www.dil.ie/33145" n="28">
 				<w type="data" lemma="ní" lemmaRef="http://www.dil.ie/33145" ana="pron" lemmaDW="nì"
@@ -2179,8 +2179,8 @@
 				<w type="data" lemma="son" lemmaRef="http://www.dil.ie/38456" ana="noun"
 					lemmaDW="sòn"
 					lemmaRefDW="http://www.faclair.com/ViewDictionaryEntry.aspx?ID=4F809816EACABE5E6FD21E64E6058849"/>
-				<gen>o</gen>
-				<iType>m</iType>
+				<gen>m</gen>
+				<iType>o</iType>
 			</entryFree>
 			<entryFree corresp="http://www.dil.ie/28510" n="12">
 				<w type="data" lemma="indossa" lemmaRef="http://www.dil.ie/28510" ana="noun"
@@ -2779,11 +2779,11 @@
 				<w type="data" lemma="scíath" lemmaRef="http://www.dil.ie/36454" ana="noun"
 					lemmaDW="sgiath"
 					lemmaRefDW="http://www.faclair.com/ViewDictionaryEntry.aspx?ID=8621ED00C019B7DB8B626D59CCA5B524"/>
-				<gen xml:lang="sga">o</gen>
+				<gen xml:lang="sga">m</gen>
 				<gen xml:lang="mga" n="2">f</gen>
 				<gen xml:lang="mga" n="1">m</gen>
 				<iType xml:lang="mga" n="1">o</iType>
-				<iType xml:lang="sga">m</iType>
+				<iType xml:lang="sga">o</iType>
 				<iType xml:lang="mga" n="2">ā</iType>
 			</entryFree>
 			<entryFree corresp="http://www.dil.ie/18059" n="10">
@@ -4561,8 +4561,8 @@
 				<w type="data" lemma="bárc" lemmaRef="http://www.dil.ie/5400" ana="noun"
 					lemmaDW="bàrc"
 					lemmaRefDW="http://www.faclair.com/ViewDictionaryEntry.aspx?ID=89D85F6710393EE39CE283C6B69767B5"/>
-				<gen>ā</gen>
-				<iType>f</iType>
+				<gen>f</gen>
+				<iType>ā</iType>
 			</entryFree>
 			<entryFree corresp="http://www.dil.ie/30536" n="6">
 				<w type="data" lemma="loinges" lemmaRef="http://www.dil.ie/30536" ana="noun"
@@ -6248,10 +6248,10 @@
 			<entryFree corresp="http://www.dil.ie/25584" n="4">
 				<w type="data" lemma="gell" lemmaRef="http://www.dil.ie/25584" ana="noun" lemmaDW="geall"
 					lemmaRefDW="http://www.faclair.com/ViewDictionaryEntry.aspx?ID=DA260645E774515C046C4FC80164E662"/>
-				<gen xml:lang="sga">o</gen>
-				<iType xml:lang="sga">n</iType>
-				<gen xml:lang="mga">o</gen>
-				<iType xml:lang="mga">m</iType>
+				<gen xml:lang="sga">n</gen>
+				<iType xml:lang="sga">o</iType>
+				<gen xml:lang="mga">m</gen>
+				<iType xml:lang="mga">o</iType>
 			</entryFree>
 			<entryFree corresp="http://www.dil.ie/41505" n="4">
 				<w type="data" lemma="tost" lemmaRef="http://www.dil.ie/41505" ana="adj" lemmaDW="tost"
@@ -6616,7 +6616,6 @@
 				<gramGrp><gen>m</gen>
 				<iType>o</iType></gramGrp>
 			</entryFree>
-			<anchor xml:id="dataEntry"/>
 			<entryFree corresp="http://www.dil.ie/22781" n="4">
 				<w type="data" lemma="fo-gní" lemmaRef="http://www.dil.ie/22781" ana="verb"
 					lemmaDW="" lemmaRefDW=""/>
@@ -6962,7 +6961,7 @@
 			<entryFree corresp="http://www.dil.ie/3370" n="4">
 				<w type="data" lemma="anart" lemmaRef="http://www.dil.ie/3370" ana="noun" lemmaDW="anart"
 					lemmaRefDW="http://www.faclair.com/ViewDictionaryEntry.aspx?ID=4D2C868C4123EEF45E7F9F453D276865"/>
-				<gramGrp><gen xml:lang="sga">n</gen><gen xml:lang="mga" n="1">m</gen><gen xml:lang="mga" n="2">f</gen><gen xml:lang="gd">m</gen>
+				<gramGrp ana="noun"><gen xml:lang="sga">n</gen><gen xml:lang="mga" n="1">m</gen><gen xml:lang="mga" n="2">f</gen><gen xml:lang="gd">m</gen>
 				<iType>o</iType></gramGrp>
 			</entryFree>
 			<entryFree corresp="http://www.dil.ie/18012" n="4">
@@ -6974,9 +6973,10 @@
 			<entryFree corresp="http://www.dil.ie/29810" n="4">
 				<w type="data" lemma="léir" lemmaRef="http://www.dil.ie/29810" ana="adj" lemmaDW="lèir"
 					lemmaRefDW="http://www.faclair.com/ViewDictionaryEntry.aspx?ID=22AE68A47EEEF399F36863E8B2D73D0C"/>
-				<gramGrp><gen/>
+				<gramGrp ana="adj"><gen/>
 				<iType>i</iType></gramGrp>
 			</entryFree>
+			<anchor xml:id="dataEntry"/>
 			<entryFree corresp="http://www.dil.ie/25995" n="4">
 				<w type="data" lemma="glas" lemmaRef="http://www.dil.ie/25995" ana="noun" lemmaDW=""
 					lemmaRefDW=""/>
@@ -16156,7 +16156,7 @@
 				<w type="data" lemma="bliadnach" lemmaRef="http://www.dil.ie/6135" ana="adj"
 					lemmaDW="bliadhnach"
 					lemmaRefDW="http://www.faclair.com/ViewDictionaryEntry.aspx?ID=25F131ED28D6484FD36223EA212A9B41"/>
-				<gramGrp><gen xml:lang="sga" n="1">o</gen><gen xml:lang="sga" n="2">ā</gen>
+				<gramGrp><iType xml:lang="sga" n="1">o</iType><iType xml:lang="sga" n="2">ā</iType>
 					<iType/></gramGrp>
 			</entryFree>
 			<entryFree corresp="http://www.dil.ie/18490" n="2">
