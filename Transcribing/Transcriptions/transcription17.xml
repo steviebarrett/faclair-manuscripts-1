@@ -3628,18 +3628,22 @@
 				<lg n="20" type="prosediv" xml:id="MS17.3.20">
 					<l xml:id="MS17.3.20a">
 						<w lemma="ó" lemmaRef="http://www.dil.ie/33364" ana="prep">O</w>
-						<w lemma="do, labraithir"
-							lemmaRef="http://www.dil.ie/17098, http://www.dil.ie/29252"
-							ana="part, verb"><w lemma="do" lemmaRef="http://www.dil.ie/17098"
-								ana="part">do</w><choice>
-								<sic><w lemma="labraithir" lemmaRef="http://www.dil.ie/29252"
+						<choice>
+							<sic><w lemma="do, labraithir"
+									lemmaRef="http://www.dil.ie/17098, http://www.dil.ie/29252"
+									ana="part, verb"><w lemma="do"
+										lemmaRef="http://www.dil.ie/17098" ana="part">do</w><w
+										lemma="labraithir" lemmaRef="http://www.dil.ie/29252"
 										ana="verb">lala<lb n="10" xml:id="MS17.32r.10"/>b<abbr
-											cert="high">r<g ref="g1">um</g></abbr></w></sic>
-								<corr resp="EPT"><w lemma="labraithir"
-										lemmaRef="http://www.dil.ie/29252" ana="verb">la<lb n="10"
-											sameAs="MS17.32r.10"/>b<abbr cert="high">r<g ref="g1"
-												>um</g></abbr></w></corr>
-							</choice></w>
+											cert="high">r<g ref="g1">um</g></abbr></w></w></sic>
+							<corr resp="EPT"><w lemma="do, labraithir"
+									lemmaRef="http://www.dil.ie/17098, http://www.dil.ie/29252"
+									ana="part, verb"><w lemma="do"
+										lemmaRef="http://www.dil.ie/17098" ana="part">do</w><w
+										lemma="labraithir" lemmaRef="http://www.dil.ie/29252"
+										ana="verb">la<lb n="10" sameAs="MS17.32r.10"/>b<abbr
+											cert="high">r<g ref="g1">um</g></abbr></w></w></corr>
+						</choice>
 						<w lemma="ar" lemmaRef="http://www.dil.ie/3902" ana="prep">ar</w>
 						<space type="scribal"/>
 						<w lemma="rét" lemmaRef="http://www.dil.ie/35158" ana="noun">raod</w>
