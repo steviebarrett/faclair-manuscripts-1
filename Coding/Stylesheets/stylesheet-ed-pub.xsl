@@ -2900,6 +2900,15 @@
 					<xsl:when test="@ana = 'pref' and ancestor::tei:w[contains(@ana, 'pref, noun')]">
 						<xsl:text/>
 					</xsl:when>
+					<xsl:when test="@ana = 'pref' and ancestor::tei:w[contains(@ana, 'prep, noun')]">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when test="@ana = 'pref' and ancestor::tei:w[contains(@ana, 'prep, num')]">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when test="@ana = 'pref' and ancestor::tei:w[contains(@ana, 'pref, vnoun')]">
+						<xsl:text/>
+					</xsl:when>
 					<xsl:when test="@ana = 'pron' and ancestor::tei:w[contains(@ana, 'pron, part')]">
 						<xsl:text/>
 					</xsl:when>
@@ -3124,7 +3133,6 @@
 	</xsl:template>
 
 	<xsl:template match="tei:ref">
-		<xsl:param name="gRef" select="@target"/>
 		<xsl:variable name="newID">
 			<xsl:value-of select="generate-id()"/>
 			<xsl:value-of select="count(preceding::*)"/>
@@ -3165,9 +3173,7 @@
 					<seg id="ref{$refPOS}_exp" style="background-color:silver" hidden="hidden">
 						<xsl:text> [</xsl:text>
 						<b>
-							<xsl:call-template name="glyphNote">
-								<xsl:with-param name="gRef"/>
-							</xsl:call-template>
+							<xsl:call-template name="glyphNote"/>
 						</b>
 						<xsl:text>] </xsl:text>
 					</seg>

@@ -381,6 +381,18 @@ function addSlip(id) {
 		var lbWRefTxt = rcol3.getElementsByClassName("lbRef")[0].innerHTML;
 		rcol3.getElementsByClassName("lbHead")[0].innerHTML = "<sub>" + lbWRefTxt + " " + "</sub>";
 	}
+	var cfeSpan = opened.document.querySelectorAll("td[class=form] > a > span[class=cfe]");
+	var cfeSpanCount = cfeSpan.length;
+	var cfe;
+	for (cfe = 0; cfe < cfeSpanCount; cfe++) {
+		cfeSpan[cfe].parentNode.removeChild(cfeSpan[cfe]);
+	}
+	var spaceSpan = opened.document.querySelectorAll("td[class=form] > a > span[class=space]");
+	var spaceSpanCount = spaceSpan.length;
+	var space;
+	for (space = 0; space < spaceSpanCount; space++) {
+		spaceSpan[space].parentNode.removeChild(spaceSpan[space]);
+	}
 	var contextBrs = rcol3.getElementsByTagName("br");
 	var contextBrsCount = contextBrs.length;
 	var b;
@@ -726,6 +738,18 @@ function wordSearch(id) {
 		// for (b = 0; b < contextBrsCount; b++) {
 		//	contextBrs[b].parentNode.removeChild(contextBrs[b].parentNode.contextBrs[b]);
 		// }
+		var cfeSpan = opened.document.querySelectorAll("td[class=form] > a > span[class=cfe]");
+		var cfeSpanCount = cfeSpan.length;
+		var cfe;
+		for (cfe = 0; cfe < cfeSpanCount; cfe++) {
+			cfeSpan[cfe].parentNode.removeChild(cfeSpan[cfe]);
+		}
+		var spaceSpan = opened.document.querySelectorAll("td[class=form] > a > span[class=space]");
+		var spaceSpanCount = spaceSpan.length;
+		var space;
+		for (space = 0; space < spaceSpanCount; space++) {
+			spaceSpan[space].parentNode.removeChild(spaceSpan[space]);
+		}
 		cell3.style.fontSize = "smaller";
 		var contextChildren = row.childNodes[2].childNodes;
 		var contextChildrenCount = row.childNodes[2].childNodes.length;
