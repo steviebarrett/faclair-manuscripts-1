@@ -2840,6 +2840,10 @@
 						test="@ana = 'noun' and ancestor::tei:w[contains(@ana, 'noun, dpron')]">
 						<xsl:text/>
 					</xsl:when>
+					<xsl:when
+						test="@ana = 'art' and ancestor::tei:w[contains(@ana, 'art, dpron')]">
+						<xsl:text/>
+					</xsl:when>
 					<xsl:when test="@ana = 'noun' and ancestor::tei:w[contains(@ana, 'noun, ptcp')]">
 						<xsl:text/>
 					</xsl:when>
