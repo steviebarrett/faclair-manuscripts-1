@@ -449,11 +449,11 @@ function addSlip(id) {
 	var lemDW = el.getAttribute("lemmaDW");
 	var lemURLDW = el.getAttribute("lemmaRefDW");
 	var rcol11 = row.insertCell(10);
-	rcol11.innerHTML = '<a target="' + lemURLDW + '" href="' + lemURLDW + '">' + lemDW + '</a>';
+	rcol11.innerHTML = '<a target="_blank" href="' + lemURLDW + '">' + lemDW + '</a>';
 	var lemSL = el.getAttribute("lemmaSL");
 	var lemURLSL = el.getAttribute("slipRef");
 	var rcol12 = row.insertCell(11);
-	rcol12.innerHTML = '<a target="' + lemURLSL + '" href="' + lemURLSL + '">' + lemSL + '</a>';
+	rcol12.innerHTML = '<a target="_blank" href="' + lemURLSL + '">' + lemSL + '</a>';
 	var rcol13 = row.insertCell(12);
 	rcol13.innerHTML = '<a target="' + lref + '" href="' + lref + '">' + lref + '</a>';
 	var finURIED;
