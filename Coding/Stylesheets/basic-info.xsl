@@ -27,26 +27,18 @@
               <li><a href="#" id="showSemiDiplomatic">semi-diplomatic transcription</a></li>
             </ul>
           </div>
-          <hr/>
-          <hr/>
           <div id="headerInformation">
             <h2>Header information</h2>
             <xsl:apply-templates select="tei:TEI/tei:teiHeader"/>
           </div>
-          <hr/>
-          <hr/>
           <div id="diplomaticTranscription">
             <h2>Diplomatic transcription</h2>
             <xsl:apply-templates select="tei:TEI/tei:text/tei:body" mode="diplomatic"/>
           </div>
-          <hr/>
-          <hr/>
           <div id="semiDiplomaticTranscription">
             <h2>Semi-diplomatic transcription</h2>
             <xsl:apply-templates select="tei:TEI/tei:text/tei:body" mode="semi-diplomatic"/>
           </div>
-          <hr/>
-          <hr/>
         </div>
         <div id="right-panel">
         </div>
@@ -155,18 +147,14 @@
     <div style="color: gray; font-size: small; margin-top: 20px;">
       <xsl:text>[start of text </xsl:text>
       <xsl:value-of select="@n"/>
+      <xsl:text>: </xsl:text>
+      <xsl:value-of select="@type"/>
+      <xsl:text>, </xsl:text>
+      <xsl:value-of select="@resp"/>
       <xsl:text>] </xsl:text>
       <a href="#" class="addComment" title="Leave comment on this text" data-s="div" data-n="{@n}">[+]</a>
       <div class="commentForm" id="cf__div__{@n}">
-        <select>
-          <option value="">-- Select a user --</option>
-          <option value="et">Eystein</option>
-          <option value="mm">Martina</option>
-          <option value="wg">Willie</option>
-        </select>
-        <textarea rows="7" cols="40"></textarea><br/><br/>
-        <button class="saveComment">save</button>
-        <button class="cancelComment">cancel</button>
+        <xsl:call-template name="commentForm"/>
       </div>
       <xsl:text> </xsl:text>
       <a href="#" class="viewComment greyedOut" title="View comments on this text" data-s="div" data-n="{@n}">[?]</a>
@@ -178,6 +166,18 @@
       <xsl:text>]</xsl:text>
     </div>
   </xsl:template>
+  
+  <xsl:template name="commentForm">
+    <select>
+      <option value="">-- Select a user --</option>
+      <option value="et">Eystein</option>
+      <option value="mm">Martina</option>
+      <option value="wg">Willie</option>
+    </select>
+    <textarea rows="7" cols="40"></textarea><br/><br/>
+    <button class="saveComment">save</button>
+    <button class="cancelComment">cancel</button>
+  </xsl:template>
 
   <xsl:template mode="diplomatic" match="tei:pb">
     <div style="color: gray; font-size: small; margin-top: 20px;">
@@ -188,50 +188,42 @@
   </xsl:template>
 
   <xsl:template mode="diplomatic" match="tei:lb">
-    <!-- MM: line breaks inside words? -->
-    <!--
-    <a href="#" class="addComment" title="Leave comment on this line">[+]</a>
-    <a href="#" class="viewComment" title="View comments on this line">[?]</a>
-    -->
     <span class="lineBreak" data-number="{@n}" id="{concat('line_',@xml:id)}">
-      <br id="{generate-id()}_dip" data-number="{@n}"/>
+      <br/>
+      <a href="#" class="addComment" title="Leave comment on this line" data-s="lb" data-n="{@xml:id}">[+]</a>
+      <div class="commentForm" id="{concat('cf__lb__',@xml:id)}">
+        <xsl:call-template name="commentForm"/>
+      </div>
+      <xsl:text> </xsl:text>
+      <a href="#" class="viewComment greyedOut" title="View comments on this line" data-s="lb" data-n="{@xml:id}">[?]</a>
+      <xsl:text> </xsl:text>
     </span>
-    <a href="#" class="addComment" title="Leave comment on this line" data-s="lb" data-n="{@xml:id}">[+]</a>
-    <div class="commentForm" id="{concat('cf__lb__',@xml:id)}">
-      <select>
-        <option value="">-- Select a user --</option>
-        <option value="et">Eystein</option>
-        <option value="mm">Martina</option>
-        <option value="wg">Willie</option>
-      </select><br/><br/>
-      <textarea rows="7" cols="40"></textarea><br/><br/>
-      <button class="saveComment">save</button>
-      <button class="cancelComment">cancel</button>
-    </div>
-    <xsl:text> </xsl:text>
-    <a href="#" class="viewComment greyedOut" title="View comments on this line" data-s="lb" data-n="{@xml:id}">[?]</a>
   </xsl:template>
 
   <xsl:template mode="diplomatic" match="tei:name[not(ancestor::tei:name)]"> <!-- a name which is NOT part of a larger name -->
     <span class="word name chunk">
-      <xsl:attribute name="id">
-        <xsl:value-of select="generate-id()"/>
-      </xsl:attribute>
       <xsl:attribute name="data-nametype">
         <xsl:value-of select="@type"/>
       </xsl:attribute>
       <xsl:choose>
-        <xsl:when test="count(child::tei:w | child::tei:name) = 1">
-          <xsl:attribute name="data-headword">
-            <xsl:value-of select="tei:w/@lemma"/>
-          </xsl:attribute>
-          <xsl:attribute name="data-pos">
-            <xsl:value-of select="tei:w/@ana"/>
-          </xsl:attribute>
-          <xsl:attribute name="data-edil">
-            <xsl:value-of select="tei:w/@lemmaRef"/>
-          </xsl:attribute>
-          <xsl:apply-templates mode="diplomatic"/>
+        <xsl:when test="count(child::tei:w | child::tei:name) = 1"> <!-- name/w -->
+          <xsl:choose>
+            <xsl:when test="tei:w/tei:w"> <!-- T12, line p.96r line 3 'trenmhoir' name/w/w+ -->
+              <xsl:apply-templates mode="diplomatic" select="tei:w/tei:w"/>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:attribute name="data-headword">
+                <xsl:value-of select="tei:w/@lemma"/>
+              </xsl:attribute>
+              <xsl:attribute name="data-pos">
+                <xsl:value-of select="tei:w/@ana"/>
+              </xsl:attribute>
+              <xsl:attribute name="data-edil">
+                <xsl:value-of select="tei:w/@lemmaRef"/>
+              </xsl:attribute>
+              <xsl:apply-templates mode="diplomatic"/>
+            </xsl:otherwise>
+          </xsl:choose>
         </xsl:when>
         <xsl:otherwise>
           <xsl:apply-templates mode="diplomatic"/>
@@ -242,9 +234,6 @@
 
   <xsl:template mode="diplomatic" match="tei:name"> <!-- a name which IS part of a larger name -->
     <span class="word name">
-      <xsl:attribute name="id">
-        <xsl:value-of select="generate-id()"/>
-      </xsl:attribute>
       <xsl:attribute name="data-nametype">
         <xsl:value-of select="@type"/>
       </xsl:attribute>
@@ -267,9 +256,6 @@
 
   <xsl:template mode="diplomatic" match="tei:w[not(ancestor::tei:w or ancestor::tei:name)]"> <!-- a word which is NOT part of a larger word or name -->
     <span class="word chunk">
-      <xsl:attribute name="id">
-        <xsl:value-of select="generate-id()"/>
-      </xsl:attribute>
       <xsl:if test="count(child::tei:w | child::tei:name) = 0"> <!-- a syntactically simple word -->
         <xsl:attribute name="data-headword">
           <xsl:value-of select="@lemma"/>
@@ -287,9 +273,6 @@
 
   <xsl:template mode="diplomatic" match="tei:w"> <!-- a word which IS part of a larger word or name -->
     <span class="word">
-      <xsl:attribute name="id">
-        <xsl:value-of select="generate-id()"/>
-      </xsl:attribute>
       <xsl:if test="count(child::tei:w | child::tei:name) = 0"> <!-- a syntactically simple word -->
         <xsl:attribute name="data-headword">
           <xsl:value-of select="@lemma"/>
@@ -305,41 +288,39 @@
     </span>
   </xsl:template>
 
-  <xsl:template mode="diplomatic" match="tei:abbr">
-    <span class="abbreviation">
-      <xsl:attribute name="id">
-        <xsl:value-of select="generate-id()"/>
-      </xsl:attribute>
-      <xsl:apply-templates mode="diplomatic"/>
-    </span>
-  </xsl:template>
-
-
   <xsl:template mode="diplomatic" match="tei:g">
-    <!--
-    <xsl:variable name="comWord"
-      select="count(ancestor::tei:w[not(descendant::tei:w)]/preceding::tei:w[not(descendant::tei:w)])"/>
-    <xsl:variable name="position"
-      select="count(preceding::tei:g[ancestor::tei:w[not(descendant::tei:w) and count(preceding::tei:w[not(descendant::tei:w)]) = $comWord]])"/>
-      -->
-    <!-- <i id="l{$position}" cert="{ancestor::tei:abbr/@cert}"> -->
-    <span class="glyph">
-      <xsl:attribute name="id">
-        <xsl:value-of select="generate-id()"/>
-      </xsl:attribute>
-      <xsl:attribute name="data-glyphref">
-        <xsl:value-of select="@ref"/>
-      </xsl:attribute>
-      <xsl:apply-templates mode="diplomatic"/>
-    </span>
+    <xsl:choose>
+      <xsl:when test="starts-with(@ref,'l')"> <!-- ligature -->
+        <span class="ligature">
+          <xsl:attribute name="data-glyphref">
+            <xsl:value-of select="@ref"/>
+          </xsl:attribute>
+          <xsl:apply-templates mode="diplomatic"/>
+        </span>
+      </xsl:when>
+      <xsl:otherwise> <!-- expansion -->
+        <span class="expansion">
+          <xsl:attribute name="data-glyphref">
+            <xsl:value-of select="@ref"/>
+          </xsl:attribute>
+          <xsl:apply-templates mode="diplomatic"/>
+        </span>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
   <xsl:template mode="diplomatic" match="tei:space">
     <xsl:text> </xsl:text>
   </xsl:template>
 
-  <xsl:template mode="diplomatic" match="tei:unclear">
-    <span class="unclear" data-cert="{@cert}" data-reason="{@reason}">
+  <xsl:template mode="diplomatic" match="tei:unclear[@reason='damage']">
+    <span class="damagedDiplo">
+      <xsl:apply-templates mode="diplomatic"/>
+    </span>
+  </xsl:template>
+  
+  <xsl:template mode="diplomatic" match="tei:unclear[@reason='text_obscure']">
+    <span class="obscureTextDiplo">
       <xsl:apply-templates mode="diplomatic"/>
     </span>
   </xsl:template>
@@ -351,19 +332,47 @@
   </xsl:template>
 
   <xsl:template mode="diplomatic" match="tei:add">
-    <span class="addition" data-hand="{@resp}" data-place="{@place}" data-type="{@type}">
-      <xsl:apply-templates mode="diplomatic"/>
-    </span>
+    <xsl:choose>
+      <xsl:when test="@place='above'">
+        <span class="addition above" data-hand="{@resp}" data-place="{@place}"  data-type="{@type}">
+          <xsl:apply-templates mode="diplomatic"/>
+        </span>
+      </xsl:when>
+      <xsl:when test="@place='below'">
+        <span class="addition below" data-hand="{@resp}" data-place="{@place}"  data-type="{@type}">
+          <xsl:apply-templates mode="diplomatic"/>
+        </span>
+      </xsl:when>
+      <xsl:otherwise>
+        <span class="addition" data-hand="{@resp}" data-place="{@place}" data-type="{@type}">
+          <xsl:apply-templates mode="diplomatic"/>
+        </span>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
-  
+
   <xsl:template mode="diplomatic" match="tei:supplied">
-    <span class="supplied">
+    <span class="suppliedDiplo">
       <xsl:apply-templates mode="diplomatic"/>
     </span>
   </xsl:template>
   
-  <xsl:template mode="diplomatic" match="tei:choice">  <!-- this needs work cf. lines 1249-53 of BoD -->
-    <xsl:apply-templates mode="diplomatic" select="tei:corr"/>
+  <xsl:template mode="diplomatic" match="tei:choice">
+    <span class="correction" data-edited="{tei:corr}">
+      <xsl:apply-templates mode="diplomatic" select="tei:sic"/>
+    </span>
+  </xsl:template>
+
+  <!-- ignore notes in diplomatic edition - Added by SB -->
+  <xsl:template mode="diplomatic" match="tei:note"/>
+  
+  <!-- Marginal notes - Added by SB-->
+  <xsl:template match="tei:seg[@type='margNote']" mode="diplomatic">
+    <xsl:text> </xsl:text>
+    <a href="#" class="marginaLNoteLink" data-id="{@xml:id}">m</a>
+    <div class="marginalNote" id="{@xml:id}">
+      <xsl:apply-templates mode="diplomatic"/>
+    </div>
   </xsl:template>
 
   <!-- SEMI-DIPLOMATIC -->
@@ -376,6 +385,10 @@
     <div style="color: gray; font-size: small; margin-top: 20px;">
       <xsl:text>[start of text </xsl:text>
       <xsl:value-of select="@n"/>
+      <xsl:text>: </xsl:text>
+      <xsl:value-of select="@type"/>
+      <xsl:text>, </xsl:text>
+      <xsl:value-of select="@resp"/>
       <xsl:text>] </xsl:text>
     </div>
     <xsl:apply-templates mode="semi-diplomatic"/>
@@ -385,30 +398,41 @@
       <xsl:text>]</xsl:text>
     </div>
   </xsl:template>
+  
+  <xsl:template mode="semi-diplomatic" match="tei:p">
+    <p>
+      <xsl:apply-templates mode="semi-diplomatic"/>
+    </p>
+  </xsl:template>
 
   <xsl:template mode="semi-diplomatic" match="tei:name[not(ancestor::tei:name)]"> <!-- a name which is NOT part of a larger name -->
     <span class="word name chunk">
-      <xsl:attribute name="id">
-        <xsl:value-of select="generate-id()"/>
-      </xsl:attribute>
       <xsl:attribute name="data-nametype">
         <xsl:value-of select="@type"/>
       </xsl:attribute>
+      
       <xsl:choose>
-        <xsl:when test="count(child::tei:w | child::tei:name) = 1">
-          <xsl:attribute name="data-headword">
-            <xsl:value-of select="tei:w/@lemma"/>
-          </xsl:attribute>
-          <xsl:attribute name="data-pos">
-            <xsl:value-of select="tei:w/@ana"/>
-          </xsl:attribute>
-          <xsl:attribute name="data-edil">
-            <xsl:value-of select="tei:w/@lemmaRef"/>
-          </xsl:attribute>
-          <xsl:apply-templates mode="semi-diplomatic"/>
+        <xsl:when test="count(child::tei:w | child::tei:name) = 1"> <!-- name/w -->
+          <xsl:choose>
+            <xsl:when test="tei:w/tei:w"> <!-- T12, line p.96r line 3 'trenmhoir' name/w/w+ -->
+              <xsl:apply-templates mode="semi-diplomatic" select="tei:w/tei:w"/>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:attribute name="data-headword">
+                <xsl:value-of select="tei:w/@lemma"/>
+              </xsl:attribute>
+              <xsl:attribute name="data-pos">
+                <xsl:value-of select="tei:w/@ana"/>
+              </xsl:attribute>
+              <xsl:attribute name="data-edil">
+                <xsl:value-of select="tei:w/@lemmaRef"/>
+              </xsl:attribute>
+              <xsl:apply-templates mode="semidiplomatic"/>
+            </xsl:otherwise>
+          </xsl:choose>
         </xsl:when>
         <xsl:otherwise>
-          <xsl:apply-templates mode="semi-diplomatic"/>
+          <xsl:apply-templates mode="semidiplomatic"/>
         </xsl:otherwise>
       </xsl:choose>
     </span>
@@ -417,9 +441,6 @@
   
   <xsl:template mode="semi-diplomatic" match="tei:name"> <!-- a name which IS part of a larger name -->
     <span class="word name">
-      <xsl:attribute name="id">
-        <xsl:value-of select="generate-id()"/>
-      </xsl:attribute>
       <xsl:attribute name="data-nametype">
         <xsl:value-of select="@type"/>
       </xsl:attribute>
@@ -443,9 +464,6 @@
   
   <xsl:template mode="semi-diplomatic" match="tei:w[not(ancestor::tei:w or ancestor::tei:name)]"> <!-- a word which is NOT part of a larger word or name -->
     <span class="word chunk">
-      <xsl:attribute name="id">
-        <xsl:value-of select="generate-id()"/>
-      </xsl:attribute>
       <xsl:if test="count(child::tei:w | child::tei:name) = 0"> <!-- a syntactically simple word -->
         <xsl:attribute name="data-headword">
           <xsl:value-of select="@lemma"/>
@@ -464,9 +482,6 @@
   
   <xsl:template mode="semi-diplomatic" match="tei:w"> <!-- a word which IS part of a larger word or name -->
     <span class="word">
-      <xsl:attribute name="id">
-        <xsl:value-of select="generate-id()"/>
-      </xsl:attribute>
       <xsl:if test="count(child::tei:w | child::tei:name) = 0"> <!-- a syntactically simple word -->
         <xsl:attribute name="data-headword">
           <xsl:value-of select="@lemma"/>
@@ -482,14 +497,106 @@
     </span>
     <xsl:text> </xsl:text>
   </xsl:template>
+  
+  <xsl:template mode="semi-diplomatic" match="tei:g">
+    <xsl:choose>
+      <xsl:when test="starts-with(@ref,'l')">
+        <span class="ligature">
+          <xsl:attribute name="data-glyphref">
+            <xsl:value-of select="@ref"/>
+          </xsl:attribute>
+          <xsl:apply-templates mode="semi-diplomatic"/>
+        </span>
+      </xsl:when>
+      <xsl:otherwise>
+        <span class="expansion">
+          <xsl:attribute name="data-glyphref">
+            <xsl:value-of select="@ref"/>
+          </xsl:attribute>
+          <xsl:apply-templates mode="semi-diplomatic"/>
+        </span>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
 
-<!-- 
-  <xsl:template match="tei:w | tei:name" mode="semi-diplomatic">
-    <xsl:text> </xsl:text>
+  <xsl:template mode="semi-diplomatic" match="tei:del">
+    <span class="deletion" data-hand="{@resp}">
+      <xsl:apply-templates mode="diplomatic"/>
+    </span>
+  </xsl:template>
+  
+  <xsl:template mode="semi-diplomatic" match="tei:add">
+    <span class="addition" data-hand="{@resp}" data-place="{@place}" data-type="{@type}">
+      <xsl:apply-templates mode="semi-diplomatic"/>
+    </span>
+  </xsl:template>
+  
+  <xsl:template mode="semi-diplomatic" match="tei:choice">
+    <span class="correction" data-original="{tei:sic}">
+      <xsl:apply-templates mode="semi-diplomatic" select="tei:corr"/>
+    </span>
+  </xsl:template>
+  
+  <xsl:template mode="semi-diplomatic" match="tei:note">
+    <a href="#" title="{.}">[*]</a>
+  </xsl:template>
+  
+  <xsl:template mode="semi-diplomatic" match="tei:lg">
+    <p>
+      <xsl:apply-templates mode="semi-diplomatic"/>
+    </p>
+  </xsl:template>
+  
+  <xsl:template mode="semi-diplomatic" match="tei:l">
     <xsl:apply-templates mode="semi-diplomatic"/>
+    <br/>
+  </xsl:template>
+  
+  <xsl:template mode="semi-diplomatic" match="tei:supplied">
+    <span class="suppliedSemi">
+      <xsl:text>[</xsl:text>
+      <xsl:apply-templates mode="semi-diplomatic"/>
+      <xsl:text>]</xsl:text>
+    </span>
+  </xsl:template>
+  
+  <xsl:template mode="semi-diplomatic" match="tei:unclear[@reason='damage']">
+    <span class="damagedSemi">
+      <xsl:text>[</xsl:text>
+      <xsl:apply-templates mode="diplomatic"/>
+      <xsl:text>]</xsl:text>
+    </span>
+  </xsl:template>
+  
+  <xsl:template mode="semi-diplomatic" match="tei:unclear[@reason='text_obscure']">
+    <span class="obscureTextSemi">
+      <xsl:text>[</xsl:text>
+      <xsl:apply-templates mode="diplomatic"/>
+      <xsl:text>]</xsl:text>
+    </span>
+  </xsl:template>
+  
+  <xsl:template mode="semi-diplomatic" match="tei:pb">
+    <span style="color: gray; font-size: small; font-family: Helvetica;">
+      <xsl:text> [p. </xsl:text>
+      <xsl:value-of select="@n"/>
+      <xsl:text>] </xsl:text>
+    </span>
+  </xsl:template>
+  
+  <xsl:template mode="semi-diplomatic" match="tei:lb">
+    <span style="color: gray; font-size: small; font-family: Helvetica;">
+      <xsl:text> (</xsl:text>
+      <xsl:value-of select="@n"/>
+      <xsl:text>) </xsl:text>
+    </span>
+  </xsl:template>
+  
+  <xsl:template mode="semi-diplomatic" match="tei:pc">
+    <xsl:text> </xsl:text>
+    <xsl:value-of select="."/>
     <xsl:text> </xsl:text>
   </xsl:template>
-  -->
-
+  
 
 </xsl:stylesheet>

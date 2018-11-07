@@ -2840,6 +2840,10 @@
 						test="@ana = 'noun' and ancestor::tei:w[contains(@ana, 'noun, dpron')]">
 						<xsl:text/>
 					</xsl:when>
+					<xsl:when
+						test="@ana = 'art' and ancestor::tei:w[contains(@ana, 'art, dpron')]">
+						<xsl:text/>
+					</xsl:when>
 					<xsl:when test="@ana = 'noun' and ancestor::tei:w[contains(@ana, 'noun, ptcp')]">
 						<xsl:text/>
 					</xsl:when>
@@ -2898,6 +2902,15 @@
 						<xsl:text/>
 					</xsl:when>
 					<xsl:when test="@ana = 'pref' and ancestor::tei:w[contains(@ana, 'pref, noun')]">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when test="@ana = 'pref' and ancestor::tei:w[contains(@ana, 'prep, noun')]">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when test="@ana = 'pref' and ancestor::tei:w[contains(@ana, 'prep, num')]">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when test="@ana = 'pref' and ancestor::tei:w[contains(@ana, 'pref, vnoun')]">
 						<xsl:text/>
 					</xsl:when>
 					<xsl:when test="@ana = 'pron' and ancestor::tei:w[contains(@ana, 'pron, part')]">

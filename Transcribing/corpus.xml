@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="Schemas/fnag_mss2.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
-<?xml-stylesheet type="text/xsl" href="../Coding/Stylesheets/stylesheet-xml-hwData-update_2.xsl"?>
+<?xml-stylesheet type="text/xsl" href="../Coding/Stylesheets/home.xsl"?>
 <teiCorpus xmlns="http://www.tei-c.org/ns/1.0" xmlns:xi="http://www.w3.org/2001/XInclude">
 	<teiHeader>
 		<fileDesc>
@@ -274,7 +274,8 @@
 					</biblStruct>
 					<biblStruct type="book" xml:id="Bannerman2015">
 						<monogr>
-							<title level="m">The Beatons: A Medical Kindred in the Classical Gaelic Tradition</title>
+							<title level="m">The Beatons: A Medical Kindred in the Classical Gaelic
+								Tradition</title>
 							<respStmt>
 								<resp>author</resp>
 								<name>
@@ -325,7 +326,7 @@
 								<biblScope unit="issue">2</biblScope>
 								<biblScope unit="page">170-173</biblScope>
 								<date>1968</date>
-								</imprint>
+							</imprint>
 						</monogr>
 					</biblStruct>
 					<biblStruct type="journalArticle" xml:id="Gillies1978">
@@ -819,7 +820,7 @@
 						character(s).</note>
 				</glyph>
 				<glyph xml:id="g4" corresp="https://www.vanhamel.nl/codecs/Spiritus_asper">
-					<glyphName>spiritus asper</glyphName>
+					<glyphName>lenition dot/tick</glyphName>
 					<note>Also known as <hi rend="italic">spiritus asper</hi>; adds an "-h" to
 						consonants (i.e. aspirates).</note>
 				</glyph>
@@ -1099,21 +1100,29 @@
 					<glyphName>r abbreviation</glyphName>
 					<note>Superscript "r", standing for "r" + vowel or vowel + "r".</note>
 				</glyph>
-				<glyph xml:id="g60" corresp="https://www.vanhamel.nl/codecs/Quod_(q_with_curved_stroke)">
+				<glyph xml:id="g60"
+					corresp="https://www.vanhamel.nl/codecs/Quod_(q_with_curved_stroke)">
 					<glyphName>q with curved stroke</glyphName>
-					<note>A "q" with an upward pointing stroke to the right curling back on the letter and passing over the descender, standing for "cu" in Gaelic contexts and "quod" in Latin contexts.</note>
+					<note>A "q" with an upward pointing stroke to the right curling back on the
+						letter and passing over the descender, standing for "cu" in Gaelic contexts
+						and "quod" in Latin contexts.</note>
 				</glyph>
 				<glyph xml:id="g61">
 					<glyphName>um/m abbreviation</glyphName>
-					<note>A "z" with a diagonal cross-stroke; stands for vowel + "-m" in Latin genitive plurals.</note>
+					<note>A "z" with a diagonal cross-stroke; stands for vowel + "-m" in Latin
+						genitive plurals.</note>
 				</glyph>
 				<glyph xml:id="g62">
 					<glyphName>capital R</glyphName>
-					<note>Stands for "cath" in <ref type="ms" target="MS3">T3</ref>. <hi rend="bold">NB:</hi> could be an alternative form of "K" (<ref type="glyph" target="g49">g49</ref>)</note>
+					<note>Stands for "cath" in <ref type="ms" target="MS3">T3</ref>. <hi rend="bold"
+							>NB:</hi> could be an alternative form of "K" (<ref type="glyph"
+							target="g49">g49</ref>)</note>
 				</glyph>
 				<glyph xml:id="g63">
 					<glyphName>Punctus abbreviation</glyphName>
-					<note>A single point standing for the rest of a usually well-known word or name; this is distinct from <ref type="glyph" target="g9">g9</ref>, which denotes a pair of enclosing puncta.</note>
+					<note>A single point standing for the rest of a usually well-known word or name;
+						this is distinct from <ref type="glyph" target="g9">g9</ref>, which denotes
+						a pair of enclosing puncta.</note>
 				</glyph>
 				<glyph xml:id="g64">
 					<glyphName>a with stroke</glyphName>
@@ -1123,17 +1132,46 @@
 					<glyphName>arabic 3</glyphName>
 					<note>Arabic numeral "3", standing for "tri" or "tir" in Gaelic contexts.</note>
 				</glyph>
+				<glyph xml:id="g66">
+					<glyphName>oo abbreviation</glyphName>
+					<note>Double "o"; stands for "eile".</note>
+				</glyph>
+				<glyph xml:id="g67">
+					<glyphName>ȯȯ abbreviation</glyphName>
+					<note>Double "ȯ"; stands for "eile".</note>
+				</glyph>
+				<glyph xml:id="g68">
+					<glyphName>double tironian nota</glyphName>
+					<note>Two tironian nota, shortened at both ends, with two short suspension
+						strokes above them; stands for "eile".</note>
+				</glyph>
+				<glyph xml:id="g69">
+					<glyphName>double suspension stroke</glyphName>
+					<note>Two suspension strokes, standing for one or more syllables that include a
+						double consonant. Like <ref target="g14" type="glyph">g14</ref> but
+						indicating double consonants other than "-nn-".</note>
+				</glyph>
+				<glyph xml:id="g70" corresp="https://www.vanhamel.nl/codecs/U%C3%AD_(.h.)">
+					<glyphName>h abbreviation</glyphName>
+					<note>An "h", usually enclosed by puncti, standing for "úa" or an inflected form thereof.</note>
+				</glyph>
+				<glyph xml:id="g71">
+					<glyphName>ŋ abbreviation</glyphName>
+					<note>An "ŋ", standing for "na".</note>
+				</glyph>
 				<glyph xml:id="l5" corresp="https://vanhamel.nl/codecs/Ao_(ligature)">
 					<glyphName>ao ligature</glyphName>
 					<note>"a" without a backstroke, followed by "o".</note>
 				</glyph>
 				<glyph xml:id="l6" corresp="https://vanhamel.nl/codecs/Rr_(ligature)">
 					<glyphName>rr ligature</glyphName>
-					<note>"rr", with the first "r" reduced to a single descender and its hook merged with the top of the descender of the second "r".</note>
+					<note>"rr", with the first "r" reduced to a single descender and its hook merged
+						with the top of the descender of the second "r".</note>
 				</glyph>
 				<glyph xml:id="l7" corresp="https://www.vanhamel.nl/codecs/Et_(digraph)">
 					<glyphName>et digraph</glyphName>
-					<note>"et", with the middle stroke of "e" also the cross-stroke of "t" and the "e" enclosing the "t".</note>
+					<note>"et", with the middle stroke of "e" also the cross-stroke of "t" and the
+						"e" enclosing the "t".</note>
 				</glyph>
 				<glyph xml:id="l8">
 					<glyphName>am ligature</glyphName>
@@ -1161,7 +1199,8 @@
 				</glyph>
 				<glyph xml:id="l15" corresp="https://www.vanhamel.nl/codecs/Na_(digraph)">
 					<glyphName>na digraph</glyphName>
-					<note>"n", with "a" dangling beneath the line, attached to the second minim of "n".</note>
+					<note>"n", with "a" dangling beneath the line, attached to the second minim of
+						"n".</note>
 				</glyph>
 				<glyph xml:id="l16" corresp="https://www.vanhamel.nl/codecs/Ea_(ligature_allograph)">
 					<glyphName>ea ligature</glyphName>
@@ -1170,6 +1209,11 @@
 				<glyph xml:id="l17" corresp="https://www.vanhamel.nl/codecs/Di_(ligature)">
 					<glyphName>di ligature</glyphName>
 					<note>A "d" with a long back-stroke, standing for "di".</note>
+				</glyph>
+				<glyph xml:id="l18">
+					<glyphName>er digraph</glyphName>
+					<note>A "e" followed by an "r", whose serif replaces the middle cross-stroke of
+						the "e"..</note>
 				</glyph>
 				<glyph xml:id="ln" corresp="n">
 					<glyphName/>
@@ -1255,7 +1299,7 @@
 							it from monosyllables ending with /X'/ (e.g. <hi rend="italic">nac</hi>,
 								<ref target="#T2.1.1d">q1d</ref> not <hi rend="italic">nach</hi>. At
 							the same time, lenition markers are added where lenition would not
-							normally be written (e.g. <hi rend="italic">mainḋir</hi>, <ref
+							normally be written (e.g. <hi rend="italic">mainḋir</hi>, <ref
 								target="#T2.1.2b">q2b</ref>. There is also one occasion where
 							lenition is used to indicate eclipsis (<ref target="#T2.1.10a"
 								>q10a</ref>). The absence of lenition from final /X'/ may be
@@ -1479,7 +1523,8 @@
 		</revisionDesc>
 	</teiHeader>
 
-	<!-- <TEI corresp="Transcriptions/transcription1.xml"/>
+	<!--
+	<TEI corresp="Transcriptions/transcription1.xml"/>
   <TEI corresp="Transcriptions/transcription2.xml"/>  
   <TEI corresp="Transcriptions/transcription3.xml"/>
   <TEI corresp="Transcriptions/transcription4.xml"/>
@@ -1493,18 +1538,18 @@
   <TEI corresp="Transcriptions/transcription14.xml"/>
   <TEI corresp="Transcriptions/transcription15.xml"/>
   <TEI corresp="Transcriptions/transcription16.xml"/>
-  <TEI corresp="Transcriptions/transcription17.xml"/> -->
-
+  <TEI corresp="Transcriptions/transcription17.xml"/>
+  -->
 
 	<xi:include href="Transcriptions/transcription1.xml" parse="xml"/>
-		<xi:include href="Transcriptions/transcription2.xml" parse="xml"/>
-		<xi:include href="Transcriptions/transcription3.xml" parse="xml"/>
-		<xi:include href="Transcriptions/transcription4.xml" parse="xml"/>
-		<xi:include href="Transcriptions/transcription5.xml" parse="xml"/>
+	<xi:include href="Transcriptions/transcription2.xml" parse="xml"/>
+	<xi:include href="Transcriptions/transcription3.xml" parse="xml"/>
+	<xi:include href="Transcriptions/transcription4.xml" parse="xml"/>
+	<xi:include href="Transcriptions/transcription5.xml" parse="xml"/>
 	<xi:include href="Transcriptions/transcription6.xml" parse="xml"/>
-		<xi:include href="Transcriptions/transcription7.xml" parse="xml"/>
-		<xi:include href="Transcriptions/transcription8.xml" parse="xml"/>
-		<xi:include href="Transcriptions/transcription9.xml" parse="xml"/>
+	<xi:include href="Transcriptions/transcription7.xml" parse="xml"/>
+	<xi:include href="Transcriptions/transcription8.xml" parse="xml"/>
+	<xi:include href="Transcriptions/transcription9.xml" parse="xml"/>
 	<!-- <xi:include href="Transcriptions/transcription10.xml" parse="xml"/> -->
 	<!-- <xi:include href="Transcriptions/transcription11.xml" parse="xml"/> -->
 	<xi:include href="Transcriptions/transcription12.xml" parse="xml"/>
@@ -1514,4 +1559,5 @@
 	<xi:include href="Transcriptions/transcription16.xml" parse="xml"/>
 	<xi:include href="Transcriptions/transcription17.xml" parse="xml"/>
 	<xi:include href="hwData.xml" parse="xml"/>
+
 </teiCorpus>
