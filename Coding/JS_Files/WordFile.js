@@ -445,17 +445,17 @@ function addSlip(id) {
 	var lrefED = el.getAttribute("lemmaRefED");
 	var lemED = el.getAttribute("lemmaED");
 	var rcol10 = row.insertCell(9);
-	rcol10.innerHTML = '<a target="' + lrefED + '" href="' + lrefED + '">' + lemED + '</a>';
+	rcol10.innerHTML = '<a target="_blank" href="' + lrefED + '">' + lemED + '</a>';
 	var lemDW = el.getAttribute("lemmaDW");
 	var lemURLDW = el.getAttribute("lemmaRefDW");
 	var rcol11 = row.insertCell(10);
-	rcol11.innerHTML = '<a target="' + lemURLDW + '" href="' + lemURLDW + '">' + lemDW + '</a>';
+	rcol11.innerHTML = '<a target="_blank" href="' + lemURLDW + '">' + lemDW + '</a>';
 	var lemSL = el.getAttribute("lemmaSL");
 	var lemURLSL = el.getAttribute("slipRef");
 	var rcol12 = row.insertCell(11);
-	rcol12.innerHTML = '<a target="' + lemURLSL + '" href="' + lemURLSL + '">' + lemSL + '</a>';
+	rcol12.innerHTML = '<a target="_blank" href="' + lemURLSL + '">' + lemSL + '</a>';
 	var rcol13 = row.insertCell(12);
-	rcol13.innerHTML = '<a target="' + lref + '" href="' + lref + '">' + lref + '</a>';
+	rcol13.innerHTML = '<a target="_blank" href="' + lref + '">' + lref + '</a>';
 	var finURIED;
 	if (rcol13.firstChild.innerHTML.slice(11, 17) == "dil.ie") {
 		finURIED = rcol13.firstChild.innerHTML.slice(18);
@@ -813,17 +813,17 @@ function wordSearch(id) {
 		var lrefED = el.getAttribute("lemmaRefED");
 		var lemED = el.getAttribute("lemmaED");
 		var cell10 = row.insertCell(9);
-		cell10.innerHTML = '<a target="' + lrefED + '" href="' + lrefED + '">' + lemED + '</a>';
+		cell10.innerHTML = '<a target="_blank" href="' + lrefED + '">' + lemED + '</a>';
 		var lemDW = el.getAttribute("lemmaDW");
 		var lemURLDW = el.getAttribute("lemmaRefDW");
 		var cell11 = row.insertCell(10);
-		cell11.innerHTML = '<a target="' + lemURLDW + '" href="' + lemURLDW + '">' + lemDW + '</a>';
+		cell11.innerHTML = '<a target="_blank" href="' + lemURLDW + '">' + lemDW + '</a>';
 		var lemSL = el.getAttribute("lemmaSL");
 		var lemURLSL = el.getAttribute("slipRef");
 		var cell12 = row.insertCell(11);
-		cell12.innerHTML = '<a target="' + lemURLSL + '" href="' + lemURLSL + '">' + lemSL + '</a>';
+		cell12.innerHTML = '<a target="_blank" href="' + lemURLSL + '">' + lemSL + '</a>';
 		var cell13 = row.insertCell(12);
-		cell13.innerHTML = '<a target="' + lref + '" href="' + lref + '">' + lref + '</a>';
+		cell13.innerHTML = '<a target="_blank" href="' + lref + '">' + lref + '</a>';
 		var finURIED;
 		if (cell13.firstChild.innerHTML.slice(11, 17) == "dil.ie") {
 			finURIED = cell13.firstChild.innerHTML.slice(18);
