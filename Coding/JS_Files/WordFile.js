@@ -459,8 +459,8 @@ function addSlip(id) {
 	var finURIED;
 	if (rcol13.firstChild.innerHTML.slice(11, 17) == "dil.ie") {
 		finURIED = rcol13.firstChild.innerHTML.slice(18);
-	} else if (rcol13.firstChild.innerHTML.slice(11, 22) == "faclair.com") {
-		finURIED = rcol13.firstChild.innerHTML.slice(51);
+	} else if (rcol13.firstChild.innerHTML.slice(12, 23) == "faclair.com") {
+		finURIED = rcol13.firstChild.innerHTML.slice(52);
 	} else if (rcol12.firstChild.innerHTML.slice(6, 17) == "dasg.ac.uk") {
 		finURIED = rcol13.firstChild.innerHTML.slice(36);
 	} else if (rcol13.firstChild.innerHTML.slice(8, 24) == "www.teanglann.ie") {
@@ -827,8 +827,8 @@ function wordSearch(id) {
 		var finURIED;
 		if (cell13.firstChild.innerHTML.slice(11, 17) == "dil.ie") {
 			finURIED = cell13.firstChild.innerHTML.slice(18);
-		} else if (cell13.firstChild.innerHTML.slice(11, 22) == "faclair.com") {
-			finURIED = cell13.firstChild.innerHTML.slice(51);
+		} else if (cell13.firstChild.innerHTML.slice(12, 23) == "faclair.com") {
+			finURIED = cell13.firstChild.innerHTML.slice(52);
 		} else if (cell12.firstChild.innerHTML.slice(6, 17) == "dasg.ac.uk") {
 			finURIED = cell13.firstChild.innerHTML.slice(36);
 		} else if (rcol13.firstChild.innerHTML.slice(8, 24) == "www.teanglann.ie") {
