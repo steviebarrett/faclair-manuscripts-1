@@ -581,7 +581,7 @@
 	</xsl:template>
 	
 	<xsl:template mode="dip" match="tei:seg[@type = 'xp']">
-		<xsl:apply-templates/>
+		<xsl:apply-templates mode="dip"/>
 	</xsl:template>
 
 	<xsl:template mode="dip" name="word" match="tei:w[not(descendant::tei:w)]">
