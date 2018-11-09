@@ -579,6 +579,10 @@
 	<xsl:template mode="dip" match="tei:choice">
 		<xsl:apply-templates mode="dip" select="tei:sic"/>
 	</xsl:template>
+	
+	<xsl:template mode="dip" match="tei:seg[@type = 'xp']">
+		<xsl:apply-templates/>
+	</xsl:template>
 
 	<xsl:template mode="dip" name="word" match="tei:w[not(descendant::tei:w)]">
 		<xsl:param name="compWordID"/>
@@ -2232,18 +2236,18 @@
 	
 	<xsl:template mode="dip" match="tei:anchor[@type='crossref']">
 		<xsl:variable name="crossrefID" select="@copyOf"/>
-		<xsl:variable name="msID" select="substring-before($crossrefID, '.')"/>
+		<!-- <xsl:variable name="msID" select="substring-before($crossrefID, '.')"/>
 		<xsl:variable name="msNO" select="substring-after($msID, 'MS')"/>
 		<xsl:variable name="filename" select="concat('transcription', $msNO, '.xml')"/>
-		<xsl:variable name="filepath" select="concat('../../Transcribing/Transcriptions/', $filename)"/>
+		<xsl:variable name="filepath" select="concat('../../Transcribing/Transcriptions/', $filename)"/> -->
 		<xsl:choose>
-			<xsl:when test="document($filepath)/tei:div[@corresp = $crossrefID]/@type = 'prose'">
+			<xsl:when test="//tei:div[@corresp = $crossrefID]/@type = 'prose'">
 				<h3><xsl:value-of select="@comment"/></h3>
-				<xsl:apply-templates mode="dip" select="document($filepath)//tei:div[@corresp = $crossrefID]/tei:p/*"/>
+				<xsl:apply-templates mode="dip" select="//tei:div[@corresp = $crossrefID]/tei:p/*"/>
 			</xsl:when>
 			<xsl:otherwise>
 				<h3><xsl:value-of select="@comment"/></h3>
-				<xsl:apply-templates mode="dip" select="document($filepath)//tei:div[@corresp = $crossrefID]/*"/>
+				<xsl:apply-templates mode="dip" select="//tei:div[@corresp = $crossrefID]/*"/>
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
