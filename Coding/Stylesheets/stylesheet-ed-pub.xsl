@@ -4064,9 +4064,11 @@
 		<xsl:variable name="filepath" select="concat('..\..\Transcribing\Transcriptions\', $filename)"/>
 		<xsl:choose>
 			<xsl:when test="document($filepath)/tei:div[@corresp = $crossrefID]/@type = 'prose'">
+				<h3><xsl:value-of select="@comment"/></h3>
 				<xsl:apply-templates select="document($filepath)//tei:div[@corresp = $crossrefID]/tei:p/*"/>
 			</xsl:when>
 			<xsl:otherwise>
+				<h3><xsl:value-of select="@comment"/></h3>
 				<xsl:apply-templates select="document($filepath)//tei:div[@corresp = $crossrefID]/*"/>
 			</xsl:otherwise>
 		</xsl:choose>
