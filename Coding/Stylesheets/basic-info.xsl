@@ -209,7 +209,7 @@
         <xsl:when test="count(child::tei:w | child::tei:name) = 1"> <!-- name/w -->
           <xsl:choose>
             <xsl:when test="tei:w/tei:w"> <!-- T12, line p.96r line 3 'trenmhoir' name/w/w+ -->
-              <xsl:apply-templates mode="diplomatic" select="tei:w/tei:w"/>
+              <xsl:apply-templates mode="diplomatic" select="tei:w/*"/>
             </xsl:when>
             <xsl:otherwise>
               <xsl:attribute name="data-headword">
