@@ -38,14 +38,14 @@ $(function() {
     if (i != -1) {
       var j = str.indexOf('[?]');
       str2 = str.slice(0,i) + str.slice(j+4, str.length);
-      return str2;
     }
     else if (k != -1) {
       var j = str.indexOf(') ');
       str2 = str.slice(0,k) + str.slice(j+2, str.length);
-      return str2;
     }
-    else return str;
+    else str2 = str;
+    str = str2.replace(/[:=]/g,'');
+    return str;
   }
 
   function makeDescription(span, rec) {

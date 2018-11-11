@@ -297,7 +297,7 @@
     <xsl:text> </xsl:text>
   </xsl:template>
   
-  <xsl:template mode="diplomatic" match="tei:pc">
+  <xsl:template mode="diplomatic" match="tei:pc[not(ancestor::tei:w)]">
     <span class="punct">
       <xsl:value-of select="."/>
     </span>
