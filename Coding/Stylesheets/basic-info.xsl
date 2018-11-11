@@ -201,6 +201,14 @@
       <xsl:text> </xsl:text>
     </span>
   </xsl:template>
+  
+  <xsl:template mode="diplomatic" match="tei:cb">
+    <div style="color: gray; font-size: small; margin-top: 20px;">
+      <xsl:text>[start of column </xsl:text>
+      <xsl:value-of select="@n"/>
+      <xsl:text>]</xsl:text>
+    </div>
+  </xsl:template>
 
   <xsl:template mode="diplomatic" match="tei:name[not(ancestor::tei:name)]"> <!-- a name which is NOT part of a larger name -->
     <span class="name chunk syntagm">
@@ -534,6 +542,14 @@
   <xsl:template mode="semi-diplomatic" match="tei:pb">
     <span style="color: gray; font-size: small; font-family: Helvetica;">
       <xsl:text> [p. </xsl:text>
+      <xsl:value-of select="@n"/>
+      <xsl:text>] </xsl:text>
+    </span>
+  </xsl:template>
+  
+  <xsl:template mode="semi-diplomatic" match="tei:cb">
+    <span style="color: gray; font-size: small; font-family: Helvetica;">
+      <xsl:text> [col. </xsl:text>
       <xsl:value-of select="@n"/>
       <xsl:text>] </xsl:text>
     </span>
