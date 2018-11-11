@@ -145,6 +145,10 @@
     <xsl:apply-templates mode="diplomatic"/>
   </xsl:template>
 
+  <xsl:template match="tei:div/tei:div" mode="diplomatic">
+    <xsl:apply-templates mode="diplomatic"/>
+  </xsl:template>  
+
   <xsl:template match="tei:div" mode="diplomatic">
     <div style="color: gray; font-size: small; margin-top: 20px;">
       <xsl:text>[start of text </xsl:text>
