@@ -95,6 +95,15 @@ $(function() {
       html += '</ul>';
       html += '</li>';
     }
+    else if ($(span).children('.addition, .deletion').length>0) {
+      html += '<li>is a syntactically complex form containing the following elements:';      
+      html += '<ul>';
+      $(span).children('.syntagm').add($(span).children('.addition').add($(span).children('.deletion')).children('.syntagm')).each(function() {
+        html = html + '<li>' + makeDescription($(this),true) + '</li>';
+      });
+      html += '</ul>';
+      html += '</li>';
+    }
     else {
       html += '<li>is a syntactically simple form</li>';
     }    
