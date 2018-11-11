@@ -122,7 +122,7 @@ $(function() {
       $(span).find('.ligature').each(function() {
         var g = eval('glyph_' + $(this).attr('data-glyphref'));
         txt = '<a href="http://' + g.url + '" target="_new" data-src="' + $(this).attr('id') + '">' + g.name;
-        txt = txt + '</a>: ' + g.description,replace(/%/g,"'");
+        txt = txt + '</a>: ' + g.description.replace(/%/g,"'");
         html = html + '<li class="glyphItem">' + txt +'</li>';
       });
       html += '</ul></li>';
