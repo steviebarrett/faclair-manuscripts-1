@@ -1783,6 +1783,10 @@
 	<xsl:template match="tei:seg[@type = 'MSDefd']">
 		<xsl:apply-templates/>
 	</xsl:template>
+	
+	<xsl:template match="tei:seg[@type = 'xp']">
+		<xsl:apply-templates/>
+	</xsl:template>
 
 	<xsl:template match="tei:quote">
 		<br/>
@@ -4052,6 +4056,24 @@
 			</xsl:when>
 			<xsl:otherwise>
 				<xsl:text> </xsl:text>
+			</xsl:otherwise>
+		</xsl:choose>
+	</xsl:template>
+	
+	<xsl:template match="tei:anchor[@type='crossref']">
+		<xsl:variable name="crossrefID" select="@copyOf"/>
+		<xsl:variable name="msID" select="substring-before($crossrefID, '.')"/>
+		<xsl:variable name="msNO" select="substring-after($msID, 'MS')"/>
+		<xsl:variable name="filename" select="concat('transcription', $msNO, '.xml')"/>
+		<xsl:variable name="filepath" select="concat('..\..\Transcribing\Transcriptions\', $filename)"/>
+		<xsl:choose>
+			<xsl:when test="document($filepath)//tei:div[@corresp = $crossrefID]/@type = 'prose'">
+				<h3><xsl:value-of select="@comment"/></h3>
+				<xsl:apply-templates select="document($filepath)//tei:div[@corresp = $crossrefID]/tei:p/*"/>
+			</xsl:when>
+			<xsl:otherwise>
+				<h3><xsl:value-of select="@comment"/></h3>
+				<xsl:apply-templates select="document($filepath)//tei:div[@corresp = $crossrefID]/*"/>
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
