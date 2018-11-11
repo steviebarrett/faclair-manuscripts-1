@@ -39,6 +39,8 @@
             <h2>Semi-diplomatic transcription</h2>
             <xsl:apply-templates select="tei:TEI/tei:text/tei:body" mode="semi-diplomatic"/>
           </div>
+          <p></p>
+          <p></p>
         </div>
         <div id="right-panel">
         </div>
