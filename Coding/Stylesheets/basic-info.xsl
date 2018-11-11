@@ -322,7 +322,11 @@
   </xsl:template>
   
   <xsl:template mode="diplomatic" match="tei:choice">
-    <span class="correction" data-edited="{tei:corr}">
+    <span class="correction">
+      <xsl:attribute name="title">
+        <xsl:text>Probably: </xsl:text>
+        <xsl:apply-templates select="tei:corr" mode="diplomatic"/>
+      </xsl:attribute>
       <xsl:apply-templates mode="diplomatic" select="tei:sic"/>
     </span>
   </xsl:template>
@@ -459,7 +463,11 @@
   </xsl:template>
   
   <xsl:template mode="semi-diplomatic" match="tei:choice">
-    <span class="correction" data-original="{tei:sic}">
+    <span class="correction">
+      <xsl:attribute name="title">
+        <xsl:text>Corrected from: </xsl:text>
+        <xsl:apply-templates select="tei:sic" mode="semi-diplomatic"/>
+      </xsl:attribute>
       <xsl:apply-templates mode="semi-diplomatic" select="tei:corr"/>
     </span>
   </xsl:template>

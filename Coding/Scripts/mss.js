@@ -205,17 +205,6 @@ $(function() {
       });
       html += '</ul></li>';
     }
-    if ($(span).parents('.correction').length>0 && $(span).parents('.correction').attr('data-edited')) {
-      html += '<li>should probably be: ';
-      html += $(span).parents('.correction').attr('data-edited');
-      //html += makeDescription($(span).parents('.correctionDiplo').children('.edited'),false); // disny work
-      html += '</li>';
-    }
-    else if ($(span).parents('.correction').length>0 && $(span).parents('.correction').attr('data-original')) {
-      html += '<li>corrected from: ';
-      html += $(span).parents('.correction').attr('data-original');
-      html += '</li>';
-    }
     html += '</ul>';
     return html;
   }
