@@ -183,7 +183,7 @@ $(function() {
       });
       html += '</ul></li>';
     }
-    if (!rec && $(span).find('.obscureTextDiplo').length>0) { // not working yet
+    if (!rec && $(span).find('.obscureTextDiplo').length>0) {
       html += '<li>contains the following sequences of obscured text:<ul>';
       $(span).find('.obscureTextDiplo').each(function() {
         html = html + '<li><span style="color: green;">[</span>' + $(this).text() + '<span style="color: green;">]</span> ';
@@ -191,18 +191,24 @@ $(function() {
       });
       html += '</ul></li>';
     }
-    if (!rec && $(span).hasClass('obscureTextDiplo')) {  // or this
-      html += '<li>contains the following sequences of obscured text:<ul>';
-      html = html + '<li><span style="color: green;">[</span>' + $(span).text() + '<span style="color: green;">]</span> ';
+    else if (!rec && $(span).parents('.obscureTextDiplo').length>0) {
+      html += '<li>part of the following sequence of obscured text:<ul>';
+      html = html + '<li><span style="color: green;">[</span>' + $(span).parents('.obscureTextDiplo').text() + '<span style="color: green;">]</span> ';
       html += '</li>';
       html += '</ul></li>';
     }
-    if (!rec && $(span).find('.obscureTextSemi').length>0) { // or this
+    else if (!rec && $(span).find('.obscureTextSemi').length>0) { 
       html += '<li>contains the following sequences of obscured text:<ul>';
       $(span).find('.obscureTextSemi').each(function() {
         html = html + '<li><span style="color: green;">[</span>' + $(this).text() + '<span style="color: green;">]</span> ';
         html += '</li>';
       });
+      html += '</ul></li>';
+    }
+    else if (!rec && $(span).parents('.obscureTextSemi').length>0) {
+      html += '<li>part of the following sequence of obscured text:<ul>';
+      html = html + '<li><span style="color: green;">[</span>' + $(span).parents('.obscureTextSemi').text() + '<span style="color: green;">]</span> ';
+      html += '</li>';
       html += '</ul></li>';
     }
     html += '</ul>';
