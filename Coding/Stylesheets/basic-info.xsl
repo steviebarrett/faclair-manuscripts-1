@@ -251,6 +251,12 @@
       <xsl:apply-templates mode="diplomatic"/>
     </span>
   </xsl:template>
+  
+  <xsl:template mode="diplomatic" match="tei:date">
+    <span class="syntagm">
+      <xsl:apply-templates mode="diplomatic"/>
+    </span>
+  </xsl:template>
 
   <xsl:template mode="diplomatic" match="tei:g">
     <xsl:choose>
@@ -275,6 +281,12 @@
 
   <xsl:template mode="diplomatic" match="tei:space">
     <xsl:text> </xsl:text>
+  </xsl:template>
+  
+  <xsl:template mode="diplomatic" match="tei:pc">
+    <span class="punct">
+      <xsl:value-of select="."/>
+    </span>
   </xsl:template>
 
   <xsl:template mode="diplomatic" match="tei:unclear[@reason='damage']">
@@ -429,6 +441,12 @@
     <xsl:text> </xsl:text>
   </xsl:template>
   
+  <xsl:template mode="semi-diplomatic" match="tei:date">
+    <span class="syntagm">
+      <xsl:apply-templates mode="semi-diplomatic"/>
+    </span>
+  </xsl:template>
+  
   <xsl:template mode="semi-diplomatic" match="tei:g">
     <xsl:choose>
       <xsl:when test="starts-with(@ref,'l')">
@@ -528,9 +546,11 @@
   </xsl:template>
   
   <xsl:template mode="semi-diplomatic" match="tei:pc">
-    <xsl:text> </xsl:text>
-    <xsl:value-of select="."/>
-    <xsl:text> </xsl:text>
+    <span class="punct">
+      <xsl:text> </xsl:text>
+      <xsl:value-of select="."/>
+      <xsl:text> </xsl:text>
+    </span>
   </xsl:template>
   
 
