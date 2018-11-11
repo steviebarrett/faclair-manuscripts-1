@@ -52,7 +52,7 @@
             <xsl:text>",name:"</xsl:text>
             <xsl:value-of select="tei:glyphName"/>
             <xsl:text>",description:"</xsl:text>
-            <xsl:value-of select="normalize-space(translate(tei:note, '&quot;', ''))"/>
+            <xsl:value-of select="normalize-space(translate(tei:note, '&quot;', '%'))"/>
             <xsl:text>"};&#10;</xsl:text>            
           </xsl:for-each>
           <xsl:for-each select="document('../../Transcribing/corpus.xml')/tei:teiCorpus/tei:teiHeader/tei:encodingDesc/tei:classDecl/tei:taxonomy[@xml:id='POS']/tei:gloss">
