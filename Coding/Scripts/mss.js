@@ -65,13 +65,31 @@ $(function() {
         html = html + '<li>is a ' + eval('pos_' + poss[i]) + '</li>';
       }
     }
+    else if ($(span).hasClass('name') && $(span).children('.word').length==1 && $(span).children('.word').children('.word').length==0) {
+      var poss = $(span).children('.word').attr('data-pos').split(', ');
+      for (var i = 0; i < poss.length; i++) { 
+        html = html + '<li>is a ' + eval('pos_' + poss[i]) + '</li>';
+      }
+    }
     if ($(span).attr('data-headword')) {
       html = html + '<li>is a form of the headword <a href="' + $(span).attr('data-edil') + '" target="_new">' + $(span).attr('data-headword') + '</a></li>';
     }
-    if ($(span).children('.word').length>1) {
+    else if ($(span).hasClass('name') && $(span).children('.word').length==1 && $(span).children('.word').attr('data-headword')) {
+      html = html + '<li>is a form of the headword <a href="' + $(span).children('.word').attr('data-edil') + '" target="_new">' + $(span).children('.word').attr('data-headword') + '</a></li>';
+    }
+    if ($(span).children('.syntagm').length>1) {
       html += '<li>is a syntactically complex form containing the following elements:';      
       html += '<ul>';
-      $(span).children('.word').each(function() {
+      $(span).children('.syntagm').each(function() {
+        html = html + '<li>' + makeDescription($(this),true) + '</li>';
+      });
+      html += '</ul>';
+      html += '</li>';
+    }
+    else if ($(span).children('.syntagm').length==1 && $(span).children('.syntagm').children('.syntagm').length>0) {
+      html += '<li>is a syntactically complex form containing the following elements:';      
+      html += '<ul>';
+      $(span).children('.syntagm').children('.syntagm').each(function() {
         html = html + '<li>' + makeDescription($(this),true) + '</li>';
       });
       html += '</ul>';
