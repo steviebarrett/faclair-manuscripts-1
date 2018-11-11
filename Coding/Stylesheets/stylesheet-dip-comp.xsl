@@ -2229,6 +2229,22 @@
 				</xsl:attribute>
 			</xsl:if>Add Comment</button> -->
 	</xsl:template>
+	
+	<xsl:template mode="dip" match="tei:anchor[@type='crossref']">
+		<xsl:variable name="crossrefID" select="@copyOf"/>
+		<xsl:variable name="msID" select="substring-before($crossrefID, '.')"/>
+		<xsl:variable name="msNO" select="substring-after($msID, 'MS')"/>
+		<xsl:variable name="filename" select="concat('transcription', $msNO, '.xml')"/>
+		<xsl:variable name="filepath" select="concat('../../Transcribing/Transcriptions/', $filename)"/>
+		<xsl:choose>
+			<xsl:when test="document($filepath)/tei:div[@corresp = $crossrefID]/@type = 'prose'">
+				<xsl:apply-templates mode="dip" select="document($filepath)//tei:div[@corresp = $crossrefID]/tei:p/*"/>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:apply-templates mode="dip" select="document($filepath)//tei:div[@corresp = $crossrefID]/*"/>
+			</xsl:otherwise>
+		</xsl:choose>
+	</xsl:template>
 
 	<xsl:template mode="dip" match="tei:head">
 		<xsl:apply-templates mode="dip"/>
