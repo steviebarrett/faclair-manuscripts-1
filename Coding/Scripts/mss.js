@@ -108,7 +108,7 @@ $(function() {
       html += '<li>is a syntactically simple form</li>';
     }    
     if (!rec && $(span).find('.expansion').length>0) {
-      html += '<li>contains the following scribal expansions:<ul id="expansionList">';
+      html = html + '<li>' + extractExpansions($(span)) + ' contains the following scribal expansions:<ul id="expansionList">';
       $(span).find('.expansion').each(function() {
         var g = eval('glyph_' + $(this).attr('data-glyphref'));
         txt = '<a href="http://' + g.url + '" target="_new" data-src="' + $(this).attr('id') + '">' + g.name;
@@ -222,6 +222,23 @@ $(function() {
     }
     html += '</ul>';
     return html;
+  }
+
+  function extractExpansions(html) {
+  /*  
+    oot = '';
+    if ($(html).hasClass('expansion')) {
+      var id = 'exp' + Math.floor((Math.random() * 10000) + 1);
+      console.log(id);
+      oot = '<span class="expansion" id="' + id + '">';
+      oot += $(html).text();
+      oot += '</span>';
+    }
+    else {
+      $(html).children().each();
+    }
+    */
+    return $(html).text();
   }
 
   /*
