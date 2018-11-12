@@ -51,13 +51,17 @@ a:hover {
   background-color: inherit;
   text-decoration: inherit;
   color: inherit;
+}
+
+.punct {
   font-family: "Times New Roman", serif;
 }
 
-.word, .name {
+.syntagm {
   background-color: inherit;
   text-decoration: inherit;
   color: inherit;
+  font-family: "Times New Roman", serif;
 }
 
 .expansion {
@@ -89,19 +93,26 @@ a:hover {
 
 .addition {
   color: blue;
+  font-size: small;
 }
 
 .above {
-  vertical-align: super;
+  vertical-align: baseline;
+  position: relative;
+  top: -0.4em;
 }
 
 .below {
-  vertical-align: sub;
+  vertical-align: baseline;
+  position: relative;
+  top: 0.4em;
 }
 
+/*
 .correction {
   color:red;
 }
+*/
 
 .suppliedDiplo {
   display: none;
@@ -122,7 +133,7 @@ a:hover {
 
 .obscureTextDiplo {
   color: black;
-  background-color: gray;
+  background-color: lightgray;
 }
 
 .obscureTextSemi {

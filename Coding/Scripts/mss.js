@@ -38,14 +38,14 @@ $(function() {
     if (i != -1) {
       var j = str.indexOf('[?]');
       str2 = str.slice(0,i) + str.slice(j+4, str.length);
-      return str2;
     }
     else if (k != -1) {
       var j = str.indexOf(') ');
       str2 = str.slice(0,k) + str.slice(j+2, str.length);
-      return str2;
     }
-    else return str;
+    else str2 = str;
+    str = str2.replace(/[:=]/g,'');
+    return str;
   }
 
   function makeDescription(span, rec) {
@@ -65,13 +65,40 @@ $(function() {
         html = html + '<li>is a ' + eval('pos_' + poss[i]) + '</li>';
       }
     }
+    else if ($(span).hasClass('name') && $(span).children('.word').length==1 && $(span).children('.word').children('.word').length==0) {
+      var poss = $(span).children('.word').attr('data-pos').split(', ');
+      for (var i = 0; i < poss.length; i++) { 
+        html = html + '<li>is a ' + eval('pos_' + poss[i]) + '</li>';
+      }
+    }
     if ($(span).attr('data-headword')) {
       html = html + '<li>is a form of the headword <a href="' + $(span).attr('data-edil') + '" target="_new">' + $(span).attr('data-headword') + '</a></li>';
     }
-    if ($(span).children('.word').length>1) {
+    else if ($(span).hasClass('name') && $(span).children('.word').length==1 && $(span).children('.word').attr('data-headword')) {
+      html = html + '<li>is a form of the headword <a href="' + $(span).children('.word').attr('data-edil') + '" target="_new">' + $(span).children('.word').attr('data-headword') + '</a></li>';
+    }
+    if ($(span).children('.syntagm').length>1) {
       html += '<li>is a syntactically complex form containing the following elements:';      
       html += '<ul>';
-      $(span).children('.word').each(function() {
+      $(span).children('.syntagm').each(function() {
+        html = html + '<li>' + makeDescription($(this),true) + '</li>';
+      });
+      html += '</ul>';
+      html += '</li>';
+    }
+    else if ($(span).children('.syntagm').length==1 && $(span).children('.syntagm').children('.syntagm').length>0) {
+      html += '<li>is a syntactically complex form containing the following elements:';      
+      html += '<ul>';
+      $(span).children('.syntagm').children('.syntagm').each(function() {
+        html = html + '<li>' + makeDescription($(this),true) + '</li>';
+      });
+      html += '</ul>';
+      html += '</li>';
+    }
+    else if ($(span).children('.addition, .deletion').length>0) {
+      html += '<li>is a syntactically complex form containing the following elements:';      
+      html += '<ul>';
+      $(span).children('.syntagm').add($(span).children('.addition').add($(span).children('.deletion')).children('.syntagm')).each(function() {
         html = html + '<li>' + makeDescription($(this),true) + '</li>';
       });
       html += '</ul>';
@@ -81,11 +108,11 @@ $(function() {
       html += '<li>is a syntactically simple form</li>';
     }    
     if (!rec && $(span).find('.expansion').length>0) {
-      html += '<li>contains the following scribal expansions:<ul id="expansionList">';
+      html = html + '<li>' + extractExpansions($(span)) + ' contains the following scribal expansions:<ul id="expansionList">';
       $(span).find('.expansion').each(function() {
         var g = eval('glyph_' + $(this).attr('data-glyphref'));
         txt = '<a href="http://' + g.url + '" target="_new" data-src="' + $(this).attr('id') + '">' + g.name;
-        txt = txt + '</a>: ' + g.description;
+        txt = txt + '</a>: ' + g.description.replace(/%/g,"'");
         html = html + '<li class="glyphItem">' + txt +'</li>';
       });
       html += '</ul></li>';
@@ -95,7 +122,7 @@ $(function() {
       $(span).find('.ligature').each(function() {
         var g = eval('glyph_' + $(this).attr('data-glyphref'));
         txt = '<a href="http://' + g.url + '" target="_new" data-src="' + $(this).attr('id') + '">' + g.name;
-        txt = txt + '</a>: ' + g.description;
+        txt = txt + '</a>: ' + g.description.replace(/%/g,"'");
         html = html + '<li class="glyphItem">' + txt +'</li>';
       });
       html += '</ul></li>';
@@ -165,7 +192,7 @@ $(function() {
       });
       html += '</ul></li>';
     }
-    if (!rec && $(span).find('.obscureTextDiplo').length>0) { // not working yet
+    if (!rec && $(span).find('.obscureTextDiplo').length>0) {
       html += '<li>contains the following sequences of obscured text:<ul>';
       $(span).find('.obscureTextDiplo').each(function() {
         html = html + '<li><span style="color: green;">[</span>' + $(this).text() + '<span style="color: green;">]</span> ';
@@ -173,13 +200,13 @@ $(function() {
       });
       html += '</ul></li>';
     }
-    if (!rec && $(span).hasClass('obscureTextDiplo')) {  // or this
-      html += '<li>contains the following sequences of obscured text:<ul>';
-      html = html + '<li><span style="color: green;">[</span>' + $(span).text() + '<span style="color: green;">]</span> ';
+    else if (!rec && $(span).parents('.obscureTextDiplo').length>0) {
+      html += '<li>part of the following sequence of obscured text:<ul>';
+      html = html + '<li><span style="color: green;">[</span>' + $(span).parents('.obscureTextDiplo').text() + '<span style="color: green;">]</span> ';
       html += '</li>';
       html += '</ul></li>';
     }
-    if (!rec && $(span).find('.obscureTextSemi').length>0) { // or this
+    else if (!rec && $(span).find('.obscureTextSemi').length>0) { 
       html += '<li>contains the following sequences of obscured text:<ul>';
       $(span).find('.obscureTextSemi').each(function() {
         html = html + '<li><span style="color: green;">[</span>' + $(this).text() + '<span style="color: green;">]</span> ';
@@ -187,19 +214,31 @@ $(function() {
       });
       html += '</ul></li>';
     }
-    if ($(span).parents('.correction').length>0 && $(span).parents('.correction').attr('data-edited')) {
-      html += '<li>should probably be: ';
-      html += $(span).parents('.correction').attr('data-edited');
-      //html += makeDescription($(span).parents('.correctionDiplo').children('.edited'),false); // disny work
+    else if (!rec && $(span).parents('.obscureTextSemi').length>0) {
+      html += '<li>part of the following sequence of obscured text:<ul>';
+      html = html + '<li><span style="color: green;">[</span>' + $(span).parents('.obscureTextSemi').text() + '<span style="color: green;">]</span> ';
       html += '</li>';
-    }
-    else if ($(span).parents('.correction').length>0 && $(span).parents('.correction').attr('data-original')) {
-      html += '<li>corrected from: ';
-      html += $(span).parents('.correction').attr('data-original');
-      html += '</li>';
+      html += '</ul></li>';
     }
     html += '</ul>';
     return html;
+  }
+
+  function extractExpansions(html) {
+  /*  
+    oot = '';
+    if ($(html).hasClass('expansion')) {
+      var id = 'exp' + Math.floor((Math.random() * 10000) + 1);
+      console.log(id);
+      oot = '<span class="expansion" id="' + id + '">';
+      oot += $(html).text();
+      oot += '</span>';
+    }
+    else {
+      $(html).children().each();
+    }
+    */
+    return $(html).text();
   }
 
   /*
