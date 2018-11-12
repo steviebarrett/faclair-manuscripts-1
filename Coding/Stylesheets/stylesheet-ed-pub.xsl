@@ -1240,7 +1240,7 @@
 									</seg>
 								</xsl:when>
 								<xsl:otherwise>
-									<xsl:variable name="handRef" select="ancestor::tei:div/@resp"/>
+									<xsl:variable name="handRef" select="ancestor::tei:div[1]/@resp"/>
 									<seg n="{@n}" align="left"
 										id="word{count(ancestor::tei:w[1]/preceding::*)}_pb_tit"
 										class="pb" onmouseover="disableWordFunctions(this.id)"
@@ -1258,15 +1258,16 @@
 							</xsl:choose>
 						</xsl:when>
 						<xsl:otherwise>
+							<xsl:variable name="handRef" select="ancestor::tei:div[1]/@resp"/>
 							<seg align="left"
 								id="word{count(ancestor::tei:w[1]/preceding::*)}_pb_tit" class="pb"
 								onmouseover="disableWordFunctions(this.id)"
 								onmouseout="enableWordFunctions(this.id)" style="color:#000000">
 								<b><span class="pbRef"><xsl:value-of select="@n"/></span>:
 										<xsl:value-of
-										select="key('hands', ancestor::tei:div/@resp)/tei:forename"
+											select="document('../../Transcribing/corpus.xml')//tei:handNote[@xml:id=$handRef]/tei:forename"
 										/><xsl:text> </xsl:text><xsl:value-of
-										select="key('hands', ancestor::tei:div/@resp)/tei:surname"
+											select="document('../../Transcribing/corpus.xml')//tei:handNote[@xml:id=$handRef]/tei:surname"
 										/><xsl:text> (</xsl:text><xsl:value-of
 										select="ancestor::tei:div[1]/@resp"
 									/><xsl:text>) </xsl:text></b>
@@ -4086,10 +4087,12 @@
 		<xsl:variable name="filepath" select="concat('..\..\Transcribing\Transcriptions\', $filename)"/>
 		<xsl:choose>
 			<xsl:when test="document($filepath)//tei:div[@corresp = $crossrefID]/@type = 'prose'">
+				<br/>
 				<h3><xsl:value-of select="@comment"/></h3>
 				<xsl:apply-templates select="document($filepath)//tei:div[@corresp = $crossrefID]/tei:p/*"/>
 			</xsl:when>
 			<xsl:otherwise>
+				<br/>
 				<h3><xsl:value-of select="@comment"/></h3>
 				<xsl:apply-templates select="document($filepath)//tei:div[@corresp = $crossrefID]/*"/>
 			</xsl:otherwise>

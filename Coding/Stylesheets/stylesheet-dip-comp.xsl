@@ -127,40 +127,42 @@
 							<xsl:choose>
 								<xsl:when
 									test="preceding::tei:handShift/ancestor::tei:div[1]/@corresp = $comDiv">
+									<xsl:variable name="handRef" select="preceding::tei:handShift[1]/@new"/>
 									<seg align="left">
 										<b><span class="pbRef" prefix="{$unit}"><xsl:value-of
 												select="@n"/></span>: <xsl:value-of
-												select="key('hands', preceding::tei:handShift[1]/@new)/tei:forename"
+													select="document('../../Transcribing/corpus.xml')//tei:handNote[@xml:id=$handRef]/tei:forename"
 												/><xsl:text> </xsl:text><xsl:value-of
-												select="key('hands', preceding::tei:handShift[1]/@new)/tei:surname"
+													select="document('../../Transcribing/corpus.xml')//tei:handNote[@xml:id=$handRef]/tei:surname"
 												/><xsl:text> (</xsl:text><xsl:value-of
 												select="preceding::tei:handShift[1]/@new"
 											/><xsl:text>)</xsl:text></b>
 									</seg>
 								</xsl:when>
 								<xsl:otherwise>
+									<xsl:variable name="handRef" select="ancestor::tei:div[1]/@resp"/>
 									<seg align="left">
 										<b><span class="pbRef" prefix="{$unit}"><xsl:value-of
 												select="@n"/></span>: <xsl:value-of
-												select="key('hands', ancestor::tei:div/@resp)/tei:forename"
+													select="document('../../Transcribing/corpus.xml')//tei:handNote[@xml:id=$handRef]/tei:forename"
 												/><xsl:text> </xsl:text><xsl:value-of
-												select="key('hands', ancestor::tei:div/@resp)/tei:surname"
+													select="document('../../Transcribing/corpus.xml')//tei:handNote[@xml:id=$handRef]/tei:surname"
 												/><xsl:text> (</xsl:text><xsl:value-of
-												select="ancestor::tei:div/@resp"
+												select="ancestor::tei:div[1]/@resp"
 											/><xsl:text>) </xsl:text></b>
 									</seg>
 								</xsl:otherwise>
 							</xsl:choose>
 						</xsl:when>
-						<xsl:otherwise>
+						<xsl:otherwise><xsl:variable name="handRef" select="ancestor::tei:div[1]/@resp"/>
 							<seg align="left">
 								<b><span class="pbRef" prefix="{$unit}"><xsl:value-of select="@n"
 										/></span>: <xsl:value-of
-										select="key('hands', ancestor::tei:div/@resp)/tei:forename"
+											select="document('../../Transcribing/corpus.xml')//tei:handNote[@xml:id=$handRef]/tei:forename"
 										/><xsl:text> </xsl:text><xsl:value-of
-										select="key('hands', ancestor::tei:div/@resp)/tei:surname"
+											select="document('../../Transcribing/corpus.xml')//tei:handNote[@xml:id=$handRef]/tei:surname"
 										/><xsl:text> (</xsl:text><xsl:value-of
-										select="ancestor::tei:div/@resp"
+										select="ancestor::tei:div[1]/@resp"
 									/><xsl:text>) </xsl:text></b>
 							</seg>
 						</xsl:otherwise>
@@ -210,37 +212,40 @@
 							<xsl:choose>
 								<xsl:when
 									test="preceding::tei:handShift/ancestor::tei:div[1]/@corresp = $comDiv">
+									<xsl:variable name="handRef" select="preceding::tei:handShift[1]/@new"/>
 									<seg align="left">
 										<b><xsl:value-of select="@n"/>: <xsl:value-of
-												select="key('hands', preceding::tei:handShift[1]/@new)/tei:forename"
+											select="document('../../Transcribing/corpus.xml')//tei:handNote[@xml:id=$handRef]/tei:forename"
 												/><xsl:text> </xsl:text><xsl:value-of
-												select="key('hands', preceding::tei:handShift[1]/@new)/tei:surname"
+													select="document('../../Transcribing/corpus.xml')//tei:handNote[@xml:id=$handRef]/tei:surname"
 												/><xsl:text> (</xsl:text><xsl:value-of
 												select="preceding::tei:handShift[1]/@new"
 											/><xsl:text>)</xsl:text></b>
 									</seg>
 								</xsl:when>
 								<xsl:otherwise>
+									<xsl:variable name="handRef" select="ancestor::tei:div[1]/@resp"/>
 									<seg align="left">
 										<b><xsl:value-of select="@n"/>: <xsl:value-of
-												select="key('hands', ancestor::tei:div/@resp)/tei:forename"
+											select="document('../../Transcribing/corpus.xml')//tei:handNote[@xml:id=$handRef]/tei:forename"
 												/><xsl:text> </xsl:text><xsl:value-of
-												select="key('hands', ancestor::tei:div/@resp)/tei:surname"
+													select="document('../../Transcribing/corpus.xml')//tei:handNote[@xml:id=$handRef]/tei:surname"
 												/><xsl:text> (</xsl:text><xsl:value-of
-												select="ancestor::tei:div/@resp"
+												select="ancestor::tei:div[1]/@resp"
 											/><xsl:text>) </xsl:text></b>
 									</seg>
 								</xsl:otherwise>
 							</xsl:choose>
 						</xsl:when>
 						<xsl:otherwise>
+							<xsl:variable name="handRef" select="ancestor::tei:div[1]/@resp"/>
 							<seg align="left">
 								<b><xsl:value-of select="@n"/>: <xsl:value-of
-										select="key('hands', ancestor::tei:div/@resp)/tei:forename"
+									select="document('../../Transcribing/corpus.xml')//tei:handNote[@xml:id=$handRef]/tei:forename"
 										/><xsl:text> </xsl:text><xsl:value-of
-										select="key('hands', ancestor::tei:div/@resp)/tei:surname"
+											select="document('../../Transcribing/corpus.xml')//tei:handNote[@xml:id=$handRef]/tei:surname"
 										/><xsl:text> (</xsl:text><xsl:value-of
-										select="ancestor::tei:div/@resp"
+										select="ancestor::tei:div[1]/@resp"
 									/><xsl:text>) </xsl:text></b>
 							</seg>
 						</xsl:otherwise>
@@ -600,8 +605,8 @@
 							<xsl:value-of select="ancestor::tei:name/@type"/>
 							<xsl:text> name</xsl:text>
 						</xsl:when>
-						<xsl:when test="@xml:lang">Language: <xsl:value-of
-								select="key('lang', @xml:lang)/text()"/></xsl:when>
+						<xsl:when test="@xml:lang"><xsl:variable name="langRef" select="@xml:lang"/><xsl:text>Language: </xsl:text><xsl:value-of
+							select="document('../../Transcribing/corpus.xml')//tei:taxonomy[@xml:id='lang']/tei:gloss[@xml:id=$langRef]/text()"/></xsl:when>
 						<xsl:otherwise>[no lemma entered]</xsl:otherwise>
 					</xsl:choose>
 				</xsl:when>
@@ -858,11 +863,12 @@
 		</xsl:variable>
 		<xsl:variable name="abbrRef">
 			<xsl:for-each select="descendant::tei:abbr//tei:g | ancestor::tei:abbr//tei:g">
-				<xsl:if test="key('abbrs', @ref)/@corresp">
-					<xsl:value-of select="key('abbrs', @ref)/@corresp"/>
+				<xsl:variable name="glyphRef" select="@ref"/>
+				<xsl:if test="document('../../Transcribing/corpus.xml')//tei:glyph[@xml:id=$glyphRef]/@corresp">
+					<xsl:value-of select="document('../../Transcribing/corpus.xml')//tei:glyph[@xml:id=$glyphRef]/@corresp"/>
 				</xsl:if>
-				<xsl:if test="key('abbrs', @ref)[not(@corresp)]">
-					<xsl:value-of select="key('abbrs', @ref)/tei:glyphName"/>
+				<xsl:if test="document('../../Transcribing/corpus.xml')//tei:glyph[@xml:id=$glyphRef and not(@corresp)]">
+					<xsl:value-of select="document('../../Transcribing/corpus.xml')//tei:glyph[@xml:id=$glyphRef]/tei:glyphName"/>
 				</xsl:if>
 				<xsl:choose>
 					<xsl:when
@@ -930,25 +936,26 @@
 		<xsl:variable name="hand">
 			<xsl:choose>
 				<xsl:when test="descendant::tei:handShift">
-					<xsl:value-of select="key('hands', $handRef)/tei:forename"/>
+					<xsl:value-of select="document('../../Transcribing/corpus.xml')//tei:handNote[@xml:id=$handRef]/tei:forename"/>
 					<xsl:text> </xsl:text>
-					<xsl:value-of select="key('hands', $handRef)/tei:surname"/>
+					<xsl:value-of select="document('../../Transcribing/corpus.xml')//tei:handNote[@xml:id=$handRef]/tei:surname"/>
 					<xsl:text> (</xsl:text>
 					<xsl:value-of select="substring($handRef, 5)"/>
 					<xsl:text>); </xsl:text>
 					<xsl:for-each select="descendant::tei:handShift">
-						<xsl:value-of select="key('hands', @new)/tei:forename"/>
+						<xsl:variable name="hsHandRef" select="@new"/>
+						<xsl:value-of select="document('../../Transcribing/corpus.xml')//tei:handNote[@xml:id=$hsHandRef]/tei:forename"/>
 						<xsl:text> </xsl:text>
-						<xsl:value-of select="key('hands', @new)/tei:surname"/>
+						<xsl:value-of select="document('../../Transcribing/corpus.xml')//tei:handNote[@xml:id=$hsHandRef]/tei:surname"/>
 						<xsl:text> (</xsl:text>
 						<xsl:value-of select="substring(@new, 5)"/>
 						<xsl:text>); </xsl:text>
 					</xsl:for-each>
 				</xsl:when>
 				<xsl:otherwise>
-					<xsl:value-of select="key('hands', $handRef)/tei:forename"/>
+					<xsl:value-of select="document('../../Transcribing/corpus.xml')//tei:handNote[@xml:id=$handRef]/tei:forename"/>
 					<xsl:text> </xsl:text>
-					<xsl:value-of select="key('hands', $handRef)/tei:surname"/>
+					<xsl:value-of select="document('../../Transcribing/corpus.xml')//tei:handNote[@xml:id=$handRef]/tei:surname"/>
 					<xsl:text> (</xsl:text>
 					<xsl:value-of select="substring($handRef, 5)"/>
 					<xsl:text>) </xsl:text>
@@ -956,7 +963,7 @@
 			</xsl:choose>
 		</xsl:variable>
 		<xsl:variable name="handDate">
-			<xsl:value-of select="key('hands', $handRef)/tei:date"/>
+			<xsl:value-of select="document('../../Transcribing/corpus.xml')//tei:handNote[@xml:id=$handRef]/tei:date"/>
 		</xsl:variable>
 		<xsl:variable name="shelfmark">
 			<xsl:value-of select="ancestor::tei:TEI//tei:msIdentifier/@sameAs"/>
@@ -1004,16 +1011,17 @@
 				</xsl:otherwise>
 			</xsl:choose>
 		</xsl:variable>
-		<xsl:variable name="gloss">
+		<xsl:variable name="glossText">
 			<xsl:choose>
 				<xsl:when
 					test="ancestor::tei:seg[@type = 'gloss'] and not(ancestor::tei:add[@type = 'gloss'])">
+					<xsl:variable name="glHandRef" select="ancestor::tei:seg[@type = 'gloss']/tei:add[@type = 'gloss']/@resp"/>
 					<xsl:text>A gloss has been added by </xsl:text>
 					<xsl:value-of
-						select="key('hands', ancestor::tei:seg[@type = 'gloss']/tei:add[@type = 'gloss']/@resp)/tei:forename"/>
+						select="document('../../Transcribing/corpus.xml')//tei:handNote[@xml:id=$glHandRef]/tei:forename"/>
 					<xsl:text> </xsl:text>
 					<xsl:value-of
-						select="key('hands', ancestor::tei:seg[@type = 'gloss']/tei:add[@type = 'gloss']/@resp)/tei:surname"/>
+						select="document('../../Transcribing/corpus.xml')//tei:handNote[@xml:id=$glHandRef]/tei:surname"/>
 					<xsl:text> (</xsl:text>
 					<xsl:value-of
 						select="ancestor::tei:seg[@type = 'gloss']/tei:add[@type = 'gloss']/@resp"/>
@@ -1045,6 +1053,7 @@
 					<xsl:text>"</xsl:text>
 				</xsl:when>
 				<xsl:when test="ancestor::tei:add[@type = 'gloss']">
+					<xsl:variable name="glHandRef" select="ancestor::tei:add[@type = 'gloss']/@resp"/>
 					<xsl:text>This has been added as a gloss </xsl:text>
 					<xsl:if test="ancestor::tei:seg[@type = 'gloss']">
 						<xsl:text>on "</xsl:text>
@@ -1076,10 +1085,10 @@
 					</xsl:if>
 					<xsl:text>by </xsl:text>
 					<xsl:value-of
-						select="key('hands', ancestor::tei:add[@type = 'gloss']/@resp)/tei:forename"/>
+						select="document('../../Transcribing/corpus.xml')//tei:handNote[@xml:id=$glHandRef]/tei:forename"/>
 					<xsl:text> </xsl:text>
 					<xsl:value-of
-						select="key('hands', ancestor::tei:add[@type = 'gloss']/@resp)/tei:surname"/>
+						select="document('../../Transcribing/corpus.xml')//tei:handNote[@xml:id=$glHandRef]/tei:surname"/>
 					<xsl:text> (</xsl:text>
 					<xsl:value-of select="ancestor::tei:add[@type = 'gloss']/@resp"/>
 					<xsl:text>).</xsl:text>
@@ -1100,7 +1109,8 @@
 					<xsl:value-of select="@lemmaDW"/>
 				</xsl:when>
 				<xsl:otherwise>
-					<xsl:value-of select="key('hwData', @lemmaRef)/tei:w/@lemmaDW"/>
+					<xsl:variable name="hwRef" select="@lemmaRef"/>
+					<xsl:value-of select="document('../../Transcribing/hwData.xml')//tei:entryFree[@corresp=$hwRef]/tei:w/@lemmaDW"/>
 				</xsl:otherwise>
 			</xsl:choose>
 		</xsl:variable>
@@ -1110,7 +1120,8 @@
 					<xsl:value-of select="@lemmaRefDW"/>
 				</xsl:when>
 				<xsl:otherwise>
-					<xsl:value-of select="key('hwData', @lemmaRef)/tei:w/@lemmaRefDW"/>
+					<xsl:variable name="hwRef" select="@lemmaRef"/>
+					<xsl:value-of select="document('../../Transcribing/hwData.xml')//tei:entryFree[@corresp=$hwRef]/tei:w/@lemmaRefDW"/>
 				</xsl:otherwise>
 			</xsl:choose>
 		</xsl:variable>
@@ -1185,7 +1196,7 @@
 			lemmaRefED="{$EDref}" lemmaSL="{$slLemma}" slipRef="{$slRef}" ana="{@ana}"
 			hand="{$hand}" ref="{$msref}" date="{$handDate}" medium="{$medium}" cert="{$certLvl}"
 			abbrRefs="{$abbrRef}"
-			title="{$lem}: {$pos} {$src}&#10;{$hand}&#10;{$prob}{$certProb}&#10;Abbreviations: {$abbrs}&#10;{$gloss}"
+			title="{$lem}: {$pos} {$src}&#10;{$hand}&#10;{$prob}{$certProb}&#10;Abbreviations: {$abbrs}&#10;{$glossText}"
 			style="text-decoration:none; color:#000000">
 			<xsl:if test="contains(@lemmaRef, 'dasg.ac.uk')">
 				<xsl:attribute name="slipRef">
@@ -1345,25 +1356,26 @@
 		<xsl:variable name="hand">
 			<xsl:choose>
 				<xsl:when test="descendant::tei:handShift">
-					<xsl:value-of select="key('hands', $handRef)/tei:forename"/>
+					<xsl:value-of select="document('../../Transcribing/corpus.xml')//tei:handNote[@xml:id=$handRef]/tei:forename"/>
 					<xsl:text> </xsl:text>
-					<xsl:value-of select="key('hands', $handRef)/tei:surname"/>
+					<xsl:value-of select="document('../../Transcribing/corpus.xml')//tei:handNote[@xml:id=$handRef]/tei:surname"/>
 					<xsl:text> (</xsl:text>
 					<xsl:value-of select="$handRef"/>
 					<xsl:text>); </xsl:text>
 					<xsl:for-each select="descendant::tei:handShift">
-						<xsl:value-of select="key('hands', @new)/tei:forename"/>
+						<xsl:variable name="hsHandRef" select="@new"/>
+						<xsl:value-of select="document('../../Transcribing/corpus.xml')//tei:handNote[@xml:id=$hsHandRef]/tei:forename"/>
 						<xsl:text> </xsl:text>
-						<xsl:value-of select="key('hands', @new)/tei:surname"/>
+						<xsl:value-of select="document('../../Transcribing/corpus.xml')//tei:handNote[@xml:id=$hsHandRef]/tei:surname"/>
 						<xsl:text> (</xsl:text>
 						<xsl:value-of select="@new"/>
 						<xsl:text>); </xsl:text>
 					</xsl:for-each>
 				</xsl:when>
 				<xsl:otherwise>
-					<xsl:value-of select="key('hands', $handRef)/tei:forename"/>
+					<xsl:value-of select="document('../../Transcribing/corpus.xml')//tei:handNote[@xml:id=$handRef]/tei:forename"/>
 					<xsl:text> </xsl:text>
-					<xsl:value-of select="key('hands', $handRef)/tei:surname"/>
+					<xsl:value-of select="document('../../Transcribing/corpus.xml')//tei:handNote[@xml:id=$handRef]/tei:surname"/>
 					<xsl:text> (</xsl:text>
 					<xsl:value-of select="$handRef"/>
 					<xsl:text>) </xsl:text>
@@ -1373,11 +1385,11 @@
 		<xsl:variable name="prob">
 			<xsl:if test="ancestor::tei:del">
 				<xsl:text xml:space="preserve">&#10;- characters deleted by </xsl:text>
-				<xsl:value-of select="key('hands', ancestor::tei:del/@resp)/tei:forename"/>
+				<xsl:value-of select="document('../../Transcribing/corpus.xml')//tei:handNote[@xml:id=$handRef]/tei:forename"/>
 				<xsl:text> </xsl:text>
-				<xsl:value-of select="key('hands', ancestor::tei:del/@resp)/tei:surname"/>
+				<xsl:value-of select="document('../../Transcribing/corpus.xml')//tei:handNote[@xml:id=$handRef]/tei:surname"/>
 				<xsl:text> (</xsl:text>
-				<xsl:value-of select="key('hands', ancestor::tei:del/@resp)/@xml:id"/>
+				<xsl:value-of select="$handRef"/>
 				<xsl:text>)&#10;</xsl:text>
 			</xsl:if>
 		</xsl:variable>
@@ -2241,13 +2253,13 @@
 		<xsl:variable name="filename" select="concat('transcription', $msNO, '.xml')"/>
 		<xsl:variable name="filepath" select="concat('../../Transcribing/Transcriptions/', $filename)"/>
 		<xsl:choose>
-			<xsl:when test="//tei:div[@corresp = $crossrefID]/@type = 'prose'">
+			<xsl:when test="document($filepath)//tei:div[@corresp = $crossrefID]/@type = 'prose'">
 				<h3><xsl:value-of select="@comment"/></h3>
-				<xsl:apply-templates mode="dip" select="//tei:div[@corresp = $crossrefID]/tei:p/*"/>
+				<xsl:apply-templates mode="dip" select="document($filepath)//tei:div[@corresp = $crossrefID]/tei:p/*"/>
 			</xsl:when>
 			<xsl:otherwise>
 				<h3><xsl:value-of select="@comment"/></h3>
-				<xsl:apply-templates mode="dip" select="//tei:div[@corresp = $crossrefID]/*"/>
+				<xsl:apply-templates mode="dip" select="document($filepath)//tei:div[@corresp = $crossrefID]/*"/>
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
