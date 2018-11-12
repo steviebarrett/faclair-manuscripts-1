@@ -32,22 +32,6 @@ $(function() {
     $('#right-panel').html(makeDescription($(this),false));
   });
   
-  function clean(str) { // remove form content from headword strings at linebreaks
-    var i = str.indexOf('[+]');
-    var k = str.indexOf(' (');
-    if (i != -1) {
-      var j = str.indexOf('[?]');
-      str2 = str.slice(0,i) + str.slice(j+4, str.length);
-    }
-    else if (k != -1) {
-      var j = str.indexOf(') ');
-      str2 = str.slice(0,k) + str.slice(j+2, str.length);
-    }
-    else str2 = str;
-    str = str2.replace(/[:=]/g,'');
-    return str;
-  }
-
   function makeDescription(span, rec) {
     html = '<span style="color:red;">' + clean($(span).text()) + '</span><ul>';
     if ($(span).hasClass('name')) {
@@ -224,6 +208,22 @@ $(function() {
     return html;
   }
 
+  function clean(str) { // remove form content from headword strings at linebreaks
+    var i = str.indexOf('[+]');
+    var k = str.indexOf(' (');
+    if (i != -1) {
+      var j = str.indexOf('[?]');
+      str2 = str.slice(0,i) + str.slice(j+4, str.length);
+    }
+    else if (k != -1) {
+      var j = str.indexOf(') ');
+      str2 = str.slice(0,k) + str.slice(j+2, str.length);
+    }
+    else str2 = str;
+    str = str2.replace(/[:=]/g,'');
+    return str;
+  }
+
   function extractExpansions(html) {
   /*  
     oot = '';
@@ -238,7 +238,7 @@ $(function() {
       $(html).children().each();
     }
     */
-    return $(html).text();
+    return clean($(html).text());
   }
 
   /*
