@@ -2747,7 +2747,7 @@
 						test="ancestor::tei:add[count(descendant::tei:w[not(descendant::tei:w)]) = 1 or count(descendant::tei:w[descendant::tei:w]) = 1]">
 						<xsl:text/>
 					</xsl:when>
-					<xsl:when test="ancestor::tei:unclear and count(following-sibling::tei:w) = 0">
+					<xsl:when test="ancestor::tei:unclear and count(following-sibling::*[descendant-or-self::tei:w]) = 0">
 						<xsl:text/>
 					</xsl:when>
 					<xsl:when
