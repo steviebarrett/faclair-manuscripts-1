@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:tei="http://www.tei-c.org/ns/1.0"
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema"
 	exclude-result-prefixes="xs" version="2.0">
-	<xsl:include href="stylesheet-dip-comp.xsl"/>
+	<xsl:include href="stylesheet-dip-comp-doc.xsl"/>
 	<xsl:strip-space elements="*"/>
 
 	<xsl:output method="html"/>
