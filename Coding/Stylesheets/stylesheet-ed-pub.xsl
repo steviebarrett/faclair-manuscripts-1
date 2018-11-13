@@ -4084,7 +4084,7 @@
 		<xsl:variable name="msID" select="substring-before($crossrefID, '.')"/>
 		<xsl:variable name="msNO" select="substring-after($msID, 'MS')"/>
 		<xsl:variable name="filename" select="concat('transcription', $msNO, '.xml')"/>
-		<xsl:variable name="filepath" select="concat('..\..\Transcribing\Transcriptions\', $filename)"/>
+		<xsl:variable name="filepath" select="concat('../../Transcribing/Transcriptions/', $filename)"/>
 		<xsl:choose>
 			<xsl:when test="document($filepath)//tei:div[@corresp = $crossrefID]/@type = 'prose'">
 				<br/>
