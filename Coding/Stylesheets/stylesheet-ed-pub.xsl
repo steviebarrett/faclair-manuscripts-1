@@ -1157,7 +1157,7 @@
 
 	<xsl:template match="tei:pb">
 		<xsl:choose>
-			<xsl:when test="ancestor::tei:div[1][@type = 'prose']">
+			<xsl:when test="ancestor::tei:div[1]/@type = 'prose'">
 				<span class="pbHead">
 					<xsl:variable name="comDiv" select="ancestor::tei:div[1]/@corresp"/>
 					<xsl:if test="preceding::tei:lb[ancestor::tei:div/@corresp = $comDiv]">
@@ -1299,7 +1299,15 @@
 			</xsl:when>
 			<xsl:otherwise>
 				<span class="pb">
-					<xsl:text> </xsl:text>
+					<xsl:choose>
+						<xsl:when test="ancestor::tei:div[1]/@type = 'verse'">
+							<br/>
+							<br/>
+						</xsl:when>
+						<xsl:otherwise>
+							<xsl:text> </xsl:text>
+						</xsl:otherwise>
+					</xsl:choose>
 					<sub>
 						<b>
 							<xsl:choose>
@@ -1310,7 +1318,22 @@
 							<xsl:value-of select="@n"/>
 						</b>
 					</sub>
-					<xsl:text> </xsl:text>
+					<xsl:choose>
+						<xsl:when test="ancestor::tei:div[1]/@type = 'verse'">
+							<xsl:choose>
+								<xsl:when test="following::*[1]/name() = 'cb'">
+									<xsl:text/>
+								</xsl:when>
+								<xsl:otherwise>
+									<br/>
+									<br/>
+								</xsl:otherwise>
+							</xsl:choose>
+						</xsl:when>
+						<xsl:otherwise>
+							<xsl:text> </xsl:text>
+						</xsl:otherwise>
+					</xsl:choose>
 				</span>
 			</xsl:otherwise>
 		</xsl:choose>
@@ -1318,12 +1341,12 @@
 
 	<xsl:template match="tei:cb">
 		<xsl:choose>
-			<xsl:when test="ancestor::tei:div[1]/@type = 'prose'">
+			<xsl:when test="ancestor::tei:div[1]/@type = 'prose' or ancestor::tei:div[1]/@type = 'verse'">
 				<span class="cbHead">
 					<br/>
 					<br/>
-					<b>Col.<xsl:text> </xsl:text>
-						<span class="cbRef"><xsl:value-of select="@n"/></span></b>
+					<sub><b>Col.<xsl:text> </xsl:text>
+						<span class="cbRef"><xsl:value-of select="@n"/></span></b></sub>
 					<br/>
 					<br/>
 				</span>
@@ -1661,7 +1684,7 @@
 					<br id="word{count(ancestor::tei:w[1]/preceding::*)}_pb_br2" class="pb"
 						onmouseover="disableWordFunctions(this.id)"
 						onmouseout="enableWordFunctions(this.id)" style="color:#000000"/>
-					<xsl:apply-templates select="descendant::tei:l"/>
+					<xsl:apply-templates/>
 					<xsl:if test="@type = 'prosediv'">
 						<br/>
 						<br/>
