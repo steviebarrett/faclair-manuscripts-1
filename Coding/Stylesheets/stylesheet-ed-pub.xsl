@@ -2744,7 +2744,7 @@
 						<xsl:text/>
 					</xsl:when>
 					<xsl:when
-						test="ancestor::tei:add[count(descendant::tei:w[not(descendant::tei:w)]) = 1]">
+						test="ancestor::tei:add[count(descendant::tei:w[not(descendant::tei:w)]) = 1 or count(descendant::tei:w[descendant::tei:w]) = 1]">
 						<xsl:text/>
 					</xsl:when>
 					<xsl:when test="ancestor::tei:unclear and count(following-sibling::tei:w) = 0">
@@ -3962,7 +3962,7 @@
 						<b>
 							<i>-gap-</i>
 						</b>
-					</sub>
+					</sub><xsl:text> </xsl:text>
 				</a>
 			</xsl:when>
 			<xsl:otherwise>
@@ -3979,7 +3979,7 @@
 								<b>
 									<i>-gap-</i>
 								</b>
-							</sub>
+							</sub><xsl:text> </xsl:text>
 						</a>
 					</xsl:when>
 					<xsl:otherwise>
@@ -3994,7 +3994,7 @@
 								<b>
 									<i>-gap-</i>
 								</b>
-							</sub>
+							</sub><xsl:text> </xsl:text>
 						</a>
 					</xsl:otherwise>
 				</xsl:choose>
