@@ -1718,7 +1718,7 @@
 				<xsl:value-of select="ancestor::tei:l[1]/@n"/>
 			</xsl:if>
 		</xsl:variable>
-		<p style="margin-right:90pc; text-align:center" msLine="{$lineID}">
+		<p style="margin-right:70pc; text-align:right" msLine="{$lineID}">
 			<xsl:apply-templates/>
 		</p>
 	</xsl:template>
