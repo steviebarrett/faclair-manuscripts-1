@@ -415,7 +415,7 @@
 		<xsl:variable name="importCount"><!--NB: This currently can only count one block of imported text-->
 			<xsl:choose>
 				<xsl:when test="ancestor::tei:TEI[1][@xml:id = $fileID]//tei:anchor[@type='crossref']">
-					<xsl:variable name="crossrefID" select="@copyOf"/>
+					<xsl:variable name="crossrefID" select="ancestor::tei:TEI[1][@xml:id = $fileID]//tei:anchor[@type='crossref']/@copyOf"/>
 					<xsl:variable name="msID" select="substring-before($crossrefID, '.')"/>
 					<xsl:variable name="msNO" select="substring-after($msID, 'MS')"/>
 					<xsl:variable name="filename" select="concat('transcription', $msNO, '.xml')"/>
@@ -427,7 +427,8 @@
 				</xsl:otherwise>
 			</xsl:choose>
 		</xsl:variable>
-		<xsl:value-of select="sum($mainCount, $importCount)"/><xsl:text> words</xsl:text><br/>
+		<xsl:value-of select="$mainCount + $importCount"/><xsl:text> words</xsl:text>
+		<br/>
 	</xsl:template>
 
 	<xsl:template
