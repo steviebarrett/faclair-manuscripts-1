@@ -409,9 +409,25 @@
 
 	<xsl:template match="tei:teiHeader/tei:fileDesc/tei:extent">
 		<xsl:variable name="fileID" select="ancestor::tei:TEI[1]/@xml:id"/>
-		<xsl:value-of
-			select="count(//tei:w[not(descendant::tei:w) and ancestor::tei:TEI[1][@xml:id = $fileID]])"/>
-		<xsl:text> words</xsl:text>
+		<xsl:variable name="mainCount">
+			<xsl:value-of select="count(//tei:w[not(descendant::tei:w) and ancestor::tei:TEI[1][@xml:id = $fileID]])"/>
+		</xsl:variable>
+		<xsl:variable name="importCount"><!--NB: This currently can only count one block of imported text-->
+			<xsl:choose>
+				<xsl:when test="ancestor::tei:TEI[1][@xml:id = $fileID]//tei:anchor[@type='crossref']">
+					<xsl:variable name="crossrefID" select="@copyOf"/>
+					<xsl:variable name="msID" select="substring-before($crossrefID, '.')"/>
+					<xsl:variable name="msNO" select="substring-after($msID, 'MS')"/>
+					<xsl:variable name="filename" select="concat('transcription', $msNO, '.xml')"/>
+					<xsl:variable name="filepath" select="concat('..\..\Transcribing\Transcriptions\', $filename)"/>
+					<xsl:value-of select="count(document($filepath)//tei:div[@corresp = $crossrefID]//tei:w[not(descendant::tei:w)])"/>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:value-of select="0"/>
+				</xsl:otherwise>
+			</xsl:choose>
+		</xsl:variable>
+		<xsl:value-of select="sum($mainCount, $importCount)"/><xsl:text> words</xsl:text>
 	</xsl:template>
 
 	<xsl:template
