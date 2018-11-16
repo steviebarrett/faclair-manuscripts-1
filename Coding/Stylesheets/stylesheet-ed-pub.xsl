@@ -427,7 +427,7 @@
 				</xsl:otherwise>
 			</xsl:choose>
 		</xsl:variable>
-		<xsl:value-of select="sum($mainCount, $importCount)"/><xsl:text> words</xsl:text>
+		<xsl:value-of select="sum($mainCount, $importCount)"/><xsl:text> words</xsl:text><br/>
 	</xsl:template>
 
 	<xsl:template
