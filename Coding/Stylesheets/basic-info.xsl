@@ -266,7 +266,7 @@
     </span>
   </xsl:template>
   
-  <xsl:template mode="diplomatic" match="tei:date">
+  <xsl:template mode="diplomatic" match="tei:date | tei:c | tei:num">
     <span class="syntagm">
       <xsl:apply-templates mode="diplomatic"/>
     </span>
