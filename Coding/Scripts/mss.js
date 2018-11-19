@@ -95,7 +95,7 @@ $(function() {
       html = html + '<li>' + extractExpansions($(span)) + ' contains the following scribal expansions:<ul id="expansionList">';
       $(span).find('.expansion').each(function() {
         var g = eval('glyph_' + $(this).attr('data-glyphref'));
-        txt = '<a href="http://' + g.url + '" target="_new" data-src="' + $(this).attr('id') + '">' + g.name;
+        txt = '<a href="' + g.url + '" target="_new" data-src="' + $(this).attr('id') + '">' + g.name;
         txt = txt + '</a>: ' + g.description.replace(/%/g,"'");
         html = html + '<li class="glyphItem">' + txt +'</li>';
       });
@@ -105,7 +105,7 @@ $(function() {
       html += '<li>contains the following scribal ligatures:<ul id="ligatureList">';
       $(span).find('.ligature').each(function() {
         var g = eval('glyph_' + $(this).attr('data-glyphref'));
-        txt = '<a href="http://' + g.url + '" target="_new" data-src="' + $(this).attr('id') + '">' + g.name;
+        txt = '<a href="' + g.url + '" target="_new" data-src="' + $(this).attr('id') + '">' + g.name;
         txt = txt + '</a>: ' + g.description.replace(/%/g,"'");
         html = html + '<li class="glyphItem">' + txt +'</li>';
       });
