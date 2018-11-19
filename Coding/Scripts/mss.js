@@ -111,6 +111,13 @@ $(function() {
       });
       html += '</ul></li>';
     }
+    if (!rec && $(span).find('.expansion').length>0) {
+      // SB
+    }
+    if (!rec && $(span).find('.ligature').length>0) {
+      // SB
+    }
+    
     if (!rec && $(span).find('.unclear').length>0) {
       html += '<li>contains the following unclear sequences:<ul id="unclearList">';
       $(span).find('.unclear').each(function() {
