@@ -152,9 +152,10 @@ $(function() {
       html += '</li>';
     }
     if (!rec && $(span).find('.suppliedDiplo').length>0) {
-      html += '<li>contains the following supplied sequences:<ul>';
+      html += '<li>contains editorial supplements:<ul>';
+      //html += $(span).text();  
       $(span).find('.suppliedDiplo').each(function() {
-        html = html + '<li><span style="color: green;">[</span>' + $(this).text() + '<span style="color: green;">]</span> ';
+        html = html + '<li><span style="color: green;">' + $(this).text() + '</span> ';
         html += '</li>';
       });
       html += '</ul></li>';

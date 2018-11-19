@@ -343,7 +343,9 @@
 
   <xsl:template mode="diplomatic" match="tei:supplied">
     <span class="suppliedDiplo">
+      <xsl:text>[</xsl:text>
       <xsl:apply-templates mode="diplomatic"/>
+      <xsl:text>]</xsl:text>
     </span>
   </xsl:template>
   
