@@ -35,12 +35,17 @@ $(function() {
   function makeDescription(span, rec) {
     html = '<span style="color:red;">' + clean($(span).text()) + '</span><ul>';
     if ($(span).hasClass('name')) {
-      html = html + '<li>is the name of a ';
       if ($(span).attr('data-nametype')=='personal') {
-        html = html + 'person</li>';
+        html = html + '<li>is the name of a person</li>';
       }
       else if ($(span).attr('data-nametype')=='place') {
-        html = html + 'place</li>';
+        html = html + '<li>is the name of a place</li>';
+      }
+      else if ($(span).attr('data-nametype')=='population') {
+        html = html + '<li>is the name of a group of people</li>';
+      }
+      else {
+        html = html + '<li>is a name</li>';
       }
     }
     if ($(span).attr('data-pos')) {
