@@ -370,6 +370,22 @@
       <xsl:apply-templates mode="diplomatic"/>
     </div>
   </xsl:template>
+  
+  <xsl:template match="tei:gap" mode="diplomatic">
+    <span class="gap">
+      <xsl:attribute name="title">
+        <xsl:text>Reason: </xsl:text>
+        <xsl:value-of select="@reason"/>
+        <xsl:text>, Extent: </xsl:text>
+        <xsl:value-of select="@extent"/>
+        <xsl:text> </xsl:text>
+        <xsl:value-of select="@unit"/>
+        <xsl:text>, Resp: </xsl:text>
+        <xsl:value-of select="@resp"/>
+      </xsl:attribute>
+      <xsl:text>[...]</xsl:text>
+    </span>
+  </xsl:template>
 
   <!-- SEMI-DIPLOMATIC -->
 
@@ -457,7 +473,7 @@
     <xsl:text> </xsl:text>
   </xsl:template>
   
-  <xsl:template mode="semi-diplomatic" match="tei:date">
+  <xsl:template mode="semi-diplomatic" match="tei:date | tei:c | tei:num">
     <span class="syntagm">
       <xsl:apply-templates mode="semi-diplomatic"/>
     </span>
