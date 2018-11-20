@@ -302,12 +302,6 @@
       <xsl:value-of select="."/>
     </span>
   </xsl:template>
-
-  <xsl:template mode="diplomatic" match="tei:unclear[@reason='damage']">
-    <span class="damagedDiplo">
-      <xsl:apply-templates mode="diplomatic"/>
-    </span>
-  </xsl:template>
   
   <xsl:template mode="diplomatic" match="tei:unclear[@reason='text_obscure']">
     <span class="obscureTextDiplo">
@@ -386,6 +380,17 @@
       <xsl:text>[...]</xsl:text>
     </span>
   </xsl:template>
+  
+  <xsl:template mode="diplomatic" match="tei:unclear[@reason='damage']">
+    <span class="gap">
+      <xsl:attribute name="title">
+        <xsl:text>Reason: damage. Probably: </xsl:text>
+        <xsl:apply-templates mode="diplomatic"/>
+      </xsl:attribute>
+      <xsl:text>[...]</xsl:text>
+    </span>
+  </xsl:template>
+  
 
   <!-- SEMI-DIPLOMATIC -->
 
