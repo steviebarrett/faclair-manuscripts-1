@@ -64,6 +64,7 @@ function disableWordFunctions(id) {
 	word.setAttribute("onclick", "");
 	word.setAttribute("onmouseover", "");
 	word.setAttribute("onmouseout", "");
+	word.removeAttribute("href");
 	}
 	else{
 		return;
@@ -84,7 +85,8 @@ function enableWordFunctions(id) {
 	}
 	}
 	else{
-		return;
+		var wHref = word.getAttribute("lemmaRef");
+		word.setAttribute("href", wHref);
 	}
 	word.setAttribute("onmouseover", "hilite(this.id)");
 	word.setAttribute("onmouseout", "dhilite(this.id)");

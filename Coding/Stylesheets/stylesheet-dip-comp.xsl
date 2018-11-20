@@ -1179,7 +1179,7 @@
 				</xsl:otherwise>
 			</xsl:choose>
 		</xsl:variable>
-		<a class="dip" id="{$wordId}" pos="{$wordPOS}" href="{$lemRef}" target="_blank"
+		<a class="dip" id="{$wordId}" pos="{$wordPOS}"
 			onmouseover="hilite(this.id)" onmouseout="dhilite(this.id)" lemma="{$lem}"
 			lemmaRef="{$lemRef}" lemmaDW="{$DWlem}" lemmaRefDW="{$DWref}" lemmaED="{$EDlem}"
 			lemmaRefED="{$EDref}" lemmaSL="{$slLemma}" slipRef="{$slRef}" ana="{@ana}"
@@ -1187,6 +1187,14 @@
 			abbrRefs="{$abbrRef}"
 			title="{$lem}: {$pos} {$src}&#10;{$hand}&#10;{$prob}{$certProb}&#10;Abbreviations: {$abbrs}&#10;{$gloss}"
 			style="text-decoration:none; color:#000000">
+			<xsl:if test="not($lemRef = '')">
+				<xsl:attribute name="href">
+					<xsl:value-of select="$lemRef"/>
+				</xsl:attribute>
+				<xsl:attribute name="target">
+					<xsl:text>_blank</xsl:text>
+				</xsl:attribute>
+			</xsl:if>
 			<xsl:if test="contains(@lemmaRef, 'dasg.ac.uk')">
 				<xsl:attribute name="slipRef">
 					<xsl:value-of select="@lemmaRef"/>
