@@ -30,8 +30,13 @@
 							with lexical and palaeographical data from various sources (e.g. eDIL).
 							Transcriptions also have introductions, which are based on the relevant
 							secondary literature and the editors' own observations. </p>
-						<p>hwData.xml contains data on each headword in the FnaG MSS Corpus supplied
-							by the editors while transcribing and while reviewing the headwords.</p>
+						<p>The headword database (hwData.xml) contains data on each headword in the
+							FnaG MSS Corpus supplied by the editors while transcribing and while
+							reviewing the headwords. Headwords and URLs from eDIL and Dwelly are
+							added during transcription. Morphological data and additional
+							headwords/URLs are added to the headwords database.</p>
+						<p>There are currently <xsl:call-template name="hwCount"/> headwords in the
+							headword database. <xsl:call-template name="scgDataPc"/>. There are <xsl:call-template name="newHwCount"/> new words in the corpus. </p>
 					</sourceDesc>
 				</fileDesc>
 			</teiHeader>
@@ -97,6 +102,19 @@
 				</body>
 			</text>
 		</TEI>
+	</xsl:template>
+
+	<xsl:template name="hwCount">
+		<xsl:value-of select="count(//tei:TEI[@xml:id = 'hwData']//tei:entryFree)"/>
+	</xsl:template>
+	
+	<xsl:template name="scgDataPc">
+		<xsl:variable name="calc" select="count(//tei:TEI[@xml:id = 'hwData']//tei:entryFree/tei:w[not(@lemmaDW = '') and not(@lemma = '')]) div count(//tei:TEI[@xml:id = 'hwData']//tei:entryFree)"/>
+		<xsl:value-of select="$calc * 100"/><xsl:text>%</xsl:text>
+	</xsl:template>
+	
+	<xsl:template name="newHwCount">
+		<xsl:value-of select="count(//tei:w[not(@xml:lang) and not(@type = 'data') and not(descendant::tei:w) and not(@lemmaRef = //tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree/@corresp)])"/>
 	</xsl:template>
 
 	<!-- <xsl:template name="entry">
