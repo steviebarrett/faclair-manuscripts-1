@@ -14,22 +14,24 @@
 			<teiHeader>
 				<fileDesc>
 					<titleStmt>
-						<title> FnaG MSS Corpus: New Headword Data </title>
+						<title> FnaG MSS Corpus: Headword Data </title>
 					</titleStmt>
 					<publicationStmt>
-						<p> This data is extracted from the FnaG MSS Corpus and compared to the
-							existing headword database (hwData.xml). Only headwords that do not
-							appear in that database are presented here. It is assumed that the
-							relevant data will be added to each entry in this file and the entries
-							then transferred manually to hwData.xml.</p>
+						<p> This data is extracted from the FnaG MSS Corpus and the existing
+							headword database (hwData.xml). A new database is generated consisting
+							of the pre-existing database together with headwords that have been
+							found in the corpus that do not appear in the pre-existing database.
+							These are tagged 'source="new"'. The counts ('@n') of occurences of
+							headwords in the corpus have been updated based on the version of the
+							corpus used to generate this file.</p>
 					</publicationStmt>
 					<sourceDesc>
 						<p> The FnaG MSS Corpus has been transcribed from manuscripts and marked up
 							with lexical and palaeographical data from various sources (e.g. eDIL).
 							Transcriptions also have introductions, which are based on the relevant
 							secondary literature and the editors' own observations. </p>
-						<p>hwData.xml contains data on each headword in the Corpus supplied by the
-							editors while transcribing and while reviewing the headwords.</p>
+						<p>hwData.xml contains data on each headword in the FnaG MSS Corpus supplied
+							by the editors while transcribing and while reviewing the headwords.</p>
 					</sourceDesc>
 				</fileDesc>
 			</teiHeader>
@@ -38,61 +40,66 @@
 					<xsl:for-each
 						select="//tei:w[not(descendant::tei:w) and not(@lemmaRef = preceding::tei:w[not(descendant::tei:w)]/@lemmaRef) and not(@type = 'data') and @lemmaRef]">
 						<xsl:variable name="wordID" select="@lemmaRef"/>
-							<entryFree>
-								<xsl:attribute name="corresp">
+						<entryFree>
+							<xsl:attribute name="corresp">
+								<xsl:value-of select="$wordID"/>
+							</xsl:attribute>
+							<xsl:attribute name="n">
+								<xsl:value-of
+									select="count(//tei:w[not(descendant::tei:w) and not(@xml:lang) and not(@type = 'data') and @lemmaRef = $wordID])"
+								/>
+							</xsl:attribute>
+							<xsl:if
+								test="not(//tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree[@corresp = $wordID])">
+								<xsl:attribute name="source">
+									<xsl:text>new</xsl:text>
+								</xsl:attribute>
+							</xsl:if>
+							<w>
+								<xsl:attribute name="type">
+									<xsl:text>data</xsl:text>
+								</xsl:attribute>
+								<xsl:attribute name="lemma">
+									<xsl:value-of select="@lemma"/>
+								</xsl:attribute>
+								<xsl:attribute name="lemmaRef">
 									<xsl:value-of select="@lemmaRef"/>
 								</xsl:attribute>
-								<xsl:attribute name="n">
-									<xsl:value-of
-										select="count(//tei:w[not(descendant::tei:w) and not(@xml:lang) and @lemmaRef = $wordID])"
-									/>
+								<xsl:attribute name="ana">
+									<xsl:value-of select="@ana"/>
 								</xsl:attribute>
 								<xsl:if
-									test="not(//tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree[@corresp = $wordID])">
-									<xsl:attribute name="source">
-										<xsl:text>new</xsl:text>
-									</xsl:attribute>
-								</xsl:if>
-								<w>
-									<xsl:attribute name="type">
-										<xsl:text>data</xsl:text>
-									</xsl:attribute>
-									<xsl:attribute name="lemma">
-										<xsl:value-of select="@lemma"/>
-									</xsl:attribute>
-									<xsl:attribute name="lemmaRef">
-										<xsl:value-of select="@lemmaRef"/>
-									</xsl:attribute>
-									<xsl:attribute name="ana">
-										<xsl:value-of select="@ana"/>
-									</xsl:attribute>
+									test="//tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree[@corresp = $wordID]/tei:w/@lemmaDW">
 									<xsl:attribute name="lemmaDW">
 										<xsl:value-of
 											select="//tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree[@corresp = $wordID]/tei:w/@lemmaDW"
 										/>
 									</xsl:attribute>
+								</xsl:if>
+								<xsl:if
+									test="//tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree[@corresp = $wordID]/tei:w/@lemmaRefDW">
 									<xsl:attribute name="lemmaRefDW">
 										<xsl:value-of
 											select="//tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree[@corresp = $wordID]/tei:w/@lemmaRefDW"
 										/>
 									</xsl:attribute>
-								</w>
-								<xsl:copy-of
-									select="//tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree[@corresp = $wordID]/tei:gramGrp"
-								/>
-								<xsl:copy-of
-									select="//tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree[@corresp = $wordID]/tei:gen[not(ancestor::tei:gramGrp)]"/>
-								<xsl:copy-of
-									select="//tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree[@corresp = $wordID]/tei:iType[not(ancestor::tei:gramGrp)]"
-								/>
-							</entryFree>
+								</xsl:if>
+							</w>
+							<xsl:copy-of
+								select="//tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree[@corresp = $wordID]/tei:gramGrp"/>
+							<xsl:copy-of
+								select="//tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree[@corresp = $wordID]/tei:gen[not(ancestor::tei:gramGrp)]"/>
+							<xsl:copy-of
+								select="//tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree[@corresp = $wordID]/tei:iType[not(ancestor::tei:gramGrp)]"
+							/>
+						</entryFree>
 					</xsl:for-each>
 				</body>
 			</text>
 		</TEI>
 	</xsl:template>
 
-	<xsl:template name="entry">
+	<!-- <xsl:template name="entry">
 		<entryFree>
 			<xsl:attribute name="corresp">
 				<xsl:value-of select="@lemmaRef"/>
@@ -138,6 +145,6 @@
 			<gen/>
 			<iType/>
 		</entryFree>
-	</xsl:template>
+	</xsl:template> -->
 
 </xsl:stylesheet>
