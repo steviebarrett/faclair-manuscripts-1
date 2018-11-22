@@ -17,13 +17,15 @@
 						<title> FnaG MSS Corpus: Headword Data </title>
 					</titleStmt>
 					<publicationStmt>
-						<p> This data is extracted from the FnaG MSS Corpus and the existing
-							headword database (hwData.xml). A new database is generated consisting
-							of the pre-existing database together with headwords that have been
-							found in the corpus that do not appear in the pre-existing database.
-							These are tagged 'source="new"'. The counts ('@n') of occurences of
-							headwords in the corpus have been updated based on the version of the
-							corpus used to generate this file.</p>
+						<p><xsl:call-template name="date"/></p>
+						<p> This data was extracted from the FnaG MSS Corpus and the existing
+							headword database (hwData.xml). A
+							new database is generated consisting of the pre-existing database
+							together with headwords that have been found in the corpus that do not
+							appear in the pre-existing database. These are tagged 'source="new"'.
+							The counts ('@n') of occurences of headwords in the corpus have been
+							updated based on the version of the corpus used to generate this
+							file.</p>
 					</publicationStmt>
 					<sourceDesc>
 						<p> The FnaG MSS Corpus has been transcribed from manuscripts and marked up
@@ -35,8 +37,13 @@
 							reviewing the headwords. Headwords and URLs from eDIL and Dwelly are
 							added during transcription. Morphological data and additional
 							headwords/URLs are added to the headwords database.</p>
-						<p>There are currently <xsl:call-template name="hwCount"/> headwords in the
-							headword database. <xsl:call-template name="scgDataPc"/>. There are <xsl:call-template name="newHwCount"/> new words in the corpus. </p>
+						<p>There are currently <xsl:call-template name="hwCount"/> headword entries
+							in the headword database. <xsl:call-template name="scgDataPc"/> of these
+							contain headwords from both eDIL and Dwelly.</p>
+						<p><xsl:call-template name="newHwCount"/> new words have been added to the
+							corpus since <xsl:call-template name="prevDate"/>. Entries have been
+							created for them in the headword database. These are:<xsl:call-template
+								name="newHwList"/></p>
 					</sourceDesc>
 				</fileDesc>
 			</teiHeader>
@@ -107,14 +114,39 @@
 	<xsl:template name="hwCount">
 		<xsl:value-of select="count(//tei:TEI[@xml:id = 'hwData']//tei:entryFree)"/>
 	</xsl:template>
-	
+
 	<xsl:template name="scgDataPc">
-		<xsl:variable name="calc" select="count(//tei:TEI[@xml:id = 'hwData']//tei:entryFree/tei:w[not(@lemmaDW = '') and not(@lemma = '')]) div count(//tei:TEI[@xml:id = 'hwData']//tei:entryFree)"/>
-		<xsl:value-of select="$calc * 100"/><xsl:text>%</xsl:text>
+		<xsl:variable name="calc"
+			select="count(//tei:TEI[@xml:id = 'hwData']//tei:entryFree/tei:w[not(@lemmaDW = '') and not(@lemma = '')]) div count(//tei:TEI[@xml:id = 'hwData']//tei:entryFree)"/>
+		<xsl:value-of select="round($calc * 100)"/>
+		<xsl:text>%</xsl:text>
 	</xsl:template>
-	
+
 	<xsl:template name="newHwCount">
-		<xsl:value-of select="count(//tei:w[not(@xml:lang) and not(@type = 'data') and not(descendant::tei:w) and not(@lemmaRef = //tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree/@corresp)])"/>
+		<xsl:value-of
+			select="count(//tei:w[not(@xml:lang) and not(@type = 'data') and not(descendant::tei:w) and @lemmaRef and not(@lemmaRef = //tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree/@corresp) and not(@lemmaRef = preceding::tei:w/@lemmaRef)])"
+		/>
+	</xsl:template>
+
+	<xsl:template name="newHwList">
+		<list>
+			<xsl:for-each
+				select="//tei:w[not(@xml:lang) and not(@type = 'data') and not(descendant::tei:w) and @lemmaRef and not(@lemmaRef = //tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree/@corresp) and not(@lemmaRef = preceding::tei:w/@lemmaRef)]">
+				<xsl:sort
+					select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
+				<item>
+					<xsl:value-of select="@lemma"/>
+				</item>
+			</xsl:for-each>
+		</list>
+	</xsl:template>
+
+	<xsl:template name="date">
+		<xsl:value-of select="current-date()"/>
+	</xsl:template>
+
+	<xsl:template name="prevDate">
+		<xsl:value-of select="//tei:TEI[@xml:id = 'hwData']//tei:publicationStmt/tei:date"/>
 	</xsl:template>
 
 	<!-- <xsl:template name="entry">
