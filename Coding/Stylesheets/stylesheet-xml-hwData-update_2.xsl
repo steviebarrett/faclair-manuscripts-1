@@ -14,22 +14,36 @@
 			<teiHeader>
 				<fileDesc>
 					<titleStmt>
-						<title> FnaG MSS Corpus: New Headword Data </title>
+						<title> FnaG MSS Corpus: Headword Data </title>
 					</titleStmt>
 					<publicationStmt>
-						<p> This data is extracted from the FnaG MSS Corpus and compared to the
-							existing headword database (hwData.xml). Only headwords that do not
-							appear in that database are presented here. It is assumed that the
-							relevant data will be added to each entry in this file and the entries
-							then transferred manually to hwData.xml.</p>
+						<p><xsl:call-template name="date"/></p>
+						<p> This data was extracted from the FnaG MSS Corpus and the existing
+							headword database (hwData.xml). A
+							new database is generated consisting of the pre-existing database
+							together with headwords that have been found in the corpus that do not
+							appear in the pre-existing database. These are tagged 'source="new"'.
+							The counts ('@n') of occurences of headwords in the corpus have been
+							updated based on the version of the corpus used to generate this
+							file.</p>
 					</publicationStmt>
 					<sourceDesc>
 						<p> The FnaG MSS Corpus has been transcribed from manuscripts and marked up
 							with lexical and palaeographical data from various sources (e.g. eDIL).
 							Transcriptions also have introductions, which are based on the relevant
 							secondary literature and the editors' own observations. </p>
-						<p>hwData.xml contains data on each headword in the Corpus supplied by the
-							editors while transcribing and while reviewing the headwords.</p>
+						<p>The headword database (hwData.xml) contains data on each headword in the
+							FnaG MSS Corpus supplied by the editors while transcribing and while
+							reviewing the headwords. Headwords and URLs from eDIL and Dwelly are
+							added during transcription. Morphological data and additional
+							headwords/URLs are added to the headwords database.</p>
+						<p>There are currently <xsl:call-template name="hwCount"/> headword entries
+							in the headword database. <xsl:call-template name="scgDataPc"/> of these
+							contain headwords from both eDIL and Dwelly.</p>
+						<p><xsl:call-template name="newHwCount"/> new words have been added to the
+							corpus since <xsl:call-template name="prevDate"/>. Entries have been
+							created for them in the headword database. These are:<xsl:call-template
+								name="newHwList"/></p>
 					</sourceDesc>
 				</fileDesc>
 			</teiHeader>
@@ -38,61 +52,104 @@
 					<xsl:for-each
 						select="//tei:w[not(descendant::tei:w) and not(@lemmaRef = preceding::tei:w[not(descendant::tei:w)]/@lemmaRef) and not(@type = 'data') and @lemmaRef]">
 						<xsl:variable name="wordID" select="@lemmaRef"/>
-							<entryFree>
-								<xsl:attribute name="corresp">
+						<entryFree>
+							<xsl:attribute name="corresp">
+								<xsl:value-of select="$wordID"/>
+							</xsl:attribute>
+							<xsl:attribute name="n">
+								<xsl:value-of
+									select="count(//tei:w[not(descendant::tei:w) and not(@xml:lang) and not(@type = 'data') and @lemmaRef = $wordID])"
+								/>
+							</xsl:attribute>
+							<xsl:if
+								test="not(//tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree[@corresp = $wordID])">
+								<xsl:attribute name="source">
+									<xsl:text>new</xsl:text>
+								</xsl:attribute>
+							</xsl:if>
+							<w>
+								<xsl:attribute name="type">
+									<xsl:text>data</xsl:text>
+								</xsl:attribute>
+								<xsl:attribute name="lemma">
+									<xsl:value-of select="@lemma"/>
+								</xsl:attribute>
+								<xsl:attribute name="lemmaRef">
 									<xsl:value-of select="@lemmaRef"/>
 								</xsl:attribute>
-								<xsl:attribute name="n">
-									<xsl:value-of
-										select="count(//tei:w[not(descendant::tei:w) and not(@xml:lang) and @lemmaRef = $wordID])"
-									/>
+								<xsl:attribute name="ana">
+									<xsl:value-of select="@ana"/>
 								</xsl:attribute>
 								<xsl:if
-									test="not(//tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree[@corresp = $wordID])">
-									<xsl:attribute name="source">
-										<xsl:text>new</xsl:text>
-									</xsl:attribute>
-								</xsl:if>
-								<w>
-									<xsl:attribute name="type">
-										<xsl:text>data</xsl:text>
-									</xsl:attribute>
-									<xsl:attribute name="lemma">
-										<xsl:value-of select="@lemma"/>
-									</xsl:attribute>
-									<xsl:attribute name="lemmaRef">
-										<xsl:value-of select="@lemmaRef"/>
-									</xsl:attribute>
-									<xsl:attribute name="ana">
-										<xsl:value-of select="@ana"/>
-									</xsl:attribute>
+									test="//tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree[@corresp = $wordID]/tei:w/@lemmaDW">
 									<xsl:attribute name="lemmaDW">
 										<xsl:value-of
 											select="//tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree[@corresp = $wordID]/tei:w/@lemmaDW"
 										/>
 									</xsl:attribute>
+								</xsl:if>
+								<xsl:if
+									test="//tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree[@corresp = $wordID]/tei:w/@lemmaRefDW">
 									<xsl:attribute name="lemmaRefDW">
 										<xsl:value-of
 											select="//tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree[@corresp = $wordID]/tei:w/@lemmaRefDW"
 										/>
 									</xsl:attribute>
-								</w>
-								<xsl:copy-of
-									select="//tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree[@corresp = $wordID]/tei:gramGrp"
-								/>
-								<xsl:copy-of
-									select="//tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree[@corresp = $wordID]/tei:gen[not(ancestor::tei:gramGrp)]"/>
-								<xsl:copy-of
-									select="//tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree[@corresp = $wordID]/tei:iType[not(ancestor::tei:gramGrp)]"
-								/>
-							</entryFree>
+								</xsl:if>
+							</w>
+							<xsl:copy-of
+								select="//tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree[@corresp = $wordID]/tei:gramGrp"/>
+							<xsl:copy-of
+								select="//tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree[@corresp = $wordID]/tei:gen[not(ancestor::tei:gramGrp)]"/>
+							<xsl:copy-of
+								select="//tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree[@corresp = $wordID]/tei:iType[not(ancestor::tei:gramGrp)]"
+							/>
+						</entryFree>
 					</xsl:for-each>
 				</body>
 			</text>
 		</TEI>
 	</xsl:template>
 
-	<xsl:template name="entry">
+	<xsl:template name="hwCount">
+		<xsl:value-of select="count(//tei:TEI[@xml:id = 'hwData']//tei:entryFree)"/>
+	</xsl:template>
+
+	<xsl:template name="scgDataPc">
+		<xsl:variable name="calc"
+			select="count(//tei:TEI[@xml:id = 'hwData']//tei:entryFree/tei:w[not(@lemmaDW = '') and not(@lemma = '')]) div count(//tei:TEI[@xml:id = 'hwData']//tei:entryFree)"/>
+		<xsl:value-of select="round($calc * 100)"/>
+		<xsl:text>%</xsl:text>
+	</xsl:template>
+
+	<xsl:template name="newHwCount">
+		<xsl:value-of
+			select="count(//tei:w[not(@xml:lang) and not(@type = 'data') and not(descendant::tei:w) and @lemmaRef and not(@lemmaRef = //tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree/@corresp) and not(@lemmaRef = preceding::tei:w/@lemmaRef)])"
+		/>
+	</xsl:template>
+
+	<xsl:template name="newHwList">
+		<list>
+			<xsl:for-each
+				select="//tei:w[not(@xml:lang) and not(@type = 'data') and not(descendant::tei:w) and @lemmaRef and not(@lemmaRef = //tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree/@corresp) and not(@lemmaRef = preceding::tei:w/@lemmaRef)]">
+				<xsl:sort
+					select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
+				<item>
+					<xsl:value-of select="@lemma"/>
+				</item>
+			</xsl:for-each>
+		</list>
+	</xsl:template>
+
+	<xsl:template name="date">
+		<xsl:value-of select="current-date()"/>
+	</xsl:template>
+
+	<xsl:template name="prevDate">
+		<xsl:value-of select="//tei:TEI[@xml:id = 'hwData']//tei:publicationStmt/tei:date"/>
+	</xsl:template>
+
+	<!-- <xsl:template name="entry">
 		<entryFree>
 			<xsl:attribute name="corresp">
 				<xsl:value-of select="@lemmaRef"/>
@@ -138,6 +195,6 @@
 			<gen/>
 			<iType/>
 		</entryFree>
-	</xsl:template>
+	</xsl:template> -->
 
 </xsl:stylesheet>
