@@ -102,28 +102,22 @@ $(function() {
       html += '</ul></li>';
     }
     if (!rec && $(span).find('.ligature').length>0) {
-      var xhr;  //an outer object to store the AJAX response
       html += '<li>contains the following scribal ligatures:<ul id="ligatureList">';
       $(span).find('.ligature').each(function() {
           //var g = eval('glyph_' + $(this).attr('data-glyphref'))
           var xmlId = $(this).attr('data-glyphref');
-          xhr = $.getJSON('/ajax/manuscripts.php?action=getGlyph&xmlId=' + xmlId, function (g) {
+          $.ajaxSetup({async: false});
+          $.getJSON('/ajax/manuscripts.php?action=getGlyph&xmlId=' + xmlId, function (g) {
 //          })
 //              .done(function (g) {
-                 // console.log(g);
+                  console.log(g);
                   txt = '<a href="http://' + g.corresp + '" target="_new" data-src="' + $(this).attr('id') + '">' + g.glyphName;
                   txt = txt + '</a>: ' + g.note;
                   html = html + '<li class="glyphItem">' + txt +'</li>';
               });
 
       });
-      xhr.done(function(g) {
-        console.log(g);
-          txt = "hello world!";
-          txt += '<a href="http://' + g.corresp + '" target="_new" data-src="' + $(this).attr('id') + '">' + g.glyphName;
-          txt = txt + '</a>: ' + g.note;
-          html = html + '<li class="glyphItem">' + txt +'</li>';
-      });
+      $.ajaxSetup({async: true});
       html += '</ul></li>';
     }
     if (!rec && $(span).find('.unclear').length>0) {
