@@ -20,28 +20,70 @@
 					<resp>Editor</resp>
 				</respStmt>
 			</titleStmt>
-			<extent>145 words </extent>
+			<extent/>
 			<publicationStmt>
 				<authority sameAs="authority"/>
-				<availability status="restricted" default="false">
+				<availability status="restricted">
 					<p>For internal use by the Faclair na Gàidhlig/DASG projects</p>
 				</availability>
 				<idno>T6</idno>
 			</publicationStmt>
 			<notesStmt>
-				<note anchored="true">
-					<p/>
+				<note>
+					<p>This manuscript has been described as "the detritus of the Kilbride
+						collection" (Black <ref target="Black2011" type="bib">2011</ref>). It
+						consists of three components, all in Gaelic but distinct in in scribal hand,
+						shape, genre, and subject-matter. These contain religious poetry (1); a
+						fragment of the Ulster Cycle text, <hi rend="italics">Caithréim Conghail
+							Cláiringhnigh</hi> (2); and a contract issued by Duncan MacDougall
+						(1603×1616) (3). All are acephelous and suffer from various other sorts of
+						damage, which is often serious.</p>
 				</note>
 			</notesStmt>
-			<sourceDesc default="false">
-				<msDesc status="draft">
+			<sourceDesc>
+				<msDesc>
 					<msIdentifier sameAs="MS6">
 						<settlement>Edinburgh</settlement>
 						<repository>NLS Adv.</repository>
 						<idno type="shelfmark">MS 72.1.31</idno>
 					</msIdentifier>
 					<msContents>
-						<summary> ... </summary>
+						<summary><p><ref type="ms" target="MS6">NLS Adv. 72.1.31</ref>, as currently
+								bound, begins with a collection of poetry that is either about Colum
+								Cille or attributed to him here or in other manuscripts. The latter
+								type includes dramatic monologues set in the context of his
+								hagiography and general pronouncements on religious themes. There is
+								noticeable overlap in content between this collection and that in
+									<ref type="ms" target="LaudMisc615">Laud Misc. 615</ref>, for
+								which see Herbert and Sullivan (<ref target="Herbert1973" type="bib"
+									>1973</ref>). Many of the poems are badly affected by erosion or
+								loss of segments of vellum. Only four out of the thirteen poems
+								catalogued by Black (<ref target="Black2011" type="bib">2011</ref>)
+								are sufficiently complete for meaningful transcription and even
+								these transcriptions are based partially on edititions made of the
+								poems from <ref type="bib" target="LaudMisc615">Laud Misc.
+								615</ref>.</p>
+							<p>The fragment of <hi rend="italics">Caithréim Conghail
+									Cláirignigh</hi> (for which, see MacSweeney (<ref
+									target="MacSweeney1904" type="bib">1904</ref>)) relates the
+								Ulster king's voyage to Lochlann and his return to Ireland via
+								Britain, together with the transactions he undertakes with various
+								kings along the route. The text is in the expansive, prosimetric
+								style of later Middle Irish narrative, with hints of later romances
+								in the prominence of voyges to far-flung lands and magic in its
+								narrative. Fol. 6 is in generally good condition but large swathes
+								of fol. 7 appear illegible.</p>
+							<p>The MacDougall Contract seems to have been issued by Duncan
+								MacDougall of Dunollie sometime between 1603 and 1616 (Black <ref
+									target="Black1984" type="bib">1984</ref>: 143). Like the rest of
+								the manuscript, it has suffered damage which obscures its details.
+								However, it Black has argued from what is left that it concerns a
+								tenant of MacDougall's (also called Duncan), who holds land from him
+								in steelbow and is setting a portion of this land to a sub-tenant.
+								The beginning of the text is lost, and most lines lack their own
+								beginnings and ends, but substantial detail of the agreement is
+								prserved nonetheless.</p>
+						</summary>
 						<msItem n="1" xml:id="MS6.1" resp="Hand7">
 							<locus>fols 1–5</locus>
 							<title>Columban Poetry</title>
@@ -50,43 +92,33 @@
 								<title>Seven Psalms Against Seven Sins</title>
 								<incipit>Seacht sailm s[unn] ... </incipit>
 								<explicit> ... ameasg mor seacht. seait sailm.</explicit>
-								<filiation>
-									<p/>
-								</filiation>
-								<textLang mainLang="ghc">
-									<note anchored="true">
-										<p/>
-									</note>
-								</textLang>
+								<filiation/>
+								<textLang mainLang="ghc"/>
 							</msItem>
 							<msItem n="1.2" xml:id="MS6.1.2" resp="Hand7">
 								<locus>fol.2r10-17</locus>
 								<title>Offerings</title>
 								<incipit> Urbairt na termeisg go brat ...</incipit>
 								<explicit> ... { ar do dhe uad fein urbairt }</explicit>
-								<filiation>
-									<p/>
-								</filiation>
-								<textLang mainLang="ghc">
-									<note anchored="true">
-										<p/>
-									</note>
-								</textLang>
+								<filiation/>
+								<textLang mainLang="ghc"/>
 							</msItem>
 							<msItem n="1.3" xml:id="MS6.1.3" resp="Hand7">
 								<locus>fol.2v1-7</locus>
 								<title>Heaven and Hell</title>
 								<incipit> {Mair}g do ni { peta } da colaind ...</incipit>
 								<explicit> ... an taigh ríg nimhi gan mairg</explicit>
-								<filiation>
-									<p/>
-								</filiation>
-								<textLang mainLang="ghc">
-									<note anchored="true">
-										<p/>
-									</note>
-								</textLang>
+								<filiation/>
+								<textLang mainLang="ghc"/>
 							</msItem>
+						</msItem>
+						<msItem xml:id="MS6.2" resp="Hand27">
+							<locus>fols 6 and 7</locus>
+							<title>The MacDougall Contract</title>
+							<incipit>Is maith linn catair Muirne d’faicsin ...</incipit>
+							<explicit>... Erenn ina fochair</explicit>
+							<filiation/>
+							<textLang mainLang="ghc" otherLangs="gd"/>
 						</msItem>
 						<msItem xml:id="MS6.3" resp="Hand8">
 							<locus>fol. 8r.1–11</locus>
@@ -96,60 +128,52 @@
 							<filiation>
 								<p>No other copies of this contract are known.</p>
 							</filiation>
-							<textLang mainLang="ghc" otherLangs="gd">
-								<note anchored="true">
-									<p> ... </p>
-								</note>
-							</textLang>
+							<textLang mainLang="ghc" otherLangs="gd"/>
 						</msItem>
 					</msContents>
 					<physDesc>
-						<p> ... </p>
+						<p/>
 						<objectDesc>
 							<supportDesc>
-								<support>
-									<p> ... </p>
-								</support>
-								<foliation>
-									<p> ... </p>
-								</foliation>
-								<condition>
-									<p> ... </p>
-								</condition>
+								<support/>
+								<foliation/>
+								<condition/>
 							</supportDesc>
 							<layoutDesc>
-								<p> ... </p>
+								<p/>
 							</layoutDesc>
 						</objectDesc>
 					</physDesc>
 					<history>
-						<provenance>
-							<p> ... </p>
-						</provenance>
+						<provenance/>
 					</history>
 				</msDesc>
 			</sourceDesc>
 		</fileDesc>
 		<encodingDesc>
-			<metDecl default="false" type="met real">
-				<p> ... </p>
+			<metDecl>
+				<p/>
 			</metDecl>
-			<refsDecl default="false">
-				<p> ... </p>
+			<refsDecl>
+				<p/>
 			</refsDecl>
 		</encodingDesc>
 		<profileDesc>
 			<handNotes>
-				<handNote sameAs="Handn"/>
+				<handNote/>
 			</handNotes>
-			<textClass default="false">
+			<textClass>
 				<keywords>
-					<term> ... </term>
+					<term>Religious</term>
+					<term>Colum Cille</term>
+					<term>Ulster Cycle</term>
+					<term>Law</term>
+					<term>Scottish scribe</term>
 				</keywords>
 			</textClass>
 		</profileDesc>
-		<revisionDesc status="draft">
-			<change when="..." who="#..." status="draft">...</change>
+		<revisionDesc>
+			<change when="2018-11-27" who="EPT">Finished initial marked-up text.</change>
 		</revisionDesc>
 	</teiHeader>
 	<text>
