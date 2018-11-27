@@ -1629,7 +1629,21 @@
 		</xsl:variable>
 		<xsl:choose>
 			<xsl:when test="@reason = 'damage'">
-				<xsl:text/>
+				<xsl:variable name="damageLength" select="string-length(string(self::*))"/>
+				<a id="{generate-id()}" title="{$damageLength} chars extent, loss of writing surface" href="#"
+					onclick="return false;" style="text-decoration:none; color:#000000">
+					<xsl:if test="not(ancestor::tei:del)">
+						<xsl:attribute name="msLine">
+							<xsl:value-of select="$lineID"/>
+						</xsl:attribute>
+					</xsl:if>
+					<sub>
+						<b>
+							<i>-gap-</i>
+						</b>
+					</sub>
+					<xsl:text> </xsl:text>
+				</a>
 			</xsl:when>
 			<xsl:otherwise>
 				<xsl:choose>
