@@ -103,7 +103,6 @@ $(function() {
     }
     if (!rec && $(span).find('.ligature').length>0) {
       html += '<li>contains the following scribal ligatures:<ul id="ligatureList">';
-      var txt = '';
       $(span).find('.ligature').each(function() {
           //var g = eval('glyph_' + $(this).attr('data-glyphref'))
           var xmlId = $(this).attr('data-glyphref');
