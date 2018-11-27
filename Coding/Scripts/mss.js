@@ -119,6 +119,9 @@ $(function() {
       });
       xhr.done(function(g) {
         console.log(g);
+          txt = '<a href="http://' + g.corresp + '" target="_new" data-src="' + $(this).attr('id') + '">' + g.glyphName;
+          txt = txt + '</a>: ' + g.note;
+          html = html + '<li class="glyphItem">' + txt +'</li>';
       });
       html += '</ul></li>';
     }
