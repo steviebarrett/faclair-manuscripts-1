@@ -107,8 +107,8 @@ $(function() {
           //var g = eval('glyph_' + $(this).attr('data-glyphref'))
           var xmlId = $(this).attr('data-glyphref');
           $.getJSON('/ajax/manuscripts.php?action=getGlyph&xmlId=' + xmlId, function () {
-          })
-              .done(function (g) {
+//          })
+//              .done(function (g) {
                   console.log(g);
                   txt = '<a href="http://' + g.corresp + '" target="_new" data-src="' + $(this).attr('id') + '">' + g.glyphName;
                   txt = txt + '</a>: ' + g.note;
