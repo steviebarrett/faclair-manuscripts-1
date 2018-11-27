@@ -104,18 +104,16 @@ $(function() {
     if (!rec && $(span).find('.ligature').length>0) {
       html += '<li>contains the following scribal ligatures:<ul id="ligatureList">';
       $(span).find('.ligature').each(function() {
-          //var g = eval('glyph_' + $(this).attr('data-glyphref'))
           var xmlId = $(this).attr('data-glyphref');
-          var id = $(this).attr('id');
-          $.ajaxSetup({async: false});    //!! we should not be using this
+          var id = $(this).attr('id');    //!! this is undefined
+          $.ajaxSetup({async: false});    //!! we should not be using this !!
           $.getJSON('/ajax/manuscripts.php?action=getGlyph&xmlId=' + xmlId, function (g) {
-              console.log(g);
               txt = '<a href="http://' + g.corresp + '" target="_new" data-src="' + id + '">' + g.name;
               txt = txt + '</a>: ' + g.note;
               html = html + '<li class="glyphItem">' + txt +'</li>';
           });
       });
-      $.ajaxSetup({async: true}); //!! we should not be using this
+      $.ajaxSetup({async: true}); //!! we should not be using this !!
       html += '</ul></li>';
     }
     if (!rec && $(span).find('.unclear').length>0) {
