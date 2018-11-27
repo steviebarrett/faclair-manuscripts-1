@@ -106,7 +106,7 @@ $(function() {
       $(span).find('.ligature').each(function() {
           //var g = eval('glyph_' + $(this).attr('data-glyphref'))
           var xmlId = $(this).attr('data-glyphref');
-          $.getJSON('/ajax/manuscripts.php?action=getGlyph&xmlId=' + xmlId, function () {
+          $.getJSON('/ajax/manuscripts.php?action=getGlyph&xmlId=' + xmlId, function (g) {
 //          })
 //              .done(function (g) {
                   console.log(g);
