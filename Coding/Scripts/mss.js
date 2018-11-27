@@ -117,7 +117,7 @@ $(function() {
               });
 
       });
-      xhr.complete(function(g) {
+      xhr.done(function(g) {
         console.log(g);
       });
       html += '</ul></li>';
