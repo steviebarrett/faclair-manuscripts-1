@@ -1583,7 +1583,7 @@
 		<xsl:choose>
 			<xsl:when test="@reason = 'damage'">
 				<xsl:variable name="damageLength" select="string-length(string(self::*))"/>
-				<a id="{generate-id()}" title="{$damageLength} chars extent, loss of writing surface" href="#"
+				<a id="{generate-id()}" title="c. {$damageLength} chars extent, loss of writing surface" href="#"
 					onclick="return false;" style="text-decoration:none; color:#000000">
 					<xsl:if test="not(ancestor::tei:del)">
 						<xsl:attribute name="msLine">
