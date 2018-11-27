@@ -106,18 +106,16 @@ $(function() {
       $(span).find('.ligature').each(function() {
           //var g = eval('glyph_' + $(this).attr('data-glyphref'))
           var xmlId = $(this).attr('data-glyphref');
-          $.ajaxSetup({async: false});
+          var id = $(this).attr('id');
+          $.ajaxSetup({async: false});    //!! we should not be using this
           $.getJSON('/ajax/manuscripts.php?action=getGlyph&xmlId=' + xmlId, function (g) {
-//          })
-//              .done(function (g) {
-                  console.log(g);
-                  txt = '<a href="http://' + g.corresp + '" target="_new" data-src="' + $(this).attr('id') + '">' + g.glyphName;
-                  txt = txt + '</a>: ' + g.note;
-                  html = html + '<li class="glyphItem">' + txt +'</li>';
-              });
-
+              console.log(g);
+              txt = '<a href="http://' + g.corresp + '" target="_new" data-src="' + id + '">' + g.name;
+              txt = txt + '</a>: ' + g.note;
+              html = html + '<li class="glyphItem">' + txt +'</li>';
+          });
       });
-      $.ajaxSetup({async: true});
+      $.ajaxSetup({async: true}); //!! we should not be using this
       html += '</ul></li>';
     }
     if (!rec && $(span).find('.unclear').length>0) {
