@@ -163,7 +163,7 @@
 	</xsl:template>
 
 	<xsl:template name="prevDate">
-		<xsl:value-of select="//tei:TEI[@xml:id = 'hwData']//tei:publicationStmt/tei:date/tei:p"/>
+		<xsl:value-of select="//tei:TEI[@xml:id = 'hwData']//tei:publicationStmt/tei:date/tei:p[1]"/>
 	</xsl:template>
 
 	<!-- <xsl:template name="entry">
