@@ -62,11 +62,28 @@
 								/>
 							</xsl:attribute>
 							<xsl:if
-								test="not(//tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree[@corresp = $wordID])">
+								test="not(//tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree[@corresp = $wordID]) or //tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree[@corresp = $wordID]/@source = 'new'">
 								<xsl:attribute name="source">
 									<xsl:text>new</xsl:text>
 								</xsl:attribute>
 							</xsl:if>
+							<xsl:choose>
+								<xsl:when test="not(//tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree[@corresp = $wordID])">
+									<xsl:attribute name="source">
+										<xsl:text>new</xsl:text>
+									</xsl:attribute>
+								</xsl:when>
+								<xsl:otherwise>
+									<xsl:choose>
+										<xsl:when test="//tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree[@corresp = $wordID]/@source = 'new'">
+											<xsl:attribute name="source">
+												<xsl:text>new</xsl:text>
+											</xsl:attribute>
+										</xsl:when>
+									</xsl:choose>
+								</xsl:otherwise>
+							</xsl:choose>
+							
 							<w>
 								<xsl:attribute name="type">
 									<xsl:text>data</xsl:text>
@@ -142,11 +159,11 @@
 	</xsl:template>
 
 	<xsl:template name="date">
-		<xsl:value-of select="current-date()"/>
+		<xsl:value-of select="current-dateTime()"/>
 	</xsl:template>
 
 	<xsl:template name="prevDate">
-		<xsl:value-of select="//tei:TEI[@xml:id = 'hwData']//tei:publicationStmt/tei:date"/>
+		<xsl:value-of select="//tei:TEI[@xml:id = 'hwData']//tei:publicationStmt/tei:p[1]"/>
 	</xsl:template>
 
 	<!-- <xsl:template name="entry">
