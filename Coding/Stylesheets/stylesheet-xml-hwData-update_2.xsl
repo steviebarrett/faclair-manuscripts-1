@@ -159,11 +159,11 @@
 	</xsl:template>
 
 	<xsl:template name="date">
-		<xsl:value-of select="current-date()"/>
+		<xsl:value-of select="current-dateTime()"/>
 	</xsl:template>
 
 	<xsl:template name="prevDate">
-		<xsl:value-of select="//tei:TEI[@xml:id = 'hwData']//tei:publicationStmt/tei:date"/>
+		<xsl:value-of select="//tei:TEI[@xml:id = 'hwData']//tei:publicationStmt/tei:date/tei:p"/>
 	</xsl:template>
 
 	<!-- <xsl:template name="entry">
