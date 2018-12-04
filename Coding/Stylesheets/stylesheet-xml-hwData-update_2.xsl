@@ -17,7 +17,7 @@
 						<title> FnaG MSS Corpus: Headword Data </title>
 					</titleStmt>
 					<publicationStmt>
-						<p><xsl:call-template name="date"/></p>
+						<date><xsl:call-template name="date"/></date>
 						<p> This data was extracted from the FnaG MSS Corpus and the existing
 							headword database (hwData.xml). A
 							new database is generated consisting of the pre-existing database
@@ -163,7 +163,7 @@
 	</xsl:template>
 
 	<xsl:template name="prevDate">
-		<xsl:value-of select="//tei:TEI[@xml:id = 'hwData']//tei:publicationStmt/tei:date/tei:p[1]"/>
+		<xsl:value-of select="//tei:TEI[@xml:id = 'hwData']//tei:publicationStmt/tei:date"/>
 	</xsl:template>
 
 	<!-- <xsl:template name="entry">
