@@ -29,11 +29,16 @@ $(function() {
   $('.chunk').click(function(){
     $('.chunk').css('background-color', 'inherit');
     $(this).css('background-color', 'yellow');
-    $('#right-panel').html(makeDescription($(this),false));
+    $('#headword').text(clean($(this).text()));
+    $('#headwordInfo').html(makeDescription($(this),false)); // this doesn't work
+    //$('#right-panel').html(makeDescription($(this),false));
   });
   
   function makeDescription(span, rec) {
+    /* 
     html = '<span style="color:red;">' + clean($(span).text()) + '</span><ul>';
+     */
+    html = '';
     if ($(span).hasClass('name')) {
       html = html + '<li>is the name of a ';
       if ($(span).attr('data-nametype')=='personal') {
@@ -61,6 +66,7 @@ $(function() {
     else if ($(span).hasClass('name') && $(span).children('.word').length==1 && $(span).children('.word').attr('data-headword')) {
       html = html + '<li>is a form of the headword <a href="' + $(span).children('.word').attr('data-edil') + '" target="_new">' + $(span).children('.word').attr('data-headword') + '</a></li>';
     }
+    /* 
     if ($(span).children('.syntagm').length>1) {
       html += '<li>is a syntactically complex form containing the following elements:';      
       html += '<ul>';
@@ -210,6 +216,7 @@ $(function() {
       html += '</ul></li>';
     }
     html += '</ul>';
+     */
     return html;
   }
 

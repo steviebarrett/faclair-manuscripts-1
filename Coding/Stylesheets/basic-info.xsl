@@ -43,6 +43,8 @@
           <p></p>
         </div>
         <div id="right-panel">
+          <h1 id="headword">Headword</h1>
+          <ul id="headwordInfo"></ul>
         </div>
         <script>
           <xsl:for-each select="document('../../Transcribing/corpus.xml')/tei:teiCorpus/tei:teiHeader/tei:encodingDesc/tei:charDecl/tei:glyph">
