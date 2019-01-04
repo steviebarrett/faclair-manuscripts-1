@@ -9,7 +9,7 @@
 				<authority>FnaG MSS Project</authority>
 			</publicationStmt>
 			<sourceDesc>
-				<bibl xml:id="r">
+				<bibl xml:id="r" type="bib">
 					<author><forename>William</forename><surname>Reeves</surname></author>
 					<title level="a">On an Ancient Deed, Being a Grant of Land in Islay, from Donald Mac Donald, Lord of the Isles</title>
 					<title level="m">Proceedings of the Royal Irish Academy</title>
@@ -17,35 +17,35 @@
 					<biblScope unit="pages" from="230" to="234">230-234</biblScope>
 					<date>1850</date>
 				</bibl>
-				<bibl xml:id="j">
+				<bibl xml:id="j" type="bib">
 					<author><forename>H.</forename><surname>James</surname></author>
 					<title>Facsimiles of National Manuscripts of Scotland</title>
 					<biblScope unit="volume"></biblScope>
 					<pubPlace>Southampton</pubPlace>
 					<date from="1867" to="1871">1867-1871</date>
 				</bibl>
-				<bibl xml:id="s">
+				<bibl xml:id="s" type="bib">
 					<author><forename>George G.</forename><surname>Smith</surname></author>
 					<title>The Book of Islay. Documents illustrating the history of the Island</title>
 					<pubPlace>Edinburgh</pubPlace>
 					<publisher>[privately printed]</publisher>
 					<date>1895</date>
 				</bibl>
-				<bibl xml:id="f">
+				<bibl xml:id="f" type="bib">
 					<author><forename>Charles</forename><surname>Fraser-Mackintosh</surname></author>
 					<title>The Last MacDonalds of Isla</title>
 					<pubPlace>Glasgow</pubPlace>
 					<publisher>Celtic Monthly</publisher>
 					<date>1895</date>
 				</bibl>
-				<bibl xml:id="c">
+				<bibl xml:id="c" type="bib">
 					<author><forename>John</forename><surname>Cameron</surname></author>
 					<title>Celtic Law</title>
 					<pubPlace>London</pubPlace>
 					<publisher>W. Hodge</publisher>
 					<date>1937</date>
 				</bibl>
-				<bibl xml:id="m">
+				<bibl xml:id="m" type="bib">
 					<author><forename>Jean</forename><surname>Munro</surname></author>
 					<author><forename>Robert W.</forename><surname>Munro</surname></author>
 					<title>Acts of the Lords of the Isles, 1336-1493</title>
@@ -53,13 +53,18 @@
 					<pubPlace>Edinburgh</pubPlace>
 					<date>1986</date>
 				</bibl>
-				<bibl xml:id="a">
+				<msDesc xml:id="a">
 					<msIdentifier>
-					<settlement>Edinburgh</settlement>
+						<settlement>Edinburgh</settlement>
 						<repository>NAS</repository>
 						<idno type="shelfmark">RH.6/218A</idno>
 						<msName>The 'Ancient Transcript'</msName>
 					</msIdentifier>
+				</msDesc>
+				<bibl xml:id="t">
+					<author><forename>Eystein</forename><surname>Thanisch</surname></author>
+					<title>FnaG MSS Transcription</title>
+					<date>2019</date>
 				</bibl>
 			</sourceDesc>
 		</fileDesc>
@@ -87,10 +92,10 @@
 				</app>
 				<app>
 					<rdg wit="#c">Domhnaill</rdg>
-					<rdg wit="#s">d[o]mhnaill</rdg>
-					<rdg wit="#j">d[o]mhnaill</rdg>
-					<rdg wit="#m">D[o]mhnaill</rdg>
-					<rdg wit="#r">Doṁnaill</rdg>
+					<rdg wit="#s">d<unclear>o</unclear>mhnaill</rdg>
+					<rdg wit="#j">d<unclear>o</unclear>mhnaill</rdg>
+					<rdg wit="#m">D<unclear>o</unclear>mhnaill</rdg>
+					<rdg wit="#r">Domhnaill</rdg>
 				</app>
 				<app>
 					<rdg wit="#c">ag</rdg>
@@ -104,7 +109,7 @@
 					<rdg wit="#s">bronagh</rdg>
 					<rdg wit="#j">bronagh</rdg>
 					<rdg wit="#m">bronnagh</rdg>
-					<rdg wit="#r">bronnaġ</rdg>
+					<rdg wit="#r">bronnagh</rdg>
 				</app>
 				<app>
 					<rdg wit="#c">⁊</rdg>
@@ -115,16 +120,16 @@
 				</app>
 				<app>
 					<rdg wit="#c">tabhairt</rdg>
-					<rdg wit="#s">tabha[irt]</rdg>
-					<rdg wit="#j">tabha[irt]</rdg>
-					<rdg wit="#m">tabha[irt]</rdg>
+					<rdg wit="#s">tabha<unclear>irt</unclear></rdg>
+					<rdg wit="#j">tabha<unclear>irt</unclear></rdg>
+					<rdg wit="#m">tabha<unclear>irt</unclear></rdg>
 					<rdg wit="#r">taḃairt</rdg>
 				</app>
 				<app>
 					<rdg wit="#c">én</rdg>
-					<rdg wit="#s">[en]</rdg>
-					<rdg wit="#j">[en]</rdg>
-					<rdg wit="#m">[en]</rdg>
+					<rdg wit="#s"><unclear>en</unclear></rdg>
+					<rdg wit="#j"><unclear>en</unclear></rdg>
+					<rdg wit="#m"><unclear>en</unclear></rdg>
 					<rdg wit="#r">én</rdg>
 				</app>
 				<app>
@@ -132,7 +137,7 @@
 					<rdg wit="#s">mhairg</rdg>
 					<rdg wit="#j">mhairg</rdg>
 					<rdg wit="#m">mhairg</rdg>
-					<rdg wit="#r">ṁairg</rdg>
+					<rdg wit="#r">mhairg</rdg>
 				</app>
 				<app>
 					<rdg wit="#c">dég</rdg>
@@ -161,6 +166,395 @@
 					<rdg wit="#j">dfearann</rdg>
 					<rdg wit="#m">dfearann</rdg>
 					<rdg wit="#r">dfearann</rdg>
+				</app>
+				<lb n="2"/>
+				<app>
+					<rdg wit="#c">uaim</rdg>
+					<rdg wit="#s">uaim</rdg>
+					<rdg wit="#j">uaim</rdg>
+					<rdg wit="#m">uaim</rdg>
+					<rdg wit="#r">uaim</rdg>
+				</app>
+				<app>
+					<rdg wit="#c">pfhéin</rdg>
+					<rdg wit="#s">phfein</rdg>
+					<rdg wit="#j">pfhein</rdg>
+					<rdg wit="#m">phfein</rdg>
+					<rdg wit="#r">pfhein</rdg>
+				</app>
+				<app>
+					<rdg wit="#c">agas</rdg>
+					<rdg wit="#s"><unclear>agas</unclear></rdg>
+					<rdg wit="#j"><unclear>agas</unclear></rdg>
+					<rdg wit="#m"><unclear>agas</unclear></rdg>
+					<rdg wit="#r">⁊</rdg>
+				</app>
+				<app>
+					<rdg wit="#c">om</rdg>
+					<rdg wit="#s">om</rdg>
+					<rdg wit="#j"><unclear>om</unclear></rdg>
+					<rdg wit="#m"><unclear>om</unclear></rdg>
+					<rdg wit="#r">om</rdg>
+				</app>
+				<app>
+					<rdg wit="#c">oighribh</rdg>
+					<rdg wit="#s">oighribh</rdg>
+					<rdg wit="#j">oighribh</rdg>
+					<rdg wit="#m">oighribh</rdg>
+					<rdg wit="#r">oighribh</rdg>
+				</app>
+				<app>
+					<rdg wit="#c">do</rdg>
+					<rdg wit="#s">do</rdg>
+					<rdg wit="#j">do</rdg>
+					<rdg wit="#m">do</rdg>
+					<rdg wit="#r">do</rdg>
+				</app>
+				<app>
+					<rdg wit="#c">Bhrian</rdg>
+					<rdg wit="#s">Bhrian</rdg>
+					<rdg wit="#j">Bhrian</rdg>
+					<rdg wit="#m">Bhrian</rdg>
+					<rdg wit="#r">Bhrian</rdg>
+				</app>
+				<app>
+					<rdg wit="#c">Bhicaire</rdg>
+					<rdg wit="#s">Bhicaire</rdg>
+					<rdg wit="#j">Bhicaire</rdg>
+					<rdg wit="#m">Bhicaire</rdg>
+					<rdg wit="#r">bicaire</rdg>
+				</app>
+				<app>
+					<rdg wit="#c">Mhagaodh</rdg>
+					<rdg wit="#s">Mhagaodh</rdg>
+					<rdg wit="#j">Mhagaodh</rdg>
+					<rdg wit="#m">Mhagaodh</rdg>
+					<rdg wit="#r">Mhagaodh</rdg>
+				</app>
+				<app>
+					<rdg wit="#c">agas</rdg>
+					<rdg wit="#s">ag<unclear>as</unclear></rdg>
+					<rdg wit="#j">ag<unclear>as</unclear></rdg>
+					<rdg wit="#m">ag<unclear>as</unclear></rdg>
+					<rdg wit="#r">⁊</rdg>
+				</app>
+				<app>
+					<rdg wit="#c">da</rdg>
+					<rdg wit="#s"><unclear>da</unclear></rdg>
+					<rdg wit="#j"><unclear>da</unclear></rdg>
+					<rdg wit="#m"><unclear>da</unclear></rdg>
+					<rdg wit="#r">da</rdg>
+				</app>
+				<app>
+					<rdg wit="#c">oighribh</rdg>
+					<rdg wit="#s"><unclear>oighribh</unclear></rdg>
+					<rdg wit="#j"><unclear>oighribh</unclear></rdg>
+					<rdg wit="#m"><unclear>oighribh</unclear></rdg>
+					<rdg wit="#r">oighribh</rdg>
+				</app>
+				<app>
+					<rdg wit="#c">na</rdg>
+					<rdg wit="#s"><unclear>na</unclear></rdg>
+					<rdg wit="#j"><unclear>na</unclear></rdg>
+					<rdg wit="#m"><unclear>na</unclear></rdg>
+					<rdg wit="#r">na</rdg>
+				</app>
+				<app>
+					<rdg wit="#c">dhiaigh</rdg>
+					<rdg wit="#s"><unclear>dhiaigh</unclear></rdg>
+					<rdg wit="#j"><unclear>dhiaigh</unclear></rdg>
+					<rdg wit="#m"><unclear>dhiaigh</unclear></rdg>
+					<rdg wit="#r">dhiaigh</rdg>
+				</app>
+				<app>
+					<rdg wit="#c">go</rdg>
+					<rdg wit="#s">go</rdg>
+					<rdg wit="#j">go</rdg>
+					<rdg wit="#m">go</rdg>
+					<rdg wit="#r">go</rdg>
+				</app>
+				<app>
+					<rdg wit="#c">siorthuighe</rdg>
+					<rdg wit="#s">siorthuighe</rdg>
+					<rdg wit="#j">siorthuighe</rdg>
+					<rdg wit="#m">siorthuighe</rdg>
+					<rdg wit="#r">siorthuighe</rdg>
+				</app>
+				<app>
+					<rdg wit="#c">suthain</rdg>
+					<rdg wit="#s">suthain</rdg>
+					<rdg wit="#j">suthain</rdg>
+					<rdg wit="#m">suthain</rdg>
+					<rdg wit="#r">sutháin</rdg>
+				</app>
+				<lb n="3"/>
+				<app>
+					<rdg wit="#c">ar</rdg>
+					<rdg wit="#s">ar</rdg>
+					<rdg wit="#j">ar</rdg>
+					<rdg wit="#m">ar</rdg>
+					<rdg wit="#r">ar</rdg>
+				</app>
+				<app>
+					<rdg wit="#c">son</rdg>
+					<rdg wit="#s">son</rdg>
+					<rdg wit="#j">son</rdg>
+					<rdg wit="#m">son</rdg>
+					<rdg wit="#r">son</rdg>
+				</app>
+				<app>
+					<rdg wit="#c">a</rdg>
+					<rdg wit="#s">a</rdg>
+					<rdg wit="#j">a</rdg>
+					<rdg wit="#m">a</rdg>
+					<rdg wit="#r">a</rdg>
+				</app>
+				<app>
+					<rdg wit="#c">sheirbise</rdg>
+					<rdg wit="#s">sheirbh<unclear>ise</unclear></rdg>
+					<rdg wit="#j">sheirbh<unclear>ise</unclear></rdg>
+					<rdg wit="#m">sheirbh<unclear>ise</unclear></rdg>
+					<rdg wit="#r">dheighsheirbhise</rdg>
+				</app>
+				<app>
+					<rdg wit="#c"><gap/></rdg>
+					<rdg wit="#s"><gap/></rdg>
+					<rdg wit="#j"><gap/></rdg>
+					<rdg wit="#m"><gap/></rdg>
+					<rdg wit="#r"/>
+				</app>
+				<app>
+					<rdg wit="#c">damh</rdg>
+					<rdg wit="#s">damh</rdg>
+					<rdg wit="#j">damh</rdg>
+					<rdg wit="#m">damh</rdg>
+					<rdg wit="#r">damh</rdg>
+				</app>
+				<app>
+					<rdg wit="#c">pféin</rdg>
+					<rdg wit="#s">pfein</rdg>
+					<rdg wit="#j">pfein</rdg>
+					<rdg wit="#m">pfein</rdg>
+					<rdg wit="#r">pfhein</rdg>
+				</app>
+				<app>
+					<rdg wit="#c">agus</rdg>
+					<rdg wit="#s"><unclear>agas</unclear></rdg>
+					<rdg wit="#j"><unclear>agas</unclear></rdg>
+					<rdg wit="#m"><unclear>agas</unclear></rdg>
+					<rdg wit="#r">agas</rdg>
+				</app>
+				<app>
+					<rdg wit="#c">dom</rdg>
+					<rdg wit="#s"><unclear>dom</unclear></rdg>
+					<rdg wit="#j"><unclear>dom</unclear></rdg>
+					<rdg wit="#m"><unclear>dom</unclear></rdg>
+					<rdg wit="#r">dom</rdg>
+				</app>
+				<app>
+					<rdg wit="#c">athair</rdg>
+					<rdg wit="#s"><unclear>athair</unclear></rdg>
+					<rdg wit="#j"><unclear>athair</unclear></rdg>
+					<rdg wit="#m"><unclear>athair</unclear></rdg>
+					<rdg wit="#r">athair</rdg>
+				</app>
+				<app>
+					<rdg wit="#c">romham</rdg>
+					<rdg wit="#s"><unclear>romham</unclear></rdg>
+					<rdg wit="#j"><unclear>romham</unclear></rdg>
+					<rdg wit="#m"><unclear>romham</unclear></rdg>
+					<rdg wit="#r">romham</rdg>
+				</app>
+				<app>
+					<rdg wit="#c">agas</rdg>
+					<rdg wit="#s"><unclear>agas</unclear></rdg>
+					<rdg wit="#j"><unclear>agas</unclear></rdg>
+					<rdg wit="#m"><unclear>agas</unclear></rdg>
+					<rdg wit="#r">⁊</rdg>
+				</app>
+				<app>
+					<rdg wit="#c">so</rdg>
+					<rdg wit="#s"><unclear>so</unclear></rdg>
+					<rdg wit="#j"><unclear>so</unclear></rdg>
+					<rdg wit="#m"><unclear>so</unclear></rdg>
+					<rdg wit="#r">so</rdg>
+				</app>
+				<app>
+					<rdg wit="#c">air</rdg>
+					<rdg wit="#s"><unclear>air</unclear></rdg>
+					<rdg wit="#j"><unclear>air</unclear></rdg>
+					<rdg wit="#m"><unclear>air</unclear></rdg>
+					<rdg wit="#r">air</rdg>
+				</app>
+				<app>
+					<rdg wit="#c">chunnrag</rdg>
+					<rdg wit="#s"><unclear>chunnr</unclear>ag</rdg>
+					<rdg wit="#j"><unclear>chunnr</unclear>ag</rdg>
+					<rdg wit="#m"><unclear>chunnr</unclear>ag</rdg>
+					<rdg wit="#r">chunnragh</rdg>
+				</app>
+				<app>
+					<rdg wit="#c">agas</rdg>
+					<rdg wit="#s">agas</rdg>
+					<rdg wit="#j">agas</rdg>
+					<rdg wit="#m">agas</rdg>
+					<rdg wit="#r">⁊</rdg>
+				</app>
+				<app>
+					<rdg wit="#c">air</rdg>
+					<rdg wit="#s">air</rdg>
+					<rdg wit="#j">air</rdg>
+					<rdg wit="#m">air</rdg>
+					<rdg wit="#r">ar</rdg>
+				</app>
+				<app>
+					<rdg wit="#c">chonghioll</rdg>
+					<rdg wit="#s">chonghioll</rdg>
+					<rdg wit="#j">chonghioll</rdg>
+					<rdg wit="#m">chonghioll</rdg>
+					<rdg wit="#r">choingioll</rdg>
+				</app>
+				<lb n="4"/>
+				<app>
+					<rdg wit="#c">go</rdg>
+					<rdg wit="#s">go</rdg>
+					<rdg wit="#j">go</rdg>
+					<rdg wit="#m">go</rdg>
+					<rdg wit="#r">go</rdg>
+				</app>
+				<app>
+					<rdg wit="#c">tteobhraidh</rdg>
+					<rdg wit="#s">tteobhraidh</rdg>
+					<rdg wit="#j">tteobhraidh</rdg>
+					<rdg wit="#m">tteobhraidh</rdg>
+					<rdg wit="#r">tteabhraidh</rdg>
+				</app>
+				<app>
+					<rdg wit="#c">sé</rdg>
+					<rdg wit="#s">se</rdg>
+					<rdg wit="#j">se</rdg>
+					<rdg wit="#m">se</rdg>
+					<rdg wit="#r">se</rdg>
+				</app>
+				<app>
+					<rdg wit="#c">féin</rdg>
+					<rdg wit="#s">fein</rdg>
+					<rdg wit="#j">fein</rdg>
+					<rdg wit="#m">fein</rdg>
+					<rdg wit="#r">fein</rdg>
+				</app>
+				<app>
+					<rdg wit="#c">agus</rdg>
+					<rdg wit="#s">agas</rdg>
+					<rdg wit="#j">agas</rdg>
+					<rdg wit="#m">agas</rdg>
+					<rdg wit="#r">agas</rdg>
+				</app>
+				<app>
+					<rdg wit="#c">iadsan</rdg>
+					<rdg wit="#s">iadsan</rdg>
+					<rdg wit="#j">iadsan</rdg>
+					<rdg wit="#m">iadsan</rdg>
+					<rdg wit="#r">iadsan</rdg>
+				</app>
+				<app>
+					<rdg wit="#c">damhsa</rdg>
+					<rdg wit="#s">damhsa</rdg>
+					<rdg wit="#j">damhsa</rdg>
+					<rdg wit="#m">damhsa</rdg>
+					<rdg wit="#r">damhsa</rdg>
+				</app>
+				<app>
+					<rdg wit="#c">agas</rdg>
+					<rdg wit="#s"><unclear>agas</unclear></rdg>
+					<rdg wit="#j"><unclear>agas</unclear></rdg>
+					<rdg wit="#m"><unclear>agas</unclear></rdg>
+					<rdg wit="#r">agas</rdg>
+				</app>
+				<app>
+					<rdg wit="#c">dom</rdg>
+					<rdg wit="#s"><unclear>dom</unclear></rdg>
+					<rdg wit="#j"><unclear>dom</unclear></rdg>
+					<rdg wit="#m"><unclear>dom</unclear></rdg>
+					<rdg wit="#r">dom</rdg>
+				</app>
+				<app>
+					<rdg wit="#c">oighribh</rdg>
+					<rdg wit="#s"><unclear>oighribh</unclear></rdg>
+					<rdg wit="#j"><unclear>oighribh</unclear></rdg>
+					<rdg wit="#m"><unclear>oighribh</unclear></rdg>
+					<rdg wit="#r">oighribh</rdg>
+				</app>
+				<app>
+					<rdg wit="#c">am</rdg>
+					<rdg wit="#s"><unclear>am</unclear></rdg>
+					<rdg wit="#j"><unclear>am</unclear></rdg>
+					<rdg wit="#m"><unclear>am</unclear></rdg>
+					<rdg wit="#r">am</rdg>
+				</app>
+				<app>
+					<rdg wit="#c">dhiaigh</rdg>
+					<rdg wit="#s"><unclear>dhiaigh</unclear></rdg>
+					<rdg wit="#j"><unclear>dhiaigh</unclear></rdg>
+					<rdg wit="#m"><unclear>dhiaigh</unclear></rdg>
+					<rdg wit="#r">dhiaigh</rdg>
+				</app>
+				<app>
+					<rdg wit="#c">go</rdg>
+					<rdg wit="#s">go</rdg>
+					<rdg wit="#j">go</rdg>
+					<rdg wit="#m">go</rdg>
+					<rdg wit="#r">go</rdg>
+				</app>
+				<app>
+					<rdg wit="#c">bliadhnamhail</rdg>
+					<rdg wit="#s">bliahdhnamhail</rdg>
+					<rdg wit="#j">bliadhnamhail</rdg>
+					<rdg wit="#m">bliadhnamhail</rdg>
+					<rdg wit="#r">bliadhanamhail</rdg>
+				</app>
+				<lb n="6"/>
+				<app>
+					<rdg wit="#c">ceithre</rdg>
+					<rdg wit="#s">ceithre</rdg>
+					<rdg wit="#j">ceithre</rdg>
+					<rdg wit="#m">ceithre</rdg>
+					<rdg wit="#r">ceithre</rdg>
+				</app>
+				<app>
+					<rdg wit="#c">bá</rdg>
+					<rdg wit="#s">ba</rdg>
+					<rdg wit="#j">ba</rdg>
+					<rdg wit="#m">ba</rdg>
+					<rdg wit="#r">ba</rdg>
+				</app>
+				<app>
+					<rdg wit="#c">ionmharbhtha</rdg>
+					<rdg wit="#s">ionmharbhtha</rdg>
+					<rdg wit="#j">ionmharbhtha</rdg>
+					<rdg wit="#m">ionmbharbhtha</rdg>
+					<rdg wit="#r">ionmharbhtha</rdg>
+				</app>
+				<app>
+					<rdg wit="#c">chum</rdg>
+					<rdg wit="#s">chum</rdg>
+					<rdg wit="#j">chum</rdg>
+					<rdg wit="#m">chum</rdg>
+					<rdg wit="#r">chum</rdg>
+				</app>
+				<app>
+					<rdg wit="#c">mo</rdg>
+					<rdg wit="#s">mo</rdg>
+					<rdg wit="#j">mo</rdg>
+					<rdg wit="#m">mo</rdg>
+					<rdg wit="#r">mo</rdg>
+				</app>
+				<app>
+					<rdg wit="#c">thighe</rdg>
+					<rdg wit="#s">thighe</rdg>
+					<rdg wit="#j">thighe</rdg>
+					<rdg wit="#m">thighe</rdg>
+					<rdg wit="#r">thighe</rdg>
 				</app>
 				<app>
 					<rdg wit="#c"></rdg>
