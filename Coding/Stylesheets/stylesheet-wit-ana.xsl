@@ -55,8 +55,12 @@
 								</xsl:choose>
 							</th>
 						</xsl:for-each>
+						<th>
+							<xsl:text>Varants?</xsl:text>
+						</th>
 					</tr>
 					<xsl:for-each select="//tei:app">
+						<xsl:variable name="appID" select="@xml:id"/>
 						<tr>
 							<td>
 								<xsl:value-of select="@xml:id"/>
@@ -69,6 +73,13 @@
 									<xsl:apply-templates/>
 								</td>
 							</xsl:for-each>
+							<td>
+								<xsl:choose>
+									<xsl:when test="">
+										
+									</xsl:when>
+								</xsl:choose>
+							</td>
 						</tr>
 					</xsl:for-each>
 				</table>
