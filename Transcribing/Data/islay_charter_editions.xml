@@ -10,6 +10,8 @@
 				<authority>FnaG MSS Project</authority>
 			</publicationStmt>
 			<sourceDesc>
+				<!-- A source from which variant readings have been added should carry the attribute 'type="wit"' in either <bibl> or <msDesc>; 
+					if no readings have been added yet, then this attribute should be not be added.   -->
 				<bibl xml:id="r" type="wit" subtype="bib">
 					<author><forename>William</forename><surname>Reeves</surname></author>
 					<title level="a">On an Ancient Deed, Being a Grant of Land in Islay, from Donald
@@ -34,7 +36,7 @@
 					<publisher>[privately printed]</publisher>
 					<date from="1895">1895</date>
 				</bibl>
-				<bibl xml:id="f" type="wit" subtype="bib">
+				<bibl xml:id="f" subtype="bib">
 					<author><forename>Charles</forename><surname>Fraser-Mackintosh</surname></author>
 					<title>The Last MacDonalds of Isla</title>
 					<pubPlace>Glasgow</pubPlace>
@@ -64,7 +66,7 @@
 						<msName>The Islay Charter (original manuscript)</msName>
 					</msIdentifier>
 				</msDesc>
-				<msDesc xml:id="t" type="wit" subtype="ms">
+				<msDesc xml:id="t" subtype="ms">
 					<msIdentifier>
 						<settlement>Edinburgh</settlement>
 						<repository>NAS</repository>
@@ -1238,6 +1240,7 @@
 					<rdg wit="#j"/>
 					<rdg wit="#m"/>
 					<rdg wit="#r">do</rdg>
+					<rdg wit="#o"/>
 				</app>
 				<app xml:id="t11rdg_70f1efc9">
 					<rdg wit="#c"/>
@@ -1245,6 +1248,7 @@
 					<rdg wit="#j"/>
 					<rdg wit="#m"/>
 					<rdg wit="#r">féin</rdg>
+					<rdg wit="#o"/>
 				</app>
 				<lb n="10"/>
 				<app xml:id="t11rdg_70f1efd0">
@@ -1349,6 +1353,7 @@
 					<rdg wit="#j"/>
 					<rdg wit="#m"/>
 					<rdg wit="#r">agas</rdg>
+					<rdg wit="#o"/>
 				</app>
 				<app xml:id="t11rdg_70f1efd7">
 					<rdg wit="#c"/>
@@ -1356,6 +1361,7 @@
 					<rdg wit="#j"/>
 					<rdg wit="#m"/>
 					<rdg wit="#r">go</rdg>
+					<rdg wit="#o"/>
 				</app>
 				<app xml:id="t11rdg_70f1efd8">
 					<rdg wit="#c"/>
@@ -1363,6 +1369,7 @@
 					<rdg wit="#j"/>
 					<rdg wit="#m"/>
 					<rdg wit="#r">deireagh</rdg>
+					<rdg wit="#o"/>
 				</app>
 				<app xml:id="t11rdg_70f1efd9">
 					<rdg wit="#c"/>
@@ -1370,6 +1377,7 @@
 					<rdg wit="#j"/>
 					<rdg wit="#m"/>
 					<rdg wit="#r">an</rdg>
+					<rdg wit="#o"/>
 				</app>
 				<app xml:id="t11rdg_70f1efda">
 					<rdg wit="#c"/>
@@ -1377,6 +1385,7 @@
 					<rdg wit="#j"/>
 					<rdg wit="#m"/>
 					<rdg wit="#r">bheatha</rdg>
+					<rdg wit="#o"/>
 				</app>
 				<app xml:id="t11rdg_70f1efdb">
 					<rdg wit="#c">agas</rdg>
@@ -1432,6 +1441,7 @@
 					<rdg wit="#j"/>
 					<rdg wit="#m"/>
 					<rdg wit="#r">sin</rdg>
+					<rdg wit="#o"/>
 				</app>
 				<app xml:id="t11rdg_70f1efe2">
 					<rdg wit="#c"/>
@@ -1439,6 +1449,7 @@
 					<rdg wit="#j"/>
 					<rdg wit="#m"/>
 					<rdg wit="#r">do</rdg>
+					<rdg wit="#o"/>
 				</app>
 				<app xml:id="t11rdg_70f1efe3">
 					<rdg wit="#c">thugas</rdg>
@@ -1511,6 +1522,7 @@
 					<rdg wit="#j"/>
 					<rdg wit="#m"/>
 					<rdg wit="#r">siorthuighe</rdg>
+					<rdg wit="#o"/>
 				</app>
 				<app xml:id="t11rdg_70f216d6">
 					<rdg wit="#c"/>
@@ -1518,6 +1530,7 @@
 					<rdg wit="#j"/>
 					<rdg wit="#m"/>
 					<rdg wit="#r">suthain</rdg>
+					<rdg wit="#o"/>
 				</app>
 				<app xml:id="t11rdg_70f216d7">
 					<rdg wit="#c">iadhon</rdg>
@@ -1783,6 +1796,7 @@
 					<rdg wit="#j"/>
 					<rdg wit="#m"/>
 					<rdg wit="#r">don</rdg>
+					<rdg wit="#o"/>
 				</app>
 				<app xml:id="t11rdg_70f23de2">
 					<rdg wit="#c"/>
@@ -1790,6 +1804,7 @@
 					<rdg wit="#j"/>
 					<rdg wit="#m"/>
 					<rdg wit="#r">mbrian</rdg>
+					<rdg wit="#o"/>
 				</app>
 				<app xml:id="t11rdg_70f23de3">
 					<rdg wit="#c"/>
@@ -1797,6 +1812,7 @@
 					<rdg wit="#j"/>
 					<rdg wit="#m"/>
 					<rdg wit="#r">thuas</rdg>
+					<rdg wit="#o"/>
 				</app>
 				<app xml:id="t11rdg_70f23de4">
 					<rdg wit="#c"/>
@@ -1804,6 +1820,7 @@
 					<rdg wit="#j"/>
 					<rdg wit="#m"/>
 					<rdg wit="#r">agas</rdg>
+					<rdg wit="#o"/>
 				</app>
 				<app xml:id="t11rdg_70f23de5">
 					<rdg wit="#c"/>
@@ -1811,6 +1828,7 @@
 					<rdg wit="#j"/>
 					<rdg wit="#m"/>
 					<rdg wit="#r">dá</rdg>
+					<rdg wit="#o"/>
 				</app>
 				<app xml:id="t11rdg_70f23de6">
 					<rdg wit="#c"/>
@@ -1818,6 +1836,7 @@
 					<rdg wit="#j"/>
 					<rdg wit="#m"/>
 					<rdg wit="#r">oighribh</rdg>
+					<rdg wit="#o"/>
 				</app>
 				<app xml:id="t11rdg_70f23de7">
 					<rdg wit="#c"/>
@@ -1825,6 +1844,7 @@
 					<rdg wit="#j"/>
 					<rdg wit="#m"/>
 					<rdg wit="#r">na</rdg>
+					<rdg wit="#o"/>
 				</app>
 				<app xml:id="t11rdg_70f23de8">
 					<rdg wit="#c"/>
@@ -1832,6 +1852,7 @@
 					<rdg wit="#j"/>
 					<rdg wit="#m"/>
 					<rdg wit="#r">dhiaidh</rdg>
+					<rdg wit="#o"/>
 				</app>
 				<app xml:id="t11rdg_70f23de9">
 					<rdg wit="#c">ceanglam</rdg>
@@ -1904,6 +1925,7 @@
 					<rdg wit="#j"/>
 					<rdg wit="#m"/>
 					<rdg wit="#r">mo</rdg>
+					<rdg wit="#o"/>
 				</app>
 				<app xml:id="t11rdg_70f23df2">
 					<rdg wit="#c"/>
@@ -1911,6 +1933,7 @@
 					<rdg wit="#j"/>
 					<rdg wit="#m"/>
 					<rdg wit="#r">dhiaigh</rdg>
+					<rdg wit="#o"/>
 				</app>
 				<app xml:id="t11rdg_70f23df3">
 					<rdg wit="#c"/>
@@ -1950,6 +1973,7 @@
 					<rdg wit="#j"/>
 					<rdg wit="#m"/>
 					<rdg wit="#r">⁊</rdg>
+					<rdg wit="#o"/>
 				</app>
 				<app xml:id="t11rdg_70f23df8">
 					<rdg wit="#c"/>
@@ -1957,6 +1981,7 @@
 					<rdg wit="#j"/>
 					<rdg wit="#m"/>
 					<rdg wit="#r">an</rdg>
+					<rdg wit="#o"/>
 				</app>
 				<app xml:id="t11rdg_70f23df9">
 					<rdg wit="#c"/>
@@ -1964,6 +1989,7 @@
 					<rdg wit="#j"/>
 					<rdg wit="#m"/>
 					<rdg wit="#r">brontanas</rdg>
+					<rdg wit="#o"/>
 				</app>
 				<app xml:id="t11rdg_70f23dfa">
 					<rdg wit="#c">so</rdg>
@@ -1996,7 +2022,6 @@
 					<rdg wit="#m">agas</rdg>
 					<rdg wit="#r">⁊</rdg>
 					<rdg wit="#o">agas</rdg>
-					<rdg wit="#o">agas</rdg>
 				</app>
 				<app xml:id="t11rdg_70f23dfe">
 					<rdg wit="#c"/>
@@ -2004,6 +2029,7 @@
 					<rdg wit="#j"/>
 					<rdg wit="#m"/>
 					<rdg wit="#r">do</rdg>
+					<rdg wit="#o"/>
 				</app>
 				<app xml:id="t11rdg_70f23dff">
 					<rdg wit="#c">chonghbhail</rdg>
@@ -2197,6 +2223,7 @@
 					<rdg wit="#j"/>
 					<rdg wit="#m"/>
 					<rdg wit="#r">shios</rdg>
+					<rdg wit="#o"/>
 				</app>
 				<app xml:id="t11rdg_70f26501">
 					<rdg wit="#c">a</rdg>
