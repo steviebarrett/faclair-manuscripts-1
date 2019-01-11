@@ -17,15 +17,16 @@
 						<title> FnaG MSS Corpus: Headword Data </title>
 					</titleStmt>
 					<publicationStmt>
-						<p><xsl:call-template name="date"/></p>
+						<p>
+							<xsl:call-template name="date"/>
+						</p>
 						<p> This data was extracted from the FnaG MSS Corpus and the existing
-							headword database (hwData.xml). A
-							new database is generated consisting of the pre-existing database
-							together with headwords that have been found in the corpus that do not
-							appear in the pre-existing database. These are tagged 'source="new"'.
-							The counts ('@n') of occurences of headwords in the corpus have been
-							updated based on the version of the corpus used to generate this
-							file.</p>
+							headword database (hwData.xml). A new database is generated consisting
+							of the pre-existing database together with headwords that have been
+							found in the corpus that do not appear in the pre-existing database.
+							These are tagged 'source="new"'. The counts ('@n') of occurences of
+							headwords in the corpus have been updated based on the version of the
+							corpus used to generate this file.</p>
 					</publicationStmt>
 					<sourceDesc>
 						<p> The FnaG MSS Corpus has been transcribed from manuscripts and marked up
@@ -68,14 +69,16 @@
 								</xsl:attribute>
 							</xsl:if>
 							<xsl:choose>
-								<xsl:when test="not(//tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree[@corresp = $wordID])">
+								<xsl:when
+									test="not(//tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree[@corresp = $wordID])">
 									<xsl:attribute name="source">
 										<xsl:text>new</xsl:text>
 									</xsl:attribute>
 								</xsl:when>
 								<xsl:otherwise>
 									<xsl:choose>
-										<xsl:when test="//tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree[@corresp = $wordID]/@source = 'new'">
+										<xsl:when
+											test="//tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree[@corresp = $wordID]/@source = 'new'">
 											<xsl:attribute name="source">
 												<xsl:text>new</xsl:text>
 											</xsl:attribute>
@@ -83,7 +86,7 @@
 									</xsl:choose>
 								</xsl:otherwise>
 							</xsl:choose>
-							
+
 							<w>
 								<xsl:attribute name="type">
 									<xsl:text>data</xsl:text>
@@ -112,6 +115,25 @@
 											select="//tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree[@corresp = $wordID]/tei:w/@lemmaRefDW"
 										/>
 									</xsl:attribute>
+								</xsl:if>
+								<xsl:variable name="firstLem"
+									select="//tei:w[@lemmaRef = $wordID and not(@lemmaRef = preceding::tei:w/@lemmaRef)]/@lemma"/>
+								<xsl:if test="//tei:w[@lemmaRef = $wordID and @lemma != $firstLem]">
+									<ab>
+										<xsl:attribute name="type">altLem</xsl:attribute>
+										<xsl:value-of select="$firstLem"/>
+									</ab>
+									<xsl:for-each
+										select="//tei:w[@lemmaRef = $wordID and @lemma != $firstLem]">
+										<xsl:variable name="thisLem" select="@lemma"/>
+										<xsl:if
+											test="not(preceding::tei:w[@lemmaRef = $wordID]/@lemma = $thisLem)">
+											<ab>
+												<xsl:attribute name="type">altLem</xsl:attribute>
+												<xsl:value-of select="$thisLem"/>
+											</ab>
+										</xsl:if>
+									</xsl:for-each>
 								</xsl:if>
 							</w>
 							<xsl:copy-of
