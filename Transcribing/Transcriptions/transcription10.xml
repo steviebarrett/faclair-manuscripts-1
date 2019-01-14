@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../Schemas/fnag_mss2.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-stylesheet type="text/xsl" href="../../Coding/Stylesheets/basic-info.xsl"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="T10">
+	<teiHeader>
+		<fileDesc>
+			<titleStmt>
+				<title>Transcription 10: The Islay Charter</title>
+				<respStmt corresp="EPT">
+					<name>Eystein P. Thanisch</name>
+					<resp>Transcriber</resp>
+					<resp>Editor</resp>
+				</respStmt>
+				<respStmt corresp="WGI">
+					<name>William Gillies</name>
+					<resp>Overseer</resp>
+				</respStmt>
+			</titleStmt>
+			<extent/>
+			<publicationStmt>
+				<authority sameAs="authority"/>
+				<availability status="restricted">
+					<p>For internal use by the Faclair na Gàidhlig/DASG projects</p>
+				</availability>
+				<idno>T10</idno>
+			</publicationStmt>
+			<notesStmt>
+				<note>
+					<p/>
+				</note>
+			</notesStmt>
+			<sourceDesc>
+				<msDesc>
+					<msIdentifier sameAs="MS10">
+						<settlement>Edinburgh</settlement>
+						<repository>National Archives of Scotland</repository>
+						<idno type="shelfmark">RH.6/218</idno>
+						<msName>The Islay Charter</msName>
+					</msIdentifier>
+					<msContents>
+						<summary/>
+						<msItem xml:id="MS10.1" resp="Hand28">
+							<locus>fol.1<hi rend="sup">r</hi>1–30</locus>
+							<title>The Islay Charter</title>
+							<incipit/>
+							<explicit/>
+							<filiation/>
+							<textLang mainLang="hsg">
+								<note/>
+							</textLang>
+						</msItem>
+					</msContents>
+					<physDesc>
+						<p/>
+						<objectDesc>
+							<supportDesc>
+								<support/>
+								<foliation/>
+								<condition/>
+							</supportDesc>
+							<layoutDesc>
+								<p/>
+							</layoutDesc>
+						</objectDesc>
+					</physDesc>
+					<history>
+						<provenance/>
+					</history>
+				</msDesc>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<metDecl>
+				<p/>
+			</metDecl>
+			<refsDecl>
+				<p/>
+			</refsDecl>
+		</encodingDesc>
+		<profileDesc>
+			<handNotes>
+				<handNote sameAs="Hand28"/>
+			</handNotes>
+			<textClass>
+				<keywords>
+					<term/>
+				</keywords>
+			</textClass>
+		</profileDesc>
+		<revisionDesc>
+			<change when="2019-01-14" resp="EPT">File created</change>
+		</revisionDesc>
+	</teiHeader>
+	<text>
+		<body>
+			<div n="1" type="prose" corresp="MS10.1" resp="Hand28">
+				<p>
+					<pb n="1r" xml:id="MS10.1r"/>
+					<lb n="1" xml:id="MS10.1r.1"/>
+					<w lemma="i" lemmaRef="http://www.dil.ie/26891" ana="prep">An</w>
+					<space type="scribal"/>
+					<w lemma="ainmm" lemmaRef="http://www.dil.ie/1471" ana="noun">ainm</w>
+					<space type="scribal"/>
+					<w lemma="día" lemmaRef="http://www.dil.ie/15847" ana="noun">de</w>
+					<space type="scribal"/>
+					<unclear reason="text_obscure" cert="high" resp="Munro1986"><w xml:lang="hbo"
+							>amen</w></unclear>
+					<lb n="2" xml:id="MS10.1r.2"/>
+					<w ana="verb, emph" corresp="#t10rdg_70f06920"><w lemma="attá" lemmaRef="http://www.dil.ie/4927" ana="verb">Ataim</w>
+					<w lemma="se" lemmaRef="http://www.dil.ie/36703" ana="emph">se</w></w>
+				</p>
+			</div>
+		</body>
+	</text>
+</TEI>
