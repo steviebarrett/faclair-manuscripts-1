@@ -30,15 +30,34 @@ $(function() {
     $('.chunk').css('background-color', 'inherit');
     $(this).css('background-color', 'yellow');
     $('#headword').text(clean($(this).text()));
-    $('#headwordInfo').html(makeDescription($(this),false)); // this doesn't work
-    //$('#right-panel').html(makeDescription($(this),false));
+    $('#syntaxInfo').html(makeDescription($(this),false));
+    
+    if ($(this).find('.expansion').length>0) {
+      html = 'It contains the following scribal expansions:<ul>';
+      $(this).find('.expansion').each(function() {
+        html += '<li>';
+        var xmlId = $(this).attr('data-glyphref');  
+        var id = $(this).attr('id');    //!! this is undefined
+        $.getJSON('/ajax/manuscripts.php?action=getGlyph&xmlId=' + xmlId, function (g) { // this URL is broken
+          txt = '<a href="http://' + g.corresp + '" target="_new" data-src="' + id + '">' + g.name;
+          txt = txt + '</a>: ' + g.note;
+          html = html + '<li class="glyphItem">' + txt +'</li>';
+        });
+        html += '</li>';
+      });
+      html += '</ul>'; 
+      $('#expansionInfo').html(html);
+    }
+    else {
+      $('#expansionInfo').empty();
+    }
   });
   
   function makeDescription(span, rec) {
-    /* 
-    html = '<span style="color:red;">' + clean($(span).text()) + '</span><ul>';
-     */
     html = '';
+    if (rec) {
+      html = html + '<span style="color:red;">' + clean($(span).text()) + '</span><ul>';
+    }
     if ($(span).hasClass('name')) {
       html = html + '<li>is the name of a ';
       if ($(span).attr('data-nametype')=='personal') {
@@ -96,6 +115,11 @@ $(function() {
     else {
       html += '<li>is a syntactically simple form</li>';
     }
+    if (rec) {
+      html += '</ul>';
+    }
+    return html;
+    
     /*
     if (!rec && $(span).find('.expansion').length>0) {
       html = html + '<li>' + extractExpansions($(span)) + ' contains the following scribal expansions:<ul id="expansionList">';
@@ -217,7 +241,7 @@ $(function() {
     }
     html += '</ul>';
      */
-    return html;
+    
   }
 
   function clean(str) { // remove form content from headword strings at linebreaks
