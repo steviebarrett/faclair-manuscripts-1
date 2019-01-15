@@ -66,7 +66,6 @@ $(function() {
     else if ($(span).hasClass('name') && $(span).children('.word').length==1 && $(span).children('.word').attr('data-headword')) {
       html = html + '<li>is a form of the headword <a href="' + $(span).children('.word').attr('data-edil') + '" target="_new">' + $(span).children('.word').attr('data-headword') + '</a></li>';
     }
-    /* 
     if ($(span).children('.syntagm').length>1) {
       html += '<li>is a syntactically complex form containing the following elements:';      
       html += '<ul>';
@@ -96,7 +95,8 @@ $(function() {
     }
     else {
       html += '<li>is a syntactically simple form</li>';
-    }    
+    }
+    /*
     if (!rec && $(span).find('.expansion').length>0) {
       html = html + '<li>' + extractExpansions($(span)) + ' contains the following scribal expansions:<ul id="expansionList">';
       $(span).find('.expansion').each(function() {
