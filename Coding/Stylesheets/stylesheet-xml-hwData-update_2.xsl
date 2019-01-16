@@ -119,19 +119,19 @@
 								<xsl:variable name="firstLem"
 									select="//tei:w[@lemmaRef = $wordID and not(@lemmaRef = preceding::tei:w/@lemmaRef)]/@lemma"/>
 								<xsl:if test="//tei:w[@lemmaRef = $wordID and @lemma != $firstLem]">
-									<ab>
+									<span>
 										<xsl:attribute name="type">altLem</xsl:attribute>
 										<xsl:value-of select="$firstLem"/>
-									</ab>
+									</span>
 									<xsl:for-each
 										select="//tei:w[@lemmaRef = $wordID and @lemma != $firstLem]">
 										<xsl:variable name="thisLem" select="@lemma"/>
 										<xsl:if
 											test="not(preceding::tei:w[@lemmaRef = $wordID]/@lemma = $thisLem)">
-											<ab>
+											<span>
 												<xsl:attribute name="type">altLem</xsl:attribute>
 												<xsl:value-of select="$thisLem"/>
-											</ab>
+											</span>
 										</xsl:if>
 									</xsl:for-each>
 								</xsl:if>
