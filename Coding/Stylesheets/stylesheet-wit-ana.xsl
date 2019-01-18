@@ -33,6 +33,7 @@
 							<xsl:text>MS line</xsl:text>
 						</th>
 						<xsl:for-each select="//*[@type = 'wit']">
+							<xsl:sort select="tei:date/@from"/>
 							<th style="bold">
 								<xsl:choose>
 									<xsl:when test="@subtype = 'bib'">
@@ -89,6 +90,10 @@
 								<xsl:value-of select="preceding::tei:lb[1]/@n"/>
 							</td>
 							<xsl:for-each select="tei:rdg">
+								<xsl:sort>
+									<xsl:variable name="witID" select="@wit"/>
+									<xsl:value-of select="//*[@type = 'wit' and @xml:id = $witID]/tei:date/@from"/>
+								</xsl:sort>
 								<td>
 									<xsl:apply-templates/>
 								</td>
