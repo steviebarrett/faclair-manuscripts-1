@@ -465,6 +465,16 @@ function addSlip(id) {
 		finURIED = rcol13.firstChild.innerHTML.slice(36);
 	} else if (rcol13.firstChild.innerHTML.slice(8, 24) == "www.teanglann.ie") {
 		finURIED = "TG_" + rcol13.firstChild.innerHTML.slice(32);
+	} else if (rcol13.firstChild.innerHTML.slice(8, 21) == "www.dsl.ac.uk") {
+		finURIED = rcol13.firstChild.innerHTML.slice(32);
+	} else if (rcol13.firstChild.innerHTML.slice(8, 22) == "www.logainm.ie") {
+		finURIED = rcol13.firstChild.innerHTML.slice(26);
+	} else if (rcol13.firstChild.innerHTML.slice(8, 29) == "www.ainmean-aite.scot") {
+		finURIED = rcol13.firstChild.innerHTML.slice(40);
+	} else if (rcol13.firstChild.innerHTML.slice(8, 39) == "www.online-latin-dictionary.com") {
+		finURIED = rcol13.firstChild.innerHTML.slice(76);
+	} else if (rcol13.firstChild.innerHTML.slice(8, 19) == "www.oed.com") {
+		finURIED = rcol13.firstChild.innerHTML.slice(31);
 	}
 	rcol13.firstChild.innerHTML = finURIED;
 	var rcol14 = row.insertCell(13);
@@ -833,6 +843,16 @@ function wordSearch(id) {
 			finURIED = cell13.firstChild.innerHTML.slice(36);
 		} else if (rcol13.firstChild.innerHTML.slice(8, 24) == "www.teanglann.ie") {
 			finURIED = "TG_" + rcol13.firstChild.innerHTML.slice(32);
+		} else if (rcol13.firstChild.innerHTML.slice(8, 21) == "www.dsl.ac.uk") {
+			finURIED = rcol13.firstChild.innerHTML.slice(32);
+		} else if (rcol13.firstChild.innerHTML.slice(8, 22) == "www.logainm.ie") {
+			finURIED = rcol13.firstChild.innerHTML.slice(26);
+		} else if (rcol13.firstChild.innerHTML.slice(8, 29) == "www.ainmean-aite.scot") {
+			finURIED = rcol13.firstChild.innerHTML.slice(40);
+		} else if (rcol13.firstChild.innerHTML.slice(8, 39) == "www.online-latin-dictionary.com") {
+			finURIED = rcol13.firstChild.innerHTML.slice(76);
+		} else if (rcol13.firstChild.innerHTML.slice(8, 19) == "www.oed.com") {
+			finURIED = rcol13.firstChild.innerHTML.slice(31);
 		}
 		cell13.firstChild.innerHTML = finURIED;
 		var cell14 = row.insertCell(13);
