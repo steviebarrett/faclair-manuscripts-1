@@ -2095,7 +2095,23 @@
 				</xsl:otherwise>
 			</xsl:choose>
 		</xsl:variable>
-		<xsl:variable name="lemRef" select="@lemmaRef"/>
+		<xsl:variable name="lemRef">
+			<xsl:choose>
+				<xsl:when test="@lemmaRef">
+					<xsl:value-of select="@lemmaRef"/>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:choose>
+						<xsl:when test="ancestor::tei:name/@corresp">
+							<xsl:value-of select="ancestor::tei:name/@corresp"/>
+						</xsl:when>
+						<xsl:otherwise>
+							<xsl:text/>
+						</xsl:otherwise>
+					</xsl:choose>
+				</xsl:otherwise>
+			</xsl:choose>
+		</xsl:variable>
 		<xsl:variable name="an" select="@ana"/>
 		<xsl:variable name="prob">
 			<xsl:if test="descendant::*[@reason] or ancestor::*[@reason]">
