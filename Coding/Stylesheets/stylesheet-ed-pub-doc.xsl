@@ -2871,6 +2871,18 @@
 						<xsl:text/>
 					</xsl:when>
 					<xsl:when
+						test="@ana = 'prep' and ancestor::tei:w[contains(@ana, 'prep, poss')]">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when
+						test="@ana = 'prep' and ancestor::tei:w[contains(@ana, 'prep, pron')]">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when
+						test="@ana = 'prep' and ancestor::tei:w[contains(@ana, 'prep, art')]">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when
 						test="@ana = 'pron' and ancestor::tei:w[contains(@ana, 'pron, dpron')]">
 						<xsl:text/>
 					</xsl:when>
