@@ -61,27 +61,67 @@
 				<xsl:value-of select="$wordPosition"/>
 			</td>
 			<td>
+				<xsl:choose>
+					<xsl:when test="contains(@lemmaRef, 'dil.ie')">
+						<xsl:value-of select="substring(@lemmaRef, 19)"/>
+					</xsl:when>
+					<xsl:when test="contains(@lemmaRef, 'faclair.com')">
+						<xsl:value-of select="substring(@lemmaRef, 53)"/>
+					</xsl:when>
+					<xsl:when test="contains(@lemmaRef, 'dasg.ac.uk')">
+						<xsl:value-of select="substring(@lemmaRef, 37)"/>
+					</xsl:when>
+					<xsl:when test="contains(@lemmaRef, 'www.teanglann.ie')">
+						<xsl:value-of select="substring(@lemmaRef, 33)"/>
+					</xsl:when>
+					<xsl:when test="contains(@lemmaRef, 'www.dsl.ac.uk')">
+						<xsl:value-of select="substring(@lemmaRef, 33)"/>
+					</xsl:when>
+					<xsl:when test="contains(@lemmaRef, 'www.logainm.ie')">
+						<xsl:value-of select="substring(@lemmaRef, 27)"/>
+					</xsl:when>
+					<xsl:when test="contains(@lemmaRef, 'www.ainmean-aite.scot')">
+						<xsl:value-of select="substring(@lemmaRef, 41)"/>
+					</xsl:when>
+					<xsl:when test="contains(@lemmaRef, 'www.online-latin-dictionary.com')">
+						<xsl:value-of select="substring(@lemmaRef, 77)"/>
+					</xsl:when>
+					<xsl:when test="contains(@lemmaRef, 'www.oed.com')">
+						<xsl:value-of select="substring(@lemmaRef, 32)"/>
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:text>none</xsl:text>
+					</xsl:otherwise>
+				</xsl:choose>
+			</td>
+			<td>
 				<a href="{@lemmaRef}">
 					<xsl:value-of select="@lemma"/>
 				</a>
 			</td>
 			<td>
-				<xsl:value-of select="count(//tei:TEI[descendant::tei:w[@lemmaRef = $lemID] and not(@xml:id = 'hwData')])"/>
+				<xsl:value-of
+					select="count(//tei:TEI[descendant::tei:w[@lemmaRef = $lemID] and not(@xml:id = 'hwData')])"
+				/>
 			</td>
 			<td>
 				<span>
 					<xsl:attribute name="style">
-						<xsl:if test="ancestor::*[@cert] or descendant::*[@cert]"><xsl:choose>
-							<xsl:when test="ancestor::*/@cert = 'low' or descendant::*/@cert = 'low'">
-								<xsl:text>color:#ff0000</xsl:text>
-							</xsl:when>
-							<xsl:when test="ancestor::*/@cert = 'medium' or descendant::*/@cert = 'medium'">
-								<xsl:text>color:#ff9900</xsl:text>
-							</xsl:when>
-							<xsl:otherwise>
-								<xsl:text/>
-							</xsl:otherwise>
-						</xsl:choose></xsl:if>
+						<xsl:if test="ancestor::*[@cert] or descendant::*[@cert]">
+							<xsl:choose>
+								<xsl:when
+									test="ancestor::*/@cert = 'low' or descendant::*/@cert = 'low'">
+									<xsl:text>color:#ff0000</xsl:text>
+								</xsl:when>
+								<xsl:when
+									test="ancestor::*/@cert = 'medium' or descendant::*/@cert = 'medium'">
+									<xsl:text>color:#ff9900</xsl:text>
+								</xsl:when>
+								<xsl:otherwise>
+									<xsl:text/>
+								</xsl:otherwise>
+							</xsl:choose>
+						</xsl:if>
 					</xsl:attribute>
 					<xsl:apply-templates/>
 				</span>
@@ -95,26 +135,32 @@
 						<xsl:choose>
 							<xsl:when
 								test="descendant::tei:supplied or descendant::tei:unclear[@reason = 'damage']">
-								<xsl:text>chars supp.</xsl:text></xsl:when>
+								<xsl:text>chars supp.</xsl:text>
+							</xsl:when>
 							<xsl:otherwise>
 								<xsl:choose>
-									<xsl:when test="ancestor::tei:unclear[@reason = 'interp_obscure']">
+									<xsl:when
+										test="ancestor::tei:unclear[@reason = 'interp_obscure']">
 										<xsl:text>meaning unclear</xsl:text>
 									</xsl:when>
 									<xsl:otherwise>
-										<xsl:choose><xsl:when test="ancestor::tei:unclear[@reason = 'text_obscure']">
-											<xsl:text>word unclear</xsl:text>
-										</xsl:when>
-										<xsl:otherwise>
-											<xsl:choose>
-												<xsl:when test="descendant::tei:abbr[not(@cert = 'high')]">
-													<xsl:text>exp. unclear</xsl:text>
+										<xsl:choose>
+											<xsl:when
+												test="ancestor::tei:unclear[@reason = 'text_obscure']">
+												<xsl:text>word unclear</xsl:text>
+											</xsl:when>
+											<xsl:otherwise>
+												<xsl:choose>
+												<xsl:when
+												test="descendant::tei:abbr[not(@cert = 'high')]">
+												<xsl:text>exp. unclear</xsl:text>
 												</xsl:when>
 												<xsl:otherwise>
-													<xsl:text>none</xsl:text>
+												<xsl:text>none</xsl:text>
 												</xsl:otherwise>
-											</xsl:choose>
-										</xsl:otherwise></xsl:choose>
+												</xsl:choose>
+											</xsl:otherwise>
+										</xsl:choose>
 									</xsl:otherwise>
 								</xsl:choose>
 							</xsl:otherwise>
@@ -125,22 +171,23 @@
 			<td>
 				<xsl:choose>
 					<xsl:when test="descendant::tei:g">
-							<xsl:for-each select="descendant::tei:g">
-									<xsl:if test="count(ancestor::tei:w[not(descendant::tei:w)]/descendant::tei:g) > 1">
-										<b>|</b>
-									</xsl:if>
-									<a>
-										<xsl:if test="key('abbrs', @ref)/@corresp">
-											<xsl:attribute name="href">
-												<xsl:value-of select="key('abbrs', @ref)/@corresp"/>
-											</xsl:attribute>
-										</xsl:if>
-										<xsl:value-of select="key('abbrs', @ref)/tei:glyphName"/>
-									</a>
-									<xsl:if test="count(ancestor::tei:w/descendant::tei:g) > 1">
-										<b>|</b>
-									</xsl:if>
-							</xsl:for-each>
+						<xsl:for-each select="descendant::tei:g">
+							<xsl:if
+								test="count(ancestor::tei:w[not(descendant::tei:w)]/descendant::tei:g) > 1">
+								<b>|</b>
+							</xsl:if>
+							<a>
+								<xsl:if test="key('abbrs', @ref)/@corresp">
+									<xsl:attribute name="href">
+										<xsl:value-of select="key('abbrs', @ref)/@corresp"/>
+									</xsl:attribute>
+								</xsl:if>
+								<xsl:value-of select="key('abbrs', @ref)/tei:glyphName"/>
+							</a>
+							<xsl:if test="count(ancestor::tei:w/descendant::tei:g) > 1">
+								<b>|</b>
+							</xsl:if>
+						</xsl:for-each>
 					</xsl:when>
 					<xsl:otherwise>
 						<xsl:text>none</xsl:text>
@@ -220,7 +267,8 @@
 								</b>
 							</sub>
 							<xsl:apply-templates
-								select="preceding::tei:l[1][ancestor::tei:lg[@xml:id = $comVerse]]"/>
+								select="preceding::tei:l[1][ancestor::tei:lg[@xml:id = $comVerse]]"
+							/>
 						</xsl:if>
 						<xsl:if
 							test="not(preceding::tei:w[ancestor::tei:l[@xml:id = $comLine]]) and ancestor::tei:l/preceding::tei:l[ancestor::tei:lg[@xml:id = $comVerse]] or not(following::tei:w[ancestor::tei:l[@xml:id = $comLine]]) and ancestor::tei:l/following::tei:l[ancestor::tei:lg[@xml:id = $comVerse]]">
@@ -407,6 +455,9 @@
 							<b>Form ID</b>
 						</th>
 						<th>
+							<b>Hw ID</b>
+						</th>
+						<th>
 							<b>Headword</b>
 						</th>
 						<th>
@@ -451,7 +502,8 @@
 					</tr>
 					<xsl:for-each
 						select="//tei:w[not(descendant::tei:w) and contains(@ana, 'art') and not(@type = 'data') and not(contains(@ana, 'part'))]">
-						<xsl:sort select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
+						<xsl:sort
+							select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
 						<xsl:call-template name="contentRow">
 							<xsl:with-param name="posID">
 								<xsl:text>art</xsl:text>
@@ -460,7 +512,8 @@
 					</xsl:for-each>
 					<xsl:for-each
 						select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(ancestor::tei:name) and contains(@ana, 'noun') and not(@type = 'data') and not(contains(@ana, 'vnoun')) and not(@xml:lang)]">
-						<xsl:sort select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
+						<xsl:sort
+							select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
 						<xsl:call-template name="contentRow">
 							<xsl:with-param name="posID">
 								<xsl:text>noun</xsl:text>
@@ -469,7 +522,8 @@
 					</xsl:for-each>
 					<xsl:for-each
 						select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and contains(@ana, 'pron')]">
-						<xsl:sort select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
+						<xsl:sort
+							select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
 						<xsl:call-template name="contentRow">
 							<xsl:with-param name="posID">
 								<xsl:text>pron</xsl:text>
@@ -478,7 +532,8 @@
 					</xsl:for-each>
 					<xsl:for-each
 						select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and contains(@ana, 'poss')]">
-						<xsl:sort select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
+						<xsl:sort
+							select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
 						<xsl:call-template name="contentRow">
 							<xsl:with-param name="posID">
 								<xsl:text>poss</xsl:text>
@@ -487,7 +542,8 @@
 					</xsl:for-each>
 					<xsl:for-each
 						select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and contains(@ana, 'adj')]">
-						<xsl:sort select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
+						<xsl:sort
+							select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
 						<xsl:call-template name="contentRow">
 							<xsl:with-param name="posID">
 								<xsl:text>adj</xsl:text>
@@ -496,7 +552,8 @@
 					</xsl:for-each>
 					<xsl:for-each
 						select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and contains(@ana, 'num')]">
-						<xsl:sort select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
+						<xsl:sort
+							select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
 						<xsl:call-template name="contentRow">
 							<xsl:with-param name="posID">
 								<xsl:text>num</xsl:text>
@@ -521,7 +578,8 @@
 					</xsl:for-each>
 					<xsl:for-each
 						select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and contains(@ana, 'verb') and not(@lemmaRef = 'http://www.dil.ie/29104') and not(@lemmaRef = 'http://www.dil.ie/4927')]">
-						<xsl:sort select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
+						<xsl:sort
+							select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
 						<xsl:call-template name="contentRow">
 							<xsl:with-param name="posID">
 								<xsl:text>verb</xsl:text>
@@ -530,7 +588,8 @@
 					</xsl:for-each>
 					<xsl:for-each
 						select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and contains(@ana, 'vnoun')]">
-						<xsl:sort select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
+						<xsl:sort
+							select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
 						<xsl:call-template name="contentRow">
 							<xsl:with-param name="posID">
 								<xsl:text>vn</xsl:text>
@@ -539,7 +598,8 @@
 					</xsl:for-each>
 					<xsl:for-each
 						select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and contains(@ana, 'ptcp')]">
-						<xsl:sort select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
+						<xsl:sort
+							select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
 						<xsl:call-template name="contentRow">
 							<xsl:with-param name="posID">
 								<xsl:text>ptcp</xsl:text>
@@ -548,7 +608,8 @@
 					</xsl:for-each>
 					<xsl:for-each
 						select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and contains(@ana, 'adv')]">
-						<xsl:sort select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
+						<xsl:sort
+							select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
 						<xsl:call-template name="contentRow">
 							<xsl:with-param name="posID">
 								<xsl:text>adv</xsl:text>
@@ -557,7 +618,8 @@
 					</xsl:for-each>
 					<xsl:for-each
 						select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and contains(@ana, 'conj')]">
-						<xsl:sort select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
+						<xsl:sort
+							select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
 						<xsl:call-template name="contentRow">
 							<xsl:with-param name="posID">
 								<xsl:text>conj</xsl:text>
@@ -566,7 +628,8 @@
 					</xsl:for-each>
 					<xsl:for-each
 						select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and contains(@ana, 'prep')]">
-						<xsl:sort select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
+						<xsl:sort
+							select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
 						<xsl:call-template name="contentRow">
 							<xsl:with-param name="posID">
 								<xsl:text>prep</xsl:text>
@@ -575,7 +638,8 @@
 					</xsl:for-each>
 					<xsl:for-each
 						select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and contains(@ana, 'part')]">
-						<xsl:sort select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
+						<xsl:sort
+							select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
 						<xsl:call-template name="contentRow">
 							<xsl:with-param name="posID">
 								<xsl:text>part</xsl:text>
@@ -584,7 +648,8 @@
 					</xsl:for-each>
 					<xsl:for-each
 						select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and contains(@ana, 'interrog')]">
-						<xsl:sort select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
+						<xsl:sort
+							select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
 						<xsl:call-template name="contentRow">
 							<xsl:with-param name="posID">
 								<xsl:text>int</xsl:text>
@@ -593,7 +658,8 @@
 					</xsl:for-each>
 					<xsl:for-each
 						select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and contains(@ana, 'pref')]">
-						<xsl:sort select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
+						<xsl:sort
+							select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
 						<xsl:call-template name="contentRow">
 							<xsl:with-param name="posID">
 								<xsl:text>pref</xsl:text>
@@ -643,23 +709,20 @@
 		<xsl:choose>
 			<xsl:when test="@ana = 'part' and ancestor::tei:w[contains(@ana, 'part, verb')]">
 				<xsl:choose>
-					<xsl:when
-						test="ancestor::tei:w[contains(@lemmaRef, 'http://www.dil.ie/29104')]">
+					<xsl:when test="ancestor::tei:w[contains(@lemmaRef, 'http://www.dil.ie/29104')]">
 						<xsl:text/>
 					</xsl:when>
 					<xsl:otherwise>
-							<xsl:text> </xsl:text>
-						
+						<xsl:text> </xsl:text>
+
 					</xsl:otherwise>
 				</xsl:choose>
 			</xsl:when>
-			<xsl:when
-				test="@ana = 'part' and ancestor::tei:w[contains(@ana, 'part, pron, verb')]">
+			<xsl:when test="@ana = 'part' and ancestor::tei:w[contains(@ana, 'part, pron, verb')]">
 				<xsl:text/>
 			</xsl:when>
-			<xsl:when
-				test="@ana = 'pron' and ancestor::tei:w[contains(@ana, 'part, pron, verb')]">
-					<xsl:text> </xsl:text>
+			<xsl:when test="@ana = 'pron' and ancestor::tei:w[contains(@ana, 'part, pron, verb')]">
+				<xsl:text> </xsl:text>
 			</xsl:when>
 			<xsl:when test="@ana = 'part' and ancestor::tei:w[contains(@ana, 'part, noun')]">
 				<xsl:text/>
@@ -682,38 +745,31 @@
 			<xsl:when test="@ana = 'noun' and ancestor::tei:w[contains(@ana, 'noun, adj')]">
 				<xsl:text/>
 			</xsl:when>
-			<xsl:when
-				test="@ana = 'prep' and ancestor::tei:w[contains(@ana, 'prep, dpron')]">
+			<xsl:when test="@ana = 'prep' and ancestor::tei:w[contains(@ana, 'prep, dpron')]">
 				<xsl:text/>
 			</xsl:when>
-			<xsl:when
-				test="@ana = 'prep' and ancestor::tei:w[contains(@ana, 'prep, poss')]">
+			<xsl:when test="@ana = 'prep' and ancestor::tei:w[contains(@ana, 'prep, poss')]">
 				<xsl:text/>
 			</xsl:when>
-			<xsl:when
-				test="@ana = 'prep' and ancestor::tei:w[contains(@ana, 'prep, art')]">
+			<xsl:when test="@ana = 'prep' and ancestor::tei:w[contains(@ana, 'prep, art')]">
 				<xsl:text/>
 			</xsl:when>
-			<xsl:when
-				test="@ana = 'pron' and ancestor::tei:w[contains(@ana, 'pron, dpron')]">
+			<xsl:when test="@ana = 'pron' and ancestor::tei:w[contains(@ana, 'pron, dpron')]">
 				<xsl:text/>
 			</xsl:when>
 			<xsl:when test="@ana = 'pron' and ancestor::tei:w[contains(@ana, 'pron, pron')]">
 				<xsl:text/>
 			</xsl:when>
-			<xsl:when
-				test="@ana = 'prep' and ancestor::tei:w[contains(@ana, 'prep, pron')]">
+			<xsl:when test="@ana = 'prep' and ancestor::tei:w[contains(@ana, 'prep, pron')]">
 				<xsl:text/>
 			</xsl:when>
 			<xsl:when test="@ana = 'prep' and ancestor::tei:w[contains(@ana, 'prep, verb')]">
 				<xsl:text/>
 			</xsl:when>
-			<xsl:when
-				test="@ana = 'noun' and ancestor::tei:w[contains(@ana, 'noun, dpron')]">
+			<xsl:when test="@ana = 'noun' and ancestor::tei:w[contains(@ana, 'noun, dpron')]">
 				<xsl:text/>
 			</xsl:when>
-			<xsl:when
-				test="@ana = 'art' and ancestor::tei:w[contains(@ana, 'art, dpron')]">
+			<xsl:when test="@ana = 'art' and ancestor::tei:w[contains(@ana, 'art, dpron')]">
 				<xsl:text/>
 			</xsl:when>
 			<xsl:when test="@ana = 'noun' and ancestor::tei:w[contains(@ana, 'noun, ptcp')]">
@@ -737,8 +793,7 @@
 			<xsl:when test="@ana = 'noun' and ancestor::tei:w[contains(@ana, 'noun, noun')]">
 				<xsl:text/>
 			</xsl:when>
-			<xsl:when
-				test="@ana = 'vnoun' and ancestor::tei:w[contains(@ana, 'vnoun, vnoun')]">
+			<xsl:when test="@ana = 'vnoun' and ancestor::tei:w[contains(@ana, 'vnoun, vnoun')]">
 				<xsl:text/>
 			</xsl:when>
 			<xsl:when
@@ -757,8 +812,7 @@
 			<xsl:when test="@ana = 'num' and ancestor::tei:w[contains(@ana, 'num, vnoun')]">
 				<xsl:text/>
 			</xsl:when>
-			<xsl:when
-				test="@ana = 'vnoun' and ancestor::tei:w[contains(@ana, 'vnoun, noun')]">
+			<xsl:when test="@ana = 'vnoun' and ancestor::tei:w[contains(@ana, 'vnoun, noun')]">
 				<xsl:text/>
 			</xsl:when>
 			<xsl:when test="@ana = 'adj' and ancestor::tei:w[contains(@ana, 'adj, vnoun')]">
@@ -803,12 +857,10 @@
 			<xsl:when test="@ana = 'conj' and ancestor::tei:w[contains(@ana, 'conj, verb')]">
 				<xsl:text/>
 			</xsl:when>
-			<xsl:when
-				test="@ana = 'interrog' and ancestor::tei:w[contains(@ana, 'interrog, prep')]">
+			<xsl:when test="@ana = 'interrog' and ancestor::tei:w[contains(@ana, 'interrog, prep')]">
 				<xsl:text/>
 			</xsl:when>
-			<xsl:when
-				test="@ana = 'interrog' and ancestor::tei:w[contains(@ana, 'interrog, part')]">
+			<xsl:when test="@ana = 'interrog' and ancestor::tei:w[contains(@ana, 'interrog, part')]">
 				<xsl:text/>
 			</xsl:when>
 			<xsl:when test="ancestor::tei:w and following::tei:pc[1]">
@@ -822,14 +874,14 @@
 				<xsl:text/>
 			</xsl:when>
 			<xsl:when test="not(following-sibling::*)">
-					<xsl:text> </xsl:text>
+				<xsl:text> </xsl:text>
 			</xsl:when>
 			<xsl:when
 				test="@ana = 'pron' and ancestor::tei:w[contains(@ana, 'pron, pron')] and following-sibling::tei:w[@ana = 'pron']">
 				<xsl:text/>
 			</xsl:when>
 			<xsl:otherwise>
-					<xsl:text> </xsl:text>
+				<xsl:text> </xsl:text>
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
@@ -964,7 +1016,7 @@
 			</xsl:when>
 		</xsl:choose>
 	</xsl:template>
-	
+
 	<xsl:template match="tei:supplied">
 		<xsl:param name="wordID"/>
 		<xsl:choose>
@@ -1403,7 +1455,7 @@
 	</xsl:template>
 
 	<xsl:template match="tei:l">
-		<xsl:text xml:space="preserve"> ¦¦ </xsl:text><xsl:apply-templates/>
+		<xsl:apply-templates/>
 	</xsl:template>
 
 </xsl:stylesheet>
