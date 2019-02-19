@@ -4141,10 +4141,13 @@
 					<xsl:text xml:space="preserve">loss of writing surface</xsl:text>
 				</xsl:when>
 				<xsl:when test="@reason = 'fold'">
-					<xsl:text xml:space="preserve">the page edge is folded in the digital image</xsl:text>
+					<xsl:text xml:space="preserve">the page is folded in the digital image</xsl:text>
 				</xsl:when>
 				<xsl:when test="@reason = 'text_omitted'">
 					<xsl:text xml:space="preserve">textual lacuna; no physical loss/damage</xsl:text>
+				</xsl:when>
+				<xsl:when test="@reason = 'text_omitted'">
+					<xsl:text xml:space="preserve">text has been deleted by a scribe</xsl:text>
 				</xsl:when>
 				<xsl:otherwise>
 					<xsl:text xml:space="preserve">reason unavailable</xsl:text>
