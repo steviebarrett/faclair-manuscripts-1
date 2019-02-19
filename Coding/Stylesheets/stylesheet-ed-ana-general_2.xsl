@@ -66,7 +66,7 @@
 				</a>
 			</td>
 			<td>
-				<xsl:value-of select="count(//tei:TEI[descendant::tei:w/@lemmaRef = $lemID])"/>
+				<xsl:value-of select="count(//tei:TEI[descendant::tei:w/@lemmaRef = $lemID] and not(@xml:id = 'hwData'))"/>
 			</td>
 			<td>
 				<span>
