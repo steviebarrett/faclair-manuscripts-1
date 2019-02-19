@@ -1691,6 +1691,9 @@
 				<xsl:when test="@reason = 'text_omitted'">
 					<xsl:text xml:space="preserve">textual lacuna; no physical loss/damage</xsl:text>
 				</xsl:when>
+				<xsl:when test="@reason = 'deletion'">
+					<xsl:text xml:space="preserve">text has been deleted by a scribe</xsl:text>
+				</xsl:when>
 				<xsl:otherwise>
 					<xsl:text xml:space="preserve">reason unavailable</xsl:text>
 				</xsl:otherwise>
