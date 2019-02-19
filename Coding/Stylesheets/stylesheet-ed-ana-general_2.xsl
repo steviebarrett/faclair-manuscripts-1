@@ -83,7 +83,10 @@
 					<xsl:when test="contains(@lemmaRef, 'www.ainmean-aite.scot')">
 						<xsl:value-of select="substring(@lemmaRef, 41)"/>
 					</xsl:when>
-					<xsl:when test="contains(@lemmaRef, 'www.online-latin-dictionary.com')">
+					<xsl:when test="contains(@lemmaRef, 'https://www.online-latin-dictionary.com/latin-dictionary-flexion.php?lemma=')">
+						<xsl:value-of select="substring(@lemmaRef, 76)"/>
+					</xsl:when>
+					<xsl:when test="contains(@lemmaRef, 'https://www.online-latin-dictionary.com/latin-dictionary-flexion.php?parola=')">
 						<xsl:value-of select="substring(@lemmaRef, 77)"/>
 					</xsl:when>
 					<xsl:when test="contains(@lemmaRef, 'www.oed.com')">
