@@ -454,13 +454,21 @@
 					$(this).toggle($(this).children().eq(3).text().toLowerCase().indexOf(hwString) > -1)
 					});
 					});
+					$("#reset").click(function(){
+					$("#hwField").val('');
+					$("#formField").val('');
+					$("[style='display: none;']").show();
+					});
 					});
 				</script>
 				<h1>Corpus Report</h1>
 			</head>
 			<body>
 				<input id="hwField"/>
+				<br/>
 				<input id="formField"/>
+				<br/>
+				<button id="reset"><label>Reset</label></button>
 				<table border="1px solid black" id="tbl">
 					<thead><tr>
 						<th>
