@@ -448,81 +448,187 @@
 				<script type="application/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"/>
 				<script>
 					$(document).ready(function(){
-					$("#hwField").keyup(function(){
-					var hwString = $(this).val().toLowerCase();
+					alert("The Corpus is ready for searching.");
+					$("#hwFilter").click(function(){
+					$("#hwIDField").attr("disabled", "disabled");
+					$("#formField").attr("disabled", "disabled");
+					$("#hwProgress").removeAttr("hidden");
+					var hwString = $("#hwField").val().toLowerCase();
 					$("#tbl tbody tr").filter(function() {
 					$(this).toggle($(this).children().eq(3).text().toLowerCase().indexOf(hwString) > -1)
 					});
+					$("#hwProgress").attr("hidden", "hidden");
+					$("#hwResult").removeAttr("hidden");
+					alert("Search complete!");
 					});
-					$("#reset").click(function(){
+					$("#hwIDFilter").click(function(){
+					$("#hwField").attr("disabled", "disabled");
+					$("#formField").attr("disabled", "disabled");
+					$("#hwIDProgress").removeAttr("hidden");
+					var hwIDVal = $("#hwIDField").val();
+					var hwIDStr = hwIDVal; 
+					$("#tbl tbody tr").each(function(){
+					if($(this).children().eq(2).text() == hwIDStr){
+					$(this).show();
+					} else {
+					$(this).hide();
+					}
+					});
+					//	$("#tbl tbody tr").filter(function() {
+					//	$(this).toggle($(this).children().eq(2).text().toLowerCase().indexOf(hwIDString) > -1)
+					// });
+					$("#hwIDProgress").attr("hidden", "hidden");
+					$("#hwIDResult").removeAttr("hidden");
+					alert("Search complete!");
+					});
+					$("#formFilter").click(function(){
+					$("#hwIDField").attr("disabled", "disabled");
+					$("#hwField").attr("disabled", "disabled");
+					$("#formProgress").removeAttr("hidden");
+					var formString = $("#formField").val().toLowerCase();
+					$("#tbl tbody tr").filter(function() {
+					$(this).toggle($(this).children().eq(5).text().toLowerCase().indexOf(formString) > -1)
+					});
+					$("#formProgress").attr("hidden", "hidden");
+					$("#formResult").removeAttr("hidden");
+					alert("Search complete!");
+					});
+					$("#hwReset").click(function(){
+					$("#hwResult").attr("hidden", "hidden");
+					$("#hwDfilt").removeAttr("hidden");
 					$("#hwField").val('');
+					$("[style='display: none;']").show();
+					$(".field").removeAttr("disabled");
+					$("#hwDfilt").attr("hidden", "hidden");
+					alert("The Corpus is ready for searching.");
+					});
+					$("#hwIDReset").click(function(){
+					$("#hwIDResult").attr("hidden", "hidden");
+					$("#hwIDDfilt").removeAttr("hidden");
+					$("#hwIDField").val('');
+					$("[style='display: none;']").show();
+					$(".field").removeAttr("disabled");
+					$("#hwIDDfilt").attr("hidden", "hidden");
+					alert("The Corpus is ready for searching.");
+					});
+					$("#formReset").click(function(){
+					$("#formResult").attr("hidden", "hidden");
+					$("#formDfilt").removeAttr("hidden");
 					$("#formField").val('');
 					$("[style='display: none;']").show();
+					$(".field").removeAttr("disabled");
+					$("#formDfilt").attr("hidden", "hidden");
+					alert("The Corpus is ready for searching.");
 					});
+					// $("#resetAll").click(function(){
+					//	$(".result").attr("hidden", "hidden");
+					//	$("#hwField").val('');
+					//	$("#hwIDField").val('');
+					//	$("#formField").val('');
+					//	$(".field").removeAttr("disabled");
+					//	$("[style='display: none;']").show();
+					// });
 					});
 				</script>
 				<h1>Corpus Report</h1>
 			</head>
 			<body>
-				<input id="hwField"/>
+				<label for="hwField">Headword contans:</label>
 				<br/>
-				<input id="formField"/>
+				<input class="field" id="hwField"/>
+				<button id="hwFilter">
+					<label>Filter</label>
+				</button>
+				<button id="hwReset">
+					<label>Reset</label>
+				</button>
+				<label id="hwProgress" class="progress" hidden="hidden">In progress...</label>
+				<label id="hwResult" class="result" hidden="hidden">Done</label>
+				<label id="hwDfilt" class="dfilt" hidden="hidden">Defiltering...</label>
 				<br/>
-				<button id="reset"><label>Reset</label></button>
+				<label for="hwIDField">Headword ID matches:</label>
+				<br/>
+				<input class="field" id="hwIDField"/>
+				<button id="hwIDFilter">
+					<label>Filter</label>
+				</button>
+				<button id="hwIDReset">
+					<label>Reset</label>
+				</button>
+				<label id="hwIDProgress" class="progress" hidden="hidden">In progress...</label>
+				<label id="hwIDResult" class="result" hidden="hidden">Done</label>
+				<label id="hwIDDfilt" class="dfilt" hidden="hidden">Defiltering...</label>
+				<br/>
+				<label for="formField">Form contains:</label>
+				<br/>
+				<input class="field" id="formField"/>
+				<button id="formFilter">
+					<label>Filter</label>
+				</button>
+				<button id="formReset">
+					<label>Reset</label>
+				</button>
+				<label id="formProgress" class="progress" hidden="hidden">In progress...</label>
+				<label id="formResult" class="result" hidden="hidden">Done</label>
+				<label id="formDfilt" class="dfilt" hidden="hidden">Defiltering...</label>
+				<br/>
+				<!-- <button id="resetAll"><label>Reset all</label></button> -->
 				<table border="1px solid black" id="tbl">
-					<thead><tr>
-						<th>
-							<b>Data ID</b>
-						</th>
-						<th>
-							<b>Form ID</b>
-						</th>
-						<th>
-							<b>Hw ID</b>
-						</th>
-						<th>
-							<b>Headword</b>
-						</th>
-						<th>
-							<b>MS Count</b>
-						</th>
-						<th>
-							<b>Form</b>
-						</th>
-						<th>
-							<b>Problem(s)</b>
-						</th>
-						<th>
-							<b>Abbrevs/Ligs</b>
-						</th>
-						<th>
-							<b>Part of Speech</b>
-						</th>
-						<th>
-							<b>Scribe</b>
-						</th>
-						<th>
-							<b>Date</b>
-						</th>
-						<th>
-							<b>MS</b>
-						</th>
-						<th>
-							<b>Fol./Page</b>
-						</th>
-						<th>
-							<b>Line</b>
-						</th>
-						<th>
-							<b>Text No.</b>
-						</th>
-						<th>
-							<b>Text Ref.</b>
-						</th>
-						<th>
-							<b>Context</b>
-						</th>
-					</tr></thead>
+					<thead>
+						<tr>
+							<th>
+								<b>Data ID</b>
+							</th>
+							<th>
+								<b>Form ID</b>
+							</th>
+							<th>
+								<b>Hw ID</b>
+							</th>
+							<th>
+								<b>Headword</b>
+							</th>
+							<th>
+								<b>MS Count</b>
+							</th>
+							<th>
+								<b>Form</b>
+							</th>
+							<th>
+								<b>Problem(s)</b>
+							</th>
+							<th>
+								<b>Abbrevs/Ligs</b>
+							</th>
+							<th>
+								<b>Part of Speech</b>
+							</th>
+							<th>
+								<b>Scribe</b>
+							</th>
+							<th>
+								<b>Date</b>
+							</th>
+							<th>
+								<b>MS</b>
+							</th>
+							<th>
+								<b>Fol./Page</b>
+							</th>
+							<th>
+								<b>Line</b>
+							</th>
+							<th>
+								<b>Text No.</b>
+							</th>
+							<th>
+								<b>Text Ref.</b>
+							</th>
+							<th>
+								<b>Context</b>
+							</th>
+						</tr>
+					</thead>
 					<tbody>
 						<xsl:for-each
 							select="//tei:w[not(descendant::tei:w) and contains(@ana, 'art') and not(@type = 'data') and not(contains(@ana, 'part'))]">
