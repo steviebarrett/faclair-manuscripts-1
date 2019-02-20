@@ -487,7 +487,7 @@
 					$("#formProgress").removeAttr("hidden");
 					var formString = $("#formField").val().toLowerCase();
 					$("#tbl tbody tr").filter(function() {
-					$(this).toggle($(this).children().eq(5).text().toLowerCase().indexOf(formString) > -1)
+					$(this).toggle($(this).children().eq(5).text().replace(/{|}|[|]/g,'').toLowerCase().indexOf(formString) > -1);
 					});
 					$("#formProgress").attr("hidden", "hidden");
 					$("#formResult").removeAttr("hidden");
