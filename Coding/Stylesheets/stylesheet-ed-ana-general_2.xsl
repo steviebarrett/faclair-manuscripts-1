@@ -83,10 +83,12 @@
 					<xsl:when test="contains(@lemmaRef, 'www.ainmean-aite.scot')">
 						<xsl:value-of select="substring(@lemmaRef, 41)"/>
 					</xsl:when>
-					<xsl:when test="contains(@lemmaRef, 'https://www.online-latin-dictionary.com/latin-dictionary-flexion.php?lemma=')">
+					<xsl:when
+						test="contains(@lemmaRef, 'https://www.online-latin-dictionary.com/latin-dictionary-flexion.php?lemma=')">
 						<xsl:value-of select="substring(@lemmaRef, 76)"/>
 					</xsl:when>
-					<xsl:when test="contains(@lemmaRef, 'https://www.online-latin-dictionary.com/latin-dictionary-flexion.php?parola=')">
+					<xsl:when
+						test="contains(@lemmaRef, 'https://www.online-latin-dictionary.com/latin-dictionary-flexion.php?parola=')">
 						<xsl:value-of select="substring(@lemmaRef, 77)"/>
 					</xsl:when>
 					<xsl:when test="contains(@lemmaRef, 'www.oed.com')">
@@ -443,240 +445,411 @@
 	<xsl:template match="/">
 		<html>
 			<head>
+				<script type="application/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"/>
 				<script>
-					
+					$(document).ready(function(){
+					alert("The Corpus is ready for searching.");
+					$("#hwcFilter").click(function(){
+					$("#hwcProgress").removeAttr("hidden");
+					$("#hwIDField").attr("disabled", "disabled");
+					$("#formField").attr("disabled", "disabled");
+					$("#hwmField").attr("disabled", "disabled");
+					var hwcString = $("#hwcField").val().toLowerCase();
+					$("#tbl tbody tr").filter(function() {
+					$(this).toggle($(this).children().eq(3).text().toLowerCase().indexOf(hwcString) > -1)
+					});
+					$("#hwcProgress").attr("hidden", "hidden");
+					$("#hwcResult").removeAttr("hidden");
+					alert("Search complete!");
+					});
+					$("#hwmFilter").click(function(){
+					$("#hwIDField").attr("disabled", "disabled");
+					$("#formField").attr("disabled", "disabled");
+					$("#hwcField").attr("disabled", "disabled");
+					$("#hwmProgress").removeAttr("hidden");
+					var hwmVal = $("#hwmField").val().toLowerCase();
+					var hwmString = hwmVal;
+					$("#tbl tbody tr").each(function(){
+					if($(this).children().eq(3).text() == hwmString){
+					$(this).show();
+					} else {
+					$(this).hide();
+					}
+					});
+					// $("#tbl tbody tr").filter(function() {
+					// $(this).toggle($(this).children().eq(3).text().toLowerCase().indexOf(hwString) > -1)
+					$("#hwmProgress").attr("hidden", "hidden");
+					$("#hwmResult").removeAttr("hidden");
+					alert("Search complete!");
+					});
+					$("#hwIDFilter").click(function(){
+					$("#hwcField").attr("disabled", "disabled");
+					$("#hwmField").attr("disabled", "disabled");
+					$("#formField").attr("disabled", "disabled");
+					$("#hwIDProgress").removeAttr("hidden");
+					var hwIDVal = $("#hwIDField").val();
+					var hwIDStr = hwIDVal; 
+					$("#tbl tbody tr").each(function(){
+					if($(this).children().eq(2).text() == hwIDStr){
+					$(this).show();
+					} else {
+					$(this).hide();
+					}
+					});
+					//	$("#tbl tbody tr").filter(function() {
+					//	$(this).toggle($(this).children().eq(2).text().toLowerCase().indexOf(hwIDString) > -1)
+					// });
+					$("#hwIDProgress").attr("hidden", "hidden");
+					$("#hwIDResult").removeAttr("hidden");
+					alert("Search complete!");
+					});
+					$("#formFilter").click(function(){
+					$("#hwIDField").attr("disabled", "disabled");
+					$("#hwcField").attr("disabled", "disabled");
+					$("#hwmField").attr("disabled", "disabled");
+					$("#formProgress").removeAttr("hidden");
+					var formString = $("#formField").val().toLowerCase();
+					$("#tbl tbody tr").filter(function() {
+					$(this).toggle($(this).children().eq(5).text().replace(/{|}|[|]/g,'').toLowerCase().indexOf(formString) > -1);
+					});
+					$("#formProgress").attr("hidden", "hidden");
+					$("#formResult").removeAttr("hidden");
+					alert("Search complete!");
+					});
+					$("#hwcReset").click(function(){
+					$("#hwcResult").attr("hidden", "hidden");
+					$("#hwDfilt").removeAttr("hidden");
+					$("#hwcField").val('');
+					$("[style='display: none;']").show();
+					$(".field").removeAttr("disabled");
+					$("#hwDfilt").attr("hidden", "hidden");
+					alert("The Corpus is ready for searching.");
+					});
+					$("#hwmReset").click(function(){
+					$("#hwmResult").attr("hidden", "hidden");
+					$("#hwmDfilt").removeAttr("hidden");
+					$("#hwmField").val('');
+					$("[style='display: none;']").show();
+					$(".field").removeAttr("disabled");
+					$("#hwmDfilt").attr("hidden", "hidden");
+					alert("The Corpus is ready for searching.");
+					});
+					$("#hwIDReset").click(function(){
+					$("#hwIDResult").attr("hidden", "hidden");
+					$("#hwIDDfilt").removeAttr("hidden");
+					$("#hwIDField").val('');
+					$("[style='display: none;']").show();
+					$(".field").removeAttr("disabled");
+					$("#hwIDDfilt").attr("hidden", "hidden");
+					alert("The Corpus is ready for searching.");
+					});
+					$("#formReset").click(function(){
+					$("#formResult").attr("hidden", "hidden");
+					$("#formDfilt").removeAttr("hidden");
+					$("#formField").val('');
+					$("[style='display: none;']").show();
+					$(".field").removeAttr("disabled");
+					$("#formDfilt").attr("hidden", "hidden");
+					alert("The Corpus is ready for searching.");
+					});
+					// $("#resetAll").click(function(){
+					//	$(".result").attr("hidden", "hidden");
+					//	$("#hwField").val('');
+					//	$("#hwIDField").val('');
+					//	$("#formField").val('');
+					//	$(".field").removeAttr("disabled");
+					//	$("[style='display: none;']").show();
+					// });
+					});
 				</script>
 				<h1>Corpus Report</h1>
 			</head>
 			<body>
+				<label for="hwcField">Headword contains:</label>
+				<br/>
+				<input class="field" id="hwcField"/>
+				<button id="hwcFilter">
+					<label>Filter</label>
+				</button>
+				<button id="hwcReset">
+					<label>Reset</label>
+				</button>
+				<label id="hwcProgress" class="progress" hidden="hidden">In progress...</label>
+				<label id="hwcResult" class="result" hidden="hidden">Done</label>
+				<label id="hwcDfilt" class="dfilt" hidden="hidden">Defiltering...</label>
+				<br/>
+				<label for="hwField">Headword matches:</label>
+				<br/>
+				<input class="field" id="hwmField"/>
+				<button id="hwmFilter">
+					<label>Filter</label>
+				</button>
+				<button id="hwmReset">
+					<label>Reset</label>
+				</button>
+				<label id="hwmProgress" class="progress" hidden="hidden">In progress...</label>
+				<label id="hwmResult" class="result" hidden="hidden">Done</label>
+				<label id="hwmDfilt" class="dfilt" hidden="hidden">Defiltering...</label>
+				<br/>
+				<label for="hwIDField">Headword ID matches:</label>
+				<br/>
+				<input class="field" id="hwIDField"/>
+				<button id="hwIDFilter">
+					<label>Filter</label>
+				</button>
+				<button id="hwIDReset">
+					<label>Reset</label>
+				</button>
+				<label id="hwIDProgress" class="progress" hidden="hidden">In progress...</label>
+				<label id="hwIDResult" class="result" hidden="hidden">Done</label>
+				<label id="hwIDDfilt" class="dfilt" hidden="hidden">Defiltering...</label>
+				<br/>
+				<label for="formField">Form contains:</label>
+				<br/>
+				<input class="field" id="formField"/>
+				<button id="formFilter">
+					<label>Filter</label>
+				</button>
+				<button id="formReset">
+					<label>Reset</label>
+				</button>
+				<label id="formProgress" class="progress" hidden="hidden">In progress...</label>
+				<label id="formResult" class="result" hidden="hidden">Done</label>
+				<label id="formDfilt" class="dfilt" hidden="hidden">Defiltering...</label>
+				<br/>
+				<!-- <button id="resetAll"><label>Reset all</label></button> -->
 				<table border="1px solid black" id="tbl">
-					<tr>
-						<th>
-							<b>Data ID</b>
-						</th>
-						<th>
-							<b>Form ID</b>
-						</th>
-						<th>
-							<b>Hw ID</b>
-						</th>
-						<th>
-							<b>Headword</b>
-						</th>
-						<th>
-							<b>MS Count</b>
-						</th>
-						<th>
-							<b>Form</b>
-						</th>
-						<th>
-							<b>Problem(s)</b>
-						</th>
-						<th>
-							<b>Abbrevs/Ligs</b>
-						</th>
-						<th>
-							<b>Part of Speech</b>
-						</th>
-						<th>
-							<b>Scribe</b>
-						</th>
-						<th>
-							<b>Date</b>
-						</th>
-						<th>
-							<b>MS</b>
-						</th>
-						<th>
-							<b>Fol./Page</b>
-						</th>
-						<th>
-							<b>Line</b>
-						</th>
-						<th>
-							<b>Text No.</b>
-						</th>
-						<th>
-							<b>Text Ref.</b>
-						</th>
-						<th>
-							<b>Context</b>
-						</th>
-					</tr>
-					<xsl:for-each
-						select="//tei:w[not(descendant::tei:w) and contains(@ana, 'art') and not(@type = 'data') and not(contains(@ana, 'part'))]">
-						<xsl:sort
-							select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
-						<xsl:call-template name="contentRow">
-							<xsl:with-param name="posID">
-								<xsl:text>art</xsl:text>
-							</xsl:with-param>
-						</xsl:call-template>
-					</xsl:for-each>
-					<xsl:for-each
-						select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(ancestor::tei:name) and contains(@ana, 'noun') and not(@type = 'data') and not(contains(@ana, 'vnoun')) and not(@xml:lang)]">
-						<xsl:sort
-							select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
-						<xsl:call-template name="contentRow">
-							<xsl:with-param name="posID">
-								<xsl:text>noun</xsl:text>
-							</xsl:with-param>
-						</xsl:call-template>
-					</xsl:for-each>
-					<xsl:for-each
-						select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and contains(@ana, 'pron')]">
-						<xsl:sort
-							select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
-						<xsl:call-template name="contentRow">
-							<xsl:with-param name="posID">
-								<xsl:text>pron</xsl:text>
-							</xsl:with-param>
-						</xsl:call-template>
-					</xsl:for-each>
-					<xsl:for-each
-						select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and contains(@ana, 'poss')]">
-						<xsl:sort
-							select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
-						<xsl:call-template name="contentRow">
-							<xsl:with-param name="posID">
-								<xsl:text>poss</xsl:text>
-							</xsl:with-param>
-						</xsl:call-template>
-					</xsl:for-each>
-					<xsl:for-each
-						select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and contains(@ana, 'adj')]">
-						<xsl:sort
-							select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
-						<xsl:call-template name="contentRow">
-							<xsl:with-param name="posID">
-								<xsl:text>adj</xsl:text>
-							</xsl:with-param>
-						</xsl:call-template>
-					</xsl:for-each>
-					<xsl:for-each
-						select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and contains(@ana, 'num')]">
-						<xsl:sort
-							select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
-						<xsl:call-template name="contentRow">
-							<xsl:with-param name="posID">
-								<xsl:text>num</xsl:text>
-							</xsl:with-param>
-						</xsl:call-template>
-					</xsl:for-each>
-					<xsl:for-each
-						select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and @lemmaRef = 'http://www.dil.ie/4927']">
-						<xsl:call-template name="contentRow">
-							<xsl:with-param name="posID">
-								<xsl:text>subst</xsl:text>
-							</xsl:with-param>
-						</xsl:call-template>
-					</xsl:for-each>
-					<xsl:for-each
-						select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and @lemmaRef = 'http://www.dil.ie/29104']">
-						<xsl:call-template name="contentRow">
-							<xsl:with-param name="posID">
-								<xsl:text>cop</xsl:text>
-							</xsl:with-param>
-						</xsl:call-template>
-					</xsl:for-each>
-					<xsl:for-each
-						select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and contains(@ana, 'verb') and not(@lemmaRef = 'http://www.dil.ie/29104') and not(@lemmaRef = 'http://www.dil.ie/4927')]">
-						<xsl:sort
-							select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
-						<xsl:call-template name="contentRow">
-							<xsl:with-param name="posID">
-								<xsl:text>verb</xsl:text>
-							</xsl:with-param>
-						</xsl:call-template>
-					</xsl:for-each>
-					<xsl:for-each
-						select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and contains(@ana, 'vnoun')]">
-						<xsl:sort
-							select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
-						<xsl:call-template name="contentRow">
-							<xsl:with-param name="posID">
-								<xsl:text>vn</xsl:text>
-							</xsl:with-param>
-						</xsl:call-template>
-					</xsl:for-each>
-					<xsl:for-each
-						select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and contains(@ana, 'ptcp')]">
-						<xsl:sort
-							select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
-						<xsl:call-template name="contentRow">
-							<xsl:with-param name="posID">
-								<xsl:text>ptcp</xsl:text>
-							</xsl:with-param>
-						</xsl:call-template>
-					</xsl:for-each>
-					<xsl:for-each
-						select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and contains(@ana, 'adv')]">
-						<xsl:sort
-							select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
-						<xsl:call-template name="contentRow">
-							<xsl:with-param name="posID">
-								<xsl:text>adv</xsl:text>
-							</xsl:with-param>
-						</xsl:call-template>
-					</xsl:for-each>
-					<xsl:for-each
-						select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and contains(@ana, 'conj')]">
-						<xsl:sort
-							select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
-						<xsl:call-template name="contentRow">
-							<xsl:with-param name="posID">
-								<xsl:text>conj</xsl:text>
-							</xsl:with-param>
-						</xsl:call-template>
-					</xsl:for-each>
-					<xsl:for-each
-						select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and contains(@ana, 'prep')]">
-						<xsl:sort
-							select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
-						<xsl:call-template name="contentRow">
-							<xsl:with-param name="posID">
-								<xsl:text>prep</xsl:text>
-							</xsl:with-param>
-						</xsl:call-template>
-					</xsl:for-each>
-					<xsl:for-each
-						select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and contains(@ana, 'part')]">
-						<xsl:sort
-							select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
-						<xsl:call-template name="contentRow">
-							<xsl:with-param name="posID">
-								<xsl:text>part</xsl:text>
-							</xsl:with-param>
-						</xsl:call-template>
-					</xsl:for-each>
-					<xsl:for-each
-						select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and contains(@ana, 'interrog')]">
-						<xsl:sort
-							select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
-						<xsl:call-template name="contentRow">
-							<xsl:with-param name="posID">
-								<xsl:text>int</xsl:text>
-							</xsl:with-param>
-						</xsl:call-template>
-					</xsl:for-each>
-					<xsl:for-each
-						select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and contains(@ana, 'pref')]">
-						<xsl:sort
-							select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
-						<xsl:call-template name="contentRow">
-							<xsl:with-param name="posID">
-								<xsl:text>pref</xsl:text>
-							</xsl:with-param>
-						</xsl:call-template>
-					</xsl:for-each>
-					<xsl:for-each
-						select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and @lemma = 'UNKNOWN']">
-						<xsl:call-template name="contentRow">
-							<xsl:with-param name="posID">
-								<xsl:text>unk</xsl:text>
-							</xsl:with-param>
-						</xsl:call-template>
-					</xsl:for-each>
+					<thead>
+						<tr>
+							<th>
+								<b>Data ID</b>
+							</th>
+							<th>
+								<b>Form ID</b>
+							</th>
+							<th>
+								<b>Hw ID</b>
+							</th>
+							<th>
+								<b>Headword</b>
+							</th>
+							<th>
+								<b>MS Count</b>
+							</th>
+							<th>
+								<b>Form</b>
+							</th>
+							<th>
+								<b>Problem(s)</b>
+							</th>
+							<th>
+								<b>Abbrevs/Ligs</b>
+							</th>
+							<th>
+								<b>Part of Speech</b>
+							</th>
+							<th>
+								<b>Scribe</b>
+							</th>
+							<th>
+								<b>Date</b>
+							</th>
+							<th>
+								<b>MS</b>
+							</th>
+							<th>
+								<b>Fol./Page</b>
+							</th>
+							<th>
+								<b>Line</b>
+							</th>
+							<th>
+								<b>Text No.</b>
+							</th>
+							<th>
+								<b>Text Ref.</b>
+							</th>
+							<th>
+								<b>Context</b>
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						<xsl:for-each
+							select="//tei:w[not(descendant::tei:w) and contains(@ana, 'art') and not(@type = 'data') and not(contains(@ana, 'part'))]">
+							<xsl:sort
+								select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
+							<xsl:call-template name="contentRow">
+								<xsl:with-param name="posID">
+									<xsl:text>art</xsl:text>
+								</xsl:with-param>
+							</xsl:call-template>
+						</xsl:for-each>
+						<xsl:for-each
+							select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(ancestor::tei:name) and contains(@ana, 'noun') and not(@type = 'data') and not(contains(@ana, 'vnoun')) and not(@xml:lang)]">
+							<xsl:sort
+								select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
+							<xsl:call-template name="contentRow">
+								<xsl:with-param name="posID">
+									<xsl:text>noun</xsl:text>
+								</xsl:with-param>
+							</xsl:call-template>
+						</xsl:for-each>
+						<xsl:for-each
+							select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and contains(@ana, 'pron')]">
+							<xsl:sort
+								select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
+							<xsl:call-template name="contentRow">
+								<xsl:with-param name="posID">
+									<xsl:text>pron</xsl:text>
+								</xsl:with-param>
+							</xsl:call-template>
+						</xsl:for-each>
+						<xsl:for-each
+							select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and contains(@ana, 'poss')]">
+							<xsl:sort
+								select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
+							<xsl:call-template name="contentRow">
+								<xsl:with-param name="posID">
+									<xsl:text>poss</xsl:text>
+								</xsl:with-param>
+							</xsl:call-template>
+						</xsl:for-each>
+						<xsl:for-each
+							select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and contains(@ana, 'adj')]">
+							<xsl:sort
+								select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
+							<xsl:call-template name="contentRow">
+								<xsl:with-param name="posID">
+									<xsl:text>adj</xsl:text>
+								</xsl:with-param>
+							</xsl:call-template>
+						</xsl:for-each>
+						<xsl:for-each
+							select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and contains(@ana, 'num')]">
+							<xsl:sort
+								select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
+							<xsl:call-template name="contentRow">
+								<xsl:with-param name="posID">
+									<xsl:text>num</xsl:text>
+								</xsl:with-param>
+							</xsl:call-template>
+						</xsl:for-each>
+						<xsl:for-each
+							select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and @lemmaRef = 'http://www.dil.ie/4927']">
+							<xsl:call-template name="contentRow">
+								<xsl:with-param name="posID">
+									<xsl:text>subst</xsl:text>
+								</xsl:with-param>
+							</xsl:call-template>
+						</xsl:for-each>
+						<xsl:for-each
+							select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and @lemmaRef = 'http://www.dil.ie/29104']">
+							<xsl:call-template name="contentRow">
+								<xsl:with-param name="posID">
+									<xsl:text>cop</xsl:text>
+								</xsl:with-param>
+							</xsl:call-template>
+						</xsl:for-each>
+						<xsl:for-each
+							select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and contains(@ana, 'verb') and not(@lemmaRef = 'http://www.dil.ie/29104') and not(@lemmaRef = 'http://www.dil.ie/4927')]">
+							<xsl:sort
+								select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
+							<xsl:call-template name="contentRow">
+								<xsl:with-param name="posID">
+									<xsl:text>verb</xsl:text>
+								</xsl:with-param>
+							</xsl:call-template>
+						</xsl:for-each>
+						<xsl:for-each
+							select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and contains(@ana, 'vnoun')]">
+							<xsl:sort
+								select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
+							<xsl:call-template name="contentRow">
+								<xsl:with-param name="posID">
+									<xsl:text>vn</xsl:text>
+								</xsl:with-param>
+							</xsl:call-template>
+						</xsl:for-each>
+						<xsl:for-each
+							select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and contains(@ana, 'ptcp')]">
+							<xsl:sort
+								select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
+							<xsl:call-template name="contentRow">
+								<xsl:with-param name="posID">
+									<xsl:text>ptcp</xsl:text>
+								</xsl:with-param>
+							</xsl:call-template>
+						</xsl:for-each>
+						<xsl:for-each
+							select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and contains(@ana, 'adv')]">
+							<xsl:sort
+								select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
+							<xsl:call-template name="contentRow">
+								<xsl:with-param name="posID">
+									<xsl:text>adv</xsl:text>
+								</xsl:with-param>
+							</xsl:call-template>
+						</xsl:for-each>
+						<xsl:for-each
+							select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and contains(@ana, 'conj')]">
+							<xsl:sort
+								select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
+							<xsl:call-template name="contentRow">
+								<xsl:with-param name="posID">
+									<xsl:text>conj</xsl:text>
+								</xsl:with-param>
+							</xsl:call-template>
+						</xsl:for-each>
+						<xsl:for-each
+							select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and contains(@ana, 'prep')]">
+							<xsl:sort
+								select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
+							<xsl:call-template name="contentRow">
+								<xsl:with-param name="posID">
+									<xsl:text>prep</xsl:text>
+								</xsl:with-param>
+							</xsl:call-template>
+						</xsl:for-each>
+						<xsl:for-each
+							select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and contains(@ana, 'part')]">
+							<xsl:sort
+								select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
+							<xsl:call-template name="contentRow">
+								<xsl:with-param name="posID">
+									<xsl:text>part</xsl:text>
+								</xsl:with-param>
+							</xsl:call-template>
+						</xsl:for-each>
+						<xsl:for-each
+							select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and contains(@ana, 'interrog')]">
+							<xsl:sort
+								select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
+							<xsl:call-template name="contentRow">
+								<xsl:with-param name="posID">
+									<xsl:text>int</xsl:text>
+								</xsl:with-param>
+							</xsl:call-template>
+						</xsl:for-each>
+						<xsl:for-each
+							select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and contains(@ana, 'pref')]">
+							<xsl:sort
+								select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
+							<xsl:call-template name="contentRow">
+								<xsl:with-param name="posID">
+									<xsl:text>pref</xsl:text>
+								</xsl:with-param>
+							</xsl:call-template>
+						</xsl:for-each>
+						<xsl:for-each
+							select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and @lemma = 'UNKNOWN']">
+							<xsl:call-template name="contentRow">
+								<xsl:with-param name="posID">
+									<xsl:text>unk</xsl:text>
+								</xsl:with-param>
+							</xsl:call-template>
+						</xsl:for-each>
+					</tbody>
 				</table>
 			</body>
 		</html>
