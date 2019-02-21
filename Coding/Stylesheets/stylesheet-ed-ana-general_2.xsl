@@ -716,6 +716,16 @@
 							</xsl:call-template>
 						</xsl:for-each>
 						<xsl:for-each
+							select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and contains(@ana, 'emph')]">
+							<xsl:sort
+								select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
+							<xsl:call-template name="contentRow">
+								<xsl:with-param name="posID">
+									<xsl:text>emph</xsl:text>
+								</xsl:with-param>
+							</xsl:call-template>
+						</xsl:for-each>
+						<xsl:for-each
 							select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and contains(@ana, 'adj')]">
 							<xsl:sort
 								select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
