@@ -449,20 +449,43 @@
 				<script>
 					$(document).ready(function(){
 					alert("The Corpus is ready for searching.");
-					$("#hwFilter").click(function(){
+					$("#hwcFilter").click(function(){
 					$("#hwIDField").attr("disabled", "disabled");
 					$("#formField").attr("disabled", "disabled");
-					$("#hwProgress").removeAttr("hidden");
-					var hwString = $("#hwField").val().toLowerCase();
+					$("#hwmField").attr("disabled", "disabled");
+					$("#hwcProgress").removeAttr("hidden");
+					var hwcString = $("#hwcField").val().toLowerCase();
 					$("#tbl tbody tr").filter(function() {
-					$(this).toggle($(this).children().eq(3).text().toLowerCase().indexOf(hwString) > -1)
+					$(this).toggle($(this).children().eq(3).text().toLowerCase().indexOf(hwcString) > -1)
 					});
-					$("#hwProgress").attr("hidden", "hidden");
-					$("#hwResult").removeAttr("hidden");
+					$("#hwcProgress").attr("hidden", "hidden");
+					$("#hwcResult").removeAttr("hidden");
+					alert("Search complete!");
+					});
+					$("#hwmFilter").click(function(){
+					$("#hwIDField").attr("disabled", "disabled");
+					$("#formField").attr("disabled", "disabled");
+					$("#hwcField").attr("disabled", "disabled");
+					$("#hwmProgress").removeAttr("hidden");
+					var hwmVal = $("#hwmField").val().toLowerCase();
+					var hwmString = hwmVal;
+					$("#tbl tbody tr").each(function(){
+					if($(this).children().eq(3).text() == hwmString){
+					$(this).show();
+					} else {
+					$(this).hide();
+					}
+					});
+					// $("#tbl tbody tr").filter(function() {
+					// $(this).toggle($(this).children().eq(3).text().toLowerCase().indexOf(hwString) > -1)
+					});
+					$("#hwmProgress").attr("hidden", "hidden");
+					$("#hwmResult").removeAttr("hidden");
 					alert("Search complete!");
 					});
 					$("#hwIDFilter").click(function(){
-					$("#hwField").attr("disabled", "disabled");
+					$("#hwcField").attr("disabled", "disabled");
+					$("#hwmField").attr("disabled", "disabled");
 					$("#formField").attr("disabled", "disabled");
 					$("#hwIDProgress").removeAttr("hidden");
 					var hwIDVal = $("#hwIDField").val();
@@ -483,7 +506,8 @@
 					});
 					$("#formFilter").click(function(){
 					$("#hwIDField").attr("disabled", "disabled");
-					$("#hwField").attr("disabled", "disabled");
+					$("#hwcField").attr("disabled", "disabled");
+					$("#hwmField").attr("disabled", "disabled");
 					$("#formProgress").removeAttr("hidden");
 					var formString = $("#formField").val().toLowerCase();
 					$("#tbl tbody tr").filter(function() {
@@ -493,10 +517,11 @@
 					$("#formResult").removeAttr("hidden");
 					alert("Search complete!");
 					});
-					$("#hwReset").click(function(){
-					$("#hwResult").attr("hidden", "hidden");
+					$("#hwcReset").click(function(){
+					$("#hwcResult").attr("hidden", "hidden");
+					$("#hwmField").attr("disabled", "disabled");
 					$("#hwDfilt").removeAttr("hidden");
-					$("#hwField").val('');
+					$("#hwcField").val('');
 					$("[style='display: none;']").show();
 					$(".field").removeAttr("disabled");
 					$("#hwDfilt").attr("hidden", "hidden");
@@ -533,18 +558,31 @@
 				<h1>Corpus Report</h1>
 			</head>
 			<body>
-				<label for="hwField">Headword contans:</label>
+				<label for="hwcField">Headword contains:</label>
 				<br/>
-				<input class="field" id="hwField"/>
-				<button id="hwFilter">
+				<input class="field" id="hwcField"/>
+				<button id="hwcFilter">
 					<label>Filter</label>
 				</button>
-				<button id="hwReset">
+				<button id="hwcReset">
 					<label>Reset</label>
 				</button>
-				<label id="hwProgress" class="progress" hidden="hidden">In progress...</label>
-				<label id="hwResult" class="result" hidden="hidden">Done</label>
-				<label id="hwDfilt" class="dfilt" hidden="hidden">Defiltering...</label>
+				<label id="hwcProgress" class="progress" hidden="hidden">In progress...</label>
+				<label id="hwcResult" class="result" hidden="hidden">Done</label>
+				<label id="hwcDfilt" class="dfilt" hidden="hidden">Defiltering...</label>
+				<br/>
+				<label for="hwField">Headword matches:</label>
+				<br/>
+				<input class="field" id="hwmField"/>
+				<button id="hwmFilter">
+					<label>Filter</label>
+				</button>
+				<button id="hwmReset">
+					<label>Reset</label>
+				</button>
+				<label id="hwmProgress" class="progress" hidden="hidden">In progress...</label>
+				<label id="hwmResult" class="result" hidden="hidden">Done</label>
+				<label id="hwmDfilt" class="dfilt" hidden="hidden">Defiltering...</label>
 				<br/>
 				<label for="hwIDField">Headword ID matches:</label>
 				<br/>
