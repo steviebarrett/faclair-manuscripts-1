@@ -450,10 +450,10 @@
 					$(document).ready(function(){
 					alert("The Corpus is ready for searching.");
 					$("#hwcFilter").click(function(){
+					$("#hwcProgress").removeAttr("hidden");
 					$("#hwIDField").attr("disabled", "disabled");
 					$("#formField").attr("disabled", "disabled");
 					$("#hwmField").attr("disabled", "disabled");
-					$("#hwcProgress").removeAttr("hidden");
 					var hwcString = $("#hwcField").val().toLowerCase();
 					$("#tbl tbody tr").filter(function() {
 					$(this).toggle($(this).children().eq(3).text().toLowerCase().indexOf(hwcString) > -1)
@@ -478,7 +478,6 @@
 					});
 					// $("#tbl tbody tr").filter(function() {
 					// $(this).toggle($(this).children().eq(3).text().toLowerCase().indexOf(hwString) > -1)
-					});
 					$("#hwmProgress").attr("hidden", "hidden");
 					$("#hwmResult").removeAttr("hidden");
 					alert("Search complete!");
@@ -519,12 +518,20 @@
 					});
 					$("#hwcReset").click(function(){
 					$("#hwcResult").attr("hidden", "hidden");
-					$("#hwmField").attr("disabled", "disabled");
 					$("#hwDfilt").removeAttr("hidden");
 					$("#hwcField").val('');
 					$("[style='display: none;']").show();
 					$(".field").removeAttr("disabled");
 					$("#hwDfilt").attr("hidden", "hidden");
+					alert("The Corpus is ready for searching.");
+					});
+					$("#hwmReset").click(function(){
+					$("#hwmResult").attr("hidden", "hidden");
+					$("#hwmDfilt").removeAttr("hidden");
+					$("#hwmField").val('');
+					$("[style='display: none;']").show();
+					$(".field").removeAttr("disabled");
+					$("#hwmDfilt").attr("hidden", "hidden");
 					alert("The Corpus is ready for searching.");
 					});
 					$("#hwIDReset").click(function(){
