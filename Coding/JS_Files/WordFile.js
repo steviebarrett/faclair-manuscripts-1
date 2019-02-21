@@ -471,7 +471,9 @@ function addSlip(id) {
 		finURIED = rcol13.firstChild.innerHTML.slice(26);
 	} else if (rcol13.firstChild.innerHTML.slice(8, 29) == "www.ainmean-aite.scot") {
 		finURIED = rcol13.firstChild.innerHTML.slice(40);
-	} else if (rcol13.firstChild.innerHTML.slice(8, 39) == "www.online-latin-dictionary.com") {
+	} else if (rcol13.firstChild.innerHTML.slice(8, 75) == "www.online-latin-dictionary.com/latin-dictionary-flexion.php?lemma=") {
+		finURIED = rcol13.firstChild.innerHTML.slice(75);
+	} else if (rcol13.firstChild.innerHTML.slice(8, 76) == "www.online-latin-dictionary.com/latin-dictionary-flexion.php?parola=") {
 		finURIED = rcol13.firstChild.innerHTML.slice(76);
 	} else if (rcol13.firstChild.innerHTML.slice(8, 19) == "www.oed.com") {
 		finURIED = rcol13.firstChild.innerHTML.slice(31);
@@ -849,7 +851,9 @@ function wordSearch(id) {
 			finURIED = rcol13.firstChild.innerHTML.slice(26);
 		} else if (rcol13.firstChild.innerHTML.slice(8, 29) == "www.ainmean-aite.scot") {
 			finURIED = rcol13.firstChild.innerHTML.slice(40);
-		} else if (rcol13.firstChild.innerHTML.slice(8, 39) == "www.online-latin-dictionary.com") {
+		} else if (rcol13.firstChild.innerHTML.slice(8, 75) == "www.online-latin-dictionary.com/latin-dictionary-flexion.php?lemma=") {
+			finURIED = rcol13.firstChild.innerHTML.slice(75);
+		} else if (rcol13.firstChild.innerHTML.slice(8, 76) == "www.online-latin-dictionary.com/latin-dictionary-flexion.php?parola=") {
 			finURIED = rcol13.firstChild.innerHTML.slice(76);
 		} else if (rcol13.firstChild.innerHTML.slice(8, 19) == "www.oed.com") {
 			finURIED = rcol13.firstChild.innerHTML.slice(31);
