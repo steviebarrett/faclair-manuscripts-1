@@ -885,15 +885,16 @@
 								type="scribal"/>
 						</l>
 						<l n="b" xml:id="MS3.1.1.1b">
-							<w lemma="a" lemmaRef="http://www.dil.ie/2" ana="part">a</w><w
-								lemma="clann" lemmaRef="http://www.dil.ie/9365" ana="noun"><abbr
-									cert="high">c<g ref="g4">h</g></abbr><abbr cert="high">l<g
-										ref="g14">ann</g></abbr>a</w><space type="scribal"
-								/><pc>:</pc><lb n="26" xml:id="MS3.p1.26"/>
-								<w lemma="míl" lemmaRef="http://www.dil.ie/32222" ana="noun">mili</w>
-								<space type="scribal"/><w lemma="co"
-								lemmaRef="http://www.dil.ie/9787" ana="prep">co</w><space
-								type="scribal"/>
+							<w lemma="a" lemmaRef="http://www.dil.ie/2" ana="part">a</w>
+							<name type="population">
+								<w lemma="clann" lemmaRef="http://www.dil.ie/9365" ana="noun"><abbr cert="high">c<g ref="g4">h</g></abbr><abbr cert="high">l<g ref="g14">ann</g></abbr>a</w>
+								<space type="scribal"/><pc>:</pc>
+					<lb n="26" xml:id="MS3.p1.26"/>
+									<w lemma="míl" lemmaRef="http://www.dil.ie/32222" ana="noun">mili</w>
+							</name>
+							<space type="scribal"/>
+							<w lemma="co" lemmaRef="http://www.dil.ie/9787" ana="prep">co</w>
+							<space type="scribal"/>
 							<w ana="adj, noun">
 								<w lemma="mór" lemmaRef="http://www.dil.ie/32548" ana="adj"><abbr cert="high">m<g ref="g15">or</g></abbr></w>
 								<space type="scribal"/>
@@ -14320,10 +14321,8 @@
 							<space type="scribal"/>
 							<w lemma="fót" lemmaRef="http://www.dil.ie/24133" ana="noun">fod</w>
 							<space type="scribal"/>
-							<w ana="prep, noun">
-								<w lemma="de" lemmaRef="http://www.dil.ie/14787" ana="prep">d</w>
-								<w lemma="Ériu" lemmaRef="http://www.dil.ie/20288" ana="noun">eiri<abbr cert="high">n<g ref="g5">n</g></abbr></w>
-							</w>
+							<w lemma="de" lemmaRef="http://www.dil.ie/14787" ana="prep">d<supplied resp="MMA">'</supplied></w>
+							<w lemma="Ériu" lemmaRef="http://www.dil.ie/20288" ana="noun">eiri<abbr cert="high">n<g ref="g5">n</g></abbr></w>
 							<space type="scribal"/>
 							<w lemma="oc" lemmaRef="http://www.dil.ie/33397" ana="prep, pron">agi<abbr cert="high">b<g ref="g4">h</g></abbr></w>
 							<pc>,,</pc>
@@ -14350,7 +14349,7 @@
 							<space type="scribal"/>
 							<w lemma="mór" lemmaRef="http://www.dil.ie/32548" ana="adj">mora</w>
 							<space type="scribal"/>
-							mi<abbr cert="high">l<g ref="g3">id</g></abbr><abbr cert="high"><g ref="g4">h</g></abbr>
+							<w lemma="míl" lemmaRef="http://www.dil.ie/32222" ana="noun">mi<abbr cert="high">l<g ref="g3">id</g></abbr><abbr cert="high"><g ref="g4">h</g></abbr></w>
 							<pc>,,</pc>
 						</l>
 						<space type="scribal"/>
@@ -22724,9 +22723,11 @@
 							<space type="scribal"/>
 							<w lemma="do" lemmaRef="http://www.dil.ie/17096" ana="prep">do</w>
 							<space type="scribal"/>
-							<w lemma="clann" lemmaRef="http://www.dil.ie/9365" ana="noun"><abbr cert="high">c<g ref="g4">h</g></abbr><abbr cert="high">l<g ref="g23">ann</g></abbr>uib</w>
-							<space type="scribal"/>
-							<name type="personal"><w ana="noun"><abbr cert="high">m<g ref="g15">or</g></abbr>na</w></name>
+							<name type="population">
+								<w lemma="clann" lemmaRef="http://www.dil.ie/9365" ana="noun"><abbr cert="high">c<g ref="g4">h</g></abbr><abbr cert="high">l<g ref="g23">ann</g></abbr>uib</w>
+								<space type="scribal"/>
+								<name type="personal"><w ana="noun"><abbr cert="high">m<g ref="g15">or</g></abbr>na</w></name>
+							</name>
 							<space type="scribal"/>
 							<w lemma="sé" lemmaRef="http://www.dil.ie/36709" ana="pron">sei<abbr cert="high">si<g ref="g5">n</g></abbr></w>
 							<space type="scribal"/>
@@ -24545,7 +24546,7 @@
 								<w lemma="com-" lemmaRef="http://www.dil.ie/10554" ana="pref">choi</w>
 								<w lemma="nert" lemmaRef="http://www.dil.ie/33116" ana="noun">nirt</w>
 							</w>
-						<lb n="24" xml:id="MS3.p21.24"/>
+						<lb n="24" xml:id="MS3.p20.24"/>
 							<w ana="noun, adj">
 								<w lemma="tonn" lemmaRef="http://www.dil.ie/41386" ana="noun"><abbr cert="high">t<g ref="g4">h</g></abbr>o<abbr cert="high">n<g ref="g5">n</g></abbr></w>
 								<w lemma="galach" lemmaRef="http://www.dil.ie/25280" ana="adj" lemmaSL="goileach" slipRef="https://dasg.ac.uk/slips/index.php?id=0090492">gui<abbr cert="high">l<g ref="g3">a</g></abbr><abbr cert="high"><g ref="g12">ch</g></abbr></w>
@@ -24859,7 +24860,993 @@
 									<w lemma="in" lemmaRef="http://www.dil.ie/28194" ana="art">an</w>
 								</w>
 							</seg>
+						<pb n="21" xml:id="MS3.p21"/>
+						<lb n="1" xml:id="MS3.p21.1"/>
+							<w ana="prep, art">
+								<w lemma="i" lemmaRef="http://www.dil.ie/26891" ana="prep">s</w>
+								<w lemma="in" lemmaRef="http://www.dil.ie/28194" ana="art">an</w>
+							</w>
+							<space type="scribal"/>
+							<w lemma="comrac" lemmaRef="http://www.dil.ie/11625" ana="noun"><abbr cert="high">c<g ref="g4">h</g></abbr>o<abbr cert="high">m<g ref="g25">ri</g></abbr>g</w>
+							<space type="scribal"/>
+							<w lemma="ocus" lemmaRef="http://www.dil.ie/33484" ana="conj"><abbr cert="high"><g ref="g2">agus</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="do-beir" lemmaRef="http://www.dil.ie/17216" ana="verb">tug</w>
+							<space type="scribal"/>
+							<w lemma="buille" lemmaRef="http://www.dil.ie/7388" ana="noun">buille</w>
+							<space type="scribal"/>
+							<w lemma="do" lemmaRef="http://www.dil.ie/17096" ana="prep">do</w>
+							<space type="scribal"/>
+							<w lemma="rí" lemmaRef="http://www.dil.ie/35181" ana="noun">r<abbr cert="high"><g ref="g54">i</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="in" lemmaRef="http://www.dil.ie/28194" ana="art">na</w>
+							<space type="scribal"/>
+							<name type="place"><w lemma="franc" lemmaRef="http://www.dil.ie/24242" ana="noun"><abbr cert="high">f<g ref="g17">ra</g></abbr>ince</w></name>
+							<space type="scribal"/>
+							<w lemma="ocus" lemmaRef="http://www.dil.ie/33484" ana="conj"><abbr cert="high"><g ref="g2">agus</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="do-beir" lemmaRef="http://www.dil.ie/17216" ana="verb">tug</w>
+							<space type="scribal"/>
+							<w lemma="rí" lemmaRef="http://www.dil.ie/35181" ana="noun">r<abbr cert="high"><g ref="g54">i</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="in" lemmaRef="http://www.dil.ie/28194" ana="art"><abbr cert="high"><g ref="g35">na</g></abbr></w>
+							<space type="scribal"/>
+							<name type="place"><w lemma="franc" lemmaRef="http://www.dil.ie/24242" ana="noun"><abbr cert="high">f<g ref="g17">ra</g></abbr><abbr cert="high"><g ref="g54">ince</g></abbr></w></name>
+							<space type="scribal"/>
+							<w lemma="buille" lemmaRef="http://www.dil.ie/7388" ana="noun">buill</w>
+							<space type="scribal"/>
+							<w lemma="do" lemmaRef="http://www.dil.ie/17096" ana="prep, pron">dho</w>
+							<pc>:</pc>
+						<lb n="2" xml:id="MS3.p21.2"/>
+							<pc>:</pc>
+							<space type="scribal"/>
+							<w lemma="sin" lemmaRef="http://www.dil.ie/37567" ana="dpron"><abbr cert="high">si<g ref="g5">n</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="ocus" lemmaRef="http://www.dil.ie/33484" ana="conj"><abbr cert="high"><g ref="g2">agus</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="do, fris-gair" lemmaRef="http://www.dil.ie/17098, http://www.dil.ie/24363" ana="part, verb">
+								<w lemma="do" lemmaRef="http://www.dil.ie/17098" ana="part">do</w>
+								<space type="scribal"/>
+								<w lemma="fris-gair" lemmaRef="http://www.dil.ie/24363" ana="verb"><abbr cert="high">f<g ref="g4">h</g></abbr><abbr cert="high"><g ref="g20">re</g></abbr>g<abbr cert="high"><g ref="g8">ar</g></abbr></w>
+							</w>
+							<space type="scribal"/>
+							<w lemma="i" lemmaRef="http://www.dil.ie/26891" ana="prep">a</w>
+							<space type="scribal"/>
+							<w lemma="comlann" lemmaRef="http://www.dil.ie/11408" ana="noun">ccoi<abbr cert="high">m<g ref="g4">h</g></abbr><abbr cert="high">l<g ref="g23">ann</g></abbr></w>
+							<space type="scribal"/>
+							<pc>:</pc>
+							<space type="scribal"/>
+							<w lemma="nuair" lemmaRef="https://www.faclair.com/ViewDictionaryEntry.aspx?ID=B6BEA2007082496BEB724726C0F39795" ana="conj">No<abbr cert="high"><g ref="g46">ir</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="do, ad-cí" lemmaRef="http://www.dil.ie/17098, http://www.dil.ie/391" ana="part, verb">
+								<w lemma="do" lemmaRef="http://www.dil.ie/17098" ana="part">do</w>
+								<space type="scribal"/>
+								<w lemma="ad-cí" lemmaRef="http://www.dil.ie/391" ana="verb"><abbr cert="high"><g ref="g28">con</g></abbr><abbr cert="high"><g ref="g8">ar</g></abbr>c</w>
+							</w>
+							<space type="scribal"/>
+							<w lemma="dá" lemmaRef="http://www.dil.ie/14080" ana="num"><abbr cert="high"><g ref="g26">dá</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun"><abbr cert="high">m<g ref="g3">a</g></abbr>c</w>
+							<space type="scribal"/>
+							<w lemma="de" lemmaRef="http://www.dil.ie/14787" ana="prep">D<supplied resp="MMA">'</supplied></w>
+							<name type="personal"><w ana="noun">oi<abbr cert="high">si<g ref="g5">n</g></abbr></w></name>
+							<space type="scribal"/>
+							<w lemma="sin" lemmaRef="http://www.dil.ie/37567" ana="dpron"><abbr cert="high">si<g ref="g5">n</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w>
+							<space type="scribal"/>
+							<name type="personal"><w lemma="échtach" lemmaRef="http://www.dil.ie/19549" ana="adj">E<abbr cert="high"><g ref="g10">cht</g></abbr>a<abbr cert="high">c<g ref="g4">h</g></abbr></w></name>
+							<space type="scribal"/>
+							<w lemma="ocus" lemmaRef="http://www.dil.ie/33484" ana="conj"><abbr cert="high"><g ref="g2">agus</g></abbr></w>
+						<lb n="3" xml:id="MS3.p21.3"/>
+							<name type="personal"><w lemma="ulach" lemmaRef="http://www.dil.ie/43089" ana="adj">U<abbr cert="medium">l<g ref="g3">ac</g></abbr><abbr cert="high"><g ref="g4">h</g></abbr></w></name>
+							<space type="scribal"/>
+							<w lemma="do, gonaid" lemmaRef="http://www.dil.ie/17098, http://www.dil.ie/26387" ana="part, verb">
+								<w lemma="do" lemmaRef="http://www.dil.ie/17098" ana="part">do</w>
+								<space type="scribal"/>
+								<w lemma="gonaid" lemmaRef="http://www.dil.ie/26387" ana="verb"><abbr cert="high">g<g ref="g4">h</g></abbr>oin</w>
+							</w>
+							<space type="scribal"/>
+							<w lemma="síat" lemmaRef="http://www.dil.ie/37393" ana="pron"><abbr cert="high">s<g ref="g24">iad</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="rí" lemmaRef="http://www.dil.ie/35181" ana="noun">r<abbr cert="high"><g ref="g54">i</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="in" lemmaRef="http://www.dil.ie/28194" ana="art"><abbr cert="high"><g ref="g35">na</g></abbr></w>
+							<space type="scribal"/>
+							<name type="place"><w lemma="franc" lemmaRef="http://www.dil.ie/24242" ana="noun"><abbr cert="high">f<g ref="g17">ra</g></abbr><abbr cert="high"><g ref="g54">ince</g></abbr></w></name>
+							<space type="scribal"/>
+							<w lemma="ocus" lemmaRef="http://www.dil.ie/33484" ana="conj"><abbr cert="high"><g ref="g2">agus</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="gonaid" lemmaRef="http://www.dil.ie/26387" ana="verb"><abbr cert="high">g<g ref="g4">h</g></abbr>oin</w>
+							<space type="scribal"/>
+							<w lemma="é" lemmaRef="http://www.dil.ie/19325" ana="pron">e<abbr cert="high">si<g ref="g5">n</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="cach" lemmaRef="http://www.dil.ie/7528" ana="adj"><abbr cert="high">g<g ref="g3">ac</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="nech" lemmaRef="http://www.dil.ie/33014" ana="pron"><abbr cert="high">n<g ref="g3">ec</g></abbr><abbr cert="high"><g ref="g4">h</g></abbr></w>
+							<space type="scribal"/>
+							<w ana="prep, pron, dpron">
+								<w lemma="de" lemmaRef="http://www.dil.ie/14787" ana="prep, pron"><abbr cert="high">d<g ref="g4">h</g></abbr>iu</w>
+								<w lemma="sin" lemmaRef="http://www.dil.ie/37567" ana="dpron"><abbr cert="high">si<g ref="g5">n</g></abbr></w>
+							</w>
+							<space type="scribal"/>
+							<w lemma="i" lemmaRef="http://www.dil.ie/26891" ana="prep">an</w>
+							<w lemma="cuman" lemmaRef="http://www.dil.ie/13811" ana="noun">couma<abbr cert="high">o<g ref="g5">n</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="a" lemmaRef="http://www.dil.ie/3" ana="poss"><abbr cert="high">a<g ref="g5">n</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="guin" lemmaRef="http://www.dil.ie/26798" ana="noun">gona</w>
+						<lb n="4" xml:id="MS3.p21.4"/>
+							<w lemma="fadéin" lemmaRef="http://www.dil.ie/20990" ana="pron"><abbr cert="high">f<g ref="g3">ein</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="ocus" lemmaRef="http://www.dil.ie/33484" ana="conj"><abbr cert="high"><g ref="g2">agus</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="do, benaid" lemmaRef="http://www.dil.ie/17098, http://www.dil.ie/5647" ana="part, verb">
+								<w lemma="do" lemmaRef="http://www.dil.ie/17098" ana="part">do</w>
+								<space type="scribal"/>
+								<w lemma="benaid" lemmaRef="http://www.dil.ie/5647" ana="verb"><abbr cert="high">b<g ref="g4">h</g></abbr>uin</w>
+							</w>
+							<space type="scribal"/>
+							<w lemma="osnad" lemmaRef="http://www.dil.ie/34075" ana="noun">os<abbr cert="high"><g ref="g35">na</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="comrac" lemmaRef="http://www.dil.ie/11625" ana="noun">co<abbr cert="high">m<g ref="g4">h</g></abbr><abbr cert="high"><g ref="g25">ri</g></abbr>g</w>
+							<space type="scribal"/>
+							<w lemma="a" lemmaRef="http://www.dil.ie/8" ana="prep">a</w>
+							<space type="scribal"/>
+							<name type="personal"><w ana="noun">hoi<abbr cert="high">si<g ref="g5">n</g></abbr></w></name>
+							<space type="scribal"/>
+							<w lemma="co" lemmaRef="http://www.dil.ie/9788" ana="conj"><abbr cert="high">g<g ref="g3">o</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="UNKNOWN" ana="verb">nai<abbr cert="high">m<g ref="g4">h</g></abbr>deo<abbr cert="high">i<g ref="g5">n</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="uile" lemmaRef="http://www.dil.ie/42968" ana="adj"></w>
+							<space type="scribal"/>
+							<w lemma="nuair" lemmaRef="https://www.faclair.com/ViewDictionaryEntry.aspx?ID=B6BEA2007082496BEB724726C0F39795" ana="conj">No<abbr cert="high"><g ref="g46">ir</g></abbr></w>
+							<space type="scribal"/>
+							<choice>
+								<sic><w lemma="ad-cí" lemmaRef="http://www.dil.ie/391" ana="verb"><abbr cert="high"><g ref="g28">con</g></abbr><abbr cert="high"><g ref="g30">cu</g></abbr>c</w></sic>
+								<corr resp="MMA"><w lemma="ad-cí" lemmaRef="http://www.dil.ie/391" ana="verb"><abbr cert="high"><g ref="g28">con</g></abbr><abbr cert="high"><g ref="g8">ar</g></abbr>c</w></corr>
+							</choice>
+							<space type="scribal"/>
+							<name type="personal">
+								<w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun"><abbr cert="high">m<g ref="g3"></g></abbr>c</w>
+						<lb n="5" xml:id="MS3.p21.5"/>
+								<name type="personal"><w ana="noun">lud<abbr cert="high">h<g ref="g3">a</g></abbr><abbr cert="high"><g ref="g12">ch</g></abbr></w></name>
+							</name>
+							<space type="scribal"/>
+							<w lemma="sin" lemmaRef="http://www.dil.ie/37567" ana="dpron"><abbr cert="high">si<g ref="g5">n</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="do-beir" lemmaRef="http://www.dil.ie/17216" ana="verb"><abbr cert="high">t<g ref="g4">h</g></abbr>ug</w>
+							<space type="scribal"/>
+							<w lemma="sé" lemmaRef="http://www.dil.ie/36709" ana="pron">sé</w>
+							<space type="scribal"/>
+							<w ana="adj, noun">
+								<w lemma="ród" lemmaRef="http://www.dil.ie/35404" ana="adj">ro</w>
+								<w lemma="guin" lemmaRef="http://www.dil.ie/26798" ana="noun">guine</w>
+							</w>
+							<space type="scribal"/>
+							<w ana="noun, adj">
+								<w lemma="rún" lemmaRef="http://www.dil.ie/35787" ana="noun">rúin</w>
+								<w lemma="olcach" lemmaRef="http://www.dil.ie/33785" ana="adj">ol<abbr cert="high">c<g ref="g3">ac</g></abbr></w>
+							</w>
+							<space type="scribal"/>
+							<w lemma="do" lemmaRef="http://www.dil.ie/17096" ana="prep">do</w>
+							<space type="scribal"/>
+							<w lemma="rí" lemmaRef="http://www.dil.ie/35181" ana="noun">r<abbr cert="high"><g ref="g54">i</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="in" lemmaRef="http://www.dil.ie/28194" ana="art"><abbr cert="high"><g ref="g35">na</g></abbr></w>
+							<space type="scribal"/>
+							<name type="place"><w lemma="franc" lemmaRef="http://www.dil.ie/24242" ana="noun"><abbr cert="high">f<g ref="g17">ra</g></abbr><abbr cert="high"><g ref="g54">ince</g></abbr></w></name>
+							<space type="scribal"/>
+							<w lemma="ocus" lemmaRef="http://www.dil.ie/33484" ana="conj"><abbr cert="high"><g ref="g2">agus</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="do-beir" lemmaRef="http://www.dil.ie/17216" ana="verb">do<space type="scribal"/><abbr cert="high">h<g ref="g17">ra</g></abbr>d</w>
+							<space type="scribal"/>
+							<w lemma="in" lemmaRef="http://www.dil.ie/28194" ana="art"><abbr cert="high">a<g ref="g5">n</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="rí" lemmaRef="http://www.dil.ie/35181" ana="noun">rí</w>
+							<space type="scribal"/>
+							<pc>-</pc>
+						<lb n="6" xml:id="MS3.p21.6"/>
+							<w lemma="béim" lemmaRef="http://www.dil.ie/5566" ana="vnoun">be<abbr cert="high">i<g ref="g1">m</g></abbr></w>
+							<space type="scribal"/>
+							<w ana="prep, pron, emph">
+								<w lemma="do" lemmaRef="http://www.dil.ie/17096" ana="prep, pron"><abbr cert="high">d<g ref="g4">h</g></abbr>ó</w>
+								<w lemma="sa" lemmaRef="https://www.faclair.com/ViewDictionaryEntry.aspx?ID=7E145C01680F4B96EC0D6B602D966228" ana="emph"><abbr cert="high">si<g ref="g5">n</g></abbr></w>
+							</w>
+							<space type="scribal"/>
+							<w lemma="ocus" lemmaRef="http://www.dil.ie/33484" ana="conj"><abbr cert="high"><g ref="g2">agus</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="immar" lemmaRef="http://www.dil.ie/27721" ana="conj"><abbr cert="high">m<g ref="g16">ur</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="do, léimmid" lemmaRef="http://www.dil.ie/17098, http://www.dil.ie/29798" ana="part, verb">
+								<w lemma="do" lemmaRef="http://www.dil.ie/17098" ana="part">a</w>
+								<space type="scribal"/>
+								<w lemma="léimmid" lemmaRef="http://www.dil.ie/29798" ana="verb">le<abbr cert="high">m<g ref="g1">m</g></abbr><abbr cert="high">n<g ref="g3">ic</g></abbr><abbr cert="high"><g ref="g4">h</g></abbr></w>
+							</w>
+							<space type="scribal"/>
+							<name type="personal">
+								<w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun"><abbr cert="high">m<g ref="g3">a</g></abbr>c</w>
+								<space type="scribal"/>
+								<name type="personal"><w ana="noun">lud<abbr cert="high">h<g ref="g3">ac</g></abbr><abbr cert="high"><g ref="g4">h</g></abbr></w></name>
+							</name>
+							<space type="scribal"/>
+							<w lemma="tar" lemmaRef="http://www.dil.ie/40049" ana="prep"><abbr cert="high"><g ref="g8">ar</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="ais" lemmaRef="http://www.dil.ie/2466" ana="noun">nais</w>
+							<space type="scribal"/>
+							<w lemma="de" lemmaRef="http://www.dil.ie/14787" ana="prep">do</w>
+							<space type="scribal"/>
+							<w ana="adj, verb">
+								<w lemma="sgiord" lemmaRef="https://www.dfaclair.com/ViewDictionaryEntry.aspx?ID=66F37FF607701471F5C555114224D8A3" ana="adj">s<abbr cert="high">g<g ref="g25">ir</g></abbr>d</w>
+								<w lemma="léimm" lemmaRef="http://www.dil.ie/29795" ana="noun">lém</w>
+							</w>
+							<space type="scribal"/>
+							<w lemma="do, rannaid" lemmaRef="http://www.dil.ie/17098, http://www.dil.ie/34809" ana="part, verb">
+								<w lemma="do" lemmaRef="http://www.dil.ie/17098" ana="part">do</w>
+								<space type="scribal"/>
+								<w lemma="rannaid" lemmaRef="http://www.dil.ie/34809" ana="verb">roi<abbr cert="high">n<g ref="g5">n</g></abbr></w>
+							</w>
+							<space type="scribal"/>
+							<w ana="prep, poss">
+								<w lemma="i" lemmaRef="http://www.dil.ie/26891" ana="prep"><abbr cert="high"><g ref="g35">n</g></abbr></w>
+								<w lemma="a" lemmaRef="http://www.dil.ie/3" ana="poss"><abbr cert="high"><g ref="g35">a</g></abbr></w>
+							</w>
+						<lb n="7" xml:id="MS3.p21.7"/>
+							<w lemma="dá" lemmaRef="http://www.dil.ie/14080" ana="num"><abbr cert="high"><g ref="g26">d</g></abbr><abbr cert="high"><g ref="g4">h</g></abbr><abbr cert="high"><g ref="g26">a</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="ordu" lemmaRef="http://www.dil.ie/33993" ana="noun">ordi<abbr cert="high">n<g ref="g5">n</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="é" lemmaRef="http://www.dil.ie/19325" ana="pron">é</w>
+							<pc>.</pc>
+							<space type="scribal"/>
+							<w lemma="do-icc" lemmaRef="http://www.dil.ie/17788" ana="verb">Tanig</w>
+							<space type="scribal"/>
+							<w lemma="trí" lemmaRef="http://www.dil.ie/41872" ana="num"><abbr cert="high">t<g ref="g25">ri</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="coíca" lemmaRef="http://www.dil.ie/10038" ana="num">.l.</w>
+							<space type="scribal"/>
+							<w lemma="láech" lemmaRef="http://www.dil.ie/29307" ana="noun">lao<abbr cert="high">c<g ref="g4">h</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="de" lemmaRef="http://www.dil.ie/14787" ana="prep">do</w>
+							<space type="scribal"/>
+							<name type="population">
+								<w lemma="clann" lemmaRef="http://www.dil.ie/9365" ana="noun">c<abbr cert="high">l<g ref="g23">ann</g></abbr>ip</w>
+								<space type="scribal"/>
+								<name type="personal"><w lemma="baiscne" lemmaRef="http://www.dil.ie/5250" ana="noun">b<abbr cert="high"><g ref="g54">uisgne</g></abbr></w></name>
+							</name>
+							<space type="scribal"/>
+							<w lemma="co" lemmaRef="http://www.dil.ie/9786" ana="prep, pron"><abbr cert="high"><g ref="g30">cu</g></abbr>ige</w>
+							<space type="scribal"/>
+							<w lemma="ocus" lemmaRef="http://www.dil.ie/33484" ana="conj"><abbr cert="high"><g ref="g2">agus</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="do-beir" lemmaRef="http://www.dil.ie/17216" ana="verb"><abbr cert="high">t<g ref="g79">ug</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="guin" lemmaRef="http://www.dil.ie/26798" ana="noun">guin</w>
+							<space type="scribal"/>
+							<w lemma="cach" lemmaRef="http://www.dil.ie/7528" ana="adj">ga<abbr cert="high">c<g ref="g4">h</g></abbr></w>
+							<space type="scribal"/>
+							<w ana="adj, noun">
+								<w lemma="óen" lemmaRef="http://www.dil.ie/33512" ana="adj">aon</w>
+								<w lemma="fer" lemmaRef="http://www.dil.ie/21665" ana="noun"><abbr cert="high">f<g ref="g4">h</g></abbr>ir</w>
+							</w>
+							<space type="scribal"/>
+							<w lemma="ar" lemmaRef="http://www.dil.ie/3902" ana="prep, pron"><abbr cert="high"><g ref="g8">ar</g></abbr></w>
+							<pc>,,</pc>
+							<space type="scribal"/>
+							<w lemma="ocus" lemmaRef="http://www.dil.ie/33484" ana="conj"><abbr cert="high"><g ref="g2">agus</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="ní" lemmaRef="http://www.dil.ie/33147" ana="adv">ni</w>
+							<space type="scribal"/>
+							<w lemma="téit" lemmaRef="http://www.dil.ie/40447" ana="verb">dec<abbr cert="high">h<g ref="g3">aid</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="nech" lemmaRef="http://www.dil.ie/33014" ana="pron"><abbr cert="high">n<g ref="g3">ech</g></abbr></w>
+							<space type="scribal"/>
+							<w ana="prep, pron, emph">
+								<w lemma="oc" lemmaRef="http://www.dil.ie/33397" ana="prep, pron">a<abbr cert="high"><g ref="g30">cu</g></abbr></w>
+								<w lemma="sa" lemmaRef="https://www.faclair.com/ViewDictionaryEntry.aspx?ID=7E145C01680F4B96EC0D6B602D966228" ana="emph">s<abbr cert="high">a<g ref="g5">n</g></abbr></w>
+							</w>
+							<space type="scribal"/>
+							<w lemma="cen" lemmaRef="http://www.dil.ie/8581" ana="prep"><abbr cert="high">g<g ref="g3">an</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="guin" lemmaRef="http://www.dil.ie/26798" ana="noun">gu<abbr cert="high">i<g ref="g5">n</g></abbr></w>
+							<space type="scribal"/>
+							<w ana="prep, pron, emph">
+								<w lemma="ó" lemmaRef="http://www.dil.ie/33364" ana="prep, pron">ua<abbr cert="high">d<g ref="g4">h</g></abbr>a</w>
+								<w lemma="sa" lemmaRef="https://www.faclair.com/ViewDictionaryEntry.aspx?ID=7E145C01680F4B96EC0D6B602D966228" ana="emph">san</w>
+							</w>
+							<space type="scribal"/>
+							<w lemma="ocus" lemmaRef="http://www.dil.ie/33484" ana="conj"><abbr cert="high"><g ref="g2">agus</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="do, benaid" lemmaRef="http://www.dil.ie/17098, http://www.dil.ie/5647" ana="part, verb">
+								<w lemma="do" lemmaRef="http://www.dil.ie/17098" ana="part">do</w>
+								<space type="scribal"/>
+								<w lemma="benaid" lemmaRef="http://www.dil.ie/5647" ana="verb">buin</w>
+							</w>
+							<space type="scribal"/>
+							<w lemma="rí" lemmaRef="http://www.dil.ie/35181" ana="noun">r<abbr cert="high"><g ref="g54">i</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="in" lemmaRef="http://www.dil.ie/28194" ana="art"><abbr cert="high"><g ref="g35">na</g></abbr></w>
+							<space type="scribal"/>
+							<name type="place"><w lemma="franc" lemmaRef="http://www.dil.ie/24242" ana="noun"><abbr cert="high">f<g ref="g17">raince</g></abbr></w></name>
+						<lb n="9" xml:id="MS3.p21.9"/>
+							<w ana="adj, noun">
+								<w lemma="trom" lemmaRef="http://www.dil.ie/42031" ana="adj"><abbr cert="high">t<g ref="g15">ro</g></abbr>m</w>
+								<w lemma="osnad" lemmaRef="http://www.dil.ie/34075" ana="noun">osna</w>
+							</w>
+							<space type="scribal"/>
+							<w lemma="éccomlonn" lemmaRef="http://www.dil.ie/19440" ana="adj">eccom<abbr cert="high">l<g ref="g23">ainn</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="a" lemmaRef="http://www.dil.ie/8" ana="prep">a</w>
+							<space type="scribal"/>
+							<name type="personal"><w lemma="Oscar" lemmaRef="http://www.dil.ie/34061" ana="noun">hos<abbr cert="high">g<g ref="g16">ur</g></abbr></w></name>
+							<space type="scribal"/>
+							<w lemma="co" lemmaRef="http://www.dil.ie/9788" ana="conj"><abbr cert="high">g<g ref="g3"></g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="UNKNOWN">boil</w>
+							<space type="scribal"/>
+							<w lemma="la" lemmaRef="http://www.dil.ie/29233" ana="prep, pron">leo<abbr cert="high">d<g ref="g4">h</g></abbr>a</w>
+							<space type="scribal"/>
+							<w lemma="uile" lemmaRef="http://www.dil.ie/42968" ana="adj"><abbr cert="high"><g ref="g69">uile</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="é" lemmaRef="http://www.dil.ie/19325" ana="pron">é</w>
+							<space type="scribal"/>
+							<pc>.</pc>
+							<space type="scribal"/>
+							<w lemma="acht" lemmaRef="http://www.dil.ie/200" ana="conj">a<abbr cert="high">c<g ref="g4">h</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="nuair" lemmaRef="https://www.faclair.com/ViewDictionaryEntry.aspx?ID=B6BEA2007082496BEB724726C0F39795" ana="conj">noir</w>
+							<space type="scribal"/>
+							<w lemma="a" lemmaRef="http://www.dil.ie/5" ana="pron, verb">a</w>
+							<space type="scribal"/>
+							<w lemma="mothaigid" lemmaRef="http://www.dil.ie/32608" ana="verb"><abbr cert="high">m<g ref="g4">h</g></abbr>o<abbr cert="high">t<g ref="g4">h</g></abbr>i<abbr cert="high">c<g ref="g4">h</g></abbr></w>
+							<space type="scribal"/>
+						<lb n="10" xml:id="MS3.p21.10"/>
+							<w ana="prep, poss">
+								<w lemma="de" lemmaRef="http://www.dil.ie/14787" ana="prep"><abbr cert="high"><g ref="g26">d</g></abbr><abbr cert="high"><g ref="g4">h</g></abbr></w>
+								<w lemma="a" lemmaRef="http://www.dil.ie/3" ana="poss"><abbr cert="high"><g ref="g26">a</g></abbr></w>
+							</w>
+							<space type="scribal"/>
+							<w lemma="sin" lemmaRef="http://www.dil.ie/37567" ana="dpron"><abbr cert="high">si<g ref="g5">n</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="in" lemmaRef="http://www.dil.ie/28194" ana="art"><abbr cert="high">a<g ref="g5">n</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="duine" lemmaRef="http://www.dil.ie/19139" ana="noun">duine</w>
+							<space type="scribal"/>
+							<w lemma="nach" lemmaRef="http://www.dil.ie/32908" ana="part"><abbr cert="high">n<g ref="g12">ach</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="traethaid" lemmaRef="http://www.dil.ie/41555" ana="verb"><abbr cert="high">t<g ref="g25">ri</g></abbr><abbr cert="high"><g ref="l5">ao</g></abbr><abbr cert="high">t<g ref="g4">h</g></abbr>a<abbr cert="high">d<g ref="g4">h</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="ocus" lemmaRef="http://www.dil.ie/33484" ana="conj"><abbr cert="high"><g ref="g2">agus</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="in" lemmaRef="http://www.dil.ie/28194" ana="art"><abbr cert="high">a<g ref="g5">n</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="léo" lemmaRef="http://www.dil.ie/29941" ana="noun">leoi<abbr cert="high">g<g ref="g3">an</g></abbr></w>
+							<space type="scribal"/>
+							<w ana="adj, adj">
+								<w lemma="lúath" lemmaRef="http://www.dil.ie/30854" ana="adj"><abbr cert="high">l<g ref="g3">uat</g></abbr></w>
+								<space type="scribal"/>
+								<w lemma="fergach" lemmaRef="http://www.dil.ie/21718" ana="adj"><abbr cert="high">f<g ref="g21">er</g></abbr><abbr cert="high">g<g ref="g12">ach</g></abbr></w>
+							</w>
+							<space type="scribal"/>
+							<w lemma="ocus" lemmaRef="http://www.dil.ie/33484" ana="conj"><abbr cert="high"><g ref="g2">agus</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="in" lemmaRef="http://www.dil.ie/28194" ana="art">a</w>
+							<space type="scribal"/>
+							<w lemma="nathair" lemmaRef="http://www.dil.ie/33000" ana="noun">nat<abbr cert="high">h<g ref="g3"/></abbr><abbr cert="high"><g ref="g16">ur</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="puinseanta" lemmaRef="https://www.faclair.com/ViewDictionaryEntry.aspx?ID=5E91E08E0EB909DD0CF7E96D3DDE6A3F" ana="adj"><abbr cert="high">p<g ref="g4">h</g></abbr>oisuin<abbr cert="high">t<g ref="g3">a</g></abbr></w>
+							<space type="scribal"/>
+							<w ana="adj, adj">
+								<w lemma="fír" lemmaRef="http://www.dil.ie/22171" ana="adj">fíor</w>
+						<lb n="11" xml:id="MS3.p21.11"/>
+								<w lemma="neimnech" lemmaRef="http://www.dil.ie/33041" ana="adj">nei<abbr cert="high">m<g ref="g4">h</g></abbr><abbr cert="high">n<g ref="g3">ec</g></abbr></w>
+							</w>
+							<space type="scribal"/>
+							<w lemma="ocus" lemmaRef="http://www.dil.ie/33484" ana="conj"><abbr cert="high"><g ref="g2">agus</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="in" lemmaRef="http://www.dil.ie/28194" ana="art"><abbr cert="high">a<g ref="g5">n</g></abbr></w>
+							<space type="scribal"/>
+							<w ana="adj, noun">
+								<w lemma="óen" lemmaRef="http://www.dil.ie/33512" ana="adj">ton</w>
+								<w lemma="cú" lemmaRef="http://www.dil.ie/13291" ana="noun"><abbr cert="high"><g ref="g30">cu</g></abbr></w>
+							</w>
+							<space type="scribal"/>
+							<w lemma="airgalach" lemmaRef="http://www.dil.ie/2011" ana="adj">ior<abbr cert="high">g<g ref="g4">h</g></abbr>i<abbr cert="high">l<g ref="g3">ac</g></abbr><abbr cert="high"><g ref="g4">h</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="ocus" lemmaRef="http://www.dil.ie/33484" ana="conj"><abbr cert="high"><g ref="g2">agus</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="in" lemmaRef="http://www.dil.ie/28194" ana="art"><abbr cert="high">a<g ref="g5">n</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="tonn" lemmaRef="http://www.dil.ie/41386" ana="noun">t<abbr cert="high">o<g ref="g14">nn</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="robarta" lemmaRef="http://www.dil.ie/35376" ana="noun">ro<abbr cert="high">b<g ref="g4">h</g></abbr>ir<abbr cert="high">t<g ref="g3">e</g></abbr></w>
+							<space type="scribal"/>
+							<w ana="pref, adj">
+								<w lemma="ro" lemmaRef="http://www.dil.ie/35365" ana="pref">ro</w>
+								<space type="scribal"/>
+								<w lemma="mer" lemmaRef="http://www.dil.ie/31981" ana="adj"><abbr cert="high">m<g ref="g21">er</g></abbr></w>
+							</w>
+							<space type="scribal"/>
+							<w lemma="ocus" lemmaRef="http://www.dil.ie/33484" ana="conj"><abbr cert="high"><g ref="g2">agus</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="in" lemmaRef="http://www.dil.ie/28194" ana="art"><abbr cert="high">a<g ref="g1">m</g></abbr></w>
+							<w lemma="bratt" lemmaRef="http://www.dil.ie/6598" ana="noun"><abbr cert="high">b<g ref="g17">ra</g></abbr>t</w>
+							<space type="scribal"/>
+							<w lemma="ós" lemmaRef="http://www.dil.ie/34047" ana="prep">os</w>
+							<w lemma="broc" lemmaRef="http://www.dil.ie/6883" ana="noun">brua<abbr cert="high">c<g ref="g4">h</g></abbr>ib</w>
+							<space type="scribal"/>
+							<w lemma="ocus" lemmaRef="http://www.dil.ie/33484" ana="conj"><abbr cert="high"><g ref="g2">agus</g></abbr></w>
+						<lb n="12" xml:id="MS3.p21.12"/>
+							<w lemma="in" lemmaRef="http://www.dil.ie/28194" ana="art"><abbr cert="high">a<g ref="g5">n</g></abbr></w>
+							<space type="scribal"/>
+							<unclear reason="interp_obscure" cert="medium" resp="MMA">
+								<w ana="noun, noun">
+									<w lemma="cleth" lemmaRef="http://www.dil.ie/9453" ana="noun">cleit</w>
+									<w lemma="bern" lemmaRef="http://www.dil.ie/5714" ana="noun"><abbr cert="high">b<g ref="g21">er</g></abbr>ni<abbr cert="high">d<g ref="g4">h</g></abbr></w>
+								</w>
+							</unclear>
+							<space type="scribal"/>
+							<w lemma="cét-" lemmaRef="http://www.dil.ie/8866" ana="num">c<abbr cert="high"><g ref="g2">éd</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="ocus" lemmaRef="http://www.dil.ie/33484" ana="conj"><abbr cert="high"><g ref="g2">agus</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="in" lemmaRef="http://www.dil.ie/28194" ana="art"><abbr cert="high">a<g ref="g5">n</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="lám" lemmaRef="http://www.dil.ie/29507" ana="noun">lá<abbr cert="high">m<g ref="g4">h</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="nach" lemmaRef="http://www.dil.ie/32908" ana="part"><abbr cert="high">n<g ref="g3">ac</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="sáraigid" lemmaRef="http://www.dil.ie/36205" ana="verb">sári<abbr cert="high"><g ref="g10">cht</g></abbr>e</w>
+							<space type="scribal"/>
+							<w lemma="ocus" lemmaRef="http://www.dil.ie/33484" ana="conj"><abbr cert="high"><g ref="g2">agus</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="in" lemmaRef="http://www.dil.ie/28194" ana="art">a</w>
+							<space type="scribal"/>
+							<w lemma="cride" lemmaRef="http://www.dil.ie/12925" ana="noun">c<abbr cert="high">c<g ref="g25">ri</g></abbr>de</w>
+							<space type="scribal"/>
+							<w lemma="nach" lemmaRef="http://www.dil.ie/32908" ana="part"><abbr cert="high">n<g ref="g3">ac</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="UNKNOWN" ana="verb">tími<abbr cert="high"><g ref="g10">cht</g></abbr>e</w>
+							<space type="scribal"/>
+							<w lemma="ocus" lemmaRef="http://www.dil.ie/33484" ana="conj"><abbr cert="high"><g ref="g2">agus</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="in" lemmaRef="http://www.dil.ie/28194" ana="art"><abbr cert="high">a<g ref="g5">n</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="traig" lemmaRef="http://www.dil.ie/41569" ana="noun"><abbr cert="high">t<g ref="g15">ro</g></abbr>i<abbr cert="high">g<g ref="g4">h</g></abbr></w>
+						<lb n="13" xml:id="MS3.p21.13"/>
+							<w lemma="nach" lemmaRef="http://www.dil.ie/32908" ana="part"><abbr cert="high">n<g ref="g3">ach</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="do-beir" lemmaRef="http://www.dil.ie/17216" ana="verb">tucc</w>
+							<space type="scribal"/>
+							<w lemma="óen" lemmaRef="http://www.dil.ie/33512" ana="num"><abbr cert="high"><g ref="l5">ao</g></abbr>n</w>
+							<add place="above" type="insertion" resp="Hand99"><abbr cert="high">c<g ref="g4">h</g></abbr>eim</add>
+							<space type="scribal"/>
+							<w lemma="tar" lemmaRef="http://www.dil.ie/40049" ana="prep"><abbr cert="high"><g ref="g8">ar</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="ais" lemmaRef="http://www.dil.ie/2466" ana="noun">nais</w>
+							<space type="scribal"/>
+							<w lemma="ríam" lemmaRef="http://www.dil.ie/35216" ana="adv">ri<abbr cert="high">a<g ref="g1">m</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="roim" lemmaRef="http://www.dil.ie/35470" ana="prep">ro</w>
+							<space type="scribal"/>
+							<w lemma="slóg" lemmaRef="http://www.dil.ie/37981" ana="noun"><supplied resp="MMA">s</supplied>hluaid</w>
+							<space type="scribal"/>
+							<w lemma="nó" lemmaRef="http://www.dil.ie/33204" ana="conj"><abbr cert="high"><g ref="g35">no</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="roim" lemmaRef="http://www.dil.ie/35470" ana="prep">roin</w>
+							<space type="scribal"/>
+							<choice>
+								<sic><w lemma="sochaide" lemmaRef="http://www.dil.ie/38230" ana="noun">soch<abbr cert="high">r<g ref="g3">aid</g></abbr>e</w></sic>
+								<corr resp="MMA"><w lemma="sochaide" lemmaRef="http://www.dil.ie/38230" ana="noun">soc<abbr cert="high">h<g ref="g3">aid</g></abbr>e</w></corr>
+							</choice>
+							<space type="scribal"/>
+							<w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">i</w>
+							<add place="above" type="insertion" resp="Hand99"><w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w></add>
+							<space type="scribal"/>
+							<name type="personal"><w lemma="Oscar" lemmaRef="http://www.dil.ie/34061" ana="noun">Os<abbr cert="high">g<g ref="g16">ur</g></abbr></w></name>
+							<space type="scribal"/>
+							<w lemma="anglondach" lemmaRef="http://www.dil.ie/3635" ana="adj"><abbr cert="high">a<g ref="g5">n</g></abbr>aglo<abbr cert="high">n<g ref="g5">n</g></abbr>a<abbr cert="high">c<g ref="g4">h</g></abbr></w>
+						<lb n="14" xml:id="MS3.p21.14"/>
+							<w ana="verb, noun">
+								<w lemma="is" lemmaRef="http://www.dil.ie/29104" ana="verb">b</w>
+								<w lemma="ingnad" lemmaRef="http://www.dil.ie/28675" ana="noun">iong<abbr cert="high">n<g ref="g3">ad</g></abbr></w>
+							</w>
+							<space type="scribal"/>
+							<w lemma="mór" lemmaRef="http://www.dil.ie/32548" ana="adj">mór</w>
+							<space type="scribal"/>
+							<w lemma="la" lemmaRef="http://www.dil.ie/29233" ana="prep, pron">leis</w>
+							<space type="scribal"/>
+							<w lemma="cía" lemmaRef="http://www.dil.ie/8965" ana="pron">cia</w>
+							<space type="scribal"/>
+							<w ana="verb, adj">
+								<w lemma="is" lemmaRef="http://www.dil.ie/29104" ana="verb">b</w>
+								<w lemma="urrainn" lemmaRef="https://www.faclair.com/ViewDictionaryEntry.aspx?ID=BU2960B1187BE753900E2133FEABB70C3" ana="adj">u<abbr cert="high"><g ref="l6">rr</g></abbr>i<abbr cert="high">n<g ref="g5">n</g></abbr></w>
+							</w>
+							<space type="scribal"/>
+							<w lemma="in" lemmaRef="http://www.dil.ie/28194" ana="art"><abbr cert="high">a<g ref="g5">n</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="éicen" lemmaRef="http://www.dil.ie/19711" ana="noun">eigi<abbr cert="high">n<g ref="g5">n</g></abbr></w>
+							<w lemma="sin" lemmaRef="http://www.dil.ie/37567" ana="dpron"><abbr cert="high">si<g ref="g5">n</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="cuirid" lemmaRef="http://www.dil.ie/13660" ana="verb"><abbr cert="high">c<g ref="g4">h</g></abbr>u<abbr cert="high"><g ref="g46">ir</g></abbr></w>
+							<space type="scribal"/>
+							<choice>
+								<sic><w lemma="co" lemmaRef="http://www.dil.ie/9786" ana="prep"><abbr cert="high"><g ref="g30">cu</g></abbr></w></sic>
+								<corr resp="MMA"><w lemma="ar" lemmaRef="http://www.dil.ie/3902" ana="prep"><abbr cert="high"><g ref="g8">ar</g></abbr></w></corr>
+							</choice>
+							<space type="scribal"/>
+							<w lemma="athair" lemmaRef="http://www.dil.ie/4625" ana="noun">a<abbr cert="high">t<g ref="g4">h</g></abbr><abbr cert="high"><g ref="g8">ar</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="ocus" lemmaRef="http://www.dil.ie/33484" ana="conj"><abbr cert="high"><g ref="g2">agus</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="do, do-gní" lemmaRef="http://www.dil.ie/17098, http://www.dil.ie/17752" ana="part, verb">
+								<w lemma="do" lemmaRef="http://www.dil.ie/17098" ana="part">do</w>
+								<w lemma="do-gní" lemmaRef="http://www.dil.ie/17752" ana="verb">ri<abbr cert="high">n<g ref="g3">ned</g></abbr><abbr cert="high"><g ref="g4">h</g></abbr></w>
+							</w>
+							<space type="scribal"/>
+							<w lemma="dam" lemmaRef="http://www.dil.ie/14462" ana="noun"><abbr cert="high"><g ref="g26">da</g></abbr><abbr cert="high">m<g ref="g4">h</g></abbr></w>
+						<lb n="15" xml:id="MS3.p21.15"/>
+							<w lemma="dían" lemmaRef="http://www.dil.ie/15951" ana="adj"><abbr cert="high">d<g ref="g4">h</g></abbr>ion</w>
+							<space type="scribal"/>
+							<w ana="pref, noun">
+								<w lemma="dī-" lemmaRef="http://www.dil.ie/15840" ana="pref">di<abbr cert="high">t<g ref="g4">h</g></abbr></w>
+								<w lemma="fulang" lemmaRef="http://www.dil.ie/24943" ana="noun"><abbr cert="high">f<g ref="g4">h</g></abbr>ulaing</w>
+							</w>
+							<space type="scribal"/>
+							<w lemma="dásacht" lemmaRef="http://www.dil.ie/14713" ana="noun"><abbr cert="high"><g ref="g26">da</g></abbr>sa<abbr cert="high"><g ref="g10">cht</g></abbr>a</w>
+							<space type="scribal"/>
+							<w lemma="de" lemmaRef="http://www.dil.ie/14787" ana="prep, pron"><abbr cert="high">d<g ref="g4">h</g></abbr>e</w>
+							<space type="scribal"/>
+							<w lemma="ocus" lemmaRef="http://www.dil.ie/33484" ana="conj"><abbr cert="high"><g ref="g2">agus</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="do-icc" lemmaRef="http://www.dil.ie/17788" ana="verb"><abbr cert="high">t<g ref="g4">h</g></abbr>ainig</w>
+							<space type="scribal"/>
+							<w ana="prep, poss">
+								<w lemma="do" lemmaRef="http://www.dil.ie/17096" ana="prep"><abbr cert="high"><g ref="g26">d</g></abbr></w>
+								<w lemma="a" lemmaRef="http://www.dil.ie/3" ana="poss"><abbr cert="high"><g ref="g26">a</g></abbr></w>
+							</w>
+							<space type="scribal"/>
+							<w lemma="indsaigid" lemmaRef="http://www.dil.ie/28540" ana="vnoun">uin<abbr cert="high">s<g ref="g3">i</g></abbr></w>
+							<space type="scribal"/>
+							<w ana="prep, poss">
+								<w lemma="i" lemmaRef="http://www.dil.ie/26891" ana="prep"><abbr cert="high"><g ref="g35">n</g></abbr></w>
+								<w lemma="a" lemmaRef="http://www.dil.ie/3" ana="poss"><abbr cert="high"><g ref="g35">a</g></abbr></w>
+							</w>
+							<space type="scribal"/>
+							<w lemma="rúathar" lemmaRef="http://www.dil.ie/35656" ana="noun">rua<abbr cert="high">t<g ref="g4">h</g></abbr><abbr cert="high"><g ref="g8">ar</g></abbr></w>
+							<space type="scribal"/>
+							<w ana="noun, adj">
+								<w lemma="recht" lemmaRef="http://www.dil.ie/34899" ana="noun">re<abbr cert="high"><g ref="g10">cht</g></abbr></w>
+								<w lemma="aicentach" lemmaRef="http://www.dil.ie/782" ana="adj">aig<pc>:</pc><lb n="16" xml:id="MS3.p21.16"/>in<abbr cert="high">t<g ref="g12">ech</g></abbr></w>
+							</w>
+							<space type="scribal"/>
+							<w lemma="ocus" lemmaRef="http://www.dil.ie/33484" ana="conj"><abbr cert="high"><g ref="g2">agus</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="is" lemmaRef="http://www.dil.ie/29104" ana="verb"><abbr cert="high">b<g ref="g3">a</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="samalta" lemmaRef="http://www.dil.ie/36132" ana="adj">sa<abbr cert="high">m<g ref="g4">h</g></abbr><abbr cert="high"><g ref="g3">il</g></abbr>t<abbr cert="high"><g ref="g3">a</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="fri" lemmaRef="http://www.dil.ie/24329" ana="prep"><abbr cert="high"><g ref="l4">re</g></abbr></w>
+							<space type="scribal"/>
+							<w ana="adj, noun">
+								<w lemma="mór" lemmaRef="http://www.dil.ie/32548" ana="adj">mor</w>
+								<space type="scribal"/>
+								<w lemma="sreup" lemmaRef="https://www.faclair.com/ViewDictionaryEntry.aspx?ID=54A2D386D2CC45DD1C5405AF837ECBB9" ana="noun"><supplied resp="MMA">s</supplied>hruip</w>
+							</w>
+							<space type="scribal"/>
+							<w lemma="ech" lemmaRef="http://www.dil.ie/19508" ana="noun">ec</w>
+							<space type="scribal"/>
+							<w lemma="cocad" lemmaRef="http://www.dil.ie/9864" ana="noun">co<abbr cert="high">g<g ref="g3">ad</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="oc" lemmaRef="http://www.dil.ie/33397" ana="prep">aig</w>
+							<space type="scribal"/>
+							<w ana="noun, noun">
+								<w lemma="torann" lemmaRef="http://www.dil.ie/41429" ana="noun">tori<abbr cert="high">n<g ref="g5">n</g></abbr></w>
+								<w lemma="búalad" lemmaRef="http://www.dil.ie/7257" ana="vnoun"><abbr cert="high">b<g ref="g4">h</g></abbr>ua<abbr cert="high">l<g ref="g3">ad</g></abbr></w>
+							</w>
+							<space type="scribal"/>
+							<w lemma="in" lemmaRef="http://www.dil.ie/28194" ana="art"><abbr cert="high"><g ref="g35">na</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="tráig" lemmaRef="http://www.dil.ie/41572" ana="noun"><abbr cert="high">t<g ref="g17">ra</g></abbr><abbr cert="high">g<g ref="g4">h</g></abbr>i<abbr cert="high">d<g ref="g4">h</g></abbr></w>
+						<lb n="17" xml:id="MS3.p21.17"/>
+							<w lemma="in" lemmaRef="http://www.dil.ie/28194" ana="art">an</w>
+							<space type="scribal"/>
+							<w lemma="crínachad" lemmaRef="http://www.dil.ie/12947" ana="vnoun"><abbr cert="high">c<g ref="g25">ri</g></abbr>oni<abbr cert="high">c<g ref="g4">h</g></abbr><abbr cert="high">h<g ref="g3">id</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="do-beir" lemmaRef="http://www.dil.ie/17216" ana="verb"><abbr cert="high">t<g ref="g4">h</g></abbr>ug</w>
+							<space type="scribal"/>
+							<w lemma="ar" lemmaRef="http://www.dil.ie/3902" ana="prep, pron">o<abbr cert="high"><g ref="l6">rr</g></abbr>a</w>
+							<space type="scribal"/>
+							<w lemma="ocus" lemmaRef="http://www.dil.ie/33484" ana="conj"><abbr cert="high"><g ref="g2">agus</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="do, ad-cí" lemmaRef="http://www.dil.ie/17098, http://www.dil.ie/391" ana="part, verb">
+								<w lemma="do" lemmaRef="http://www.dil.ie/17098" ana="part">do</w>
+								<space type="scribal"/>
+								<w lemma="ad-cí" lemmaRef="http://www.dil.ie/391" ana="verb"><abbr cert="high"><g ref="g30">cu</g></abbr><abbr cert="high">n<g ref="g5">n</g></abbr>ig</w>
+							</w>
+							<space type="scribal"/>
+							<w lemma="rí" lemmaRef="http://www.dil.ie/35181" ana="noun">r<abbr cert="high"><g ref="g54">i</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="in" lemmaRef="http://www.dil.ie/28194" ana="art"><abbr cert="high"><g ref="g35">na</g></abbr></w>
+							<space type="scribal"/>
+							<name type="place"><w lemma="franc" lemmaRef="http://www.dil.ie/24242" ana="noun"><abbr cert="high">f<g ref="g17">ra</g></abbr><abbr cert="high"><g ref="g54">ince</g></abbr></w></name>
+							<space type="scribal"/>
+							<w lemma="co" lemmaRef="http://www.dil.ie/9786" ana="prep, pron"><abbr cert="high"><g ref="g30">cu</g></abbr>ige</w>
+							<space type="scribal"/>
+							<w lemma="é" lemmaRef="http://www.dil.ie/19325" ana="pron">é</w>
+							<space type="scribal"/>
+							<w lemma="ocus" lemmaRef="http://www.dil.ie/33484" ana="conj"><abbr cert="high"><g ref="g2">agus</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="do, gráinid" lemmaRef="http://www.dil.ie/17098, http://www.dil.ie/26506" ana="part, verb">
+								<w lemma="do" lemmaRef="http://www.dil.ie/17098" ana="part">do</w>
+								<space type="scribal"/>
+								<w lemma="gráinid" lemmaRef="http://www.dil.ie/26506" ana="verb"><abbr cert="high">g<g ref="g17">ra</g></abbr>in</w>
+							</w>
+							<space type="scribal"/>
+							<w lemma="a" lemmaRef="http://www.dil.ie/3" ana="poss">a</w>
+							<space type="scribal"/>
+							<w lemma="cride" lemmaRef="http://www.dil.ie/12925" ana="noun"><abbr cert="high">c<g ref="g4">h</g></abbr><abbr cert="high"><g ref="g25">ri</g></abbr><abbr cert="high">d<g ref="g4">h</g></abbr>e</w>
+						<lb n="18" xml:id="MS3.p21.18"/>
+							<w lemma="roim" lemmaRef="http://www.dil.ie/35470" ana="prep, pron">roi<abbr cert="high"><g ref="g1">m</g></abbr><abbr cert="high"><g ref="g4">h</g></abbr>e</w>
+							<space type="scribal"/>
+							<w lemma="ocus" lemmaRef="http://www.dil.ie/33484" ana="conj"><abbr cert="high"><g ref="g2">agus</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="do, téit" lemmaRef="http://www.dil.ie/17098, http://www.dil.ie/40447" ana="part, verb">
+								<w lemma="do" lemmaRef="http://www.dil.ie/17098" ana="part">do</w>
+								<space type="scribal"/>
+								<w lemma="téit" lemmaRef="http://www.dil.ie/40447" ana="verb">c<abbr cert="high">h<g ref="g3">aid</g></abbr></w>
+							</w>
+							<space type="scribal"/>
+							<w lemma="a" lemmaRef="http://www.dil.ie/3" ana="poss">a</w>
+							<space type="scribal"/>
+							<w lemma="cruth" lemmaRef="http://www.dil.ie/13271" ana="noun"><abbr cert="high">c<g ref="g4">h</g></abbr>ru<abbr cert="high">t<g ref="g4">h</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="ocus" lemmaRef="http://www.dil.ie/33484" ana="conj"><abbr cert="high"><g ref="g2">agus</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="a" lemmaRef="http://www.dil.ie/3" ana="poss">a</w>
+							<space type="scribal"/>
+							<w ana="adj, vnoun">
+								<w lemma="cáem" lemmaRef="http://www.dil.ie/7590" ana="adj"><abbr cert="high">c<g ref="g4">h</g></abbr><abbr cert="high"><g ref="l5">ao</g></abbr><abbr cert="high">m<g ref="g4">h</g></abbr></w>
+								<w lemma="dénum" lemmaRef="http://www.dil.ie/15474" ana="vnoun"><abbr cert="high">d<g ref="g4">h</g></abbr>ena<abbr cert="high">m<g ref="g4">h</g></abbr></w>
+							</w>
+							<space type="scribal"/>
+							<w lemma="de" lemmaRef="http://www.dil.ie/14787" ana="prep, pron"><abbr cert="high">d<g ref="g4">h</g></abbr>e</w>
+							<space type="scribal"/>
+							<w lemma="ocus" lemmaRef="http://www.dil.ie/33484" ana="conj"><abbr cert="high"><g ref="g2">agus</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="smúaintigid" lemmaRef="http://www.dil.ie/38085" ana="verb">sm<abbr cert="high"><g ref="l5">ao</g></abbr>in<abbr cert="high">c<g ref="g4">h</g></abbr>is</w>
+							<space type="scribal"/>
+							<w lemma="nach" lemmaRef="http://www.dil.ie/32908" ana="part"><abbr cert="high">n<g ref="g3">ac</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="attá" lemmaRef="http://www.dil.ie/4927" ana="verb">roi<abbr cert="high"><g ref="g1">m</g></abbr><abbr cert="high"><g ref="g4">h</g></abbr></w>
+						<lb n="19" xml:id="MS3.p21.19"/>
+							<w lemma="ar" lemmaRef="http://www.dil.ie/3902" ana="prep"><abbr cert="high"><g ref="g8">ar</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="talam" lemmaRef="http://www.dil.ie/39932" ana="noun">ta<abbr cert="high">l<g ref="g3">am</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="dítiu" lemmaRef="http://www.dil.ie/16919" ana="noun">diodi<abbr cert="high">n<g ref="g5">n</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="oc" lemmaRef="http://www.dil.ie/33397" ana="prep, pron">aige</w>
+							<space type="scribal"/>
+							<w lemma="immar" lemmaRef="http://www.dil.ie/27721" ana="conj"><abbr cert="high">m<g ref="g16">ur</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="a" lemmaRef="http://www.dil.ie/5" ana="pron, verb">a</w>
+							<space type="scribal"/>
+							<w lemma="téit" lemmaRef="http://www.dil.ie/40447" ana="verb">rec<abbr cert="high">h<g ref="g3">ad</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="é" lemmaRef="http://www.dil.ie/19325" ana="pron">e</w>
+							<space type="scribal"/>
+							<w ana="prep, art">
+								<w lemma="i" lemmaRef="http://www.dil.ie/26891" ana="prep">s</w>
+								<w lemma="in" lemmaRef="http://www.dil.ie/28194" ana="art">an</w>
+							</w>
+							<space type="scribal"/>
+							<w lemma="aer" lemmaRef="http://www.dil.ie/632" ana="noun">air</w>
+							<space type="scribal"/>
+							<w lemma="nó" lemmaRef="http://www.dil.ie/33204" ana="conj"><abbr cert="high"><g ref="g35">no</g></abbr></w>
+							<space type="scribal"/>
+							<w ana="prep, art">
+								<w lemma="i" lemmaRef="http://www.dil.ie/26891" ana="prep">s</w>
+								<w lemma="in" lemmaRef="http://www.dil.ie/28194" ana="art">an</w>
+							</w>
+							<space type="scribal"/>
+							<w lemma="firmimint" lemmaRef="http://www.dil.ie/22208" ana="noun">fi<abbr cert="high"><g ref="g8">ar</g></abbr><abbr cert="high">m<g ref="g3">int</g></abbr>t</w>
+							<space type="scribal"/>
+							<w lemma="ocus" lemmaRef="http://www.dil.ie/33484" ana="conj"><abbr cert="high"><g ref="g2">agus</g></abbr></w>
+							<space type="scribal"/>
+							<choice>
+								<sic>
+									<w lemma="UNKNOWN"><abbr cert="high">d<g ref="g4">h</g></abbr>ur</w>
+						<lb n="20" xml:id="MS3.p21.20"/>
+									<w lemma="amarcaid" lemmaRef="http://www.dil.ie/3090" ana="verb">ab<abbr cert="high"><g ref="g8">ar</g></abbr>c</w>
+								</sic>
+								<corr resp="MMA">
+									<w lemma="do, amarcaid" lemmaRef="http://www.dil.ie/17098, http://www.dil.ie/3090" ana="part, verb">
+										<w lemma="do" lemmaRef="http://www.dil.ie/17098" ana="part">do</w>
+						<lb n="20" sameAs="MS3.p21.20"/>
+										<w lemma="amarcaid" lemmaRef="http://www.dil.ie/3090" ana="verb">ab<abbr cert="high"><g ref="g8">ar</g></abbr>c</w>
+									</w>
+								</corr>
+							</choice>
+							<space type="scribal"/>
+							<w lemma="sé" lemmaRef="http://www.dil.ie/36709" ana="pron">se</w>
+							<space type="scribal"/>
+							<w lemma="i" lemmaRef="http://www.dil.ie/26891" ana="prep">a</w>
+							<space type="scribal"/>
+							<w lemma="nél" lemmaRef="http://www.dil.ie/33060" ana="noun">néli<abbr cert="high">b<g ref="g4">h</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="in" lemmaRef="http://www.dil.ie/28194" ana="art">a<space type="scribal"/>n</w>
+							<w lemma="aer" lemmaRef="http://www.dil.ie/632" ana="noun">air</w>
+							<space type="scribal"/>
+							<w lemma="ocus" lemmaRef="http://www.dil.ie/33484" ana="conj"><abbr cert="high"><g ref="g2">agus</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="smúaintigid" lemmaRef="http://www.dil.ie/38085" ana="verb">sm<abbr cert="high"><g ref="l5">ao</g></abbr>ni<abbr cert="high">c<g ref="g4">h</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="sé" lemmaRef="http://www.dil.ie/36709" ana="pron">se</w>
+							<space type="scribal"/>
+							<w lemma="co" lemmaRef="http://www.dil.ie/9788" ana="conj"><abbr cert="high">g<g ref="g3">o</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="is" lemmaRef="http://www.dil.ie/29104" ana="verb"><abbr cert="high">m<g ref="g3">ba</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="dían" lemmaRef="http://www.dil.ie/15951" ana="adj">dion</w>
+							<space type="scribal"/>
+							<w lemma="do" lemmaRef="http://www.dil.ie/17096" ana="prep">do</w>
+							<space type="scribal"/>
+							<w lemma="buith" lemmaRef="http://www.dil.ie/7435" ana="vnoun">bit</w>
+							<space type="scribal"/>
+							<w lemma="eter" lemmaRef="http://www.dil.ie/20789" ana="prep, pron"><abbr cert="high"><g ref="g2">et</g></abbr><abbr cert="high"><g ref="l6">rr</g></abbr>a</w>
+						<lb n="21" xml:id="MS3.p21.21"/>
+							<w lemma="ocus" lemmaRef="http://www.dil.ie/33484" ana="conj"><abbr cert="high"><g ref="g2">agus</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="búailid" lemmaRef="http://www.dil.ie/7240" ana="verb">buail</w>
+							<space type="scribal"/>
+							<w lemma="étrumme" lemmaRef="http://www.dil.ie/20930" ana="noun">aoidrimis</w>
+							<space type="scribal"/>
+							<w lemma="cíall" lemmaRef="http://www.dil.ie/8983" ana="noun">céill</w>
+							<space type="scribal"/>
+							<w lemma="ocus" lemmaRef="http://www.dil.ie/33484" ana="conj"><abbr cert="high"><g ref="g2">agus</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="inchinn" lemmaRef="http://www.dil.ie/28266" ana="noun">in<abbr cert="high">c<g ref="g4">h</g></abbr>in</w>
+							<space type="scribal"/>
+							<w lemma="é" lemmaRef="http://www.dil.ie/19325" ana="pron">é</w>
+							<space type="scribal"/>
+							<pc>,,</pc>
+							<space type="scribal"/>
+							<w lemma="ocus" lemmaRef="http://www.dil.ie/33484" ana="conj"><abbr cert="high"><g ref="g2">agus</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="do-beir" lemmaRef="http://www.dil.ie/17216" ana="verb"><abbr cert="high">t<g ref="g4">h</g></abbr>ug</w>
+							<space type="scribal"/>
+							<w lemma="sé" lemmaRef="http://www.dil.ie/36709" ana="pron">se</w>
+							<space type="scribal"/>
+							<w lemma="síned" lemmaRef="http://www.dil.ie/37584" ana="vnoun">sio<abbr cert="high">n<g ref="g3">ad</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="ar" lemmaRef="http://www.dil.ie/3902" ana="prep"><abbr cert="high"><g ref="g8">ar</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="a" lemmaRef="http://www.dil.ie/3" ana="poss">a</w>
+							<space type="scribal"/>
+							<w lemma="colainn" lemmaRef="http://www.dil.ie/10477" ana="noun"><abbr cert="high">c<g ref="g4">h</g></abbr>o<abbr cert="high">l<g ref="g23">ann</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="ó" lemmaRef="http://www.dil.ie/33364" ana="prep"><abbr cert="high">f<g ref="g3">o</g></abbr></w>
+						<lb n="22" xml:id="MS3.p21.22"/>
+							<w lemma="talam" lemmaRef="http://www.dil.ie/39932" ana="noun"><abbr cert="high">t<g ref="g4">h</g></abbr>a<abbr cert="high">l<g ref="g3">am</g></abbr><abbr cert="high"><g ref="g4">h</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="ar" lemmaRef="http://www.dil.ie/3902" ana="prep"><abbr cert="high"><g ref="g8">ar</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="cor" lemmaRef="http://www.dil.ie/12406" ana="vnoun"><abbr cert="high">c<g ref="g4">h</g></abbr>or</w>
+							<space type="scribal"/>
+							<w lemma="co" lemmaRef="http://www.dil.ie/9788" ana="conj"><abbr cert="high">g<g ref="g3">an</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="téit" lemmaRef="http://www.dil.ie/40447" ana="verb">dec<abbr cert="high">h<g ref="g3">ad</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="é" lemmaRef="http://www.dil.ie/19325" ana="pron">e</w>
+							<space type="scribal"/>
+							<w lemma="la" lemmaRef="http://www.dil.ie/29233" ana="prep">le</w>
+							<space type="scribal"/>
+							<w lemma="gáeth" lemmaRef="http://www.dil.ie/25098" ana="noun">g<abbr cert="high"><g ref="l5">ao</g></abbr><abbr cert="high">t<g ref="g4">h</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="ocus" lemmaRef="http://www.dil.ie/33484" ana="conj"><abbr cert="high"><g ref="g2">agus</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="la" lemmaRef="http://www.dil.ie/29233" ana="prep">le</w>
+							<space type="scribal"/>
+							<w lemma="geltacht" lemmaRef="http://www.dil.ie/25601" ana="noun">gellta<abbr cert="high"><g ref="g10">cht</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="i" lemmaRef="http://www.dil.ie/26891" ana="prep">a</w>
+							<space type="scribal"/>
+							<w lemma="fíadnaise" lemmaRef="http://www.dil.ie/21911" ana="noun">fiagnis</w>
+							<w lemma="slóg" lemmaRef="http://www.dil.ie/37981" ana="noun"><abbr cert="high">s<g ref="g4">h</g></abbr><abbr cert="high">l<g ref="g3">oid</g></abbr><abbr cert="high"><g ref="g4">h</g></abbr></w>
+						<lb n="23" xml:id="MS3.p21.23"/>
+							<w lemma="in" lemmaRef="http://www.dil.ie/28194" ana="art">an</w>
+							<space type="scribal"/>
+							<w lemma="domun" lemmaRef="http://www.dil.ie/18161" ana="noun">do<abbr cert="high">m<g ref="g4">h</g></abbr><abbr cert="high"><g ref="g3">in</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="ocus" lemmaRef="http://www.dil.ie/33484" ana="conj"><abbr cert="high"><g ref="g2">agus</g></abbr></w>
+							<space type="scribal"/>
+							<w ana="adv, part">
+								<w lemma="ní" lemmaRef="http://www.dil.ie/33147" ana="adv">ni</w>
+								<w lemma="ro" lemmaRef="http://www.dil.ie/35364" ana="part">r</w>
+							</w>
+							<space type="scribal"/>
+							<w lemma="do-airling" lemmaRef="http://www.dil.ie/17145" ana="verb"><abbr cert="high">t<g ref="g4">h</g></abbr>u<abbr cert="high"><g ref="g46">ir</g></abbr>lem</w>
+							<space type="scribal"/>
+							<w ana="prep, art">
+								<w lemma="ó" lemmaRef="http://www.dil.ie/33364" ana="prep">fo</w>
+								<w lemma="in" lemmaRef="http://www.dil.ie/28194" ana="art">n</w>
+							</w>
+							<space type="scribal"/>
+							<w ana="noun, noun">
+								<w lemma="báeth" lemmaRef="http://www.dil.ie/5139" ana="adj"><abbr cert="high">b<g ref="g4">h</g></abbr><abbr cert="high"><g ref="l5">ao</g></abbr><abbr cert="high">t<g ref="g4">h</g></abbr></w>
+								<w lemma="etell" lemmaRef="http://www.dil.ie/20780" ana="noun">itil</w>
+							</w>
+							<w lemma="sin" lemmaRef="http://www.dil.ie/37567" ana="dpron"><abbr cert="high">si<g ref="g5">n</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="co" lemmaRef="http://www.dil.ie/9788" ana="conj"><abbr cert="high">g<g ref="g3">o</g></abbr><space type="scribal"/>n</w>
+							<w lemma="do, ro-icc" lemmaRef="http://www.dil.ie/17098, http://www.dil.ie/35459" ana="part, verb">
+								<w lemma="do" lemmaRef="http://www.dil.ie/17098" ana="part">d</w>
+								<w lemma="ro-icc" lemmaRef="http://www.dil.ie/35459" ana="verb"><abbr cert="high"><g ref="g17">ra</g></abbr>inig</w>
+							</w>
+							<space type="scribal"/>
+							<name type="place">
+								<w lemma="glenn" lemmaRef="http://www.dil.ie/26047" ana="noun">G<abbr cert="high"><g ref="g23">enn</g></abbr></w>
+								<space type="scribal"/>
+								<name type="personal"><w lemma="Bolcán" lemmaRef="http://www.dil.ie/6345" ana="noun">bol<abbr cert="high">c<g ref="g3">an</g></abbr></w></name>
+							</name>
+							<space type="scribal"/>
+							<w lemma="co" lemmaRef="http://www.dil.ie/9786" ana="prep"><abbr cert="high"><g ref="g30">cu</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="airther" lemmaRef="http://www.dil.ie/2432" ana="noun">o<abbr cert="high"><g ref="g46">ir</g></abbr><lb n="24" xml:id="MS3.p21.24"/><pc>:</pc><abbr cert="high">t<g ref="g4">h</g></abbr>ire</w>
+							<space type="scribal"/>
+							<w lemma="in" lemmaRef="http://www.dil.ie/28194" ana="art"><abbr cert="high"><g ref="g35">na</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="crích" lemmaRef="http://www.dil.ie/12912" ana="noun"><abbr cert="high">c<g ref="g25">ri</g></abbr>o<abbr cert="high">c<g ref="g4">h</g></abbr></w>
+							<w lemma="sin" lemmaRef="http://www.dil.ie/37567" ana="dpron"><abbr cert="high">si<g ref="g5">n</g></abbr></w>
+							<pc>,,</pc>
+							<space type="scribal"/>
+							<w lemma="ór" lemmaRef="http://www.dil.ie/33928" ana="conj">o<abbr cert="high"><g ref="g46">ir</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="is" lemmaRef="http://www.dil.ie/29104" ana="verb">is</w>
+							<space type="scribal"/>
+							<unclear reason="interp_obscure" cert="medium" resp="MMA">
+								<w lemma="UNKNOWN">me<abbr cert="high">t<g ref="g4">h</g></abbr>e</w>
+								<space type="scribal"/>
+								<w lemma="nó" lemmaRef="http://www.dil.ie/33204" ana="conj"><abbr cert="high"><g ref="g45">no</g></abbr></w>
+								<space type="scribal"/>
+								<w lemma="éc" lemmaRef="http://www.dil.ie/19360" ana="noun">eug</w>
+								<space type="scribal"/>
+								<w ana="prep, art">
+									<w lemma="do" lemmaRef="http://www.dil.ie/17096" ana="prep">do</w>
+									<w lemma="in" lemmaRef="http://www.dil.ie/28194" ana="art">n</w>
+								</w>
+								<space type="scribal"/>
+								<w lemma="UNKNOWN"><abbr cert="high">g<g ref="g4">h</g></abbr>elt<abbr cert="high"><g ref="g8">ar</g></abbr></w>
+							</unclear>
+							<space type="scribal"/>
+							<w lemma="attá" lemmaRef="http://www.dil.ie/4927" ana="verb"><abbr cert="high">b<g ref="g4">h</g></abbr>ios</w>
+							<space type="scribal"/>
+							<w lemma="i" lemmaRef="http://www.dil.ie/26891" ana="prep">a</w>
+							<name type="place"><w lemma="Ériu" lemmaRef="http://www.dil.ie/20288" ana="noun">neir<abbr cert="high">i<g ref="g14">nn</g></abbr></w></name>
+							<space type="scribal"/>
+							<w lemma="immar" lemmaRef="http://www.dil.ie/27721" ana="prep"><abbr cert="high">m<g ref="g16">ur</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="a" lemmaRef="http://www.dil.ie/5" ana="pron, verb">a</w>
+							<space type="scribal"/>
+							<w lemma="ro-icc" lemmaRef="http://www.dil.ie/35459" ana="verb">rig</w>
+						<lb n="25" xml:id="MS3.p21.25"/>
+							<w lemma="é" lemmaRef="http://www.dil.ie/19325" ana="pron">e</w>
+							<space type="scribal"/>
+							<w lemma="in" lemmaRef="http://www.dil.ie/28194" ana="art">n</w>
+							<w ana="noun, emph">
+								<w lemma="glenn" lemmaRef="http://www.dil.ie/26047" ana="noun">g<abbr cert="high">l<g ref="g23">enn</g></abbr></w>
+								<w lemma="sa" lemmaRef="https://www.faclair.com/ViewDictionaryEntry.aspx?ID=7E145C01680F4B96EC0D6B602D966228" ana="emph">sa</w>
+							</w>
+							<space type="scribal"/>
+							<w lemma="a" lemmaRef="http://www.dil.ie/8" ana="prep">an</w>
+							<w lemma="cenn" lemmaRef="http://www.dil.ie/8622" ana="noun">ce<abbr cert="high">n<g ref="g5">n</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="in" lemmaRef="http://www.dil.ie/28194" ana="art">an</w>
+							<w lemma="dara" lemmaRef="http://www.dil.ie/14634" ana="adj"><abbr cert="high"><g ref="g25">i</g></abbr>ra</w>
+							<space type="scribal"/>
+							<w lemma="lá" lemmaRef="http://www.dil.ie/29234" ana="noun">la</w>
+							<add place="above" type="insertion" resp="Hand23">
+								<unclear reason="interp_obscure" cert="medium" resp="MMA">
+									<w lemma="do" lemmaRef="http://www.dil.ie/17098" ana="part"><abbr cert="high"><g ref="g26">d</g></abbr></w>
+									<w lemma="a" lemmaRef="http://www.dil.ie/5" ana="pron, verb"><abbr cert="high"><g ref="g26">a</g></abbr></w>
+								</unclear>
+							</add>
+							<space type="scribal"/>
+							<w lemma="teiched" lemmaRef="http://www.dil.ie/40344" ana="vnoun">teic<abbr cert="high">h<g ref="g3">ed</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="ocus" lemmaRef="http://www.dil.ie/33484" ana="conj"><abbr cert="high"><g ref="g2">agus</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="do-beir" lemmaRef="http://www.dil.ie/17216" ana="verb"><abbr cert="high">t<g ref="g4">h</g></abbr>u<abbr cert="high">g<g ref="g3">ad</g></abbr><abbr cert="high"><g ref="g4">h</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="gáir" lemmaRef="http://www.dil.ie/25196" ana="noun">gair</w>
+							<space type="scribal"/>
+							<w lemma="mór" lemmaRef="http://www.dil.ie/32548" ana="adj"><abbr cert="high">m<g ref="g15">or</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="oc" lemmaRef="http://www.dil.ie/33397" ana="prep">aig</w>
+							<space type="scribal"/>
+							<w lemma="slóg" lemmaRef="http://www.dil.ie/37981" ana="noun">s<abbr cert="high">l<g ref="g3">uad</g></abbr><abbr cert="high"><g ref="g4">h</g></abbr></w>
+							<space type="scribal"/>
+							<choice>
+								<sic><w lemma="imm" lemmaRef="http://www.dil.ie/27635" ana="prep, pron">u<abbr cert="high">ui<g ref="g1">m</g></abbr>e</w></sic>
+								<corr resp="MMA"><w lemma="uile" lemmaRef="http://www.dil.ie/42968" ana="adj">uile</w></corr>
+							</choice>
+							<space type="scribal"/>
+							<w lemma="in" lemmaRef="http://www.dil.ie/28194" ana="art">an</w>
+							<space type="scribal"/>
+							<w lemma="domun" lemmaRef="http://www.dil.ie/18161" ana="noun">d<abbr cert="high">o<g ref="g1">m</g></abbr><abbr cert="high"><g ref="g4">h</g></abbr><abbr cert="high"><g ref="g25">in</g></abbr></w>
+						<lb n="26" xml:id="MS3.p21.26"/>
+							<w ana="prep, poss">
+								<w lemma="do" lemmaRef="http://www.dil.ie/17096" ana="prep"><abbr cert="high"><g ref="g26">d</g></abbr></w>
+								<w lemma="a" lemmaRef="http://www.dil.ie/3" ana="poss"><abbr cert="high"><g ref="g26">a</g></abbr></w>
+							</w>
+							<space type="scribal"/>
+							<w lemma="caíned" lemmaRef="http://www.dil.ie/7826" ana="vnoun"><abbr cert="high">c<g ref="g4">h</g></abbr><abbr cert="high"><g ref="l5">ao</g></abbr><abbr cert="high">n<g ref="g3">ed</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="ocus" lemmaRef="http://www.dil.ie/33484" ana="conj"><abbr cert="high"><g ref="g2">agus</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="oc" lemmaRef="http://www.dil.ie/33397" ana="prep">ag</w>
+							<space type="scribal"/>
+							<w lemma="fían" lemmaRef="http://www.dil.ie/21945" ana="noun"><abbr cert="high">f<g ref="g4">h</g></abbr>ia<abbr cert="high">n<g ref="g3">a</g></abbr></w>
+							<space type="scribal"/>
+							<name type="place"><w lemma="Ériu" lemmaRef="http://www.dil.ie/20288" ana="noun">E<abbr cert="high"><g ref="g46">ir</g></abbr>i<abbr cert="high">n<g ref="g5">n</g></abbr></w></name>
+							<space type="scribal"/>
+							<w ana="prep, poss">
+								<w lemma="do" lemmaRef="http://www.dil.ie/17096" ana="prep"><abbr cert="high"><g ref="g26">d</g></abbr></w>
+								<w lemma="a" lemmaRef="http://www.dil.ie/3" ana="poss"><abbr cert="high"><g ref="g26">a</g></abbr></w>
+							</w>
+							<space type="scribal"/>
+							<w lemma="commaídem" lemmaRef="http://www.dil.ie/11482" ana="verb"><abbr cert="high">m<g ref="g4">h</g></abbr>aoi<abbr cert="high">d<g ref="g4">h</g></abbr>u<abbr cert="high">m<g ref="g4">h</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="ocus" lemmaRef="http://www.dil.ie/33484" ana="conj"><abbr cert="high"><g ref="g2">agus</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="as-beir" lemmaRef="http://www.dil.ie/4383" ana="verb">ad<space type="scribal"/><abbr cert="high">b<g ref="g3">e</g></abbr>rt</w>
+							<space type="scribal"/>
+							<name type="personal"><w lemma="finn" lemmaRef="http://www.dil.ie/22134" ana="adj"><abbr cert="high">f<g ref="g23">iunn</g></abbr></w></name>
+							<space type="scribal"/>
+							<w lemma="in" lemmaRef="http://www.dil.ie/28194" ana="art">an</w>
+							<space type="scribal"/>
+							<w lemma="laíd" lemmaRef="http://www.dil.ie/29367" ana="noun"><abbr cert="high">l<g ref="g3">aoid</g></abbr><abbr cert="high"><g ref="g4">h</g></abbr></w>
+							<space type="scribal"/>
+							<w lemma="i" lemmaRef="http://www.dil.ie/26891" ana="prep, pron">a<abbr cert="high">n<g ref="g5">n</g></abbr></w>
+							<space type="scribal"/>
+							<pc>.</pc>
+							<space type="scribal"/>
+							<pc>-</pc>
 					</p>
+				</div>
+				<div n="1.14" type="verse" resp="Hand23" corresp="MS3.1.14">
+					<lg n="1" type="stanza" xml:id="MS3.1.14.1">
+						<l n="a" xml:id="MS3.1.14.1a">
+						</l>
+						<l n="b" xml:id="MS3.1.14.1b">
+						</l>
+						<l n="c" xml:id="MS3.1.14.1c">
+						</l>
+						<l n="d" xml:id="MS3.1.14.1d">
+						</l>
+					</lg>
+					<lg n="2" type="stanza" xml:id="MS3.1.14.2">
+						<l n="a" xml:id="MS3.1.14.2a">
+						</l>
+						<l n="b" xml:id="MS3.1.14.2b">
+						</l>
+						<l n="c" xml:id="MS3.1.14.2c">
+						</l>
+						<l n="d" xml:id="MS3.1.14.2d">
+						</l>
+					</lg>
+					<lg n="3" type="stanza" xml:id="MS3.1.14.3">
+						<l n="a" xml:id="MS3.1.14.3a">
+						</l>
+						<l n="b" xml:id="MS3.1.14.3b">
+						</l>
+						<l n="c" xml:id="MS3.1.14.3c">
+						</l>
+						<l n="d" xml:id="MS3.1.14.3d">
+						</l>
+					</lg>
 				</div>
 			</div>
 		</body>
