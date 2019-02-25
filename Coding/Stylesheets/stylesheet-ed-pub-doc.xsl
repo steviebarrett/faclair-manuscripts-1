@@ -2995,7 +2995,14 @@
 						<xsl:text/>
 					</xsl:when>
 					<xsl:when test="@ana = 'part' and ancestor::tei:w[contains(@ana, 'part, part')]">
-						<xsl:text/>
+						<xsl:choose>
+							<xsl:when test="following::tei:w[1][ancestor::tei:w and @ana = 'part']">
+								<xsl:text/>
+							</xsl:when>
+							<xsl:otherwise>
+								<xsl:text> </xsl:text>
+							</xsl:otherwise>
+						</xsl:choose>
 					</xsl:when>
 					<xsl:when test="@ana = 'conj' and ancestor::tei:w[contains(@ana, 'conj, pron')]">
 						<xsl:text/>
