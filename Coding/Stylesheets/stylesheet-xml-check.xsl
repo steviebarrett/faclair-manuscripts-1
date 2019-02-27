@@ -20,8 +20,60 @@
 				<xsl:call-template name="glyphRef"/>
 				<xsl:call-template name="wrongLemma"/>
 				<xsl:call-template name="wNoAttrs"/>
+				<xsl:call-template name="missingLineNumber"/>
 			</body>
 		</html>
+	</xsl:template>
+
+	<xsl:template name="missingLineNumber"> <!--  NOT WORKING -->
+		<h2>Broken line number sequence</h2>
+		<table>
+			<thead>
+				<tr>
+					<th width="120">MS line</th>
+					<th>Preceding line</th>
+				</tr>
+			</thead>
+			<tbody>
+				<xsl:for-each select="//tei:lb[@xml:id]">
+					<xsl:variable name="comPage" select="preceding::tei:pb[1]/@xml:id"/>
+					<xsl:choose>
+						<xsl:when test="preceding::tei:cb[preceding::tei:lb[1]/@xml:id = $comPage]">
+							<xsl:variable name="comCol"
+								select="preceding::tei:cb[1][preceding::tei:pb[1][@xml:id = $comPage]]/@xml:id"/>
+							<xsl:variable name="precLineNo"
+								select="number(preceding::tei:lb[1][@xml:id and preceding::tei:pb[1]/@xml:id = $comPage and preceding::tei:cb[1]/@xml:id = $comCol]/@n)"/>
+							<xsl:if test="number(@n) &gt; 1 and number(@n) &gt; number($precLineNo + 1)">
+								<tr>
+									<td>
+										<xsl:value-of select="@xml:id"/>
+									</td>
+									<td>
+										<xsl:value-of select="preceding::tei:lb[1][@xml:id]/@xml:id"
+										/>
+									</td>
+								</tr>
+							</xsl:if>
+						</xsl:when>
+						<xsl:otherwise>
+							<xsl:variable name="precLineNo"
+								select="number(preceding::tei:lb[1][@xml:id and preceding::tei:pb[1]/@xml:id = $comPage]/@n)"/>
+							<xsl:if test="number(@n) &gt; 1 and number(@n) &gt; number($precLineNo + 1)">
+								<tr>
+									<td>
+										<xsl:value-of select="@xml:id"/>
+									</td>
+									<td>
+										<xsl:value-of select="preceding::tei:lb[1][@xml:id]/@xml:id"
+										/>
+									</td>
+								</tr>
+							</xsl:if>
+						</xsl:otherwise>
+					</xsl:choose>
+				</xsl:for-each>
+			</tbody>
+		</table>
 	</xsl:template>
 
 	<xsl:template name="wNoAttrs">
@@ -33,9 +85,11 @@
 					<th>Word</th>
 				</tr>
 			</thead>
-			<xsl:if test="//tei:w[not(@lemma) and not(@lemmaRef) and not(@ana) and not(@xml:lang)]">
-				<tbody>
-					<xsl:for-each select="//tei:w[not(@lemma) and not(@lemmaRef) and not(@ana) and not(@xml:lang)]">
+			<tbody>
+				<xsl:if
+					test="//tei:w[not(@lemma) and not(@lemmaRef) and not(@ana) and not(@xml:lang)]">
+					<xsl:for-each
+						select="//tei:w[not(@lemma) and not(@lemmaRef) and not(@ana) and not(@xml:lang)]">
 						<tr>
 							<td>
 								<xsl:choose>
@@ -52,8 +106,8 @@
 							</td>
 						</tr>
 					</xsl:for-each>
-				</tbody>
-			</xsl:if>
+				</xsl:if>
+			</tbody>
 		</table>
 	</xsl:template>
 
