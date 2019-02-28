@@ -16,15 +16,79 @@
 					margin-right: 0px;
 				}</style>
 			<body>
+				<xsl:call-template name="strayChars"/>
 				<xsl:call-template name="abbrCert"/>
 				<xsl:call-template name="glyphRef"/>
 				<xsl:call-template name="wrongLemma"/>
 				<xsl:call-template name="wNoAttrs"/>
 				<xsl:call-template name="wBlankAttr"/>
+				<xsl:call-template name="wNoText"/>
 				<xsl:call-template name="unclearBlankAttr"/>
 				<!-- <xsl:call-template name="missingLineNumber"/> -->
 			</body>
 		</html>
+	</xsl:template>
+	
+	<xsl:template name="strayChars">
+		<h2>&lt;p&gt;/&lt;lg&gt;/&lt;l&gt; elements with direct text node children</h2>
+		<table>
+			<thead>
+				<tr>
+					<th width="120">MS line</th>
+				</tr>
+			</thead>
+			<tbody>
+				<xsl:if test="//tei:p/text() or //tei:lg/text() or //tei:l/text()">
+					<xsl:for-each select="//tei:p[child::text()]">
+						<tr>
+							<td>
+								<xsl:choose>
+									<xsl:when test="name() = 'p'">
+										<xsl:value-of select="parent::tei:div/@corresp"/>
+									</xsl:when>
+								</xsl:choose>
+							</td>
+						</tr>
+					</xsl:for-each>
+					<xsl:for-each select="//tei:lg[text()]|//tei:l[text()]">
+						<tr>
+							<td>
+								<xsl:value-of select="@xml:id"/>
+							</td>
+						</tr>
+					</xsl:for-each>
+				</xsl:if>
+			</tbody>
+		</table>
+	</xsl:template>
+	
+	<xsl:template name="wNoText">
+		<h2>&lt;w&gt; containing no text</h2>
+		<table>
+			<thead>
+				<tr>
+					<th width="120">MS line</th>
+				</tr>
+			</thead>
+			<tbody>
+				<xsl:if test="//tei:w[not(descendant::tei:w)]/string(self::*) = ''">
+					<xsl:for-each select="//tei:w[not(descendant::tei:w) and string(self::*) = '']">
+						<tr>
+							<td>
+								<xsl:choose>
+									<xsl:when test="preceding::tei:lb[1]/@sameAs">
+										<xsl:value-of select="preceding::tei:lb[1]/@sameAs"/>
+									</xsl:when>
+									<xsl:otherwise>
+										<xsl:value-of select="preceding::tei:lb[1]/@xml:id"/>
+									</xsl:otherwise>
+								</xsl:choose>
+							</td>
+						</tr>
+					</xsl:for-each>
+				</xsl:if>
+			</tbody>
+		</table>
 	</xsl:template>
 
 	<xsl:template name="unclearBlankAttr">
