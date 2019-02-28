@@ -135,6 +135,23 @@
 										</xsl:if>
 									</xsl:for-each>
 								</xsl:if>
+								<xsl:variable name="firstForm"
+									select="//tei:w[not(@type = 'data') and @lemmaRef = $wordID and not(@lemmaRef = preceding::tei:w[not(descendant::tei:w)]/@lemmaRef)]/string(self::*)"/>
+								<xsl:if
+									test="//tei:w[not(@type = 'data') and @lemmaRef = $wordID and not(string(self::*) = $firstForm)]">
+									<span>
+										<xsl:attribute name="type">altForm</xsl:attribute>
+										<xsl:value-of select="$firstForm"/>
+									</span>
+									<xsl:for-each
+										select="//tei:w[not(@type = 'data') and @lemmaRef = $wordID and not(string(self::*) = preceding::tei:w[not(@type = 'data') and @lemmaRef = $wordID]/string(self::*)) and not(string(self::*) = $firstForm)]">
+										<xsl:variable name="thisForm" select="string(self::*)"/>
+										<span>
+											<xsl:attribute name="type">altForm</xsl:attribute>
+											<xsl:value-of select="$thisForm"/>
+										</span>
+									</xsl:for-each>
+								</xsl:if>
 							</w>
 							<xsl:copy-of
 								select="//tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree[@corresp = $wordID]/tei:gramGrp"/>
