@@ -20,12 +20,49 @@
 				<xsl:call-template name="glyphRef"/>
 				<xsl:call-template name="wrongLemma"/>
 				<xsl:call-template name="wNoAttrs"/>
-				<xsl:call-template name="missingLineNumber"/>
+				<xsl:call-template name="wBlankAttr"/>
+				<!-- <xsl:call-template name="missingLineNumber"/> -->
 			</body>
 		</html>
 	</xsl:template>
 
-	<xsl:template name="missingLineNumber"> <!--  NOT WORKING -->
+	<xsl:template name="wBlankAttr">
+		<h2>&lt;w&gt; with blank attribute(s)</h2>
+		<table>
+			<thead>
+				<tr>
+					<th width="120">MS line</th>
+					<th>Word</th>
+				</tr>
+			</thead>
+			<tbody>
+				<xsl:if
+					test="//tei:w[@lemma = '' or @lemmaRef = '' or @ana = '' or @xml:lang = '' or @source = '']">
+					<xsl:for-each
+						select="//tei:w[not(@lemma) and not(@lemmaRef) and not(@ana) and not(@xml:lang)]">
+						<tr>
+							<td>
+								<xsl:choose>
+									<xsl:when test="preceding::tei:lb[1]/@sameAs">
+										<xsl:value-of select="preceding::tei:lb[1]/@sameAs"/>
+									</xsl:when>
+									<xsl:otherwise>
+										<xsl:value-of select="preceding::tei:lb[1]/@xml:id"/>
+									</xsl:otherwise>
+								</xsl:choose>
+							</td>
+							<td>
+								<xsl:value-of select="string(self::*)"/>
+							</td>
+						</tr>
+					</xsl:for-each>
+				</xsl:if>
+			</tbody>
+		</table>
+	</xsl:template>
+
+	<xsl:template name="missingLineNumber">
+		<!--  NOT WORKING -->
 		<h2>Broken line number sequence</h2>
 		<table>
 			<thead>
@@ -43,7 +80,8 @@
 								select="preceding::tei:cb[1][preceding::tei:pb[1][@xml:id = $comPage]]/@xml:id"/>
 							<xsl:variable name="precLineNo"
 								select="number(preceding::tei:lb[1][@xml:id and preceding::tei:pb[1]/@xml:id = $comPage and preceding::tei:cb[1]/@xml:id = $comCol]/@n)"/>
-							<xsl:if test="number(@n) &gt; 1 and number(@n) &gt; number($precLineNo + 1)">
+							<xsl:if
+								test="number(@n) &gt; 1 and number(@n) &gt; number($precLineNo + 1)">
 								<tr>
 									<td>
 										<xsl:value-of select="@xml:id"/>
@@ -58,7 +96,8 @@
 						<xsl:otherwise>
 							<xsl:variable name="precLineNo"
 								select="number(preceding::tei:lb[1][@xml:id and preceding::tei:pb[1]/@xml:id = $comPage]/@n)"/>
-							<xsl:if test="number(@n) &gt; 1 and number(@n) &gt; number($precLineNo + 1)">
+							<xsl:if
+								test="number(@n) &gt; 1 and number(@n) &gt; number($precLineNo + 1)">
 								<tr>
 									<td>
 										<xsl:value-of select="@xml:id"/>
