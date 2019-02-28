@@ -21,9 +21,69 @@
 				<xsl:call-template name="wrongLemma"/>
 				<xsl:call-template name="wNoAttrs"/>
 				<xsl:call-template name="wBlankAttr"/>
+				<xsl:call-template name="unclearBlankAttr"/>
 				<!-- <xsl:call-template name="missingLineNumber"/> -->
 			</body>
 		</html>
+	</xsl:template>
+
+	<xsl:template name="unclearBlankAttr">
+		<h2>&lt;unclear&gt; with blank attribute(s)</h2>
+		<table>
+			<thead>
+				<tr>
+					<th width="120">MS line</th>
+					<th>Word</th>
+				</tr>
+			</thead>
+			<tbody>
+				<xsl:if
+					test="//tei:unclear[@reason and string(@reason) = '' or @cert and string(@cert) = '' or @resp and string(@resp) = '']">
+					<xsl:for-each
+						select="//tei:unclear[@reason and string(@reason) = '' or @cert and string(@cert) = '' or @resp and string(@resp) = '']">
+						<tr>
+							<td>
+								<xsl:choose>
+									<xsl:when test="preceding::tei:lb[1]/@sameAs">
+										<xsl:value-of select="preceding::tei:lb[1]/@sameAs"/>
+									</xsl:when>
+									<xsl:otherwise>
+										<xsl:value-of select="preceding::tei:lb[1]/@xml:id"/>
+									</xsl:otherwise>
+								</xsl:choose>
+							</td>
+							<td>
+								<xsl:choose>
+									<xsl:when test="ancestor::tei:w[not(descendant::tei:w)]">
+										<xsl:variable name="wordID"
+											select="count(ancestor::tei:w[not(descendant::tei:w)]/preceding::*)"/>
+										<xsl:variable name="abbrID"
+											select="count(preceding::tei:abbr[count(ancestor::tei:w[not(descendant::tei:w)]/preceding::*) = $wordID])"/>
+										<xsl:variable name="glyphID">
+											<xsl:text>xxx</xsl:text>
+										</xsl:variable>
+										<xsl:apply-templates select="tei:w[not(descendant::tei:w)]">
+											<xsl:with-param name="abbrID">
+												<xsl:value-of select="$abbrID"/>
+											</xsl:with-param>
+											<xsl:with-param name="wordID">
+												<xsl:value-of select="$wordID"/>
+											</xsl:with-param>
+											<xsl:with-param name="glyphID">
+												<xsl:value-of select="$glyphID"/>
+											</xsl:with-param>
+										</xsl:apply-templates>
+									</xsl:when>
+									<xsl:otherwise>
+										<xsl:apply-templates/>
+									</xsl:otherwise>
+								</xsl:choose>
+							</td>
+						</tr>
+					</xsl:for-each>
+				</xsl:if>
+			</tbody>
+		</table>
 	</xsl:template>
 
 	<xsl:template name="wBlankAttr">
@@ -37,9 +97,9 @@
 			</thead>
 			<tbody>
 				<xsl:if
-					test="//tei:w[@lemma = '' or @lemmaRef = '' or @ana = '' or @xml:lang = '' or @source = '']">
+					test="//tei:w[@lemma and string(@lemma) = '' or @lemmaRef and string(@lemmaRef) = '' or @ana and string(@ana) = '' or @xml:lang and string(@xml:lang) = '' or @source and string(@source) = '']">
 					<xsl:for-each
-						select="//tei:w[not(@lemma) and not(@lemmaRef) and not(@ana) and not(@xml:lang)]">
+						select="//tei:w[@lemma and string(@lemma) = '' or @lemmaRef and string(@lemmaRef) = '' or @ana and string(@ana) = '' or @xml:lang and string(@xml:lang) = '' or @source and string(@source) = '']">
 						<tr>
 							<td>
 								<xsl:choose>
@@ -370,6 +430,14 @@
 		</xsl:choose>
 	</xsl:template>
 
+	<xsl:template match="tei:space">
+		<xsl:text> </xsl:text>
+	</xsl:template>
 
+	<xsl:template match="tei:unclear">
+		<xsl:text>{</xsl:text>
+		<xsl:apply-templates/>
+		<xsl:text>}</xsl:text>
+	</xsl:template>
 
 </xsl:stylesheet>
