@@ -31,12 +31,12 @@ $(function() {
     $(this).css('background-color', 'yellow');
     $('#headword').text(clean($(this).text()));
     $('#syntaxInfo').html(makeDescription($(this),false));
-    
     if ($(this).find('.expansion').length>0) {
       html = 'It contains the following scribal expansions:<ul>';
       $(this).find('.expansion').each(function() {
         html += '<li>';
         var xmlId = $(this).attr('data-glyphref');  
+        alert(xmlId);
         var id = $(this).attr('id');    //!! this is undefined
         $.getJSON('/ajax/manuscripts.php?action=getGlyph&xmlId=' + xmlId, function (g) { // this URL is broken
           txt = '<a href="http://' + g.corresp + '" target="_new" data-src="' + id + '">' + g.name;
@@ -70,13 +70,13 @@ $(function() {
     if ($(span).attr('data-pos')) {
       var poss = $(span).attr('data-pos').split(', ');
       for (var i = 0; i < poss.length; i++) { 
-        html = html + '<li>is a ' + eval('pos_' + poss[i]) + '</li>';
+        html = html + '<li>is a ' + poss[i] + '</li>';
       }
     }
     else if ($(span).hasClass('name') && $(span).children('.word').length==1 && $(span).children('.word').children('.word').length==0) {
       var poss = $(span).children('.word').attr('data-pos').split(', ');
       for (var i = 0; i < poss.length; i++) { 
-        html = html + '<li>is a ' + eval('pos_' + poss[i]) + '</li>';
+        html = html + '<li>is a ' + poss[i] + '</li>';
       }
     }
     if ($(span).attr('data-headword')) {

@@ -47,6 +47,7 @@
           <ul id="syntaxInfo"></ul>
           <p id="expansionInfo"></p>
         </div>
+        <!--
         <script>
           <xsl:for-each select="document('../../Transcribing/corpus.xml')/tei:teiCorpus/tei:teiHeader/tei:encodingDesc/tei:charDecl/tei:glyph">
             <xsl:text>var glyph_</xsl:text>
@@ -68,6 +69,7 @@
             <xsl:text>';&#10;</xsl:text>            
           </xsl:for-each>
         </script>
+        -->
       </body>
     </html>
   </xsl:template>
