@@ -13,8 +13,7 @@
 					$('tbody:not(:has(tr))').html('<tr><td>None :-)</td></tr>');
 					});
 				</script>
-				<title><xsl:value-of select="//tei:TEI/@xml:id"/>_error _report_<xsl:value-of
-						select="current-dateTime()"/></title>
+				<title><xsl:value-of select="//tei:TEI/@xml:id"/>_error _report_<xsl:call-template name="date"/></title>
 			</head>
 			<style>
 				span {
@@ -91,7 +90,7 @@
 			</thead>
 			<tbody class="resultsBdy">
 				<xsl:choose>
-					<xsl:when test="//tei:w[not(descendant::tei:w)]/string(self::*) = ''">
+					<xsl:when test="string(//tei:w[not(descendant::tei:w)]/self::*) = ''">
 						<xsl:for-each
 							select="//tei:w[not(descendant::tei:w) and string(self::*) = '']">
 							<tr>
@@ -566,6 +565,10 @@
 		<xsl:text>{</xsl:text>
 		<xsl:apply-templates/>
 		<xsl:text>}</xsl:text>
+	</xsl:template>
+	
+	<xsl:template name="date">
+		<xsl:value-of select="current-dateTime()"/>
 	</xsl:template>
 
 </xsl:stylesheet>
