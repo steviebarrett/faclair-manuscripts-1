@@ -90,7 +90,7 @@
 			</thead>
 			<tbody class="resultsBdy">
 				<xsl:choose>
-					<xsl:when test="string(//tei:w[not(descendant::tei:w)]/self::*) = ''">
+					<xsl:when test="//tei:w[not(descendant::tei:w) and string(self::*) = '']">
 						<xsl:for-each
 							select="//tei:w[not(descendant::tei:w) and string(self::*) = '']">
 							<tr>
@@ -542,7 +542,7 @@
 			<xsl:otherwise>
 				<xsl:choose>
 					<xsl:when
-						test="count(preceding::tei:g[count(ancestor::tei:w[not(descendant::tei:w)]/preceding::*) = $wordID]) = $glyphID">
+						test="string(count(preceding::tei:g[string(count(ancestor::tei:w[not(descendant::tei:w)]/preceding::*)) = string($wordID)])) = string($glyphID)">
 						<span style="background-color:#ff5c33;font-style:italic;">
 							<xsl:apply-templates/>
 						</span>
