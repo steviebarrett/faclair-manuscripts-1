@@ -2,118 +2,142 @@
 <?xml-model href="../Schemas/fnag_mss2.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 <?xml-stylesheet type="text/xsl" href="../../Coding/Stylesheets/basic-info.xsl"?>
 <TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="T11">
-	<teiHeader>
-		<fileDesc>
-			<titleStmt>
-				<title>Transcription 11: The MacLeod Fosterage Contract</title>
-				<respStmt corresp="EPT">
-					<name>Eystein P. Thanisch</name>
-					<resp>Transcriber</resp>
-					<resp>Editor</resp>
-				</respStmt>
-				<respStmt corresp="WGI">
-					<name>William Gillies</name>
-					<resp>Overseer</resp>
-				</respStmt>
-			</titleStmt>
-			<extent/>
-			<publicationStmt>
-				<authority sameAs="authority"/>
-				<availability status="restricted">
-					<p>For internal use by the Faclair na Gàidhlig/DASG projects</p>
-				</availability>
-				<idno>T10</idno>
-			</publicationStmt>
-			<notesStmt>
-				<note>
-					<p/>
-				</note>
-			</notesStmt>
-			<sourceDesc>
-				<msDesc>
-					<msIdentifier sameAs="MS10">
-						<settlement>Edinburgh</settlement>
-						<repository>National Archives of Scotland</repository>
-						<idno type="shelfmark">RH.9/17/35</idno>
-						<msName>The MacLeod Fosterage Contract</msName>
-					</msIdentifier>
-					<msContents>
-						<summary/>
-						<msItem xml:id="MS11.1" resp="Hand31">
-							<locus>fol.1<hi rend="sup">r</hi>1–29</locus>
-							<title>The MacLeod Fosterage Contract</title>
-							<incipit/>
-							<explicit/>
-							<filiation/>
-							<textLang mainLang="ghc">
-								<note/>
-							</textLang>
-						</msItem>
-					</msContents>
-					<physDesc>
-						<p/>
-						<objectDesc>
-							<supportDesc>
-								<support/>
-								<foliation/>
-								<condition/>
-							</supportDesc>
-							<layoutDesc>
-								<p/>
-							</layoutDesc>
-						</objectDesc>
-					</physDesc>
-					<history>
-						<provenance/>
-					</history>
-				</msDesc>
-			</sourceDesc>
-		</fileDesc>
-		<encodingDesc>
-			<metDecl>
-				<p/>
-			</metDecl>
-			<refsDecl>
-				<p/>
-			</refsDecl>
-		</encodingDesc>
-		<profileDesc>
-			<handNotes>
-				<handNote sameAs="Hand31"/>
-			</handNotes>
-			<textClass>
-				<keywords>
-					<term/>
-				</keywords>
-			</textClass>
-		</profileDesc>
-		<revisionDesc>
-			<change when="2019-04-02" resp="EPT">File created</change>
-		</revisionDesc>
-	</teiHeader>
-	<text>
-		<body>
-			<div n="1" type="prose" corresp="MS11.1" resp="Hand31">
-				<p>
-				    <pb n="1" xml:id="MS11.p1"/>
-				    <lb n="1" xml:id="MS11.p1.1"/>
-				    <w lemma="oc" lemmaRef="http://www.dil.ie/33397" ana="prep">Ag</w>
-				    <space type="scribal"/>
-				    <w lemma="so" lemmaRef="http://www.dil.ie/38191" ana="dpron">so</w>
-				    <space type="scribal"/>
-				    <w lemma="in" lemmaRef="http://www.dil.ie/28194" ana="art">an</w>
-				    <space type="scribal"/>
-				    <w lemma="acht" lemmaRef="http://www.dil.ie/202" ana="noun">ta<abbr cert="high"><g ref="g10">cht</g></abbr></w>
-				    <space type="scribal"/>
-				    <w lemma="ocus" lemmaRef="http://www.dil.ie/33484" ana="conj"><abbr cert="high"><g ref="g2">agus</g></abbr></w>
-				    <space type="scribal"/>
-				    <w lemma="in" lemmaRef="http://www.dil.ie/28194" ana="art">an</w>
-				    <space type="scribal"/>
-				    <w lemma="cengal" lemmaRef="http://www.dil.ie/8609" ana="noun">cengal</w>
-				</p>
-			</div>
-		</body>
-	</text>
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Transcription 11: The MacLeod Fosterage Contract</title>
+                <respStmt corresp="EPT">
+                    <name>Eystein P. Thanisch</name>
+                    <resp>Transcriber</resp>
+                    <resp>Editor</resp>
+                </respStmt>
+                <respStmt corresp="WGI">
+                    <name>William Gillies</name>
+                    <resp>Overseer</resp>
+                </respStmt>
+            </titleStmt>
+            <extent/>
+            <publicationStmt>
+                <authority sameAs="authority"/>
+                <availability status="restricted">
+                    <p>For internal use by the Faclair na Gàidhlig/DASG projects</p>
+                </availability>
+                <idno>T10</idno>
+            </publicationStmt>
+            <notesStmt>
+                <note>
+                    <p/>
+                </note>
+            </notesStmt>
+            <sourceDesc>
+                <msDesc>
+                    <msIdentifier sameAs="MS10">
+                        <settlement>Edinburgh</settlement>
+                        <repository>National Archives of Scotland</repository>
+                        <idno type="shelfmark">RH.9/17/35</idno>
+                        <msName>The MacLeod Fosterage Contract</msName>
+                    </msIdentifier>
+                    <msContents>
+                        <summary/>
+                        <msItem xml:id="MS11.1" resp="Hand31">
+                            <locus>fol.1<hi rend="sup">r</hi>1–29</locus>
+                            <title>The MacLeod Fosterage Contract</title>
+                            <incipit/>
+                            <explicit/>
+                            <filiation/>
+                            <textLang mainLang="ghc">
+                                <note/>
+                            </textLang>
+                        </msItem>
+                    </msContents>
+                    <physDesc>
+                        <p/>
+                        <objectDesc>
+                            <supportDesc>
+                                <support/>
+                                <foliation/>
+                                <condition/>
+                            </supportDesc>
+                            <layoutDesc>
+                                <p/>
+                            </layoutDesc>
+                        </objectDesc>
+                    </physDesc>
+                    <history>
+                        <provenance/>
+                    </history>
+                </msDesc>
+            </sourceDesc>
+        </fileDesc>
+        <encodingDesc>
+            <metDecl>
+                <p/>
+            </metDecl>
+            <refsDecl>
+                <p/>
+            </refsDecl>
+        </encodingDesc>
+        <profileDesc>
+            <handNotes>
+                <handNote sameAs="Hand31"/>
+            </handNotes>
+            <textClass>
+                <keywords>
+                    <term/>
+                </keywords>
+            </textClass>
+        </profileDesc>
+        <revisionDesc>
+            <change when="2019-04-02" resp="EPT">File created</change>
+        </revisionDesc>
+    </teiHeader>
+    <text>
+        <body>
+            <div n="1" type="prose" corresp="MS11.1" resp="Hand31">
+                <p>
+                    <pb n="1" xml:id="MS11.p1"/>
+                    <lb n="1" xml:id="MS11.p1.1"/>
+                    <w lemma="oc" lemmaRef="http://www.dil.ie/33397" ana="prep">Ag</w>
+                    <space type="scribal"/>
+                    <w lemma="so" lemmaRef="http://www.dil.ie/38191" ana="dpron">so</w>
+                    <space type="scribal"/>
+                    <w lemma="in" lemmaRef="http://www.dil.ie/28194" ana="art">an</w>
+                    <space type="scribal"/>
+                    <w lemma="acht" lemmaRef="http://www.dil.ie/202" ana="noun">ta<abbr cert="high"
+                                ><g ref="g10">cht</g></abbr></w>
+                    <space type="scribal"/>
+                    <w lemma="ocus" lemmaRef="http://www.dil.ie/33484" ana="conj"><abbr cert="high"
+                                ><g ref="g2">agus</g></abbr></w>
+                    <space type="scribal"/>
+                    <w lemma="in" lemmaRef="http://www.dil.ie/28194" ana="art">an</w>
+                    <space type="scribal"/>
+                    <w lemma="cengal" lemmaRef="http://www.dil.ie/8609" ana="noun">cengal</w>
+                    <space type="scribal"/>
+                    <w lemma="ar" lemmaRef="http://www.dil.ie/3902" ana="prep">ar</w>
+                    <space type="scribal"/>
+                    <w lemma="a" lemmaRef="http://www.dil.ie/5" ana="pron">a</w>
+                    <w lemma="attá" lemmaRef="http://www.dil.ie/4927" ana="verb">ffuil</w>
+                    <space type="scribal"/>
+                    <name type="personal"><w lemma="mac" lemmaRef="http://www.dil.ie/31166"
+                            ana="noun"><abbr cert="high">m<g ref="g3">a</g>c</abbr></w><space
+                            type="scribal"/><name type="personal"><w ana="noun"
+                        >leoid</w></name></name>
+                    <space type="scribal"/>
+                    <w lemma="oc" lemmaRef="http://www.dil.ie/33397" ana="prep">ag</w>
+                    <space type="scribal"/>
+                    <w lemma="tabairt" lemmaRef="http://www.dil.ie/39363" ana="vnoun">ta<abbr
+                            cert="high">b<g ref="g4">h</g></abbr>airt</w>
+                    <space type="scribal"/>
+                    <w lemma="a" lemmaRef="http://www.dil.ie/3" ana="poss">a</w>
+                    <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun"><abbr cert="high"
+                                >m<g ref="g12">ic</g></abbr></w>
+                    <space type="scribal"/>
+                    <w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w>
+                    <space type="scribal"/>
+                    <name type="personal"><w ana="noun">to<abbr cert="high">r<g ref="g1"
+                                >m</g></abbr>oid</w></name>
+                </p>
+            </div>
+        </body>
+    </text>
 </TEI>
-
-
