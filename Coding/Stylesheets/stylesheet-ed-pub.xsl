@@ -1949,6 +1949,10 @@
 	<xsl:template match="tei:seg[@type = 'xp']">
 		<xsl:apply-templates/>
 	</xsl:template>
+	
+	<xsl:template match="tei:seg[@type= 'signature']">
+		<xsl:apply-templates/>
+	</xsl:template>
 
 	<xsl:template match="tei:quote">
 		<br/>
