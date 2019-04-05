@@ -594,6 +594,10 @@
 		<xsl:apply-templates mode="dip"/>
 	</xsl:template>
 
+	<xsl:template mode="dip" match="tei:seg[@type= 'signature']">
+		<xsl:apply-templates/>
+	</xsl:template>
+
 	<xsl:template mode="dip" name="word" match="tei:w[not(descendant::tei:w)]">
 		<xsl:param name="compWordID"/>
 		<xsl:variable name="wordId">
