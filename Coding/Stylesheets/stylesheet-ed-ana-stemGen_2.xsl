@@ -17,6 +17,9 @@
                     <thead>
                         <tr>
                             <th> Trans. </th>
+                            <th> page/fol. </th>
+                            <th> col. </th>
+                            <th> line </th>
                             <th> Ref. </th>
                             <th> Form </th>
                             <th> POS </th>
@@ -47,6 +50,15 @@
         <tr>
             <td>
                 <xsl:value-of select="ancestor::tei:TEI/@xml:id"/>
+            </td>
+            <td>
+                <xsl:value-of select="preceding::tei:pb[1]/@n"/>
+            </td>
+            <td>
+                <xsl:value-of select="preceding::tei:cb[1][ancestor::tei:div/@corresp = $comDiv]/@n"/>
+            </td>
+            <td>
+                <xsl:value-of select="preceding::tei:lb[1]/@n"/>
             </td>
             <td>
                 <xsl:choose>
