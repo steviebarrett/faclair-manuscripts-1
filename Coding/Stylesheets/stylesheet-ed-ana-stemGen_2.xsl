@@ -55,7 +55,8 @@
                 <xsl:value-of select="preceding::tei:pb[1]/@n"/>
             </td>
             <td>
-                <xsl:value-of select="preceding::tei:cb[1][ancestor::tei:div/@corresp = $comDiv]/@n"/>
+                <xsl:value-of select="preceding::tei:cb[1][ancestor::tei:div/@corresp = $comDiv]/@n"
+                />
             </td>
             <td>
                 <xsl:value-of select="preceding::tei:lb[1]/@n"/>
@@ -228,9 +229,9 @@
         <xsl:choose>
             <xsl:when test="ancestor::tei:w">
                 <xsl:if test="ancestor::tei:w/preceding::tei:w[1]/ancestor::*[@* = $comSection]">
-                    <span style="background-color; grey;">
+                    <span>
                         <xsl:apply-templates
-                            select="ancestor::tei:w/preceding::tei:w[not(ancestor::tei:w) and ancestor::*[@* = $comSection]][1]"
+                            select="ancestor::tei:w/preceding::tei:w[not(ancestor::tei:w) and ancestor::*[@* = $comSection] and not(ancestor::tei:choice)][1]"
                         />
                     </span>
                     <xsl:text> </xsl:text>
@@ -238,9 +239,10 @@
             </xsl:when>
             <xsl:otherwise>
                 <xsl:if test="preceding::tei:w[1]/ancestor::*[@* = $comSection]">
-                    <span style="background-color; grey;">
+                    <span>
                         <xsl:apply-templates
-                            select="preceding::tei:w[1][ancestor::*[@* = $comSection]]"/>
+                            select="preceding::tei:w[1][ancestor::*[@* = $comSection] and not(ancestor::tei:choice)]"
+                        />
                     </span>
                     <xsl:text> </xsl:text>
                 </xsl:if>
@@ -281,9 +283,9 @@
         <xsl:choose>
             <xsl:when test="ancestor::tei:w">
                 <xsl:if test="ancestor::tei:w/following::tei:w[1]/ancestor::*[@* = $comSection]">
-                    <span style="background-color; grey;">
+                    <span>
                         <xsl:apply-templates
-                            select="ancestor::tei:w/following::tei:w[not(ancestor::tei:w) and ancestor::*[@* = $comSection]][1]"
+                            select="ancestor::tei:w/following::tei:w[not(ancestor::tei:w) and ancestor::*[@* = $comSection] and not(ancestor::tei:choice)][1]"
                         />
                     </span>
                     <xsl:text> </xsl:text>
@@ -291,9 +293,10 @@
             </xsl:when>
             <xsl:otherwise>
                 <xsl:if test="following::tei:w[1]/ancestor::*[@* = $comSection]">
-                    <span style="background-color; grey;">
+                    <span>
                         <xsl:apply-templates
-                            select="following::tei:w[1][ancestor::*[@* = $comSection]]"/>
+                            select="following::tei:w[1][ancestor::*[@* = $comSection] and not(ancestor::tei:choice)]"
+                        />
                     </span>
                     <xsl:text> </xsl:text>
                 </xsl:if>
