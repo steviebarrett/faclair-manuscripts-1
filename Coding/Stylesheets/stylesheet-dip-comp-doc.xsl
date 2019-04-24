@@ -594,6 +594,10 @@
 		<xsl:apply-templates mode="dip"/>
 	</xsl:template>
 
+	<xsl:template mode="dip" match="tei:seg[@type= 'signature']">
+		<xsl:apply-templates/>
+	</xsl:template>
+
 	<xsl:template mode="dip" name="word" match="tei:w[not(descendant::tei:w)]">
 		<xsl:param name="compWordID"/>
 		<xsl:variable name="wordId">
@@ -1646,7 +1650,8 @@
 		<xsl:choose>
 			<xsl:when test="@reason = 'damage'">
 				<xsl:variable name="damageLength" select="string-length(string(self::*))"/>
-				<a id="{generate-id()}" title="c. {$damageLength} chars extent, loss of writing surface" href="#"
+				<a id="{generate-id()}"
+					title="c. {$damageLength} chars extent, loss of writing surface" href="#"
 					onclick="return false;" style="text-decoration:none; color:#000000">
 					<xsl:if test="not(ancestor::tei:del)">
 						<xsl:attribute name="msLine">
@@ -2356,7 +2361,14 @@
 	</xsl:template>
 
 	<xsl:template mode="dip" match="tei:head">
-		<xsl:apply-templates mode="dip"/>
+		<xsl:choose>
+			<xsl:when test="@type = 'lgHead'">
+				<xsl:text/>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:apply-templates mode="dip"/>
+			</xsl:otherwise>
+		</xsl:choose>
 	</xsl:template>
 
 </xsl:stylesheet>

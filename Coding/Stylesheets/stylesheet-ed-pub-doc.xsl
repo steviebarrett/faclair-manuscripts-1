@@ -1649,6 +1649,7 @@
 				</p>
 			</xsl:when>
 			<xsl:otherwise>
+				<xsl:if test="tei:head[@type = 'lgHead']"><h3><xsl:apply-templates select="tei:head[@type = 'lgHead']/tei:title"/></h3></xsl:if>
 				<p style="margin-left:30px">
 					<xsl:if test="@n">
 						<b align="left">
@@ -1811,6 +1812,10 @@
 		<xsl:apply-templates/>
 	</xsl:template>
 
+	<xsl:template match="tei:seg[@type= 'signature']">
+		<xsl:apply-templates/>
+	</xsl:template>
+	
 	<xsl:template match="tei:quote">
 		<br/>
 		<br/>
