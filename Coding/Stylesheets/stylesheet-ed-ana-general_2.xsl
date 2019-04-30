@@ -69,13 +69,13 @@
 						<xsl:value-of select="substring(@lemmaRef, 53)"/>
 					</xsl:when>
 					<xsl:when test="contains(@lemmaRef, 'dasg.ac.uk')">
-						<xsl:value-of select="substring(@lemmaRef, 37)"/>
+						<xsl:value-of select="substring(@lemmaRef, 38)"/>
 					</xsl:when>
 					<xsl:when test="contains(@lemmaRef, 'www.teanglann.ie')">
 						<xsl:value-of select="substring(@lemmaRef, 33)"/>
 					</xsl:when>
 					<xsl:when test="contains(@lemmaRef, 'www.dsl.ac.uk')">
-						<xsl:value-of select="substring(@lemmaRef, 33)"/>
+						<xsl:value-of select="substring(@lemmaRef, 32)"/>
 					</xsl:when>
 					<xsl:when test="contains(@lemmaRef, 'www.logainm.ie')">
 						<xsl:value-of select="substring(@lemmaRef, 27)"/>
