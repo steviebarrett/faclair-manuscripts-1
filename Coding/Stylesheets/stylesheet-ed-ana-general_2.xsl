@@ -92,7 +92,7 @@
 						<xsl:value-of select="substring(@lemmaRef, 77)"/>
 					</xsl:when>
 					<xsl:when test="contains(@lemmaRef, 'www.oed.com')">
-						<xsl:value-of select="substring(@lemmaRef, 32)"/>
+						<xsl:value-of select="substring(@lemmaRef, 31)"/>
 					</xsl:when>
 					<xsl:otherwise>
 						<xsl:text>none</xsl:text>
