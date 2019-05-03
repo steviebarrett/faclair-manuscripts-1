@@ -2,101 +2,238 @@
 <?xml-model href="../Schemas/fnag_mss2.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 <?xml-stylesheet type="text/xsl" href="../../Coding/Stylesheets/basic-info.xsl"?>
 <TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="T10">
-	<teiHeader>
-		<fileDesc>
-			<titleStmt>
-				<title>Transcription 10: The Islay Charter</title>
-				<respStmt corresp="EPT">
-					<name>Eystein P. Thanisch</name>
-					<resp>Transcriber</resp>
-					<resp>Editor</resp>
-				</respStmt>
-				<respStmt corresp="WGI">
-					<name>William Gillies</name>
-					<resp>Overseer</resp>
-				</respStmt>
-			</titleStmt>
-			<extent/>
-			<publicationStmt>
-				<authority sameAs="authority"/>
-				<availability status="restricted">
-					<p>For internal use by the Faclair na Gàidhlig/DASG projects</p>
-				</availability>
-				<idno>T10</idno>
-			</publicationStmt>
-			<notesStmt>
-				<note>
-					<p/>
-				</note>
-			</notesStmt>
-			<sourceDesc>
-				<msDesc>
-					<msIdentifier sameAs="MS10">
-						<settlement>Edinburgh</settlement>
-						<repository>NLS</repository>
-					    <idno type="shelfmark">Adv. MS. 72.1.27</idno>
-					</msIdentifier>
-					<msContents>
-						<summary/>
-						<msItem n="2" xml:id="MS18.2" resp="Hand36">
-						    <locus>fol. 2<hi rend="sup">vb</hi>1–3<hi rend="sup">ra</hi>20</locus>
-							<title>On Music</title>
-							<incipit/>
-							<explicit/>
-							<filiation/>
-							<textLang mainLang="ghc">
-								<note/>
-							</textLang>
-						</msItem>
-					</msContents>
-					<physDesc>
-						<p/>
-						<objectDesc>
-							<supportDesc>
-								<support/>
-								<foliation/>
-								<condition/>
-							</supportDesc>
-							<layoutDesc>
-								<p/>
-							</layoutDesc>
-						</objectDesc>
-					</physDesc>
-					<history>
-						<provenance/>
-					</history>
-				</msDesc>
-			</sourceDesc>
-		</fileDesc>
-		<encodingDesc>
-			<metDecl>
-				<p/>
-			</metDecl>
-			<refsDecl>
-				<p/>
-			</refsDecl>
-		</encodingDesc>
-		<profileDesc>
-			<handNotes>
-				<handNote sameAs="Hand36"/>
-			</handNotes>
-			<textClass>
-				<keywords>
-					<term/>
-				</keywords>
-			</textClass>
-		</profileDesc>
-		<revisionDesc>
-			<change when="2019-05-03" resp="EPT">File created</change>
-		</revisionDesc>
-	</teiHeader>
-	<text>
-		<body>
-			<div n="2" type="divprose" corresp="MS18.2" resp="Hand36">
-				
-			</div>
-		</body>
-	</text>
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Transcription 10: The Islay Charter</title>
+                <respStmt corresp="EPT">
+                    <name>Eystein P. Thanisch</name>
+                    <resp>Transcriber</resp>
+                    <resp>Editor</resp>
+                </respStmt>
+                <respStmt corresp="WGI">
+                    <name>William Gillies</name>
+                    <resp>Overseer</resp>
+                </respStmt>
+            </titleStmt>
+            <extent/>
+            <publicationStmt>
+                <authority sameAs="authority"/>
+                <availability status="restricted">
+                    <p>For internal use by the Faclair na Gàidhlig/DASG projects</p>
+                </availability>
+                <idno>T10</idno>
+            </publicationStmt>
+            <notesStmt>
+                <note>
+                    <p/>
+                </note>
+            </notesStmt>
+            <sourceDesc>
+                <msDesc>
+                    <msIdentifier sameAs="MS10">
+                        <settlement>Edinburgh</settlement>
+                        <repository>NLS</repository>
+                        <idno type="shelfmark">Adv. MS. 72.1.27</idno>
+                    </msIdentifier>
+                    <msContents>
+                        <summary/>
+                        <msItem n="2" xml:id="MS18.2" resp="Hand36">
+                            <locus>fol. 2<hi rend="sup">vb</hi>36–3<hi rend="sup">ra</hi>20</locus>
+                            <title>On Music</title>
+                            <incipit/>
+                            <explicit/>
+                            <filiation/>
+                            <textLang mainLang="ghc">
+                                <note/>
+                            </textLang>
+                        </msItem>
+                    </msContents>
+                    <physDesc>
+                        <p/>
+                        <objectDesc>
+                            <supportDesc>
+                                <support/>
+                                <foliation/>
+                                <condition/>
+                            </supportDesc>
+                            <layoutDesc>
+                                <p/>
+                            </layoutDesc>
+                        </objectDesc>
+                    </physDesc>
+                    <history>
+                        <provenance/>
+                    </history>
+                </msDesc>
+            </sourceDesc>
+        </fileDesc>
+        <encodingDesc>
+            <metDecl>
+                <p/>
+            </metDecl>
+            <refsDecl>
+                <p/>
+            </refsDecl>
+        </encodingDesc>
+        <profileDesc>
+            <handNotes>
+                <handNote sameAs="Hand36"/>
+            </handNotes>
+            <textClass>
+                <keywords>
+                    <term/>
+                </keywords>
+            </textClass>
+        </profileDesc>
+        <revisionDesc>
+            <change when="2019-05-03" resp="EPT">File created</change>
+        </revisionDesc>
+    </teiHeader>
+    <text>
+        <body>
+            <div n="2" type="divprose" corresp="MS18.2" resp="Hand36">
+                <lg n="1" type="prosediv" xml:id="MS18.2.1">
+                    <l n="a" xml:id="MS18.2.1a"><pb n="2v" xml:id="MS18.2v"/><cb n="b"
+                            xml:id="MS18.2vb"/><lb n="36" xml:id="MS18.2vb.36"/>
+                        <w xml:lang="la">MUSICA</w>
+                        <space type="scribal"/>
+                        <w xml:lang="la">EST</w>
+                        <space type="scribal"/>
+                        <w xml:lang="la">PLURIUM</w>
+                        <space type="scribal"/>
+                        <w xml:lang="la">DISIMILI<abbr cert="high">U<g ref="g1">M</g></abbr></w>
+                        <lb n="37" xml:id="MS18.2vb.37"/>
+                        <w xml:lang="la">in</w>
+                        <w xml:lang="la">un<abbr cert="high">u<g ref="g1">m</g></abbr></w>
+                        <space type="scribal"/>
+                        <w xml:lang="la">redactorum</w>
+                        <space type="scribal"/>
+                        <w xml:lang="la"><abbr cert="high"><g ref="g28">con</g></abbr>cordia</w>
+                        <space type="scribal"/>
+                    </l>
+                    <l n="b" xml:id="MS18.2.1b">
+                        <w lemma=".i." lemmaRef="http://www.dil.ie/26892" ana="abbr">.i.</w>
+                        <space type="scribal"/>
+                        <w ana="verb, pron"><w lemma="is" lemmaRef="http://www.dil.ie/29104"
+                                ana="verb">is</w><w lemma="ed" lemmaRef="http://www.dil.ie/19657"
+                                ana="ed"><abbr cert="high"><g ref="g3">ead</g></abbr></w></w>
+                        <space type="scribal"/>
+                        <w lemma="is" lemmaRef="http://www.dil.ie/29104" ana="verb">is</w>
+                        <w lemma="ceól" lemmaRef="http://www.dil.ie/8701" ana="noun">ceol</w>
+                        <space type="scribal"/>
+                        <w lemma="nó" lemmaRef="http://www.dil.ie/33204" ana="conj"><abbr
+                                cert="high"><g ref="g45">no</g></abbr></w>
+                        <space type="scribal"/>
+                        <w lemma="is" lemmaRef="http://www.dil.ie/29104" ana="verb">is</w>
+                        <lb n="38" xml:id="MS18.2vb.38"/>
+                        <w lemma="binnius" lemmaRef="http://www.dil.ie/5928" ana="noun">bindes</w>
+                        <space type="scribal"/>
+                        <w lemma="i" lemmaRef="http://www.dil.ie/26891" ana="prep, pron">and</w>
+                        <space type="scribal"/>
+                        <w lemma="mórán" lemmaRef="http://www.dil.ie/32560" ana="noun">moran</w>
+                        <space type="scribal"/>
+                        <w lemma="de" lemmaRef="http://www.dil.ie/14787" ana="prep">do</w>
+                        <w lemma="ní" lemmaRef="http://www.dil.ie/33146" ana="noun">n<abbr
+                                cert="high"><g ref="g2">eit</g><g ref="g4">h</g></abbr>i<abbr
+                                cert="high">b<g ref="g4">h</g></abbr></w>
+                        <space type="scribal"/>
+                        <w ana="pref, noun"><w lemma="nem-" lemmaRef="http://www.dil.ie/33072"
+                                ana="pref">ne<abbr cert="high">a<g ref="g1">m</g></abbr></w>
+                            <space type="scribal"/>
+                            <w lemma="conson" lemmaRef="http://www.dil.ie/12322" ana="noun"
+                                    >co<supplied resp="EPT">n</supplied>si<abbr cert="high">n<g
+                                        ref="g5">n</g></abbr>e</w></w>
+                        <space type="scribal"/>
+                        <w lemma="do" lemmaRef="http://www.dil.ie/17096" ana="prep">do</w>
+                        <w lemma="tarraing" lemmaRef="http://www.dil.ie/40137" ana="vnoun"><abbr
+                                cert="medium">t<g ref="g22">err</g></abbr>ing</w>
+                        <lb n="39" xml:id="MS18.2vb.39"/>
+                        <w lemma="co" lemmaRef="http://www.dil.ie/9786" ana="prep">co</w>
+                        <w lemma="oentadach" lemmaRef="http://www.dil.ie/33539" ana="adj">h<abbr
+                                cert="high"><g ref="l9">ae</g></abbr>nta<abbr cert="high">d<g
+                                    ref="g4">h</g></abbr>a<abbr cert="high">c<g ref="g4"
+                                >h</g></abbr></w>
+                        <space type="scribal"/>
+                        <w lemma="i" lemmaRef="http://www.dil.ie/26891" ana="prep">a</w>
+                        <w ana="num, noun"><w lemma="oen" lemmaRef="http://www.dil.ie/33512"
+                                ana="num"><abbr cert="high"><g ref="l9">ae</g></abbr>n</w><w
+                                lemma="ceól" lemmaRef="http://www.dil.ie/8701" ana="noun"
+                            >ceol</w></w>
+                        <w lemma="amáin" lemmaRef="http://www.dil.ie/3061" ana="adj">ama<abbr
+                                cert="high">i<g ref="g5">n</g></abbr></w>
+                        <space type="scribal"/>
+                        <w xml:lang="la"><abbr cert="high"><g ref="l7">Et</g></abbr></w>
+                        <w lemma="as-beir" lemmaRef="http://www.dil.ie/4383" ana="verb">a<abbr
+                                cert="medium">d<g ref="g3">eir</g><g ref="g4"/></abbr></w>
+                        <space type="scribal"/>
+                        <name type="personal"><w ana="noun"><abbr cert="high"><g ref="g8">ar</g><g
+                                        ref="g3">istotles</g></abbr></w></name>
+                        <space type="scribal"/>
+                        <w lemma="co" lemmaRef="http://www.dil.ie/9788" ana="conj">co</w>
+                        <w lemma="attá" lemmaRef="http://www.dil.ie/4927" ana="verb">fuil</w>
+                        <w lemma="cuit" lemmaRef="http://www.dil.ie/13717" ana="noun">c<lb n="40"
+                                xml:id="MS18.2vb.40"/>uid</w>
+                        <space type="scribal"/>
+                        <w lemma="de" lemmaRef="http://www.dil.ie/14787" ana="prep">do</w>
+                        <w lemma="ceól" lemmaRef="http://www.dil.ie/8701" ana="noun">ceol</w>
+                        <space type="scribal"/>
+                        <w lemma="i" lemmaRef="http://www.dil.ie/26891" ana="prep">and</w>
+                        <space type="scribal"/>
+                        <w ana="prep, art"><w lemma="i" lemmaRef="http://www.dil.ie/26891"
+                                ana="prep">s</w><w lemma="in" lemmaRef="http://www.dil.ie/28194"
+                                ana="art">a</w></w>
+                        <space type="scribal"/>
+                        <w lemma="domun" lemmaRef="http://www.dil.ie/18161" ana="noun">d<abbr
+                                cert="high">o<g ref="g1">m</g></abbr>un</w>
+                        <space type="scribal"/>
+                        <w ana="prep, art"><w lemma="de" lemmaRef="http://www.dil.ie/14787"
+                                ana="prep">do</w><w lemma="in" lemmaRef="http://www.dil.ie/28194"
+                                ana="art">n</w></w>
+                        <space type="scribal"/>
+                        <w lemma="ceól" lemmaRef="http://www.dil.ie/8701" ana="noun">ceol</w>
+                        <space type="scribal"/>
+                        <w lemma="attá" lemmaRef="http://www.dil.ie/4927" ana="verb">ata</w>
+                        <space type="scribal"/>
+                        <w lemma="cuit" lemmaRef="http://www.dil.ie/13717" ana="noun"><abbr
+                                cert="high"><g ref="g30">cu</g></abbr>id</w>
+                        <space type="scribal"/>
+                        <w lemma="de" lemmaRef="http://www.dil.ie/14787" ana="prep">de</w>
+                        <lb n="41" xml:id="MS18.2vb.41"/>
+                        <w ana="prep, art"><w lemma="i" lemmaRef="http://www.dil.ie/26891"
+                                ana="prep">is</w><w lemma="in" lemmaRef="http://www.dil.ie/28194"
+                                ana="art">na</w></w>
+                        <space type="scribal"/>
+                        <w lemma="dúil" lemmaRef="http://www.dil.ie/19089" ana="noun">duili<abbr
+                                cert="high">b<g ref="g4">h</g></abbr></w>
+                        <space type="scribal"/>
+                        <w lemma="ocus" lemmaRef="http://www.dil.ie/33484" ana="conj"><abbr
+                                cert="high"><g ref="g2">agus</g></abbr></w>
+                        <space type="scribal"/>
+                        <w lemma="cuit" lemmaRef="http://www.dil.ie/13717" ana="noun">cuid</w>
+                        <space type="scribal"/>
+                        <w ana="prep, art"><w lemma="i" lemmaRef="http://www.dil.ie/26891"
+                                ana="prep">is</w><w lemma="in" lemmaRef="http://www.dil.ie/28194"
+                                ana="art">na</w></w>
+                        <w lemma="plainét" lemmaRef="http://www.dil.ie/34392" ana="noun">p<abbr
+                                cert="high">l<g ref="g3">anet</g></abbr>ai<abbr cert="high">b<g
+                                    ref="g4">h</g></abbr></w>
+                        <space type="scribal"/>
+                        <w lemma="ocus" lemmaRef="http://www.dil.ie/33484" ana="conj"><abbr
+                                cert="high"><g ref="g2">agus</g></abbr></w>
+                        <w lemma="cuit" lemmaRef="http://www.dil.ie/13717" ana="noun"><abbr
+                                cert="high"><g ref="g30">cu</g></abbr>id</w>
+                        <space type="scribal"/>
+                        <w ana="prep, art"><w lemma="i" lemmaRef="http://www.dil.ie/26891"
+                                ana="prep">is</w><w lemma="in" lemmaRef="http://www.dil.ie/28194"
+                                ana="art">na</w></w>
+                        <w lemma="aimser" lemmaRef="http://www.dil.ie/1149" ana="noun">ha<abbr
+                                cert="high">i<g ref="g1">m</g></abbr><abbr cert="medium">s<g
+                                    ref="g21">ir</g></abbr>i<abbr cert="high">b<g ref="g4"
+                                >h</g></abbr></w>
+                    </l>
+                </lg>
+            </div>
+        </body>
+    </text>
 </TEI>
-
-
