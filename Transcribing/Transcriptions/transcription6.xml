@@ -280,8 +280,9 @@
 							<w lemmaED="anaid" lemmaRefED="http://www.dil.ie/3302" lemma="anaid"
 								lemmaRef="http://www.dil.ie/3302" ana="verb">nanat</w>
 							<space type="scribal"/>
-							<w lemmaED="do" lemmaRefED="http://www.dil.ie/17096" lemma="do"
-								lemmaRef="http://www.dil.ie/17096" ana="prep, art">dana</w>
+							<w ana="prep, art"><w lemma="do" lemmaRef="http://www.dil.ie/17096"
+									ana="prep">da</w><w lemma="in"
+									lemmaRef="http://www.dil.ie/28194" ana="art">na</w></w>
 							<w lemmaED="ball" lemmaRefED="http://www.dil.ie/5299" lemma="ball"
 								lemmaRef="http://www.dil.ie/5299" ana="noun">bal</w>
 							<space type="scribal"/>
@@ -645,8 +646,8 @@
 					<lg n="7" type="stanza" xml:id="MS6.1.7" org="uniform" sample="complete">
 						<l n="a" xml:id="MS6.1.7a">
 							<lb n="8" xml:id="MS6.2r.8"/>
-							<w lemmaED="i" lemmaRefED="http://www.dil.ie/26891" lemma="i"
-								lemmaRef="http://www.dil.ie/26891" ana="prep, pron">Inte</w>
+							<w lemma="i" lemmaRef="http://www.dil.ie/26891" ana="prep, pron"
+								>Inte</w>
 							<space type="scribal"/>
 							<w lemmaED="gnáth" lemmaRefED="http://www.dil.ie/26193" lemma="gnáth"
 								lemmaRef="http://www.dil.ie/26193" ana="noun">gnat</w>
@@ -789,8 +790,10 @@
 							<space type="scribal"/>
 						</l>
 						<l n="b" xml:id="MS6.1.2.1b">
-							<w lemmaED="i" lemmaRefED="http://www.dil.ie/26891" lemma="i"
-								lemmaRef="http://www.dil.ie/26891" ana="prep, poss">at</w>
+							<w ana="prep, poss"><w lemmaED="i" lemmaRefED="http://www.dil.ie/26891"
+									lemma="i" lemmaRef="http://www.dil.ie/26891" ana="prep">a</w><w
+									lemma="t" lemmaRef="http://www.dil.ie/39354" ana="poss"
+								>t</w></w>
 							<w lemmaED="oenar" lemmaRefED="http://www.dil.ie/33521" lemma="oenar"
 								lemmaRef="http://www.dil.ie/33521" ana="noun">aenar</w>
 							<gap reason="text_obscure" extent="1" unit="chars" resp="EPT"/>
@@ -808,8 +811,7 @@
 							<pc>.</pc>
 						</l>
 						<l n="c" xml:id="MS6.1.2.1c">
-							<w lemmaED="ar" lemmaRefED="http://www.dil.ie/3902" lemma="ar"
-								lemmaRef="http://www.dil.ie/3902" ana="prep, pron">orm</w>
+							<w lemma="ar" lemmaRef="http://www.dil.ie/3902" ana="prep, pron">orm</w>
 							<space type="scribal"/>
 							<w lemmaED="do-gní" lemmaRefED="http://www.dil.ie/17752" lemma="do-gní"
 								lemmaRef="http://www.dil.ie/17752" ana="verb">dernud</w>
@@ -862,8 +864,8 @@
 					<lg n="2" type="stanza" xml:id="MS6.1.2.2" org="uniform" sample="complete">
 						<l n="a" xml:id="MS6.1.2.2a">
 							<lb n="11" xml:id="MS6.2r.11"/>
-							<w lemmaED="i" lemmaRefED="http://www.dil.ie/26891" lemma="i"
-								lemmaRef="http://www.dil.ie/26891" ana="prep, pron">Inte</w>
+							<w lemma="i" lemmaRef="http://www.dil.ie/26891" ana="prep, pron"
+								>Inte</w>
 							<space type="scribal"/>
 							<w lemmaED="is" lemmaRefED="http://www.dil.ie/29104" lemma="is"
 								lemmaRef="http://www.dil.ie/29104" ana="verb">is</w>
@@ -879,8 +881,7 @@
 							<w lemmaED="geined" lemmaRefED="http://www.dil.ie/25535" lemma="geined"
 								lemmaRef="http://www.dil.ie/25535" ana="noun">gened</w>
 							<space type="scribal"/>
-							<w lemmaED="i" lemmaRefED="http://www.dil.ie/26891" lemma="i"
-								lemmaRef="http://www.dil.ie/26891" ana="prep, pron">and</w>
+							<w lemma="i" lemmaRef="http://www.dil.ie/26891" ana="prep, pron">and</w>
 							<space type="scribal"/>
 						</l>
 						<l n="b" xml:id="MS6.1.2.2b">
@@ -1096,18 +1097,18 @@
 									<g ref="g11">air</g>
 								</abbr>g</w>
 							<space type="scribal"/>
-							<w lemmaED="do" lemmaRefED="http://www.dil.ie/17096" lemma="do"
-								lemmaRef="http://www.dil.ie/17096" ana="prep, pron">d<abbr
+							<w lemma="do" lemmaRef="http://www.dil.ie/17096" ana="prep, pron">d<abbr
 									cert="high">o<g ref="g1">m</g>
 								</abbr>
 							</w>
 						</l>
 						<l n="b" xml:id="MS6.1.2.4b">
-							<w lemmaED="cía" lemmaRefED="http://www.dil.ie/8966" lemma="cía"
-								lemmaRef="http://www.dil.ie/8966" ana="conj, verb">gi<abbr
-									cert="high">d<g ref="g4">h</g>
-								</abbr>
-							</w>
+							<w ana="conj, verb"><w lemmaED="cía" lemmaRefED="http://www.dil.ie/8966"
+									lemma="cía" lemmaRef="http://www.dil.ie/8966" ana="conj"
+									>gi</w><w lemma="is" lemmaRef="http://www.dil.ie/29104"
+									ana="verb"><abbr cert="high">d<g ref="g4">h</g>
+									</abbr>
+								</w></w>
 							<space type="scribal"/>
 							<w lemmaED="sásad" lemmaRefED="http://www.dil.ie/36220" lemma="sásad"
 								lemmaRef="http://www.dil.ie/36220" ana="vnoun">sasa<abbr cert="high"
@@ -1199,11 +1200,12 @@
 							<w lemmaED="é" lemmaRefED="http://www.dil.ie/19325" lemma="é"
 								lemmaRef="http://www.dil.ie/19325" ana="pron">e</w>
 							<space type="scribal"/>
-							<w lemmaED="cía" lemmaRefED="http://www.dil.ie/8966" lemma="cía"
-								lemmaRef="http://www.dil.ie/8966" ana="conj, verb">gi<abbr
-									cert="high">d<g ref="g4">h</g>
-								</abbr>
-							</w>
+							<w ana="conj, verb"><w lemmaED="cía" lemmaRefED="http://www.dil.ie/8966"
+									lemma="cía" lemmaRef="http://www.dil.ie/8966" ana="conj"
+									>gi</w><w lemma="is" lemmaRef="http://www.dil.ie/29104"
+									ana="verb"><abbr cert="high">d<g ref="g4">h</g>
+									</abbr>
+								</w></w>
 							<space type="scribal"/>
 							<w lemmaED="aithgerr" lemmaRefED="http://www.dil.ie/2666"
 								lemma="aithgerr" lemmaRef="http://www.dil.ie/2666" ana="adj">a<abbr
@@ -1282,11 +1284,12 @@
 							<w lemmaED="do-icc" lemmaRefED="http://www.dil.ie/17788" lemma="do-icc"
 								lemmaRef="http://www.dil.ie/17788" ana="verb">tig</w>
 							<space type="scribal"/>
-							<w lemmaED="ar" lemmaRefED="http://www.dil.ie/3902" lemma="ar"
-								lemmaRef="http://www.dil.ie/3902" ana="prep, poss">
-								<abbr cert="high">
-									<g ref="g8">ar</g>
-								</abbr>a</w>
+							<w ana="prep, poss"><w lemma="ar" lemmaRef="http://www.dil.ie/3902"
+									ana="prep">
+									<abbr cert="high">
+										<g ref="g8">ar</g>
+									</abbr></w><w lemma="a" lemmaRef="http://www.dil.ie/3"
+									ana="poss">a</w></w>
 							<w lemmaED="grád" lemmaRefED="http://www.dil.ie/26460" lemma="grád"
 								lemmaRef="http://www.dil.ie/26460" ana="noun">grad</w>
 							<space type="scribal"/>
@@ -1328,11 +1331,12 @@
 									</abbr>
 								</w>
 								<space type="scribal"/>
-								<w lemmaED="do" lemmaRefED="http://www.dil.ie/17096" lemma="do"
-									lemmaRef="http://www.dil.ie/17096" ana="prep, art">d<abbr
-										cert="high">o<g ref="g5">n</g>
-									</abbr>
-								</w>
+								<w ana="prep, art"><w lemma="do" lemmaRef="http://www.dil.ie/17096"
+										ana="prep">do</w><w lemma="in"
+										lemmaRef="http://www.dil.ie/28194" ana="art"><abbr
+											cert="high"><g ref="g5">n</g>
+										</abbr>
+									</w></w>
 								<w lemma="UNKNOWN">
 									<abbr cert="high">t<g ref="g17">ra</g>
 									</abbr>n<abbr cert="high">
@@ -1412,8 +1416,9 @@
 									>peta</w>
 							</unclear>
 							<space type="scribal"/>
-							<w lemmaED="do" lemmaRefED="http://www.dil.ie/17096" lemma="do"
-								lemmaRef="http://www.dil.ie/17096" ana="prep, poss">da</w>
+							<w ana="prep, poss"><w lemma="do" lemmaRef="http://www.dil.ie/17096"
+									ana="prep">d</w><w lemma="a" lemmaRef="http://www.dil.ie/3"
+									ana="poss">a</w></w>
 							<w lemmaED="colainn" lemmaRefED="http://www.dil.ie/10477"
 								lemma="colainn" lemmaRef="http://www.dil.ie/10477" ana="noun"
 									>cola<abbr cert="high">i<g ref="g5">n</g>
@@ -1585,8 +1590,9 @@
 							<space type="scribal"/>
 							<c>te</c>
 							<gap reason="text_obscure" extent="6" unit="chars" resp="EPT"/>
-							<w lemmaED="fo" lemmaRefED="http://www.dil.ie/22333" lemma="fo"
-								lemmaRef="http://www.dil.ie/22333" ana="prep, art">fan</w>
+							<w ana="prep, art"><w lemma="fo" lemmaRef="http://www.dil.ie/22333"
+									ana="prep">fa</w><w lemma="in"
+									lemmaRef="http://www.dil.ie/28194" ana="art">n</w></w>
 							<space type="scribal"/>
 							<w lemmaED="colainn" lemmaRefED="http://www.dil.ie/10477"
 								lemma="colainn" lemmaRef="http://www.dil.ie/10477" ana="noun">
@@ -1596,11 +1602,12 @@
 							<space type="scribal"/>
 						</l>
 						<l n="b" xml:id="MS6.1.3.3b">
-							<w lemmaED="i" lemmaRefED="http://www.dil.ie/26891" lemma="i"
-								lemmaRef="http://www.dil.ie/26891" ana="prep, art">s<abbr
-									cert="high">a<g ref="g5">n</g>
-								</abbr>
-							</w>
+							<w ana="prep, art"><w lemmaED="i" lemmaRefED="http://www.dil.ie/26891"
+									lemma="i" lemmaRef="http://www.dil.ie/26891" ana="prep">sa</w><w
+									lemma="in" lemmaRef="http://www.dil.ie/28194" ana="art"><abbr
+										cert="high"><g ref="g5">n</g>
+									</abbr>
+								</w></w>
 							<w lemmaED="ainimm" lemmaRefED="http://www.dil.ie/1402" lemma="ainimm"
 								lemmaRef="http://www.dil.ie/1402" ana="noun">tana<abbr cert="high"
 										>i<g ref="g1">m</g>
@@ -2708,8 +2715,7 @@
 							<w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun"><abbr
 									cert="high">m<g ref="g12">ic</g></abbr></w>
 							<space type="scribal"/>
-							<name type="personal"><w ana="noun"
-								>ainmireac</w></name>
+							<name type="personal"><w ana="noun">ainmireac</w></name>
 							<space type="scribal"/>
 							<w lemma="do" lemmaRef="http://www.dil.ie/17096" ana="prep">do</w>
 						</l>
@@ -2916,22 +2922,19 @@
 						</abbr>
 					</w>
 					<space type="scribal"/>
-					<w lemmaED="cía" lemmaRefED="http://www.dil.ie/8966" lemma="cía"
-						lemmaRef="http://www.dil.ie/8966" lemmaDW="ged"
-						lemmaRefDW="https://www.faclair.com/ViewDictionaryEntry.aspx?ID=EE97C5E27B6D05FE211F9685C0BCE34F"
-						ana="conj, verb">gio<abbr cert="high">d<g ref="g4">h</g>
-						</abbr>
-					</w>
+					<w ana="conj, verb"><w lemma="cía" lemmaRef="http://www.dil.ie/8966" ana="conj"
+							>gio</w><w lemma="is" lemmaRef="http://www.dil.ie/29104" ana="verb"
+								><abbr cert="high">d<g ref="g4">h</g>
+							</abbr>
+						</w></w>
 					<w lemmaED="attá" lemmaRefED="http://www.dil.ie/4927" lemma="attá"
 						lemmaRef="http://www.dil.ie/4927" lemmaDW="bi"
 						lemmaRefDW="https://www.faclair.com/ViewDictionaryEntry.aspx?ID=489D8E87B3298BDAB1897B697F69EC99"
 						ana="verb">be</w>
 					<space type="scribal"/>
 					<unclear reason="text_obscure" cert="high" resp="EPT">
-						<w lemmaED="oc" lemmaRefED="http://www.dil.ie/33397" lemma="oc"
-							lemmaRef="http://www.dil.ie/33397" lemmaDW="aig"
-							lemmaRefDW="https://www.faclair.com/ViewDictionaryEntry.aspx?ID=2E66B1E5E696813A2C5EA18AF9A757B7"
-							ana="prep, pron">a<abbr cert="medium">
+						<w lemma="oc" lemmaRef="http://www.dil.ie/33397" ana="prep, pron">a<abbr
+								cert="medium">
 								<g ref="g30">ca</g>
 							</abbr>
 						</w>
@@ -3132,8 +3135,9 @@
 						</w>
 					</name>
 					<space type="editorial"/>
-					<w lemmaED="fri" lemmaRefED="http://www.dil.ie/24329" lemma="fri"
-						lemmaRef="http://www.dil.ie/24329" ana="prep, art">rena</w>
+					<w ana="prep, art"><w lemmaED="fri" lemmaRefED="http://www.dil.ie/24329"
+							lemma="fri" lemmaRef="http://www.dil.ie/24329" ana="prep">re</w><w
+							lemma="in" lemmaRef="http://www.dil.ie/28194" ana="art">na</w></w>
 					<space type="scribal"/>
 					<w lemmaED="tabairt" lemmaRefED="http://www.dil.ie/39363" lemma="tabairt"
 						lemmaRef="http://www.dil.ie/39363" ana="vnoun">
@@ -3141,8 +3145,8 @@
 						</abbr>a<abbr cert="high">b<g ref="g3">hair</g>
 						</abbr>t</w>
 					<space type="scribal"/>
-					<w lemmaED="do" lemmaRefED="http://www.dil.ie/17096" lemma="do"
-						lemmaRef="http://www.dil.ie/17096" ana="prep, poss">da</w>
+					<w ana="prep, poss"><w lemma="do" lemmaRef="http://www.dil.ie/17096" ana="prep"
+							>d</w><w lemma="a" lemmaRef="http://www.dil.ie/3" ana="poss">a</w></w>
 					<space type="scribal"/>
 					<w lemmaED="óclach" lemmaRefED="http://www.dil.ie/33460" lemma="óclach"
 						lemmaRef="http://www.dil.ie/33460" ana="noun">ogla<abbr cert="high">c<g
@@ -3311,8 +3315,8 @@
 						</abbr>
 					</w>
 					<space type="scribal"/>
-					<w lemmaED="do" lemmaRefED="http://www.dil.ie/17096" lemma="do"
-						lemmaRef="http://www.dil.ie/17096" ana="prep, art">don</w>
+					<w ana="prep, art"><w lemma="do"
+						lemmaRef="http://www.dil.ie/17096" ana="prep">do</w><w lemma="in" lemmaRef="http://www.dil.ie/28194" ana="art">n</w></w>
 					<space type="scribal"/>
 					<w lemmaED="dá" lemmaRefED="http://www.dil.ie/14080" lemma="dá"
 						lemmaRef="http://www.dil.ie/14080" ana="num">2</w>
@@ -3422,7 +3426,7 @@
 						</abbr>
 					</w>
 					<space type="scribal"/>
-					<w lemmaED="do" lemmaRefED="http://www.dil.ie/17096" lemma="do"
+					<w lemma="do"
 						lemmaRef="http://www.dil.ie/17096" ana="prep, pron">doi<abbr cert="high">p<g
 								ref="g4">h</g>
 						</abbr>
