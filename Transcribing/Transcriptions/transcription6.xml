@@ -84,53 +84,60 @@
 								beginnings and ends, but substantial detail of the agreement is
 								prserved nonetheless.</p>
 						</summary>
-						<msItem n="1" xml:id="MS6.1" resp="Hand7">
+						<msItem n="1" xml:id="MS6.1">
 							<locus>fols 1–5</locus>
 							<title>Columban Poetry</title>
-							<msItem n="1.1" xml:id="MS6.1.1" resp="Hand7">
+							<author role="scribe" corresp="Hand7"/>
+							<msItem n="1.1" xml:id="MS6.1.1">
 								<locus>fol.2r1–9</locus>
 								<title>Seven Psalms Against Seven Sins</title>
+								<author role="scribe" corresp="Hand7"/>
 								<incipit>Seacht sailm s[unn] ... </incipit>
 								<explicit> ... ameasg mor seacht. seait sailm.</explicit>
 								<filiation/>
 								<textLang mainLang="ghc"/>
 							</msItem>
-							<msItem n="1.2" xml:id="MS6.1.2" resp="Hand7">
+							<msItem n="1.2" xml:id="MS6.1.2">
 								<locus>fol.2r10-17</locus>
 								<title>Offerings</title>
+								<author role="scribe" corresp="Hand7"/>
 								<incipit> Urbairt na termeisg go brat ...</incipit>
 								<explicit> ... { ar do dhe uad fein urbairt }</explicit>
 								<filiation/>
 								<textLang mainLang="ghc"/>
 							</msItem>
-							<msItem n="1.3" xml:id="MS6.1.3" resp="Hand7">
+							<msItem n="1.3" xml:id="MS6.1.3">
 								<locus>fol.2v1-7</locus>
 								<title>Heaven and Hell</title>
+								<author role="scribe" corresp="Hand7"/>
 								<incipit> {Mair}g do ni { peta } da colaind ...</incipit>
 								<explicit> ... an taigh ríg nimhi gan mairg</explicit>
 								<filiation/>
 								<textLang mainLang="ghc"/>
 							</msItem>
-							<msItem n="1.5" xml:id="MS6.1.5" resp="Hand7">
+							<msItem n="1.5" xml:id="MS6.1.5">
 								<locus>fol. 3r1-???</locus>
 								<title>A Metrical Life of Colum Cille</title>
+								<author role="scribe" corresp="Hand7"/>
 								<incipit> Sgela Colaim comdalaidh ...</incipit>
 								<explicit> [unclear] </explicit>
 								<filiation/>
 								<textLang mainLang="ghc"/>
 							</msItem>
 						</msItem>
-						<msItem n="2" xml:id="MS6.2" resp="Hand27">
+						<msItem n="2" xml:id="MS6.2">
 							<locus>fols 6 and 7</locus>
 							<title>Fragment of Caithréim Conghail Clairinghigh</title>
+							<author role="scribe" corresp="Hand27"/>
 							<incipit>Is maith linn catair Muirne d’faicsin ...</incipit>
 							<explicit>... Erenn ina fochair</explicit>
 							<filiation/>
 							<textLang mainLang="ghc" otherLangs="gd"/>
 						</msItem>
-						<msItem n="3" xml:id="MS6.3" resp="Hand8">
+						<msItem n="3" xml:id="MS6.3">
 							<locus>fol. 8r.1–11</locus>
 							<title>The MacDougall Contract</title>
+							<author role="scribe" corresp="Hand8"/>
 							<incipit> -gap- {donnc}hadh mac dubhghaill -gap- ...</incipit>
 							<explicit>... Dunc[an] </explicit>
 							<filiation>
@@ -186,8 +193,8 @@
 	</teiHeader>
 	<text>
 		<body>
-			<div n="1" type="verse" resp="Hand7" corresp="MS6.1">
-				<div n="1.1" type="verse" resp="Hand7" corresp="MS6.1.1">
+			<div n="1" type="verse" hand="Hand7" corresp="MS6.1">
+				<div n="1.1" type="verse" hand="Hand7" corresp="MS6.1.1">
 					<lg n="1" type="stanza" xml:id="MS6.1.1.1">
 						<l n="a" xml:id="MS6.1.1.1a"><handShift new="Hand7"/>
 							<pb n="2r" xml:id="MS6.2r"/><lb n="1" xml:id="MS6.2.1"/>
@@ -579,7 +586,7 @@
 						</l>
 					</lg>
 				</div>
-				<div n="1.2" type="verse" resp="Hand7" corresp="MS6.1.2">
+				<div n="1.2" type="verse" hand="Hand7" corresp="MS6.1.2">
 					<lg n="1" type="stanza" xml:id="MS6.1.2.1">
 						<l n="a" xml:id="MS6.1.2.1a"><handShift new="Hand7"/><lb n="10" xml:id="MS6.2r.10"/>
 							<w lemma="airbert" lemmaRef="http://www.dil.ie/1622" pos="vnoun"
@@ -988,7 +995,7 @@
 						</l>
 					</lg>
 				</div>
-				<div n="1.3" type="verse" resp="Hand7" corresp="MS6.1.3">
+				<div n="1.3" type="verse" hand="Hand7" corresp="MS6.1.3">
 					<pb n="2v" xml:id="MS6.2v"/>
 					<lg n="1" type="stanza" xml:id="MS6.1.3.1">
 						<l n="a" xml:id="MS6.1.3.1a"><handShift new="Hand7"/>
@@ -1279,7 +1286,7 @@
 							<w lemma="ifern" lemmaRef="http://www.dil.ie/27230" pos="noun">ifrin</w>
 							<space type="scribal"/>
 							<w lemma="tech" lemmaRef="http://www.dil.ie/40265" pos="noun"><abbr
-									cert="high">t<del resp="Hand7"><g ref="g4"
+									cert="high">t<del hand="Hand7"><g ref="g4"
 								>h</g></del></abbr>eac</w>
 							<space type="scribal"/>
 							<w lemma="in" lemmaRef="http://www.dil.ie/28194" pos="art">an</w>
@@ -1350,7 +1357,7 @@
 						</l>
 					</lg>
 				</div>
-				<div n="1.5" type="verse" resp="Hand7" corresp="MS6.1.5">
+				<div n="1.5" type="verse" hand="Hand7" corresp="MS6.1.5">
 					<lg n="1" type="stanza" xml:id="MS6.1.5.1">
 						<l n="a" xml:id="MS6.1.5.1a"><handShift new="Hand7"/><pb n="3r" xml:id="MS6.3r"/><lb n="1"
 								xml:id="MS6.3r.1"/>
@@ -1644,7 +1651,7 @@
 							<space type="scribal"/>
 							<w lemma="cís" lemmaRef="http://www.dil.ie/9231" pos="noun">cis</w>
 							<space type="scribal"/>
-							<del resp="Hand999"><w lemma="ocus" lemmaRef="http://www.dil.ie/33484"
+							<del hand="Hand999"><w lemma="ocus" lemmaRef="http://www.dil.ie/33484"
 									pos="conj"><abbr cert="high"><g ref="g2">is</g></abbr></w></del>
 							<w lemma="cach" lemmaRef="http://www.dil.ie/7528" pos="adj">ga<abbr
 									cert="high">c<g ref="g4">h</g></abbr></w>
@@ -2142,7 +2149,7 @@
 					</lg>
 				</div>
 			</div>
-			<div n="3" type="prose" resp="Hand8" corresp="MS6.3">
+			<div n="3" type="prose" hand="Hand8" corresp="MS6.3">
 				<p><handShift new="Hand8"/>
 					<pb n="8r" xml:id="MS6.8r"/>
 					<lb n="1" xml:id="MS6.8r.1"/>
@@ -2214,7 +2221,7 @@
 					<w lemma="ocus" lemmaRef="http://www.dil.ie/33484" pos="conj"><abbr cert="high"
 								><g ref="g2">agus</g></abbr></w>
 					<space type="scribal"/>
-					<del resp="Hand8">
+					<del hand="Hand8">
 						<w lemma="dead" lemmaRef="http://www.dil.ie/14812" pos="noun">ndiaig</w>
 					</del>
 					<w lemma="ó" lemmaRef="http://www.dil.ie/33364" pos="prep">o</w>
