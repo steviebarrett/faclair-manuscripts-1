@@ -29,11 +29,48 @@ $(function() {
   $('.chunk').click(function(){
     $('.chunk').css('background-color', 'inherit');
     $(this).css('background-color', 'yellow');
-    $('#right-panel').html(makeDescription($(this),false));
+    $('#headword').text(clean($(this).text()));
+    $('#syntaxInfo').html(makeDescription($(this),false));
+    $('#expansionList').html('');
+    if ($(this).find('.expansion').length>0) {
+      $('#expansionInfo').show();
+      html = '';
+      $(this).find('.expansion').each(function() {
+        var xmlId = $(this).attr('data-glyphref');  
+        $.getJSON('/~mark/faclair-manuscripts/Coding/Scripts/ajax.php?action=getGlyph&xmlId=' + xmlId, function (g) {
+          txt = '<li class="glyphItem"><a href="http://' + g.corresp + '" target="_new" data-src="' + g.id + '">' + g.name;
+          txt = txt + '</a>: ' + g.note + '</li>';
+          html = html + txt;
+        })
+        .done(function() {
+          $('#expansionList').html(html);
+        });
+      }); 
+    }
+    else {
+      $('#expansionInfo').hide();
+    }
+    $('#damagedList').html('');
+    if ($(this).find('.damagedDiplo').length>0) {
+      $('#damagedInfo').show();
+      html = '';
+      $(this).find('.damagedDiplo').each(function() {
+        html = html + '<li><span style="color: green;">[</span>' + $(this).text() + '<span style="color: green;">]</span> ';
+        html += '</li>';
+      }); 
+      $('#damagedList').html(html);
+    }
+    else {
+      $('#damagedInfo').hide();
+    }
+    
   });
   
   function makeDescription(span, rec) {
-    html = '<span style="color:red;">' + clean($(span).text()) + '</span><ul>';
+    html = '';
+    if (rec) {
+      html = html + '<span style="color:red;">' + clean($(span).text()) + '</span><ul>';
+    }
     if ($(span).hasClass('name')) {
       if ($(span).attr('data-nametype')=='personal') {
         html = html + '<li>is the name of a person</li>';
@@ -51,13 +88,13 @@ $(function() {
     if ($(span).attr('data-pos')) {
       var poss = $(span).attr('data-pos').split(', ');
       for (var i = 0; i < poss.length; i++) { 
-        html = html + '<li>is a ' + eval('pos_' + poss[i]) + '</li>';
+        html = html + '<li>is a ' + poss[i] + '</li>';
       }
     }
     else if ($(span).hasClass('name') && $(span).children('.word').length==1 && $(span).children('.word').children('.word').length==0) {
       var poss = $(span).children('.word').attr('data-pos').split(', ');
       for (var i = 0; i < poss.length; i++) { 
-        html = html + '<li>is a ' + eval('pos_' + poss[i]) + '</li>';
+        html = html + '<li>is a ' + poss[i] + '</li>';
       }
     }
     if ($(span).attr('data-headword')) {
@@ -95,25 +132,26 @@ $(function() {
     }
     else {
       html += '<li>is a syntactically simple form</li>';
-    }    
-    if (!rec && $(span).find('.expansion').length>0) {
-      html = html + '<li>' + extractExpansions($(span)) + ' contains the following scribal expansions:<ul id="expansionList">';
-      $(span).find('.expansion').each(function() {
-        var g = eval('glyph_' + $(this).attr('data-glyphref'));
-        txt = '<a href="' + g.url + '" target="_new" data-src="' + $(this).attr('id') + '">' + g.name;
-        txt = txt + '</a>: ' + g.description.replace(/%/g,"'");
-        html = html + '<li class="glyphItem">' + txt +'</li>';
-      });
-      html += '</ul></li>';
     }
+    if (rec) {
+      html += '</ul>';
+    }
+    return html;
+    
+    /*
     if (!rec && $(span).find('.ligature').length>0) {
       html += '<li>contains the following scribal ligatures:<ul id="ligatureList">';
       $(span).find('.ligature').each(function() {
-        var g = eval('glyph_' + $(this).attr('data-glyphref'));
-        txt = '<a href="' + g.url + '" target="_new" data-src="' + $(this).attr('id') + '">' + g.name;
-        txt = txt + '</a>: ' + g.description.replace(/%/g,"'");
-        html = html + '<li class="glyphItem">' + txt +'</li>';
+          var xmlId = $(this).attr('data-glyphref');
+          var id = $(this).attr('id');    //!! this is undefined
+          $.ajaxSetup({async: false});    //!! we should not be using this !!
+          $.getJSON('/ajax/manuscripts.php?action=getGlyph&xmlId=' + xmlId, function (g) {
+              txt = '<a href="http://' + g.corresp + '" target="_new" data-src="' + id + '">' + g.name;
+              txt = txt + '</a>: ' + g.note;
+              html = html + '<li class="glyphItem">' + txt +'</li>';
+          });
       });
+      $.ajaxSetup({async: true}); //!! we should not be using this !!
       html += '</ul></li>';
     }
     if (!rec && $(span).find('.expansion').length>0) {
@@ -218,7 +256,8 @@ $(function() {
       html += '</ul></li>';
     }
     html += '</ul>';
-    return html;
+     */
+    
   }
 
   function clean(str) { // remove form content from headword strings at linebreaks
