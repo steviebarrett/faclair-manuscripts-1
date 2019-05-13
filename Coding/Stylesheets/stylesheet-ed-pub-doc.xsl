@@ -1649,6 +1649,7 @@
 				</p>
 			</xsl:when>
 			<xsl:otherwise>
+				<xsl:if test="tei:head[@type = 'lgHead']"><h3><xsl:apply-templates select="tei:head[@type = 'lgHead']/tei:title"/></h3></xsl:if>
 				<p style="margin-left:30px">
 					<xsl:if test="@n">
 						<b align="left">
@@ -1811,6 +1812,10 @@
 		<xsl:apply-templates/>
 	</xsl:template>
 
+	<xsl:template match="tei:seg[@type= 'signature']">
+		<xsl:apply-templates/>
+	</xsl:template>
+	
 	<xsl:template match="tei:quote">
 		<br/>
 		<br/>
@@ -2095,7 +2100,23 @@
 				</xsl:otherwise>
 			</xsl:choose>
 		</xsl:variable>
-		<xsl:variable name="lemRef" select="@lemmaRef"/>
+		<xsl:variable name="lemRef">
+			<xsl:choose>
+				<xsl:when test="@lemmaRef">
+					<xsl:value-of select="@lemmaRef"/>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:choose>
+						<xsl:when test="ancestor::tei:name/@corresp">
+							<xsl:value-of select="ancestor::tei:name/@corresp"/>
+						</xsl:when>
+						<xsl:otherwise>
+							<xsl:text/>
+						</xsl:otherwise>
+					</xsl:choose>
+				</xsl:otherwise>
+			</xsl:choose>
+		</xsl:variable>
 		<xsl:variable name="an" select="@ana"/>
 		<xsl:variable name="prob">
 			<xsl:if test="descendant::*[@reason] or ancestor::*[@reason]">
@@ -2679,7 +2700,7 @@
 				</xsl:otherwise>
 			</xsl:choose>
 		</xsl:variable>
-		<a id="{$wordId}" pos="{$wordPOS}" href="{$lemRef}" target="_blank"
+		<a id="{$wordId}" pos="{$wordPOS}"
 			onmouseover="hilite(this.id)" onmouseout="dhilite(this.id)" lemma="{$lem}"
 			lemmaRef="{$lemRef}" lemmaED="{$EDlem}" lemmaRefED="{$EDref}" lemmaDW="{$DWlem}"
 			lemmaRefDW="{$DWref}" lemmaSL="{$slLemma}" slipRef="{$slRef}" ana="{@ana}"
@@ -2687,6 +2708,12 @@
 			abbrRefs="{$abbrRef}" lineID="{$lineRef}"
 			title="{$lem}: {$pos} {$src}&#10;{$hand}&#10;{$prob}{$certProb}&#10;Abbreviations: {$abbrs}&#10;{$glossText}&#10;{@comment}"
 			style="text-decoration:none; color:#000000" class="ed">
+			<xsl:if test="not($lemRef = '')">
+				<xsl:attribute name="href" select="$lemRef"/>
+				<xsl:attribute name="target">
+					<xsl:text>_blank</xsl:text>
+				</xsl:attribute>
+			</xsl:if>
 			<xsl:if test="contains(@lemmaRef, 'dasg.ac.uk')">
 				<xsl:attribute name="slipRef">
 					<xsl:value-of select="@lemmaRef"/>
@@ -2865,6 +2892,18 @@
 						<xsl:text/>
 					</xsl:when>
 					<xsl:when
+						test="@ana = 'prep' and ancestor::tei:w[contains(@ana, 'prep, poss')]">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when
+						test="@ana = 'prep' and ancestor::tei:w[contains(@ana, 'prep, pron')]">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when
+						test="@ana = 'prep' and ancestor::tei:w[contains(@ana, 'prep, art')]">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when
 						test="@ana = 'pron' and ancestor::tei:w[contains(@ana, 'pron, dpron')]">
 						<xsl:text/>
 					</xsl:when>
@@ -2930,6 +2969,9 @@
 					<xsl:when test="@ana = 'adj' and ancestor::tei:w[contains(@ana, 'adj, vnoun')]">
 						<xsl:text/>
 					</xsl:when>
+					<xsl:when test="@ana = 'adj' and ancestor::tei:w[contains(@ana, 'adj, verb')]">
+						<xsl:text/>
+					</xsl:when>
 					<xsl:when test="@ana = 'pref' and ancestor::tei:w[contains(@ana, 'pref, adj')]">
 						<xsl:text/>
 					</xsl:when>
@@ -2958,7 +3000,14 @@
 						<xsl:text/>
 					</xsl:when>
 					<xsl:when test="@ana = 'part' and ancestor::tei:w[contains(@ana, 'part, part')]">
-						<xsl:text/>
+						<xsl:choose>
+							<xsl:when test="following::tei:w[1][ancestor::tei:w and @ana = 'part']">
+								<xsl:text/>
+							</xsl:when>
+							<xsl:otherwise>
+								<xsl:text> </xsl:text>
+							</xsl:otherwise>
+						</xsl:choose>
 					</xsl:when>
 					<xsl:when test="@ana = 'conj' and ancestor::tei:w[contains(@ana, 'conj, pron')]">
 						<xsl:text/>
@@ -2968,6 +3017,10 @@
 					</xsl:when>
 					<xsl:when
 						test="@ana = 'interrog' and ancestor::tei:w[contains(@ana, 'interrog, prep')]">
+						<xsl:text/>
+					</xsl:when>
+					<xsl:when
+						test="@ana = 'interrog' and ancestor::tei:w[contains(@ana, 'interrog, part')]">
 						<xsl:text/>
 					</xsl:when>
 					<xsl:when test="ancestor::tei:w and following::tei:pc[1]">
@@ -3979,6 +4032,9 @@
 				</xsl:when>
 				<xsl:when test="@reason = 'text_omitted'">
 					<xsl:text xml:space="preserve">textual lacuna; no physical loss/damage</xsl:text>
+				</xsl:when>
+				<xsl:when test="@reason = 'deletion'">
+					<xsl:text xml:space="preserve">text has been deleted by a scribe</xsl:text>
 				</xsl:when>
 				<xsl:otherwise>
 					<xsl:text xml:space="preserve">reason unavailable</xsl:text>

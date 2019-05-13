@@ -59,11 +59,13 @@ function hideComment(id) {
 }
 
 function disableWordFunctions(id) {
-	if(document.getElementById(id).parentNode.tagName == "A"){
-	var word = document.getElementById(id).parentNode;
+	if(document.getElementById(id).parentNode.parentNode.tagName == "A"){
+	var word = document.getElementById(id).parentNode.parentNode;
 	word.setAttribute("onclick", "");
 	word.setAttribute("onmouseover", "");
 	word.setAttribute("onmouseout", "");
+	word.removeAttribute("href");
+	word.removeAttribute("target");
 	}
 	else{
 		return;
@@ -71,8 +73,8 @@ function disableWordFunctions(id) {
 }
 
 function enableWordFunctions(id) {
-	if(document.getElementById(id).parentNode.tagName == "A"){
-	var word = document.getElementById(id).parentNode;
+	if(document.getElementById(id).parentNode.parentNode.tagName == "A"){
+	var word = document.getElementById(id).parentNode.parentNode;
 	var wsButtons = document.getElementsByClassName("ws");
 	var csButtons = document.getElementsByClassName("cs");
 	if (wsButtons[0].hasAttribute("disabled")) {
@@ -84,8 +86,14 @@ function enableWordFunctions(id) {
 	}
 	}
 	else{
-		return;
+		if(word.getAttribute("lemmaRef") !== ""){
+		var wHref = word.getAttribute("lemmaRef");
+		word.setAttribute("href", wHref);
+		} else {
+			return;
+		}
 	}
 	word.setAttribute("onmouseover", "hilite(this.id)");
 	word.setAttribute("onmouseout", "dhilite(this.id)");
+	word.setAttribute("target", "_blank");
 }

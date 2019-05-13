@@ -551,7 +551,9 @@
 	</xsl:template>
 
 	<xsl:template mode="dip" match="tei:seg[@type = 'cfe']">
-		<span class="cfe"><xsl:apply-templates mode="dip"/></span>
+		<span class="cfe">
+			<xsl:apply-templates mode="dip"/>
+		</span>
 	</xsl:template>
 
 	<xsl:template mode="dip" match="tei:seg[@type = 'margNote']">
@@ -579,9 +581,13 @@
 	<xsl:template mode="dip" match="tei:choice">
 		<xsl:apply-templates mode="dip" select="tei:sic"/>
 	</xsl:template>
-	
+
 	<xsl:template mode="dip" match="tei:seg[@type = 'xp']">
 		<xsl:apply-templates mode="dip"/>
+	</xsl:template>
+	
+	<xsl:template mode="dip" match="tei:seg[@type= 'signature']">
+		<xsl:apply-templates/>
 	</xsl:template>
 
 	<xsl:template mode="dip" name="word" match="tei:w[not(descendant::tei:w)]">
@@ -620,7 +626,23 @@
 				</xsl:otherwise>
 			</xsl:choose>
 		</xsl:variable>
-		<xsl:variable name="lemRef" select="@lemmaRef"/>
+		<xsl:variable name="lemRef">
+			<xsl:choose>
+				<xsl:when test="@lemmaRef">
+					<xsl:value-of select="@lemmaRef"/>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:choose>
+						<xsl:when test="ancestor::tei:name/@corresp">
+							<xsl:value-of select="ancestor::tei:name/@corresp"/>
+						</xsl:when>
+						<xsl:otherwise>
+							<xsl:text/>
+						</xsl:otherwise>
+					</xsl:choose>
+				</xsl:otherwise>
+			</xsl:choose>
+		</xsl:variable>
 		<xsl:variable name="an" select="@ana"/>
 		<xsl:variable name="prob">
 			<xsl:if test="descendant::*[@reason] or ancestor::*[@reason]">
@@ -1179,14 +1201,21 @@
 				</xsl:otherwise>
 			</xsl:choose>
 		</xsl:variable>
-		<a class="dip" id="{$wordId}" pos="{$wordPOS}" href="{$lemRef}" target="_blank"
-			onmouseover="hilite(this.id)" onmouseout="dhilite(this.id)" lemma="{$lem}"
-			lemmaRef="{$lemRef}" lemmaDW="{$DWlem}" lemmaRefDW="{$DWref}" lemmaED="{$EDlem}"
-			lemmaRefED="{$EDref}" lemmaSL="{$slLemma}" slipRef="{$slRef}" ana="{@ana}"
-			hand="{$hand}" ref="{$msref}" date="{$handDate}" medium="{$medium}" cert="{$certLvl}"
-			abbrRefs="{$abbrRef}"
+		<a class="dip" id="{$wordId}" pos="{$wordPOS}" onmouseover="hilite(this.id)"
+			onmouseout="dhilite(this.id)" lemma="{$lem}" lemmaRef="{$lemRef}" lemmaDW="{$DWlem}"
+			lemmaRefDW="{$DWref}" lemmaED="{$EDlem}" lemmaRefED="{$EDref}" lemmaSL="{$slLemma}"
+			slipRef="{$slRef}" ana="{@ana}" hand="{$hand}" ref="{$msref}" date="{$handDate}"
+			medium="{$medium}" cert="{$certLvl}" abbrRefs="{$abbrRef}"
 			title="{$lem}: {$pos} {$src}&#10;{$hand}&#10;{$prob}{$certProb}&#10;Abbreviations: {$abbrs}&#10;{$gloss}"
 			style="text-decoration:none; color:#000000">
+			<xsl:if test="not($lemRef = '')">
+				<xsl:attribute name="href">
+					<xsl:value-of select="$lemRef"/>
+				</xsl:attribute>
+				<xsl:attribute name="target">
+					<xsl:text>_blank</xsl:text>
+				</xsl:attribute>
+			</xsl:if>
 			<xsl:if test="contains(@lemmaRef, 'dasg.ac.uk')">
 				<xsl:attribute name="slipRef">
 					<xsl:value-of select="@lemmaRef"/>
@@ -1572,52 +1601,74 @@
 			<xsl:value-of select="preceding::tei:lb[1]/@n"/>
 		</xsl:variable>
 		<xsl:choose>
-			<xsl:when test="descendant::tei:w">
-				<span msLine="{$lineID}_dip">
-					<xsl:text>{</xsl:text>
-				</span>
-				<xsl:apply-templates mode="dip"/>
-				<span msLine="{$lineID}_dip">
-					<xsl:text>}</xsl:text>
-				</span>
+			<xsl:when test="@reason = 'damage'">
+				<xsl:variable name="damageLength" select="string-length(string(self::*))"/>
+				<a id="{generate-id()}"
+					title="c. {$damageLength} chars extent, loss of writing surface" href="#"
+					onclick="return false;" style="text-decoration:none; color:#000000">
+					<xsl:if test="not(ancestor::tei:del)">
+						<xsl:attribute name="msLine">
+							<xsl:value-of select="$lineID"/>
+						</xsl:attribute>
+					</xsl:if>
+					<sub>
+						<b>
+							<i>-gap-</i>
+						</b>
+					</sub>
+					<xsl:text> </xsl:text>
+				</a>
 			</xsl:when>
-			<xsl:when test="ancestor::tei:w">
-				<span>
-					<xsl:text>{</xsl:text>
-				</span>
-				<xsl:apply-templates mode="dip"/>
-				<span>
-					<xsl:text>}</xsl:text>
-				</span>
-			</xsl:when>
-			<xsl:when test="descendant::tei:date">
-				<span msLine="{$lineID}_dip">
-					<xsl:text>{</xsl:text>
-				</span>
-				<xsl:apply-templates mode="dip"/>
-				<span msLine="{$lineID}_dip">
-					<xsl:text>}</xsl:text>
-				</span>
-			</xsl:when>
-			<xsl:when test="ancestor::tei:date">
-				<xsl:text>{</xsl:text>
-				<xsl:apply-templates mode="dip"/>
-				<xsl:text>}</xsl:text>
-			</xsl:when>
-			<xsl:when test="descendant::tei:num">
-				<span msLine="{$lineID}_dip">
-					<xsl:text>{</xsl:text>
-				</span>
-				<xsl:apply-templates mode="dip"/>
-				<span msLine="{$lineID}_dip">
-					<xsl:text>}</xsl:text>
-				</span>
-			</xsl:when>
-			<xsl:when test="ancestor::tei:num">
-				<xsl:text>{</xsl:text>
-				<xsl:apply-templates mode="dip"/>
-				<xsl:text>}</xsl:text>
-			</xsl:when>
+			<xsl:otherwise>
+				<xsl:choose>
+					<xsl:when test="descendant::tei:w">
+						<span msLine="{$lineID}_dip">
+							<xsl:text>{</xsl:text>
+						</span>
+						<xsl:apply-templates mode="dip"/>
+						<span msLine="{$lineID}_dip">
+							<xsl:text>}</xsl:text>
+						</span>
+					</xsl:when>
+					<xsl:when test="ancestor::tei:w">
+						<span>
+							<xsl:text>{</xsl:text>
+						</span>
+						<xsl:apply-templates mode="dip"/>
+						<span>
+							<xsl:text>}</xsl:text>
+						</span>
+					</xsl:when>
+					<xsl:when test="descendant::tei:date">
+						<span msLine="{$lineID}_dip">
+							<xsl:text>{</xsl:text>
+						</span>
+						<xsl:apply-templates mode="dip"/>
+						<span msLine="{$lineID}_dip">
+							<xsl:text>}</xsl:text>
+						</span>
+					</xsl:when>
+					<xsl:when test="ancestor::tei:date">
+						<xsl:text>{</xsl:text>
+						<xsl:apply-templates mode="dip"/>
+						<xsl:text>}</xsl:text>
+					</xsl:when>
+					<xsl:when test="descendant::tei:num">
+						<span msLine="{$lineID}_dip">
+							<xsl:text>{</xsl:text>
+						</span>
+						<xsl:apply-templates mode="dip"/>
+						<span msLine="{$lineID}_dip">
+							<xsl:text>}</xsl:text>
+						</span>
+					</xsl:when>
+					<xsl:when test="ancestor::tei:num">
+						<xsl:text>{</xsl:text>
+						<xsl:apply-templates mode="dip"/>
+						<xsl:text>}</xsl:text>
+					</xsl:when>
+				</xsl:choose>
+			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
 
@@ -1644,6 +1695,9 @@
 				</xsl:when>
 				<xsl:when test="@reason = 'text_omitted'">
 					<xsl:text xml:space="preserve">textual lacuna; no physical loss/damage</xsl:text>
+				</xsl:when>
+				<xsl:when test="@reason = 'deletion'">
+					<xsl:text xml:space="preserve">text has been deleted by a scribe</xsl:text>
 				</xsl:when>
 				<xsl:otherwise>
 					<xsl:text xml:space="preserve">reason unavailable</xsl:text>
@@ -2233,27 +2287,39 @@
 				</xsl:attribute>
 			</xsl:if>Add Comment</button> -->
 	</xsl:template>
-	
-	<xsl:template mode="dip" match="tei:anchor[@type='crossref']">
+
+	<xsl:template mode="dip" match="tei:anchor[@type = 'crossref']">
 		<xsl:variable name="crossrefID" select="@copyOf"/>
 		<xsl:variable name="msID" select="substring-before($crossrefID, '.')"/>
 		<xsl:variable name="msNO" select="substring-after($msID, 'MS')"/>
 		<xsl:variable name="filename" select="concat('transcription', $msNO, '.xml')"/>
-		<xsl:variable name="filepath" select="concat('../../Transcribing/Transcriptions/', $filename)"/>
+		<xsl:variable name="filepath"
+			select="concat('../../Transcribing/Transcriptions/', $filename)"/>
 		<xsl:choose>
 			<xsl:when test="//tei:div[@corresp = $crossrefID]/@type = 'prose'">
-				<h3><xsl:value-of select="@comment"/></h3>
+				<h3>
+					<xsl:value-of select="@comment"/>
+				</h3>
 				<xsl:apply-templates mode="dip" select="//tei:div[@corresp = $crossrefID]/tei:p/*"/>
 			</xsl:when>
 			<xsl:otherwise>
-				<h3><xsl:value-of select="@comment"/></h3>
+				<h3>
+					<xsl:value-of select="@comment"/>
+				</h3>
 				<xsl:apply-templates mode="dip" select="//tei:div[@corresp = $crossrefID]/*"/>
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
 
 	<xsl:template mode="dip" match="tei:head">
-		<xsl:apply-templates mode="dip"/>
+		<xsl:choose>
+			<xsl:when test="@type = 'lgHead'">
+				<xsl:text/>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:apply-templates mode="dip"/>
+			</xsl:otherwise>
+		</xsl:choose>
 	</xsl:template>
 
 </xsl:stylesheet>

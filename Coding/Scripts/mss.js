@@ -72,12 +72,17 @@ $(function() {
       html = html + '<span style="color:red;">' + clean($(span).text()) + '</span><ul>';
     }
     if ($(span).hasClass('name')) {
-      html = html + '<li>is the name of a ';
       if ($(span).attr('data-nametype')=='personal') {
-        html = html + 'person</li>';
+        html = html + '<li>is the name of a person</li>';
       }
       else if ($(span).attr('data-nametype')=='place') {
-        html = html + 'place</li>';
+        html = html + '<li>is the name of a place</li>';
+      }
+      else if ($(span).attr('data-nametype')=='population') {
+        html = html + '<li>is the name of a group of people</li>';
+      }
+      else {
+        html = html + '<li>is a name</li>';
       }
     }
     if ($(span).attr('data-pos')) {
@@ -149,6 +154,13 @@ $(function() {
       $.ajaxSetup({async: true}); //!! we should not be using this !!
       html += '</ul></li>';
     }
+    if (!rec && $(span).find('.expansion').length>0) {
+      // SB
+    }
+    if (!rec && $(span).find('.ligature').length>0) {
+      // SB
+    }
+    
     if (!rec && $(span).find('.unclear').length>0) {
       html += '<li>contains the following unclear sequences:<ul id="unclearList">';
       $(span).find('.unclear').each(function() {
@@ -183,9 +195,10 @@ $(function() {
       html += '</li>';
     }
     if (!rec && $(span).find('.suppliedDiplo').length>0) {
-      html += '<li>contains the following supplied sequences:<ul>';
+      html += '<li>contains editorial supplements:<ul>';
+      //html += $(span).text();  
       $(span).find('.suppliedDiplo').each(function() {
-        html = html + '<li><span style="color: green;">[</span>' + $(this).text() + '<span style="color: green;">]</span> ';
+        html = html + '<li><span style="color: green;">' + $(this).text() + '</span> ';
         html += '</li>';
       });
       html += '</ul></li>';

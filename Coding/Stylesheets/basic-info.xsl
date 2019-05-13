@@ -257,7 +257,7 @@
     </span>
   </xsl:template>
   
-  <xsl:template mode="diplomatic" match="tei:date">
+  <xsl:template mode="diplomatic" match="tei:date | tei:c | tei:num">
     <span class="syntagm">
       <xsl:apply-templates mode="diplomatic"/>
     </span>
@@ -291,12 +291,6 @@
   <xsl:template mode="diplomatic" match="tei:pc[not(ancestor::tei:w)]">
     <span class="punct">
       <xsl:value-of select="."/>
-    </span>
-  </xsl:template>
-
-  <xsl:template mode="diplomatic" match="tei:unclear[@reason='damage']">
-    <span class="damagedDiplo">
-      <xsl:apply-templates mode="diplomatic"/>
     </span>
   </xsl:template>
   
@@ -334,7 +328,9 @@
 
   <xsl:template mode="diplomatic" match="tei:supplied">
     <span class="suppliedDiplo">
+      <xsl:text>[</xsl:text>
       <xsl:apply-templates mode="diplomatic"/>
+      <xsl:text>]</xsl:text>
     </span>
   </xsl:template>
   
@@ -359,6 +355,33 @@
       <xsl:apply-templates mode="diplomatic"/>
     </div>
   </xsl:template>
+  
+  <xsl:template match="tei:gap" mode="diplomatic">
+    <span class="gap">
+      <xsl:attribute name="title">
+        <xsl:text>Reason: </xsl:text>
+        <xsl:value-of select="@reason"/>
+        <xsl:text>, Extent: </xsl:text>
+        <xsl:value-of select="@extent"/>
+        <xsl:text> </xsl:text>
+        <xsl:value-of select="@unit"/>
+        <xsl:text>, Resp: </xsl:text>
+        <xsl:value-of select="@resp"/>
+      </xsl:attribute>
+      <xsl:text>[...]</xsl:text>
+    </span>
+  </xsl:template>
+  
+  <xsl:template mode="diplomatic" match="tei:unclear[@reason='damage']">
+    <span class="gap">
+      <xsl:attribute name="title">
+        <xsl:text>Reason: damage. Probably: </xsl:text>
+        <xsl:apply-templates mode="diplomatic"/>
+      </xsl:attribute>
+      <xsl:text>[...]</xsl:text>
+    </span>
+  </xsl:template>
+  
 
   <!-- SEMI-DIPLOMATIC -->
 
@@ -446,7 +469,7 @@
     <xsl:text> </xsl:text>
   </xsl:template>
   
-  <xsl:template mode="semi-diplomatic" match="tei:date">
+  <xsl:template mode="semi-diplomatic" match="tei:date | tei:c | tei:num">
     <span class="syntagm">
       <xsl:apply-templates mode="semi-diplomatic"/>
     </span>
