@@ -7,7 +7,7 @@
  */
 
 /** CONSTANTS */
-define("ROOT", "/Users/mark/Sites");    //this must be updated to the local filepath for testing
+//define("ROOT", "/Users/mark/Sites");    //this must be updated to the local filepath for testing
 
 
 switch ($_GET["action"]) {

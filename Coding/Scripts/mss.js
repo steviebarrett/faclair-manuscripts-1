@@ -31,27 +31,39 @@ $(function() {
     $(this).css('background-color', 'yellow');
     $('#headword').text(clean($(this).text()));
     $('#syntaxInfo').html(makeDescription($(this),false));
+    $('#expansionList').html('');
     if ($(this).find('.expansion').length>0) {
       $('#expansionInfo').show();
       html = '';
       $(this).find('.expansion').each(function() {
         var xmlId = $(this).attr('data-glyphref');  
-        var id = $(this).attr('id');    //!! this is undefined
         $.getJSON('/~mark/faclair-manuscripts/Coding/Scripts/ajax.php?action=getGlyph&xmlId=' + xmlId, function (g) {
-          txt = '<li class="glyphItem"><a href="http://' + g.corresp + '" target="_new" data-src="' + g.id + '">' + g.name; // start here
+          txt = '<li class="glyphItem"><a href="http://' + g.corresp + '" target="_new" data-src="' + g.id + '">' + g.name;
           txt = txt + '</a>: ' + g.note + '</li>';
           html = html + txt;
-          //alert(html);
         })
         .done(function() {
           $('#expansionList').html(html);
         });
       }); 
-      //$('#expansionInfo').html(html);
     }
     else {
       $('#expansionInfo').hide();
     }
+    $('#damagedList').html('');
+    if ($(this).find('.damagedDiplo').length>0) {
+      $('#damagedInfo').show();
+      html = '';
+      $(this).find('.damagedDiplo').each(function() {
+        html = html + '<li><span style="color: green;">[</span>' + $(this).text() + '<span style="color: green;">]</span> ';
+        html += '</li>';
+      }); 
+      $('#damagedList').html(html);
+    }
+    else {
+      $('#damagedInfo').hide();
+    }
+    
   });
   
   function makeDescription(span, rec) {
@@ -122,16 +134,6 @@ $(function() {
     return html;
     
     /*
-    if (!rec && $(span).find('.expansion').length>0) {
-      html = html + '<li>' + extractExpansions($(span)) + ' contains the following scribal expansions:<ul id="expansionList">';
-      $(span).find('.expansion').each(function() {
-        var g = eval('glyph_' + $(this).attr('data-glyphref'));
-        txt = '<a href="http://' + g.url + '" target="_new" data-src="' + $(this).attr('id') + '">' + g.name;
-        txt = txt + '</a>: ' + g.description.replace(/%/g,"'");
-        html = html + '<li class="glyphItem">' + txt +'</li>';
-      });
-      html += '</ul></li>';
-    }
     if (!rec && $(span).find('.ligature').length>0) {
       html += '<li>contains the following scribal ligatures:<ul id="ligatureList">';
       $(span).find('.ligature').each(function() {

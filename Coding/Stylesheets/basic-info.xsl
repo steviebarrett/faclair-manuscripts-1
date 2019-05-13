@@ -49,30 +49,11 @@
             Contains the following scribal expansions:
             <ul id="expansionList"></ul>
           </p>
+          <p id="damagedInfo" style="display:none;">
+            Contains the following damaged sections:
+            <ul id="damagedList"></ul>
+          </p>
         </div>
-        <!--
-        <script>
-          <xsl:for-each select="document('../../Transcribing/corpus.xml')/tei:teiCorpus/tei:teiHeader/tei:encodingDesc/tei:charDecl/tei:glyph">
-            <xsl:text>var glyph_</xsl:text>
-            <xsl:value-of select="@xml:id"/>
-            <xsl:text>={</xsl:text>
-            <xsl:text>url:"</xsl:text>
-            <xsl:value-of select="@corresp"/>
-            <xsl:text>",name:"</xsl:text>
-            <xsl:value-of select="tei:glyphName"/>
-            <xsl:text>",description:"</xsl:text>
-            <xsl:value-of select="normalize-space(translate(tei:note, '&quot;', '%'))"/>
-            <xsl:text>"};&#10;</xsl:text>            
-          </xsl:for-each>
-          <xsl:for-each select="document('../../Transcribing/corpus.xml')/tei:teiCorpus/tei:teiHeader/tei:encodingDesc/tei:classDecl/tei:taxonomy[@xml:id='POS']/tei:gloss">
-            <xsl:text>var pos_</xsl:text>
-            <xsl:value-of select="@xml:id"/>
-            <xsl:text>='</xsl:text>
-            <xsl:value-of select="."/>
-            <xsl:text>';&#10;</xsl:text>            
-          </xsl:for-each>
-        </script>
-        -->
       </body>
     </html>
   </xsl:template>
@@ -153,9 +134,11 @@
     <xsl:apply-templates mode="diplomatic"/>
   </xsl:template>
 
+<!--
   <xsl:template match="tei:div/tei:div" mode="diplomatic">
     <xsl:apply-templates mode="diplomatic"/>
   </xsl:template>  
+-->
 
   <xsl:template match="tei:div" mode="diplomatic">
     <div style="color: gray; font-size: small; margin-top: 20px;">
