@@ -7,7 +7,7 @@
  */
 
 /** CONSTANTS */
-define("ROOT", "/var/www/html/dasg.arts.gla.ac.uk/www");    //this must be updated to the local filepath for testing
+define("ROOT", "/Users/mark/Sites");    //this must be updated to the local filepath for testing
 
 
 switch ($_GET["action"]) {
@@ -223,7 +223,7 @@ SQL;
 
     public static function getGlyph($id) {
         $xmlId = $id;
-        $filepath = ROOT . "/mss/Transcribing/corpus.xml";
+        $filepath = ROOT . "/faclair-manuscripts/Transcribing/corpus.xml"; // change back to /mss/
         $xml = simplexml_load_file($filepath);
         $xml->registerXPathNamespace('tei', 'http://www.tei-c.org/ns/1.0');
         $nodes = $xml->xpath("/tei:teiCorpus/tei:teiHeader/tei:encodingDesc/tei:charDecl/tei:glyph[@xml:id='{$xmlId}']");

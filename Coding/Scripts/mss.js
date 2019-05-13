@@ -32,24 +32,25 @@ $(function() {
     $('#headword').text(clean($(this).text()));
     $('#syntaxInfo').html(makeDescription($(this),false));
     if ($(this).find('.expansion').length>0) {
-      html = 'It contains the following scribal expansions:<ul>';
+      $('#expansionInfo').show();
+      html = '';
       $(this).find('.expansion').each(function() {
-        html += '<li>';
         var xmlId = $(this).attr('data-glyphref');  
-        alert(xmlId);
         var id = $(this).attr('id');    //!! this is undefined
-        $.getJSON('/ajax/manuscripts.php?action=getGlyph&xmlId=' + xmlId, function (g) { // this URL is broken
-          txt = '<a href="http://' + g.corresp + '" target="_new" data-src="' + id + '">' + g.name;
-          txt = txt + '</a>: ' + g.note;
-          html = html + '<li class="glyphItem">' + txt +'</li>';
+        $.getJSON('/~mark/faclair-manuscripts/Coding/Scripts/ajax.php?action=getGlyph&xmlId=' + xmlId, function (g) {
+          txt = '<li class="glyphItem"><a href="http://' + g.corresp + '" target="_new" data-src="' + g.id + '">' + g.name; // start here
+          txt = txt + '</a>: ' + g.note + '</li>';
+          html = html + txt;
+          //alert(html);
+        })
+        .done(function() {
+          $('#expansionList').html(html);
         });
-        html += '</li>';
-      });
-      html += '</ul>'; 
-      $('#expansionInfo').html(html);
+      }); 
+      //$('#expansionInfo').html(html);
     }
     else {
-      $('#expansionInfo').empty();
+      $('#expansionInfo').hide();
     }
   });
   

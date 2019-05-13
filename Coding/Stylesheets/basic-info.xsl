@@ -45,7 +45,10 @@
         <div id="right-panel">
           <h1 id="headword"></h1>
           <ul id="syntaxInfo"></ul>
-          <p id="expansionInfo"></p>
+          <p id="expansionInfo" style="display:none;">
+            Contains the following scribal expansions:
+            <ul id="expansionList"></ul>
+          </p>
         </div>
         <!--
         <script>
