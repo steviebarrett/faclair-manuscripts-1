@@ -50,7 +50,7 @@
             <ul id="expansionList"></ul>
           </p>
           <p id="damagedInfo" style="display:none;">
-            Contains the following damaged sections:
+            Contains the following damaged or obscured sections:
             <ul id="damagedList"></ul>
           </p>
         </div>
@@ -178,8 +178,11 @@
 
   <xsl:template mode="diplomatic" match="tei:pb">
     <div style="color: gray; font-size: small; margin-top: 20px;">
-      <xsl:text>[start of page </xsl:text>
-      <xsl:value-of select="@n"/>
+      <xsl:text>[start of </xsl:text>
+      <a href="{@facs}" target="_new">
+        <xsl:text>page </xsl:text>
+        <xsl:value-of select="@n"/>
+      </a>
       <xsl:text>]</xsl:text>
     </div>
   </xsl:template>
@@ -203,6 +206,15 @@
       <xsl:value-of select="@n"/>
       <xsl:text>]</xsl:text>
     </div>
+  </xsl:template>
+
+  <xsl:template mode="diplomatic" match="tei:lg">
+    <xsl:apply-templates mode="diplomatic"/>
+  </xsl:template>
+  
+  <xsl:template mode="diplomatic" match="tei:l">
+    <xsl:apply-templates mode="diplomatic"/>
+    <span style="color: gray;"> / </span> 
   </xsl:template>
 
   <xsl:template mode="diplomatic" match="tei:name[not(ancestor::tei:name)]"> <!-- a name which is NOT part of a larger name -->
@@ -230,7 +242,7 @@
           <xsl:value-of select="@lemma"/>
         </xsl:attribute>
         <xsl:attribute name="data-pos">
-          <xsl:value-of select="@ana"/>
+          <xsl:value-of select="@pos"/>
         </xsl:attribute>
         <xsl:attribute name="data-edil">
           <xsl:value-of select="@lemmaRef"/>
@@ -247,7 +259,7 @@
           <xsl:value-of select="@lemma"/>
         </xsl:attribute>
         <xsl:attribute name="data-pos">
-          <xsl:value-of select="@ana"/>
+          <xsl:value-of select="@pos"/>
         </xsl:attribute>
         <xsl:attribute name="data-edil">
           <xsl:value-of select="@lemmaRef"/>
@@ -274,10 +286,7 @@
         </span>
       </xsl:when>
       <xsl:otherwise> <!-- expansion -->
-        <span class="expansion">
-          <xsl:attribute name="data-glyphref">
-            <xsl:value-of select="@ref"/>
-          </xsl:attribute>
+        <span class="expansion" data-cert="{../@cert}" data-glyphref="{@ref}">
           <xsl:apply-templates mode="diplomatic"/>
         </span>
       </xsl:otherwise>
@@ -294,8 +303,17 @@
     </span>
   </xsl:template>
   
-  <xsl:template mode="diplomatic" match="tei:unclear[@reason='text_obscure']">
-    <span class="obscureTextDiplo">
+  <xsl:template mode="diplomatic" match="tei:unclear[@reason='damage']">
+    <span class="unclearDamageDiplo" data-cert="{@cert}" data-resp="{@resp}">
+      <xsl:attribute name="data-add">
+        <xsl:apply-templates mode="diplomatic"/>
+      </xsl:attribute>
+      <xsl:text>[...]</xsl:text>
+    </span>
+  </xsl:template>
+  
+  <xsl:template mode="diplomatic" match="tei:unclear">
+    <span class="unclearDiplo" data-cert="{@cert}" data-resp="{@resp}" data-reason="{@reason}">
       <xsl:apply-templates mode="diplomatic"/>
     </span>
   </xsl:template>
@@ -357,27 +375,7 @@
   </xsl:template>
   
   <xsl:template match="tei:gap" mode="diplomatic">
-    <span class="gap">
-      <xsl:attribute name="title">
-        <xsl:text>Reason: </xsl:text>
-        <xsl:value-of select="@reason"/>
-        <xsl:text>, Extent: </xsl:text>
-        <xsl:value-of select="@extent"/>
-        <xsl:text> </xsl:text>
-        <xsl:value-of select="@unit"/>
-        <xsl:text>, Resp: </xsl:text>
-        <xsl:value-of select="@resp"/>
-      </xsl:attribute>
-      <xsl:text>[...]</xsl:text>
-    </span>
-  </xsl:template>
-  
-  <xsl:template mode="diplomatic" match="tei:unclear[@reason='damage']">
-    <span class="gap">
-      <xsl:attribute name="title">
-        <xsl:text>Reason: damage. Probably: </xsl:text>
-        <xsl:apply-templates mode="diplomatic"/>
-      </xsl:attribute>
+    <span class="gapDamageDiplo" data-extent="{@extent}" data-unit="{@unit}" data-resp="{@resp}">
       <xsl:text>[...]</xsl:text>
     </span>
   </xsl:template>

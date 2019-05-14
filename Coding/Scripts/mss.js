@@ -28,6 +28,7 @@ $(function() {
 
   $('.chunk').click(function(){
     $('.chunk').css('background-color', 'inherit');
+    $('.gapDamageDiplo').css('background-color', 'inherit');
     $(this).css('background-color', 'yellow');
     $('#headword').text(clean($(this).text()));
     $('#syntaxInfo').html(makeDescription($(this),false));
@@ -36,10 +37,11 @@ $(function() {
       $('#expansionInfo').show();
       html = '';
       $(this).find('.expansion').each(function() {
+        cert = $(this).attr('data-cert');
         var xmlId = $(this).attr('data-glyphref');  
         $.getJSON('/~mark/faclair-manuscripts/Coding/Scripts/ajax.php?action=getGlyph&xmlId=' + xmlId, function (g) {
           txt = '<li class="glyphItem"><a href="http://' + g.corresp + '" target="_new" data-src="' + g.id + '">' + g.name;
-          txt = txt + '</a>: ' + g.note + '</li>';
+          txt = txt + '</a>: ' + g.note + ' (' + cert + ' certainty)</li>';
           html = html + txt;
         })
         .done(function() {
@@ -51,19 +53,38 @@ $(function() {
       $('#expansionInfo').hide();
     }
     $('#damagedList').html('');
-    if ($(this).find('.damagedDiplo').length>0) {
+    if ($(this).find('.unclearDamageDiplo').length>0 || $(this).find('.unclearDiplo').length>0) {
       $('#damagedInfo').show();
-      html = '';
-      $(this).find('.damagedDiplo').each(function() {
-        html = html + '<li><span style="color: green;">[</span>' + $(this).text() + '<span style="color: green;">]</span> ';
-        html += '</li>';
+      html2 = '';
+      $(this).find('.unclearDamageDiplo').each(function() {
+        html2 = html2 + '<li><span style="color: green;">[</span>' + $(this).attr('data-add') + '<span style="color: green;">]</span> ';
+        html2 = html2 + '(' + $(this).attr('data-resp') + ', ' + $(this).attr('data-cert');
+        html2 += ' certainty)</li>';
       }); 
-      $('#damagedList').html(html);
+      $(this).find('.unclearDiplo').each(function() {
+        html2 = html2 + '<li><span style="color: green;">[</span>' + $(this).text() + '<span style="color: green;">]</span> ';
+        html2 = html2 + '(' + $(this).attr('data-resp') + ', ' + $(this).attr('data-cert');
+        html2 += ' certainty, ' + $(this).attr('data-reason') + ')</li>';
+      }); 
+      $('#damagedList').html(html2);
     }
     else {
       $('#damagedInfo').hide();
     }
-    
+  });
+  
+  $('.gapDamageDiplo').click(function(){
+    $('.chunk').css('background-color', 'inherit');
+    $('.gapDamageDiplo').css('background-color', 'inherit');
+    $(this).css('background-color', 'yellow');
+    $('#expansionList').html('');
+    $('#damagedList').html('');
+    $('#headword').html('');
+    $('#damagedInfo').hide();
+    $('#expansionInfo').hide();
+    html = 'This is a damaged section of text: ';
+    html = html + $(this).attr('data-extent') + ' ' + $(this).attr('data-unit') + ' (' + $(this).attr('data-resp') + ')';
+    $('#syntaxInfo').html(html);
   });
   
   function makeDescription(span, rec) {
@@ -86,10 +107,7 @@ $(function() {
       }
     }
     if ($(span).attr('data-pos')) {
-      var poss = $(span).attr('data-pos').split(', ');
-      for (var i = 0; i < poss.length; i++) { 
-        html = html + '<li>is a ' + poss[i] + '</li>';
-      }
+      html = html + '<li>is a ' + $(span).attr('data-pos') + '</li>';
     }
     else if ($(span).hasClass('name') && $(span).children('.word').length==1 && $(span).children('.word').children('.word').length==0) {
       var poss = $(span).children('.word').attr('data-pos').split(', ');

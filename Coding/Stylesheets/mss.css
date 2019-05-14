@@ -53,7 +53,7 @@ a:hover {
   text-decoration: none;
 }
 
-.chunk {
+.chunk, .gapDamageDiplo {
   cursor: pointer;
   background-color: inherit;
   text-decoration: inherit;
@@ -64,7 +64,7 @@ a:hover {
   font-family: "Times New Roman", serif;
 }
 
-.syntagm {
+.syntagm, .gapDamageDiplo {
   background-color: inherit;
   text-decoration: inherit;
   color: inherit;
@@ -89,6 +89,10 @@ a:hover {
 }
 
 .unclear {
+  color: gray;
+}
+
+.unclearDamageDiplo {
   color: gray;
 }
 
@@ -138,7 +142,7 @@ a:hover {
   color: brown;
 }
 
-.obscureTextDiplo {
+.unclearDiplo {
   color: black;
   background-color: lightgray;
 }
@@ -158,9 +162,8 @@ a:hover {
   display: none;
 }
 
-.gap {
-  color: red;
-  font-size: small;
+.gapDamageDiplo {
+  color: gray;
 }
 
 
