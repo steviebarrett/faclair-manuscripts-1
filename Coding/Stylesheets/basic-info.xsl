@@ -211,7 +211,7 @@
   
   <xsl:template mode="diplomatic" match="tei:l">
     <xsl:apply-templates mode="diplomatic"/>
-    <span style="color: gray;"> / </span> 
+    <!-- <span style="color: gray;"> / </span> -->
   </xsl:template>
 
   <xsl:template mode="diplomatic" match="tei:name[not(ancestor::tei:name)]"> <!-- a name which is NOT part of a larger name -->
@@ -311,6 +311,18 @@
   
   <xsl:template mode="diplomatic" match="tei:unclear[@reason='text_obscure']">
     <span class="unclearTextObscureDiplo" data-cert="{@cert}" data-resp="{@resp}">
+      <xsl:apply-templates mode="diplomatic"/>
+    </span>
+  </xsl:template>
+  
+  <xsl:template mode="diplomatic" match="tei:unclear[@reason='char']">
+    <span class="unclearCharDiplo" data-cert="{@cert}" data-resp="{@resp}">
+      <xsl:apply-templates mode="diplomatic"/>
+    </span>
+  </xsl:template>
+  
+  <xsl:template mode="diplomatic" match="tei:unclear[@reason='interp_obscure']">
+    <span class="unclearInterpObscureDiplo" data-cert="{@cert}" data-resp="{@resp}">
       <xsl:apply-templates mode="diplomatic"/>
     </span>
   </xsl:template>

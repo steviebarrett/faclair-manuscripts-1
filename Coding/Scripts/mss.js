@@ -279,6 +279,21 @@ $(function() {
       }); 
       html2 += '</ul>';
     }
+    if ($(span).find('.unclearCharDiplo').length>0) {
+      html2 += 'Contains the following unclear characters:<ul>';
+      $(span).find('.unclearCharDiplo').each(function() {
+        html2 = html2 + '<li>[' + $(this).text() + '] ';
+        html2 = html2 + '(' + $(this).attr('data-resp') + ', ' + $(this).attr('data-cert');
+        html2 += ' certainty)</li>';
+      }); 
+      html2 += '</ul>';
+    }
+    if ($(span).parents('.unclearTextObscureDiplo').length>0) {
+      html2 += 'This is part of an obscured section.'; 
+    }
+    if ($(span).parents('.unclearInterpObscureDiplo').length>0) {
+      html2 += 'This is part of a section whose interpretation is obscure.'; 
+    }
     return html2;
   }
 
