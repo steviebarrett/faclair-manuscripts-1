@@ -39,7 +39,8 @@ $(function() {
       $(this).find('.expansion').each(function() {
         cert = $(this).attr('data-cert');
         var xmlId = $(this).attr('data-glyphref');  
-        $.getJSON('/~mark/faclair-manuscripts/Coding/Scripts/ajax.php?action=getGlyph&xmlId=' + xmlId, function (g) {
+        //$.getJSON('/~mark/faclair-manuscripts/Coding/Scripts/ajax.php?action=getGlyph&xmlId=' + xmlId, function (g) {
+        $.getJSON('/ajax/manuscripts.php?action=getGlyph&xmlId=' + xmlId, function (g) {
           txt = '<li class="glyphItem"><a href="http://' + g.corresp + '" target="_new" data-src="' + g.id + '">' + g.name;
           txt = txt + '</a>: ' + g.note + ' (' + cert + ' certainty)</li>';
           html = html + txt;
@@ -52,25 +53,7 @@ $(function() {
     else {
       $('#expansionInfo').hide();
     }
-    $('#damagedList').html('');
-    if ($(this).find('.unclearDamageDiplo').length>0 || $(this).find('.unclearDiplo').length>0) {
-      $('#damagedInfo').show();
-      html2 = '';
-      $(this).find('.unclearDamageDiplo').each(function() {
-        html2 = html2 + '<li><span style="color: green;">[</span>' + $(this).attr('data-add') + '<span style="color: green;">]</span> ';
-        html2 = html2 + '(' + $(this).attr('data-resp') + ', ' + $(this).attr('data-cert');
-        html2 += ' certainty)</li>';
-      }); 
-      $(this).find('.unclearDiplo').each(function() {
-        html2 = html2 + '<li><span style="color: green;">[</span>' + $(this).text() + '<span style="color: green;">]</span> ';
-        html2 = html2 + '(' + $(this).attr('data-resp') + ', ' + $(this).attr('data-cert');
-        html2 += ' certainty, ' + $(this).attr('data-reason') + ')</li>';
-      }); 
-      $('#damagedList').html(html2);
-    }
-    else {
-      $('#damagedInfo').hide();
-    }
+    $('#damagedInfo').html(getDamage($(this)));
   });
   
   $('.gapDamageDiplo').click(function(){
@@ -78,9 +61,8 @@ $(function() {
     $('.gapDamageDiplo').css('background-color', 'inherit');
     $(this).css('background-color', 'yellow');
     $('#expansionList').html('');
-    $('#damagedList').html('');
     $('#headword').html('');
-    $('#damagedInfo').hide();
+    $('#damagedInfo').html('');
     $('#expansionInfo').hide();
     html = 'This is a damaged section of text: ';
     html = html + $(this).attr('data-extent') + ' ' + $(this).attr('data-unit') + ' (' + $(this).attr('data-resp') + ')';
@@ -275,7 +257,29 @@ $(function() {
     }
     html += '</ul>';
      */
-    
+  }
+
+  function getDamage(span) {
+    html2 = '';
+    if ($(span).find('.unclearDamageDiplo').length>0) {
+      html2 += 'Contains the following damaged sections:<ul>';
+      $(span).find('.unclearDamageDiplo').each(function() {
+        html2 = html2 + '<li>[' + $(this).attr('data-add') + '] ';
+        html2 = html2 + '(' + $(this).attr('data-resp') + ', ' + $(this).attr('data-cert');
+        html2 += ' certainty)</li>';
+      }); 
+      html2 += '</ul>';
+    }
+    if ($(span).find('.unclearTextObscureDiplo').length>0) {
+      html2 += 'Contains the following obscured sections:<ul>';
+      $(span).find('.unclearTextObscureDiplo').each(function() {
+        html2 = html2 + '<li>[' + $(this).text() + '] ';
+        html2 = html2 + '(' + $(this).attr('data-resp') + ', ' + $(this).attr('data-cert');
+        html2 += ' certainty)</li>';
+      }); 
+      html2 += '</ul>';
+    }
+    return html2;
   }
 
   function clean(str) { // remove form content from headword strings at linebreaks

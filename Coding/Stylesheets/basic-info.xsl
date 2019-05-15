@@ -49,10 +49,7 @@
             Contains the following scribal expansions:
             <ul id="expansionList"></ul>
           </p>
-          <p id="damagedInfo" style="display:none;">
-            Contains the following damaged or obscured sections:
-            <ul id="damagedList"></ul>
-          </p>
+          <p id="damagedInfo"></p>
         </div>
       </body>
     </html>
@@ -312,8 +309,8 @@
     </span>
   </xsl:template>
   
-  <xsl:template mode="diplomatic" match="tei:unclear">
-    <span class="unclearDiplo" data-cert="{@cert}" data-resp="{@resp}" data-reason="{@reason}">
+  <xsl:template mode="diplomatic" match="tei:unclear[@reason='text_obscure']">
+    <span class="unclearTextObscureDiplo" data-cert="{@cert}" data-resp="{@resp}">
       <xsl:apply-templates mode="diplomatic"/>
     </span>
   </xsl:template>
