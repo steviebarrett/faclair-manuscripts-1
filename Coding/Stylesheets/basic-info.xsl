@@ -50,6 +50,7 @@
             <ul id="expansionList"></ul>
           </p>
           <p id="damagedInfo"></p>
+          <p id="deletionInfo"></p>
         </div>
       </body>
     </html>
@@ -328,7 +329,7 @@
   </xsl:template>
   
   <xsl:template mode="diplomatic" match="tei:del">
-    <span class="deletion" data-hand="{@resp}">
+    <span class="deletionDiplo" data-hand="{@hand}">
       <xsl:apply-templates mode="diplomatic"/>
     </span>
   </xsl:template>

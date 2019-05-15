@@ -39,8 +39,8 @@ $(function() {
       $(this).find('.expansion').each(function() {
         cert = $(this).attr('data-cert');
         var xmlId = $(this).attr('data-glyphref');  
-        //$.getJSON('/~mark/faclair-manuscripts/Coding/Scripts/ajax.php?action=getGlyph&xmlId=' + xmlId, function (g) {
-        $.getJSON('/ajax/manuscripts.php?action=getGlyph&xmlId=' + xmlId, function (g) {
+        $.getJSON('/~mark/faclair-manuscripts/Coding/Scripts/ajax.php?action=getGlyph&xmlId=' + xmlId, function (g) {
+        //$.getJSON('/ajax/manuscripts.php?action=getGlyph&xmlId=' + xmlId, function (g) {
           txt = '<li class="glyphItem"><a href="http://' + g.corresp + '" target="_new" data-src="' + g.id + '">' + g.name;
           txt = txt + '</a>: ' + g.note + ' (' + cert + ' certainty)</li>';
           html = html + txt;
@@ -54,6 +54,7 @@ $(function() {
       $('#expansionInfo').hide();
     }
     $('#damagedInfo').html(getDamage($(this)));
+    $('#deletionInfo').html(getDeletions($(this)));
   });
   
   $('.gapDamageDiplo').click(function(){
@@ -293,6 +294,20 @@ $(function() {
     }
     if ($(span).parents('.unclearInterpObscureDiplo').length>0) {
       html2 += 'This is part of a section whose interpretation is obscure.'; 
+    }
+    return html2;
+  }
+
+  function getDeletions(span) {
+    html2 = '';
+    if ($(span).find('.deletionDiplo').length>0) {
+      html2 += 'Contains the following deletions:<ul>';
+      $(span).find('.deletionDiplo').each(function() {
+        html2 = html2 + '<li>[' + $(this).text() + '] ';
+        html2 = html2 + '(' + $(this).attr('data-hand');
+        html2 += ')</li>';
+      }); 
+      html2 += '</ul>';
     }
     return html2;
   }
