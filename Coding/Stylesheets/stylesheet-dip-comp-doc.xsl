@@ -563,6 +563,12 @@
 			<xsl:apply-templates mode="dip"/>
 		</span>
 	</xsl:template>
+	
+	<xsl:template mode="dip" match="tei:seg[@type = 'fragment']">
+		<span class="fragment">
+			<xsl:text/>
+		</span>
+	</xsl:template>
 
 	<xsl:template mode="dip" match="tei:seg[@type = 'margNote']">
 		<xsl:variable name="encLineID"
