@@ -46,7 +46,7 @@
           <h1 id="headword"></h1>
           <ul id="syntaxInfo"></ul>
           <p id="expansionInfo" style="display:none;">
-            Contains the following scribal expansions:
+            Contains the following scribal expansions and ligatures:
             <ul id="expansionList"></ul>
           </p>
           <p id="damagedInfo"></p>
@@ -145,7 +145,7 @@
       <xsl:text>: </xsl:text>
       <xsl:value-of select="@type"/>
       <xsl:text>, </xsl:text>
-      <xsl:value-of select="@resp"/>
+      <xsl:value-of select="@hand"/>
       <xsl:text>] </xsl:text>
       <a href="#" class="addComment" title="Leave comment on this text" data-s="div" data-n="{@n}">[+]</a>
       <div class="commentForm" id="cf__div__{@n}">
@@ -183,6 +183,10 @@
       </a>
       <xsl:text>]</xsl:text>
     </div>
+  </xsl:template>
+
+  <xsl:template mode="diplomatic" match="tei:handShift">
+    <span style="color: gray; font-size: small;">[handshift: <xsl:value-of select="@new"/>]</span>
   </xsl:template>
 
   <xsl:template mode="diplomatic" match="tei:lb">
@@ -245,6 +249,12 @@
         <xsl:attribute name="data-edil">
           <xsl:value-of select="@lemmaRef"/>
         </xsl:attribute>
+        <xsl:attribute name="data-lemmasl">
+          <xsl:value-of select="@lemmaSL"/>
+        </xsl:attribute>
+        <xsl:attribute name="data-slipref">
+          <xsl:value-of select="@slipRef"/>
+        </xsl:attribute>
       </xsl:if>
       <xsl:apply-templates mode="diplomatic"/>
     </span>
@@ -262,6 +272,12 @@
         <xsl:attribute name="data-edil">
           <xsl:value-of select="@lemmaRef"/>
         </xsl:attribute>
+        <xsl:attribute name="data-lemmasl">
+          <xsl:value-of select="@lemmaSL"/>
+        </xsl:attribute>
+        <xsl:attribute name="data-slipref">
+          <xsl:value-of select="@slipRef"/>
+        </xsl:attribute>
       </xsl:if>
       <xsl:apply-templates mode="diplomatic"/>
     </span>
@@ -276,15 +292,12 @@
   <xsl:template mode="diplomatic" match="tei:g">
     <xsl:choose>
       <xsl:when test="starts-with(@ref,'l')"> <!-- ligature -->
-        <span class="ligature">
-          <xsl:attribute name="data-glyphref">
-            <xsl:value-of select="@ref"/>
-          </xsl:attribute>
+        <span class="ligature" data-glyphref="{@ref}" id="{generate-id(.)}">
           <xsl:apply-templates mode="diplomatic"/>
         </span>
       </xsl:when>
       <xsl:otherwise> <!-- expansion -->
-        <span class="expansion" data-cert="{../@cert}" data-glyphref="{@ref}">
+        <span class="expansion" data-cert="{../@cert}" data-glyphref="{@ref}" id="{generate-id(.)}">
           <xsl:apply-templates mode="diplomatic"/>
         </span>
       </xsl:otherwise>
