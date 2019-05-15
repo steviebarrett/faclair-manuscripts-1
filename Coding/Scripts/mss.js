@@ -39,8 +39,8 @@ $(function() {
       $(this).find('.expansion').each(function() {
         cert = $(this).attr('data-cert');
         var xmlId = $(this).attr('data-glyphref');  
-        $.getJSON('/~mark/faclair-manuscripts/Coding/Scripts/ajax.php?action=getGlyph&xmlId=' + xmlId, function (g) {
-        //$.getJSON('/ajax/manuscripts.php?action=getGlyph&xmlId=' + xmlId, function (g) {
+        //$.getJSON('/~mark/faclair-manuscripts/Coding/Scripts/ajax.php?action=getGlyph&xmlId=' + xmlId, function (g) {
+        $.getJSON('/ajax/manuscripts.php?action=getGlyph&xmlId=' + xmlId, function (g) {
           txt = '<li class="glyphItem"><a href="http://' + g.corresp + '" target="_new" data-src="' + g.id + '">' + g.name;
           txt = txt + '</a>: ' + g.note + ' (' + cert + ' certainty)</li>';
           html = html + txt;
