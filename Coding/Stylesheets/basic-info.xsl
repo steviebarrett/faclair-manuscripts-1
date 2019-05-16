@@ -250,12 +250,14 @@
         <xsl:attribute name="data-edil">
           <xsl:value-of select="@lemmaRef"/>
         </xsl:attribute>
+        <!--
         <xsl:attribute name="data-dwheadword">
           <xsl:value-of select="document('../../Transcribing/hwData.xml')/descendant::tei:entryFree[@corresp=$lemmaRef]/tei:w/@lemmaDW"/>
         </xsl:attribute>
         <xsl:attribute name="data-dwurl">
           <xsl:value-of select="document('../../Transcribing/hwData.xml')/descendant::tei:entryFree[@corresp=$lemmaRef]/tei:w/@lemmaRefDW"/>
         </xsl:attribute>
+        -->
         <xsl:attribute name="data-lemmasl">
           <xsl:value-of select="@lemmaSL"/>
         </xsl:attribute>
@@ -279,12 +281,6 @@
         </xsl:attribute>
         <xsl:attribute name="data-edil">
           <xsl:value-of select="@lemmaRef"/>
-        </xsl:attribute>
-        <xsl:attribute name="data-dwheadword">
-          <xsl:value-of select="document('../../Transcribing/hwData.xml')/descendant::tei:entryFree[@corresp=$lemmaRef]/tei:w/@lemmaDW"/>
-        </xsl:attribute>
-        <xsl:attribute name="data-dwurl">
-          <xsl:value-of select="document('../../Transcribing/hwData.xml')/descendant::tei:entryFree[@corresp=$lemmaRef]/tei:w/@lemmaRefDW"/>
         </xsl:attribute>
         <xsl:attribute name="data-lemmasl">
           <xsl:value-of select="@lemmaSL"/>
