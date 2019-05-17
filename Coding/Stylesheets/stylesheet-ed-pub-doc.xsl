@@ -1727,6 +1727,10 @@
 	<xsl:template match="tei:seg[@type = 'cfe']">
 		<xsl:text/>
 	</xsl:template>
+	
+	<xsl:template match="tei:seg[@type = 'fragment']">
+		<xsl:text/>
+	</xsl:template>
 
 	<xsl:template match="tei:seg[@type = 'title']">
 		<xsl:variable name="elPOS" select="count(preceding::*)"/>
