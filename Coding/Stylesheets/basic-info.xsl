@@ -51,6 +51,7 @@
           </p>
           <p id="damagedInfo"></p>
           <p id="deletionInfo"></p>
+          <p id="additionInfo"></p>
         </div>
       </body>
     </html>
@@ -302,7 +303,7 @@
   </xsl:template>
   
   <xsl:template mode="diplomatic" match="tei:date | tei:c | tei:num">
-    <span class="syntagm">
+    <span class="chunk syntagm">
       <xsl:apply-templates mode="diplomatic"/>
     </span>
   </xsl:template>
@@ -371,24 +372,16 @@
     </span>
   </xsl:template>
 
-  <xsl:template mode="diplomatic" match="tei:add">
-    <xsl:choose>
-      <xsl:when test="@place='above'">
-        <span class="addition above" data-hand="{@resp}" data-place="{@place}"  data-type="{@type}">
-          <xsl:apply-templates mode="diplomatic"/>
-        </span>
-      </xsl:when>
-      <xsl:when test="@place='below'">
-        <span class="addition below" data-hand="{@resp}" data-place="{@place}"  data-type="{@type}">
-          <xsl:apply-templates mode="diplomatic"/>
-        </span>
-      </xsl:when>
-      <xsl:otherwise>
-        <span class="addition" data-hand="{@resp}" data-place="{@place}" data-type="{@type}">
-          <xsl:apply-templates mode="diplomatic"/>
-        </span>
-      </xsl:otherwise>
-    </xsl:choose>
+  <xsl:template mode="diplomatic" match="tei:add[@type='gloss']">
+    <span class="gloss" data-hand="{@hand}" data-place="{@place}">
+      <xsl:apply-templates mode="diplomatic"/>
+    </span>
+  </xsl:template>
+
+  <xsl:template mode="diplomatic" match="tei:add[@type='insertion']">
+    <span class="insertion" data-hand="{@hand}" data-place="{@place}">
+      <xsl:apply-templates mode="diplomatic"/>
+    </span>
   </xsl:template>
 
   <xsl:template mode="diplomatic" match="tei:supplied">

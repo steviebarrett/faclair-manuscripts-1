@@ -101,21 +101,15 @@ a:hover {
   text-decoration-style: double;
 }
 
-.addition {
-  color: blue;
+.insertion {
   font-size: small;
-}
-
-.above {
   vertical-align: baseline;
   position: relative;
   top: -0.4em;
 }
 
-.below {
-  vertical-align: baseline;
-  position: relative;
-  top: 0.4em;
+.gloss::before {
+  content: "[gl.]";
 }
 
 /*

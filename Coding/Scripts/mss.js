@@ -67,6 +67,7 @@ $(function() {
     }
     $('#damagedInfo').html(getDamage($(this)));
     $('#deletionInfo').html(getDeletions($(this)));
+    $('#additionInfo').html(getAdditions($(this)));
   });
   
   $('.gapDamageDiplo').click(function(){
@@ -184,21 +185,8 @@ $(function() {
     
     /*
     
-    if (!rec && $(span).find('.addition').length>0) {
-      html += '<li>contains the following added sequences:<ul id="additionList">';
-      $(span).find('.addition').each(function() {
-        html = html + '<li><span style="color: green;">[</span>' + $(this).text() + '<span style="color: green;">]</span> – ';
-        html = html + 'added by: ' + $(this).attr('data-hand') + ', place: ' + $(this).attr('data-place') + ', type: ' + $(this).attr('data-type');
-        html += '</li>';
-      });
-      html += '</ul></li>';
-    }
-    if (!rec && $(span).parents('.addition').length>0) {
-      html += '<li>is part of the addition ';
-      html = html + '<span style="color:red;">' + $(span).parents('.addition').text() + '</span> ';
-      html = html + '[' + 'added by: ' + $(span).parents('.addition').attr('data-hand') + ', place: ' + $(span).parents('.addition').attr('data-place') + ', type: ' + $(span).parents('.addition').attr('data-type') + ']';
-      html += '</li>';
-    }
+    
+   
     if (!rec && $(span).find('.suppliedDiplo').length>0) {
       html += '<li>contains editorial supplements:<ul>';
       //html += $(span).text();  
@@ -299,6 +287,29 @@ $(function() {
         html2 = html2 + '(' + $(this).attr('data-hand');
         html2 += ')</li>';
       }); 
+      html2 += '</ul>';
+    }
+    return html2;
+  }
+
+  function getAdditions(span) {
+    html2 = '';
+    if ($(span).find('.insertion').length>0) {
+      html2 += 'Contains the following insertions:<ul>';
+      $(span).find('.insertion').each(function() {
+        html2 = html2 + '<li>[' + $(this).text() + '] ';
+        html2 = html2 + '(' + $(this).attr('data-hand');
+        html2 = html2 + ', '  + $(this).attr('data-place');
+        html2 += ')</li>';
+      }); 
+      html2 += '</ul>';
+    }
+    else if ($(span).parents('.insertion').length>0) {
+      html2 += 'Is part of the following insertion:<ul>';
+      html2 = html2 + '<li>[' + $(span).parents('.insertion').text() + '] ';
+      html2 = html2 + '(' + $(span).parents('.insertion').attr('data-hand');
+      html2 = html2 + ', ' + $(span).parents('.insertion').attr('data-place');
+      html2 += ')</li>';
       html2 += '</ul>';
     }
     return html2;
