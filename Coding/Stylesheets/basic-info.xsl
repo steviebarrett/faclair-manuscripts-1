@@ -240,30 +240,30 @@
   <xsl:template mode="diplomatic" match="tei:w[not(ancestor::tei:w or ancestor::tei:name)]"> <!-- a word which is NOT part of a larger word or name -->
     <span class="word chunk syntagm">
       <xsl:if test="count(tei:w) = 0"> <!-- a syntactically simple word -->
-        <xsl:variable name="lemmaRef" select="@lemmaRef"/>
-        <xsl:attribute name="data-headword">
-          <xsl:value-of select="@lemma"/>
-        </xsl:attribute>
-        <xsl:attribute name="data-pos">
-          <xsl:value-of select="@pos"/>
-        </xsl:attribute>
-        <xsl:attribute name="data-edil">
-          <xsl:value-of select="@lemmaRef"/>
-        </xsl:attribute>
-        <!--
-        <xsl:attribute name="data-dwheadword">
-          <xsl:value-of select="document('../../Transcribing/hwData.xml')/descendant::tei:entryFree[@corresp=$lemmaRef]/tei:w/@lemmaDW"/>
-        </xsl:attribute>
-        <xsl:attribute name="data-dwurl">
-          <xsl:value-of select="document('../../Transcribing/hwData.xml')/descendant::tei:entryFree[@corresp=$lemmaRef]/tei:w/@lemmaRefDW"/>
-        </xsl:attribute>
-        -->
-        <xsl:attribute name="data-lemmasl">
-          <xsl:value-of select="@lemmaSL"/>
-        </xsl:attribute>
-        <xsl:attribute name="data-slipref">
-          <xsl:value-of select="@slipRef"/>
-        </xsl:attribute>
+        <xsl:choose>
+          <xsl:when test="@xml:lang">
+            <xsl:attribute name="xml:lang">
+              <xsl:value-of select="@xml:lang"/>
+            </xsl:attribute>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:attribute name="data-headword">
+              <xsl:value-of select="@lemma"/>
+            </xsl:attribute>
+            <xsl:attribute name="data-pos">
+              <xsl:value-of select="@pos"/>
+            </xsl:attribute>
+            <xsl:attribute name="data-edil">
+              <xsl:value-of select="@lemmaRef"/>
+            </xsl:attribute>
+            <xsl:attribute name="data-lemmasl">
+              <xsl:value-of select="@lemmaSL"/>
+            </xsl:attribute>
+            <xsl:attribute name="data-slipref">
+              <xsl:value-of select="@slipRef"/>
+            </xsl:attribute>
+          </xsl:otherwise>
+        </xsl:choose>
       </xsl:if>
       <xsl:apply-templates mode="diplomatic"/>
     </span>
@@ -272,22 +272,30 @@
   <xsl:template mode="diplomatic" match="tei:w"> <!-- a word which IS part of a larger word or name -->
     <span class="word syntagm">
       <xsl:if test="count(tei:w) = 0"> <!-- a syntactically simple word -->
-        <xsl:variable name="lemmaRef" select="@lemmaRef"/>
-        <xsl:attribute name="data-headword">
-          <xsl:value-of select="@lemma"/>
-        </xsl:attribute>
-        <xsl:attribute name="data-pos">
-          <xsl:value-of select="@pos"/>
-        </xsl:attribute>
-        <xsl:attribute name="data-edil">
-          <xsl:value-of select="@lemmaRef"/>
-        </xsl:attribute>
-        <xsl:attribute name="data-lemmasl">
-          <xsl:value-of select="@lemmaSL"/>
-        </xsl:attribute>
-        <xsl:attribute name="data-slipref">
-          <xsl:value-of select="@slipRef"/>
-        </xsl:attribute>
+        <xsl:choose>
+          <xsl:when test="@xml:lang">
+            <xsl:attribute name="xml:lang">
+              <xsl:value-of select="@xml:lang"/>
+            </xsl:attribute>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:attribute name="data-headword">
+              <xsl:value-of select="@lemma"/>
+            </xsl:attribute>
+            <xsl:attribute name="data-pos">
+              <xsl:value-of select="@pos"/>
+            </xsl:attribute>
+            <xsl:attribute name="data-edil">
+              <xsl:value-of select="@lemmaRef"/>
+            </xsl:attribute>
+            <xsl:attribute name="data-lemmasl">
+              <xsl:value-of select="@lemmaSL"/>
+            </xsl:attribute>
+            <xsl:attribute name="data-slipref">
+              <xsl:value-of select="@slipRef"/>
+            </xsl:attribute>
+          </xsl:otherwise>
+        </xsl:choose>
       </xsl:if>
       <xsl:apply-templates mode="diplomatic"/>
     </span>
