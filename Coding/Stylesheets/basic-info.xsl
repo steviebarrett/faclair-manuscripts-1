@@ -314,8 +314,14 @@
           <xsl:apply-templates mode="diplomatic"/>
         </span>
       </xsl:when>
-      <xsl:otherwise> <!-- expansion -->
+      <xsl:when test="../@cert"> <!-- expansion -->
         <span class="expansion" data-cert="{../@cert}" data-glyphref="{@ref}" id="{generate-id(.)}">
+          <xsl:apply-templates mode="diplomatic"/>
+        </span>
+      </xsl:when>
+      <xsl:otherwise> <!-- weird expansion -->
+        <xsl:variable name="corresp" select="@corresp"/>
+        <span class="expansion" data-cert="{preceding::tei:abbr[@corresp=$corresp]/@cert}" data-glyphref="{@ref}" id="{generate-id(.)}">
           <xsl:apply-templates mode="diplomatic"/>
         </span>
       </xsl:otherwise>
