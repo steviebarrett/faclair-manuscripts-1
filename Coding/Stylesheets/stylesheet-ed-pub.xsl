@@ -1791,6 +1791,11 @@
 					<xsl:apply-templates select="descendant::tei:l"/>
 				</p>
 			</xsl:when>
+			<xsl:when test="@type = 'fragment'">
+				<p style="margin-left:30px">
+					<xsl:apply-templates select="descendant::tei:l"/>
+				</p>
+			</xsl:when>
 			<xsl:otherwise>
 				<xsl:if test="tei:head[@type = 'lgHead']"><h3><xsl:apply-templates select="tei:head[@type = 'lgHead']/tei:title"/></h3></xsl:if>
 				<p style="margin-left:30px">
