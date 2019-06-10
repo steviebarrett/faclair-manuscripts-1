@@ -5,19 +5,19 @@ $(function() {
     $('#diplomaticTranscription').hide();
     $('#semiDiplomaticTranscription').hide();
   });
-  
+
   $('#showDiplomatic').click(function(){
     $('#headerInformation').hide();
     $('#diplomaticTranscription').show();
     $('#semiDiplomaticTranscription').hide();
   });
-  
+
   $('#showSemiDiplomatic').click(function(){
     $('#headerInformation').hide();
     $('#diplomaticTranscription').hide();
     $('#semiDiplomaticTranscription').show();
-  });  
-  
+  });
+
   $('.chunk').mouseenter(function(){
     $(this).css('text-decoration', 'underline');
   });
@@ -32,7 +32,7 @@ $(function() {
     $(this).css('background-color', 'yellow');
     //$('#headword').text(clean($(this).text()));
     $('#headword').html(reindex($(this).html()));
-    makeDescription($(this),false);
+    $('#syntaxInfo').html(makeDescription($(this),false));
     $('#expansionList').html('');
     if ($(this).find('.expansion, .ligature').length>0) {
       $('#expansionInfo').show();
@@ -47,20 +47,21 @@ $(function() {
           txt = txt + '</a>: ' + g.note + ' (' + cert + ' certainty) <a style="font-size: small;" href="#" class="glyphShow" data-id="' + elementId + '">[show]</a></li>';
           html = html + txt;
         })
-        .done(function() {
-          $('#expansionList').html(html);
-          $('.glyphShow').hover(
-            function(){
-              $('#'+$(this).attr('data-id')).css('text-decoration', 'underline');
-              $('#xx'+$(this).attr('data-id')).css('background-color', 'yellow');
-            },
-            function() {
-              $('#'+$(this).attr('data-id')).css('text-decoration', 'inherit');
-              $('#xx'+$(this).attr('data-id')).css('background-color', 'inherit');
-            }
-          );
-        });
-      }); 
+            .done(function() {
+              $('#expansionList').html(html);
+              $('.glyphShow').hover(
+                  function(){
+                    $('#'+$(this).attr('data-id')).css('text-decoration', 'underline');
+                    console.log('underline: ' + $(this).attr('data-id'));
+                    $('#xx'+$(this).attr('data-id')).css('background-color', 'yellow');
+                  },
+                  function() {
+                    $('#'+$(this).attr('data-id')).css('text-decoration', 'inherit');
+                    $('#xx'+$(this).attr('data-id')).css('background-color', 'inherit');
+                  }
+              );
+            });
+      });
     }
     else {
       $('#expansionInfo').hide();
@@ -69,7 +70,7 @@ $(function() {
     $('#deletionInfo').html(getDeletions($(this)));
     $('#additionInfo').html(getAdditions($(this)));
   });
-  
+
   $('.gapDamageDiplo').click(function(){
     $('.chunk').css('background-color', 'inherit');
     $('.gapDamageDiplo').css('background-color', 'inherit');
@@ -82,111 +83,107 @@ $(function() {
     html = html + $(this).attr('data-extent') + ' ' + $(this).attr('data-unit') + ' (' + $(this).attr('data-resp') + ')';
     $('#syntaxInfo').html(html);
   });
-  
+
   function makeDescription(span, rec) {
+    htmlx = '';
     if (rec) {
-      $('#syntaxInfo').append('<span style="color:red;">' + clean($(span).text()) + '</span><ul>');
+      htmlx = htmlx + '<span style="color:red;">' + clean($(span).text()) + '</span><ul>';
     }
     if ($(span).hasClass('name')) {
       if ($(span).attr('data-nametype')=='personal') {
-        $('#syntaxInfo').append('<li>is the name of a person</li>');
+        htmlx = htmlx + '<li>is the name of a person</li>';
       }
       else if ($(span).attr('data-nametype')=='place') {
-        $('#syntaxInfo').append('<li>is the name of a place</li>');
+        htmlx = htmlx + '<li>is the name of a place</li>';
       }
       else if ($(span).attr('data-nametype')=='population') {
-        $('#syntaxInfo').append('<li>is the name of a group of people</li>');
+        htmlx = htmlx + '<li>is the name of a group of people</li>';
       }
       else {
-        $('#syntaxInfo').append('<li>is a name</li>');
+        htmlx = htmlx + '<li>is a name</li>';
       }
     }
     if ($(span).attr('xml:lang') || ($(span).hasClass('name') && $(span).children('.word').length==1 && $(span).children('.word').attr('xml:lang'))) {
-      $('#syntaxInfo').append('<li>is not a Gaelic word: ');
+      htmlx = htmlx + '<li>is not a Gaelic word: ';
       if ($(span).attr('xml:lang')) {
-        $('#syntaxInfo').append(decode($(span).attr('xml:lang')));
+        htmlx += decode($(span).attr('xml:lang'));
       }
       else {
-        $('#syntaxInfo').append(decode($(span).children('.word').attr('xml:lang')));
+        htmlx += decode($(span).children('.word').attr('xml:lang'));
       }
-      $('#syntaxInfo').append('</li>');
+      htmlx += '</li>';
     }
     else {
       if ($(span).attr('data-pos')) {
-        $('#syntaxInfo').append('<li>is a ' + $(span).attr('data-pos') + '</li>');
+        htmlx = htmlx + '<li>is a ' + $(span).attr('data-pos') + '</li>';
       }
       else if ($(span).hasClass('name') && $(span).children('.word').length==1 && $(span).children('.word').children('.word').length==0) {
         var poss = $(span).children('.word').attr('data-pos').split(', ');
         for (var i = 0; i < poss.length; i++) {
-          $('#syntaxInfo').append('<li>is a ' + poss[i] + '</li>');
+          htmlx = htmlx + '<li>is a ' + poss[i] + '</li>';
         }
       }
       if ($(span).attr('data-headword')) {
-        $('#syntaxInfo').append('<li>is a form of the headword ');
-        $('#syntaxInfo').append('<a href="' + $(span).attr('data-edil') + '" target="_new">' + $(span).attr('data-headword') + '</a>');
+        htmlx += '<li>is a form of the headword ';
+        htmlx = htmlx + '<a href="' + $(span).attr('data-edil') + '" target="_new">' + $(span).attr('data-headword') + '</a>';
         if ($(span).attr('data-edil').indexOf('dil.ie')>0) {
-          $('#syntaxInfo').append(' (eDIL)');
+          htmlx += ' (eDIL)';
         }
         else if ($(span).attr('data-edil').indexOf('faclair.com')>0) {
-          $('#syntaxInfo').append(' (Dwelly)');
+          htmlx += ' (Dwelly)';
         }
         $.ajaxSetup({async: false});
         $.getJSON('/~stephenbarrett/mss/Coding/Scripts/ajax.php?action=getDwelly&edil=' + $(span).attr('data-edil'), function (g) {
         //$.getJSON('/ajax/manuscripts.php?action=getDwelly&edil=' + $(span).attr('data-edil'), function (g) {
           if (g.hw != '') {
-            $('#syntaxInfo').append(', <a href="' + g.url + '" target="_new">' + g.hw + '</a> (Dwelly)');
+            htmlx = htmlx + ', <a href="' + g.url + '" target="_new">' + g.hw + '</a> (Dwelly)';
           }
         });
-        $('#syntaxInfo').append('</li>');
+        htmlx += '</li>';
       }
       else if ($(span).hasClass('name') && $(span).children('.word').length==1 && $(span).children('.word').attr('data-headword')) { // add extra headwords here too
-        $('#syntaxInfo').append('<li>is a form of the headword <a href="' + $(span).children('.word').attr('data-edil') + '" target="_new">' + $(span).children('.word').attr('data-headword') + '</a></li>');
+        htmlx = htmlx + '<li>is a form of the headword <a href="' + $(span).children('.word').attr('data-edil') + '" target="_new">' + $(span).children('.word').attr('data-headword') + '</a></li>';
       }
-    
-    if ($(span).children('.syntagm').length>1) {
-      $('#syntaxInfo').append('<li>is a syntactically complex form containing the following elements:');
-      $('#syntaxInfo').append('<ul>');
-      $(span).children('.syntagm').each(function() {
-        $('#syntaxInfo').append('<li>')
-        makeDescription($(this),true);
-        ('#syntaxInfo').append('</li>')
-      });
-      $('#syntaxInfo').append('</ul>');
-      $('#syntaxInfo').append('</li>');
-    }
-    else if ($(span).children('.syntagm').length==1 && $(span).children('.syntagm').children('.syntagm').length>0) {
-      $('#syntaxInfo').append('<li>is a syntactically complex form containing the following elements:');
-      $('#syntaxInfo').append('<ul>');
-      $(span).children('.syntagm').children('.syntagm').each(function() {
-        $('#syntaxInfo').append('<li>');
-        makeDescription($(this),true);
-        $('#syntaxInfo').append('</li>');
-      });
-      $('#syntaxInfo').append('</ul>');
-      $('#syntaxInfo').append('</li>');
-    }
-    else if ($(span).children('.addition, .deletion').length>0) {
-      $('#syntaxInfo').append('<li>is a syntactically complex form containing the following elements:');
-      $('#syntaxInfo').append('<ul>');
-      $(span).children('.syntagm').add($(span).children('.addition').add($(span).children('.deletion')).children('.syntagm')).each(function() {
-        $('#syntaxInfo').append('<li>');
-        makeDescription($(this),true);
-        $('#syntaxInfo').append('</li>');
-      });
-      $('#syntaxInfo').append('</ul>');
-      $('#syntaxInfo').append('</li>');
-    }
-    else {
-      $('#syntaxInfo').append('<li>is a syntactically simple form</li>');
-    }
-    if($(span).attr('data-lemmasl')) {
-      $('#syntaxInfo').append('<li>appears in the HDSG/RB collection of headwords: <a href="' + $(span).attr('data-slipref') + '" target="_new">' + $(span).attr('data-lemmasl') + '</a></li>');
-    }
+
+      if ($(span).children('.syntagm').length>1) {
+        htmlx += '<li>is a syntactically complex form containing the following elements:';
+        htmlx += '<ul>';
+        $(span).children('.syntagm').each(function() {
+          htmlx = htmlx + '<li>' + makeDescription($(this),true) + '</li>';
+        });
+        htmlx += '</ul>';
+        htmlx += '</li>';
+      }
+      else if ($(span).children('.syntagm').length==1 && $(span).children('.syntagm').children('.syntagm').length>0) {
+        htmlx += '<li>is a syntactically complex form containing the following elements:';
+        htmlx += '<ul>';
+        $(span).children('.syntagm').children('.syntagm').each(function() {
+          htmlx = htmlx + '<li>' + makeDescription($(this),true) + '</li>';
+        });
+        htmlx += '</ul>';
+        htmlx += '</li>';
+      }
+      else if ($(span).children('.addition, .deletion').length>0) {
+        htmlx += '<li>is a syntactically complex form containing the following elements:';
+        htmlx += '<ul>';
+        $(span).children('.syntagm').add($(span).children('.addition').add($(span).children('.deletion')).children('.syntagm')).each(function() {
+          htmlx = htmlx + '<li>' + makeDescription($(this),true) + '</li>';
+        });
+        htmlx += '</ul>';
+        htmlx += '</li>';
+      }
+      else {
+        htmlx += '<li>is a syntactically simple form</li>';
+      }
+      if($(span).attr('data-lemmasl')) {
+        htmlx = htmlx + '<li>appears in the HDSG/RB collection of headwords: <a href="' + $(span).attr('data-slipref') + '" target="_new">' + $(span).attr('data-lemmasl') + '</a></li>';
+      }
     }
     if (rec) {
-      $('#syntaxInfo').append('</ul>');
+      htmlx += '</ul>';
     }
-    
+    return htmlx;
+
     /*
     
     
@@ -235,11 +232,16 @@ $(function() {
     html += '</ul>';
      */
   }
-  
+
   function decode(lang) {
     switch(lang) {
       case 'la': return 'Latin';
       case 'sco': return 'Scots';
+      case "gk": return 'Greek';
+      case 'hbo': return 'Ancient Hebrew';
+      case 'jpa': return 'Aramaic';
+      case 'en': return 'English';
+      case 'und': return 'unknown';
       default: return lang;
     }
   }
@@ -252,7 +254,7 @@ $(function() {
         html2 = html2 + '<li>[' + $(this).attr('data-add') + '] ';
         html2 = html2 + '(' + $(this).attr('data-resp') + ', ' + $(this).attr('data-cert');
         html2 += ' certainty)</li>';
-      }); 
+      });
       html2 += '</ul>';
     }
     if ($(span).find('.unclearTextObscureDiplo').length>0) {
@@ -261,7 +263,7 @@ $(function() {
         html2 = html2 + '<li>[' + $(this).text() + '] ';
         html2 = html2 + '(' + $(this).attr('data-resp') + ', ' + $(this).attr('data-cert');
         html2 += ' certainty)</li>';
-      }); 
+      });
       html2 += '</ul>';
     }
     if ($(span).find('.unclearCharDiplo').length>0) {
@@ -270,14 +272,14 @@ $(function() {
         html2 = html2 + '<li>[' + $(this).text() + '] ';
         html2 = html2 + '(' + $(this).attr('data-resp') + ', ' + $(this).attr('data-cert');
         html2 += ' certainty)</li>';
-      }); 
+      });
       html2 += '</ul>';
     }
     if ($(span).parents('.unclearTextObscureDiplo').length>0) {
-      html2 += 'This is part of an obscured section.'; 
+      html2 += 'This is part of an obscured section.';
     }
     if ($(span).parents('.unclearInterpObscureDiplo').length>0) {
-      html2 += 'This is part of a section whose interpretation is obscure.'; 
+      html2 += 'This is part of a section whose interpretation is obscure.';
     }
     return html2;
   }
@@ -290,7 +292,7 @@ $(function() {
         html2 = html2 + '<li>[' + $(this).text() + '] ';
         html2 = html2 + '(' + $(this).attr('data-hand');
         html2 += ')</li>';
-      }); 
+      });
       html2 += '</ul>';
     }
     return html2;
@@ -305,7 +307,7 @@ $(function() {
         html2 = html2 + '(' + $(this).attr('data-hand');
         html2 = html2 + ', '  + $(this).attr('data-place');
         html2 += ')</li>';
-      }); 
+      });
       html2 += '</ul>';
     }
     else if ($(span).parents('.insertion').length>0) {
@@ -340,30 +342,29 @@ $(function() {
   }
 
   function extractExpansions(html) {
-  /*  
-    oot = '';
-    if ($(html).hasClass('expansion')) {
-      var id = 'exp' + Math.floor((Math.random() * 10000) + 1);
-      console.log(id);
-      oot = '<span class="expansion" id="' + id + '">';
-      oot += $(html).text();
-      oot += '</span>';
-    }
-    else {
-      $(html).children().each();
-    }
-    */
+    /*
+      oot = '';
+      if ($(html).hasClass('expansion')) {
+        var id = 'exp' + Math.floor((Math.random() * 10000) + 1);
+        console.log(id);
+        oot = '<span class="expansion" id="' + id + '">';
+        oot += $(html).text();
+        oot += '</span>';
+      }
+      else {
+        $(html).children().each();
+      }
+      */
     return clean($(html).text());
   }
 
   /*
-    Show/hide marginal notes
-    Added by Sb
-   */
+Show/hide marginal notes
+Added by Sb
+*/
   $('.marginalNoteLink').on('click', function() {
     var id = $(this).attr('data-id').replace(/\./g, '\\.');
     $('#'+id).toggle();
   });
-
 
 });

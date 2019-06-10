@@ -408,7 +408,7 @@
   <!-- Marginal notes - Added by SB-->
   <xsl:template match="tei:seg[@type='margNote']" mode="diplomatic">
     <xsl:text> </xsl:text>
-    <a href="#" class="marginaLNoteLink" data-id="{@xml:id}">m</a>
+    <a href="#" class="marginalNoteLink" data-id="{@xml:id}">m</a>
     <div class="marginalNote" id="{@xml:id}">
       <xsl:apply-templates mode="diplomatic"/>
     </div>
@@ -520,6 +520,9 @@
           <xsl:attribute name="data-glyphref">
             <xsl:value-of select="@ref"/>
           </xsl:attribute>
+          <xsl:attribute name="id">   <!-- added by SB to provide mouse-over highlighting -->
+            <xsl:value-of select="concat('semi-', generate-id(.))"/>
+          </xsl:attribute>            <!-- //  -->
           <xsl:apply-templates mode="semi-diplomatic"/>
         </span>
       </xsl:when>
@@ -528,6 +531,9 @@
           <xsl:attribute name="data-glyphref">
             <xsl:value-of select="@ref"/>
           </xsl:attribute>
+          <xsl:attribute name="id">   <!-- added by SB to provide mouse-over highlighting -->
+            <xsl:value-of select="concat('semi-', generate-id(.))"/>
+          </xsl:attribute>            <!-- //  -->
           <xsl:apply-templates mode="semi-diplomatic"/>
         </span>
       </xsl:otherwise>
@@ -539,7 +545,7 @@
       <xsl:apply-templates mode="diplomatic"/>
     </span>
   </xsl:template>
-  
+
   <xsl:template mode="semi-diplomatic" match="tei:add">
     <span class="addition" data-hand="{@resp}" data-place="{@place}" data-type="{@type}">
       <xsl:apply-templates mode="semi-diplomatic"/>
