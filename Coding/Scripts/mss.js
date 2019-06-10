@@ -104,12 +104,10 @@ $(function() {
     if ($(span).attr('xml:lang') || ($(span).hasClass('name') && $(span).children('.word').length==1 && $(span).children('.word').attr('xml:lang'))) {
       $('#syntaxInfo').append('<li>is not a Gaelic word: ');
       if ($(span).attr('xml:lang')) {
-        htmlx = decode($(span).attr('xml:lang'));
-        $('#syntaxInfo').append(htmlx);
+        $('#syntaxInfo').append(decode($(span).attr('xml:lang')));
       }
       else {
-        htmlx = decode($(span).children('.word').attr('xml:lang'));
-        $('#syntaxInfo').append(htmlx);
+        $('#syntaxInfo').append(decode($(span).children('.word').attr('xml:lang')));
       }
       $('#syntaxInfo').append('</li>');
     }
@@ -149,7 +147,9 @@ $(function() {
       $('#syntaxInfo').append('<li>is a syntactically complex form containing the following elements:');
       $('#syntaxInfo').append('<ul>');
       $(span).children('.syntagm').each(function() {
-        $('#syntaxInfo').append('<li>' + makeDescription($(this),true) + '</li>');
+        $('#syntaxInfo').append('<li>')
+        makeDescription($(this),true);
+        ('#syntaxInfo').append('</li>')
       });
       $('#syntaxInfo').append('</ul>');
       $('#syntaxInfo').append('</li>');
@@ -158,7 +158,9 @@ $(function() {
       $('#syntaxInfo').append('<li>is a syntactically complex form containing the following elements:');
       $('#syntaxInfo').append('<ul>');
       $(span).children('.syntagm').children('.syntagm').each(function() {
-        $('#syntaxInfo').append('<li>' + makeDescription($(this),true) + '</li>');
+        $('#syntaxInfo').append('<li>');
+        makeDescription($(this),true);
+        $('#syntaxInfo').append('</li>');
       });
       $('#syntaxInfo').append('</ul>');
       $('#syntaxInfo').append('</li>');
@@ -167,7 +169,9 @@ $(function() {
       $('#syntaxInfo').append('<li>is a syntactically complex form containing the following elements:');
       $('#syntaxInfo').append('<ul>');
       $(span).children('.syntagm').add($(span).children('.addition').add($(span).children('.deletion')).children('.syntagm')).each(function() {
-        $('#syntaxInfo').append('<li>' + makeDescription($(this),true) + '</li>');
+        $('#syntaxInfo').append('<li>');
+        makeDescription($(this),true);
+        $('#syntaxInfo').append('</li>');
       });
       $('#syntaxInfo').append('</ul>');
       $('#syntaxInfo').append('</li>');
