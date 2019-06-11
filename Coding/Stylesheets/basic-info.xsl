@@ -178,7 +178,7 @@
   <xsl:template mode="diplomatic" match="tei:pb">
     <div style="color: gray; font-size: small; margin-top: 20px;">
       <xsl:text>[start of </xsl:text>
-      <a href="{@facs}" target="_new">
+      <a href="#" class="page" data-facs="{@facs}">
         <xsl:text>page </xsl:text>
         <xsl:value-of select="@n"/>
       </a>
