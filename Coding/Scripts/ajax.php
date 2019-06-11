@@ -49,6 +49,17 @@ switch ($_GET["action"]) {
         $glyph = Manuscripts::getGlyph($xmlId);
         echo json_encode($glyph);
         break;
+    case "getDwelly":
+        $edil = $_GET["edil"];
+        $dwelly = Manuscripts::getDwelly($edil);
+        echo json_encode($dwelly);
+        break;
+    case "getTextInfo":
+        echo json_encode(Manuscripts::getTextInfo($_GET["ms"], $_GET["text"]));
+        break;
+    case "getHandInfo":
+        echo json_encode(Manuscripts::getHandInfo($_GET["hand"]));
+        break;
     default:
         break;
 }
@@ -235,5 +246,35 @@ SQL;
         $note = (string)$node->note;
         $glyph = array("id" => $xmlId, "corresp" => $corresp, "name" => $glyphName, "note" => $note);
         return $glyph;
+    }
+
+    public static function getDwelly($edil) {
+        $filepath = ROOT . "/faclair-manuscripts/Transcribing/hwData.xml"; // change back to /mss/
+        $xml = simplexml_load_file($filepath);
+        $xml->registerXPathNamespace('tei', 'http://www.tei-c.org/ns/1.0');
+        $nodes = $xml->xpath("/tei:TEI/tei:text/tei:body/tei:entryFree[@corresp='{$edil}']/tei:w");
+        $node = $nodes[0];
+        $lemmaDW = (string)$node["lemmaDW"];
+        $lemmaRefDW = (string)$node["lemmaRefDW"];
+        $dwelly = array("hw" => $lemmaDW, "url" => $lemmaRefDW);
+        return $dwelly;
+    }
+
+    public static function getTextInfo($ms, $text) {
+        $filepath = "../../Transcribing/Transcriptions/transcription" . $ms . ".xml";
+        $xml = simplexml_load_file($filepath);
+        $xml->registerXPathNamespace('tei', 'http://www.tei-c.org/ns/1.0');
+        $text = $xml->xpath("/tei:TEI/tei:teiHeader/tei:fileDesc/tei:sourceDesc/tei:msDesc/tei:msContents/tei:msItem[@xml:id='{$text}']")[0];
+        return array("title" => (string)$text->title);
+    }
+
+    public static function getHandInfo($handid) {
+        $filepath = "../../Transcribing/corpus.xml";
+        $xml = simplexml_load_file($filepath);
+        $xml->registerXPathNamespace('tei', 'http://www.tei-c.org/ns/1.0');
+        $hand = $xml->xpath("/tei:teiCorpus/tei:teiHeader/tei:profileDesc/tei:handNotes/tei:handNote[@xml:id='{$handid}']")[0];
+        $notes = array();
+        foreach ($hand->note->p as $p) { $notes[] = (string)$p; }
+        return array("forename" => (string)$hand->forename, "surname" => (string)$hand->surname, "from" => (string)$hand->date["from"], "to" => (string)$hand->date["to"], "min" => (string)$hand->date["min"], "max" => (string)$hand->date["max"], "region" => (string)$hand->region, "notes" => $notes);
     }
 }
