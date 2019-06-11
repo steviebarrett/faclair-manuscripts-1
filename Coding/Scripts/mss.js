@@ -18,6 +18,14 @@ $(function() {
     $('#semiDiplomaticTranscription').show();
   });
 
+  $('.page').click(function(){
+      $('.chunk, .gapDamageDiplo').css('background-color', 'inherit');
+      html = '<img src="';
+      html += $(this).attr('data-facs');
+      html += '"/>';
+      $('#right-panel').html(html);
+  });
+
   $('.chunk').mouseenter(function(){
     $(this).css('text-decoration', 'underline');
   });
