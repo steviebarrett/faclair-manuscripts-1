@@ -8,8 +8,8 @@
 
 /** CONSTANTS */
 //define("ROOT", "/Users/mark/Sites");    //this must be updated to the local filepath for testing
-define("ROOT", "/Users/stephenbarrett/Sites");
-//define("ROOT", "/var/www/html/dasg.arts.gla.ac.uk/www/");
+//define("ROOT", "/Users/stephenbarrett/Sites");
+define("ROOT", "/var/www/html/dasg.arts.gla.ac.uk/www/");
 
 switch ($_GET["action"]) {
 
