@@ -3,7 +3,7 @@ html {
 }
 
 body {
-  font-family: Helvetica; 
+  font-family: Helvetica;
   font-size: 12pt;
   width: 100%;
   height: 100%;
@@ -13,16 +13,16 @@ body {
   text-decoration: inherit;
 }
 
-#left-panel {
+#leftPanel {
   float: left;
   width: 50%;
   height: 100%;
   overflow: auto;
 }
 
-#right-panel {
+#rightPanel {
   height: 100%;
-  overflow: auto;
+  overflow: scroll;
   padding: 20px;
   padding-bottom: 100px;
 }
@@ -111,6 +111,24 @@ a:hover {
 .gloss::before {
   content: "[gl.]";
 }
+
+.handshift {
+  font-size: small;
+  color: gray;
+}
+
+div.text {
+  /*  border-style: dotted; */
+}
+
+h1.textHeader, h1.textFooter {
+  color: gray;
+  font-size: small;
+  /*  margin-top: 20px; */
+  font-weight: normal;
+}
+
+
 
 /*
 .correction {
