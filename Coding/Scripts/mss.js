@@ -69,7 +69,7 @@ $(function() {
             html += '"/>'
         }
         $('#rightPanel').html(html);
-        $('#rightPanel').css('overflow-x', 'scroll');
+        $('#rightPanel').resize();
     });
 
     $('.chunk').hover(
