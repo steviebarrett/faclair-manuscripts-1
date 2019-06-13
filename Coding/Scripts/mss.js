@@ -64,11 +64,12 @@ $(function() {
             html += " src='https://cudl.lib.cam.ac.uk/embed/#item="+mssNo+"&page="+pageNo+"&hide-info=true'";
             html += " frameborder='0' allowfullscreen='' onmousewheel=''></iframe></div>";
         } else {    //simple case: just wrap the url in an image tag
-            html = '<img src="';
+            html = '<img width="1000" src="';
             html += url;
             html += '"/>'
         }
         $('#rightPanel').html(html);
+        $('#rightPanel').css('overflow-x', 'scroll');
     });
 
     $('.chunk').hover(
