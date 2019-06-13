@@ -25,7 +25,7 @@ $(function() {
         var user = $(this).siblings('select').val();
         var comment = $(this).siblings('textarea').val();
         var feedbackHtml = '';
-        $.getJSON('/ajax/manuscripts.php?action=saveComment&docid='+docid+'&s='+s+'&sid='+sid+'&user='+user+'&comment='+comment, function(data) {
+        $.getJSON('../../Coding/Scripts/ajax.php?action=saveComment&docid='+docid+'&s='+s+'&sid='+sid+'&user='+user+'&comment='+comment, function(data) {
             console.log(data);
             if (data.saved == true) {
                 feedbackHtml = '<strong>Your comment has been saved</strong>';
@@ -62,12 +62,12 @@ $(function() {
         var parts = $(this).attr('id').split('__');
         var cid = parts[1];     //the DB comment ID
         var feedbackHtml;
-        $.getJSON('/ajax/manuscripts.php?action=deleteComment&cid='+cid, function() {})
+        $.getJSON('../../Coding/Scripts/ajax.php?action=deleteComment&cid='+cid, function() {})
             .done(function(data) {
                 console.log(data);
                 feedbackHtml = '<strong>The comment has been deleted</strong>';
                 if (data.empty == true) { //if the number of deleted comments = the total number of comments
-                    $.getJSON('/ajax/manuscripts.php?action=getCommentInfo&cid=' + cid, function () {})
+                    $.getJSON('/../../Coding/Scripts/ajax.php?action=getCommentInfo&cid=' + cid, function () {})
                         .done(function (cdata) {
                             console.log(cdata);
                             var sectionId = cdata.section_id.replace(/\./g, '\\.');
@@ -94,7 +94,7 @@ $(function() {
         Flag the sections that have comments
      */
     var docid = $('html').attr('data-docid');   //the MS ID
-    $.getJSON('/ajax/manuscripts.php?action=getPopulatedSections&docid='+docid, function(data) {
+    $.getJSON('../../Coding/Scripts/ajax.php?action=getPopulatedSections&docid='+docid, function(data) {
         $.each(data, function(k, v) {
             $.each(v, function (key, val) {
                 var section = val.section;
@@ -115,7 +115,7 @@ $(function() {
  */
 function updateComments(docid, s, sid) {
     var html = '<ul class="commentsList">';
-    $.getJSON('/ajax/manuscripts.php?action=getComment&docid='+docid+'&s='+s+'&sid='+sid, function(data) {
+    $.getJSON('../../Coding/Scripts/ajax.php?action=getComment&docid='+docid+'&s='+s+'&sid='+sid, function(data) {
         $.each(data, function(k, v) {
             $.each(v, function (key, val) {
                 var displayClass = "";
