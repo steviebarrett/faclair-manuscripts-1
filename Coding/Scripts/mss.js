@@ -49,7 +49,8 @@ $(function() {
         MSS Image handling on page click
         SB - added functionality to handle embedded viewer required for links to cudl.lib.cam.ac.uk
      */
-    $('.page').click(function(){
+    $('.page').click(function(e){
+        e.stopImmediatePropagation();   //prevents outer link (e.g. word across pages) from overriding this one
         $('.chunk, .gapDamageDiplo').css('background-color', 'inherit');
         var html = '';
         var url = $(this).attr('data-facs');
@@ -63,13 +64,12 @@ $(function() {
             html += "<iframe type='text/html' width='600' height='410' style='position: absolute; width: 100%; height: 100%;'";
             html += " src='https://cudl.lib.cam.ac.uk/embed/#item="+mssNo+"&page="+pageNo+"&hide-info=true'";
             html += " frameborder='0' allowfullscreen='' onmousewheel=''></iframe></div>";
-        } else {    //simple case: just wrap the url in an image tag
-            html = '<img width="1000" src="';
+        } else {    //simple case: just stick the url in an image tag
+            html = '<img width="100%" src="';
             html += url;
             html += '"/>'
         }
         $('#rightPanel').html(html);
-        $('#rightPanel').resize();
     });
 
     $('.chunk').hover(
@@ -84,7 +84,9 @@ $(function() {
         //$('#headword').text(clean($(this).text()));
         html = '<h1>';
         this2 = $(this).clone();
+        $(this2).find('div').remove();  //delete any divs (e.g. 'start of page ...')
         html += reindex(this2);
+        html = html.replace(/\n/g,'');
         html += '</h1><ul>';
         html += makeSyntax($(this),false);
         html += '</ul>';
@@ -384,7 +386,7 @@ $(function() {
         //console.log(typeof span);
         //span2 = $('#rightPanel').find('.lineBreak').remove();
         $(span).find('.lineBreak').remove();
-        console.log(span);
+        //console.log(span);
         //$('.lineBreak').remove()
         //console.log(span2.html());
         //delete all <span class="lineBreak"> elements from inside span;
