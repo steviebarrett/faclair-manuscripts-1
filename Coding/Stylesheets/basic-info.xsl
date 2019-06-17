@@ -348,7 +348,6 @@
             </span>
           </xsl:otherwise>
         </xsl:choose>
-
       </xsl:when>
       <xsl:otherwise> <!-- weird expansion -->
         <xsl:variable name="corresp" select="@corresp"/>
@@ -513,6 +512,12 @@
         <xsl:attribute name="data-edil">
           <xsl:value-of select="@lemmaRef"/>
         </xsl:attribute>
+        <xsl:attribute name="data-lemmasl">
+          <xsl:value-of select="@lemmaSL"/>
+        </xsl:attribute>
+        <xsl:attribute name="data-slipref">
+          <xsl:value-of select="@slipRef"/>
+        </xsl:attribute>
       </xsl:if>
       <xsl:apply-templates mode="semi-diplomatic"/>
     </span>
@@ -531,6 +536,12 @@
         <xsl:attribute name="data-edil">
           <xsl:value-of select="@lemmaRef"/>
         </xsl:attribute>
+        <xsl:attribute name="data-lemmasl">
+          <xsl:value-of select="@lemmaSL"/>
+        </xsl:attribute>
+        <xsl:attribute name="data-slipref">
+          <xsl:value-of select="@slipRef"/>
+        </xsl:attribute>
       </xsl:if>
       <xsl:apply-templates mode="semi-diplomatic"/>
     </span>
@@ -545,25 +556,37 @@
 
   <xsl:template mode="semi-diplomatic" match="tei:g">
     <xsl:choose>
-      <xsl:when test="starts-with(@ref,'l')">
-        <span class="ligature">
-          <xsl:attribute name="data-glyphref">
-            <xsl:value-of select="@ref"/>
-          </xsl:attribute>
-          <xsl:attribute name="id">   <!-- added by SB to provide mouse-over highlighting -->
-            <xsl:value-of select="concat('semi-', generate-id(.))"/>
-          </xsl:attribute>            <!-- //  -->
-          <xsl:apply-templates mode="semi-diplomatic"/>
-        </span>
+      <xsl:when test="starts-with(@ref,'l')"> <!-- ligature -->
+        <xsl:choose>
+          <xsl:when test="@corresp">  <!-- SB: added to handle corresp attributes in glyphs -->
+            <span class="ligature corresp-{@corresp}" data-corresp="{@corresp}" data-glyphref="{@ref}" id="{generate-id(.)}">
+              <xsl:apply-templates mode="semi-diplomatic"/>
+            </span>
+          </xsl:when>
+          <xsl:otherwise>
+            <span class="ligature" data-glyphref="{@ref}" id="{generate-id(.)}">
+              <xsl:apply-templates mode="semi-diplomatic"/>
+            </span>
+          </xsl:otherwise>
+        </xsl:choose>
       </xsl:when>
-      <xsl:otherwise>
-        <span class="expansion">
-          <xsl:attribute name="data-glyphref">
-            <xsl:value-of select="@ref"/>
-          </xsl:attribute>
-          <xsl:attribute name="id">   <!-- added by SB to provide mouse-over highlighting -->
-            <xsl:value-of select="concat('semi-', generate-id(.))"/>
-          </xsl:attribute>            <!-- //  -->
+      <xsl:when test="../@cert"> <!-- expansion -->
+        <xsl:choose>
+          <xsl:when test="@corresp">  <!-- SB: added to handle corresp attributes in glyphs -->
+            <span class="expansion corresp-{@corresp}" data-corresp="{@corresp}" data-cert="{../@cert}" data-glyphref="{@ref}" id="{generate-id(.)}">
+              <xsl:apply-templates mode="semi-diplomatic"/>
+            </span>
+          </xsl:when>
+          <xsl:otherwise>
+            <span class="expansion" data-cert="{../@cert}" data-glyphref="{@ref}" id="{generate-id(.)}">
+              <xsl:apply-templates mode="semi-diplomatic"/>
+            </span>
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:when>
+      <xsl:otherwise> <!-- weird expansion -->
+        <xsl:variable name="corresp" select="@corresp"/>
+        <span class="expansion" data-cert="{preceding::tei:abbr[@corresp=$corresp]/@cert}" data-glyphref="{@ref}" id="{generate-id(.)}">
           <xsl:apply-templates mode="semi-diplomatic"/>
         </span>
       </xsl:otherwise>

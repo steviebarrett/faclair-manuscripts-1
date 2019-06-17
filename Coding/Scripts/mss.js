@@ -100,6 +100,8 @@ $(function() {
                     } else {
                         prevCorresp = corresp;
                     }
+                } else {
+                    prevCorresp = '';
                 }
                 cert = $(this).attr('data-cert');
                 var xmlId = $(this).attr('data-glyphref');
