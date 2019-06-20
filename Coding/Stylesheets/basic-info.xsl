@@ -437,14 +437,14 @@
   <!-- Marginal notes - Added by SB-->
   <xsl:template match="tei:seg[@type='margNote']" mode="diplomatic">
     <xsl:text> </xsl:text>
-    <a href="#" class="marginaLNoteLink" data-id="{@xml:id}">m</a>
+    <a href="#" class="marginalNoteLink" data-id="{@xml:id}">m</a>
     <div class="marginalNote" id="{@xml:id}">
       <xsl:apply-templates mode="diplomatic"/>
     </div>
   </xsl:template>
 
   <xsl:template match="tei:gap" mode="diplomatic">
-    <span class="gapDamageDiplo" data-extent="{@extent}" data-unit="{@unit}" data-resp="{@resp}">
+    <span class="gapDamageDiplo" data-quantity="{@quantity}" data-unit="{@unit}" data-resp="{@resp}">
       <xsl:text>[...]</xsl:text>
     </span>
   </xsl:template>
@@ -507,7 +507,7 @@
           <xsl:value-of select="@lemma"/>
         </xsl:attribute>
         <xsl:attribute name="data-pos">
-          <xsl:value-of select="@ana"/>
+          <xsl:value-of select="@pos"/>
         </xsl:attribute>
         <xsl:attribute name="data-edil">
           <xsl:value-of select="@lemmaRef"/>
@@ -524,6 +524,30 @@
     <xsl:text> </xsl:text>
   </xsl:template>
 
+  <!-- Added by SB to handle bottom level words (no word division) -->
+  <xsl:template mode="semi-diplomatic" match="tei:w[ancestor::tei:w and not(descendant::tei:w)]">
+    <span class="word chunk syntagm">
+      <xsl:if test="count(tei:w) = 0"> <!-- a syntactically simple word -->
+        <xsl:attribute name="data-headword">
+          <xsl:value-of select="@lemma"/>
+        </xsl:attribute>
+        <xsl:attribute name="data-pos">
+          <xsl:value-of select="@pos"/>
+        </xsl:attribute>
+        <xsl:attribute name="data-edil">
+          <xsl:value-of select="@lemmaRef"/>
+        </xsl:attribute>
+        <xsl:attribute name="data-lemmasl">
+          <xsl:value-of select="@lemmaSL"/>
+        </xsl:attribute>
+        <xsl:attribute name="data-slipref">
+          <xsl:value-of select="@slipRef"/>
+        </xsl:attribute>
+      </xsl:if>
+      <xsl:apply-templates mode="semi-diplomatic"/>
+    </span>
+  </xsl:template>
+
   <xsl:template mode="semi-diplomatic" match="tei:w"> <!-- a word which IS part of a larger word or name -->
     <span class="word syntagm">
       <xsl:if test="count(tei:w) = 0"> <!-- a syntactically simple word -->
@@ -531,7 +555,7 @@
           <xsl:value-of select="@lemma"/>
         </xsl:attribute>
         <xsl:attribute name="data-pos">
-          <xsl:value-of select="@ana"/>
+          <xsl:value-of select="@pos"/>
         </xsl:attribute>
         <xsl:attribute name="data-edil">
           <xsl:value-of select="@lemmaRef"/>

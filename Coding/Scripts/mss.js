@@ -147,14 +147,15 @@ $(function() {
         $('#damagedInfo').html('');
         $('#expansionInfo').hide();
         html = 'This is a damaged section of text: ';
-        html = html + $(this).attr('data-extent') + ' ' + $(this).attr('data-unit') + ' (' + $(this).attr('data-resp') + ')';
+        html = html + $(this).attr('data-quantity') + ' ' + $(this).attr('data-unit') + ' (' + $(this).attr('data-resp') + ')';
         $('#syntaxInfo').html(html);
 
     });
 
     function makeSyntax(span, rec) {
         html = '';
-        if (rec) { html += '<span style="color:red;">' + clean($(span).text()) + '</span><ul>'; }
+        //SB note the searchHeadword() call here. Just for testing and will be moved.
+        if (rec) { html += '<span style="color:red;">' + clean($(span).text()) + '</span><ul>'; searchHeadword(span);}
         if ($(span).hasClass('name')) {
             type = $(span).attr('data-nametype');
             if (type=='personal') { html += '<li>is the name of a person</li>'; }
@@ -430,11 +431,38 @@ $(function() {
 
     /*
       Show/hide marginal notes
-      Added by Sb
+      Added by SB
      */
     $('.marginalNoteLink').on('click', function() {
         var id = $(this).attr('data-id').replace(/\./g, '\\.');
         $('#'+id).toggle();
     });
-
 });
+
+/*
+    Function to search the headwords and return/write out a list of results
+
+    SB: just a start right now; needs a lot of work
+    TODO: sort out the actual structure of the HTML to ensure the results display properly
+ */
+function searchHeadword(span) {
+    var headword = $(span).attr('data-headword');
+    var url = $(span).attr('data-edil');
+    var html = '';
+
+    $('#leftPanel').find('span[data-edil="'+url+'"]').each(function() {
+        $(this).css('color', 'green');
+
+        $(this).prevAll().slice(0, 5).each(function() {
+            html += $(this).html() + ' ';
+        });
+        html += headword;
+        $(this).nextAll().slice(0, 5).each(function() {
+            html += ' ' + $(this).html();
+        });
+        html += '<br/>';
+    });
+    $('#test').html(html);  //#test doesn't currently exist
+
+
+}
