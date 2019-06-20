@@ -26,7 +26,9 @@ $(function() {
         $.getJSON('../../Coding/Scripts/ajax.php?action=getTextInfo&ms=' + granny.attr('data-ms') + '&text=' + granny.attr('data-corresp'), function (g) {
             html += g.title;
         })
-        html += ' (' + granny.attr('data-type') + ')</p><p>Hand:</p><ul>';
+        //TODO: use the new getHandInfo function for the following:
+        html += getHandInfo(granny.attr('data-hand'));
+        /*html += ' (' + granny.attr('data-type') + ')</p><p>Hand:</p><ul>';
         $.getJSON('../../Coding/Scripts/ajax.php?action=getHandInfo&hand=' + granny.attr('data-hand'), function (g) {
             html += '<li>';
             if (g.forename + g.surname != '') { html +=  g.forename + ' ' + g.surname; }
@@ -41,7 +43,7 @@ $(function() {
             html += '</li>';
             for (i=0;i<g.notes.length; i++) { html += '<li>' + g.notes[i] + '</li>'; }
         })
-        html += '</ul>';
+        html += '</ul>';*/
         $('#rightPanel').html(html);
     });
 
@@ -88,6 +90,7 @@ $(function() {
         html += reindex(this2);
         html = html.replace(/\n/g,'');
         html += '</h1><ul>';
+
         html += makeSyntax($(this),false);
         html += '</ul>';
         if ($(this).find('.expansion, .ligature').length>0) {
@@ -114,6 +117,9 @@ $(function() {
                 })
             });
             html += '</ul>';
+            if ($(this2).attr('data-hand') != undefined) {
+                html += getHandInfo($(this2).attr('data-hand'));    //get the hand info if available
+            }
 
         }
         /*
@@ -156,6 +162,7 @@ $(function() {
         html = '';
         //SB note the searchHeadword() call here. Just for testing and will be moved.
         if (rec) { html += '<span style="color:red;">' + clean($(span).text()) + '</span><ul>'; searchHeadword(span);}
+
         if ($(span).hasClass('name')) {
             type = $(span).attr('data-nametype');
             if (type=='personal') { html += '<li>is the name of a person</li>'; }
@@ -440,12 +447,43 @@ $(function() {
 });
 
 /*
+    Uses an AJAX request to fetch the detailed hand info for a given hand ID
+    Returns an HTML formatteed string
+ */
+function getHandInfo(handId) {
+    var html = '<br/>Hand information:<ul>';
+    $.ajaxSetup({async: false});
+    $.getJSON('../../Coding/Scripts/ajax.php?action=getHandInfo&hand=' + handId, function (g) {
+        html += '<li>';
+        if (g.forename + g.surname != '') { html +=  g.forename + ' ' + g.surname; }
+        else { html += 'Anonymous'; }
+        html += '</li><li>';
+        html += g.from;
+        if (g.min != g.from) { html += '/' + g.min; }
+        html += ' – ' + g.to;
+        if (g.max != g.to) { html += '/' + g.max; }
+        html += '</li><li>'
+        html += g.region;
+        html += '</li>';
+        for (i=0;i<g.notes.length; i++) { html += '<li>' + g.notes[i] + '</li>'; }
+    });
+    html += '</ul>';
+    return html;
+}
+
+/*
     Function to search the headwords and return/write out a list of results
 
     SB: just a start right now; needs a lot of work
     TODO: sort out the actual structure of the HTML to ensure the results display properly
  */
 function searchHeadword(span) {
+
+    /*
+        switched off for development
+     */
+    return;
+
     var headword = $(span).attr('data-headword');
     var url = $(span).attr('data-edil');
     var html = '';

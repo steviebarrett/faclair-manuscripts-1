@@ -236,6 +236,9 @@
       <xsl:attribute name="data-nametype">
         <xsl:value-of select="@type"/>
       </xsl:attribute>
+      <xsl:attribute name="data-hand">
+        <xsl:value-of select="preceding::tei:handShift[1]/@new"/>
+      </xsl:attribute>
       <xsl:apply-templates mode="diplomatic"/>
     </span>
   </xsl:template>
@@ -245,12 +248,18 @@
       <xsl:attribute name="data-nametype">
         <xsl:value-of select="@type"/>
       </xsl:attribute>
+      <xsl:attribute name="data-hand">
+        <xsl:value-of select="preceding::tei:handShift[1]/@new"/>
+      </xsl:attribute>
       <xsl:apply-templates mode="diplomatic"/>
     </span>
   </xsl:template>
 
   <xsl:template mode="diplomatic" match="tei:w[not(ancestor::tei:w or ancestor::tei:name)]"> <!-- a word which is NOT part of a larger word or name -->
     <span class="word chunk syntagm">
+      <xsl:attribute name="data-hand">
+        <xsl:value-of select="preceding::tei:handShift[1]/@new"/>
+      </xsl:attribute>
       <xsl:if test="count(tei:w) = 0"> <!-- a syntactically simple word -->
         <xsl:choose>
           <xsl:when test="@xml:lang">
@@ -261,6 +270,9 @@
           <xsl:otherwise>
             <xsl:attribute name="data-headword">
               <xsl:value-of select="@lemma"/>
+            </xsl:attribute>
+            <xsl:attribute name="data-hand">
+              <xsl:value-of select="preceding::tei:handShift[1]/@new"/>
             </xsl:attribute>
             <xsl:attribute name="data-pos">
               <xsl:value-of select="@pos"/>
@@ -294,6 +306,9 @@
             <xsl:attribute name="data-headword">
               <xsl:value-of select="@lemma"/>
             </xsl:attribute>
+            <xsl:attribute name="data-hand">
+              <xsl:value-of select="preceding::tei:handShift[1]/@new"/>
+            </xsl:attribute>
             <xsl:attribute name="data-pos">
               <xsl:value-of select="@pos"/>
             </xsl:attribute>
@@ -315,6 +330,9 @@
 
   <xsl:template mode="diplomatic" match="tei:date | tei:c | tei:num">
     <span class="chunk syntagm">
+      <xsl:attribute name="data-hand">
+        <xsl:value-of select="preceding::tei:handShift[1]/@new"/>
+      </xsl:attribute>
       <xsl:apply-templates mode="diplomatic"/>
     </span>
   </xsl:template>
@@ -485,6 +503,9 @@
       <xsl:attribute name="data-nametype">
         <xsl:value-of select="@type"/>
       </xsl:attribute>
+      <xsl:attribute name="data-hand">
+        <xsl:value-of select="preceding::tei:handShift[1]/@new"/>
+      </xsl:attribute>
       <xsl:apply-templates mode="semi-diplomatic"/>
     </span>
     <xsl:text> </xsl:text>
@@ -495,6 +516,9 @@
       <xsl:attribute name="data-nametype">
         <xsl:value-of select="@type"/>
       </xsl:attribute>
+      <xsl:attribute name="data-hand">
+        <xsl:value-of select="preceding::tei:handShift[1]/@new"/>
+      </xsl:attribute>
       <xsl:apply-templates mode="semi-diplomatic"/>
     </span>
     <xsl:text> </xsl:text>
@@ -502,9 +526,15 @@
 
   <xsl:template mode="semi-diplomatic" match="tei:w[not(ancestor::tei:w or ancestor::tei:name)]"> <!-- a word which is NOT part of a larger word or name -->
     <span class="word chunk syntagm">
+      <xsl:attribute name="data-hand">
+        <xsl:value-of select="preceding::tei:handShift[1]/@new"/>
+      </xsl:attribute>
       <xsl:if test="count(tei:w) = 0"> <!-- a syntactically simple word -->
         <xsl:attribute name="data-headword">
           <xsl:value-of select="@lemma"/>
+        </xsl:attribute>
+        <xsl:attribute name="data-hand">
+          <xsl:value-of select="preceding::tei:handShift[1]/@new"/>
         </xsl:attribute>
         <xsl:attribute name="data-pos">
           <xsl:value-of select="@pos"/>
@@ -524,12 +554,52 @@
     <xsl:text> </xsl:text>
   </xsl:template>
 
+  <!-- Added by SB to handle compound verbs -->
+  <xsl:template mode="semi-diplomatic" match="tei:w[contains(@pos, 'verb') and descendant::tei:w]">
+    <xsl:call-template name="compound-verb"/>
+  </xsl:template>
+
+  <xsl:template name="compound-verb" match="tei:w">
+    <xsl:if test="@pos = 'verb' and @lemmaRef != 'http://www.dil.ie/29104'">  <!-- checks for POS and copula -->
+      <xsl:text> </xsl:text>  <!-- only adds a space before a verb that is not the copula -->
+    </xsl:if>
+    <span class="word chunk syntagm">
+      <xsl:attribute name="data-hand">
+        <xsl:value-of select="preceding::tei:handShift[1]/@new"/>
+      </xsl:attribute>
+      <xsl:if test="count(tei:w) = 0"> <!-- a syntactically simple word -->
+        <xsl:attribute name="data-headword">
+          <xsl:value-of select="@lemma"/>
+        </xsl:attribute>
+        <xsl:attribute name="data-pos">
+          <xsl:value-of select="@pos"/>
+        </xsl:attribute>
+        <xsl:attribute name="data-edil">
+          <xsl:value-of select="@lemmaRef"/>
+        </xsl:attribute>
+        <xsl:attribute name="data-lemmasl">
+          <xsl:value-of select="@lemmaSL"/>
+        </xsl:attribute>
+        <xsl:attribute name="data-slipref">
+          <xsl:value-of select="@slipRef"/>
+        </xsl:attribute>
+      </xsl:if>
+      <xsl:apply-templates/>
+    </span>
+    <xsl:if test="@pos = 'verb'">
+      <xsl:text> </xsl:text>
+    </xsl:if>
+  </xsl:template>
+
   <!-- Added by SB to handle bottom level words (no word division) -->
   <xsl:template mode="semi-diplomatic" match="tei:w[ancestor::tei:w and not(descendant::tei:w)]">
     <span class="word chunk syntagm">
       <xsl:if test="count(tei:w) = 0"> <!-- a syntactically simple word -->
         <xsl:attribute name="data-headword">
           <xsl:value-of select="@lemma"/>
+        </xsl:attribute>
+        <xsl:attribute name="data-hand">
+          <xsl:value-of select="preceding::tei:handShift[1]/@new"/>
         </xsl:attribute>
         <xsl:attribute name="data-pos">
           <xsl:value-of select="@pos"/>
@@ -550,9 +620,15 @@
 
   <xsl:template mode="semi-diplomatic" match="tei:w"> <!-- a word which IS part of a larger word or name -->
     <span class="word syntagm">
+      <xsl:attribute name="data-hand">
+        <xsl:value-of select="preceding::tei:handShift[1]/@new"/>
+      </xsl:attribute>
       <xsl:if test="count(tei:w) = 0"> <!-- a syntactically simple word -->
         <xsl:attribute name="data-headword">
           <xsl:value-of select="@lemma"/>
+        </xsl:attribute>
+        <xsl:attribute name="data-hand">
+          <xsl:value-of select="preceding::tei:handShift[1]/@new"/>
         </xsl:attribute>
         <xsl:attribute name="data-pos">
           <xsl:value-of select="@pos"/>
