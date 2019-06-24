@@ -26,24 +26,8 @@ $(function() {
         $.getJSON('../../Coding/Scripts/ajax.php?action=getTextInfo&ms=' + granny.attr('data-ms') + '&text=' + granny.attr('data-corresp'), function (g) {
             html += g.title;
         })
-        //TODO: use the new getHandInfo function for the following:
-        html += getHandInfo(granny.attr('data-hand'));
-        /*html += ' (' + granny.attr('data-type') + ')</p><p>Hand:</p><ul>';
-        $.getJSON('../../Coding/Scripts/ajax.php?action=getHandInfo&hand=' + granny.attr('data-hand'), function (g) {
-            html += '<li>';
-            if (g.forename + g.surname != '') { html +=  g.forename + ' ' + g.surname; }
-            else { html += 'Anonymous'; }
-            html += '</li><li>';
-            html += g.from;
-            if (g.min != g.from) { html += '/' + g.min; }
-            html += ' – ' + g.to;
-            if (g.max != g.to) { html += '/' + g.max; }
-            html += '</li><li>'
-            html += g.region;
-            html += '</li>';
-            for (i=0;i<g.notes.length; i++) { html += '<li>' + g.notes[i] + '</li>'; }
-        })
-        html += '</ul>';*/
+        var hands = [granny.attr('data-hand')];
+        html += getHandInfo(hands);
         $('#rightPanel').html(html);
     });
 
@@ -87,11 +71,19 @@ $(function() {
         html = '<h1>';
         this2 = $(this).clone();
         $(this2).find('div').remove();  //delete any divs (e.g. 'start of page ...')
+
         html += reindex(this2);
         html = html.replace(/\n/g,'');
         html += '</h1><ul>';
-
         html += makeSyntax($(this),false);
+        if ($(this2).attr('data-hand') != undefined) {
+            var hands = [$(this2).attr('data-hand')];
+            $(this2).find('.handShift').each(function() {
+                hands.push($(this).attr('data-hand'));
+            });
+            console.log(hands);
+            html += getHandInfo(hands);    //get the hand info if available
+        }
         html += '</ul>';
         if ($(this).find('.expansion, .ligature').length>0) {
             html += 'Contains, or is formed from, the following scribal abbreviations and/or ligatures:<ul>';
@@ -117,10 +109,6 @@ $(function() {
                 })
             });
             html += '</ul>';
-            if ($(this2).attr('data-hand') != undefined) {
-                html += getHandInfo($(this2).attr('data-hand'));    //get the hand info if available
-            }
-
         }
         /*
         $('#damagedInfo').html(getDamage($(this)));
@@ -161,7 +149,7 @@ $(function() {
     function makeSyntax(span, rec) {
         html = '';
         //SB note the searchHeadword() call here. Just for testing and will be moved.
-        if (rec) { html += '<span style="color:red;">' + clean($(span).text()) + '</span><ul>'; searchHeadword(span);}
+        if (rec) { html += '<span onclick="searchHeadword(\'' + $(span).attr('data-headword') + '\',\'' + $(span).attr('data-edil') + '\')" style="color:red;">' + clean($(span).text()) + '</span><ul>'; } //  searchHeadword(span);}
 
         if ($(span).hasClass('name')) {
             type = $(span).attr('data-nametype');
@@ -243,6 +231,23 @@ $(function() {
                 html += '<li>appears in the HDSG/RB collection of headwords: <a href="' + $(span).attr('data-slipref') + '" target="_new">' + $(span).attr('data-lemmasl') + '</a></li>';
             }
         }
+
+        if ($(span).find('.insertion').length != 0) {
+            html += getAdditions(span);
+        }
+        //a handShift within a word
+        $(span).find('.handShift').each(function() {
+            html += '<li>contains a hand shift to ';
+            $.ajaxSetup({async: false});
+            $.getJSON('../../Coding/Scripts/ajax.php?action=getHandInfo&hand=' + $(this).attr('data-hand'), function (g) {
+                if (g.forename + g.surname != '') {
+                    html += g.forename + ' ' + g.surname;
+                } else {
+                    html += 'Anonymous';
+                }
+            });
+            html += '</li>';
+        });
         if (rec) {
             html += '</ul>';
         }
@@ -368,12 +373,19 @@ $(function() {
     }
 
     function getAdditions(span) {
-        html2 = '';
+        html2 = '<li>';
         if ($(span).find('.insertion').length>0) {
             html2 += 'Contains the following insertions:<ul>';
             $(span).find('.insertion').each(function() {
-                html2 = html2 + '<li>[' + $(this).text() + '] ';
-                html2 = html2 + '(' + $(this).attr('data-hand');
+                html2 = html2 + '<li>[' + $(this).text() + '] (';
+                $.ajaxSetup({async: false});
+                $.getJSON('../../Coding/Scripts/ajax.php?action=getHandInfo&hand=' + $(this).attr('data-hand'), function (g) {
+                    if (g.forename + g.surname != '') {
+                        html2 += g.forename + ' ' + g.surname;
+                    } else {
+                        html2 += 'Anonymous';
+                    }
+                });
                 html2 = html2 + ', '  + $(this).attr('data-place');
                 html2 += ')</li>';
             });
@@ -381,11 +393,18 @@ $(function() {
         }
         else if ($(span).parents('.insertion').length>0) {
             html2 += 'Is part of the following insertion:<ul>';
-            html2 = html2 + '<li>[' + $(span).parents('.insertion').text() + '] ';
-            html2 = html2 + '(' + $(span).parents('.insertion').attr('data-hand');
+            html2 = html2 + '<li>[' + $(span).parents('.insertion').text() + '] (';
+            $.ajaxSetup({async: false});
+            $.getJSON('../../Coding/Scripts/ajax.php?action=getHandInfo&hand=' + $(this).attr('data-hand'), function (g) {
+                if (g.forename + g.surname != '') {
+                    html2 += g.forename + ' ' + g.surname;
+                } else {
+                    html2 += 'Anonymous';
+                }
+            });
             html2 = html2 + ', ' + $(span).parents('.insertion').attr('data-place');
             html2 += ')</li>';
-            html2 += '</ul>';
+            html2 += '</ul></li>';
         }
         return html2;
     }
@@ -416,6 +435,7 @@ $(function() {
         }
         else str2 = str;
         str = str2.replace(/[:=]/g,'');
+
         return str;
     }
 
@@ -447,26 +467,44 @@ $(function() {
 });
 
 /*
-    Uses an AJAX request to fetch the detailed hand info for a given hand ID
-    Returns an HTML formatteed string
+    Uses an AJAX request to fetch the detailed hand info for an array of hand IDs
+    Returns an HTML formatted string
  */
-function getHandInfo(handId) {
-    var html = '<br/>Hand information:<ul>';
+function getHandInfo(handIds) {
+    var html = '<br/><h3>Hand information:</h3><ul>';
+
+    if (handIds.length > 1) {
+        html += '<li><h3>Hand 1:</h3></li>';
+    }
     $.ajaxSetup({async: false});
-    $.getJSON('../../Coding/Scripts/ajax.php?action=getHandInfo&hand=' + handId, function (g) {
-        html += '<li>';
-        if (g.forename + g.surname != '') { html +=  g.forename + ' ' + g.surname; }
-        else { html += 'Anonymous'; }
-        html += '</li><li>';
-        html += g.from;
-        if (g.min != g.from) { html += '/' + g.min; }
-        html += ' – ' + g.to;
-        if (g.max != g.to) { html += '/' + g.max; }
-        html += '</li><li>'
-        html += g.region;
-        html += '</li>';
-        for (i=0;i<g.notes.length; i++) { html += '<li>' + g.notes[i] + '</li>'; }
-    });
+    for (i=0;i<(handIds.length);i++) {
+        if (i > 0) {
+            html += '<li><h3>Hand ' + (i+1) + ':</h3></li>';
+        }
+        $.getJSON('../../Coding/Scripts/ajax.php?action=getHandInfo&hand=' + handIds[i], function (g) {
+            html += '<li>';
+            if (g.forename + g.surname != '') {
+                html += g.forename + ' ' + g.surname;
+            } else {
+                html += 'Anonymous';
+            }
+            html += '</li><li>';
+            html += g.from;
+            if (g.min != g.from) {
+                html += '/' + g.min;
+            }
+            html += ' – ' + g.to;
+            if (g.max != g.to) {
+                html += '/' + g.max;
+            }
+            html += '</li><li>'
+            html += g.region;
+            html += '</li>';
+            for (j = 0; j < g.notes.length; j++) {
+                html += '<li>' + g.notes[j] + '</li>';
+            }
+        });
+    }
     html += '</ul>';
     return html;
 }
@@ -477,30 +515,32 @@ function getHandInfo(handId) {
     SB: just a start right now; needs a lot of work
     TODO: sort out the actual structure of the HTML to ensure the results display properly
  */
-function searchHeadword(span) {
-
+function searchHeadword(headword, url) {
+    return;
     /*
         switched off for development
      */
-    return;
-
-    var headword = $(span).attr('data-headword');
-    var url = $(span).attr('data-edil');
+//console.log($(span).attr('data-headword'));
+    //var headword = $(span).attr('data-headword');
+    //var url = $(span).attr('data-edil');
     var html = '';
 
-    $('#leftPanel').find('span[data-edil="'+url+'"]').each(function() {
-        $(this).css('color', 'green');
-
-        $(this).prevAll().slice(0, 5).each(function() {
-            html += $(this).html() + ' ';
-        });
-        html += headword;
-        $(this).nextAll().slice(0, 5).each(function() {
-            html += ' ' + $(this).html();
-        });
+    $('#leftPanel span[data-edil="'+url+'"]').each(function() {
+        $($(this).parent().prevAll().slice(0,5).get().reverse()).each(function() {
+            //$(this).css('color', 'green');
+            //$(this).children().css('color', 'red');
+            var prevChunk = $(this).remove('.addComment');  //not working
+            html += prevChunk.html() + ' ';
+        })
+        html += $(this).text();
+        $(this).parent().nextAll().slice(0,5).each(function() {
+            //$(this).css('color', 'green');
+            //$(this).children().css('color', 'red');
+            var nextChunk = $(this).remove('.addComment');  //not working
+            html += ' ' + nextChunk.html();
+        })
         html += '<br/>';
     });
-    $('#test').html(html);  //#test doesn't currently exist
-
-
+    $('#test').html(html);
+    return;
 }

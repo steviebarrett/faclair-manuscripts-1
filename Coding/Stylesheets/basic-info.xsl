@@ -18,6 +18,7 @@
       </head>
       <body>
         <div id="leftPanel">
+          <div id="test"></div> <!-- SB - remove me -->
           <h1 id="top">
             <xsl:value-of select="tei:TEI/tei:teiHeader/tei:fileDesc/tei:titleStmt/tei:title"/>
           </h1>
@@ -255,6 +256,27 @@
     </span>
   </xsl:template>
 
+  <xsl:template name="addAttributes">
+    <xsl:attribute name="data-headword">
+      <xsl:value-of select="@lemma"/>
+    </xsl:attribute>
+    <xsl:attribute name="data-hand">
+      <xsl:value-of select="preceding::tei:handShift[1]/@new"/>
+    </xsl:attribute>
+    <xsl:attribute name="data-pos">
+      <xsl:value-of select="@pos"/>
+    </xsl:attribute>
+    <xsl:attribute name="data-edil">
+      <xsl:value-of select="@lemmaRef"/>
+    </xsl:attribute>
+    <xsl:attribute name="data-lemmasl">
+      <xsl:value-of select="@lemmaSL"/>
+    </xsl:attribute>
+    <xsl:attribute name="data-slipref">
+      <xsl:value-of select="@slipRef"/>
+    </xsl:attribute>
+  </xsl:template>
+
   <xsl:template mode="diplomatic" match="tei:w[not(ancestor::tei:w or ancestor::tei:name)]"> <!-- a word which is NOT part of a larger word or name -->
     <span class="word chunk syntagm">
       <xsl:attribute name="data-hand">
@@ -268,24 +290,7 @@
             </xsl:attribute>
           </xsl:when>
           <xsl:otherwise>
-            <xsl:attribute name="data-headword">
-              <xsl:value-of select="@lemma"/>
-            </xsl:attribute>
-            <xsl:attribute name="data-hand">
-              <xsl:value-of select="preceding::tei:handShift[1]/@new"/>
-            </xsl:attribute>
-            <xsl:attribute name="data-pos">
-              <xsl:value-of select="@pos"/>
-            </xsl:attribute>
-            <xsl:attribute name="data-edil">
-              <xsl:value-of select="@lemmaRef"/>
-            </xsl:attribute>
-            <xsl:attribute name="data-lemmasl">
-              <xsl:value-of select="@lemmaSL"/>
-            </xsl:attribute>
-            <xsl:attribute name="data-slipref">
-              <xsl:value-of select="@slipRef"/>
-            </xsl:attribute>
+            <xsl:call-template name="addAttributes"/>
           </xsl:otherwise>
         </xsl:choose>
       </xsl:if>
@@ -303,24 +308,7 @@
             </xsl:attribute>
           </xsl:when>
           <xsl:otherwise>
-            <xsl:attribute name="data-headword">
-              <xsl:value-of select="@lemma"/>
-            </xsl:attribute>
-            <xsl:attribute name="data-hand">
-              <xsl:value-of select="preceding::tei:handShift[1]/@new"/>
-            </xsl:attribute>
-            <xsl:attribute name="data-pos">
-              <xsl:value-of select="@pos"/>
-            </xsl:attribute>
-            <xsl:attribute name="data-edil">
-              <xsl:value-of select="@lemmaRef"/>
-            </xsl:attribute>
-            <xsl:attribute name="data-lemmasl">
-              <xsl:value-of select="@lemmaSL"/>
-            </xsl:attribute>
-            <xsl:attribute name="data-slipref">
-              <xsl:value-of select="@slipRef"/>
-            </xsl:attribute>
+            <xsl:call-template name="addAttributes"/>
           </xsl:otherwise>
         </xsl:choose>
       </xsl:if>
@@ -530,24 +518,7 @@
         <xsl:value-of select="preceding::tei:handShift[1]/@new"/>
       </xsl:attribute>
       <xsl:if test="count(tei:w) = 0"> <!-- a syntactically simple word -->
-        <xsl:attribute name="data-headword">
-          <xsl:value-of select="@lemma"/>
-        </xsl:attribute>
-        <xsl:attribute name="data-hand">
-          <xsl:value-of select="preceding::tei:handShift[1]/@new"/>
-        </xsl:attribute>
-        <xsl:attribute name="data-pos">
-          <xsl:value-of select="@pos"/>
-        </xsl:attribute>
-        <xsl:attribute name="data-edil">
-          <xsl:value-of select="@lemmaRef"/>
-        </xsl:attribute>
-        <xsl:attribute name="data-lemmasl">
-          <xsl:value-of select="@lemmaSL"/>
-        </xsl:attribute>
-        <xsl:attribute name="data-slipref">
-          <xsl:value-of select="@slipRef"/>
-        </xsl:attribute>
+        <xsl:call-template name="addAttributes"/>
       </xsl:if>
       <xsl:apply-templates mode="semi-diplomatic"/>
     </span>
@@ -568,21 +539,7 @@
         <xsl:value-of select="preceding::tei:handShift[1]/@new"/>
       </xsl:attribute>
       <xsl:if test="count(tei:w) = 0"> <!-- a syntactically simple word -->
-        <xsl:attribute name="data-headword">
-          <xsl:value-of select="@lemma"/>
-        </xsl:attribute>
-        <xsl:attribute name="data-pos">
-          <xsl:value-of select="@pos"/>
-        </xsl:attribute>
-        <xsl:attribute name="data-edil">
-          <xsl:value-of select="@lemmaRef"/>
-        </xsl:attribute>
-        <xsl:attribute name="data-lemmasl">
-          <xsl:value-of select="@lemmaSL"/>
-        </xsl:attribute>
-        <xsl:attribute name="data-slipref">
-          <xsl:value-of select="@slipRef"/>
-        </xsl:attribute>
+        <xsl:call-template name="addAttributes"/>
       </xsl:if>
       <xsl:apply-templates/>
     </span>
@@ -595,24 +552,7 @@
   <xsl:template mode="semi-diplomatic" match="tei:w[ancestor::tei:w and not(descendant::tei:w)]">
     <span class="word chunk syntagm">
       <xsl:if test="count(tei:w) = 0"> <!-- a syntactically simple word -->
-        <xsl:attribute name="data-headword">
-          <xsl:value-of select="@lemma"/>
-        </xsl:attribute>
-        <xsl:attribute name="data-hand">
-          <xsl:value-of select="preceding::tei:handShift[1]/@new"/>
-        </xsl:attribute>
-        <xsl:attribute name="data-pos">
-          <xsl:value-of select="@pos"/>
-        </xsl:attribute>
-        <xsl:attribute name="data-edil">
-          <xsl:value-of select="@lemmaRef"/>
-        </xsl:attribute>
-        <xsl:attribute name="data-lemmasl">
-          <xsl:value-of select="@lemmaSL"/>
-        </xsl:attribute>
-        <xsl:attribute name="data-slipref">
-          <xsl:value-of select="@slipRef"/>
-        </xsl:attribute>
+        <xsl:call-template name="addAttributes"/>
       </xsl:if>
       <xsl:apply-templates mode="semi-diplomatic"/>
     </span>
@@ -624,24 +564,7 @@
         <xsl:value-of select="preceding::tei:handShift[1]/@new"/>
       </xsl:attribute>
       <xsl:if test="count(tei:w) = 0"> <!-- a syntactically simple word -->
-        <xsl:attribute name="data-headword">
-          <xsl:value-of select="@lemma"/>
-        </xsl:attribute>
-        <xsl:attribute name="data-hand">
-          <xsl:value-of select="preceding::tei:handShift[1]/@new"/>
-        </xsl:attribute>
-        <xsl:attribute name="data-pos">
-          <xsl:value-of select="@pos"/>
-        </xsl:attribute>
-        <xsl:attribute name="data-edil">
-          <xsl:value-of select="@lemmaRef"/>
-        </xsl:attribute>
-        <xsl:attribute name="data-lemmasl">
-          <xsl:value-of select="@lemmaSL"/>
-        </xsl:attribute>
-        <xsl:attribute name="data-slipref">
-          <xsl:value-of select="@slipRef"/>
-        </xsl:attribute>
+        <xsl:call-template name="addAttributes"/>
       </xsl:if>
       <xsl:apply-templates mode="semi-diplomatic"/>
     </span>
@@ -693,6 +616,10 @@
     </xsl:choose>
   </xsl:template>
 
+  <xsl:template mode="semi-diplomatic" match="tei:handShift">
+    <span class="handshift" data-hand="{@new}"></span>
+  </xsl:template>
+
   <xsl:template mode="semi-diplomatic" match="tei:del">
     <span class="deletion" data-hand="{@resp}">
       <xsl:apply-templates mode="diplomatic"/>
@@ -701,6 +628,12 @@
 
   <xsl:template mode="semi-diplomatic" match="tei:add">
     <span class="addition" data-hand="{@resp}" data-place="{@place}" data-type="{@type}">
+      <xsl:apply-templates mode="semi-diplomatic"/>
+    </span>
+  </xsl:template>
+
+  <xsl:template mode="semi-diplomatic" match="tei:add[@type='insertion']">
+    <span class="insertion" data-hand="{@hand}" data-place="{@place}">
       <xsl:apply-templates mode="semi-diplomatic"/>
     </span>
   </xsl:template>
