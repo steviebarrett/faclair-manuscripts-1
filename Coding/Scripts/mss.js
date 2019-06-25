@@ -453,7 +453,6 @@ $(function() {
 
 function getHandInfo(handId) {
     var name = '';
-    $.ajaxSetup({async: false});
     $.getJSON('../../Coding/Scripts/ajax.php?action=getHandInfo&hand=' + handId, function (g) {
         if (g.forename + g.surname != '') {
             name = g.forename + ' ' + g.surname;
