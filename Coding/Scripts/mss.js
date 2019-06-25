@@ -148,7 +148,7 @@ $(function() {
     function makeSyntax(span, rec) {
         html = '';
         //SB note the searchHeadword() call here. Just for testing and will be moved.
-        if (rec) { html += '<span onclick="searchHeadword(\'' + $(span).attr('data-headword') + '\',\'' + $(span).attr('data-edil') + '\')" style="color:red;">' + clean($(span).text()) + '</span><ul>'; } //  searchHeadword(span);}
+        if (rec) { html += '<span onclick="searchHeadword(\'' + $(span).attr('data-headword') + '\',\'' + $(span).attr('data-edil') + '\')" style="color:red;">' + clean($(span).text()) + '</span><ul>'; }
 
         var handIds = [$(span).attr('data-hand')];;
         html += getHandInfoDivs(handIds);
@@ -453,6 +453,7 @@ $(function() {
 
 function getHandInfo(handId) {
     var name = '';
+    $.ajaxSetup({async: false});
     $.getJSON('../../Coding/Scripts/ajax.php?action=getHandInfo&hand=' + handId, function (g) {
         if (g.forename + g.surname != '') {
             name = g.forename + ' ' + g.surname;
