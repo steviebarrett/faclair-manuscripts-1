@@ -269,7 +269,10 @@ SQL;
         $xml->registerXPathNamespace('tei', 'http://www.tei-c.org/ns/1.0');
         $hand = $xml->xpath("/tei:teiCorpus/tei:teiHeader/tei:profileDesc/tei:handNotes/tei:handNote[@xml:id='{$handid}']")[0];
         $notes = array();
-        foreach ($hand->note->p as $p) { $notes[] = (string)$p; }
-        return array("forename" => (string)$hand->forename, "surname" => (string)$hand->surname, "from" => (string)$hand->date["from"], "to" => (string)$hand->date["to"], "min" => (string)$hand->date["min"], "max" => (string)$hand->date["max"], "region" => (string)$hand->region, "notes" => $notes);
+        foreach ($hand->note as $note) { $notes[] = $note->asXML(); }
+        return array("forename" => (string)$hand->forename, "surname" => (string)$hand->surname,
+            "from" => (string)$hand->date["from"], "to" => (string)$hand->date["to"],
+            "min" => (string)$hand->date["min"], "max" => (string)$hand->date["max"], "region" => (string)$hand->region,
+            "notes" => $notes);
     }
 }

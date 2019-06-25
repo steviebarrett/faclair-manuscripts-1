@@ -27,7 +27,7 @@ $(function() {
             html += g.title;
         })
         var hands = [granny.attr('data-hand')];
-        html += getHandInfo(hands);
+        html += getHandInfoDivs(hands);
         $('#rightPanel').html(html);
     });
 
@@ -76,14 +76,6 @@ $(function() {
         html = html.replace(/\n/g,'');
         html += '</h1><ul>';
         html += makeSyntax($(this),false);
-        if ($(this2).attr('data-hand') != undefined) {
-            var hands = [$(this2).attr('data-hand')];
-            $(this2).find('.handShift').each(function() {
-                hands.push($(this).attr('data-hand'));
-            });
-            console.log(hands);
-            html += getHandInfo(hands);    //get the hand info if available
-        }
         html += '</ul>';
         if ($(this).find('.expansion, .ligature').length>0) {
             html += 'Contains, or is formed from, the following scribal abbreviations and/or ligatures:<ul>';
@@ -115,6 +107,13 @@ $(function() {
         $('#deletionInfo').html(getDeletions($(this)));
         $('#additionInfo').html(getAdditions($(this)));
          */
+        if ($(this2).attr('data-hand') != undefined) {
+            var hands = [$(this2).attr('data-hand')];
+            $(this2).find('.handShift').each(function() {
+                hands.push($(this).attr('data-hand'));
+            });
+            html += getHandInfoDivs(hands);    //get the hand info if available
+        }
         $('#rightPanel').html(html);
 
         //SB - moved following glyph handler from deleted .done due to the synchronous call
@@ -150,6 +149,19 @@ $(function() {
         html = '';
         //SB note the searchHeadword() call here. Just for testing and will be moved.
         if (rec) { html += '<span onclick="searchHeadword(\'' + $(span).attr('data-headword') + '\',\'' + $(span).attr('data-edil') + '\')" style="color:red;">' + clean($(span).text()) + '</span><ul>'; } //  searchHeadword(span);}
+
+        var handIds = [$(span).attr('data-hand')];;
+        html += getHandInfoDivs(handIds);
+        html += '<li>was written by ';
+        html += '<a href="#" onclick="$(\'#handInfo_'+ handIds[0] + '\').bPopup();">' + getHandInfo($(span).attr('data-hand')) + '</a>';
+        html += '</li>';
+
+        //a handShift within a word
+        $(span).find('.handShift').each(function() {
+            html += '<li>contains a hand shift to ';
+            html += '<a href="#" onclick="$(\'#handInfo_'+ $(this).attr('data-hand') + '\').bPopup();">' + getHandInfo($(this).attr('data-hand')) + '</a>';
+            html += '</li>';
+        });
 
         if ($(span).hasClass('name')) {
             type = $(span).attr('data-nametype');
@@ -235,19 +247,6 @@ $(function() {
         if ($(span).find('.insertion').length != 0) {
             html += getAdditions(span);
         }
-        //a handShift within a word
-        $(span).find('.handShift').each(function() {
-            html += '<li>contains a hand shift to ';
-            $.ajaxSetup({async: false});
-            $.getJSON('../../Coding/Scripts/ajax.php?action=getHandInfo&hand=' + $(this).attr('data-hand'), function (g) {
-                if (g.forename + g.surname != '') {
-                    html += g.forename + ' ' + g.surname;
-                } else {
-                    html += 'Anonymous';
-                }
-            });
-            html += '</li>';
-        });
         if (rec) {
             html += '</ul>';
         }
@@ -378,14 +377,7 @@ $(function() {
             html2 += 'Contains the following insertions:<ul>';
             $(span).find('.insertion').each(function() {
                 html2 = html2 + '<li>[' + $(this).text() + '] (';
-                $.ajaxSetup({async: false});
-                $.getJSON('../../Coding/Scripts/ajax.php?action=getHandInfo&hand=' + $(this).attr('data-hand'), function (g) {
-                    if (g.forename + g.surname != '') {
-                        html2 += g.forename + ' ' + g.surname;
-                    } else {
-                        html2 += 'Anonymous';
-                    }
-                });
+                html2 += '<a href="#" onclick="$(\'#handInfo_'+ $(this).attr('data-hand') + '\').bPopup();">' + getHandInfo($(this).attr('data-hand')) + '</a>';
                 html2 = html2 + ', '  + $(this).attr('data-place');
                 html2 += ')</li>';
             });
@@ -394,14 +386,7 @@ $(function() {
         else if ($(span).parents('.insertion').length>0) {
             html2 += 'Is part of the following insertion:<ul>';
             html2 = html2 + '<li>[' + $(span).parents('.insertion').text() + '] (';
-            $.ajaxSetup({async: false});
-            $.getJSON('../../Coding/Scripts/ajax.php?action=getHandInfo&hand=' + $(this).attr('data-hand'), function (g) {
-                if (g.forename + g.surname != '') {
-                    html2 += g.forename + ' ' + g.surname;
-                } else {
-                    html2 += 'Anonymous';
-                }
-            });
+            html2 += '<a href="#" onclick="$(\'#handInfo_'+ $(this).attr('data-hand') + '\').bPopup();">' + getHandInfo($(this).attr('data-hand')) + '</a>';
             html2 = html2 + ', ' + $(span).parents('.insertion').attr('data-place');
             html2 += ')</li>';
             html2 += '</ul></li>';
@@ -466,29 +451,34 @@ $(function() {
     });
 });
 
+function getHandInfo(handId) {
+    var name = '';
+    $.getJSON('../../Coding/Scripts/ajax.php?action=getHandInfo&hand=' + handId, function (g) {
+        if (g.forename + g.surname != '') {
+            name = g.forename + ' ' + g.surname;
+        } else {
+            name = 'Anonymous (' + handId + ')';
+        }
+    });
+    return name;
+}
 /*
     Uses an AJAX request to fetch the detailed hand info for an array of hand IDs
     Returns an HTML formatted string
  */
-function getHandInfo(handIds) {
-    var html = '<br/><h3>Hand information:</h3><ul>';
-
-    if (handIds.length > 1) {
-        html += '<li><h3>Hand 1:</h3></li>';
-    }
+function getHandInfoDivs(handIds) {
+    var html = '';
     $.ajaxSetup({async: false});
     for (i=0;i<(handIds.length);i++) {
-        if (i > 0) {
-            html += '<li><h3>Hand ' + (i+1) + ':</h3></li>';
-        }
+        html += '<div id="handInfo_' + handIds[i] + '" style="display:none; overflow: scroll; width: 40em; height: 20em; background: white; padding: 10px;">';
         $.getJSON('../../Coding/Scripts/ajax.php?action=getHandInfo&hand=' + handIds[i], function (g) {
-            html += '<li>';
+            html += '<p>';
             if (g.forename + g.surname != '') {
                 html += g.forename + ' ' + g.surname;
             } else {
-                html += 'Anonymous';
+                html += 'Anonymous (' + handIds[i] + ')';
             }
-            html += '</li><li>';
+            html += '</p><p>';
             html += g.from;
             if (g.min != g.from) {
                 html += '/' + g.min;
@@ -497,15 +487,25 @@ function getHandInfo(handIds) {
             if (g.max != g.to) {
                 html += '/' + g.max;
             }
-            html += '</li><li>'
+            html += '</p><p>'
             html += g.region;
-            html += '</li>';
+            html += '</p>';
             for (j = 0; j < g.notes.length; j++) {
-                html += '<li>' + g.notes[j] + '</li>';
+                var xml = $.parseXML(g.notes[j]);
+                $xml = $(xml);
+                $xml.find('p').each(function (index, element) {
+                    $(element).find('hi').each(function () {
+                        $(this).replaceWith(function () {
+                            return $('<em />', {html: $(this).html()});
+                        });
+                    });
+                    html += '<p>' + $(element).html() + '</p>';
+                });
             }
+
         });
+        html += '</div>';
     }
-    html += '</ul>';
     return html;
 }
 
