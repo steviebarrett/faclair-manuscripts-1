@@ -166,7 +166,12 @@ $(function() {
         if ($(span).hasClass('name')) {
             type = $(span).attr('data-nametype');
             if (type=='personal') { html += '<li>is the name of a person</li>'; }
-            else if (type=='place') { html += '<li>is the name of a place</li>'; }
+            else if (
+                type=='place') { html += '<li>is the name of a place</li>';
+                if ($(span).attr('data-corresp') != '') {
+                    html += '<li>further information on this placename can be found <a href="' + $(span).attr('data-corresp') + '" target="_blank">here</a></li>';
+                }
+            }
             else if (type=='population') { html += '<li>is the name of a group of people</li>'; }
             else { html += '<li>is a name</li>'; }
         }
@@ -520,27 +525,32 @@ function searchHeadword(headword, url) {
     /*
         switched off for development
      */
-//console.log($(span).attr('data-headword'));
-    //var headword = $(span).attr('data-headword');
-    //var url = $(span).attr('data-edil');
     var html = '';
 
     $('#leftPanel span[data-edil="'+url+'"]').each(function() {
+        var wordref = $(this).attr('data-wordref');
         $($(this).parent().prevAll().slice(0,5).get().reverse()).each(function() {
-            //$(this).css('color', 'green');
-            //$(this).children().css('color', 'red');
-            var prevChunk = $(this).remove('.addComment');  //not working
-            html += prevChunk.html() + ' ';
+            var this2 = $(this).clone();
+            $(this2).find('br').remove();
+            $(this2).find('a').remove('.addComment');   //remove the comment links
+            html += $(this2).html() + ' ';
         })
-        html += $(this).text();
+        html += '<span style="color:red;">' +
+            '<a href="#' + wordref + '" onclick="highlightSpan(\'' + wordref + '\');">' + $(this).text() + '</a>'
+            + '</span>';
         $(this).parent().nextAll().slice(0,5).each(function() {
-            //$(this).css('color', 'green');
-            //$(this).children().css('color', 'red');
-            var nextChunk = $(this).remove('.addComment');  //not working
-            html += ' ' + nextChunk.html();
+            var this2 = $(this).clone();
+            $(this2).find('br').remove();
+            $(this2).find('a').remove('.addComment');   //remove the comment links
+            html += ' ' + $(this2).html();
         })
         html += '<br/>';
     });
-    $('#test').html(html);
+    $('#rightPanel').html(html);
     return;
+}
+
+function highlightSpan(id) {
+    $("span[data-wordref]").css('color', 'inherit'); //reset any previously highlighted span
+    $("span[data-wordref='" + id + "']").css("color", "red");
 }

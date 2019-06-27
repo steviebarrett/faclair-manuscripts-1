@@ -237,6 +237,9 @@
       <xsl:attribute name="data-nametype">
         <xsl:value-of select="@type"/>
       </xsl:attribute>
+      <xsl:attribute name="data-corresp">
+        <xsl:value-of select="@corresp"/>
+      </xsl:attribute>
       <xsl:attribute name="data-hand">
         <xsl:value-of select="preceding::tei:handShift[1]/@new"/>
       </xsl:attribute>
@@ -248,6 +251,9 @@
     <span class="name syntagm">
       <xsl:attribute name="data-nametype">
         <xsl:value-of select="@type"/>
+      </xsl:attribute>
+      <xsl:attribute name="data-corresp">
+        <xsl:value-of select="@corresp"/>
       </xsl:attribute>
       <xsl:attribute name="data-hand">
         <xsl:value-of select="preceding::tei:handShift[1]/@new"/>
@@ -299,7 +305,12 @@
   </xsl:template>
 
   <xsl:template mode="diplomatic" match="tei:w"> <!-- a word which IS part of a larger word or name -->
+    <xsl:variable name="wordref" select="generate-id()"/> <!-- SB added to handle headword search results -->
+    <a id="{$wordref}"></a>
     <span class="word syntagm">
+      <xsl:attribute name="data-wordref"> <!-- SB added to handle headword search results -->
+        <xsl:value-of select="$wordref"/>
+      </xsl:attribute>
       <xsl:if test="count(tei:w) = 0"> <!-- a syntactically simple word -->
         <xsl:choose>
           <xsl:when test="@xml:lang">
@@ -491,6 +502,9 @@
       <xsl:attribute name="data-nametype">
         <xsl:value-of select="@type"/>
       </xsl:attribute>
+      <xsl:attribute name="data-corresp">
+        <xsl:value-of select="@corresp"/>
+      </xsl:attribute>
       <xsl:attribute name="data-hand">
         <xsl:value-of select="preceding::tei:handShift[1]/@new"/>
       </xsl:attribute>
@@ -503,6 +517,9 @@
     <span class="name syntagm">
       <xsl:attribute name="data-nametype">
         <xsl:value-of select="@type"/>
+      </xsl:attribute>
+      <xsl:attribute name="data-corresp">
+        <xsl:value-of select="@corresp"/>
       </xsl:attribute>
       <xsl:attribute name="data-hand">
         <xsl:value-of select="preceding::tei:handShift[1]/@new"/>
