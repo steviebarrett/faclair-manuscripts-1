@@ -451,7 +451,7 @@
 
   <xsl:template match="tei:gap" mode="diplomatic">
     <span class="gapDamageDiplo" data-quantity="{@quantity}" data-unit="{@unit}" data-resp="{@resp}">
-      <xsl:text>[...]</xsl:text>
+      <xsl:text> [</xsl:text><xsl:value-of select="@quantity"></xsl:value-of><xsl:text> missing folio(s)] </xsl:text>
     </span>
   </xsl:template>
 
@@ -716,6 +716,12 @@
       <xsl:text> </xsl:text>
       <xsl:value-of select="."/>
       <xsl:text> </xsl:text>
+    </span>
+  </xsl:template>
+
+  <xsl:template match="tei:gap" mode="semi-diplomatic">
+    <span class="gapDamageDiplo" data-quantity="{@quantity}" data-unit="{@unit}" data-resp="{@resp}">
+      <xsl:text> [</xsl:text><xsl:value-of select="@quantity"></xsl:value-of><xsl:text> missing folio(s)] </xsl:text>
     </span>
   </xsl:template>
 
