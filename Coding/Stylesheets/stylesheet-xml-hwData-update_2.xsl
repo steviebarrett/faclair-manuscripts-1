@@ -174,8 +174,7 @@
 	<xsl:template name="scgDataPc">
 		<xsl:variable name="calc"
 			select="count(//tei:TEI[@xml:id = 'hwData']//tei:entryFree[tei:w[@lemmaDW and @lemma]]) div count(//tei:TEI[@xml:id = 'hwData']//tei:entryFree)"/>
-		<xsl:value-of select="round($calc * 100)"/>
-		<xsl:text>%</xsl:text>
+		<xsl:value-of select="format-number($calc, '##%')"/>
 	</xsl:template>
 
 	<xsl:template name="newHwCount">
