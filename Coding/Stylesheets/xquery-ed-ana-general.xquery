@@ -27,7 +27,7 @@ href="{$hwRef}"
 target="_blank">{$hw}</a></td><td>{$form}</td><td>{
 for $y in $line
 where $y/ancestor::tei:sic or not($y/ancestor::tei:choice)
-let $rawLine := string(if (not($y/descendant::tei:w) and name($y) = "w" or name($y) = "pc" or name($y) = "date" or name($y) = "num" or name($y) = "c") then
+let $nspLine := translate(normalize-space(string(if (not($y/descendant::tei:w) and name($y) = "w" or name($y) = "pc" or name($y) = "date" or name($y) = "num" or name($y) = "c") then
 string(translate(normalize-space($y/self::*), " ", ""))
 else (if (name($y) = "seg" and $y/@type = "fragment") then string(translate(normalize-space($y/self::*), " ", ""))
 else (if (name($y) = "gap") then "..."
@@ -35,8 +35,7 @@ else
 (if (name($y) = "space") then
 "_"
 else
-""))))
-let $nspLine := translate(normalize-space($rawLine), " ", "")
+""))))), " ", "")
 let $finalLine := translate($nspLine, "_", " ")
 return normalize-space($finalLine)
 }</td></tr>
