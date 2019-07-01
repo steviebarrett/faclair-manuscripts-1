@@ -18,7 +18,7 @@ content="text/html; charset=UTF-8"/>
 for $x in //tei:w[not(descendant::tei:w) and not(@xml:lang) and not(@type = "data") and @lemmaRef]
 let $hw := string($x/@lemma)
 let $hwRef := $x/@lemmaRef
-let $form := $x/string(self::*)
+let $form := translate(normalize-space($x/string(self::*)), " ", "")
 let $lineRef := $x/preceding::tei:lb[1]/@xml:id
 let $line := //*[preceding::tei:lb[1]/@xml:id = $lineRef]
 return
@@ -27,9 +27,19 @@ href="{$hwRef}"
 target="_blank">{$hw}</a></td><td>{$form}</td><td>{
 for $y in $line
 where $y/ancestor::tei:sic or not($y/ancestor::tei:choice)
-return if(name($y) = "w" and not($y/descendant::tei:w)) then string($y/self::*) else (if(name($y) = "space") then "SPACE" else "")
-}
-</td></tr>
+let $rawLine := string(if (not($y/descendant::tei:w) and name($y) = "w" or name($y) = "pc" or name($y) = "date" or name($y) = "num" or name($y) = "c") then
+string(translate(normalize-space($y/self::*), " ", ""))
+else (if (name($y) = "seg" and $y/@type = "fragment") then string(translate(normalize-space($y/self::*), " ", ""))
+else (if (name($y) = "gap") then "..."
+else
+(if (name($y) = "space") then
+"_"
+else
+""))))
+let $nspLine := translate(normalize-space($rawLine), " ", "")
+let $finalLine := translate($nspLine, "_", " ")
+return normalize-space($finalLine)
+}</td></tr>
 }
 </table>
 </body>
