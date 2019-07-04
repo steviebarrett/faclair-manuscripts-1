@@ -32,7 +32,7 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
             {
                 for $z in //tei:div[not(ancestor::tei:div) and not(@resp = preceding::tei:div[not(ancestor::tei:div)]/@corresp)]/@corresp
                 let $text_id := string($z)
-                let $scribe_id := string(//tei:div[@corresp = $z]/@resp)
+                let $scribe_id := string(//tei:div[not(ancestor::tei:div) and not(@corresp = preceding::tei:div[not(ancestor::tei:div)]/@corresp) and @corresp = $z]/@resp)
                 let $text_label := string(//tei:msItem[@xml:id = $z]/tei:title)
                 let $text_affil := string(//tei:handNote[@xml:id = $scribe_id]/tei:affiliation)
                 return
