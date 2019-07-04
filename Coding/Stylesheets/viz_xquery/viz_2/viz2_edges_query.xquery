@@ -11,13 +11,21 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
             <tr>
                 <th>source</th>
                 <th>target</th>
+                <th>type</th>
             </tr>
             {
                 for $x in //tei:w[not(descendant::tei:w) and not(@xml:lang) and not(@type = "data") and not(ancestor::tei:name)]
                 let $lemRef := string($x/@lemmaRef)
-                let $lemScribe := string($x/ancestor::tei:div[1]/@resp)
+                let $lemText := string($x/ancestor::tei:div[not(ancestor::tei:div)]/@corresp)
                 return
-                    <tr><td>{$lemScribe}</td><td>{$lemRef}</td></tr>
+                    <tr><td>{$lemText}</td><td>{$lemRef}</td><td>word</td></tr>
+            }
+            {
+                for $z in //tei:div[not(ancestor::tei:div)]
+                let $textID := string($z/@corresp)
+                let $textScribe := string($z/@resp)
+                return
+                    <tr><td>{$textScribe}</td><td>{$textID}</td><td>text</td></tr>
             }
         </table>
     </body>
