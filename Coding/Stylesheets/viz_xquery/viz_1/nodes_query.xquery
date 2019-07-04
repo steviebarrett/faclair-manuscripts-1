@@ -12,7 +12,7 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
 <th>affiliation</th>
 </tr>
 {
-for $x in //tei:w[not(descendant::tei:w) and not(@xml:lang) and not(@type = "data") and not(ancestor::tei:name) and @lemmaRef and not(@lemmaRef = preceding::tei:w/@lemmaRef)]
+for $x in //tei:w[not(descendant::tei:w) and not(@xml:lang) and not(@type = "data") and not(ancestor::tei:name) and @lemmaRef and not(@lemmaRef = preceding::tei:w[not(ancestor::tei:name)]/@lemmaRef)]
 let $hw_id := string($x/@lemmaRef)
 let $hw_label := string($x/@lemma)
 return <tr><td>{$hw_id}</td><td>{$hw_label}</td><td>headword</td><td>null</td></tr>
