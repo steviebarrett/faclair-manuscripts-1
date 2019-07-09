@@ -22,11 +22,8 @@
 	</xsl:attribute-set>
 
 	<xsl:template name="contentRow">
-		<xsl:param name="posID"/>
-		<xsl:variable name="lemID" select="@lemmaRef"/>
 		<xsl:variable name="wordPosition" select="count(preceding::*)"/>
 		<xsl:variable name="comDiv" select="ancestor::tei:div[1]/@corresp"/>
-		<xsl:variable name="comPage" select="preceding::tei:pb[1]/@xml:id"/>
 		<xsl:variable name="handRef">
 			<xsl:choose>
 				<xsl:when test="ancestor::tei:add">
@@ -226,156 +223,8 @@
 					</thead>
 					<tbody>
 						<xsl:for-each
-							select="//tei:w[not(descendant::tei:w) and contains(@ana, 'art') and not(@type = 'data') and not(contains(@ana, 'part'))]">
-							<xsl:call-template name="contentRow">
-								<xsl:with-param name="posID">
-									<xsl:text>art</xsl:text>
-								</xsl:with-param>
-							</xsl:call-template>
-						</xsl:for-each>
-						<xsl:for-each
-							select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(ancestor::tei:name) and contains(@ana, 'noun') and not(@type = 'data') and not(contains(@ana, 'vnoun')) and not(@xml:lang)]">
-							<xsl:call-template name="contentRow">
-								<xsl:with-param name="posID">
-									<xsl:text>noun</xsl:text>
-								</xsl:with-param>
-							</xsl:call-template>
-						</xsl:for-each>
-						<xsl:for-each
-							select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and contains(@ana, 'pron')]">
-							<xsl:call-template name="contentRow">
-								<xsl:with-param name="posID">
-									<xsl:text>pron</xsl:text>
-								</xsl:with-param>
-							</xsl:call-template>
-						</xsl:for-each>
-						<xsl:for-each
-							select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and contains(@ana, 'poss')]">
-							<xsl:call-template name="contentRow">
-								<xsl:with-param name="posID">
-									<xsl:text>poss</xsl:text>
-								</xsl:with-param>
-							</xsl:call-template>
-						</xsl:for-each>
-						<xsl:for-each
-							select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and contains(@ana, 'emph')]">
-							<xsl:call-template name="contentRow">
-								<xsl:with-param name="posID">
-									<xsl:text>emph</xsl:text>
-								</xsl:with-param>
-							</xsl:call-template>
-						</xsl:for-each>
-						<xsl:for-each
-							select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and contains(@ana, 'adj')]">
-							<xsl:call-template name="contentRow">
-								<xsl:with-param name="posID">
-									<xsl:text>adj</xsl:text>
-								</xsl:with-param>
-							</xsl:call-template>
-						</xsl:for-each>
-						<xsl:for-each
-							select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and contains(@ana, 'num')]">
-							<xsl:call-template name="contentRow">
-								<xsl:with-param name="posID">
-									<xsl:text>num</xsl:text>
-								</xsl:with-param>
-							</xsl:call-template>
-						</xsl:for-each>
-						<xsl:for-each
-							select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and @lemmaRef = 'http://www.dil.ie/4927']">
-							<xsl:call-template name="contentRow">
-								<xsl:with-param name="posID">
-									<xsl:text>subst</xsl:text>
-								</xsl:with-param>
-							</xsl:call-template>
-						</xsl:for-each>
-						<xsl:for-each
-							select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and @lemmaRef = 'http://www.dil.ie/29104']">
-							<xsl:call-template name="contentRow">
-								<xsl:with-param name="posID">
-									<xsl:text>cop</xsl:text>
-								</xsl:with-param>
-							</xsl:call-template>
-						</xsl:for-each>
-						<xsl:for-each
-							select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and contains(@ana, 'verb') and not(@lemmaRef = 'http://www.dil.ie/29104') and not(@lemmaRef = 'http://www.dil.ie/4927')]">
-							<xsl:call-template name="contentRow">
-								<xsl:with-param name="posID">
-									<xsl:text>verb</xsl:text>
-								</xsl:with-param>
-							</xsl:call-template>
-						</xsl:for-each>
-						<xsl:for-each
-							select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and contains(@ana, 'vnoun')]">
-							<xsl:call-template name="contentRow">
-								<xsl:with-param name="posID">
-									<xsl:text>vn</xsl:text>
-								</xsl:with-param>
-							</xsl:call-template>
-						</xsl:for-each>
-						<xsl:for-each
-							select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and contains(@ana, 'ptcp')]">
-							<xsl:call-template name="contentRow">
-								<xsl:with-param name="posID">
-									<xsl:text>ptcp</xsl:text>
-								</xsl:with-param>
-							</xsl:call-template>
-						</xsl:for-each>
-						<xsl:for-each
-							select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and contains(@ana, 'adv')]">
-							<xsl:call-template name="contentRow">
-								<xsl:with-param name="posID">
-									<xsl:text>adv</xsl:text>
-								</xsl:with-param>
-							</xsl:call-template>
-						</xsl:for-each>
-						<xsl:for-each
-							select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and contains(@ana, 'conj')]">
-							<xsl:call-template name="contentRow">
-								<xsl:with-param name="posID">
-									<xsl:text>conj</xsl:text>
-								</xsl:with-param>
-							</xsl:call-template>
-						</xsl:for-each>
-						<xsl:for-each
-							select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and contains(@ana, 'prep')]">
-							<xsl:call-template name="contentRow">
-								<xsl:with-param name="posID">
-									<xsl:text>prep</xsl:text>
-								</xsl:with-param>
-							</xsl:call-template>
-						</xsl:for-each>
-						<xsl:for-each
-							select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and contains(@ana, 'part')]">
-							<xsl:call-template name="contentRow">
-								<xsl:with-param name="posID">
-									<xsl:text>part</xsl:text>
-								</xsl:with-param>
-							</xsl:call-template>
-						</xsl:for-each>
-						<xsl:for-each
-							select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and contains(@ana, 'interrog')]">
-							<xsl:call-template name="contentRow">
-								<xsl:with-param name="posID">
-									<xsl:text>int</xsl:text>
-								</xsl:with-param>
-							</xsl:call-template>
-						</xsl:for-each>
-						<xsl:for-each
-							select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and contains(@ana, 'pref')]">
-							<xsl:call-template name="contentRow">
-								<xsl:with-param name="posID">
-									<xsl:text>pref</xsl:text>
-								</xsl:with-param>
-							</xsl:call-template>
-						</xsl:for-each>
-						<xsl:for-each
-							select="//tei:w[ancestor::tei:body and not(descendant::tei:w) and not(@type = 'data') and @lemma = 'UNKNOWN']">
-							<xsl:call-template name="contentRow">
-								<xsl:with-param name="posID">
-									<xsl:text>unk</xsl:text>
-								</xsl:with-param>
-							</xsl:call-template>
+							select="//tei:w[not(descendant::tei:w) and not(@type = 'data') and not(@xml:lang)]">
+							<xsl:call-template name="contentRow"/>
 						</xsl:for-each>
 					</tbody>
 				</table>
