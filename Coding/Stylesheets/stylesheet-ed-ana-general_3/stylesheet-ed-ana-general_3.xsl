@@ -73,7 +73,7 @@
 					</thead>
 					<tbody>
 						<xsl:for-each
-							select="//tei:w[not(descendant::tei:w) and not(@type = 'data') and not(@xml:lang)]">
+							select="//tei:w[not(descendant::tei:w) and not(@type = 'data') and not(@xml:lang) and not(ancestor::tei:supplied)]">
 							<xsl:call-template name="contentRow"/>
 						</xsl:for-each>
 					</tbody>
@@ -252,7 +252,7 @@
 	</xsl:template>
 
 	<xsl:template mode="context" match="tei:space">
-		<xsl:text xml:space="preserve"> </xsl:text>
+		&#160;
 	</xsl:template>
 
 	<xsl:template mode="context" match="tei:expan">
@@ -269,9 +269,9 @@
 				</sup>
 			</xsl:when>
 			<xsl:when test="@rend = 'strikethrough'">
-				<strike>
+				<del>
 					<xsl:apply-templates select="child::* | child::text()"/>
-				</strike>
+				</del>
 			</xsl:when>
 		</xsl:choose>
 	</xsl:template>
@@ -324,35 +324,29 @@
 		<xsl:text xml:space="preserve"> [...] </xsl:text>
 	</xsl:template>
 
-	<xsl:template mode="table" match="tei:w[descendant::tei:w]">
-		<xsl:param name="wordID"/>
-		<span>
-			<xsl:apply-templates>
-				<xsl:with-param name="wordID">
-					<xsl:value-of select="$wordID"/>
-				</xsl:with-param>
-			</xsl:apply-templates>
-		</span>
-		<xsl:text> </xsl:text>
+	<xsl:template mode="table" name="tableForm">
+		<xsl:apply-templates select="child::*|child::text()"/>
 	</xsl:template>
-
-	<xsl:template mode="table" match="tei:w[not(descendant::tei:w)]">
-		<xsl:param name="wordID"/>
-		<span class="form">
-			<xsl:apply-templates mode="table"/>
-		</span>
+	
+	<xsl:template mode="table" match="tei:abbr">
+		<xsl:apply-templates select="child::*|child::text()">
+			<xsl:with-param name="abbrCert">
+				<xsl:value-of select="@cert"/>
+			</xsl:with-param>
+		</xsl:apply-templates>
 	</xsl:template>
 
 	<xsl:template mode="table" match="tei:g">
+		<xsl:param name="abbrCert"/>
 		<xsl:variable name="color">
 			<xsl:choose>
-				<xsl:when test="ancestor::tei:abbr/@cert = 'low'">
+				<xsl:when test="$abbrCert = 'low'">
 					<xsl:text>#ff0000</xsl:text>
 				</xsl:when>
-				<xsl:when test="ancestor::tei:abbr/@cert = 'medium'">
+				<xsl:when test="$abbrCert = 'medium'">
 					<xsl:text>#ff9900</xsl:text>
 				</xsl:when>
-				<xsl:when test="ancestor::tei:abbr/@cert = 'unknown'">
+				<xsl:when test="$abbrCert = 'unknown'">
 					<xsl:text>#d9d9d9</xsl:text>
 				</xsl:when>
 			</xsl:choose>
@@ -372,18 +366,12 @@
 	</xsl:template>
 
 	<xsl:template mode="table" match="tei:del">
-		<xsl:param name="wordID"/>
-		<del rend="strikethrough">
-			<xsl:apply-templates>
-				<xsl:with-param name="wordID">
-					<xsl:value-of select="$wordID"/>
-				</xsl:with-param>
-			</xsl:apply-templates>
+		<del>
+			<xsl:apply-templates select="child::*|child::text()"/>
 		</del>
 	</xsl:template>
 
 	<xsl:template mode="table" match="tei:unclear">
-		<xsl:param name="wordID"/>
 		<xsl:variable name="color">
 			<xsl:choose>
 				<xsl:when test="@cert = 'low'">
@@ -397,124 +385,9 @@
 				</xsl:when>
 			</xsl:choose>
 		</xsl:variable>
-		<xsl:choose>
-			<xsl:when test="descendant::tei:w">
-				<xsl:text>{ </xsl:text>
-				<span style="color:{$color}">
-					<xsl:apply-templates>
-						<xsl:with-param name="wordID">
-							<xsl:value-of select="$wordID"/>
-						</xsl:with-param>
-					</xsl:apply-templates>
+				<span class="unclear" style="color:{$color}">
+					<xsl:apply-templates select="child::*|child::text()"/>
 				</span>
-				<xsl:text>} </xsl:text>
-			</xsl:when>
-			<xsl:when test="ancestor::tei:w">
-				<xsl:text>{</xsl:text>
-				<span style="color:{$color}">
-					<xsl:apply-templates>
-						<xsl:with-param name="wordID">
-							<xsl:value-of select="$wordID"/>
-						</xsl:with-param>
-					</xsl:apply-templates>
-				</span>
-				<xsl:text>}</xsl:text>
-			</xsl:when>
-			<xsl:when test="descendant::tei:date">
-				<xsl:text> {</xsl:text>
-				<span style="color:{$color}">
-					<xsl:apply-templates>
-						<xsl:with-param name="wordID">
-							<xsl:value-of select="$wordID"/>
-						</xsl:with-param>
-					</xsl:apply-templates>
-				</span>
-				<xsl:text>} </xsl:text>
-			</xsl:when>
-			<xsl:when test="ancestor::tei:num">
-				<xsl:text> {</xsl:text>
-				<span style="color:{$color}">
-					<xsl:apply-templates>
-						<xsl:with-param name="wordID">
-							<xsl:value-of select="$wordID"/>
-						</xsl:with-param>
-					</xsl:apply-templates>
-				</span>
-				<xsl:text>} </xsl:text>
-			</xsl:when>
-		</xsl:choose>
-	</xsl:template>
-
-	<xsl:template mode="table" match="tei:supplied">
-		<xsl:param name="wordID"/>
-		<xsl:choose>
-			<xsl:when test="descendant::tei:w">
-				<xsl:text>[ </xsl:text>
-				<span>
-					<xsl:apply-templates>
-						<xsl:with-param name="wordID">
-							<xsl:value-of select="$wordID"/>
-						</xsl:with-param>
-					</xsl:apply-templates>
-				</span>
-				<xsl:text>] </xsl:text>
-			</xsl:when>
-			<xsl:when test="ancestor::tei:w">
-				<xsl:text>[</xsl:text>
-				<span>
-					<xsl:apply-templates>
-						<xsl:with-param name="wordID">
-							<xsl:value-of select="$wordID"/>
-						</xsl:with-param>
-					</xsl:apply-templates>
-				</span>
-				<xsl:text>]</xsl:text>
-			</xsl:when>
-			<xsl:when test="descendant::tei:date">
-				<xsl:text> [</xsl:text>
-				<span>
-					<xsl:apply-templates>
-						<xsl:with-param name="wordID">
-							<xsl:value-of select="$wordID"/>
-						</xsl:with-param>
-					</xsl:apply-templates>
-				</span>
-				<xsl:text>] </xsl:text>
-			</xsl:when>
-			<xsl:when test="ancestor::tei:num">
-				<xsl:text> [</xsl:text>
-				<span>
-					<xsl:apply-templates>
-						<xsl:with-param name="wordID">
-							<xsl:value-of select="$wordID"/>
-						</xsl:with-param>
-					</xsl:apply-templates>
-				</span>
-				<xsl:text>] </xsl:text>
-			</xsl:when>
-			<xsl:when test="ancestor::tei:date">
-				<xsl:text>[</xsl:text>
-				<span>
-					<xsl:apply-templates>
-						<xsl:with-param name="wordID">
-							<xsl:value-of select="$wordID"/>
-						</xsl:with-param>
-					</xsl:apply-templates>
-				</span>
-				<xsl:text>]</xsl:text>
-			</xsl:when>
-			<xsl:when test="descendant::tei:num">
-				<xsl:text> [</xsl:text>
-				<span>
-					<xsl:apply-templates>
-						<xsl:with-param name="wordID">
-							<xsl:value-of select="$wordID"/>
-						</xsl:with-param>
-					</xsl:apply-templates>
-				</span>
-				<xsl:text>] </xsl:text>
-			</xsl:when>
-		</xsl:choose>
 	</xsl:template>
 
 	<xsl:template mode="table" match="tei:handShift">
@@ -523,277 +396,16 @@
 		</sub>
 	</xsl:template>
 
-	<xsl:template mode="table" match="tei:add[@type = 'insertion']">
-		<xsl:param name="wordID"/>
-		<xsl:choose>
-			<xsl:when test="ancestor::tei:w">
-				<xsl:choose>
-					<xsl:when test="@place = 'above'">
-						<b>
-							<xsl:text>\</xsl:text>
-						</b>
-						<xsl:apply-templates/>
-						<b>
-							<xsl:text>/</xsl:text>
-						</b>
-					</xsl:when>
-					<xsl:when test="@place = 'below'">
-						<b>
-							<xsl:text>/</xsl:text>
-						</b>
-						<xsl:apply-templates/>
-						<b>
-							<xsl:text>\</xsl:text>
-						</b>
-					</xsl:when>
-					<xsl:when test="@place = 'margin, right'">
-						<b>
-							<xsl:text>&lt;</xsl:text>
-						</b>
-						<xsl:apply-templates/>
-						<b>
-							<xsl:text>&lt;</xsl:text>
-						</b>
-					</xsl:when>
-					<xsl:when test="@place = 'margin, left'">
-						<b>
-							<xsl:text>&gt;</xsl:text>
-						</b>
-						<xsl:apply-templates/>
-						<b>
-							<xsl:text>&gt;</xsl:text>
-						</b>
-					</xsl:when>
-					<xsl:when test="@place = 'margin, top'">
-						<b>
-							<xsl:text>\\</xsl:text>
-						</b>
-						<xsl:apply-templates/>
-						<b>
-							<xsl:text>//</xsl:text>
-						</b>
-					</xsl:when>
-					<xsl:when test="@place = 'margin, bottom'">
-						<b>
-							<xsl:text>\\</xsl:text>
-						</b>
-						<xsl:apply-templates/>
-						<b>
-							<xsl:text>//</xsl:text>
-						</b>
-					</xsl:when>
-					<xsl:when test="@place = 'inline'">
-						<b>
-							<xsl:text>|</xsl:text>
-						</b>
-						<xsl:apply-templates/>
-						<b>
-							<xsl:text>|</xsl:text>
-						</b>
-					</xsl:when>
-				</xsl:choose>
-			</xsl:when>
-			<xsl:otherwise>
-				<xsl:choose>
-					<xsl:when test="@place = 'above'">
-						<b>
-							<xsl:text>\ </xsl:text>
-						</b>
-						<xsl:apply-templates>
-							<xsl:with-param name="wordID">
-								<xsl:value-of select="$wordID"/>
-							</xsl:with-param>
-						</xsl:apply-templates>
-						<b>
-							<xsl:text>/ </xsl:text>
-						</b>
-					</xsl:when>
-					<xsl:when test="@place = 'below'">
-						<b>
-							<xsl:text>/ </xsl:text>
-						</b>
-						<xsl:apply-templates>
-							<xsl:with-param name="wordID">
-								<xsl:value-of select="$wordID"/>
-							</xsl:with-param>
-						</xsl:apply-templates>
-						<b>
-							<xsl:text>\ </xsl:text>
-						</b>
-					</xsl:when>
-					<xsl:when test="@place = 'margin, right'">
-						<b>
-							<xsl:text>&lt; </xsl:text>
-						</b>
-						<xsl:apply-templates>
-							<xsl:with-param name="wordID">
-								<xsl:value-of select="$wordID"/>
-							</xsl:with-param>
-						</xsl:apply-templates>
-						<b>
-							<xsl:text>&lt; </xsl:text>
-						</b>
-					</xsl:when>
-					<xsl:when test="@place = 'margin, left'">
-						<b>
-							<xsl:text>&gt; </xsl:text>
-						</b>
-						<xsl:apply-templates>
-							<xsl:with-param name="wordID">
-								<xsl:value-of select="$wordID"/>
-							</xsl:with-param>
-						</xsl:apply-templates>
-						<b>
-							<xsl:text>&gt; </xsl:text>
-						</b>
-					</xsl:when>
-					<xsl:when test="@place = 'margin, top'">
-						<b>
-							<xsl:text>// </xsl:text>
-						</b>
-						<xsl:apply-templates>
-							<xsl:with-param name="wordID">
-								<xsl:value-of select="$wordID"/>
-							</xsl:with-param>
-						</xsl:apply-templates>
-						<b>
-							<xsl:text>\\ </xsl:text>
-						</b>
-					</xsl:when>
-					<xsl:when test="@place = 'margin, bottom'">
-						<b>
-							<xsl:text>\\ </xsl:text>
-						</b>
-						<xsl:apply-templates>
-							<xsl:with-param name="wordID">
-								<xsl:value-of select="$wordID"/>
-							</xsl:with-param>
-						</xsl:apply-templates>
-						<b>
-							<xsl:text>// </xsl:text>
-						</b>
-					</xsl:when>
-					<xsl:when test="@place = 'inline'">
-						<b>
-							<xsl:text>| </xsl:text>
-						</b>
-						<xsl:apply-templates>
-							<xsl:with-param name="wordID">
-								<xsl:value-of select="$wordID"/>
-							</xsl:with-param>
-						</xsl:apply-templates>
-						<b>
-							<xsl:text>| </xsl:text>
-						</b>
-					</xsl:when>
-				</xsl:choose>
-			</xsl:otherwise>
-		</xsl:choose>
+	<xsl:template mode="table" match="tei:add">
+		<sup><xsl:apply-templates select="child::*|child::text()"/></sup>
 	</xsl:template>
 
-	<xsl:template mode="table" match="tei:add[@type = 'gloss']">
-		<xsl:param name="wordID"/>
-		<xsl:choose>
-			<xsl:when test="@place = 'above'">
-				<b>
-					<xsl:text> \ gl. </xsl:text>
-				</b>
-				<xsl:apply-templates>
-					<xsl:with-param name="wordID">
-						<xsl:value-of select="$wordID"/>
-					</xsl:with-param>
-				</xsl:apply-templates>
-				<b>
-					<xsl:text> / </xsl:text>
-				</b>
-			</xsl:when>
-			<xsl:when test="@place = 'below'">
-				<b>
-					<xsl:text> / gl. </xsl:text>
-				</b>
-				<xsl:apply-templates>
-					<xsl:with-param name="wordID">
-						<xsl:value-of select="$wordID"/>
-					</xsl:with-param>
-				</xsl:apply-templates>
-				<b>
-					<xsl:text> \ </xsl:text>
-				</b>
-			</xsl:when>
-			<xsl:when test="@place = 'margin, right'">
-				<b>
-					<xsl:text> &lt; gl. </xsl:text>
-				</b>
-				<xsl:apply-templates>
-					<xsl:with-param name="wordID">
-						<xsl:value-of select="$wordID"/>
-					</xsl:with-param>
-				</xsl:apply-templates>
-				<b>
-					<xsl:text> &lt;  </xsl:text>
-				</b>
-			</xsl:when>
-			<xsl:when test="@place = 'margin, left'">
-				<b>
-					<xsl:text> &gt; gl. </xsl:text>
-				</b>
-				<xsl:apply-templates>
-					<xsl:with-param name="wordID">
-						<xsl:value-of select="$wordID"/>
-					</xsl:with-param>
-				</xsl:apply-templates>
-				<b>
-					<xsl:text> &gt; </xsl:text>
-				</b>
-			</xsl:when>
-			<xsl:when test="@place = 'margin, top'">
-				<b>
-					<xsl:text>// gl. </xsl:text>
-				</b>
-				<xsl:apply-templates>
-					<xsl:with-param name="wordID">
-						<xsl:value-of select="$wordID"/>
-					</xsl:with-param>
-				</xsl:apply-templates>
-				<b>
-					<xsl:text> \\</xsl:text>
-				</b>
-			</xsl:when>
-			<xsl:when test="@place = 'margin, bottom'">
-				<b>
-					<xsl:text>\\ gl. </xsl:text>
-				</b>
-				<xsl:apply-templates>
-					<xsl:with-param name="wordID">
-						<xsl:value-of select="$wordID"/>
-					</xsl:with-param>
-				</xsl:apply-templates>
-				<b>
-					<xsl:text> //</xsl:text>
-				</b>
-			</xsl:when>
-			<xsl:when test="@place = 'inline'">
-				<b>
-					<xsl:text>| gl. </xsl:text>
-				</b>
-				<xsl:apply-templates>
-					<xsl:with-param name="wordID">
-						<xsl:value-of select="$wordID"/>
-					</xsl:with-param>
-				</xsl:apply-templates>
-				<b>
-					<xsl:text> |</xsl:text>
-				</b>
-			</xsl:when>
-		</xsl:choose>
-	</xsl:template>
+	<xsl:template mode="table" match="tei:space[@type = 'force']">&#160;</xsl:template>
 
-	<xsl:template mode="table" match="tei:space[@type = 'force']"> &#160; </xsl:template>
-
-	<xsl:template mode="table" match="tei:space[@type = 'em']"> &#160;&#160;&#160;&#160; </xsl:template>
+	<xsl:template mode="table" match="tei:space[@type = 'em']">&#160;&#160;&#160;&#160;</xsl:template>
 
 	<xsl:template mode="table" match="tei:space[@type = 'scribal']">
-		<xsl:text/>
+		&#160;
 	</xsl:template>
 
 	<xsl:template mode="table" match="tei:space[@type = 'editorial']">
@@ -825,29 +437,12 @@
 	</xsl:template>
 
 	<xsl:template mode="table" match="tei:lb">
-		<xsl:if test="@xml:id">
-			<xsl:choose>
-				<xsl:when test="not(ancestor::tei:lg[@type = 'stanza'])">
-					<xsl:text/>
-				</xsl:when>
-				<xsl:otherwise>
-					<sub>
-						<b>
-							<xsl:value-of select="@n"/>
-							<xsl:text>.</xsl:text>
-						</b>
-					</sub>
-				</xsl:otherwise>
-			</xsl:choose>
-		</xsl:if>
-		<xsl:if test="@sameAs">
 			<sub>
 				<b>
 					<xsl:value-of select="@n"/>
 					<xsl:text>.</xsl:text>
 				</b>
 			</sub>
-		</xsl:if>
 	</xsl:template>
 
 </xsl:stylesheet>
