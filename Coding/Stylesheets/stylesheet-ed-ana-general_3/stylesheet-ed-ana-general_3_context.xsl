@@ -7,11 +7,13 @@
 
 
     <xsl:template match="/">
-        <xsl:result-document
-            href="corpus_contexts-{(current-dateTime() -
+        <xsl:variable name="timestamp" select="(current-dateTime() -
             xs:dateTime('1970-01-01T00:00:00') )
-            div xs:dayTimeDuration('PT1S') * 1000}.xml">
+            div xs:dayTimeDuration('PT1S') * 1000"/>
+        <xsl:result-document
+            href="corpus_contexts-{$timestamp}.xml">
             <tei:TEI>
+                <xsl:attribute name="xml:id" select="concat('msLines_', $timestamp)"/>
                 <tei:teiHeader>
                     <tei:fileDesc>
                         <tei:titleStmt>
