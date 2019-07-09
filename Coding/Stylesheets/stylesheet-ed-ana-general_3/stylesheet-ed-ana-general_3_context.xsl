@@ -30,6 +30,9 @@
                         <xsl:variable name="lineID" select="@xml:id"/>
                         <tei:seg>
                             <xsl:attribute name="xml:id" select="$lineID"/>
+                            <xsl:attribute name="type">
+                                <xsl:text>msLine</xsl:text>
+                            </xsl:attribute>
                             <xsl:call-template name="line">
                                 <xsl:with-param name="lineID">
                                     <xsl:value-of select="$lineID"/>
@@ -47,16 +50,18 @@
         <xsl:choose>
             <xsl:when test="//tei:lb[@xml:id = $lineID]/ancestor::tei:p">
                 <xsl:apply-templates
-                    select="//*[preceding::tei:lb[1]/@xml:id = $lineID and parent::tei:p]"/>
+                    select="//*[preceding::tei:lb[1]/@xml:id = $lineID and parent::tei:p[parent::tei:div[//tei:lb[@xml:id = $lineID]]]]"
+                />
             </xsl:when>
-            <xsl:when test="//tei:lb[@xml:id = $lineID]/ancestor::tei:l">
+            <xsl:when
+                test="//tei:lb[@xml:id = $lineID]/ancestor::tei:l[ancestor::tei:div[//tei:lb[@xml:id = $lineID]]]">
                 <xsl:apply-templates
                     select="//*[preceding::tei:lb[1]/@xml:id = $lineID and parent::tei:l]"/>
             </xsl:when>
         </xsl:choose>
     </xsl:template>
 
-    <xsl:template match="tei:name | tei:w[descendant::tei:w] | tei:seg | tei:hi">
+    <xsl:template match="tei:name | tei:w[descendant::tei:w] | tei:seg[not(@type='framgent')] | tei:hi">
         <xsl:apply-templates select="child::*"/>
     </xsl:template>
 
@@ -83,6 +88,55 @@
 
     <xsl:template match="tei:note">
         <xsl:text/>
+    </xsl:template>
+    
+    <xsl:template match="tei:choice">
+        <xsl:apply-templates select="child::tei:sic"/>
+    </xsl:template>
+
+    <xsl:template match="tei:pc">
+        <seg>
+            <xsl:attribute name="type">
+                <xsl:text>punctuation</xsl:text>
+            </xsl:attribute>
+            <xsl:apply-templates select="child::* | child::text()"/>
+        </seg>
+    </xsl:template>
+
+    <xsl:template match="tei:c">
+        <seg>
+            <xsl:attribute name="type">
+                <xsl:text>character</xsl:text>
+            </xsl:attribute>
+            <xsl:apply-templates select="child::* | child::text()"/>
+        </seg>
+    </xsl:template>
+
+    <xsl:template match="tei:date">
+        <seg>
+            <xsl:attribute name="type">
+                <xsl:text>date</xsl:text>
+            </xsl:attribute>
+            <xsl:apply-templates select="child::* | child::text()"/>
+        </seg>
+    </xsl:template>
+
+    <xsl:template match="tei:num">
+        <seg>
+            <xsl:attribute name="type">
+                <xsl:text>number</xsl:text>
+            </xsl:attribute>
+            <xsl:apply-templates select="child::* | child::text()"/>
+        </seg>
+    </xsl:template>
+    
+    <xsl:template match="tei:seg[@type = 'fragment']">
+        <seg>
+            <xsl:attribute name="type">
+                <xsl:text>fragment</xsl:text>
+            </xsl:attribute>
+            <xsl:apply-templates select="child::* | child::text()"/>
+        </seg>
     </xsl:template>
 
     <xsl:template match="tei:space">
