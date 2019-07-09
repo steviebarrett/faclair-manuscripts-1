@@ -167,14 +167,14 @@
 	<xsl:template name="contextCell">
 		<xsl:param name="wordPosition"/>
 		<xsl:param name="lineID"/>
-		<xsl:apply-templates select="document('stylesheet-ed-ana-general_3_context.xsl')//tei:seg[@xml:id = $lineID]">
+		<xsl:apply-templates mode="data" select="document('stylesheet-ed-ana-general_3_context.xsl')//tei:seg[@type = 'msLine' and @xml:id = $lineID]">
 			<xsl:with-param name="wordPosition">
 				<xsl:value-of select="$wordPosition"/>
 			</xsl:with-param>
 		</xsl:apply-templates>
 	</xsl:template>
 
-	<xsl:template match="/">
+	<xsl:template mode="table" match="/">
 		<html>
 			<head>
 				<title>FnaG MSS Corpus</title>
