@@ -21,10 +21,12 @@
 		<xsl:attribute name="border">solid 0.1mm black</xsl:attribute>
 	</xsl:attribute-set>
 
-	<xsl:template mode="table" match="/">
+	<xsl:template match="/">
 		<html>
 			<head>
-				<title>FnaG MSS Corpus</title>
+				<title>
+					<h1>Corpus Report</h1>
+				</title>
 			</head>
 			<body>
 				<table border="1px solid black" id="tbl">
@@ -82,7 +84,7 @@
 		</html>
 	</xsl:template>
 
-	<xsl:template mode="table" name="contentRow">
+	<xsl:template name="contentRow">
 		<xsl:variable name="wordPosition" select="count(preceding::*)"/>
 		<xsl:variable name="comDiv" select="ancestor::tei:div[1]/@corresp"/>
 		<xsl:variable name="handRef">
@@ -128,7 +130,9 @@
 						test="ancestor::tei:supplied or ancestor::tei:unclear or descendant::tei:supplied or descendant::unclear or @lemma = 'UNKNOWN'">
 						<xsl:text>yes</xsl:text>
 					</xsl:when>
-					<xsl:otherwise> no </xsl:otherwise>
+					<xsl:otherwise>
+						<xsl:text>no</xsl:text>
+					</xsl:otherwise>
 				</xsl:choose>
 			</td>
 			<td>
@@ -223,7 +227,7 @@
 							<xsl:value-of select="concat(@style, ';', 'background-color:#aqua')"/>
 						</xsl:when>
 						<xsl:otherwise>
-							<xsl:text>background-color:#aqua</xsl:text>
+							<xsl:text>background-color:aqua</xsl:text>
 						</xsl:otherwise>
 					</xsl:choose>
 				</xsl:attribute>
@@ -232,7 +236,9 @@
 		</span>
 	</xsl:template>
 
-	<xsl:template mode="context" match="tei:space"> &#160; </xsl:template>
+	<xsl:template mode="context" match="tei:space">
+		<xsl:text xml:space="preserve">&#160;</xsl:text>
+	</xsl:template>
 
 	<xsl:template mode="context" match="tei:expan">
 		<span class="expansion" style="italic">
