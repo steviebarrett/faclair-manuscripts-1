@@ -4,7 +4,7 @@
 	exclude-result-prefixes="xs" version="1.0">
 	<xsl:strip-space elements="*"/>
 
-	<xsl:output method="html"/>
+	<xsl:output method="html" version="5"/>
 
 	<xsl:key name="abbrs" match="*" use="@xml:id"/>
 	<xsl:key name="hands" match="*" use="@xml:id"/>
