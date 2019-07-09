@@ -19,8 +19,11 @@
                         <tei:titleStmt>
                             <tei:title> FnaG MSS Corpus: MS Lines </tei:title>
                         </tei:titleStmt>
-                        <tei:publicationStmt>
-                            <tei:p> For internal use only. </tei:p>
+                        <tei:publicationStmt >
+                            <availability status="restricted" xml:id="availability">
+                                <licence><p>For internal use by the Faclair na Gàidhlig/DASG
+                                    projects.</p></licence>
+                            </availability>
                         </tei:publicationStmt>
                         <tei:sourceDesc>
                             <p> Generated from project TEI transcription files. </p>
