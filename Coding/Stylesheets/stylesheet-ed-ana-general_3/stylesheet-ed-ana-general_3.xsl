@@ -54,60 +54,12 @@
 		</xsl:variable>
 		<tr>
 			<td>
-				<xsl:value-of select="$posID"/>
-				<xsl:value-of select="position()"/>
-			</td>
-			<td>
 				<xsl:value-of select="$wordPosition"/>
-			</td>
-			<td>
-				<xsl:choose>
-					<xsl:when test="contains(@lemmaRef, 'dil.ie')">
-						<xsl:value-of select="substring(@lemmaRef, 19)"/>
-					</xsl:when>
-					<xsl:when test="contains(@lemmaRef, 'faclair.com')">
-						<xsl:value-of select="substring(@lemmaRef, 53)"/>
-					</xsl:when>
-					<xsl:when test="contains(@lemmaRef, 'dasg.ac.uk')">
-						<xsl:value-of select="substring(@lemmaRef, 37)"/>
-					</xsl:when>
-					<xsl:when test="contains(@lemmaRef, 'www.teanglann.ie')">
-						<xsl:value-of select="substring(@lemmaRef, 33)"/>
-					</xsl:when>
-					<xsl:when test="contains(@lemmaRef, 'www.dsl.ac.uk')">
-						<xsl:value-of select="substring(@lemmaRef, 32)"/>
-					</xsl:when>
-					<xsl:when test="contains(@lemmaRef, 'www.logainm.ie')">
-						<xsl:value-of select="substring(@lemmaRef, 27)"/>
-					</xsl:when>
-					<xsl:when test="contains(@lemmaRef, 'www.ainmean-aite.scot')">
-						<xsl:value-of select="substring(@lemmaRef, 41)"/>
-					</xsl:when>
-					<xsl:when
-						test="contains(@lemmaRef, 'https://www.online-latin-dictionary.com/latin-dictionary-flexion.php?lemma=')">
-						<xsl:value-of select="substring(@lemmaRef, 76)"/>
-					</xsl:when>
-					<xsl:when
-						test="contains(@lemmaRef, 'https://www.online-latin-dictionary.com/latin-dictionary-flexion.php?parola=')">
-						<xsl:value-of select="substring(@lemmaRef, 77)"/>
-					</xsl:when>
-					<xsl:when test="contains(@lemmaRef, 'www.oed.com')">
-						<xsl:value-of select="substring(@lemmaRef, 32)"/>
-					</xsl:when>
-					<xsl:otherwise>
-						<xsl:text>none</xsl:text>
-					</xsl:otherwise>
-				</xsl:choose>
 			</td>
 			<td>
 				<a href="{@lemmaRef}">
 					<xsl:value-of select="@lemma"/>
 				</a>
-			</td>
-			<td>
-				<xsl:value-of
-					select="count(//tei:TEI[descendant::tei:w[@lemmaRef = $lemID] and not(@xml:id = 'hwData')])"
-				/>
 			</td>
 			<td>
 				<span>
@@ -133,43 +85,11 @@
 			</td>
 			<td>
 				<xsl:choose>
-					<xsl:when test="ancestor::tei:supplied">
-						<xsl:text>supp.</xsl:text>
+					<xsl:when test="ancestor::tei:supplied or ancestor::tei:unclear or descendant::tei:supplied or descendant::unclear or @lemma = 'UNKNOWN'">
+						<xsl:text>yes</xsl:text>
 					</xsl:when>
 					<xsl:otherwise>
-						<xsl:choose>
-							<xsl:when
-								test="descendant::tei:supplied or descendant::tei:unclear[@reason = 'damage']">
-								<xsl:text>chars supp.</xsl:text>
-							</xsl:when>
-							<xsl:otherwise>
-								<xsl:choose>
-									<xsl:when
-										test="ancestor::tei:unclear[@reason = 'interp_obscure']">
-										<xsl:text>meaning unclear</xsl:text>
-									</xsl:when>
-									<xsl:otherwise>
-										<xsl:choose>
-											<xsl:when
-												test="ancestor::tei:unclear[@reason = 'text_obscure']">
-												<xsl:text>word unclear</xsl:text>
-											</xsl:when>
-											<xsl:otherwise>
-												<xsl:choose>
-												<xsl:when
-												test="descendant::tei:abbr[not(@cert = 'high')]">
-												<xsl:text>exp. unclear</xsl:text>
-												</xsl:when>
-												<xsl:otherwise>
-												<xsl:text>none</xsl:text>
-												</xsl:otherwise>
-												</xsl:choose>
-											</xsl:otherwise>
-										</xsl:choose>
-									</xsl:otherwise>
-								</xsl:choose>
-							</xsl:otherwise>
-						</xsl:choose>
+						no
 					</xsl:otherwise>
 				</xsl:choose>
 			</td>
@@ -232,389 +152,48 @@
 				</xsl:choose>
 			</td>
 			<td>
-				<xsl:choose>
-					<xsl:when test="ancestor::tei:div[1][@type = 'verse']">
-						<xsl:variable name="comLine" select="ancestor::tei:l/@xml:id"/>
-						<xsl:variable name="comVerse" select="ancestor::tei:lg/@xml:id"/>
-						<xsl:if
-							test="not(preceding::tei:w[ancestor::tei:l[@xml:id = $comLine]]) and ancestor::tei:l/preceding::tei:l[ancestor::tei:lg[@xml:id = $comVerse]]">
-							<sub>
-								<b>
-									<xsl:value-of
-										select="preceding::tei:l[1][ancestor::tei:lg[@xml:id = $comVerse]]/@n"/>
-									<xsl:text>. </xsl:text>
-								</b>
-							</sub>
-							<xsl:apply-templates
-								select="preceding::tei:l[1][ancestor::tei:lg[@xml:id = $comVerse]]"
-							/>
-						</xsl:if>
-						<xsl:if
-							test="not(preceding::tei:w[ancestor::tei:l[@xml:id = $comLine]]) and ancestor::tei:l/preceding::tei:l[ancestor::tei:lg[@xml:id = $comVerse]] or not(following::tei:w[ancestor::tei:l[@xml:id = $comLine]]) and ancestor::tei:l/following::tei:l[ancestor::tei:lg[@xml:id = $comVerse]]">
-							<sub>
-								<b>
-									<xsl:value-of select="ancestor::tei:l/@n"/>
-									<xsl:text>. </xsl:text>
-								</b>
-							</sub>
-						</xsl:if>
-						<xsl:apply-templates
-							select="ancestor-or-self::*[parent::tei:l]/preceding::*[parent::tei:l[@xml:id = $comLine]]"/>
-						<xsl:apply-templates select="ancestor-or-self::*[parent::tei:l]">
-							<xsl:with-param name="wordID">
-								<xsl:value-of select="$wordPosition"/>
-							</xsl:with-param>
-						</xsl:apply-templates>
-						<xsl:apply-templates
-							select="ancestor-or-self::*[parent::tei:l]/following::*[parent::tei:l[@xml:id = $comLine]]"/>
-						<xsl:if
-							test="not(following::tei:w[ancestor::tei:l[@xml:id = $comLine]]) and ancestor::tei:l/following::tei:l[ancestor::tei:lg[@xml:id = $comVerse]]">
-							<sub>
-								<b>
-									<xsl:value-of
-										select="following::tei:l[1][ancestor::tei:lg[@xml:id = $comVerse]]/@n"/>
-									<xsl:text>. </xsl:text>
-								</b>
-							</sub>
-							<xsl:apply-templates
-								select="following::tei:l[1][ancestor::tei:lg[@xml:id = $comVerse]]"
-							/>
-						</xsl:if>
-					</xsl:when>
-					<xsl:otherwise>
-						<xsl:variable name="comLine">
-							<xsl:value-of select="preceding::tei:lb[1][@xml:id]/@xml:id"/>
-						</xsl:variable>
-						<xsl:variable name="precLine">
-							<xsl:value-of
-								select="preceding::tei:lb[1][@xml:id]/preceding::tei:lb[1][@xml:id]/@xml:id"
-							/>
-						</xsl:variable>
-						<xsl:variable name="nextLine">
-							<xsl:value-of
-								select="preceding::tei:lb[1][@xml:id]/following::tei:lb[1][@xml:id]/@xml:id"
-							/>
-						</xsl:variable>
-						<xsl:choose>
-							<xsl:when test="ancestor::tei:div[1][@type = 'prose']">
-								<xsl:if
-									test="not(preceding::tei:w[preceding::tei:lb[1][@xml:id = $comLine]]) and preceding::tei:lb[1][ancestor::tei:div[1][@corresp = $comDiv and @type = 'prose']]">
-									<sub>
-										<b>
-											<xsl:value-of select="//tei:lb[@xml:id = $precLine]/@n"/>
-											<xsl:text>. </xsl:text>
-										</b>
-									</sub>
-									<xsl:apply-templates
-										select="//*[preceding::tei:lb[1][@xml:id = $precLine] and parent::tei:p[parent::tei:div]]"/>
-									<sub>
-										<b>
-											<xsl:value-of select="//tei:lb[@xml:id = $comLine]/@n"/>
-											<xsl:text>. </xsl:text>
-										</b>
-									</sub>
-								</xsl:if>
-								<xsl:if
-									test="not(following::tei:w[preceding::tei:lb[1][@xml:id = $comLine]]) and following::tei:lb[1][@xml:id and ancestor::tei:div[1][@corresp = $comDiv and @type = 'prose']]">
-									<sub>
-										<b>
-											<xsl:value-of select="//tei:lb[@xml:id = $comLine]/@n"/>
-											<xsl:text>. </xsl:text>
-										</b>
-									</sub>
-								</xsl:if>
-								<xsl:apply-templates
-									select="ancestor-or-self::*[parent::tei:p]/preceding::*[preceding::tei:lb[1]/@xml:id = $comLine and parent::tei:p[parent::tei:div]]"
-								/>
-							</xsl:when>
-							<xsl:when test="ancestor::tei:div[1][@type = 'divprose']">
-								<xsl:if
-									test="not(preceding::tei:w[preceding::tei:lb[1][@xml:id = $comLine]]) and preceding::tei:lb[1][ancestor::tei:div[1][@corresp = $comDiv and @type = 'divprose']]">
-									<sub>
-										<b>
-											<xsl:value-of select="//tei:lb[@xml:id = $precLine]/@n"/>
-											<xsl:text>. </xsl:text>
-										</b>
-									</sub>
-									<xsl:apply-templates
-										select="//*[preceding::tei:lb[1][@xml:id = $precLine] and parent::tei:l]"/>
-									<sub>
-										<b>
-											<xsl:value-of select="//tei:lb[@xml:id = $comLine]/@n"/>
-											<xsl:text>. </xsl:text>
-										</b>
-									</sub>
-								</xsl:if>
-								<xsl:if
-									test="not(following::tei:w[preceding::tei:lb[1][@xml:id = $comLine]]) and following::tei:lb[1][@xml:id and ancestor::tei:div[1][@corresp = $comDiv and @type = 'divprose']]">
-									<sub>
-										<b>
-											<xsl:value-of select="//tei:lb[@xml:id = $comLine]/@n"/>
-											<xsl:text>. </xsl:text>
-										</b>
-									</sub>
-								</xsl:if>
-								<xsl:apply-templates
-									select="ancestor-or-self::*[parent::tei:l]/preceding::*[preceding::tei:lb[1]/@xml:id = $comLine and parent::tei:l]"
-								/>
-							</xsl:when>
-						</xsl:choose>
-						<xsl:choose>
-							<xsl:when test="ancestor::tei:div[1][@type = 'prose']">
-								<xsl:apply-templates select="ancestor-or-self::*[parent::tei:p]">
-									<xsl:with-param name="wordID">
-										<xsl:value-of select="$wordPosition"/>
-									</xsl:with-param>
-								</xsl:apply-templates>
-
-							</xsl:when>
-							<xsl:when test="ancestor::tei:div[1][@type = 'divprose']">
-								<xsl:apply-templates select="ancestor-or-self::*[parent::tei:l]">
-									<xsl:with-param name="wordID">
-										<xsl:value-of select="$wordPosition"/>
-									</xsl:with-param>
-								</xsl:apply-templates>
-							</xsl:when>
-						</xsl:choose>
-						<xsl:choose>
-							<xsl:when test="ancestor::tei:div[1][@type = 'prose']">
-								<xsl:apply-templates
-									select="ancestor-or-self::*[parent::tei:p]/following::*[preceding::tei:lb[1]/@xml:id = $comLine and parent::tei:p[parent::tei:div]]"/>
-								<xsl:if
-									test="not(following::tei:w[preceding::tei:lb[1][@xml:id = $comLine]]) and following::tei:lb[1][@xml:id and ancestor::tei:div[1][@corresp = $comDiv and @type = 'prose']]">
-									<sub>
-										<b>
-											<xsl:value-of select="//tei:lb[@xml:id = $nextLine]/@n"/>
-											<xsl:text>. </xsl:text>
-										</b>
-									</sub>
-									<xsl:apply-templates
-										select="//*[preceding::tei:lb[1][@xml:id = $nextLine] and parent::tei:p[parent::tei:div]]"
-									/>
-								</xsl:if>
-							</xsl:when>
-							<xsl:when test="ancestor::tei:div[1][@type = 'divprose']">
-								<xsl:apply-templates
-									select="ancestor-or-self::*[parent::tei:l]/following::*[preceding::tei:lb[1][@xml:id = $comLine] and parent::tei:l]"/>
-								<xsl:if
-									test="not(following::tei:w[preceding::tei:lb[1][@xml:id = $comLine]]) and following::tei:lb[1][@xml:id and ancestor::tei:div[1][@corresp = $comDiv and @type = 'divprose']]">
-									<sub>
-										<b>
-											<xsl:value-of select="//tei:lb[@xml:id = $nextLine]/@n"/>
-											<xsl:text>. </xsl:text>
-										</b>
-									</sub>
-									<xsl:apply-templates
-										select="//*[preceding::tei:lb[1][@xml:id = $nextLine] and parent::tei:l]"
-									/>
-								</xsl:if>
-							</xsl:when>
-						</xsl:choose>
-					</xsl:otherwise>
-				</xsl:choose>
+				<xsl:call-template name="contextCell">
+					<xsl:with-param name="wordPosition">
+						<xsl:value-of select="$wordPosition"/>
+					</xsl:with-param>
+					<xsl:with-param name="lineID">
+						<xsl:value-of select="preceding::tei:lb[1][@xml:id]/@xml:id"/>
+					</xsl:with-param>
+				</xsl:call-template>
 			</td>
 		</tr>
+	</xsl:template>
+	
+	<xsl:template name="contextCell">
+		<xsl:param name="wordPosition"/>
+		<xsl:param name="lineID"/>
+		<xsl:apply-templates select="document('stylesheet-ed-ana-general_3_context.xsl')//tei:seg[@xml:id = $lineID]">
+			<xsl:with-param name="wordPosition">
+				<xsl:value-of select="$wordPosition"/>
+			</xsl:with-param>
+		</xsl:apply-templates>
 	</xsl:template>
 
 	<xsl:template match="/">
 		<html>
 			<head>
-				<script type="application/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"/>
-				<script>
-					$(document).ready(function(){
-					alert("The Corpus is ready for searching.");
-					$("#hwcFilter").click(function(){
-					$("#hwcProgress").removeAttr("hidden");
-					$("#hwIDField").attr("disabled", "disabled");
-					$("#formField").attr("disabled", "disabled");
-					$("#hwmField").attr("disabled", "disabled");
-					var hwcString = $("#hwcField").val().toLowerCase();
-					$("#tbl tbody tr").filter(function() {
-					$(this).toggle($(this).children().eq(3).text().toLowerCase().indexOf(hwcString) > -1)
-					});
-					$("#hwcProgress").attr("hidden", "hidden");
-					$("#hwcResult").removeAttr("hidden");
-					alert("Search complete!");
-					});
-					$("#hwmFilter").click(function(){
-					$("#hwIDField").attr("disabled", "disabled");
-					$("#formField").attr("disabled", "disabled");
-					$("#hwcField").attr("disabled", "disabled");
-					$("#hwmProgress").removeAttr("hidden");
-					var hwmVal = $("#hwmField").val().toLowerCase();
-					var hwmString = hwmVal;
-					$("#tbl tbody tr").each(function(){
-					if($(this).children().eq(3).text() == hwmString){
-					$(this).show();
-					} else {
-					$(this).hide();
-					}
-					});
-					// $("#tbl tbody tr").filter(function() {
-					// $(this).toggle($(this).children().eq(3).text().toLowerCase().indexOf(hwString) > -1)
-					$("#hwmProgress").attr("hidden", "hidden");
-					$("#hwmResult").removeAttr("hidden");
-					alert("Search complete!");
-					});
-					$("#hwIDFilter").click(function(){
-					$("#hwcField").attr("disabled", "disabled");
-					$("#hwmField").attr("disabled", "disabled");
-					$("#formField").attr("disabled", "disabled");
-					$("#hwIDProgress").removeAttr("hidden");
-					var hwIDVal = $("#hwIDField").val();
-					var hwIDStr = hwIDVal; 
-					$("#tbl tbody tr").each(function(){
-					if($(this).children().eq(2).text() == hwIDStr){
-					$(this).show();
-					} else {
-					$(this).hide();
-					}
-					});
-					//	$("#tbl tbody tr").filter(function() {
-					//	$(this).toggle($(this).children().eq(2).text().toLowerCase().indexOf(hwIDString) > -1)
-					// });
-					$("#hwIDProgress").attr("hidden", "hidden");
-					$("#hwIDResult").removeAttr("hidden");
-					alert("Search complete!");
-					});
-					$("#formFilter").click(function(){
-					$("#hwIDField").attr("disabled", "disabled");
-					$("#hwcField").attr("disabled", "disabled");
-					$("#hwmField").attr("disabled", "disabled");
-					$("#formProgress").removeAttr("hidden");
-					var formString = $("#formField").val().toLowerCase();
-					$("#tbl tbody tr").filter(function() {
-					$(this).toggle($(this).children().eq(5).text().replace(/{|}|[|]/g,'').toLowerCase().indexOf(formString) > -1);
-					});
-					$("#formProgress").attr("hidden", "hidden");
-					$("#formResult").removeAttr("hidden");
-					alert("Search complete!");
-					});
-					$("#hwcReset").click(function(){
-					$("#hwcResult").attr("hidden", "hidden");
-					$("#hwDfilt").removeAttr("hidden");
-					$("#hwcField").val('');
-					$("[style='display: none;']").show();
-					$(".field").removeAttr("disabled");
-					$("#hwDfilt").attr("hidden", "hidden");
-					alert("The Corpus is ready for searching.");
-					});
-					$("#hwmReset").click(function(){
-					$("#hwmResult").attr("hidden", "hidden");
-					$("#hwmDfilt").removeAttr("hidden");
-					$("#hwmField").val('');
-					$("[style='display: none;']").show();
-					$(".field").removeAttr("disabled");
-					$("#hwmDfilt").attr("hidden", "hidden");
-					alert("The Corpus is ready for searching.");
-					});
-					$("#hwIDReset").click(function(){
-					$("#hwIDResult").attr("hidden", "hidden");
-					$("#hwIDDfilt").removeAttr("hidden");
-					$("#hwIDField").val('');
-					$("[style='display: none;']").show();
-					$(".field").removeAttr("disabled");
-					$("#hwIDDfilt").attr("hidden", "hidden");
-					alert("The Corpus is ready for searching.");
-					});
-					$("#formReset").click(function(){
-					$("#formResult").attr("hidden", "hidden");
-					$("#formDfilt").removeAttr("hidden");
-					$("#formField").val('');
-					$("[style='display: none;']").show();
-					$(".field").removeAttr("disabled");
-					$("#formDfilt").attr("hidden", "hidden");
-					alert("The Corpus is ready for searching.");
-					});
-					// $("#resetAll").click(function(){
-					//	$(".result").attr("hidden", "hidden");
-					//	$("#hwField").val('');
-					//	$("#hwIDField").val('');
-					//	$("#formField").val('');
-					//	$(".field").removeAttr("disabled");
-					//	$("[style='display: none;']").show();
-					// });
-					});
-				</script>
-				<h1>Corpus Report</h1>
+				<title>FnaG MSS Corpus</title>
 			</head>
 			<body>
-				<label for="hwcField">Headword contains:</label>
-				<br/>
-				<input class="field" id="hwcField"/>
-				<button id="hwcFilter">
-					<label>Filter</label>
-				</button>
-				<button id="hwcReset">
-					<label>Reset</label>
-				</button>
-				<label id="hwcProgress" class="progress" hidden="hidden">In progress...</label>
-				<label id="hwcResult" class="result" hidden="hidden">Done</label>
-				<label id="hwcDfilt" class="dfilt" hidden="hidden">Defiltering...</label>
-				<br/>
-				<label for="hwField">Headword matches:</label>
-				<br/>
-				<input class="field" id="hwmField"/>
-				<button id="hwmFilter">
-					<label>Filter</label>
-				</button>
-				<button id="hwmReset">
-					<label>Reset</label>
-				</button>
-				<label id="hwmProgress" class="progress" hidden="hidden">In progress...</label>
-				<label id="hwmResult" class="result" hidden="hidden">Done</label>
-				<label id="hwmDfilt" class="dfilt" hidden="hidden">Defiltering...</label>
-				<br/>
-				<label for="hwIDField">Headword ID matches:</label>
-				<br/>
-				<input class="field" id="hwIDField"/>
-				<button id="hwIDFilter">
-					<label>Filter</label>
-				</button>
-				<button id="hwIDReset">
-					<label>Reset</label>
-				</button>
-				<label id="hwIDProgress" class="progress" hidden="hidden">In progress...</label>
-				<label id="hwIDResult" class="result" hidden="hidden">Done</label>
-				<label id="hwIDDfilt" class="dfilt" hidden="hidden">Defiltering...</label>
-				<br/>
-				<label for="formField">Form contains:</label>
-				<br/>
-				<input class="field" id="formField"/>
-				<button id="formFilter">
-					<label>Filter</label>
-				</button>
-				<button id="formReset">
-					<label>Reset</label>
-				</button>
-				<label id="formProgress" class="progress" hidden="hidden">In progress...</label>
-				<label id="formResult" class="result" hidden="hidden">Done</label>
-				<label id="formDfilt" class="dfilt" hidden="hidden">Defiltering...</label>
-				<br/>
-				<!-- <button id="resetAll"><label>Reset all</label></button> -->
 				<table border="1px solid black" id="tbl">
 					<thead>
 						<tr>
 							<th>
-								<b>Data ID</b>
-							</th>
-							<th>
 								<b>Form ID</b>
-							</th>
-							<th>
-								<b>Hw ID</b>
 							</th>
 							<th>
 								<b>Headword</b>
 							</th>
 							<th>
-								<b>MS Count</b>
-							</th>
-							<th>
 								<b>Form</b>
 							</th>
 							<th>
-								<b>Problem(s)</b>
+								<b>Problem(s)?</b>
 							</th>
 							<th>
 								<b>Part of Speech</b>
