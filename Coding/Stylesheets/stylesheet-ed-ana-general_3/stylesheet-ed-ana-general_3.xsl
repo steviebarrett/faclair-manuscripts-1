@@ -251,9 +251,7 @@
 		</span>
 	</xsl:template>
 
-	<xsl:template mode="context" match="tei:space">
-		&#160;
-	</xsl:template>
+	<xsl:template mode="context" match="tei:space"> &#160; </xsl:template>
 
 	<xsl:template mode="context" match="tei:expan">
 		<span class="expansion" style="italic">
@@ -325,11 +323,11 @@
 	</xsl:template>
 
 	<xsl:template mode="table" name="tableForm">
-		<xsl:apply-templates select="child::*|child::text()"/>
+		<xsl:apply-templates select="child::* | child::text()"/>
 	</xsl:template>
-	
+
 	<xsl:template mode="table" match="tei:abbr">
-		<xsl:apply-templates select="child::*|child::text()">
+		<xsl:apply-templates select="child::* | child::text()">
 			<xsl:with-param name="abbrCert">
 				<xsl:value-of select="@cert"/>
 			</xsl:with-param>
@@ -367,7 +365,7 @@
 
 	<xsl:template mode="table" match="tei:del">
 		<del>
-			<xsl:apply-templates select="child::*|child::text()"/>
+			<xsl:apply-templates select="child::* | child::text()"/>
 		</del>
 	</xsl:template>
 
@@ -385,9 +383,9 @@
 				</xsl:when>
 			</xsl:choose>
 		</xsl:variable>
-				<span class="unclear" style="color:{$color}">
-					<xsl:apply-templates select="child::*|child::text()"/>
-				</span>
+		<span class="unclear" style="color:{$color}">
+			<xsl:apply-templates select="child::* | child::text()"/>
+		</span>
 	</xsl:template>
 
 	<xsl:template mode="table" match="tei:handShift">
@@ -397,16 +395,17 @@
 	</xsl:template>
 
 	<xsl:template mode="table" match="tei:add">
-		<sup><xsl:apply-templates select="child::*|child::text()"/></sup>
+		<sup>
+			<xsl:apply-templates select="child::* | child::text()"/>
+		</sup>
 	</xsl:template>
 
 	<xsl:template mode="table" match="tei:space[@type = 'force']">&#160;</xsl:template>
 
-	<xsl:template mode="table" match="tei:space[@type = 'em']">&#160;&#160;&#160;&#160;</xsl:template>
+	<xsl:template mode="table" match="tei:space[@type = 'em']"
+		>&#160;&#160;&#160;&#160;</xsl:template>
 
-	<xsl:template mode="table" match="tei:space[@type = 'scribal']">
-		&#160;
-	</xsl:template>
+	<xsl:template mode="table" match="tei:space[@type = 'scribal']"> &#160; </xsl:template>
 
 	<xsl:template mode="table" match="tei:space[@type = 'editorial']">
 		<xsl:text/>
@@ -437,12 +436,12 @@
 	</xsl:template>
 
 	<xsl:template mode="table" match="tei:lb">
-			<sub>
-				<b>
-					<xsl:value-of select="@n"/>
-					<xsl:text>.</xsl:text>
-				</b>
-			</sub>
+		<sub>
+			<b>
+				<xsl:value-of select="@n"/>
+				<xsl:text>.</xsl:text>
+			</b>
+		</sub>
 	</xsl:template>
 
 </xsl:stylesheet>
