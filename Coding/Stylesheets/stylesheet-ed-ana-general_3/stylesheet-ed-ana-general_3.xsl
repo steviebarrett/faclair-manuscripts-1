@@ -120,26 +120,7 @@
 				</a>
 			</td>
 			<td>
-				<span>
-					<xsl:attribute name="style">
-						<xsl:if test="ancestor::*[@cert] or descendant::*[@cert]">
-							<xsl:choose>
-								<xsl:when
-									test="ancestor::*/@cert = 'low' or descendant::*/@cert = 'low'">
-									<xsl:text>color:#ff0000</xsl:text>
-								</xsl:when>
-								<xsl:when
-									test="ancestor::*/@cert = 'medium' or descendant::*/@cert = 'medium'">
-									<xsl:text>color:#ff9900</xsl:text>
-								</xsl:when>
-								<xsl:otherwise>
-									<xsl:text/>
-								</xsl:otherwise>
-							</xsl:choose>
-						</xsl:if>
-					</xsl:attribute>
-					<xsl:apply-templates mode="table"/>
-				</span>
+				<xsl:call-template name="tableForm"/>
 			</td>
 			<td>
 				<xsl:choose>
@@ -221,7 +202,7 @@
 		</tr>
 	</xsl:template>
 
-	<xsl:template name="contextCell" mode="table">
+	<xsl:template name="contextCell">
 		<xsl:param name="wordPosition"/>
 		<xsl:param name="lineID"/>
 		<xsl:apply-templates mode="context"
@@ -322,8 +303,27 @@
 		<xsl:text xml:space="preserve"> [...] </xsl:text>
 	</xsl:template>
 
-	<xsl:template mode="table" name="tableForm">
-		<xsl:apply-templates select="child::* | child::text()"/>
+	<xsl:template name="tableForm">
+		<xsl:variable name="color">
+			<xsl:choose>
+				<xsl:when test="ancestor::*/@cert = 'low'">
+					<xsl:value-of select="concat('color:', '#ff0000')"/>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:choose>
+						<xsl:when test="ancestor::*/@cert = 'medium'">
+							<xsl:value-of select="concat('color:', '#ff9900')"/>
+						</xsl:when>
+					</xsl:choose>
+				</xsl:otherwise>
+			</xsl:choose>
+		</xsl:variable>
+		<span class="tableForm">
+			<xsl:attribute name="style">
+				<xsl:value-of select="$color"/>
+			</xsl:attribute>
+			<xsl:apply-templates select="child::* | child::text()"/>
+		</span>
 	</xsl:template>
 
 	<xsl:template mode="table" match="tei:abbr">
