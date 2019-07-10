@@ -126,37 +126,37 @@
 			</td>
 			<td>
 				<xsl:choose>
-					<xsl:when test="contains(@lemmaRef, 'dil.ie')">
-						<xsl:value-of select="substring(@lemmaRef, 19)"/>
+					<xsl:when test="contains($lemRef, 'dil.ie')">
+						<xsl:value-of select="substring($lemRef, 19)"/>
 					</xsl:when>
-					<xsl:when test="contains(@lemmaRef, 'faclair.com')">
-						<xsl:value-of select="substring(@lemmaRef, 53)"/>
+					<xsl:when test="contains($lemRef, 'faclair.com')">
+						<xsl:value-of select="substring($lemRef, 53)"/>
 					</xsl:when>
-					<xsl:when test="contains(@lemmaRef, 'dasg.ac.uk')">
-						<xsl:value-of select="substring(@lemmaRef, 37)"/>
+					<xsl:when test="contains($lemRef, 'dasg.ac.uk')">
+						<xsl:value-of select="substring($lemRef, 37)"/>
 					</xsl:when>
-					<xsl:when test="contains(@lemmaRef, 'www.teanglann.ie')">
-						<xsl:value-of select="substring(@lemmaRef, 33)"/>
+					<xsl:when test="contains($lemRef, 'www.teanglann.ie')">
+						<xsl:value-of select="substring($lemRef, 33)"/>
 					</xsl:when>
-					<xsl:when test="contains(@lemmaRef, 'www.dsl.ac.uk')">
-						<xsl:value-of select="substring(@lemmaRef, 32)"/>
+					<xsl:when test="contains($lemRef, 'www.dsl.ac.uk')">
+						<xsl:value-of select="substring($lemRef, 32)"/>
 					</xsl:when>
-					<xsl:when test="contains(@lemmaRef, 'www.logainm.ie')">
-						<xsl:value-of select="substring(@lemmaRef, 27)"/>
+					<xsl:when test="contains($lemRef, 'www.logainm.ie')">
+						<xsl:value-of select="substring($lemRef, 27)"/>
 					</xsl:when>
-					<xsl:when test="contains(@lemmaRef, 'www.ainmean-aite.scot')">
-						<xsl:value-of select="substring(@lemmaRef, 41)"/>
-					</xsl:when>
-					<xsl:when
-						test="contains(@lemmaRef, 'https://www.online-latin-dictionary.com/latin-dictionary-flexion.php?lemma=')">
-						<xsl:value-of select="substring(@lemmaRef, 76)"/>
+					<xsl:when test="contains($lemRef, 'www.ainmean-aite.scot')">
+						<xsl:value-of select="substring($lemRef, 41)"/>
 					</xsl:when>
 					<xsl:when
-						test="contains(@lemmaRef, 'https://www.online-latin-dictionary.com/latin-dictionary-flexion.php?parola=')">
-						<xsl:value-of select="substring(@lemmaRef, 77)"/>
+						test="contains($lemRef, 'https://www.online-latin-dictionary.com/latin-dictionary-flexion.php?lemma=')">
+						<xsl:value-of select="substring($lemRef, 76)"/>
 					</xsl:when>
-					<xsl:when test="contains(@lemmaRef, 'www.oed.com')">
-						<xsl:value-of select="substring(@lemmaRef, 32)"/>
+					<xsl:when
+						test="contains($lemRef, 'https://www.online-latin-dictionary.com/latin-dictionary-flexion.php?parola=')">
+						<xsl:value-of select="substring($lemRef, 77)"/>
+					</xsl:when>
+					<xsl:when test="contains($lemRef, 'www.oed.com')">
+						<xsl:value-of select="substring($lemRef, 32)"/>
 					</xsl:when>
 					<xsl:otherwise>
 						<xsl:text>none</xsl:text>
