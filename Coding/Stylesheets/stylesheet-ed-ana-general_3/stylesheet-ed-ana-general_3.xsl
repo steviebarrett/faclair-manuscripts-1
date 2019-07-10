@@ -34,10 +34,13 @@
 								<b>Form ID</b>
 							</th>
 							<th>
-								<b>Headword</b>
+								<b>Form</b>
 							</th>
 							<th>
-								<b>Form</b>
+								<b>HW ID</b>
+							</th>
+							<th>
+								<b>Headword</b>
 							</th>
 							<th>
 								<b>Problem(s)?</b>
@@ -114,17 +117,56 @@
 				</xsl:otherwise>
 			</xsl:choose>
 		</xsl:variable>
-		<tr>
+		<tr id="{generate-id()}">
 			<td>
 				<xsl:value-of select="$wordPosition"/>
+			</td>
+			<td>
+				<xsl:call-template name="tableForm"/>
+			</td>
+			<td>
+				<xsl:choose>
+					<xsl:when test="contains(@lemmaRef, 'dil.ie')">
+						<xsl:value-of select="substring(@lemmaRef, 19)"/>
+					</xsl:when>
+					<xsl:when test="contains(@lemmaRef, 'faclair.com')">
+						<xsl:value-of select="substring(@lemmaRef, 53)"/>
+					</xsl:when>
+					<xsl:when test="contains(@lemmaRef, 'dasg.ac.uk')">
+						<xsl:value-of select="substring(@lemmaRef, 37)"/>
+					</xsl:when>
+					<xsl:when test="contains(@lemmaRef, 'www.teanglann.ie')">
+						<xsl:value-of select="substring(@lemmaRef, 33)"/>
+					</xsl:when>
+					<xsl:when test="contains(@lemmaRef, 'www.dsl.ac.uk')">
+						<xsl:value-of select="substring(@lemmaRef, 32)"/>
+					</xsl:when>
+					<xsl:when test="contains(@lemmaRef, 'www.logainm.ie')">
+						<xsl:value-of select="substring(@lemmaRef, 27)"/>
+					</xsl:when>
+					<xsl:when test="contains(@lemmaRef, 'www.ainmean-aite.scot')">
+						<xsl:value-of select="substring(@lemmaRef, 41)"/>
+					</xsl:when>
+					<xsl:when
+						test="contains(@lemmaRef, 'https://www.online-latin-dictionary.com/latin-dictionary-flexion.php?lemma=')">
+						<xsl:value-of select="substring(@lemmaRef, 76)"/>
+					</xsl:when>
+					<xsl:when
+						test="contains(@lemmaRef, 'https://www.online-latin-dictionary.com/latin-dictionary-flexion.php?parola=')">
+						<xsl:value-of select="substring(@lemmaRef, 77)"/>
+					</xsl:when>
+					<xsl:when test="contains(@lemmaRef, 'www.oed.com')">
+						<xsl:value-of select="substring(@lemmaRef, 32)"/>
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:text>none</xsl:text>
+					</xsl:otherwise>
+				</xsl:choose>
 			</td>
 			<td>
 				<a href="{@lemmaRef}">
 					<xsl:value-of select="@lemma"/>
 				</a>
-			</td>
-			<td>
-				<xsl:call-template name="tableForm"/>
 			</td>
 			<td>
 				<xsl:choose>
@@ -239,7 +281,7 @@
 					</xsl:choose>
 				</xsl:attribute>
 			</xsl:if>
-			<xsl:apply-templates mode="context" select="child::* | child::text()"/>
+			<b><xsl:apply-templates mode="context" select="child::* | child::text()"/></b>
 		</span>
 	</xsl:template>
 
