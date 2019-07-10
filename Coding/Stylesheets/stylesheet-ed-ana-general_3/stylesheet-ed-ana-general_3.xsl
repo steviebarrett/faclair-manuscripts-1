@@ -196,7 +196,9 @@
 				</xsl:choose>
 			</td>
 			<td>
-				<xsl:value-of select="count(//tei:TEI[not(@xml:id = 'hwData') and descendant::tei:w[@lemmaRef = $lemRef]])"/>
+				<xsl:value-of
+					select="count(//tei:TEI[not(@xml:id = 'hwData') and descendant::tei:w[@lemmaRef = $lemRef]])"
+				/>
 			</td>
 			<td>
 				<xsl:call-template name="contextCell">
@@ -246,9 +248,10 @@
 	</xsl:template>
 
 	<xsl:template mode="context" match="tei:expan">
-		<span class="expansion"><i>
-			<xsl:apply-templates mode="context" select="child::* | child::text()"/>
-		</i>
+		<span class="expansion">
+			<i>
+				<xsl:apply-templates mode="context" select="child::* | child::text()"/>
+			</i>
 		</span>
 	</xsl:template>
 
@@ -363,9 +366,11 @@
 		</xsl:variable>
 		<xsl:choose>
 			<xsl:when test="contains(@ref, 'g')">
-				<span class="abbreviation"><i style="color:{$color}">
-					<xsl:apply-templates mode="table"/>
-				</i></span>
+				<span class="abbreviation">
+					<i style="color:{$color}">
+						<xsl:apply-templates mode="table"/>
+					</i>
+				</span>
 			</xsl:when>
 			<xsl:otherwise>
 				<span class="ligature">
