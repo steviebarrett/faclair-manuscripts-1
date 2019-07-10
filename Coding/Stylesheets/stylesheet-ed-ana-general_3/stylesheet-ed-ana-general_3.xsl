@@ -237,7 +237,7 @@
 					</xsl:choose>
 				</xsl:attribute>
 			</xsl:if>
-			<xsl:apply-templates select="child::* | child::text()"/>
+			<xsl:apply-templates mode="context" select="child::* | child::text()"/>
 		</span>
 	</xsl:template>
 
@@ -246,8 +246,9 @@
 	</xsl:template>
 
 	<xsl:template mode="context" match="tei:expan">
-		<span class="expansion" style="italic">
-			<xsl:apply-templates select="child::* | child::text()"/>
+		<span class="expansion"><i>
+			<xsl:apply-templates mode="context" select="child::* | child::text()"/>
+		</i>
 		</span>
 	</xsl:template>
 
@@ -255,12 +256,12 @@
 		<xsl:choose>
 			<xsl:when test="@rend = 'sup'">
 				<sup>
-					<xsl:apply-templates select="child::* | child::text()"/>
+					<xsl:apply-templates mode="context" select="child::* | child::text()"/>
 				</sup>
 			</xsl:when>
 			<xsl:when test="@rend = 'strikethrough'">
 				<del>
-					<xsl:apply-templates select="child::* | child::text()"/>
+					<xsl:apply-templates mode="context" select="child::* | child::text()"/>
 				</del>
 			</xsl:when>
 		</xsl:choose>
@@ -270,27 +271,27 @@
 		<xsl:choose>
 			<xsl:when test="@type = 'punctuation'">
 				<span class="punctuation">
-					<xsl:apply-templates select="child::* | child::text()"/>
+					<xsl:apply-templates mode="context" select="child::* | child::text()"/>
 				</span>
 			</xsl:when>
 			<xsl:when test="@type = 'character'">
 				<span class="character">
-					<xsl:apply-templates select="child::* | child::text()"/>
+					<xsl:apply-templates mode="context" select="child::* | child::text()"/>
 				</span>
 			</xsl:when>
 			<xsl:when test="@type = 'date'">
 				<span class="date">
-					<xsl:apply-templates select="child::* | child::text()"/>
+					<xsl:apply-templates mode="context" select="child::* | child::text()"/>
 				</span>
 			</xsl:when>
 			<xsl:when test="@type = 'number'">
 				<span class="number">
-					<xsl:apply-templates select="child::* | child::text()"/>
+					<xsl:apply-templates mode="context" select="child::* | child::text()"/>
 				</span>
 			</xsl:when>
 			<xsl:when test="@type = 'fragment'">
 				<span class="fragment">
-					<xsl:apply-templates select="child::* | child::text()"/>
+					<xsl:apply-templates mode="context" select="child::* | child::text()"/>
 				</span>
 			</xsl:when>
 			<xsl:when test="@style">
@@ -298,7 +299,7 @@
 					<xsl:attribute name="style">
 						<xsl:value-of select="@style"/>
 					</xsl:attribute>
-					<xsl:apply-templates select="child::* | child::text()"/>
+					<xsl:apply-templates mode="context" select="child::* | child::text()"/>
 				</span>
 			</xsl:when>
 		</xsl:choose>
@@ -306,7 +307,7 @@
 
 	<xsl:template mode="context" match="tei:supplied">
 		<xsl:text>[</xsl:text>
-		<xsl:apply-templates select="child::* | child::text()"/>
+		<xsl:apply-templates mode="context" select="child::* | child::text()"/>
 		<xsl:text>]</xsl:text>
 	</xsl:template>
 
@@ -333,12 +334,12 @@
 			<xsl:attribute name="style">
 				<xsl:value-of select="$color"/>
 			</xsl:attribute>
-			<xsl:apply-templates select="child::* | child::text()"/>
+			<xsl:apply-templates mode="table" select="child::* | child::text()"/>
 		</span>
 	</xsl:template>
 
 	<xsl:template mode="table" match="tei:abbr">
-		<xsl:apply-templates select="child::* | child::text()">
+		<xsl:apply-templates mode="table" select="child::* | child::text()">
 			<xsl:with-param name="abbrCert">
 				<xsl:value-of select="@cert"/>
 			</xsl:with-param>
@@ -362,13 +363,13 @@
 		</xsl:variable>
 		<xsl:choose>
 			<xsl:when test="contains(@ref, 'g')">
-				<i style="color:{$color}">
-					<xsl:apply-templates/>
-				</i>
+				<span class="abbreviation"><i style="color:{$color}">
+					<xsl:apply-templates mode="table"/>
+				</i></span>
 			</xsl:when>
 			<xsl:otherwise>
-				<span style="color:{$color}">
-					<xsl:apply-templates/>
+				<span class="ligature">
+					<xsl:apply-templates mode="table"/>
 				</span>
 			</xsl:otherwise>
 		</xsl:choose>
@@ -376,7 +377,7 @@
 
 	<xsl:template mode="table" match="tei:del">
 		<del>
-			<xsl:apply-templates select="child::* | child::text()"/>
+			<xsl:apply-templates select="child::* | child::text()" mode="table"/>
 		</del>
 	</xsl:template>
 
@@ -395,7 +396,7 @@
 			</xsl:choose>
 		</xsl:variable>
 		<span class="unclear" style="color:{$color}">
-			<xsl:apply-templates select="child::* | child::text()"/>
+			<xsl:apply-templates select="child::* | child::text()" mode="table"/>
 		</span>
 	</xsl:template>
 
@@ -407,7 +408,7 @@
 
 	<xsl:template mode="table" match="tei:add">
 		<sup>
-			<xsl:apply-templates select="child::* | child::text()"/>
+			<xsl:apply-templates select="child::* | child::text()" mode="table"/>
 		</sup>
 	</xsl:template>
 
