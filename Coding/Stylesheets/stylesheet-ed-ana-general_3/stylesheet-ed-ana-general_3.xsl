@@ -25,7 +25,7 @@
 		<html>
 			<head>
 				<title>
-					<h1>Corpus Report</h1>
+					Corpus Report
 				</title>
 			</head>
 			<body>
