@@ -210,7 +210,7 @@
 		<xsl:param name="wordPosition"/>
 		<xsl:param name="lineID"/>
 		<xsl:apply-templates mode="context"
-			select="document('corpus-contexts.xml')//tei:seg[@type = 'msLine' and @xml:id = $lineID]/child::*">
+			select="document('corpus_contexts.xml')//tei:seg[@type = 'msLine' and @xml:id = $lineID]/child::*">
 			<xsl:with-param name="wordPosition">
 				<xsl:value-of select="$wordPosition"/>
 			</xsl:with-param>
