@@ -24,9 +24,7 @@
 	<xsl:template match="/">
 		<html>
 			<head>
-				<title>
-					Corpus Report
-				</title>
+				<title> Corpus Report </title>
 			</head>
 			<body>
 				<table border="1px solid black" id="tbl">
@@ -69,6 +67,9 @@
 								<b>Text Ref.</b>
 							</th>
 							<th>
+								<b>MS Count</b>
+							</th>
+							<th>
 								<b>Context</b>
 							</th>
 						</tr>
@@ -86,6 +87,7 @@
 
 	<xsl:template name="contentRow">
 		<xsl:variable name="wordPosition" select="count(preceding::*)"/>
+		<xsl:variable name="lemRef" select="@lemmaRef"/>
 		<xsl:variable name="comDiv" select="ancestor::tei:div[1]/@corresp"/>
 		<xsl:variable name="handRef">
 			<xsl:choose>
@@ -192,6 +194,9 @@
 						<xsl:text>n/a</xsl:text>
 					</xsl:otherwise>
 				</xsl:choose>
+			</td>
+			<td>
+				<xsl:value-of select="count(//tei:TEI[not(@xml:id = 'hwData') and descendant::tei:w[@lemmaRef = $lemRef]])"/>
 			</td>
 			<td>
 				<xsl:call-template name="contextCell">
