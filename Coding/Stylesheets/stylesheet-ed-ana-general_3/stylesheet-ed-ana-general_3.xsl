@@ -268,21 +268,31 @@
 
 	<xsl:template mode="context" match="tei:w">
 		<xsl:param name="wordPosition"/>
-		<span class="word">
-			<xsl:if test="@xml:id = $wordPosition">
-				<xsl:attribute name="style">
-					<xsl:choose>
-						<xsl:when test="@style">
-							<xsl:value-of select="concat(@style, ';', 'background-color:#aqua')"/>
-						</xsl:when>
-						<xsl:otherwise>
-							<xsl:text>background-color:aqua</xsl:text>
-						</xsl:otherwise>
-					</xsl:choose>
-				</xsl:attribute>
-			</xsl:if>
-			<b><xsl:apply-templates mode="context" select="child::* | child::text()"/></b>
-		</span>
+		<xsl:choose>
+			<xsl:when test="@xml:id = $wordPosition">
+				<span class="word">
+					<xsl:attribute name="style">
+						<xsl:choose>
+							<xsl:when test="@style">
+								<xsl:value-of select="concat(@style, ';', 'background-color:#aqua')"
+								/>
+							</xsl:when>
+							<xsl:otherwise>
+								<xsl:text>background-color:aqua</xsl:text>
+							</xsl:otherwise>
+						</xsl:choose>
+					</xsl:attribute>
+					<b>
+						<xsl:apply-templates mode="context" select="child::* | child::text()"/>
+					</b>
+				</span>
+			</xsl:when>
+			<xsl:otherwise>
+				<span class="word">
+					<xsl:apply-templates mode="context" select="child::* | child::text()"/>
+				</span>
+			</xsl:otherwise>
+		</xsl:choose>
 	</xsl:template>
 
 	<xsl:template mode="context" match="tei:space">
