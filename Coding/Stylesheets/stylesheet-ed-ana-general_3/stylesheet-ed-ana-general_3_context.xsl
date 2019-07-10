@@ -66,7 +66,7 @@
         </xsl:choose>
     </xsl:template>
 
-    <xsl:template match="tei:name | tei:w[descendant::tei:w] | tei:seg[not(@type='framgent')] | tei:hi">
+    <xsl:template match="tei:name | tei:w[descendant::tei:w] | tei:seg[not(@type='fragment')] | tei:hi">
         <xsl:apply-templates select="child::*"/>
     </xsl:template>
 
