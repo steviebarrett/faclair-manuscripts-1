@@ -56,37 +56,42 @@
             <xsl:when test="//tei:lb[@xml:id = $lineID]/ancestor::tei:p">
                 <xsl:apply-templates
                     select="//*[preceding::tei:lb[1]/@xml:id = $lineID and parent::tei:p[parent::tei:div[//tei:lb[@xml:id = $lineID]]]]"
-                />
+                >
+                    <xsl:with-param name="lineID" select="$lineID"/>
+                </xsl:apply-templates>
             </xsl:when>
             <xsl:when
                 test="//tei:lb[@xml:id = $lineID]/ancestor::tei:l[ancestor::tei:div[//tei:lb[@xml:id = $lineID]]]">
                 <xsl:apply-templates
-                    select="//*[preceding::tei:lb[1]/@xml:id = $lineID and parent::tei:l]"/>
+                    select="//*[preceding::tei:lb[1]/@xml:id = $lineID and parent::tei:l]"><xsl:with-param name="lineID" select="$lineID"/></xsl:apply-templates>
             </xsl:when>
         </xsl:choose>
     </xsl:template>
 
     <xsl:template match="tei:name | tei:w[descendant::tei:w] | tei:seg[not(@type='fragment')] | tei:hi">
-        <xsl:apply-templates select="child::*"/>
+        <xsl:param name="lineID"/>
+        <xsl:apply-templates select="child::*"><xsl:with-param name="lineID" select="$lineID"></xsl:with-param></xsl:apply-templates>
     </xsl:template>
 
     <xsl:template match="tei:add">
+        <xsl:param name="lineID"/>
         <tei:hi>
             <xsl:attribute name="rend">
                 <xsl:text>sup</xsl:text>
             </xsl:attribute>
-            <xsl:apply-templates select="child::* | child::text()"/>
+            <xsl:apply-templates select="child::* | child::text()"><xsl:with-param name="lineID" select="$lineID"></xsl:with-param></xsl:apply-templates>
         </tei:hi>
     </xsl:template>
 
     <xsl:template match="tei:w[not(descendant::tei:w) and not(@type = 'data')]">
+        <xsl:param name="lineID"/>
         <tei:w>
             <xsl:if test="@lemma = 'UNKNOWN'">
                 <xsl:attribute name="style">
                     <xsl:value-of select="concat('color:', '#ff0000')"/>
                 </xsl:attribute>
             </xsl:if>
-            <xsl:attribute name="xml:id" select="count(preceding::*)"/>
+            <xsl:attribute name="xml:id" select="concat($lineID, '_', count(preceding::*[preceding::tei:lb[1]/@xml:id = $lineID]))"/>
             <xsl:apply-templates select="child::* | child::text()"/>
         </tei:w>
     </xsl:template>
@@ -96,7 +101,8 @@
     </xsl:template>
     
     <xsl:template match="tei:choice">
-        <xsl:apply-templates select="child::tei:sic"/>
+        <xsl:param name="lineID"/>
+        <xsl:apply-templates select="child::tei:sic"><xsl:with-param name="lineID" select="$lineID"></xsl:with-param></xsl:apply-templates>
     </xsl:template>
 
     <xsl:template match="tei:pc">
@@ -159,17 +165,19 @@
     </xsl:template>
 
     <xsl:template match="tei:del">
+        <xsl:param name="lineID"/>
         <tei:hi>
             <xsl:attribute name="rend">
                 <xsl:text>strikethrough</xsl:text>
             </xsl:attribute>
-            <xsl:apply-templates select="child::* | child::text()"/>
+            <xsl:apply-templates select="child::* | child::text()"><xsl:with-param name="lineID" select="$lineID"/></xsl:apply-templates>
         </tei:hi>
     </xsl:template>
 
     <xsl:template match="tei:supplied">
+        <xsl:param name="lineID"/>
         <tei:supplied>
-            <xsl:apply-templates select="child::* | child::text()"/>
+            <xsl:apply-templates select="child::* | child::text()"><xsl:with-param name="lineID" select="$lineID"/></xsl:apply-templates>
         </tei:supplied>
     </xsl:template>
 
@@ -178,6 +186,7 @@
     </xsl:template>
 
     <xsl:template match="tei:unclear">
+        <xsl:param name="lineID"/>
         <tei:seg>
             <xsl:attribute name="style">
                 <xsl:choose>
@@ -192,7 +201,7 @@
                     </xsl:when>
                 </xsl:choose>
             </xsl:attribute>
-            <xsl:apply-templates select="child::* | child::text()"/>
+            <xsl:apply-templates select="child::* | child::text()"><xsl:with-param name="lineID" select="$lineID"/></xsl:apply-templates>
         </tei:seg>
     </xsl:template>
 
