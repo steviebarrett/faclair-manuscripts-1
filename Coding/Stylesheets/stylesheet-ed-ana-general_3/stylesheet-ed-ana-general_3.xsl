@@ -89,7 +89,12 @@
 	</xsl:template>
 
 	<xsl:template name="contentRow">
-		<xsl:variable name="wordPosition" select="count(preceding::*)"/>
+		<xsl:variable name="msLine" select="preceding::tei:lb[1][@xml:id]/@xml:id"/>
+		<xsl:variable name="wordPosition">
+			<xsl:value-of
+				select="concat(preceding::tei:lb[1][@xml:id]/@xml:id, '_', count(preceding::*[preceding::tei:lb[1][@xml:id]/@xml:id = $msLine]))"
+			/>
+		</xsl:variable>
 		<xsl:variable name="lemRef" select="@lemmaRef"/>
 		<xsl:variable name="comDiv" select="ancestor::tei:div[1]/@corresp"/>
 		<xsl:variable name="handRef">
