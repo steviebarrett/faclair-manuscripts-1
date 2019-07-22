@@ -428,7 +428,7 @@
 									cert="high">i<g ref="g5">n</g></abbr></w>
 							<space type="scribal"/>
 							<w lemma="cráes" lemmaRef="http://www.dil.ie/12717" pos="noun">craes</w>
-							<c>p</c>
+							<seg type="fragment">p</seg>
 							<gap reason="damage" quantity="3" unit="chars" resp="EPT"/>
 						</l>
 						<l n="b" xml:id="MS6.1.5b">
@@ -630,8 +630,7 @@
 									pos="possessive_pronoun">t</w></w>
 							<w lemma="oenar" lemmaRef="http://www.dil.ie/33521" pos="noun">aenar</w>
 							<gap reason="text_obscure" quantity="1" unit="chars" resp="EPT"/>
-							<unclear reason="text_obscure" cert="medium" resp="EPT"
-								><c>d</c></unclear>
+							<seg type="fragment">d</seg>
 							<w lemma="immallé" lemmaRef="http://www.dil.ie/27701" pos="adverb"
 								>malle</w>
 							<w lemma="fri" lemmaRef="http://www.dil.ie/24329" pos="preposition"
@@ -652,7 +651,7 @@
 									><unclear reason="text_obscure" cert="medium" resp="EPT"
 									>gn</unclear><abbr cert="high">i<g ref="g1">m</g></abbr></w>
 							<space type="scribal"/>
-							<c>d</c>
+							<seg type="fragment">d</seg>
 							<gap reason="text_obscure" quantity="3" unit="chars" resp="EPT"/>
 							<lb n="9" sameAs="MS6.2r.9"/>
 							<unclear reason="interp_obscure" cert="high" resp="EPT"><w lemma="día"
@@ -702,9 +701,9 @@
 							</name>
 							<space type="scribal"/>
 							<w lemma="*dochruthach" source="docraid"
-								lemmaRef="http://www.dil.ie/17377" pos="prefix-adjective"><w
-									lemma="do-" lemmaRef="http://www.dil.ie/17099" pos="pref"
-									>do</w><w lemma="cruthach" lemmaRef="http://www.dil.ie/13273"
+								lemmaRef="http://www.dil.ie/17377" pos="adjective"><w lemma="do-"
+									lemmaRef="http://www.dil.ie/17099" pos="pref">do</w><w
+									lemma="cruthach" lemmaRef="http://www.dil.ie/13273"
 									pos="adjective"><abbr cert="high">c<g ref="g15"
 										>ro</g></abbr>ca<abbr cert="high">c<g ref="g4"
 									>h</g></abbr></w></w>
@@ -733,7 +732,7 @@
 										>durb<abbr cert="high"><g ref="g11"
 								>air</g></abbr></w></unclear>
 							<space type="scribal"/>
-							<c>g</c>
+							<seg type="fragment">g</seg>
 							<gap reason="text_obscure" quantity="2" unit="chars" resp="EPT"/>
 						</l>
 						<l n="d" xml:id="MS6.1.2.2d">
@@ -749,6 +748,19 @@
 										corresp="df7f3760">n</g></w></w>
 							<w lemma="timthirecht" lemmaRef="http://www.dil.ie/40825" pos="noun"
 									>tim<abbr cert="high">t<g ref="g4">h</g></abbr>ereait</w>
+							<!-- testing -->
+							<w pos="adjective-adjective">
+								<w lemma="trén" lemmaRef="http://www.dil.ie/41798" pos="adjective"
+									>treun</w>
+								<w lemma="ferda" lemmaRef="http://www.dil.ie/21705" pos="adjective"
+										><add type="insertion" place="above" hand="Hand7"><abbr
+											cert="high">f<g ref="g4">h</g></abbr></add>e<abbr
+										cert="high">a<g ref="g8">r</g></abbr><abbr cert="high">d<g
+											ref="g4">h</g></abbr><mod type="corr_scribal"
+										hand="Hand999"><del><abbr cert="high"><g ref="g8"
+												>ar</g></abbr></del><add place="inline"
+										>a</add></mod></w>
+							</w>
 							<pc>.</pc>
 							<space type="scribal"/>
 						</l>
@@ -759,10 +771,9 @@
 									cert="high">b<g ref="g4">h</g></abbr>uil<supplied resp="EPT"
 									>e</supplied></w>
 							<space type="scribal"/>
-							<w pos="preposition-verb"><w lemma="ó"
-									lemmaRef="http://www.dil.ie/33364" pos="preposition">o</w><w
-									lemma="attá" lemmaRef="http://www.dil.ie/4927" pos="verb"
-								>ta</w></w>
+							<w lemma="ó" lemmaRef="http://www.dil.ie/33364" pos="preposition"
+								>o</w><w lemma="attá" lemmaRef="http://www.dil.ie/4927" pos="verb"
+								>ta</w>
 							<w lemma="mám" lemmaRef="http://www.dil.ie/31500" pos="noun">mam</w>
 							<space type="scribal"/>
 							<w lemma="co" lemmaRef="http://www.dil.ie/9787" pos="preposition">go</w>
@@ -790,7 +801,7 @@
 							<w pos="particle-verb"><w lemma="do" lemmaRef="http://www.dil.ie/17098"
 									pos="particle">do</w><w lemma="is"
 									lemmaRef="http://www.dil.ie/29104" pos="verb">b</w></w>
-							<c>d</c>
+							<seg type="fragment">d</seg>
 							<gap reason="text_obscure" quantity="6" unit="chars" resp="EPT"/>
 							<lb n="13" xml:id="MS6.2r.13"/>
 							<w lemma="a" lemmaRef="http://www.dil.ie/3" pos="possessive_pronoun"
@@ -911,9 +922,11 @@
 									lemma="is" lemmaRef="http://www.dil.ie/29104" pos="verb"><abbr
 										cert="high">d<g ref="g4">h</g></abbr></w></w>
 							<space type="scribal"/>
-							<w lemma="aithgerr" lemmaRef="http://www.dil.ie/2666" pos="adjective"
-									>a<abbr cert="high">t<g ref="g4">h</g></abbr>ge<abbr cert="high"
-										><g ref="g8">ar</g></abbr></w>
+							<w lemma="aithgerr" lemmaRef="http://www.dil.ie/2666" pos="adjective"><w
+									lemma="aith-" lemmaRef="http://www.dil.ie/2544" pos="prefix"
+										>a<abbr cert="high">t<g ref="g4">h</g></abbr></w><w
+									lemma="gerr" lemmaRef="http://www.dil.ie/25744" pos="adjective"
+										>ge<abbr cert="high"><g ref="g8">ar</g></abbr></w></w>
 							<space type="scribal"/>
 						</l>
 						<l n="c" xml:id="MS6.1.2.5c">
@@ -1001,12 +1014,12 @@
 										>acht</g></abbr></w>
 							</unclear>
 							<space type="scribal"/>
-							<c>do</c>
+							<seg type="fragment">do</seg>
 							<gap reason="text_obscure" quantity="3" unit="chars" resp="EPT"/>
 						</l>
 						<l n="d" xml:id="MS6.1.2.6d">
 							<gap reason="text_obscure" quantity="2" unit="chars" resp="EPT"/>
-							<w lemma="UNKNOWN"><abbr cert="high"><g ref="g8">ar</g></abbr></w>
+							<seg type="fragment"><abbr cert="high"><g ref="g8">ar</g></abbr></seg>
 							<unclear reason="interp_obscure" cert="medium" resp="EPT">
 								<w pos="particle-verb"><w lemma="do"
 										lemmaRef="http://www.dil.ie/17098" pos="particle"
@@ -1368,7 +1381,7 @@
 									cert="high">a<g ref="g1">m</g></abbr></w>
 							<lb n="7" xml:id="MS6.2v.7"/>
 							<gap reason="damage" quantity="5" unit="chars" resp="EPT"/>
-							<c>age</c>
+							<seg type="fragment">age</seg>
 							<space type="scribal"/>
 						</l>
 						<l n="d" xml:id="MS6.1.3.5d">
@@ -1415,9 +1428,11 @@
 										cert="high">i<g ref="g1">m</g></abbr></w></name>
 							<space type="scribal"/>
 							<w lemma="comdálach" lemmaRef="http://www.dil.ie/10975" pos="adjective"
-									>c<abbr cert="high">o<g ref="g1">m</g></abbr><abbr cert="high"
-										>d<g ref="g4">h</g></abbr>alai<abbr cert="high">d<g ref="g4"
-										>h</g></abbr></w>
+									><w lemma="com-" lemmaRef="http://www.dil.ie/10554" pos="prefix"
+										>c<abbr cert="high">o<g ref="g1">m</g></abbr></w><w
+									lemma="dálach" lemmaRef="http://www.dil.ie/14352" pos="adj"
+										><abbr cert="high">d<g ref="g4">h</g></abbr>alai<abbr
+										cert="high">d<g ref="g4">h</g></abbr></w></w>
 							<space type="scribal"/>
 						</l>
 						<l n="b" xml:id="MS6.1.5.1b">
@@ -1535,7 +1550,7 @@
 							<space type="scribal"/>
 						</l>
 						<l n="d" xml:id="MS6.1.5.3d">
-							<c>e</c>
+							<seg type="fragment">e</seg>
 							<gap reason="damage" quantity="12" unit="chars" resp="EPT"/><lb n="5"
 								xml:id="MS6.3r.5"/>
 							<w pos="preposition-possessive_pronoun"><w lemma="i"
@@ -1679,7 +1694,7 @@
 							<w lemma="cach" lemmaRef="http://www.dil.ie/7528" pos="adjective"
 								>Gac</w>
 							<space type="scribal"/>
-							<c>sa</c>
+							<seg type="fragment">sa</seg>
 							<gap reason="damage" quantity="8" unit="chars" resp="EPT"/>
 							<lb n="8" xml:id="MS6.3r.8"/>
 							<w lemma="slánachas" lemmaRef="http://www.dil.ie/37836" pos="noun"
@@ -1875,7 +1890,7 @@
 							<space type="scribal"/>
 							<c>do</c>
 							<space type="scribal"/>
-							<c>or</c>
+							<seg type="fragment">or</seg>
 							<gap reason="damage" quantity="4" unit="chars" resp="EPT"/>
 							<lb n="13" xml:id="MS4.3r.13"/>
 							<unclear reason="interp_obscure" cert="medium" resp="EPT"><w lemma="a"
@@ -1971,7 +1986,7 @@
 								>n</g></abbr>sa</w></name>
 							<space type="scribal"/>
 							<w lemma="co" lemmaRef="http://www.dil.ie/9786" pos="preposition">go</w>
-							<c>d</c>
+							<seg type="fragment">d</seg>
 							<gap reason="damage" quantity="5" unit="chars" resp="EPT"/>
 						</l>
 					</lg>
@@ -2155,7 +2170,7 @@
 						</l>
 						<l n="b" xml:id="MS6.1.5.14b">
 							<gap reason="damage" quantity="4" unit="chars" resp="EPT"/>
-							<c>te</c>
+							<seg type="fragment">te</seg>
 							<space type="scribal"/>
 							<w lemma="mesta" lemmaRef="http://www.dil.ie/32081" pos="adjective"
 								>meste</w>
@@ -2196,7 +2211,7 @@
 					<lg n="15" type="stanza" xml:id="MS6.1.5.15">
 						<l n="a" xml:id="MS6.1.5.15a">
 							<gap reason="damage" quantity="3" unit="chars" resp="EPT"/>
-							<c>iac</c>
+							<seg type="fragment">iac</seg>
 							<space type="scribal"/>
 							<w lemma="co" lemmaRef="http://www.dil.ie/9786" pos="preposition">go</w>
 							<w lemma="lúath" lemmaRef="http://www.dil.ie/30854" pos="adjective"
@@ -2232,7 +2247,7 @@
 				<p><handShift new="Hand8"/>
 					<pb n="8v" xml:id="MS6.8v"
 						facs="https://www.isos.dias.ie/libraries/NLS/NLS_Adv_MS_72_1_31/small_jpgs/16.jpg"/>
-					<lb n="1" xml:id="MS6.8r.1"/>
+					<lb n="1" xml:id="MS6.8v.1"/>
 					<gap quantity="31" unit="chars" reason="damage"/>
 					<unclear reason="text_obscure" cert="medium" resp="Black1984">
 						<name type="personal">
@@ -2246,15 +2261,14 @@
 								cert="high">m<g ref="g3">a</g></abbr>c</w>
 						<space type="editorial"/>
 						<name type="personal">
-							<w lemma="dúb, gall"
-								lemmaRef="http://www.dil.ie/18985, http://www.dil.ie/25308"
-								pos="noun"><w lemma="dub" lemmaRef="http://www.dil.ie/18985"
-									pos="adjective">dubh</w><w lemma="Gall"
-									lemmaRef="http://www.dil.ie/25308" pos="noun">ghaill</w></w>
+							<w pos="adjective-noun"><w lemma="dub"
+									lemmaRef="http://www.dil.ie/18985" pos="adjective">dubh</w><w
+									lemma="Gall" lemmaRef="http://www.dil.ie/25308" pos="noun"
+									>ghaill</w></w>
 						</name>
 						<gap quantity="6" unit="chars" reason="damage" resp="Black1984"/>
 					</unclear>
-					<lb n="2" xml:id="MS6.8r.2"/>
+					<lb n="2" xml:id="MS6.8v.2"/>
 					<gap quantity="12" unit="chars" reason="damage" resp="Black1984"/>
 					<unclear reason="text_obscure" cert="medium" resp="Black1984">
 						<w lemma="in" lemmaRef="http://www.dil.ie/28194" pos="article">an</w>
@@ -2262,7 +2276,7 @@
 						<w lemma="margg" lemmaRef="http://www.dil.ie/31605" pos="noun">marg</w>
 					</unclear>
 					<gap quantity="38" unit="chars" reason="text_obscure" resp="Black1984"/>
-					<lb n="3" xml:id="MS6.8r.3"/>
+					<lb n="3" xml:id="MS6.8v.3"/>
 					<gap quantity="12" unit="chars" reason="text_obscure" resp="Black1984"/>
 					<w lemma="ocus" lemmaRef="http://www.dil.ie/33484" pos="conjunction"><abbr
 							cert="high"><g ref="g2">agus</g></abbr></w>
@@ -2270,8 +2284,8 @@
 					<w lemma="is" lemmaRef="http://www.dil.ie/29104" pos="verb">is</w>
 					<w lemma="é" lemmaRef="http://www.dil.ie/19325" pos="pronoun">e</w>
 					<space type="scribal"/>
-					<w lemma="pàigh"
-						lemmaRef="https://www.faclair.com/ViewDictionaryEntry.aspx?ID=EFE05DD9C092A4E0D9E788FD21D175EF"
+					<!-- testing -->
+					<w lemma="páidhim" corresp="https://dasg.ac.uk/slips/index.php?id=0110783"
 						pos="verb">paig</w>
 					<gap quantity="17" unit="chars" reason="damage" resp="Black1984"/>
 					<w lemma="margg" lemmaRef="http://www.dil.ie/31605" pos="noun"><unclear
@@ -2285,7 +2299,7 @@
 					<space type="scribal"/>
 					<w lemma="sé" lemmaRef="http://www.dil.ie/36709" pos="pronoun">se</w>
 					<gap quantity="14" unit="chars" reason="damage" resp="Black1984"/>
-					<lb n="4" xml:id="MS6.8r.4"/>
+					<lb n="4" xml:id="MS6.8v.4"/>
 					<gap quantity="4" unit="chars" reason="damage" resp="Black1984"/>
 					<unclear reason="text_obscure" cert="medium" resp="Black1984">
 						<w lemma="bolla"
@@ -2314,6 +2328,7 @@
 					<w lemma="immar" lemmaRef="http://www.dil.ie/27721" pos="conjunction">m<abbr
 							cert="high"><g ref="g16">ar</g></abbr></w>
 					<space type="scribal"/>
+					<!-- testing -->
 					<w lemma="pàigh"
 						lemmaRef="https://www.faclair.com/ViewDictionaryEntry.aspx?ID=EFE05DD9C092A4E0D9E788FD21D175EF"
 						lemmaSL="páidhim" slipRef="https://dasg.ac.uk/slips/index.php?id=0110783"
@@ -2327,12 +2342,12 @@
 						slipRef="https://dasg.ac.uk/slips/index.php?id=0101041" pos="noun"><unclear
 							reason="text_obscure" cert="high" resp="Black1984">m</unclear>airg</w>
 					<gap quantity="12" unit="chars" reason="damage" resp="Black1984"/>
-					<lb n="5" xml:id="MS6.8r.5"/>
+					<lb n="5" xml:id="MS6.8v.5"/>
 					<gap extent="unknown" reason="damage" resp="Black1984"/>
 					<w lemma="ocus" lemmaRef="http://www.dil.ie/33484" pos="conjunction"><abbr
 							cert="high"><g ref="g2">agus</g></abbr></w>
 					<space type="scribal"/>
-					<w pos="conjunction-verb"><w lemma="cía" lemmaRef="http://www.dil.ie/8966"
+					<w pos="conjunction"><w lemma="cía" lemmaRef="http://www.dil.ie/8966"
 							pos="conjunction">gio</w><w lemma="is"
 							lemmaRef="http://www.dil.ie/29104" pos="verb"><abbr cert="high">d<g
 									ref="g4">h</g>
@@ -2344,7 +2359,7 @@
 								>a<abbr cert="medium"><g ref="g30">ca</g></abbr></w>
 					</unclear>
 					<space type="scribal"/>
-					<c>f</c>
+					<seg type="fragment">f</seg>
 					<gap quantity="6" unit="chars" reason="text_obscure" resp="Black1984"/>
 					<w lemma="tacar" lemmaRef="http://www.dil.ie/39387" lemmaSL="tacar"
 						slipRef="https://dasg.ac.uk/slips/index.php?id=0002903" pos="noun">tac<abbr
@@ -2381,7 +2396,7 @@
 							>habairt</unclear>
 					</w>
 					<gap extent="unknown" reason="damage" resp="EPT"/>
-					<lb n="6" xml:id="MS6.8r.6"/>
+					<lb n="6" xml:id="MS6.8v.6"/>
 					<gap quantity="5" unit="chars" reason="damage" resp="EPT"/>
 					<w lemma="tech" lemmaRef="http://www.dil.ie/40265" pos="noun">ti<abbr
 							cert="high">g<g ref="g4">h</g></abbr>
@@ -2439,7 +2454,7 @@
 							reason="damage" cert="medium" resp="Black1984">ach</unclear>
 					</w>
 					<gap extent="unknown" reason="damage"/>
-					<lb n="7" xml:id="MS6.8r.7"/>
+					<lb n="7" xml:id="MS6.8v.7"/>
 					<w lemma="ocus" lemmaRef="http://www.dil.ie/33484" pos="conjunction"><abbr
 							cert="high"><g ref="g2">agus</g></abbr></w>
 					<space type="scribal"/>
@@ -2494,15 +2509,16 @@
 							reason="text_obscure" cert="high" resp="Black1984"><abbr cert="high">d<g
 									ref="g3">na</g></abbr></unclear></w>
 					<gap extent="unknown" reason="damage"/>
-					<lb n="8" xml:id="MS6.8r.8"/>
+					<lb n="8" xml:id="MS6.8v.8"/>
 					<w lemma="attá" lemmaRef="http://www.dil.ie/4927" pos="verb">
 						<unclear reason="text_obscure" cert="high" resp="Black1984"
 						>at</unclear>a</w>
 					<space type="scribal"/>
-					<w lemma="do" lemmaRef="http://www.dil.ie/17096" pos="preposition">d</w>
-					<w lemma="fíach" lemmaRef="http://www.dil.ie/21871" lemmaSL="fiach"
-						slipRef="https://dasg.ac.uk/slips/index.php?id=0080476" pos="noun"
-							>fiacui<abbr cert="high">b<g ref="g4">h</g></abbr></w>
+					<w pos="preposition-noun"><w lemma="do" lemmaRef="http://www.dil.ie/17096"
+							pos="preposition">d</w>
+						<w lemma="fíach" lemmaRef="http://www.dil.ie/21871" lemmaSL="fiach"
+							slipRef="https://dasg.ac.uk/slips/index.php?id=0080476" pos="noun"
+								>fiacui<abbr cert="high">b<g ref="g4">h</g></abbr></w></w>
 					<space type="scribal"/>
 					<w lemma="ar" lemmaRef="http://www.dil.ie/3902" pos="preposition"><abbr
 							cert="high"><g ref="g8">ar</g></abbr></w>
@@ -2559,7 +2575,7 @@
 					<name type="personal"><w lemma="Donnchad" lemmaRef="http://www.dil.ie/18224"
 							pos="noun">do<abbr cert="high">n<g ref="g5">n</g>
 							</abbr>ch<supplied resp="Black1984">adh</supplied></w></name>
-					<lb n="9" xml:id="MS6.8r.9"/>
+					<lb n="9" xml:id="MS6.8v.9"/>
 					<gap extent="unknown" reason="damage"/>
 					<unclear reason="text_obscure" cert="medium" resp="Black1984"><w lemma="in"
 							lemmaRef="http://www.dil.ie/28194" pos="article">an</w><w
@@ -2621,7 +2637,7 @@
 								resp="Black1984">onnchadh</supplied></w>
 					</name>
 					<gap extent="unknown" reason="damage"/>
-					<lb n="10" xml:id="MS6.8r.10"/>
+					<lb n="10" xml:id="MS6.8v.10"/>
 					<gap extent="unknown" reason="damage" resp="Black1984"/>
 					<w lemma="lesaigidir" lemmaRef="http://www.dil.ie/30002" pos="verbal_noun">
 						<unclear reason="damage" resp="Black1984" cert="high">l</unclear>ea<abbr
@@ -2675,7 +2691,7 @@
 							slipRef="https://dasg.ac.uk/slips/index.php?id=0090704" pos="noun"
 							>iarann</w></w>
 					<gap extent="unknown" reason="damage" resp="Black1984"/>
-					<lb n="11" xml:id="MS6.8r.11"/>
+					<lb n="11" xml:id="MS6.8v.11"/>
 					<w lemma="acht" lemmaRef="http://www.dil.ie/200" pos="preposition"><unclear
 							reason="damage" cert="medium" resp="Black1984">a</unclear><abbr
 							cert="high"><g ref="g10">ch</g></abbr>t</w>
@@ -2711,9 +2727,9 @@
 					<space type="scribal"/>
 					<name type="personal"><w pos="noun">eogain</w></name>
 					<gap extent="unknown" reason="damage"/>
-					<lb n="12" xml:id="MS6.8r.12"/>
+					<lb n="12" xml:id="MS6.8v.12"/>
 					<gap quantity="1" unit="lines" reason="damage"/>
-					<lb n="13" xml:id="MS6.8r.13"/>
+					<lb n="13" xml:id="MS6.8v.13"/>
 					<name type="personal"><w xml:lang="sco" pos="noun">Dunc<unclear reason="damage"
 								cert="high" resp="Black1984">an</unclear></w></name>
 				</p>
