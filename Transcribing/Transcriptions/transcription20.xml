@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../Schemas/fnag_mss2.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-stylesheet type="text/xsl" href="../../Coding/Stylesheets/basic-info.xsl"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="T3">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Transcription 20: NLS Adv. 72.1.9</title>
+                <respStmt corresp="MMA">
+                    <name>Martina Maher</name>
+                    <resp>Transcriber</resp>
+                    <resp>Editor</resp>
+                </respStmt>
+                <respStmt corresp="WGI">
+                    <name>William Gillies</name>
+                    <resp>Overseer</resp>
+                </respStmt>
+            </titleStmt>
+            <extent> ... words </extent>
+            <publicationStmt>
+                <authority sameAs="authority"/>
+                <availability status="restricted">
+                    <p>For internal use by the Faclair na Gàidhlig/DASG projects</p>
+                </availability>
+                <idno>T20</idno>
+            </publicationStmt>
+            <notesStmt>
+                <note>
+                    <p/>
+                </note>
+            </notesStmt>
+            <sourceDesc>
+                <msDesc>
+                    <msIdentifier sameAs="MS3">
+                        <settlement>Edinburgh</settlement>
+                        <repository>NLS</repository>
+                        <idno type="shelfmark">Adv. MS. 72.1.9</idno>
+                    </msIdentifier>
+                    <msContents>
+                        <summary>
+                            <p>A single folio containing (the end of) a tract on prognosis, a personal note, and the pedigree of MacDougalls of Dunollie. Ronald Black has judged the MS to be in the hand of Eoghan Mac Pháill on the basis of its similarity to that in NLS Adv. 72.1.34.</p>
+                        </summary>
+                        <msItem n="1" xml:id="MS20.1" resp="Hand40">
+                            <locus>fol. 1<hi rend="sup">r</hi>1-9</locus>
+                            <title>Tract on prognosis</title>
+                            <incipit>ADD TEXT HERE</incipit>
+                            <explicit>ADD TEXT HERE</explicit>
+                            <filiation/>
+                            <textLang mainLang="ghc" otherLangs="gd">
+                                <note/>
+                            </textLang>
+                        </msItem>
+                        <msItem n="2" xml:id="MS20.2" resp="Hand40">
+                            <locus>fol. 1<hi rend="sup">r</hi>a1-fol. 1<hi rend="sup">r</hi>c9</locus>
+                            <title>Personal note</title>
+                            <incipit>ADD TEXT HERE</incipit>
+                            <explicit>ADD TEXT HERE</explicit>
+                            <filiation/>
+                            <textLang mainLang="ghc" otherLangs="gd">
+                                <note/>
+                            </textLang>
+                        </msItem>
+                        <msItem n="3" xml:id="MS20.3" resp="Hand40">
+                            <locus>fol. 1<hi rend="sup">r</hi>b1-fol. 1<hi rend="sup">r</hi>c9</locus>
+                            <title>Medical Material</title>
+                            <incipit>ADD TEXT HERE</incipit>
+                            <explicit>ADD TEXT HERE</explicit>
+                            <filiation/>
+                            <textLang mainLang="ghc" otherLangs="gd">
+                                <note/>
+                            </textLang>
+                        </msItem>
+                    </msContents>
+                    <physDesc>
+                        <p/>
+                        <objectDesc>
+                            <supportDesc>
+                                <support/>
+                                <foliation/>
+                                <condition/>
+                            </supportDesc>
+                            <layoutDesc>
+                                <p/>
+                            </layoutDesc>
+                        </objectDesc>
+                    </physDesc>
+                    <history>
+                        <provenance/>
+                    </history>
+                </msDesc>
+            </sourceDesc>
+        </fileDesc>
+        <encodingDesc>
+            <metDecl>
+                <p/>
+            </metDecl>
+            <refsDecl>
+                <p/>
+            </refsDecl>
+        </encodingDesc>
+        <profileDesc>
+            <handNotes>
+                <handNote sameAs="Handn"/>
+            </handNotes>
+            <textClass>
+                <keywords>
+                    <term/>
+                </keywords>
+            </textClass>
+        </profileDesc>
+        <revisionDesc>
+            <change when="2019-07-30" resp="MMA">Began initial transcription</change>
+        </revisionDesc>
+    </teiHeader>
+    <text>
+        <body>
+            <div n="1" type="divprose" resp="Hand40" corresp="MS20.1">
+                <p>
+                    <pb n="1" xml:id="MS20.p1"/>
+                    <lb n="1" xml:id="MS20.f1.1"/>
+                </p>
+            </div>
+            <div n="2" type="divprose" resp="Hand40" corresp="MS20.2">
+                <p>
+                    <cb n="a" xml:id="MS20.1ra"/>
+                    <lb n="1" xml:id="MS20.1ra.1"/>
+                        <w lemma="sin" lemmaRef="http://www.dil.ie/37567" ana="dpron">Sin</w>
+                        <w lemma="oc" lemmaRef="http://www.dil.ie/33397" ana="prep, pron">a<abbr cert="high">g<g ref="g24">ad</g></abbr></w>
+                        <space type="scribal"/>
+                        <w lemma="a" lemmaRef="http://www.dil.ie/2" ana="part">a</w>
+                        <w lemma="bráthair" lemmaRef="http://www.dil.ie/6585" ana="noun"><abbr cert="high">b<g ref="g17">ra</g></abbr><abbr cert="high">t<g ref="g4">h</g></abbr><abbr cert="high"><g ref="g11">air</g></abbr></w>
+                    <lb n="2" xml:id="MS20.1ra.2"/>
+                </p>
+            </div>
+            <div n="3" type="divprose" resp="Hand40" corresp="MS20.3">
+                <p>
+                    
+                </p>
+            </div>
+        </body>
+    </text>
+</TEI>
