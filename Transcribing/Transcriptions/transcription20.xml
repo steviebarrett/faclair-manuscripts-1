@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="../Schemas/fnag_mss2.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 <?xml-stylesheet type="text/xsl" href="../../Coding/Stylesheets/basic-info.xsl"?>
-<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="T3">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="T20">
     <teiHeader>
         <fileDesc>
             <titleStmt>
@@ -100,7 +100,7 @@
         </encodingDesc>
         <profileDesc>
             <handNotes>
-                <handNote sameAs="Handn"/>
+                <handNote sameAs="Hand8"/>
             </handNotes>
             <textClass>
                 <keywords>
@@ -130,6 +130,17 @@
                         <w lemma="a" lemmaRef="http://www.dil.ie/2" ana="part">a</w>
                         <w lemma="bráthair" lemmaRef="http://www.dil.ie/6585" ana="noun"><abbr cert="high">b<g ref="g17">ra</g></abbr><abbr cert="high">t<g ref="g4">h</g></abbr><abbr cert="high"><g ref="g11">air</g></abbr></w>
                     <lb n="2" xml:id="MS20.1ra.2"/>
+                        <w lemma="inmain" lemmaRef="http://www.dil.ie/28762" ana="adj">inmuin</w>
+                        <space type="scribal"/>
+                        <w lemma="ocus" lemmaRef="http://www.dil.ie/33484" ana="conj"><abbr cert="high"><g ref="g2">agus</g></abbr></w>
+                        <w lemma="má" lemmaRef="http://www.dil.ie/31164" ana="conj">ma</w>
+                        <w lemma="attá" lemmaRef="http://www.dil.ie/4927" ana="verb"><abbr cert="high">t<g ref="g4">h</g></abbr>a</w>
+                    <lb n="3" xml:id="MS20.1ra.3"/>
+                        <w lemma="locht" lemmaRef="http://www.dil.ie/30459" ana="noun">lo<abbr cert="high"><g ref="g10">cht</g></abbr></w>
+                        <space type="scribal"/>
+                        <w lemma="scríbneóirecht" lemmaRef="http://www.dil.ie/36645" ana="vnoun">s<abbr cert="high">g<g ref="g25">ri</g></abbr><abbr cert="high">b<g ref="g4">h</g></abbr>moire<abbr cert="high"><g ref="g10">c</g></abbr><abbr cert="high"><g ref="g4">h</g></abbr><abbr cert="high"><g ref="g10">t</g></abbr></w>
+                    <lb n="4" xml:id="MS20.1ra4"/>
+                        <w lemma="i" lemmaRef="http://www.dil.ie/26891" ana="prep, pron">a<abbr cert="high">n<g ref="g5">n</g></abbr></w>
                 </p>
             </div>
             <div n="3" type="divprose" resp="Hand8" corresp="MS20.3">
