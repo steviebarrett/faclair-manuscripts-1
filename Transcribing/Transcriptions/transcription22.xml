@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../Schemas/fnag_mss2.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-stylesheet type="text/xsl" href="../../Coding/Stylesheets/basic-info.xsl"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="T22">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Transcription 22: NAS GD328/11</title>
+                <respStmt corresp="MMA">
+                    <name>Martina Maher</name>
+                    <resp>Transcriber</resp>
+                    <resp>Editor</resp>
+                </respStmt>
+                <respStmt corresp="WGI">
+                    <name>William Gillies</name>
+                    <resp>Overseer</resp>
+                </respStmt>
+            </titleStmt>
+            <extent> ... words </extent>
+            <publicationStmt>
+                <authority sameAs="authority"/>
+                <availability status="restricted">
+                    <p>For internal use by the Faclair na Gàidhlig/DASG projects</p>
+                </availability>
+                <idno>T22</idno>
+            </publicationStmt>
+            <notesStmt>
+                <note>
+                    <p/>
+                </note>
+            </notesStmt>
+            <sourceDesc>
+                <msDesc>
+                    <msIdentifier sameAs="MS22">
+                        <settlement>Edinburgh</settlement>
+                        <repository>NAS</repository>
+                        <idno type="shelfmark">GD328/11</idno>
+                    </msIdentifier>
+                    <msContents>
+                        <summary>
+                            <p>ADD DESCRIPTION HERE</p>
+                        </summary>
+                        <msItem n="1" xml:id="MS21.1" resp="Hand41">
+                            <locus/>
+                            <title>Stanza to Neil MacNeil of Ugadale.</title>
+                            <incipit>Deghmhic Neill a bhláth na feile</incipit>
+                            <explicit>lean do chanmhuin féin ga cíol</explicit>
+                            <filiation/>
+                            <textLang mainLang="ghc" otherLangs="gd">
+                                <note/>
+                            </textLang>
+                        </msItem>
+                    </msContents>
+                    <physDesc>
+                        <p/>
+                        <objectDesc>
+                            <supportDesc>
+                                <support/>
+                                <foliation/>
+                                <condition/>
+                            </supportDesc>
+                            <layoutDesc>
+                                <p/>
+                            </layoutDesc>
+                        </objectDesc>
+                    </physDesc>
+                    <history>
+                        <provenance/>
+                    </history>
+                </msDesc>
+            </sourceDesc>
+        </fileDesc>
+        <encodingDesc>
+            <metDecl>
+                <p/>
+            </metDecl>
+            <refsDecl>
+                <p/>
+            </refsDecl>
+        </encodingDesc>
+        <profileDesc>
+            <handNotes>
+                <handNote sameAs="Hand41"/>
+            </handNotes>
+            <textClass>
+                <keywords>
+                    <term/>
+                </keywords>
+            </textClass>
+        </profileDesc>
+        <revisionDesc>
+            <change when="2019-08-05" resp="MMA">Began initial transcription</change>
+        </revisionDesc>
+    </teiHeader>
+    <text>
+        <body>
+            <div n="1" type="verse" resp="Hand41" corresp="MS22.1">
+                <lg n="1" type="stanza" xml:id="MS22.1.1">
+                    <l n="a" xml:id="MS22.1.1a">
+                <lb n="3" xml:id="MS22.p4.3"/>
+                    </l>
+                    <l n="b" xml:id="MS22.1.1b">
+                <lb n="4" xml:id="MS22.p4.4"/>
+                    </l>
+                    <l n="c" xml:id="MS22.1.1c">
+                        <lb n="5" xml:id="MS22.p4.5"/>
+                    </l>
+                    <l n="d" xml:id="MS22.1.1d">
+                        <lb n="6" xml:id="MS22.p4.6"/>
+                    </l>
+                </lg>
+            </div>
+        </body>
+    </text>
+</TEI>
