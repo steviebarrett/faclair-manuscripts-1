@@ -1871,6 +1871,10 @@
 		<xsl:text/>
 	</xsl:template>
 	
+	<xsl:template match="tei:seg[@type = 'ed-er']">
+		<xsl:apply-templates select="tei:add[@type = 'correction']"/>
+	</xsl:template>
+	
 	<xsl:template match="tei:seg[@type = 'fragment']">
 		<xsl:text/>
 	</xsl:template>
