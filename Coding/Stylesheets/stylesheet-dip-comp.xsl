@@ -556,6 +556,10 @@
 		</span>
 	</xsl:template>
 	
+	<xsl:template mode="dip" match="tei:seg[@type = 'ed-er']">
+		<xsl:apply-templates select="tei:add[@type = 'correction']"/>
+	</xsl:template>
+	
 	<xsl:template mode="dip" match="tei:seg[@type = 'fragment']">
 		<span class="fragment">
 		<xsl:text/>
