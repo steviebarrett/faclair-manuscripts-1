@@ -307,7 +307,19 @@
 						<msIdentifier xml:id="MS22">
 							<settlement>Edinburgh</settlement>
 							<repository>NAS</repository>
-							<idno type="shelfmark">GD 328/11</idno>
+							<idno type="shelfmark">GD328/11</idno>
+						</msIdentifier>
+						<history>
+							<origin>
+								<date from-custom="18">18</date>
+							</origin>
+						</history>
+					</msDesc>
+					<msDesc>
+						<msIdentifier xml:id="MS23">
+							<settlement>Edinburgh</settlement>
+							<repository>NAS</repository>
+							<idno type="shelfmark">GD201/1/362/5</idno>
 						</msIdentifier>
 						<history>
 							<origin>
@@ -2071,6 +2083,14 @@
 					<affiliation>misc</affiliation>
 					<note/>
 				</handNote>
+				<handNote xml:id="Hand42">
+					<forename>Lachlan</forename>
+					<surname>Mac Mhuirich</surname>
+					<date type="floruit" min="1701" max="1799">1749</date>
+					<region>Argyll</region>
+					<affiliation>misc</affiliation>
+					<note/>
+				</handNote>
 				<handNote xml:id="Hand999">
 					<forename>an unidentfied</forename>
 					<surname>hand</surname>
@@ -2127,6 +2147,7 @@
   <TEI corresp="Transcriptions/transcription20.xml"/>
   <TEI corresp="Transcriptions/transcription21.xml"/>
   <TEI corresp="Transcriptions/transcription22.xml"/>
+  <TEI corresp="Transcriptions/transcription23.xml"/>
   -->
 
 	<!-- <xi:include href="Transcriptions/transcription1.xml" parse="xml"/> -->
@@ -2151,6 +2172,7 @@
 	<!-- <xi:include href="Transcriptions/transcription20.xml" parse="xml"/> -->
 	<!-- <xi:include href="Transcriptions/transcription21.xml" parse="xml"/> -->
 	<!-- <xi:include href="Transcriptions/transcription22.xml" parse="xml"/> -->
+	<!-- <xi:include href="Transcriptions/transcription23.xml" parse="xml"/> -->
 	<!-- <xi:include href="hwData.xml" parse="xml"/> -->
 
 </teiCorpus>
