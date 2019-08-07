@@ -43,10 +43,10 @@
 								<b>Headword</b>
 							</th>
 							<th>
-								<b>Stem</b>
+								<b>OIr Stem</b>
 							</th>
 							<th>
-								<b>Gender</b>
+								<b>OIr Gender</b>
 							</th>
 							<th>
 								<b>Problem(s)?</b>
