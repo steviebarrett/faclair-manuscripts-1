@@ -4902,6 +4902,10 @@
 			</xsl:when>
 		</xsl:choose>
 	</xsl:template>
+	
+	<xsl:template match="tei:add[@type = 'correction']">
+		<xsl:apply-templates/>
+	</xsl:template>
 
 	<xsl:template match="tei:handShift">
 		<xsl:variable name="elPOS" select="count(preceding::*)"/>
