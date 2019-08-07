@@ -2257,6 +2257,10 @@
 			</xsl:when>
 		</xsl:choose>
 	</xsl:template>
+	
+	<xsl:template mode="dip" match="tei:add[@type = 'correction']">
+		<xsl:apply-templates/>
+	</xsl:template>
 
 	<xsl:template mode="dip" match="tei:handShift">
 		<xsl:variable name="elPOS" select="count(preceding::*)"/>
