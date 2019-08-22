@@ -1330,7 +1330,15 @@
 							<xsl:choose>
 								<xsl:when test="contains(@n, 'r') or contains(@n, 'v')"
 									>fol.<xsl:text> </xsl:text></xsl:when>
-								<xsl:otherwise>p.<xsl:text> </xsl:text></xsl:otherwise>
+								<xsl:otherwise><xsl:choose>
+									<xsl:when test="contains(@n, 'p')">
+										<xsl:text/> 
+									</xsl:when>
+									<xsl:otherwise>
+										p.<xsl:text> </xsl:text>
+									</xsl:otherwise>
+								</xsl:choose>
+								</xsl:otherwise>
 							</xsl:choose>
 							<xsl:value-of select="@n"/>
 						</b>
