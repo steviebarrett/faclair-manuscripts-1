@@ -2871,8 +2871,7 @@
 				<xsl:choose>
 					<xsl:when test="@ana = 'part' and ancestor::tei:w[contains(@ana, 'part, verb')]">
 						<xsl:choose>
-							<xsl:when
-								test="ancestor::tei:w[contains(@lemmaRef, 'http://www.dil.ie/29104')]">
+							<xsl:when test="ancestor::tei:w/descendant::tei:w[@lemmaRef = 'http://www.dil.ie/29104']">
 								<xsl:text/>
 							</xsl:when>
 							<xsl:otherwise>
