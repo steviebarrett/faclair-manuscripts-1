@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../Schemas/fnag_mss2.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-stylesheet type="text/xsl" href="../../Coding/Stylesheets/basic-info.xsl"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="T26">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Transcription 26: NLS Adv. 72.1.34</title>
+                <respStmt corresp="MMA">
+                    <name>Martina Maher</name>
+                    <resp>Transcriber</resp>
+                    <resp>Editor</resp>
+                </respStmt>
+                <respStmt corresp="WGI">
+                    <name>William Gillies</name>
+                    <resp>Overseer</resp>
+                </respStmt>
+            </titleStmt>
+            <extent> ... words </extent>
+            <publicationStmt>
+                <authority sameAs="authority"/>
+                <availability status="restricted">
+                    <p>For internal use by the Faclair na Gàidhlig/DASG projects</p>
+                </availability>
+                <idno>T26</idno>
+            </publicationStmt>
+            <notesStmt>
+                <note>
+                    <p/>
+                </note>
+            </notesStmt>
+            <sourceDesc>
+                <msDesc>
+                    <msIdentifier sameAs="MS26">
+                        <settlement>Edinburgh</settlement>
+                        <repository>NLS Adv.</repository>
+                        <idno type="shelfmark">72.1.34</idno>
+                    </msIdentifier>
+                    <msContents>
+                        <summary>
+                            <p/>
+                        </summary>
+                        <msItem n="1" xml:id="MS26.1" resp="Hand8">
+                            <locus/>
+                            <title>Bruighean Chaorthuinn</title>
+                            <incipit>Ri uasal oireadha ro gabhusa flai[theas agus f]orlamhus ar na ceithre treabhaibh Lochlannach</incipit>
+                            <explicit></explicit>
+                            <filiation/>
+                            <textLang mainLang="ghc" otherLangs="gd">
+                                <note/>
+                            </textLang>
+                        </msItem>
+                        <msItem n="2" xml:id="MS26.2" resp="Hand8">
+                            <locus/>
+                            <title>Bruidhean Bheag na hAlmhaine</title>
+                            <incipit>Fleadh mhor choain moradhbhal do commoradh le [Fionn] mac Cubhaill mhic treunmhoir Í Bhaoiscne a nEalmhuin l[eth]anmhor laocha ar magh Laighean.</incipit>
+                            <explicit></explicit>
+                            <filiation/>
+                            <textLang mainLang="ghc" otherLangs="gd">
+                                <note/>
+                            </textLang>
+                        </msItem>
+                        <msItem n="3" xml:id="MS26.3" resp="Hand8">
+                            <locus/>
+                            <title>Ca hainm ata ar Fhearghal og</title>
+                            <incipit>Ca hainm ata ar Fhearghal og</incipit>
+                            <explicit></explicit>
+                            <filiation/>
+                            <textLang mainLang="ghc" otherLangs="gd">
+                                <note/>
+                            </textLang>
+                        </msItem>
+                        <msItem n="4" xml:id="MS26.4" resp="Hand8">
+                            <locus/>
+                            <title>Letter from Eoghan mac Phaill to Eóin Ui Conchubhair</title>
+                            <incipit>Beannacht agus [gap]frithbendachtus chugat Eóin Uí Conchubair</incipit>
+                            <explicit></explicit>
+                            <filiation/>
+                            <textLang mainLang="ghc" otherLangs="gd">
+                                <note/>
+                            </textLang>
+                        </msItem>
+                    </msContents>
+                    <physDesc>
+                        <p/>
+                        <objectDesc>
+                            <supportDesc>
+                                <support/>
+                                <foliation/>
+                                <condition/>
+                            </supportDesc>
+                            <layoutDesc>
+                                <p/>
+                            </layoutDesc>
+                        </objectDesc>
+                    </physDesc>
+                    <history>
+                        <provenance/>
+                    </history>
+                </msDesc>
+            </sourceDesc>
+        </fileDesc>
+        <encodingDesc>
+            <metDecl>
+                <p/>
+            </metDecl>
+            <refsDecl>
+                <p/>
+            </refsDecl>
+        </encodingDesc>
+        <profileDesc>
+            <handNotes>
+                <handNote sameAs="Hand8"/>
+            </handNotes>
+            <textClass>
+                <keywords>
+                    <term/>
+                </keywords>
+            </textClass>
+        </profileDesc>
+        <revisionDesc>
+            <change when="2019-08-26" resp="MMA">Began initial transcription</change>
+        </revisionDesc>
+    </teiHeader>
+    <text>
+        <body>
+            <div n="1" type="divprose" resp="Hand8" corresp="MS26.1">
+            </div>
+            <div n="2" type="divprose" resp="Hand8" corresp="MS26.2">
+            </div>
+            <div n="3" type="verse" resp="Hand8" corresp="MS26.3">
+            </div>
+            <div n="4" type="prose" resp="Hand8" corresp="MS26.4">
+            </div>
+        </body>
+    </text>
+</TEI>
