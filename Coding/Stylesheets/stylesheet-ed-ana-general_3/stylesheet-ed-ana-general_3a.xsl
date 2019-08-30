@@ -55,6 +55,9 @@
 								<b>Part of Speech</b>
 							</th>
 							<th>
+								<b>MS</b>
+							</th>
+							<th>
 								<b>Scribe</b>
 							</th>
 							<th>
@@ -266,6 +269,9 @@
 			</td>
 			<td>
 				<xsl:value-of select="@ana"/>
+			</td>
+			<td>
+				<xsl:value-of select="ancestor::tei:TEI/descendant::tei:msIdentifier/@sameAs"/>
 			</td>
 			<td>
 				<xsl:value-of select="key('hands', $handRef)/tei:forename"/>
