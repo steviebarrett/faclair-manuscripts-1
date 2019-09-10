@@ -14,14 +14,12 @@
     <div>
     <!--<div class="text" data-hand="{@hand}" data-n="{@n}" data-corresp="{@corresp}" data-type="{@type}" data-ms="{substring(/tei:TEI/@xml:id,2)}">-->  
       <div><small class="text-muted">[start of Text <xsl:value-of select="@n"/>]</small></div>
-        <!--
-        <a href="#" class="addComment" title="Leave comment on this text" data-s="div" data-n="{@n}">[+]</a>
-        <div class="commentForm" id="cf__div__{@n}">
-          <xsl:call-template name="commentForm"/>
-        </div>
-        <xsl:text> </xsl:text>
-        <a href="#" class="viewComment greyedOut" title="View comments on this text" data-s="div" data-n="{@n}">[?]</a>
-        -->
+      <a href="#" class="addComment" title="Leave comment on this text" data-s="div" data-n="{@n}">[+]</a>
+      <div class="commentForm" id="cf__div__{@n}">
+        <xsl:call-template name="commentForm"/>
+      </div>
+      <xsl:text> </xsl:text>
+      <a href="#" class="viewComment greyedOut" title="View comments on this text" data-s="div" data-n="{@n}">[?]</a>
       <xsl:apply-templates/>
       <div><small class="text-muted">[end of Text <xsl:value-of select="@n"/>]</small></div>
     </div>
@@ -59,7 +57,6 @@
   <xsl:template match="tei:lb">
     <span class="lineBreak" data-number="{@n}" id="{concat('line_',@xml:id)}">
       <br/>
-      <!--
       <a href="#" class="addComment" title="Leave comment on this line" data-s="lb" data-n="{@xml:id}">[+]</a>
       <div class="commentForm" id="{concat('cf__lb__',@xml:id)}">
         <xsl:call-template name="commentForm"/>
@@ -67,7 +64,6 @@
       <xsl:text> </xsl:text>
       <a href="#" class="viewComment greyedOut" title="View comments on this line" data-s="lb" data-n="{@xml:id}">[?]</a>
       <xsl:text> </xsl:text>
-      -->
     </span>
   </xsl:template>
 
@@ -211,7 +207,6 @@
     </xsl:template>
   -->
 
-<!--
   <xsl:template name="commentForm">
     <select>
       <option value="">- Select a user -</option>
@@ -223,7 +218,6 @@
     <button class="saveComment">save</button>
     <button class="cancelComment">cancel</button>
   </xsl:template>
--->
 
   
 
