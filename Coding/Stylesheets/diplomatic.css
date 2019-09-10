@@ -1,0 +1,17 @@
+.lineBreak::after {
+  content: attr(data-number) ". ";
+  color: gray;
+  font-size: x-small;
+}
+
+.syntagm, .punct {
+  font-family: "Times New Roman", serif;
+}
+
+.chunk {
+  cursor: pointer;
+  /* background-color: inherit;
+  text-decoration: inherit;
+  color: inherit; */
+}
+
