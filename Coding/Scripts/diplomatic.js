@@ -103,15 +103,6 @@ $(function() {
         }
         $('#rightPanel').html(html);
    });
-/*
-  $('.addComment').on('click', function () {
-        console.log('go');
-        var s = $(this).attr('data-s');
-        var sid = $(this).attr('data-n');
-        sid = sid.replace(/\./g, '\\.');
-        $('#cf__' + s + '__' + sid).bPopup();
-    });
-     */
 
 });
 
