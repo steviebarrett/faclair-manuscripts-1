@@ -16,7 +16,7 @@
     <div class="container-fluid" style="height: 100%;">
       <div class="row" style="height: 100%;">
         <div class="col-2">
-          <div class="list-group list-group-flush overflow-auto" style="height: 100%;">
+          <div class="list-group list-group-flush" style="overflow: auto; height: 100%;">
 <?php
 $ms = new SimpleXMLElement("../../Transcribing/Transcriptions/transcription" . $_GET["t"] . ".xml", 0, true);
 $ms->registerXPathNamespace('tei', 'http://www.tei-c.org/ns/1.0');
