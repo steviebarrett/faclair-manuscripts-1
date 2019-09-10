@@ -14,9 +14,25 @@
     <div>
     <!--<div class="text" data-hand="{@hand}" data-n="{@n}" data-corresp="{@corresp}" data-type="{@type}" data-ms="{substring(/tei:TEI/@xml:id,2)}">-->  
       <div><small class="text-muted">[start of Text <xsl:value-of select="@n"/>]</small></div>
-      <a href="#" class="addComment" title="Leave comment on this text" data-s="div" data-n="{@n}">[+]</a>
-      <div class="commentForm" id="cf__div__{@n}">
-        <xsl:call-template name="commentForm"/>
+      <button type="button" data-toggle="modal" data-target="#cf__div__{@n}" class="addComment" title="Leave comment on this text" data-s="div" data-n="{@n}">[+]</button>
+      <div class="modal fade commentForm" tabindex="-1" role="dialog" aria-hidden="true" id="cf__div__{@n}">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Comment</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="close">
+                <span aria-hidden="true"></span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <xsl:call-template name="commentForm"/>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">close</button>
+              <button type="button" class="btn btn-primary">save</button>
+            </div>
+          </div>
+        </div>
       </div>
       <xsl:text> </xsl:text>
       <a href="#" class="viewComment greyedOut" title="View comments on this text" data-s="div" data-n="{@n}">[?]</a>
@@ -57,9 +73,25 @@
   <xsl:template match="tei:lb">
     <span class="lineBreak" data-number="{@n}" id="{concat('line_',@xml:id)}">
       <br/>
-      <a href="#" class="addComment" title="Leave comment on this line" data-s="lb" data-n="{@xml:id}">[+]</a>
-      <div class="commentForm" id="{concat('cf__lb__',@xml:id)}">
-        <xsl:call-template name="commentForm"/>
+      <button type="button" data-toggle="modal" data-target="#{concat('cf__lb__',@xml:id)}" title="Leave comment on this line" data-s="lb" data-n="{@xml:id}">[+]</button>
+      <div class="modal fade commentForm" tabindex="-1" role="dialog" aria-hidden="true" id="{concat('cf__lb__',@xml:id)}">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Comment</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="close">
+                <span aria-hidden="true"></span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <xsl:call-template name="commentForm"/>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">close</button>
+              <button type="button" class="btn btn-primary">save</button>
+            </div>
+          </div>
+        </div>
       </div>
       <xsl:text> </xsl:text>
       <a href="#" class="viewComment greyedOut" title="View comments on this line" data-s="lb" data-n="{@xml:id}">[?]</a>
@@ -215,8 +247,8 @@
       <option value="wg">Willie</option>
     </select>
     <textarea rows="7" cols="40"></textarea><br/><br/>
-    <button class="saveComment">save</button>
-    <button class="cancelComment">cancel</button>
+    <!--button class="saveComment">save</button>
+    <button class="cancelComment">cancel</button-->
   </xsl:template>
 
   

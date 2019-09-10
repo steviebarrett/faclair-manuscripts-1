@@ -5,6 +5,7 @@ $(function() {
         Show/hide comment form
      */
     $('.addComment').on('click', function () {
+        return;
         console.log('go');
         var s = $(this).attr('data-s');
         var sid = $(this).attr('data-n');
