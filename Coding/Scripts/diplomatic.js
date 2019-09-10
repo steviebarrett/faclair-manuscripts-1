@@ -134,7 +134,7 @@ $(function() {
     else {
      */
     html += partOfSpeech(span); 
-    html += syntax(span); 
+    html += structure(span); 
       /*
             if ($(span).attr('data-headword')) {
                 html += '<li>is a form of the headword ';
@@ -250,7 +250,7 @@ $(function() {
     return html;
   }
   
-  function syntax(span) {
+  function structure(span) {
     html = '';
     if ($(span).children('.syntagm').length>1) {
       html += '<li>is a syntactically complex form containing the following elements:';
