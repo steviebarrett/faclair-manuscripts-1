@@ -1,11 +1,16 @@
+
 $(function() {
   
     $('.indexHeadword').click(function(){
       $('#midl').animate({
         scrollTop: 0
       },0);
-      $('.syntagm').css('background-color', 'inherit');
-      $('[data-headword="'+ $(this).attr('data-uri') + '"]').css('background-color', 'yellow');
+      $('.syntagm').css({'background-color': 'inherit', 'color': 'inherit'});
+      $('.indexHeadword').css({'background-color': 'inherit', 'color': 'inherit'});
+      
+      $('[data-headword="'+ $(this).attr('data-uri') + '"]').css({'background-color': 'red', 'color': 'white'});
+      $(this).css('color', 'red');
+      
       var x = $('[data-headword="'+ $(this).attr('data-uri') + '"]').first();
       //alert(x.offset().top);
       $('#midl').animate({
@@ -14,18 +19,41 @@ $(function() {
       return null;
     });
     
+  $('.page').click(function(e){
+        e.stopImmediatePropagation();   //prevents outer link (e.g. word across pages) from overriding this one
+        //$('.chunk, .gapDamageDiplo').css('background-color', 'inherit');
+        var html = '';
+        var url = $(this).attr('data-facs');
+        var regex = /^((http[s]?|ftp):\/)?\/?([^:\/\s]+)((\/\w+)*\/)([\w\-\.]+[^#?\s]+)(.*)?(#[\w\-]+)?$/
+        var urlElems = regex.exec(url);
+        if (urlElems[3] == 'cudl.lib.cam.ac.uk') {  //complex case: write the viewer code
+            var paramElems = urlElems[6].split('/');
+            var mssNo = paramElems[0];
+            var pageNo = paramElems[1];
+            html = "<div style='position: relative; width: 100%; padding-bottom: 80%;'>";
+            html += "<iframe type='text/html' width='600' height='410' style='position: absolute; width: 100%; height: 100%;'";
+            html += " src='https://cudl.lib.cam.ac.uk/embed/#item="+mssNo+"&page="+pageNo+"&hide-info=true'";
+            html += " frameborder='0' allowfullscreen='' onmousewheel=''></iframe></div>";
+        } else {    //simple case: just stick the url in an image tag
+            html = '<img width="100%" src="';
+            html += url;
+            html += '"/>'
+        }
+        $('#rhs').html(html);
+    });  
+    
   $('.chunk').hover(
         function(){$(this).css('text-decoration', 'underline');},
         function(){$(this).css('text-decoration', 'inherit');}
     );
 
   $('.chunk').click(function(){
-    //alert($(this).text());
+    $('.chunk').css('background-color', 'inherit');
+    $(this).css('background-color', 'yellow');
     $('#rhs').text($(this).text());
     return null;
         var prevCorresp = '';
-        $('.chunk, .gapDamageDiplo').css('background-color', 'inherit');
-        $(this).css('background-color', 'yellow');
+        
         //$('#headword').text(clean($(this).text()));
         html = '<h1>';
         this2 = $(this).clone();
