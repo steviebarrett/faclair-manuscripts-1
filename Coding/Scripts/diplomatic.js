@@ -1,26 +1,19 @@
-
 $(function() {
   
-    $('.indexHeadword').click(function(){
-      $('#midl').animate({
-        scrollTop: 0
-      },0);
-      $('.syntagm').css({'background-color': 'inherit', 'color': 'inherit'});
-      $('.indexHeadword').css({'background-color': 'inherit', 'color': 'inherit'});
-      
-      $('[data-headword="'+ $(this).attr('data-uri') + '"]').css({'background-color': 'red', 'color': 'white'});
-      $(this).css('color', 'red');
-      
-      var x = $('[data-headword="'+ $(this).attr('data-uri') + '"]').first();
-      //alert(x.offset().top);
-      $('#midl').animate({
-        scrollTop: x.offset().top - 100
-      },500);
-      return null;
-    });
-    
+  $('.indexHeadword').click(function(){
+    $('#midl').animate({scrollTop: 0},0);
+    $('.syntagm').css({'color': 'inherit'});
+    $('#rhs').html('');
+    $('.indexHeadword').css({'color': 'inherit'});
+    $('[data-headword="'+ $(this).attr('data-uri') + '"]').css({'color': 'red'});
+    $(this).css('color', 'red');
+    var x = $('[data-headword="'+ $(this).attr('data-uri') + '"]').first();
+    $('#midl').animate({scrollTop: x.offset().top - 100},500);
+    return null;
+  });
+
   $('.page').click(function(e){
-        e.stopImmediatePropagation();   //prevents outer link (e.g. word across pages) from overriding this one
+    e.stopImmediatePropagation();   //prevents outer link (e.g. word across pages) from overriding this one
         //$('.chunk, .gapDamageDiplo').css('background-color', 'inherit');
         var html = '';
         var url = $(this).attr('data-facs');
@@ -39,19 +32,19 @@ $(function() {
             html += url;
             html += '"/>'
         }
-        $('#rhs').html(html);
-    });  
+    $('#rhs').html(html);
+  });  
     
   $('.chunk').hover(
-        function(){$(this).css('text-decoration', 'underline');},
-        function(){$(this).css('text-decoration', 'inherit');}
-    );
+    function(){$(this).css('text-decoration', 'underline');},
+    function(){$(this).css('text-decoration', 'inherit');}
+  );
 
   $('.chunk').click(function(){
     $('.chunk').css('background-color', 'inherit');
     $(this).css('background-color', 'yellow');
-    $('#rhs').text($(this).text());
-    return null;
+    html = '<h1>' + $(this).text() + '</h1>';
+    /* 
         var prevCorresp = '';
         
         //$('#headword').text(clean($(this).text()));
@@ -62,8 +55,11 @@ $(function() {
         html += reindex(this2);
         html = html.replace(/\n/g,'');
         html += '</h1><ul>';
-        html += makeSyntax($(this),false);
-        html += '</ul>';
+         */
+    html += '<ul>';
+    html += makeSyntax($(this),false);
+    html += '</ul>';
+    /*
         if ($(this).find('.expansion, .ligature').length>0) {
             html += 'Contains, or is formed from, the following scribal abbreviations and/or ligatures:<ul>';
             $(this).find('.expansion, .ligature').each(function() {
@@ -89,11 +85,13 @@ $(function() {
             });
             html += '</ul>';
         }
+         */
         /*
         $('#damagedInfo').html(getDamage($(this)));
         $('#deletionInfo').html(getDeletions($(this)));
         $('#additionInfo').html(getAdditions($(this)));
          */
+         /* 
         if ($(this2).attr('data-hand') != undefined) {
             var hands = [$(this2).attr('data-hand')];
             $(this2).find('.handShift').each(function() {
@@ -101,8 +99,191 @@ $(function() {
             });
             html += getHandInfoDivs(hands);    //get the hand info if available
         }
-        $('#rightPanel').html(html);
-   });
+         */
+    $('#rhs').html(html);
+  });
+
+  function makeSyntax(span, rec) {
+    html = '';
+    if (rec) {
+      html += '<ul>';
+    }
+    /*
+        //SB note the searchHeadword() call here. Just for testing and will be moved.
+        if (rec) { html += '<span onclick="searchHeadword(\'' + $(span).attr('data-headword') + '\',\'' + $(span).attr('data-edil') + '\')" style="color:red;">' + clean($(span).text()) + '</span><ul>'; }
+        var handIds = [$(span).attr('data-hand')];;
+        html += getHandInfoDivs(handIds);
+        html += '<li>was written by ';
+        html += '<a href="#" onclick="$(\'#handInfo_'+ handIds[0] + '\').bPopup();">' + getHandInfo($(span).attr('data-hand')) + '</a>';
+        html += '</li>';
+        //a handShift within a word
+        $(span).find('.handShift').each(function() {
+            html += '<li>contains a hand shift to ';
+            html += '<a href="#" onclick="$(\'#handInfo_'+ $(this).attr('data-hand') + '\').bPopup();">' + getHandInfo($(this).attr('data-hand')) + '</a>';
+            html += '</li>';
+        });
+    */
+    if ($(span).hasClass('name')) html += onomastics(span);
+    /*
+    if ($(span).attr('xml:lang') || ($(span).hasClass('name') && $(span).children('.word').attr('xml:lang')==1 && $(span).children('.word').attr('xml:lang'))) {
+      html += '<li>is not a Gaelic word: ';
+      if ($(span).attr('xml:lang')) { html += decode($(span).attr('xml:lang')); }
+      else { html += decode($(span).children('.word').attr('xml:lang')); }
+      html += '</li>';
+    }
+    else {
+     */
+    html += partOfSpeech(span); 
+    html += syntax(span); 
+      /*
+            if ($(span).attr('data-headword')) {
+                html += '<li>is a form of the headword ';
+                html += '<a href="' + $(span).attr('data-edil') + '" target="_new">' + $(span).attr('data-headword') + '</a>';
+                if ($(span).attr('data-edil').indexOf('dil.ie')>0) { html += ' (eDIL)'; }
+                else if ($(span).attr('data-edil').indexOf('faclair.com')>0) {
+                    html += ' (Dwelly)';
+                }
+                $.ajaxSetup({async: false});
+                $.getJSON('../../Coding/Scripts/ajax.php?action=getDwelly&edil=' + $(span).attr('data-edil'), function (g) {
+                    if (g.hw != '') { html += ', <a href="' + g.url + '" target="_new">' + g.hw + '</a> (Dwelly)'; }
+                });
+                html += '</li>';
+            }
+            else if ($(span).hasClass('name') && $(span).children('.word').length==1 && $(span).children('.word').attr('data-headword')) { // add extra headwords here too?
+                html += '<li>is a form of the headword ';
+                html += '<a href="' + $(span).children('.word').attr('data-edil') + '" target="_new">' + $(span).children('.word').attr('data-headword') + '</a>';
+                if ($(span).children('.word').attr('data-edil').indexOf('dil.ie')>0) { html += ' (eDIL)'; }
+                else if ($(span).children('.word').attr('data-edil').indexOf('faclair.com')>0) {
+                    html += ' (Dwelly)';
+                }
+                $.ajaxSetup({async: false});
+                $.getJSON('../../Coding/Scripts/ajax.php?action=getDwelly&edil=' + $(span).children('.word').attr('data-edil'), function (g) {
+                    if (g.hw != '') { html += ', <a href="' + g.url + '" target="_new">' + g.hw + '</a> (Dwelly)'; }
+                });
+                html += '</li>';
+            }
+             */
+             /*
+      
+            if($(span).attr('data-lemmasl')) {
+                html += '<li>appears in the HDSG/RB collection of headwords: <a href="' + $(span).attr('data-slipref') + '" target="_new">' + $(span).attr('data-lemmasl') + '</a></li>';
+            }
+        }
+
+        if ($(span).find('.insertion').length != 0) {
+            html += getAdditions(span);
+        }
+        
+        */
+    if (rec) {
+      html += '</ul>';
+    }
+    return html;
+
+        /*
+        if (!rec && $(span).find('.suppliedDiplo').length>0) {
+          html += '<li>contains editorial supplements:<ul>';
+          //html += $(span).text();
+          $(span).find('.suppliedDiplo').each(function() {
+            html = html + '<li><span style="color: green;">' + $(this).text() + '</span> ';
+            html += '</li>';
+          });
+          html += '</ul></li>';
+        }
+        if (!rec && $(span).find('.suppliedSemi').length>0) {
+          html += '<li>contains the following supplied sequences:<ul>';
+          $(span).find('.suppliedSemi').each(function() {
+            html = html + '<li><span style="color: green;">[</span>' + $(this).text() + '<span style="color: green;">]</span> ';
+            html += '</li>';
+          });
+          html += '</ul></li>';
+        }
+
+        if (!rec && $(span).find('.damagedSemi').length>0) {
+          html += '<li>contains the following damaged sequences:<ul>';
+          $(span).find('.damagedSemi').each(function() {
+            html = html + '<li><span style="color: green;">[</span>' + $(this).text() + '<span style="color: green;">]</span> ';
+            html += '</li>';
+          });
+          html += '</ul></li>';
+        }
+
+        else if (!rec && $(span).find('.obscureTextSemi').length>0) {
+          html += '<li>contains the following sequences of obscured text:<ul>';
+          $(span).find('.obscureTextSemi').each(function() {
+            html = html + '<li><span style="color: green;">[</span>' + $(this).text() + '<span style="color: green;">]</span> ';
+            html += '</li>';
+          });
+          html += '</ul></li>';
+        }
+        else if (!rec && $(span).parents('.obscureTextSemi').length>0) {
+          html += '<li>part of the following sequence of obscured text:<ul>';
+          html = html + '<li><span style="color: green;">[</span>' + $(span).parents('.obscureTextSemi').text() + '<span style="color: green;">]</span> ';
+          html += '</li>';
+          html += '</ul></li>';
+        }
+        html += '</ul>';
+         */
+  }
+
+  function onomastics(span){
+    html = '<li>is ';
+    type = $(span).attr('data-nametype');
+    if (type=='personal') html += 'an anthroponym';
+    else if (type=='place') { 
+      html += 'a toponym';
+        /* 
+        if ($(span).attr('data-corresp') != '') {
+          html += '<li>further information on this placename can be found <a href="' + $(span).attr('data-corresp') + '" target="_blank">here</a></li>';
+        }
+        */
+    }
+    else if (type=='population') html += 'a demonym';
+    else html += 'a name';
+    return html + '</li>';
+  }
+  
+  function partOfSpeech(span) {
+    html = '';
+    if ($(span).attr('data-pos')) html += '<li>is a ' + $(span).attr('data-pos') + '</li>';
+    else if ($(span).hasClass('name') && $(span).children('.word').length==1 && $(span).children('.word').children('.word').length==0) html += '<li>is a ' + $(span).children('.word').attr('data-pos') + '</li>';
+    return html;
+  }
+  
+  function syntax(span) {
+    html = '';
+    if ($(span).children('.syntagm').length>1) {
+      html += '<li>is a syntactically complex form containing the following elements:';
+      html += '<ul>';
+      $(span).children('.syntagm').each(function() {
+          html = html + '<li>' + makeSyntax($(this),true) + '</li>';
+      });
+      html += '</ul>';
+      html += '</li>';
+    }
+    /* }
+         else if ($(span).children('.syntagm').length==1 && $(span).children('.syntagm').children('.syntagm').length>0) {
+           htmlx += '<li>is a syntactically complex form containing the following elements:';
+           htmlx += '<ul>';
+           $(span).children('.syntagm').children('.syntagm').each(function() {
+             htmlx = htmlx + '<li>' + makeSyntax($(this),true) + '</li>';
+           });
+           htmlx += '</ul>';
+           htmlx += '</li>';
+         }
+         else if ($(span).children('.addition, .deletion').length>0) {
+           htmlx += '<li>is a syntactically complex form containing the following elements:';
+           htmlx += '<ul>';
+           $(span).children('.syntagm').add($(span).children('.addition').add($(span).children('.deletion')).children('.syntagm')).each(function() {
+             htmlx = htmlx + '<li>' + makeSyntax($(this),true) + '</li>';
+           });
+           htmlx += '</ul>';
+           htmlx += '</li>';
+         }
+          */
+    else html += '<li>is a syntactically simple form</li>';
+    return html;
+  }
 
 });
 
