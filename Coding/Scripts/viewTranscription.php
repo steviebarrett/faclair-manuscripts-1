@@ -19,6 +19,7 @@
   </head>
   <body style="height: 100%;">
     <div class="container-fluid" style="height: 100%;">
+      <!-- comment form markup -->
       <div class="modal fade commentForm" id="commentForm" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -37,6 +38,7 @@
                     </select>
                     <textarea rows="7" cols="40" id="commentContent"></textarea><br/><br/>
                 </div>
+                <input type="hidden" id="docid" value="{$_GET["t"]}"/>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">close</button>
                     <button type="button" class="btn btn-primary saveComment">save</button>
