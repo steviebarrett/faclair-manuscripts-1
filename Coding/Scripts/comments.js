@@ -1,7 +1,7 @@
 
 $(function() {
 
-    //variables to hold the section type and section ID
+    //local variables to hold the section type and section ID
     var s, sid;
     var docid = 'T' + $('#docid').val();   //the MS ID
 
