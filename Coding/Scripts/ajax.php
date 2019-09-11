@@ -6,6 +6,11 @@
  * Time: 08:33
  */
 
+define("DB_HOST", "localhost");
+define("DB_NAME", "dasg");
+define("DB_USER", "dasg");
+define("DB_PASSWORD", "Dcraobh2106!");
+
 switch ($_GET["action"]) {
 
     case "saveComment":
@@ -274,5 +279,44 @@ SQL;
             "from" => (string)$hand->date["from"], "to" => (string)$hand->date["to"],
             "min" => (string)$hand->date["min"], "max" => (string)$hand->date["max"], "region" => (string)$hand->region,
             "notes" => $notes);
+    }
+}
+
+class DB
+{
+    private static $databaseHandle;
+    const ERROR_REPORTING = true;
+
+    private static function connect($dbName)
+    {
+        try {
+            self::$databaseHandle = new PDO(
+                "mysql:host=" . DB_HOST . ";dbname=" . $dbName . ";charset=utf8;", DB_USER, DB_PASSWORD
+            );
+        } catch (PDOException $e){
+            echo $e->getMessage();
+        }
+    }
+
+    public static function getDatabaseHandle($dbName = DB_NAME)
+    {
+        self::connect($dbName);
+
+        if (self::ERROR_REPORTING)
+            self::$databaseHandle->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        self::$databaseHandle->query("SET NAMES utf8");
+
+        return self::$databaseHandle;
+    }
+
+    public static function getLastId($dbName, $tableName)
+    {
+        $dbh = self::getDatabaseHandle($dbName);
+        $stmt = $dbh->prepare("SELECT `AUTO_INCREMENT` FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = '{$dbName}' AND TABLE_NAME   = '{$tableName}'");
+        $stmt->execute();
+        $lastId = $stmt->fetch(PDO::FETCH_NUM);
+        $lastId = $lastId[0];
+        return $lastId;
     }
 }
