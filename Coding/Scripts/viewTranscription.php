@@ -38,7 +38,7 @@
                     </select>
                     <textarea rows="7" cols="40" id="commentContent"></textarea><br/><br/>
                 </div>
-                <input type="hidden" id="docid" value="{$_GET["t"]}"/>
+                <input type="hidden" id="docid" value="<?php echo $_GET["t"]; ?>"/>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">close</button>
                     <button type="button" class="btn btn-primary saveComment">save</button>
