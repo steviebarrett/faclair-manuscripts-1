@@ -19,6 +19,31 @@
   </head>
   <body style="height: 100%;">
     <div class="container-fluid" style="height: 100%;">
+      <div class="modal fade commentForm" id="commentForm" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Comment</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="close">
+                        <span aria-hidden="true"></span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <select>
+                        <option value="">- Select a user -</option>
+                        <option value="et">Eystein</option>
+                        <option value="mm">Martina</option>
+                        <option value="wg">Willie</option>
+                    </select>
+                    <textarea rows="7" cols="40"></textarea><br/><br/>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">close</button>
+                    <button type="button" class="btn btn-primary saveComment">save</button>
+                </div>
+            </div>
+        </div>
+      </div>
       <div class="row" style="height: 100%;">
         <div class="col-2">
           <div class="list-group list-group-flush" style="overflow: auto; height: 100%;">

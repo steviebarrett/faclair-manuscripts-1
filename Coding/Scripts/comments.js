@@ -1,16 +1,16 @@
 
 $(function() {
 
+    //variables to hold the section type and section ID
+    var s, sid;
+
     /*
-        Show/hide comment form
+        Set the variables for comment saving
      */
     $('.addComment').on('click', function () {
-        return;
-        console.log('go');
-        var s = $(this).attr('data-s');
-        var sid = $(this).attr('data-n');
-        sid = sid.replace(/\./g, '\\.');
-        $('#cf__' + s + '__' + sid).popover();
+        s = $(this).attr('data-s');
+        sid = $(this).attr('data-n');
+     //   sid = sid.replace(/\./g, '\\.');
     });
 
     /*
@@ -18,10 +18,10 @@ $(function() {
      */
     $('.saveComment').on('click', function() {
         var docid = $('html').attr('data-docid');   //the MS ID
-        var formId = $(this).parent().attr('id');
-        var parts = formId.split('__');
-        var s = parts[1];                           //the section type (e.g. div or lb)
-        var sid = parts[2];                         //the section ID
+       // var formId = $(this).parent().attr('id');
+       // var parts = formId.split('__');
+       // var s = parts[1];                           //the section type (e.g. div or lb)
+       // var sid = parts[2];                         //the section ID
         var escapedSid = sid.replace(/\./g, '\\.');
         //$('a[data-s='+s+'][data-n='+escapedSid+'][class="viewComment"]').show();   //show the viewComment link
         var user = $(this).siblings('select').val();
@@ -43,7 +43,7 @@ $(function() {
         //reset the form elements
         $(this).siblings('select').val(''); //reset the user
         $(this).siblings('textarea').val(''); //reset the comment
-        $(this).parent().bPopup().close();   //close the popup
+        $('#commentForm').modal('toggle');   //close the popup
     });
 
     /*
