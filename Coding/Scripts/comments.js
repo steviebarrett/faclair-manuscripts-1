@@ -3,6 +3,7 @@ $(function() {
 
     //variables to hold the section type and section ID
     var s, sid;
+    var docid = 'T' + $('#docid').val();   //the MS ID
 
     /*
         Set the variables for comment saving
@@ -10,20 +11,13 @@ $(function() {
     $('.addComment').on('click', function () {
         s = $(this).attr('data-s');
         sid = $(this).attr('data-n');
-     //   sid = sid.replace(/\./g, '\\.');
     });
 
     /*
         Save a comment
      */
     $('.saveComment').on('click', function() {
-        var docid = 'T' + $('#docid').val();   //the MS ID
-       // var formId = $(this).parent().attr('id');
-       // var parts = formId.split('__');
-       // var s = parts[1];                           //the section type (e.g. div or lb)
-       // var sid = parts[2];                         //the section ID
         var escapedSid = sid.replace(/\./g, '\\.');
-        //$('a[data-s='+s+'][data-n='+escapedSid+'][class="viewComment"]').show();   //show the viewComment link
         var user = $('#commentUser').val();
         var comment = $('#commentContent').val();
         var feedbackHtml = '';
@@ -41,8 +35,8 @@ $(function() {
                 updateComments(docid, s, sid);              //update the comments list to the current section
             });
         //reset the form elements
-        $(this).siblings('select').val(''); //reset the user
-        $(this).siblings('textarea').val(''); //reset the comment
+        $('#commentUser').val(''); //reset the user
+        $('#commentContent').val(''); //reset the comment
         $('#commentForm').modal('toggle');   //close the popup
     });
 
@@ -50,9 +44,9 @@ $(function() {
         Cancel comment entry
      */
     $('.cancelComment').on('click', function () {
-        $(this).siblings('select').val(''); //reset the user
-        $(this).siblings('textarea').val(''); //reset the comment
-        $(this).parent().bPopup().close();   //close the popup
+        $('#commentUser').val(''); //reset the user
+        $('#commentContent').val(''); //reset the comment
+        $('#commentForm').modal('toggle');   //close the popup
     });
 
     /*
@@ -86,7 +80,6 @@ $(function() {
         Get comments
      */
     $('.viewComment').on('click', function() {
-        var docid = $('html').attr('data-docid');   //the MS ID
         var s = $(this).attr('data-s');             //the section type (e.g. div/lb)
         var sid = $(this).attr('data-n');           //the section ID
         updateComments(docid, s, sid);
@@ -95,7 +88,6 @@ $(function() {
     /*
         Flag the sections that have comments
      */
-    var docid = $('html').attr('data-docid');   //the MS ID
     $.getJSON('ajax.php?action=getPopulatedSections&docid='+docid, function(data) {
         $.each(data, function(k, v) {
             $.each(v, function (key, val) {

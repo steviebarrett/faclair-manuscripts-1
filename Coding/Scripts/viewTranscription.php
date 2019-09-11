@@ -40,7 +40,7 @@
                 </div>
                 <input type="hidden" id="docid" value="<?php echo $_GET["t"]; ?>"/>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">close</button>
+                    <button type="button" class="btn btn-secondary cancelComment" data-dismiss="modal">close</button>
                     <button type="button" class="btn btn-primary saveComment">save</button>
                 </div>
             </div>
