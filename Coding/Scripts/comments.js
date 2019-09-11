@@ -17,7 +17,7 @@ $(function() {
         Save a comment
      */
     $('.saveComment').on('click', function() {
-        var docid = $('#docid').val();   //the MS ID
+        var docid = 'T' + $('#docid').val();   //the MS ID
        // var formId = $(this).parent().attr('id');
        // var parts = formId.split('__');
        // var s = parts[1];                           //the section type (e.g. div or lb)
