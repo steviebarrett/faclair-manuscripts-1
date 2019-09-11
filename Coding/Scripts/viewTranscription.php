@@ -29,13 +29,13 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <select>
+                    <select id="commentUser">
                         <option value="">- Select a user -</option>
                         <option value="et">Eystein</option>
                         <option value="mm">Martina</option>
                         <option value="wg">Willie</option>
                     </select>
-                    <textarea rows="7" cols="40"></textarea><br/><br/>
+                    <textarea rows="7" cols="40" id="commentContent"></textarea><br/><br/>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">close</button>

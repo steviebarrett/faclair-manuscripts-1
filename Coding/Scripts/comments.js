@@ -24,8 +24,8 @@ $(function() {
        // var sid = parts[2];                         //the section ID
         var escapedSid = sid.replace(/\./g, '\\.');
         //$('a[data-s='+s+'][data-n='+escapedSid+'][class="viewComment"]').show();   //show the viewComment link
-        var user = $(this).siblings('select').val();
-        var comment = $(this).siblings('textarea').val();
+        var user = $('#commentUser').val();
+        var comment = $('#commentContent').val();
         var feedbackHtml = '';
         $.getJSON('ajax.php?action=saveComment&docid='+docid+'&s='+s+'&sid='+sid+'&user='+user+'&comment='+comment, function(data) {
             console.log(data);
