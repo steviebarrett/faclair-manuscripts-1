@@ -100,6 +100,8 @@ $(function() {
             html += getHandInfoDivs(hands);    //get the hand info if available
         }
          */
+    // hand info     
+    
     $('#rhs').html(html);
   });
 
@@ -108,21 +110,9 @@ $(function() {
     if (rec) {
       html += '<ul>';
     }
-    /*
-        //SB note the searchHeadword() call here. Just for testing and will be moved.
-        if (rec) { html += '<span onclick="searchHeadword(\'' + $(span).attr('data-headword') + '\',\'' + $(span).attr('data-edil') + '\')" style="color:red;">' + clean($(span).text()) + '</span><ul>'; }
-        var handIds = [$(span).attr('data-hand')];;
-        html += getHandInfoDivs(handIds);
-        html += '<li>was written by ';
-        html += '<a href="#" onclick="$(\'#handInfo_'+ handIds[0] + '\').bPopup();">' + getHandInfo($(span).attr('data-hand')) + '</a>';
-        html += '</li>';
-        //a handShift within a word
-        $(span).find('.handShift').each(function() {
-            html += '<li>contains a hand shift to ';
-            html += '<a href="#" onclick="$(\'#handInfo_'+ $(this).attr('data-hand') + '\').bPopup();">' + getHandInfo($(this).attr('data-hand')) + '</a>';
-            html += '</li>';
-        });
-    */
+    html += handInfo(span);
+    
+    
     if ($(span).hasClass('name')) html += onomastics(span);
     /*
     if ($(span).attr('xml:lang') || ($(span).hasClass('name') && $(span).children('.word').attr('xml:lang')==1 && $(span).children('.word').attr('xml:lang'))) {
@@ -226,6 +216,29 @@ $(function() {
          */
   }
 
+function handInfo(span) {
+  html = '';
+  var h;
+  h = $(span).prevAll('.handshift').first().attr('data-hand');
+  if (typeof h == 'undefined') {
+    h = $(span).parents('.text').first().attr('data-hand');
+  }
+  var handIds = [h];
+  html += getHandInfoDivs(handIds);
+  html += '<li>was written by ';
+  html += '<a href="#" onclick="alert(\'clicked\');$(\'#handInfo_' + handIds[0] +'\').show();">' + getHandInfo(h) + '</a>';
+  html += '</li>';
+  //a handShift within a word
+  /* 
+  $(span).find('.handShift').each(function() {
+    html += '<li>contains a hand shift to ';
+    html += '<a href="#" onclick="$(\'#handInfo_'+ $(this).attr('data-hand') + '\').bPopup();">' + getHandInfo($(this).attr('data-hand')) + '</a>';
+    html += '</li>';
+  });
+  */
+  return html;  
+}
+
   function onomastics(span){
     html = '<li>is ';
     type = $(span).attr('data-nametype');
@@ -285,7 +298,75 @@ $(function() {
     return html;
   }
 
+
+/*
+      Show/hide marginal notes
+      Added by SB
+     */
+    $('.marginalNoteLink').on('click', function() {
+        var id = $(this).attr('data-id').replace(/\./g, '\\.');
+        $('#'+id).toggle();
+    });
+
 });
+
+function getHandInfo(handId) {
+    var name = '';
+    $.getJSON('ajax.php?action=getHandInfo&hand=' + handId, function (g) {
+        if (g.forename + g.surname != '') {
+            name = g.forename + ' ' + g.surname;
+        } else {
+            name = 'Anonymous (' + handId + ')';
+        }
+    });
+    return name;
+}
+/*
+    Uses an AJAX request to fetch the detailed hand info for an array of hand IDs
+    Returns an HTML formatted string
+ */
+function getHandInfoDivs(handIds) {
+    var html = '';
+    $.ajaxSetup({async: false});
+    for (i=0;i<(handIds.length);i++) {
+        html += '<div id="handInfo_' + handIds[i] + '" style="display:none; overflow: scroll; width: 40em; height: 20em; background: white; padding: 10px;">';
+        $.getJSON('ajax.php?action=getHandInfo&hand=' + handIds[i], function (g) {
+            html += '<p>';
+            if (g.forename + g.surname != '') {
+                html += g.forename + ' ' + g.surname;
+            } else {
+                html += 'Anonymous (' + handIds[i] + ')';
+            }
+            html += '</p><p>';
+            html += g.from;
+            if (g.min != g.from) {
+                html += '/' + g.min;
+            }
+            html += ' – ' + g.to;
+            if (g.max != g.to) {
+                html += '/' + g.max;
+            }
+            html += '</p><p>'
+            html += g.region;
+            html += '</p>';
+            for (j = 0; j < g.notes.length; j++) {
+                var xml = $.parseXML(g.notes[j]);
+                $xml = $(xml);
+                $xml.find('p').each(function (index, element) {
+                    $(element).find('hi').each(function () {
+                        $(this).replaceWith(function () {
+                            return $('<em />', {html: $(this).html()});
+                        });
+                    });
+                    html += '<p>' + $(element).html() + '</p>';
+                });
+            }
+
+        });
+        html += '</div>';
+    }
+    return html;
+}
 
 
 

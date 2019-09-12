@@ -11,8 +11,7 @@
   </xsl:template>
 
   <xsl:template match="tei:div">
-    <div>
-    <!--<div class="text" data-hand="{@hand}" data-n="{@n}" data-corresp="{@corresp}" data-type="{@type}" data-ms="{substring(/tei:TEI/@xml:id,2)}">-->  
+    <div class="text" data-hand="{@hand}" data-n="{@n}" data-corresp="{@corresp}" data-type="{@type}" data-ms="{substring(/tei:TEI/@xml:id,2)}"> 
       <div><small class="text-muted">[start of Text <xsl:value-of select="@n"/>]</small></div>
       <button type="button" data-toggle="modal" data-target="#commentForm" class="addComment" title="Leave comment on this text" data-s="div" data-n="{@n}">[+]</button>
       <xsl:text> </xsl:text>
@@ -39,11 +38,9 @@
       </div>
   </xsl:template>
 
-  <!--
   <xsl:template match="tei:handShift">
-    <div class="handshift" data-hand="{@new}"><small class="text-muted">[handshift]</small></div>
+    <span class="handshift" data-hand="{@new}"><small class="text-muted">[hs]</small></span>
   </xsl:template>
-  -->
   
   <xsl:template match="tei:p">
     <p>
@@ -80,10 +77,10 @@
       <xsl:attribute name="data-nametype">
         <xsl:value-of select="@type"/>
       </xsl:attribute>
-      <!--
       <xsl:attribute name="data-corresp">
         <xsl:value-of select="@corresp"/>
       </xsl:attribute>
+      <!--
       <xsl:attribute name="data-hand">
         <xsl:value-of select="preceding::tei:handShift[1]/@new"/>
       </xsl:attribute>
@@ -97,10 +94,10 @@
       <xsl:attribute name="data-nametype">
         <xsl:value-of select="@type"/>
       </xsl:attribute>
-      <!--
       <xsl:attribute name="data-corresp">
         <xsl:value-of select="@corresp"/>
       </xsl:attribute>
+      <!--
       <xsl:attribute name="data-hand">
         <xsl:value-of select="preceding::tei:handShift[1]/@new"/>
       </xsl:attribute>
@@ -171,7 +168,6 @@
     <xsl:attribute name="data-pos">
       <xsl:value-of select="@pos"/>
     </xsl:attribute>
-    <!--
     <xsl:attribute name="data-edil">
       <xsl:value-of select="@lemmaRef"/>
     </xsl:attribute>
@@ -181,7 +177,6 @@
     <xsl:attribute name="data-slipref">
       <xsl:value-of select="@slipRef"/>
     </xsl:attribute>
-    -->
   </xsl:template>
   
   <xsl:template match="tei:date | tei:c | tei:num">
@@ -201,29 +196,11 @@
     </xsl:template>
   -->
 
-<!-- shouldn't be needed anymore - SB
-  <xsl:template name="commentForm">
-    <select>
-      <option value="">- Select a user -</option>
-      <option value="et">Eystein</option>
-      <option value="mm">Martina</option>
-      <option value="wg">Willie</option>
-    </select>
-    <textarea rows="7" cols="40"></textarea><br/><br/>
-    <button class="saveComment">save</button>
-    <button class="cancelComment">cancel</button>
-  </xsl:template>
--->
-  
-
-
- 
-<!--
   <xsl:template match="tei:g">
     <xsl:choose>
-      <xsl:when test="starts-with(@ref,'l')">  ligature 
+      <xsl:when test="starts-with(@ref,'l')">  <!-- ligature -->
         <xsl:choose>
-          <xsl:when test="@corresp">   SB: added to handle corresp attributes in glyphs 
+          <xsl:when test="@corresp">   <!-- SB: added to handle corresp attributes in glyphs (non-continuous abbreviations) -->
             <span class="ligature corresp-{@corresp}" data-corresp="{@corresp}" data-glyphref="{@ref}" id="{generate-id(.)}">
               <xsl:apply-templates/>
             </span>
@@ -235,9 +212,9 @@
           </xsl:otherwise>
         </xsl:choose>
       </xsl:when>
-      <xsl:when test="../@cert">  expansion 
+      <xsl:when test="../@cert">  <!-- expansion -->
         <xsl:choose>
-          <xsl:when test="@corresp">   SB: added to handle corresp attributes in glyphs 
+          <xsl:when test="@corresp">   <!-- SB: added to handle corresp attributes in glyphs -->
             <span class="expansion corresp-{@corresp}" data-corresp="{@corresp}" data-cert="{../@cert}" data-glyphref="{@ref}" id="{generate-id(.)}">
               <xsl:apply-templates/>
             </span>
@@ -249,7 +226,7 @@
           </xsl:otherwise>
         </xsl:choose>
       </xsl:when>
-      <xsl:otherwise>  weird expansion 
+      <xsl:otherwise>  <!-- weird expansion -->
         <xsl:variable name="corresp" select="@corresp"/>
         <span class="expansion" data-cert="{preceding::tei:abbr[@corresp=$corresp]/@cert}" data-glyphref="{@ref}" id="{generate-id(.)}">
           <xsl:apply-templates/>
@@ -262,6 +239,7 @@
     <xsl:text> </xsl:text>
   </xsl:template>
 
+
   <xsl:template match="tei:pc[not(ancestor::tei:w)]">
     <span class="punct">
       <xsl:value-of select="."/>
@@ -269,7 +247,7 @@
   </xsl:template>
 
   <xsl:template match="tei:unclear[@reason='damage']">
-    <span class="unclearDamageDiplo" data-cert="{@cert}" data-resp="{@resp}">
+    <span class="unclearDamage" data-cert="{@cert}" data-resp="{@resp}">
       <xsl:attribute name="data-add">
         <xsl:apply-templates/>
       </xsl:attribute>
@@ -278,25 +256,25 @@
   </xsl:template>
 
   <xsl:template match="tei:unclear[@reason='text_obscure']">
-    <span class="unclearTextObscureDiplo" data-cert="{@cert}" data-resp="{@resp}">
+    <span class="unclearTextObscure" data-cert="{@cert}" data-resp="{@resp}">
       <xsl:apply-templates/>
     </span>
   </xsl:template>
 
   <xsl:template match="tei:unclear[@reason='char']">
-    <span class="unclearCharDiplo" data-cert="{@cert}" data-resp="{@resp}">
+    <span class="unclearChar" data-cert="{@cert}" data-resp="{@resp}">
       <xsl:apply-templates/>
     </span>
   </xsl:template>
 
   <xsl:template match="tei:unclear[@reason='interp_obscure']">
-    <span class="unclearInterpObscureDiplo" data-cert="{@cert}" data-resp="{@resp}">
+    <span class="unclearInterpObscure" data-cert="{@cert}" data-resp="{@resp}">
       <xsl:apply-templates/>
     </span>
   </xsl:template>
 
   <xsl:template match="tei:del">
-    <span class="deletionDiplo" data-hand="{@hand}">
+    <span class="deletion" data-hand="{@hand}">
       <xsl:apply-templates/>
     </span>
   </xsl:template>
@@ -314,7 +292,7 @@
   </xsl:template>
 
   <xsl:template match="tei:supplied">
-    <span class="suppliedDiplo">
+    <span class="supplied">
       <xsl:text>[</xsl:text>
       <xsl:apply-templates/>
       <xsl:text>]</xsl:text>
@@ -330,13 +308,11 @@
       <xsl:apply-templates select="tei:sic"/>
     </span>
   </xsl:template>
-  -->
 
   <!-- ignore notes in diplomatic edition - Added by SB -->
   <xsl:template match="tei:note"/>
 
   <!-- Marginal notes - Added by SB-->
-  <!--
   <xsl:template match="tei:seg[@type='margNote']">
     <xsl:text> </xsl:text>
     <a href="#" class="marginalNoteLink" data-id="{@xml:id}">m</a>
@@ -344,14 +320,19 @@
       <xsl:apply-templates/>
     </div>
   </xsl:template>
-  -->
-  <!--
+
   <xsl:template match="tei:gap">
-    <span class="gapDamageDiplo" data-quantity="{@quantity}" data-unit="{@unit}" data-resp="{@resp}">
+    <span class="gapDamage" data-quantity="{@quantity}" data-unit="{@unit}" data-resp="{@resp}">
       <xsl:text> [</xsl:text><xsl:value-of select="@quantity"></xsl:value-of><xsl:text> missing folio(s)] </xsl:text>
     </span>
   </xsl:template>
-  -->
 
+  <xsl:template match="tei:head/tei:title">
+    <xsl:text> </xsl:text>
+    <strong>
+      <xsl:apply-templates/>
+    </strong>
+    <xsl:text> </xsl:text>
+  </xsl:template>
 
 </xsl:stylesheet>

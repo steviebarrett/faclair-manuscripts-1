@@ -15,6 +15,59 @@
   color: inherit; */
 }
 
+.expansion {
+  font-style: italic;
+}
+
+.insertion {
+  font-size: small;
+  vertical-align: baseline;
+  position: relative;
+  top: -0.4em;
+}
+
+.gloss::before {
+  content: "[gl.]";
+}
+
+.deletion {
+  text-decoration: line-through;
+  text-decoration-style: double;
+}
+
+.gapDamage {
+  color: gray;
+}
+
+.damaged {
+  color: black;
+  background-color: black;
+}
+
+.unclearDamage {
+  color: gray;
+}
+
+.unclearTextObscure, .unclearChar {
+  color: black;
+  background-color: lightgray;
+}
+
+.marginalNoteLink {
+  font-size: small;
+  text-decoration: line-through;
+  vertical-align: sub;
+}
+
+.marginalNote {
+  margin: -15px 0 5px 20px;
+  display: none;
+}
+
+.supplied {
+  display: none;
+}
+
 /*
   Comments
  */
