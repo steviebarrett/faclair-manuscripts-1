@@ -332,8 +332,7 @@ function getHandInfoDivs(handIds) {
         html += '<div class="modal" tabindex="-1" role="dialog" id="handInfo_' + handIds[i] + '">\n' +
             '  <div class="modal-dialog" role="document">\n' +
             '    <div class="modal-content">\n' +
-            '      <div class="modal-body">\n' +
-            '        <p>Modal body text goes here.</p>\n';
+            '      <div class="modal-body">\n';
         $.getJSON('ajax.php?action=getHandInfo&hand=' + handIds[i], function (g) {
             html += '<p>';
             if (g.forename + g.surname != '') {
@@ -369,7 +368,6 @@ function getHandInfoDivs(handIds) {
         });
         html += '      </div>\n' +
             '      <div class="modal-footer">\n' +
-            '        <button type="button" class="btn btn-primary">Save changes</button>\n' +
             '        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>\n' +
             '      </div>\n' +
             '    </div>\n' +
