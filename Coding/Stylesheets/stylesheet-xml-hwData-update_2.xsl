@@ -59,7 +59,7 @@
 							</xsl:attribute>
 							<xsl:attribute name="n">
 								<xsl:value-of
-									select="count(//tei:w[not(descendant::tei:w) and not(@xml:lang) and not(@type = 'data') and @lemmaRef = $wordID])"
+									select="count(//tei:w[not(contains(@lemmaRef, ',')) and not(@xml:lang) and not(@type = 'data') and @lemmaRef = $wordID])"
 								/>
 							</xsl:attribute>
 							<xsl:if
