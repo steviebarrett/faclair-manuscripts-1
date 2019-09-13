@@ -226,7 +226,7 @@ function handInfo(span) {
   var handIds = [h];
   html += getHandInfoDivs(handIds);
   html += '<li>was written by ';
-  html += '<a href="#" onclick="alert(\'clicked\');$(\'#handInfo_' + handIds[0] +'\').show();">' + getHandInfo(h) + '</a>';
+  html += '<a href="#" data-toggle="modal" data-target="#handInfo_' + handIds[0] +'">' + getHandInfo(h) + '</a>';
   html += '</li>';
   //a handShift within a word
   /* 
@@ -329,7 +329,12 @@ function getHandInfoDivs(handIds) {
     var html = '';
     $.ajaxSetup({async: false});
     for (i=0;i<(handIds.length);i++) {
-        html += '<div id="handInfo_' + handIds[i] + '" style="display:none; overflow: scroll; width: 40em; height: 20em; background: white; padding: 10px;">';
+        html += '<div class="modal" tabindex="-1" role="dialog" id="handInfo_' + handIds[i] + '">\n' +
+            '  <div class="modal-dialog" role="document">\n' +
+            '    <div class="modal-content">\n' +
+            '
+            '      <div class="modal-body">\n' +
+            '        <p>Modal body text goes here.</p>\n';
         $.getJSON('ajax.php?action=getHandInfo&hand=' + handIds[i], function (g) {
             html += '<p>';
             if (g.forename + g.surname != '') {
@@ -363,7 +368,15 @@ function getHandInfoDivs(handIds) {
             }
 
         });
-        html += '</div>';
+        html += '      </div>\n' +
+            '      <div class="modal-footer">\n' +
+            '        <button type="button" class="btn btn-primary">Save changes</button>\n' +
+            '        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>\n' +
+            '      </div>\n' +
+            '    </div>\n' +
+            '  </div>\n' +
+            '</div>' +
+        '</div>';
     }
     return html;
 }
