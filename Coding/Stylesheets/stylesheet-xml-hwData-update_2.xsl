@@ -51,7 +51,7 @@
 			<text>
 				<body>
 					<xsl:for-each
-						select="//tei:w[not(descendant::tei:w) and not(@lemmaRef = preceding::tei:w[not(descendant::tei:w)]/@lemmaRef) and not(@type = 'data') and @lemmaRef]">
+						select="//tei:w[not(descendant::tei:w) and not(@lemmaRef = preceding::tei:w[not(descendant::tei:w)]/@lemmaRef) and not(@type = 'data') and @lemmaRef] | //tei:w[descendant::tei:w and not(@lemmaRef = preceding::tei:w/@lemmaRef) and not(contains(@lemmaRef, ',')) and not(@type = 'data') and @lemmaRef]">
 						<xsl:variable name="wordID" select="@lemmaRef"/>
 						<entryFree>
 							<xsl:attribute name="corresp">
@@ -136,15 +136,15 @@
 									</xsl:for-each>
 								</xsl:if>
 								<xsl:variable name="firstForm"
-									select="//tei:w[not(@type = 'data') and @lemmaRef = $wordID and not(@lemmaRef = preceding::tei:w[not(descendant::tei:w)]/@lemmaRef)]/string(self::*)"/>
+									select="//tei:w[not(descendant::tei:w) and not(@type = 'data') and @lemmaRef = $wordID and not(@lemmaRef = preceding::tei:w[not(descendant::tei:w)]/@lemmaRef)]/string(self::*)"/>
 								<xsl:if
-									test="//tei:w[not(@type = 'data') and @lemmaRef = $wordID and not(string(self::*) = $firstForm)]">
+									test="//tei:w[not(descendant::tei:w) and not(@type = 'data') and @lemmaRef = $wordID and not(string(self::*) = $firstForm)]">
 									<span>
 										<xsl:attribute name="type">altForm</xsl:attribute>
 										<xsl:value-of select="$firstForm"/>
 									</span>
 									<xsl:for-each
-										select="//tei:w[not(@type = 'data') and @lemmaRef = $wordID and not(string(self::*) = preceding::tei:w[not(@type = 'data') and @lemmaRef = $wordID]/string(self::*)) and not(string(self::*) = $firstForm)]">
+										select="//tei:w[not(descendant::tei:w) and not(@type = 'data') and @lemmaRef = $wordID and not(string(self::*) = preceding::tei:w[not(@type = 'data') and @lemmaRef = $wordID]/string(self::*)) and not(string(self::*) = $firstForm)]">
 										<xsl:variable name="thisForm" select="string(self::*)"/>
 										<span>
 											<xsl:attribute name="type">altForm</xsl:attribute>
@@ -179,14 +179,14 @@
 
 	<xsl:template name="newHwCount">
 		<xsl:value-of
-			select="count(//tei:w[not(@xml:lang) and not(@type = 'data') and not(descendant::tei:w) and @lemmaRef and not(@lemmaRef = //tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree/@corresp) and not(@lemmaRef = preceding::tei:w/@lemmaRef)])"
+			select="count(//tei:w[not(@xml:lang) and not(@type = 'data') and not(contains(@lemmaRef, ',')) and @lemmaRef and not(@lemmaRef = //tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree/@corresp) and not(@lemmaRef = preceding::tei:w/@lemmaRef)])"
 		/>
 	</xsl:template>
 
 	<xsl:template name="newHwList">
 		<list>
 			<xsl:for-each
-				select="//tei:w[not(@xml:lang) and not(@type = 'data') and not(descendant::tei:w) and @lemmaRef and not(@lemmaRef = //tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree/@corresp) and not(@lemmaRef = preceding::tei:w/@lemmaRef)]">
+				select="//tei:w[not(@xml:lang) and not(@type = 'data') and not(contains(@lemmaRef, ',')) and @lemmaRef and not(@lemmaRef = //tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree/@corresp) and not(@lemmaRef = preceding::tei:w/@lemmaRef)]">
 				<xsl:sort
 					select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
 				<item>
