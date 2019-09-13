@@ -59,7 +59,7 @@ $(function() {
     html += '<ul>';
     html += makeSyntax($(this),false);
     html += '</ul>';
-    /*
+
         if ($(this).find('.expansion, .ligature').length>0) {
             html += 'Contains, or is formed from, the following scribal abbreviations and/or ligatures:<ul>';
             $(this).find('.expansion, .ligature').each(function() {
@@ -77,7 +77,7 @@ $(function() {
                 var xmlId = $(this).attr('data-glyphref');
                 var elementId = $(this).attr('id');
                 //$.ajaxSetup({async: false});
-                $.getJSON('../../Coding/Scripts/ajax.php?action=getGlyph&xmlId=' + xmlId, function (g) {
+                $.getJSON('ajax.php?action=getGlyph&xmlId=' + xmlId, function (g) {
                     txt = '<li class="glyphItem"><a href="' + g.corresp + '" target="_new" data-src="' + g.id + '">' + g.name;
                     txt = txt + '</a>: ' + g.note + ' (' + cert + ' certainty) <a style="font-size: small;" href="#" class="glyphShow" data-id="' + elementId + '" data-corresp="'+prevCorresp+'">[show]</a></li>';
                     html += txt;
@@ -85,7 +85,7 @@ $(function() {
             });
             html += '</ul>';
         }
-         */
+
         /*
         $('#damagedInfo').html(getDamage($(this)));
         $('#deletionInfo').html(getDeletions($(this)));
@@ -108,11 +108,10 @@ $(function() {
   function makeSyntax(span, rec) {
     html = '';
     if (rec) {
+      html += $(span).text();
       html += '<ul>';
     }
     html += handInfo(span);
-    
-    
     if ($(span).hasClass('name')) html += onomastics(span);
     /*
     if ($(span).attr('xml:lang') || ($(span).hasClass('name') && $(span).children('.word').attr('xml:lang')==1 && $(span).children('.word').attr('xml:lang'))) {
