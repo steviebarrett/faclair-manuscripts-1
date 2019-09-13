@@ -332,7 +332,6 @@ function getHandInfoDivs(handIds) {
         html += '<div class="modal" tabindex="-1" role="dialog" id="handInfo_' + handIds[i] + '">\n' +
             '  <div class="modal-dialog" role="document">\n' +
             '    <div class="modal-content">\n' +
-            '
             '      <div class="modal-body">\n' +
             '        <p>Modal body text goes here.</p>\n';
         $.getJSON('ajax.php?action=getHandInfo&hand=' + handIds[i], function (g) {
