@@ -1,0 +1,107 @@
+.lineBreak::after {
+  content: attr(data-number) ". ";
+  color: gray;
+  font-size: x-small;
+}
+
+.syntagm, .punct {
+  font-family: "Times New Roman", serif;
+}
+
+.chunk {
+  cursor: pointer;
+  /* background-color: inherit;
+  text-decoration: inherit;
+  color: inherit; */
+}
+
+.expansion {
+  font-style: italic;
+}
+
+.insertion {
+  font-size: small;
+  vertical-align: baseline;
+  position: relative;
+  top: -0.4em;
+}
+
+.gloss::before {
+  content: "[gl.]";
+}
+
+.deletion {
+  text-decoration: line-through;
+  text-decoration-style: double;
+}
+
+.gapDamage {
+  color: gray;
+}
+
+.damaged {
+  color: black;
+  background-color: black;
+}
+
+.unclearDamage {
+  color: gray;
+}
+
+.unclearTextObscure, .unclearChar {
+  color: black;
+  background-color: lightgray;
+}
+
+.marginalNoteLink {
+  font-size: small;
+  text-decoration: line-through;
+  vertical-align: sub;
+}
+
+.marginalNote {
+  margin: -15px 0 5px 20px;
+  display: none;
+}
+
+.supplied {
+  display: none;
+}
+
+/*
+  Comments
+ */
+.commentForm {
+  display: none;
+  padding: 5px;
+  text-align: center;
+  width: 30em;
+  height: 27em;
+  background: white;
+  border: 2px solid black;
+}
+
+.commentsList {
+  list-style-type: none;
+}
+
+.commentsList > li {
+  padding: 5px;
+}
+
+.viewComment {
+  display: none;
+  font-size: x-small;
+}
+
+.addComment {
+  font-size: x-small;
+}
+
+#commentsList {
+  display: none;
+}
+
+.greyedOut {
+  color: #ccc;
+}

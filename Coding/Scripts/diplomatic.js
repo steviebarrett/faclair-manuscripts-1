@@ -14,12 +14,12 @@ $(function() {
 
   $('.page').click(function(e){
     e.stopImmediatePropagation();   //prevents outer link (e.g. word across pages) from overriding this one
-        //$('.chunk, .gapDamageDiplo').css('background-color', 'inherit');
-        var html = '';
-        var url = $(this).attr('data-facs');
-        var regex = /^((http[s]?|ftp):\/)?\/?([^:\/\s]+)((\/\w+)*\/)([\w\-\.]+[^#?\s]+)(.*)?(#[\w\-]+)?$/
-        var urlElems = regex.exec(url);
-        if (urlElems[3] == 'cudl.lib.cam.ac.uk') {  //complex case: write the viewer code
+    //$('.chunk, .gapDamageDiplo').css('background-color', 'inherit');
+    var html = '';
+    var url = $(this).attr('data-facs');
+    var regex = /^((http[s]?|ftp):\/)?\/?([^:\/\s]+)((\/\w+)*\/)([\w\-\.]+[^#?\s]+)(.*)?(#[\w\-]+)?$/
+    var urlElems = regex.exec(url);
+    if (urlElems[3] == 'cudl.lib.cam.ac.uk') {  //complex case: write the viewer code
             var paramElems = urlElems[6].split('/');
             var mssNo = paramElems[0];
             var pageNo = paramElems[1];
@@ -27,11 +27,11 @@ $(function() {
             html += "<iframe type='text/html' width='600' height='410' style='position: absolute; width: 100%; height: 100%;'";
             html += " src='https://cudl.lib.cam.ac.uk/embed/#item="+mssNo+"&page="+pageNo+"&hide-info=true'";
             html += " frameborder='0' allowfullscreen='' onmousewheel=''></iframe></div>";
-        } else {    //simple case: just stick the url in an image tag
-            html = '<img width="100%" src="';
-            html += url;
-            html += '"/>'
-        }
+    } else {    //simple case: just stick the url in an image tag
+      html = '<img width="100%" src="';
+      html += url;
+      html += '"/>'
+    }
     $('#rhs').html(html);
   });  
     
@@ -43,20 +43,15 @@ $(function() {
   $('.chunk').click(function(){
     $('.chunk').css('background-color', 'inherit');
     $(this).css('background-color', 'yellow');
-    html = '<h1>' + $(this).text() + '</h1>';
-    /* 
+    //html = '<h1>' + $(this).text() + '</h1>'; 
         var prevCorresp = '';
-        
         //$('#headword').text(clean($(this).text()));
         html = '<h1>';
         this2 = $(this).clone();
         $(this2).find('div').remove();  //delete any divs (e.g. 'start of page ...')
-
         html += reindex(this2);
         html = html.replace(/\n/g,'');
         html += '</h1><ul>';
-         */
-    html += '<ul>';
     html += makeSyntax($(this),false);
     html += '</ul>';
 
@@ -103,6 +98,19 @@ $(function() {
     // hand info     
     
     $('#rhs').html(html);
+    $('.glyphShow').hover(
+            function(){
+                $('#'+$(this).attr('data-id')).css('text-decoration', 'underline');
+                $('#xx'+$(this).attr('data-id')).css('background-color', 'yellow');
+                $('.corresp-'+$(this).attr('data-corresp')).css({'text-decoration': 'underline', 'background-color': 'yellow'});
+            },
+            function() {
+                $('#'+$(this).attr('data-id')).css('text-decoration', 'inherit');
+                $('#xx'+$(this).attr('data-id')).css('background-color', 'inherit');
+                $('.corresp-'+$(this).attr('data-corresp')).css({'text-decoration': 'inherit', 'background-color': 'inherit'});
+            }
+        );
+    
   });
 
   function makeSyntax(span, rec) {
@@ -297,6 +305,18 @@ function handInfo(span) {
     return html;
   }
 
+  function reindex(span) { // prefixes all ids in some html
+        //console.log(span.html());
+        //dom = $.parseHTML(span);
+        //console.log(typeof span);
+        //span2 = $('#rightPanel').find('.lineBreak').remove();
+        $(span).find('.lineBreak').remove();
+        //console.log(span);
+        //$('.lineBreak').remove()
+        //console.log(span2.html());
+        //delete all <span class="lineBreak"> elements from inside span;
+        return $(span).html().replace(/id="/g, 'id="xx');
+    }
 
 /*
       Show/hide marginal notes
