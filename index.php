@@ -1,3 +1,4 @@
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8"/>
@@ -13,11 +14,10 @@
   <body>
     <div class="container-fluid">
       <div class="list-group list-group-flush">
-        <div class="list-group-item list-group-item-action">Transcription 1: <a href="Coding/Scripts/viewDiplomatic.php?t=1">diplomatic</a>, <a href="Coding/Scripts/viewSemiDiplomatic.php?t=1">semi-diplomatic</a></div>
-        <div class="list-group-item list-group-item-action">Transcription 6: <a href="Coding/Scripts/viewDiplomatic.php?t=6">diplomatic</a>, <a href="Coding/Scripts/viewSemiDiplomatic.php?t=6">semi-diplomatic</a></div>
-        <div class="list-group-item list-group-item-action">Transcription 17: <a href="Coding/Scripts/viewDiplomatic.php?t=17">diplomatic</a>, <a href="Coding/Scripts/viewSemiDiplomatic.php?t=17">semi-diplomatic</a></div>
+        <div class="list-group-item list-group-item-action">Transcription 1: <a href="Coding/Scripts/viewTranscription.php?t=1&diplo=yes">diplo</a>, <a href="Coding/Scripts/viewTranscription.php?t=1&diplo=no">semi</a></div>
+        <div class="list-group-item list-group-item-action">Transcription 6: <a href="Coding/Scripts/viewTranscription.php?t=6&diplo=yes">diplo</a>, <a href="Coding/Scripts/viewTranscription.php?t=6&diplo=no">semi</a></div>
+        <div class="list-group-item list-group-item-action">Transcription 17: <a href="Coding/Scripts/viewTranscription.php?t=17&diplo=yes">diplo</a>, <a href="Coding/Scripts/viewTranscription.php?t=17&diplo=no">semi</a></div>
       </div>
     </div>    
   </body>
-  <!--  -->
 </html>

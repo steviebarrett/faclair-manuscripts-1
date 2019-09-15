@@ -1,9 +1,9 @@
 $(function() {
   
-  $('.indexHeadword').click(function(){
-    $('#midl').animate({scrollTop: 0},0);
-    $('.syntagm').css({'color': 'inherit'});
-    $('#rhs').html('');
+  $('.indexHeadword').click(function(){ // called whenever a new headword is selected
+    $('#midl').animate({scrollTop: 0},0); // move middle back to top
+    $('.syntagm').css({'background-color': 'inherit'}); // unhighlight all words and phrases
+    $('#rhs').html(''); // clear RHS
     $('.indexHeadword').css({'color': 'inherit'});
     $('[data-headword="'+ $(this).attr('data-uri') + '"]').css({'color': 'red'});
     $(this).css('color', 'red');
