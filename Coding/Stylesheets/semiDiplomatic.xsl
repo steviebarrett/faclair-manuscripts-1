@@ -5,12 +5,12 @@
   <xsl:output method="html"/>
 
   <xsl:template match="/">
-    <div data-docid="{tei:TEI/@xml:id}">
+    <div data-docid="{tei:TEI/@xml:id}"> <!-- MM: do we still need this attribute? -->
       <xsl:apply-templates select="tei:TEI/tei:text/tei:body/tei:div"/>
     </div>
   </xsl:template>
   
-  <xsl:template match="tei:div">
+  <xsl:template match="tei:div"> <!-- MM: check ALL of this with SB -->
     <div class="text" data-hand="{@hand}" data-n="{@n}" data-corresp="{@corresp}" data-type="{@type}" data-ms="{substring(/tei:TEI/@xml:id,2)}"> 
       <div><small class="text-muted">[start of Text <xsl:value-of select="@n"/>]</small></div>
       <button type="button" data-toggle="modal" data-target="#commentForm" class="addComment" title="Leave comment on this text" data-s="div" data-n="{@n}">[+]</button>

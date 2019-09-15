@@ -5,12 +5,12 @@
   <xsl:output method="html"/>
 
   <xsl:template match="/">
-    <div data-docid="{tei:TEI/@xml:id}">
+    <div data-docid="{tei:TEI/@xml:id}"> <!-- MM: do we still need this attribute? -->
       <xsl:apply-templates select="tei:TEI/tei:text/tei:body/tei:div"/>
     </div>
   </xsl:template>
 
-  <xsl:template match="tei:div">
+  <xsl:template match="tei:div"> <!-- MM: check ALL of this with SB -->
     <div class="text" data-hand="{@hand}" data-n="{@n}" data-corresp="{@corresp}" data-type="{@type}" data-ms="{substring(/tei:TEI/@xml:id,2)}"> 
       <div><small class="text-muted">[start of Text <xsl:value-of select="@n"/>]</small></div>
       <button type="button" data-toggle="modal" data-target="#commentForm" class="addComment" title="Leave comment on this text" data-s="div" data-n="{@n}">[+]</button>
@@ -21,24 +21,24 @@
     </div>
   </xsl:template>
 
-  <xsl:template match="tei:pb">
-      <div>
-        <small class="text-muted">[start of page 
-          <xsl:choose>
-            <xsl:when test="@facs">
-              <a href="#" class="page" data-facs="{@facs}">
-                <xsl:value-of select="@n"/>
-              </a>
-            </xsl:when>
-            <xsl:otherwise>
+  <xsl:template match="tei:pb"> <!-- MM: check ALL of this with SB -->
+    <div>
+      <small class="text-muted">[start of page 
+        <xsl:choose>
+          <xsl:when test="@facs">
+            <a href="#" class="page" data-facs="{@facs}">
               <xsl:value-of select="@n"/>
-            </xsl:otherwise>
-          </xsl:choose>]
-        </small>
-      </div>
+            </a>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:value-of select="@n"/>
+          </xsl:otherwise>
+        </xsl:choose>]
+      </small>
+    </div>
   </xsl:template>
 
-  <xsl:template match="tei:handShift">
+  <xsl:template match="tei:handShift"> <!-- MM: check ALL of this with SB. Should this be clickable? -->
     <span class="handshift" data-hand="{@new}"><small class="text-muted">[hs]</small></span>
   </xsl:template>
   
@@ -48,7 +48,7 @@
     </p>
   </xsl:template>
   
-  <xsl:template match="tei:lb">
+  <xsl:template match="tei:lb"> <!-- MM: check ALL of this with SB -->
     <span class="lineBreak" data-number="{@n}" id="{concat('line_',@xml:id)}">
       <br/>
       <button type="button" data-toggle="modal" data-target="#commentForm" class="addComment" title="Leave comment on this line" data-s="lb" data-n="{@xml:id}">[+]</button>
