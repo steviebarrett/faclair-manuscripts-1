@@ -54,8 +54,8 @@ else echo '<script src="semiDiplomatic.js"></script>';
       </div>
       <!-- main body of display, with three columns -->
       <div class="row" style="height: 100%;">
-        <div class="col-2"> <!-- the headword index -->
-          <div class="list-group list-group-flush" style="overflow: auto; height: 100%;">
+        <div class="col-2" style="overflow: auto; height: 100%;"> <!-- the headword index -->
+          <div class="list-group list-group-flush">
 <?php
 $ms = new SimpleXMLElement("../../Transcribing/Transcriptions/transcription" . $_GET["t"] . ".xml", 0, true);
 $ms->registerXPathNamespace('tei', 'http://www.tei-c.org/ns/1.0');
