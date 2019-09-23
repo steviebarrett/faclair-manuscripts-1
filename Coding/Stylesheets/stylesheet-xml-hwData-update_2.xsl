@@ -9,6 +9,11 @@
 	</xsl:template>
 
 	<xsl:template name="hwDataUpdate">
+		<xsl:variable name="lostHwCount">
+			<xsl:value-of
+				select="count(//tei:TEI[@xml:id = 'hwData']//tei:entryFree[not(@corresp = //tei:TEI[not(@xml:id = 'hwData')]//tei:w/@lemmaRef)])"
+			/>
+		</xsl:variable>
 		<xsl:text><?xml-model href="Schemas/fnag_mss2.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?></xsl:text>
 		<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="hwData">
 			<teiHeader>
@@ -45,6 +50,11 @@
 							corpus since <xsl:call-template name="prevDate"/>. Entries have been
 							created for them in the headword database. These are:<xsl:call-template
 								name="newHwList"/></p>
+						<xsl:if test="$lostHwCount > 0">
+							<xsl:value-of select="$lostHwCount"/> words have been removed from the
+							corpus since <xsl:call-template name="prevDate"/> and thus no longer
+							appear in the headword database. These are: <xsl:call-template
+								name="lostHwList"/></xsl:if>
 					</sourceDesc>
 				</fileDesc>
 			</teiHeader>
@@ -191,6 +201,17 @@
 					select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
 				<item>
 					<xsl:value-of select="@lemma"/>
+				</item>
+			</xsl:for-each>
+		</list>
+	</xsl:template>
+
+	<xsl:template name="lostHwList">
+		<list>
+			<xsl:for-each
+				select="//tei:TEI[@xml:id = 'hwData']//tei:entryFree[not(@corresp = //tei:TEI[not(@xml:id = 'hwData')]//tei:w/@lemmaRef)]">
+				<item>
+					<xsl:value-of select="child::tei:w/@lemma"/>
 				</item>
 			</xsl:for-each>
 		</list>
