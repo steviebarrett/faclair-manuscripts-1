@@ -51,10 +51,10 @@
 							created for them in the headword database. These are:<xsl:call-template
 								name="newHwList"/></p>
 						<xsl:if test="$lostHwCount > 0">
-							<xsl:value-of select="$lostHwCount"/> words have been removed from the
+							<p><xsl:value-of select="$lostHwCount"/> words have been removed from the
 							corpus since <xsl:call-template name="prevDate"/> and thus no longer
 							appear in the headword database. These are: <xsl:call-template
-								name="lostHwList"/></xsl:if>
+								name="lostHwList"/></p></xsl:if>
 					</sourceDesc>
 				</fileDesc>
 			</teiHeader>
@@ -208,11 +208,13 @@
 
 	<xsl:template name="lostHwList">
 		<list>
-			<xsl:for-each
-				select="//tei:TEI[@xml:id = 'hwData']//tei:entryFree[not(@corresp = //tei:TEI[not(@xml:id = 'hwData')]//tei:w/@lemmaRef)]">
-				<item>
-					<xsl:value-of select="child::tei:w/@lemma"/>
-				</item>
+			<xsl:for-each select="//tei:TEI[@xml:id = 'hwData']//tei:entryFree[not(@corresp = //tei:TEI[not(@xml:id = 'hwData')]//tei:w/@lemmaRef)]">
+				<xsl:variable name="wordID" select="@corresp"/>
+				<xsl:if test="not(//tei:TEI[not(@xml:id = 'hwData')]//tei:w/@lemmaRef = $wordID)">
+					<item>
+						<xsl:value-of select="//tei:TEI[@xml:id = 'hwData']//tei:entryFree[@corresp = $wordID]/tei:w/@lemma"/>
+					</item>
+				</xsl:if>
 			</xsl:for-each>
 		</list>
 	</xsl:template>
