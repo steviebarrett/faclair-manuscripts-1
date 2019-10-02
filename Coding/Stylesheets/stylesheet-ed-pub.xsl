@@ -1962,6 +1962,7 @@
 			</b>
 		</sub>
 		<xsl:apply-templates/>
+		<b>|</b>
 	</xsl:template>
 
 	<xsl:template match="tei:seg[@type = 'MSDef']">
