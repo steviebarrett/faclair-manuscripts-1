@@ -1,3 +1,8 @@
+/* 
+This script is called by viewTranscription.php
+It contains event handlers relevant to the comment system, and hence should only be edited by SB.
+It sends a lot of calls to ajax.php to access/update the comments database (maybe rename this comments.php?).
+*/
 
 $(function() {
 

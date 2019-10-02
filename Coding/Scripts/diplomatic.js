@@ -1,3 +1,8 @@
+/* 
+This script is called by viewTranscription.php
+It contains event handlers relevant to the diplomatic MS view only.
+*/
+
 $(function() {
 
   $('.page').click(function(e){

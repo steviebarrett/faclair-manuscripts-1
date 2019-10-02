@@ -1,3 +1,8 @@
+/* 
+This script is called by viewTranscription.php
+It contains event handlers relevant to that page as a whole, and to both MS views.
+*/
+
 $(function() {
   
   $('.indexHeadword').click(function(){ // called whenever a new headword is selected

@@ -1,4 +1,25 @@
 <!doctype html>
+<!-- 
+This script (called by ../../index.php) takes two obligatory input parameters:
+  t: the MS number, e.g. 1, 2, 3, ...
+  diplo: yes, no
+
+It displays the MS with three columns:
+1. a headword index
+2. a MSS view (diplomatic or semi-diplomatic)
+3. an information panel
+
+There are a couple of extra, default hidden panels as well:
+1. a form for adding comments
+2. a div for displaying 'hand' information
+Dependent files are:
+1. ../Stylesheets/common.css (styles relevant to page as a whole, or to both MS views) 
+2. ../Stylesheets/diplomatic.css | ../Stylesheets/semiDiplomatic.css (MS view specific styles)
+3. common.js (event handlers relevant to page as a whole, or to both MS views)
+4. diplomatic.js | semiDiplomatic.js (MS view specific event handlers)
+5. comments.js (event handlers relevant to the comment system only)
+6. ../Stylesheets/diplomatic.xsl | ../Stylesheets/semiDiplomatic.xsl (MS view specific XSLT scripts)
+-->
 <html lang="en" style="height: 100%">
   <head>
     <meta charset="utf-8">
@@ -7,12 +28,11 @@
     <link rel="stylesheet" href="../Stylesheets/common.css"/>
 <?php
 $diplo = $_GET["diplo"];
+$t = $_GET["t"];
 if ($diplo=='yes') echo '<link rel="stylesheet" href="../Stylesheets/diplomatic.css"/>';
 else echo '<link rel="stylesheet" href="../Stylesheets/semiDiplomatic.css"/>';
 ?>
-    <!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"/>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bPopup/0.11.0/jquery.bpopup.min.js"/>-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="common.js"></script>
@@ -44,7 +64,7 @@ else echo '<script src="semiDiplomatic.js"></script>';
               </select>
               <textarea rows="7" cols="40" id="commentContent"></textarea><br/><br/>
             </div>
-            <input type="hidden" id="docid" value="<?php echo $_GET["t"]; ?>"/>
+            <input type="hidden" id="docid" value="<?php echo $t; ?>"/> <!-- MM: this is nice! didn't know you could do that -->
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary cancelComment" data-dismiss="modal">close</button>
               <button type="button" class="btn btn-primary saveComment">save</button>
@@ -57,33 +77,34 @@ else echo '<script src="semiDiplomatic.js"></script>';
         <div class="col-2" style="overflow: auto; height: 100%;"> <!-- the headword index -->
           <div class="list-group list-group-flush">
 <?php
-$ms = new SimpleXMLElement("../../Transcribing/Transcriptions/transcription" . $_GET["t"] . ".xml", 0, true);
+$ms = new SimpleXMLElement("../../Transcribing/Transcriptions/transcription" . $t . ".xml", 0, true);
 $ms->registerXPathNamespace('tei', 'http://www.tei-c.org/ns/1.0');
-$uris = [];
+$lemmas = [];
 foreach ($ms->xpath('descendant::tei:w[@lemmaRef]')  as $nextWord) {
   $pair = array($nextWord["lemma"], $nextWord['lemmaRef']);
-  $uris[] = implode("|", $pair);
+  $lemmas[] = implode("|", $pair);
 }
-$uris = array_unique($uris);
-sort($uris,2);
-foreach ($uris as $nexturi) {
-  $pair = explode("|", $nexturi);
+$lemmas = array_unique($lemmas);
+sort($lemmas,2); // need better sort function here
+foreach ($lemmas as $nextLemma) {
+  $pair = explode("|", $nextLemma);
   echo '<div data-uri="' . $pair[1] . '" class="indexHeadword list-group-item list-group-item-action">' . $pair[0] . '</div>';
+  // Note that each HW HAS class="indexHeadword" for event handling
 }
 ?> 
           </div>  
         </div>
-        <div id="midl" class="col-5" style="overflow: auto; height: 100%;"> <!-- the MSS display panel in the middle -->     
+        <div id="midl" class="col-5" style="overflow: auto; height: 100%;"> <!-- the MSS display panel in the middle; note that id="midl" for event handling -->     
 <?php
 $xsl = new DOMDocument;
-if ($diplo=='yes') $xsl->load('../Stylesheets/diplomatic.xsl');
-else $xsl->load('../Stylesheets/semiDiplomatic.xsl');
+if ($diplo=='yes') { $xsl->load('../Stylesheets/diplomatic.xsl'); }
+else { $xsl->load('../Stylesheets/semiDiplomatic.xsl'); }
 $proc = new XSLTProcessor;
 $proc->importStyleSheet($xsl);
 echo $proc->transformToXML($ms);
-?>             
+?>
         </div>
-        <div id="rhs" class="col-5" style="overflow: auto; height: 100%;"> <!-- the chunk info panel, on the right -->
+        <div id="rhs" class="col-5" style="overflow: auto; height: 100%;"> <!-- the chunk info panel, on the right; id="rhs" as target for event handling -->
         </div>
       </div>
     </div>

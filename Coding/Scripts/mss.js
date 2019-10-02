@@ -1,3 +1,7 @@
+/* 
+This script is now deprecated and is here for reference only.
+*/
+
 $(function() {
 
     $('#showHeader').click(function(){

@@ -1,3 +1,8 @@
+/* 
+This stylesheet is called by viewTranscription.php
+It contains styles relevant to just the diplomatic view.
+*/
+
 .lineBreak::after {
   content: attr(data-number) ". ";
   color: gray;
