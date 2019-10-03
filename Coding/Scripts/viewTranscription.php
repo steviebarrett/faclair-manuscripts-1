@@ -85,7 +85,7 @@ foreach ($ms->xpath('descendant::tei:w[@lemmaRef]')  as $nextWord) {
   $lemmas[] = implode("|", $pair);
 }
 $lemmas = array_unique($lemmas);
-//sort($lemmas, SORT_STRING | SORT_FLAG_CASE); // need better sort function here
+sort($lemmas, SORT_STRING | SORT_FLAG_CASE); // need better sort function here
 $coll = new Collator('gd_GD');
 $coll->sort($lemmas);
 foreach ($lemmas as $nextLemma) {
