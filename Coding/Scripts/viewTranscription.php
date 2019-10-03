@@ -80,7 +80,7 @@ else echo '<script src="semiDiplomatic.js"></script>';
 $ms = new SimpleXMLElement("../../Transcribing/Transcriptions/transcription" . $t . ".xml", 0, true);
 $ms->registerXPathNamespace('tei', 'http://www.tei-c.org/ns/1.0');
 $lemmas = [];
-foreach ($ms->xpath('descendant::tei:w[@lemmaRef]')  as $nextWord) {
+foreach ($ms->xpath('descendant::tei:w[@lemmaRef and not(descendant::tei:w)]') as $nextWord) {
   $pair = array($nextWord["lemma"], $nextWord['lemmaRef']);
   $lemmas[] = implode("|", $pair);
 }
