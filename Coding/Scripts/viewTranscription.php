@@ -85,7 +85,9 @@ foreach ($ms->xpath('descendant::tei:w[@lemmaRef]')  as $nextWord) {
   $lemmas[] = implode("|", $pair);
 }
 $lemmas = array_unique($lemmas);
-sort($lemmas,2); // need better sort function here
+//sort($lemmas, SORT_STRING | SORT_FLAG_CASE); // need better sort function here
+$coll = new Collator('gd_GD');
+$coll->sort($lemmas);
 foreach ($lemmas as $nextLemma) {
   $pair = explode("|", $nextLemma);
   echo '<div data-uri="' . $pair[1] . '" class="indexHeadword list-group-item list-group-item-action">' . $pair[0] . '</div>';
