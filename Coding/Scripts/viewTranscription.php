@@ -86,7 +86,7 @@ foreach ($ms->xpath('descendant::tei:w[@lemmaRef]')  as $nextWord) {
 }
 $lemmas = array_unique($lemmas);
 $coll = new Collator('gd_GD');
-$coll->sort($lemmas); // doesn't work on Mac OS, coz no Collator class
+$coll->sort($lemmas, SORT_STRING); // doesn't work on Mac OS, coz no Collator class
 //sort($lemmas, SORT_STRING | SORT_FLAG_CASE);  
 foreach ($lemmas as $nextLemma) {
   $pair = explode("|", $nextLemma);
