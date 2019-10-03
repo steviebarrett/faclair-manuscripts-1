@@ -85,9 +85,16 @@ foreach ($ms->xpath('descendant::tei:w[@lemmaRef]')  as $nextWord) {
   $lemmas[] = implode("|", $pair);
 }
 $lemmas = array_unique($lemmas);
-$coll = new Collator('gd_GD');
-$coll->sort($lemmas, Collator::SORT_STRING); // doesn't work on Mac OS, coz no Collator class
-//sort($lemmas, SORT_STRING | SORT_FLAG_CASE);  
+usort($lemmas,'gdSort'); 
+
+function gdSort($s, $t) {
+    $accentedvowels = array('à','è','ì','ò','ù','À','È','Ì','Ò','Ù','ê','ŷ','ŵ','â','á','é','í','ó','ú','Á','É','Í','Ó','Ú');
+    $unaccentedvowels = array('a','e','i','o','u','A','E','I','O','U','e','y','w','a','a','e','i','o','u','A','E','I','O','U');
+    $str3 = str_replace($accentedvowels,$unaccentedvowels,$s);
+    $str4 = str_replace($accentedvowels,$unaccentedvowels,$t);
+    return strcasecmp($str3,$str4);
+}
+
 foreach ($lemmas as $nextLemma) {
   $pair = explode("|", $nextLemma);
   echo '<div data-uri="' . $pair[1] . '" class="indexHeadword list-group-item list-group-item-action">' . $pair[0] . '</div>';
