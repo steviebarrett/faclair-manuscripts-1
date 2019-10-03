@@ -23,7 +23,7 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
                 let $textClass := "medical"
                 where $x/ancestor::tei:TEI//tei:msItem[descendant::tei:term[string(self::*) = $textClass] and @xml:id = $lemText]
                 return
-                    <tr><td>{$hw_id}</td><td>{$hw_label}</td><td>headword</td><td>null</td></tr>
+                    <tr><td>{$hw_id}</td><td>{$hw_label}</td><td>headword</td><td>null</td><td>null</td></tr>
             }
             {
                 for $y in //tei:div[not(ancestor::tei:div) and not(@resp = preceding::tei:div[not(ancestor::tei:div)]/@corresp)]
