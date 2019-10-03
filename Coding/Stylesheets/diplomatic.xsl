@@ -16,17 +16,17 @@ It creates a diplomatic MS view.
 
   <xsl:template match="tei:div"> <!-- MM: check ALL of this with SB -->
     <div class="text" data-hand="{@hand}" data-n="{@n}" data-corresp="{@corresp}" data-type="{@type}" data-ms="{substring(/tei:TEI/@xml:id,2)}"> 
-      <div><small class="text-muted">[start of Text <xsl:value-of select="@n"/>]</small></div>
-      <button type="button" data-toggle="modal" data-target="#commentForm" class="addComment" title="Leave comment on this text" data-s="div" data-n="{@n}">[+]</button>
+      <div class="textAnchor"><small class="text-muted">[start of Text <xsl:value-of select="@n"/>]</small></div>
+      <button type="button" data-toggle="modal" data-target="#commentForm" class="addComment textAnchor" title="Leave comment on this text" data-s="div" data-n="{@n}">[+]</button>
       <xsl:text> </xsl:text>
       <a href="#" class="viewComment greyedOut" title="View comments on this text" data-s="div" data-n="{@n}">[?]</a>
       <xsl:apply-templates/>
-      <div><small class="text-muted">[end of Text <xsl:value-of select="@n"/>]</small></div>
+      <div class="textAnchor"><small class="text-muted">[end of Text <xsl:value-of select="@n"/>]</small></div>
     </div>
   </xsl:template>
 
   <xsl:template match="tei:pb"> <!-- MM: check ALL of this with SB -->
-    <div>
+    <div class="textAnchor">
       <small class="text-muted">[start of page 
         <xsl:choose>
           <xsl:when test="@facs">
@@ -323,6 +323,12 @@ It creates a diplomatic MS view.
     <div class="marginalNote" id="{@xml:id}">
       <xsl:apply-templates/>
     </div>
+  </xsl:template>
+  
+  <xsl:template match="tei:seg[@type='cfe']">
+    <span>
+      <xsl:apply-templates/>
+    </span>
   </xsl:template>
 
   <xsl:template match="tei:gap">
