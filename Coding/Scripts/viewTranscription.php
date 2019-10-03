@@ -88,6 +88,8 @@ $lemmas = array_unique($lemmas);
 usort($lemmas,'gdSort'); 
 
 function gdSort($s, $t) {
+    $s = trim($s,'*-.');
+    $t = trim($t,'*-.');
     $accentedvowels = array('à','è','ì','ò','ù','À','È','Ì','Ò','Ù','ê','ŷ','ŵ','â','á','é','í','ó','ú','Á','É','Í','Ó','Ú');
     $unaccentedvowels = array('a','e','i','o','u','A','E','I','O','U','e','y','w','a','a','e','i','o','u','A','E','I','O','U');
     $str3 = str_replace($accentedvowels,$unaccentedvowels,$s);
