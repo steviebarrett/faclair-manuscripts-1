@@ -84,6 +84,7 @@ foreach ($ms->xpath('descendant::tei:w[@lemmaRef and not(descendant::tei:w)]') a
   $pair = array($nextWord["lemma"], $nextWord['lemmaRef']);
   $lemmas[] = implode("|", $pair);
 }
+$counts = array_count_values($lemmas);
 $lemmas = array_unique($lemmas);
 usort($lemmas,'gdSort'); 
 
@@ -98,8 +99,9 @@ function gdSort($s, $t) {
 }
 
 foreach ($lemmas as $nextLemma) {
+  $n = $counts[$nextLemma];
   $pair = explode("|", $nextLemma);
-  echo '<div data-uri="' . $pair[1] . '" class="indexHeadword list-group-item list-group-item-action">' . $pair[0] . '</div>';
+  echo '<div data-uri="' . $pair[1] . '" class="indexHeadword list-group-item list-group-item-action">' . $pair[0] . ' <span class="hwCount">(' . $n . ')</span></div>';
   // Note that each HW HAS class="indexHeadword" for event handling
 }
 ?> 
