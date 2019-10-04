@@ -87,7 +87,6 @@ foreach ($ms->xpath('descendant::tei:w[@lemmaRef and not(descendant::tei:w)]') a
 $counts = array_count_values($lemmas);
 $lemmas = array_unique($lemmas);
 usort($lemmas,'gdSort'); 
-
 function gdSort($s, $t) {
     $s = trim($s,'*-.');
     $t = trim($t,'*-.');
@@ -97,11 +96,10 @@ function gdSort($s, $t) {
     $str4 = str_replace($accentedvowels,$unaccentedvowels,$t);
     return strcasecmp($str3,$str4);
 }
-
 foreach ($lemmas as $nextLemma) {
   $n = $counts[$nextLemma];
   $pair = explode("|", $nextLemma);
-  echo '<div data-uri="' . $pair[1] . '" class="indexHeadword list-group-item list-group-item-action">' . $pair[0] . ' <span class="hwCount">(' . $n . ')</span></div>';
+  echo '<div class="list-group-item list-group-item-action"><span class="indexHeadword" data-uri="' . $pair[1] . '">' . $pair[0] . '</span> <span class="hwCount">(' . $n . ')</span> <a href="#" class="implode">[-]</a> <a href="#" class="explode">[+]</a></div>';
   // Note that each HW HAS class="indexHeadword" for event handling
 }
 ?> 

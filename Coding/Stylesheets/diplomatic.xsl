@@ -19,14 +19,14 @@ It creates a diplomatic MS view.
       <div class="textAnchor"><small class="text-muted">[start of Text <xsl:value-of select="@n"/>]</small></div>
       <button type="button" data-toggle="modal" data-target="#commentForm" class="addComment textAnchor" title="Leave comment on this text" data-s="div" data-n="{@n}">[+]</button>
       <xsl:text> </xsl:text>
-      <a href="#" class="viewComment greyedOut" title="View comments on this text" data-s="div" data-n="{@n}">[?]</a>
+      <a href="#" class="viewComment greyedOut textAnchor" title="View comments on this text" data-s="div" data-n="{@n}">[?]</a>
       <xsl:apply-templates/>
       <div class="textAnchor"><small class="text-muted">[end of Text <xsl:value-of select="@n"/>]</small></div>
     </div>
   </xsl:template>
 
   <xsl:template match="tei:pb"> <!-- MM: check ALL of this with SB -->
-    <div class="textAnchor">
+    <div>
       <small class="text-muted">[start of page 
         <xsl:choose>
           <xsl:when test="@facs">
@@ -43,7 +43,7 @@ It creates a diplomatic MS view.
   </xsl:template>
 
   <xsl:template match="tei:handShift"> <!-- MM: check ALL of this with SB. Should this be clickable? -->
-    <span class="handshift" data-hand="{@new}"><small class="text-muted">[hs]</small></span>
+    <span class="handshift textAnchor" data-hand="{@new}"><small class="text-muted">[hs]</small></span>
   </xsl:template>
   
   <xsl:template match="tei:p">
