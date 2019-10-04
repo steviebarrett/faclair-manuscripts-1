@@ -1,41 +1,7 @@
 /*
 This stylesheet is called by viewTranscription.php
-It contains styles relevant to the page as a whole, to the comment system, and to both MS views.
+It contains styles relevant to the page as a whole, and to both MS views.
 */
-.commentForm {
-  display: none;
-  padding: 5px;
-  text-align: center;
-  width: 30em;
-  height: 27em;
-  background: white;
-  border: 2px solid black;
-}
-
-.commentsList {
-  list-style-type: none;
-}
-
-.commentsList > li {
-  padding: 5px;
-}
-
-.viewComment {
-  display: none;
-  font-size: x-small;
-}
-
-.addComment {
-  font-size: x-small;
-}
-
-#commentsList {
-  display: none;
-}
-
-.greyedOut {
-  color: #ccc;
-}
 
 .hwCount, .implode, .explode {
   display: none;

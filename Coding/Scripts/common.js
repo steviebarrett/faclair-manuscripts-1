@@ -31,6 +31,7 @@ $(function() {
     $(this).nextAll('.explode').show();
     $('#midl').find('span').hide();
     $('.temp').remove();
+    
     $('[data-headword="'+ $(this).prevAll('.indexHeadword').attr('data-uri') + '"]').each(function(){
       $(this).show();
       $(this).find('span').show();
@@ -52,6 +53,8 @@ $(function() {
       }
     });
     $('#midl').find('.textAnchor').hide();
+    $('#midl').find('.pageAnchor').hide();
+    $(this).parents().prevAll('.pageAnchor').first().show(); // not working
     $('#midl').find('.greyedOut').hide();
     return null;
   });
@@ -61,6 +64,7 @@ $(function() {
     $(this).prevAll('.implode').show();
     $('#midl').find('span').show();
     $('#midl').find('.textAnchor').show();
+    $('#midl').find('.pageAnchor').show();
     $('.temp').remove();
     $('#midl').animate({scrollTop: 0},0); // move middle back to top
     var x = $('[data-headword="'+ $(this).prevAll('.indexHeadword').attr('data-uri') + '"]').first();

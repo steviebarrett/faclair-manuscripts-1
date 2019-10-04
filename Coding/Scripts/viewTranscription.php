@@ -26,6 +26,7 @@ Dependent files are:
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="../Stylesheets/common.css"/>
+    <link rel="stylesheet" href="../Stylesheets/comments.css"/>
 <?php
 $diplo = $_GET["diplo"];
 $t = $_GET["t"];
@@ -46,7 +47,7 @@ else echo '<script src="semiDiplomatic.js"></script>';
   <body style="height: 100%;">
     <div class="container-fluid" style="height: 100%;">
       <!-- comment form markup (usually hidden) -->
-      <div class="modal fade commentForm" id="commentForm" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal fade" id="commentForm" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -99,7 +100,7 @@ function gdSort($s, $t) {
 foreach ($lemmas as $nextLemma) {
   $n = $counts[$nextLemma];
   $pair = explode("|", $nextLemma);
-  echo '<div class="list-group-item list-group-item-action"><span class="indexHeadword" data-uri="' . $pair[1] . '">' . $pair[0] . '</span> <span class="hwCount">(' . $n . ')</span> <a href="#" class="implode">[-]</a> <a href="#" class="explode">[+]</a></div>';
+  echo '<div class="list-group-item list-group-item-action"><span class="indexHeadword" data-uri="' . $pair[1] . '">' . $pair[0] . '</span> <span class="hwCount badge badge-light">' . $n . '</span> <a href="#" class="implode badge badge-light">-</a> <a href="#" class="explode badge badge-light">+</a></div>';
   // Note that each HW HAS class="indexHeadword" for event handling
 }
 ?> 
