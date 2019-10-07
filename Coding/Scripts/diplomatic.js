@@ -13,98 +13,25 @@ $(function() {
     var regex = /^((http[s]?|ftp):\/)?\/?([^:\/\s]+)((\/\w+)*\/)([\w\-\.]+[^#?\s]+)(.*)?(#[\w\-]+)?$/
     var urlElems = regex.exec(url);
     if (urlElems[3] == 'cudl.lib.cam.ac.uk') {  //complex case: write the viewer code
-            var paramElems = urlElems[6].split('/');
-            var mssNo = paramElems[0];
-            var pageNo = paramElems[1];
-            html = "<div style='position: relative; width: 100%; padding-bottom: 80%;'>";
-            html += "<iframe type='text/html' width='600' height='410' style='position: absolute; width: 100%; height: 100%;'";
-            html += " src='https://cudl.lib.cam.ac.uk/embed/#item="+mssNo+"&page="+pageNo+"&hide-info=true'";
-            html += " frameborder='0' allowfullscreen='' onmousewheel=''></iframe></div>";
-    } else {    //simple case: just stick the url in an image tag
+      var paramElems = urlElems[6].split('/');
+      var mssNo = paramElems[0];
+      var pageNo = paramElems[1];
+      html = "<div style='position: relative; width: 100%; padding-bottom: 80%;'>";
+      html += "<iframe type='text/html' width='600' height='410' style='position: absolute; width: 100%; height: 100%;'";
+      html += " src='https://cudl.lib.cam.ac.uk/embed/#item="+mssNo+"&page="+pageNo+"&hide-info=true'";
+      html += " frameborder='0' allowfullscreen='' onmousewheel=''></iframe></div>";
+    } 
+    else {    //simple case: just stick the url in an image tag
       html = '<img width="100%" src="';
       html += url;
       html += '"/>'
     }
     $('#rhs').html(html);
-  });  
-    
-  $('.chunk').hover(
-    function(){$(this).css('text-decoration', 'underline');},
-    function(){$(this).css('text-decoration', 'inherit');}
-  );
-
-  $('.chunk').click(function(){
-    $('.chunk').css('background-color', 'inherit');
-    $(this).css('background-color', 'yellow');
-    //html = '<h1>' + $(this).text() + '</h1>'; 
-        var prevCorresp = '';
-        //$('#headword').text(clean($(this).text()));
-        html = '<h1>';
-        this2 = $(this).clone();
-        $(this2).find('div').remove();  //delete any divs (e.g. 'start of page ...')
-        html += reindex(this2);
-        html = html.replace(/\n/g,'');
-        html += '</h1><ul>';
-    html += makeSyntax($(this),false);
-    html += '</ul>';
-
-        if ($(this).find('.expansion, .ligature').length>0) {
-            html += 'Contains, or is formed from, the following scribal abbreviations and/or ligatures:<ul>';
-            $(this).find('.expansion, .ligature').each(function() {
-                var corresp;
-                if (corresp = $(this).attr('data-corresp')) {
-                    if (corresp === prevCorresp) {
-                        return true;    //SB: prevents >1 example being shown for elements with the same corresp
-                    } else {
-                        prevCorresp = corresp;
-                    }
-                } else {
-                    prevCorresp = '';
-                }
-                cert = $(this).attr('data-cert');
-                var xmlId = $(this).attr('data-glyphref');
-                var elementId = $(this).attr('id');
-                //$.ajaxSetup({async: false});
-                $.getJSON('ajax.php?action=getGlyph&xmlId=' + xmlId, function (g) {
-                    txt = '<li class="glyphItem"><a href="' + g.corresp + '" target="_new" data-src="' + g.id + '">' + g.name;
-                    txt = txt + '</a>: ' + g.note + ' (' + cert + ' certainty) <a style="font-size: small;" href="#" class="glyphShow" data-id="' + elementId + '" data-corresp="'+prevCorresp+'">[show]</a></li>';
-                    html += txt;
-                })
-            });
-            html += '</ul>';
-        }
-
-        /*
-        $('#damagedInfo').html(getDamage($(this)));
-        $('#deletionInfo').html(getDeletions($(this)));
-        $('#additionInfo').html(getAdditions($(this)));
-         */
-         /* 
-        if ($(this2).attr('data-hand') != undefined) {
-            var hands = [$(this2).attr('data-hand')];
-            $(this2).find('.handShift').each(function() {
-                hands.push($(this).attr('data-hand'));
-            });
-            html += getHandInfoDivs(hands);    //get the hand info if available
-        }
-         */
-    // hand info     
-    
-    $('#rhs').html(html);
-    $('.glyphShow').hover(
-            function(){
-                $('#'+$(this).attr('data-id')).css('text-decoration', 'underline');
-                $('#xx'+$(this).attr('data-id')).css('background-color', 'yellow');
-                $('.corresp-'+$(this).attr('data-corresp')).css({'text-decoration': 'underline', 'background-color': 'yellow'});
-            },
-            function() {
-                $('#'+$(this).attr('data-id')).css('text-decoration', 'inherit');
-                $('#xx'+$(this).attr('data-id')).css('background-color', 'inherit');
-                $('.corresp-'+$(this).attr('data-corresp')).css({'text-decoration': 'inherit', 'background-color': 'inherit'});
-            }
-        );
-    
   });
+    
+  
+
+  
 
   function makeSyntax(span, rec) {
     html = '';
@@ -298,18 +225,7 @@ function handInfo(span) {
     return html;
   }
 
-  function reindex(span) { // prefixes all ids in some html
-        //console.log(span.html());
-        //dom = $.parseHTML(span);
-        //console.log(typeof span);
-        //span2 = $('#rightPanel').find('.lineBreak').remove();
-        $(span).find('.lineBreak').remove();
-        //console.log(span);
-        //$('.lineBreak').remove()
-        //console.log(span2.html());
-        //delete all <span class="lineBreak"> elements from inside span;
-        return $(span).html().replace(/id="/g, 'id="xx');
-    }
+  
 
 /*
       Show/hide marginal notes
