@@ -25,6 +25,7 @@ It creates a diplomatic MS view.
         <!-- MM: not sure we need greyedOut here -->
         <xsl:text> </xsl:text>
         <small class="text-muted">[start of <span title="{concat(@type,' ',@corresp)}">Text <xsl:value-of select="@n"/></span>]</small>
+        <small class="text-muted" title="{tei:p/tei:handShift/@new}">[hs]</small>
       </div>
       <xsl:apply-templates/>
       <div class="textAnchor"><small class="text-muted">[end of Text <xsl:value-of select="@n"/>]</small></div>
@@ -38,8 +39,8 @@ It creates a diplomatic MS view.
   </xsl:template>
 
   <xsl:template match="tei:pb">
-    <br/>
     <span class="pageAnchor">
+      <br/>
       <small class="text-muted">[start of page 
         <xsl:choose>
           <xsl:when test="@facs">
@@ -54,8 +55,8 @@ It creates a diplomatic MS view.
       </small>
     </span>
   </xsl:template>
-
-  <xsl:template match="tei:handShift">
+  
+  <xsl:template match="tei:w/tei:handShift">
     <span class="handshift" data-hand="{@new}" title="{@new}"><small class="text-muted">[hs]</small></span>
   </xsl:template>
   
@@ -136,7 +137,7 @@ It creates a diplomatic MS view.
         </xsl:when>
         <xsl:otherwise>    <!-- a Gaelic word -->
           <xsl:attribute name="data-headword">
-            <xsl:value-of select="@lemmaRef"/>
+            <xsl:value-of select="@lemma"/>
           </xsl:attribute>
           <xsl:attribute name="data-pos">
             <xsl:value-of select="@pos"/>

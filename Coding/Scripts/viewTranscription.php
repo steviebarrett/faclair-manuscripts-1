@@ -100,7 +100,7 @@ function gdSort($s, $t) {
 foreach ($lemmas as $nextLemma) {
   $n = $counts[$nextLemma];
   $pair = explode("|", $nextLemma);
-  echo '<div class="list-group-item list-group-item-action"><span class="indexHeadword" data-uri="' . $pair[1] . '">' . $pair[0] . '</span> <span class="hwCount badge badge-light">' . $n . '</span> <a href="#" class="implode badge badge-light">-</a> <a href="#" class="explode badge badge-light">+</a></div>';
+  echo '<div class="list-group-item list-group-item-action"><span class="indexHeadword" data-uri="' . $pair[1] . '">' . $pair[0] . '</span> <span class="hwCount badge badge-light">' . $n . '</span> <button type="button" class="implode">-</button> <button type="button" class="explode">+</button></div>';
   // Note that each HW HAS class="indexHeadword" for event handling
 }
 ?> 

@@ -307,26 +307,6 @@ $(function() {
          */
     }
 
-    function decode(lang) {
-        switch (lang) {
-            case 'la':
-                return 'Latin';
-            case 'sco':
-                return 'Scots';
-            case "gk":
-                return 'Greek';
-            case 'hbo':
-                return 'Ancient Hebrew';
-            case 'jpa':
-                return 'Aramaic';
-            case 'en':
-                return 'English';
-            case 'und':
-                return 'unknown';
-            default:
-                return lang;
-        }
-    }
 
     function getDamage(span) {
         html2 = '';
