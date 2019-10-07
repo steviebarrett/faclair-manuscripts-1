@@ -257,12 +257,13 @@ It creates a diplomatic MS view.
   </xsl:template>
 
   <xsl:template match="tei:choice">
-    <span class="correction">
-      <xsl:attribute name="title">
-        <xsl:text>Probably: </xsl:text>
+    <span class="choice">
+      <span class="corr" data-resp="{tei:corr/@resp}">
         <xsl:apply-templates select="tei:corr"/>
-      </xsl:attribute>
-      <xsl:apply-templates select="tei:sic"/>
+      </span>
+      <span class="sic" style="color:red">
+        <xsl:apply-templates select="tei:sic"/>
+      </span>
     </span>
   </xsl:template>
 

@@ -180,6 +180,7 @@ function makeSyntax(span, rec) {
       html += '<li>appears in the HDSG/RB collection of headwords: <a href="' + $(span).attr('data-slipref') + '" target="_new">' + $(span).attr('data-lemmasl') + '</a></li>';
     }
   }
+  html += getCorrection(span); // start here
   if (rec) {
     html += '</ul>';
   }
@@ -454,3 +455,21 @@ function getAdditions(span) {
         }
         return html2 + '</div>';
 }
+
+function getCorrection(span) {
+  html = '';
+  if($(span).parents('.choice').length > 0) {
+    html += '<li>';
+    html += 'Note that \'';
+    html += $(span).parents('.choice').children('.sic').text();
+    html += '\' should probably be read as \'';
+    x = $(span).parents('.choice').children('.corr');
+    html += x.text();
+    html += '\' (' + x.attr('data-resp') + ').</li>';
+  }
+  else if ($(span).find('.choice').length > 0) {
+    alert('yadda'); // start here!
+  }
+  return html;
+}
+
