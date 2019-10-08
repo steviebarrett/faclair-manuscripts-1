@@ -17,18 +17,20 @@ It creates a diplomatic MS view.
   <xsl:template match="tei:div"> 
     <div class="text" data-hand="{@hand}" data-n="{@n}" data-corresp="{@corresp}" data-type="{@type}" data-ms="{substring(/tei:TEI/@xml:id,2)}"> 
       <!-- Do we still need class="text"? Where does data-ms get used? -->
+      <!--
       <div class="textAnchor">
         <button type="button" data-toggle="modal" data-target="#commentForm" class="addComment" title="Leave comment on this text" data-s="div" data-n="{@n}">+</button>
-        <!-- MM: don't think we need data-s and data-n here. Just look at the grandparent. -->
         <xsl:text> </xsl:text>
         <button type="button" class="viewComment greyedOut" title="View comments on this text" data-s="div" data-n="{@n}">?</button>
-        <!-- MM: not sure we need greyedOut here -->
         <xsl:text> </xsl:text>
         <small class="text-muted">[start of <span title="{concat(@type,' ',@corresp)}">Text <xsl:value-of select="@n"/></span>]</small>
         <small class="text-muted" title="{tei:p/tei:handShift/@new}">[hs]</small>
       </div>
+      -->
       <xsl:apply-templates/>
+      <!--
       <div class="textAnchor"><small class="text-muted">[end of Text <xsl:value-of select="@n"/>]</small></div>
+      -->
     </div>
   </xsl:template>
 
@@ -89,7 +91,7 @@ It creates a diplomatic MS view.
     <xsl:text> </xsl:text>
   </xsl:template>
 
-  <xsl:template match="tei:pc[not(ancestor::tei:w)]">
+  <xsl:template match="tei:pc">
     <span class="punct">
       <xsl:value-of select="."/>
     </span>
@@ -261,7 +263,7 @@ It creates a diplomatic MS view.
       <span class="corr" data-resp="{tei:corr/@resp}">
         <xsl:apply-templates select="tei:corr"/>
       </span>
-      <span class="sic" style="color:red">
+      <span class="sic">
         <xsl:apply-templates select="tei:sic"/>
       </span>
     </span>
@@ -271,7 +273,7 @@ It creates a diplomatic MS view.
   <xsl:template match="tei:note"/>
 
   <!-- Marginal notes - Added by SB-->
-  <xsl:template match="tei:seg[@type='margNote']"> <!-- ????? -->
+  <xsl:template match="tei:seg[@type='margNote']">
     <xsl:text> </xsl:text>
     <a href="#" class="marginalNoteLink" data-id="{@xml:id}">m</a>
     <div class="marginalNote" id="{@xml:id}">
@@ -300,12 +302,6 @@ It creates a diplomatic MS view.
     </span>
   </xsl:template>
 
-  <xsl:template match="tei:head/tei:title">
-    <xsl:text> </xsl:text>
-    <strong>
-      <xsl:apply-templates/>
-    </strong>
-    <xsl:text> </xsl:text>
-  </xsl:template>
+  <xsl:template match="tei:head/tei:title"/>
 
 </xsl:stylesheet>

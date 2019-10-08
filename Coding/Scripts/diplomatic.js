@@ -29,24 +29,11 @@ $(function() {
     $('#rhs').html(html);
   });
     
-  
-
-  
-
-  
-
-
-
-  
-
-/*
-      Show/hide marginal notes
-      Added by SB
-     */
-    $('.marginalNoteLink').on('click', function() {
-        var id = $(this).attr('data-id').replace(/\./g, '\\.');
-        $('#'+id).toggle();
-    });
+  /* Show/hide marginal notes. Added by SB. MM: might be interefered with by hw search now. */
+  $('.marginalNoteLink').on('click', function() {
+    var id = $(this).attr('data-id').replace(/\./g, '\\.');
+    $('#'+id).toggle();
+  });
 
 });
 

@@ -11,6 +11,7 @@ $(function() {
     $('#rhs').html(''); // clear RHS
     $('.temp').remove(); // remove all temporary hr elements
     $('#midl').find('span').show(); // unhide all spans
+    $('#midl').find('.corr').hide();
     $('.textAnchor').show();
     $('.pageAnchor').show();
     $('.indexHeadword').parent().css({'background-color': 'inherit'});
@@ -64,6 +65,7 @@ $(function() {
     $(this).hide();
     $(this).prevAll('.implode').show();
     $('#midl').find('span').show();
+    $('#midl').find('.corr').hide();
     $('#midl').find('.textAnchor').show();
     $('#midl').find('.pageAnchor').show();
     $('.temp').remove();
@@ -86,6 +88,7 @@ $(function() {
     this2 = $(this).clone();
     $(this2).find('.lineBreak').remove();
     $(this2).find('.pageAnchor').remove();
+    $(this2).find('.punct').remove();
     $(this2).find('[id]').each(function(){
       $(this).attr('id', 'xx-' + $(this).attr('id'));
     });
@@ -122,12 +125,12 @@ $(function() {
     $('.glyphShow').hover( //maybe move up to just after the ajax call?
       function(){
         $('#'+$(this).attr('data-id')).css('text-decoration', 'underline');
-        $('#xx'+$(this).attr('data-id')).css('background-color', 'yellow');
+        $('#xx-'+$(this).attr('data-id')).css('background-color', 'yellow');
         $('.corresp-'+$(this).attr('data-corresp')).css({'text-decoration': 'underline', 'background-color': 'yellow'});
       },
       function() {
         $('#'+$(this).attr('data-id')).css('text-decoration', 'inherit');
-        $('#xx'+$(this).attr('data-id')).css('background-color', 'inherit');
+        $('#xx-'+$(this).attr('data-id')).css('background-color', 'inherit');
         $('.corresp-'+$(this).attr('data-corresp')).css({'text-decoration': 'inherit', 'background-color': 'inherit'});
       }
     );
@@ -138,7 +141,7 @@ $(function() {
 function makeSyntax(span, rec) {
   html = '';
   if (rec) {
-    html += $(span).text();
+    html += $(span).text().replace(/[\+\?\:]/g, '');
     html += '<ul>';
   }
   if ($(span).children('.syntagm').length < 2) { html += handInfo(span); } // syntactically simple? maybe some bugs here?
@@ -180,7 +183,7 @@ function makeSyntax(span, rec) {
       html += '<li>appears in the HDSG/RB collection of headwords: <a href="' + $(span).attr('data-slipref') + '" target="_new">' + $(span).attr('data-lemmasl') + '</a></li>';
     }
   }
-  html += getCorrection(span); // start here
+  html += getCorrection(span);
   if (rec) {
     html += '</ul>';
   }
@@ -360,26 +363,24 @@ function structure(span) {
     html += '</ul>';
     html += '</li>';
   }
-    /* } maybe reintegrate all of this?
-         else if ($(span).children('.syntagm').length==1 && $(span).children('.syntagm').children('.syntagm').length>0) {
-           htmlx += '<li>is a syntactically complex form containing the following elements:';
-           htmlx += '<ul>';
+  else if ($(span).children('.syntagm').length==1 && $(span).children('.syntagm').children('.syntagm').length>0) {
+           html += '<li>is a syntactically complex form containing the following elements:';
+           html += '<ul>';
            $(span).children('.syntagm').children('.syntagm').each(function() {
-             htmlx = htmlx + '<li>' + makeSyntax($(this),true) + '</li>';
+             html = html + '<li>' + makeSyntax($(this),true) + '</li>';
            });
-           htmlx += '</ul>';
-           htmlx += '</li>';
-         }
-         else if ($(span).children('.addition, .deletion').length>0) {
-           htmlx += '<li>is a syntactically complex form containing the following elements:';
-           htmlx += '<ul>';
-           $(span).children('.syntagm').add($(span).children('.addition').add($(span).children('.deletion')).children('.syntagm')).each(function() {
-             htmlx = htmlx + '<li>' + makeSyntax($(this),true) + '</li>';
-           });
-           htmlx += '</ul>';
-           htmlx += '</li>';
-         }
-          */
+           html += '</ul>';
+           html += '</li>';
+  }
+  else if ($(span).children('.insertion, .deletion').length>0) {
+    html += '<li>is a syntactically complex form containing the following elements:';
+    html += '<ul>';
+    $(span).children('.syntagm').add($(span).children('.insertion').add($(span).children('.deletion')).children('.syntagm')).each(function() {
+      html += '<li>' + makeSyntax($(this),true) + '</li>';
+    });
+    html += '</ul>';
+    html += '</li>';
+  }
   else html += '<li>is a syntactically simple form</li>';
   return html;
 }
@@ -423,17 +424,27 @@ function getDamage(span) { // all this needs checked
 }
 
 function getDeletions(span) {
-        html2 = '<div>';
-        if ($(span).find('.deletion').length>0) {
-            html2 += 'Contains the following deletions:<ul>';
-            $(span).find('.deletion').each(function() {
-                html2 = html2 + '<li>[' + $(this).text() + '] ';
-                html2 = html2 + '(' + $(this).attr('data-hand');
-                html2 += ')</li>';
-            });
-            html2 += '</ul>';
-        }
-        return html2 + '</div>';
+  html = '<div>';
+  var x = $(span).find('.deletion'); // contains a deletion
+  if (x.length>0) {
+    html += 'Contains the following deletions:<ul>';
+    x.each(function() {
+      html += '<li>[' + $(this).text() + '] ';
+      html += '(<a href="#" onclick="$(\'#handInfo_'+ $(this).attr('data-hand') + '\').bPopup();">' + getHandName($(this).attr('data-hand')) + '</a>)</li>';
+    });
+    html += '</ul>';
+  }
+  else {
+    x = $(span).parents('.deletion');
+    if (x.length>0) {
+      html += 'Is part of the following deletion:<ul>';
+      html += '<li>[' + x.text() + '] (';
+      html += '<a href="#" onclick="$(\'#handInfo_'+ x.attr('data-hand') + '\').bPopup();">' + getHandName(x.attr('data-hand')) + '</a>';
+      html += ')</li>';
+      html += '</ul>';
+    }
+  }
+  return html + '</div>';
 }
 
 function getAdditions(span) {
@@ -451,7 +462,7 @@ function getAdditions(span) {
         else if ($(span).parents('.insertion').length>0) {
             html2 += 'Is part of the following insertion:<ul>';
             html2 = html2 + '<li>[' + $(span).parents('.insertion').text() + '] (';
-            html2 += '<a href="#" onclick="$(\'#handInfo_'+ $(this).attr('data-hand') + '\').bPopup();">' + getHandName($(this).attr('data-hand')) + '</a>';
+            html2 += '<a href="#" onclick="$(\'#handInfo_'+ $(this).attr('data-hand') + '\').bPopup();">' + getHandName($(this).attr('data-hand')) + '</a>'; // what is 'this'?
             html2 = html2 + ', ' + $(span).parents('.insertion').attr('data-place');
             html2 += ')</li>';
             html2 += '</ul>';
