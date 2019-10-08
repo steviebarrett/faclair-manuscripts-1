@@ -92,6 +92,7 @@ $(function() {
     $(this2).find('[id]').each(function(){
       $(this).attr('id', 'xx-' + $(this).attr('id'));
     });
+    $(this2).find('.supplied').css('display', 'inline');
     html += '<span class="syntagm">' + $(this2).html() + '</span>';
     //html = html.replace(/\n/g,'');
     html += '</h1><ul>';
@@ -158,7 +159,12 @@ function makeSyntax(span, rec) {
     if ($(span).attr('data-headword')) {
       html += '<li>is a form of the headword ';
       html += '<a href="' + $(span).attr('data-edil') + '" target="_new">' + $(span).attr('data-headword') + '</a>';
-      if ($(span).attr('data-edil').indexOf('dil.ie')>0) { html += ' (eDIL)'; }
+      if ($(span).attr('data-edil').indexOf('dil.ie')>0) { 
+        if ($(span).attr('data-source')!='') {
+          html += ' ' + $(span).attr('data-source'); // needs work
+        }
+        html += ' (eDIL)'; 
+      }
       else if ($(span).attr('data-edil').indexOf('faclair.com')>0) { html += ' (Dwelly)'; }
       $.ajaxSetup({async: false});
       $.getJSON('ajax.php?action=getDwelly&edil=' + $(span).attr('data-edil'), function (g) {

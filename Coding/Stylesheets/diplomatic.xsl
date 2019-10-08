@@ -10,6 +10,7 @@ It creates a diplomatic MS view.
 
   <xsl:template match="/">
     <div data-docid="{tei:TEI/@xml:id}"> <!-- MM: do we still need this attribute? -->
+      <span class="pageBreak"><small class="text-muted">[toggle <a href="#" id="commentToggle">comments</a>]</small></span>
       <xsl:apply-templates select="tei:TEI/tei:text/tei:body/tei:div"/>
     </div>
   </xsl:template>
@@ -56,7 +57,7 @@ It creates a diplomatic MS view.
   </xsl:template>
   
   <xsl:template match="tei:w/tei:handShift">
-    <span class="handshift" data-hand="{@new}" title="{@new}"><small class="text-muted">[hs]</small></span>
+    <span class="handshift" data-hand="{@new}" title="{@new}"><small class="text-muted">[beg. <xsl:value-of select="@new"/>]</small></span>
   </xsl:template>
   
   <xsl:template match="tei:lb">
@@ -143,6 +144,9 @@ It creates a diplomatic MS view.
           </xsl:attribute>
           <xsl:attribute name="data-edil">
             <xsl:value-of select="@lemmaRef"/>
+          </xsl:attribute>
+          <xsl:attribute name="data-source">
+            <xsl:value-of select="@source"/>
           </xsl:attribute>
           <xsl:if test="@lemmaSL">
             <xsl:attribute name="data-lemmasl">
@@ -312,6 +316,14 @@ It creates a diplomatic MS view.
       </small>
     </span>
     <xsl:apply-templates select="document(concat('../../Transcribing/Transcriptions/transcription',@source,'.xml'))/descendant::tei:div[@corresp=$target]"/>
+  </xsl:template>
+  
+  <xsl:template match="tei:supplied">
+    <span class="supplied" style="color:red" title="Supplied by: {@resp}">
+      <xsl:text>[</xsl:text>
+      <xsl:apply-templates/>
+      <xsl:text>]</xsl:text>
+    </span>
   </xsl:template>
 
 </xsl:stylesheet>

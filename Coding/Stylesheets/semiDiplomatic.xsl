@@ -14,17 +14,21 @@ It creates a semi-diplomatic MS view.
     </div>
   </xsl:template>
   
-  <xsl:template match="tei:div"> <!-- MM: check ALL of this with SB -->
+  <xsl:template match="tei:div"> 
     <div class="text" data-hand="{@hand}" data-n="{@n}" data-corresp="{@corresp}" data-type="{@type}" data-ms="{substring(/tei:TEI/@xml:id,2)}"> 
-      <div><small class="text-muted">[start of Text <xsl:value-of select="@n"/>]</small></div>
-      <button type="button" data-toggle="modal" data-target="#commentForm" class="addComment" title="Leave comment on this text" data-s="div" data-n="{@n}">[+]</button>
-      <xsl:text> </xsl:text>
-      <a href="#" class="viewComment greyedOut" title="View comments on this text" data-s="div" data-n="{@n}">[?]</a>
-      <xsl:apply-templates/>
-      <div><small class="text-muted">[end of Text <xsl:value-of select="@n"/>]</small></div>
+      <div class="textAnchor">
+        <button type="button" data-toggle="modal" data-target="#commentForm" class="addComment" title="Leave comment on this text" data-s="div" data-n="{@n}">+</button>
+        <xsl:text> </xsl:text>
+        <button type="button" class="viewComment greyedOut" title="View comments on this text" data-s="div" data-n="{@n}">?</button>
+        <xsl:text> </xsl:text>
+        <small class="text-muted">[start of <span title="{concat(@type,' ',@corresp)}">Text <xsl:value-of select="@n"/></span>]</small>
+        <small class="text-muted" title="{tei:p/tei:handShift/@new}">[hs]</small>
+      </div>
+    <xsl:apply-templates/>
+      <div class="textAnchor"><small class="text-muted">[end of Text <xsl:value-of select="@n"/>]</small></div>
     </div>
   </xsl:template>
-
+ 
   <xsl:template match="tei:p">
     <p>
       <xsl:apply-templates/>
