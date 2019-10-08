@@ -10,7 +10,7 @@ It creates a diplomatic MS view.
 
   <xsl:template match="/">
     <div data-docid="{tei:TEI/@xml:id}"> <!-- MM: do we still need this attribute? -->
-      <span class="pageBreak"><small class="text-muted">[toggle <a href="#" id="commentToggle">comments</a>]</small></span>
+      <!-- <span class="pageBreak"><small class="text-muted">[toggle <a href="#" id="commentToggle">comments</a>]</small></span> -->
       <xsl:apply-templates select="tei:TEI/tei:text/tei:body/tei:div"/>
     </div>
   </xsl:template>
@@ -63,10 +63,12 @@ It creates a diplomatic MS view.
   <xsl:template match="tei:lb">
     <span class="lineBreak" data-number="{@n}" id="{concat('line_',@xml:id)}">
       <br/>
+      <!--
       <button type="button" data-toggle="modal" data-target="#commentForm" class="addComment" title="Leave comment on this line" data-s="lb" data-n="{@xml:id}">+</button>
       <xsl:text> </xsl:text>
       <button type="button" class="viewComment greyedOut" title="View comments on this line" data-s="lb" data-n="{@xml:id}">?</button>
       <xsl:text> </xsl:text>
+      -->
     </span>
   </xsl:template>
 
