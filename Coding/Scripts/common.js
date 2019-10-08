@@ -239,6 +239,10 @@ function handInfo(span) {
   if (typeof h == 'undefined') { // handshift is not a sibling but rather an auntie
     h = $(span).parents().prevAll('.handshift').first().attr('data-hand');
   }
+  if (typeof h == 'undefined') {
+    h = $(span).parentsUntil('.text').parent().attr('data-hand');
+  }
+  alert(h);
   html += getHandInfoDiv(h);
   html += '<li>was written by ';
   html += '<a href="#" data-toggle="modal" data-target="#handInfo_' + h +'">' + getHandName(h) + '</a>';
