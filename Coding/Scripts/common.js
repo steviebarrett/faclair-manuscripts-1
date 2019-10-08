@@ -243,7 +243,7 @@ function handInfo(span) {
     h = $(span).parents().prevAll('.handshift').first().attr('data-hand');
   }
   if (typeof h == 'undefined') {
-    h = $(span).parentsUntil('.text').parent().attr('data-hand');
+    h = $(span).parentsUntil('.text').parent().attr('data-hand'); // this will break!
   }
   html += getHandInfoDiv(h);
   html += '<li>was written by ';

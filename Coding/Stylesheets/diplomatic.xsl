@@ -15,9 +15,8 @@ It creates a diplomatic MS view.
   </xsl:template>
 
   <xsl:template match="tei:div"> 
+    <!--
     <div class="text" data-hand="{@hand}" data-n="{@n}" data-corresp="{@corresp}" data-type="{@type}" data-ms="{substring(/tei:TEI/@xml:id,2)}"> 
-      <!-- Do we still need class="text"? Where does data-ms get used? -->
-      <!--
       <div class="textAnchor">
         <button type="button" data-toggle="modal" data-target="#commentForm" class="addComment" title="Leave comment on this text" data-s="div" data-n="{@n}">+</button>
         <xsl:text> </xsl:text>
@@ -28,16 +27,14 @@ It creates a diplomatic MS view.
       </div>
       -->
       <xsl:apply-templates/>
-      <!--
+    <!--
       <div class="textAnchor"><small class="text-muted">[end of Text <xsl:value-of select="@n"/>]</small></div>
-      -->
     </div>
+    -->
   </xsl:template>
 
   <xsl:template match="tei:p">
-    <p>
-      <xsl:apply-templates/>
-    </p>
+    <xsl:apply-templates/>
   </xsl:template>
 
   <xsl:template match="tei:pb">
@@ -246,7 +243,7 @@ It creates a diplomatic MS view.
     </span>
   </xsl:template>
 
-  <xsl:template match="tei:add[@type='gloss']">  <!-- ??? -->
+  <xsl:template match="tei:add[@type='gloss']">
     <span class="gloss" data-hand="{@hand}" data-place="{@place}">
       <xsl:apply-templates/>
     </span>
@@ -303,5 +300,18 @@ It creates a diplomatic MS view.
   </xsl:template>
 
   <xsl:template match="tei:head/tei:title"/>
+  
+  <xsl:template match="tei:anchor">
+    <xsl:variable name="target" select="@copyOf"/>
+    <span class="pageBreak">
+      <br/>
+      <small class="text-muted">
+        <xsl:text>[</xsl:text>
+        <xsl:value-of select="@comment"/>
+        <xsl:text>]</xsl:text>
+      </small>
+    </span>
+    <xsl:apply-templates select="document(concat('../../Transcribing/Transcriptions/transcription',@source,'.xml'))/descendant::tei:div[@corresp=$target]"/>
+  </xsl:template>
 
 </xsl:stylesheet>
