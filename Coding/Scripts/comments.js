@@ -35,8 +35,8 @@ $(function() {
             }
         })
             .done(function () {
-                $('a[data-s='+s+'][data-n='+escapedSid+']').removeClass('greyedOut');   //remove the greyed out status of viewComment link
-                $('a[data-s='+s+'][data-n='+escapedSid+']').show();   //show the viewComment link
+                $('button[data-s='+s+'][data-n='+escapedSid+']').removeClass('greyedOut');   //remove the greyed out status of viewComment link
+                $('button[data-s='+s+'][data-n='+escapedSid+']').show();   //show the viewComment link
                 updateComments(docid, s, sid);              //update the comments list to the current section
             });
         //reset the form elements
@@ -72,7 +72,7 @@ $(function() {
                         .done(function (cdata) {
                             console.log(cdata);
                             var sectionId = cdata.section_id.replace(/\./g, '\\.');
-                            $('a[class="viewComment"][data-s=' + cdata.section + '][data-n=' + sectionId + ']').addClass('greyedOut');  //fade the viewcComment link
+                            $('button[class="viewComment"][data-s=' + cdata.section + '][data-n=' + sectionId + ']').addClass('greyedOut');  //fade the viewcComment link
                         });
                 }
             })
@@ -99,10 +99,10 @@ $(function() {
                 var section = val.section;
                 var sectionId = val.section_id;
                 sectionId = sectionId.replace(/\./g, '\\.');
-                $('a[data-s='+section+'][data-n='+sectionId+']').show();
+                $('button[data-s='+section+'][data-n='+sectionId+']').show();
                 //remove greyedOut class if there is a non-deleted comment here
                 if (val.deleted == "0") {
-                    $('a[data-s='+section+'][data-n='+sectionId+']').removeClass('greyedOut');
+                    $('button[data-s='+section+'][data-n='+sectionId+']').removeClass('greyedOut');
                 }
             });
         });
