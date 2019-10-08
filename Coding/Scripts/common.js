@@ -461,17 +461,27 @@ function getAdditions(span) {
 
 function getCorrection(span) {
   html = '';
-  if($(span).parents('.choice').length > 0) {
+  var x = $(span).parents('.choice');
+  if(x.length > 0) {
     html += '<li>';
     html += 'Note that \'';
-    html += $(span).parents('.choice').children('.sic').text();
+    html += x.children('.sic').text().replace(/[\+\?]/g, '');
     html += '\' should probably be read as \'';
-    x = $(span).parents('.choice').children('.corr');
-    html += x.text();
-    html += '\' (' + x.attr('data-resp') + ').</li>';
+    y = x.children('.corr');
+    html += y.text().replace(/[\+\?]/g, '');
+    html += '\' (' + y.attr('data-resp') + ').</li>';
   }
-  else if ($(span).find('.choice').length > 0) {
-    alert('yadda'); // start here!
+  else {
+    x = $(span).find('.choice');
+    if (x.length > 0) {
+      html += '<li>';
+      html += 'Note that \'';
+      html += x.children('.sic').text().replace(/[\+\?]/g, '');
+      html += '\' should probably be read as \'';
+      y = x.children('.corr');
+      html += y.text().replace(/[\+\?]/g, '');
+      html += '\' (' + y.attr('data-resp') + ').</li>';
+    }
   }
   return html;
 }
