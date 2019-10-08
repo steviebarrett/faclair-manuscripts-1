@@ -20,7 +20,7 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
                 let $hw_id := string($x/@lemmaRef)
                 let $hw_label := string($x/@lemma)
                 let $lemText := string($x/ancestor::tei:div[not(ancestor::tei:div)]/@corresp)
-                where //tei:div[@corresp="MS14.3"]//tei:w[@lemmaRef = $hw_id]
+                where //tei:div[@corresp="MS12.3"]//tei:w[@lemmaRef = $hw_id]
                 return
                     <tr><td>{$hw_id}</td><td>{$hw_label}</td><td>headword</td><td>null</td><td>null</td></tr>
             }
@@ -30,7 +30,7 @@ declare namespace tei = "http://www.tei-c.org/ns/1.0";
                 let $scribe_id := string(//tei:div[not(ancestor::tei:div) and not(@corresp = preceding::tei:div[not(ancestor::tei:div)]/@corresp) and @corresp = $text_id]/@resp)
                 let $text_label := concat(//tei:msItem[@xml:id = $text_id]/tei:title, " (", $text_id, ")")
                 let $text_affil := string(//tei:handNote[@xml:id = $scribe_id]/tei:affiliation)
-                where $y//tei:w[@lemmaRef = //tei:w[ancestor::tei:div[@corresp = "MS14.3"]]/@lemmaRef]
+                where $y//tei:w[@lemmaRef = //tei:w[ancestor::tei:div[@corresp = "MS12.3"]]/@lemmaRef]
                 return
                     <tr><td>{$text_id}</td><td>{$text_label}</td><td>text</td><td>{$scribe_id}</td><td>{$text_affil}</td></tr>
             }
