@@ -41,7 +41,7 @@ else echo '<link rel="stylesheet" href="../Stylesheets/semiDiplomatic.css"/>';
 if ($diplo=='yes') echo '<script src="diplomatic.js"></script>';
 else echo '<script src="semiDiplomatic.js"></script>';
 ?>
-    <script src="comments.js"></script>
+    <!-- <script src="comments.js"></script>-->
     <title>DASG-MSS tool</title>
   </head>
   <body style="height: 100%;">
