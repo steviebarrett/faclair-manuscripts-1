@@ -11,7 +11,10 @@ $(function() {
     $('#rhs').html(''); // clear RHS
     $('.temp').remove(); // remove all temporary hr elements
     $('#midl').find('span').show(); // unhide all spans
-    $('#midl').find('.corr').hide();
+    if ($('#midl').children('div').attr('data-diplo')=='yes') {
+      $('#midl').find('.corr').hide(); 
+      $('#midl').find('.supplied').hide();
+    }
     $('.textAnchor').show();
     $('.pageAnchor').show();
     $('.indexHeadword').parent().css({'background-color': 'inherit'});
@@ -54,6 +57,10 @@ $(function() {
       }
     });
     $('.textAnchor').hide();
+    if ($('#midl').children('div').attr('data-diplo')=='yes') {
+      $('#midl').find('.corr').hide(); 
+      $('#midl').find('.supplied').hide();
+    }
     //$('.pageAnchor').show();
     //$('#midl').find('.pageAnchor').hide();
     //$(this).parents().prevAll('.pageAnchor').first().show(); // not working
@@ -65,7 +72,10 @@ $(function() {
     $(this).hide();
     $(this).prevAll('.implode').show();
     $('#midl').find('span').show();
-    $('#midl').find('.corr').hide();
+    if ($('#midl').children('div').attr('data-diplo')=='yes') {
+      $('#midl').find('.corr').hide(); 
+      $('#midl').find('.supplied').hide();
+    }
     $('#midl').find('.textAnchor').show();
     $('#midl').find('.pageAnchor').show();
     $('.temp').remove();
@@ -84,68 +94,54 @@ $(function() {
     $('.chunk').css('background-color', 'inherit');
     $(this).css('background-color', 'yellow'); 
     var prevCorresp = ''; // better name?
-    html = '<h1>';
-    this2 = $(this).clone();
-    $(this2).find('.lineBreak').remove();
-    $(this2).find('.pageAnchor').remove();
-    $(this2).find('.punct').remove();
-    $(this2).find('[id]').each(function(){
-      $(this).attr('id', 'xx-' + $(this).attr('id'));
-    });
-    $(this2).find('.supplied').css('display', 'inline');
-    html += '<span class="syntagm">' + $(this2).html() + '</span>';
-    //html = html.replace(/\n/g,'');
-    html += '</h1><ul>';
-    html += makeSyntax($(this),false);
-    html += '</ul>';
-    if ($(this).find('.expansion, .ligature').length > 0) {
-      html += 'Contains, or is formed from, the following scribal abbreviations and/or ligatures:<ul>';
-      $(this).find('.expansion, .ligature').each(function() {
-        var corresp;
-        if (corresp = $(this).attr('data-corresp')) {
-          if (corresp === prevCorresp) {
-            return true;    //SB: prevents >1 example being shown for elements with the same corresp; MM: not sure about any of this
-          } else { prevCorresp = corresp; }
-        } else { prevCorresp = ''; }
-        cert = $(this).attr('data-cert');
-        var xmlId = $(this).attr('data-glyphref');
-        var elementId = $(this).attr('id');
-        //$.ajaxSetup({async: false});
-        $.getJSON('ajax.php?action=getGlyph&xmlId=' + xmlId, function (g) {
-          txt = '<li class="glyphItem"><a href="' + g.corresp + '" target="_new" data-src="' + g.id + '">' + g.name;
-          txt = txt + '</a>: ' + g.note + ' (' + cert + ' certainty) <a style="font-size: small;" href="#" class="glyphShow" data-id="' + elementId + '" data-corresp="'+prevCorresp+'">[show]</a></li>';
-          html += txt;
-        });
-      });
-      html += '</ul>';
-    }
+    html = makeHeading($(this));
+    html += '<ul class="rhs">' + makeSyntax($(this),false) + '</ul>';
+    //start here:
     html += getDamage($(this));
-    html +=getDeletions($(this));
+    html += getDeletions($(this));
     html += getAdditions($(this));
+    html += getSupplied($(this));
     $('#rhs').html(html);
-    $('.glyphShow').hover( //maybe move up to just after the ajax call?
+    $('.glyphShow').hover(
       function(){
         $('#'+$(this).attr('data-id')).css('text-decoration', 'underline');
         $('#xx-'+$(this).attr('data-id')).css('background-color', 'yellow');
-        $('.corresp-'+$(this).attr('data-corresp')).css({'text-decoration': 'underline', 'background-color': 'yellow'});
+        //$('.corresp-'+$(this).attr('data-corresp')).css({'text-decoration': 'underline', 'background-color': 'yellow'});
       },
       function() {
         $('#'+$(this).attr('data-id')).css('text-decoration', 'inherit');
         $('#xx-'+$(this).attr('data-id')).css('background-color', 'inherit');
-        $('.corresp-'+$(this).attr('data-corresp')).css({'text-decoration': 'inherit', 'background-color': 'inherit'});
+        //$('.corresp-'+$(this).attr('data-corresp')).css({'text-decoration': 'inherit', 'background-color': 'inherit'});
       }
     );
   });
-  
 });
+
+function makeHeading(span, rec) {
+  html = '<h1>';
+  clone = $(span).clone();
+  $(clone).find('.lineBreak').remove();
+  $(clone).find('.pageAnchor').remove();
+  $(clone).find('.punct').remove();
+  $(clone).find('[id]').each(function(){
+    $(this).attr('id', 'xx-' + $(this).attr('id'));
+  });
+  $(clone).find('.supplied').css('display', 'inline');
+  html += '<span class="syntagm">' + $(clone).html() + '</span>';
+  return html + '</h1>';
+}
 
 function makeSyntax(span, rec) {
   html = '';
   if (rec) {
-    html += $(span).text().replace(/[\+\?\:]/g, '');
-    html += '<ul>';
+    html += '<strong>' + $(span).text().replace(/[\+\?\:]/g, '') + '</strong>';
+    html += '<ul class="rhs">';
   }
-  if ($(span).children('.syntagm').length < 2) { html += handInfo(span); } // syntactically simple? maybe some bugs here?
+  if ($(span).children('.syntagm').length < 2) { //syntactically simple? maybe some bugs here?
+    html += handInfo(span); 
+    html += getGlygatures(span);
+  } 
+  //start here
   if ($(span).hasClass('name')) { html += onomastics(span); }
   if ($(span).attr('xml:lang') || ($(span).hasClass('name') && $(span).children('.word').attr('xml:lang')==1 && $(span).children('.word').attr('xml:lang'))) {
     html += '<li>is not a Gaelic word: '; // maybe simplify above line?
@@ -196,23 +192,6 @@ function makeSyntax(span, rec) {
   return html;
 
         /*
-        if (!rec && $(span).find('.suppliedDiplo').length>0) {
-          html += '<li>contains editorial supplements:<ul>';
-          //html += $(span).text();
-          $(span).find('.suppliedDiplo').each(function() {
-            html = html + '<li><span style="color: green;">' + $(this).text() + '</span> ';
-            html += '</li>';
-          });
-          html += '</ul></li>';
-        }
-        if (!rec && $(span).find('.suppliedSemi').length>0) {
-          html += '<li>contains the following supplied sequences:<ul>';
-          $(span).find('.suppliedSemi').each(function() {
-            html = html + '<li><span style="color: green;">[</span>' + $(this).text() + '<span style="color: green;">]</span> ';
-            html += '</li>';
-          });
-          html += '</ul></li>';
-        }
 
         if (!rec && $(span).find('.damagedSemi').length>0) {
           html += '<li>contains the following damaged sequences:<ul>';
@@ -239,6 +218,34 @@ function makeSyntax(span, rec) {
         }
         html += '</ul>';
          */
+}
+
+function getGlygatures(span) {
+  html = '';
+  var x = span.find('.expansion, .ligature');
+  if (x.length > 0) {
+    html += '<li>contains the following scribal abbreviations and ligatures:<ul class="rhs">';
+    x.each(function() {
+        /* DISCUSS WITH SB
+        var corresp;
+        if (corresp = $(span).attr('data-corresp')) {
+          if (corresp === prevCorresp) {
+            return true;    //SB: prevents >1 example being shown for elements with the same corresp; MM: not sure about any of this
+          } else { prevCorresp = corresp; }
+        } else { prevCorresp = ''; }
+        */
+      var id = $(this).attr('id');
+      var c = $(this).attr('data-cert');
+      $.ajaxSetup({async: false});
+      $.getJSON('ajax.php?action=getGlyph&xmlId=' + $(this).attr('data-glyphref'), function (g) {
+        li = '<li><a class="glyphShow" href="' + g.corresp + '" target="_new" data-src="' + g.id + '" data-id="' + id + '">' + g.name;
+        li += '</a>: ' + g.note + ' (' + c + ' certainty)'; //<a style="font-size: small;" href="#" class="glyphShow" data-id="' + elementId + '" data-corresp="'+/*prevCorresp+*/'">[show]</a></li>';
+        html += li + '</li>';
+      });
+    });
+    html += '</ul></li>';
+  }
+  return html;
 }
 
 function handInfo(span) {
@@ -268,6 +275,7 @@ function handInfo(span) {
 
 function getHandName(handId) {
   var name = '';
+  $.ajaxSetup({async: false});
   $.getJSON('ajax.php?action=getHandInfo&hand=' + handId, function (g) {
     if (g.forename + g.surname != '') { name = g.forename + ' ' + g.surname; } 
     else { name = 'Anonymous (' + handId + ')'; }
@@ -362,7 +370,7 @@ function structure(span) {
   html = '';
   if ($(span).children('.syntagm').length > 1) {
     html += '<li>is a syntactically complex form containing the following elements:';
-    html += '<ul>';
+    html += '<ul class="rhs">';
     $(span).children('.syntagm').each(function() {
       html = html + '<li>' + makeSyntax($(this),true) + '</li>';
     });
@@ -371,7 +379,7 @@ function structure(span) {
   }
   else if ($(span).children('.syntagm').length==1 && $(span).children('.syntagm').children('.syntagm').length>0) {
            html += '<li>is a syntactically complex form containing the following elements:';
-           html += '<ul>';
+           html += '<ul class="rhs">';
            $(span).children('.syntagm').children('.syntagm').each(function() {
              html = html + '<li>' + makeSyntax($(this),true) + '</li>';
            });
@@ -380,7 +388,7 @@ function structure(span) {
   }
   else if ($(span).children('.insertion, .deletion').length>0) {
     html += '<li>is a syntactically complex form containing the following elements:';
-    html += '<ul>';
+    html += '<ul class="rhs">';
     $(span).children('.syntagm').add($(span).children('.insertion').add($(span).children('.deletion')).children('.syntagm')).each(function() {
       html += '<li>' + makeSyntax($(this),true) + '</li>';
     });
@@ -394,7 +402,7 @@ function structure(span) {
 function getDamage(span) { // all this needs checked
   html2 = '<div>';
   if ($(span).find('.unclearDamage').length>0) { // simplify all this
-    html2 += 'Contains the following damaged sections:<ul>';
+    html2 += 'Contains the following damaged sections:<ul class="rhs">';
     $(span).find('.unclearDamage').each(function() {
       html2 = html2 + '<li>[' + $(this).attr('data-add') + '] ';
       html2 = html2 + '(' + $(this).attr('data-resp') + ', ' + $(this).attr('data-cert');
@@ -403,7 +411,7 @@ function getDamage(span) { // all this needs checked
     html2 += '</ul>';
   }
         if ($(span).find('.unclearTextObscure').length>0) {
-            html2 += 'Contains the following obscured sections:<ul>';
+            html2 += 'Contains the following obscured sections:<ul class="rhs">';
             $(span).find('.unclearTextObscure').each(function() {
                 html2 = html2 + '<li>[' + $(this).text() + '] ';
                 html2 = html2 + '(' + $(this).attr('data-resp') + ', ' + $(this).attr('data-cert');
@@ -412,7 +420,7 @@ function getDamage(span) { // all this needs checked
             html2 += '</ul>';
         }
         if ($(span).find('.unclearChar').length>0) {
-            html2 += 'Contains the following unclear characters:<ul>';
+            html2 += 'Contains the following unclear characters:<ul class="rhs">';
             $(span).find('.unclearChar').each(function() {
                 html2 = html2 + '<li>[' + $(this).text() + '] ';
                 html2 = html2 + '(' + $(this).attr('data-resp') + ', ' + $(this).attr('data-cert');
@@ -433,7 +441,7 @@ function getDeletions(span) {
   html = '<div>';
   var x = $(span).find('.deletion'); // contains a deletion
   if (x.length>0) {
-    html += 'Contains the following deletions:<ul>';
+    html += 'Contains the following deletions:<ul class="rhs">';
     x.each(function() {
       html += '<li>[' + $(this).text() + '] ';
       html += '(<a href="#" onclick="$(\'#handInfo_'+ $(this).attr('data-hand') + '\').bPopup();">' + getHandName($(this).attr('data-hand')) + '</a>)</li>';
@@ -443,7 +451,7 @@ function getDeletions(span) {
   else {
     x = $(span).parents('.deletion');
     if (x.length>0) {
-      html += 'Is part of the following deletion:<ul>';
+      html += 'Is part of the following deletion:<ul class="rhs">';
       html += '<li>[' + x.text() + '] (';
       html += '<a href="#" onclick="$(\'#handInfo_'+ x.attr('data-hand') + '\').bPopup();">' + getHandName(x.attr('data-hand')) + '</a>';
       html += ')</li>';
@@ -456,7 +464,7 @@ function getDeletions(span) {
 function getAdditions(span) {
         html2 = '<div>';
         if ($(span).find('.insertion').length>0) {
-            html2 += 'Contains the following insertions:<ul>';
+            html2 += 'Contains the following insertions:<ul class="rhs">';
             $(span).find('.insertion').each(function() {
                 html2 = html2 + '<li>[' + $(this).text() + '] (';
                 html2 += '<a href="#" onclick="$(\'#handInfo_'+ $(this).attr('data-hand') + '\').bPopup();">' + getHandName($(this).attr('data-hand')) + '</a>';
@@ -466,7 +474,7 @@ function getAdditions(span) {
             html2 += '</ul>';
         }
         else if ($(span).parents('.insertion').length>0) {
-            html2 += 'Is part of the following insertion:<ul>';
+            html2 += 'Is part of the following insertion:<ul class="rhs">';
             html2 = html2 + '<li>[' + $(span).parents('.insertion').text() + '] (';
             html2 += '<a href="#" onclick="$(\'#handInfo_'+ $(this).attr('data-hand') + '\').bPopup();">' + getHandName($(this).attr('data-hand')) + '</a>'; // what is 'this'?
             html2 = html2 + ', ' + $(span).parents('.insertion').attr('data-place');
@@ -503,3 +511,24 @@ function getCorrection(span) {
   return html;
 }
 
+function getSupplied(span) {
+  html = '<div>';
+  var x = $(span).find('.supplied'); // contains a supplied element
+  if (x.length>0) {
+    html += 'Contains text supplied by an editor:<ul class="rhs">';
+    x.each(function() {
+      html += '<li>' + $(this).text();
+      html += ' (' + $(this).attr('data-resp') + ')</li>';
+    });
+    html += '</ul>';
+  }
+  else {
+    x = $(span).parents('.supplied'); // part of a supplied element
+    if (x.length>0) {
+      html += 'Has been supplied by an editor (';
+      html += x.attr('data-resp');
+      html += ').';
+    }
+  }
+  return html + '</div>';
+}

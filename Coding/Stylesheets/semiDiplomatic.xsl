@@ -9,7 +9,7 @@ It creates a semi-diplomatic MS view.
   <xsl:output method="html"/>
 
   <xsl:template match="/">
-    <div data-docid="{tei:TEI/@xml:id}"> <!-- MM: do we still need this attribute? -->
+    <div data-docid="{tei:TEI/@xml:id}" data-diplo="no">
       <xsl:apply-templates select="tei:TEI/tei:text/tei:body/tei:div"/>
     </div>
   </xsl:template>
@@ -73,7 +73,7 @@ It creates a semi-diplomatic MS view.
 
   <xsl:template name="addAttributes">
     <xsl:attribute name="data-headword">
-      <xsl:value-of select="@lemmaRef"/>
+      <xsl:value-of select="@lemma"/>
     </xsl:attribute>
     <!--
     <xsl:attribute name="data-hand">
@@ -226,8 +226,16 @@ It creates a semi-diplomatic MS view.
     <br/>
   </xsl:template>
 
-  <xsl:template match="tei:supplied">
-    <span class="suppliedSemi">
+  <xsl:template match="tei:supplied[tei:w]">  <!-- editorial insertions containing words e.g. T1.5r.25 [a] -->
+    <span class="supplied" data-resp="{@resp}">
+      <xsl:text> [</xsl:text>
+      <xsl:apply-templates/>
+      <xsl:text>] </xsl:text>
+    </span>
+  </xsl:template>
+
+  <xsl:template match="tei:supplied">  <!-- editorial insertions as parts of words e.g. T1.3r.20 mor[maer] -->
+    <span class="supplied" data-resp="{@resp}"> 
       <xsl:text>[</xsl:text>
       <xsl:apply-templates/>
       <xsl:text>]</xsl:text>

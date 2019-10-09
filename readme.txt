@@ -94,9 +94,10 @@ p elements can contain the following chunk-level spans (as well as br elements, 
 .word spans can contain .insertion spans with @data-hand and @data-place attributes
 
 
-
-
-
+w can contain supplied with @resp and content
+p can contain supplied (with resp) containing w and p and pc elements
+hidden in diplo, visible in semi (note in right hand panel in both)
+e.g. T1.3r.20 mor[maer], T1.5r.25 [a]
 
 
 

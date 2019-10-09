@@ -9,7 +9,7 @@ It creates a diplomatic MS view.
   <xsl:output method="html"/>
 
   <xsl:template match="/">
-    <div data-docid="{tei:TEI/@xml:id}"> <!-- MM: do we still need this attribute? -->
+    <div data-docid="{tei:TEI/@xml:id}" data-diplo="yes">
       <!-- <span class="pageBreak"><small class="text-muted">[toggle <a href="#" id="commentToggle">comments</a>]</small></span> -->
       <xsl:apply-templates select="tei:TEI/tei:text/tei:body/tei:div"/>
     </div>
@@ -320,8 +320,8 @@ It creates a diplomatic MS view.
     <xsl:apply-templates select="document(concat('../../Transcribing/Transcriptions/transcription',@source,'.xml'))/descendant::tei:div[@corresp=$target]"/>
   </xsl:template>
   
-  <xsl:template match="tei:supplied">
-    <span class="supplied" style="color:red" title="Supplied by: {@resp}">
+  <xsl:template match="tei:supplied"> <!-- editorial insertions e.g. MS1.3r.20 mor[maer], MS1.5r.25 [a] -->
+    <span class="supplied" data-resp="{@resp}">
       <xsl:text>[</xsl:text>
       <xsl:apply-templates/>
       <xsl:text>]</xsl:text>

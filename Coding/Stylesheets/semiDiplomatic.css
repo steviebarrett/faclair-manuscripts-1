@@ -69,7 +69,6 @@ It contains styles relevant to just the semi-diplomatic view.
   display: none;
 }
 
-.supplied {
-  display: none;
+.corr, .supplied {
+  display: inline; /*  careful with how this interacts with headword search! */
 }
-
