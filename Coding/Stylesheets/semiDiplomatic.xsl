@@ -201,12 +201,8 @@ It creates a semi-diplomatic MS view.
     </span>
   </xsl:template>
 
-  <xsl:template match="tei:choice">
-    <span class="correction">
-      <xsl:attribute name="title">
-        <xsl:text>Corrected from: </xsl:text>
-        <xsl:apply-templates select="tei:sic"/>
-      </xsl:attribute>
+  <xsl:template match="tei:choice"> <!-- editorial emendations e.g. MS1.4r.2 ro/do -->
+    <span class="sic" data-resp="{tei:corr/@resp}" data-alt="{tei:sic}">
       <xsl:apply-templates select="tei:corr"/>
     </span>
   </xsl:template>
@@ -296,5 +292,17 @@ It creates a semi-diplomatic MS view.
     </span>
   </xsl:template>
 
+  <xsl:template match="tei:anchor">
+    <xsl:variable name="target" select="@copyOf"/>
+    <span class="pageBreak">
+      <br/>
+      <small class="text-muted">
+        <xsl:text>[</xsl:text>
+        <xsl:value-of select="@comment"/>
+        <xsl:text>]</xsl:text>
+      </small>
+    </span>
+    <xsl:apply-templates select="document(concat('../../Transcribing/Transcriptions/transcription',@source,'.xml'))/descendant::tei:div[@corresp=$target]"/>
+  </xsl:template>
 
 </xsl:stylesheet>

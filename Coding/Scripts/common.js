@@ -11,21 +11,18 @@ $(function() {
     $('#rhs').html(''); // clear RHS
     $('.temp').remove(); // remove all temporary hr elements
     $('#midl').find('span').show(); // unhide all spans
-    if ($('#midl').children('div').attr('data-diplo')=='yes') {
-      $('#midl').find('.corr').hide(); 
-      $('#midl').find('.supplied').hide();
-    }
+    if ($('#midl').children('div').attr('data-diplo')=='yes') { $('.supplied').hide(); }
     $('.textAnchor').show();
     $('.pageAnchor').show();
     $('.indexHeadword').parent().css({'background-color': 'inherit'});
     $('.hwCount').hide();
     $('.implode').hide();
     $('.explode').hide();
-    $('[data-edil="'+ $(this).attr('data-uri') + '"]').css({'color': 'orange', 'font-weight': 'bold'});
+    $('[data-lemmaRef="'+ $(this).attr('data-uri') + '"]').css({'color': 'orange', 'font-weight': 'bold'});
     $(this).parent().css('background-color', 'orange');
     $(this).nextAll('.hwCount').show();
     $(this).nextAll('.implode').show();
-    var x = $('[data-edil="'+ $(this).attr('data-uri') + '"]').first();
+    var x = $('[data-lemmaRef="'+ $(this).attr('data-uri') + '"]').first();
     $('#midl').animate({scrollTop: x.offset().top - 100},500);
     return null;
   });
@@ -36,7 +33,7 @@ $(function() {
     $(this).nextAll('.explode').show();
     $('#midl').find('span').hide();
     $('.temp').remove();
-    $('[data-edil="'+ $(this).prevAll('.indexHeadword').attr('data-uri') + '"]').each(function(){
+    $('[data-lemmaRef="'+ $(this).prevAll('.indexHeadword').attr('data-uri') + '"]').each(function(){
       $(this).show();
       $(this).find('span').show();
       if ($(this).parents('span').length>0) {
@@ -57,10 +54,7 @@ $(function() {
       }
     });
     $('.textAnchor').hide();
-    if ($('#midl').children('div').attr('data-diplo')=='yes') {
-      $('#midl').find('.corr').hide(); 
-      $('#midl').find('.supplied').hide();
-    }
+    if ($('#midl').children('div').attr('data-diplo')=='yes') { $('.supplied').hide(); }
     //$('.pageAnchor').show();
     //$('#midl').find('.pageAnchor').hide();
     //$(this).parents().prevAll('.pageAnchor').first().show(); // not working
@@ -72,15 +66,12 @@ $(function() {
     $(this).hide();
     $(this).prevAll('.implode').show();
     $('#midl').find('span').show();
-    if ($('#midl').children('div').attr('data-diplo')=='yes') {
-      $('#midl').find('.corr').hide(); 
-      $('#midl').find('.supplied').hide();
-    }
+    if ($('#midl').children('div').attr('data-diplo')=='yes') { $('.supplied').hide(); }
     $('#midl').find('.textAnchor').show();
     $('#midl').find('.pageAnchor').show();
     $('.temp').remove();
     $('#midl').animate({scrollTop: 0},0); // move middle back to top
-    var x = $('[data-edil="'+ $(this).prevAll('.indexHeadword').attr('data-uri') + '"]').first();
+    var x = $('[data-lemmaRef="'+ $(this).prevAll('.indexHeadword').attr('data-uri') + '"]').first();
     $('#midl').animate({scrollTop: x.offset().top - 100},500);
     return null;
   });
@@ -100,7 +91,6 @@ $(function() {
     html += getDamage($(this));
     html += getDeletions($(this));
     html += getAdditions($(this));
-    html += getSupplied($(this));
     $('#rhs').html(html);
     $('.glyphShow').hover(
       function(){
@@ -127,6 +117,7 @@ function makeHeading(span, rec) {
     $(this).attr('id', 'xx-' + $(this).attr('id'));
   });
   $(clone).find('.supplied').css('display', 'inline');
+  $(clone).find('span').css('text-decoration', 'inherit');
   html += '<span class="syntagm">' + $(clone).html() + '</span>';
   return html + '</h1>';
 }
@@ -137,55 +128,19 @@ function makeSyntax(span, rec) {
     html += '<strong>' + $(span).text().replace(/[\+\?\:]/g, '') + '</strong>';
     html += '<ul class="rhs">';
   }
-  if ($(span).children('.syntagm').length < 2) { //syntactically simple? maybe some bugs here?
+  if ($(span).hasClass('name')) { html += getOnomastics(span); }
+  if ($(span).find('.syntagm').length < 2) { //syntactically simple? maybe some bugs here?
     html += handInfo(span); 
     html += getGlygatures(span);
-  } 
-  //start here
-  if ($(span).hasClass('name')) { html += onomastics(span); }
-  if ($(span).attr('xml:lang') || ($(span).hasClass('name') && $(span).children('.word').attr('xml:lang')==1 && $(span).children('.word').attr('xml:lang'))) {
-    html += '<li>is not a Gaelic word: '; // maybe simplify above line?
-    if ($(span).attr('xml:lang')) { html += decode($(span).attr('xml:lang')); }
-    else { html += decode($(span).children('.word').attr('xml:lang')); }
-    html += '</li>';
+    html += getCorrections(span);
+    html += getSupplied(span);
+    html += getLemmas(span);
   }
-  else {
-    html += partOfSpeech(span); 
-    html += structure(span); 
-    if ($(span).attr('data-headword')) {
-      html += '<li>is a form of the headword ';
-      html += '<a href="' + $(span).attr('data-edil') + '" target="_new">' + $(span).attr('data-headword') + '</a>';
-      if ($(span).attr('data-edil').indexOf('dil.ie')>0) { 
-        if ($(span).attr('data-source')!='') {
-          html += ' ' + $(span).attr('data-source'); // needs work
-        }
-        html += ' (eDIL)'; 
-      }
-      else if ($(span).attr('data-edil').indexOf('faclair.com')>0) { html += ' (Dwelly)'; }
-      $.ajaxSetup({async: false});
-      $.getJSON('ajax.php?action=getDwelly&edil=' + $(span).attr('data-edil'), function (g) {
-        if (g.hw != '') { html += ', <a href="' + g.url + '" target="_new">' + g.hw + '</a> (Dwelly)'; }
-      });
-      html += '</li>';
-    }
-    else if ($(span).hasClass('name') && $(span).children('.word').length==1 && $(span).children('.word').attr('data-headword')) { // add extra headwords here too?
-                html += '<li>is a form of the headword ';
-                html += '<a href="' + $(span).children('.word').attr('data-edil') + '" target="_new">' + $(span).children('.word').attr('data-headword') + '</a>';
-                if ($(span).children('.word').attr('data-edil').indexOf('dil.ie')>0) { html += ' (eDIL)'; }
-                else if ($(span).children('.word').attr('data-edil').indexOf('faclair.com')>0) {
-                    html += ' (Dwelly)';
-                }
-                $.ajaxSetup({async: false});
-                $.getJSON('ajax.php?action=getDwelly&edil=' + $(span).children('.word').attr('data-edil'), function (g) {
-                    if (g.hw != '') { html += ', <a href="' + g.url + '" target="_new">' + g.hw + '</a> (Dwelly)'; }
-                });
-                html += '</li>';
-    }  
-    if($(span).attr('data-lemmasl')) {
-      html += '<li>appears in the HDSG/RB collection of headwords: <a href="' + $(span).attr('data-slipref') + '" target="_new">' + $(span).attr('data-lemmasl') + '</a></li>';
-    }
+  if ($(span).attr('xml:lang')) {
+    html += '<li>is a ' + decodeLang($(span).attr('xml:lang')) + ' word</li>';
   }
-  html += getCorrection(span);
+  html += getPOS(span); 
+  html += getStructure(span);
   if (rec) {
     html += '</ul>';
   }
@@ -337,46 +292,47 @@ function getHandInfoDiv(h) {
   return html;
 }
 
-function onomastics(span){
-    html = '<li>is ';
-    type = $(span).attr('data-nametype');
-    if (type=='personal') html += 'an anthroponym';
-    else if (type=='place') { 
-      html += 'a toponym';
-      if ($(span).attr('data-corresp') != '') {
-        html += ' (further information can be found <a href="' + $(span).attr('data-corresp') + '" target="_blank">here</a>)';
-      }
+function getOnomastics(span){
+  html = '<li>is ';
+  type = $(span).attr('data-nametype');
+  if (type=='personal') { html += 'an anthroponym'; }
+  else if (type=='place') { 
+    html += 'a toponym';
+    if ($(span).attr('data-corresp') != '') {
+      html += ' (<a href="' + $(span).attr('data-corresp') + '" target="_blank">info</a>)';
     }
-    else if (type=='population') html += 'a demonym';
-    else html += 'a name';
-    return html + '</li>';
+  }
+  else if (type=='population') { html += 'a demonym'; }
+  else { html += 'a name'; }
+  return html + '</li>';
 }
 
-function decode(lang) {
+function decodeLang(lang) {
   switch (lang) { case 'la': return 'Latin'; case 'sco': return 'Scots'; case "gk": return 'Greek'; case 'hbo': return 'Ancient Hebrew';
                   case 'jpa': return 'Aramaic'; case 'en': return 'English'; case 'und': return 'unknown';
                   default:return lang;
   }
 }
 
-function partOfSpeech(span) {
-    html = '';
-    if ($(span).attr('data-pos')) html += '<li>is a ' + $(span).attr('data-pos') + '</li>';
-    else if ($(span).hasClass('name') && $(span).children('.word').length==1 && $(span).children('.word').children('.word').length==0) html += '<li>is a ' + $(span).children('.word').attr('data-pos') + '</li>';
-    return html; // maybe simplify above line?
+function getPOS(span) {
+  html = '';
+  if ($(span).attr('data-pos')) { html += '<li>is a ' + $(span).attr('data-pos') + '</li>'; }
+  return html;
 }
 
-function structure(span) {
+function getStructure(span) {
   html = '';
-  if ($(span).children('.syntagm').length > 1) {
+  var x = $(span).find('.word');
+  if (x.length > 1) {
     html += '<li>is a syntactically complex form containing the following elements:';
     html += '<ul class="rhs">';
-    $(span).children('.syntagm').each(function() {
+    x.each(function() {
       html = html + '<li>' + makeSyntax($(this),true) + '</li>';
     });
     html += '</ul>';
     html += '</li>';
   }
+  /* LEAVE THIS UNTIL WE ARE CLEAR IT IS NOT NEEDED
   else if ($(span).children('.syntagm').length==1 && $(span).children('.syntagm').children('.syntagm').length>0) {
            html += '<li>is a syntactically complex form containing the following elements:';
            html += '<ul class="rhs">';
@@ -395,7 +351,36 @@ function structure(span) {
     html += '</ul>';
     html += '</li>';
   }
+  */
   else html += '<li>is a syntactically simple form</li>';
+  return html;
+}
+
+function getLemmas(span) {
+  var html = '';
+  if (span.attr('data-lemmaRef').indexOf('dil.ie')>0) { 
+    if (span.attr('data-source')) {
+      html += '<li>eDIL: ' + span.attr('data-lemma') + ' (from <a href="' + span.attr('data-lemmaRef') + '" target="_new">' + span.attr('data-source') + '</a>)</li>';
+    }
+    else {
+      html += '<li>eDIL: <a href="' + span.attr('data-lemmaRef') + '" target="_new">' + span.attr('data-lemma') + '</a></li>';
+    }
+    $.getJSON('ajax.php?action=getDwelly&edil=' + span.attr('data-lemmaRef'), function (g) {
+        if (g.hw != '') { html += '<li>Dwelly: <a href="' + g.url + '" target="_new">' + g.hw + '</a>'; }
+    });
+  }
+  else if (span.attr('data-lemmaRef').indexOf('faclair.com')>0) {
+    html += '<li>Dwelly: <a href="' + $(span).attr('data-lemmaRef') + '" target="_new">' + span.attr('data-lemma') + '</a></li>';
+  }
+  else if (span.attr('data-lemmaRef').indexOf('teanglann.ie')>0) {
+    html += '<li>Teangleann: <a href="' + $(span).attr('data-lemmaRef') + '" target="_new">' + span.attr('data-lemma') + '</a></li>';
+  }
+  else if (span.attr('data-lemmaRef').indexOf('dasg.ac.uk')>0) {
+    html += '<li>HDSG slips: <a href="' + $(span).attr('data-lemmaRef') + '" target="_new">' + span.attr('data-lemma') + '</a></li>';
+  }
+  if (span.attr('data-lemmaSl')) {
+      html += '<li>HDSG slips: <a href="' + span.attr('data-slipRef') + '" target="_new">' + span.attr('data-lemmaSl') + '</a></li>';
+  }
   return html;
 }
 
@@ -484,51 +469,43 @@ function getAdditions(span) {
         return html2 + '</div>';
 }
 
-function getCorrection(span) {
+function getCorrections(span) {
   html = '';
-  var x = $(span).parents('.choice');
-  if(x.length > 0) {
-    html += '<li>';
-    html += 'Note that \'';
-    html += x.children('.sic').text().replace(/[\+\?]/g, '');
-    html += '\' should probably be read as \'';
-    y = x.children('.corr');
-    html += y.text().replace(/[\+\?]/g, '');
-    html += '\' (' + y.attr('data-resp') + ').</li>';
-  }
-  else {
-    x = $(span).find('.choice');
-    if (x.length > 0) {
-      html += '<li>';
-      html += 'Note that \'';
-      html += x.children('.sic').text().replace(/[\+\?]/g, '');
-      html += '\' should probably be read as \'';
-      y = x.children('.corr');
-      html += y.text().replace(/[\+\?]/g, '');
-      html += '\' (' + y.attr('data-resp') + ').</li>';
-    }
+  var x = $(span).parents('.sic');
+  if(x.length == 0) { x = $(span).find('.sic'); }
+  if (x.length > 0) {
+    html += '<li>editorial emendation – \'';
+    html += x.text().replace(/[\+\?]/g, '');
+    html += '\' '; 
+    if ($('#midl').children('div').attr('data-diplo')=='yes') { html += 'to'; }
+    else { html += 'from original'; }
+    html += ' \'';
+    html+= x.attr('data-alt');
+    //html += y.text().replace(/[\+\?]/g, '');
+    html += '\' (' + x.attr('data-resp') + ')</li>';
   }
   return html;
 }
 
 function getSupplied(span) {
-  html = '<div>';
+  html = '';
   var x = $(span).find('.supplied'); // contains a supplied element
   if (x.length>0) {
-    html += 'Contains text supplied by an editor:<ul class="rhs">';
+    html += '<li>contains text supplied by an editor:<ul class="rhs">';
     x.each(function() {
-      html += '<li>' + $(this).text();
+      html += '<li>';
+      html += $(this).text();
       html += ' (' + $(this).attr('data-resp') + ')</li>';
     });
-    html += '</ul>';
+    html += '</ul></li>';
   }
   else {
     x = $(span).parents('.supplied'); // part of a supplied element
     if (x.length>0) {
-      html += 'Has been supplied by an editor (';
+      html += '<li>has been supplied by an editor (';
       html += x.attr('data-resp');
-      html += ').';
+      html += ')</li>';
     }
   }
-  return html + '</div>';
+  return html;
 }

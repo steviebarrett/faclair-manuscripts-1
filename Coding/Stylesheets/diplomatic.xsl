@@ -98,68 +98,133 @@ It creates a diplomatic MS view.
   </xsl:template>
 
   <xsl:template match="tei:date | tei:c | tei:num">
-    <span class="chunk syntagm">
+    <span class="chunk">
       <xsl:apply-templates/>
     </span>
   </xsl:template>
 
-  <xsl:template match="tei:name[not(ancestor::tei:name)]">  <!-- a name which is NOT part of a larger name -->
-    <span class="name chunk syntagm" data-nametype="{@type}" data-corresp="{@corresp}">
+<!--
+  <xsl:template match="tei:name[not(ancestor::tei:name)]">  
+    <span class="name chunk" data-nametype="{@type}" data-corresp="{@corresp}">
       <xsl:apply-templates/>
     </span>
   </xsl:template>
   
-  <xsl:template match="tei:name">  <!-- a name which IS part of a larger name -->
+  <xsl:template match="tei:name">  
     <span class="name syntagm" data-nametype="{@type}" data-corresp="{@corresp}">
       <xsl:apply-templates/>
     </span>
   </xsl:template>
+  -->
   
-  <xsl:template match="tei:w[not(ancestor::tei:w or ancestor::tei:name)]">  <!-- a word which is NOT part of a larger word or name -->
+  <xsl:template match="tei:name[not(ancestor::tei:name) and count(tei:w|tei:name)=1]"> 
+    <span class="word chunk syntagm name">
+      <xsl:call-template name="addNameAttributes"/>
+      <xsl:for-each select="tei:w">
+        <xsl:call-template name="addWordAttributes"/>
+        <xsl:apply-templates/>
+      </xsl:for-each>
+    </span>
+  </xsl:template>
+  
+  <xsl:template match="tei:name[not(ancestor::tei:name) and count(tei:w|tei:name)>1]"> 
+    <span class="chunk syntagm name">
+      <xsl:call-template name="addNameAttributes"/>
+      <xsl:apply-templates/>
+    </span>
+  </xsl:template>
+  
+  <xsl:template match="tei:name[ancestor::tei:name and count(tei:w|tei:name)=1]"> 
+    <span class="word syntagm name">
+      <xsl:call-template name="addNameAttributes"/>
+      <xsl:for-each select="tei:w">
+        <xsl:call-template name="addWordAttributes"/>
+        <xsl:apply-templates/>
+      </xsl:for-each>
+    </span>
+  </xsl:template>
+  
+  <xsl:template match="tei:name[ancestor::tei:name and count(tei:w|tei:name)>1]"> 
+    <span class="syntagm name">
+      <xsl:call-template name="addNameAttributes"/>
+      <xsl:apply-templates/>
+    </span>
+  </xsl:template>
+  
+  <xsl:template match="tei:w[not(ancestor::tei:w) and not(descendant::tei:w)]"> 
     <span class="word chunk syntagm">
       <xsl:call-template name="addWordAttributes"/>
       <xsl:apply-templates/>
     </span>
   </xsl:template>
   
-  <xsl:template match="tei:w">  <!-- a word which IS part of a larger word or name -->
+  <xsl:template match="tei:w[not(ancestor::tei:w) and descendant::tei:w]"> 
+    <span class="chunk syntagm">
+      <xsl:apply-templates/>
+    </span>
+  </xsl:template>
+  
+  <xsl:template match="tei:w[ancestor::tei:w and not(descendant::tei:w)]"> 
     <span class="word syntagm">
       <xsl:call-template name="addWordAttributes"/>
       <xsl:apply-templates/>
     </span>
   </xsl:template>
   
+  <xsl:template match="tei:w">  <!-- a word which IS part of a larger word and also contains smaller words -->
+    <span class="syntagm">
+      <xsl:apply-templates/>
+    </span>
+  </xsl:template>
+  
+  <xsl:template name="addNameAttributes">
+    <xsl:if test="@type">
+      <xsl:attribute name="data-nametype">
+        <xsl:value-of select="@type"/>
+      </xsl:attribute>
+    </xsl:if>
+    <xsl:if test="@corresp">
+      <xsl:attribute name="data-corresp">
+        <xsl:value-of select="@corresp"/>
+      </xsl:attribute>
+    </xsl:if>
+  </xsl:template>
+  
   <xsl:template name="addWordAttributes">
-    <xsl:if test="count(tei:w) = 0">  <!-- a syntactically simple word -->
-      <xsl:choose>
-        <xsl:when test="@xml:lang">    <!-- a non-Gaelic word -->
-          <xsl:attribute name="xml:lang">
-            <xsl:value-of select="@xml:lang"/>
-          </xsl:attribute>
-        </xsl:when>
-        <xsl:otherwise>    <!-- a Gaelic word -->
-          <xsl:attribute name="data-headword">
-            <xsl:value-of select="@lemma"/>
-          </xsl:attribute>
-          <xsl:attribute name="data-pos">
-            <xsl:value-of select="@pos"/>
-          </xsl:attribute>
-          <xsl:attribute name="data-edil">
-            <xsl:value-of select="@lemmaRef"/>
-          </xsl:attribute>
-          <xsl:attribute name="data-source">
-            <xsl:value-of select="@source"/>
-          </xsl:attribute>
-          <xsl:if test="@lemmaSL">
-            <xsl:attribute name="data-lemmasl">
-              <xsl:value-of select="@lemmaSL"/>
-            </xsl:attribute>
-            <xsl:attribute name="data-slipref">
-              <xsl:value-of select="@slipRef"/>
-            </xsl:attribute>
-          </xsl:if>
-        </xsl:otherwise>
-      </xsl:choose>
+    <xsl:if test="@xml:lang">
+      <xsl:attribute name="xml:lang">
+        <xsl:value-of select="@xml:lang"/>
+      </xsl:attribute>
+    </xsl:if>
+    <xsl:if test="@lemma">
+      <xsl:attribute name="data-lemma">
+        <xsl:value-of select="@lemma"/>
+      </xsl:attribute>
+    </xsl:if>
+    <xsl:if test="@lemmaRef">
+      <xsl:attribute name="data-lemmaRef">
+        <xsl:value-of select="@lemmaRef"/>
+      </xsl:attribute>
+    </xsl:if>
+    <xsl:if test="@pos">
+      <xsl:attribute name="data-pos">
+        <xsl:value-of select="@pos"/>
+      </xsl:attribute>
+    </xsl:if>
+    <xsl:if test="@source">
+      <xsl:attribute name="data-source">
+        <xsl:value-of select="@source"/>
+      </xsl:attribute>
+    </xsl:if>
+    <xsl:if test="@lemmaSL">
+      <xsl:attribute name="data-lemmaSL">
+        <xsl:value-of select="@lemmaSL"/>
+      </xsl:attribute>
+    </xsl:if>
+    <xsl:if test="@slipRef">
+      <xsl:attribute name="data-slipRef">
+        <xsl:value-of select="@sslipRef"/>
+      </xsl:attribute>
     </xsl:if>
   </xsl:template>
 
@@ -261,14 +326,9 @@ It creates a diplomatic MS view.
     </span>
   </xsl:template>
 
-  <xsl:template match="tei:choice">
-    <span class="choice">
-      <span class="corr" data-resp="{tei:corr/@resp}">
-        <xsl:apply-templates select="tei:corr"/>
-      </span>
-      <span class="sic">
-        <xsl:apply-templates select="tei:sic"/>
-      </span>
+  <xsl:template match="tei:choice"> <!-- editorial emendations e.g. MS1.4r.2 ro/do NOT PERFECT YET-->
+    <span class="sic" data-resp="{tei:corr/@resp}" data-alt="{tei:corr/.}"> 
+      <xsl:apply-templates select="tei:sic"/>
     </span>
   </xsl:template>
 
