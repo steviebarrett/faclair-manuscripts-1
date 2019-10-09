@@ -358,7 +358,8 @@ function getStructure(span) {
 
 function getLemmas(span) {
   var html = '';
-  if (span.attr('data-lemmaRef').indexOf('dil.ie')>0) { 
+  var x = span.attr('data-lemmaRef');
+  if (x && span.attr('data-lemmaRef').indexOf('dil.ie')>0) { 
     if (span.attr('data-source')) {
       html += '<li>eDIL: ' + span.attr('data-lemma') + ' (from <a href="' + span.attr('data-lemmaRef') + '" target="_new">' + span.attr('data-source') + '</a>)</li>';
     }
@@ -369,13 +370,13 @@ function getLemmas(span) {
         if (g.hw != '') { html += '<li>Dwelly: <a href="' + g.url + '" target="_new">' + g.hw + '</a>'; }
     });
   }
-  else if (span.attr('data-lemmaRef').indexOf('faclair.com')>0) {
+  else if (x && span.attr('data-lemmaRef').indexOf('faclair.com')>0) {
     html += '<li>Dwelly: <a href="' + $(span).attr('data-lemmaRef') + '" target="_new">' + span.attr('data-lemma') + '</a></li>';
   }
-  else if (span.attr('data-lemmaRef').indexOf('teanglann.ie')>0) {
+  else if (x && span.attr('data-lemmaRef').indexOf('teanglann.ie')>0) {
     html += '<li>Teangleann: <a href="' + $(span).attr('data-lemmaRef') + '" target="_new">' + span.attr('data-lemma') + '</a></li>';
   }
-  else if (span.attr('data-lemmaRef').indexOf('dasg.ac.uk')>0) {
+  else if (x && span.attr('data-lemmaRef').indexOf('dasg.ac.uk')>0) {
     html += '<li>HDSG slips: <a href="' + $(span).attr('data-lemmaRef') + '" target="_new">' + span.attr('data-lemma') + '</a></li>';
   }
   if (span.attr('data-lemmaSl')) {
