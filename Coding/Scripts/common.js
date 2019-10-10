@@ -87,9 +87,6 @@ $(function() {
     var prevCorresp = ''; // better name?
     html = makeHeading($(this));
     html += '<ul class="rhs">' + makeSyntax($(this),false) + '</ul>';
-    //start here:
-    html += getDeletions($(this)); // move these
-    html += getAdditions($(this));
     $('#rhs').html(html);
     $('.glyphShow').hover(
       function(){
@@ -116,7 +113,7 @@ function makeHeading(span, rec) {
     $(this).attr('id', 'xx-' + $(this).attr('id'));
   });
   $(clone).find('.supplied').css('display', 'inline');
-  $(clone).find('span:not(.deletion)').css('text-decoration', 'inherit');
+  //$(clone).find('span:not(.deletion)').css('text-decoration', 'inherit');
   html += '<span class="syntagm">' + $(clone).html() + '</span>';
   return html + '</h1>';
 }
@@ -127,14 +124,16 @@ function makeSyntax(span, rec) {
     html += '<strong class="syntagm" style="font-size: large;">' + $(span).text().replace(/[\+\?\:]/g, '') + '</strong>';
     html += '<ul class="rhs">';
   }
-  if ($(span).hasClass('name')) { html += getOnomastics(span); }
-  if ($(span).find('.syntagm').length < 2) { //syntactically simple? maybe some bugs here?
+  if (span.hasClass('name')) { html += getOnomastics(span); }
+  if (span.hasClass('word')) {
     html += handInfo(span); 
     html += getGlygatures(span);
     html += getCorrections(span);
     html += getSupplied(span);
     html += getLemmas(span);
     html += getDamage(span);
+    html += getDeletions(span);
+    html += getAdditions(span);
   }
   if ($(span).attr('xml:lang')) {
     html += '<li>is a ' + decodeLang($(span).attr('xml:lang')) + ' word</li>';
@@ -294,11 +293,10 @@ function getPOS(span) {
 
 function getStructure(span) {
   html = '';
-  var x = $(span).find('.word');
-  if (x.length > 1) {
-    html += '<li>is a syntactically complex form containing the following elements:';
+  if (!span.hasClass('word')) {
+    html += '<li>is a syntactically complex form containing:';
     html += '<ul class="rhs">';
-    x.each(function() {
+    span.find('.word').each(function() {
       html = html + '<li>' + makeSyntax($(this),true) + '</li>';
     });
     html += '</ul>';
@@ -397,50 +395,54 @@ function getDamage(span) { // all this needs checked
 }
 
 function getDeletions(span) {
-  html = '<div>';
+  html = '';
   var x = $(span).find('.deletion'); // contains a deletion
   if (x.length>0) {
-    html += 'Contains the following deletions:<ul class="rhs">';
+    html += '<li>contains the following deletions:<ul class="rhs">';
     x.each(function() {
       html += '<li>[' + $(this).text() + '] ';
       html += '(<a href="#" onclick="$(\'#handInfo_'+ $(this).attr('data-hand') + '\').bPopup();">' + getHandName($(this).attr('data-hand')) + '</a>)</li>';
     });
-    html += '</ul>';
+    html += '</ul></li>';
   }
   else {
     x = $(span).parents('.deletion');
     if (x.length>0) {
-      html += 'Is part of the following deletion:<ul class="rhs">';
+      html += '<li>is part of the following deletion:<ul class="rhs">';
       html += '<li>[' + x.text() + '] (';
       html += '<a href="#" onclick="$(\'#handInfo_'+ x.attr('data-hand') + '\').bPopup();">' + getHandName(x.attr('data-hand')) + '</a>';
       html += ')</li>';
-      html += '</ul>';
+      html += '</ul></li>';
     }
   }
-  return html + '</div>';
+  return html;
 }
 
 function getAdditions(span) {
-        html2 = '<div>';
-        if ($(span).find('.insertion').length>0) {
-            html2 += 'Contains the following insertions:<ul class="rhs">';
-            $(span).find('.insertion').each(function() {
-                html2 = html2 + '<li>[' + $(this).text() + '] (';
-                html2 += '<a href="#" onclick="$(\'#handInfo_'+ $(this).attr('data-hand') + '\').bPopup();">' + getHandName($(this).attr('data-hand')) + '</a>';
-                html2 = html2 + ', '  + $(this).attr('data-place');
-                html2 += ')</li>';
-            });
-            html2 += '</ul>';
-        }
-        else if ($(span).parents('.insertion').length>0) {
-            html2 += 'Is part of the following insertion:<ul class="rhs">';
-            html2 = html2 + '<li>[' + $(span).parents('.insertion').text() + '] (';
-            html2 += '<a href="#" onclick="$(\'#handInfo_'+ $(this).attr('data-hand') + '\').bPopup();">' + getHandName($(this).attr('data-hand')) + '</a>'; // what is 'this'?
-            html2 = html2 + ', ' + $(span).parents('.insertion').attr('data-place');
-            html2 += ')</li>';
-            html2 += '</ul>';
-        }
-        return html2 + '</div>';
+  html = '';
+  var x = span.find('.insertion')
+  if (x.length>0) {
+    html += '<li>contains the following insertions:<ul class="rhs">';
+    x.each(function() {
+      html += '<li>[' + $(this).text() + '] (';
+      html += '<a href="#" onclick="$(\'#handInfo_'+ $(this).attr('data-hand') + '\').bPopup();">' + getHandName($(this).attr('data-hand')) + '</a>';
+      html += ', '  + $(this).attr('data-place');
+      html += ')</li>';
+    });
+    html += '</ul></li>';
+  }
+  else {
+    x = $(span).parents('.insertion');
+    if (x.length>0) {
+      html += '<li>is part of the following insertion:<ul class="rhs">';
+      html += '<li>[' + x.text() + '] (';
+      html += '<a href="#" onclick="$(\'#handInfo_'+ x.attr('data-hand') + '\').bPopup();">' + getHandName(x.attr('data-hand')) + '</a>'; // what is 'this'?
+      html += ', ' + x.attr('data-place');
+      html += ')</li>';
+      html += '</ul></li>';
+    }
+  }
+  return html;
 }
 
 function getCorrections(span) {

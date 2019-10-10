@@ -35,76 +35,146 @@ It creates a semi-diplomatic MS view.
     </p>
   </xsl:template>
 
-  <xsl:template match="tei:name[not(ancestor::tei:name)]"> <!-- a name which is NOT part of a larger name -->
-    <span class="name chunk syntagm">
-      <xsl:attribute name="data-nametype">
-        <xsl:value-of select="@type"/>
-      </xsl:attribute>
-      <xsl:attribute name="data-corresp">
-        <xsl:value-of select="@corresp"/>
-      </xsl:attribute>
-      <xsl:apply-templates/>
+  <xsl:template match="tei:name[not(ancestor::tei:name) and count(tei:w|tei:name)=1]"> 
+    <xsl:text> </xsl:text>
+    <span class="word chunk syntagm name">
+      <xsl:call-template name="addNameAttributes"/>
+      <xsl:for-each select="tei:w">
+        <xsl:call-template name="addWordAttributes"/>
+        <xsl:apply-templates/>
+      </xsl:for-each>
     </span>
     <xsl:text> </xsl:text>
   </xsl:template>
-
-  <xsl:template match="tei:name"> <!-- a name which IS part of a larger name -->
-    <span class="name syntagm">
-      <xsl:attribute name="data-nametype">
-        <xsl:value-of select="@type"/>
-      </xsl:attribute>
-      <xsl:attribute name="data-corresp">
-        <xsl:value-of select="@corresp"/>
-      </xsl:attribute>
+  
+  <xsl:template match="tei:name[not(ancestor::tei:name) and count(tei:w|tei:name)>1]"> 
+    <span class="chunk syntagm name">
+      <xsl:call-template name="addNameAttributes"/>
       <xsl:apply-templates/>
     </span>
-    <xsl:text> </xsl:text>
   </xsl:template>
-
-  <xsl:template match="tei:w[not(ancestor::tei:w or ancestor::tei:name)]"> <!-- a word which is NOT part of a larger word or name -->
+  
+  <xsl:template match="tei:name[ancestor::tei:name and count(tei:w|tei:name)=1]"> 
+    <span class="word syntagm name">
+      <xsl:call-template name="addNameAttributes"/>
+      <xsl:for-each select="tei:w">
+        <xsl:call-template name="addWordAttributes"/>
+        <xsl:apply-templates/>
+      </xsl:for-each>
+    </span>
+  </xsl:template>
+  
+  <xsl:template match="tei:name[ancestor::tei:name and count(tei:w|tei:name)>1]"> 
+    <span class="syntagm name">
+      <xsl:call-template name="addNameAttributes"/>
+      <xsl:apply-templates/>
+    </span>
+  </xsl:template>
+  
+  <xsl:template match="tei:w[not(ancestor::tei:w) and not(ancestor::tei:name) and not(descendant::tei:w)]"> 
+    <xsl:text> </xsl:text>
     <span class="word chunk syntagm">
-      <xsl:if test="count(tei:w) = 0"> <!-- a syntactically simple word -->
-        <xsl:call-template name="addAttributes"/>
-      </xsl:if>
+      <xsl:call-template name="addWordAttributes"/>
       <xsl:apply-templates/>
     </span>
     <xsl:text> </xsl:text>
   </xsl:template>
-
-  <xsl:template name="addAttributes">
-    <xsl:attribute name="data-headword">
-      <xsl:value-of select="@lemma"/>
-    </xsl:attribute>
-    <!--
-    <xsl:attribute name="data-hand">
-      <xsl:value-of select="preceding::tei:handShift[1]/@new"/>
-    </xsl:attribute>
-    -->
-    <xsl:attribute name="data-pos">
-      <xsl:value-of select="@pos"/>
-    </xsl:attribute>
-    <xsl:attribute name="data-edil">
-      <xsl:value-of select="@lemmaRef"/>
-    </xsl:attribute>
-    <xsl:attribute name="data-lemmasl">
-      <xsl:value-of select="@lemmaSL"/>
-    </xsl:attribute>
-    <xsl:attribute name="data-slipref">
-      <xsl:value-of select="@slipRef"/>
-    </xsl:attribute>
+  
+  <xsl:template match="tei:w[not(ancestor::tei:w) and not(ancestor::tei:name) and descendant::tei:w]"> 
+    <xsl:text> </xsl:text>
+    <span class="chunk syntagm">
+      <xsl:apply-templates/>
+    </span>
+    <xsl:text> </xsl:text>
   </xsl:template>
+  
+  <xsl:template match="tei:w[@pos='verb' and not(@lemmaRef='http://www.dil.ie/29104') and (ancestor::tei:w or ancestor::tei:name) and not(descendant::tei:w)]"> <!-- particle + pronoun/particle + verb compounds -->
+    <xsl:text> </xsl:text>
+    <span class="word syntagm banana">
+      <xsl:call-template name="addWordAttributes"/>
+      <xsl:apply-templates/>
+    </span>
+  </xsl:template>
+  
+  <xsl:template match="tei:w[(not(@pos='verb') or @lemmaRef='http://www.dil.ie/29104') and (ancestor::tei:w or ancestor::tei:name) and not(descendant::tei:w)]"> 
+    <span class="word syntagm">
+      <xsl:call-template name="addWordAttributes"/>
+      <xsl:apply-templates/>
+    </span>
+  </xsl:template>
+  
+  <xsl:template match="tei:w">  <!-- a word which IS part of a larger word and also contains smaller words -->
+    <span class="syntagm">
+      <xsl:apply-templates/>
+    </span>
+  </xsl:template>
+  
+  <xsl:template name="addNameAttributes">
+    <xsl:if test="@type">
+      <xsl:attribute name="data-nametype">
+        <xsl:value-of select="@type"/>
+      </xsl:attribute>
+    </xsl:if>
+    <xsl:if test="@corresp">
+      <xsl:attribute name="data-corresp">
+        <xsl:value-of select="@corresp"/>
+      </xsl:attribute>
+    </xsl:if>
+  </xsl:template>
+  
+  <xsl:template name="addWordAttributes">
+    <xsl:if test="@xml:lang">
+      <xsl:attribute name="xml:lang">
+        <xsl:value-of select="@xml:lang"/>
+      </xsl:attribute>
+    </xsl:if>
+    <xsl:if test="@lemma">
+      <xsl:attribute name="data-lemma">
+        <xsl:value-of select="@lemma"/>
+      </xsl:attribute>
+    </xsl:if>
+    <xsl:if test="@lemmaRef">
+      <xsl:attribute name="data-lemmaRef">
+        <xsl:value-of select="@lemmaRef"/>
+      </xsl:attribute>
+    </xsl:if>
+    <xsl:if test="@pos">
+      <xsl:attribute name="data-pos">
+        <xsl:value-of select="@pos"/>
+      </xsl:attribute>
+    </xsl:if>
+    <xsl:if test="@source">
+      <xsl:attribute name="data-source">
+        <xsl:value-of select="@source"/>
+      </xsl:attribute>
+    </xsl:if>
+    <xsl:if test="@lemmaSL">
+      <xsl:attribute name="data-lemmaSL">
+        <xsl:value-of select="@lemmaSL"/>
+      </xsl:attribute>
+    </xsl:if>
+    <xsl:if test="@slipRef">
+      <xsl:attribute name="data-slipRef">
+        <xsl:value-of select="@sslipRef"/>
+      </xsl:attribute>
+    </xsl:if>
+  </xsl:template>
+  
 
-  <!-- Added by SB to handle compound verbs -->
+
+<!--
+
+  Added by SB to handle compound verbs
   <xsl:template match="tei:w[contains(@pos, 'verb') and descendant::tei:w]">
     <xsl:call-template name="compound-verb"/>
   </xsl:template>
 
   <xsl:template name="compound-verb" match="tei:w">
-    <xsl:if test="@pos = 'verb' and @lemmaRef != 'http://www.dil.ie/29104'">  <!-- checks for POS and copula -->
-      <xsl:text> </xsl:text>  <!-- only adds a space before a verb that is not the copula -->
+    <xsl:if test="@pos = 'verb' and @lemmaRef != 'http://www.dil.ie/29104'">   checks for POS and copula
+      <xsl:text> </xsl:text>   only adds a space before a verb that is not the copula
     </xsl:if>
     <span class="word chunk syntagm">
-      <xsl:if test="count(tei:w) = 0"> <!-- a syntactically simple word -->
+      <xsl:if test="count(tei:w) = 0"> a syntactically simple word
         <xsl:call-template name="addAttributes"/>
       </xsl:if>
       <xsl:apply-templates/>
@@ -113,26 +183,7 @@ It creates a semi-diplomatic MS view.
       <xsl:text> </xsl:text>
     </xsl:if>
   </xsl:template>
-
-  <!-- Added by SB to handle bottom level words (no word division) -->
-  <xsl:template match="tei:w[ancestor::tei:w and not(descendant::tei:w)]">
-    <span class="word chunk syntagm">
-      <xsl:if test="count(tei:w) = 0"> <!-- a syntactically simple word -->
-        <xsl:call-template name="addAttributes"/>
-      </xsl:if>
-      <xsl:apply-templates/>
-    </span>
-  </xsl:template>
-
-  <xsl:template match="tei:w"> <!-- a word which IS part of a larger word or name -->
-    <span class="word syntagm">
-      <xsl:if test="count(tei:w) = 0"> <!-- a syntactically simple word -->
-        <xsl:call-template name="addAttributes"/>
-      </xsl:if>
-      <xsl:apply-templates/>
-    </span>
-    <xsl:text> </xsl:text>
-  </xsl:template>
+  -->
 
   <xsl:template match="tei:date | tei:c | tei:num">
     <span class="syntagm">

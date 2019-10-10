@@ -75,7 +75,7 @@ It creates a diplomatic MS view.
     </span>
   </xsl:template>
   
-  <xsl:template match="tei:lg|tei:l|tei:p|tei:note"> <!-- ignore verse, paragraphs and notes in diplo view -->
+  <xsl:template match="tei:lg|tei:l|tei:p|tei:note|tei:head/tei:title"> <!-- ignore verse, paragraphs and notes in diplo view -->
     <xsl:apply-templates/>
   </xsl:template>
 
@@ -129,20 +129,20 @@ It creates a diplomatic MS view.
     </span>
   </xsl:template>
   
-  <xsl:template match="tei:w[not(ancestor::tei:w) and not(descendant::tei:w)]"> 
+  <xsl:template match="tei:w[not(ancestor::tei:w) and not(ancestor::tei:name) and not(descendant::tei:w)]"> 
     <span class="word chunk syntagm">
       <xsl:call-template name="addWordAttributes"/>
       <xsl:apply-templates/>
     </span>
   </xsl:template>
   
-  <xsl:template match="tei:w[not(ancestor::tei:w) and descendant::tei:w]"> 
+  <xsl:template match="tei:w[not(ancestor::tei:w) and not(ancestor::tei:name) and descendant::tei:w]"> 
     <span class="chunk syntagm">
       <xsl:apply-templates/>
     </span>
   </xsl:template>
   
-  <xsl:template match="tei:w[ancestor::tei:w and not(descendant::tei:w)]"> 
+  <xsl:template match="tei:w[(ancestor::tei:w or ancestor::tei:name) and not(descendant::tei:w)]"> 
     <span class="word syntagm">
       <xsl:call-template name="addWordAttributes"/>
       <xsl:apply-templates/>
@@ -307,11 +307,8 @@ It creates a diplomatic MS view.
     </span>
   </xsl:template>
 
-  <!-- ignore notes in diplomatic edition -->
-  <xsl:template match="tei:note"/>
-
   <!-- Marginal notes - Added by SB-->
-  <xsl:template match="tei:seg[@type='margNote']">
+  <xsl:template match="tei:seg[@type='margNote']"> <!-- e.g. ? -->
     <xsl:text> </xsl:text>
     <a href="#" class="marginalNoteLink" data-id="{@xml:id}">m</a>
     <div class="marginalNote" id="{@xml:id}">
@@ -339,10 +336,8 @@ It creates a diplomatic MS view.
       <xsl:text>[..] </xsl:text>
     </span>
   </xsl:template>
-
-  <xsl:template match="tei:head/tei:title"/>
   
-  <xsl:template match="tei:anchor">
+  <xsl:template match="tei:anchor"> <!-- e.g. ? -->
     <xsl:variable name="target" select="@copyOf"/>
     <span class="pageBreak">
       <br/>
