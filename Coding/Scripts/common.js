@@ -116,7 +116,7 @@ function makeHeading(span, rec) {
     $(this).attr('id', 'xx-' + $(this).attr('id'));
   });
   $(clone).find('.supplied').css('display', 'inline');
-  $(clone).find('span').css('text-decoration', 'inherit');
+  $(clone).find('span:not(.deletion)').css('text-decoration', 'inherit');
   html += '<span class="syntagm">' + $(clone).html() + '</span>';
   return html + '</h1>';
 }

@@ -283,7 +283,7 @@ It creates a diplomatic MS view.
     </span>
   </xsl:template>
 
-  <xsl:template match="tei:del">
+  <xsl:template match="tei:del"> <!-- e.g.MS1.3r.19,  -->
     <span class="deletion" data-hand="{@hand}">
       <xsl:apply-templates/>
     </span>
