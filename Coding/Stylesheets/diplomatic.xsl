@@ -34,11 +34,7 @@ It creates a diplomatic MS view.
     -->
   </xsl:template>
 
-  <xsl:template match="tei:p">
-    <xsl:apply-templates/>
-  </xsl:template>
-
-  <xsl:template match="tei:pb">
+  <xsl:template match="tei:pb"> <!-- page breaks represented as <br> and a link to the image -->
     <span class="pageAnchor">
       <br/>
       <small class="text-muted">[start of page 
@@ -56,7 +52,7 @@ It creates a diplomatic MS view.
     </span>
   </xsl:template>
   
-  <xsl:template match="tei:w/tei:handShift">
+  <xsl:template match="tei:w/tei:handShift"> <!-- e.g. MS1.4r.11 -->
     <span class="handshift" data-hand="{@new}" title="{@new}"><small class="text-muted">[beg. <xsl:value-of select="@new"/>]</small></span>
   </xsl:template>
   
@@ -79,11 +75,7 @@ It creates a diplomatic MS view.
     </span>
   </xsl:template>
   
-  <xsl:template match="tei:lg">
-    <xsl:apply-templates/>
-  </xsl:template>
-  
-  <xsl:template match="tei:l">
+  <xsl:template match="tei:lg|tei:l|tei:p|tei:note"> <!-- ignore verse, paragraphs and notes in diplo view -->
     <xsl:apply-templates/>
   </xsl:template>
 
@@ -102,20 +94,6 @@ It creates a diplomatic MS view.
       <xsl:apply-templates/>
     </span>
   </xsl:template>
-
-<!--
-  <xsl:template match="tei:name[not(ancestor::tei:name)]">  
-    <span class="name chunk" data-nametype="{@type}" data-corresp="{@corresp}">
-      <xsl:apply-templates/>
-    </span>
-  </xsl:template>
-  
-  <xsl:template match="tei:name">  
-    <span class="name syntagm" data-nametype="{@type}" data-corresp="{@corresp}">
-      <xsl:apply-templates/>
-    </span>
-  </xsl:template>
-  -->
   
   <xsl:template match="tei:name[not(ancestor::tei:name) and count(tei:w|tei:name)=1]"> 
     <span class="word chunk syntagm name">
@@ -281,12 +259,9 @@ It creates a diplomatic MS view.
   </xsl:template>
   -->
 
-  <xsl:template match="tei:unclear[@reason='damage']">
+  <xsl:template match="tei:unclear[@reason='damage']"> <!-- e.g. MS1.85r.17 -->
     <span class="unclearDamage" data-cert="{@cert}" data-resp="{@resp}">
-      <xsl:attribute name="data-add">
-        <xsl:apply-templates/>
-      </xsl:attribute>
-      <xsl:text>[...]</xsl:text>
+      <xsl:apply-templates/>
     </span>
   </xsl:template>
 

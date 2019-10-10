@@ -88,7 +88,6 @@ $(function() {
     html = makeHeading($(this));
     html += '<ul class="rhs">' + makeSyntax($(this),false) + '</ul>';
     //start here:
-    html += getDamage($(this));
     html += getDeletions($(this));
     html += getAdditions($(this));
     $('#rhs').html(html);
@@ -135,6 +134,7 @@ function makeSyntax(span, rec) {
     html += getCorrections(span);
     html += getSupplied(span);
     html += getLemmas(span);
+    html += getDamage(span);
   }
   if ($(span).attr('xml:lang')) {
     html += '<li>is a ' + decodeLang($(span).attr('xml:lang')) + ' word</li>';
@@ -145,34 +145,6 @@ function makeSyntax(span, rec) {
     html += '</ul>';
   }
   return html;
-
-        /*
-
-        if (!rec && $(span).find('.damagedSemi').length>0) {
-          html += '<li>contains the following damaged sequences:<ul>';
-          $(span).find('.damagedSemi').each(function() {
-            html = html + '<li><span style="color: green;">[</span>' + $(this).text() + '<span style="color: green;">]</span> ';
-            html += '</li>';
-          });
-          html += '</ul></li>';
-        }
-
-        else if (!rec && $(span).find('.obscureTextSemi').length>0) {
-          html += '<li>contains the following sequences of obscured text:<ul>';
-          $(span).find('.obscureTextSemi').each(function() {
-            html = html + '<li><span style="color: green;">[</span>' + $(this).text() + '<span style="color: green;">]</span> ';
-            html += '</li>';
-          });
-          html += '</ul></li>';
-        }
-        else if (!rec && $(span).parents('.obscureTextSemi').length>0) {
-          html += '<li>part of the following sequence of obscured text:<ul>';
-          html = html + '<li><span style="color: green;">[</span>' + $(span).parents('.obscureTextSemi').text() + '<span style="color: green;">]</span> ';
-          html += '</li>';
-          html += '</ul></li>';
-        }
-        html += '</ul>';
-         */
 }
 
 function getGlygatures(span) {
@@ -386,41 +358,42 @@ function getLemmas(span) {
 }
 
 function getDamage(span) { // all this needs checked
-  html2 = '<div>';
-  if ($(span).find('.unclearDamage').length>0) { // simplify all this
-    html2 += 'Contains the following damaged sections:<ul class="rhs">';
-    $(span).find('.unclearDamage').each(function() {
-      html2 = html2 + '<li>[' + $(this).attr('data-add') + '] ';
-      html2 = html2 + '(' + $(this).attr('data-resp') + ', ' + $(this).attr('data-cert');
-      html2 += ' certainty)</li>';
+  html = '';
+  var x = span.find('.unclearDamage');
+  if (x.length>0) { // simplify all this  
+    html += '<li>Contains the following damaged sections:<ul class="rhs">';
+    x.each(function() {
+      html += '<li>[' + $(this).html() + '] ';
+      html += '(' + $(this).attr('data-resp') + ', ' + $(this).attr('data-cert');
+      html += ' certainty)</li>';
     });
-    html2 += '</ul>';
+    html += '</ul></li>';
   }
         if ($(span).find('.unclearTextObscure').length>0) {
-            html2 += 'Contains the following obscured sections:<ul class="rhs">';
+            html += 'Contains the following obscured sections:<ul class="rhs">';
             $(span).find('.unclearTextObscure').each(function() {
-                html2 = html2 + '<li>[' + $(this).text() + '] ';
-                html2 = html2 + '(' + $(this).attr('data-resp') + ', ' + $(this).attr('data-cert');
-                html2 += ' certainty)</li>';
+                html = html + '<li>[' + $(this).text() + '] ';
+                html = html + '(' + $(this).attr('data-resp') + ', ' + $(this).attr('data-cert');
+                html += ' certainty)</li>';
             });
-            html2 += '</ul>';
+            html += '</ul>';
         }
         if ($(span).find('.unclearChar').length>0) {
-            html2 += 'Contains the following unclear characters:<ul class="rhs">';
+            html += 'Contains the following unclear characters:<ul class="rhs">';
             $(span).find('.unclearChar').each(function() {
-                html2 = html2 + '<li>[' + $(this).text() + '] ';
-                html2 = html2 + '(' + $(this).attr('data-resp') + ', ' + $(this).attr('data-cert');
-                html2 += ' certainty)</li>';
+                html = html + '<li>[' + $(this).text() + '] ';
+                html = html + '(' + $(this).attr('data-resp') + ', ' + $(this).attr('data-cert');
+                html += ' certainty)</li>';
             });
-            html2 += '</ul>';
+            html += '</ul>';
         }
         if ($(span).parents('.unclearTextObscure').length>0) {
-            html2 += 'This is part of an obscured section.';
+            html += 'This is part of an obscured section.';
         }
         if ($(span).parents('.unclearInterpObscure').length>0) {
-            html2 += 'This is part of a section whose interpretation is obscure.';
+            html += 'This is part of a section whose interpretation is obscure.';
         }
-        return html2 + '</div>';
+  return html;
 }
 
 function getDeletions(span) {

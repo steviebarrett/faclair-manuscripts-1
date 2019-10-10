@@ -29,12 +29,9 @@ It contains styles relevant to just the diplomatic view.
   text-decoration-style: double;
 }
 
-.gapDamage {
-  color: gray;
-}
-
-.unclearDamage {
-  color: gray;
+.unclearDamage, .gapDamage {
+  color: lightgray;
+  background-color: lightgray;
 }
 
 .unclearTextObscure, .unclearChar {
