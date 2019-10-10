@@ -295,7 +295,7 @@ It creates a diplomatic MS view.
     </span>
   </xsl:template>
 
-  <xsl:template match="tei:add[@type='insertion']">
+  <xsl:template match="tei:add[@type='insertion']"> <!-- e.g. MS1.3r.17 -->
     <span class="insertion" data-hand="{@hand}" data-place="{@place}">
       <xsl:apply-templates/>
     </span>

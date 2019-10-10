@@ -88,7 +88,7 @@ $(function() {
     html = makeHeading($(this));
     html += '<ul class="rhs">' + makeSyntax($(this),false) + '</ul>';
     //start here:
-    html += getDeletions($(this));
+    html += getDeletions($(this)); // move these
     html += getAdditions($(this));
     $('#rhs').html(html);
     $('.glyphShow').hover(
@@ -124,7 +124,7 @@ function makeHeading(span, rec) {
 function makeSyntax(span, rec) {
   html = '';
   if (rec) {
-    html += '<strong>' + $(span).text().replace(/[\+\?\:]/g, '') + '</strong>';
+    html += '<strong class="syntagm" style="font-size: large;">' + $(span).text().replace(/[\+\?\:]/g, '') + '</strong>';
     html += '<ul class="rhs">';
   }
   if ($(span).hasClass('name')) { html += getOnomastics(span); }
