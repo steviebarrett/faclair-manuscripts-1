@@ -1,31 +1,32 @@
+/* 
+This script is called by viewTranscription.php
+It contains event handlers relevant to the comment system, and hence should only be edited by SB.
+It sends a lot of calls to ajax.php to access/update the comments database (maybe rename this comments.php?).
+*/
 
 $(function() {
 
+    //local variables to hold the section type and section ID
+    var s, sid;
+    var docid = 'T' + $('#docid').val();   //the MS ID
+
     /*
-        Show/hide comment form
+        Set the variables for comment saving
      */
     $('.addComment').on('click', function () {
-        var s = $(this).attr('data-s');
-        var sid = $(this).attr('data-n');
-        sid = sid.replace(/\./g, '\\.');
-        $('#cf__' + s + '__' + sid).bPopup();
+        s = $(this).attr('data-s');
+        sid = $(this).attr('data-n');
     });
 
     /*
         Save a comment
      */
     $('.saveComment').on('click', function() {
-        var docid = $('html').attr('data-docid');   //the MS ID
-        var formId = $(this).parent().attr('id');
-        var parts = formId.split('__');
-        var s = parts[1];                           //the section type (e.g. div or lb)
-        var sid = parts[2];                         //the section ID
         var escapedSid = sid.replace(/\./g, '\\.');
-        //$('a[data-s='+s+'][data-n='+escapedSid+'][class="viewComment"]').show();   //show the viewComment link
-        var user = $(this).siblings('select').val();
-        var comment = $(this).siblings('textarea').val();
+        var user = $('#commentUser').val();
+        var comment = $('#commentContent').val();
         var feedbackHtml = '';
-        $.getJSON('../../Coding/Scripts/ajax.php?action=saveComment&docid='+docid+'&s='+s+'&sid='+sid+'&user='+user+'&comment='+comment, function(data) {
+        $.getJSON('ajax.php?action=saveComment&docid='+docid+'&s='+s+'&sid='+sid+'&user='+user+'&comment='+comment, function(data) {
             console.log(data);
             if (data.saved == true) {
                 feedbackHtml = '<strong>Your comment has been saved</strong>';
@@ -34,23 +35,23 @@ $(function() {
             }
         })
             .done(function () {
-                $('a[data-s='+s+'][data-n='+escapedSid+']').removeClass('greyedOut');   //remove the greyed out status of viewComment link
-                $('a[data-s='+s+'][data-n='+escapedSid+']').show();   //show the viewComment link
+                $('button[data-s='+s+'][data-n='+escapedSid+']').removeClass('greyedOut');   //remove the greyed out status of viewComment link
+                $('button[data-s='+s+'][data-n='+escapedSid+']').show();   //show the viewComment link
                 updateComments(docid, s, sid);              //update the comments list to the current section
             });
         //reset the form elements
-        $(this).siblings('select').val(''); //reset the user
-        $(this).siblings('textarea').val(''); //reset the comment
-        $(this).parent().bPopup().close();   //close the popup
+        $('#commentUser').val(''); //reset the user
+        $('#commentContent').val(''); //reset the comment
+        $('#commentForm').modal('toggle');   //close the popup
     });
 
     /*
         Cancel comment entry
      */
     $('.cancelComment').on('click', function () {
-        $(this).siblings('select').val(''); //reset the user
-        $(this).siblings('textarea').val(''); //reset the comment
-        $(this).parent().bPopup().close();   //close the popup
+        $('#commentUser').val(''); //reset the user
+        $('#commentContent').val(''); //reset the comment
+        $('#commentForm').modal('toggle');   //close the popup
     });
 
     /*
@@ -62,16 +63,16 @@ $(function() {
         var parts = $(this).attr('id').split('__');
         var cid = parts[1];     //the DB comment ID
         var feedbackHtml;
-        $.getJSON('../../Coding/Scripts/ajax.php?action=deleteComment&cid='+cid, function() {})
+        $.getJSON('ajax.php?action=deleteComment&cid='+cid, function() {})
             .done(function(data) {
                 console.log(data);
                 feedbackHtml = '<strong>The comment has been deleted</strong>';
                 if (data.empty == true) { //if the number of deleted comments = the total number of comments
-                    $.getJSON('/../../Coding/Scripts/ajax.php?action=getCommentInfo&cid=' + cid, function () {})
+                    $.getJSON('ajax.php?action=getCommentInfo&cid=' + cid, function () {})
                         .done(function (cdata) {
                             console.log(cdata);
                             var sectionId = cdata.section_id.replace(/\./g, '\\.');
-                            $('a[class="viewComment"][data-s=' + cdata.section + '][data-n=' + sectionId + ']').addClass('greyedOut');  //fade the viewcComment link
+                            $('button[class="viewComment"][data-s=' + cdata.section + '][data-n=' + sectionId + ']').addClass('greyedOut');  //fade the viewcComment link
                         });
                 }
             })
@@ -84,7 +85,6 @@ $(function() {
         Get comments
      */
     $('.viewComment').on('click', function() {
-        var docid = $('html').attr('data-docid');   //the MS ID
         var s = $(this).attr('data-s');             //the section type (e.g. div/lb)
         var sid = $(this).attr('data-n');           //the section ID
         updateComments(docid, s, sid);
@@ -93,17 +93,16 @@ $(function() {
     /*
         Flag the sections that have comments
      */
-    var docid = $('html').attr('data-docid');   //the MS ID
-    $.getJSON('../../Coding/Scripts/ajax.php?action=getPopulatedSections&docid='+docid, function(data) {
+    $.getJSON('ajax.php?action=getPopulatedSections&docid='+docid, function(data) {
         $.each(data, function(k, v) {
             $.each(v, function (key, val) {
                 var section = val.section;
                 var sectionId = val.section_id;
                 sectionId = sectionId.replace(/\./g, '\\.');
-                $('a[data-s='+section+'][data-n='+sectionId+']').show();
+                $('button[data-s='+section+'][data-n='+sectionId+']').show();
                 //remove greyedOut class if there is a non-deleted comment here
                 if (val.deleted == "0") {
-                    $('a[data-s='+section+'][data-n='+sectionId+']').removeClass('greyedOut');
+                    $('button[data-s='+section+'][data-n='+sectionId+']').removeClass('greyedOut');
                 }
             });
         });
@@ -115,7 +114,7 @@ $(function() {
  */
 function updateComments(docid, s, sid) {
     var html = '<ul class="commentsList">';
-    $.getJSON('../../Coding/Scripts/ajax.php?action=getComment&docid='+docid+'&s='+s+'&sid='+sid, function(data) {
+    $.getJSON('ajax.php?action=getComment&docid='+docid+'&s='+s+'&sid='+sid, function(data) {
         $.each(data, function(k, v) {
             $.each(v, function (key, val) {
                 var displayClass = "";
@@ -131,7 +130,7 @@ function updateComments(docid, s, sid) {
             });
         });
         html += '</ul>';
-        $('#right-panel').html(html);
+        $('#rhs').html(html);
     })
         .done(function() {
            return;          //wait for completion before return

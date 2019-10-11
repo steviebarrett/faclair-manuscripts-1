@@ -1,3 +1,7 @@
+/* 
+This script is now deprecated and is here for reference only.
+*/
+
 $(function() {
 
     $('#showHeader').click(function(){
@@ -26,22 +30,8 @@ $(function() {
         $.getJSON('../../Coding/Scripts/ajax.php?action=getTextInfo&ms=' + granny.attr('data-ms') + '&text=' + granny.attr('data-corresp'), function (g) {
             html += g.title;
         })
-        html += ' (' + granny.attr('data-type') + ')</p><p>Hand:</p><ul>';
-        $.getJSON('../../Coding/Scripts/ajax.php?action=getHandInfo&hand=' + granny.attr('data-hand'), function (g) {
-            html += '<li>';
-            if (g.forename + g.surname != '') { html +=  g.forename + ' ' + g.surname; }
-            else { html += 'Anonymous'; }
-            html += '</li><li>';
-            html += g.from;
-            if (g.min != g.from) { html += '/' + g.min; }
-            html += ' – ' + g.to;
-            if (g.max != g.to) { html += '/' + g.max; }
-            html += '</li><li>'
-            html += g.region;
-            html += '</li>';
-            for (i=0;i<g.notes.length; i++) { html += '<li>' + g.notes[i] + '</li>'; }
-        })
-        html += '</ul>';
+        var hands = [granny.attr('data-hand')];
+        html += getHandInfoDivs(hands);
         $('#rightPanel').html(html);
     });
 
@@ -49,7 +39,8 @@ $(function() {
         MSS Image handling on page click
         SB - added functionality to handle embedded viewer required for links to cudl.lib.cam.ac.uk
      */
-    $('.page').click(function(){
+    $('.page').click(function(e){
+        e.stopImmediatePropagation();   //prevents outer link (e.g. word across pages) from overriding this one
         $('.chunk, .gapDamageDiplo').css('background-color', 'inherit');
         var html = '';
         var url = $(this).attr('data-facs');
@@ -63,8 +54,8 @@ $(function() {
             html += "<iframe type='text/html' width='600' height='410' style='position: absolute; width: 100%; height: 100%;'";
             html += " src='https://cudl.lib.cam.ac.uk/embed/#item="+mssNo+"&page="+pageNo+"&hide-info=true'";
             html += " frameborder='0' allowfullscreen='' onmousewheel=''></iframe></div>";
-        } else {    //simple case: just wrap the url in an image tag
-            html = '<img src="';
+        } else {    //simple case: just stick the url in an image tag
+            html = '<img width="100%" src="';
             html += url;
             html += '"/>'
         }
@@ -83,7 +74,10 @@ $(function() {
         //$('#headword').text(clean($(this).text()));
         html = '<h1>';
         this2 = $(this).clone();
+        $(this2).find('div').remove();  //delete any divs (e.g. 'start of page ...')
+
         html += reindex(this2);
+        html = html.replace(/\n/g,'');
         html += '</h1><ul>';
         html += makeSyntax($(this),false);
         html += '</ul>';
@@ -97,6 +91,8 @@ $(function() {
                     } else {
                         prevCorresp = corresp;
                     }
+                } else {
+                    prevCorresp = '';
                 }
                 cert = $(this).attr('data-cert');
                 var xmlId = $(this).attr('data-glyphref');
@@ -109,13 +105,19 @@ $(function() {
                 })
             });
             html += '</ul>';
-
         }
         /*
         $('#damagedInfo').html(getDamage($(this)));
         $('#deletionInfo').html(getDeletions($(this)));
         $('#additionInfo').html(getAdditions($(this)));
          */
+        if ($(this2).attr('data-hand') != undefined) {
+            var hands = [$(this2).attr('data-hand')];
+            $(this2).find('.handShift').each(function() {
+                hands.push($(this).attr('data-hand'));
+            });
+            html += getHandInfoDivs(hands);    //get the hand info if available
+        }
         $('#rightPanel').html(html);
 
         //SB - moved following glyph handler from deleted .done due to the synchronous call
@@ -142,18 +144,38 @@ $(function() {
         $('#damagedInfo').html('');
         $('#expansionInfo').hide();
         html = 'This is a damaged section of text: ';
-        html = html + $(this).attr('data-extent') + ' ' + $(this).attr('data-unit') + ' (' + $(this).attr('data-resp') + ')';
+        html = html + $(this).attr('data-quantity') + ' ' + $(this).attr('data-unit') + ' (' + $(this).attr('data-resp') + ')';
         $('#syntaxInfo').html(html);
 
     });
 
     function makeSyntax(span, rec) {
         html = '';
-        if (rec) { html += '<span style="color:red;">' + clean($(span).text()) + '</span><ul>'; }
+        //SB note the searchHeadword() call here. Just for testing and will be moved.
+        if (rec) { html += '<span onclick="searchHeadword(\'' + $(span).attr('data-headword') + '\',\'' + $(span).attr('data-edil') + '\')" style="color:red;">' + clean($(span).text()) + '</span><ul>'; }
+
+        var handIds = [$(span).attr('data-hand')];;
+        html += getHandInfoDivs(handIds);
+        html += '<li>was written by ';
+        html += '<a href="#" onclick="$(\'#handInfo_'+ handIds[0] + '\').bPopup();">' + getHandInfo($(span).attr('data-hand')) + '</a>';
+        html += '</li>';
+
+        //a handShift within a word
+        $(span).find('.handShift').each(function() {
+            html += '<li>contains a hand shift to ';
+            html += '<a href="#" onclick="$(\'#handInfo_'+ $(this).attr('data-hand') + '\').bPopup();">' + getHandInfo($(this).attr('data-hand')) + '</a>';
+            html += '</li>';
+        });
+
         if ($(span).hasClass('name')) {
             type = $(span).attr('data-nametype');
             if (type=='personal') { html += '<li>is the name of a person</li>'; }
-            else if (type=='place') { html += '<li>is the name of a place</li>'; }
+            else if (
+                type=='place') { html += '<li>is the name of a place</li>';
+                if ($(span).attr('data-corresp') != '') {
+                    html += '<li>further information on this placename can be found <a href="' + $(span).attr('data-corresp') + '" target="_blank">here</a></li>';
+                }
+            }
             else if (type=='population') { html += '<li>is the name of a group of people</li>'; }
             else { html += '<li>is a name</li>'; }
         }
@@ -230,6 +252,10 @@ $(function() {
                 html += '<li>appears in the HDSG/RB collection of headwords: <a href="' + $(span).attr('data-slipref') + '" target="_new">' + $(span).attr('data-lemmasl') + '</a></li>';
             }
         }
+
+        if ($(span).find('.insertion').length != 0) {
+            html += getAdditions(span);
+        }
         if (rec) {
             html += '</ul>';
         }
@@ -281,26 +307,6 @@ $(function() {
          */
     }
 
-    function decode(lang) {
-        switch (lang) {
-            case 'la':
-                return 'Latin';
-            case 'sco':
-                return 'Scots';
-            case "gk":
-                return 'Greek';
-            case 'hbo':
-                return 'Ancient Hebrew';
-            case 'jpa':
-                return 'Aramaic';
-            case 'en':
-                return 'English';
-            case 'und':
-                return 'unknown';
-            default:
-                return lang;
-        }
-    }
 
     function getDamage(span) {
         html2 = '';
@@ -355,12 +361,12 @@ $(function() {
     }
 
     function getAdditions(span) {
-        html2 = '';
+        html2 = '<li>';
         if ($(span).find('.insertion').length>0) {
             html2 += 'Contains the following insertions:<ul>';
             $(span).find('.insertion').each(function() {
-                html2 = html2 + '<li>[' + $(this).text() + '] ';
-                html2 = html2 + '(' + $(this).attr('data-hand');
+                html2 = html2 + '<li>[' + $(this).text() + '] (';
+                html2 += '<a href="#" onclick="$(\'#handInfo_'+ $(this).attr('data-hand') + '\').bPopup();">' + getHandInfo($(this).attr('data-hand')) + '</a>';
                 html2 = html2 + ', '  + $(this).attr('data-place');
                 html2 += ')</li>';
             });
@@ -368,11 +374,11 @@ $(function() {
         }
         else if ($(span).parents('.insertion').length>0) {
             html2 += 'Is part of the following insertion:<ul>';
-            html2 = html2 + '<li>[' + $(span).parents('.insertion').text() + '] ';
-            html2 = html2 + '(' + $(span).parents('.insertion').attr('data-hand');
+            html2 = html2 + '<li>[' + $(span).parents('.insertion').text() + '] (';
+            html2 += '<a href="#" onclick="$(\'#handInfo_'+ $(this).attr('data-hand') + '\').bPopup();">' + getHandInfo($(this).attr('data-hand')) + '</a>';
             html2 = html2 + ', ' + $(span).parents('.insertion').attr('data-place');
             html2 += ')</li>';
-            html2 += '</ul>';
+            html2 += '</ul></li>';
         }
         return html2;
     }
@@ -383,7 +389,7 @@ $(function() {
         //console.log(typeof span);
         //span2 = $('#rightPanel').find('.lineBreak').remove();
         $(span).find('.lineBreak').remove();
-        console.log(span);
+        //console.log(span);
         //$('.lineBreak').remove()
         //console.log(span2.html());
         //delete all <span class="lineBreak"> elements from inside span;
@@ -403,6 +409,7 @@ $(function() {
         }
         else str2 = str;
         str = str2.replace(/[:=]/g,'');
+
         return str;
     }
 
@@ -425,11 +432,109 @@ $(function() {
 
     /*
       Show/hide marginal notes
-      Added by Sb
+      Added by SB
      */
     $('.marginalNoteLink').on('click', function() {
         var id = $(this).attr('data-id').replace(/\./g, '\\.');
         $('#'+id).toggle();
     });
-
 });
+
+function getHandInfo(handId) {
+    var name = '';
+    $.getJSON('../../Coding/Scripts/ajax.php?action=getHandInfo&hand=' + handId, function (g) {
+        if (g.forename + g.surname != '') {
+            name = g.forename + ' ' + g.surname;
+        } else {
+            name = 'Anonymous (' + handId + ')';
+        }
+    });
+    return name;
+}
+/*
+    Uses an AJAX request to fetch the detailed hand info for an array of hand IDs
+    Returns an HTML formatted string
+ */
+function getHandInfoDivs(handIds) {
+    var html = '';
+    $.ajaxSetup({async: false});
+    for (i=0;i<(handIds.length);i++) {
+        html += '<div id="handInfo_' + handIds[i] + '" style="display:none; overflow: scroll; width: 40em; height: 20em; background: white; padding: 10px;">';
+        $.getJSON('../../Coding/Scripts/ajax.php?action=getHandInfo&hand=' + handIds[i], function (g) {
+            html += '<p>';
+            if (g.forename + g.surname != '') {
+                html += g.forename + ' ' + g.surname;
+            } else {
+                html += 'Anonymous (' + handIds[i] + ')';
+            }
+            html += '</p><p>';
+            html += g.from;
+            if (g.min != g.from) {
+                html += '/' + g.min;
+            }
+            html += ' – ' + g.to;
+            if (g.max != g.to) {
+                html += '/' + g.max;
+            }
+            html += '</p><p>'
+            html += g.region;
+            html += '</p>';
+            for (j = 0; j < g.notes.length; j++) {
+                var xml = $.parseXML(g.notes[j]);
+                $xml = $(xml);
+                $xml.find('p').each(function (index, element) {
+                    $(element).find('hi').each(function () {
+                        $(this).replaceWith(function () {
+                            return $('<em />', {html: $(this).html()});
+                        });
+                    });
+                    html += '<p>' + $(element).html() + '</p>';
+                });
+            }
+
+        });
+        html += '</div>';
+    }
+    return html;
+}
+
+/*
+    Function to search the headwords and return/write out a list of results
+
+    SB: just a start right now; needs a lot of work
+    TODO: sort out the actual structure of the HTML to ensure the results display properly
+ */
+function searchHeadword(headword, url) {
+    return;
+    /*
+        switched off for development
+     */
+    var html = '';
+
+    $('#leftPanel span[data-edil="'+url+'"]').each(function() {
+        var wordref = $(this).attr('data-wordref');
+        $($(this).parent().prevAll().slice(0,5).get().reverse()).each(function() {
+            var this2 = $(this).clone();
+            $(this2).find('br').remove();
+            $(this2).find('a').remove('.addComment');   //remove the comment links
+            html += $(this2).html() + ' ';
+        })
+        html += '<span style="color:red;">' +
+            '<a href="#' + wordref + '" onclick="highlightSpan(\'' + wordref + '\');">' + $(this).text() + '</a>'
+            + '</span>';
+        $(this).parent().nextAll().slice(0,5).each(function() {
+            var this2 = $(this).clone();
+            $(this2).find('br').remove();
+            $(this2).find('a').remove('.addComment');   //remove the comment links
+            html += ' ' + $(this2).html();
+        })
+        html += '<br/>';
+    });
+    $('#rightPanel').html(html);
+    return;
+}
+
+function highlightSpan(id) {
+    $("span[data-wordref]").css('color', 'inherit'); //reset any previously highlighted span
+    $("span[data-wordref='" + id + "']").css("color", "red");
+}

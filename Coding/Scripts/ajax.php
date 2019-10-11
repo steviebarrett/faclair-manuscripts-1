@@ -6,10 +6,10 @@
  * Time: 08:33
  */
 
-/** CONSTANTS */
-//define("ROOT", "/Users/mark/Sites");    //this must be updated to the local filepath for testing
-//define("ROOT", "/Users/stephenbarrett/Sites");
-define("ROOT", "/var/www/html/dasg.arts.gla.ac.uk/www/");
+define("DB_HOST", "localhost");
+define("DB_NAME", "dasg");
+define("DB_USER", "dasg");
+define("DB_PASSWORD", "Dcraobh2106!");
 
 switch ($_GET["action"]) {
 
@@ -235,7 +235,7 @@ SQL;
 
     public static function getGlyph($id) {
         $xmlId = $id;
-        $filepath = ROOT . "/mss/Transcribing/corpus.xml";
+        $filepath = "../../Transcribing/corpus.xml";
         $xml = simplexml_load_file($filepath);
         $xml->registerXPathNamespace('tei', 'http://www.tei-c.org/ns/1.0');
         $nodes = $xml->xpath("/tei:teiCorpus/tei:teiHeader/tei:encodingDesc/tei:charDecl/tei:glyph[@xml:id='{$xmlId}']");
@@ -249,7 +249,7 @@ SQL;
     }
 
     public static function getDwelly($edil) {
-        $filepath = ROOT . "/faclair-manuscripts/Transcribing/hwData.xml"; // change back to /mss/
+        $filepath = "../..//Transcribing/hwData.xml"; // change back to /mss/
         $xml = simplexml_load_file($filepath);
         $xml->registerXPathNamespace('tei', 'http://www.tei-c.org/ns/1.0');
         $nodes = $xml->xpath("/tei:TEI/tei:text/tei:body/tei:entryFree[@corresp='{$edil}']/tei:w");
@@ -274,7 +274,49 @@ SQL;
         $xml->registerXPathNamespace('tei', 'http://www.tei-c.org/ns/1.0');
         $hand = $xml->xpath("/tei:teiCorpus/tei:teiHeader/tei:profileDesc/tei:handNotes/tei:handNote[@xml:id='{$handid}']")[0];
         $notes = array();
-        foreach ($hand->note->p as $p) { $notes[] = (string)$p; }
-        return array("forename" => (string)$hand->forename, "surname" => (string)$hand->surname, "from" => (string)$hand->date["from"], "to" => (string)$hand->date["to"], "min" => (string)$hand->date["min"], "max" => (string)$hand->date["max"], "region" => (string)$hand->region, "notes" => $notes);
+        foreach ($hand->note as $note) { $notes[] = $note->asXML(); }
+        return array("forename" => (string)$hand->forename, "surname" => (string)$hand->surname,
+            "from" => (string)$hand->date["from"], "to" => (string)$hand->date["to"],
+            "min" => (string)$hand->date["min"], "max" => (string)$hand->date["max"], "region" => (string)$hand->region,
+            "notes" => $notes);
+    }
+}
+
+class DB
+{
+    private static $databaseHandle;
+    const ERROR_REPORTING = true;
+
+    private static function connect($dbName)
+    {
+        try {
+            self::$databaseHandle = new PDO(
+                "mysql:host=" . DB_HOST . ";dbname=" . $dbName . ";charset=utf8;", DB_USER, DB_PASSWORD
+            );
+        } catch (PDOException $e){
+            echo $e->getMessage();
+        }
+    }
+
+    public static function getDatabaseHandle($dbName = DB_NAME)
+    {
+        self::connect($dbName);
+
+        if (self::ERROR_REPORTING)
+            self::$databaseHandle->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        self::$databaseHandle->query("SET NAMES utf8");
+
+        return self::$databaseHandle;
+    }
+
+    public static function getLastId($dbName, $tableName)
+    {
+        $dbh = self::getDatabaseHandle($dbName);
+        $stmt = $dbh->prepare("SELECT `AUTO_INCREMENT` FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = '{$dbName}' AND TABLE_NAME   = '{$tableName}'");
+        $stmt->execute();
+        $lastId = $stmt->fetch(PDO::FETCH_NUM);
+        $lastId = $lastId[0];
+        return $lastId;
     }
 }

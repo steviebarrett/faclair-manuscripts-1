@@ -272,7 +272,7 @@
 	<text>
 		<body>
 			<div n="1" type="prose" corresp="MS1.1" hand="Hand1">
-				<p><handShift new="Hand1"/>
+				<p>
 					<pb n="3r" xml:id="MS1.3r"
 						facs="http://cudl.lib.cam.ac.uk/view/MS-II-00006-00032/6"/>
 					<lb n="10" xml:id="MS1.3r.10"/>
@@ -509,7 +509,7 @@
 					<w lemma="má" lemmaRef="http://www.dil.ie/31164" pos="conjunction-verb">mád</w>
 					<w lemma="bec" lemmaRef="http://www.dil.ie/5512" pos="noun">bec</w>
 					<!-- Testing -->
-					<w xml:lang="la">sbe<del resp="Hand1"><gap reason="text_obscure" extent="2"
+					<w xml:lang="la">sbe<del hand="Hand1"><gap reason="text_obscure" extent="2"
 								unit="chars" resp="EPT"/></del>cie<add type="insertion"
 							place="above" resp="Hand1">s</add></w>
 					<lb n="20" xml:id="MS1.3r.20"/>
@@ -731,7 +731,7 @@
 				</p>
 			</div>
 			<div n="2" type="prose" corresp="MS1.2" hand="Hand1">
-				<p><handShift new="Hand1"/>
+				<p>
 					<lb n="9" xml:id="MS1.3v.9"/>
 					<name type="personal">
 						<name type="personal">
@@ -1086,6 +1086,8 @@
 						<w lemma="do" lemmaRef="http://www.dil.ie/17098" pos="particle">do</w>
 						<w lemma="do-beir" lemmaRef="http://www.dil.ie/17216" pos="verb">rat</w>
 					</w>
+					<!-- TESTING -->
+					<gap reason="damage" quantity="1" unit="folio" resp="EPT"/>
 					<pb n="4r" xml:id="MS1.4r"
 						facs="http://cudl.lib.cam.ac.uk/view/MS-II-00006-00032/8"/>
 					<lb n="1" xml:id="MS1.4r.1"/>
@@ -1326,6 +1328,7 @@
 					<w lemma="toísech" lemmaRef="http://www.dil.ie/41302" pos="noun"><abbr
 							cert="high">t<g ref="g4">h</g></abbr>os<handShift new="Hand3"/>a<abbr
 							cert="high">c<g ref="g4">h</g></abbr></w>
+				  <handShift new="Hand3" comment="repeat"/>
 					<w lemma="co" lemmaRef="http://www.dil.ie/9786" pos="preposition">go</w>
 					<w lemma="deired" lemmaRef="http://www.dil.ie/15251" pos="noun">derad</w>
 					<space type="scribal"/>
@@ -1342,7 +1345,7 @@
 					<w lemma="toísech" lemmaRef="http://www.dil.ie/41302" pos="noun"><abbr
 							cert="high">t<g ref="g4">h</g></abbr>ese<abbr cert="high">c<g ref="g4"
 								>h</g></abbr></w>
-					<add hand="Hand3" place="above" type="insertion"><handShift new="Hand3"/>
+					<add place="above" type="insertion">
 						<w lemma="co" lemmaRef="http://www.dil.ie/9786" pos="preposition">cu</w>
 						<w lemma="lá" lemmaRef="http://www.dil.ie/29234" pos="noun">lai<abbr
 								cert="high">t<g ref="g4">h</g></abbr>i</w>
@@ -1387,7 +1390,7 @@
 				</p>
 			</div>
 			<div n="3" type="prose" corresp="MS1.3" hand="Hand4">
-				<p><handShift new="Hand4"/><pb n="4r" sameAs="MS1.4r"
+				<p><pb n="4r" sameAs="MS1.4r"
 						facs="http://cudl.lib.cam.ac.uk/view/MS-II-00006-00032/8"/>
 					<lb n="13" xml:id="MS1.4r.13"/>
 					<name type="personal">
@@ -1671,7 +1674,7 @@
 				</p>
 			</div>
 			<div n="4" type="prose" corresp="MS1.4" hand="Hand4">
-				<p><handShift new="Hand4"/>
+				<p>
 					<lb n="24" sameAs="MS1.4r.24"/>
 					<w pos="particle-verb"><w lemma="do" lemmaRef="http://www.dil.ie/17098"
 							pos="particle">do</w><w lemma="do-beir"
@@ -1765,7 +1768,7 @@
 				</p>
 			</div>
 			<div n="5" type="prose" corresp="MS1.5" hand="Hand2">
-				<p><handShift new="Hand2"/><pb n="4v" sameAs="MS1.4v"
+				<p><pb n="4v" sameAs="MS1.4v"
 						facs="http://cudl.lib.cam.ac.uk/view/MS-II-00006-00032/9"/>
 					<lb n="3" xml:id="MS1.4v.3"/>
 					<name type="personal">
@@ -2051,7 +2054,7 @@
 				</p>
 			</div>
 			<div n="6" type="prose" corresp="MS1.6" hand="Hand3">
-				<p><handShift new="Hand3"/>
+				<p>
 					<pb n="5r" xml:id="MS1.5r"
 						facs="http://cudl.lib.cam.ac.uk/view/MS-II-00006-00032/10"/>
 					<lb n="1" xml:id="MS1.5r.1"/>
@@ -2289,11 +2292,11 @@
 					</name>
 					<pc>;</pc>
 					<!-- TESTING -->
-					<anchor type="crossref" copyOf="MS7.7" comment="NLS Adv. MS. 72.1.50, fol. 48"/>
+					<anchor source="7" type="crossref" copyOf="MS7.7" comment="NLS Adv. MS. 72.1.50, fol. 48"/>
 				</p>
 			</div>
 			<div n="7" type="prose" corresp="MS1.7" hand="Hand6">
-				<p><handShift new="Hand6"/>
+				<p>
 					<pb n="28v" xml:id="MS1.28v"
 						facs="http://cudl.lib.cam.ac.uk/view/MS-II-00006-00032/57"/>
 					<lb n="15" xml:id="MS1.28v.15"/>
@@ -2313,7 +2316,7 @@
 				</p>
 			</div>
 			<div n="8" type="prose" corresp="MS1.8" hand="Hand6">
-				<p><handShift new="Hand6"/><pb n="fol.85r" xml:id="MS1.85r"
+				<p><pb n="fol.85r" xml:id="MS1.85r"
 						facs="http://cudl.lib.cam.ac.uk/view/MS-II-00006-00032/170"/>
 					<lb n="17" xml:id="MS1.85r.17"/>
 					<w lemma="for" lemmaRef="http://www.dil.ie/23272" pos="preposition"><abbr

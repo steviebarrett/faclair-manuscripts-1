@@ -1,0 +1,93 @@
+/*
+This stylesheet is called by viewTranscription.php
+*/
+
+.pageAnchorHR {
+  display: none;
+}
+
+.lineBreakDiplo::after {
+  content: attr(data-number) ". ";
+  color: gray;
+  font-size: x-small;
+}
+
+.lineBreakSemi::after {
+  content: "(" attr(data-number) ")";
+  color: gray;
+  font-size: x-small;
+}
+
+.expansion {
+  font-style: italic;
+}
+
+.insertion, .gloss {
+  font-size: small;
+  vertical-align: baseline;
+  position: relative;
+  top: -0.4em;
+}
+
+.gloss::before {
+  content: "[gl.]";
+}
+
+.deletion {
+  text-decoration: line-through;
+  text-decoration-style: double;
+}
+
+.unclearDamage, .gapDamage {
+  color: lightgray;
+  background-color: lightgray;
+}
+
+.unclearTextObscure, .unclearChar {
+  color: black;
+  background-color: lightgray;
+}
+
+.suppliedDiplo {
+  color: red;
+  display: none;
+}
+
+
+
+
+.hwCount, .implode, .explode {
+  display: none;
+}
+
+.chunk, .syntagm, .punct, .indexHeadword {
+  font-family: "Times New Roman", serif;
+}
+
+.pageAnchor, .lineBreak {
+  font-family: "Helvetica Neue", sans-serif;
+}
+
+.chunk {
+  cursor: pointer;
+}
+
+.addComment, .viewComment {
+  display: none;
+}
+
+ul.rhs {
+  margin-left: 10px; 
+  padding-left: 10px;
+}
+
+.marginalNoteLink {
+  font-size: small;
+  text-decoration: line-through;
+  vertical-align: sub;
+}
+
+.marginalNote {
+  margin: -15px 0 5px 20px;
+  display: none;
+}
