@@ -2,6 +2,10 @@
 This stylesheet is called by viewTranscription.php
 */
 
+.pageAnchorHR {
+  display: none;
+}
+
 .lineBreakDiplo::after {
   content: attr(data-number) ". ";
   color: gray;

@@ -7,6 +7,7 @@ $(function() {
   
   $('#numbersToggle').click(function() {
     $('.pageAnchor').toggle();
+    $('.pageAnchorHR').toggle();
     $('.handshift').toggle();
     if ($('#midl').children('div').attr('data-diplo')=='yes') {$('#midl').find('.lineBreak').toggleClass('lineBreakDiplo');}
     else {$('#midl').find('.lineBreak').toggleClass('lineBreakSemi');}

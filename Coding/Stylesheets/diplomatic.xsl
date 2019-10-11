@@ -51,6 +51,7 @@ It creates a diplomatic MS view.
         </xsl:choose>]
       </small>
     </span>
+    <small class=" text-muted pageAnchorHR"><br/>--------------------</small>
   </xsl:template>
   
   <xsl:template match="tei:handShift">  <!-- e.g. MS1.4r.11 -->
