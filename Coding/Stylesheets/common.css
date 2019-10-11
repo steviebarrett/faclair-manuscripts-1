@@ -1,7 +1,56 @@
 /*
 This stylesheet is called by viewTranscription.php
-It contains styles relevant to the page as a whole, and to both MS views.
 */
+
+.lineBreakDiplo::after {
+  content: attr(data-number) ". ";
+  color: gray;
+  font-size: x-small;
+}
+
+.lineBreakSemi::after {
+  content: "(" attr(data-number) ")";
+  color: gray;
+  font-size: x-small;
+}
+
+.expansion {
+  font-style: italic;
+}
+
+.insertion, .gloss {
+  font-size: small;
+  vertical-align: baseline;
+  position: relative;
+  top: -0.4em;
+}
+
+.gloss::before {
+  content: "[gl.]";
+}
+
+.deletion {
+  text-decoration: line-through;
+  text-decoration-style: double;
+}
+
+.unclearDamage, .gapDamage {
+  color: lightgray;
+  background-color: lightgray;
+}
+
+.unclearTextObscure, .unclearChar {
+  color: black;
+  background-color: lightgray;
+}
+
+.suppliedDiplo {
+  color: red;
+  display: none;
+}
+
+
+
 
 .hwCount, .implode, .explode {
   display: none;
@@ -19,10 +68,6 @@ It contains styles relevant to the page as a whole, and to both MS views.
   cursor: pointer;
 }
 
-#rhs {
-  font-size: small;
-}
-
 .addComment, .viewComment {
   display: none;
 }
@@ -32,3 +77,13 @@ ul.rhs {
   padding-left: 10px;
 }
 
+.marginalNoteLink {
+  font-size: small;
+  text-decoration: line-through;
+  vertical-align: sub;
+}
+
+.marginalNote {
+  margin: -15px 0 5px 20px;
+  display: none;
+}

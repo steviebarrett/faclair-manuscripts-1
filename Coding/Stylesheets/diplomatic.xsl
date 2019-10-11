@@ -15,7 +15,8 @@ It creates a diplomatic MS view.
     </div>
   </xsl:template>
 
-  <xsl:template match="tei:div"> 
+  <xsl:template match="tei:div">
+    <span class="handshift" data-hand="{@hand}"/>
     <!--
     <div class="text" data-hand="{@hand}" data-n="{@n}" data-corresp="{@corresp}" data-type="{@type}" data-ms="{substring(/tei:TEI/@xml:id,2)}"> 
       <div class="textAnchor">
@@ -52,12 +53,16 @@ It creates a diplomatic MS view.
     </span>
   </xsl:template>
   
-  <xsl:template match="tei:w/tei:handShift"> <!-- e.g. MS1.4r.11 -->
-    <span class="handshift" data-hand="{@new}" title="{@new}"><small class="text-muted">[beg. <xsl:value-of select="@new"/>]</small></span>
+  <xsl:template match="tei:handShift">  <!-- e.g. MS1.4r.11 -->
+    <span class="handshift" data-hand="{@new}">
+      <xsl:if test="not(@comment)">
+        <small class="text-muted">[hs]</small>
+      </xsl:if>
+    </span>
   </xsl:template>
   
   <xsl:template match="tei:lb">
-    <span class="lineBreak" data-number="{@n}" id="{concat('line_',@xml:id)}">
+    <span class="lineBreak lineBreakDiplo" data-number="{@n}" id="{concat('line_',@xml:id)}">
       <br/>
       <!--
       <button type="button" data-toggle="modal" data-target="#commentForm" class="addComment" title="Leave comment on this line" data-s="lb" data-n="{@xml:id}">+</button>
@@ -290,13 +295,13 @@ It creates a diplomatic MS view.
   </xsl:template>
 
   <xsl:template match="tei:add[@type='gloss']">
-    <span class="gloss" data-hand="{@hand}" data-place="{@place}">
+    <span class="gloss" data-place="{@place}"> <!--data-hand="{@hand}"-->
       <xsl:apply-templates/>
     </span>
   </xsl:template>
 
   <xsl:template match="tei:add[@type='insertion']"> <!-- e.g. MS1.3r.17 -->
-    <span class="insertion" data-hand="{@hand}" data-place="{@place}">
+    <span class="insertion" data-place="{@place}"> <!--data-hand="{@hand}"-->
       <xsl:apply-templates/>
     </span>
   </xsl:template>
@@ -351,7 +356,7 @@ It creates a diplomatic MS view.
   </xsl:template>
   
   <xsl:template match="tei:supplied"> <!-- editorial insertions e.g. MS1.3r.20 mor[maer], MS1.5r.25 [a] -->
-    <span class="supplied" data-resp="{@resp}">
+    <span class="suppliedDiplo" data-resp="{@resp}">
       <xsl:text>[</xsl:text>
       <xsl:apply-templates/>
       <xsl:text>]</xsl:text>

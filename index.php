@@ -8,14 +8,17 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>    
-    <title>DASG/Faclair MSS Webtool</title>
+    <title>DASG MSS Webtool</title>
   </head>
-  <body>
+  <body style="padding-top: 80px;">
     <div class="container-fluid">
+      <nav class="navbar navbar-dark bg-primary fixed-top navbar-expand-lg">
+        <a class="navbar-brand" href="about.php">DASG-MSS</a>
+      </nav>
       <div class="list-group list-group-flush">
-        <div class="list-group-item list-group-item-action">Transcription 1: <a href="Coding/Scripts/viewTranscription.php?t=1&diplo=yes">diplo</a>, <a href="Coding/Scripts/viewTranscription.php?t=1&diplo=no">semi</a></div>
-        <div class="list-group-item list-group-item-action">Transcription 6: <a href="Coding/Scripts/viewTranscription.php?t=6&diplo=yes">diplo</a>, <a href="Coding/Scripts/viewTranscription.php?t=6&diplo=no">semi</a></div>
-        <div class="list-group-item list-group-item-action">Transcription 17: <a href="Coding/Scripts/viewTranscription.php?t=17&diplo=yes">diplo</a>, <a href="Coding/Scripts/viewTranscription.php?t=17&diplo=no">semi</a></div>
+        <div class="list-group-item list-group-item-action">Transcription 1 (<em>The Book of Deer</em>: CUL I.i.6.32): <a href="Coding/Scripts/viewTranscription.php?t=1&diplo=yes">diplo</a>, <a href="Coding/Scripts/viewTranscription.php?t=1&diplo=no">semi</a></div>
+        <div class="list-group-item list-group-item-action">Transcription 6 (NLS Adv. 72.1.31): <a href="Coding/Scripts/viewTranscription.php?t=6&diplo=yes">diplo</a>, <a href="Coding/Scripts/viewTranscription.php?t=6&diplo=no">semi</a></div>
+        <div class="list-group-item list-group-item-action">Transcription 17 (NLS Adv. 72.1.4): <a href="Coding/Scripts/viewTranscription.php?t=17&diplo=yes">diplo</a>, <a href="Coding/Scripts/viewTranscription.php?t=17&diplo=no">semi</a></div>
       </div>
     </div>    
   </body>

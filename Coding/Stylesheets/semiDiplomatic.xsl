@@ -159,31 +159,6 @@ It creates a semi-diplomatic MS view.
       </xsl:attribute>
     </xsl:if>
   </xsl:template>
-  
-
-
-<!--
-
-  Added by SB to handle compound verbs
-  <xsl:template match="tei:w[contains(@pos, 'verb') and descendant::tei:w]">
-    <xsl:call-template name="compound-verb"/>
-  </xsl:template>
-
-  <xsl:template name="compound-verb" match="tei:w">
-    <xsl:if test="@pos = 'verb' and @lemmaRef != 'http://www.dil.ie/29104'">   checks for POS and copula
-      <xsl:text> </xsl:text>   only adds a space before a verb that is not the copula
-    </xsl:if>
-    <span class="word chunk syntagm">
-      <xsl:if test="count(tei:w) = 0"> a syntactically simple word
-        <xsl:call-template name="addAttributes"/>
-      </xsl:if>
-      <xsl:apply-templates/>
-    </span>
-    <xsl:if test="@pos = 'verb'">
-      <xsl:text> </xsl:text>
-    </xsl:if>
-  </xsl:template>
-  -->
 
   <xsl:template match="tei:date | tei:c | tei:num">
     <span class="syntagm">
@@ -230,9 +205,11 @@ It creates a semi-diplomatic MS view.
     </xsl:choose>
   </xsl:template>
 
+<!--
   <xsl:template match="tei:handShift">
     <span class="handshift" data-hand="{@new}"></span>
   </xsl:template>
+  -->
 
   <xsl:template match="tei:del">
     <span class="deletion" data-hand="{@resp}">
@@ -282,7 +259,7 @@ It creates a semi-diplomatic MS view.
   </xsl:template>
 
   <xsl:template match="tei:supplied">  <!-- editorial insertions as parts of words e.g. T1.3r.20 mor[maer] -->
-    <span class="supplied" data-resp="{@resp}"> 
+    <span class="suppliedSemi" data-resp="{@resp}"> 
       <xsl:text>[</xsl:text>
       <xsl:apply-templates/>
       <xsl:text>]</xsl:text>
@@ -306,27 +283,23 @@ It creates a semi-diplomatic MS view.
   </xsl:template>
 
   <xsl:template match="tei:pb">
-    <span style="color: gray; font-size: small; font-family: Helvetica;">
-      <xsl:text> [p. </xsl:text>
+    <small class="text-muted pageAnchor">
+      <xsl:text>[p.</xsl:text>
       <xsl:value-of select="@n"/>
-      <xsl:text>] </xsl:text>
-    </span>
+      <xsl:text>]</xsl:text>
+    </small>
   </xsl:template>
 
   <xsl:template match="tei:cb">
-    <span style="color: gray; font-size: small; font-family: Helvetica;">
-      <xsl:text> [col. </xsl:text>
+    <small class="text-muted">
+      <xsl:text>[col.</xsl:text>
       <xsl:value-of select="@n"/>
-      <xsl:text>] </xsl:text>
-    </span>
+      <xsl:text>]</xsl:text>
+    </small>
   </xsl:template>
 
   <xsl:template match="tei:lb">
-    <span style="color: gray; font-size: small; font-family: Helvetica;">
-      <xsl:text> (</xsl:text>
-      <xsl:value-of select="@n"/>
-      <xsl:text>) </xsl:text>
-    </span>
+    <span class="lineBreak lineBreakSemi" data-number="{@n}"/>
   </xsl:template>
 
   <xsl:template match="tei:pc">

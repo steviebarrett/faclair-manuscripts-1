@@ -28,24 +28,37 @@ Dependent files are:
     <link rel="stylesheet" href="../Stylesheets/common.css"/>
     <link rel="stylesheet" href="../Stylesheets/comments.css"/>
 <?php
-$diplo = $_GET["diplo"];
+$diplo = $_GET["diplo"]; // yes, no, both
 $t = $_GET["t"];
-if ($diplo=='yes') echo '<link rel="stylesheet" href="../Stylesheets/diplomatic.css"/>';
-else echo '<link rel="stylesheet" href="../Stylesheets/semiDiplomatic.css"/>';
 ?>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="common.js"></script>
-<?php
-if ($diplo=='yes') echo '<script src="diplomatic.js"></script>';
-else echo '<script src="semiDiplomatic.js"></script>';
-?>
     <!-- <script src="comments.js"></script>-->
     <title>DASG-MSS tool</title>
   </head>
-  <body style="height: 100%;">
+  <body style="height: 100%; padding-top: 60px;">
     <div class="container-fluid" style="height: 100%;">
+      <nav class="navbar navbar-dark bg-primary fixed-top navbar-expand-lg">
+        <a class="navbar-brand" href="../../index.php">DASG-MSS</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+             <a class="nav-item nav-link" id="numbersToggle" href="#" data-toggle="tooltip" title="show/hide line/page numbers and handshifts">numbers</a>
+             <a class="nav-item nav-link" href="#" data-toggle="tooltip" title="show/hide comments">comments</a>
+<?php
+echo '<a class="nav-item nav-link" href="viewTranscription.php?t=' . $t . '&';
+if ($diplo=='yes') { echo 'diplo=no'; }
+else { echo 'diplo=yes'; }
+echo '" data-toggle="tooltip" title="switch edition">switch</a>';
+echo '<a class="nav-item nav-link" href="viewTranscription.php?t=' . $t . '&diplo=both" data-toggle="tooltip" title="compare editions">compare</a>'
+?>
+          </div>
+        </div>
+      </nav>
       <!-- comment form markup (usually hidden) -->
       <div class="modal fade" id="commentForm" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -75,15 +88,26 @@ else echo '<script src="semiDiplomatic.js"></script>';
       </div>
       <!-- main body of display, with three columns -->
       <div class="row" style="height: 100%;">
-        <div class="col-2" style="overflow: auto; height: 100%;"> <!-- the headword index -->
+        <div id="lhs" class="col-2" style="overflow: auto; height: 100%;"> <!-- the headword index -->
           <div class="list-group list-group-flush">
 <?php
 $ms = new SimpleXMLElement("../../Transcribing/Transcriptions/transcription" . $t . ".xml", 0, true);
 $ms->registerXPathNamespace('tei', 'http://www.tei-c.org/ns/1.0');
 $lemmas = [];
 foreach ($ms->xpath('descendant::tei:w[@lemmaRef and not(descendant::tei:w)]') as $nextWord) {
-  $pair = array($nextWord["lemma"], $nextWord['lemmaRef']);
+  $pair = array($nextWord['lemma'], $nextWord['lemmaRef']);
   $lemmas[] = implode("|", $pair);
+}
+foreach ($ms->xpath('descendant::tei:anchor') as $nextAnchor) {
+  $source = $nextAnchor['source'];
+  $copyOf = $nextAnchor['copyOf'];
+  $file = '../../Transcribing/Transcriptions/transcription' . $source . '.xml';
+  $mms = new SimpleXMLElement($file, 0, true);
+  $mms->registerXPathNamespace('tei', 'http://www.tei-c.org/ns/1.0');
+  foreach ($mms->xpath('descendant::tei:div[@corresp=\'' . $copyOf . '\']/descendant::tei:w[@lemmaRef and not(descendant::tei:w)]') as $nextWord) {
+    $pair = array($nextWord['lemma'], $nextWord['lemmaRef']);
+    $lemmas[] = implode("|", $pair);
+  }
 }
 $counts = array_count_values($lemmas);
 $lemmas = array_unique($lemmas);
@@ -100,7 +124,7 @@ function gdSort($s, $t) {
 foreach ($lemmas as $nextLemma) {
   $n = $counts[$nextLemma];
   $pair = explode("|", $nextLemma);
-  echo '<div class="list-group-item list-group-item-action"><span class="indexHeadword" data-uri="' . $pair[1] . '">' . $pair[0] . '</span> <span class="hwCount badge badge-light">' . $n . '</span> <button type="button" class="implode">-</button> <button type="button" class="explode">+</button></div>';
+  echo '<div class="list-group-item list-group-item-action"><span class="indexHeadword" data-lemmaRef="' . $pair[1] . '">' . $pair[0] . '</span> <span class="hwCount badge badge-light">' . $n . '</span> <button type="button" class="implode">-</button> <button type="button" class="explode">+</button></div>';
   // Note that each HW HAS class="indexHeadword" for event handling
 }
 ?> 
@@ -109,7 +133,7 @@ foreach ($lemmas as $nextLemma) {
         <div id="midl" class="col-5" style="overflow: auto; height: 100%;"> <!-- the MSS display panel in the middle; note that id="midl" for event handling -->     
 <?php
 $xsl = new DOMDocument;
-if ($diplo=='yes') { $xsl->load('../Stylesheets/diplomatic.xsl'); }
+if ($diplo=='yes' || $diplo=='both') { $xsl->load('../Stylesheets/diplomatic.xsl'); }
 else { $xsl->load('../Stylesheets/semiDiplomatic.xsl'); }
 $proc = new XSLTProcessor;
 $proc->importStyleSheet($xsl);
@@ -117,6 +141,14 @@ echo $proc->transformToXML($ms);
 ?>
         </div>
         <div id="rhs" class="col-5" style="overflow: auto; height: 100%;"> <!-- the chunk info panel, on the right; id="rhs" as target for event handling -->
+<?php
+if ($diplo=='both') { 
+  $xsl->load('../Stylesheets/semiDiplomatic.xsl'); 
+  $proc = new XSLTProcessor;
+  $proc->importStyleSheet($xsl);
+  echo $proc->transformToXML($ms);
+}
+?>        
         </div>
       </div>
     </div>

@@ -5,60 +5,100 @@ It contains event handlers relevant to that page as a whole, and to both MS view
 
 $(function() {
   
+  $('#numbersToggle').click(function() {
+    $('.pageAnchor').toggle();
+    $('.handshift').toggle();
+    if ($('#midl').children('div').attr('data-diplo')=='yes') {$('#midl').find('.lineBreak').toggleClass('lineBreakDiplo');}
+    else {$('#midl').find('.lineBreak').toggleClass('lineBreakSemi');}
+  });
+  
+  $('.page').click(function(e){
+    e.stopImmediatePropagation();   //prevents outer link (e.g. word across pages) from overriding this one
+    //$('.chunk, .gapDamageDiplo').css('background-color', 'inherit');
+    var html = '';
+    var url = $(this).attr('data-facs');
+    var regex = /^((http[s]?|ftp):\/)?\/?([^:\/\s]+)((\/\w+)*\/)([\w\-\.]+[^#?\s]+)(.*)?(#[\w\-]+)?$/
+    var urlElems = regex.exec(url);
+    if (urlElems[3] == 'cudl.lib.cam.ac.uk') {  //complex case: write the viewer code
+      var paramElems = urlElems[6].split('/');
+      var mssNo = paramElems[0];
+      var pageNo = paramElems[1];
+      html = "<div style='position: relative; width: 100%; padding-bottom: 80%;'>";
+      html += "<iframe type='text/html' width='600' height='410' style='position: absolute; width: 100%; height: 100%;'";
+      html += " src='https://cudl.lib.cam.ac.uk/embed/#item="+mssNo+"&page="+pageNo+"&hide-info=true'";
+      html += " frameborder='0' allowfullscreen='' onmousewheel=''></iframe></div>";
+    } 
+    else {    //simple case: just stick the url in an image tag
+      html = '<img width="100%" src="';
+      html += url;
+      html += '"/>'
+    }
+    $('#rhs').html(html);
+  });
+    
+  /* Show/hide marginal notes. Added by SB. MM: might be interfered with by hw search now. */
+  $('.marginalNoteLink').on('click', function() {
+    var id = $(this).attr('data-id').replace(/\./g, '\\.');
+    $('#'+id).toggle();
+  });
+  
   $('.indexHeadword').click(function(){ // called whenever a new headword is selected
-    $('#midl').animate({scrollTop: 0},0); // move middle back to top
-    $('.syntagm').css({'background-color': 'inherit', 'color': 'inherit', 'font-weight': 'normal'}); // unhighlight all words and phrases
-    $('#rhs').html(''); // clear RHS
+    // reset midl and rhs
+    $('#midl').animate({scrollTop: 0},0);
+    $('#midl').find('.syntagm').css({'background-color': 'inherit', 'color': 'inherit', 'font-weight': 'normal'});
     $('.temp').remove(); // remove all temporary hr elements
-    $('#midl').find('span').show(); // unhide all spans
-    if ($('#midl').children('div').attr('data-diplo')=='yes') { $('.supplied').hide(); }
-    $('.textAnchor').show();
-    $('.pageAnchor').show();
+    $('#midl').find('span', '.textAnchor', '.pageAnchor').show();
+    $('#midl').find('.suppliedDiplo').hide();
+    //$('#rhs').html('');
+    // reset lhs
     $('.indexHeadword').parent().css({'background-color': 'inherit'});
     $('.hwCount').hide();
     $('.implode').hide();
     $('.explode').hide();
-    $('[data-lemmaRef="'+ $(this).attr('data-uri') + '"]').css({'color': 'orange', 'font-weight': 'bold'});
+    // do stuff
+    $('#midl').find('[data-lemmaRef="'+ $(this).attr('data-lemmaRef') + '"]').css({'color': 'orange', 'font-weight': 'bold'});
     $(this).parent().css('background-color', 'orange');
     $(this).nextAll('.hwCount').show();
     $(this).nextAll('.implode').show();
-    var x = $('[data-lemmaRef="'+ $(this).attr('data-uri') + '"]').first();
-    $('#midl').animate({scrollTop: x.offset().top - 100},500);
+    var x = $('#midl').find('[data-lemmaRef="'+ $(this).attr('data-lemmaRef') + '"]').first();
+    $('#midl').animate({scrollTop: x.offset().top - 180},500);
     return null;
   });
 
   $('.implode').click(function(){
+    //reset midl
     $('#midl').animate({scrollTop: 0},0); // move middle back to top
+    $('.temp').remove();
+    // do stuff
     $(this).hide();
     $(this).nextAll('.explode').show();
     $('#midl').find('span').hide();
-    $('.temp').remove();
-    $('[data-lemmaRef="'+ $(this).prevAll('.indexHeadword').attr('data-uri') + '"]').each(function(){
+    $('#midl').find('[data-lemmaRef="'+ $(this).prevAll('.indexHeadword').attr('data-lemmaRef') + '"]').each(function(){
       $(this).show();
       $(this).find('span').show();
-      if ($(this).parents('span').length>0) {
-        $(this).parents('span').show();
-        $(this).parents('span').find('span').show();
-        $(this).parents('span').prevAll().slice(0,10).show();
-        $(this).parents('span').prevAll().slice(0,10).find('*').show();
-        $(this).parents('span').nextAll().slice(0,10).show();
-        $(this).parents('span').nextAll().slice(0,10).find('*').show();
-        $('<hr class="temp"/>').insertAfter($(this).parents('span').nextAll().slice(0,10).last());
+      var x = $(this).parents('span');
+      if (x.length>0) {
+        x.show(); x.find('span').show();
+        var y = x.prevAll().slice(0,10);
+        y.show(); y.find('*').show();
+        y = x.nextAll().slice(0,10);
+        y.show(); y.find('*').show();
+        $('<hr class="temp"/>').insertAfter(y.last());
       }
       else {
-        $(this).prevAll().slice(0,10).show();
-        $(this).prevAll().slice(0,10).find('*').show();
-        $(this).nextAll().slice(0,10).show();
-        $(this).nextAll().slice(0,10).find('*').show();
-        $('<hr class="temp"/>').insertAfter($(this).nextAll().slice(0,10).last());
+        var y = $(this).prevAll().slice(0,10);
+        y.show(); y.find('*').show();
+        y = $(this).nextAll().slice(0,10);
+        y.show(); y.find('*').show();
+        $('<hr class="temp"/>').insertAfter(y.last());
       }
     });
     $('.textAnchor').hide();
-    if ($('#midl').children('div').attr('data-diplo')=='yes') { $('.supplied').hide(); }
+    $('#midl').find('.suppliedDiplo').hide();
     //$('.pageAnchor').show();
     //$('#midl').find('.pageAnchor').hide();
     //$(this).parents().prevAll('.pageAnchor').first().show(); // not working
-    $('#midl').find('.greyedOut').hide();
+    //$('#midl').find('.greyedOut').hide();
     return null;
   });
   
@@ -66,12 +106,12 @@ $(function() {
     $(this).hide();
     $(this).prevAll('.implode').show();
     $('#midl').find('span').show();
-    if ($('#midl').children('div').attr('data-diplo')=='yes') { $('.supplied').hide(); }
+    $('#midl').find('.suppliedDiplo').hide();
     $('#midl').find('.textAnchor').show();
     $('#midl').find('.pageAnchor').show();
     $('.temp').remove();
     $('#midl').animate({scrollTop: 0},0); // move middle back to top
-    var x = $('[data-lemmaRef="'+ $(this).prevAll('.indexHeadword').attr('data-uri') + '"]').first();
+    var x = $('#midl').find('[data-lemmaRef="'+ $(this).prevAll('.indexHeadword').attr('data-lemmaRef') + '"]').first();
     $('#midl').animate({scrollTop: x.offset().top - 100},500);
     return null;
   });
@@ -85,48 +125,65 @@ $(function() {
     $('.chunk').css('background-color', 'inherit');
     $(this).css('background-color', 'yellow'); 
     var prevCorresp = ''; // better name?
-    html = makeHeading($(this));
+    html = '<h1>' + makeHeading($(this)) + '</h1>';
     html += '<ul class="rhs">' + makeSyntax($(this),false) + '</ul>';
     $('#rhs').html(html);
+    $('#rhs').css('font-size', 'small');
     $('.glyphShow').hover(
       function(){
         $('#'+$(this).attr('data-id')).css('text-decoration', 'underline');
         $('#xx-'+$(this).attr('data-id')).css('background-color', 'yellow');
+        $('#yy-'+$(this).attr('data-id')).css('background-color', 'yellow');
         //$('.corresp-'+$(this).attr('data-corresp')).css({'text-decoration': 'underline', 'background-color': 'yellow'});
       },
       function() {
         $('#'+$(this).attr('data-id')).css('text-decoration', 'inherit');
         $('#xx-'+$(this).attr('data-id')).css('background-color', 'inherit');
+        $('#yy-'+$(this).attr('data-id')).css('background-color', 'inherit');
         //$('.corresp-'+$(this).attr('data-corresp')).css({'text-decoration': 'inherit', 'background-color': 'inherit'});
       }
     );
+    $('.headwordSearch').click(function() {
+      var x = $('.indexHeadword[data-lemmaRef="' + $(this).attr('data-lemmaRef') + '"]');
+      x.trigger('click');
+      $('#lhs').animate({scrollTop: 0},0);
+      $('#lhs').animate({scrollTop: x.offset().top - 100},500); // NOT WORKING CONSISTENTLY
+    });
   });
 });
 
 function makeHeading(span, rec) {
-  html = '<h1>';
-  clone = $(span).clone();
-  $(clone).find('.lineBreak').remove();
-  $(clone).find('.pageAnchor').remove();
-  $(clone).find('.punct').remove();
-  $(clone).find('[id]').each(function(){
-    $(this).attr('id', 'xx-' + $(this).attr('id'));
+  html = '';
+  var simplex = span.find('.word').length == 0;
+  if (simplex && span.attr('data-lemmaRef')) { 
+    html += '<a href="#" class="headwordSearch" data-lemmaRef="'; 
+    html += span.attr('data-lemmaRef');
+    html += '">'
+  }
+  clone = span.clone();
+  clone.find('.lineBreak, .pageAnchor, .punct, .handshift').remove();
+  clone.find('[id]').each(function(){
+    if (rec) { $(this).attr('id', 'yy-' + $(this).attr('id')); }
+    else { $(this).attr('id', 'xx-' + $(this).attr('id')); }
   });
-  $(clone).find('.supplied').css('display', 'inline');
-  //$(clone).find('span:not(.deletion)').css('text-decoration', 'inherit');
-  html += '<span class="syntagm">' + $(clone).html() + '</span>';
-  return html + '</h1>';
+  clone.find('.suppliedDiplo').css('display', 'inline');
+  if (!rec) {
+    clone.find('span').css({'color': 'inherit', 'font-weight': 'normal'});
+  }
+  html += '<span class="syntagm">' + clone.html() + '</span>';
+  if (simplex) { html += '</a>'; }
+  return html;
 }
 
 function makeSyntax(span, rec) {
   html = '';
   if (rec) {
-    html += '<strong class="syntagm" style="font-size: large;">' + $(span).text().replace(/[\+\?\:]/g, '') + '</strong>';
+    html += '<h4>' + makeHeading(span,true) + '</h4>';
     html += '<ul class="rhs">';
   }
   if (span.hasClass('name')) { html += getOnomastics(span); }
   if (span.hasClass('word')) {
-    html += handInfo(span); 
+    html += getHandInfo(span); 
     html += getGlygatures(span);
     html += getCorrections(span);
     html += getSupplied(span);
@@ -136,7 +193,7 @@ function makeSyntax(span, rec) {
     html += getAdditions(span);
   }
   if ($(span).attr('xml:lang')) {
-    html += '<li>is a ' + decodeLang($(span).attr('xml:lang')) + ' word</li>';
+    html += '<li>language: ' + decodeLang($(span).attr('xml:lang')) + '</li>';
   }
   html += getPOS(span); 
   html += getStructure(span);
@@ -150,7 +207,7 @@ function getGlygatures(span) {
   html = '';
   var x = span.find('.expansion, .ligature');
   if (x.length > 0) {
-    html += '<li>contains the following scribal abbreviations and ligatures:<ul class="rhs">';
+    html += '<li>scribal abbreviations and ligatures:<ul class="rhs">';
     x.each(function() {
         /* DISCUSS WITH SB
         var corresp;
@@ -174,28 +231,26 @@ function getGlygatures(span) {
   return html;
 }
 
-function handInfo(span) {
+function getHandInfo(span) {
   html = '';
   var h;
-  h = $(span).prevAll('.handshift').first().attr('data-hand');
-  if (typeof h == 'undefined') { // handshift is not a sibling but rather an auntie
-    h = $(span).parents().prevAll('.handshift').first().attr('data-hand');
+  h = span.prevAll('.handshift').first().attr('data-hand');
+  if (typeof h == 'undefined') { // handshift is not a sibling but rather an auntie of some type
+    h = span.parent().prevAll('.handshift').first().attr('data-hand');
   }
-  if (typeof h == 'undefined') {
-    h = $(span).parentsUntil('.text').parent().attr('data-hand'); // this will break!
+  if (typeof h == 'undefined') { // handshift is not a sibling or a first generation but rather a great auntie of some type
+    h = span.parent().parent().prevAll('.handshift').first().attr('data-hand');
   }
   html += getHandInfoDiv(h);
-  html += '<li>was written by ';
-  html += '<a href="#" data-toggle="modal" data-target="#handInfo_' + h +'">' + getHandName(h) + '</a>';
-  html += '</li>';
-  //a handShift within a word ?????
-  /* 
-  $(span).find('.handShift').each(function() {
-    html += '<li>contains a hand shift to ';
-    html += '<a href="#" onclick="$(\'#handInfo_'+ $(this).attr('data-hand') + '\').bPopup();">' + getHandInfo($(this).attr('data-hand')) + '</a>';
-    html += '</li>';
+  html += '<li>scribe: ';
+  html += '<a href="#" data-toggle="modal" data-target="#handInfo_' + h +'">' + getHandName(h) + '</a>'; // are two ajax calls necessary?
+  span.find('.handshift').each(function() {
+    hh = $(this).attr('data-hand');
+    html += getHandInfoDiv(hh);
+    html += ', ';
+    html += '<a href="#" data-toggle="modal" data-target="#handInfo_' + hh +'">' + getHandName(hh) + '</a>';
   });
-  */
+  html += '</li>';
   return html;  
 }
 
@@ -465,7 +520,7 @@ function getCorrections(span) {
 
 function getSupplied(span) {
   html = '';
-  var x = $(span).find('.supplied'); // contains a supplied element
+  var x = $(span).find('.suppliedDiplo, .suppliedSemi'); // contains a supplied element
   if (x.length>0) {
     html += '<li>contains text supplied by an editor:<ul class="rhs">';
     x.each(function() {
@@ -476,7 +531,7 @@ function getSupplied(span) {
     html += '</ul></li>';
   }
   else {
-    x = $(span).parents('.supplied'); // part of a supplied element
+    x = $(span).parents('.suppliedDiplo, .suppliedSemi'); // part of a supplied element
     if (x.length>0) {
       html += '<li>has been supplied by an editor (';
       html += x.attr('data-resp');
