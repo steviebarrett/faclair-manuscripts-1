@@ -267,15 +267,23 @@ It creates a semi-diplomatic MS view.
   </xsl:template>
 
   <xsl:template match="tei:unclear[@reason='damage']">
-    <span class="damagedSemi">
+    <span class="unclearDamageSemi" data-cert="{@cert}" data-resp="{@resp}">
       <xsl:text>[</xsl:text>
       <xsl:apply-templates/>
       <xsl:text>]</xsl:text>
     </span>
   </xsl:template>
 
-  <xsl:template match="tei:unclear[@reason='text_obscure']">
-    <span class="obscureTextSemi">
+  <xsl:template match="tei:unclear[@reason='text_obscure']"> <!-- e.g. MS6.2r.1 [t] -->
+    <span class="unclearTextObscureSemi" data-cert="{@cert}" data-resp="{@resp}">
+      <xsl:text>[</xsl:text>
+      <xsl:apply-templates/>
+      <xsl:text>]</xsl:text>
+    </span>
+  </xsl:template>
+  
+  <xsl:template match="tei:unclear[@reason='char']"> <!-- MS6.2r.7 [i] -->
+    <span class="unclearCharSemi" data-cert="{@cert}" data-resp="{@resp}">
       <xsl:text>[</xsl:text>
       <xsl:apply-templates/>
       <xsl:text>]</xsl:text>
@@ -310,7 +318,23 @@ It creates a semi-diplomatic MS view.
     </span>
   </xsl:template>
 
-  <xsl:template match="tei:gap" >
+  <xsl:template match="tei:gap[@reason='damage' and @unit='chars']">
+    <xsl:text> </xsl:text>
+    <span class="syntagm gapDamageCharsSemi" data-toggle="tooltip" title="Damage: {@quantity} characters ({@resp})">
+      <xsl:text>[...]</xsl:text>
+    </span>
+    <xsl:text> </xsl:text>
+  </xsl:template>
+
+  <xsl:template match="tei:gap[@reason='text_obscure' and @unit='chars']">
+    <xsl:text> </xsl:text>
+    <span class="syntagm gapDamageCharsSemi" data-toggle="tooltip" title="Obscured: {@quantity} characters ({@resp})">
+      <xsl:text>[...]</xsl:text>
+    </span>
+    <xsl:text> </xsl:text>
+  </xsl:template>
+
+  <xsl:template match="tei:gap[@unit='folio']" >
     <span class="gapDamageDiplo" data-quantity="{@quantity}" data-unit="{@unit}" data-resp="{@resp}">
       <xsl:text> [</xsl:text><xsl:value-of select="@quantity"></xsl:value-of><xsl:text> missing folio(s)] </xsl:text>
     </span>
@@ -327,6 +351,12 @@ It creates a semi-diplomatic MS view.
       </small>
     </span>
     <xsl:apply-templates select="document(concat('../../Transcribing/Transcriptions/transcription',@source,'.xml'))/descendant::tei:div[@corresp=$target]"/>
+  </xsl:template>
+  
+  <xsl:template match="tei:seg[@type='fragment' or @type='cfe']"> <!-- no idea what this means -->
+    <span class="syntagm">
+      <xsl:apply-templates/>
+    </span>
   </xsl:template>
 
 </xsl:stylesheet>

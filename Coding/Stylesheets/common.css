@@ -38,18 +38,23 @@ This stylesheet is called by viewTranscription.php
   text-decoration-style: double;
 }
 
-.unclearDamage, .gapDamage {
-  color: lightgray;
-  background-color: lightgray;
+.unclearDamageDiplo, .gapDamageCharsDiplo {
+  color: gray;
+  /* background-color: lightgray; */
 }
 
-.unclearTextObscure, .unclearChar {
+.gapDamageCharsSuperDiplo {
+  color: lightgray;
+  background-color: lightgray;
+  display: none;
+}
+
+.unclearTextObscureDiplo, .unclearCharDiplo {
   color: black;
   background-color: lightgray;
 }
 
 .suppliedDiplo {
-  color: red;
   display: none;
 }
 

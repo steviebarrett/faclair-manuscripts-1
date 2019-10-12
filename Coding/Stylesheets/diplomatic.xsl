@@ -81,9 +81,11 @@ It creates a diplomatic MS view.
     </span>
   </xsl:template>
   
-  <xsl:template match="tei:lg|tei:l|tei:p|tei:note|tei:head/tei:title"> <!-- ignore verse, paragraphs and notes in diplo view -->
+  <xsl:template match="tei:lg|tei:l|tei:p"> <!-- ignore verse and paragraphs in diplo view -->
     <xsl:apply-templates/>
   </xsl:template>
+
+  <xsl:template match="tei:note|tei:head/tei:title"/> <!-- completely ignore notes and headings in diplo view -->
 
   <xsl:template match="tei:space">
     <xsl:text> </xsl:text>
@@ -266,19 +268,19 @@ It creates a diplomatic MS view.
   -->
 
   <xsl:template match="tei:unclear[@reason='damage']"> <!-- e.g. MS1.85r.17 -->
-    <span class="unclearDamage" data-cert="{@cert}" data-resp="{@resp}">
+    <span class="unclearDamageDiplo" data-cert="{@cert}" data-resp="{@resp}">
       <xsl:apply-templates/>
     </span>
   </xsl:template>
 
-  <xsl:template match="tei:unclear[@reason='text_obscure']"> <!-- ??? -->
-    <span class="unclearTextObscure" data-cert="{@cert}" data-resp="{@resp}">
+  <xsl:template match="tei:unclear[@reason='text_obscure']"> <!-- e.g. MS6.2r.1 [t] -->
+    <span class="unclearTextObscureDiplo" data-cert="{@cert}" data-resp="{@resp}">
       <xsl:apply-templates/>
     </span>
   </xsl:template>
 
-  <xsl:template match="tei:unclear[@reason='char']"> <!-- ??? -->
-    <span class="unclearChar" data-cert="{@cert}" data-resp="{@resp}">
+  <xsl:template match="tei:unclear[@reason='char']"> <!-- MS6.2r.7 [i] -->
+    <span class="unclearCharDiplo" data-cert="{@cert}" data-resp="{@resp}">
       <xsl:apply-templates/>
     </span>
   </xsl:template>
@@ -322,8 +324,8 @@ It creates a diplomatic MS view.
     </div>
   </xsl:template>
   
-  <xsl:template match="tei:seg[@type='cfe']"> <!-- no idea what this means -->
-    <span>
+  <xsl:template match="tei:seg[@type='fragment' or @type='cfe']"> <!-- no idea what this means -->
+    <span class="syntagm">
       <xsl:apply-templates/>
     </span>
   </xsl:template>
@@ -337,10 +339,40 @@ It creates a diplomatic MS view.
     </span>
   </xsl:template>
 
-  <xsl:template match="tei:gap[@unit='chars']"> <!-- needs work -->
-    <span class="missingChars" data-quantity="{@quantity}" data-unit="{@unit}" data-resp="{@resp}">
-      <xsl:text>[..] </xsl:text>
+  <xsl:template match="tei:gap[@reason='damage' and @unit='chars']">
+    <xsl:text> </xsl:text>
+    <span class="syntagm gapDamageCharsDiplo" data-toggle="tooltip" title="Damage: {@quantity} characters ({@resp})">
+      [...]
     </span>
+    <span class="syntagm gapDamageCharsSuperDiplo" data-toggle="tooltip" title="Unclear: {@quantity} characters ({@resp})">
+      <xsl:call-template name="repeat">
+        <xsl:with-param name="count" select="@quantity" />
+      </xsl:call-template>
+    </span>
+    <xsl:text> </xsl:text>
+  </xsl:template>
+  
+  <xsl:template match="tei:gap[@reason='text_obscure' and @unit='chars']">
+    <xsl:text> </xsl:text>
+    <span class="syntagm gapDamageCharsDiplo" data-toggle="tooltip" title="Unclear: {@quantity} characters ({@resp})">
+      [...]
+    </span>
+    <span class="syntagm gapDamageCharsSuperDiplo" data-toggle="tooltip" title="Unclear: {@quantity} characters ({@resp})">
+      <xsl:call-template name="repeat">
+        <xsl:with-param name="count" select="@quantity" />
+      </xsl:call-template>
+    </span>
+    <xsl:text> </xsl:text>
+  </xsl:template>
+  
+  <xsl:template name="repeat">
+    <xsl:param name="count" />
+    <xsl:if test="$count &gt; 0">
+      <xsl:text>n</xsl:text>
+      <xsl:call-template name="repeat">
+        <xsl:with-param name="count" select="$count - 1" />
+      </xsl:call-template>
+    </xsl:if>
   </xsl:template>
   
   <xsl:template match="tei:anchor"> <!-- e.g. ? -->

@@ -9,8 +9,12 @@ $(function() {
     $('.pageAnchor').toggle();
     $('.pageAnchorHR').toggle();
     $('.handshift').toggle();
-    if ($('#midl').children('div').attr('data-diplo')=='yes') {$('#midl').find('.lineBreak').toggleClass('lineBreakDiplo');}
+    if ($('#midl').children('div').attr('data-diplo')=='yes') {
+      $('#midl').find('.lineBreak').toggleClass('lineBreakDiplo');
+      $('#midl').children('div').attr('data-diplo','super');
+    }
     else {$('#midl').find('.lineBreak').toggleClass('lineBreakSemi');}
+    $('.gapDamageCharsDiplo, .gapDamageCharsSuperDiplo').toggle();
   });
   
   $('.page').click(function(e){
@@ -47,9 +51,18 @@ $(function() {
     // reset midl and rhs
     $('#midl').animate({scrollTop: 0},0);
     $('#midl').find('.syntagm').css({'background-color': 'inherit', 'color': 'inherit', 'font-weight': 'normal'});
+    $('#midl').find('.gapDamageCharsDiplo').css('color', 'gray');
+    $('#midl').find('.gapDamageCharsSuperDiplo').css({'color': 'lightgray', 'background-color': 'lightgray'});
     $('.temp').remove(); // remove all temporary hr elements
     $('#midl').find('span', '.textAnchor', '.pageAnchor').show();
     $('#midl').find('.suppliedDiplo').hide();
+    if ($('#midl').children('div').attr('data-diplo')=='super') { 
+      $('#midl').find('.gapDamageCharsDiplo').hide(); 
+      $('.pageAnchor').hide();
+      //$('.pageAnchorHR').toggle();
+      $('.handshift').hide();
+    }
+    else { $('#midl').find('.gapDamageCharsSuperDiplo').hide(); }
     //$('#rhs').html('');
     // reset lhs
     $('.indexHeadword').parent().css({'background-color': 'inherit'});
@@ -96,6 +109,8 @@ $(function() {
     });
     $('.textAnchor').hide();
     $('#midl').find('.suppliedDiplo').hide();
+    if ($('#midl').children('div').attr('data-diplo')=='super') { $('#midl').find('.gapDamageCharsDiplo').hide(); }
+    else { $('#midl').find('.gapDamageCharsSuperDiplo').hide(); }
     //$('.pageAnchor').show();
     //$('#midl').find('.pageAnchor').hide();
     //$(this).parents().prevAll('.pageAnchor').first().show(); // not working
@@ -108,6 +123,8 @@ $(function() {
     $(this).prevAll('.implode').show();
     $('#midl').find('span').show();
     $('#midl').find('.suppliedDiplo').hide();
+    if ($('#midl').children('div').attr('data-diplo')=='super') { $('#midl').find('.gapDamageCharsDiplo').hide(); }
+    else { $('#midl').find('.gapDamageCharsSuperDiplo').hide(); }
     $('#midl').find('.textAnchor').show();
     $('#midl').find('.pageAnchor').show();
     $('.temp').remove();
@@ -413,9 +430,9 @@ function getLemmas(span) {
 
 function getDamage(span) { // all this needs checked
   html = '';
-  var x = span.find('.unclearDamage');
+  var x = span.find('.unclearDamageDiplo, .unclearDamageSemi');
   if (x.length>0) { // simplify all this  
-    html += '<li>Contains the following damaged sections:<ul class="rhs">';
+    html += '<li>damaged sections:<ul class="rhs">';
     x.each(function() {
       html += '<li>[' + $(this).html() + '] ';
       html += '(' + $(this).attr('data-resp') + ', ' + $(this).attr('data-cert');
@@ -423,27 +440,30 @@ function getDamage(span) { // all this needs checked
     });
     html += '</ul></li>';
   }
-        if ($(span).find('.unclearTextObscure').length>0) {
-            html += 'Contains the following obscured sections:<ul class="rhs">';
-            $(span).find('.unclearTextObscure').each(function() {
-                html = html + '<li>[' + $(this).text() + '] ';
-                html = html + '(' + $(this).attr('data-resp') + ', ' + $(this).attr('data-cert');
-                html += ' certainty)</li>';
-            });
-            html += '</ul>';
-        }
-        if ($(span).find('.unclearChar').length>0) {
-            html += 'Contains the following unclear characters:<ul class="rhs">';
-            $(span).find('.unclearChar').each(function() {
-                html = html + '<li>[' + $(this).text() + '] ';
-                html = html + '(' + $(this).attr('data-resp') + ', ' + $(this).attr('data-cert');
-                html += ' certainty)</li>';
-            });
-            html += '</ul>';
-        }
-        if ($(span).parents('.unclearTextObscure').length>0) {
-            html += 'This is part of an obscured section.';
-        }
+  x = span.find('.unclearTextObscureDiplo, .unclearTextObscureSemi');
+  if (x.length>0) {
+    html += '<li>obscured sections:<ul class="rhs">';
+    x.each(function() {
+      html += '<li>[' + $(this).text() + '] ';
+      html += '(' + $(this).attr('data-resp') + ', ' + $(this).attr('data-cert');
+      html += ' certainty)</li>';
+    });
+    html += '</ul></li>';
+  }
+  x = span.find('.unclearCharDiplo, .unclearCharSemi');
+  if (x.length>0) {
+    html += '<li>unclear characters:<ul class="rhs">';
+    x.each(function() {
+      html += '<li>[' + $(this).text() + '] ';
+      html += '(' + $(this).attr('data-resp') + ', ' + $(this).attr('data-cert');
+      html += ' certainty)</li>';
+    });
+    html += '</ul></li>';
+  }
+  x = span.parents('.unclearTextObscureDiplo, .unclearTextObscureSemi');
+  if (x.length>0) {
+    html += '<li>part of an obscured section (' + x.first().attr('data-resp') + ', ' + x.first().attr('data-cert') + ' certainty)</li>';
+  }
         if ($(span).parents('.unclearInterpObscure').length>0) {
             html += 'This is part of a section whose interpretation is obscure.';
         }
