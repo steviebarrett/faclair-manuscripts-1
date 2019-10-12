@@ -6,14 +6,21 @@ It contains event handlers relevant to that page as a whole, and to both MS view
 $(function() {
   
   $('#numbersToggle').click(function() {
-    $('.pageAnchor').toggle();
-    $('.pageAnchorHR').toggle();
-    $('.handshift').toggle();
-    if ($('#midl').children('div').attr('data-diplo')=='yes') {
-      $('#midl').find('.lineBreak').toggleClass('lineBreakDiplo');
-      $('#midl').children('div').attr('data-diplo','super');
+    var x = $('#midl');
+    x.find('.pageAnchor, .pageAnchorHR, .handShift').toggle();
+    var b = x.children('div').attr('data-diplo');
+    if (b=='yes') {
+      x.find('.lineBreak').toggleClass('lineBreakDiplo');
+      x.find('.expansion').toggle();
+      x.children('div').attr('data-diplo','super');
     }
-    else {$('#midl').find('.lineBreak').toggleClass('lineBreakSemi');}
+    else if (b=='super') {
+      x.find('.lineBreak').toggleClass('lineBreakDiplo');
+      x.children('div').attr('data-diplo','yes');
+    }
+    else {
+      x.find('.lineBreak').toggleClass('lineBreakSemi');
+    }
     $('.gapDamageCharsDiplo, .gapDamageCharsSuperDiplo').toggle();
   });
   
