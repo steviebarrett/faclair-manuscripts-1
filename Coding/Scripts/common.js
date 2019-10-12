@@ -145,6 +145,7 @@ $(function() {
     var prevCorresp = ''; // better name?
     html = '<h1>' + makeHeading($(this)) + '</h1>';
     html += '<ul class="rhs">' + makeSyntax($(this),false) + '</ul>';
+    html += '<a href="#" id="saveSlip">[save]</a>';
     $('#rhs').html(html);
     $('#rhs').css('font-size', 'small');
     $('.glyphShow').hover(
@@ -166,6 +167,12 @@ $(function() {
       x.trigger('click');
       $('#lhs').animate({scrollTop: 0},0);
       $('#lhs').animate({scrollTop: x.offset().top - 100},500); // NOT WORKING CONSISTENTLY
+    });
+    $('#saveSlip').click(function() {
+      alert('saved');
+      var html = '<tr><td>a</td><td>a</td><td>a</td><td>a</td></tr>';
+      $('#basket').children('tbody').append(html);
+      return null;
     });
   });
 });

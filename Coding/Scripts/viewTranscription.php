@@ -56,6 +56,7 @@ else { echo 'diplo=yes'; }
 echo '" data-toggle="tooltip" title="switch edition">switch</a>';
 echo '<a class="nav-item nav-link" href="viewTranscription.php?t=' . $t . '&diplo=both" data-toggle="tooltip" title="compare editions">compare</a>'
 ?>
+            <a class="nav-item nav-link" href="#" data-toggle="modal" data-target="#basketDiv">basket</a>
           </div>
         </div>
       </nav>
@@ -152,5 +153,28 @@ if ($diplo=='both') {
         </div>
       </div>
     </div>
+    <div class="modal" tabindex="-1" role="dialog" id="basketDiv">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <table class="table" id="basket">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">First</th>
+                  <th scope="col">Last</th>
+                  <th scope="col">Handle</th>
+                </tr>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>  
   </body>
 </html>
