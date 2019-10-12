@@ -14,6 +14,15 @@
     <div class="container-fluid">
       <nav class="navbar navbar-dark bg-primary fixed-top navbar-expand-lg">
         <a class="navbar-brand" href="about.php">DASG-MSS</a>
+        
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+             <a class="nav-item nav-link" id="numbersToggle" href="dictionary.php">dictionary</a>
+          </div>
+        </div>
       </nav>
       <div class="list-group list-group-flush">
         <div class="list-group-item list-group-item-action">Transcription 1 (<em>The Book of Deer</em>: CUL I.i.6.32): <a href="Coding/Scripts/viewTranscription.php?t=1&diplo=yes">diplo</a>, <a href="Coding/Scripts/viewTranscription.php?t=1&diplo=no">semi</a></div>
