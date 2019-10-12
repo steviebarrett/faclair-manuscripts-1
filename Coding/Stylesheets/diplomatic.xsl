@@ -36,7 +36,7 @@ It creates a diplomatic MS view.
   </xsl:template>
 
   <xsl:template match="tei:pb"> <!-- page breaks represented as <br> and a link to the image -->
-    <span class="pageAnchor">
+    <span class="pageAnchor" data-n="{@n}">
       <br/>
       <small class="text-muted">[start of page 
         <xsl:choose>

@@ -291,11 +291,13 @@ It creates a semi-diplomatic MS view.
   </xsl:template>
 
   <xsl:template match="tei:pb">
-    <small class="text-muted pageAnchor">
-      <xsl:text>[p.</xsl:text>
-      <xsl:value-of select="@n"/>
-      <xsl:text>]</xsl:text>
-    </small>
+    <span class="pageAnchor" data-n="{@n}">
+      <small class="text-muted">
+        <xsl:text>[p.</xsl:text>
+        <xsl:value-of select="@n"/>
+        <xsl:text>]</xsl:text>
+      </small>
+    </span>
   </xsl:template>
 
   <xsl:template match="tei:cb">

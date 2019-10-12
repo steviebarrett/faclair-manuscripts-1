@@ -140,8 +140,10 @@ $(function() {
   );
   
   $('.chunk').click(function(){
+    $('.selected').removeClass('selected');
     $('.chunk').css('background-color', 'inherit');
     $(this).css('background-color', 'yellow'); 
+    $(this).addClass('selected');
     var prevCorresp = ''; // better name?
     html = '<h1>' + makeHeading($(this)) + '</h1>';
     html += '<ul class="rhs">' + makeSyntax($(this),false) + '</ul>';
@@ -169,12 +171,40 @@ $(function() {
       $('#lhs').animate({scrollTop: x.offset().top - 100},500); // NOT WORKING CONSISTENTLY
     });
     $('#saveSlip').click(function() {
-      alert('saved');
-      var html = '<tr><td>a</td><td>a</td><td>a</td><td>a</td></tr>';
+      var html = '<tr><td>';
+      var x = $('.selected');
+      html += x.parents('[data-docid]').first().attr('data-docid') + '.';
+      var p = x.prevAll('.pageAnchor').first();
+      html += p.attr('data-n') + '.';
+      var l = x.prevAll('.lineBreak').first();
+      html += l.attr('data-number');
+      html += '</td><td>'; // START HERE
+      html += x.prevAll().slice(0,3).text() + ' '; 
+      html += x.text() + ' ';
+      html += x.nextAll().slice(0,3).text();
+      html += '</td><td>';
+      var h;
+      h = x.prevAll('.handshift').first().attr('data-hand');
+      if (typeof h == 'undefined') { // handshift is not a sibling but rather an auntie of some type
+        h = x.parent().prevAll('.handshift').first().attr('data-hand');
+      }
+      if (typeof h == 'undefined') { // handshift is not a sibling or a first generation but rather a great auntie of some type
+        h = x.parent().parent().prevAll('.handshift').first().attr('data-hand');
+      }
+      html += getHandName(h);
+      html += '</td><td>';
+      x.find('[data-lemma]').each(function(){
+        html += $(this).attr('data-lemma') + ' ';
+      });
+      html += '</td></tr>';
       $('#basket').children('tbody').append(html);
+      alert('added to basket');
       return null;
     });
   });
+  
+  
+  
 });
 
 function makeHeading(span, rec) {

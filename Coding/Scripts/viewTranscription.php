@@ -160,10 +160,10 @@ if ($diplo=='both') {
             <table class="table" id="basket">
               <thead>
                 <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">First</th>
-                  <th scope="col">Last</th>
-                  <th scope="col">Handle</th>
+                  <th scope="col">location</th>
+                  <th scope="col">form</th>
+                  <th scope="col">scribe</th>
+                  <th scope="col">lemmas</th>
                 </tr>
               </thead>
               <tbody>
