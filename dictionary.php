@@ -7,6 +7,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="Coding/Scripts/dictionary.js"></script>
     <title>DASG-MSS dictionary</title>
   </head>
   <body style="height: 100%; padding-top: 80px;">
@@ -22,15 +23,40 @@
           </div>
         </div>
       </nav>
+      <div class="row" style="height: 100%;">
+        <div id="lhs" class="col-2" style="overflow: auto; height: 100%;"> <!-- the headword index -->
+          <div class="list-group list-group-flush">
 <?php
-$ms = new SimpleXMLElement("Transcribing/hwData.xml", 0, true);
-$ms->registerXPathNamespace('tei', 'http://www.tei-c.org/ns/1.0');
-$xsl = new DOMDocument;
-$xsl->load('Coding/Stylesheets/dictionary.xsl');
-$proc = new XSLTProcessor;
-$proc->importStyleSheet($xsl);
-echo $proc->transformToXML($ms);
+$xml = new SimpleXMLElement("Transcribing/hwData.xml", 0, true);
+$xml->registerXPathNamespace('tei', 'http://www.tei-c.org/ns/1.0');
+$lemmas = [];
+foreach ($xml->xpath('descendant::tei:entryFree') as $nextEntry) {
+  $pair = array($nextEntry->w['lemma'], $nextEntry['corresp']);
+  $lemmas[] = implode("|", $pair);
+}
+usort($lemmas,'gdSort'); 
+function gdSort($s, $t) {
+  $s = trim($s,'*-.');
+  $t = trim($t,'*-.');
+  $accentedvowels = array('à','è','ì','ò','ù','À','È','Ì','Ò','Ù','ê','ŷ','ŵ','â','á','é','í','ó','ú','Á','É','Í','Ó','Ú');
+  $unaccentedvowels = array('a','e','i','o','u','A','E','I','O','U','e','y','w','a','a','e','i','o','u','A','E','I','O','U');
+  $str3 = str_replace($accentedvowels,$unaccentedvowels,$s);
+  $str4 = str_replace($accentedvowels,$unaccentedvowels,$t);
+  return strcasecmp($str3,$str4);
+}
+foreach ($lemmas as $nextLemma) {
+  $pair = explode("|", $nextLemma);
+  echo '<div class="list-group-item list-group-item-action entryLink" data-lemmaRef="' . $pair[1] . '">';
+  echo $pair[0];
+  echo '</div>';
+}
 ?>
+          </div>
+        </div>
+        <div id="midl" class="col-10" style="overflow: auto; height: 100%;"> 
+        
+        </div>
+      </div>
     </div>
   </body>
 </html>

@@ -174,8 +174,9 @@ $(function() {
     $('.headwordSearch').click(function() {
       var x = $('.indexHeadword[data-lemmaRef="' + $(this).attr('data-lemmaRef') + '"]');
       x.trigger('click');
-      $('#lhs').animate({scrollTop: 0},0);
-      $('#lhs').animate({scrollTop: x.offset().top - 100},500); // NOT WORKING CONSISTENTLY
+      var y = $('#lhs');
+      y.animate({scrollTop: 0},0);
+      y.animate({scrollTop: x.offset().top - 300},500); // NOT WORKING CONSISTENTLY
     });
     $('#saveSlip').click(function() {
       var html = '<tr><td>';
