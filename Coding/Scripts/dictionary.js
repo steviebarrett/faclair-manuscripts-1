@@ -1,22 +1,15 @@
 $(function() {
   
   $('.entryLink').click(function() {
-    //alert($(this).attr('data-lemmaRef'));
-    //$('#midl').html($(this).attr('data-lemmaRef'));
-    var html = 'ooo';
+    var html = '';
     $.getJSON('Coding/Scripts/dictionaryAjax.php?action=getEntry&lemmaRef=' + $(this).attr('data-lemmaRef'), function (g) {
-      alert(g.headword);
-      html += '<h1>Poooo';
-      //html += g.headword;
+      //alert(g.headword);
+      html += '<h1>'
+      html += g.headword;
       html += '</h1>';
-      
-      
-      //li = '<li><a class="glyphShow" href="' + g.corresp + '" target="_new" data-src="' + g.id + '" data-id="' + id + '">' + g.name;
-      //li += '</a>: ' + g.note + ' (' + c + ' certainty)'; //<a style="font-size: small;" href="#" class="glyphShow" data-id="' + elementId + '" data-corresp="'+/*prevCorresp+*/'">[show]</a></li>';
-      //html += li + '</li>';
-      
+      $('#midl').html(html); // right place for this?
     });
-    $('#midl').html(html);
+    
     return null;
   });
   
