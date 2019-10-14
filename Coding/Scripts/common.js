@@ -296,14 +296,7 @@ function getGlygatures(span) {
 
 function getHandInfo(span) {
   html = '';
-  var h;
-  h = span.prevAll('.handshift').first().attr('data-hand');
-  if (typeof h == 'undefined') { // handshift is not a sibling but rather an auntie of some type
-    h = span.parent().prevAll('.handshift').first().attr('data-hand');
-  }
-  if (typeof h == 'undefined') { // handshift is not a sibling or a first generation but rather a great auntie of some type
-    h = span.parent().parent().prevAll('.handshift').first().attr('data-hand');
-  }
+  var h = searchBackwards(span,'handshift').attr('data-hand');
   html += getHandInfoDiv(h);
   html += '<li>scribe: ';
   html += '<a href="#" data-toggle="modal" data-target="#handInfo_' + h +'">' + getHandName(h) + '</a>'; // are two ajax calls necessary?
@@ -325,6 +318,26 @@ function getHandName(handId) {
     else { name = 'Anonymous (' + handId + ')'; }
   });
   return name;
+}
+
+function searchBackwards(span,c) { // depth-first
+  var out;
+  var jqs = span.prevAll();
+  jqs.each(function(){
+    if ($(this).hasClass(c)) { 
+      out = $(this);
+      return false;
+    }
+    var y = $(this).find('.'+c); 
+    if (y.length>0) {
+      out = y.last();
+      return false;
+    }
+  });
+  if (typeof out == 'undefined' && span.parent()) {
+    return searchBackwards(span.parent(),c);
+  }
+  return out;
 }
 
 /*
@@ -473,10 +486,10 @@ function getLemmas(span) {
   return html;
 }
 
-function getDamage(span) { // all this needs checked
+function getDamage(span) {
   html = '';
   var x = span.find('.unclearDamageDiplo, .unclearDamageSemi');
-  if (x.length>0) { // simplify all this  
+  if (x.length>0) { 
     html += '<li>damaged sections:<ul class="rhs">';
     x.each(function() {
       html += '<li>[' + $(this).html() + '] ';
