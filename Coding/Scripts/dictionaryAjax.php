@@ -7,7 +7,7 @@ switch ($_GET["action"]) {
     echo json_encode($entry);
     break;
         
-});
+}
 
 class Dictionary {
 
@@ -17,10 +17,8 @@ class Dictionary {
     $entries = $xml->xpath("//tei:entryFree[@corresp='{$ref}']");
     $entry = $entries[0];
     $headword = $entry->w['lemma'];
-    $outout = array("headword" => $headword);
+    $output = array("headword" => $headword);
     return $output;
   }
-
-
 
 }
