@@ -16,7 +16,6 @@ It creates a diplomatic MS view.
   </xsl:template>
 
   <xsl:template match="tei:div">
-    <span class="handshift" data-hand="{@hand}"/>
     <!--
     <div class="text" data-hand="{@hand}" data-n="{@n}" data-corresp="{@corresp}" data-type="{@type}" data-ms="{substring(/tei:TEI/@xml:id,2)}"> 
       <div class="textAnchor">
@@ -36,7 +35,7 @@ It creates a diplomatic MS view.
   </xsl:template>
 
   <xsl:template match="tei:pb"> <!-- page breaks represented as <br> and a link to the image -->
-    <span class="pageAnchor" data-n="{@n}">
+    <span class="pageBreak" data-n="{@n}">
       <br/>
       <small class="text-muted">[start of page 
         <xsl:choose>
@@ -51,19 +50,17 @@ It creates a diplomatic MS view.
         </xsl:choose>]
       </small>
     </span>
-    <small class=" text-muted pageAnchorHR"><br/>--------------------</small>
+    <small class=" text-muted pageBreakHR"><br/>--------------------</small>
   </xsl:template>
   
   <xsl:template match="tei:handShift">  <!-- e.g. MS1.4r.11 -->
-    <span class="handshift" data-hand="{@new}">
-      <xsl:if test="not(@comment)">
-        <small class="text-muted">[hs]</small>
-      </xsl:if>
+    <span class="handShift" data-new="{@new}">
+      <small class="text-muted">[hs]</small>
     </span>
   </xsl:template>
   
   <xsl:template match="tei:lb">
-    <span class="lineBreak lineBreakDiplo" data-number="{@n}" id="{concat('line_',@xml:id)}">
+    <span class="lineBreak lineBreakDiplo" data-n="{@n}" id="{concat('line_',@xml:id)}">
       <br/>
       <!--
       <button type="button" data-toggle="modal" data-target="#commentForm" class="addComment" title="Leave comment on this line" data-s="lb" data-n="{@xml:id}">+</button>
@@ -75,8 +72,8 @@ It creates a diplomatic MS view.
   </xsl:template>
 
   <xsl:template match="tei:cb">
-    <br/>
-    <span class="pageAnchor">
+    <span class="columnBreak" data-n="{@n}">
+      <br/>
       <small class="text-muted">[start of column <xsl:value-of select="@n"/>]</small>
     </span>
   </xsl:template>

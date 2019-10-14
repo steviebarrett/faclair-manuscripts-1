@@ -22,7 +22,6 @@ It creates a semi-diplomatic MS view.
         <button type="button" class="viewComment greyedOut" title="View comments on this text" data-s="div" data-n="{@n}">?</button>
         <xsl:text> </xsl:text>
         <small class="text-muted">[start of <span title="{concat(@type,' ',@corresp)}">Text <xsl:value-of select="@n"/></span>]</small>
-        <small class="text-muted" title="{tei:p/tei:handShift/@new}">[hs]</small>
       </div>
     <xsl:apply-templates/>
       <div class="textAnchor"><small class="text-muted">[end of Text <xsl:value-of select="@n"/>]</small></div>
@@ -33,6 +32,12 @@ It creates a semi-diplomatic MS view.
     <p>
       <xsl:apply-templates/>
     </p>
+  </xsl:template>
+  
+  <xsl:template match="tei:handShift">  <!-- e.g. MS1.4r.11 -->
+    <span class="handShift" data-new="{@new}">
+      <small class="text-muted">[hs]</small>
+    </span>
   </xsl:template>
 
   <xsl:template match="tei:name[not(ancestor::tei:name) and count(tei:w|tei:name)=1]"> 
@@ -205,12 +210,6 @@ It creates a semi-diplomatic MS view.
     </xsl:choose>
   </xsl:template>
 
-<!--
-  <xsl:template match="tei:handShift">
-    <span class="handshift" data-hand="{@new}"></span>
-  </xsl:template>
-  -->
-
   <xsl:template match="tei:del">
     <span class="deletion" data-hand="{@resp}">
       <xsl:apply-templates/>
@@ -291,7 +290,7 @@ It creates a semi-diplomatic MS view.
   </xsl:template>
 
   <xsl:template match="tei:pb">
-    <span class="pageAnchor" data-n="{@n}">
+    <span class="pageBreak" data-n="{@n}">
       <small class="text-muted">
         <xsl:text>[p.</xsl:text>
         <xsl:value-of select="@n"/>
@@ -301,15 +300,17 @@ It creates a semi-diplomatic MS view.
   </xsl:template>
 
   <xsl:template match="tei:cb">
-    <small class="text-muted">
-      <xsl:text>[col.</xsl:text>
-      <xsl:value-of select="@n"/>
-      <xsl:text>]</xsl:text>
-    </small>
+    <span class="columnBreak" data-n="{@n}">
+      <small class="text-muted">
+        <xsl:text>[col.</xsl:text>
+        <xsl:value-of select="@n"/>
+        <xsl:text>]</xsl:text>
+      </small>
+    </span>
   </xsl:template>
 
   <xsl:template match="tei:lb">
-    <span class="lineBreak lineBreakSemi" data-number="{@n}"/>
+    <span class="lineBreak lineBreakSemi" data-n="{@n}"/>
   </xsl:template>
 
   <xsl:template match="tei:pc">

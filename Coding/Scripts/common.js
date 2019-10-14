@@ -7,7 +7,7 @@ $(function() {
   
   $('#numbersToggle').click(function() {
     var x = $('#midl');
-    x.find('.pageAnchor, .pageAnchorHR, .handShift').toggle();
+    x.find('.pageBreak, .pageBreakHR, .columnBreak, .handShift').toggle();
     var b = x.children('div').attr('data-diplo');
     if (b=='yes') {
       x.find('.lineBreak').toggleClass('lineBreakDiplo');
@@ -22,6 +22,22 @@ $(function() {
       x.find('.lineBreak').toggleClass('lineBreakSemi');
     }
     $('.gapDamageCharsDiplo, .gapDamageCharsSuperDiplo').toggle();
+  });
+  
+  $('#editionsToggle').click(function() {
+    var ms = $('body').attr('data-ms');
+    if ($('body').attr('data-ed')=='diplo') { 
+      $('body').attr('data-ed', 'semi'); 
+      // DO AJAX HERE
+      // i.e. ajax.php?action=loadSemi&ms={ms}
+      // PHP should load up the relevant XML file i.e. Transcription{ms}.xml
+      // then run the relevant XSLT file on it, i.e. semiDiplomatic.xsl
+      // then echo the results to the #midl div
+    }
+    else { 
+      $('body').attr('data-ed', 'diplo'); 
+      // SAME HERE, but in reverse
+    }
   });
   
   $('.page').click(function(e){
@@ -61,13 +77,13 @@ $(function() {
     $('#midl').find('.gapDamageCharsDiplo').css('color', 'gray');
     $('#midl').find('.gapDamageCharsSuperDiplo').css({'color': 'lightgray', 'background-color': 'lightgray'});
     $('.temp').remove(); // remove all temporary hr elements
-    $('#midl').find('span', '.textAnchor', '.pageAnchor').show();
+    $('#midl').find('span, .textAnchor, .pageBreak, .columnBreak').show();
     $('#midl').find('.suppliedDiplo').hide();
     if ($('#midl').children('div').attr('data-diplo')=='super') { 
       $('#midl').find('.gapDamageCharsDiplo').hide(); 
-      $('.pageAnchor').hide();
-      //$('.pageAnchorHR').toggle();
-      $('.handshift').hide();
+      $('.pageBreak, .columnBreak').hide();
+      //$('.pageBreakHR').toggle();
+      $('.handShift').hide();
     }
     else { $('#midl').find('.gapDamageCharsSuperDiplo').hide(); }
     //$('#rhs').html('');
@@ -118,9 +134,9 @@ $(function() {
     $('#midl').find('.suppliedDiplo').hide();
     if ($('#midl').children('div').attr('data-diplo')=='super') { $('#midl').find('.gapDamageCharsDiplo').hide(); }
     else { $('#midl').find('.gapDamageCharsSuperDiplo').hide(); }
-    //$('.pageAnchor').show();
-    //$('#midl').find('.pageAnchor').hide();
-    //$(this).parents().prevAll('.pageAnchor').first().show(); // not working
+    //$('.pageBreak').show();
+    //$('#midl').find('.pageBreak').hide();
+    //$(this).parents().prevAll('.pageBreak').first().show(); // not working
     //$('#midl').find('.greyedOut').hide();
     return null;
   });
@@ -133,7 +149,7 @@ $(function() {
     if ($('#midl').children('div').attr('data-diplo')=='super') { $('#midl').find('.gapDamageCharsDiplo').hide(); }
     else { $('#midl').find('.gapDamageCharsSuperDiplo').hide(); }
     $('#midl').find('.textAnchor').show();
-    $('#midl').find('.pageAnchor').show();
+    $('#midl').find('.pageBreak, .columnBreak').show();
     $('.temp').remove();
     $('#midl').animate({scrollTop: 0},0); // move middle back to top
     var x = $('#midl').find('[data-lemmaRef="'+ $(this).prevAll('.indexHeadword').attr('data-lemmaRef') + '"]').first();
@@ -176,34 +192,37 @@ $(function() {
       setTimeout(function(){x.trigger('click')}, 100);  //Giving the 'click' some time to process
       var y = $('#lhs');
       y.animate({scrollTop: 0},0);
-      y.animate({scrollTop: x.offset().top - 300},500); // NOT WORKING CONSISTENTLY
+      y.animate({scrollTop: x.offset().top - 300},500);
     });
     $('#saveSlip').click(function() {
       var html = '<tr><td>';
       var x = $('.selected');
       html += x.parents('[data-docid]').first().attr('data-docid') + '.';
-      var p = x.prevAll('.pageAnchor').first();
-      html += p.attr('data-n') + '.';
-      var l = x.prevAll('.lineBreak').first();
-      html += l.attr('data-number');
+      html += searchBackwards(x,'pageBreak').attr('data-n') + '.';
+      //html += searchBackwards(x,'columnBreak').attr('data-n') + '.'; NEED TO CHECK FOR COLUMNS FIRST
+      html += searchBackwards(x,'lineBreak').attr('data-n') + '.';
       html += '</td><td>'; // START HERE
-      html += x.prevAll().slice(0,3).text() + ' '; 
-      html += x.text() + ' ';
-      html += x.nextAll().slice(0,3).text();
+      html += '<span class="syntagm">'
+      var p = x.prev().clone();
+      p.find('.lineBreak, .pageBreak, .columnBreak, .handShift').remove();
+      html += p.html() + ' '; 
+      var t = x.clone();
+      t.find('.lineBreak, .pageBreak, .columnBreak, .handShift').remove();
+      html += '<span style="background-color: yellow;">' + t.html() + '</span>';
+      var n = x.next().clone();
+      n.find('.lineBreak, .pageBreak, .columnBreak, .handShift').remove();
+      html += ' ' + n.html(); 
+      html += '</span>';
       html += '</td><td>';
-      var h;
-      h = x.prevAll('.handshift').first().attr('data-hand');
-      if (typeof h == 'undefined') { // handshift is not a sibling but rather an auntie of some type
-        h = x.parent().prevAll('.handshift').first().attr('data-hand');
-      }
-      if (typeof h == 'undefined') { // handshift is not a sibling or a first generation but rather a great auntie of some type
-        h = x.parent().parent().prevAll('.handshift').first().attr('data-hand');
-      }
+      var h = searchBackwards(x,'handShift').attr('data-new');
       html += getHandName(h);
       html += '</td><td>';
-      x.find('[data-lemma]').each(function(){
-        html += $(this).attr('data-lemma') + ' ';
-      });
+      if (x.attr('data-lemma')) { html += x.attr('data-lemma'); }
+      else {
+        x.find('[data-lemma]').each(function(){
+          html += $(this).attr('data-lemma') + ' ';
+        });
+      }
       html += '</td></tr>';
       $('#basket').children('tbody').append(html);
       alert('added to basket');
@@ -224,7 +243,7 @@ function makeHeading(span, rec) {
     html += '">'
   }
   clone = span.clone();
-  clone.find('.lineBreak, .pageAnchor, .punct, .handshift').remove();
+  clone.find('.lineBreak, .pageBreak, .columnBreak, .punct, .handShift').remove();
   clone.find('[id]').each(function(){
     if (rec) { $(this).attr('id', 'yy-' + $(this).attr('id')); }
     else { $(this).attr('id', 'xx-' + $(this).attr('id')); }
@@ -296,12 +315,12 @@ function getGlygatures(span) {
 
 function getHandInfo(span) {
   html = '';
-  var h = searchBackwards(span,'handshift').attr('data-hand');
+  var h = searchBackwards(span,'handShift').attr('data-new');
   html += getHandInfoDiv(h);
   html += '<li>scribe: ';
   html += '<a href="#" data-toggle="modal" data-target="#handInfo_' + h +'">' + getHandName(h) + '</a>'; // are two ajax calls necessary?
-  span.find('.handshift').each(function() {
-    hh = $(this).attr('data-hand');
+  span.find('.handShift').each(function() {
+    hh = $(this).attr('data-new');
     html += getHandInfoDiv(hh);
     html += ', ';
     html += '<a href="#" data-toggle="modal" data-target="#handInfo_' + hh +'">' + getHandName(hh) + '</a>';

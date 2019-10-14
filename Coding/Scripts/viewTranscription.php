@@ -27,10 +27,7 @@ Dependent files are:
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="../Stylesheets/common.css"/>
     <link rel="stylesheet" href="../Stylesheets/comments.css"/>
-<?php
-$diplo = $_GET["diplo"]; // yes, no, both
-$t = $_GET["t"];
-?>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
@@ -38,7 +35,16 @@ $t = $_GET["t"];
     <!-- <script src="comments.js"></script>-->
     <title>DASG-MSS tool</title>
   </head>
-  <body style="height: 100%; padding-top: 60px;">
+<?php
+$diplo = $_GET["diplo"]; // yes, no, both
+$t = $_GET["t"];
+echo '<body style="height: 100%; padding-top: 60px;" data-ms="';
+echo $t . '" data-ed="'; 
+if ($diplo=='yes') { echo 'diplo'; }
+else if ($diplo=='no') { echo 'semi'; }
+else { echo 'both'; } 
+echo '">';
+?>
     <div class="container-fluid" style="height: 100%;">
       <nav class="navbar navbar-dark bg-primary fixed-top navbar-expand-lg">
         <a class="navbar-brand" href="../../index.php">DASG-MSS</a>
@@ -49,13 +55,7 @@ $t = $_GET["t"];
           <div class="navbar-nav">
              <a class="nav-item nav-link" id="numbersToggle" href="#" data-toggle="tooltip" title="show/hide line/page numbers and handshifts">numbers</a>
              <a class="nav-item nav-link" href="#" data-toggle="tooltip" title="show/hide comments">comments</a>
-<?php
-echo '<a class="nav-item nav-link" href="viewTranscription.php?t=' . $t . '&';
-if ($diplo=='yes') { echo 'diplo=no'; }
-else { echo 'diplo=yes'; }
-echo '" data-toggle="tooltip" title="switch edition">switch</a>';
-echo '<a class="nav-item nav-link" href="viewTranscription.php?t=' . $t . '&diplo=both" data-toggle="tooltip" title="compare editions">compare</a>'
-?>
+             <a class="nav-item nav-link" id="editionsToggle" href="#" data-toggle="tooltip" title="switch editions">switch</a>
             <a class="nav-item nav-link" href="#" data-toggle="modal" data-target="#basketDiv">basket</a>
           </div>
         </div>
@@ -171,7 +171,9 @@ if ($diplo=='both') {
             </table>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">hide</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">empty</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">export</button>
           </div>
         </div>
       </div>
