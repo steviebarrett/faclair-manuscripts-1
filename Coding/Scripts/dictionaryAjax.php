@@ -17,7 +17,7 @@ class Dictionary {
     $entries = $xml->xpath("//tei:entryFree[@corresp='{$ref}']");
     $entry = $entries[0];
     $headword = $entry->w['lemma'];
-    $output = array("headword" => $headword);
+    $output = array("headword" => $headword[0]);
     return $output;
   }
 
