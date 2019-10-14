@@ -173,7 +173,7 @@ $(function() {
     );
     $('.headwordSearch').click(function() {
       var x = $('.indexHeadword[data-lemmaRef="' + $(this).attr('data-lemmaRef') + '"]');
-      x.trigger('click');
+      setTimeout(function(){x.trigger('click')}, 100);  //Giving the 'click' some time to process
       var y = $('#lhs');
       y.animate({scrollTop: 0},0);
       y.animate({scrollTop: x.offset().top - 300},500); // NOT WORKING CONSISTENTLY
