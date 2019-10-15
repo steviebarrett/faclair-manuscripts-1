@@ -224,11 +224,21 @@ $(function() {
         });
       }
       html += '</td></tr>';
-      $('#basket').children('tbody').append(html);
+      $.ajax('ajax.php?action=saveToBasket&contents='+html);
       alert('added to basket');
       return null;
     });
   });
+
+  $('#basketToggle').click(function () {
+      $.ajax({
+          url: "ajax.php?action=getBasket",
+          cache: false
+      })
+          .done(function( html ) {
+              $("#basket").children('tbody').html(html);
+          });
+  })
   
   
   
