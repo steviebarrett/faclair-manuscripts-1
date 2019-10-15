@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!doctype html>
 <!-- 
 This script (called by ../../index.php) takes two obligatory input parameters:
@@ -56,7 +60,7 @@ echo '">';
              <a class="nav-item nav-link" id="numbersToggle" href="#" data-toggle="tooltip" title="show/hide line/page numbers and handshifts">numbers</a>
              <a class="nav-item nav-link" href="#" data-toggle="tooltip" title="show/hide comments">comments</a>
              <a class="nav-item nav-link" id="editionsToggle" href="#" data-toggle="tooltip" title="switch editions">switch</a>
-            <a class="nav-item nav-link" href="#" data-toggle="modal" data-target="#basketDiv">basket</a>
+             <a class="nav-item nav-link" id="basketToggle" href="#" data-toggle="modal" data-target="#basketDiv">basket</a>
           </div>
         </div>
       </nav>

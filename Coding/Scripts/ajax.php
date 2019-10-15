@@ -5,6 +5,7 @@
  * Date: 16/01/2019
  * Time: 08:33
  */
+session_start();
 
 define("DB_HOST", "localhost");
 define("DB_NAME", "dasg");
@@ -59,6 +60,12 @@ switch ($_GET["action"]) {
         break;
     case "getHandInfo":
         echo json_encode(Manuscripts::getHandInfo($_GET["hand"]));
+        break;
+    case "saveToBasket":
+        $_SESSION["basket"] .= $_GET["contents"];
+        break;
+    case "getBasket":
+        echo $_SESSION["basket"];
         break;
     default:
         break;
