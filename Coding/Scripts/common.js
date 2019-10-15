@@ -224,7 +224,7 @@ $(function() {
           html += $(this).attr('data-lemma') + ' ';
         });
       }
-      html += '</td><td><a href="#" class="deleteSlip">Delete</a>';
+      html += '</td><td><a href="#" class="deleteSlip">delete</a>';
       html += '</td></tr>';
       $.post('ajax.php',
           {
