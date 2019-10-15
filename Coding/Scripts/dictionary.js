@@ -10,7 +10,9 @@ $(function() {
       }
       html += '</h1>';
       html += '<p>POS: ' + g.pos + '</p>';
-      html += '<p>Other forms: ' + g.forms + '</p>';
+      if (g.forms.length>0) {
+        html += '<p>Other forms: ' + g.forms + '</p>';
+      }
       $('#midl').html(html); // right place for this?
     });
     
