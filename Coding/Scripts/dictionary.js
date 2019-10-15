@@ -4,9 +4,13 @@ $(function() {
     var html = '';
     $.getJSON('Coding/Scripts/dictionaryAjax.php?action=getEntry&lemmaRef=' + $(this).attr('data-lemmaRef'), function (g) {
       //alert(g.headword);
-      html += '<h1>'
-      html += g.headword[0];
+      html += '<h1><a href="' + g.lemmaRef + '" target="_new">' + g.lemma + '</a>';
+      if (g.lemmaDW!='') { 
+        html += ' / <a href="' + g.lemmaRefDW + '" target="_new">' + g.lemmaDW + '</a>';
+      }
       html += '</h1>';
+      html += '<p>POS: ' + g.pos + '</p>';
+      html += '<p>Other forms: ' + g.forms + '</p>';
       $('#midl').html(html); // right place for this?
     });
     

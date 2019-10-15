@@ -204,7 +204,7 @@ $(function() {
       html += '</td><td>'; // START HERE
       html += '<span class="syntagm">'
       var p = x.prev().clone();
-      p.find('.lineBreak, .pageBreak, .columnBreak, .handShift').remove();
+      p.find('.lineBreak, .pageBreak, .columnBreak, .handShift').remove(); // remove all ids as well!
       html += p.html() + ' '; 
       var t = x.clone();
       t.find('.lineBreak, .pageBreak, .columnBreak, .handShift').remove();

@@ -16,8 +16,17 @@ class Dictionary {
     $xml->registerXPathNamespace('tei', 'http://www.tei-c.org/ns/1.0');
     $entries = $xml->xpath("//tei:entryFree[@corresp='{$ref}']");
     $entry = $entries[0];
-    $headword = $entry->w['lemma'];
-    $output = array("headword" => $headword);
+    $headword = $entry->w[0];
+    $lemma = (string)$headword['lemma'];
+    $lemmaRef = (string)$headword['lemmaRef'];
+    $lemmaDW =  (string)$headword['lemmaDW'];
+    $lemmaRefDW =  (string)$headword['lemmaRefDW'];
+    $pos = (string)$headword['ana'];
+    $forms = [];
+    foreach($headword->span as $nextForm) {
+      $forms[] = (string)$nextForm;
+    }
+    $output = array("lemma" => $lemma, "lemmaDW" => $lemmaDW, "lemmaRef" => $lemmaRef, "lemmaRefDW" => $lemmaRefDW, "pos" => $pos, "forms" => $forms);
     return $output;
   }
 
