@@ -195,12 +195,13 @@ $(function() {
       y.animate({scrollTop: x.offset().top - 300},500);
     });
     $('#saveSlip').click(function() {
-      var html = '<tr><td>';
       var x = $('.selected');
-      html += x.parents('[data-docid]').first().attr('data-docid') + '.';
-      html += searchBackwards(x,'pageBreak').attr('data-n') + '.';
+      var docid = x.parents('[data-docid]').first().attr('data-docid') + '.';
+      var page = searchBackwards(x,'pageBreak').attr('data-n') + '.';
       //html += searchBackwards(x,'columnBreak').attr('data-n') + '.'; NEED TO CHECK FOR COLUMNS FIRST
-      html += searchBackwards(x,'lineBreak').attr('data-n') + '.';
+      var line = searchBackwards(x,'lineBreak').attr('data-n') + '.';
+      var id = docid + page + line;
+      var html = '<tr><td>'+id;
       html += '</td><td>'; // START HERE
       html += '<span class="syntagm">'
       var p = x.prev().clone();
@@ -223,8 +224,13 @@ $(function() {
           html += $(this).attr('data-lemma') + ' ';
         });
       }
+      html += '</td><td><a href="#" class="deleteSlip">Delete</a>';
       html += '</td></tr>';
-      $.ajax('ajax.php?action=saveToBasket&contents='+html);
+      $.post('ajax.php',
+          {
+            action: "addToBasket",
+            contents: html
+          });
       alert('added to basket');
       return null;
     });
@@ -239,7 +245,7 @@ $(function() {
               $("#basket").children('tbody').html(html);
           });
   })
-  
+
   $('#emptyBasket').click(function () {
     $.ajax({
       url: 'ajax.php?action=emptyBasket'
@@ -248,6 +254,17 @@ $(function() {
           alert('basket emptied');
         });
   })
+});
+
+//Delete a slip from the basket
+$(document).on('click', '.deleteSlip', function () {
+  $(this).parent().parent().remove();
+  var html = $("#basket").children('tbody').html();
+  $.post('ajax.php',
+      {
+        action: "saveBasket",
+        contents: html
+      });
 });
 
 function makeHeading(span, rec) {

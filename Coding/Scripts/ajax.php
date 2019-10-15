@@ -12,7 +12,7 @@ define("DB_NAME", "dasg");
 define("DB_USER", "dasg");
 define("DB_PASSWORD", "Dcraobh2106!");
 
-switch ($_GET["action"]) {
+switch ($_REQUEST["action"]) {
 
     case "saveComment":
         $manuscript = $_GET["docid"];
@@ -61,14 +61,17 @@ switch ($_GET["action"]) {
     case "getHandInfo":
         echo json_encode(Manuscripts::getHandInfo($_GET["hand"]));
         break;
-    case "saveToBasket":
-        $_SESSION["basket"] .= $_GET["contents"];
+    case "addToBasket":
+        $_SESSION["basket"] .= $_POST["contents"];
         break;
     case "getBasket":
         echo $_SESSION["basket"];
         break;
     case "emptyBasket":
         $_SESSION["basket"] = null;
+        break;
+    case "saveBasket":
+        $_SESSION["basket"] = $_POST["contents"];
         break;
     default:
         break;
