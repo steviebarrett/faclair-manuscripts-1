@@ -67,6 +67,9 @@ switch ($_GET["action"]) {
     case "getBasket":
         echo $_SESSION["basket"];
         break;
+    case "emptyBasket":
+        $_SESSION["basket"] = null;
+        break;
     default:
         break;
 }

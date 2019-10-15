@@ -240,8 +240,14 @@ $(function() {
           });
   })
   
-  
-  
+  $('#emptyBasket').click(function () {
+    $.ajax({
+      url: 'ajax.php?action=emptyBasket'
+    })
+        .done(function (html) {
+          alert('basket emptied');
+        });
+  })
 });
 
 function makeHeading(span, rec) {
