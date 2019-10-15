@@ -199,10 +199,9 @@ $(function() {
       var docid = x.parents('[data-docid]').first().attr('data-docid') + '.';
       var page = searchBackwards(x,'pageBreak').attr('data-n') + '.';
       //html += searchBackwards(x,'columnBreak').attr('data-n') + '.'; NEED TO CHECK FOR COLUMNS FIRST
-      var line = searchBackwards(x,'lineBreak').attr('data-n');
+      var line = searchBackwards(x,'lineBreak').attr('data-n') + '.';
       var id = docid + page + line;
-      var html = '<tr id="slip_' + id + '"><td>'+id+'.';
-      id = 'slip_'+id;
+      var html = '<tr><td>'+id;
       html += '</td><td>'; // START HERE
       html += '<span class="syntagm">'
       var p = x.prev().clone();
