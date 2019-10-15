@@ -176,7 +176,7 @@ if ($diplo=='both') {
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">hide</button>
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">empty</button>
+            <button type="button" id="emptyBasket" class="btn btn-secondary" data-dismiss="modal">empty</button>
             <button type="button" class="btn btn-secondary" data-dismiss="modal">export</button>
           </div>
         </div>
