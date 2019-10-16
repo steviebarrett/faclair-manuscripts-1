@@ -154,7 +154,7 @@ $(function() {
     $('.chunk').css('background-color', 'inherit');
     $(this).css('background-color', 'yellow'); 
     $(this).addClass('selected');
-    var prevCorresp = ''; // better name?
+    //var prevCorresp = '';
     html = '<h1>' + makeHeading($(this)) + '</h1>';
     html += '<ul class="rhs">' + makeSyntax($(this),false) + '</ul>';
     html += '<a href="#" id="saveSlip">[save]</a>';
