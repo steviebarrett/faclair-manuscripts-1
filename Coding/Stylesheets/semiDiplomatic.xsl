@@ -171,43 +171,21 @@ It creates a semi-diplomatic MS view.
     </span>
   </xsl:template>
 
-  <xsl:template match="tei:g">
-    <xsl:choose>
-      <xsl:when test="starts-with(@ref,'l')"> <!-- ligature -->
-        <xsl:choose>
-          <xsl:when test="@corresp">  <!-- SB: added to handle corresp attributes in glyphs -->
-            <span class="ligature corresp-{@corresp}" data-corresp="{@corresp}" data-glyphref="{@ref}" id="{generate-id(.)}">
-              <xsl:apply-templates/>
-            </span>
-          </xsl:when>
-          <xsl:otherwise>
-            <span class="ligature" data-glyphref="{@ref}" id="{generate-id(.)}">
-              <xsl:apply-templates/>
-            </span>
-          </xsl:otherwise>
-        </xsl:choose>
-      </xsl:when>
-      <xsl:when test="../@cert"> <!-- expansion -->
-        <xsl:choose>
-          <xsl:when test="@corresp">  <!-- SB: added to handle corresp attributes in glyphs -->
-            <span class="expansion corresp-{@corresp}" data-corresp="{@corresp}" data-cert="{../@cert}" data-glyphref="{@ref}" id="{generate-id(.)}">
-              <xsl:apply-templates/>
-            </span>
-          </xsl:when>
-          <xsl:otherwise>
-            <span class="expansion" data-cert="{../@cert}" data-glyphref="{@ref}" id="{generate-id(.)}">
-              <xsl:apply-templates/>
-            </span>
-          </xsl:otherwise>
-        </xsl:choose>
-      </xsl:when>
-      <xsl:otherwise> <!-- weird expansion -->
-        <xsl:variable name="corresp" select="@corresp"/>
-        <span class="expansion" data-cert="{preceding::tei:abbr[@corresp=$corresp]/@cert}" data-glyphref="{@ref}" id="{generate-id(.)}">
-          <xsl:apply-templates/>
-        </span>
-      </xsl:otherwise>
-    </xsl:choose>
+  <xsl:template match="tei:g[starts-with(@ref, 'g') and ../@cert]">
+    <span class="expansion" data-cert="{../@cert}" data-glyphref="{@ref}" id="{generate-id(.)}">
+      <xsl:if test="@corresp">
+        <xsl:attribute name="data-corresp">
+          <xsl:value-of select="@corresp"/>
+        </xsl:attribute>
+      </xsl:if>
+      <xsl:apply-templates/>
+    </span>
+  </xsl:template>
+  
+  <xsl:template match="tei:g[starts-with(@ref,'l')]">
+    <span class="ligature" data-glyphref="{@ref}" id="{generate-id(.)}">
+      <xsl:apply-templates/>
+    </span>
   </xsl:template>
 
   <xsl:template match="tei:del">

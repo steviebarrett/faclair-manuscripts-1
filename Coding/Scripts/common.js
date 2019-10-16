@@ -178,13 +178,15 @@ $(function() {
         $('#'+$(this).attr('data-id')).css('text-decoration', 'underline');
         $('#xx-'+$(this).attr('data-id')).css('background-color', 'yellow');
         $('#yy-'+$(this).attr('data-id')).css('background-color', 'yellow');
-        //$('.corresp-'+$(this).attr('data-corresp')).css({'text-decoration': 'underline', 'background-color': 'yellow'});
+        $('#midl').find('span[data-corresp=' + $(this).attr('data-corresp') + ']').css('text-decoration', 'underline');
+        $('#rhs').find('span[data-corresp=' + $(this).attr('data-corresp') + ']').css('background-color', 'yellow');
       },
       function() {
         $('#'+$(this).attr('data-id')).css('text-decoration', 'inherit');
         $('#xx-'+$(this).attr('data-id')).css('background-color', 'inherit');
         $('#yy-'+$(this).attr('data-id')).css('background-color', 'inherit');
-        //$('.corresp-'+$(this).attr('data-corresp')).css({'text-decoration': 'inherit', 'background-color': 'inherit'});
+        $('#midl').find('span[data-corresp=' + $(this).attr('data-corresp') + ']').css('text-decoration', 'inherit');
+        $('#rhs').find('span[data-corresp=' + $(this).attr('data-corresp') + ']').css('background-color', 'inherit');
       }
     );
     $('.headwordSearch').click(function() {
@@ -319,26 +321,27 @@ function makeSyntax(span, rec) {
 }
 
 function getGlygatures(span) {
-  var prevCorresp = 'mm';
+  //var prevCorresp = '';
   html = '';
   var x = span.find('.expansion, .ligature');
   if (x.length > 0) {
     html += '<li>scribal abbreviations and ligatures:<ul class="rhs">';
     x.each(function() {
-        // DISCUSS WITH SB
-        var corresp;
-        if (corresp = $(this).attr('data-corresp')) {
-          alert(prevCorresp);
-          if (corresp == prevCorresp) {
-            return true;    //SB: prevents >1 example being shown for elements with the same corresp; MM: not sure about any of this
-          } else { prevCorresp = corresp;}
-        } else { prevCorresp = '';}
-        //
+      var corresp;
+      if ($(this).attr('data-corresp')) {
+        corresp = $(this).attr('data-corresp');
+        if ($(this).attr('data-copy')) {
+          return true;    //SB: prevents >1 example being shown for elements with the same corresp
+        } 
+        //else { prevCorresp = corresp; }
+      } 
+      //else { prevCorresp = '';}
       var id = $(this).attr('id');
       var c = $(this).attr('data-cert');
+      var cr = $(this).attr('data-corresp');
       $.ajaxSetup({async: false});
       $.getJSON('ajax.php?action=getGlyph&xmlId=' + $(this).attr('data-glyphref'), function (g) {
-        li = '<li><a class="glyphShow" href="' + g.corresp + '" target="_new" data-src="' + g.id + '" data-id="' + id + '" data-corresp="' + prevCorresp + '">' + g.name;
+        li = '<li><a class="glyphShow" href="' + g.corresp + '" target="_new" data-src="' + g.id + '" data-id="' + id + '" data-corresp="' + cr + '">' + g.name;
         li += '</a>: ' + g.note + ' (' + c + ' certainty)';
         html += li + '</li>';
       });
