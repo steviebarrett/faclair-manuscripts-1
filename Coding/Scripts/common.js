@@ -319,25 +319,27 @@ function makeSyntax(span, rec) {
 }
 
 function getGlygatures(span) {
+  var prevCorresp = 'mm';
   html = '';
   var x = span.find('.expansion, .ligature');
   if (x.length > 0) {
     html += '<li>scribal abbreviations and ligatures:<ul class="rhs">';
     x.each(function() {
-        /* DISCUSS WITH SB
+        // DISCUSS WITH SB
         var corresp;
-        if (corresp = $(span).attr('data-corresp')) {
-          if (corresp === prevCorresp) {
+        if (corresp = $(this).attr('data-corresp')) {
+          alert(prevCorresp);
+          if (corresp == prevCorresp) {
             return true;    //SB: prevents >1 example being shown for elements with the same corresp; MM: not sure about any of this
-          } else { prevCorresp = corresp; }
-        } else { prevCorresp = ''; }
-        */
+          } else { prevCorresp = corresp;}
+        } else { prevCorresp = '';}
+        //
       var id = $(this).attr('id');
       var c = $(this).attr('data-cert');
       $.ajaxSetup({async: false});
       $.getJSON('ajax.php?action=getGlyph&xmlId=' + $(this).attr('data-glyphref'), function (g) {
-        li = '<li><a class="glyphShow" href="' + g.corresp + '" target="_new" data-src="' + g.id + '" data-id="' + id + '">' + g.name;
-        li += '</a>: ' + g.note + ' (' + c + ' certainty)'; //<a style="font-size: small;" href="#" class="glyphShow" data-id="' + elementId + '" data-corresp="'+/*prevCorresp+*/'">[show]</a></li>';
+        li = '<li><a class="glyphShow" href="' + g.corresp + '" target="_new" data-src="' + g.id + '" data-id="' + id + '" data-corresp="' + prevCorresp + '">' + g.name;
+        li += '</a>: ' + g.note + ' (' + c + ' certainty)';
         html += li + '</li>';
       });
     });

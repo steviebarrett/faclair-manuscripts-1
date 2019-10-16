@@ -213,6 +213,11 @@ It creates a diplomatic MS view.
 
   <xsl:template match="tei:g[starts-with(@ref, 'g') and ../@cert]">
     <span class="expansion" data-cert="{../@cert}" data-glyphref="{@ref}" id="{generate-id(.)}">
+      <xsl:if test="@corresp">
+        <xsl:attribute name="data-corresp">
+          <xsl:value-of select="@corresp"/>
+        </xsl:attribute>
+      </xsl:if>
       <xsl:apply-templates/>
     </span>
   </xsl:template>
