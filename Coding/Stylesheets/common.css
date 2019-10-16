@@ -2,7 +2,7 @@
 This stylesheet is called by viewTranscription.php
 */
 
-.pageBreakHR {
+.pageBreakSuper {
   display: none;
 }
 
@@ -43,7 +43,7 @@ This stylesheet is called by viewTranscription.php
   /* background-color: lightgray; */
 }
 
-.gapDamageCharsSuperDiplo {
+.gapDamageCharsSuperDiplo, .unclearDamageSuperDiplo  {
   color: lightgray;
   background-color: lightgray;
   display: none;
@@ -57,9 +57,6 @@ This stylesheet is called by viewTranscription.php
 .suppliedDiplo {
   display: none;
 }
-
-
-
 
 .hwCount, .implode, .explode {
   display: none;
@@ -78,7 +75,7 @@ This stylesheet is called by viewTranscription.php
 }
 
 .addComment, .viewComment {
-  display: none;
+  /*  display: none; */
 }
 
 ul.rhs {

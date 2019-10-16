@@ -9,7 +9,7 @@ It creates a semi-diplomatic MS view.
   <xsl:output method="html"/>
 
   <xsl:template match="/">
-    <div data-docid="{tei:TEI/@xml:id}" data-diplo="no">
+    <div data-docid="{tei:TEI/@xml:id}" data-diplo="no"> <!-- redundant attributes? -->
       <xsl:apply-templates select="tei:TEI/tei:text/tei:body/tei:div"/>
     </div>
   </xsl:template>

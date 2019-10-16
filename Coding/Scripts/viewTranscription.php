@@ -1,7 +1,6 @@
 <?php
 session_start();
 ?>
-
 <!doctype html>
 <!-- 
 This script (called by ../../index.php) takes two obligatory input parameters:
@@ -31,12 +30,11 @@ Dependent files are:
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="../Stylesheets/common.css"/>
     <link rel="stylesheet" href="../Stylesheets/comments.css"/>
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="common.js"></script>
-    <!-- <script src="comments.js"></script>-->
+    <script src="comments.js"></script>
     <title>DASG-MSS tool</title>
   </head>
 <?php
@@ -57,10 +55,21 @@ echo '">';
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
-             <a class="nav-item nav-link" id="numbersToggle" href="#" data-toggle="tooltip" title="show/hide line/page numbers and handshifts">numbers</a>
-             <a class="nav-item nav-link" href="#" data-toggle="tooltip" title="show/hide comments">comments</a>
-             <a class="nav-item nav-link" id="editionsToggle" href="#" data-toggle="tooltip" title="switch editions">switch</a>
-             <a class="nav-item nav-link" id="basketToggle" href="#" data-toggle="modal" data-target="#basketDiv">basket</a>
+            <a class="nav-item nav-link" id="numbersToggle" href="#" data-toggle="tooltip" title="show/hide line/page numbers and handshifts">numbers</a>
+            <a class="nav-item nav-link" id="commentsToggle" href="#" data-toggle="tooltip" title="show/hide comments">comments</a>
+<?php
+echo '<a class="nav-item nav-link" href="';
+echo 'viewTranscription.php?t=' . $t;
+if ($diplo=='yes') { echo '&diplo=no'; }
+else { echo '&diplo=yes'; }
+echo '" data-toggle="tooltip" title="switch editions">switch</a>';
+echo '<a class="nav-item nav-link" href="';
+echo 'viewTranscription.php?t=' . $t;
+if ($diplo=='both') { echo '&diplo=yes'; }
+else { echo '&diplo=both'; }
+echo '" data-toggle="tooltip" title="compare editions">compare</a>';
+?>
+            <a class="nav-item nav-link" id="basketToggle" href="#" data-toggle="modal" data-target="#basketDiv">basket</a>
           </div>
         </div>
       </nav>
@@ -83,7 +92,7 @@ echo '">';
               </select>
               <textarea rows="7" cols="40" id="commentContent"></textarea><br/><br/>
             </div>
-            <input type="hidden" id="docid" value="<?php echo $t; ?>"/> <!-- MM: this is nice! didn't know you could do that -->
+            <input type="hidden" id="docid" value="<?php echo $t; ?>"/>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary cancelComment" data-dismiss="modal">close</button>
               <button type="button" class="btn btn-primary saveComment">save</button>

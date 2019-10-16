@@ -7,37 +7,23 @@ $(function() {
   
   $('#numbersToggle').click(function() {
     var x = $('#midl');
-    x.find('.pageBreak, .pageBreakHR, .columnBreak, .handShift').toggle();
-    var b = x.children('div').attr('data-diplo');
-    if (b=='yes') {
+    x.find('.pageBreak, .pageBreakSuper, .columnBreak, .handShift').toggle();
+    var b = $('body').attr('data-ed');
+    if (b=='diplo' || b=='both') {
       x.find('.lineBreak').toggleClass('lineBreakDiplo');
-      x.find('.expansion').toggle();
-      x.children('div').attr('data-diplo','super');
-    }
-    else if (b=='super') {
-      x.find('.lineBreak').toggleClass('lineBreakDiplo');
-      x.children('div').attr('data-diplo','yes');
+      //x.find('.expansion').toggle();
+      //$('body').attr('data-ed','super');
+      //x.children('div').attr('data-diplo','super');
     }
     else {
       x.find('.lineBreak').toggleClass('lineBreakSemi');
+      //x.children('div').attr('data-diplo','yes');
     }
-    $('.gapDamageCharsDiplo, .gapDamageCharsSuperDiplo').toggle();
+    $('.gapDamageCharsDiplo, .gapDamageCharsSuperDiplo, .unclearDamageDiplo, .unclearDamageSuperDiplo').toggle();
   });
   
-  $('#editionsToggle').click(function() {
-    var ms = $('body').attr('data-ms');
-    if ($('body').attr('data-ed')=='diplo') { 
-      $('body').attr('data-ed', 'semi'); 
-      // DO AJAX HERE
-      // i.e. ajax.php?action=loadSemi&ms={ms}
-      // PHP should load up the relevant XML file i.e. Transcription{ms}.xml
-      // then run the relevant XSLT file on it, i.e. semiDiplomatic.xsl
-      // then echo the results to the #midl div
-    }
-    else { 
-      $('body').attr('data-ed', 'diplo'); 
-      // SAME HERE, but in reverse
-    }
+  $('#commentsToggle').click(function() {
+    $('#midl').find('.addComment').toggle();
   });
   
   $('.page').click(function(e){
@@ -72,20 +58,21 @@ $(function() {
   
   $('.indexHeadword').click(function(){ // called whenever a new headword is selected
     // reset midl and rhs
-    $('#midl').animate({scrollTop: 0},0);
-    $('#midl').find('.syntagm').css({'background-color': 'inherit', 'color': 'inherit', 'font-weight': 'normal'});
-    $('#midl').find('.gapDamageCharsDiplo').css('color', 'gray');
-    $('#midl').find('.gapDamageCharsSuperDiplo').css({'color': 'lightgray', 'background-color': 'lightgray'});
-    $('.temp').remove(); // remove all temporary hr elements
-    $('#midl').find('span, .textAnchor, .pageBreak, .columnBreak').show();
-    $('#midl').find('.suppliedDiplo').hide();
-    if ($('#midl').children('div').attr('data-diplo')=='super') { 
-      $('#midl').find('.gapDamageCharsDiplo').hide(); 
+    var m = $('#midl');
+    m.animate({scrollTop: 0},0);
+    m.find('.syntagm').css({'background-color': 'inherit', 'color': 'inherit', 'font-weight': 'normal'});
+    m.find('.gapDamageCharsDiplo, .unclearDamageDiplo').css('color', 'gray');
+    m.find('.gapDamageCharsSuperDiplo, .unclearDamageSuperDiplo').css({'color': 'lightgray', 'background-color': 'lightgray'});
+    m.find('.temp').remove(); // remove all temporary hr elements
+    m.find('span, .textAnchor, .pageBreak, .columnBreak').show();
+    m.find('.suppliedDiplo').hide();
+    if (m.children('div').attr('data-diplo')=='super') { // ??????
+      m.find('.gapDamageCharsDiplo').hide(); 
       $('.pageBreak, .columnBreak').hide();
-      //$('.pageBreakHR').toggle();
+      //$('.pageBreakSuper').toggle();
       $('.handShift').hide();
     }
-    else { $('#midl').find('.gapDamageCharsSuperDiplo').hide(); }
+    else { m.find('.gapDamageCharsSuperDiplo, .unclearDamageDiplo').hide(); }
     //$('#rhs').html('');
     // reset lhs
     $('.indexHeadword').parent().css({'background-color': 'inherit'});
@@ -93,12 +80,12 @@ $(function() {
     $('.implode').hide();
     $('.explode').hide();
     // do stuff
-    $('#midl').find('[data-lemmaRef="'+ $(this).attr('data-lemmaRef') + '"]').css({'color': 'orange', 'font-weight': 'bold'});
+    m.find('[data-lemmaRef="'+ $(this).attr('data-lemmaRef') + '"]').css({'color': 'orange', 'font-weight': 'bold'});
     $(this).parent().css('background-color', 'orange');
     $(this).nextAll('.hwCount').show();
     $(this).nextAll('.implode').show();
-    var x = $('#midl').find('[data-lemmaRef="'+ $(this).attr('data-lemmaRef') + '"]').first();
-    $('#midl').animate({scrollTop: x.offset().top - 180},500);
+    var x = m.find('[data-lemmaRef="'+ $(this).attr('data-lemmaRef') + '"]').first();
+    m.animate({scrollTop: x.offset().top - 180},500);
     return null;
   });
 
@@ -132,7 +119,7 @@ $(function() {
     });
     $('.textAnchor').hide();
     $('#midl').find('.suppliedDiplo').hide();
-    if ($('#midl').children('div').attr('data-diplo')=='super') { $('#midl').find('.gapDamageCharsDiplo').hide(); }
+    if ($('#midl').children('div').attr('data-diplo')=='super') { $('#midl').find('.gapDamageCharsDiplo').hide(); } //??????????????????????
     else { $('#midl').find('.gapDamageCharsSuperDiplo').hide(); }
     //$('.pageBreak').show();
     //$('#midl').find('.pageBreak').hide();
@@ -146,7 +133,7 @@ $(function() {
     $(this).prevAll('.implode').show();
     $('#midl').find('span').show();
     $('#midl').find('.suppliedDiplo').hide();
-    if ($('#midl').children('div').attr('data-diplo')=='super') { $('#midl').find('.gapDamageCharsDiplo').hide(); }
+    if ($('#midl').children('div').attr('data-diplo')=='super') { $('#midl').find('.gapDamageCharsDiplo').hide(); } //???????????????????
     else { $('#midl').find('.gapDamageCharsSuperDiplo').hide(); }
     $('#midl').find('.textAnchor').show();
     $('#midl').find('.pageBreak, .columnBreak').show();
@@ -204,7 +191,7 @@ $(function() {
       var line = searchBackwards(x,'lineBreak').attr('data-n') + '.';
       var id = docid + page + line;
       var html = '<tr><td>'+id;
-      html += '</td><td>'; // START HERE
+      html += '</td><td>';
       html += '<span class="syntagm">'
       var p = x.prev().clone();
       p.find('.lineBreak, .pageBreak, .columnBreak, .handShift').remove(); // remove all ids as well!
