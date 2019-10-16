@@ -174,6 +174,12 @@ It creates a semi-diplomatic MS view.
   <xsl:template match="tei:g[starts-with(@ref, 'g') and ../@cert]">
     <span class="expansion" data-cert="{../@cert}" data-glyphref="{@ref}" id="{generate-id(.)}">
       <xsl:if test="@corresp">
+        <xsl:variable name="corresp" select="@corresp"/>
+        <xsl:if test="preceding::tei:g[@corresp=$corresp]">
+          <xsl:attribute name="data-copy">
+            <xsl:text>true</xsl:text>
+          </xsl:attribute>
+        </xsl:if>
         <xsl:attribute name="data-corresp">
           <xsl:value-of select="@corresp"/>
         </xsl:attribute>
