@@ -22,7 +22,8 @@ $(function() {
     $('.gapDamageCharsDiplo, .gapDamageCharsSuperDiplo, .unclearDamageDiplo, .unclearDamageSuperDiplo').toggle();
   });
   
-  $('#commentsToggle').click(function() {
+  $('#commentsToggle').click(function(e) {
+    e.stopImmediatePropagation();
     var docid = 'T' + $('#docid').val();   //the MS ID
     $('#midl').find('.addComment').toggle();
     $.getJSON('ajax.php?action=getPopulatedSections&docid='+docid, function(data) {
