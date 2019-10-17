@@ -93,6 +93,7 @@ $(function() {
     /*
         Flag the sections that have comments
      */
+     /* 
     $.getJSON('ajax.php?action=getPopulatedSections&docid='+docid, function(data) {
         $.each(data, function(k, v) {
             $.each(v, function (key, val) {
@@ -107,6 +108,7 @@ $(function() {
             });
         });
     });
+     */
 });
 
 /*
