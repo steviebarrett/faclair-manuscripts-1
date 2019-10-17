@@ -23,8 +23,8 @@ $(function() {
   });
   
   $('#commentsToggle').click(function() {
+    var docid = 'T' + $('#docid').val();   //the MS ID
     $('#midl').find('.addComment').toggle();
-    
     $.getJSON('ajax.php?action=getPopulatedSections&docid='+docid, function(data) {
         $.each(data, function(k, v) {
             $.each(v, function (key, val) {
