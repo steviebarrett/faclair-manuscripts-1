@@ -126,6 +126,7 @@ $(function() {
         y = x.nextAll().slice(0,10);
         y.show(); y.find('*').show();
         $('<hr class="temp"/>').insertAfter(y.last());
+        // need to hide comments buttons
       }
       else {
         var y = $(this).prevAll().slice(0,10);
@@ -133,10 +134,11 @@ $(function() {
         y = $(this).nextAll().slice(0,10);
         y.show(); y.find('*').show();
         $('<hr class="temp"/>').insertAfter(y.last());
+        // need to hide comment buttons
       }
     });
     $('.textAnchor').hide();
-    $('#midl').find('.suppliedDiplo').hide();
+    $('#midl').find('.suppliedDiplo, .addComment, .viewComment').hide();
     if ($('#midl').children('div').attr('data-diplo')=='super') { $('#midl').find('.gapDamageCharsDiplo').hide(); } //??????????????????????
     else { $('#midl').find('.gapDamageCharsSuperDiplo').hide(); }
     //$('.pageBreak').show();
