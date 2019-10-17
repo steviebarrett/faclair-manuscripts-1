@@ -31,7 +31,7 @@ $(function() {
                 var section = val.section;
                 var sectionId = val.section_id;
                 sectionId = sectionId.replace(/\./g, '\\.');
-                $('button[data-s='+section+'][data-n='+sectionId+']').show();
+                $('button[data-s='+section+'][data-n='+sectionId+']').toggle();
                 //remove greyedOut class if there is a non-deleted comment here
                 if (val.deleted == "0") {
                     $('button[data-s='+section+'][data-n='+sectionId+']').removeClass('greyedOut');
