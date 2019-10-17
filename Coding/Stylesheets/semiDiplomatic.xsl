@@ -19,7 +19,7 @@ It creates a semi-diplomatic MS view.
       <div class="textAnchor">
         <button type="button" data-toggle="modal" data-target="#commentForm" class="addComment" title="Leave comment on this text" data-s="div" data-n="{@n}">+</button>
         <xsl:text> </xsl:text>
-        <button type="button" class="viewComment greyedOut" title="View comments on this text" data-s="div" data-n="{@n}">?</button>
+        <button type="button" data-toggle="modal" data-target="#viewCommentDiv" class="viewComment greyedOut" title="View comments on this text" data-s="div" data-n="{@n}">?</button>
         <xsl:text> </xsl:text>
         <small class="text-muted">[start of <span title="{concat(@type,' ',@corresp)}">Text <xsl:value-of select="@n"/></span>]</small>
       </div>
