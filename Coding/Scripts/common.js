@@ -24,6 +24,23 @@ $(function() {
   
   $('#commentsToggle').click(function() {
     $('#midl').find('.addComment').toggle();
+    
+    $.getJSON('ajax.php?action=getPopulatedSections&docid='+docid, function(data) {
+        $.each(data, function(k, v) {
+            $.each(v, function (key, val) {
+                var section = val.section;
+                var sectionId = val.section_id;
+                sectionId = sectionId.replace(/\./g, '\\.');
+                $('button[data-s='+section+'][data-n='+sectionId+']').show();
+                //remove greyedOut class if there is a non-deleted comment here
+                if (val.deleted == "0") {
+                    $('button[data-s='+section+'][data-n='+sectionId+']').removeClass('greyedOut');
+                }
+            });
+        });
+    });
+    
+    
   });
   
   $('.page').click(function(e){
