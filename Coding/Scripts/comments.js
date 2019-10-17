@@ -130,7 +130,8 @@ function updateComments(docid, s, sid) {
             });
         });
         html += '</ul>';
-        $('#rhs').html(html);
+        $('#viewCommentDiv').find('.modal-body').html(html);
+        
     })
         .done(function() {
            return;          //wait for completion before return

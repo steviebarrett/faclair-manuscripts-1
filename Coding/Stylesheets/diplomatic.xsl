@@ -48,7 +48,7 @@ It creates a diplomatic MS view.
       <br/>
       <button type="button" data-toggle="modal" data-target="#commentForm" class="addComment" title="Leave comment on this line" data-s="lb" data-n="{@xml:id}">+</button>
       <xsl:text> </xsl:text>
-      <button type="button" class="viewComment greyedOut" title="View comments on this line" data-s="lb" data-n="{@xml:id}">?</button>
+      <button type="button" data-toggle="modal" data-target="#viewCommentDiv" class="viewComment greyedOut" title="View comments on this line" data-s="lb" data-n="{@xml:id}">?</button>
       <xsl:text> </xsl:text>
     </span>
   </xsl:template>

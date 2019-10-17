@@ -23,7 +23,7 @@ $(function() {
   });
   
   $('#commentsToggle').click(function(e) {
-    e.stopImmediatePropagation();
+    //e.stopImmediatePropagation();
     var docid = 'T' + $('#docid').val();   //the MS ID
     $('#midl').find('.addComment').toggle();
     $.getJSON('ajax.php?action=getPopulatedSections&docid='+docid, function(data) {
