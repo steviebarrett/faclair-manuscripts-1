@@ -317,8 +317,13 @@ function makeSyntax(span, rec) {
   if ($(span).attr('xml:lang')) {
     html += '<li>language: ' + decodeLang($(span).attr('xml:lang')) + '</li>';
   }
-  html += getPOS(span); 
-  html += getStructure(span);
+  if (span.hasClass('characterString')) {
+    html += '<li>is a character string</li>';
+  }
+  else {
+    html += getPOS(span); 
+    html += getStructure(span);
+  }
   if (rec) {
     html += '</ul>';
   }

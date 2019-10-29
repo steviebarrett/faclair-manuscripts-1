@@ -95,7 +95,7 @@ It creates a semi-diplomatic MS view.
   
   <xsl:template match="tei:w[@pos='verb' and not(@lemmaRef='http://www.dil.ie/29104') and (ancestor::tei:w or ancestor::tei:name) and not(descendant::tei:w)]"> <!-- particle + pronoun/particle + verb compounds -->
     <xsl:text> </xsl:text>
-    <span class="word syntagm banana">
+    <span class="word syntagm">
       <xsl:call-template name="addWordAttributes"/>
       <xsl:apply-templates/>
     </span>
@@ -165,8 +165,8 @@ It creates a semi-diplomatic MS view.
     </xsl:if>
   </xsl:template>
 
-  <xsl:template match="tei:date | tei:c | tei:num">
-    <span class="syntagm">
+  <xsl:template match="tei:c | tei:date | tei:num">
+    <span class="chunk syntagm word characterString">
       <xsl:apply-templates/>
     </span>
   </xsl:template>

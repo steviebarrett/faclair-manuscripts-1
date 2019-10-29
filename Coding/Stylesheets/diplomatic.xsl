@@ -77,8 +77,8 @@ It creates a diplomatic MS view.
     </span>
   </xsl:template>
 
-  <xsl:template match="tei:date | tei:c | tei:num">
-    <span class="chunk">
+  <xsl:template match="tei:c | tei:date | tei:num">
+    <span class="chunk syntagm word characterString">
       <xsl:apply-templates/>
     </span>
   </xsl:template>
