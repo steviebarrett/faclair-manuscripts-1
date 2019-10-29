@@ -165,7 +165,7 @@ It creates a semi-diplomatic MS view.
     </xsl:if>
   </xsl:template>
 
-  <xsl:template match="tei:c | tei:date | tei:num">
+  <xsl:template match="tei:c | tei:date | tei:num | tei:seg[@type='fragment']">
     <span class="chunk syntagm word characterString">
       <xsl:apply-templates/>
     </span>
@@ -340,7 +340,7 @@ It creates a semi-diplomatic MS view.
     <xsl:apply-templates select="document(concat('../../Transcribing/Transcriptions/transcription',@source,'.xml'))/descendant::tei:div[@corresp=$target]"/>
   </xsl:template>
   
-  <xsl:template match="tei:seg[@type='fragment' or @type='cfe']"> <!-- no idea what this means -->
+  <xsl:template match="tei:seg[@type='cfe']"> <!-- no idea what this means -->
     <span class="syntagm">
       <xsl:apply-templates/>
     </span>
