@@ -176,7 +176,7 @@ if ($diplo=='both') {
                   <th scope="col">location</th>
                   <th scope="col">form</th>
                   <th scope="col">scribe</th>
-                  <th scope="col">lemmas</th>
+                  <th scope="col">lemma(s)</th>
                 </tr>
               </thead>
               <tbody>

@@ -332,7 +332,7 @@ It creates a diplomatic MS view.
     </xsl:if>
   </xsl:template>
   
-  <xsl:template match="tei:anchor"> <!-- e.g. ? -->
+  <xsl:template match="tei:anchor">
     <xsl:variable name="target" select="@copyOf"/>
     <span class="pageBreak">
       <br/>
