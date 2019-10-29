@@ -550,6 +550,9 @@ function getLemmas(span) {
   if (span.attr('data-lemmaSl')) {
       html += '<li>HDSG slips: <a href="' + span.attr('data-slipRef') + '" target="_new">' + span.attr('data-lemmaSl') + '</a></li>';
   }
+  if (span.attr('data-corresp')) {
+      html += '<li>HDSG slips: <a href="' + span.attr('data-corresp') + '" target="_new">' + span.attr('data-lemma') + '</a></li>';
+  }
   return html;
 }
 

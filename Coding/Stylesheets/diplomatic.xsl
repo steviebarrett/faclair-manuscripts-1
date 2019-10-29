@@ -195,7 +195,12 @@ It creates a diplomatic MS view.
     </xsl:if>
     <xsl:if test="@slipRef">
       <xsl:attribute name="data-slipRef">
-        <xsl:value-of select="@sslipRef"/>
+        <xsl:value-of select="@slipRef"/>
+      </xsl:attribute>
+    </xsl:if>
+    <xsl:if test="@corresp">
+      <xsl:attribute name="data-corresp">
+        <xsl:value-of select="@corresp"/>
       </xsl:attribute>
     </xsl:if>
   </xsl:template>
