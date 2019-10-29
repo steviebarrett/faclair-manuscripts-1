@@ -200,12 +200,6 @@ It creates a semi-diplomatic MS view.
     </span>
   </xsl:template>
 
-  <xsl:template match="tei:add">
-    <span class="addition" data-hand="{@resp}" data-place="{@place}" data-type="{@type}">
-      <xsl:apply-templates/>
-    </span>
-  </xsl:template>
-
   <xsl:template match="tei:add[@type='insertion']">
     <span class="insertion" data-hand="{@hand}" data-place="{@place}">
       <xsl:apply-templates/>
