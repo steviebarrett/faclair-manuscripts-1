@@ -485,7 +485,7 @@ function decodeLang(lang) {
 
 function getPOS(span) {
   html = '';
-  if ($(span).attr('data-pos')) { html += '<li>is a ' + $(span).attr('data-pos') + '</li>'; }
+  if ($(span).attr('data-pos')) { html += '<li>is a ' + $(span).attr('data-pos').replace('_',' ') + '</li>'; }
   return html;
 }
 
