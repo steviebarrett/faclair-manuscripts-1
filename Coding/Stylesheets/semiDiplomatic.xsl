@@ -53,13 +53,16 @@ It creates a semi-diplomatic MS view.
   </xsl:template>
   
   <xsl:template match="tei:name[not(ancestor::tei:name) and count(tei:w|tei:name)>1]"> 
+    <xsl:text> </xsl:text>
     <span class="chunk syntagm name">
       <xsl:call-template name="addNameAttributes"/>
       <xsl:apply-templates/>
     </span>
+    <xsl:text> </xsl:text>
   </xsl:template>
   
   <xsl:template match="tei:name[ancestor::tei:name and count(tei:w|tei:name)=1]"> 
+    <xsl:text> </xsl:text>
     <span class="word syntagm name">
       <xsl:call-template name="addNameAttributes"/>
       <xsl:for-each select="tei:w">
@@ -67,13 +70,16 @@ It creates a semi-diplomatic MS view.
         <xsl:apply-templates/>
       </xsl:for-each>
     </span>
+    <xsl:text> </xsl:text>
   </xsl:template>
   
   <xsl:template match="tei:name[ancestor::tei:name and count(tei:w|tei:name)>1]"> 
+    <xsl:text> </xsl:text>
     <span class="syntagm name">
       <xsl:call-template name="addNameAttributes"/>
       <xsl:apply-templates/>
     </span>
+    <xsl:text> </xsl:text>
   </xsl:template>
   
   <xsl:template match="tei:w[not(ancestor::tei:w) and not(ancestor::tei:name) and not(descendant::tei:w)]"> 
@@ -93,7 +99,50 @@ It creates a semi-diplomatic MS view.
     <xsl:text> </xsl:text>
   </xsl:template>
   
-  <xsl:template match="tei:w[@pos='verb' and not(@lemmaRef='http://www.dil.ie/29104') and (ancestor::tei:w or ancestor::tei:name) and not(descendant::tei:w)]"> <!-- particle + pronoun/particle + verb compounds -->
+  <xsl:template match="tei:w[@pos='verb' and not(@lemmaRef='http://www.dil.ie/29104') and (ancestor::tei:w or ancestor::tei:name) and not(descendant::tei:w)]">
+    <span class="word syntagm">
+      <xsl:call-template name="addWordAttributes"/>
+      <xsl:apply-templates/>
+    </span>
+    <xsl:text> </xsl:text>
+  </xsl:template>
+  
+  <xsl:template match="tei:w[@pos='verb' and @lemmaRef='http://www.dil.ie/29104' and (ancestor::tei:w or ancestor::tei:name) and not(descendant::tei:w)]">
+    <xsl:text> </xsl:text>
+    <span class="word syntagm">
+      <xsl:call-template name="addWordAttributes"/>
+      <xsl:apply-templates/>
+    </span>
+    <xsl:text> </xsl:text>
+  </xsl:template>
+  
+  
+  <xsl:template match="tei:w[(@pos='particle' or @pos='pronoun') and (ancestor::tei:w or ancestor::tei:name) and not(descendant::tei:w)]">
+    <span class="word syntagm">
+      <xsl:call-template name="addWordAttributes"/>
+      <xsl:apply-templates/>
+    </span>
+  </xsl:template>
+  
+  <xsl:template match="tei:w[not(@pos='verb' or @pos='particle' or @pos='pronoun') and (ancestor::tei:w or ancestor::tei:name) and not(descendant::tei:w)]"> 
+    <xsl:text> </xsl:text>
+    <span class="word syntagm">
+      <xsl:call-template name="addWordAttributes"/>
+      <xsl:apply-templates/>
+    </span>
+    <xsl:text> </xsl:text>
+  </xsl:template>
+  
+  <!--
+  <xsl:template match="tei:w[@pos='verb' and not(@lemmaRef='http://www.dil.ie/29104') and (ancestor::tei:w or ancestor::tei:name) and not(descendant::tei:w)]"> 
+    <span class="word syntagm">
+      <xsl:call-template name="addWordAttributes"/>
+      <xsl:apply-templates/>
+    </span>
+    <xsl:text> </xsl:text>
+  </xsl:template>
+  
+  <xsl:template match="tei:w[@pos='particle' and (ancestor::tei:w or ancestor::tei:name) and not(descendant::tei:w)]"> 
     <xsl:text> </xsl:text>
     <span class="word syntagm">
       <xsl:call-template name="addWordAttributes"/>
@@ -102,16 +151,22 @@ It creates a semi-diplomatic MS view.
   </xsl:template>
   
   <xsl:template match="tei:w[(not(@pos='verb') or @lemmaRef='http://www.dil.ie/29104') and (ancestor::tei:w or ancestor::tei:name) and not(descendant::tei:w)]"> 
+    <xsl:text> </xsl:text>
     <span class="word syntagm">
       <xsl:call-template name="addWordAttributes"/>
       <xsl:apply-templates/>
     </span>
+    <xsl:text> </xsl:text>
   </xsl:template>
   
+  -->
+  
   <xsl:template match="tei:w">  <!-- a word which IS part of a larger word and also contains smaller words -->
+    <xsl:text> </xsl:text>
     <span class="syntagm">
       <xsl:apply-templates/>
     </span>
+    <xsl:text> </xsl:text>
   </xsl:template>
   
   <xsl:template name="addNameAttributes">
