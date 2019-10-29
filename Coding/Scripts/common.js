@@ -555,7 +555,7 @@ function getLemmas(span) {
 
 function getDamage(span) {
   html = '';
-  var x = span.find('.unclearDamageDiplo, .unclearDamageSemi');
+  var x = span.find('.unclearDamageSuperDiplo, .unclearDamageSemi');
   if (x.length>0) { 
     html += '<li>damaged sections:<ul class="rhs">';
     x.each(function() {
