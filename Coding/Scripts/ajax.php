@@ -222,7 +222,7 @@ SQL;
     /*
      * Function used to find populated comment sections
      */
-    public static function getCommentSectionsByManuscriptId($msId) {
+    public static function getCommentSectionsByManuscriptId($msId) { // MAYBE START HERE?
         $query = <<<SQL
             SELECT
                 section,

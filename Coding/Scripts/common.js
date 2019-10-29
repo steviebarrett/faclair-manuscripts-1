@@ -26,19 +26,19 @@ $(function() {
     //e.stopImmediatePropagation();
     var docid = 'T' + $('#docid').val();   //the MS ID
     $('#midl').find('.addComment').toggle();
-    $.getJSON('ajax.php?action=getPopulatedSections&docid='+docid, function(data) {
-        $.each(data, function(k, v) {
-            $.each(v, function (key, val) {
-                var section = val.section;
-                var sectionId = val.section_id;
-                sectionId = sectionId.replace(/\./g, '\\.');
-                $('.viewComment[data-s='+section+'][data-n='+sectionId+']').toggle();
-                //remove greyedOut class if there is a non-deleted comment here
-                if (val.deleted == "0") {
-                    $('.viewComment[data-s='+section+'][data-n='+sectionId+']').removeClass('greyedOut');
-                }
-            });
+    $.getJSON('ajax.php?action=getPopulatedSections&docid='+docid, function(data) { // MAYBE START HERE?
+      $.each(data, function(k, v) {
+        $.each(v, function (key, val) {
+          var section = val.section;
+          var sectionId = val.section_id;
+          sectionId = sectionId.replace(/\./g, '\\.');
+          $('.viewComment[data-s='+section+'][data-n='+sectionId+']').toggle();
+            //remove greyedOut class if there is a non-deleted comment here
+            if (val.deleted == "0") {
+              $('.viewComment[data-s='+section+'][data-n='+sectionId+']').removeClass('greyedOut');
+          }
         });
+      });
     });
   });
   
@@ -462,7 +462,7 @@ function getOnomastics(span){
   if (type=='personal') { html += 'an anthroponym'; }
   else if (type=='place') { 
     html += 'a toponym';
-    if ($(span).attr('data-corresp') != '') {
+    if ($(span).attr('data-corresp')) {
       html += ' (<a href="' + $(span).attr('data-corresp') + '" target="_blank">info</a>)';
     }
   }
