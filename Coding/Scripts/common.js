@@ -308,7 +308,7 @@ $(function() {
   $('#basketToggle').click(function () {
       $.getJSON("ajax.php?action=getBasket", function( data ) {
             console.log(data);
-            $.each(data, function (elem, v) {
+            $.each(data, function (v) {
               var html = '<tr>';
               html += '<td>' + v.id + '</td>';
               html += '<td>' + v.syntagm + '</td>';
