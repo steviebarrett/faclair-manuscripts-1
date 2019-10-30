@@ -24,7 +24,7 @@ $(function() {
   
   $('#commentsToggle').click(function() {
     var docid = 'T' + $('#docid').val();   //the MS ID
-    $('#midl').find('.addComment').toggle();
+    console.log($('#midl').find('.addComment').toggle());
     $.getJSON('ajax.php?action=getPopulatedSections&docid='+docid, function(data) { // MAYBE START HERE?
       $.each(data, function(k, v) {
         $.each(v, function (key, val) {
