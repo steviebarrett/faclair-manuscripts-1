@@ -31,7 +31,7 @@ $(function() {
         $.each(v, function (key, val) {
           var section = val.section;
           var sectionId = val.section_id;
-          sectionId = sectionId.replace(/\./g, '\\.');
+        //  sectionId = sectionId.replace(/\./g, '\\.');
           $('.viewComment[data-s="'+section+'"][data-n="'+sectionId+'"]').toggle();
             console.log(section + ":" + sectionId);
             //remove greyedOut class if there is a non-deleted comment here
