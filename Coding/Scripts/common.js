@@ -505,9 +505,7 @@ function getHandInfoDiv(h) {
     if (g.max != g.to) {
       html += '/' + g.max;
     }*/
-
     html += 'Century: ' + g.date;
-
     html += '</p><p>'
     html += g.region;
     html += '</p>';
@@ -517,7 +515,12 @@ function getHandInfoDiv(h) {
       $xml.find('p').each(function (index, element) {
         $(element).find('hi').each(function () {
           $(this).replaceWith(function () {
-            return $('<em />', {html: $(this).html()});
+            var rend = $(this).attr('rend');
+            if (rend=='italics') { return $('<em />', {html: $(this).html()}); }
+            if (rend=='sup') { return $('<sup />', {html: $(this).html()}); }
+            if (rend=='sub') { return $('<sub />', {html: $(this).html()}); }
+            if (rend=='bold') { return $('<strong />', {html: $(this).html()}); }
+            if (rend=='underline') { return $('<u />', {html: $(this).html()}); }
           });
         });
         html += '<p>' + $(element).html() + '</p>';
