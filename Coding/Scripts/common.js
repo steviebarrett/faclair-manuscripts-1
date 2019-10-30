@@ -306,19 +306,21 @@ $(function() {
   });
 
   $('#basketToggle').click(function () {
+      var html = '';
       $.getJSON("ajax.php?action=getBasket", function( data ) {
-            console.log(data);
             $.each(data, function (key, value) {
-              var html = '<tr>';
+              html += '<tr>';
               html += '<td>' + value.id + '</td>';
               html += '<td>' + value.syntagm + '</td>';
               html += '<td>' + value.hand + '</td>';
               html += '<td>' + value.lemma + '</td>';
               html += '<td><a href="#" id="' + value.id + '" class="deleteSlip">delete</a></td>';
               html += '</tr>';
-              $("#basket").children('tbody').html(html);
             });
+      }).done(function () {
+          $("#basket").children('tbody').html(html);
       });
+
   })
 
   $('#emptyBasket').click(function () {
