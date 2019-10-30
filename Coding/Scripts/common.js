@@ -312,13 +312,13 @@ $(function() {
       })
           .done(function( data ) {
             console.log(data);
-            $.each(data, function (key, val) {
+            $.each(data, function (elem) {
               var html = '<tr>';
-              html += '<td>' + key.id + '</td>';
-              html += '<td>' + key.syntagm + '</td>';
-              html += '<td>' + key.hand + '</td>';
-              html += '<td>' + key.lemma + '</td>';
-              html += '<td><a href="#" id="' + key.id + '" class="deleteSlip">delete</a></td>';
+              html += '<td>' + elem.id + '</td>';
+              html += '<td>' + elem.syntagm + '</td>';
+              html += '<td>' + elem.hand + '</td>';
+              html += '<td>' + elem.lemma + '</td>';
+              html += '<td><a href="#" id="' + elem.id + '" class="deleteSlip">delete</a></td>';
               html += '</tr>';
               $("#basket").children('tbody').html(html);
             });
