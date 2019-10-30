@@ -7,6 +7,7 @@ header("Content-Type: application/xls");
 header("Content-Disposition: attachment; filename=$filename.xls");
 header("Pragma: no-cache");
 header("Expires: 0");
+echo "\xEF\xBB\xBF";   //BOM header UTF-8
 
 $data = <<<HTML
 

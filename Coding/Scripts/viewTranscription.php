@@ -186,7 +186,9 @@ if ($diplo=='both') {
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">hide</button>
             <button type="button" id="emptyBasket" class="btn btn-secondary" data-dismiss="modal">empty</button>
-              <a href="excelExport.php" target="_blank" class="btn btn-info" role="button">export</a>
+
+              <!--a href="excelExport.php" target="_blank" class="btn btn-info" role="button">export</a-->
+
           </div>
         </div>
       </div>
