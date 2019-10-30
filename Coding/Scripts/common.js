@@ -318,7 +318,7 @@ $(function() {
               html += '</tr>';
               $("#basket").children('tbody').html(html);
             });
-          });
+      });
   })
 
   $('#emptyBasket').click(function () {

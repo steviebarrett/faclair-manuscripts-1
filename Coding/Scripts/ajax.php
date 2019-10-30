@@ -70,7 +70,7 @@ switch ($_REQUEST["action"]) {
         $_SESSION["basket"] = json_encode($basket);
         break;
     case "getBasket":
-        echo json_decode($_SESSION["basket"]);
+        echo $_SESSION["basket"];
         break;
     case "emptyBasket":
         $_SESSION["basket"] = null;
