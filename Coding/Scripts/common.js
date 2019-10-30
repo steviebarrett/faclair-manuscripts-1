@@ -234,13 +234,13 @@ $(function() {
       html += '</td><td>';
       html += '<span class="syntagm">'
       var p = x.prev().clone();
-      p.find('.lineBreak, .pageBreak, .columnBreak, .handShift').remove(); // remove all ids as well!
+      p.find('button, .lineBreak, .pageBreak, .columnBreak, .handShift').remove(); // remove all ids as well!
       html += p.html() + ' '; 
       var t = x.clone();
-      t.find('.lineBreak, .pageBreak, .columnBreak, .handShift').remove();
+      t.find('button, .lineBreak, .pageBreak, .columnBreak, .handShift').remove();
       html += '<span style="background-color: yellow;">' + t.html() + '</span>';
       var n = x.next().clone();
-      n.find('.lineBreak, .pageBreak, .columnBreak, .handShift').remove();
+      n.find('button, .lineBreak, .pageBreak, .columnBreak, .handShift').remove();
       html += ' ' + n.html(); 
       html += '</span>';
       html += '</td><td>';
@@ -448,7 +448,7 @@ function getHandInfoDiv(h) {
       html += 'Anonymous (' + h + ')';
     }
     html += '</p><p>';
-    /*html += g.from;
+    /*html += g.from;           //SB: should be clear to delete this chunk (and associated data in ajax.php
     if (g.min != g.from) {
       html += '/' + g.min;
     }
