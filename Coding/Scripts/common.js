@@ -22,8 +22,7 @@ $(function() {
     $('.gapDamageCharsDiplo, .gapDamageCharsSuperDiplo, .unclearDamageDiplo, .unclearDamageSuperDiplo').toggle();
   });
   
-  $('#commentsToggle').click(function(e) {
-    //e.stopImmediatePropagation();
+  $('#commentsToggle').click(function() {
     var docid = 'T' + $('#docid').val();   //the MS ID
     $('#midl').find('.addComment').toggle();
     $.getJSON('ajax.php?action=getPopulatedSections&docid='+docid, function(data) { // MAYBE START HERE?
@@ -32,7 +31,7 @@ $(function() {
           var section = val.section;
           var sectionId = val.section_id;
           sectionId = sectionId.replace(/\./g, '\\.');
-          $('button.viewComment[data-s='+section+'][data-n='+sectionId+']').toggle();
+          $('button.viewComment[data-s='+section+'][data-n='+sectionId+']').show();
             //remove greyedOut class if there is a non-deleted comment here
             if (val.deleted == "0") {
               $('button.viewComment[data-s='+section+'][data-n='+sectionId+']').removeClass('greyedOut');
