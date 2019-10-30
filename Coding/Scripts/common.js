@@ -312,7 +312,7 @@ $(function() {
       })
           .done(function( data ) {
             console.log(data);
-            $.each(data, function (elem) {
+            $.each(JSON.parse(data), function (elem) {
               var html = '<tr>';
               html += '<td>' + elem.id + '</td>';
               html += '<td>' + elem.syntagm + '</td>';
