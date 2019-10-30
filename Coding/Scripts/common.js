@@ -293,7 +293,7 @@ $(function() {
           lemma += $(this).attr('data-lemma') + ' ';
         });
       }
-     // html += '</td><td><a href="#" class="deleteSlip">delete</a>'; //need to work this in elsewhere
+      slip.lemma = lemma;
       $.post('ajax.php',
           {
             action: "addToBasket",
@@ -311,6 +311,7 @@ $(function() {
           cache: false
       })
           .done(function( data ) {
+            console.log(data);
             $.each(data, function (key, val) {
               var html = '<tr>';
               html += '<td>' + key.id + '</td>';
