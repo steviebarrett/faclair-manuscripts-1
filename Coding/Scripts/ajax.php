@@ -66,8 +66,7 @@ switch ($_REQUEST["action"]) {
         if (!is_array($basket)) {
             $basket = Array();
         }
-        array_push($basket, json_decode($_POST["contents"]));
-        print_r($basket);
+        array_push($basket, $_POST["contents"]);
         $_SESSION["basket"] = json_encode($basket);
         break;
     case "getBasket":

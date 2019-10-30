@@ -105,6 +105,7 @@ echo '" data-toggle="tooltip" title="compare editions">compare</a>';
         <div id="lhs" class="col-2" style="overflow: auto; height: 100%;"> <!-- the headword index -->
           <div class="list-group list-group-flush">
 <?php
+print_r($_SESSION["basket"]);
 $ms = new SimpleXMLElement("../../Transcribing/Transcriptions/transcription" . $t . ".xml", 0, true);
 $ms->registerXPathNamespace('tei', 'http://www.tei-c.org/ns/1.0');
 $lemmas = [];
