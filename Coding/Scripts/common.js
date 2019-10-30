@@ -309,7 +309,7 @@ $(function() {
       var html = '';
       $.getJSON("ajax.php?action=getBasket", function( data ) {
             $.each(data, function (key, value) {
-              html += '<tr>';
+              html += '<tr id="basket_' + value.id + '">';
               html += '<td>' + value.id + '</td>';
               html += '<td>' + value.syntagm + '</td>';
               html += '<td>' + value.hand + '</td>';
@@ -336,7 +336,7 @@ $(function() {
 //Delete a slip from the basket
 $(document).on('click', '.deleteSlip', function () {
   var id = $(this).id;
-        //remove from table as well ....!
+  $('#basket_'+id).remove();  //delete from the table
   $.post('ajax.php',
       {
         action: "deleteFromBasket",

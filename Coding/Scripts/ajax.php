@@ -77,7 +77,7 @@ switch ($_REQUEST["action"]) {
         break;
     case "deleteFromBasket":
         $basket = json_decode($_SESSION["basket"]);
-        //$_POST["id"];
+        unset($basket[$_POST["id"]]);
         $_SESSION["basket"] = json_encode($basket);
         break;
     default:
