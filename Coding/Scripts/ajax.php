@@ -63,6 +63,9 @@ switch ($_REQUEST["action"]) {
         break;
     case "addToBasket":
         $basket = json_decode($_SESSION["basket"]);
+        if (!is_array($basket)) {
+            $basket = Array();
+        }
         array_push($basket, $_POST["contents"]);
         echo $_POST["contents"];
         $_SESSION["basket"] = json_encode($basket);
