@@ -33,6 +33,7 @@ $(function() {
           var sectionId = val.section_id;
           sectionId = sectionId.replace(/\./g, '\\.');
           $('.viewComment[data-s="'+section+'"][data-n="'+sectionId+'"]').toggle();
+            console.log(section + ":" + sectionId);
             //remove greyedOut class if there is a non-deleted comment here
             if (val.deleted == "0") {
               $('.viewComment[data-s="'+section+'"][data-n="'+sectionId+'"]').removeClass('greyedOut');
