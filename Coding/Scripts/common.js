@@ -308,13 +308,13 @@ $(function() {
   $('#basketToggle').click(function () {
       $.getJSON("ajax.php?action=getBasket", function( data ) {
             console.log(data);
-            $.each(data, function (v) {
+            $.each(data, function (key, value) {
               var html = '<tr>';
-              html += '<td>' + v.id + '</td>';
-              html += '<td>' + v.syntagm + '</td>';
-              html += '<td>' + v.hand + '</td>';
-              html += '<td>' + v.lemma + '</td>';
-              html += '<td><a href="#" id="' + v.id + '" class="deleteSlip">delete</a></td>';
+              html += '<td>' + value.id + '</td>';
+              html += '<td>' + value.syntagm + '</td>';
+              html += '<td>' + value.hand + '</td>';
+              html += '<td>' + value.lemma + '</td>';
+              html += '<td><a href="#" id="' + value.id + '" class="deleteSlip">delete</a></td>';
               html += '</tr>';
               $("#basket").children('tbody').html(html);
             });
