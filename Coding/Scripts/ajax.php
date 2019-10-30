@@ -288,14 +288,14 @@ SQL;
         $hand = $xml->xpath("/tei:teiCorpus/tei:teiHeader/tei:profileDesc/tei:handNotes/tei:handNote[@xml:id='{$handid}']")[0];
         $notes = array();
         foreach ($hand->note as $note) { $notes[] = $note->asXML(); }
-        //calculate the date range
+        //calculate the date (range)
         $min = (string)$hand->date["min"];
         $max = (string)$hand->date["max"];
         $min = substr($min, 0, 2);
         $max = substr($max, 0, 2);
-        $min += 1;
+        $min += 1;  //to retrieve the century
         $max += 1;
-        $date = "Century: {$min}/{$max}";
+        $date = ($min == $max) ? $min : $min . "/" . $max;
         return array("forename" => (string)$hand->forename, "surname" => (string)$hand->surname,
             "from" => (string)$hand->date["from"], "to" => (string)$hand->date["to"],
             "min" => (string)$hand->date["min"], "max" => (string)$hand->date["max"], "region" => (string)$hand->region,

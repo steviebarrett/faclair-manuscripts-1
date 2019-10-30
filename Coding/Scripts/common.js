@@ -457,7 +457,7 @@ function getHandInfoDiv(h) {
       html += '/' + g.max;
     }*/
 
-    html += g.date;
+    html += 'Century: ' + g.date;
 
     html += '</p><p>'
     html += g.region;
