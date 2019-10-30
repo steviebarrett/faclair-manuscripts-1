@@ -299,6 +299,7 @@ $(function() {
             action: "addToBasket",
             contents: slip
           });
+      console.log(slip);
       alert('added to basket');
       return null;
     });
