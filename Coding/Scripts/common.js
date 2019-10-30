@@ -27,24 +27,23 @@ $(function() {
     $('#midl').find('.addComment').toggle();
     if ($('.addComment').is(':visible')) {
       console.log('on');
-
-    } else {
-      console.log('off');
-    }
-    $.getJSON('ajax.php?action=getPopulatedSections&docid='+docid, function(data) { // MAYBE START HERE?
-      $.each(data, function(k, v) {
-        $.each(v, function (key, val) {
-          var section = val.section;
-          var sectionId = val.section_id;
-          sectionId = sectionId.replace(/\./g, '\\.');
-          $('button.viewComment[data-s='+section+'][data-n='+sectionId+']').show();
+      $.getJSON('ajax.php?action=getPopulatedSections&docid='+docid, function(data) { // MAYBE START HERE?
+        $.each(data, function(k, v) {
+          $.each(v, function (key, val) {
+            var section = val.section;
+            var sectionId = val.section_id;
+            sectionId = sectionId.replace(/\./g, '\\.');
+            $('button.viewComment[data-s='+section+'][data-n='+sectionId+']').show();
             //remove greyedOut class if there is a non-deleted comment here
             if (val.deleted == "0") {
               $('button.viewComment[data-s='+section+'][data-n='+sectionId+']').removeClass('greyedOut');
-          }
+            }
+          });
         });
       });
-    });
+    } else {
+      $('.viewComment').hide();
+    }
   });
   
   $('.page').click(function(e){
