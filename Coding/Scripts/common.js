@@ -448,14 +448,17 @@ function getHandInfoDiv(h) {
       html += 'Anonymous (' + h + ')';
     }
     html += '</p><p>';
-    html += g.from;
+    /*html += g.from;
     if (g.min != g.from) {
       html += '/' + g.min;
     }
     html += ' – ' + g.to;
     if (g.max != g.to) {
       html += '/' + g.max;
-    }
+    }*/
+
+    html += g.date;
+
     html += '</p><p>'
     html += g.region;
     html += '</p>';
