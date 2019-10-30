@@ -27,7 +27,6 @@ $(function() {
         var comment = $('#commentContent').val();
         var feedbackHtml = '';
         $.getJSON('ajax.php?action=saveComment&docid='+docid+'&s='+s+'&sid='+sid+'&user='+user+'&comment='+comment, function(data) {
-            console.log(data);
             if (data.saved == true) {
                 feedbackHtml = '<strong>Your comment has been saved</strong>';
             } else { //there was an error saving the comment

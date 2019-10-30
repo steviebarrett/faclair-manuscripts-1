@@ -223,7 +223,7 @@ $(function() {
       y.animate({scrollTop: 0},0);
       y.animate({scrollTop: x.offset().top - 300},500);
     });
-    $('#saveSlip').click(function() {
+    /*$('#saveSlip').click(function() {
       var x = $('.selected');
       var docid = x.parents('[data-docid]').first().attr('data-docid') + '.';
       var page = searchBackwards(x,'pageBreak').attr('data-n') + '.';
@@ -262,6 +262,45 @@ $(function() {
           });
       alert('added to basket');
       return null;
+    });*/
+
+    $('#saveSlip').click(function() {
+      var x = $('.selected');
+      var docid = x.parents('[data-docid]').first().attr('data-docid') + '.';
+      var page = searchBackwards(x,'pageBreak').attr('data-n') + '.';
+      var line = searchBackwards(x,'lineBreak').attr('data-n') + '.';
+      var id = docid + page + line;
+      var slip = new Object();
+      slip.id = id;
+
+      var p = x.prev().clone();
+      p.find('button, .lineBreak, .pageBreak, .columnBreak, .handShift').remove(); // remove all ids as well!
+      var syntagm = p.html() + ' ';
+      var t = x.clone();
+      t.find('button, .lineBreak, .pageBreak, .columnBreak, .handShift').remove();
+      syntagm += '<span style="background-color: yellow;">' + t.html() + '</span>'; //SB: should we strip the HTML here?
+      var n = x.next().clone();
+      n.find('button, .lineBreak, .pageBreak, .columnBreak, .handShift').remove();
+      syntagm += ' ' + n.html();
+      slip.syntagm = syntagm;
+
+      var h = searchBackwards(x,'handShift').attr('data-new');
+      slip.hand = getHandName(h);
+      var lemma = '';
+      if (x.attr('data-lemma')) { lemma += x.attr('data-lemma'); }
+      else {
+        x.find('[data-lemma]').each(function(){
+          lemma += $(this).attr('data-lemma') + ' ';
+        });
+      }
+     // html += '</td><td><a href="#" class="deleteSlip">delete</a>'; //need to work this in elsewhere
+      $.post('ajax.php',
+          {
+            action: "addToBasket",
+            contents: slip
+          });
+      alert('added to basket');
+      return null;
     });
   });
 
@@ -270,8 +309,17 @@ $(function() {
           url: "ajax.php?action=getBasket",
           cache: false
       })
-          .done(function( html ) {
+          .done(function( data ) {
+            $.each(data, function (key, val) {
+              var html = '<tr>';
+              html += '<td>' + key.id + '</td>';
+              html += '<td>' + key.syntagm + '</td>';
+              html += '<td>' + key.hand + '</td>';
+              html += '<td>' + key.lemma + '</td>';
+              html += '<td><a href="#" id="' + key.id + '" class="deleteSlip">delete</a></td>';
+              html += '</tr>';
               $("#basket").children('tbody').html(html);
+            });
           });
   })
 
@@ -279,7 +327,7 @@ $(function() {
     $.ajax({
       url: 'ajax.php?action=emptyBasket'
     })
-        .done(function (html) {
+        .done(function () {
           alert('basket emptied');
         });
   })
@@ -287,12 +335,12 @@ $(function() {
 
 //Delete a slip from the basket
 $(document).on('click', '.deleteSlip', function () {
-  $(this).parent().parent().remove();
-  var html = $("#basket").children('tbody').html();
+  var id = $(this).id;
+        //remove from table as well ....!
   $.post('ajax.php',
       {
-        action: "saveBasket",
-        contents: html
+        action: "deleteFromBasket",
+        id: id
       });
 });
 

@@ -62,16 +62,21 @@ switch ($_REQUEST["action"]) {
         echo json_encode(Manuscripts::getHandInfo($_GET["hand"]));
         break;
     case "addToBasket":
-        $_SESSION["basket"] .= $_POST["contents"];
+        $basket = json_decode($_SESSION["basket"]);
+        array_push($basket, $_POST["contents"]);
+        $_SESSION["basket"] = json_encode($basket);
         break;
     case "getBasket":
-        echo $_SESSION["basket"];
+        echo json_decode($_SESSION["basket"]);
         break;
     case "emptyBasket":
         $_SESSION["basket"] = null;
         break;
-    case "saveBasket":
-        $_SESSION["basket"] = $_POST["contents"];
+    case "deleteFromBasket":
+        $basket = json_decode($_SESSION["basket"]);
+        //$_POST["id"];
+        $_SESSION["basket"] = json_encode($basket);
+
         break;
     default:
         break;
