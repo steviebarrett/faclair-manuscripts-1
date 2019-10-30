@@ -317,7 +317,7 @@ $(function() {
               html += '<td><a href="#" id="' + elem.id + '" class="deleteSlip">delete</a></td>';
               html += '</tr>';
               $("#basket").children('tbody').html(html);
-            });
+            }
           });
   })
 
