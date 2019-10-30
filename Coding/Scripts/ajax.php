@@ -64,6 +64,7 @@ switch ($_REQUEST["action"]) {
     case "addToBasket":
         $basket = json_decode($_SESSION["basket"]);
         array_push($basket, $_POST["contents"]);
+        echo $_POST["contents"];
         $_SESSION["basket"] = json_encode($basket);
         break;
     case "getBasket":
@@ -76,7 +77,6 @@ switch ($_REQUEST["action"]) {
         $basket = json_decode($_SESSION["basket"]);
         //$_POST["id"];
         $_SESSION["basket"] = json_encode($basket);
-
         break;
     default:
         break;
