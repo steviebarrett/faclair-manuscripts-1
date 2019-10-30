@@ -306,13 +306,9 @@ $(function() {
   });
 
   $('#basketToggle').click(function () {
-      $.ajax({
-          url: "ajax.php?action=getBasket",
-          cache: false
-      })
-          .done(function( data ) {
+      $.getJSON("ajax.php?action=getBasket", function( data ) {
             console.log(data);
-            $.each(JSON.parse(data), function (elem) {
+            $.each(data), function (elem, v) {
               var html = '<tr>';
               html += '<td>' + elem.id + '</td>';
               html += '<td>' + elem.syntagm + '</td>';
