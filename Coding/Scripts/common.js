@@ -308,7 +308,7 @@ $(function() {
   $('#basketToggle').click(function () {
       $.getJSON("ajax.php?action=getBasket", function( data ) {
             console.log(data);
-            $.each(data), function (elem, v) {
+            $.each(data, function (elem, v) {
               var html = '<tr>';
               html += '<td>' + elem.id + '</td>';
               html += '<td>' + elem.syntagm + '</td>';
@@ -317,7 +317,7 @@ $(function() {
               html += '<td><a href="#" id="' + elem.id + '" class="deleteSlip">delete</a></td>';
               html += '</tr>';
               $("#basket").children('tbody').html(html);
-            }
+            });
           });
   })
 
