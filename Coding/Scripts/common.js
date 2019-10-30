@@ -116,7 +116,27 @@ $(function() {
     $('#midl').find('[data-lemmaRef="'+ $(this).prevAll('.indexHeadword').attr('data-lemmaRef') + '"]').each(function(){
       $(this).show();
       $(this).find('span').show();
-      var x = $(this).parents('span');
+      //$(this).parents('span').show(); 
+      if ($(this).hasClass('chunk')) {
+        var y = $(this).prevAll('.chunk, .lineBreak').slice(0,10);
+        y.show(); y.find('*').show();
+        searchBackwards($(this),'pageBreak').show();
+        y = $(this).nextAll('.chunk, .lineBreak').slice(0,10);
+        y.show(); y.find('*').show();
+        $('<hr class="temp"/>').insertAfter(y.last());
+      }
+      else {
+        var x = $(this).parents('.chunk');
+        x.show(); x.find('span').show();
+        var y = x.prevAll('.chunk, .lineBreak').slice(0,10);
+        y.show(); y.find('*').show();
+        searchBackwards($(this),'pageBreak').show();
+        y = x.nextAll('.chunk, .lineBreak').slice(0,10);
+        y.show(); y.find('*').show();
+        $('<hr class="temp"/>').insertAfter(y.last());
+      }
+      /*
+      var x = $(this).parents('span'); // not a chunk
       if (x.length>0) {
         x.show(); x.find('span').show();
         var y = x.prevAll().slice(0,10);
@@ -124,16 +144,15 @@ $(function() {
         y = x.nextAll().slice(0,10);
         y.show(); y.find('*').show();
         $('<hr class="temp"/>').insertAfter(y.last());
-        // need to hide comments buttons
       }
-      else {
+      else { // a chunk
         var y = $(this).prevAll().slice(0,10);
         y.show(); y.find('*').show();
         y = $(this).nextAll().slice(0,10);
         y.show(); y.find('*').show();
         $('<hr class="temp"/>').insertAfter(y.last());
-        // need to hide comment buttons
       }
+       */
     });
     $('.textAnchor').hide();
     $('#midl').find('.suppliedDiplo, .addComment, .viewComment').hide();
