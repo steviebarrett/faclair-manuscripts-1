@@ -335,7 +335,7 @@ $(function() {
 
 //Delete a slip from the basket
 $(document).on('click', '.deleteSlip', function () {
-  var id = $(this).id;
+  var id = $(this).attr('id');
   console.log(id);
   $(this).parent().parent().remove();  //delete from the table
   $.post('ajax.php',
