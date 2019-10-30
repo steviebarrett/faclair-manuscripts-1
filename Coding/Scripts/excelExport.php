@@ -37,3 +37,4 @@ $data = <<<HTML
 HTML;
 
 echo $data;
+
