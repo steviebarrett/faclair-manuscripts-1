@@ -310,11 +310,11 @@ $(function() {
             console.log(data);
             $.each(data, function (elem, v) {
               var html = '<tr>';
-              html += '<td>' + elem.id + '</td>';
-              html += '<td>' + elem.syntagm + '</td>';
-              html += '<td>' + elem.hand + '</td>';
-              html += '<td>' + elem.lemma + '</td>';
-              html += '<td><a href="#" id="' + elem.id + '" class="deleteSlip">delete</a></td>';
+              html += '<td>' + v.id + '</td>';
+              html += '<td>' + v.syntagm + '</td>';
+              html += '<td>' + v.hand + '</td>';
+              html += '<td>' + v.lemma + '</td>';
+              html += '<td><a href="#" id="' + v.id + '" class="deleteSlip">delete</a></td>';
               html += '</tr>';
               $("#basket").children('tbody').html(html);
             });
