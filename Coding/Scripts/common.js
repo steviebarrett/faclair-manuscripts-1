@@ -121,20 +121,26 @@ $(function() {
       $(this).find('span').show();
       //$(this).parents('span').show(); 
       if ($(this).hasClass('chunk')) {
-        var y = $(this).prevAll('.chunk, .lineBreak').slice(0,10);
+        var y = $(this).prevAll('.chunk, .lineBreak').slice(0,3);
         y.show(); y.find('*').show();
+        //var z = y.last();
+        //var w = searchBackwards(z,'lineBreak');
+        //w.show();
         searchBackwards($(this),'pageBreak').show();
-        y = $(this).nextAll('.chunk, .lineBreak').slice(0,10);
+        y = $(this).nextAll('.chunk, .lineBreak').slice(0,3);
         y.show(); y.find('*').show();
         $('<hr class="temp"/>').insertAfter(y.last());
       }
       else {
         var x = $(this).parents('.chunk');
         x.show(); x.find('span').show();
-        var y = x.prevAll('.chunk, .lineBreak').slice(0,10);
+        var y = x.prevAll('.chunk, .lineBreak').slice(0,3);
         y.show(); y.find('*').show();
+        //var z = y.last();
+        //var w = searchBackwards(z,'lineBreak');
+        //w.show();
         searchBackwards($(this),'pageBreak').show();
-        y = x.nextAll('.chunk, .lineBreak').slice(0,10);
+        y = x.nextAll('.chunk, .lineBreak').slice(0,3);
         y.show(); y.find('*').show();
         $('<hr class="temp"/>').insertAfter(y.last());
       }
