@@ -228,47 +228,6 @@ $(function() {
       y.animate({scrollTop: 0},0);
       y.animate({scrollTop: x.offset().top - 300},500);
     });
-    /*$('#saveSlip').click(function() {
-      var x = $('.selected');
-      var docid = x.parents('[data-docid]').first().attr('data-docid') + '.';
-      var page = searchBackwards(x,'pageBreak').attr('data-n') + '.';
-      //html += searchBackwards(x,'columnBreak').attr('data-n') + '.'; NEED TO CHECK FOR COLUMNS FIRST
-      var line = searchBackwards(x,'lineBreak').attr('data-n') + '.';
-      var id = docid + page + line;
-      var html = '<tr><td>'+id;
-      html += '</td><td>';
-      html += '<span class="syntagm">'
-      var p = x.prev().clone();
-      p.find('button, .lineBreak, .pageBreak, .columnBreak, .handShift').remove(); // remove all ids as well!
-      html += p.html() + ' '; 
-      var t = x.clone();
-      t.find('button, .lineBreak, .pageBreak, .columnBreak, .handShift').remove();
-      html += '<span style="background-color: yellow;">' + t.html() + '</span>';
-      var n = x.next().clone();
-      n.find('button, .lineBreak, .pageBreak, .columnBreak, .handShift').remove();
-      html += ' ' + n.html(); 
-      html += '</span>';
-      html += '</td><td>';
-      var h = searchBackwards(x,'handShift').attr('data-new');
-      html += getHandName(h);
-      html += '</td><td>';
-      if (x.attr('data-lemma')) { html += x.attr('data-lemma'); }
-      else {
-        x.find('[data-lemma]').each(function(){
-          html += $(this).attr('data-lemma') + ' ';
-        });
-      }
-      html += '</td><td><a href="#" class="deleteSlip">delete</a>';
-      html += '</td></tr>';
-      $.post('ajax.php',
-          {
-            action: "addToBasket",
-            contents: html
-          });
-      alert('added to basket');
-      return null;
-    });*/
-
     $('#saveSlip').click(function() {
       var x = $('.selected');
       var docid = x.parents('[data-docid]').first().attr('data-docid') + '.';
@@ -304,7 +263,6 @@ $(function() {
             action: "addToBasket",
             contents: slip
           });
-      console.log(slip);
       alert('added to basket');
       return null;
     });
@@ -333,9 +291,15 @@ $(function() {
       url: 'ajax.php?action=emptyBasket'
     })
         .done(function () {
+          $("#basket").children('tbody').remove();
           alert('basket emptied');
         });
   });
+
+  $('#msImage').zoomio({
+    fadeduration: 500
+  });
+
 });
 
 //Delete a slip from the basket

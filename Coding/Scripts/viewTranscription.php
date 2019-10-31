@@ -209,9 +209,7 @@ if ($diplo=='both') {
   <script src="../JS_Files/zoomio/zoomio.js"/>
   <script>
     $(function() {
-      $('#msImage').zoomio({
-        fadeduration: 500
-      });
+
     });
   </script>
 </html>
