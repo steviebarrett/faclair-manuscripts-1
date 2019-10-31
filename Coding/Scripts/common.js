@@ -4,7 +4,7 @@ It contains event handlers relevant to that page as a whole, and to both MS view
 */
 
 $(function() {
-  
+
   $('#numbersToggle').click(function() {
     var x = $('#midl');
     x.find('.pageBreak, .pageBreakSuper, .columnBreak, .handShift').toggle();
@@ -60,13 +60,12 @@ $(function() {
       html += "<iframe type='text/html' width='600' height='410' style='position: absolute; width: 100%; height: 100%;'";
       html += " src='https://cudl.lib.cam.ac.uk/embed/#item="+mssNo+"&page="+pageNo+"&hide-info=true'";
       html += " frameborder='0' allowfullscreen='' onmousewheel=''></iframe></div>";
-    } 
-    else {    //simple case: just stick the url in an image tag
-      html = '<img width="100%" src="';
-      html += url;
-      html += '"/>'
+      $('#rhs').html(html);
     }
-    $('#rhs').html(html);
+    else {    //simple case: just stick the url in an image tag for image viewer
+      $('#msImage').attr('src', url);
+      $('#msImage').show();
+    }
   });
     
   /* Show/hide marginal notes. Added by SB. MM: might be interfered with by hw search now. */
@@ -327,7 +326,7 @@ $(function() {
           $("#basket").children('tbody').html(html);
       });
 
-  })
+  });
 
   $('#emptyBasket').click(function () {
     $.ajax({
@@ -336,7 +335,7 @@ $(function() {
         .done(function () {
           alert('basket emptied');
         });
-  })
+  });
 });
 
 //Delete a slip from the basket
