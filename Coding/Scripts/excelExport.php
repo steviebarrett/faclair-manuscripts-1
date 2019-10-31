@@ -9,6 +9,19 @@ header("Pragma: no-cache");
 header("Expires: 0");
 echo "\xEF\xBB\xBF";   //BOM header UTF-8
 
+$basketContents = json_decode($_SESSION["basket"]);
+$tableData = "";
+foreach ($basketContents as $slip) {
+  $tableData .= <<<HTML
+    <tr>
+        <td>{$slip->id}</td>
+        <td>{$slip->syntagm}</td>
+        <td>{$slip->hand}</td>
+        <td>{$slip->lemma}</td>
+    </tr>
+HTML;
+
+}
 $data = <<<HTML
 
 <html xmlns:x="urn:schemas-microsoft-com:office:excel">
@@ -32,7 +45,7 @@ $data = <<<HTML
 </head>
 
 <body>
-  <table>{$_SESSION["basket"]}</table>
+  <table>{$tableData}</table>
 </body>
 </html>
 HTML;
