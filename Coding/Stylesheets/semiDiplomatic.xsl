@@ -204,7 +204,7 @@ It creates a semi-diplomatic MS view.
     </xsl:if>
   </xsl:template>
 
-  <xsl:template match="tei:c | tei:date | tei:num | tei:seg[@type='fragment']">
+  <xsl:template match="tei:c | tei:date | tei:num | tei:seg[@type='fragment'] | tei:pc">
     <span class="chunk syntagm word characterString">
       <xsl:apply-templates/>
     </span>
@@ -330,14 +330,6 @@ It creates a semi-diplomatic MS view.
 
   <xsl:template match="tei:lb">
     <span class="lineBreak lineBreakSemi" data-n="{@n}"/>
-  </xsl:template>
-
-  <xsl:template match="tei:pc">
-    <span class="punct">
-      <xsl:text> </xsl:text>
-      <xsl:value-of select="."/>
-      <xsl:text> </xsl:text>
-    </span>
   </xsl:template>
 
   <xsl:template match="tei:gap[@reason='damage' and @unit='chars']">
