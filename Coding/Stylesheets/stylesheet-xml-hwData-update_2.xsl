@@ -9,6 +9,11 @@
 	</xsl:template>
 
 	<xsl:template name="hwDataUpdate">
+		<xsl:variable name="lostHwCount">
+			<xsl:value-of
+				select="count(//tei:TEI[@xml:id = 'hwData']//tei:entryFree[not(@corresp = //tei:TEI[not(@xml:id = 'hwData')]//tei:w/@lemmaRef)])"
+			/>
+		</xsl:variable>
 		<xsl:text><?xml-model href="Schemas/fnag_mss2.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?></xsl:text>
 		<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="hwData">
 			<teiHeader>
@@ -45,13 +50,18 @@
 							corpus since <xsl:call-template name="prevDate"/>. Entries have been
 							created for them in the headword database. These are:<xsl:call-template
 								name="newHwList"/></p>
+						<xsl:if test="$lostHwCount > 0">
+							<p><xsl:value-of select="$lostHwCount"/> words have been removed from the
+							corpus since <xsl:call-template name="prevDate"/> and thus no longer
+							appear in the headword database. These are: <xsl:call-template
+								name="lostHwList"/></p></xsl:if>
 					</sourceDesc>
 				</fileDesc>
 			</teiHeader>
 			<text>
 				<body>
 					<xsl:for-each
-						select="//tei:w[not(descendant::tei:w) and not(@lemmaRef = preceding::tei:w[not(descendant::tei:w)]/@lemmaRef) and not(@type = 'data') and @lemmaRef]">
+						select="//tei:w[not(descendant::tei:w) and not(@lemmaRef = preceding::tei:w[not(descendant::tei:w)]/@lemmaRef) and not(@type = 'data') and @lemmaRef] | //tei:w[descendant::tei:w and not(@lemmaRef = preceding::tei:w/@lemmaRef) and not(contains(@lemmaRef, ',')) and not(@type = 'data') and @lemmaRef]">
 						<xsl:variable name="wordID" select="@lemmaRef"/>
 						<entryFree>
 							<xsl:attribute name="corresp">
@@ -59,7 +69,7 @@
 							</xsl:attribute>
 							<xsl:attribute name="n">
 								<xsl:value-of
-									select="count(//tei:w[not(descendant::tei:w) and not(@xml:lang) and not(@type = 'data') and @lemmaRef = $wordID])"
+									select="count(//tei:w[not(contains(@lemmaRef, ',')) and not(@xml:lang) and not(@type = 'data') and @lemmaRef = $wordID])"
 								/>
 							</xsl:attribute>
 							<xsl:if
@@ -136,15 +146,15 @@
 									</xsl:for-each>
 								</xsl:if>
 								<xsl:variable name="firstForm"
-									select="//tei:w[not(@type = 'data') and @lemmaRef = $wordID and not(@lemmaRef = preceding::tei:w[not(descendant::tei:w)]/@lemmaRef)]/string(self::*)"/>
+									select="//tei:w[not(descendant::tei:w) and not(@type = 'data') and @lemmaRef = $wordID and not(@lemmaRef = preceding::tei:w[not(descendant::tei:w)]/@lemmaRef)]/string(self::*)"/>
 								<xsl:if
-									test="//tei:w[not(@type = 'data') and @lemmaRef = $wordID and not(string(self::*) = $firstForm)]">
+									test="//tei:w[not(descendant::tei:w) and not(@type = 'data') and @lemmaRef = $wordID and not(string(self::*) = $firstForm)]">
 									<span>
 										<xsl:attribute name="type">altForm</xsl:attribute>
 										<xsl:value-of select="$firstForm"/>
 									</span>
 									<xsl:for-each
-										select="//tei:w[not(@type = 'data') and @lemmaRef = $wordID and not(string(self::*) = preceding::tei:w[not(@type = 'data') and @lemmaRef = $wordID]/string(self::*)) and not(string(self::*) = $firstForm)]">
+										select="//tei:w[not(descendant::tei:w) and not(@type = 'data') and @lemmaRef = $wordID and not(string(self::*) = preceding::tei:w[not(@type = 'data') and @lemmaRef = $wordID]/string(self::*)) and not(string(self::*) = $firstForm)]">
 										<xsl:variable name="thisForm" select="string(self::*)"/>
 										<span>
 											<xsl:attribute name="type">altForm</xsl:attribute>
@@ -174,25 +184,37 @@
 	<xsl:template name="scgDataPc">
 		<xsl:variable name="calc"
 			select="count(//tei:TEI[@xml:id = 'hwData']//tei:entryFree[tei:w[@lemmaDW and @lemma]]) div count(//tei:TEI[@xml:id = 'hwData']//tei:entryFree)"/>
-		<xsl:value-of select="round($calc * 100)"/>
-		<xsl:text>%</xsl:text>
+		<xsl:value-of select="format-number($calc, '##%')"/>
 	</xsl:template>
 
 	<xsl:template name="newHwCount">
 		<xsl:value-of
-			select="count(//tei:w[not(@xml:lang) and not(@type = 'data') and not(descendant::tei:w) and @lemmaRef and not(@lemmaRef = //tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree/@corresp) and not(@lemmaRef = preceding::tei:w/@lemmaRef)])"
+			select="count(//tei:w[not(@xml:lang) and not(@type = 'data') and not(contains(@lemmaRef, ',')) and @lemmaRef and not(@lemmaRef = //tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree/@corresp) and not(@lemmaRef = preceding::tei:w/@lemmaRef)])"
 		/>
 	</xsl:template>
 
 	<xsl:template name="newHwList">
 		<list>
 			<xsl:for-each
-				select="//tei:w[not(@xml:lang) and not(@type = 'data') and not(descendant::tei:w) and @lemmaRef and not(@lemmaRef = //tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree/@corresp) and not(@lemmaRef = preceding::tei:w/@lemmaRef)]">
+				select="//tei:w[not(@xml:lang) and not(@type = 'data') and not(contains(@lemmaRef, ',')) and @lemmaRef and not(@lemmaRef = //tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree/@corresp) and not(@lemmaRef = preceding::tei:w/@lemmaRef)]">
 				<xsl:sort
 					select="translate(@lemma, 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
 				<item>
 					<xsl:value-of select="@lemma"/>
 				</item>
+			</xsl:for-each>
+		</list>
+	</xsl:template>
+
+	<xsl:template name="lostHwList">
+		<list>
+			<xsl:for-each select="//tei:TEI[@xml:id = 'hwData']//tei:entryFree[not(@corresp = //tei:TEI[not(@xml:id = 'hwData')]//tei:w/@lemmaRef)]">
+				<xsl:variable name="wordID" select="@corresp"/>
+				<xsl:if test="not(//tei:TEI[not(@xml:id = 'hwData')]//tei:w/@lemmaRef = $wordID)">
+					<item>
+						<xsl:value-of select="//tei:TEI[@xml:id = 'hwData']//tei:entryFree[@corresp = $wordID]/tei:w/@lemma"/>
+					</item>
+				</xsl:if>
 			</xsl:for-each>
 		</list>
 	</xsl:template>

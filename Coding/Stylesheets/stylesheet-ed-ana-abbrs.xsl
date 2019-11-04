@@ -12,7 +12,7 @@
 		<html>
 			<head>
 				<title> Report: <xsl:value-of
-						select="ancestor::tei:TEI/tei:teiHeader/tei:fileDesc/tei:titleStmt/tei:title"/>
+						select="//tei:TEI/tei:teiHeader/tei:fileDesc/tei:titleStmt/tei:title"/>
 				</title>
 			</head>
 			<body>
@@ -221,7 +221,7 @@
 
 	<xsl:template match="tei:unclear">
 		<xsl:choose>
-			<xsl:when test="/@cert = 'low'">
+			<xsl:when test="@cert = 'low'">
 				<xsl:text>{</xsl:text>
 				<mark>
 					<xsl:apply-templates/>
@@ -384,7 +384,7 @@
 		</sub>
 	</xsl:template>
 
-	<xsl:template match="tei:div/@resp">
+	<xsl:template match="tei:div">
 		<xsl:if test="not(preceding::tei:div/@resp or preceding::tei:handShift/@new)">
 			<sub>
 				<b> beg. <xsl:value-of select="@resp"/>

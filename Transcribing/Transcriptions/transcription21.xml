@@ -1,0 +1,968 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../Schemas/fnag_mss2.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-stylesheet type="text/xsl" href="../../Coding/Stylesheets/basic-info.xsl"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="T21">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Transcription 21: NLS Adv. 35.4.8</title>
+                <respStmt corresp="MMA">
+                    <name>Martina Maher</name>
+                    <resp>Transcriber</resp>
+                    <resp>Editor</resp>
+                </respStmt>
+                <respStmt corresp="WGI">
+                    <name>William Gillies</name>
+                    <resp>Overseer</resp>
+                </respStmt>
+            </titleStmt>
+            <extent> ... words </extent>
+            <publicationStmt>
+                <authority sameAs="authority"/>
+                <availability status="restricted">
+                    <p>For internal use by the Faclair na Gàidhlig/DASG projects</p>
+                </availability>
+                <idno>T21</idno>
+            </publicationStmt>
+            <notesStmt>
+                <note>
+                    <p/>
+                </note>
+            </notesStmt>
+            <sourceDesc>
+                <msDesc>
+                    <msIdentifier sameAs="MS21">
+                        <settlement>Edinburgh</settlement>
+                        <repository>NLS</repository>
+                        <idno type="shelfmark">Adv. MS. 35.4.8</idno>
+                    </msIdentifier>
+                    <msContents>
+                        <summary>
+                            <p>ADD DESCRIPTION HERE</p>
+                        </summary>
+                        <msItem n="1" xml:id="MS21.1" resp="Hand40">
+                            <locus>p. 176<hi rend="sup">r</hi>1-9</locus>
+                            <title>MacLean pedigree</title>
+                            <incipit>Here follow the forementioned catalogues</incipit>
+                            <explicit>Inghis teurteamher</explicit>
+                            <filiation/>
+                            <textLang mainLang="ghc" otherLangs="gd">
+                                <note/>
+                            </textLang>
+                            <biblFull>
+                                <fileDesc>
+                                    <titleStmt>
+                                        <title>MacLean pedigree</title>
+                                    </titleStmt>
+                                    <publicationStmt><p>Draft transcription</p></publicationStmt>
+                                    <sourceDesc><p>Transcribed from manuscript</p></sourceDesc>
+                                </fileDesc>
+                                <profileDesc>
+                                    <textClass>
+                                        <keywords>
+                                            <term>genealogical</term>
+                                        </keywords>
+                                    </textClass>
+                                </profileDesc>
+                            </biblFull>
+                        </msItem>
+                        <msItem n="2" xml:id="MS21.2" resp="Hand40">
+                            <locus>p. 194<hi rend="sup">r</hi>a1-fol. 1<hi rend="sup">r</hi>c9</locus>
+                            <title>Beginning of Mac Vurich’s Panegyrick on the Macleans</title>
+                            <incipit>Clan Ghilleoin ni bratich bovi borb rini bivighie</incipit>
+                            <explicit>S marig i hachrigh ri auim bruini forr gruoim ghrani</explicit>
+                            <filiation/>
+                            <textLang mainLang="ghc" otherLangs="gd">
+                                <note/>
+                            </textLang>
+                            <biblFull>
+                                <fileDesc>
+                                    <titleStmt>
+                                        <title>Beginning of Mac Vurich’s Panegyrick on the Macleans</title>
+                                    </titleStmt>
+                                    <publicationStmt><p>Draft transcription</p></publicationStmt>
+                                    <sourceDesc><p>Transcribed from manuscript</p></sourceDesc>
+                                </fileDesc>
+                                <profileDesc>
+                                    <textClass>
+                                        <keywords>
+                                            <term>poetry</term>
+                                        </keywords>
+                                    </textClass>
+                                </profileDesc>
+                            </biblFull>
+                        </msItem>
+                    </msContents>
+                    <physDesc>
+                        <p/>
+                        <objectDesc>
+                            <supportDesc>
+                                <support/>
+                                <foliation/>
+                                <condition/>
+                            </supportDesc>
+                            <layoutDesc>
+                                <p/>
+                            </layoutDesc>
+                        </objectDesc>
+                    </physDesc>
+                    <history>
+                        <provenance/>
+                    </history>
+                </msDesc>
+            </sourceDesc>
+        </fileDesc>
+        <encodingDesc>
+            <metDecl>
+                <p/>
+            </metDecl>
+            <refsDecl>
+                <p/>
+            </refsDecl>
+        </encodingDesc>
+        <profileDesc>
+            <handNotes>
+                <handNote sameAs="Hand40"/>
+            </handNotes>
+            <textClass>
+                <keywords>
+                    <term/>
+                </keywords>
+            </textClass>
+        </profileDesc>
+        <revisionDesc>
+            <change when="2019-07-30" resp="MMA">Began initial transcription</change>
+        </revisionDesc>
+    </teiHeader>
+    <text>
+        <body>
+            <div n="1" type="divprose" resp="Hand40" corresp="MS21.1">
+                <p>
+                    <pb n="176" xml:id="MS21.p176"/>
+                    <lb n="21" xml:id="MS21.p176.21"/>
+                        <w xml:lang="en">Here</w>
+                        <space type="scribal"/>
+                        <w xml:lang="en">follow</w>
+                        <space type="scribal"/>
+                        <w xml:lang="en">the</w>
+                        <space type="scribal"/>
+                        <w xml:lang="en">forementioned</w>
+                        <space type="scribal"/>
+                        <w xml:lang="en">Catalogues</w>
+                    <cb n="a" xml:id="MS21.p176.a"/>
+                    <lb n="1" xml:id="MS21.p176.a1"/>
+                        <w xml:lang="en">Mr</w>
+                        <space type="scribal"/>
+                        <w xml:lang="en">Beaton's</w>
+                        <w xml:lang="en">Cata<pc>:</pc><lb n="2" xml:id="MS21.p176.a2"/><pc>:</pc>logue</w>
+                        <pc>.</pc>
+                        <note type="fn" resp="MMA"><p>The context for this is as follows: The upper half of p.176 reads as follows: ‘This poem <supplied resp="MMA">The MacVurich Panegyrick on the MacLeans</supplied>was composed, at least, Thirty Years before kennedy’s Book was published. All these laid together would seem to argue the Genuineness of these Catalogues preserved among the Macleans, and, although Macvurich in Hope of a Reward should be included to forge an illustrious and antient Descent for those he designed to flatter, Yet I see no Reason That Doctor Kennedy a Stranger to them writing in a forreign Country should do so, or make any Mention of them at all, if he had not found in some Record worthy of Credit That they were so descended. There has been in all Ages a Friendship ‘twixt the Mackenzies and Macleans and among them both a rexeived Tradition of their being descended of Two Brothers. But I could never find any authority for this or any seeming Probability even from those who affirmed it most. Mr Buchanan of Aichinar makes Mention of it, and supposes the Macleans to be descended of the Gerlad Earl of Jildarr, and I have heared That Doctor George Mackenzie in his Genealogy of the Mackenzies affirms some such Matter. But as Mr Buchanan gives no Voucher, and the Doctor’s Book has not appeared in the World, and the forementioned Tradition has few Vouchers, and yet fewer that gives it Credit, I am always more apt to believe the most received and better vouched Tradition above related; Yet, if the Doctor;s Book proves the Fraternity from better Authority, I yield to Reason.’</p></note>
+                    <lb n="3" xml:id="MS21.p176.a3"/>
+                        <name type="personal">
+                            <w ana="noun, noun">
+                                <w lemma="gilla" lemmaRef="http://www.dil.ie/25843" ana="noun">Gill</w>
+                                <w ana="noun">ean</w>
+                            </w>
+                        </name>
+                        <space type="scribal"/>
+                        <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">mac</w>
+                    <lb n="4" xml:id="MS21.p176.a4"/>
+                        <name type="personal"><w ana="noun">Crath</w></name>
+                        <note type="fn" resp="MMA"><p>For mac Raith (from <hi rend="italics">rath</hi>, http://www.dil.ie/34833)</p></note>
+                        <space type="scribal"/>
+                        <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">mac</w>
+                    <lb n="5" xml:id="MS21.p176.a5"/>
+                        <name type="personal"><w lemma="mílchú" lemmaRef="http://www.dil.ie/32231" ana="noun">Milhun</w></name>
+                        <space type="scribal"/>
+                        <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">vic</w>
+                    <lb n="6" xml:id="MS21.p176.a6"/>
+                        <name type="personal"><w lemma="Níall" lemmaRef="http://www.dil.ie/33163" ana="noun">Neill</w></name>
+                        <space type="scribal"/>
+                        <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">vic</w>
+                    <lb n="7" xml:id="MS21.p176.a7"/>
+                        <name type="personal">
+                            <w lemma="cú" lemmaRef="http://www.dil.ie/13291" ana="noun">Coun</w>
+                            <w lemma="doilig" lemmaRef="http://www.dil.ie/17839" ana="noun">dully</w>
+                        </name>
+                        <space type="scribal"/>
+                        <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">vic</w>
+                    <lb n="8" xml:id="MS21.p176.a8"/>
+                        <name type="personal"><w lemma="cellach" lemmaRef="http://www.dil.ie/8563" ana="noun">Ceallic</w></name>
+                        <space type="scribal"/>
+                        <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">vic</w>
+                    <lb n="9" xml:id="MS21.p176.a9"/>
+                        <name type="personal"><w ana="noun">Craine</w></name>
+                        <note type="fn" resp="MMA"><p>=Raingce</p></note>
+                        <space type="scribal"/>
+                        <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">vic</w>
+                    <lb n="10" xml:id="MS21.p176.a10"/>
+                        <w lemma="sen" lemmaRef="http://www.dil.ie/37090" ana="adj">Shauin</w>
+                        <space type="scribal"/>
+                        <w ana="adj, noun">
+                            <w lemma="dub" lemmaRef="http://www.dil.ie/18985" ana="adj">Du</w>
+                            <w lemma="Gall" lemmaRef="http://www.dil.ie/25308" ana="noun">il</w>
+                        </w>
+                        <pc>=</pc>
+                    <lb n="11" xml:id="MS21.p176.a11"/>
+                        <pc>=</pc>
+                        <name type="place"><w>skoni</w></name>
+                        <note type="fn" resp="MMA"><p>=Scónn =Scone</p></note>
+                        <space type="scribal"/>
+                       <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">vic</w>
+                    <lb n="12" xml:id="MS21.p176.a12"/>
+                        <name type="personal">
+                            <w ana="noun">Ierei</w>
+                        </name>
+                        <space type="scribal"/>
+                        <w lemma="dub" lemmaRef="http://www.dil.ie/18985" ana="adj">duidh</w>
+                    <lb n="13" xml:id="MS21.p176.a13"/>
+                        <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">vic</w>
+                        <space type="scribal"/>
+                        <name type="personal">
+                            <w ana="noun, noun">
+                                <w lemma="fer" lemmaRef="http://www.dil.ie/21665" ana="noun">Fer</w>
+                                <w lemma="gus" lemmaRef="http://www.dil.ie/26839" ana="noun">ghish</w>
+                            </w>
+                        </name>
+                    <lb n="14" xml:id="MS21.p176.a14"/>
+                         <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">vic</w>
+                         <space type="scribal"/>
+                         <name type="personal"><w ana="noun">Neachdin</w></name>
+                    <lb n="15" xml:id="MS21.p176.a15"/>
+                         <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">vic</w>
+                         <space type="scribal"/>
+                         <name type="personal"><w ana="noun">Colli</w></name>
+                         <note type="fn" resp="MMA"><p>=Colla</p></note>
+                         <space type="scribal"/>
+                         <name type="place"><w lemma="Mumu" lemmaRef="http://www.dil.ie/32829" ana="noun">mium</w></name>
+                    <lb n="16" xml:id="MS21.p176.a16"/>
+                         <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">vic</w>
+                         <space type="scribal"/>
+                         <name type="personal"><w ana="noun">Boaghan</w></name>
+                         <note type="fn" resp="MMA"><p>=Baodán</p></note>
+                    <lb n="17" xml:id="MS21.p176.a17"/>
+                         <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">vic</w>
+                         <space type="scribal"/>
+                         <name type="personal"><w ana="noun">Eoachie</w></name>
+                    <lb n="18" xml:id="MS21.p176.a18"/>
+                        <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">vic</w>
+                        <space type="scribal"/>
+                        <name type="personal"><w ana="noun">Mhurchuih</w></name>
+                    <lb n="19" xml:id="MS21.p176.a19"/>
+                        <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">vic</w>
+                        <space type="scribal"/>
+                        <name type="personal"><w ana="noun">Lognirni</w></name>
+                    <lb n="20" xml:id="MS21.p176.a20"/>
+                        <w lemma="mór" lemmaRef="http://www.dil.ie/32548" ana="adj">mhoir</w>
+                        <space type="scribal"/>
+                        <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">vic</w>
+                    <lb n="21" xml:id="MS21.p176.a21"/>
+                        <name type="personal"><w ana="noun, noun"><w lemma="fer" lemmaRef="http://www.dil.ie/21665" ana="noun">Fer</w><w lemma="gus" lemmaRef="http://www.dil.ie/26839" ana="noun">ghis</w></w></name>
+                        <space type="scribal"/>
+                        <w ana="noun, adj">
+                            <w lemma="abra" lemmaRef="http://www.dil.ie/77" ana="noun">abra</w>
+                            <pc>=</pc>
+                    <lb n="22" xml:id="MS21.p176.a22"/>
+                            <pc>=</pc>
+                            <w lemma="rúad" lemmaRef="http://www.dil.ie/35614" ana="adj">riodh</w>
+                        </w>
+                        <space type="scribal"/>
+                        <name type="personal"><w ana="noun">eoghon</w></name>
+                    <lb n="23" xml:id="MS21.p176.a23"/>
+                        <w lemma="rí" lemmaRef="http://www.dil.ie/35181" ana="noun">ri</w>
+                        <space type="scribal"/>
+                        <name type="personal"><w ana="noun">Albi</w></name>
+                        <space type="scribal"/>
+                        <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">vic</w>
+                    <cb n="b" xml:id="MS21.p176.b"/>
+                    <lb n="1" xml:id="MS21.p176.b1"/>
+                        <w xml:lang="en">Dr</w>
+                        <w xml:lang="en">Kennedy's</w>
+                    <lb n="2" xml:id="MS21.p176.b2"/>
+                        <w xml:lang="en">Catalogue</w>
+                    <lb n="3" xml:id="MS21.p176.b3"/>
+                    <lb n="4" xml:id="MS21.p176.b4"/>
+                    <lb n="5" xml:id="MS21.p176.b5"/>
+                    <lb n="6" xml:id="MS21.p176.b6"/>
+                    <lb n="7" xml:id="MS21.p176.b7"/>
+                    <lb n="8" xml:id="MS21.p176.b8"/>
+                    <lb n="9" xml:id="MS21.p176.b9"/>
+                    <lb n="10" xml:id="MS21.p176.b10"/>
+                    <lb n="11" xml:id="MS21.p176.b11"/>
+                    <lb n="12" xml:id="MS21.p176.b12"/>
+                    <lb n="13" xml:id="MS21.p176.b13"/>
+                    <lb n="14" xml:id="MS21.p176.b14"/>
+                    <lb n="15" xml:id="MS21.p176.b15"/>
+                    <lb n="16" xml:id="MS21.p176.b16"/>
+                    <lb n="17" xml:id="MS21.p176.b17"/>
+                    <lb n="18" xml:id="MS21.p176.b18"/>
+                    <lb n="19" xml:id="MS21.p176.b19"/>
+                        <name type="personal"><w ana="noun">Logirni</w></name>
+                        <space type="scribal"/>
+                        <w lemma="mór" lemmaRef="http://www.dil.ie/32548" ana="adj">mor</w>
+                    <lb n="20" xml:id="MS21.p176.b20"/>
+                        <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">mac</w>
+                        <space type="scribal"/>
+                        <name type="personal"><w ana="noun">Ere</w></name>
+                    <lb n="21" xml:id="MS21.p176.b21"/>
+                        <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">vic</w>
+                    <cb n="c" xml:id="MS21.p176.c"/>
+                    <lb n="1" xml:id="MS21.p176.c1"/>
+                        <w xml:lang="en">Mr</w>
+                        <space type="scribal"/>
+                        <w xml:lang="en">B<abbr cert="high"><g ref="g63">eaton</g></abbr>'s</w>
+                        <space type="scribal"/>
+                        <w xml:lang="en">Catalogue</w>
+                    <lb n="2" xml:id="MS21.p176.c2"/>
+                    <lb n="3" xml:id="MS21.p176.c3"/>
+                        <name type="personal"><w ana="noun">Ere</w></name>
+                        <note type="fn" resp="MMA"><p>For Earc?</p></note>
+                        <space type="scribal"/>
+                        <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">vic</w>
+                    <lb n="4" xml:id="MS21.p176.c4"/>
+                        <name type="personal"><w ana="noun">Eaochie</w></name>
+                        <space type="scribal"/>
+                        <w ana="noun, adj">
+                            <w lemma="muin" lemmaRef="http://www.dil.ie/32713" ana="noun">bun</w>
+                            <w lemma="remor" lemmaRef="http://www.dil.ie/35078" ana="adj">ram<pc>=</pc><lb n="5" xml:id="MS21.p176.c5"/><pc>=</pc>bir</w>
+                        </w>
+                        <space type="scribal"/>
+                        <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">vic</w>
+                    <lb n="6" xml:id="MS21.p176.c6"/>
+                        <name type="personal"><w lemma="Oengus" lemmaRef="http://www.dil.ie/33532" ana="noun">Inghis</w></name>
+                        <space type="scribal"/>
+                        <w lemma="úallach" lemmaRef="http://www.dil.ie/42711" ana="adj">uolich</w>
+                        <space type="scribal"/>
+                        <w xml:lang="en">or</w>
+                    <lb n="7" xml:id="MS21.p176.c7"/>
+                        <name type="personal"><w lemma="Oengus" lemmaRef="http://www.dil.ie/33532" ana="noun">Inghis</w></name>
+                        <space type="scribal"/>
+                        <w lemma="fer" lemmaRef="http://www.dil.ie/21665" ana="noun">fear</w>
+                        <space type="scribal"/>
+                        <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">vic</w>
+                    <lb n="8" xml:id="MS21.p176.c8"/>
+                        <name type="personal"><w ana="noun, noun"><w lemma="fer" lemmaRef="http://www.dil.ie/21665" ana="noun"></w><w lemma="gus" lemmaRef="http://www.dil.ie/26839" ana="noun"></w></w></name>
+                        <space type="scribal"/>
+                        <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">vic</w>
+                    <lb n="9" xml:id="MS21.p176.c9"/>
+                        <name type="personal"><w ana="noun">Eaochie</w></name>
+                        <space type="scribal"/>
+                        <w ana="adj">tuom<space type="scribal"/>hil</w>
+                        <note type="fn" resp="MMA"><p>=Taithmheal/Tathmhal</p></note>
+                    <lb n="10" xml:id="MS21.p176.c10"/>
+                        <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">vic</w>
+                        <space type="scribal"/>
+                        <name type="personal"><w ana="noun">Felim</w></name>
+                        <space type="scribal"/>
+                        <w ana="noun, noun">
+                            <w lemma="lám" lemmaRef="http://www.dil.ie/29507" ana="noun">lamh</w>
+                    <lb n="11" xml:id="MS21.p176.c11"/>
+                            <w lemma="doé" lemmaRef="http://www.dil.ie/17513" ana="noun">doid</w>
+                        </w>
+                        <space type="scribal"/>
+                        <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">vic</w>
+                    <lb n="12" xml:id="MS21.p176.c12"/>
+                        <name type="personal"><w ana="noun">Cinc</w></name>
+                        <note type="fn" resp="MMA"><p>=Cinge/Cionga</p></note>
+                        <space type="scribal"/>
+                        <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">vic</w>
+                    <lb n="13" xml:id="MS21.p176.c13"/>
+                        <name type="personal"><w lemma="Gúaire" lemmaRef="http://www.dil.ie/26748" ana="noun">Gouri</w></name>
+                        <space type="scribal"/>
+                        <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">vic</w>
+                    <lb n="14" xml:id="MS21.p176.c14"/>
+                        <name type="personal"><w ana="noun">Fiunduin</w></name>
+                        <note type="fn" resp="MMA"><p>Fiontan</p></note>
+                        <space type="scribal"/>
+                        <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">vic</w>
+                    <lb n="15" xml:id="MS21.p176.c15"/>
+                        <name type="personal"><w ana="noun">Carbre</w></name>
+                        <space type="scribal"/>
+                        <w lemma="UNKNOWN">nad</w>
+                        <space type="scribal"/>
+                        <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">vic</w>
+                    <lb n="16" xml:id="MS21.p176.c16"/>
+                        <name type="personal"><w ana="noun">Conir</w></name>
+                        <note type="fn" resp="MMA"><p>=Conaire</p></note>
+                        <space type="scribal"/>
+                        <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">vic</w>
+                    <lb n="17" xml:id="MS21.p176.c17"/>
+                        <name type="personal"><w lemma="alldathach" lemmaRef="http://www.dil.ie/2964" ana="adj">Alliod</w></name>
+                        <note type="fn" resp="MMA"><p>=Allathach. <hi rend="italics">Recte</hi> Lugaid Allathach?</p></note>
+                        <space type="scribal"/>
+                        <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">vic</w>
+                    <lb n="18" xml:id="MS21.p176.c18"/>
+                        <name type="personal"><w ana="noun">Carbre</w></name>
+                        <space type="scribal"/>
+                        <w ana="adj, noun">
+                            <w lemma="cromm" lemmaRef="http://www.dil.ie/13103" ana="adj">chrom</w>
+                            <pc>=</pc>
+                    <lb n="19" xml:id="MS21.p176.c19"/>
+                            <pc>=</pc>
+                            <w lemma="cenn" lemmaRef="http://www.dil.ie/8622" ana="noun">chin</w>
+                        </w>
+                    <lb n="20" xml:id="MS21.p176.c20"/>
+                        <name type="personal"><w lemma="Dáire" lemmaRef="http://www.dil.ie/14270" ana="noun">Dari</w></name>
+                        <space type="scribal"/>
+                        <w lemma="dornmar" lemmaRef="http://www.dil.ie/18371" ana="adj">
+                            <w lemma="dorn" lemmaRef="http://www.dil.ie/18356" ana="noun">dorn</w>
+                    <lb n="21" xml:id="MS21.p176.c21"/>
+                            <w lemma="mór" lemmaRef="http://www.dil.ie/32548" ana="adj">mhor</w>
+                        </w>
+                        <space type="scribal"/>
+                        <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">vic</w>
+                    <lb n="22" xml:id="MS21.p176.c22"/>
+                        <name type="personal"><w ana="noun">Carbre</w></name>
+                        <space type="scribal"/>
+                        <w ana="adj, adj">
+                            <w lemma="finn" lemmaRef="http://www.dil.ie/22134" ana="adj">fiun</w>
+                    <lb n="23" xml:id="MS21.p176.c23"/>
+                            <w lemma="mór" lemmaRef="http://www.dil.ie/32548" ana="adj">mhoir</w>
+                        </w>
+                        <space type="scribal"/>
+                        <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">vic</w>
+                    <lb n="24" xml:id="MS21.p176.c24"/>
+                        <name type="personal"><w ana="noun">Conir</w></name>
+                        <note type="fn" resp="MMA"><p>=Conaire</p></note>
+                        <space type="scribal"/>
+                        <w lemma="mór" lemmaRef="http://www.dil.ie/32548" ana="adj">mhoir</w>
+                        <space type="scribal"/>
+                        <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">vic</w>
+                    <lb n="25" xml:id="MS21.p176.c25"/>
+                        <name type="personal"><w ana="noun">Edir<space type="scribal"/>Sceoil</w></name>
+                        <note type="fn" resp="MMA"><p>=Eidirscéal</p></note>
+                    <lb n="26" xml:id="MS21.p176.c26"/>
+                        <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">vic</w>
+                    <cb n="d" xml:id="MS21.p176.d"/>
+                    <lb n="1" xml:id="MS21.p176.d1"/>
+                        <w xml:lang="en">Dr</w>
+                        <space type="scribal"/>
+                        <w xml:lang="en">Ken<abbr cert="high"><g ref="g63">nedy</g></abbr>'s</w>
+                        <space type="scribal"/>
+                        <w xml:lang="en">Cata<pc>=</pc><lb n="2" xml:id="MS21.p176.d2"/><pc>=</pc>logue</w>
+                        <pc>.</pc>
+                    <lb n="3" xml:id="MS21.p176.d3"/>
+                    <lb n="4" xml:id="MS21.p176.d4"/>
+                        <name type="personal"><w ana="noun">Eaochie</w></name>
+                        <space type="scribal"/>
+                        <w ana="noun, adj">
+                            <w lemma="muin" lemmaRef="http://www.dil.ie/32713" ana="noun">bun</w>
+                            <space type="scribal"/>
+                            <pc>=</pc>
+                    <lb n="5" xml:id="MS21.p176.d5"/>
+                            <w lemma="remor" lemmaRef="http://www.dil.ie/35078" ana="adj">ramhir</w>
+                        </w>
+                        <space type="scribal"/>
+                        <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">vic</w>
+                    <lb n="6" xml:id="MS21.p176.d6"/>
+                        <name type="personal"><w lemma="Oengus" lemmaRef="http://www.dil.ie/33532" ana="noun">Inghis</w></name>
+                        <space type="scribal"/>
+                        <w lemma="úallach" lemmaRef="http://www.dil.ie/42711" ana="adj">uolich</w>
+                    <lb n="7" xml:id="MS21.p176.d7"/>
+                        <w xml:lang="en">or</w>
+                        <space type="scribal"/>
+                        <name type="personal"><w lemma="fer" lemmaRef="http://www.dil.ie/21665" ana="noun">fear</w></name>
+                        <space type="scribal"/>
+                        <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">vic</w>
+                    <lb n="8" xml:id="MS21.p176.d8"/>
+                        <name type="personal"><w ana="noun, noun"><w lemma="fer" lemmaRef="http://www.dil.ie/21665" ana="noun">Fer</w><w lemma="gus" lemmaRef="http://www.dil.ie/26839" ana="noun">ghis</w></w></name>
+                        <space type="scribal"/>
+                        <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">vic</w>
+                    <lb n="9" xml:id="MS21.p176.d9"/>
+                        <name type="personal"><w ana="noun">Fiachra</w></name>
+                        <space type="scribal"/>
+                        <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">vic</w>
+                    <lb n="10" xml:id="MS21.p176.d10"/>
+                        <name type="personal"><w ana="noun">Felim</w></name>
+                        <space type="scribal"/>
+                        <w ana="noun, noun">
+                            <w lemma="lám" lemmaRef="http://www.dil.ie/29507" ana="noun">lamh</w>
+                            <w lemma="doé" lemmaRef="http://www.dil.ie/17513" ana="noun">do<pc>=</pc><lb n="11" xml:id="MS21.p176.d11"/><pc>=</pc>id</w>
+                        </w>
+                        <space type="scribal"/>
+                        <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">vic</w>
+                    <lb n="12" xml:id="MS21.p176.d12"/>
+                        <name type="personal"><w ana="noun">Kinta</w></name>
+                        <note type="fn" resp="MMA"><p>=Cinte/Cionta</p></note>
+                        <space type="scribal"/>
+                        <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">vic</w>
+                    <lb n="13" xml:id="MS21.p176.d13"/>
+                        <name type="personal"><w lemma="Gúaire" lemmaRef="http://www.dil.ie/26748" ana="noun">Guori</w></name>
+                        <space type="scribal"/>
+                        <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">vic</w>
+                    <lb n="14" xml:id="MS21.p176.d14"/>
+                        <name type="personal"><w ana="noun">Fiunduin</w></name>
+                        <note type="fn" resp="MMA"><p>Fiontan</p></note>
+                        <space type="scribal"/>
+                        <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">vic</w>
+                    <lb n="15" xml:id="MS21.p176.d15"/>
+                        <name type="personal"><w ana="noun">Eaochie</w></name>
+                        <space type="scribal"/>
+                        <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">vic</w>
+                    <lb n="16" xml:id="MS21.p176.d16"/>
+                        <name type="personal"><w ana="noun">Conir</w></name>
+                        <note type="fn" resp="MMA"><p>=Conaire</p></note>
+                        <space type="scribal"/>
+                        <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">vic</w>
+                    <lb n="17" xml:id="MS21.p176.d17"/>
+                        <name type="personal">
+                            <w lemma="mug" lemmaRef="http://www.dil.ie/32675" ana="noun">Moga</w>
+                            <w lemma="lám" lemmaRef="http://www.dil.ie/29507" ana="noun">lama</w>
+                        </name>
+                        <space type="scribal"/>
+                        <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">vic</w>
+                    <lb n="18" xml:id="MS21.p176.d18"/>
+                        <name type="personal"><w lemma="alldathach" lemmaRef="http://www.dil.ie/2964" ana="adj">Alliod</w></name>
+                        <note type="fn" resp="MMA"><p>=Allathach. <hi rend="italics">Recte</hi> Lugaid Allathach?</p></note>
+                        <space type="scribal"/>
+                        <w xml:lang="en">or</w>
+                    <lb n="19" xml:id="MS21.p176.d19"/>
+                        <name type="personal"><w lemma="Lugaid" lemmaRef="http://www.dil.ie/30946" ana="noun">Luig</w></name>
+                        <space type="scribal"/>
+                        <w lemma="alldathach" lemmaRef="http://www.dil.ie/2964" ana="adj">Allatach</w>
+                    <lb n="20" xml:id="MS21.p176.d20"/>
+                        <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">vic</w>
+                        <space type="scribal"/>
+                        <name type="personal"><w ana="noun">Carbre</w></name>
+                    <lb n="21" xml:id="MS21.p176.d21"/>
+                        <w ana="adj, noun">
+                            <w lemma="cromm" lemmaRef="http://www.dil.ie/13103" ana="adj">Chrom</w>
+                            <w lemma="cenn" lemmaRef="http://www.dil.ie/8622" ana="noun">chin</w>
+                        </w>
+                    <lb n="22" xml:id="MS21.p176.d22"/>
+                        <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">vic</w>
+                        <space type="scribal"/>
+                        <name type="personal"><w lemma="Dáire" lemmaRef="http://www.dil.ie/14270" ana="noun">Dari</w></name>
+                    <lb n="23" xml:id="MS21.p176.d23"/>
+                        <w lemma="dornmar" lemmaRef="http://www.dil.ie/18371" ana="adj">
+                            <w lemma="dorn" lemmaRef="http://www.dil.ie/18356" ana="noun">dorn</w>
+                            <space type="scribal"/>
+                            <w lemma="mór" lemmaRef="http://www.dil.ie/32548" ana="adj">mhoir</w>
+                        </w>
+                    <lb n="24" xml:id="MS21.p176.d24"/>
+                        <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">vic</w>
+                        <space type="scribal"/>
+                        <name type="personal"><w ana="noun">Carbre</w></name>
+                    <lb n="25" xml:id="MS21.p176.d25"/>
+                        <w ana="adj, adj">
+                            <w lemma="finn" lemmaRef="http://www.dil.ie/22134" ana="adj">fiun</w>
+                            <space type="scribal"/>
+                            <w lemma="mór" lemmaRef="http://www.dil.ie/32548" ana="adj">mhoir</w>
+                        </w>
+                    <lb n="26" xml:id="MS21.p176.d26"/>
+                        <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">vic</w>
+                        <space type="scribal"/>
+                        <name type="personal"><w ana="noun">Conir</w></name>
+                        <note type="fn" resp="MMA"><p>=Conaire</p></note>
+                    <lb n="27" xml:id="MS21.p176.d27"/>
+                        <w lemma="mór" lemmaRef="http://www.dil.ie/32548" ana="adj">mhoir</w>
+                        <space type="scribal"/>
+                        <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">vic</w>
+                    <lb n="28" xml:id="MS21.p176.d28"/>
+                        <name type="personal"><w ana="noun">Edir<space type="scribal"/>Sieoil</w></name>
+                        <note type="fn" resp="MMA"><p>=Eidirscéal</p></note>
+                    <lb n="29" xml:id="MS21.p176.d29"/>
+                        <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">vic</w>
+                    <cb n="e" xml:id="MS21.p176.e"/>
+                    <lb n="1" xml:id="MS21.p176.e1"/>
+                        <w xml:lang="en">Mr</w>
+                        <space type="scribal"/>
+                        <w xml:lang="en">B<abbr cert="high"><g ref="g63">eaton</g></abbr>'s</w>
+                        <space type="scribal"/>
+                        <w xml:lang="en">Catalogue</w>
+                    <lb n="2" xml:id="MS21.p176.e2"/>
+                    <lb n="3" xml:id="MS21.p176.e3"/>
+                    <lb n="4" xml:id="MS21.p176.e4"/>
+                        <name type="personal"><w ana="noun">Eoidhin</w></name>
+                        <note type="fn" resp="MMA"><p>=Eoghan</p></note>
+                        <space type="scribal"/>
+                        <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">vic</w>
+                    <lb n="5" xml:id="MS21.p176.e5"/>
+                        <name type="personal"><w ana="noun">Eri</w></name>
+                        <space type="scribal"/>
+                        <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">vic</w>
+                    <lb n="6" xml:id="MS21.p176.e6"/>
+                        <name type="personal"><w ana="noun">Olliol</w></name>
+                        <space type="scribal"/>
+                        <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">vic</w>
+                    <lb n="7" xml:id="MS21.p176.e7"/>
+                        <name type="personal"><w lemma="Dedad" lemmaRef="http://www.dil.ie/14974" ana="noun">Deaodhie</w></name>
+                        <space type="scribal"/>
+                        <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">vic</w>
+                    <lb n="8" xml:id="MS21.p176.e8"/>
+                        <name type="personal"><w lemma="sen" lemmaRef="http://www.dil.ie/37090" ana="adj">Shin</w></name>
+                        <space type="scribal"/>
+                        <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">vic</w>
+                    <lb n="9" xml:id="MS21.p176.e9"/>
+                        <name type="personal"><w lemma="trén" lemmaRef="http://www.dil.ie/41798" ana="noun">Tren</w></name>
+                        <space type="scribal"/>
+                        <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">vic</w>
+                    <lb n="10" xml:id="MS21.p176.e10"/>
+                        <name type="personal"><w ana="noun">Rotren</w></name>
+                        <space type="scribal"/>
+                        <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">vic</w>
+                    <lb n="11" xml:id="MS21.p176.e11"/>
+                        <name type="personal"><w ana="noun">Ernaili</w></name>
+                        <note type="fn" resp="MMA"><p>=Éarnn?</p></note>
+                        <space type="scribal"/>
+                        <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">vic</w>
+                    <lb n="12" xml:id="MS21.p176.e12"/>
+                        <name type="personal"><w ana="noun">Manimhoir</w></name>
+                        <space type="scribal"/>
+                        <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">vic</w>
+                    <lb n="13" xml:id="MS21.p176.e13"/>
+                        <name type="personal"><w ana="noun, noun"><w lemma="fer" lemmaRef="http://www.dil.ie/21665" ana="noun">Fer</w><w lemma="gus" lemmaRef="http://www.dil.ie/26839" ana="noun">ghis</w></w></name>
+                        <space type="scribal"/>
+                        <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">vic</w>
+                    <lb n="14" xml:id="MS21.p176.e14"/>
+                        <name type="personal"><w ana="noun, noun"><w lemma="fer" lemmaRef="http://www.dil.ie/21665" ana="noun">Fer</w><w lemma="gus" lemmaRef="http://www.dil.ie/26839" ana="noun">ghis</w></w></name>
+                        <space type="scribal"/>
+                        <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">vic</w>
+                    <lb n="15" xml:id="MS21.p176.e15"/>
+                        <name type="personal"><w ana="noun">Olliol</w></name>
+                        <space type="scribal"/>
+                        <name type="population"><w ana="noun">erin</w></name>
+                        <note type="fn" resp="MMA"><p>=Éarann</p></note>
+                    <lb n="16" xml:id="MS21.p176.e16"/>
+                        <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">vic</w>
+                        <space type="scribal"/>
+                        <name type="personal"><w ana="noun">Fiachry</w></name>
+                    <lb n="17" xml:id="MS21.p176.e17"/>
+                        <w lemma="fer" lemmaRef="http://www.dil.ie/21665" ana="noun">Fir</w>
+                        <w lemma="muir" lemmaRef="http://www.dil.ie/32761" ana="noun">vary</w>
+                        <space type="scribal"/>
+                        <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">vic</w>
+                    <lb n="18" xml:id="MS21.p176.e18"/>
+                        <name type="personal"><w lemma="Oengus" lemmaRef="http://www.dil.ie/33532" ana="noun">Inghis</w></name>
+                        <space type="scribal"/>
+                        <w lemma="tuirbech" lemmaRef="http://www.dil.ie/42374" ana="adj">teur<supplied resp="MMA">vach</supplied></w>
+                        <name type="place"><w lemma="temair" lemmaRef="http://www.dil.ie/40480" ana="noun">te<pc>=</pc><lb n="19" xml:id="MS21.p176.e19"/><pc>=</pc>amher</w></name>
+                    <cb n="f" xml:id="MS21.p176.f"/>
+                    <lb n="1" xml:id="MS21.p176.f1"/>
+                        <w xml:lang="en">Dr</w>
+                        <w xml:lang="en">Kennedy's</w>
+                        <space type="scribal"/>
+                        <w xml:lang="en">Ca<pc>=</pc><lb n="2" xml:id="MS21.p176.f2"/><pc>=</pc>talogue</w>
+                    <lb n="3" xml:id="MS21.p176.f3"/>
+                    <lb n="4" xml:id="MS21.p176.f4"/>
+                        <name type="personal"><w ana="noun">Eogan</w></name>
+                        <space type="scribal"/>
+                        <w xml:lang="en">or</w>
+                        <space type="scribal"/>
+                        <name type="personal"><w ana="noun">Evan</w></name>
+                        <space type="scribal"/>
+                        <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">vic</w>
+                    <lb n="5" xml:id="MS21.p176.f5"/>
+                        <name type="personal"><w ana="noun">Olliol</w></name>
+                        <space type="scribal"/>
+                        <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">vic</w>
+                    <lb n="6" xml:id="MS21.p176.f6"/>   
+                        <name type="personal"><w lemma="Éber" lemmaRef="http://www.dil.ie/19339" ana="noun">Evior</w></name>
+                        <space type="scribal"/>
+                        <supplied resp="MMA"><w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">vic</w></supplied>
+                        <name type="personal"><w ana="noun">Hiar</w></name>
+                        <space type="scribal"/>
+                        <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">vic</w>
+                    <lb n="7" xml:id="MS21.p176.f7"/>
+                        <name type="personal"><w lemma="Dedad" lemmaRef="http://www.dil.ie/14974" ana="noun">Deaodhie</w></name>
+                        <space type="scribal"/>
+                        <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">vic</w>
+                    <lb n="8" xml:id="MS21.p176.f8"/>
+                        <name type="personal">
+                            <w lemma="sen" lemmaRef="http://www.dil.ie/37090" ana="adj">Shin</w>
+                        </name>
+                        <supplied resp="MMA"><w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">vic</w></supplied>
+                    <lb n="9" xml:id="MS21.p176.f9"/>
+                        <name type="personal">
+                            <w ana="pref, adj">
+                                <w lemma="ro" lemmaRef="http://www.dil.ie/35365" ana="pref">Ro</w>
+                                <w lemma="sen" lemmaRef="http://www.dil.ie/37090" ana="adj">shin</w>
+                            </w>
+                        </name>
+                        <space type="scribal"/>
+                        <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">vic</w>
+                    <lb n="10" xml:id="MS21.p176.f10"/>
+                        <name type="personal"><w lemma="trén" lemmaRef="http://www.dil.ie/41798" ana="noun">Tren</w></name>
+                        <space type="scribal"/>
+                        <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">vic</w>
+                    <lb n="11" xml:id="MS21.p176.f11"/>
+                        <name type="personal">
+                            <w ana="pref, noun">
+                                <w lemma="ro" lemmaRef="http://www.dil.ie/35365" ana="pref">Ro</w>
+                                <w lemma="trén" lemmaRef="http://www.dil.ie/41798" ana="noun">thren</w>
+                            </w>
+                        </name>
+                        <space type="scribal"/>
+                        <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">vic</w>
+                    <lb n="12" xml:id="MS21.p176.f12"/>
+                        <name type="personal"><w ana="noun">Earndill</w></name>
+                        <note type="fn" resp="MMA"><p>=Éarnn? Arnal?</p></note>
+                        <space type="scribal"/>
+                        <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">vic</w>
+                    <lb n="13" xml:id="MS21.p176.f13"/>
+                        <name type="personal"><w lemma="forggu" lemmaRef="http://www.dil.ie/23687" ana="adj">Fergo</w></name>
+                        <space type="scribal"/>
+                        <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">vic</w>
+                    <lb n="14" xml:id="MS21.p176.f14"/>
+                        <name type="personal"><w ana="noun">Feradach</w></name>
+                        <space type="scribal"/>
+                        <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">vic</w>
+                    <lb n="15" xml:id="MS21.p176.f15"/>
+                        <name type="personal"><w ana="noun">Olliol</w></name>
+                        <space type="scribal"/>
+                        <name type="population"><w ana="noun">Erin</w></name>
+                        <note type="fn" resp="MMA"><p>=Éarann</p></note>
+                        <space type="scribal"/>
+                        <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">vic</w>
+                    <lb n="16" xml:id="MS21.p176.f16"/>
+                        <name type="personal"><w ana="noun">Fiachry</w></name>
+                        <space type="scribal"/>
+                        <w lemma="fer" lemmaRef="http://www.dil.ie/21665" ana="noun">Fir</w>
+                        <w lemma="muir" lemmaRef="http://www.dil.ie/32761" ana="noun">vary</w>
+                        <space type="scribal"/>
+                        <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">vic</w>
+                    <lb n="17" xml:id="MS21.p176.f17"/>
+                        <name type="personal">
+                            <w lemma="Oengus" lemmaRef="http://www.dil.ie/33532" ana="noun">Inighis</w>
+                        </name>
+                        <space type="scribal"/>
+                        <w lemma="tuirbech" lemmaRef="http://www.dil.ie/42374" ana="adj">teur<supplied resp="MMA">vach</supplied></w>
+                        <name type="place"><w lemma="temair" lemmaRef="http://www.dil.ie/40480" ana="noun">teamher</w></name>
+                </p>
+            </div>
+            <div n="2" type="verse" resp="Hand40" corresp="MS21.2">
+                <lg n="1" type="stanza" xml:id="MS21.2.1">
+                    <l n="a" xml:id="MS21.2.1a">
+                <pb n="194" xml:id="MS21.p194"/>
+                <lb n="14" xml:id="MS21.p194.14"/>
+                        <w lemma="clann" lemmaRef="http://www.dil.ie/9365" ana="noun">Clan</w>
+                        <space type="scribal"/>
+                        <name type="personal">
+                            <w ana="noun, noun">
+                                <w lemma="gilla" lemmaRef="http://www.dil.ie/25843" ana="noun">Ghill</w>
+                                <w ana="noun">eoin</w>
+                            </w>
+                        </name>
+                        <space type="scribal"/>
+                        <w lemma="in" lemmaRef="http://www.dil.ie/28194" ana="art">ni</w>
+                        <space type="scribal"/>
+                        <w lemma="brattach" lemmaRef="http://www.dil.ie/6600" ana="noun">bratich</w>
+                        <space type="scribal"/>
+                        <w lemma="badba" lemmaRef="http://www.dil.ie/5115" ana="noun">bovi</w>
+                        <space type="scribal"/>
+                        <w lemma="borb" lemmaRef="http://www.dil.ie/6398" ana="adj">borb</w>
+                        <space type="scribal"/>
+                        <w ana="prep, poss">
+                            <w lemma="fri" lemmaRef="http://www.dil.ie/24329" ana="prep, pron">ri</w>
+                            <space type="scribal"/>
+                            <w lemma="a" lemmaRef="http://www.dil.ie/3" ana="poss">ni</w>
+                        </w>
+                        <space type="scribal"/>
+                        <w lemma="bibdu" lemmaRef="http://www.dil.ie/5851" ana="noun">bi<space type="scribal"/>vighie</w>
+                    </l>
+                    <l n="b" xml:id="MS21.2.1b">
+                <lb n="15" xml:id="MS21.p194.15"/>
+                        <w lemma="is" lemmaRef="http://www.dil.ie/29104" ana="verb">S</w>
+                        <w lemma="mairg" lemmaRef="http://www.dil.ie/31399" ana="noun">mairg</w>
+                        <space type="scribal"/>
+                        <w ana="prep, art">
+                            <w lemma="do" lemmaRef="http://www.dil.ie/17096" ana="prep">d</w>
+                            <w lemma="in" lemmaRef="http://www.dil.ie/28194" ana="art">in</w>
+                        </w>
+                        <space type="scribal"/>
+                        <w lemma="slóg" lemmaRef="http://www.dil.ie/37981" ana="noun">tluoidh</w>
+                        <space type="scribal"/>
+                        <w lemma="ar" lemmaRef="http://www.dil.ie/3902" ana="prep">er</w>
+                        <space type="scribal"/>
+                        <w lemma="ed" lemmaRef="http://www.dil.ie/19658" ana="noun">fegh</w>
+                        <space type="scribal"/>
+                        <w lemma="in" lemmaRef="http://www.dil.ie/28194" ana="art">ni</w>
+                        <space type="scribal"/>
+                        <name type="place"><w ana="noun">fouli</w></name>
+                        <space type="scribal"/>
+                        <w ana="prep, poss">
+                            <w lemma="oc" lemmaRef="http://www.dil.ie/33397" ana="prep">g</w>
+                            <w lemma="a" lemmaRef="http://www.dil.ie/3" ana="poss">a</w>
+                        </w>
+                        <space type="scribal"/>
+                        <w lemma="dál" lemmaRef="http://www.dil.ie/14345" ana="noun">ndail</w>
+                        <space type="scribal"/>
+                        <w lemma="dimbág" lemmaRef="http://www.dil.ie/16487" ana="noun">dimighie</w>
+                    </l>
+                    <l n="c" xml:id="MS21.2.1c">
+                <lb n="16" xml:id="MS21.p194.16"/>
+                        <w lemma="gasrad" lemmaRef="http://www.dil.ie/25446" ana="noun">Gasrie</w>
+                        <space type="scribal"/>
+                        <w lemma="glésta" lemmaRef="http://www.dil.ie/26076" ana="adj">Glesdi</w>
+                        <space type="scribal"/>
+                        <w lemma="Goídel" lemmaRef="http://www.dil.ie/26308" ana="noun">ghoidhell</w>
+                        <space type="scribal"/>
+                        <w lemma="dánae" lemmaRef="http://www.dil.ie/14575" ana="adj">gha<space type="scribal"/>ni</w>
+                        <space type="scribal"/>
+                        <w ana="adj, noun">
+                            <w lemma="óc" lemmaRef="http://www.dil.ie/33398" ana="adj">oig</w>
+                            <space type="scribal"/>
+                            <w lemma="fer" lemmaRef="http://www.dil.ie/21665" ana="noun">fer</w>
+                        </w>
+                        <space type="scribal"/>
+                        <w lemma="imdae" lemmaRef="http://www.dil.ie/27433" ana="noun">imighie</w>
+                    </l>
+                    <l n="d" xml:id="MS21.2.1d">
+                <lb n="17" xml:id="MS21.p194.17"/>
+                        <w ana="part, part, verb">
+                            <w ana="part, part">
+                                <w lemma="ní" lemmaRef="http://www.dil.ie/33147" ana="adv">ni</w>
+                                <w lemma="ro" lemmaRef="http://www.dil.ie/35364" ana="part">r</w>
+                            </w>
+                            <space type="scribal"/>
+                            <w lemma="ceilid" lemmaRef="http://www.dil.ie/8460" ana="verb">Cheil</w>
+                        </w>
+                        <space type="scribal"/>
+                        <w lemma="buinne" lemmaRef="http://www.dil.ie/7399" ana="noun">buinti</w>
+                        <space type="scribal"/>
+                        <w ana="prep, art">
+                            <supplied resp="Campbell1968">%<w lemma="de" lemmaRef="http://www.dil.ie/14787" ana="prep">do</w></supplied>
+                            <w lemma="in" lemmaRef="http://www.dil.ie/28194" ana="art">n</w>
+                        </w>
+                        <w lemma="fuil" lemmaRef="http://www.dil.ie/24792" ana="noun">uil</w>
+                        <space type="scribal"/>
+                        <w lemma="brais" lemmaRef="http://www.dil.ie/6559" ana="adj">mhrash</w>
+                        <space type="scribal"/>
+                        <w lemma="meraige" lemmaRef="http://www.dil.ie/31990" ana="adj">mherighi</w>
+                        <space type="scribal"/>
+                        <w lemma="is" lemmaRef="http://www.dil.ie/29104" ana="verb">noch</w>
+                        <space type="scribal"/>
+                        <w lemma="tais" lemmaRef="http://www.dil.ie/39821" ana="noun">tash</w>
+                        <space type="scribal"/>
+                        <w lemma="timme" lemmaRef="http://www.dil.ie/40783" ana="noun">timinie</w>
+                    </l>
+                    <l n="e" xml:id="MS21.2.1e">
+                <lb n="18" xml:id="MS21.p194.18"/>
+                        <w lemma="imdae" lemmaRef="http://www.dil.ie/27433" ana="noun">Imigh</w>
+                        <space type="scribal"/>
+                        <w lemma="de" lemmaRef="http://www.dil.ie/14787" ana="prep, pron">ghiv</w>
+                        <space type="scribal"/>
+                        <w lemma="oc" lemmaRef="http://www.dil.ie/33397" ana="prep">aig</w>
+                        <space type="scribal"/>
+                        <w lemma="cosnam" lemmaRef="http://www.dil.ie/12617" ana="vnoun">Cosnigh</w>
+                        <space type="scribal"/>
+                        <w lemma="crech" lemmaRef="http://www.dil.ie/12791" ana="noun">Criechi</w>
+                        <space type="scribal"/>
+                        <w lemma="la" lemmaRef="http://www.dil.ie/29233" ana="prep">le</w>
+                        <space type="scribal"/>
+                        <w lemma="crúas" lemmaRef="http://www.dil.ie/13200" ana="noun">cruois</w>
+                        <space type="scribal"/>
+                        <w lemma="lám" lemmaRef="http://www.dil.ie/29507" ana="noun">laimhi</w>
+                    </l>
+                    <l n="f" xml:id="MS21.2.1f">
+                <lb n="19" xml:id="MS21.p194.19"/>
+                        <w lemma="nech" lemmaRef="http://www.dil.ie/33014" ana="pron">noch</w>
+                        <space type="scribal"/>
+                        <w lemma="is" lemmaRef="http://www.dil.ie/29104" ana="verb">is</w>
+                        <space type="scribal"/>
+                        <w lemma="maith" lemmaRef="http://www.dil.ie/31438" ana="adj">airr</w>
+                        <space type="scribal"/>
+                        <w lemma="ar" lemmaRef="http://www.dil.ie/3902" ana="prep">er</w>
+                        <space type="scribal"/>
+                        <name type="place">
+                            <w lemma="clúain" lemmaRef="http://www.dil.ie/9619" ana="noun">clon</w>
+                            <space type="scribal"/>
+                            <w lemma="in" lemmaRef="http://www.dil.ie/28194" ana="art">ni</w>
+                            <space type="scribal"/>
+                            <w lemma="cléirech" lemmaRef="http://www.dil.ie/9416" ana="noun">Cleri</w>
+                        </name>
+                        <space type="scribal"/>
+                        <w lemma="cen" lemmaRef="http://www.dil.ie/8581" ana="prep">gin</w>
+                        <space type="scribal"/>
+                        <w lemma="bró" lemmaRef="http://www.dil.ie/6877" ana="noun">mhrou</w>
+                        <space type="scribal"/>
+                        <w lemma="muir" lemmaRef="http://www.dil.ie/32761" ana="noun">mari</w>
+                    </l>
+                    <l n="g" xml:id="MS21.2.1g">
+                <lb n="20" xml:id="MS21.p194.20"/>
+                        <w lemma="ocus" lemmaRef="http://www.dil.ie/33484" ana="conj">S</w>
+                        <unclear reason="interp_obscure" cert="medium" resp="MMA">
+                            <w lemma="a" lemmaRef="http://www.dil.ie/5" ana="pron">i</w>
+                        </unclear>
+                        <space type="scribal"/>
+                        <w lemma="fo-gaib" lemmaRef="http://www.dil.ie/22696" ana="verb">ghivigh</w>
+                        <space type="scribal"/>
+                        <w lemma="a" lemmaRef="http://www.dil.ie/3" ana="poss">i</w>
+                        <space type="scribal"/>
+                        <w lemma="dúas" lemmaRef="http://www.dil.ie/18981" ana="noun">ghuois</w>
+                        <space type="scribal"/>
+                        <w lemma="ó" lemmaRef="http://www.dil.ie/33364" ana="prep">o</w>
+                        <space type="scribal"/>
+                        <w lemma="rí" lemmaRef="http://www.dil.ie/35181" ana="noun">righi</w>
+                        <space type="scribal"/>
+                        <w lemma="cen" lemmaRef="http://www.dil.ie/8581" ana="prep">gin</w>
+                        <space type="scribal"/>
+                        <w lemma="dígal" lemmaRef="http://www.dil.ie/16293" ana="vnoun">dial</w>
+                        <w lemma="táire" lemmaRef="http://www.dil.ie/39693" ana="noun">tari</w>
+                    </l>
+                    <l n="h" xml:id="MS21.2.1h">
+                <lb n="21" xml:id="MS21.p194.21"/>
+                        <w lemma="is" lemmaRef="http://www.dil.ie/29104" ana="verb">S</w>
+                        <w lemma="inunn" lemmaRef="http://www.dil.ie/28996" ana="adv">inin</w>
+                        <space type="scribal"/>
+                        <w ana="prep, poss">
+                            <w lemma="do" lemmaRef="http://www.dil.ie/17096" ana="prep">d</w>
+                            <w lemma="ar" lemmaRef="http://www.dil.ie/3906" ana="poss">ar</w>
+                        </w>
+                        <space type="scribal"/>
+                        <w lemma="crod" lemmaRef="http://www.dil.ie/13056" ana="noun">crou</w>
+                        <space type="scribal"/>
+                        <w lemma="ocus" lemmaRef="http://www.dil.ie/33484" ana="conj">is</w>
+                        <space type="scribal"/>
+                        <w ana="prep, poss">
+                            <w lemma="do" lemmaRef="http://www.dil.ie/17096" ana="prep">d</w>
+                            <w lemma="ar" lemmaRef="http://www.dil.ie/3906" ana="poss">ar</w>
+                        </w>
+                        <space type="scribal"/>
+                        <w lemma="cana" lemmaRef="http://www.dil.ie/8119" ana="noun">cuini</w>
+                        <space type="scribal"/>
+                        <w lemma="is" lemmaRef="http://www.dil.ie/29104" ana="verb">s</w>
+                        <w lemma="do" lemmaRef="http://www.dil.ie/17096" ana="prep">di</w>
+                        <space type="scribal"/>
+                        <name type="personal">
+                            <name type="personal">
+                                <w ana="noun, noun">
+                                    <w lemma="cú" lemmaRef="http://www.dil.ie/13291" ana="noun">Chu</w>
+                                    <w lemma="rí" lemmaRef="http://www.dil.ie/35181" ana="noun">ri</w>
+                                </w>
+                            </name>
+                            <space type="scribal"/>
+                            <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun">mac</w>
+                            <space type="scribal"/>
+                            <name type="personal"><w lemma="Dáire" lemmaRef="http://www.dil.ie/14270" ana="noun">Dari</w></name>
+                        </name>
+                        <pc>.</pc>
+                    </l>
+                    <l n="i" xml:id="MS21.2.1i">
+                <lb n="22" xml:id="MS21.p194.22"/>
+                        <w lemma="is" lemmaRef="http://www.dil.ie/29104" ana="verb">S</w>
+                        <w lemma="mairg" lemmaRef="http://www.dil.ie/31399" ana="noun">marig</w>
+                        <space type="scribal"/>
+                        <w ana="part, verb">
+                            <w lemma="do" lemmaRef="http://www.dil.ie/17098" ana="part">i</w>
+                            <space type="scribal"/>
+                            <w lemma="do-cuirethar" lemmaRef="http://www.dil.ie/17442" ana="verb">hachrigh</w>
+                        </w>
+                        <space type="scribal"/>
+                        <w lemma="fri" lemmaRef="http://www.dil.ie/24329" ana="prep">ri</w>
+                        <space type="scribal"/>
+                        <w lemma="in" lemmaRef="http://www.dil.ie/28194" ana="art">auim</w>
+                        <space type="scribal"/>
+                        <w lemma="braine" lemmaRef="http://www.dil.ie/6508" ana="noun">bruini</w>
+                        <space type="scribal"/>
+                        <w lemma="immar" lemmaRef="http://www.dil.ie/27721" ana="prep">forr</w>
+                        <space type="scribal"/>
+                        <w lemma="gruaim" lemmaRef="http://www.dil.ie/26712" ana="noun">gruoim</w>
+                        <space type="scribal"/>
+                        <w lemma="gráin" lemmaRef="http://www.dil.ie/6508" ana="adj">ghrani</w>
+                    </l>
+                </lg>
+            </div>
+        </body>
+    </text>
+</TEI>
