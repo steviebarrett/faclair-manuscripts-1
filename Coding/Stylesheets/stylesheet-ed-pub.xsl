@@ -1332,7 +1332,7 @@
 									>fol.<xsl:text> </xsl:text></xsl:when>
 								<xsl:otherwise><xsl:choose>
 									<xsl:when test="contains(@n, 'p')">
-										<xsl:text/> 
+										<xsl:text/>
 									</xsl:when>
 									<xsl:otherwise>
 										p.<xsl:text> </xsl:text>
@@ -1883,11 +1883,11 @@
 	<xsl:template match="tei:seg[@type = 'cfe']">
 		<xsl:text/>
 	</xsl:template>
-	
+
 	<xsl:template match="tei:seg[@type = 'ed-er']">
 		<xsl:apply-templates select="tei:add[@type = 'correction']"/>
 	</xsl:template>
-	
+
 	<xsl:template match="tei:seg[@type = 'fragment']">
 		<xsl:text/>
 	</xsl:template>
@@ -1972,11 +1972,11 @@
 	<xsl:template match="tei:seg[@type = 'MSDefd']">
 		<xsl:apply-templates/>
 	</xsl:template>
-	
+
 	<xsl:template match="tei:seg[@type = 'xp']">
 		<xsl:apply-templates/>
 	</xsl:template>
-	
+
 	<xsl:template match="tei:seg[@type= 'signature']">
 		<xsl:apply-templates/>
 	</xsl:template>
@@ -4302,7 +4302,7 @@
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
-	
+
 	<xsl:template match="tei:anchor[@type='crossref']">
 		<xsl:variable name="crossrefID" select="@copyOf"/>
 		<xsl:variable name="msID" select="substring-before($crossrefID, '.')"/>
@@ -4915,7 +4915,7 @@
 			</xsl:when>
 		</xsl:choose>
 	</xsl:template>
-	
+
 	<xsl:template match="tei:add[@type = 'correction']">
 		<xsl:apply-templates/>
 	</xsl:template>
