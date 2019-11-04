@@ -75,14 +75,14 @@ $(function() {
   });
   
   $('.indexHeadword').click(function(){ // called whenever a new headword is selected
-    // reset midl and rhs
+    // reset midl
     var m = $('#midl');
     m.animate({scrollTop: 0},0);
     m.find('.syntagm').css({'background-color': 'inherit', 'color': 'inherit', 'font-weight': 'normal'});
     m.find('.gapDamageCharsDiplo, .unclearDamageDiplo').css('color', 'gray');
     m.find('.gapDamageCharsSuperDiplo, .unclearDamageSuperDiplo').css({'color': 'lightgray', 'background-color': 'lightgray'});
     m.find('.temp').remove(); // remove all temporary hr elements
-    m.find('span, .textAnchor, .pageBreak, .columnBreak').show();
+    m.find('span,.textAnchor,.pageBreak,.columnBreak').show();
     m.find('.suppliedDiplo').hide();
     if (m.children('div').attr('data-diplo')=='super') { // ??????
       m.find('.gapDamageCharsDiplo').hide(); 
@@ -90,7 +90,7 @@ $(function() {
       //$('.pageBreakSuper').toggle();
       $('.handShift').hide();
     }
-    else { m.find('.gapDamageCharsSuperDiplo, .unclearDamageDiplo').hide(); }
+    else { m.find('.gapDamageCharsSuperDiplo, .unclearDamageSuperDiplo').hide(); }
     // reset lhs
     $('.indexHeadword').parent().css({'background-color': 'inherit'});
     $('.hwCount,.implode,.explode,.reset').hide();
@@ -105,38 +105,46 @@ $(function() {
 
   $('.implode').click(function(){
     //reset midl
-    $('#midl').animate({scrollTop: 0},0); // move middle back to top
+    var x = $('#midl');
+    x.animate({scrollTop: 0},0); // move middle back to top
     $('.temp').remove();
     // do stuff
     $(this).hide();
     $(this).nextAll('.explode').show();
-    $('#midl').find('span').hide();
-    $('#midl').find('[data-lemmaRef="'+ $(this).prevAll('.indexHeadword').attr('data-lemmaRef') + '"]').each(function(){
+    x.find('span').hide();
+    x.find('[data-lemmaRef="'+ $(this).prevAll('.indexHeadword').attr('data-lemmaRef') + '"]').each(function(){
       $(this).show();
       $(this).find('span').show();
-      //$(this).parents('span').show(); 
       if ($(this).hasClass('chunk')) {
+        //alert($(this).text());
         var y = $(this).prevAll('.chunk, .lineBreak').slice(0,3);
-        y.show(); y.find('*').show();
-        //var z = y.last();
-        //var w = searchBackwards(z,'lineBreak');
-        //w.show();
-        searchBackwards($(this),'pageBreak').show();
+        y.show(); 
+        y.find('*').show();
+        var z = y.last();
+        //if (z.prevAll('.lineBreak').size()>0) {   // STILL NOT WORKING - Drostan l. 1
+          //alert(z.html());
+          //alert(z.prevAll('.lineBreak').html());
+          var w = searchBackwards(z,'lineBreak');
+          if (typeof w != 'undefined') {
+            w.show();
+          }
+        //}
+        //searchBackwards($(this),'pageBreak').show();
         y = $(this).nextAll('.chunk, .lineBreak').slice(0,3);
         y.show(); y.find('*').show();
         $('<hr class="temp"/>').insertAfter(y.last());
       }
       else {
-        var x = $(this).parents('.chunk');
-        x.show(); x.find('span').show();
-        var y = x.prevAll('.chunk, .lineBreak').slice(0,3);
-        y.show(); y.find('*').show();
+        var y = $(this).parents('.chunk');
+        y.show(); y.find('span').show();
+        var z = y.prevAll('.chunk, .lineBreak').slice(0,3);
+        z.show(); z.find('*').show();
         //var z = y.last();
         //var w = searchBackwards(z,'lineBreak');
         //w.show();
         searchBackwards($(this),'pageBreak').show();
-        y = x.nextAll('.chunk, .lineBreak').slice(0,3);
-        y.show(); y.find('*').show();
+        z = y.nextAll('.chunk, .lineBreak').slice(0,3);
+        z.show(); z.find('*').show();
         $('<hr class="temp"/>').insertAfter(y.last());
       }
       /*
@@ -159,9 +167,9 @@ $(function() {
        */
     });
     $('.textAnchor').hide();
-    $('#midl').find('.suppliedDiplo, .addComment, .viewComment').hide();
-    if ($('#midl').children('div').attr('data-diplo')=='super') { $('#midl').find('.gapDamageCharsDiplo').hide(); } //??????????????????????
-    else { $('#midl').find('.gapDamageCharsSuperDiplo').hide(); }
+    x.find('.suppliedDiplo, .addComment, .viewComment').hide();
+    if (x.children('div').attr('data-diplo')=='super') { x.find('.gapDamageCharsDiplo').hide(); } //??????????????????????
+    else { x.find('.gapDamageCharsSuperDiplo').hide(); }
     //$('.pageBreak').show();
     //$('#midl').find('.pageBreak').hide();
     //$(this).parents().prevAll('.pageBreak').first().show(); // not working
@@ -190,7 +198,6 @@ $(function() {
     $(this).hide();
     $(this).prevAll('.implode,.explode,.hwCount').hide();
     $(this).parent().css({'background-color': 'inherit'});
-    //setTimeout(function(){$(this).prevAll('.explode').trigger('click')}, 100);
     $('#midl').find('.syntagm').css({'background-color': 'inherit', 'color': 'inherit', 'font-weight': 'normal'});
     return null;
   });
@@ -434,6 +441,7 @@ function getHandName(handId) {
 }
 
 function searchBackwards(span,c) { // depth-first
+  //console.log(span.attr('class'));
   var out;
   var jqs = span.prevAll();
   jqs.each(function(){
@@ -447,7 +455,8 @@ function searchBackwards(span,c) { // depth-first
       return false;
     }
   });
-  if (typeof out == 'undefined' && span.parent()) {
+  if (typeof out == 'undefined' && span.parents('span')) {
+    console.log(span.parent());
     return searchBackwards(span.parent(),c);
   }
   return out;
@@ -657,7 +666,10 @@ function getDeletions(span) {
     html += '<li>contains the following deletions:<ul class="rhs">';
     x.each(function() {
       html += '<li>[' + $(this).text() + '] ';
-      html += '(<a href="#" onclick="$(\'#handInfo_'+ $(this).attr('data-hand') + '\').bPopup();">' + getHandName($(this).attr('data-hand')) + '</a>)</li>';
+      //html += '(<a href="#" onclick="$(\'#handInfo_'+ $(this).attr('data-hand') + '\').bPopup();">' + getHandName($(this).attr('data-hand')) + '</a>)</li>';
+      var h = $(this).attr('data-hand');
+      html += getHandInfoDiv(h);
+      html += '(<a href="#" data-toggle="modal" data-target="#handInfo_' + h +'">' + getHandName(h) + '</a>)</li>'; 
     });
     html += '</ul></li>';
   }
@@ -666,7 +678,10 @@ function getDeletions(span) {
     if (x.length>0) {
       html += '<li>is part of the following deletion:<ul class="rhs">';
       html += '<li>[' + x.text() + '] (';
-      html += '<a href="#" onclick="$(\'#handInfo_'+ x.attr('data-hand') + '\').bPopup();">' + getHandName(x.attr('data-hand')) + '</a>';
+      var h = x.attr('data-hand');
+      html += getHandInfoDiv(h);
+      html += '<a href="#" data-toggle="modal" data-target="#handInfo_' + h +'">' + getHandName(h) + '</a>';
+      //html += '<a href="#" onclick="$(\'#handInfo_'+ x.attr('data-hand') + '\').bPopup();">' + getHandName(x.attr('data-hand')) + '</a>';
       html += ')</li>';
       html += '</ul></li>';
     }
@@ -681,7 +696,10 @@ function getAdditions(span) {
     html += '<li>contains the following insertions:<ul class="rhs">';
     x.each(function() {
       html += '<li>[' + $(this).text() + '] (';
-      html += '<a href="#" onclick="$(\'#handInfo_'+ $(this).attr('data-hand') + '\').bPopup();">' + getHandName($(this).attr('data-hand')) + '</a>';
+      var h = $(this).attr('data-hand');
+      html += getHandInfoDiv(h);
+      html += '<a href="#" data-toggle="modal" data-target="#handInfo_' + h +'">' + getHandName(h) + '</a>';
+      //html += '<a href="#" onclick="$(\'#handInfo_'+ $(this).attr('data-hand') + '\').bPopup();">' + getHandName($(this).attr('data-hand')) + '</a>';
       html += ', '  + $(this).attr('data-place');
       html += ')</li>';
     });
@@ -692,7 +710,10 @@ function getAdditions(span) {
     if (x.length>0) {
       html += '<li>is part of the following insertion:<ul class="rhs">';
       html += '<li>[' + x.text() + '] (';
-      html += '<a href="#" onclick="$(\'#handInfo_'+ x.attr('data-hand') + '\').bPopup();">' + getHandName(x.attr('data-hand')) + '</a>'; // what is 'this'?
+      var h = x.attr('data-hand');
+      html += getHandInfoDiv(h);
+      html += '<a href="#" data-toggle="modal" data-target="#handInfo_' + h +'">' + getHandName(h) + '</a>';
+      //html += '<a href="#" onclick="$(\'#handInfo_'+ x.attr('data-hand') + '\').bPopup();">' + getHandName(x.attr('data-hand')) + '</a>'; // what is 'this'?
       html += ', ' + x.attr('data-place');
       html += ')</li>';
       html += '</ul></li>';
