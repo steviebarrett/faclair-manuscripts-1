@@ -38,8 +38,9 @@
 					</msIdentifier>
 					<msContents>
 						<summary/>
-						<msItem xml:id="MS16.1" resp="Hand22">
+						<msItem xml:id="MS16.1">
 							<locus>pp.1.1–11.14</locus>
+							<author role="scribe" corresp="Hand22"/>
 							<title>Do ísligh onóir Gáoidheal</title>
 							<incipit>Cathal mac muireadhuigh cecinit ...</incipit>
 							<explicit>... Marbhna Eoin mhic leóid anúas gonuige sin</explicit>
@@ -66,8 +67,9 @@
 								</profileDesc>
 							</biblFull>
 						</msItem>
-						<msItem xml:id="MS16.2" resp="Hand22">
+						<msItem xml:id="MS16.2">
 							<locus>pp.13.1–16.3</locus>
+							<author role="scribe" corresp="Hand22"/>
 							<title>Mairg chaomhnus a cholann</title>
 							<incipit>Mairg chaomhnus a cholann ...</incipit>
 							<explicit>... fuil criost in bur ccomhair mairg</explicit>
@@ -94,8 +96,9 @@
 								</profileDesc>
 							</biblFull>
 						</msItem>
-						<msItem xml:id="MS16.3" resp="Hand22">
+						<msItem xml:id="MS16.3">
 							<locus>pp.17.1–20.5</locus>
+							<author role="scribe" corresp="Hand22"/>
 							<title>Mochean do chonnarc areir</title>
 							<incipit>Mo chen do chonnarc aréir [...]</incipit>
 							<explicit>[...] gur bhlodh tú ó chách mochen</explicit>
@@ -122,8 +125,9 @@
 								</profileDesc>
 							</biblFull>
 						</msItem>
-						<msItem xml:id="MS16.4" resp="Hand22">
+						<msItem xml:id="MS16.4">
 							<locus>pp.20.5–21.20</locus>
+							<author role="scribe" corresp="Hand22"/>
 							<title>A sheonóid méduigh menma</title>
 							<incipit>A sheonóid méduigh menma [...]</incipit>
 							<explicit>[...] ler taomadh fhuil o iosa a . s.e.o.n{.a.i.d.}</explicit>
@@ -150,8 +154,9 @@
 								</profileDesc>
 							</biblFull>
 						</msItem>
-						<msItem xml:id="MS16.5" resp="Hand22">
+						<msItem xml:id="MS16.5">
 							<locus>pp.22.1–7</locus>
+							<author role="scribe" corresp="Hand22"/>
 							<title>Deimhin do síol adhuimh ég</title>
 							<incipit>Deimhin do síol adhuimh ég [..]</incipit>
 							<explicit>[...] cuir re foigide as ferr D/E/M/I/N</explicit>
@@ -176,8 +181,9 @@
 								</profileDesc>
 							</biblFull>
 						</msItem>
-						<msItem xml:id="MS16.6" resp="Hand39">
+						<msItem xml:id="MS16.6">
 							<locus>pp. 27.1–28.4</locus>
+							<author role="scribe" corresp="Hand39"/>
 							<title>Note to Sir Norman McLeod</title>
 							<incipit>Ata ann so agad a shior tormoid mic ruaidri...</incipit>
 							<explicit>... ag an léichtheoir dibh sin óg no arr[sa] da mbí
@@ -233,6 +239,7 @@
 		<profileDesc>
 			<handNotes>
 				<handNote corresp="Hand22"/>
+				<handNote corresp="Hand39"/>
 			</handNotes>
 			<textClass>
 				<keywords>
@@ -246,9 +253,9 @@
 	</teiHeader>
 	<text>
 		<body>
-			<div n="1" type="verse" resp="Hand22" corresp="MS16.1">
-				<div n="1.1" type="prose" resp="Hand22" corresp="MS16.1.1">
-					<p><pb n="1" xml:id="MS16.p1"/><lb n="1" xml:id="MS16.p1.1"/>
+			<div n="1" type="verse" corresp="MS16.1">
+				<div n="1.1" type="prose" corresp="MS16.1.1">
+					<p><handShift new="Hand22"/><pb n="1" xml:id="MS16.p1"/><lb n="1" xml:id="MS16.p1.1"/>
 						<name type="personal"><w pos="noun">Ca<abbr cert="high">t<g ref="g4"
 									>h</g></abbr>al</w><space type="scribal"/><w lemma="mac"
 								lemmaRef="http://www.dil.ie/31166" pos="noun"><abbr cert="high">m<g
@@ -263,7 +270,7 @@
 								>init</g></abbr></w>
 					</p>
 				</div>
-				<div n="1.2" type="verse" resp="Hand22" corresp="MS16.1.2">
+				<div n="1.2" type="verse" corresp="MS16.1.2">
 					<lg n="1" type="stanza" xml:id="MS16.1.2.1">
 						<l n="a" xml:id="MS16.1.2.1a"><lb n="2" xml:id="MS16.p1.2"/>
 							<w pos="particle-verb"><w lemma="do" lemmaRef="http://www.dil.ie/17098"
@@ -1464,7 +1471,7 @@
 						<l n="c" xml:id="MS16.1.2.19c"><lb n="3" xml:id="MS16.p5.3"/>
 							<w lemma="brethem" lemmaRef="http://www.dil.ie/6699" pos="noun"
 									>brei<abbr cert="high">t<g ref="g4">h</g></abbr><add
-									type="insertion" place="margin, top" resp="Hand22">ea<abbr
+									type="insertion" place="margin, top">ea<abbr
 										cert="high">m<g ref="g4">h</g></abbr></add></w>
 							<space type="scribal"/>
 							<w lemma="slóg" lemmaRef="http://www.dil.ie/37981" pos="noun">slói<abbr
@@ -1669,7 +1676,7 @@
 						</l>
 						<l n="d" xml:id="MS16.1.2.22d"><lb n="16" xml:id="MS16.p5.16"/>
 							<w lemma="rí" lemmaRef="http://www.dil.ie/35181" pos="noun">rí</w>
-							<add type="insertion" place="above" resp="hand22"><w lemma="ocus"
+							<add type="insertion" place="above"><w lemma="ocus"
 									lemmaRef="http://www.dil.ie/33484" pos="conjunction"><abbr cert="high"
 											><g ref="g2">agus</g></abbr></w></add>
 							<w lemma="fili" lemmaRef="http://www.dil.ie/22070" pos="noun">file</w>
@@ -1945,8 +1952,7 @@
 							<space type="scribal"/>
 							<w lemma="caíne" lemmaRef="http://www.dil.ie/7822" pos="noun"><abbr
 									cert="high">c<g ref="g4">h</g></abbr><abbr cert="high"><g
-										ref="l5">ao</g></abbr><add type="insertion" place="below"
-									resp="Hand22">i</add>ne</w>
+										ref="l5">ao</g></abbr><add type="insertion" place="below">i</add>ne</w>
 							<space type="scribal"/>
 							<w lemma="la" lemmaRef="http://www.dil.ie/29233" pos="preposition-pronoun">le</w>
 							<space type="scribal"/>
@@ -2739,7 +2745,7 @@
 										>t<g ref="g4">h</g></abbr></w>
 							<space type="scribal"/>
 							<w lemma="doinenn" lemmaRef="http://www.dil.ie/17897" pos="noun">do<add
-									type="insertion" place="above" resp="Hand22">i</add>ne<abbr
+									type="insertion" place="above">i</add>ne<abbr
 									cert="high">n<g ref="g5">n</g></abbr></w>
 							<space type="scribal"/>
 							<w lemma="díberg" lemmaRef="http://www.dil.ie/16020" pos="noun">dí<abbr
@@ -2924,9 +2930,9 @@
 										>li<abbr cert="high">n<g ref="g5">n</g></abbr>te</w></w>
 							<space type="scribal"/>
 							<name type="place"><w lemma="moned" lemmaRef="http://www.dil.ie/32531"
-									pos="noun">mon<seg type="er-ed"><del resp="Hand999">ú</del><add
-											type="correction" place="inline" resp="Hand999"
-										>u</add></seg>i<abbr cert="high">g<g ref="g4"
+								pos="noun">mon<seg type="er-ed"><del hand="Hand999">ú</del><add
+											type="correction" place="inline"
+										><handShift new="Hand999"/>u</add></seg><handShift new="Hand22"/>i<abbr cert="high">g<g ref="g4"
 									>h</g></abbr></w></name>
 						</l>
 					</lg>
@@ -3472,7 +3478,7 @@
 						</l>
 					</lg>
 				</div>
-				<div n="1.3" type="prose" resp="Hand22" corresp="MS16.1.3">
+				<div n="1.3" type="prose" corresp="MS16.1.3">
 					<p><lb n="14" xml:id="MS16.p11.14"/>
 						<w lemma="marbnad" lemmaRef="http://www.dil.ie/31582" pos="verbal_noun">Mar<abbr
 								cert="high">b<g ref="g4">h</g></abbr>na</w>
@@ -3500,9 +3506,9 @@
 					</p>
 				</div>
 			</div>
-			<div n="2" type="verse" resp="Hand22" corresp="MS16.2">
+			<div n="2" type="verse" corresp="MS16.2">
 				<div n="2.1" type="prose" resp="Hand22" corresp="MS16.2a">
-					<p><pb n="13" xml:id="MS16.p13"/><lb n="1" xml:id="MS16.p13.1"/>
+					<p><handShift new="Hand22"/><pb n="13" xml:id="MS16.p13"/><lb n="1" xml:id="MS16.p13.1"/>
 						<name type="personal"><w pos="noun">Ca<abbr cert="high">t<g ref="g4"
 									>h</g></abbr>al</w><space type="scribal"/><w lemma="mac"
 								lemmaRef="http://www.dil.ie/31166" pos="noun"><abbr cert="high">m<g
@@ -3514,7 +3520,7 @@
 								>init</g></abbr></w>
 					</p>
 				</div>
-				<div n="2.1" type="verse" resp="Hand22" corresp="MS16.2.1.1">
+				<div n="2.1" type="verse" corresp="MS16.2.1.1">
 					<lg n="1" type="stanza" xml:id="MS16.2.1.1">
 						<l n="a" xml:id="MS16.2.1.1a"><lb n="2" xml:id="MS16.p13.2"/>
 							<w lemma="mairg" lemmaRef="http://www.dil.ie/31399" pos="noun"><unclear
@@ -4302,8 +4308,7 @@
 									cert="high">ú<g ref="g5">n</g></abbr></w>
 							<space type="scribal"/>
 							<w pos="particle-verb"><w lemma="do" lemmaRef="http://www.dil.ie/17098"
-									pos="particle">do</w><add type="insertion" place="margin, top"
-									resp="Hand22"><w lemma="rímid"
+									pos="particle">do</w><add type="insertion" place="margin, top"><w lemma="rímid"
 										lemmaRef="http://www.dil.ie/35310" pos="verb">ri<abbr
 											cert="high">o<g ref="g1">m</g><g ref="g4"
 										>h</g></abbr>as</w></add></w>
@@ -5388,9 +5393,9 @@
 					</lg>
 				</div>
 			</div>
-			<div n="3" type="verse" resp="Hand22" corresp="MS16.3">
+			<div n="3" type="verse" corresp="MS16.3">
 				<lg n="1" type="stanza" xml:id="MS16.3.1">
-					<l n="a" xml:id="MS16.3.1a"><pb n="17" xml:id="MS16.p17"/><lb n="1"
+					<l n="a" xml:id="MS16.3.1a"><handShift new="Hand22"/><pb n="17" xml:id="MS16.p17"/><lb n="1"
 							xml:id="MS16.p17.1"/>
 						<w lemma="mochen" lemmaRef="http://www.dil.ie/32415" pos="adjective">Mo<space
 								type="scribal"/><abbr cert="high">c<g ref="g4">h</g></abbr>en</w>
@@ -6473,7 +6478,7 @@
 								pos="particle">r<unclear reason="text_obscure" cert="medium"
 									resp="Matheson1964-1966">o</unclear></w><w lemma="-m-"
 								lemmaRef="http://www.dil.ie/31160" pos="pronoun">m</w><add
-								type="insertion" place="margin, top" resp="Hand22"><w lemma="cnaïd"
+								type="insertion" place="margin, top"><w lemma="cnaïd"
 									lemmaRef="http://www.dil.ie/9709" pos="verb">cna</w></add></w>
 					</l>
 					<l n="c" xml:id="MS16.3.14c"><lb n="10" xml:id="MS16.p18.10"/>
@@ -7122,7 +7127,7 @@
 								lemmaRef="http://www.dil.ie/9137" pos="verb"><abbr cert="high">c<g
 										ref="g4">h</g></abbr>in</w></w>
 						<space type="scribal"/>
-						<add type="insertion" place="above" resp="Hand22"><w lemma="ó"
+						<add type="insertion" place="above"><w lemma="ó"
 								lemmaRef="http://www.dil.ie/33364" pos="preposition">o</w></add>
 						<name type="personal"><w lemma="conn" lemmaRef="http://www.dil.ie/12215"
 								pos="noun"><abbr cert="high">c<g ref="g4">h</g></abbr>o<abbr
@@ -7538,7 +7543,7 @@
 						<space type="scribal"/>
 						<w lemma="i" lemmaRef="http://www.dil.ie/26891" pos="preposition">a</w>
 						<w lemma="féice" lemmaRef="http://www.dil.ie/21457" pos="noun">bféigi</w>
-						<add type="insertion" place="margin, top" resp="Hand22"><w lemma="fid"
+						<add type="insertion" place="margin, top"><w lemma="fid"
 								lemmaRef="http://www.dil.ie/21999" pos="noun">fe<abbr cert="high"
 										>d<g ref="g4">h</g></abbr></w></add>
 					</l>
@@ -7600,9 +7605,9 @@
 					</l>
 				</lg>
 			</div>
-			<div n="4" type="verse" resp="Hand22" corresp="MS16.4">
+			<div n="4" type="verse" corresp="MS16.4">
 				<lg n="1" type="stanza" xml:id="MS16.4.1">
-					<l n="a" xml:id="MS16.4.1a"><lb n="6" xml:id="MS16.p20.6"/>
+					<l n="a" xml:id="MS16.4.1a"><handShift new="Hand22"/><lb n="6" xml:id="MS16.p20.6"/>
 						<w lemma="a" lemmaRef="http://www.dil.ie/2" pos="particle">A</w><name
 							type="personal"><w pos="noun"><abbr cert="high">s<g ref="g4"
 									>h</g></abbr>eonóid</w></name><space type="scribal"/><w
@@ -8557,9 +8562,9 @@
 					</l>
 				</lg>
 			</div>
-			<div n="5" type="verse" resp="Hand22" corresp="MS16.5">
+			<div n="5" type="verse" corresp="MS16.5">
 				<lg n="1" type="stanza" xml:id="MS16.5.1">
-					<l n="a" xml:id="MS16.6.1a"><pb n="22" xml:id="MS16.p22"/><lb n="1"
+					<l n="a" xml:id="MS16.6.1a"><handShift new="Hand22"/><pb n="22" xml:id="MS16.p22"/><lb n="1"
 							xml:id="MS16.p22.1"/>
 						<w lemma="deimin" lemmaRef="http://www.dil.ie/15210" pos="adjective">Dei<abbr
 								cert="high">m<g ref="g4">h</g></abbr>in</w><space type="scribal"/><w
@@ -8722,8 +8727,8 @@
 							pos="adjective">D/E/<abbr cert="high">M<g ref="g4">H</g></abbr>/I/N/</w></l>
 				</lg>
 			</div>
-			<div n="6" type="prose" resp="Hand39" corresp="MS16.6">
-				<p><pb n="23" xml:id="MS16.p23"/><lb n="1" xml:id="MS16.p23.1"/>
+			<div n="6" type="prose" corresp="MS16.6">
+				<p><handShift new="Hand39"/><pb n="23" xml:id="MS16.p23"/><lb n="1" xml:id="MS16.p23.1"/>
 					<w lemma="attá" lemmaRef="http://www.dil.ie/4927" pos="verb">Ata</w>
 					<space type="scribal"/>
 					<w lemma="i" lemmaRef="http://www.dil.ie/26891" pos="preposition-pronoun">a<abbr
