@@ -117,33 +117,35 @@ $(function() {
       $(this).find('span').show();
       if ($(this).hasClass('chunk')) {
         //alert($(this).text());
-        var y = $(this).prevAll('.chunk, .lineBreak').slice(0,3);
+        var y = $(this).prevAll('.chunk, .lineBreak').slice(0,5);
         y.show(); 
         y.find('*').show();
         var z = y.last();
         //if (z.prevAll('.lineBreak').size()>0) {   // STILL NOT WORKING - Drostan l. 1
           //alert(z.html());
           //alert(z.prevAll('.lineBreak').html());
+           
           var w = searchBackwards(z,'lineBreak');
           if (typeof w != 'undefined') {
             w.show();
           }
+           
         //}
         //searchBackwards($(this),'pageBreak').show();
-        y = $(this).nextAll('.chunk, .lineBreak').slice(0,3);
+        y = $(this).nextAll('.chunk, .lineBreak').slice(0,5);
         y.show(); y.find('*').show();
         $('<hr class="temp"/>').insertAfter(y.last());
       }
       else {
         var y = $(this).parents('.chunk');
         y.show(); y.find('span').show();
-        var z = y.prevAll('.chunk, .lineBreak').slice(0,3);
+        var z = y.prevAll('.chunk, .lineBreak').slice(0,5);
         z.show(); z.find('*').show();
         //var z = y.last();
         //var w = searchBackwards(z,'lineBreak');
         //w.show();
         searchBackwards($(this),'pageBreak').show();
-        z = y.nextAll('.chunk, .lineBreak').slice(0,3);
+        z = y.nextAll('.chunk, .lineBreak').slice(0,5);
         z.show(); z.find('*').show();
         $('<hr class="temp"/>').insertAfter(y.last());
       }
@@ -455,8 +457,9 @@ function searchBackwards(span,c) { // depth-first
       return false;
     }
   });
-  if (typeof out == 'undefined' && span.parents('span')) {
-    console.log(span.parent());
+  var z = span.parent();
+  if (typeof out == 'undefined' && z.is('span')) {
+    //console.log(span.parent().);
     return searchBackwards(span.parent(),c);
   }
   return out;
