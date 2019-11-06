@@ -140,9 +140,6 @@ It creates a semi-diplomatic MS view.
     <xsl:text> </xsl:text>
   </xsl:template>
   
-  
-  
-  
   <xsl:template name="addNameAttributes">
     <xsl:if test="@type">
       <xsl:attribute name="data-nametype">
@@ -249,7 +246,7 @@ It creates a semi-diplomatic MS view.
   </xsl:template>
 
   <xsl:template match="tei:note">
-    <a href="#" title="{.}">[*]</a>
+    <a href="#" title="{normalize-space(.)}">[*]</a>
   </xsl:template>
 
   <xsl:template match="tei:lg">
