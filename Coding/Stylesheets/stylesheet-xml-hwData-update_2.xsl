@@ -108,7 +108,7 @@
 									<xsl:value-of select="@lemmaRef"/>
 								</xsl:attribute>
 								<xsl:attribute name="ana">
-									<xsl:value-of select="@ana"/>
+									<xsl:value-of select="@ana or @pos"/>
 								</xsl:attribute>
 								<xsl:if
 									test="//tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree[@corresp = $wordID]/tei:w/@lemmaDW">
