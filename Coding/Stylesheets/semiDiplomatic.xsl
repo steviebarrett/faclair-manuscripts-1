@@ -40,7 +40,7 @@ It creates a semi-diplomatic MS view.
     </span>
   </xsl:template>
 
-  <xsl:template match="tei:name[not(ancestor::tei:name) and count(tei:w|tei:name)=1 and count(tei:w/tei:w)>1]"> 
+  <xsl:template match="tei:name[not(ancestor::tei:name) and count(tei:w|tei:name)=1 and count(tei:w/tei:w)>1]"> <!-- Dubhghaill -->
     <xsl:text> </xsl:text>
     <span class="chunk syntagm name">
       <xsl:apply-templates select="tei:w/tei:w"/>
@@ -48,7 +48,7 @@ It creates a semi-diplomatic MS view.
     <xsl:text> </xsl:text>
   </xsl:template>
   
-  <xsl:template match="tei:name[not(ancestor::tei:name) and count(tei:w|tei:name)=1 and count(tei:w/tei:w)=0]"> 
+  <xsl:template match="tei:name[not(ancestor::tei:name) and count(tei:w|tei:name)=1 and count(tei:w/tei:w)=0]"> <!-- Drostan -->
     <xsl:text> </xsl:text>
     <span class="word chunk syntagm name">
       <xsl:call-template name="addNameAttributes"/>
@@ -60,7 +60,7 @@ It creates a semi-diplomatic MS view.
     <xsl:text> </xsl:text>
   </xsl:template>
   
-  <xsl:template match="tei:name[not(ancestor::tei:name) and count(tei:w|tei:name)>1]"> 
+  <xsl:template match="tei:name[not(ancestor::tei:name) and count(tei:w|tei:name)>1]"> <!-- Calum cille -->
     <xsl:text> </xsl:text>
     <span class="chunk syntagm name">
       <xsl:call-template name="addNameAttributes"/>
@@ -116,12 +116,21 @@ It creates a semi-diplomatic MS view.
     <xsl:text> </xsl:text>
   </xsl:template>
   
-  <xsl:template match="tei:w[(not(@pos='verb') or @lemmaRef='http://www.dil.ie/29104') and (ancestor::tei:w or ancestor::tei:name) and not(descendant::tei:w)]"> 
-    <span class="word syntagm">
+  <xsl:template match="tei:w[(not(@pos='verb') or @lemmaRef='http://www.dil.ie/29104') and ancestor::tei:name and not(ancestor::tei:w) and not(descendant::tei:w)]"> 
+    <xsl:text> </xsl:text>
+    <span class="word syntagm apple">
       <xsl:call-template name="addWordAttributes"/>
       <xsl:apply-templates/>
     </span>
+    <xsl:text> </xsl:text>
   </xsl:template>
+  
+  <xsl:template match="tei:w[(not(@pos='verb') or @lemmaRef='http://www.dil.ie/29104') and ancestor::tei:w and not(descendant::tei:w)]"> 
+    <span class="word syntagm banana">
+      <xsl:call-template name="addWordAttributes"/>
+      <xsl:apply-templates/>
+    </span>
+  </xsl:template> <!-- Calum cille vs Drostan vs Dubhghaill? -->
   
   <xsl:template match="tei:w">  <!-- a word which IS part of a larger word and also contains smaller words -->
     <xsl:text> </xsl:text>
@@ -130,6 +139,9 @@ It creates a semi-diplomatic MS view.
     </span>
     <xsl:text> </xsl:text>
   </xsl:template>
+  
+  
+  
   
   <xsl:template name="addNameAttributes">
     <xsl:if test="@type">
