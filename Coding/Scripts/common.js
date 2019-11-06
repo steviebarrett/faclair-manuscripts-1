@@ -116,66 +116,93 @@ $(function() {
       $(this).show();
       $(this).find('span').show();
       if ($(this).hasClass('chunk')) {
-        //alert($(this).text());
         var y = $(this).prevAll('.chunk, .lineBreak').slice(0,5);
         y.show(); 
         y.find('*').show();
         var z = y.last();
-        //if (z.prevAll('.lineBreak').size()>0) {   // STILL NOT WORKING - Drostan l. 1
-          //alert(z.html());
-          //alert(z.prevAll('.lineBreak').html());
-           
-          var w = searchBackwards(z,'lineBreak');
-          if (typeof w != 'undefined') {
-            w.show();
+        var w = searchBackwards(z,'lineBreak');
+        if (typeof w != 'undefined') {
+          w.show();
+          var u = w.parents('.chunk');
+          if (u.length>0) { // embedded in chunk
+            u.show();
+            u.nextUntil($(this)).show();
+            u.nextUntil($(this)).find('*').show();
           }
-           
-        //}
-        //searchBackwards($(this),'pageBreak').show();
+          else {
+            w.nextUntil($(this)).show();
+            w.nextUntil($(this)).find('*').show();
+          }
+        }
+        searchBackwards($(this),'pageBreak').show();
         y = $(this).nextAll('.chunk, .lineBreak').slice(0,5);
-        y.show(); y.find('*').show();
-        $('<hr class="temp"/>').insertAfter(y.last());
+        y.show(); 
+        y.find('*').show();
+        z = y.last();
+        w = searchForwards(z,'lineBreak');
+        if (typeof w != 'undefined') {
+          //w.show();
+          var u = w.parents('.chunk');
+          if (u.length>0) { // embedded in chunk
+            u.show();
+            u.prevUntil($(this)).show();
+            u.prevUntil($(this)).find('*').show();
+          }
+          else {
+            w.prevUntil($(this)).show();
+            w.prevUntil($(this)).find('*').show();
+          }
+        }
+        //$('<hr class="temp"/>').insertAfter(y.last());
       }
       else {
-        var y = $(this).parents('.chunk');
-        y.show(); y.find('span').show();
-        var z = y.prevAll('.chunk, .lineBreak').slice(0,5);
-        z.show(); z.find('*').show();
-        //var z = y.last();
-        //var w = searchBackwards(z,'lineBreak');
-        //w.show();
-        searchBackwards($(this),'pageBreak').show();
-        z = y.nextAll('.chunk, .lineBreak').slice(0,5);
-        z.show(); z.find('*').show();
-        $('<hr class="temp"/>').insertAfter(y.last());
+        var a = $(this).parents('.chunk');
+        a.show(); 
+        a.find('span').show();
+        var y = a.prevAll('.chunk, .lineBreak').slice(0,5);
+        y.show(); 
+        y.find('*').show();
+        var z = y.last();
+        var w = searchBackwards(z,'lineBreak');
+        if (typeof w != 'undefined') {
+          w.show();
+          var u = w.parents('.chunk');
+          if (u.length>0) { // embedded in chunk
+            u.show();
+            u.nextUntil(a).show();
+            u.nextUntil(a).find('*').show();
+          }
+          else {
+            w.nextUntil(a).show();
+            w.nextUntil(a).find('*').show();
+          }
+        }
+        searchBackwards(a,'pageBreak').show();
+        y = a.nextAll('.chunk, .lineBreak').slice(0,5);
+        y.show(); 
+        y.find('*').show();
+        var z = y.last();
+        var w = searchForwards(z,'lineBreak');
+        if (typeof w != 'undefined') {
+          //w.show();
+          var u = w.parents('.chunk');
+          if (u.length>0) { // embedded in chunk
+            u.show();
+            u.prevUntil(a).show();
+            u.prevUntil(a).find('*').show();
+          }
+          else {
+            w.prevUntil(a).show();
+            w.prevUntil(a).find('*').show();
+          }
+        }
+        //$('<hr class="temp"/>').insertAfter(y.last());
       }
-      /*
-      var x = $(this).parents('span'); // not a chunk
-      if (x.length>0) {
-        x.show(); x.find('span').show();
-        var y = x.prevAll().slice(0,10);
-        y.show(); y.find('*').show();
-        y = x.nextAll().slice(0,10);
-        y.show(); y.find('*').show();
-        $('<hr class="temp"/>').insertAfter(y.last());
-      }
-      else { // a chunk
-        var y = $(this).prevAll().slice(0,10);
-        y.show(); y.find('*').show();
-        y = $(this).nextAll().slice(0,10);
-        y.show(); y.find('*').show();
-        $('<hr class="temp"/>').insertAfter(y.last());
-      }
-       */
     });
     $('.textAnchor').hide();
     x.find('.suppliedDiplo, .addComment, .viewComment').hide();
     if (x.children('div').attr('data-diplo')=='super') { x.find('.gapDamageCharsDiplo').hide(); } //??????????????????????
     else { x.find('.gapDamageCharsSuperDiplo').hide(); }
-    //$('.pageBreak').show();
-    //$('#midl').find('.pageBreak').hide();
-    //$(this).parents().prevAll('.pageBreak').first().show(); // not working
-    //$('#midl').find('.greyedOut').hide();
     return null;
   });
   
@@ -443,7 +470,6 @@ function getHandName(handId) {
 }
 
 function searchBackwards(span,c) { // depth-first
-  //console.log(span.attr('class'));
   var out;
   var jqs = span.prevAll();
   jqs.each(function(){
@@ -458,12 +484,33 @@ function searchBackwards(span,c) { // depth-first
     }
   });
   var z = span.parent();
-  if (typeof out == 'undefined' && z.is('span')) {
-    //console.log(span.parent().);
-    return searchBackwards(span.parent(),c);
+  if (typeof out == 'undefined' && !z.is('body')) {
+    return searchBackwards(z,c);
   }
   return out;
 }
+
+function searchForwards(span,c) { // depth-first
+  var out;
+  var jqs = span.nextAll();
+  jqs.each(function(){
+    if ($(this).hasClass(c)) { 
+      out = $(this);
+      return false;
+    }
+    var y = $(this).find('.'+c); 
+    if (y.length>0) {
+      out = y.last();
+      return false;
+    }
+  });
+  var z = span.parent();
+  if (typeof out == 'undefined' && !z.is('body')) {
+    return searchForwards(z,c);
+  }
+  return out;
+}
+
 
 /*
   Uses an AJAX request to fetch the detailed hand info for a hand IDs
