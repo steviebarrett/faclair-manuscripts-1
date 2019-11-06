@@ -365,7 +365,7 @@ function makeHeading(span, rec) {
     html += '">'
   }
   clone = span.clone();
-  clone.find('.lineBreak, .pageBreak, .columnBreak, .punct, .handShift').remove();
+  clone.find('.lineBreak, .pageBreak, .columnBreak, .punct, .handShift, .pageBreakSuper').remove();
   clone.find('[id]').each(function(){
     if (rec) { $(this).attr('id', 'yy-' + $(this).attr('id')); }
     else { $(this).attr('id', 'xx-' + $(this).attr('id')); }
