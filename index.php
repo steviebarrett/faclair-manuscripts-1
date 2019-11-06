@@ -26,6 +26,7 @@
       </nav>
       <div class="list-group list-group-flush">
         <div class="list-group-item list-group-item-action">Transcription 1 (<em>The Book of Deer</em>: CUL I.i.6.32): <a href="Coding/Scripts/viewTranscription.php?t=1&diplo=yes">diplo</a>, <a href="Coding/Scripts/viewTranscription.php?t=1&diplo=no">semi</a></div>
+        <div class="list-group-item list-group-item-action">Transcription 3 (<em>Cath Fionntrágha</em>: NLS Adv. MS. 72.2.11): <a href="Coding/Scripts/viewTranscription.php?t=3&diplo=yes">diplo</a>, <a href="Coding/Scripts/viewTranscription.php?t=3&diplo=no">semi</a></div>
         <div class="list-group-item list-group-item-action">Transcription 6 (NLS Adv. 72.1.31): <a href="Coding/Scripts/viewTranscription.php?t=6&diplo=yes">diplo</a>, <a href="Coding/Scripts/viewTranscription.php?t=6&diplo=no">semi</a></div>
         <div class="list-group-item list-group-item-action">Transcription 17 (NLS Adv. 72.1.4): <a href="Coding/Scripts/viewTranscription.php?t=17&diplo=yes">diplo</a>, <a href="Coding/Scripts/viewTranscription.php?t=17&diplo=no">semi</a></div>
       </div>
