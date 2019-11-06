@@ -1330,7 +1330,15 @@
 							<xsl:choose>
 								<xsl:when test="contains(@n, 'r') or contains(@n, 'v')"
 									>fol.<xsl:text> </xsl:text></xsl:when>
-								<xsl:otherwise>p.<xsl:text> </xsl:text></xsl:otherwise>
+								<xsl:otherwise><xsl:choose>
+									<xsl:when test="contains(@n, 'p')">
+										<xsl:text/>
+									</xsl:when>
+									<xsl:otherwise>
+										p.<xsl:text> </xsl:text>
+									</xsl:otherwise>
+								</xsl:choose>
+								</xsl:otherwise>
 							</xsl:choose>
 							<xsl:value-of select="@n"/>
 						</b>
@@ -1786,6 +1794,16 @@
 					<xsl:apply-templates select="descendant::tei:l"/>
 				</p>
 			</xsl:when>
+			<xsl:when test="@type = 'fragment'">
+				<p style="margin-left:30px">
+					<xsl:apply-templates select="descendant::tei:l"/>
+				</p>
+			</xsl:when>
+			<xsl:when test="@type = 'fragment'">
+				<p style="margin-left:30px">
+					<xsl:apply-templates select="descendant::tei:l"/>
+				</p>
+			</xsl:when>
 			<xsl:otherwise>
 				<xsl:if test="tei:head[@type = 'lgHead']"><h3><xsl:apply-templates select="tei:head[@type = 'lgHead']/tei:title"/></h3></xsl:if>
 				<p style="margin-left:30px">
@@ -1866,6 +1884,14 @@
 		<xsl:text/>
 	</xsl:template>
 
+	<xsl:template match="tei:seg[@type = 'ed-er']">
+		<xsl:apply-templates select="tei:add[@type = 'correction']"/>
+	</xsl:template>
+
+	<xsl:template match="tei:seg[@type = 'fragment']">
+		<xsl:text/>
+	</xsl:template>
+
 	<xsl:template match="tei:seg[@type = 'title']">
 		<xsl:variable name="elPOS" select="count(preceding::*)"/>
 		<xsl:variable name="lineID">
@@ -1936,6 +1962,7 @@
 			</b>
 		</sub>
 		<xsl:apply-templates/>
+		<b>|</b>
 	</xsl:template>
 
 	<xsl:template match="tei:seg[@type = 'MSDef']">
@@ -1945,11 +1972,11 @@
 	<xsl:template match="tei:seg[@type = 'MSDefd']">
 		<xsl:apply-templates/>
 	</xsl:template>
-	
+
 	<xsl:template match="tei:seg[@type = 'xp']">
 		<xsl:apply-templates/>
 	</xsl:template>
-	
+
 	<xsl:template match="tei:seg[@type= 'signature']">
 		<xsl:apply-templates/>
 	</xsl:template>
@@ -2972,8 +2999,7 @@
 				<xsl:choose>
 					<xsl:when test="@ana = 'part' and ancestor::tei:w[contains(@ana, 'part, verb')]">
 						<xsl:choose>
-							<xsl:when
-								test="ancestor::tei:w[contains(@lemmaRef, 'http://www.dil.ie/29104')]">
+							<xsl:when test="ancestor::tei:w/descendant::tei:w[@lemmaRef = 'http://www.dil.ie/29104']">
 								<xsl:text/>
 							</xsl:when>
 							<xsl:otherwise>
@@ -4276,7 +4302,7 @@
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
-	
+
 	<xsl:template match="tei:anchor[@type='crossref']">
 		<xsl:variable name="crossrefID" select="@copyOf"/>
 		<xsl:variable name="msID" select="substring-before($crossrefID, '.')"/>
@@ -4888,6 +4914,10 @@
 				</xsl:choose>
 			</xsl:when>
 		</xsl:choose>
+	</xsl:template>
+
+	<xsl:template match="tei:add[@type = 'correction']">
+		<xsl:apply-templates/>
 	</xsl:template>
 
 	<xsl:template match="tei:handShift">

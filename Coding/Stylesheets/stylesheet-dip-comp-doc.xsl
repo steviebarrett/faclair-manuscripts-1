@@ -563,6 +563,16 @@
 			<xsl:apply-templates mode="dip"/>
 		</span>
 	</xsl:template>
+	
+	<xsl:template mode="dip" match="tei:seg[@type = 'ed-er']">
+		<xsl:apply-templates select="tei:add[@type = 'correction']"/>
+	</xsl:template>
+	
+	<xsl:template mode="dip" match="tei:seg[@type = 'fragment']">
+		<span class="fragment">
+			<xsl:text/>
+		</span>
+	</xsl:template>
 
 	<xsl:template mode="dip" match="tei:seg[@type = 'margNote']">
 		<xsl:variable name="encLineID"
@@ -2246,6 +2256,10 @@
 				</b>
 			</xsl:when>
 		</xsl:choose>
+	</xsl:template>
+	
+	<xsl:template mode="dip" match="tei:add[@type = 'correction']">
+		<xsl:apply-templates/>
 	</xsl:template>
 
 	<xsl:template mode="dip" match="tei:handShift">

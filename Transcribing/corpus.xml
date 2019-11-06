@@ -268,6 +268,102 @@
 						</history>
 					</msDesc>
 					<msDesc>
+						<msIdentifier xml:id="MS19">
+							<settlement>Edinburgh</settlement>
+							<repository>NAS</repository>
+							<idno type="shelfmark">RH. 13/40</idno>
+						</msIdentifier>
+						<history>
+							<origin>
+								<date from-custom="17">17</date>
+							</origin>
+						</history>
+					</msDesc>
+					<msDesc>
+						<msIdentifier xml:id="MS20">
+							<settlement>Edinburgh</settlement>
+							<repository>NLS</repository>
+							<idno type="shelfmark">Adv. MS. 72.1.9</idno>
+						</msIdentifier>
+						<history>
+							<origin>
+								<date from-custom="17">17</date>
+							</origin>
+						</history>
+					</msDesc>
+					<msDesc>
+						<msIdentifier xml:id="MS21">
+							<settlement>Edinburgh</settlement>
+							<repository>NLS Adv.</repository>
+							<idno type="shelfmark">MS. 35.4.8</idno>
+						</msIdentifier>
+						<history>
+							<origin>
+								<date from-custom="20">20</date>
+							</origin>
+						</history>
+					</msDesc>
+					<msDesc>
+						<msIdentifier xml:id="MS22">
+							<settlement>Edinburgh</settlement>
+							<repository>NAS</repository>
+							<idno type="shelfmark">GD328/11</idno>
+						</msIdentifier>
+						<history>
+							<origin>
+								<date from-custom="18">18</date>
+							</origin>
+						</history>
+					</msDesc>
+					<msDesc>
+						<msIdentifier xml:id="MS23">
+							<settlement>Edinburgh</settlement>
+							<repository>NAS</repository>
+							<idno type="shelfmark">GD201/1/362/5</idno>
+						</msIdentifier>
+						<history>
+							<origin>
+								<date from-custom="18">18</date>
+							</origin>
+						</history>
+					</msDesc>
+					<msDesc>
+						<msIdentifier xml:id="MS24">
+							<settlement>Edinburgh</settlement>
+							<repository>NLS</repository>
+							<idno type="shelfmark">Wod.Lett.Qu.I</idno>
+						</msIdentifier>
+						<history>
+							<origin>
+								<date from-custom="18">18</date>
+							</origin>
+						</history>
+					</msDesc>
+					<msDesc>
+						<msIdentifier xml:id="MS25">
+							<settlement>Edinburgh</settlement>
+							<repository>EUL</repository>
+							<idno type="shelfmark">MS 3096.1.20</idno>
+						</msIdentifier>
+						<history>
+							<origin>
+								<date from-custom="18">18</date>
+							</origin>
+						</history>
+					</msDesc>
+					<msDesc>
+						<msIdentifier xml:id="MS26">
+							<settlement>Edinburgh</settlement>
+							<repository>NLS Adv.</repository>
+							<idno type="shelfmark">72.1.34</idno>
+						</msIdentifier>
+						<history>
+							<origin>
+								<date from-custom="17">17</date>
+							</origin>
+						</history>
+					</msDesc>
+					<msDesc>
 						<msIdentifier xml:id="LaudMisc615">
 							<settlement>Oxford</settlement>
 							<repository>Bodleian Library</repository>
@@ -883,6 +979,21 @@
 							</imprint>
 						</monogr>
 					</biblStruct>
+					<biblStruct type="book" xml:id="Black2001">
+						<monogr>
+							<title>An Lasair: Anthology of 18th Century Scottish Gaelic
+								Verse</title>
+							<respStmt>
+								<resp>editor</resp>
+								<name><forename>Ronald</forename><surname>Black</surname></name>
+							</respStmt>
+							<imprint>
+								<pubPlace>Edinburgh</pubPlace>
+								<publisher>Birlinn</publisher>
+								<date>2001</date>
+							</imprint>
+						</monogr>
+					</biblStruct>
 				</listBibl>
 			</sourceDesc>
 		</fileDesc>
@@ -1029,7 +1140,7 @@
 				</taxonomy>
 				<taxonomy xml:id="lang">
 					<gloss xml:id="la">Latin</gloss>
-					<gloss xml:id="gk">Greek</gloss>
+					<gloss xml:id="grk">Greek</gloss>
 					<gloss xml:id="sco">Scots</gloss>
 					<gloss xml:id="hbo">Ancient Hebrew</gloss>
 					<gloss xml:id="jpa">Aramaic</gloss>
@@ -1050,7 +1161,7 @@
 					<note>A horizontal line with a downwards hook, standing for "-m".</note>
 				</glyph>
 				<glyph xml:id="g2" corresp="https://www.vanhamel.nl/codecs/Ocus,_et_(Tironian_note)">
-					<glyphName> Tironian et/ocus</glyphName>
+					<glyphName>Tironian et/ocus</glyphName>
 					<note>Resembles a "7"; may stand for "ocus" and variants or "et" and
 						variants.</note>
 				</glyph>
@@ -1504,7 +1615,33 @@
 					<glyphName>subscript i (curled)</glyphName>
 					<note>A subscript "i", curved and often finished with a left-facing loop that
 						almost makes it look like a perpendicular or upside down "e", standing for a
-						syllable including "i" or simply "i" itself.</note>
+						syllable including "i" or simply "i" itself.</note></glyph>
+				<glyph xml:id="g96">
+					<glyphName>arabic numeral 10</glyphName>
+					<note>"10", standing for "de(i)ch", "de(i)th" etc.</note>
+				</glyph>
+				<glyph xml:id="g97" corresp="https://www.vanhamel.nl/codecs/Id_est_(.i.)">
+					<glyphName>.i. abbreviation</glyphName>
+					<note>".i.", when used to supply characters of another word, standing for "edon"
+						or suchlike.</note>
+				</glyph>
+				<glyph xml:id="g98" corresp="https://www.vanhamel.nl/codecs/He_(ligature)">
+					<glyphName>he abbreviation</glyphName>
+					<note>"h" with a ligatured "e" on the ascender, standing for "her", "hre", or
+						another syllable containing "h" and "e".</note>
+				</glyph>
+				<glyph xml:id="g99">
+					<glyphName>superscript ll</glyphName>
+					<note>"ll" in superscript, standing for a syllable containing "ll".</note>
+				</glyph>
+				<glyph xml:id="g100" corresp="https://www.vanhamel.nl/codecs/4_(Arabic_numeral)">
+					<glyphName>arabic numeral 4</glyphName>
+					<note>A "4", standing for "cethair", "cethra", or suchlike.</note>
+				</glyph>
+				<glyph xml:id="g101">
+					<glyphName>ur (u with descender and cross-stroke)</glyphName>
+					<note>A "u" with a descender and cross-stroke, standing for "ur"; possibly
+						modelled on the ar abbreviation.</note>
 				</glyph>
 				<glyph xml:id="l1">
 					<glyphName>ligature</glyphName>
@@ -1625,8 +1762,41 @@
 					<note>A ligatured "a", although taller than usuual, whose back-stoke forms one
 						of the minims of a following "n", standing for "aen".</note>
 				</glyph>
-				<glyph xml:id="ln" corresp="n">
-					<glyphName/>
+				<glyph xml:id="l30">
+					<glyphName>sp ligature</glyphName>
+					<note>A reversed "s", sharing a backstroke with a following "p".</note>
+				</glyph>
+				<glyph xml:id="l31">
+					<glyphName>b + f ligature</glyphName>
+					<note/>
+				</glyph>
+				<glyph xml:id="l32">
+					<glyphName>le ligature</glyphName>
+					<note/>
+				</glyph>
+				<glyph xml:id="l33">
+					<glyphName>tt ligature</glyphName>
+					<note/>
+				</glyph>
+				<glyph xml:id="l34">
+					<glyphName>ta ligature</glyphName>
+					<note/>
+				</glyph>
+				<glyph xml:id="l35">
+					<glyphName>ni ligature</glyphName>
+					<note/>
+				</glyph>
+				<glyph xml:id="l36">
+					<glyphName>ar ligature</glyphName>
+					<note/>
+				</glyph>
+				<glyph xml:id="l37"
+					corresp="https://www.vanhamel.nl/codecs/IS_(vertical_S_through_I)">
+					<glyphName>is ligature</glyphName>
+					<note/>
+				</glyph>
+				<glyph xml:id="l38" corresp="https://www.vanhamel.nl/codecs/De_(ligature)">
+					<glyphName>de ligature</glyphName>
 					<note/>
 				</glyph>
 			</charDecl>
@@ -1636,6 +1806,7 @@
 				<handNote xml:id="Hand1">
 					<date from="1100" to="1150" min="1100" max="1200">12</date>
 					<region cert="high">NE Scotland</region>
+					<affiliation>deer</affiliation>
 					<note><p>Hand A in the Gaelic Notes in the Book of Deer</p>
 						<p>Jackson (1972): (p.12) Writing commences small, then varies in size.
 							(p.13) It could date from the early to mid-12th century and must date
@@ -1647,6 +1818,7 @@
 				<handNote xml:id="Hand2">
 					<date from="1100" to="1150" min="1100" max="1200">12</date>
 					<region cert="high">NE Scotland</region>
+					<affiliation>deer</affiliation>
 					<note><p>Hand B in the Gaelic Notes in the Book of Deer</p><p>Jackson (1972):
 							(p.13) Similar to A; makes much use of margins to keep his text
 							together. (p.16) Contemporary with A; late 11th/early 12th
@@ -1655,6 +1827,7 @@
 				<handNote xml:id="Hand3">
 					<date from="1100" to="1150" min="1100" max="1200">12</date>
 					<region cert="high">NE Scotland</region>
+					<affiliation>deer</affiliation>
 					<note><p>Hand C in the Gaelic Notes in the Book of Deer</p><p>Jackson (1972):
 							(p.13) Uses paler and browner ink. Writing is spidery. More use of
 							lenition marks. (p.15) Later than A and B. (p.16) "lateish in the
@@ -1663,6 +1836,7 @@
 				<handNote xml:id="Hand4">
 					<date from="1100" to="1150" min="1100" max="1200">12</date>
 					<region cert="high">NE Scotland</region>
+					<affiliation>deer</affiliation>
 					<note><p>Hand D in the Gaelic Notes in the Book of Deer</p><p>Jackson (1972):
 							(p.14) Less formal. More use of m-suspension and abbreviations for <hi
 								rend="italics">mac</hi> and <hi rend="italics">meic</hi>. Use of
@@ -1672,6 +1846,7 @@
 				<handNote xml:id="Hand5">
 					<date from="1100" to="1150" min="1100" max="1200">12</date>
 					<region cert="high">NE Scotland</region>
+					<affiliation>deer</affiliation>
 					<note><p>Hand E in the Gaelic Notes in the Book of Deer</p><p>Jackson (1972):
 							(p.15): Wrote the Charter of David I. (p.16) A continental hand, with
 							Hiberno-Saxon influences. (p.16) Late in the period.</p></note>
@@ -1679,12 +1854,14 @@
 				<handNote xml:id="Hand6">
 					<date cert="medium" from="0900" to="1000" min="900" max="1000">10</date>
 					<region cert="high">NE Scotland</region>
+					<affiliation>deer</affiliation>
 					<note>Scribe of main text in the Book of Deer</note>
 				</handNote>
 				<handNote xml:id="Hand7">
 					<surname cert="medium">MacEwen (?)</surname>
 					<date from="1450" to="1550" min="1501" max="1599">15/16</date>
 					<region cert="medium">Argyll</region>
+					<affiliation>mcewen</affiliation>
 					<note><p>This is the scribe of '<ref target="T2">Aingil Dé dom dhín</ref>' in
 								<ref target="MS2">London, BL MS. Egerton 2899</ref> and a set of
 							Columban poems in Edinburgh, NLS Adv. MS 72.1.31. Black has suggested
@@ -1719,6 +1896,7 @@
 					<surname>Mac Pháil</surname>
 					<date cert="high" from="1600" to="1650" min="1600" max="1700">17</date>
 					<region cert="high">W Scotland</region>
+					<affiliation>misc</affiliation>
 					<note/>
 				</handNote>
 				<handNote xml:id="Hand9">
@@ -1726,6 +1904,7 @@
 					<surname>Mac Gilleoin</surname>
 					<date cert="medium" from="1650" to="1700" min="1600" max="1700">17</date>
 					<region cert="high">SW Scotland</region>
+					<affiliation>misc</affiliation>
 					<note/>
 				</handNote>
 				<handNote xml:id="Hand10">
@@ -1733,6 +1912,7 @@
 					<surname>MacMhuirich</surname>
 					<date cert="medium" from="1600" to="1660" min="1601" max="1799">17/18</date>
 					<region cert="high">W Scotland</region>
+					<affiliation>macmhuirich</affiliation>
 					<note/>
 				</handNote>
 				<handNote xml:id="Hand11">
@@ -1741,12 +1921,14 @@
 					<date type="floruit" cert="medium" from="1707" to="1745" min="1700" max="1800"
 						>18</date>
 					<region cert="high">W Scotland</region>
+					<affiliation>macmhuirich</affiliation>
 					<note/>
 				</handNote>
 				<handNote xml:id="Hand12">
 					<date type="floruit" cert="medium" from="1500" to="1590" min="1500" max="1600"
 						>16</date>
 					<region cert="high">W Scotland</region>
+					<affiliation>beaton</affiliation>
 					<note>Hand M in NLS Adv. MS 72.1.33.</note>
 				</handNote>
 				<handNote xml:id="Hand13">
@@ -1755,6 +1937,7 @@
 					<date type="floruit" cert="medium" from="1577" to="1598" min="1500" max="1600"
 						>16</date>
 					<region cert="high">Isle of Mull</region>
+					<affiliation>misc</affiliation>
 					<note/>
 				</handNote>
 				<handNote xml:id="Hand14">
@@ -1763,12 +1946,14 @@
 					<date type="floruit" cert="medium" from="1613" to="1621" min="1600" max="1700"
 						>17</date>
 					<region/>
+					<affiliation>beaton</affiliation>
 					<note>Black's Hand K (NLS Adv. 72.1.33)</note>
 				</handNote>
 				<handNote xml:id="Hand15">
 					<date type="floruit" cert="low" from="1590" to="1700" min="1600" max="1700"
 						>17</date>
 					<region/>
+					<affiliation>beaton</affiliation>
 					<note>Like James Beaton's, this hand makes occasional brief interventions in
 						Transcription 5.2 (NLS Adv. MS. 72.1.33). It is mucher neater than James
 						Beaton's and the main scribes, with each stroke an angular block strongly
@@ -1780,6 +1965,7 @@
 					<date type="life" cert="medium" from="1640" to="1715" min="1600" max="1700"
 						>17</date>
 					<region/>
+					<affiliation>beaton</affiliation>
 					<note>Black's Hand S (NLS Adv. 72.1.33)</note>
 				</handNote>
 				<handNote xml:id="Hand17">
@@ -1788,6 +1974,7 @@
 					<date type="floruit" cert="medium" from="1656" to="1656" min="1600" max="1700"
 						>17</date>
 					<region/>
+					<affiliation>beaton</affiliation>
 					<note>Black's Hand D (NLS Adv. 72.1.33)</note>
 				</handNote>
 				<handNote xml:id="Hand18">
@@ -1796,6 +1983,7 @@
 					<date type="floruit" cert="medium" from="1467" to="1467" min="1400" max="1500"
 						>15</date>
 					<region>Ireland/Hebrides</region>
+					<affiliation>DAC</affiliation>
 					<note/>
 				</handNote>
 				<handNote xml:id="Hand19">
@@ -1804,6 +1992,7 @@
 					<date type="floruit" cert="high" from="1560" to="1563" min="1500" max="1600"
 						>16</date>
 					<region/>
+					<affiliation>beaton</affiliation>
 					<note>EUL La. III.21</note>
 				</handNote>
 				<handNote xml:id="Hand20">
@@ -1813,6 +2002,7 @@
 						>16</date>
 					<region>SW Scotland</region>
 					<region>Ireland</region>
+					<affiliation>beaton</affiliation>
 					<note><p xml:space="preserve">
 						- "a good, clear hand varying in size from average to large" (Black, 2011)
 						- tendency to use accents frequently (related to stress patterns in Latinate vocab?); difficult to distinguish from hairstrokes on "i" in minim clusters.
@@ -1826,6 +2016,7 @@
 					<surname>?Mac Domhnaill</surname>
 					<date min="1501" max="1699">16/17</date>
 					<region>Sleat (?)</region>
+					<affiliation>misc</affiliation>
 					<note/>
 				</handNote>
 				<handNote xml:id="Hand22">
@@ -1833,6 +2024,7 @@
 					<surname>Mac Mhuirich</surname>
 					<date min="1600" max="1700">17</date>
 					<region>Western Isles/Skye</region>
+					<affiliation>macmhuirich</affiliation>
 					<note/>
 				</handNote>
 				<handNote xml:id="Hand23">
@@ -1840,11 +2032,13 @@
 					<surname>Mac Mhaighstir Alasdair</surname>
 					<date min="1700" max="1800">18</date>
 					<region>Western Highlands</region>
+					<affiliation>AMD</affiliation>
 					<note/>
 				</handNote>
 				<handNote xml:id="Hand24">
 					<date type="floruit" min="1500" max="1600">16</date>
 					<region cert="medium">Islay</region>
+					<affiliation>beaton</affiliation>
 					<note><p>This individual is unidentified but they appear to have been a
 							physician active in Islay in the 16th century. In <ref type="mss"
 								target="JRIr35">John Rylands MS. Ir 35</ref> (fol. 67<hi rend="sup"
@@ -1863,6 +2057,7 @@
 					<date type="floruit" min="1401" max="1599" from="1512" to="1512">15/16</date>
 					<region cert="high">Sligo</region>
 					<region cert="high">Kildare</region>
+					<affiliation>beaton</affiliation>
 					<note><p>This scribe appears to be based in Ireland. He contributes to
 							manuscripts associated with Sligo and Kildare. In <ref target="MS17"
 								type="mss">MS17</ref> (fol. 100<hi rend="sup">r</hi>6), he calls
@@ -1878,11 +2073,13 @@
 					<surname>mac Beathadh</surname>
 					<date type="floruit" min="1501" max="1699" from="1582" to="1603">16/17</date>
 					<region/>
+					<affiliation>beaton</affiliation>
 					<note><p>Hand G/H(?)/I(?) in NLS Adv. 72.1.33</p></note>
 				</handNote>
 				<handNote xml:id="Hand27">
 					<date type="floruit" min="1501" max="1599">16</date>
 					<region/>
+					<affiliation>misc</affiliation>
 					<note><p>Hand 5 in NLS Adv. 72.1.40; hand of Section B of NLS Adv.
 						72.1.31</p></note>
 				</handNote>
@@ -1891,65 +2088,186 @@
 					<surname>Beaton</surname>
 					<date type="floruit" min="1350" max="1550" from="1408" to="1408">14/15</date>
 					<region>Islay</region>
+					<affiliation>beaton</affiliation>
 				</handNote>
 				<handNote xml:id="Hand29">
 					<forename>Domhnall</forename>
 					<surname>Mac Domhnaill</surname>
 					<date type="floruit" min="1386" max="1423" from="1386" to="1423">14/15</date>
 					<region>Islay</region>
+					<affiliation>misc</affiliation>
 					<note><p>Lord of the Isles (1386–1408)</p></note>
 				</handNote>
 				<handNote xml:id="Hand30">
 					<date type="floruit" min="1401" max="1599">14/15</date>
 					<region>Islay</region>
+					<affiliation>misc</affiliation>
 					<note/>
 				</handNote>
 				<handNote xml:id="Hand31">
 					<forename>Toirdealbach</forename>
 					<surname>Ó Muirgheasa</surname>
-					<date type="floruit" min="1601" max="1699">1614</date>
+					<date type="floruit" from="1614" to="1614" min="1601" max="1699">17</date>
 					<region>Skye</region>
+					<affiliation>misc</affiliation>
 					<note>Scribe (?) and first witness of the MacLeod Fosterage Contract
 						(1614).</note>
 				</handNote>
 				<handNote xml:id="Hand32">
 					<forename>Eoin</forename>
 					<surname>Mac Colgan</surname>
-					<date type="floruit" min="1601" max="1699">1614</date>
+					<date type="floruit" from="1614" to="1614" min="1601" max="1699">17</date>
 					<region>Skye</region>
+					<affiliation>misc</affiliation>
 					<note>Minister of Bracadale; witness of the MacLeod Fosterage Contract
 						(1614).</note>
 				</handNote>
 				<handNote xml:id="Hand33">
 					<forename>Eoghan</forename>
 					<surname>Mac Suibhne</surname>
-					<date type="floruit" min="1601" max="1699">1614</date>
+					<date type="floruit" from="1614" to="1614" min="1601" max="1699">17</date>
 					<region>Skye</region>
+					<affiliation>misc</affiliation>
 					<note>Minister of Duirinish; witness of the MacLeod Fosterage Contract
 						(1614).</note>
 				</handNote>
 				<handNote xml:id="Hand34">
 					<forename>Domhnall</forename>
 					<surname>Mac Pail</surname>
-					<date type="floruit" min="1601" max="1699">1614</date>
+					<date type="floruit" from="1614" to="1614" min="1601" max="1699">17</date>
 					<region>Skye</region>
+					<affiliation>misc</affiliation>
 					<note>Witness of the MacLeod Fosterage Contract (1614).</note>
 				</handNote>
 				<handNote xml:id="Hand35">
 					<date type="floruit" min="1501" max="1599">16</date>
 					<note>Hand 48 in NLS Adv. 72.1.2.</note>
+					<affiliation>beaton</affiliation>
 				</handNote>
 				<handNote xml:id="Hand36">
 					<date type="floruit" min="1501" max="1599">16</date>
 					<note>Hand 1 in NLS Adv. 72.1.27; "akin to those of Dáibhí Ó Cearnaigh, the Ó
 						Ceannamháins and John Beaton in EUL MS. Laing III 21 and BL MS. Add.
 						15,582".</note>
+					<affiliation>beaton</affiliation>
+				</handNote>
+				<handNote xml:id="Hand37">
+					<forename>[unk.]</forename>
+					<surname>[unk.]</surname>
+					<date type="floruit" min="1501" max="1599">16</date>
+					<note>Intervenes briefly in Hand 1's text in NLS Adv. 72.1.27.</note>
+					<affiliation>beaton</affiliation>
+				</handNote>
+				<handNote xml:id="Hand38">
+					<forename>Neil</forename>
+					<surname>MacEwen</surname>
+					<date type="floruit" from="1631" to="1631" min="1601" max="1699">17</date>
+					<region>Argyll</region>
+					<affiliation>mcewen</affiliation>
+					<note>Scribe of 'Mór in broinsgel' in NAS RH. 13/40.</note>
+				</handNote>
+				<handNote xml:id="Hand39">
+					<forename>[unk.]</forename>
+					<surname>[unk.]</surname>
+					<date type="floruit" min="1649" max="1705">17/18</date>
+					<region>Skye</region>
+					<affiliation>misc</affiliation>
+					<note>Address Sir Norman McLeod in RIA E.i.3.</note>
+				</handNote>
+				<handNote xml:id="Hand41">
+					<forename>Uilleam</forename>
+					<surname>Mac Mhurchaidh</surname>
+					<date type="floruit" from="1750" to="1750" min="1701" max="1799">18</date>
+					<region>Argyll</region>
+					<affiliation>misc</affiliation>
+					<note/>
+				</handNote>
+				<handNote xml:id="Hand42">
+					<forename>Lachlan</forename>
+					<surname>Mac Mhuirich</surname>
+					<date type="floruit" from="1749" to="1749" min="1701" max="1799">18</date>
+					<region>Argyll</region>
+					<affiliation>macmhuirich</affiliation>
+					<note/>
+				</handNote>
+				<handNote xml:id="Hand43">
+					<forename>Domhnall</forename>
+					<surname>Mac Mharcuis</surname>
+					<date type="floruit" from="1700" to="1700" min="1701" max="1799">18</date>
+					<region>Argyll</region>
+					<affiliation>misc</affiliation>
+					<note/>
+				</handNote>
+				<handNote xml:id="Hand44">
+					<forename>[unk.]</forename>
+					<surname>[unk.]</surname>
+					<date type="floruit" min="1501" max="1599">16</date>
+					<region>Argyll</region>
+					<affiliation>beaton</affiliation>
+					<note>Hand 2 in NLS Adv. 72.1.27</note>
+				</handNote>
+				<handNote xml:id="Hand45">
+					<forename>Niall</forename>
+					<surname>[unk.]</surname>
+					<date type="floruit" min="1501" max="1599">16</date>
+					<region>Argyll</region>
+					<affiliation>beaton</affiliation>
+					<note>Hand 3 in NLS Adv. 72.1.27</note>
+				</handNote>
+				<handNote xml:id="Hand46">
+					<forename>[unk.]</forename>
+					<surname>[unk.]</surname>
+					<date type="floruit" min="1501" max="1599">16</date>
+					<region>Argyll</region>
+					<affiliation>beaton</affiliation>
+					<note>Hand 5 in NLS Adv. 72.1.27</note>
+				</handNote>
+				<handNote xml:id="Hand47">
+					<forename>[unk.]</forename>
+					<surname>[unk.]</surname>
+					<date type="floruit" min="1501" max="1599">16</date>
+					<region>Argyll</region>
+					<affiliation>beaton</affiliation>
+					<note>Hand 4 in NLS Adv. 72.1.27</note>
+				</handNote>
+				<handNote xml:id="Hand48">
+					<forename>[unk.]</forename>
+					<surname>[unk.]</surname>
+					<date type="floruit" min="1501" max="1599">16</date>
+					<region>Argyll</region>
+					<affiliation>beaton</affiliation>
+					<note>Hand 6 in NLS Adv. 72.1.27</note>
+				</handNote>
+				<handNote xml:id="Hand49">
+					<forename>[unk.]</forename>
+					<surname>[unk.]</surname>
+					<date type="floruit" min="1501" max="1599">16</date>
+					<region>Argyll</region>
+					<affiliation>beaton</affiliation>
+					<note>Hand 7 in NLS Adv. 72.1.27</note>
+				</handNote>
+				<handNote xml:id="Hand50">
+					<forename>[unk.]</forename>
+					<surname>Beaton [?]</surname>
+					<date type="floruit" min="1501" max="1599">16</date>
+					<region>Argyll</region>
+					<affiliation>beaton</affiliation>
+					<note>Hand 8 in NLS Adv. 72.1.27</note>
+				</handNote>
+				<handNote xml:id="Hand52">
+					<forename>[unk.]</forename>
+					<surname>[unk.]</surname>
+					<date type="floruit" min="1401" max="1499">15</date>
+					<region>Argyll</region>
+					<affiliation>beaton</affiliation>
+					<note>Hand 2 in NLS Adv. 72.1.1</note>
 				</handNote>
 				<handNote xml:id="Hand999">
 					<forename>an unidentfied</forename>
 					<surname>hand</surname>
 					<date>unknown</date>
 					<region>unknown</region>
+					<affiliation>misc</affiliation>
 					<note><p>This hand not only cannot be associated with a known scribe but cannot
 							even be grouped in confidence with other interventions. This is probably
 							because not enough has been written in this hand for a sound
@@ -1995,6 +2313,15 @@
   <TEI corresp="Transcriptions/transcription15.xml"/>
   <TEI corresp="Transcriptions/transcription16.xml"/>
   <TEI corresp="Transcriptions/transcription17.xml"/>
+  <TEI corresp="Transcriptions/transcription18.xml"/>
+  <TEI corresp="Transcriptions/transcription19.xml"/>
+  <TEI corresp="Transcriptions/transcription20.xml"/>
+  <TEI corresp="Transcriptions/transcription21.xml"/>
+  <TEI corresp="Transcriptions/transcription22.xml"/>
+  <TEI corresp="Transcriptions/transcription23.xml"/>
+  <TEI corresp="Transcriptions/transcription24.xml"/>
+  <TEI corresp="Transcriptions/transcription25.xml"/>
+  <TEI corresp="Transcriptions/transcription26.xml"/>
   -->
 
 	<!-- <xi:include href="Transcriptions/transcription1.xml" parse="xml"/> -->
@@ -2015,6 +2342,14 @@
 	<!-- <xi:include href="Transcriptions/transcription16.xml" parse="xml"/> -->
 	<!-- <xi:include href="Transcriptions/transcription17.xml" parse="xml"/> -->
 	<!-- <xi:include href="Transcriptions/transcription18.xml" parse="xml"/> -->
+	<!-- <xi:include href="Transcriptions/transcription19.xml" parse="xml"/> -->
+	<!-- <xi:include href="Transcriptions/transcription20.xml" parse="xml"/> -->
+	<!-- <xi:include href="Transcriptions/transcription21.xml" parse="xml"/> -->
+	<!-- <xi:include href="Transcriptions/transcription22.xml" parse="xml"/> -->
+	<!-- <xi:include href="Transcriptions/transcription23.xml" parse="xml"/> -->
+	<!-- <xi:include href="Transcriptions/transcription24.xml" parse="xml"/> -->
+	<!-- <xi:include href="Transcriptions/transcription25.xml" parse="xml"/> -->
+	<!-- <xi:include href="Transcriptions/transcription26.xml" parse="xml"/> -->
 	<!-- <xi:include href="hwData.xml" parse="xml"/> -->
 
 </teiCorpus>
