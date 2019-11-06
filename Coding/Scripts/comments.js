@@ -27,7 +27,6 @@ $(function() {
         var comment = $('#commentContent').val();
         var feedbackHtml = '';
         $.getJSON('ajax.php?action=saveComment&docid='+docid+'&s='+s+'&sid='+sid+'&user='+user+'&comment='+comment, function(data) {
-            console.log(data);
             if (data.saved == true) {
                 feedbackHtml = '<strong>Your comment has been saved</strong>';
             } else { //there was an error saving the comment
@@ -93,13 +92,14 @@ $(function() {
     /*
         Flag the sections that have comments
      */
+     /* 
     $.getJSON('ajax.php?action=getPopulatedSections&docid='+docid, function(data) {
         $.each(data, function(k, v) {
             $.each(v, function (key, val) {
                 var section = val.section;
                 var sectionId = val.section_id;
                 sectionId = sectionId.replace(/\./g, '\\.');
-                $('button[data-s='+section+'][data-n='+sectionId+']').show();
+                //$('button[data-s='+section+'][data-n='+sectionId+']').show();
                 //remove greyedOut class if there is a non-deleted comment here
                 if (val.deleted == "0") {
                     $('button[data-s='+section+'][data-n='+sectionId+']').removeClass('greyedOut');
@@ -107,6 +107,7 @@ $(function() {
             });
         });
     });
+     */
 });
 
 /*
@@ -130,7 +131,8 @@ function updateComments(docid, s, sid) {
             });
         });
         html += '</ul>';
-        $('#rhs').html(html);
+        $('#viewCommentDiv').find('.modal-body').html(html);
+        
     })
         .done(function() {
            return;          //wait for completion before return

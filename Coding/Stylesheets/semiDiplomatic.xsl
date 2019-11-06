@@ -9,7 +9,7 @@ It creates a semi-diplomatic MS view.
   <xsl:output method="html"/>
 
   <xsl:template match="/">
-    <div data-docid="{tei:TEI/@xml:id}" data-diplo="no">
+    <div data-docid="{tei:TEI/@xml:id}" data-diplo="no"> <!-- redundant attributes? -->
       <xsl:apply-templates select="tei:TEI/tei:text/tei:body/tei:div"/>
     </div>
   </xsl:template>
@@ -19,10 +19,9 @@ It creates a semi-diplomatic MS view.
       <div class="textAnchor">
         <button type="button" data-toggle="modal" data-target="#commentForm" class="addComment" title="Leave comment on this text" data-s="div" data-n="{@n}">+</button>
         <xsl:text> </xsl:text>
-        <button type="button" class="viewComment greyedOut" title="View comments on this text" data-s="div" data-n="{@n}">?</button>
+        <button type="button" data-toggle="modal" data-target="#viewCommentDiv" class="viewComment greyedOut" title="View comments on this text" data-s="div" data-n="{@n}">?</button>
         <xsl:text> </xsl:text>
         <small class="text-muted">[start of <span title="{concat(@type,' ',@corresp)}">Text <xsl:value-of select="@n"/></span>]</small>
-        <small class="text-muted" title="{tei:p/tei:handShift/@new}">[hs]</small>
       </div>
     <xsl:apply-templates/>
       <div class="textAnchor"><small class="text-muted">[end of Text <xsl:value-of select="@n"/>]</small></div>
@@ -34,8 +33,22 @@ It creates a semi-diplomatic MS view.
       <xsl:apply-templates/>
     </p>
   </xsl:template>
+  
+  <xsl:template match="tei:handShift">  <!-- e.g. MS1.4r.11 -->
+    <span class="handShift" data-new="{@new}">
+      <small class="text-muted">[hs]</small>
+    </span>
+  </xsl:template>
 
-  <xsl:template match="tei:name[not(ancestor::tei:name) and count(tei:w|tei:name)=1]"> 
+  <xsl:template match="tei:name[not(ancestor::tei:name) and count(tei:w|tei:name)=1 and count(tei:w/tei:w)>1]"> 
+    <xsl:text> </xsl:text>
+    <span class="chunk syntagm name">
+      <xsl:apply-templates select="tei:w/tei:w"/>
+    </span>
+    <xsl:text> </xsl:text>
+  </xsl:template>
+  
+  <xsl:template match="tei:name[not(ancestor::tei:name) and count(tei:w|tei:name)=1 and count(tei:w/tei:w)=0]"> 
     <xsl:text> </xsl:text>
     <span class="word chunk syntagm name">
       <xsl:call-template name="addNameAttributes"/>
@@ -48,13 +61,16 @@ It creates a semi-diplomatic MS view.
   </xsl:template>
   
   <xsl:template match="tei:name[not(ancestor::tei:name) and count(tei:w|tei:name)>1]"> 
+    <xsl:text> </xsl:text>
     <span class="chunk syntagm name">
       <xsl:call-template name="addNameAttributes"/>
       <xsl:apply-templates/>
     </span>
+    <xsl:text> </xsl:text>
   </xsl:template>
   
   <xsl:template match="tei:name[ancestor::tei:name and count(tei:w|tei:name)=1]"> 
+    <xsl:text> </xsl:text>
     <span class="word syntagm name">
       <xsl:call-template name="addNameAttributes"/>
       <xsl:for-each select="tei:w">
@@ -62,13 +78,16 @@ It creates a semi-diplomatic MS view.
         <xsl:apply-templates/>
       </xsl:for-each>
     </span>
+    <xsl:text> </xsl:text>
   </xsl:template>
   
   <xsl:template match="tei:name[ancestor::tei:name and count(tei:w|tei:name)>1]"> 
+    <xsl:text> </xsl:text>
     <span class="syntagm name">
       <xsl:call-template name="addNameAttributes"/>
       <xsl:apply-templates/>
     </span>
+    <xsl:text> </xsl:text>
   </xsl:template>
   
   <xsl:template match="tei:w[not(ancestor::tei:w) and not(ancestor::tei:name) and not(descendant::tei:w)]"> 
@@ -88,12 +107,13 @@ It creates a semi-diplomatic MS view.
     <xsl:text> </xsl:text>
   </xsl:template>
   
-  <xsl:template match="tei:w[@pos='verb' and not(@lemmaRef='http://www.dil.ie/29104') and (ancestor::tei:w or ancestor::tei:name) and not(descendant::tei:w)]"> <!-- particle + pronoun/particle + verb compounds -->
+  <xsl:template match="tei:w[@pos='verb' and not(@lemmaRef='http://www.dil.ie/29104') and (ancestor::tei:w or ancestor::tei:name) and not(descendant::tei:w)]">
     <xsl:text> </xsl:text>
-    <span class="word syntagm banana">
+    <span class="word syntagm">
       <xsl:call-template name="addWordAttributes"/>
       <xsl:apply-templates/>
     </span>
+    <xsl:text> </xsl:text>
   </xsl:template>
   
   <xsl:template match="tei:w[(not(@pos='verb') or @lemmaRef='http://www.dil.ie/29104') and (ancestor::tei:w or ancestor::tei:name) and not(descendant::tei:w)]"> 
@@ -104,9 +124,11 @@ It creates a semi-diplomatic MS view.
   </xsl:template>
   
   <xsl:template match="tei:w">  <!-- a word which IS part of a larger word and also contains smaller words -->
+    <xsl:text> </xsl:text>
     <span class="syntagm">
       <xsl:apply-templates/>
     </span>
+    <xsl:text> </xsl:text>
   </xsl:template>
   
   <xsl:template name="addNameAttributes">
@@ -155,70 +177,47 @@ It creates a semi-diplomatic MS view.
     </xsl:if>
     <xsl:if test="@slipRef">
       <xsl:attribute name="data-slipRef">
-        <xsl:value-of select="@sslipRef"/>
+        <xsl:value-of select="@slipRef"/>
+      </xsl:attribute>
+    </xsl:if>
+    <xsl:if test="@corresp">
+      <xsl:attribute name="data-corresp">
+        <xsl:value-of select="@corresp"/>
       </xsl:attribute>
     </xsl:if>
   </xsl:template>
 
-  <xsl:template match="tei:date | tei:c | tei:num">
-    <span class="syntagm">
+  <xsl:template match="tei:c | tei:date | tei:num | tei:seg[@type='fragment'] | tei:pc">
+    <span class="chunk syntagm word characterString">
       <xsl:apply-templates/>
     </span>
   </xsl:template>
 
-  <xsl:template match="tei:g">
-    <xsl:choose>
-      <xsl:when test="starts-with(@ref,'l')"> <!-- ligature -->
-        <xsl:choose>
-          <xsl:when test="@corresp">  <!-- SB: added to handle corresp attributes in glyphs -->
-            <span class="ligature corresp-{@corresp}" data-corresp="{@corresp}" data-glyphref="{@ref}" id="{generate-id(.)}">
-              <xsl:apply-templates/>
-            </span>
-          </xsl:when>
-          <xsl:otherwise>
-            <span class="ligature" data-glyphref="{@ref}" id="{generate-id(.)}">
-              <xsl:apply-templates/>
-            </span>
-          </xsl:otherwise>
-        </xsl:choose>
-      </xsl:when>
-      <xsl:when test="../@cert"> <!-- expansion -->
-        <xsl:choose>
-          <xsl:when test="@corresp">  <!-- SB: added to handle corresp attributes in glyphs -->
-            <span class="expansion corresp-{@corresp}" data-corresp="{@corresp}" data-cert="{../@cert}" data-glyphref="{@ref}" id="{generate-id(.)}">
-              <xsl:apply-templates/>
-            </span>
-          </xsl:when>
-          <xsl:otherwise>
-            <span class="expansion" data-cert="{../@cert}" data-glyphref="{@ref}" id="{generate-id(.)}">
-              <xsl:apply-templates/>
-            </span>
-          </xsl:otherwise>
-        </xsl:choose>
-      </xsl:when>
-      <xsl:otherwise> <!-- weird expansion -->
+  <xsl:template match="tei:g[starts-with(@ref, 'g') and ../@cert]">
+    <span class="expansion" data-cert="{../@cert}" data-glyphref="{@ref}" id="{generate-id(.)}">
+      <xsl:if test="@corresp">
         <xsl:variable name="corresp" select="@corresp"/>
-        <span class="expansion" data-cert="{preceding::tei:abbr[@corresp=$corresp]/@cert}" data-glyphref="{@ref}" id="{generate-id(.)}">
-          <xsl:apply-templates/>
-        </span>
-      </xsl:otherwise>
-    </xsl:choose>
+        <xsl:if test="preceding::tei:g[@corresp=$corresp]">
+          <xsl:attribute name="data-copy">
+            <xsl:text>true</xsl:text>
+          </xsl:attribute>
+        </xsl:if>
+        <xsl:attribute name="data-corresp">
+          <xsl:value-of select="@corresp"/>
+        </xsl:attribute>
+      </xsl:if>
+      <xsl:apply-templates/>
+    </span>
   </xsl:template>
-
-<!--
-  <xsl:template match="tei:handShift">
-    <span class="handshift" data-hand="{@new}"></span>
+  
+  <xsl:template match="tei:g[starts-with(@ref,'l')]">
+    <span class="ligature" data-glyphref="{@ref}" id="{generate-id(.)}">
+      <xsl:apply-templates/>
+    </span>
   </xsl:template>
-  -->
 
   <xsl:template match="tei:del">
     <span class="deletion" data-hand="{@resp}">
-      <xsl:apply-templates/>
-    </span>
-  </xsl:template>
-
-  <xsl:template match="tei:add">
-    <span class="addition" data-hand="{@resp}" data-place="{@place}" data-type="{@type}">
       <xsl:apply-templates/>
     </span>
   </xsl:template>
@@ -231,7 +230,9 @@ It creates a semi-diplomatic MS view.
 
   <xsl:template match="tei:choice"> <!-- editorial emendations e.g. MS1.4r.2 ro/do -->
     <span class="sic" data-resp="{tei:corr/@resp}" data-alt="{tei:sic}">
+      <strong>|</strong>
       <xsl:apply-templates select="tei:corr"/>
+      <strong>|</strong>
     </span>
   </xsl:template>
 
@@ -267,50 +268,70 @@ It creates a semi-diplomatic MS view.
   </xsl:template>
 
   <xsl:template match="tei:unclear[@reason='damage']">
-    <span class="damagedSemi">
+    <span class="unclearDamageSemi" data-cert="{@cert}" data-resp="{@resp}">
       <xsl:text>[</xsl:text>
       <xsl:apply-templates/>
       <xsl:text>]</xsl:text>
     </span>
   </xsl:template>
 
-  <xsl:template match="tei:unclear[@reason='text_obscure']">
-    <span class="obscureTextSemi">
-      <xsl:text>[</xsl:text>
+  <xsl:template match="tei:unclear[@reason='text_obscure']"> <!-- e.g. MS6.2r.1 [t] -->
+    <span class="unclearTextObscureSemi" data-cert="{@cert}" data-resp="{@resp}">
+      <xsl:text>{</xsl:text>
       <xsl:apply-templates/>
-      <xsl:text>]</xsl:text>
+      <xsl:text>}</xsl:text>
+    </span>
+  </xsl:template>
+  
+  <xsl:template match="tei:unclear[@reason='char']"> <!-- MS6.2r.7 [i] -->
+    <span class="unclearCharSemi" data-cert="{@cert}" data-resp="{@resp}">
+      <xsl:text>{</xsl:text>
+      <xsl:apply-templates/>
+      <xsl:text>}</xsl:text>
     </span>
   </xsl:template>
 
   <xsl:template match="tei:pb">
-    <small class="text-muted pageAnchor">
-      <xsl:text>[p.</xsl:text>
-      <xsl:value-of select="@n"/>
-      <xsl:text>]</xsl:text>
-    </small>
-  </xsl:template>
-
-  <xsl:template match="tei:cb">
-    <small class="text-muted">
-      <xsl:text>[col.</xsl:text>
-      <xsl:value-of select="@n"/>
-      <xsl:text>]</xsl:text>
-    </small>
-  </xsl:template>
-
-  <xsl:template match="tei:lb">
-    <span class="lineBreak lineBreakSemi" data-number="{@n}"/>
-  </xsl:template>
-
-  <xsl:template match="tei:pc">
-    <span class="punct">
-      <xsl:text> </xsl:text>
-      <xsl:value-of select="."/>
-      <xsl:text> </xsl:text>
+    <span class="pageBreak" data-n="{@n}">
+      <small class="text-muted">
+        <xsl:text>[p.</xsl:text>
+        <xsl:value-of select="@n"/>
+        <xsl:text>]</xsl:text>
+      </small>
     </span>
   </xsl:template>
 
-  <xsl:template match="tei:gap" >
+  <xsl:template match="tei:cb">
+    <span class="columnBreak" data-n="{@n}">
+      <small class="text-muted">
+        <xsl:text>[col.</xsl:text>
+        <xsl:value-of select="@n"/>
+        <xsl:text>]</xsl:text>
+      </small>
+    </span>
+  </xsl:template>
+
+  <xsl:template match="tei:lb">
+    <span class="lineBreak lineBreakSemi" data-n="{@n}"/>
+  </xsl:template>
+
+  <xsl:template match="tei:gap[@reason='damage' and @unit='chars']">
+    <xsl:text> </xsl:text>
+    <span class="syntagm gapDamageCharsSemi" data-toggle="tooltip" title="Damage: {@quantity} characters ({@resp})">
+      <xsl:text>[...]</xsl:text>
+    </span>
+    <xsl:text> </xsl:text>
+  </xsl:template>
+
+  <xsl:template match="tei:gap[@reason='text_obscure' and @unit='chars']">
+    <xsl:text> </xsl:text>
+    <span class="syntagm gapDamageCharsSemi" data-toggle="tooltip" title="Obscured: {@quantity} characters ({@resp})">
+      <xsl:text>[...]</xsl:text>
+    </span>
+    <xsl:text> </xsl:text>
+  </xsl:template>
+
+  <xsl:template match="tei:gap[@unit='folio']" >
     <span class="gapDamageDiplo" data-quantity="{@quantity}" data-unit="{@unit}" data-resp="{@resp}">
       <xsl:text> [</xsl:text><xsl:value-of select="@quantity"></xsl:value-of><xsl:text> missing folio(s)] </xsl:text>
     </span>
@@ -327,6 +348,12 @@ It creates a semi-diplomatic MS view.
       </small>
     </span>
     <xsl:apply-templates select="document(concat('../../Transcribing/Transcriptions/transcription',@source,'.xml'))/descendant::tei:div[@corresp=$target]"/>
+  </xsl:template>
+  
+  <xsl:template match="tei:seg[@type='cfe']"> <!-- no idea what this means -->
+    <span class="syntagm">
+      <xsl:apply-templates/>
+    </span>
   </xsl:template>
 
 </xsl:stylesheet>

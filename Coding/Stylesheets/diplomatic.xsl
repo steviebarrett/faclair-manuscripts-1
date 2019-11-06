@@ -9,34 +9,17 @@ It creates a diplomatic MS view.
   <xsl:output method="html"/>
 
   <xsl:template match="/">
-    <div data-docid="{tei:TEI/@xml:id}" data-diplo="yes">
-      <!-- <span class="pageBreak"><small class="text-muted">[toggle <a href="#" id="commentToggle">comments</a>]</small></span> -->
+    <div data-docid="{tei:TEI/@xml:id}" data-diplo="yes"> <!-- these attributes are redundant now -->
       <xsl:apply-templates select="tei:TEI/tei:text/tei:body/tei:div"/>
     </div>
   </xsl:template>
 
   <xsl:template match="tei:div">
-    <span class="handshift" data-hand="{@hand}"/>
-    <!--
-    <div class="text" data-hand="{@hand}" data-n="{@n}" data-corresp="{@corresp}" data-type="{@type}" data-ms="{substring(/tei:TEI/@xml:id,2)}"> 
-      <div class="textAnchor">
-        <button type="button" data-toggle="modal" data-target="#commentForm" class="addComment" title="Leave comment on this text" data-s="div" data-n="{@n}">+</button>
-        <xsl:text> </xsl:text>
-        <button type="button" class="viewComment greyedOut" title="View comments on this text" data-s="div" data-n="{@n}">?</button>
-        <xsl:text> </xsl:text>
-        <small class="text-muted">[start of <span title="{concat(@type,' ',@corresp)}">Text <xsl:value-of select="@n"/></span>]</small>
-        <small class="text-muted" title="{tei:p/tei:handShift/@new}">[hs]</small>
-      </div>
-      -->
-      <xsl:apply-templates/>
-    <!--
-      <div class="textAnchor"><small class="text-muted">[end of Text <xsl:value-of select="@n"/>]</small></div>
-    </div>
-    -->
+    <xsl:apply-templates/>
   </xsl:template>
 
   <xsl:template match="tei:pb"> <!-- page breaks represented as <br> and a link to the image -->
-    <span class="pageAnchor">
+    <span class="pageBreak" data-n="{@n}">
       <br/>
       <small class="text-muted">[start of page 
         <xsl:choose>
@@ -51,57 +34,64 @@ It creates a diplomatic MS view.
         </xsl:choose>]
       </small>
     </span>
-    <small class=" text-muted pageAnchorHR"><br/>--------------------</small>
+    <hr class="pageBreakSuper"/>
   </xsl:template>
   
   <xsl:template match="tei:handShift">  <!-- e.g. MS1.4r.11 -->
-    <span class="handshift" data-hand="{@new}">
-      <xsl:if test="not(@comment)">
-        <small class="text-muted">[hs]</small>
-      </xsl:if>
+    <span class="handShift" data-new="{@new}">
+      <small class="text-muted">[hs]</small>
     </span>
   </xsl:template>
   
   <xsl:template match="tei:lb">
-    <span class="lineBreak lineBreakDiplo" data-number="{@n}" id="{concat('line_',@xml:id)}">
+    <span class="lineBreak lineBreakDiplo" data-n="{@n}" id="{concat('line_',@xml:id)}">
       <br/>
-      <!--
       <button type="button" data-toggle="modal" data-target="#commentForm" class="addComment" title="Leave comment on this line" data-s="lb" data-n="{@xml:id}">+</button>
       <xsl:text> </xsl:text>
-      <button type="button" class="viewComment greyedOut" title="View comments on this line" data-s="lb" data-n="{@xml:id}">?</button>
+      <button type="button" data-toggle="modal" data-target="#viewCommentDiv" class="viewComment greyedOut" title="View comments on this line" data-s="lb" data-n="{@xml:id}">?</button>
       <xsl:text> </xsl:text>
-      -->
     </span>
   </xsl:template>
 
   <xsl:template match="tei:cb">
-    <br/>
-    <span class="pageAnchor">
+    <span class="columnBreak" data-n="{@n}">
+      <br/>
       <small class="text-muted">[start of column <xsl:value-of select="@n"/>]</small>
     </span>
+    <hr class="pageBreakSuper"/> <!-- for super-diplomatic view -->
   </xsl:template>
   
-  <xsl:template match="tei:lg|tei:l|tei:p|tei:note|tei:head/tei:title"> <!-- ignore verse, paragraphs and notes in diplo view -->
+  <xsl:template match="tei:lg|tei:l|tei:p"> <!-- ignore verse and paragraphs in diplo view -->
     <xsl:apply-templates/>
   </xsl:template>
+
+  <xsl:template match="tei:note|tei:head/tei:title"/> <!-- completely ignore notes and headings in diplo view -->
 
   <xsl:template match="tei:space">
     <xsl:text> </xsl:text>
   </xsl:template>
 
+<!--
   <xsl:template match="tei:pc">
     <span class="punct">
       <xsl:value-of select="."/>
     </span>
   </xsl:template>
+  -->
 
-  <xsl:template match="tei:date | tei:c | tei:num">
-    <span class="chunk">
+  <xsl:template match="tei:c | tei:date | tei:num | tei:seg[@type='fragment'] | tei:pc">
+    <span class="chunk syntagm word characterString">
       <xsl:apply-templates/>
     </span>
   </xsl:template>
   
-  <xsl:template match="tei:name[not(ancestor::tei:name) and count(tei:w|tei:name)=1]"> 
+  <xsl:template match="tei:name[not(ancestor::tei:name) and count(tei:w|tei:name)=1 and count(tei:w/tei:w)>1]"> 
+    <span class="chunk syntagm name">
+      <xsl:apply-templates select="tei:w/tei:w"/>
+    </span>
+  </xsl:template>
+  
+  <xsl:template match="tei:name[not(ancestor::tei:name) and count(tei:w|tei:name)=1 and count(tei:w/tei:w)=0]"> 
     <span class="word chunk syntagm name">
       <xsl:call-template name="addNameAttributes"/>
       <xsl:for-each select="tei:w">
@@ -207,13 +197,29 @@ It creates a diplomatic MS view.
     </xsl:if>
     <xsl:if test="@slipRef">
       <xsl:attribute name="data-slipRef">
-        <xsl:value-of select="@sslipRef"/>
+        <xsl:value-of select="@slipRef"/>
+      </xsl:attribute>
+    </xsl:if>
+    <xsl:if test="@corresp">
+      <xsl:attribute name="data-corresp">
+        <xsl:value-of select="@corresp"/>
       </xsl:attribute>
     </xsl:if>
   </xsl:template>
 
   <xsl:template match="tei:g[starts-with(@ref, 'g') and ../@cert]">
     <span class="expansion" data-cert="{../@cert}" data-glyphref="{@ref}" id="{generate-id(.)}">
+      <xsl:if test="@corresp">
+        <xsl:variable name="corresp" select="@corresp"/>
+        <xsl:if test="preceding::tei:g[@corresp=$corresp]">
+          <xsl:attribute name="data-copy">
+            <xsl:text>true</xsl:text>
+          </xsl:attribute>
+        </xsl:if>
+        <xsl:attribute name="data-corresp">
+          <xsl:value-of select="@corresp"/>
+        </xsl:attribute>
+      </xsl:if>
       <xsl:apply-templates/>
     </span>
   </xsl:template>
@@ -224,61 +230,21 @@ It creates a diplomatic MS view.
     </span>
   </xsl:template>
 
-<!-- bits of this may need to be reinserted, for discontinuities
-  <xsl:template match="tei:g">
-    <xsl:choose>
-      <xsl:when test="starts-with(@ref,'l')"> 
-        <xsl:choose>
-          <xsl:when test="@corresp">   
-            <span class="ligature corresp-{@corresp}" data-corresp="{@corresp}" data-glyphref="{@ref}" id="{generate-id(.)}">
-              <xsl:apply-templates/>
-            </span>
-          </xsl:when>
-          <xsl:otherwise>
-            <span class="ligature" data-glyphref="{@ref}" id="{generate-id(.)}">
-              <xsl:apply-templates/>
-            </span>
-          </xsl:otherwise>
-        </xsl:choose>
-      </xsl:when>
-      <xsl:when test="../@cert">  
-        <xsl:choose>
-          <xsl:when test="@corresp">   
-            <span class="expansion corresp-{@corresp}" data-corresp="{@corresp}" data-cert="{../@cert}" data-glyphref="{@ref}" id="{generate-id(.)}">
-              <xsl:apply-templates/>
-            </span>
-          </xsl:when>
-          <xsl:otherwise>
-            <span class="expansion" data-cert="{../@cert}" data-glyphref="{@ref}" id="{generate-id(.)}">
-              <xsl:apply-templates/>
-            </span>
-          </xsl:otherwise>
-        </xsl:choose>
-      </xsl:when>
-      <xsl:otherwise>  
-        <xsl:variable name="corresp" select="@corresp"/>
-        <span class="expansion" data-cert="{preceding::tei:abbr[@corresp=$corresp]/@cert}" data-glyphref="{@ref}" id="{generate-id(.)}">
-          <xsl:apply-templates/>
-        </span>
-      </xsl:otherwise>
-    </xsl:choose>
-  </xsl:template>
-  -->
-
   <xsl:template match="tei:unclear[@reason='damage']"> <!-- e.g. MS1.85r.17 -->
-    <span class="unclearDamage" data-cert="{@cert}" data-resp="{@resp}">
+    <span class="unclearDamageDiplo" data-toggle="tooltip" data-cert="{@cert}" data-resp="{@resp}" title="">[..]</span>
+    <span class="unclearDamageSuperDiplo" data-cert="{@cert}" data-resp="{@resp}" data-toggle="tooltip" title="">
       <xsl:apply-templates/>
     </span>
   </xsl:template>
 
-  <xsl:template match="tei:unclear[@reason='text_obscure']"> <!-- ??? -->
-    <span class="unclearTextObscure" data-cert="{@cert}" data-resp="{@resp}">
+  <xsl:template match="tei:unclear[@reason='text_obscure']"> <!-- e.g. MS6.2r.1 [t] -->
+    <span class="unclearTextObscureDiplo" data-cert="{@cert}" data-resp="{@resp}">
       <xsl:apply-templates/>
     </span>
   </xsl:template>
 
-  <xsl:template match="tei:unclear[@reason='char']"> <!-- ??? -->
-    <span class="unclearChar" data-cert="{@cert}" data-resp="{@resp}">
+  <xsl:template match="tei:unclear[@reason='char']"> <!-- MS6.2r.7 [i] -->
+    <span class="unclearCharDiplo" data-cert="{@cert}" data-resp="{@resp}">
       <xsl:apply-templates/>
     </span>
   </xsl:template>
@@ -296,13 +262,13 @@ It creates a diplomatic MS view.
   </xsl:template>
 
   <xsl:template match="tei:add[@type='gloss']">
-    <span class="gloss" data-place="{@place}"> <!--data-hand="{@hand}"-->
+    <span class="gloss" data-place="{@place}" data-hand="{@hand}">
       <xsl:apply-templates/>
     </span>
   </xsl:template>
 
   <xsl:template match="tei:add[@type='insertion']"> <!-- e.g. MS1.3r.17 -->
-    <span class="insertion" data-place="{@place}"> <!--data-hand="{@hand}"-->
+    <span class="insertion" data-place="{@place}" data-hand="{@hand}">
       <xsl:apply-templates/>
     </span>
   </xsl:template>
@@ -323,7 +289,7 @@ It creates a diplomatic MS view.
   </xsl:template>
   
   <xsl:template match="tei:seg[@type='cfe']"> <!-- no idea what this means -->
-    <span>
+    <span class="syntagm">
       <xsl:apply-templates/>
     </span>
   </xsl:template>
@@ -337,13 +303,43 @@ It creates a diplomatic MS view.
     </span>
   </xsl:template>
 
-  <xsl:template match="tei:gap[@unit='chars']"> <!-- needs work -->
-    <span class="missingChars" data-quantity="{@quantity}" data-unit="{@unit}" data-resp="{@resp}">
-      <xsl:text>[..] </xsl:text>
+  <xsl:template match="tei:gap[@reason='damage' and @unit='chars']">
+    <xsl:text> </xsl:text>
+    <span class="syntagm gapDamageCharsDiplo" data-toggle="tooltip" title="Damage: {@quantity} characters ({@resp})">
+      [...]
     </span>
+    <span class="syntagm gapDamageCharsSuperDiplo" data-toggle="tooltip" title="Unclear: {@quantity} characters ({@resp})">
+      <xsl:call-template name="repeat">
+        <xsl:with-param name="count" select="@quantity" />
+      </xsl:call-template>
+    </span>
+    <xsl:text> </xsl:text>
   </xsl:template>
   
-  <xsl:template match="tei:anchor"> <!-- e.g. ? -->
+  <xsl:template match="tei:gap[@reason='text_obscure' and @unit='chars']">
+    <xsl:text> </xsl:text>
+    <span class="syntagm gapDamageCharsDiplo" data-toggle="tooltip" title="Unclear: {@quantity} characters ({@resp})">
+      [...]
+    </span>
+    <span class="syntagm gapDamageCharsSuperDiplo" data-toggle="tooltip" title="Unclear: {@quantity} characters ({@resp})">
+      <xsl:call-template name="repeat">
+        <xsl:with-param name="count" select="@quantity" />
+      </xsl:call-template>
+    </span>
+    <xsl:text> </xsl:text>
+  </xsl:template>
+  
+  <xsl:template name="repeat">
+    <xsl:param name="count" />
+    <xsl:if test="$count &gt; 0">
+      <xsl:text>n</xsl:text>
+      <xsl:call-template name="repeat">
+        <xsl:with-param name="count" select="$count - 1" />
+      </xsl:call-template>
+    </xsl:if>
+  </xsl:template>
+  
+  <xsl:template match="tei:anchor">
     <xsl:variable name="target" select="@copyOf"/>
     <span class="pageBreak">
       <br/>

@@ -5,13 +5,14 @@
  * Date: 16/01/2019
  * Time: 08:33
  */
+session_start();
 
 define("DB_HOST", "localhost");
 define("DB_NAME", "dasg");
 define("DB_USER", "dasg");
 define("DB_PASSWORD", "Dcraobh2106!");
 
-switch ($_GET["action"]) {
+switch ($_REQUEST["action"]) {
 
     case "saveComment":
         $manuscript = $_GET["docid"];
@@ -59,6 +60,33 @@ switch ($_GET["action"]) {
         break;
     case "getHandInfo":
         echo json_encode(Manuscripts::getHandInfo($_GET["hand"]));
+        break;
+    case "addToBasket":
+        $basket = json_decode($_SESSION["basket"]);
+        if (!is_array($basket)) {
+            $basket = Array();
+        }
+        array_push($basket, $_POST["contents"]);
+        $_SESSION["basket"] = json_encode($basket);
+        break;
+    case "getBasket":
+        echo $_SESSION["basket"];
+        break;
+    case "emptyBasket":
+        $_SESSION["basket"] = null;
+        break;
+    case "deleteFromBasket":
+        $basket = json_decode($_SESSION["basket"]);
+        $i = 0;
+        foreach ($basket as $item) {
+            if ($_POST["id"] == $item->id) {
+                unset($basket[$i]);
+                $i--;
+            }
+            $i++;
+        }
+        $basket = array_values($basket);    //rebase the array
+        $_SESSION["basket"] = json_encode($basket);
         break;
     default:
         break;
@@ -209,7 +237,7 @@ SQL;
     /*
      * Function used to find populated comment sections
      */
-    public static function getCommentSectionsByManuscriptId($msId) {
+    public static function getCommentSectionsByManuscriptId($msId) { // MAYBE START HERE?
         $query = <<<SQL
             SELECT
                 section,
@@ -275,10 +303,18 @@ SQL;
         $hand = $xml->xpath("/tei:teiCorpus/tei:teiHeader/tei:profileDesc/tei:handNotes/tei:handNote[@xml:id='{$handid}']")[0];
         $notes = array();
         foreach ($hand->note as $note) { $notes[] = $note->asXML(); }
+        //calculate the date (range)
+        $min = (string)$hand->date["min"];
+        $max = (string)$hand->date["max"];
+        $min = substr($min, 0, 2);
+        $max = substr($max, 0, 2);
+        $min += 1;  //to retrieve the century
+        $max += 1;
+        $date = ($min == $max) ? $min : $min . "/" . $max;
         return array("forename" => (string)$hand->forename, "surname" => (string)$hand->surname,
             "from" => (string)$hand->date["from"], "to" => (string)$hand->date["to"],
             "min" => (string)$hand->date["min"], "max" => (string)$hand->date["max"], "region" => (string)$hand->region,
-            "notes" => $notes);
+            "notes" => $notes, "date" => $date);
     }
 }
 

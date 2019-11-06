@@ -4,13 +4,45 @@ It contains event handlers relevant to that page as a whole, and to both MS view
 */
 
 $(function() {
-  
+
   $('#numbersToggle').click(function() {
-    $('.pageAnchor').toggle();
-    $('.pageAnchorHR').toggle();
-    $('.handshift').toggle();
-    if ($('#midl').children('div').attr('data-diplo')=='yes') {$('#midl').find('.lineBreak').toggleClass('lineBreakDiplo');}
-    else {$('#midl').find('.lineBreak').toggleClass('lineBreakSemi');}
+    var x = $('#midl');
+    x.find('.pageBreak, .pageBreakSuper, .columnBreak, .handShift').toggle();
+    var b = $('body').attr('data-ed');
+    if (b=='diplo' || b=='both') {
+      x.find('.lineBreak').toggleClass('lineBreakDiplo');
+      //x.find('.expansion').toggle();
+      //$('body').attr('data-ed','super');
+      //x.children('div').attr('data-diplo','super');
+    }
+    else {
+      x.find('.lineBreak').toggleClass('lineBreakSemi');
+      //x.children('div').attr('data-diplo','yes');
+    }
+    $('.gapDamageCharsDiplo, .gapDamageCharsSuperDiplo, .unclearDamageDiplo, .unclearDamageSuperDiplo').toggle();
+  });
+  
+  $('#commentsToggle').click(function() {
+    var docid = 'T' + $('#docid').val();   //the MS ID
+    $('#midl').find('.addComment').toggle();
+    if ($('.addComment').is(':visible')) {
+      $.getJSON('ajax.php?action=getPopulatedSections&docid='+docid, function(data) { // MAYBE START HERE?
+        $.each(data, function(k, v) {
+          $.each(v, function (key, val) {
+            var section = val.section;
+            var sectionId = val.section_id;
+            sectionId = sectionId.replace(/\./g, '\\.');
+            $('button.viewComment[data-s='+section+'][data-n='+sectionId+']').show();
+            //remove greyedOut class if there is a non-deleted comment here
+            if (val.deleted == "0") {
+              $('button.viewComment[data-s='+section+'][data-n='+sectionId+']').removeClass('greyedOut');
+            }
+          });
+        });
+      });
+    } else {
+      $('.viewComment').hide();
+    }
   });
   
   $('.page').click(function(e){
@@ -28,13 +60,12 @@ $(function() {
       html += "<iframe type='text/html' width='600' height='410' style='position: absolute; width: 100%; height: 100%;'";
       html += " src='https://cudl.lib.cam.ac.uk/embed/#item="+mssNo+"&page="+pageNo+"&hide-info=true'";
       html += " frameborder='0' allowfullscreen='' onmousewheel=''></iframe></div>";
-    } 
-    else {    //simple case: just stick the url in an image tag
-      html = '<img width="100%" src="';
-      html += url;
-      html += '"/>'
+      $('#rhs').html(html);
     }
-    $('#rhs').html(html);
+    else {    //simple case: just stick the url in an image tag for image viewer
+      $('#msImage').attr('src', url);
+      $('#msImage').show();
+    }
   });
     
   /* Show/hide marginal notes. Added by SB. MM: might be interfered with by hw search now. */
@@ -44,40 +75,80 @@ $(function() {
   });
   
   $('.indexHeadword').click(function(){ // called whenever a new headword is selected
-    // reset midl and rhs
-    $('#midl').animate({scrollTop: 0},0);
-    $('#midl').find('.syntagm').css({'background-color': 'inherit', 'color': 'inherit', 'font-weight': 'normal'});
-    $('.temp').remove(); // remove all temporary hr elements
-    $('#midl').find('span', '.textAnchor', '.pageAnchor').show();
-    $('#midl').find('.suppliedDiplo').hide();
-    //$('#rhs').html('');
+    // reset midl
+    var m = $('#midl');
+    m.animate({scrollTop: 0},0);
+    m.find('.syntagm').css({'background-color': 'inherit', 'color': 'inherit', 'font-weight': 'normal'});
+    m.find('.gapDamageCharsDiplo, .unclearDamageDiplo').css('color', 'gray');
+    m.find('.gapDamageCharsSuperDiplo, .unclearDamageSuperDiplo').css({'color': 'lightgray', 'background-color': 'lightgray'});
+    m.find('.temp').remove(); // remove all temporary hr elements
+    m.find('span,.textAnchor,.pageBreak,.columnBreak').show();
+    m.find('.suppliedDiplo').hide();
+    if (m.children('div').attr('data-diplo')=='super') { // ??????
+      m.find('.gapDamageCharsDiplo').hide(); 
+      $('.pageBreak,.columnBreak').hide();
+      //$('.pageBreakSuper').toggle();
+      $('.handShift').hide();
+    }
+    else { m.find('.gapDamageCharsSuperDiplo, .unclearDamageSuperDiplo').hide(); }
     // reset lhs
     $('.indexHeadword').parent().css({'background-color': 'inherit'});
-    $('.hwCount').hide();
-    $('.implode').hide();
-    $('.explode').hide();
+    $('.hwCount,.implode,.explode,.reset').hide();
     // do stuff
-    $('#midl').find('[data-lemmaRef="'+ $(this).attr('data-lemmaRef') + '"]').css({'color': 'orange', 'font-weight': 'bold'});
+    m.find('[data-lemmaRef="'+ $(this).attr('data-lemmaRef') + '"]').css({'color': 'orange', 'font-weight': 'bold'});
     $(this).parent().css('background-color', 'orange');
-    $(this).nextAll('.hwCount').show();
-    $(this).nextAll('.implode').show();
-    var x = $('#midl').find('[data-lemmaRef="'+ $(this).attr('data-lemmaRef') + '"]').first();
-    $('#midl').animate({scrollTop: x.offset().top - 180},500);
+    $(this).nextAll('.hwCount,.implode,.reset').show();
+    var x = m.find('[data-lemmaRef="'+ $(this).attr('data-lemmaRef') + '"]').first();
+    m.animate({scrollTop: x.offset().top - 180},500);
     return null;
   });
 
   $('.implode').click(function(){
     //reset midl
-    $('#midl').animate({scrollTop: 0},0); // move middle back to top
+    var x = $('#midl');
+    x.animate({scrollTop: 0},0); // move middle back to top
     $('.temp').remove();
     // do stuff
     $(this).hide();
     $(this).nextAll('.explode').show();
-    $('#midl').find('span').hide();
-    $('#midl').find('[data-lemmaRef="'+ $(this).prevAll('.indexHeadword').attr('data-lemmaRef') + '"]').each(function(){
+    x.find('span').hide();
+    x.find('[data-lemmaRef="'+ $(this).prevAll('.indexHeadword').attr('data-lemmaRef') + '"]').each(function(){
       $(this).show();
       $(this).find('span').show();
-      var x = $(this).parents('span');
+      if ($(this).hasClass('chunk')) {
+        //alert($(this).text());
+        var y = $(this).prevAll('.chunk, .lineBreak').slice(0,3);
+        y.show(); 
+        y.find('*').show();
+        var z = y.last();
+        //if (z.prevAll('.lineBreak').size()>0) {   // STILL NOT WORKING - Drostan l. 1
+          //alert(z.html());
+          //alert(z.prevAll('.lineBreak').html());
+          var w = searchBackwards(z,'lineBreak');
+          if (typeof w != 'undefined') {
+            w.show();
+          }
+        //}
+        //searchBackwards($(this),'pageBreak').show();
+        y = $(this).nextAll('.chunk, .lineBreak').slice(0,3);
+        y.show(); y.find('*').show();
+        $('<hr class="temp"/>').insertAfter(y.last());
+      }
+      else {
+        var y = $(this).parents('.chunk');
+        y.show(); y.find('span').show();
+        var z = y.prevAll('.chunk, .lineBreak').slice(0,3);
+        z.show(); z.find('*').show();
+        //var z = y.last();
+        //var w = searchBackwards(z,'lineBreak');
+        //w.show();
+        searchBackwards($(this),'pageBreak').show();
+        z = y.nextAll('.chunk, .lineBreak').slice(0,3);
+        z.show(); z.find('*').show();
+        $('<hr class="temp"/>').insertAfter(y.last());
+      }
+      /*
+      var x = $(this).parents('span'); // not a chunk
       if (x.length>0) {
         x.show(); x.find('span').show();
         var y = x.prevAll().slice(0,10);
@@ -86,19 +157,22 @@ $(function() {
         y.show(); y.find('*').show();
         $('<hr class="temp"/>').insertAfter(y.last());
       }
-      else {
+      else { // a chunk
         var y = $(this).prevAll().slice(0,10);
         y.show(); y.find('*').show();
         y = $(this).nextAll().slice(0,10);
         y.show(); y.find('*').show();
         $('<hr class="temp"/>').insertAfter(y.last());
       }
+       */
     });
     $('.textAnchor').hide();
-    $('#midl').find('.suppliedDiplo').hide();
-    //$('.pageAnchor').show();
-    //$('#midl').find('.pageAnchor').hide();
-    //$(this).parents().prevAll('.pageAnchor').first().show(); // not working
+    x.find('.suppliedDiplo, .addComment, .viewComment').hide();
+    if (x.children('div').attr('data-diplo')=='super') { x.find('.gapDamageCharsDiplo').hide(); } //??????????????????????
+    else { x.find('.gapDamageCharsSuperDiplo').hide(); }
+    //$('.pageBreak').show();
+    //$('#midl').find('.pageBreak').hide();
+    //$(this).parents().prevAll('.pageBreak').first().show(); // not working
     //$('#midl').find('.greyedOut').hide();
     return null;
   });
@@ -108,12 +182,23 @@ $(function() {
     $(this).prevAll('.implode').show();
     $('#midl').find('span').show();
     $('#midl').find('.suppliedDiplo').hide();
+    if ($('#midl').children('div').attr('data-diplo')=='super') { $('#midl').find('.gapDamageCharsDiplo').hide(); } //???????????????????
+    else { $('#midl').find('.gapDamageCharsSuperDiplo').hide(); }
     $('#midl').find('.textAnchor').show();
-    $('#midl').find('.pageAnchor').show();
+    $('#midl').find('.pageBreak, .columnBreak').show();
     $('.temp').remove();
     $('#midl').animate({scrollTop: 0},0); // move middle back to top
     var x = $('#midl').find('[data-lemmaRef="'+ $(this).prevAll('.indexHeadword').attr('data-lemmaRef') + '"]').first();
     $('#midl').animate({scrollTop: x.offset().top - 100},500);
+    return null;
+  });
+  
+  $('.reset').click(function(){
+    $(this).prevAll('.explode').trigger('click');
+    $(this).hide();
+    $(this).prevAll('.implode,.explode,.hwCount').hide();
+    $(this).parent().css({'background-color': 'inherit'});
+    $('#midl').find('.syntagm').css({'background-color': 'inherit', 'color': 'inherit', 'font-weight': 'normal'});
     return null;
   });
   
@@ -123,11 +208,14 @@ $(function() {
   );
   
   $('.chunk').click(function(){
+    $('.selected').removeClass('selected');
     $('.chunk').css('background-color', 'inherit');
     $(this).css('background-color', 'yellow'); 
-    var prevCorresp = ''; // better name?
+    $(this).addClass('selected');
+    //var prevCorresp = '';
     html = '<h1>' + makeHeading($(this)) + '</h1>';
     html += '<ul class="rhs">' + makeSyntax($(this),false) + '</ul>';
+    html += '<a href="#" id="saveSlip">[save]</a>';
     $('#rhs').html(html);
     $('#rhs').css('font-size', 'small');
     $('.glyphShow').hover(
@@ -135,22 +223,108 @@ $(function() {
         $('#'+$(this).attr('data-id')).css('text-decoration', 'underline');
         $('#xx-'+$(this).attr('data-id')).css('background-color', 'yellow');
         $('#yy-'+$(this).attr('data-id')).css('background-color', 'yellow');
-        //$('.corresp-'+$(this).attr('data-corresp')).css({'text-decoration': 'underline', 'background-color': 'yellow'});
+        $('#midl').find('span[data-corresp=' + $(this).attr('data-corresp') + ']').css('text-decoration', 'underline');
+        $('#rhs').find('span[data-corresp=' + $(this).attr('data-corresp') + ']').css('background-color', 'yellow');
       },
       function() {
         $('#'+$(this).attr('data-id')).css('text-decoration', 'inherit');
         $('#xx-'+$(this).attr('data-id')).css('background-color', 'inherit');
         $('#yy-'+$(this).attr('data-id')).css('background-color', 'inherit');
-        //$('.corresp-'+$(this).attr('data-corresp')).css({'text-decoration': 'inherit', 'background-color': 'inherit'});
+        $('#midl').find('span[data-corresp=' + $(this).attr('data-corresp') + ']').css('text-decoration', 'inherit');
+        $('#rhs').find('span[data-corresp=' + $(this).attr('data-corresp') + ']').css('background-color', 'inherit');
       }
     );
     $('.headwordSearch').click(function() {
       var x = $('.indexHeadword[data-lemmaRef="' + $(this).attr('data-lemmaRef') + '"]');
-      x.trigger('click');
-      $('#lhs').animate({scrollTop: 0},0);
-      $('#lhs').animate({scrollTop: x.offset().top - 100},500); // NOT WORKING CONSISTENTLY
+      setTimeout(function(){x.trigger('click')}, 100);  //Giving the 'click' some time to process
+      var y = $('#lhs');
+      y.animate({scrollTop: 0},0);
+      y.animate({scrollTop: x.offset().top - 300},500);
+    });
+    $('#saveSlip').click(function() {
+      var x = $('.selected');
+      var docid = x.parents('[data-docid]').first().attr('data-docid') + '.';
+      var page = searchBackwards(x,'pageBreak').attr('data-n') + '.';
+      var line = searchBackwards(x,'lineBreak').attr('data-n') + '.';
+      var id = docid + page + line;
+      var slip = new Object();
+      slip.id = id;
+
+      var p = x.prev().clone();
+      p.find('button, .lineBreak, .pageBreak, .columnBreak, .handShift').remove(); // remove all ids as well!
+      var syntagm = p.html() + ' ';
+      var t = x.clone();
+      t.find('button, .lineBreak, .pageBreak, .columnBreak, .handShift').remove();
+      syntagm += '<span style="background-color: yellow;">' + t.html() + '</span>'; //SB: should we strip the HTML here?
+      var n = x.next().clone();
+      n.find('button, .lineBreak, .pageBreak, .columnBreak, .handShift').remove();
+      syntagm += ' ' + n.html();
+      slip.syntagm = syntagm;
+
+      var h = searchBackwards(x,'handShift').attr('data-new');
+      slip.hand = getHandName(h);
+      var lemma = '';
+      if (x.attr('data-lemma')) { lemma += x.attr('data-lemma'); }
+      else {
+        x.find('[data-lemma]').each(function(){
+          lemma += $(this).attr('data-lemma') + ' ';
+        });
+      }
+      slip.lemma = lemma;
+      $.post('ajax.php',
+          {
+            action: "addToBasket",
+            contents: slip
+          });
+      alert('added to basket');
+      return null;
     });
   });
+
+  $('#basketToggle').click(function () {
+      var html = '';
+      $.getJSON("ajax.php?action=getBasket", function( data ) {
+            $.each(data, function (key, value) {
+              html += '<tr id="basket_' + value.id + '">';
+              html += '<td>' + value.id + '</td>';
+              html += '<td>' + value.syntagm + '</td>';
+              html += '<td>' + value.hand + '</td>';
+              html += '<td>' + value.lemma + '</td>';
+              html += '<td><a href="#" id="' + value.id + '" class="deleteSlip">delete</a></td>';
+              html += '</tr>';
+            });
+      }).done(function () {
+          $("#basket").children('tbody').html(html);
+      });
+
+  });
+
+  $('#emptyBasket').click(function () {
+    $.ajax({
+      url: 'ajax.php?action=emptyBasket'
+    })
+        .done(function () {
+          $("#basket").children('tbody').remove();
+          alert('basket emptied');
+        });
+  });
+
+  $('#msImage').zoomio({
+    fadeduration: 500
+  });
+
+});
+
+//Delete a slip from the basket
+$(document).on('click', '.deleteSlip', function () {
+  var id = $(this).attr('id');
+  console.log(id);
+  $(this).parent().parent().remove();  //delete from the table
+  $.post('ajax.php',
+      {
+        action: "deleteFromBasket",
+        id: id
+      });
 });
 
 function makeHeading(span, rec) {
@@ -162,7 +336,7 @@ function makeHeading(span, rec) {
     html += '">'
   }
   clone = span.clone();
-  clone.find('.lineBreak, .pageAnchor, .punct, .handshift').remove();
+  clone.find('.lineBreak, .pageBreak, .columnBreak, .punct, .handShift').remove();
   clone.find('[id]').each(function(){
     if (rec) { $(this).attr('id', 'yy-' + $(this).attr('id')); }
     else { $(this).attr('id', 'xx-' + $(this).attr('id')); }
@@ -196,8 +370,13 @@ function makeSyntax(span, rec) {
   if ($(span).attr('xml:lang')) {
     html += '<li>language: ' + decodeLang($(span).attr('xml:lang')) + '</li>';
   }
-  html += getPOS(span); 
-  html += getStructure(span);
+  if (span.hasClass('characterString')) {
+    html += '<li>is a character string</li>';
+  }
+  else {
+    html += getPOS(span); 
+    html += getStructure(span);
+  }
   if (rec) {
     html += '</ul>';
   }
@@ -205,25 +384,28 @@ function makeSyntax(span, rec) {
 }
 
 function getGlygatures(span) {
+  //var prevCorresp = '';
   html = '';
   var x = span.find('.expansion, .ligature');
   if (x.length > 0) {
     html += '<li>scribal abbreviations and ligatures:<ul class="rhs">';
     x.each(function() {
-        /* DISCUSS WITH SB
-        var corresp;
-        if (corresp = $(span).attr('data-corresp')) {
-          if (corresp === prevCorresp) {
-            return true;    //SB: prevents >1 example being shown for elements with the same corresp; MM: not sure about any of this
-          } else { prevCorresp = corresp; }
-        } else { prevCorresp = ''; }
-        */
+      var corresp;
+      if ($(this).attr('data-corresp')) {
+        corresp = $(this).attr('data-corresp');
+        if ($(this).attr('data-copy')) {
+          return true;    //SB: prevents >1 example being shown for elements with the same corresp
+        } 
+        //else { prevCorresp = corresp; }
+      } 
+      //else { prevCorresp = '';}
       var id = $(this).attr('id');
       var c = $(this).attr('data-cert');
+      var cr = $(this).attr('data-corresp');
       $.ajaxSetup({async: false});
       $.getJSON('ajax.php?action=getGlyph&xmlId=' + $(this).attr('data-glyphref'), function (g) {
-        li = '<li><a class="glyphShow" href="' + g.corresp + '" target="_new" data-src="' + g.id + '" data-id="' + id + '">' + g.name;
-        li += '</a>: ' + g.note + ' (' + c + ' certainty)'; //<a style="font-size: small;" href="#" class="glyphShow" data-id="' + elementId + '" data-corresp="'+/*prevCorresp+*/'">[show]</a></li>';
+        li = '<li><a class="glyphShow" href="' + g.corresp + '" target="_new" data-src="' + g.id + '" data-id="' + id + '" data-corresp="' + cr + '">' + g.name;
+        li += '</a>: ' + g.note + ' (' + c + ' certainty)';
         html += li + '</li>';
       });
     });
@@ -234,19 +416,12 @@ function getGlygatures(span) {
 
 function getHandInfo(span) {
   html = '';
-  var h;
-  h = span.prevAll('.handshift').first().attr('data-hand');
-  if (typeof h == 'undefined') { // handshift is not a sibling but rather an auntie of some type
-    h = span.parent().prevAll('.handshift').first().attr('data-hand');
-  }
-  if (typeof h == 'undefined') { // handshift is not a sibling or a first generation but rather a great auntie of some type
-    h = span.parent().parent().prevAll('.handshift').first().attr('data-hand');
-  }
+  var h = searchBackwards(span,'handShift').attr('data-new');
   html += getHandInfoDiv(h);
   html += '<li>scribe: ';
   html += '<a href="#" data-toggle="modal" data-target="#handInfo_' + h +'">' + getHandName(h) + '</a>'; // are two ajax calls necessary?
-  span.find('.handshift').each(function() {
-    hh = $(this).attr('data-hand');
+  span.find('.handShift').each(function() {
+    hh = $(this).attr('data-new');
     html += getHandInfoDiv(hh);
     html += ', ';
     html += '<a href="#" data-toggle="modal" data-target="#handInfo_' + hh +'">' + getHandName(hh) + '</a>';
@@ -263,6 +438,28 @@ function getHandName(handId) {
     else { name = 'Anonymous (' + handId + ')'; }
   });
   return name;
+}
+
+function searchBackwards(span,c) { // depth-first
+  //console.log(span.attr('class'));
+  var out;
+  var jqs = span.prevAll();
+  jqs.each(function(){
+    if ($(this).hasClass(c)) { 
+      out = $(this);
+      return false;
+    }
+    var y = $(this).find('.'+c); 
+    if (y.length>0) {
+      out = y.last();
+      return false;
+    }
+  });
+  if (typeof out == 'undefined' && span.parents('span')) {
+    console.log(span.parent());
+    return searchBackwards(span.parent(),c);
+  }
+  return out;
 }
 
 /*
@@ -284,14 +481,15 @@ function getHandInfoDiv(h) {
       html += 'Anonymous (' + h + ')';
     }
     html += '</p><p>';
-    html += g.from;
+    /*html += g.from;           //SB: should be clear to delete this chunk (and associated data in ajax.php
     if (g.min != g.from) {
       html += '/' + g.min;
     }
     html += ' – ' + g.to;
     if (g.max != g.to) {
       html += '/' + g.max;
-    }
+    }*/
+    html += 'Century: ' + g.date;
     html += '</p><p>'
     html += g.region;
     html += '</p>';
@@ -301,7 +499,12 @@ function getHandInfoDiv(h) {
       $xml.find('p').each(function (index, element) {
         $(element).find('hi').each(function () {
           $(this).replaceWith(function () {
-            return $('<em />', {html: $(this).html()});
+            var rend = $(this).attr('rend');
+            if (rend=='italics') { return $('<em />', {html: $(this).html()}); }
+            if (rend=='sup') { return $('<sup />', {html: $(this).html()}); }
+            if (rend=='sub') { return $('<sub />', {html: $(this).html()}); }
+            if (rend=='bold') { return $('<strong />', {html: $(this).html()}); }
+            if (rend=='underline') { return $('<u />', {html: $(this).html()}); }
           });
         });
         html += '<p>' + $(element).html() + '</p>';
@@ -325,7 +528,7 @@ function getOnomastics(span){
   if (type=='personal') { html += 'an anthroponym'; }
   else if (type=='place') { 
     html += 'a toponym';
-    if ($(span).attr('data-corresp') != '') {
+    if ($(span).attr('data-corresp')) {
       html += ' (<a href="' + $(span).attr('data-corresp') + '" target="_blank">info</a>)';
     }
   }
@@ -343,7 +546,7 @@ function decodeLang(lang) {
 
 function getPOS(span) {
   html = '';
-  if ($(span).attr('data-pos')) { html += '<li>is a ' + $(span).attr('data-pos') + '</li>'; }
+  if ($(span).attr('data-pos')) { html += '<li>is a ' + $(span).attr('data-pos').replace('_',' ') + '</li>'; }
   return html;
 }
 
@@ -408,14 +611,17 @@ function getLemmas(span) {
   if (span.attr('data-lemmaSl')) {
       html += '<li>HDSG slips: <a href="' + span.attr('data-slipRef') + '" target="_new">' + span.attr('data-lemmaSl') + '</a></li>';
   }
+  if (span.attr('data-corresp')) {
+      html += '<li>HDSG slips: <a href="' + span.attr('data-corresp') + '" target="_new">' + span.attr('data-lemma') + '</a></li>';
+  }
   return html;
 }
 
-function getDamage(span) { // all this needs checked
+function getDamage(span) {
   html = '';
-  var x = span.find('.unclearDamage');
-  if (x.length>0) { // simplify all this  
-    html += '<li>Contains the following damaged sections:<ul class="rhs">';
+  var x = span.find('.unclearDamageSuperDiplo, .unclearDamageSemi');
+  if (x.length>0) { 
+    html += '<li>damaged sections:<ul class="rhs">';
     x.each(function() {
       html += '<li>[' + $(this).html() + '] ';
       html += '(' + $(this).attr('data-resp') + ', ' + $(this).attr('data-cert');
@@ -423,27 +629,30 @@ function getDamage(span) { // all this needs checked
     });
     html += '</ul></li>';
   }
-        if ($(span).find('.unclearTextObscure').length>0) {
-            html += 'Contains the following obscured sections:<ul class="rhs">';
-            $(span).find('.unclearTextObscure').each(function() {
-                html = html + '<li>[' + $(this).text() + '] ';
-                html = html + '(' + $(this).attr('data-resp') + ', ' + $(this).attr('data-cert');
-                html += ' certainty)</li>';
-            });
-            html += '</ul>';
-        }
-        if ($(span).find('.unclearChar').length>0) {
-            html += 'Contains the following unclear characters:<ul class="rhs">';
-            $(span).find('.unclearChar').each(function() {
-                html = html + '<li>[' + $(this).text() + '] ';
-                html = html + '(' + $(this).attr('data-resp') + ', ' + $(this).attr('data-cert');
-                html += ' certainty)</li>';
-            });
-            html += '</ul>';
-        }
-        if ($(span).parents('.unclearTextObscure').length>0) {
-            html += 'This is part of an obscured section.';
-        }
+  x = span.find('.unclearTextObscureDiplo, .unclearTextObscureSemi');
+  if (x.length>0) {
+    html += '<li>obscured sections:<ul class="rhs">';
+    x.each(function() {
+      html += '<li>[' + $(this).text() + '] ';
+      html += '(' + $(this).attr('data-resp') + ', ' + $(this).attr('data-cert');
+      html += ' certainty)</li>';
+    });
+    html += '</ul></li>';
+  }
+  x = span.find('.unclearCharDiplo, .unclearCharSemi');
+  if (x.length>0) {
+    html += '<li>unclear characters:<ul class="rhs">';
+    x.each(function() {
+      html += '<li>[' + $(this).text() + '] ';
+      html += '(' + $(this).attr('data-resp') + ', ' + $(this).attr('data-cert');
+      html += ' certainty)</li>';
+    });
+    html += '</ul></li>';
+  }
+  x = span.parents('.unclearTextObscureDiplo, .unclearTextObscureSemi');
+  if (x.length>0) {
+    html += '<li>part of an obscured section (' + x.first().attr('data-resp') + ', ' + x.first().attr('data-cert') + ' certainty)</li>';
+  }
         if ($(span).parents('.unclearInterpObscure').length>0) {
             html += 'This is part of a section whose interpretation is obscure.';
         }
@@ -457,7 +666,10 @@ function getDeletions(span) {
     html += '<li>contains the following deletions:<ul class="rhs">';
     x.each(function() {
       html += '<li>[' + $(this).text() + '] ';
-      html += '(<a href="#" onclick="$(\'#handInfo_'+ $(this).attr('data-hand') + '\').bPopup();">' + getHandName($(this).attr('data-hand')) + '</a>)</li>';
+      //html += '(<a href="#" onclick="$(\'#handInfo_'+ $(this).attr('data-hand') + '\').bPopup();">' + getHandName($(this).attr('data-hand')) + '</a>)</li>';
+      var h = $(this).attr('data-hand');
+      html += getHandInfoDiv(h);
+      html += '(<a href="#" data-toggle="modal" data-target="#handInfo_' + h +'">' + getHandName(h) + '</a>)</li>'; 
     });
     html += '</ul></li>';
   }
@@ -466,7 +678,10 @@ function getDeletions(span) {
     if (x.length>0) {
       html += '<li>is part of the following deletion:<ul class="rhs">';
       html += '<li>[' + x.text() + '] (';
-      html += '<a href="#" onclick="$(\'#handInfo_'+ x.attr('data-hand') + '\').bPopup();">' + getHandName(x.attr('data-hand')) + '</a>';
+      var h = x.attr('data-hand');
+      html += getHandInfoDiv(h);
+      html += '<a href="#" data-toggle="modal" data-target="#handInfo_' + h +'">' + getHandName(h) + '</a>';
+      //html += '<a href="#" onclick="$(\'#handInfo_'+ x.attr('data-hand') + '\').bPopup();">' + getHandName(x.attr('data-hand')) + '</a>';
       html += ')</li>';
       html += '</ul></li>';
     }
@@ -481,7 +696,10 @@ function getAdditions(span) {
     html += '<li>contains the following insertions:<ul class="rhs">';
     x.each(function() {
       html += '<li>[' + $(this).text() + '] (';
-      html += '<a href="#" onclick="$(\'#handInfo_'+ $(this).attr('data-hand') + '\').bPopup();">' + getHandName($(this).attr('data-hand')) + '</a>';
+      var h = $(this).attr('data-hand');
+      html += getHandInfoDiv(h);
+      html += '<a href="#" data-toggle="modal" data-target="#handInfo_' + h +'">' + getHandName(h) + '</a>';
+      //html += '<a href="#" onclick="$(\'#handInfo_'+ $(this).attr('data-hand') + '\').bPopup();">' + getHandName($(this).attr('data-hand')) + '</a>';
       html += ', '  + $(this).attr('data-place');
       html += ')</li>';
     });
@@ -492,7 +710,10 @@ function getAdditions(span) {
     if (x.length>0) {
       html += '<li>is part of the following insertion:<ul class="rhs">';
       html += '<li>[' + x.text() + '] (';
-      html += '<a href="#" onclick="$(\'#handInfo_'+ x.attr('data-hand') + '\').bPopup();">' + getHandName(x.attr('data-hand')) + '</a>'; // what is 'this'?
+      var h = x.attr('data-hand');
+      html += getHandInfoDiv(h);
+      html += '<a href="#" data-toggle="modal" data-target="#handInfo_' + h +'">' + getHandName(h) + '</a>';
+      //html += '<a href="#" onclick="$(\'#handInfo_'+ x.attr('data-hand') + '\').bPopup();">' + getHandName(x.attr('data-hand')) + '</a>'; // what is 'this'?
       html += ', ' + x.attr('data-place');
       html += ')</li>';
       html += '</ul></li>';
