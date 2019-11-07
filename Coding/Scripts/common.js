@@ -342,7 +342,19 @@ $(function() {
     fadeduration: 500
   });
 
+  //removeSpaces();
+
 });
+
+function removeSpaces() {
+  var x = $('#midl').find('.sic');
+  x.each(function() {
+    var y = $(this).find('.word');
+    var z = y.first();
+    z.css('background-color', 'red');
+    console.log('m' + z.text() + 'm');
+  });
+}
 
 //Delete a slip from the basket
 $(document).on('click', '.deleteSlip', function () {
