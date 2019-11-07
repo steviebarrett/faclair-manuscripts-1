@@ -285,6 +285,12 @@ It creates a semi-diplomatic MS view.
     </span>
   </xsl:template>
   
+  <xsl:template match="tei:unclear[@reason='interp_obscure']"> <!-- e.g. MS6.2r.1 [t] -->
+    <span class="unclearInterpObscureSemi" data-cert="{@cert}" data-resp="{@resp}">
+      <xsl:apply-templates/>
+    </span>
+  </xsl:template>
+  
   <xsl:template match="tei:unclear[@reason='char']"> <!-- MS6.2r.7 [i] -->
     <span class="unclearCharSemi" data-cert="{@cert}" data-resp="{@resp}">
       <xsl:apply-templates/>
