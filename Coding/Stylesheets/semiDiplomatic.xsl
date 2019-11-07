@@ -239,9 +239,7 @@ It creates a semi-diplomatic MS view.
 
   <xsl:template match="tei:choice"> <!-- editorial emendations e.g. MS1.4r.2 ro/do -->
     <span class="sic" data-resp="{tei:corr/@resp}" data-alt="{tei:sic}">
-      <strong>|</strong>
       <xsl:apply-templates select="tei:corr"/>
-      <strong>|</strong>
     </span>
   </xsl:template>
 
@@ -260,43 +258,36 @@ It creates a semi-diplomatic MS view.
     <br/>
   </xsl:template>
 
-  <xsl:template match="tei:supplied[tei:w]">  <!-- editorial insertions containing words e.g. T1.5r.25 [a] -->
+
+<!--
+  <xsl:template match="tei:supplied[tei:w]">   editorial insertions containing words e.g. T1.5r.25 [a] 
     <span class="supplied" data-resp="{@resp}">
-      <xsl:text> [</xsl:text>
       <xsl:apply-templates/>
-      <xsl:text>] </xsl:text>
     </span>
   </xsl:template>
+-->
 
   <xsl:template match="tei:supplied">  <!-- editorial insertions as parts of words e.g. T1.3r.20 mor[maer] -->
     <span class="suppliedSemi" data-resp="{@resp}"> 
-      <xsl:text>[</xsl:text>
       <xsl:apply-templates/>
-      <xsl:text>]</xsl:text>
     </span>
   </xsl:template>
 
   <xsl:template match="tei:unclear[@reason='damage']">
     <span class="unclearDamageSemi" data-cert="{@cert}" data-resp="{@resp}">
-      <xsl:text>[</xsl:text>
       <xsl:apply-templates/>
-      <xsl:text>]</xsl:text>
     </span>
   </xsl:template>
 
   <xsl:template match="tei:unclear[@reason='text_obscure']"> <!-- e.g. MS6.2r.1 [t] -->
     <span class="unclearTextObscureSemi" data-cert="{@cert}" data-resp="{@resp}">
-      <xsl:text>{</xsl:text>
       <xsl:apply-templates/>
-      <xsl:text>}</xsl:text>
     </span>
   </xsl:template>
   
   <xsl:template match="tei:unclear[@reason='char']"> <!-- MS6.2r.7 [i] -->
     <span class="unclearCharSemi" data-cert="{@cert}" data-resp="{@resp}">
-      <xsl:text>{</xsl:text>
       <xsl:apply-templates/>
-      <xsl:text>}</xsl:text>
     </span>
   </xsl:template>
 

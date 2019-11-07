@@ -49,9 +49,25 @@ This stylesheet is called by viewTranscription.php
   display: none;
 }
 
-.unclearTextObscureDiplo, .unclearCharDiplo {
+.unclearTextObscureDiplo, .unclearCharDiplo, .unclearDamageSemi, .unclearTextObscureSemi, .unclearCharSemi {
   color: black;
   background-color: lightgray;
+}
+
+.sic::before {
+  content: "{";
+}
+
+.sic::after {
+  content: "}";
+}
+
+.suppliedSemi::before {
+  content: "[";
+}
+
+.suppliedSemi::after {
+  content: "]";
 }
 
 .suppliedDiplo {
