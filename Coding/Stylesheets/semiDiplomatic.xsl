@@ -225,6 +225,10 @@ It creates a semi-diplomatic MS view.
     </span>
   </xsl:template>
 
+  <xsl:template match="tei:space[@type='force']">
+    <xsl:text> </xsl:text>
+  </xsl:template>
+
   <xsl:template match="tei:del">
     <span class="deletion">
       <xsl:apply-templates/>
