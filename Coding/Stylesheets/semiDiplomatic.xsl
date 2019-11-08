@@ -226,13 +226,13 @@ It creates a semi-diplomatic MS view.
   </xsl:template>
 
   <xsl:template match="tei:del">
-    <span class="deletion" data-hand="{@resp}">
+    <span class="deletion">
       <xsl:apply-templates/>
     </span>
   </xsl:template>
 
   <xsl:template match="tei:add[@type='insertion']">
-    <span class="insertion" data-hand="{@hand}" data-place="{@place}">
+    <span class="insertion" data-place="{@place}">
       <xsl:apply-templates/>
     </span>
   </xsl:template>

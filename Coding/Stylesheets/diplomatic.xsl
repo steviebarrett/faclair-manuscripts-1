@@ -256,19 +256,19 @@ It creates a diplomatic MS view.
   </xsl:template>
 
   <xsl:template match="tei:del"> <!-- e.g.MS1.3r.19,  -->
-    <span class="deletion" data-hand="{@hand}">
+    <span class="deletion">
       <xsl:apply-templates/>
     </span>
   </xsl:template>
 
   <xsl:template match="tei:add[@type='gloss']">
-    <span class="gloss" data-place="{@place}" data-hand="{@hand}">
+    <span class="gloss" data-place="{@place}">
       <xsl:apply-templates/>
     </span>
   </xsl:template>
 
   <xsl:template match="tei:add[@type='insertion']"> <!-- e.g. MS1.3r.17 -->
-    <span class="insertion" data-place="{@place}" data-hand="{@hand}">
+    <span class="insertion" data-place="{@place}">
       <xsl:apply-templates/>
     </span>
   </xsl:template>

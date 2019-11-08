@@ -723,24 +723,31 @@ function getDamage(span) {
 
 function getDeletions(span) {
   html = '';
-  var x = $(span).find('.deletion'); // contains a deletion
+  var x = span.find('.deletion'); // contains a deletion
   if (x.length>0) {
     html += '<li>contains the following deletions:<ul class="rhs">';
     x.each(function() {
       html += '<li>[' + $(this).text() + '] ';
       //html += '(<a href="#" onclick="$(\'#handInfo_'+ $(this).attr('data-hand') + '\').bPopup();">' + getHandName($(this).attr('data-hand')) + '</a>)</li>';
-      var h = $(this).attr('data-hand');
+      var h;
+      var y = $(this).children('.handShift');
+      if (y.length>0) {
+        h = y.attr('data-new');
+      }
+      else {
+        h = searchBackwards($(this),'handShift').attr('data-new');
+      }
       html += getHandInfoDiv(h);
       html += '(<a href="#" data-toggle="modal" data-target="#handInfo_' + h +'">' + getHandName(h) + '</a>)</li>'; 
     });
     html += '</ul></li>';
   }
   else {
-    x = $(span).parents('.deletion');
+    x = span.parents('.deletion');
     if (x.length>0) {
       html += '<li>is part of the following deletion:<ul class="rhs">';
       html += '<li>[' + x.text() + '] (';
-      var h = x.attr('data-hand');
+      var h = searchBackwards(span,'handShift').attr('data-new');
       html += getHandInfoDiv(h);
       html += '<a href="#" data-toggle="modal" data-target="#handInfo_' + h +'">' + getHandName(h) + '</a>';
       //html += '<a href="#" onclick="$(\'#handInfo_'+ x.attr('data-hand') + '\').bPopup();">' + getHandName(x.attr('data-hand')) + '</a>';
@@ -758,7 +765,14 @@ function getAdditions(span) {
     html += '<li>contains the following insertions:<ul class="rhs">';
     x.each(function() {
       html += '<li>[' + $(this).text() + '] (';
-      var h = $(this).attr('data-hand');
+      var h;
+      var y = $(this).children('.handShift');
+      if (y.length>0) {
+        h = y.attr('data-new');
+      }
+      else {
+        h = searchBackwards($(this),'handShift').attr('data-new');
+      }
       html += getHandInfoDiv(h);
       html += '<a href="#" data-toggle="modal" data-target="#handInfo_' + h +'">' + getHandName(h) + '</a>';
       //html += '<a href="#" onclick="$(\'#handInfo_'+ $(this).attr('data-hand') + '\').bPopup();">' + getHandName($(this).attr('data-hand')) + '</a>';
@@ -772,7 +786,7 @@ function getAdditions(span) {
     if (x.length>0) {
       html += '<li>is part of the following insertion:<ul class="rhs">';
       html += '<li>[' + x.text() + '] (';
-      var h = x.attr('data-hand');
+      var h = searchBackwards(span,'handShift').attr('data-new');
       html += getHandInfoDiv(h);
       html += '<a href="#" data-toggle="modal" data-target="#handInfo_' + h +'">' + getHandName(h) + '</a>';
       //html += '<a href="#" onclick="$(\'#handInfo_'+ x.attr('data-hand') + '\').bPopup();">' + getHandName(x.attr('data-hand')) + '</a>'; // what is 'this'?
