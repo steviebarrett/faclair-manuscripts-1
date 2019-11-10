@@ -359,5 +359,9 @@ It creates a diplomatic MS view.
       <xsl:text>]</xsl:text>
     </span>
   </xsl:template>
+  
+  <xsl:template match="tei:seg[@type='catchword']">
+    <xsl:apply-templates/>
+  </xsl:template>
 
 </xsl:stylesheet>

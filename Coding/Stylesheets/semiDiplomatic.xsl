@@ -366,4 +366,7 @@ It creates a semi-diplomatic MS view.
     </span>
   </xsl:template>
 
+  <xsl:template match="tei:seg[@type='catchword']"/>
+  
+
 </xsl:stylesheet>
