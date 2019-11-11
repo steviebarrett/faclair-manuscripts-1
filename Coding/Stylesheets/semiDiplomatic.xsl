@@ -43,7 +43,7 @@ It creates a semi-diplomatic MS view.
   <xsl:template match="tei:name[not(ancestor::tei:name) and count(tei:w|tei:name)=1 and count(tei:w/tei:w)>1]"> <!-- Dubhghaill -->
     <xsl:text> </xsl:text>
     <span class="chunk syntagm name">
-      <xsl:apply-templates select="tei:w/tei:w"/>
+      <xsl:apply-templates select="tei:w/tei:w | tei:w/tei:lb"/>
     </span>
     <xsl:text> </xsl:text>
   </xsl:template>
