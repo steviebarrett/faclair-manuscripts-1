@@ -40,12 +40,13 @@
                         <summary>
                             <p/>
                         </summary>
-                        <msItem n="1" xml:id="MS24.1" resp="Hand43">
+                        <msItem n="1" xml:id="MS24.1">
                             <locus/>
                             <title>Answers to Queries to Inverlochy</title>
                             <incipit>Information of Meall fuar monny</incipit>
                             <explicit>... but the tennants of that place hurling or filling stons out of the carb broke the urn in peeces.</explicit>
                             <filiation/>
+                            <author role="scribe" corresp="Hand43"/>
                             <textLang mainLang="en" otherLangs="gd">
                                 <note/>
                             </textLang>
@@ -66,12 +67,13 @@
                                 </profileDesc>
                             </biblFull>
                         </msItem>
-                        <msItem n="2" xml:id="MS24.2" resp="Hand43">
+                        <msItem n="2" xml:id="MS24.2">
                             <locus/>
                             <title>Aibidil na Gaoidheilg</title>
                             <incipit>Aibidil na Gaoidheilg</incipit>
                             <explicit>... Professor of the Irish etc.</explicit>
                             <filiation/>
+                            <author role="scribe" corresp="Hand43"/>
                             <textLang mainLang="en" otherLangs="gd">
                                 <note/>
                             </textLang>
@@ -92,12 +94,13 @@
                                 </profileDesc>
                             </biblFull>
                         </msItem>
-                        <msItem n="3" xml:id="MS24.3" resp="Hand43">
+                        <msItem n="3" xml:id="MS24.3">
                             <locus/>
                             <title>Further description of Meall Fuar Monny</title>
                             <incipit>Further discription of Meall fuar Monny</incipit>
                             <explicit>... but whither it freeses or not I cannot tell.</explicit>
                             <filiation/>
+                            <author role="scribe" corresp="Hand43"/>
                             <textLang mainLang="en" otherLangs="gd">
                                 <note/>
                             </textLang>
@@ -162,20 +165,21 @@
     </teiHeader>
     <text>
         <body>
-            <div n="1" type="prose" resp="Hand43" corresp="MS24.1">
+            <div n="1" type="prose" corresp="MS24.1">
                 <p>
                     <pb n="148" xml:id="MS24.f148r" facs="https://www.isos.dias.ie/libraries/NLS/NLS_Wod_Lett_Qu_1/small_jpgs/1.jpg"/>
                     <lb n="1" xml:id="MS24.f148r.1"/>
+                    <handShift new="Hand43"/>
                         <w xml:lang="en">Information</w>
                         <space type="scribal"/>
                         <w xml:lang="en">of</w>
                         <space type="scribal"/>
                         <name type="place">
-                            <w lemma="mell" lemmaRef="http://www.dil.ie/31896" ana="noun">Meall</w>
+                            <w lemma="mell" lemmaRef="http://www.dil.ie/31896" pos="noun">Meall</w>
                             <space type="scribal"/>
-                            <w lemma="úar" lemmaRef="http://www.dil.ie/42762" ana="adj">fuar</w>
+                            <w lemma="úar" lemmaRef="http://www.dil.ie/42762" pos="adjective">fuar</w>
                             <space type="scribal"/>
-                            <w lemma="moned" lemmaRef="http://www.dil.ie/32531" ana="noun">monny</w>
+                            <w lemma="moned" lemmaRef="http://www.dil.ie/32531" pos="noun">monny</w>
                         </name>
                         <space type="scribal"/>
                         <w xml:lang="en">it</w>
@@ -195,7 +199,7 @@
                         <space type="scribal"/>
                         <w xml:lang="en">of</w>
                         <space type="scribal"/>
-                        <name type="place"><w ana="noun">urquthart</w></name>
+                        <name type="place"><w pos="noun">urquthart</w></name>
                         <space type="scribal"/>
                         <w xml:lang="en">towards</w>
                     <lb n="3" xml:id="MS24.f148r.3"/>
@@ -217,7 +221,7 @@
                         <space type="scribal"/>
                         <w xml:lang="en">little</w>
                         <space type="scribal"/>
-                        <w lemma="loch" lemmaRef="http://www.dil.ie/30427" ana="noun">Loch</w>
+                        <w lemma="loch" lemmaRef="http://www.dil.ie/30427" pos="noun">Loch</w>
                         <space type="scribal"/>
                         <w xml:lang="en">in</w>
                         <space type="scribal"/>
@@ -254,26 +258,26 @@
                         <space type="scribal"/>
                         <w xml:lang="en">tell</w>
                         <space type="scribal"/>
-                        <w ana="verb, pron">
-                            <w lemma="is" lemmaRef="http://www.dil.ie/29104" ana="verb">s</w>
-                            <w lemma="é" lemmaRef="http://www.dil.ie/19325" ana="pron">e</w>
+                        <w pos="verb_pronoun">
+                            <w lemma="is" lemmaRef="http://www.dil.ie/29104" pos="verb">s</w>
+                            <w lemma="é" lemmaRef="http://www.dil.ie/19325" pos="pronoun">e</w>
                         </w>
                         <space type="scribal"/>
-                        <w lemma="ed" lemmaRef="http://www.dil.ie/19657" ana="pron">sea<abbr cert="high">d<g ref="g4">h</g></abbr></w>
+                        <w lemma="ed" lemmaRef="http://www.dil.ie/19657" pos="pronoun">sea<abbr cert="high">d<g ref="g4">h</g></abbr></w>
                         <space type="scribal"/>
-                        <w lemma="do" lemmaRef="http://www.dil.ie/17098" ana="part">do</w>
+                        <w lemma="do" lemmaRef="http://www.dil.ie/17098" pos="particle">do</w>
                         <space type="scribal"/>
-                        <w ana="verb, noun">
-                            <w lemma="is" lemmaRef="http://www.dil.ie/29104" ana="verb">n</w>
-                            <w lemma="ainmm" lemmaRef="http://www.dil.ie/1471" ana="noun">aim</w>
+                        <w pos="verb_noun">
+                            <w lemma="is" lemmaRef="http://www.dil.ie/29104" pos="verb">n</w>
+                            <w lemma="ainmm" lemmaRef="http://www.dil.ie/1471" pos="noun">aim</w>
                         </w>
                         <space type="scribal"/>
                         <name type="place">
-                            <w lemma="mell" lemmaRef="http://www.dil.ie/31896" ana="noun">meall</w>
+                            <w lemma="mell" lemmaRef="http://www.dil.ie/31896" pos="noun">meall</w>
                             <space type="scribal"/>
-                            <w lemma="úar" lemmaRef="http://www.dil.ie/42762" ana="adj">fuar</w>
+                            <w lemma="úar" lemmaRef="http://www.dil.ie/42762" pos="adjective">fuar</w>
                             <space type="scribal"/>
-                            <w lemma="moned" lemmaRef="http://www.dil.ie/32531" ana="noun">monai<abbr cert="high">d<g ref="g4">h</g></abbr></w>
+                            <w lemma="moned" lemmaRef="http://www.dil.ie/32531" pos="noun">monai<abbr cert="high">d<g ref="g4">h</g></abbr></w>
                         </name>
                         <w xml:lang="en">that</w>
                         <space type="scribal"/>
@@ -294,13 +298,13 @@
                         <w xml:lang="en">name</w>
                         <space type="scribal"/>
                         <name type="place">
-                            <w lemma="mell" lemmaRef="http://www.dil.ie/31896" ana="noun">meall</w>
+                            <w lemma="mell" lemmaRef="http://www.dil.ie/31896" pos="noun">meall</w>
                             <space type="scribal"/>
-                            <w lemma="úar" lemmaRef="http://www.dil.ie/42762" ana="adj">fuar</w>
+                            <w lemma="úar" lemmaRef="http://www.dil.ie/42762" pos="adjective">fuar</w>
                             <space type="scribal"/>
                             <pc>-</pc>
                      <lb n="7" xml:id="MS24.f148r.7"/>
-                            <w lemma="moned" lemmaRef="http://www.dil.ie/32531" ana="noun">monny</w>
+                            <w lemma="moned" lemmaRef="http://www.dil.ie/32531" pos="noun">monny</w>
                         </name>
                         <w xml:lang="en">is</w>
                         <space type="scribal"/>
@@ -315,8 +319,8 @@
                         <w xml:lang="en">mountain</w>
                         <space type="scribal"/>
                         <name type="place" corresp="https://www.ainmean-aite.scot/placename/loch-ness/">
-                            <w lemma="loch" lemmaRef="http://www.dil.ie/30427" ana="noun">Loch</w>
-                            <w ana="noun">ness</w>
+                            <w lemma="loch" lemmaRef="http://www.dil.ie/30427" pos="noun">Loch</w>
+                            <w pos="noun">ness</w>
                         </name>
                         <space type="scribal"/>
                         <w xml:lang="en">of</w>
@@ -327,7 +331,7 @@
                         <space type="scribal"/>
                         <w xml:lang="en">is</w>
                         <space type="scribal"/>
-                        <w xml:lang="en" ana="num">18</w>
+                        <w xml:lang="en" pos="number">18</w>
                         <space type="scribal"/>
                         <w xml:lang="en">miles</w>
                         <space type="scribal"/>
@@ -442,7 +446,7 @@
                         <w xml:lang="en">of</w>
                         <space type="scribal"/>
                         <name type="place">
-                            <w ana="noun">naes</w>
+                            <w pos="noun">naes</w>
                         </name>
                         <space type="scribal"/>
                         <w xml:lang="en">never</w>
@@ -460,7 +464,7 @@
                         <w xml:lang="en">Coldest</w>
                         <space type="scribal"/>
                         <w xml:lang="en">times</w>
-                        <add place="above" type="insertion" resp="Hand43">
+                        <add place="above" type="insertion">
                             <w xml:lang="en">in</w>
                         </add>
                         <space type="scribal"/>
@@ -489,9 +493,9 @@
                         <w xml:lang="en">from</w>
                     <lb n="16" xml:id="MS24.f148r.16"/>
                         <name type="place" corresp="https://www.ainmean-aite.scot/placename/inverness/">
-                            <w ana="noun, noun">
-                                <w lemma="inber" lemmaRef="http://www.dil.ie/28243" ana="noun">Inver</w>
-                                <w ana="noun">ness</w>
+                            <w pos="noun_noun">
+                                <w lemma="inber" lemmaRef="http://www.dil.ie/28243" pos="noun">Inver</w>
+                                <w pos="noun">ness</w>
                             </w>
                         </name>
                         <space type="scribal"/>
@@ -522,9 +526,9 @@
                         <w xml:lang="en">to</w>
                         <space type="scribal"/>
                         <name type="place" corresp="https://www.ainmean-aite.scot/placename/inverness/">
-                            <w ana="noun, noun">
-                                <w lemma="inber" lemmaRef="http://www.dil.ie/28243" ana="noun">Inver</w>
-                                <w ana="noun">ness</w>
+                            <w pos="noun_noun">
+                                <w lemma="inber" lemmaRef="http://www.dil.ie/28243" pos="noun">Inver</w>
+                                <w pos="noun">ness</w>
                             </w>
                         </name>
                         <space type="scribal"/>
@@ -559,11 +563,11 @@
                         <w xml:lang="en">is</w>
                         <space type="scribal"/>
                         <name type="place" corresp="https://www.ainmean-aite.scot/placename/beauly/">
-                            <w lemma="manchán" lemmaRef="http://www.dil.ie/31526" ana="noun">Manchoin</w>
+                            <w lemma="manchán" lemmaRef="http://www.dil.ie/31526" pos="noun">Manchoin</w>
                         </name>
                     <lb n="19" xml:id="MS24.f148r.19"/>
                         <name type="place" corresp="https://www.ainmean-aite.scot/placename/beauly/">
-                            <w lemma="manchán" lemmaRef="http://www.dil.ie/31526" ana="noun">man<abbr cert="high">c<g ref="g4">h</g></abbr>oin</w>
+                            <w lemma="manchán" lemmaRef="http://www.dil.ie/31526" pos="noun">man<abbr cert="high">c<g ref="g4">h</g></abbr>oin</w>
                         </name>
                         <space type="scribal"/>
                         <w xml:lang="en">Manach</w>
@@ -609,7 +613,7 @@
                         <w xml:lang="en">name</w>
                         <space type="scribal"/>
                         <name type="place" corresp="https://www.ainmean-aite.scot/placename/beauly/">
-                            <w lemma="manchán" lemmaRef="http://www.dil.ie/31526" ana="noun">manchoin</w>
+                            <w lemma="manchán" lemmaRef="http://www.dil.ie/31526" pos="noun">manchoin</w>
                         </name>
                         <space type="scribal"/>
                         <w xml:lang="en">the</w>
@@ -649,11 +653,11 @@
                         <w xml:lang="en">Called</w>
                     <lb n="23" xml:id="MS24.f148r.23"/>
                         <name type="place">
-                            <w lemma="ab" lemmaRef="http://www.dil.ie/16" ana="noun">a<abbr cert="high">b<g ref="g4">h</g></abbr>uinn</w>
+                            <w lemma="ab" lemmaRef="http://www.dil.ie/16" pos="noun">a<abbr cert="high">b<g ref="g4">h</g></abbr>uinn</w>
                             <space type="scribal"/>
-                            <w lemma="in" lemmaRef="http://www.dil.ie/28194" ana="art">na</w>
+                            <w lemma="in" lemmaRef="http://www.dil.ie/28194" pos="article">na</w>
                             <space type="scribal"/>
-                            <w lemma="manach" lemmaRef="http://www.dil.ie/31514" ana="noun">mana<abbr cert="high">c<g ref="g4">h</g></abbr></w>
+                            <w lemma="manach" lemmaRef="http://www.dil.ie/31514" pos="noun">mana<abbr cert="high">c<g ref="g4">h</g></abbr></w>
                         </name>
                         <space type="scribal"/>
                         <w xml:lang="en">that</w>
@@ -694,11 +698,11 @@
                         <w xml:lang="en">Called</w>
                         <space type="scribal"/>
                         <name type="personal">
-                            <w lemma="port" lemmaRef="http://www.dil.ie/34476" ana="noun">port</w>
+                            <w lemma="port" lemmaRef="http://www.dil.ie/34476" pos="noun">port</w>
                             <space type="scribal"/>
-                            <w lemma="in" lemmaRef="http://www.dil.ie/28194" ana="art">na</w>
+                            <w lemma="in" lemmaRef="http://www.dil.ie/28194" pos="article">na</w>
                             <space type="scribal"/>
-                            <w lemma="manach" lemmaRef="http://www.dil.ie/31514" ana="noun">mana<abbr cert="high">c<g ref="g4">h</g></abbr></w>
+                            <w lemma="manach" lemmaRef="http://www.dil.ie/31514" pos="noun">mana<abbr cert="high">c<g ref="g4">h</g></abbr></w>
                         </name>
                     <lb n="25" xml:id="MS24.f148r.25"/>
                         <w xml:lang="en">that</w>
@@ -927,9 +931,9 @@
                             <w xml:lang="en">The</w>
                         </seg>
                         <space type="scribal"/>
-                        <w lemma="cláirsech" lemmaRef="http://www.dil.ie/9345" ana="noun">Clarshach</w>
+                        <w lemma="cláirsech" lemmaRef="http://www.dil.ie/9345" pos="noun">Clarshach</w>
                         <space type="scribal"/>
-                        <w lemma="cláirsech" lemmaRef="http://www.dil.ie/9345" ana="noun">clairsa<abbr cert="high">c<g ref="g4">h</g></abbr></w>
+                        <w lemma="cláirsech" lemmaRef="http://www.dil.ie/9345" pos="noun">clairsa<abbr cert="high">c<g ref="g4">h</g></abbr></w>
                         <space type="scribal"/>
                         <w xml:lang="en">the</w>
                         <space type="scribal"/>
@@ -951,9 +955,9 @@
                         <space type="scribal"/>
                         <w xml:lang="en">is</w>
                         <space type="scribal"/>
-                        <w lemma="uisce" lemmaRef="http://www.dil.ie/43063" ana="noun">usge</w>
+                        <w lemma="uisce" lemmaRef="http://www.dil.ie/43063" pos="noun">usge</w>
                         <space type="scribal"/>
-                        <w lemma="betha" lemmaRef="http://www.dil.ie/5779" ana="noun">bea<abbr cert="high">t<g ref="g4">h</g></abbr>a</w>
+                        <w lemma="betha" lemmaRef="http://www.dil.ie/5779" pos="noun">bea<abbr cert="high">t<g ref="g4">h</g></abbr>a</w>
                         <space type="scribal"/>
                         <w xml:lang="en">that</w>
                         <space type="scribal"/>
@@ -1033,7 +1037,7 @@
                         <w xml:lang="en">take</w>
                         <space type="scribal"/>
                         <w xml:lang="en">theire</w>
-                        <add place="above" type="insertion" resp="Hand43">
+                        <add place="above" type="insertion">
                             <w xml:lang="en">rest</w>
                         </add>
                         <space type="scribal"/>
@@ -1057,7 +1061,7 @@
                         <space type="scribal"/>
                         <w xml:lang="en">not</w>
                         <space type="scribal"/>
-                        <del resp="Hand43">
+                        <del>
                             <w xml:lang="en">helre</w>
                         </del>
                         <w xml:lang="en">heare</w>
@@ -1133,14 +1137,14 @@
                         <w xml:lang="en">peeces</w>
                 </p>
             </div>
-            <div n="2" type="prose" resp="Hand43" corresp="MS24.2">
+            <div n="2" type="prose" corresp="MS24.2">
                 <p>
                     <lb n="13" xml:id="MS24.f148v.13"/>
-                        <w lemma="aibidil" lemmaRef="http://www.dil.ie/731" ana="noun">Aibidil</w>
+                        <w lemma="aibidil" lemmaRef="http://www.dil.ie/731" pos="noun">Aibidil</w>
                         <space type="scribal"/>
-                        <w lemma="in" lemmaRef="http://www.dil.ie/28194" ana="art">na</w>
+                        <w lemma="in" lemmaRef="http://www.dil.ie/28194" pos="article">na</w>
                         <space type="scribal"/>
-                        <w lemma="Goídelc" lemmaRef="http://www.dil.ie/26311" ana="noun">gaoi<abbr cert="high">d<g ref="g4">h</g></abbr>eilg</w>
+                        <w lemma="Goídelc" lemmaRef="http://www.dil.ie/26311" pos="noun">gaoi<abbr cert="high">d<g ref="g4">h</g></abbr>eilg</w>
                         <space type="scribal"/>
                         <w xml:lang="en">that</w>
                         <space type="scribal"/>
@@ -1162,7 +1166,7 @@
                         <space type="scribal"/>
                         <w xml:lang="en">but</w>
                         <space type="scribal"/>
-                        <w ana="num">17</w>
+                        <w pos="number">17</w>
                         <space type="scribal"/>
                         <w xml:lang="en">letters</w>
                         <space type="scribal"/>
@@ -1254,7 +1258,7 @@
                         <space type="scribal"/>
                         <w xml:lang="en">these</w>
                         <space type="scribal"/>
-                        <w xml:lang="en" ana="num">17</w>
+                        <w xml:lang="en" pos="number">17</w>
                         <space type="scribal"/>
                         <w xml:lang="en">letters</w>
                         <space type="scribal"/>
@@ -1316,20 +1320,20 @@
                         <w xml:lang="en">language</w>
                     <lb n="23" xml:id="MS24.f148v.23"/>
                         <name type="personal">
-                            <name type="personal"><w lemma="Domnall" lemmaRef="http://www.dil.ie/18133" ana="noun">Domnall</w></name>
+                            <name type="personal"><w lemma="Domnall" lemmaRef="http://www.dil.ie/18133" pos="noun">Domnall</w></name>
                             <space type="scribal"/>
-                            <w lemma="mac" lemmaRef="http://www.dil.ie/31166" ana="noun"><abbr cert="high">M<g ref="g12">ac</g></abbr></w>
+                            <w lemma="mac" lemmaRef="http://www.dil.ie/31166" pos="noun"><abbr cert="high">M<g ref="g12">ac</g></abbr></w>
                             <space type="scribal"/>
-                            <name type="personal"><w ana="noun">Marcus</w></name>
+                            <name type="personal"><w pos="noun">Marcus</w></name>
                         </name>
                     <lb n="24" xml:id="MS24.f148v.24"/>
-                        <w lemma="fer" lemmaRef="http://www.dil.ie/21665" ana="noun">fear</w>
+                        <w lemma="fer" lemmaRef="http://www.dil.ie/21665" pos="noun">fear</w>
                         <space type="scribal"/>
-                        <w lemma="aibidil" lemmaRef="http://www.dil.ie/731" ana="noun">ad<abbr cert="high">b<g ref="g4">h</g></abbr>uil</w>
+                        <w lemma="aibidil" lemmaRef="http://www.dil.ie/731" pos="noun">ad<abbr cert="high">b<g ref="g4">h</g></abbr>uil</w>
                         <space type="scribal"/>
-                        <w lemma="in" lemmaRef="http://www.dil.ie/28194" ana="art">na</w>
+                        <w lemma="in" lemmaRef="http://www.dil.ie/28194" pos="article">na</w>
                         <space type="scribal"/>
-                        <w lemma="Goídelc" lemmaRef="http://www.dil.ie/26311" ana="noun">gaoideilge</w>
+                        <w lemma="Goídelc" lemmaRef="http://www.dil.ie/26311" pos="noun">gaoideilge</w>
                         <space type="scribal"/>
                         <w xml:lang="en">that</w>
                         <space type="scribal"/>
@@ -1356,7 +1360,7 @@
                         <w xml:lang="en">etc</w>
                 </p>
             </div>
-            <div n="3" type="prose" resp="Hand43" corresp="MS24.3">
+            <div n="3" type="prose" corresp="MS24.3">
                 <p>
                     <pb n="149r" xml:id="MS24.f149r" facs="https://www.isos.dias.ie/libraries/NLS/NLS_Wod_Lett_Qu_1/small_jpgs/3.jpg"/>
                     <lb n="1" xml:id="MS24.f149r.1"/>
@@ -1369,7 +1373,7 @@
                         <name type="place">
                             <w xml:lang="en">Meall</w>
                             <space type="scribal"/>
-                            <w lemma="úar" lemmaRef="http://www.dil.ie/42762" ana="adj">fuar</w>
+                            <w lemma="úar" lemmaRef="http://www.dil.ie/42762" pos="adjective">fuar</w>
                             <space type="scribal"/>
                             <w xml:lang="en">Monny</w>
                         </name>
