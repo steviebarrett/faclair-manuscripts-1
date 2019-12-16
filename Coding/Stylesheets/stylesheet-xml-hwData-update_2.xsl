@@ -96,7 +96,6 @@
 									</xsl:choose>
 								</xsl:otherwise>
 							</xsl:choose>
-
 							<w>
 								<xsl:attribute name="type">
 									<xsl:text>data</xsl:text>
@@ -107,8 +106,15 @@
 								<xsl:attribute name="lemmaRef">
 									<xsl:value-of select="@lemmaRef"/>
 								</xsl:attribute>
-								<xsl:attribute name="ana">
-									<xsl:value-of select="@ana or @pos"/>
+								<xsl:attribute name="pos">
+									<xsl:choose>
+										<xsl:when test="@ana">
+											<xsl:value-of select="@ana"/>
+										</xsl:when>
+										<xsl:when test="@pos">
+											<xsl:value-of select="@pos"/>
+										</xsl:when>
+									</xsl:choose>
 								</xsl:attribute>
 								<xsl:if
 									test="//tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree[@corresp = $wordID]/tei:w/@lemmaDW">
