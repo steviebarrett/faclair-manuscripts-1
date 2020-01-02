@@ -4,8 +4,19 @@
 	exclude-result-prefixes="xs" version="3.0">
 	<xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
 
+	<xsl:variable name="timestamp">
+		<xsl:value-of
+			select="
+			(current-dateTime() -
+			xs:dateTime('1970-01-01T00:00:00'))
+			div xs:dayTimeDuration('PT1S') * 1000"
+		/>
+	</xsl:variable>
+
 	<xsl:template match="/">
+		<xsl:result-document href="{concat('hwData_', $timestamp, '.xml')}">
 		<xsl:call-template name="hwDataUpdate"/>
+		</xsl:result-document>
 	</xsl:template>
 
 	<xsl:template name="hwDataUpdate">
