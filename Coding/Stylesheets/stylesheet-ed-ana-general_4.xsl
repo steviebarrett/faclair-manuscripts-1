@@ -42,6 +42,7 @@
                         }
                         span.form_in_context {
                             background-color: #05ffb0;
+                            font-style: bold;
                         }</style>
                 </head>
                 <body>
