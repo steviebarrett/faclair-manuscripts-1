@@ -42,8 +42,8 @@
                         }
                         span.form_in_context {
                             background-color: #05ffb0;
-                        }
-                    </style>
+                            font-style: bold;
+                        }</style>
                 </head>
                 <body>
                     <table
@@ -60,6 +60,9 @@
                                 </th>
                                 <th>
                                     <xsl:text>Form ID</xsl:text>
+                                </th>
+                                <th>
+                                    <xsl:text>Probs?</xsl:text>
                                 </th>
                                 <th>
                                     <xsl:text>POS</xsl:text>
@@ -137,8 +140,19 @@
                                             <xsl:call-template name="form"/>
                                         </span>
                                     </td>
-                                    <td>
+                                    <td class="form_ID_cell">
                                         <xsl:value-of select="$formID"/>
+                                    </td>
+                                    <td>
+                                        <xsl:choose>
+                                            <xsl:when
+                                                test="descendant::tei:abbr[@cert != 'high'] or descendant::tei:unclear or descendant::tei:supplied or @lemma = 'unknown' or ancestor::tei:unclear or ancestor::tei:choice">
+                                                <xsl:text>yes</xsl:text>
+                                            </xsl:when>
+                                            <xsl:otherwise>
+                                                <xsl:text>no</xsl:text>
+                                            </xsl:otherwise>
+                                        </xsl:choose>
                                     </td>
                                     <td class="pos_cell">
                                         <xsl:choose>
@@ -309,10 +323,11 @@
                                     <td class="context_cell">
                                         <xsl:choose>
                                             <xsl:when test="ancestor::tei:lg[@type = 'stanza']">
-                                                <xsl:apply-templates select="ancestor::tei:l/child::*"
-                                                  mode="context">
+                                                <xsl:apply-templates
+                                                  select="ancestor::tei:l/child::*" mode="context">
                                                   <xsl:with-param name="formID">
-                                                      <xsl:value-of select="substring-after($formID, '_')"/>
+                                                  <xsl:value-of
+                                                  select="substring-after($formID, '_')"/>
                                                   </xsl:with-param>
                                                   <xsl:with-param name="formLemRef">
                                                   <xsl:value-of select="$lemRef"/>
@@ -324,7 +339,8 @@
                                                   select="//tei:lb[@xml:id = $lineID or @sameAs = $lineID]/following::*[parent::tei:p and preceding::tei:lb[1]/@* = $lineID and not(ancestor::tei:TEI[@xml:id = 'hwDats'])]"
                                                   mode="context">
                                                   <xsl:with-param name="formID">
-                                                      <xsl:value-of select="substring-after($formID, '_')"/>
+                                                  <xsl:value-of
+                                                  select="substring-after($formID, '_')"/>
                                                   </xsl:with-param>
                                                   <xsl:with-param name="formLemRef">
                                                   <xsl:value-of select="$lemRef"/>
@@ -391,16 +407,16 @@
         <xsl:param name="formID"/>
         <xsl:param name="formLemRef"/>
         <xsl:apply-templates select="child::*" mode="context">
-            <xsl:with-param name="formID"/>
-            <xsl:with-param name="formLemRef"/>
+            <xsl:with-param name="formID" select="$formID"/>
+            <xsl:with-param name="formLemRef" select="$formLemRef"/>
         </xsl:apply-templates>
     </xsl:template>
     <xsl:template match="tei:w[descendant::tei:w]" mode="context">
         <xsl:param name="formID"/>
         <xsl:param name="formLemRef"/>
         <xsl:apply-templates mode="context">
-            <xsl:with-param name="formID"/>
-            <xsl:with-param name="formLemRef"/>
+            <xsl:with-param name="formID" select="$formID"/>
+            <xsl:with-param name="formLemRef" select="$formLemRef"/>
         </xsl:apply-templates>
         <xsl:if test="not(ancestor::tei:w)">
             <xsl:text xml:space="preserve"> </xsl:text>
@@ -460,8 +476,8 @@
         <xsl:param name="formID"/>
         <xsl:param name="formLemRef"/>
         <xsl:apply-templates mode="context">
-            <xsl:with-param name="formID"/>
-            <xsl:with-param name="formLemRef"/>
+            <xsl:with-param name="formID" select="$formID"/>
+            <xsl:with-param name="formLemRef" select="$formLemRef"/>
         </xsl:apply-templates>
     </xsl:template>
     <xsl:template match="tei:g" mode="context">
@@ -469,8 +485,8 @@
         <xsl:param name="formLemRef"/>
         <span class="expansion">
             <xsl:apply-templates mode="context">
-                <xsl:with-param name="formID"/>
-                <xsl:with-param name="formLemRef"/>
+                <xsl:with-param name="formID" select="$formID"/>
+                <xsl:with-param name="formLemRef" select="$formLemRef"/>
             </xsl:apply-templates>
         </span>
     </xsl:template>
@@ -478,8 +494,8 @@
         <xsl:param name="formID"/>
         <xsl:param name="formLemRef"/>
         <xsl:apply-templates mode="context">
-            <xsl:with-param name="formID"/>
-            <xsl:with-param name="formLemRef"/>
+            <xsl:with-param name="formID" select="$formID"/>
+            <xsl:with-param name="formLemRef" select="$formLemRef"/>
         </xsl:apply-templates>
     </xsl:template>
     <xsl:template match="tei:num" mode="context">
@@ -497,8 +513,8 @@
         <span class="insertion">
             <sup>
                 <xsl:apply-templates mode="context">
-                    <xsl:with-param name="formID"/>
-                    <xsl:with-param name="formLemRef"/>
+                    <xsl:with-param name="formID" select="$formID"/>
+                    <xsl:with-param name="formLemRef" select="$formLemRef"/>
                 </xsl:apply-templates>
             </sup>
         </span>
@@ -508,8 +524,8 @@
         <xsl:param name="formLemRef"/>
         <del>
             <xsl:apply-templates mode="context">
-                <xsl:with-param name="formID"/>
-                <xsl:with-param name="formLemRef"/>
+                <xsl:with-param name="formID" select="$formID"/>
+                <xsl:with-param name="formLemRef" select="$formLemRef"/>
             </xsl:apply-templates>
         </del>
     </xsl:template>
@@ -518,8 +534,8 @@
         <xsl:param name="formLemRef"/>
         <span class="unclear">
             <xsl:apply-templates mode="context">
-                <xsl:with-param name="formID"/>
-                <xsl:with-param name="formLemRef"/>
+                <xsl:with-param name="formID" select="$formID"/>
+                <xsl:with-param name="formLemRef" select="$formLemRef"/>
             </xsl:apply-templates>
         </span>
     </xsl:template>
@@ -528,8 +544,8 @@
         <xsl:param name="formLemRef"/>
         <span class="supplied">
             <xsl:apply-templates mode="context">
-                <xsl:with-param name="formID"/>
-                <xsl:with-param name="formLemRef"/>
+                <xsl:with-param name="formID" select="$formID"/>
+                <xsl:with-param name="formLemRef" select="$formLemRef"/>
             </xsl:apply-templates>
         </span>
     </xsl:template>
@@ -537,8 +553,8 @@
         <xsl:param name="formID"/>
         <xsl:param name="formLemRef"/>
         <xsl:apply-templates select="tei:corr/child::*" mode="context">
-            <xsl:with-param name="formID"/>
-            <xsl:with-param name="formLemRef"/>
+            <xsl:with-param name="formID" select="$formID"/>
+            <xsl:with-param name="formLemRef" select="$formLemRef"/>
         </xsl:apply-templates>
     </xsl:template>
     <xsl:template match="tei:seg[@type = 'fragment']" mode="context">
