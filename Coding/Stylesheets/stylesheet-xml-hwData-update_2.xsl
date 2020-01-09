@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:tei="http://www.tei-c.org/ns/1.0"
-	xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	exclude-result-prefixes="xs" version="3.0">
 	<xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
 
@@ -25,8 +25,10 @@
 				select="count(//tei:TEI[@xml:id = 'hwData']//tei:entryFree[not(@corresp = //tei:TEI[not(@xml:id = 'hwData')]//tei:w/@lemmaRef)])"
 			/>
 		</xsl:variable>
-		<xsl:text><?xml-model href="Schemas/fnag_mss2.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?></xsl:text>
 		<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="hwData">
+			<xsl:attribute name="xsi:schemaLocation">
+				<xsl:text>Schemas/fnag_mss3.rng</xsl:text>
+			</xsl:attribute>
 			<teiHeader>
 				<fileDesc>
 					<titleStmt>
