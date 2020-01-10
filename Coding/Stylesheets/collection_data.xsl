@@ -11,12 +11,12 @@
         />
     </xsl:variable>
     <xsl:variable name="filename">
-        <xsl:value-of select="concat('corpus_data', '-', $timestamp, '.xhtml')"/>
+        <xsl:value-of select="concat('collection_data', '-', $timestamp, '.xhtml')"/>
     </xsl:variable>
     <xsl:strip-space elements="*"/>
     <xsl:output method="xhtml" indent="no"/>
     <xsl:template match="/">
-        <xsl:result-document href="{$filename}">
+        <xsl:result-document href="Data\collection_data\{$filename}">
             <html xmlns="http://www.w3.org/1999/xhtml">
                 <head>
                     <title> FnaG MSS: Corpus Data </title>
