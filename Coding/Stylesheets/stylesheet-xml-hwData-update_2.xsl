@@ -25,7 +25,6 @@
 				select="count(//tei:TEI[@xml:id = 'hwData']//tei:entryFree[not(@corresp = //tei:TEI[not(@xml:id = 'hwData')]//tei:w/@lemmaRef)])"
 			/>
 		</xsl:variable>
-		<xsl:text><?xml-model href="Schemas/fnag_mss2.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?></xsl:text>
 		<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="hwData">
 			<teiHeader>
 				<fileDesc>
