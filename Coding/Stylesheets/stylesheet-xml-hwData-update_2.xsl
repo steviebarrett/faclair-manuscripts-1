@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:tei="http://www.tei-c.org/ns/1.0"
-	xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema"
 	exclude-result-prefixes="xs" version="3.0">
 	<xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
 
@@ -26,9 +26,6 @@
 			/>
 		</xsl:variable>
 		<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="hwData">
-			<xsl:attribute name="xsi:schemaLocation">
-				<xsl:text>Schemas/fnag_mss3.rng</xsl:text>
-			</xsl:attribute>
 			<teiHeader>
 				<fileDesc>
 					<titleStmt>
