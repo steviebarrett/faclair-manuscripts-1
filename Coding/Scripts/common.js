@@ -681,7 +681,7 @@ function getLemmas(span) {
 
 function getDamage(span) {
   html = '';
-  var x = span.find('.unclearDamageSuperDiplo, .unclearDamageSemi');
+  var x = span.find('.unclearDamageSuperDiplo, .unclearDamageSemi'); // Does it contain a damaged section?
   if (x.length>0) { 
     html += '<li>damaged sections:<ul class="rhs">';
     x.each(function() {
@@ -690,6 +690,10 @@ function getDamage(span) {
       html += ' certainty)</li>';
     });
     html += '</ul></li>';
+  }
+  x = span.parents('.unclearDamageSuperDiplo, .unclearDamageSemi'); // Is it contained within a damaged section?
+  if (x.length>0) {
+    html += '<li>part of a damaged section (' + x.first().attr('data-resp') + ', ' + x.first().attr('data-cert') + ' certainty)</li>';
   }
   x = span.find('.unclearTextObscureDiplo, .unclearTextObscureSemi');
   if (x.length>0) {
@@ -715,9 +719,9 @@ function getDamage(span) {
   if (x.length>0) {
     html += '<li>part of an obscured section (' + x.first().attr('data-resp') + ', ' + x.first().attr('data-cert') + ' certainty)</li>';
   }
-        if ($(span).parents('.unclearInterpObscure').length>0) {
-            html += 'This is part of a section whose interpretation is obscure.';
-        }
+  if ($(span).parents('.unclearInterpObscure').length>0) {
+    html += 'This is part of a section whose interpretation is obscure.';
+  }
   return html;
 }
 
