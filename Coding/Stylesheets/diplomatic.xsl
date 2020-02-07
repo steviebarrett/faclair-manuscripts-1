@@ -329,6 +329,14 @@ It creates a diplomatic MS view.
     </span>
   </xsl:template>
 
+  <xsl:template match="tei:gap[@extent='unknown']">
+    <xsl:text> </xsl:text>
+    <span class="syntagm gapDamageCharsDiplo" data-toggle="tooltip" title="Damage: unknown extent ({@resp})">
+      [...]
+    </span>
+    <xsl:text> </xsl:text>
+  </xsl:template>
+
   <xsl:template match="tei:gap[@reason='damage' and @unit='chars']">
     <xsl:text> </xsl:text>
     <span class="syntagm gapDamageCharsDiplo" data-toggle="tooltip" title="Damage: {@quantity} characters ({@resp})">
