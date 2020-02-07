@@ -729,7 +729,7 @@ function getDamage(span) {
     html += '<li>part of an obscured section (' + x.first().attr('data-resp') + ', ' + x.first().attr('data-cert') + ' certainty)</li>';
   }
   if ($(span).parents('.unclearInterpObscure').length>0) {
-    html += 'This is part of a section whose interpretation is obscure.';
+    html += '<li>This is part of a section whose interpretation is obscure.</li>';
   }
   return html;
 }
