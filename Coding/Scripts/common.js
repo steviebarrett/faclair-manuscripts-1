@@ -659,26 +659,31 @@ function getStructure(span) {
 
 function getLemmas(span) {
   var html = '';
-  var x = span.attr('data-lemmaRef');
-  if (x && span.attr('data-lemmaRef').indexOf('dil.ie')>0) { 
+  var x = span.attr('data-lemmaref');
+  if (x && span.attr('data-lemmaref').indexOf('dil.ie')>0) { 
     if (span.attr('data-source')) {
-      html += '<li>eDIL: ' + span.attr('data-lemma') + ' (from <a href="' + span.attr('data-lemmaRef') + '" target="_new">' + span.attr('data-source') + '</a>)</li>';
+      html += '<li>eDIL: ' + span.attr('data-lemma') + ' (from <a href="' + span.attr('data-lemmaref') + '" target="_new">' + span.attr('data-source') + '</a>)</li>';
     }
     else {
-      html += '<li>eDIL: <a href="' + span.attr('data-lemmaRef') + '" target="_new">' + span.attr('data-lemma') + '</a></li>';
+      html += '<li>eDIL: <a href="' + span.attr('data-lemmaref') + '" target="_new">' + span.attr('data-lemma') + '</a></li>';
     }
-    $.getJSON('ajax.php?action=getDwelly&edil=' + span.attr('data-lemmaRef'), function (g) {
-        if (g.hw != '') { html += '<li>Dwelly: <a href="' + g.url + '" target="_new">' + g.hw + '</a>'; }
-    });
+    if (span.attr('data-lemmadw')) {
+      html += '<li>Dwelly: <a href="' + span.attr('data-lemmarefdw') + '" target="_new">' + span.attr('data-lemmadw') + '</a></li>';
+    }
+    else {
+      $.getJSON('ajax.php?action=getDwelly&edil=' + span.attr('data-lemmaref'), function (g) {
+        if (g.hw != '') { html += '<li>Dwelly: <a href="' + g.url + '" target="_new">' + g.hw + '</a></li>'; }
+      });
+    }
   }
-  else if (x && span.attr('data-lemmaRef').indexOf('faclair.com')>0) {
-    html += '<li>Dwelly: <a href="' + $(span).attr('data-lemmaRef') + '" target="_new">' + span.attr('data-lemma') + '</a></li>';
+  else if (x && span.attr('data-lemmaref').indexOf('faclair.com')>0) {
+    html += '<li>Dwelly: <a href="' + $(span).attr('data-lemmaref') + '" target="_new">' + span.attr('data-lemma') + '</a></li>';
   }
-  else if (x && span.attr('data-lemmaRef').indexOf('teanglann.ie')>0) {
-    html += '<li>Teanglann: <a href="' + $(span).attr('data-lemmaRef') + '" target="_new">' + span.attr('data-lemma') + '</a></li>';
+  else if (x && span.attr('data-lemmaref').indexOf('teanglann.ie')>0) {
+    html += '<li>Teanglann: <a href="' + $(span).attr('data-lemmaref') + '" target="_new">' + span.attr('data-lemma') + '</a></li>';
   }
-  else if (x && span.attr('data-lemmaRef').indexOf('dasg.ac.uk')>0) {
-    html += '<li>HDSG slips: <a href="' + $(span).attr('data-lemmaRef') + '" target="_new">' + span.attr('data-lemma') + '</a></li>';
+  else if (x && span.attr('data-lemmaref').indexOf('dasg.ac.uk')>0) {
+    html += '<li>HDSG slips: <a href="' + $(span).attr('data-lemmaref') + '" target="_new">' + span.attr('data-lemma') + '</a></li>';
   }
   if (span.attr('data-lemmaSl')) {
       html += '<li>HDSG slips: <a href="' + span.attr('data-slipRef') + '" target="_new">' + span.attr('data-lemmaSl') + '</a></li>';

@@ -167,8 +167,18 @@ It creates a semi-diplomatic MS view.
       </xsl:attribute>
     </xsl:if>
     <xsl:if test="@lemmaRef">
-      <xsl:attribute name="data-lemmaRef">
+      <xsl:attribute name="data-lemmaref">
         <xsl:value-of select="@lemmaRef"/>
+      </xsl:attribute>
+    </xsl:if>
+    <xsl:if test="@lemmaDW">
+      <xsl:attribute name="data-lemmadw">
+        <xsl:value-of select="@lemmaDW"/>
+      </xsl:attribute>
+    </xsl:if>
+    <xsl:if test="@lemmaRefDW">
+      <xsl:attribute name="data-lemmarefdw">
+        <xsl:value-of select="@lemmaRefDW"/>
       </xsl:attribute>
     </xsl:if>
     <xsl:if test="@pos">
