@@ -208,7 +208,11 @@ It creates a semi-diplomatic MS view.
     </xsl:if>
   </xsl:template>
 
-  <xsl:template match="tei:pc[ancestor::tei:w]">
+  <xsl:template match="tei:pc[ancestor::tei:w and not(ancestor::tei:supplied)]">
+  </xsl:template>
+  
+  <xsl:template match="tei:pc[ancestor::tei:w and ancestor::tei:supplied]">
+    <xsl:value-of select="."/>
   </xsl:template>
   
   <xsl:template match="tei:pc[not(ancestor::tei:w)]">

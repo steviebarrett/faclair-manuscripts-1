@@ -72,9 +72,7 @@ It creates a diplomatic MS view.
   </xsl:template>
 
   <xsl:template match="tei:pc[ancestor::tei:w]">
-    <span class="punct">
-      <xsl:value-of select="."/>
-    </span>
+    <xsl:value-of select="."/>
   </xsl:template>
 
   <xsl:template match="tei:pc[not(ancestor::tei:w)]">
