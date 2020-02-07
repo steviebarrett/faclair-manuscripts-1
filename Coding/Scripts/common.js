@@ -675,7 +675,7 @@ function getLemmas(span) {
     html += '<li>Dwelly: <a href="' + $(span).attr('data-lemmaRef') + '" target="_new">' + span.attr('data-lemma') + '</a></li>';
   }
   else if (x && span.attr('data-lemmaRef').indexOf('teanglann.ie')>0) {
-    html += '<li>Teangleann: <a href="' + $(span).attr('data-lemmaRef') + '" target="_new">' + span.attr('data-lemma') + '</a></li>';
+    html += '<li>Teanglann: <a href="' + $(span).attr('data-lemmaRef') + '" target="_new">' + span.attr('data-lemma') + '</a></li>';
   }
   else if (x && span.attr('data-lemmaRef').indexOf('dasg.ac.uk')>0) {
     html += '<li>HDSG slips: <a href="' + $(span).attr('data-lemmaRef') + '" target="_new">' + span.attr('data-lemma') + '</a></li>';
