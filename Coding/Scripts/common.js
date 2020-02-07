@@ -685,6 +685,9 @@ function getLemmas(span) {
   else if (x && span.attr('data-lemmaref').indexOf('dasg.ac.uk')>0) {
     html += '<li>HDSG slips: <a href="' + $(span).attr('data-lemmaref') + '" target="_new">' + span.attr('data-lemma') + '</a></li>';
   }
+  else {
+    html += '<li>Lemma: <a href="' + $(span).attr('data-lemmaref') + '" target="_new">' + span.attr('data-lemma') + '</a></li>';
+  }
   if (span.attr('data-lemmaSl')) {
       html += '<li>HDSG slips: <a href="' + span.attr('data-slipRef') + '" target="_new">' + span.attr('data-lemmaSl') + '</a></li>';
   }
