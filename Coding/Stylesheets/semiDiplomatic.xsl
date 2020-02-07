@@ -328,7 +328,7 @@ It creates a semi-diplomatic MS view.
 
   <xsl:template match="tei:pb">
     <span class="pageBreak" data-n="{@n}">
-      <small class="text-muted">
+      <small class="font-weight-bold">
         <xsl:text>[p.</xsl:text>
         <xsl:value-of select="@n"/>
         <xsl:text>]</xsl:text>
@@ -338,7 +338,7 @@ It creates a semi-diplomatic MS view.
 
   <xsl:template match="tei:cb">
     <span class="columnBreak" data-n="{@n}">
-      <small class="text-muted">
+      <small class="font-weight-bold">
         <xsl:text>[col.</xsl:text>
         <xsl:value-of select="@n"/>
         <xsl:text>]</xsl:text>
