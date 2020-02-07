@@ -7,7 +7,7 @@ $(function() {
 
   $('#numbersToggle').click(function() {
     var x = $('#midl');
-    x.find('.pageBreak, .pageBreakSuper, .columnBreak, .handShift').toggle();
+    x.find('.pageBreak, .pageBreakSuper, .columnBreak, .handShift, .stanzaNumber').toggle();
     var b = $('body').attr('data-ed');
     if (b=='diplo' || b=='both') {
       x.find('.lineBreak').toggleClass('lineBreakDiplo');

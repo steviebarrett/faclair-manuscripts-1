@@ -277,9 +277,19 @@ It creates a semi-diplomatic MS view.
   </xsl:template>
 
   <xsl:template match="tei:lg">
-    <p>
-      <xsl:apply-templates/>
-    </p>
+    <table>
+      <tr>
+        <td style="vertical-align: top; width: 50px;" class="stanzaNumber">
+          <small class="text-muted">
+            <xsl:value-of select="@n"/>.
+          </small>
+        </td>
+        <td>
+          <xsl:apply-templates/>
+        </td>
+      </tr>
+    </table>
+    <p> </p>
   </xsl:template>
 
   <xsl:template match="tei:l">
