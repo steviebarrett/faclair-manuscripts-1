@@ -230,12 +230,22 @@ It creates a diplomatic MS view.
     </span>
   </xsl:template>
 
-  <xsl:template match="tei:unclear[@reason='damage']"> <!-- e.g. MS1.85r.17 -->
+  <xsl:template match="tei:unclear[@reason='damage' and ancestor::tei:w]"> <!-- e.g. MS1.85r.17 -->
     <span class="unclearDamageDiplo" data-toggle="tooltip" data-cert="{@cert}" data-resp="{@resp}" title="">[..]</span>
     <span class="unclearDamageSuperDiplo" data-cert="{@cert}" data-resp="{@resp}" data-toggle="tooltip" title="">
       <xsl:apply-templates/>
     </span>
   </xsl:template>
+  
+  <xsl:template match="tei:unclear[@reason='damage' and not(ancestor::tei:w)]"> 
+    <span class="chunk syntagm damage">
+      <span class="unclearDamageDiplo" data-toggle="tooltip" data-cert="{@cert}" data-resp="{@resp}" title="">[..]</span>
+      <span class="unclearDamageSuperDiplo" data-cert="{@cert}" data-resp="{@resp}" data-toggle="tooltip" title="">
+        <xsl:apply-templates/>
+      </span>
+    </span>
+  </xsl:template>
+  
 
   <xsl:template match="tei:unclear[@reason='text_obscure']"> <!-- e.g. MS6.2r.1 [t] -->
     <span class="unclearTextObscureDiplo" data-cert="{@cert}" data-resp="{@resp}">

@@ -614,7 +614,16 @@ function getPOS(span) {
 
 function getStructure(span) {
   html = '';
-  if (!span.hasClass('word')) {
+  if (span.hasClass('damage')) {
+    html += '<li>is a damaged section containing:';
+    html += '<ul class="rhs">';
+    span.find('.word').each(function() {
+      html = html + '<li>' + makeSyntax($(this),true) + '</li>';
+    });
+    html += '</ul>';
+    html += '</li>';
+  }
+  else if (!span.hasClass('word')) {
     html += '<li>is a syntactically complex form containing:';
     html += '<ul class="rhs">';
     span.find('.word').each(function() {
