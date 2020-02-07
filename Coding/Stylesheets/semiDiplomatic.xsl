@@ -350,6 +350,14 @@ It creates a semi-diplomatic MS view.
     <span class="lineBreak lineBreakSemi" data-n="{@n}"/>
   </xsl:template>
 
+  <xsl:template match="tei:gap[@extent='unknown']">
+    <xsl:text> </xsl:text>
+    <span class="syntagm gapDamageCharsSemi" data-toggle="tooltip" title="Damage: unknown extent ({@resp})">
+      [...]
+    </span>
+    <xsl:text> </xsl:text>
+  </xsl:template>
+
   <xsl:template match="tei:gap[@reason='damage' and @unit='chars']">
     <xsl:text> </xsl:text>
     <span class="syntagm gapDamageCharsSemi" data-toggle="tooltip" title="Damage: {@quantity} characters ({@resp})">
