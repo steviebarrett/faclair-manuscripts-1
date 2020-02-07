@@ -403,7 +403,7 @@ function makeSyntax(span, rec) {
     html += getGlygatures(span);
     html += getCorrections(span);
     html += getSupplied(span);
-    html += getLemmas(span);
+    //html += getLemmas(span);
     html += getDamage(span);
     html += getDeletions(span);
     html += getAdditions(span);
@@ -416,6 +416,7 @@ function makeSyntax(span, rec) {
   }
   else {
     html += getPOS(span); 
+    html += getLemmas(span);
     html += getStructure(span);
   }
   if (rec) {

@@ -102,6 +102,7 @@ It creates a semi-diplomatic MS view.
   <xsl:template match="tei:w[not(ancestor::tei:w) and not(ancestor::tei:name) and descendant::tei:w]"> 
     <xsl:text> </xsl:text>
     <span class="chunk syntagm">
+      <xsl:call-template name="addWordAttributes"/>
       <xsl:apply-templates/>
     </span>
     <xsl:text> </xsl:text>
@@ -135,6 +136,7 @@ It creates a semi-diplomatic MS view.
   <xsl:template match="tei:w">  <!-- a word which IS part of a larger word and also contains smaller words -->
     <xsl:text> </xsl:text>
     <span class="syntagm">
+      <xsl:call-template name="addWordAttributes"/>
       <xsl:apply-templates/>
     </span>
     <xsl:text> </xsl:text>
