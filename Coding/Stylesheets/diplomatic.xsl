@@ -71,15 +71,19 @@ It creates a diplomatic MS view.
     <xsl:text> </xsl:text>
   </xsl:template>
 
-<!--
-  <xsl:template match="tei:pc">
+  <xsl:template match="tei:pc[ancestor::tei:w]">
     <span class="punct">
       <xsl:value-of select="."/>
     </span>
   </xsl:template>
-  -->
 
-  <xsl:template match="tei:c | tei:date | tei:num | tei:seg[@type='fragment'] | tei:pc">
+  <xsl:template match="tei:pc[not(ancestor::tei:w)]">
+      <span class="chunk syntagm word characterString">
+        <xsl:apply-templates/>
+      </span>
+  </xsl:template>
+
+  <xsl:template match="tei:c | tei:date | tei:num | tei:seg[@type='fragment']">
     <span class="chunk syntagm word characterString">
       <xsl:apply-templates/>
     </span>

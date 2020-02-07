@@ -198,7 +198,16 @@ It creates a semi-diplomatic MS view.
     </xsl:if>
   </xsl:template>
 
-  <xsl:template match="tei:c | tei:date | tei:num | tei:seg[@type='fragment'] | tei:pc">
+  <xsl:template match="tei:pc[ancestor::tei:w]">
+  </xsl:template>
+  
+  <xsl:template match="tei:pc[not(ancestor::tei:w)]">
+      <span class="chunk syntagm word characterString">
+        <xsl:apply-templates/>
+      </span>
+  </xsl:template>
+
+  <xsl:template match="tei:c | tei:date | tei:num | tei:seg[@type='fragment']">
     <span class="chunk syntagm word characterString">
       <xsl:apply-templates/>
     </span>
