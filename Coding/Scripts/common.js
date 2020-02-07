@@ -686,7 +686,12 @@ function getLemmas(span) {
     html += '<li>HDSG slips: <a href="' + $(span).attr('data-lemmaref') + '" target="_new">' + span.attr('data-lemma') + '</a></li>';
   }
   else {
-    html += '<li>Lemma: <a href="' + $(span).attr('data-lemmaref') + '" target="_new">' + span.attr('data-lemma') + '</a></li>';
+    if (span.attr('data-source')) {
+      html += '<li>lemma: ' + span.attr('data-lemma') + ' (from <a href="' + span.attr('data-lemmaref') + '" target="_new">' + span.attr('data-source') + '</a>)</li>';
+    }
+    else {
+      html += '<li>lemma: <a href="' + span.attr('data-lemmaref') + '" target="_new">' + span.attr('data-lemma') + '</a></li>';
+    }
   }
   if (span.attr('data-lemmaSl')) {
       html += '<li>HDSG slips: <a href="' + span.attr('data-slipRef') + '" target="_new">' + span.attr('data-lemmaSl') + '</a></li>';
