@@ -706,7 +706,7 @@ function getDamage(span) {
   html = '';
   var x = span.find('.unclearDamageSuperDiplo, .unclearDamageSemi'); // Does it contain a damaged section?
   if (x.length>0) { 
-    html += '<li>damaged sections:<ul class="rhs">';
+    html += '<li>Text supplied for lost writing surface:<ul class="rhs">';
     x.each(function() {
       html += '<li>[' + $(this).html() + '] ';
       html += '(' + $(this).attr('data-resp') + ', ' + $(this).attr('data-cert');

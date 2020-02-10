@@ -244,14 +244,14 @@ It creates a diplomatic MS view.
     </span>
   </xsl:template>
 
-  <xsl:template match="tei:unclear[@reason='damage' and ancestor::tei:w]"> <!-- e.g. MS1.85r.17 -->
+  <xsl:template match="tei:unclear[(@reason='damage' or @reason='writing_surface_lost') and ancestor::tei:w]"> <!-- e.g. MS1.85r.17 -->
     <span class="unclearDamageDiplo" data-toggle="tooltip" data-cert="{@cert}" data-resp="{@resp}" title="">[..]</span>
     <span class="unclearDamageSuperDiplo" data-cert="{@cert}" data-resp="{@resp}" data-toggle="tooltip" title="">
       <xsl:apply-templates/>
     </span>
   </xsl:template>
   
-  <xsl:template match="tei:unclear[@reason='damage' and not(ancestor::tei:w)]"> 
+  <xsl:template match="tei:unclear[(@reason='damage' or @reason='writing_surface_lost') and not(ancestor::tei:w)]"> 
     <span class="chunk syntagm damage">
       <span class="unclearDamageDiplo" data-toggle="tooltip" data-cert="{@cert}" data-resp="{@resp}" title="">[..]</span>
       <span class="unclearDamageSuperDiplo" data-cert="{@cert}" data-resp="{@resp}" data-toggle="tooltip" title="">
@@ -335,7 +335,7 @@ It creates a diplomatic MS view.
     <xsl:text> </xsl:text>
   </xsl:template>
 
-  <xsl:template match="tei:gap[@reason='damage' and @unit='chars']">
+  <xsl:template match="tei:gap[(@reason='damage' or @reason='writing_surface_lost') and @unit='chars']">
     <xsl:text> </xsl:text>
     <span class="syntagm gapDamageCharsDiplo" data-toggle="tooltip" title="Damage: {@quantity} characters ({@resp})">
       [...]

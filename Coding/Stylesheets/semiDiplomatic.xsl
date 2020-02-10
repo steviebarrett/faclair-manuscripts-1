@@ -312,7 +312,7 @@ It creates a semi-diplomatic MS view.
     </span>
   </xsl:template>
 
-  <xsl:template match="tei:unclear[@reason='damage']">
+  <xsl:template match="tei:unclear[@reason='damage' or @reason='writing_surface_lost']">
     <span class="unclearDamageSemi" data-cert="{@cert}" data-resp="{@resp}">
       <xsl:apply-templates/>
     </span>
@@ -368,7 +368,7 @@ It creates a semi-diplomatic MS view.
     <xsl:text> </xsl:text>
   </xsl:template>
 
-  <xsl:template match="tei:gap[@reason='damage' and @unit='chars']">
+  <xsl:template match="tei:gap[(@reason='damage' or @reason='writing_surface_lost') and @unit='chars']">
     <xsl:text> </xsl:text>
     <span class="syntagm gapDamageCharsSemi" data-toggle="tooltip" title="Damage: {@quantity} characters ({@resp})">
       <xsl:text>[...]</xsl:text>
