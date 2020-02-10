@@ -40,7 +40,6 @@
     <xsl:apply-templates select="tei:profileDesc/tei:langUsage/tei:p"/>
     <p>Hands</p>
     <p>Keywords</p>
-    <p>Back to <a href="../../index.php">index</a></p>
   </xsl:template>
   
   <xsl:template match="tei:msDesc">
