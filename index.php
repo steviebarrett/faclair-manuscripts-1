@@ -54,6 +54,8 @@
         <div class="list-group-item list-group-item-action">Transcription 28 (): <a href="Coding/Scripts/viewTranscription.php?t=28&diplo=yes">diplo</a>, <a href="Coding/Scripts/viewTranscription.php?t=28&diplo=no">semi</a></div>
         <div class="list-group-item list-group-item-action">Transcription 29 (): <a href="Coding/Scripts/viewTranscription.php?t=29&diplo=yes">diplo</a>, <a href="Coding/Scripts/viewTranscription.php?t=29&diplo=no">semi</a></div>
         <div class="list-group-item list-group-item-action">Transcription 30 (): <a href="Coding/Scripts/viewTranscription.php?t=30&diplo=yes">diplo</a>, <a href="Coding/Scripts/viewTranscription.php?t=30&diplo=no">semi</a></div>
+        <div class="list-group-item list-group-item-action">Transcription 31 (<em>The Red Book of Clanranald</em>: NMS MS 39): <a href="Coding/Scripts/viewTranscription.php?t=31&diplo=yes">diplo</a>, <a href="Coding/Scripts/viewTranscription.php?t=31&diplo=no">semi</a></div>
+        <div class="list-group-item list-group-item-action">Transcription 32 (<em>The Black Book of Clanranald</em>: NMS MS 40): <a href="Coding/Scripts/viewTranscription.php?t=32&diplo=yes">diplo</a>, <a href="Coding/Scripts/viewTranscription.php?t=32&diplo=no">semi</a></div>
       </div>
     </div>    
   </body>
