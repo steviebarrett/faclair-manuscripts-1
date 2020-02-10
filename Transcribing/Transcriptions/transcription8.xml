@@ -5,7 +5,8 @@
 	<teiHeader>
 		<fileDesc>
 			<titleStmt>
-				<title>Transcription 8: A Gaelic Fragment in The Kingis Quair Manuscript (Oxford, Bodleian Library MS. Arch. Selden B.24)</title>
+				<title>Transcription 8: A Gaelic Fragment in The Kingis Quair Manuscript (Oxford,
+					Bodleian Library MS. Arch. Selden B.24)</title>
 				<respStmt corresp="EPT">
 					<name>Eystein P. Thanisch</name>
 					<resp>Transcriber</resp>
@@ -52,9 +53,10 @@
 							<p>The only Gaelic material in the manuscript is Domhnall Gorm's
 								quatrain, now lacunose.</p>
 						</summary>
-						<msItem n="1" xml:id="MS8.1" resp="Hand21">
+						<msItem n="1" xml:id="MS8.1">
 							<locus>fol.231v4–6</locus>
 							<title>Gaelic Verse Fragment</title>
+							<author role="scribe" corresp="Hand21"/>
 							<incipit>[...] air cioth na coinne ...</incipit>
 							<explicit>... air clar na cruinne</explicit>
 							<note>
@@ -341,8 +343,12 @@
 									<titleStmt>
 										<title>Gaelic Verse Fragment</title>
 									</titleStmt>
-									<publicationStmt><p>Draft transcription</p></publicationStmt>
-									<sourceDesc><p>Transcribed from manuscript</p></sourceDesc>
+									<publicationStmt>
+										<p>Draft transcription</p>
+									</publicationStmt>
+									<sourceDesc>
+										<p>Transcribed from manuscript</p>
+									</sourceDesc>
 								</fileDesc>
 								<profileDesc>
 									<textClass>
@@ -453,12 +459,12 @@
 	</teiHeader>
 	<text>
 		<body>
-			<div n="1" type="verse" resp="Hand21" corresp="MS8.1">
-				<pb n="231v" xml:id="MS8.231v"/>
+			<div n="1" type="verse" hand="Hand21" corresp="MS8.1">
 				<lg n="1" type="stanza" xml:id="MS8.1.1">
-					<l n="a" xml:id="MS8.1.1a"><lb n="4" xml:id="MS8.231v.4"/>
-						<gap reason="damage" extent="2" unit="syllables" resp="EPT"/><w lemma="ar"
-							lemmaRef="http://www.dil.ie/3902" ana="prep"
+					<l n="a" xml:id="MS8.1.1a"><handShift new="Hand21"/><pb n="231v"
+							xml:id="MS8.231v"/><lb n="4" xml:id="MS8.231v.4"/>
+						<gap reason="damage" quantity="2" unit="syllables" resp="EPT"/><w lemma="ar"
+							lemmaRef="http://www.dil.ie/3902" pos="preposition"
 							comment="This may be the final syllable of a longer word, rather than a word in itself."
 							>air</w><note type="fn" resp="EPT"><p>The visibility of text drops to
 								zero to the immediate left of the "a-" of "air", means that this
@@ -468,11 +474,11 @@
 								perfect internal rhymes, and a word ending in "-uair" (: "buain")
 								would supply such a rhyme. Nothing more can be said about this
 								hypothesised word, unfortunately.</p></note><space type="scribal"
-							/><w lemma="cith" lemmaRef="http://www.dil.ie/9259" ana="noun">cio<abbr
+							/><w lemma="cith" lemmaRef="http://www.dil.ie/9259" pos="noun">cio<abbr
 								cert="high">t<g ref="g4">h</g></abbr></w><space type="scribal"/><w
-							lemma="in" lemmaRef="http://www.dil.ie/28194" ana="art">na</w><space
+							lemma="in" lemmaRef="http://www.dil.ie/28194" pos="article">na</w><space
 							type="scribal"/><w lemma="coinne" lemmaRef="http://www.dil.ie/10358"
-							ana="noun">coinne</w><pc>.</pc><space type="scribal"/><note type="fn"
+							pos="noun">coinne</w><pc>.</pc><space type="scribal"/><note type="fn"
 							resp="EPT"><p>Some pen strokes are visible just above this line, before
 								the page becomes too damaged for anything to be made out. It is
 								possible that they are abbreviation strokes relating to this line
@@ -482,59 +488,61 @@
 								just about be made out above. </p></note>
 					</l>
 					<l n="b" xml:id="MS8.1.1b">
-						<w lemma="do" lemmaRef="http://www.dil.ie/17096" ana="prep, art"
-							>don</w><space type="scribal"/><w lemma="bith"
-							lemmaRef="http://www.dil.ie/5971" ana="noun"><abbr cert="high">b<g
+						<w pos="preposition-article"><w lemma="do"
+								lemmaRef="http://www.dil.ie/17096" pos="preposition">do</w><w
+								lemma="in" lemmaRef="http://www.dil.ie/28194" pos="article"
+							>n</w></w><space type="scribal"/><w lemma="bith"
+							lemmaRef="http://www.dil.ie/5971" pos="noun"><abbr cert="high">b<g
 									ref="g4">h</g></abbr>io<abbr cert="high">t<g ref="g4"
 								>h</g></abbr></w><space type="scribal"/><w lemma="for"
-							lemmaRef="http://www.dil.ie/23272" ana="prep"><abbr cert="high"><g
-									ref="g11">air</g></abbr></w><space type="scribal"/><w
-							lemma="búain" lemmaRef="http://www.dil.ie/7248" ana="vnoun"
+							lemmaRef="http://www.dil.ie/23272" pos="preposition"><abbr cert="high"
+									><g ref="g11">air</g></abbr></w><space type="scribal"/><w
+							lemma="búain" lemmaRef="http://www.dil.ie/7248" pos="verbal_noun"
 							>buain</w><space type="scribal"/><w lemma="a"
-							lemmaRef="http://www.dil.ie/3" ana="poss">a</w><w lemma="duille"
-							lemmaRef="http://www.dil.ie/19115" ana="noun">duille</w>
+							lemmaRef="http://www.dil.ie/3" pos="possessive">a</w><w lemma="duille"
+							lemmaRef="http://www.dil.ie/19115" pos="noun">duille</w>
 					</l>
 					<l n="c" xml:id="MS8.1.1c"><lb n="5" xml:id="MS8.231v.5"/>
 						<gap reason="damage" extent="2" unit="syllables" resp="EPT"/><choice>
-							<sic><w lemma="bruach" lemmaRef="http://www.dil.ie/7041" ana="noun"
+							<sic><w lemma="bruach" lemmaRef="http://www.dil.ie/7041" pos="noun"
 										><unclear reason="damage" cert="medium" resp="EPT"
 										>b</unclear>ruai<abbr cert="high">c<g ref="g4"
 									>h</g></abbr></w></sic>
 							<corr resp="EPT"><w lemma="bruach" lemmaRef="http://www.dil.ie/7041"
-									ana="noun"><unclear reason="damage" cert="medium" resp="EPT"
+									pos="noun"><unclear reason="damage" cert="medium" resp="EPT"
 										>b</unclear>ruai<abbr cert="high">g<g ref="g4"
 									>h</g></abbr></w></corr>
 						</choice><note type="fn" resp="EPT"><p>The slenderisation suggests that this
 								is a prepositional form, hence the tentative translation "{on the}
 								bank".</p></note><space type="scribal"/><w lemma="lám"
-							lemmaRef="http://www.dil.ie/29507" ana="noun">laim</w><space
+							lemmaRef="http://www.dil.ie/29507" pos="noun">laim</w><space
 							type="scribal"/><w lemma="fri" lemmaRef="http://www.dil.ie/24329"
-							ana="prep">re</w><space type="scribal"/><w lemma="linn"
-							lemmaRef="http://www.dil.ie/30274" ana="noun">li<abbr cert="high">n<g
+							pos="preposition">re</w><space type="scribal"/><w lemma="linn"
+							lemmaRef="http://www.dil.ie/30274" pos="noun">li<abbr cert="high">n<g
 									ref="g5">n</g></abbr>e</w><space type="scribal"
 							/><pc>.</pc><space type="scribal"/>
 					</l>
 					<l n="d" xml:id="MS8.1.1d">
-						<w lemma="fo-gaib" lemmaRef="http://www.dil.ie/22696" ana="verb">fu<abbr
+						<w lemma="fo-gaib" lemmaRef="http://www.dil.ie/22696" pos="verb">fu<abbr
 								cert="high"><g ref="g11">air</g></abbr></w><space type="scribal"/><w
-							lemma="sinn" lemmaRef="http://www.dil.ie/37607" ana="pron">si<abbr
+							lemma="sinn" lemmaRef="http://www.dil.ie/37607" pos="pronoun">si<abbr
 								cert="high">n<g ref="g5">n</g></abbr>e</w><space type="scribal"/><w
-							lemma="for" lemmaRef="http://www.dil.ie/23272" ana="prep"><abbr
+							lemma="for" lemmaRef="http://www.dil.ie/23272" pos="preposition"><abbr
 								cert="high"><g ref="g11">air</g></abbr></w><w lemma="clár"
-							lemmaRef="http://www.dil.ie/9377" ana="noun">clar</w><space
+							lemmaRef="http://www.dil.ie/9377" pos="noun">clar</w><space
 							type="scribal"/><w lemma="in" lemmaRef="http://www.dil.ie/28194"
-							ana="art">na</w><space type="scribal"/><w lemma="cruinne"
-							lemmaRef="http://www.dil.ie/13227" ana="noun">crui<abbr cert="high">n<g
+							pos="article">na</w><space type="scribal"/><w lemma="cruinne"
+							lemmaRef="http://www.dil.ie/13227" pos="noun">crui<abbr cert="high">n<g
 									ref="g5">n</g></abbr>e</w>
 					</l>
 				</lg>
 				<lg type="sig" xml:id="MS8.1.2">
 					<l xml:id="MS8.1.2a"><lb n="6" xml:id="MS8.231v.6"/><w lemma="mise"
-							lemmaRef="http://www.dil.ie/32365" ana="pron">misi</w><space
+							lemmaRef="http://www.dil.ie/32365" pos="pronoun">misi</w><space
 							type="scribal"/><name type="personal"><w lemma="Domnall"
-								lemmaRef="http://www.dil.ie/18133" ana="noun">domnall</w><space
+								lemmaRef="http://www.dil.ie/18133" pos="noun">domnall</w><space
 								type="scribal"/><w lemma="gorm" lemmaRef="http://www.dil.ie/26408"
-								ana="adj">gorm</w><pc>.</pc></name></l>
+								pos="adjective">gorm</w><pc>.</pc></name></l>
 				</lg>
 			</div>
 		</body>
