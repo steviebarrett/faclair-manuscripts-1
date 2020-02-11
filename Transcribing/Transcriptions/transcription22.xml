@@ -40,7 +40,7 @@
                         <summary>
                             <p>Stanza to Neil MacNeil of Ugadale.</p>
                         </summary>
-                        <msItem n="1" xml:id="MS22.1" resp="Hand41">
+                        <msItem n="1" xml:id="MS22.1">
                             <locus/>
                             <title>Stanza to Neil MacNeil of Ugadale</title>
                             <incipit>Deghmhic Neill a bhláth na feile</incipit>
@@ -117,8 +117,8 @@
                 <pb n="26" xml:id="MS22.p26"/>
                 <lb n="3" xml:id="MS22.p26.3"/>
                 <handShift new="Hand41"/>
-                        <add place="above" type="insertion"><w lemma="a" lemmaRef="http://www.dil.ie/2" pos="particle">a</w></add>
-                        <w pos="adjective_noun">
+                        <add place="above" type="insertion" hand="Hand41"><w lemma="a" lemmaRef="http://www.dil.ie/2" pos="particle">a</w></add>
+                        <w pos="adjective-noun">
                             <w lemma="dag" lemmaRef="http://www.dil.ie/14139" pos="adjective">de<abbr cert="high">g<g ref="g4">h</g></abbr></w>
                             <w lemma="mac" lemmaRef="http://www.dil.ie/31166" pos="noun">mhic</w>
                         </w>
@@ -138,7 +138,7 @@
                         <w lemma="is" lemmaRef="http://www.dil.ie/29104" pos="verb">s</w>
                         <w lemma="óc" lemmaRef="http://www.dil.ie/33398" pos="adjective">og</w>
                         <space type="scribal"/>
-                        <w pos="particle_verb">
+                        <w pos="particle-verb">
                             <w lemma="do" lemmaRef="http://www.dil.ie/17098" pos="particle">do</w>
                             <space type="scribal"/>
                             <w lemma="cuirid" lemmaRef="http://www.dil.ie/13660" pos="verb"><abbr cert="high">c<g ref="g4">h</g></abbr>uir</w>
@@ -154,7 +154,7 @@
                     </l>
                     <l n="c" xml:id="MS22.1.1c">
                 <lb n="5" xml:id="MS22.p26.5"/>
-                        <w pos="preposition_pronoun">
+                        <w pos="preposition-possessive_pronoun">
                             <w lemma="de" lemmaRef="http://www.dil.ie/14787" pos="preposition">e</w>
                             <w lemma="a" lemmaRef="http://www.dil.ie/3" pos="possessive_pronoun">a</w>
                         </w>
@@ -162,7 +162,7 @@
                         <w lemma="méit" lemmaRef="http://www.dil.ie/31852" pos="noun">mhead</w>
                         <space type="scribal"/>
                         <w lemma="ocus" lemmaRef="http://www.dil.ie/33484" pos="conjunction">s</w>
-                        <w pos="particle_verb">
+                        <w pos="particle-verb">
                             <w lemma="do" lemmaRef="http://www.dil.ie/17098" pos="particle">a</w>
                             <space type="scribal"/>
                             <w lemma="fo-gaib" lemmaRef="http://www.dil.ie/22696" pos="verb"><abbr cert="high">d<g ref="g4">h</g></abbr>ei<abbr cert="high">b<g ref="g4">h</g></abbr></w>
@@ -195,7 +195,7 @@
                         <unclear reason="interp_obscure" cert="medium" resp="MMA">
                             <w lemma="co" lemmaRef="http://www.dil.ie/9787" pos="preposition">ga</w>
                             <space type="scribal"/>
-                            <del><c>cliar</c></del>
+                            <del hand="Hand41"><c>cliar</c></del>
                             <space type="scribal"/>
                             <w lemma="cíall" lemmaRef="http://www.dil.ie/8983" pos="noun">cíol</w>
                         </unclear>
