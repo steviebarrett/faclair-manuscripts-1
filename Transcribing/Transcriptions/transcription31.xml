@@ -112,16 +112,17 @@
                 <p>
                 <pb n="11" xml:id="MS31.p11"/>
                 <lb n="1" xml:id="MS31.p11.1"/>
+                <handShift sameAs="Hand10"/>
                     <gap reason="loss_of_folios" extent="unknown" resp="MMA"/>
                     <w lemma="deec" lemmaRef="http://www.dil.ie/15020" pos="number">dég</w>
                     <w lemma="do" lemmaRef="http://www.dil.ie/17096" pos="prepositional_pronoun">dho</w>
                     <w lemma="i" lemmaRef="http://www.dil.ie/26891" pos="prepositional_pronoun">innte</w>
-                    <w pos="particle_verb">
+                    <w pos="particle-verb">
                         <w lemma="do" lemmaRef="http://www.dil.ie/17098" pos="particle">do</w>
                         <w lemma="téit" lemmaRef="http://www.dil.ie/40447" pos="verb">chuaidh</w>
                     </w>
                     <w lemma="ar" lemmaRef="http://www.dil.ie/3902" pos="preposition">ar</w>
-                    <w pos="adjective_noun">
+                    <w pos="adjective-noun">
                         <w lemma="doír" lemmaRef="http://www.dil.ie/17924" pos="adjective">saor</w>
                 <lb n="2" xml:id="MS31.p11.2"/>
                         <w lemma="cúairt" lemmaRef="http://www.dil.ie/13327" pos="noun">chuairt</w>
@@ -188,12 +189,15 @@
                 <lb n="11" xml:id="MS31.p11.11"/>
                     <w lemma="ocus" lemmaRef="http://www.dil.ie/33484" pos="conjunction"><abbr cert="high"><g ref="g2">agus</g></abbr></w>
                     <w lemma="fer" lemmaRef="http://www.dil.ie/21665" pos="noun">fir</w>
-                    <w lemma="" lemmaRef="http://www.dil.ie/XXX" pos="">lúirg</w>
+                    <w lemma="lorg" lemmaRef="http://www.dil.ie/30682" pos="noun">lúirg</w>
+                    <!-- Check if this HW is correct. -->
                     <w lemma="íar" lemmaRef="http://www.dil.ie/26931" pos="preposition">ar</w>
                     <w lemma="slicht" lemmaRef="http://www.dil.ie/37930" pos="noun">sliocht</w>
                     <w lemma="fer" lemmaRef="http://www.dil.ie/21665" pos="noun">fer</w>
                     <pc>=</pc>
-                    <w lemma="UNKNOWN">faclair</w>
+                    <w lemma="foclóir" lemmaRef="http://www.dil.ie/22534" pos="noun">faclair</w>
+                    <note type="fn" resp="MMA"><p>Or, is this to be marked as a word that is part of a name with no headword behind it?</p></note>
+                    <!-- Check if this HW is correct. -->
                 <lb n="12" xml:id="MS31.p11.12"/>
                     <unclear reason="interp_obscure" cert="medium" resp="MMA"><w lemma="agad" lemmaRef="http://www.dil.ie/678" pos="noun">aghuid</w></unclear>
                     <space type="scribal"/>
@@ -215,7 +219,7 @@
                     <w lemma="íar" lemmaRef="http://www.dil.ie/26931" pos="preposition">ar</w>
                 <lb n="14" xml:id="MS31.p11.14"/>
                     <name type="personal"><w lemma="Maine" lemmaRef="http://www.dil.ie/31367" pos="noun">maine</w></name>
-                    <w pos="particle_verb">
+                    <w pos="particle-verb">
                         <w lemma="do" lemmaRef="http://www.dil.ie/17098" pos="particle">do</w>
                         <w lemma="ásaid" lemmaRef="http://www.dil.ie/4369" pos="verb">fhás</w>
                     </w>
@@ -226,7 +230,7 @@
                     <name type="place" corresp="https://www.logainm.ie/1420121.aspx"><w lemma="Ériu" lemmaRef="http://www.dil.ie/20288" pos="noun">neirinn</w></name>
                     <w lemma="íar" lemmaRef="http://www.dil.ie/26931" pos="preposition">ar</w>
                     <name type="personal"><w pos="noun">colla</w></name>
-                    <w pos="preposition_possessive_pronoun">
+                    <w pos="preposition-possessive_pronoun">
                         <w lemma="do" lemmaRef="http://www.dil.ie/17096" pos="preposition">d</w>
                         <w lemma="a" lemmaRef="http://www.dil.ie/3" pos="possessive_pronoun">a</w>
                     </w>
@@ -235,7 +239,7 @@
                 <lb n="16" xml:id="MS31.p11.16"/>
                     <w lemma="mac" lemmaRef="http://www.dil.ie/31166" pos="noun">mág</w>
                     <name type="personal"><w lemma="odor" lemmaRef="http://www.dil.ie/33495" pos="noun">uighir</w></name>
-                    <w pos="preposition_possessive_pronoun">
+                    <w pos="preposition-possessive_pronoun">
                         <w lemma="i" lemmaRef="http://www.dil.ie/26891" pos="preposition">n</w>
                         <w lemma="a" lemmaRef="http://www.dil.ie/3" pos="possessive_pronoun">a</w>
                     </w>
@@ -247,8 +251,8 @@
                 <pb n="12" xml:id="MS31.p12"/>
                 <lb n="1" xml:id="MS31.p12.1"/> 
                     <w lemma="mac" lemmaRef="http://www.dil.ie/31166" pos="noun">mág</w>
-                    <name type="personal"><w lemma="" lemmaRef="http://www.dil.ie/XXX" pos="noun">mathghamhna</w></name>
-                    <w pos="preposition_possessive_pronoun">
+                    <name type="personal"><w lemma="mathgamain" lemmaRef="http://www.dil.ie/31684" pos="noun">mathghamhna</w></name>
+                    <w pos="preposition-possessive_pronoun">
                         <w lemma="i" lemmaRef="http://www.dil.ie/26891" pos="preposition">n</w>
                         <w lemma="a" lemmaRef="http://www.dil.ie/3" pos="possessive_pronoun">a</w>
                     </w>
@@ -266,7 +270,7 @@
                     <w lemma="ocus" lemmaRef="http://www.dil.ie/33484" pos="conjunction"><abbr cert="high"><g ref="g2">agus</g></abbr></w>
                     <w lemma="mórán" lemmaRef="http://www.dil.ie/32560" pos="noun">morán</w>
                     <w lemma="aile" lemmaRef="http://www.dil.ie/978" pos="adjective">oile</w>
-                    <w pos="particle_verb">
+                    <w pos="particle-verb">
                         <w lemma="ní" lemmaRef="http://www.dil.ie/33147" pos="particle">ni</w>
                         <w lemma="ad-cí" lemmaRef="http://www.dil.ie/391" pos="verb">fhaca</w>
                     </w>
@@ -285,7 +289,7 @@
                     <w lemma="i" lemmaRef="http://www.dil.ie/26891" pos="preposition">a</w>
                     <w lemma="a" lemmaRef="http://www.dil.ie/5" pos="pronoun">a</w>
                     <w lemma="téit" lemmaRef="http://www.dil.ie/40447" pos="verb">ndechuidh</w>
-                    <w pos="preposition_article">
+                    <w pos="preposition-article">
                         <w lemma="i" lemmaRef="http://www.dil.ie/26891" pos="preposition">s</w>
                         <w lemma="in" lemmaRef="http://www.dil.ie/28194" pos="article">an</w>
                     </w>
@@ -295,12 +299,12 @@
                 <lb n="6" xml:id="MS31.p12.6"/>
                     <w lemma="duine" lemmaRef="http://www.dil.ie/19139" pos="noun">dhaoinibh</w>
                     <w lemma="noíbthe" lemmaRef="http://www.dil.ie/33253" pos="adjective">naomtha</w>
-                    <w pos="particle_verb">
+                    <w pos="particle-verb">
                         <w lemma="do" lemmaRef="http://www.dil.ie/17098" pos="particle">do</w>
                         <w lemma="attá" lemmaRef="http://www.dil.ie/4927" pos="verb">bhi</w>
                     </w>
-                    <del><c>o</c></del>
-                    <w lemma="" lemmaRef="http://www.dil.ie/XXX" pos="noun">iomad</w>
+                    <del hand="Hand22"><c>o</c></del>
+                    <w lemma="imbed" lemmaRef="http://www.dil.ie/27298" pos="noun">iomad</w>
                 <lb n="7" xml:id="MS31.p12.7"/>
                     <w lemma="de" lemmaRef="http://www.dil.ie/14787" pos="preposition">de</w>
                     <w lemma="duine" lemmaRef="http://www.dil.ie/19139" pos="noun">dhaoinibh</w>
@@ -320,13 +324,13 @@
                     <w lemma="oc" lemmaRef="http://www.dil.ie/33397" pos="preposition">ag</w>
                     <w lemma="so" lemmaRef="http://www.dil.ie/38191" pos="demonstrative_pronoun">so</w>
                     <w lemma="in" lemmaRef="http://www.dil.ie/28194" pos="article">an</w>
-                    <w lemma="" lemmaRef="http://www.dil.ie/XXX" pos="noun">líne</w>
+                    <w lemma="líne" lemmaRef="http://www.dil.ie/30252" pos="noun">líne</w>
                     <w lemma="díriuch" lemmaRef="http://www.dil.ie/16743" pos="adjective">dírech</w>
                 <lb n="10" xml:id="MS31.p12.10"/>
                     <w lemma="anúas" lemmaRef="http://www.dil.ie/3838" pos="adverb">anúas</w>
                     <name type="personal"><w pos="noun">colla</w></name>
                     <w lemma="úas" lemmaRef="http://www.dil.ie/42792" pos="adjective">úais</w>
-                    <w pos="particle_verb">
+                    <w pos="particle-verb">
                         <w lemma="do" lemmaRef="http://www.dil.ie/17098" pos="particle">do</w>
                         <w lemma="gainithir" lemmaRef="http://www.dil.ie/25186" pos="verb">ginedh</w>
                     </w>
@@ -335,7 +339,7 @@
                     <w lemma="ó" lemmaRef="http://www.dil.ie/33364" pos="preposition">o</w>
                     <name type="personal"><w pos="noun">colla</w></name>
                     <w lemma="úas" lemmaRef="http://www.dil.ie/42792" pos="adjective">úais</w>
-                    <w pos="particle_verb">
+                    <w pos="particle-verb">
                         <w lemma="do" lemmaRef="http://www.dil.ie/17098" pos="particle">do</w>
                         <w lemma="gainithir" lemmaRef="http://www.dil.ie/25186" pos="verb">ginedh</w>
                     </w>
@@ -343,7 +347,7 @@
                     <name type="personal"><w pos="noun">carrann</w></name>
                     <w lemma="ó" lemmaRef="http://www.dil.ie/33364" pos="preposition">ó</w>
                     <name type="personal"><w pos="noun">eochaidh</w></name>
-                    <w pos="particle_verb">
+                    <w pos="particle-verb">
                         <w lemma="do" lemmaRef="http://www.dil.ie/17098" pos="particle">do</w>
                         <w lemma="gainithir" lemmaRef="http://www.dil.ie/25186" pos="verb">ginedh</w>
                     </w>
@@ -351,20 +355,20 @@
                     <w lemma="ó" lemmaRef="http://www.dil.ie/33364" pos="preposition">ó</w>
                 <lb n="13" xml:id="MS31.p12.13"/>
                     <name type="personal"><w pos="noun">charrann</w></name>
-                    <w pos="particle_verb">
+                    <w pos="particle-verb">
                         <w lemma="do" lemmaRef="http://www.dil.ie/17098" pos="particle">do</w>
                         <w lemma="gainithir" lemmaRef="http://www.dil.ie/25186" pos="verb">ginedh</w>
                     </w>
                     <name type="personal"><w lemma="Maine" lemmaRef="http://www.dil.ie/31367" pos="noun">maine</w></name>
                     <w lemma="ó" lemmaRef="http://www.dil.ie/33364" pos="preposition">o</w>
                     <name type="personal"><w lemma="erc" lemmaRef="http://www.dil.ie/20224" pos="noun">earc</w></name>
-                    <w pos="particle_verb">
+                    <w pos="particle-verb">
                         <w lemma="do" lemmaRef="http://www.dil.ie/17098" pos="particle">do</w>
                         <w lemma="gainithir" lemmaRef="http://www.dil.ie/25186" pos="verb">ginedh</w>
                     </w>
                 <lb n="14" xml:id="MS31.p12.14"/>
                     <name type="personal">
-                        <w pos="noun_noun">
+                        <w pos="noun-noun">
                             <w lemma="fer" lemmaRef="http://www.dil.ie/21665" pos="noun">fear</w>
                             <w lemma="gus" lemmaRef="http://www.dil.ie/26839" pos="noun">gus</w>
                         </w>
@@ -372,24 +376,24 @@
                     <w lemma="ó" lemmaRef="http://www.dil.ie/33364" pos="preposition">o</w>
                     <name type="personal"><w lemma="Maine" lemmaRef="http://www.dil.ie/31367" pos="noun">mhaine</w></name>
                     <space type="scribal"/>
-                    <w pos="particle_verb">
+                    <w pos="particle-verb">
                         <w lemma="do" lemmaRef="http://www.dil.ie/17098" pos="particle">do</w>
                         <w lemma="gainithir" lemmaRef="http://www.dil.ie/25186" pos="verb">ginedh</w>
                     </w>
                     <name type="personal"><w pos="noun">goth<pc>=</pc><lb n="15" xml:id="MS31.p12.15"/>fruigh</w></name>
                     <w lemma="ó" lemmaRef="http://www.dil.ie/33364" pos="preposition">o</w>
                     <name type="personal">
-                        <w pos="noun_noun">
+                        <w pos="noun-noun">
                             <w lemma="fer" lemmaRef="http://www.dil.ie/21665" pos="noun">fer</w>
                             <w lemma="gus" lemmaRef="http://www.dil.ie/26839" pos="noun">ghus</w>
                         </w>
                     </name>
-                    <w pos="particle_verb">
+                    <w pos="particle-verb">
                         <w lemma="do" lemmaRef="http://www.dil.ie/17098" pos="particle">do</w>
                         <w lemma="gainithir" lemmaRef="http://www.dil.ie/25186" pos="verb">ginedh</w>
                     </w>
                     <name type="personal">
-                        <w pos="noun_noun">
+                        <w pos="noun-noun">
                             <w lemma="Níall" lemmaRef="http://www.dil.ie/33163" pos="noun">niall</w>
                             <w lemma="gus" lemmaRef="http://www.dil.ie/26839" pos="noun">gus</w>
                         </w>
@@ -425,7 +429,7 @@
                 <lb n="3" xml:id="MS31.p13.3"/>
                     <w lemma="cha" lemmaRef="https://www.faclair.com/ViewDictionaryEntry.aspx?ID=2EDBB989A9E3D8BD441ED39E81D6B611" pos="particle">ca</w>
                     <w lemma="miste" lemmaRef="https://www,faclair.com/ViewDictionaryEntry.aspx?ID=9A5F2260091E0FA46C4C37F5E380B3B3" pos="adjective">miste</w>
-                    <w pos="noun_adverb">
+                    <w pos="noun-adverb">
                         <w lemma="cuit" lemmaRef="http://www.dil.ie/13717" pos="noun">cuid</w>
                         <w lemma="éicin" lemmaRef="http://www.dil.ie/19719" pos="adverb">eigin</w>
                     </w>
@@ -493,26 +497,26 @@
                     <w lemma="argat" lemmaRef="http://www.dil.ie/4140" pos="noun">airgid</w>
                     <w lemma="mac" lemmaRef="http://www.dil.ie/31166" pos="noun"><abbr cert="high">m<g ref="g9">ic</g></abbr></w>
                     <name type="personal">
-                        <w pos="noun_noun">
+                        <w pos="noun-noun">
                             <w lemma="Níall" lemmaRef="http://www.dil.ie/33163" pos="noun">niall</w>
                             <w lemma="gus" lemmaRef="http://www.dil.ie/26839" pos="noun">gusa</w>
                         </w>
                     </name>
                 <lb n="12" xml:id="MS31.p13.12"/>
-                    <w pos="particle_verb">
+                    <w pos="particle-verb">
                         <w lemma="do" lemmaRef="http://www.dil.ie/17098" pos="particle">do</w>
                         <w lemma="gainithir" lemmaRef="http://www.dil.ie/25186" pos="verb">ginedh</w>
                     </w>
                     <name type="personal"><w lemma="suibne" lemmaRef="http://www.dil.ie/39190" pos="noun">suibhne</w></name>
                     <w lemma="ó" lemmaRef="http://www.dil.ie/33364" pos="preposition">o</w>
                     <name type="personal">
-                        <w pos="noun_noun">
+                        <w pos="noun-noun">
                             <w lemma="Níall" lemmaRef="http://www.dil.ie/33163" pos="noun">niall</w>
                             <w lemma="gus" lemmaRef="http://www.dil.ie/26839" pos="noun">gusa</w>
                         </w>
                     </name>
                 <lb n="13" xml:id="MS31.p13.13"/>
-                    <w pos="particle_verb">
+                    <w pos="particle-verb">
                         <w lemma="do" lemmaRef="http://www.dil.ie/17098" pos="particle">do</w>
                         <w lemma="gainithir" lemmaRef="http://www.dil.ie/25186" pos="verb">ginedh</w>
                     </w>
@@ -520,7 +524,7 @@
                     <w lemma="ó" lemmaRef="http://www.dil.ie/33364" pos="preposition">o</w>
                     <name type="personal"><w lemma="suibne" lemmaRef="http://www.dil.ie/39190" pos="noun">suibhni</w></name>
                 <lb n="14" xml:id="MS31.p13.14"/>
-                    <w pos="particle_verb">
+                    <w pos="particle-verb">
                         <w lemma="do" lemmaRef="http://www.dil.ie/17098" pos="particle">do</w>
                         <w lemma="gainithir" lemmaRef="http://www.dil.ie/25186" pos="verb">ginedh</w>
                     </w>
@@ -528,13 +532,13 @@
                     <w lemma="ó" lemmaRef="http://www.dil.ie/33364" pos="preposition">o</w>
                     <name type="personal"><w pos="noun">mherghach</w></name>
                 <lb n="15" xml:id="MS31.p13.15"/>
-                    <w pos="particle_verb">
+                    <w pos="particle-verb">
                         <w lemma="do" lemmaRef="http://www.dil.ie/17098" pos="particle">do</w>
                         <w lemma="gainithir" lemmaRef="http://www.dil.ie/25186" pos="verb">ginedh</w>
                     </w>
                     <w lemma="gilla" lemmaRef="http://www.dil.ie/25843" pos="noun">giolla</w>
                     <w lemma="ó" lemmaRef="http://www.dil.ie/33364" pos="preposition">o</w>
-                    <w lemma="" lemmaRef="http://www.dil.ie/XXX" pos="noun">gamhnán</w>
+                    <name type="personal"><w lemma="gamnán" lemmaRef="http://www.dil.ie/25347" pos="noun">gamhnán</w></name>
                 <lb n="16" xml:id="MS31.p13.16"/>
                     <name type="personal"><w lemma="Solam" lemmaRef="http://www.dil.ie/38409" pos="noun">sholamh</w></name>
                     <w lemma="is" lemmaRef="http://www.dil.ie/29104" pos="verb">as</w>
@@ -544,7 +548,7 @@
                     <pc>=</pc>
                 <lb n="17" xml:id="MS31.p13.17"/>
                     <w lemma="úa" lemmaRef="http://www.dil.ie/42573" pos="noun">o</w>
-                    <name type="personal"><w pos="noun">ghamnán</w></name>
+                    <name type="personal"><w lemma="gamnán" lemmaRef="http://www.dil.ie/25347" pos="noun">ghamnán</w></name>
                     <w lemma="so" lemmaRef="http://www.dil.ie/38191" pos="demonstrative_pronoun">sa</w>
                     <w lemma="ó" lemmaRef="http://www.dil.ie/33364" pos="preposition">o</w>
                     <w lemma="do-icc" lemmaRef="http://www.dil.ie/17788" pos="verb">ntainic</w>
@@ -552,7 +556,7 @@
                     <w lemma="clann" lemmaRef="http://www.dil.ie/9365" pos="noun">clann</w>
                     <name type="personal"><w lemma="Domnall" lemmaRef="http://www.dil.ie/18133" pos="noun">domnuill</w></name>
                     <name type="place" corresp="https://www.logainm.ie/1810.aspx">
-                        <w lemma="" lemmaRef="http://www.dil.ie/XXX" pos="noun">ros</w>
+                        <w lemma="ros" lemmaRef="http://www.dil.ie/35549" pos="noun">ros</w>
                         <w lemma="lóeg" lemmaRef="http://www.dil.ie/30483" pos="noun">laogh</w>
                     </name>
                     <w lemma="ó" lemmaRef="http://www.dil.ie/33364" pos="preposition">o</w>
@@ -568,20 +572,20 @@
                     <w lemma="mac" lemmaRef="http://www.dil.ie/31166" pos="noun">mac</w>
                     <w lemma="gilla" lemmaRef="http://www.dil.ie/25843" pos="noun">giolla</w>
                     <w lemma="úa" lemmaRef="http://www.dil.ie/42573" pos="noun">o</w>
-                    <name type="personal"><w pos="noun">ghamnan</w></name>
+                    <name type="personal"><w lemma="gamnán" lemmaRef="http://www.dil.ie/25347" pos="noun">ghamnan</w></name>
                     <w lemma="ocus" lemmaRef="http://www.dil.ie/33484" pos="conjunction"><abbr cert="high"><g ref="g2">agus</g></abbr></w>
                     <w lemma="is" lemmaRef="http://www.dil.ie/29104" pos="verb">is</w>
                     <w lemma="é" lemmaRef="http://www.dil.ie/19325" pos="pronoun">é</w>
                     <w lemma="gilla" lemmaRef="http://www.dil.ie/25843" pos="noun">giolla</w>
                 <lb n="3" xml:id="MS31.p14.3"/>
                     <w lemma="úa" lemmaRef="http://www.dil.ie/42573" pos="noun">o</w>
-                    <name type="personal"><w pos="noun">gamhnan</w></name>
-                    <w pos="particle_verb">
+                    <name type="personal"><w lemma="gamnán" lemmaRef="http://www.dil.ie/25347" pos="noun">gamhnan</w></name>
+                    <w pos="particle-verb">
                         <w lemma="do" lemmaRef="http://www.dil.ie/17098" pos="particle">do</w>
                         <w lemma="do-fócaib" lemmaRef="http://www.dil.ie/17646" pos="verb">thógh</w>
                     </w>
                     <name type="place">
-                        <w lemma="" lemmaRef="http://www.dil.ie/XXX" pos="noun">mainistir</w>
+                        <w lemma="mainister" lemmaRef="http://www.dil.ie/31375" pos="noun">mainistir</w>
                         <w lemma="in" lemmaRef="http://www.dil.ie/28194" pos="article">na</w>
                 <lb n="4" xml:id="MS31.p14.4"/>
                         <choice>
@@ -596,8 +600,8 @@
                     <w lemma="i" lemmaRef="http://www.dil.ie/26891" pos="preposition">a</w>
                     <w lemma="contae" lemmaRef="http://www.dil.ie/12336" pos="noun">cunntáoi</w>
                 <lb n="5" xml:id="MS31.p14.5"/>
-                    <name type="place" corresp="https://www.logainm.ie/1810.aspx">
-                        <w lemma="" lemmaRef="https://www.logainm.ie/1810.aspx" pos="noun">shligech</w>
+                    <name type="place" corresp="https://www.logainm.ie/100028.aspx">
+                        <w lemma="Sligeach" lemmaRef="https://www.logainm.ie/100028.aspx" pos="noun">shligech</w>
                     </name>
                     <w lemma="i" lemmaRef="http://www.dil.ie/26891" pos="preposition">a</w>
                     <name type="place" corresp="https://www.logainm.ie/1165969.aspx">
@@ -625,13 +629,13 @@
                 <lb n="8" xml:id="MS31.p14.8"/>
                     <w lemma="roim" lemmaRef="http://www.dil.ie/35470" pos="prepositional_pronoun">romham</w>
                     <w lemma="é" lemmaRef="http://www.dil.ie/19325" pos="pronoun">e</w>
-                    <w pos="particle_verb">
+                    <w pos="particle-verb">
                         <w lemma="do" lemmaRef="http://www.dil.ie/17098" pos="particle">do</w>
                         <w lemma="fétaid" lemmaRef="http://www.dil.ie/21805" pos="verb">fhéduinn</w>
                     </w>
                     <w lemma="do" lemmaRef="http://www.dil.ie/17096" pos="preposition">do</w>
                     <w lemma="cor" lemmaRef="http://www.dil.ie/12406" pos="verbal_noun">chur</w>
-                    <w pos="preposition_possessive_pronoun">
+                    <w pos="preposition-possessive_pronoun">
                         <w lemma="i" lemmaRef="http://www.dil.ie/26891" pos="preposition">a</w>
                         <w lemma="mo" lemmaRef="http://www.dil.ie/32400" pos="possessive_pronoun">m</w>
                     </w>
@@ -639,12 +643,12 @@
                     <w lemma="cuimne" lemmaRef="http://www.dil.ie/13561" pos="noun">chuimhne</w>
                     <w lemma="in" lemmaRef="http://www.dil.ie/28194" pos="article">an</w>
                     <w lemma="úar" lemmaRef="http://www.dil.ie/42763" pos="noun">uair</w>
-                    <w pos="particle_verb">
+                    <w pos="particle-verb">
                         <w lemma="do" lemmaRef="http://www.dil.ie/17098" pos="particle">do</w>
                         <w lemma="attá" lemmaRef="http://www.dil.ie/4927" pos="verb">bi</w>
                     </w>
                     <w lemma="mé" lemmaRef="http://www.dil.ie/31705" pos="pronoun">me</w>
-                    <w pos="preposition_article">
+                    <w pos="preposition-article">
                         <w lemma="i" lemmaRef="http://www.dil.ie/26891" pos="preposition">s</w>
                         <w lemma="in" lemmaRef="http://www.dil.ie/28194" pos="article">an</w>
                     </w>
@@ -653,7 +657,7 @@
                     <w lemma="sin" lemmaRef="http://www.dil.ie/37567" pos="demonstrative_pronoun">sin</w>
                     <w lemma="ocus" lemmaRef="http://www.dil.ie/33484" pos="conjunction"><abbr cert="high"><g ref="g2">agus</g></abbr></w>
                     <w lemma="attá" lemmaRef="http://www.dil.ie/4927" pos="verb">ata</w>
-                    <w pos="adjective_noun">
+                    <w pos="adjective-noun">
                         <w lemma="gnáth" lemmaRef="http://www.dil.ie/26193" pos="adjective">gnath</w>
                         <w lemma="cuimne" lemmaRef="http://www.dil.ie/13561" pos="noun">chuimhne</w>
                     </w>
@@ -664,11 +668,11 @@
                         <w lemma="tír" lemmaRef="http://www.dil.ie/40940" pos="noun">tíri</w>
                     </add>
                     <!-- Check which margin -->
-                    <w pos="preposition_possessive_pronoun">
+                    <w pos="preposition-possessive_pronoun">
                         <w lemma="do" lemmaRef="http://www.dil.ie/17096" pos="preposition">d</w>
                         <w lemma="a" lemmaRef="http://www.dil.ie/3" pos="possessive_pronoun">a</w>
                     </w>
-                    <w lemma="" lemmaRef="http://www.dil.ie/XXX" pos="verbal_noun">chonnmhail</w>
+                    <w lemma="congbáil" lemmaRef="http://www.dil.ie/12155" pos="verbal_noun">chonnmhail</w>
                     <w lemma="ar" lemmaRef="http://www.dil.ie/3902" pos="preposition">ar</w>
                     <w lemma="cuimne" lemmaRef="http://www.dil.ie/13561" pos="noun">cuimhne</w>
                     <w lemma="do" lemmaRef="http://www.dil.ie/17096" pos="preposition">do</w>
@@ -685,8 +689,8 @@
                     <w lemma="slicht" lemmaRef="http://www.dil.ie/37930" pos="noun">sliocht</w>
                     <w lemma="gilla" lemmaRef="http://www.dil.ie/25843" pos="noun">ghiolla</w>
                     <w lemma="úa" lemmaRef="http://www.dil.ie/42573" pos="noun">o</w>
-                    <name type="personal"><w pos="noun">ghamhnain</w></name>
-                    <w pos="preposition_article">
+                    <name type="personal"><w lemma="gamnán" lemmaRef="http://www.dil.ie/25347" pos="noun">ghamhnain</w></name>
+                    <w pos="preposition-article">
                         <w lemma="i" lemmaRef="http://www.dil.ie/26891" pos="preposition">s</w>
                         <w lemma="in" lemmaRef="http://www.dil.ie/28194" pos="article">na</w>
                     </w>
@@ -697,16 +701,16 @@
                     <w lemma="attá" lemmaRef="http://www.dil.ie/4927" pos="verb">biadh</w>
                     <w lemma="fis" lemmaRef="http://www.dil.ie/22221" pos="noun">fhios</w>
                     <w lemma="oc" lemmaRef="http://www.dil.ie/33397" pos="prepositional_pronoun">agad</w>
-                    <w pos="conjunction_particle_verb">
+                    <w pos="conjunction-particle-verb">
                         <w lemma="co" lemmaRef="http://www.dil.ie/9788" pos="conjunction">gu</w>
                         <w lemma="ro" lemmaRef="http://www.dil.ie/35364" pos="particle">r</w>
                 <lb n="15" xml:id="MS31.p14.15"/>
                         <w lemma="is" lemmaRef="http://www.dil.ie/29104" pos="verb">bh</w>
                     </w>
                     <w lemma="é" lemmaRef="http://www.dil.ie/19325" pos="pronoun">e</w>
-                    <w lemma="" lemmaRef="http://www.dil.ie/XXX" pos="noun">tiodal</w>
-                    <w lemma="" lemmaRef="http://www.dil.ie/XXX" pos="adjective">gnáthach</w>
-                    <w pos="particle_verb">
+                    <w lemma="titul" lemmaRef="http://www.dil.ie/40988" pos="noun">tiodal</w>
+                    <w lemma="gnáthach" lemmaRef="http://www.dil.ie/26194" pos="adjective">gnáthach</w>
+                    <w pos="particle-verb">
                         <w lemma="do" lemmaRef="http://www.dil.ie/17098" pos="particle">do</w>
                         <w lemma="beirid" lemmaRef="http://www.dil.ie/5583" pos="verb">bheartháoi</w>
                     </w>
@@ -717,6 +721,327 @@
                     <w lemma="treb" lemmaRef="http://www.dil.ie/41614" pos="noun">treibhe</w>
                     <w lemma="ó" lemmaRef="http://www.dil.ie/33364" pos="preposition">ó</w>
                     <name type="personal"><w pos="noun">raghnall</w></name>
+                <pb n="15" xml:id="MS31.p15"/>
+                <lb n="1" xml:id="MS31.p15.1"/>
+                    <seg type="catchword">
+                        <name type="personal"><w pos="noun">ragnall</w></name>
+                    </seg>
+                    <w lemma="mac" lemmaRef="http://www.dil.ie/31166" pos="noun">mac</w>
+                    <name type="personal"><w lemma="samairle" lemmaRef="http://www.dil.ie/36130" pos="noun">somhuirle</w></name>
+                    <w lemma="súas" lemmaRef="http://www.dil.ie/39119" pos="adverb">súas</w>
+                <lb n="2" xml:id="MS31.p15.2"/>
+                    <w lemma="co" lemmaRef="http://www.dil.ie/9786" pos="preposition">go</w>
+                    <name type="personal"><w pos="noun">colla</w></name>
+                    <w lemma="úas" lemmaRef="http://www.dil.ie/42792" pos="adjective">úais</w>
+                    <w lemma=".i." lemmaRef="http://www.dil.ie/26892" pos="abbreviation">.i.</w>
+                    <w lemma="úa" lemmaRef="http://www.dil.ie/42573" pos="noun">Ó</w>
+                    <name type="personal"><w pos="noun">colla</w></name>
+                <lb n="3" xml:id="MS31.p15.3"/>
+                    <w lemma="ocus" lemmaRef="http://www.dil.ie/33484" pos="conjunction"><abbr cert="high"><g ref="g2">agus</g></abbr></w>
+                    <w lemma="toísech" lemmaRef="http://www.dil.ie/41302" pos="noun">taoisech</w>
+                    <name type="place" corresp="https://www.ainmean-aite.scot/placename/argyll/">
+                        <w lemma="airer" lemmaRef="http://www.dil.ie/1930" pos="noun">earr</w>
+                        <w lemma="Goídel" lemmaRef="http://www.dil.ie/26308" pos="noun">ghaoidheal</w>
+                    </name>
+                <lb n="4" xml:id="MS31.p15.4"/>
+                    <name type="personal">
+                        <w lemma="gilla" lemmaRef="http://www.dil.ie/25843" pos="noun">Giolla</w>
+                        <name type="personal"><w lemma="Brigit" lemmaRef="http://www.dil.ie/6818" pos="noun">bríde</w></name>
+                    </name>
+                    <del hand="Hand22"><c>g</c></del>
+                    <w lemma="mac" lemmaRef="http://www.dil.ie/31166" pos="noun">mac</w>
+                    <w lemma="gilla" lemmaRef="http://www.dil.ie/25843" pos="noun">gille</w>
+                    <w lemma="úa" lemmaRef="http://www.dil.ie/42573" pos="noun">o</w>
+                    <name type="personal"><w lemma="gamnán" lemmaRef="http://www.dil.ie/25347" pos="noun">ghamhnain</w></name>
+                    <w lemma="mac" lemmaRef="http://www.dil.ie/31166" pos="noun">mac</w>
+                    <w lemma="ocus" lemmaRef="http://www.dil.ie/33484" pos="conjunction"><abbr cert="high"><g ref="g2">agus</g></abbr></w>
+                    <w lemma="úath" lemmaRef="http://www.dil.ie/42810" pos="noun">úath</w>
+                    <!-- Check if this HW is correct. -->
+                    <w lemma="toísech" lemmaRef="http://www.dil.ie/41302" pos="noun">toisigh</w>
+                    <name type="place" corresp="https://www.ainmean-aite.scot/placename/argyll/">
+                        <w lemma="airer" lemmaRef="http://www.dil.ie/1930" pos="noun">earr</w>
+                <lb n="5" xml:id="MS31.p15.5"/>
+                        <w lemma="Goídel" lemmaRef="http://www.dil.ie/26308" pos="noun">ghaoidheal</w>
+                    </name>
+                    <w lemma="ocus" lemmaRef="http://www.dil.ie/33484" pos="conjunction"><abbr cert="high"><g ref="g2">agus</g></abbr></w>
+                    <w lemma="úa" lemmaRef="http://www.dil.ie/42573" pos="noun">o</w>
+                    <name type="personal"><w pos="noun">colla</w></name>
+                    <pc>.</pc>
+                    <w lemma="íar" lemmaRef="http://www.dil.ie/26931" pos="preposition">ar</w>
+                    <w lemma="buith" lemmaRef="http://www.dil.ie/7435" pos="verbal_noun">mbeith</w>
+                    <w lemma="do" lemmaRef="http://www.dil.ie/17096" pos="prepositional_pronoun">dhó</w>
+                <lb n="6" xml:id="MS31.p15.6"/>
+                    <w lemma="i" lemmaRef="http://www.dil.ie/26891" pos="preposition">a</w>
+                    <w lemma="mescc" lemmaRef="http://www.dil.ie/32044" pos="noun">measg</w>
+                    <w lemma="a" lemmaRef="http://www.dil.ie/3" pos="possessive_pronoun">a</w>
+                    <w lemma="ciniud" lemmaRef="http://www.dil.ie/9138" pos="noun">chinnigh</w>
+                    <w lemma="i" lemmaRef="http://www.dil.ie/26891" pos="preposition">a</w>
+                    <name type="place" corresp="https://www.logainm.ie/1420121.aspx"><w lemma="Ériu" lemmaRef="http://www.dil.ie/20288" pos="noun">neirinn</w></name>
+                    <w lemma=".i." lemmaRef="http://www.dil.ie/26892" pos="abbreviation">.i.</w>
+                    <w lemma="UNKNOWN">ó</w>
+                <lb n="7" xml:id="MS31.p15.7"/>
+                    <w lemma="clann" lemmaRef="http://www.dil.ie/9365" pos="noun">clanna</w>
+                    <w lemma="in" lemmaRef="http://www.dil.ie/28194" pos="article">na</w>
+                    <name type="personal"><w pos="noun">ccolladh</w></name>
+                    <w lemma="immar" lemmaRef="http://www.dil.ie/27721" pos="preposition">mar</w>
+                    <w lemma="attá" lemmaRef="http://www.dil.ie/4927" pos="verb">atáid</w>
+                <lb n="9" xml:id="MS31.p15.9"/>
+                    <name type="other"><w pos="noun">manchaigh</w></name>
+                    <w lemma="ocus" lemmaRef="http://www.dil.ie/33484" pos="conjunction"><abbr cert="high"><g ref="g2">agus</g></abbr></w>
+                    <name type="other"><w pos="noun">mathdhamnaigh</w></name>
+                    <w lemma=".i." lemmaRef="http://www.dil.ie/26892" pos="abbreviation">.i.</w>
+                    <w lemma="ciniud" lemmaRef="http://www.dil.ie/9138" pos="noun">cinneadh</w>
+                <lb n="10" xml:id="MS31.p15.10"/>
+                    <w lemma="mac" lemmaRef="http://www.dil.ie/31166" pos="noun">még</w>
+                    <name type="personal"><w lemma="odor" lemmaRef="http://www.dil.ie/33495" pos="noun">uighir</w></name>
+                    <w lemma="ocus" lemmaRef="http://www.dil.ie/33484" pos="conjunction"><abbr cert="high"><g ref="g2">agus</g></abbr></w>
+                    <w lemma="mac" lemmaRef="http://www.dil.ie/31166" pos="noun">még</w>
+                    <name type="personal"><w lemma="mathgamain" lemmaRef="http://www.dil.ie/31684" pos="noun">mhathghamhna</w></name>
+                <lb n="11" xml:id="MS31.p15.11"/>
+                    <w lemma="do-cuirethar" lemmaRef="http://www.dil.ie/17442" pos="verb">tarrla</w>
+                    <w pos="preposition-article">
+                        <w lemma="do" lemmaRef="http://www.dil.ie/17096" pos="preposition">do</w>
+                        <w lemma="in" lemmaRef="http://www.dil.ie/28194" pos="article">n</w>
+                    </w>
+                    <w lemma="aicme" lemmaRef="http://www.dil.ie/805" pos="noun">aicme</w>
+                    <w lemma="sin" lemmaRef="http://www.dil.ie/37567" pos="demonstrative_pronoun">soin</w>
+                <lb n="12" xml:id="MS31.p15.12"/>
+                    <w lemma="coinne" lemmaRef="http://www.dil.ie/10358" pos="noun">coinne</w>
+                    <w lemma="ocus" lemmaRef="http://www.dil.ie/33484" pos="conjunction"><abbr cert="high"><g ref="g2">agus</g></abbr></w>
+                    <w lemma="comdál" lemmaRef="http://www.dil.ie/10974" pos="noun">
+                        <w lemma="com-" lemmaRef="http://www.dil.ie/10554" pos="prefix">comh</w>
+                        <w lemma="dál" lemmaRef="http://www.dil.ie/14345" pos="noun">dhail</w>
+                    </w>
+                    <w lemma="do" lemmaRef="http://www.dil.ie/17096" pos="preposition">do</w>
+                <lb n="13" xml:id="MS31.p15.13"/>
+                    <w lemma="buith" lemmaRef="http://www.dil.ie/7435" pos="verbal_noun">bheith</w>
+                    <w lemma="eter" lemmaRef="http://www.dil.ie/20789" pos="prepositional_pronoun">eatartha</w>
+                    <w lemma="i" lemmaRef="http://www.dil.ie/26891" pos="preposition">a</w>
+                    <name type="place" corresp="https://www.logainm.ie/100014.aspx"><w lemma="Fear Manach" lemmaRef="https://www.logainm.ie/100014.aspx" pos="noun">férmanach</w></name>
+                <lb n="14" xml:id="MS31.p15.14"/>
+                    <w lemma="i" lemmaRef="http://www.dil.ie/26891" pos="preposition">a</w>
+                    <w lemma="dúthaig" lemmaRef="http://www.dil.ie/19305" pos="noun">ndúithigh</w>
+                    <w lemma="mac" lemmaRef="http://www.dil.ie/31166" pos="noun">még</w>
+                    <name type="personal"><w lemma="odor" lemmaRef="http://www.dil.ie/33495" pos="noun">uighir</w></name>
+                    <w lemma="ocus" lemmaRef="http://www.dil.ie/33484" pos="conjunction"><abbr cert="high"><g ref="g2">agus</g></abbr></w>
+                    <w lemma="is" lemmaRef="http://www.dil.ie/29104" pos="verb">ba</w>
+                    <w lemma="UNKNOWN">da</w>
+                <lb n="15" xml:id="MS31.p15.15"/>
+                    <w lemma="UNKNOWN">nadhbharuibh</w>
+                    <w lemma="UNKNOWN">ma</w>
+                    <w lemma="UNKNOWN">ghnoidhighibh</w>
+                <lb n="16" xml:id="MS31.p15.16"/>
+                    <name type="personal">
+                        <w lemma="gilla" lemmaRef="http://www.dil.ie/25843" pos="noun">ghille</w>
+                        <name type="personal"><w lemma="Brigit" lemmaRef="http://www.dil.ie/6818" pos="noun">bhrighde</w></name>
+                    </name>
+                    <w lemma="co" lemmaRef="http://www.dil.ie/9787" pos="preposition">go</w>
+                    <!-- Check if this HW is correct. -->
+                    <w lemma="cuit" lemmaRef="http://www.dil.ie/13717" pos="noun">cuid</w>
+                    <w lemma="dúthaig" lemmaRef="http://www.dil.ie/19305" pos="noun">duichthe</w>
+                    <w lemma="do" lemmaRef="http://www.dil.ie/17096" pos="preposition">do</w>
+                <lb n="17" xml:id="MS31.p15.17"/>
+                    <w lemma="tabairt" lemmaRef="http://www.dil.ie/39363" pos="verbal_noun">thabart<supplied resp="Black1973">t</supplied></w>
+                    <w lemma="do" lemmaRef="http://www.dil.ie/17096" pos="prepositional_pronoun">dhó</w>
+                    <w pos="preposition_possessive-pronoun">
+                        <w lemma="do" lemmaRef="http://www.dil.ie/17096" pos="preposition">d</w>
+                        <w lemma="a" lemmaRef="http://www.dil.ie/3" pos="possessive_pronoun">a</w>
+                    </w>
+                    <w lemma="tír" lemmaRef="http://www.dil.ie/40940" pos="noun">tír</w>
+                    <w lemma="fadéin" lemmaRef="http://www.dil.ie/20990" pos="pronoun">féin</w>
+                    <w lemma="ó" lemmaRef="http://www.dil.ie/33365" pos="conjunction">o</w>
+                    <w pos="particle-verb">
+                        <w lemma="do" lemmaRef="http://www.dil.ie/17098" pos="particle">do</w>
+                <pb n="16" xml:id="MS31.p16"/>
+                <lb n="1" xml:id="MS31.p16.1"/>
+                        <seg type="catchword"><w lemma="do" lemmaRef="http://www.dil.ie/17098" pos="particle">do</w></seg>
+                        <w lemma="attá" lemmaRef="http://www.dil.ie/4927" pos="verb">bhí</w>
+                    </w>
+                    <w lemma="sé" lemmaRef="http://www.dil.ie/36709" pos="pronoun">sé</w>
+                    <w lemma="íar" lemmaRef="http://www.dil.ie/26931" pos="preposition">air</w>
+                    <w lemma="díbra" lemmaRef="http://www.dil.ie/16045" pos="noun">díobra</w>
+                    <w pos="preposition-possessive_pronoun">
+                        <w lemma="ó" lemmaRef="http://www.dil.ie/33364" pos="preposition">ó</w>
+                        <w lemma="a" lemmaRef="http://www.dil.ie/3" pos="possessive_pronoun">na</w>
+                    </w>
+                    <w lemma="dúthchas" lemmaRef="http://www.dil.ie/19311" pos="noun">dhúchus</w>
+                <lb n="2" xml:id="MS31.p16.2"/>
+                    <w lemma="nert" lemmaRef="http://www.dil.ie/33116" pos="noun">nert</w>
+                    <w lemma="Lochlannach" lemmaRef="http://www.dil.ie/30452" pos="noun">lochlannach</w>
+                    <w lemma="ocus" lemmaRef="http://www.dil.ie/33484" pos="conjunction"><abbr cert="high"><g ref="g2">agus</g></abbr></w>
+                    <w pos="adjective-noun">
+                        <w lemma="finn" lemmaRef="http://www.dil.ie/22134" pos="adjective">fionn</w>
+                        <w lemma="Gall" lemmaRef="http://www.dil.ie/25308" pos="noun">gallach</w>
+                    </w>
+                <lb n="3" xml:id="MS31.p16.3"/>
+                    <w pos="particle-verb">
+                        <w lemma="do" lemmaRef="http://www.dil.ie/17098" pos="particle">do</w>
+                        <w lemma="ad-cí" lemmaRef="http://www.dil.ie/391" pos="verb">chonnuirc</w>
+                    </w>
+                    <name type="personal">
+                        <w lemma="gilla" lemmaRef="http://www.dil.ie/25843" pos="noun">gille</w>
+                        <name type="personal"><w lemma="Brigit" lemmaRef="http://www.dil.ie/6818" pos="noun">bride</w></name>
+                    </name>
+                    <w lemma="slóg" lemmaRef="http://www.dil.ie/37981" pos="noun">sluagh</w>
+                <lb n="4" xml:id="MS31.p16.4"/>
+                    <w lemma="mór" lemmaRef="http://www.dil.ie/32548" pos="adjective">mor</w>
+                    <w lemma="de" lemmaRef="http://www.dil.ie/14787" pos="preposition">do</w>
+                    <w lemma="duine" lemmaRef="http://www.dil.ie/19139" pos="noun">daoinibh</w>
+                    <w lemma="óc" lemmaRef="http://www.dil.ie/33398" pos="adjective">óga</w>
+                    <w lemma="airramanta" lemmaRef="http://www.dil.ie/2353" pos="adjective">urrunnta</w>
+                    <del hand="Hand22">
+                        <w pos="preposition-article">
+                            <w lemma="i" lemmaRef="http://www.dil.ie/26891" pos="preposition">s</w>
+                            <w lemma="in" lemmaRef="http://www.dil.ie/28194" pos="article">a</w>
+                        </w>
+                    </del>
+                <lb n="5" xml:id="MS31.p16.5"/>
+                    <w pos="preposition_article">
+                        <w lemma="i" lemmaRef="http://www.dil.ie/26891" pos="preposition">s</w>
+                        <w lemma="in" lemmaRef="http://www.dil.ie/28194" pos="article">an</w>
+                    </w>
+                    <w lemma="airechtas" lemmaRef="http://www.dil.ie/1910" pos="noun">oireachtus</w>
+                    <w lemma="ocus" lemmaRef="http://www.dil.ie/33484" pos="conjunction"><abbr cert="high"><g ref="g2">agus</g></abbr></w>
+                    <w lemma="íat" lemmaRef="http://www.dil.ie/27113" pos="pronoun">iad</w>
+                    <w lemma="fàbharach" lemmaRef="https://www.faclair.com/ViewDictionaryEntry.aspx?ID=DF6F2EA4DA695685A6C1E854A666C13A" pos="adjective">fabharach</w>
+                    <w lemma="do" lemmaRef="http://www.dil.ie/17096" pos="prepositional_pronoun">dho</w>
+                    <w lemma="fadéin" lemmaRef="http://www.dil.ie/20990" pos="pronoun">fein</w>
+                <lb n="6" xml:id="MS31.p16.6"/>
+                    <w lemma="is" lemmaRef="http://www.dil.ie/29104" pos="verb">as</w>
+                    <w lemma="í" lemmaRef="http://www.dil.ie/26895" pos="pronoun">í</w>
+                    <w lemma="coma" lemmaRef="http://www.dil.ie/10558" pos="noun">chomha</w>
+                    <w pos="particle-verb">
+                        <w lemma="do" lemmaRef="http://www.dil.ie/17098" pos="particle">do</w>
+                        <w lemma="íarraid" lemmaRef="http://www.dil.ie/27062" pos="verb">iarr</w>
+                    </w>
+                    <w lemma="sé" lemmaRef="http://www.dil.ie/36709" pos="pronoun">se</w>
+                    <w lemma="ar" lemmaRef="http://www.dil.ie/3902" pos="preposition">ar</w>
+                    <w lemma="a" lemmaRef="http://www.dil.ie/3" pos="possessive_pronoun">a</w>
+                    <w lemma="cara" lemmaRef="http://www.dil.ie/8205" pos="noun">chairdibh</w>
+                    <w lemma="a" lemmaRef="http://www.dil.ie/3" pos="possessive_pronoun">an</w>
+                <lb n="7" xml:id="MS31.p16.7"/>
+                    <w lemma="tilled" lemmaRef="http://www.dil.ie/40752" pos="verbal_noun">tuillfedh</w>
+                    <w pos="preposition-article">
+                        <w lemma="i" lemmaRef="http://www.dil.ie/26891" pos="preposition">s</w>
+                        <w lemma="in" lemmaRef="http://www.dil.ie/28194" pos="article">an</w>
+                    </w>
+                    <w lemma="les" lemmaRef="http://www.dil.ie/29991" pos="noun">lios</w>
+                    <w pos="particle-verb">
+                        <w lemma="do" lemmaRef="http://www.dil.ie/17098" pos="particle">do</w>
+                        <w lemma="attá" lemmaRef="http://www.dil.ie/4927" pos="verb">bi</w>
+                    </w>
+                    <w lemma="i" lemmaRef="http://www.dil.ie/26891" pos="preposition">a</w>
+                    <w lemma="ocus" lemmaRef="http://www.dil.ie/33483" pos="adjective">bfogas</w>
+                <lb n="8" xml:id="MS31.p16.8"/>
+                    <w pos="preposition-article">
+                        <w lemma="i" lemmaRef="http://www.dil.ie/26891" pos="preposition">s</w>
+                        <w lemma="in" lemmaRef="http://www.dil.ie/28194" pos="article">an</w>
+                    </w>
+                    <w lemma="áitt" lemmaRef="http://www.dil.ie/2826" pos="noun">aire</w>
+                    <w lemma="do" lemmaRef="http://www.dil.ie/17096" pos="preposition">do</w>
+                    <w lemma="duine" lemmaRef="http://www.dil.ie/19139" pos="noun">dhaoinibh</w>
+                    <w lemma="do" lemmaRef="http://www.dil.ie/17096" pos="preposition">do</w>
+                    <w lemma="léiciud" lemmaRef="http://www.dil.ie/29768" pos="verbal_noun">leigen</w>
+                    <note type="fn" resp="WGI"><p>'leinen' overwritten by scribe.</p></note>
+                    <w lemma="la" lemmaRef="http://www.dil.ie/29233" pos="prepositional_pronoun">leis</w>
+                <lb n="9" xml:id="MS31.p16.9"/>
+                    <w lemma="do" lemmaRef="http://www.dil.ie/17096" pos="preposition">d<supplied resp="MMA"><pc>'</pc></supplied></w>
+                    <name type="place"><w lemma="Albu" lemmaRef="http://www.dil.ie/2890" pos="noun">alban</w></name>
+                    <w lemma="immar" lemmaRef="http://www.dil.ie/27721" pos="preposition">mur</w>
+                    <w lemma="dúal" lemmaRef="http://www.dil.ie/18951" pos="noun">dhúil</w>
+                    <w lemma="co" lemmaRef="http://www.dil.ie/9788" pos="conjunction">go</w>
+                    <w lemma="do-beir" lemmaRef="http://www.dil.ie/17216" pos="verb">ttugadh</w>
+                    <w lemma="sé" lemmaRef="http://www.dil.ie/36709" pos="pronoun">se</w>
+                <lb n="10" xml:id="MS31.p16.10"/>
+                    <w lemma="selb" lemmaRef="http://www.dil.ie/37038" pos="noun">sealbh</w>
+                    <w lemma="a" lemmaRef="http://www.dil.ie/3" pos="possessive_pronoun">a</w>
+                    <w lemma="dúthaig" lemmaRef="http://www.dil.ie/19305" pos="noun">dúcha</w>
+                    <w lemma="ocus" lemmaRef="http://www.dil.ie/33484" pos="conjunction"><abbr cert="high"><g ref="g2">agus</g></abbr></w>
+                    <w lemma="a" lemmaRef="http://www.dil.ie/3" pos="possessive_pronoun">a</w>
+                    <w lemma="cuit" lemmaRef="http://www.dil.ie/13717" pos="noun">coda</w>
+                    <w lemma="fadéin" lemmaRef="http://www.dil.ie/20990" pos="pronoun">féin</w>
+                    <w lemma="do" lemmaRef="http://www.dil.ie/17096" pos="prepositional_pronoun">di</w>
+                <lb n="11" xml:id="MS31.p16.11"/>
+                    <unclear reason="interp_obscure" cert="medium" resp="MMA">
+                        <add place="in_margin" type="insertion" hand="Hand22">
+                            <w lemma="immach" lemmaRef="http://www.dil.ie/27644" pos="adverb">amach</w>
+                        </add>
+                        <w pos="particle-verb">
+                            <w lemma="do" lemmaRef="http://www.dil.ie/17098" pos="particle">do</w>
+                            <w lemma="ad-cí" lemmaRef="http://www.dil.ie/391" pos="verb">connuig</w>
+                        </w>
+                        <w lemma="mé" lemmaRef="http://www.dil.ie/31705" pos="pronoun">me</w>
+                        <w lemma="in" lemmaRef="http://www.dil.ie/28194" pos="article">an</w>
+                        <w lemma="les" lemmaRef="http://www.dil.ie/29991" pos="noun">leas</w>
+                        <w lemma="de" lemmaRef="http://www.dil.ie/14787" pos="preposition">d<supplied resp="MMA"><pc>'</pc></supplied></w>
+                        <w lemma="secht" lemmaRef="http://www.dil.ie/36788" pos="number">7</w>
+                        <w lemma="duine" lemmaRef="http://www.dil.ie/19139" pos="noun">daoine</w>
+                    </unclear>
+                    <!-- Check which margin. -->
+                <lb n="12" xml:id="MS31.p16.12"/>
+                    <w pos="particle-verb">
+                        <w lemma="do" lemmaRef="http://www.dil.ie/17098" pos="particle">do</w>
+                        <w lemma="attá" lemmaRef="http://www.dil.ie/4927" pos="verb">bhi</w>
+                    </w>
+                    <w pos="preposition_article">
+                        <w lemma="do" lemmaRef="http://www.dil.ie/17096" pos="preposition">d</w>
+                        <w lemma="a" lemmaRef="http://www.dil.ie/3" pos="possessive_pronoun">a</w>
+                    </w>
+                    <w lemma="taisbénad" lemmaRef="http://www.dil.ie/39824" pos="verbal_noun">taisbenadh</w>
+                    <w pos="particle-verb">
+                        <w lemma="do" lemmaRef="http://www.dil.ie/17098" pos="particle">do</w>
+                        <w lemma="tillid" lemmaRef="http://www.dil.ie/40753" pos="verb">thuillfed</w>
+                    </w>
+                <lb n="13" xml:id="MS31.p16.13"/>
+                    <w lemma="a" lemmaRef="http://www.dil.ie/4" pos="particle">a</w>
+                    <w lemma="cethair" lemmaRef="http://www.dil.ie/8908" pos="number">ceithir</w>
+                    <w pos="conjunction-particle">
+                        <w lemma="nó" lemmaRef="http://www.dil.ie/33204" pos="conjunction">n</w>
+                        <w lemma="a" lemmaRef="http://www.dil.ie/4" pos="particle">a</w>
+                    </w>
+                    <w lemma="cóic" lemmaRef="http://www.dil.ie/10037" pos="number">cúig</w>
+                    <w lemma="de" lemmaRef="http://www.dil.ie/14787" pos="preposition">do</w>
+                    <w lemma="cét" lemmaRef="http://www.dil.ie/8862" pos="noun">cheduibh</w>
+                    <w lemma="fer" lemmaRef="http://www.dil.ie/21665" pos="noun">fer</w>
+                <lb n="14" xml:id="MS31.p16.14"/>
+                    <w lemma="íar" lemmaRef="http://www.dil.ie/26931" pos="preposition">ar</w>
+                    <w lemma="a" lemmaRef="http://www.dil.ie/3" pos="possessive_pronoun">na</w>
+                    <w lemma="cor" lemmaRef="http://www.dil.ie/12406" pos="verbal_noun">cur</w>
+                    <w lemma="i" lemmaRef="http://www.dil.ie/26891" pos="preposition">a</w>
+                    <w lemma="ordugud" lemmaRef="http://www.dil.ie/33994" pos="verbal_noun">nórdughadh</w>
+                    <w lemma="ocus" lemmaRef="http://www.dil.ie/33484" pos="conjunction"><abbr cert="high"><g ref="g2">agus</g></abbr></w>
+                    <w lemma="i" lemmaRef="http://www.dil.ie/26891" pos="preposition">a</w>
+                    <w lemma="ranc" lemmaRef="http://www.dil.ie/34798" pos="noun">rang</w>
+                <lb n="15" xml:id="MS31.p16.15"/>
+                    <w lemma="i" lemmaRef="http://www.dil.ie/26891" pos="prepositional_pronoun">ann</w>
+                    <w pos="particle-verb">
+                        <w lemma="do" lemmaRef="http://www.dil.ie/17098" pos="particle">do</w>
+                        <w lemma="glúasid" lemmaRef="http://www.dil.ie/26173" pos="verb">ghluais</w>
+                    </w>
+                    <name type="personal">
+                        <w lemma="gilla" lemmaRef="http://www.dil.ie/25843" pos="noun">giolla</w>
+                        <name type="personal"><w lemma="Brigit" lemmaRef="http://www.dil.ie/6818" pos="noun">bride</w></name>
+                    </name>
+                <lb n="16" xml:id="MS31.p16.16"/>
+                    <w pos="preposition-verbal_noun">
+                        <w lemma="do" lemmaRef="http://www.dil.ie/17096" pos="preposition">d</w>
+                        <w lemma="indsaigid" lemmaRef="http://www.dil.ie/28540" pos="verbal_noun">ionnsuigh</w>
+                    </w>
+                    <w lemma="in" lemmaRef="http://www.dil.ie/28194" pos="article">na</w>
+                    <name type="place"><w lemma="Albu" lemmaRef="http://www.dil.ie/2890" pos="noun">halban</w></name>
+                    <w lemma="ocus" lemmaRef="http://www.dil.ie/33484" pos="conjunction"><abbr cert="high"><g ref="g2">agus</g></abbr></w>
+                    <w lemma="ocus" lemmaRef="http://www.dil.ie/33484" pos="conjunction"><abbr cert="high"><g ref="g2">agus</g></abbr></w>
+                    <w lemma="in" lemmaRef="http://www.dil.ie/28194" pos="article">an</w>
+                    <w lemma="cuitechta" lemmaRef="http://www.dil.ie/13729" pos="noun">chuideachta</w>
+                <lb n="17" xml:id="MS31.p16.17"/>
+                    <w lemma="sin" lemmaRef="http://www.dil.ie/37567" pos="demonstrative_pronoun">sin</w>
+                    <w lemma="la" lemmaRef="http://www.dil.ie/29233" pos="prepositional_pronoun">leis</w>
+                    <w lemma="ocus" lemmaRef="http://www.dil.ie/33484" pos="conjunction"><abbr cert="high"><g ref="g2">agus</g></abbr></w>
+                    <w lemma="do-icc" lemmaRef="http://www.dil.ie/17788" pos="verb">tangadur</w>
+                    <w lemma="ar" lemmaRef="http://www.dil.ie/3902" pos="preposition">ar</w>
+                    <w lemma="tír" lemmaRef="http://www.dil.ie/40940" pos="noun">tir</w>
+                    <w lemma="do-beir" lemmaRef="http://www.dil.ie/17216" pos="verb">tug</w>
+                <gap reason="loss_of_folios" extent="16" unit="pages" resp="MMA"/>
                 </p>
             </div>
         </body>
