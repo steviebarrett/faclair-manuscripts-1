@@ -660,6 +660,9 @@ function getStructure(span) {
 function getLemmas(span) {
   var html = '';
   var x = span.attr('data-lemmaref');
+  if (!x) {
+    return '';
+  }
   if (x && span.attr('data-lemmaref').indexOf('dil.ie')>0) { 
     if (span.attr('data-source')) {
       html += '<li>eDIL: ' + span.attr('data-lemma') + ' (from <a href="' + span.attr('data-lemmaref') + '" target="_new">' + span.attr('data-source') + '</a>)</li>';
