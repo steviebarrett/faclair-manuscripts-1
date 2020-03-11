@@ -450,7 +450,7 @@
                             <w lemma="fuil" lemmaRef="http://www.dil.ie/24792" pos="noun">fuil</w>
                         </w>
                         <space type="scribal"/>
-                        <name type="personal"><w pos="noun">art<unclear reason="lost_writing_surface" cert="high" resp="MMA">uir</unclear></w></name>
+                        <name type="personal"><w pos="noun">artu<unclear reason="lost_writing_surface" cert="high" resp="MMA">ir</unclear></w></name>
                     </l>
                 </lg>
                 <lg n="7" type="stanza" xml:id="MS28.1.7">
@@ -515,7 +515,9 @@
                 <lg n="8" type="stanza" xml:id="MS28.1.8">
                     <l n="a" xml:id="MS28.1.8a">
                 <lb n="15" xml:id="MS28.f1r.15"/>
-                        <unclear reason="damage" cert="medium" resp="MMA"><w lemma="UNKNOWN">T<space type="scribal"/>ug</w></unclear>
+                        <c>T</c>
+                        <gap reason="fold" extent="2" unit="chars" resp="MMA"/>
+                        <c>g</c>
                         <space type="scribal"/>
                         <name type="personal">
                             <w lemma="gilla" lemmaRef="http://www.dil.ie/25843" pos="noun">gioll<space type="scribal"/>e</w>
@@ -1787,7 +1789,7 @@
                             <w lemma="" lemmaRef="http://www.dil.ie/XXX" pos="verb"><abbr cert="high">t<g ref="g4">h</g></abbr><abbr cert="high"><g ref="g13">arr</g></abbr>guir</w>
                         </w>
                         <space type="scribal"/>
-                        <w lemma="UNKNOWN" pos="noun">cho<abbr cert="high">t<g ref="g4">h</g></abbr>rua<abbr cert="high">g<g ref="g4">h</g></abbr></w>
+                        <w lemma="UNKNOWN" pos="noun">cho<abbr cert="high">t<g ref="g4">h</g></abbr>rua<add place="below" type="insertion" hand="Hand8">i</add><abbr cert="high">g<g ref="g4">h</g></abbr></w>
                     </l>
                     <l n="c" xml:id="MS28.1.29c">
                     <lb n="29" xml:id="MS28.f1v.29"/>
@@ -1984,13 +1986,14 @@
                         <space type="scribal"/>
                         <w lemma="UNKNOWN" lemmaRef="http://www.dil.ie/XXX" pos="verbal_noun"><abbr cert="high"><g ref="g77">airr</g></abbr><abbr cert="high">g<g ref="g57">al</g></abbr>eana</w>
                         <space type="scribal"/>
-                        <w lemma="tre" lemmaRef="http://www.dil.ie/41608" pos="prepositional_pronoun">tríot</w>
+                        <w lemma="tre" lemmaRef="http://www.dil.ie/41608" pos="prepositional_pronoun">troid</w>
                         <space type="scribal"/>
                         <w lemma="do-icc" lemmaRef="http://www.dil.ie/17788" pos="verb">tainaig</w>
                     </l>
                 </lg>
                 <lg n="33" type="stanza" xml:id="MS28.1.33">
                     <l n="a" xml:id="MS28.1.33a">
+                    <pb n="2r" xml:id="MS28.f2r"/>
                     <lb n="1" xml:id="MS28.f2r.1"/>
                     </l>
                     <l n="b" xml:id="MS28.1.33b">
@@ -2091,6 +2094,7 @@
                     </l>
                     <l n="c" xml:id="MS28.1.40c">
                     <lb n="16" xml:id="MS28.f2r.16"/>
+                        
                     </l>
                     <l n="d" xml:id="MS28.1.40d">
                     </l>
