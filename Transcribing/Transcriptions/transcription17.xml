@@ -60,17 +60,39 @@
 							<author role="scribe" corresp="Hand24"/>
 							<incipit>Re sine ...</incipit>
 							<explicit>... in cait nuasin</explicit>
+							<biblFull>
+								<fileDesc>
+									<titleStmt>
+										<title>Misc. Notes and Extracts</title>
+									</titleStmt>
+									<publicationStmt>
+										<p>Draft transcription</p>
+									</publicationStmt>
+									<sourceDesc>
+										<p>Transcribed from manuscript</p>
+									</sourceDesc>
+								</fileDesc>
+								<profileDesc>
+									<textClass>
+										<keywords>
+											<term>misc</term>
+											<term>medical</term>
+											<term>prose</term>
+										</keywords>
+									</textClass>
+								</profileDesc>
+							</biblFull>
 						</msItem>
 						<msItem n="2" xml:id="MS17.2">
 							<locus>fol. 26<hi rend="sup">r</hi>1–80<hi rend="sup">v</hi>15</locus>
-							<title>Definitions 2</title>
+							<title>Medical Definitions</title>
 							<author role="scribe" corresp="Hand24"/>
 							<incipit>Quem scientia vivificat non moritur ...</incipit>
 							<explicit>... meigbetadh .i. mo sesi</explicit>
 							<biblFull>
 								<fileDesc>
 									<titleStmt>
-										<title>Definitions </title>
+										<title>Medical Definitions</title>
 									</titleStmt>
 									<publicationStmt>
 										<p>Draft transcription</p>
@@ -188,8 +210,34 @@
 	<text>
 		<body>
 			<div n="1" type="divprose" hand="Hand24" corresp="MS17.1">
-				<div n="1.1" type="prosediv" xml:id="MS17.1.1">
-					<p xml:id="MS17.1.1a"><handShift new="Hand24"/><pb n="24r" xml:id="MS17.24r"
+				<div n="1.1" type="prose" xml:id="MS17.1.1">
+					<p><handShift new="Hand57"/>
+						<pb n="23r" xml:id="MS17.23r"/>
+						<lb n="10" xml:id="MS17.23r.10"/>
+						<w lemma="mé" lemmaRef="http://www.dil.ie/31705" pos="pronoun">M<abbr
+								cert="high">i<g ref="g50">s</g></abbr>e</w>
+						<space type="scribal"/>
+						<name type="personal"><w lemma="Níall" lemmaRef="http://www.dil.ie/33163"
+								pos="noun">niall</w></name>
+						<space type="scribal"/>
+						<w pos="particle-verb"><w lemma="do" lemmaRef="http://www.dil.ie/17098"
+								pos="particle">do</w><space type="scribal"/><w lemma="graifnid"
+								lemmaRef="http://www.dil.ie/26489" pos="verb"><abbr cert="high">g<g
+										ref="g17">ra</g></abbr>ibne</w></w>
+						<space type="scribal"/>
+						<w lemma="in" lemmaRef="http://www.dil.ie/28194" pos="article"><abbr
+								cert="high">a<g ref="g5">n</g></abbr></w>
+						<space type="scribal"/>
+						<w lemma="bec" lemmaRef="http://www.dil.ie/5512" pos="noun"><abbr
+								cert="high">b<g ref="g12">ec</g></abbr></w>
+						<lb n="11" xml:id="MS17.23r.11"/>
+						<w lemma="sin" lemmaRef="http://www.dil.ie/37567"
+							pos="demonstrative_pronoun"><abbr cert="high">si<g ref="g5"
+							>n</g></abbr></w>
+					</p>
+				</div>
+				<div n="1.2" type="prosediv" xml:id="MS17.1.2">
+					<p xml:id="MS17.1.2a"><handShift new="Hand24"/><pb n="24r" xml:id="MS17.24r"
 							facs="https://www.isos.dias.ie/libraries/NLS/NLS_Adv_MS_72_1_4/small_jpgs/049.jpg"
 							/><lb n="1" xml:id="MS17.24r.1"/>
 						<unclear reason="text_obscure" cert="high" resp="Black2011">
@@ -206,7 +254,7 @@
 						<w xml:lang="la"><abbr cert="high"><g ref="g18">est</g></abbr></w>
 						<space type="scribal"/>
 					</p>
-					<p xml:id="MS17.1.1b">
+					<p xml:id="MS17.1.2b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" pos="abbreviation">.i.</w>
 						<space type="scribal"/>
 						<w lemma="in" lemmaRef="http://www.dil.ie/28194" pos="article">an</w>
@@ -240,8 +288,8 @@
 								>ecmais</w></unclear>
 					</p>
 				</div>
-				<div n="1.2" type="divprose" hand="Hand24" corresp="MS17.1.2">
-					<p xml:id="MS17.1.2a"><handShift new="Hand24"/><lb n="5" xml:id="MS17.24r.5"/>
+				<div n="1.3" type="divprose" hand="Hand24" corresp="MS17.1.3">
+					<p xml:id="MS17.1.3a"><handShift new="Hand24"/><lb n="5" xml:id="MS17.24r.5"/>
 						<w xml:lang="la">Natura</w>
 						<w xml:lang="la"><abbr cert="high"><g ref="g18">est</g></abbr></w>
 						<space type="scribal"/>
@@ -268,7 +316,7 @@
 						<w xml:lang="la">accidens</w>
 						<space type="scribal"/>
 					</p>
-					<p xml:id="MS17.1.2b">
+					<p xml:id="MS17.1.3b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" pos="abbreviation">.i.</w>
 						<space type="scribal"/>
 						<w pos="verb-pronoun"><w lemma="is" lemmaRef="http://www.dil.ie/29104"
@@ -328,7 +376,7 @@
 						<pc>\\</pc>
 					</p>
 				</div>
-				<div n="1.3" type="prose" hand="Hand56" corresp="MS17.1.3">
+				<div n="1.4" type="prose" hand="Hand56" corresp="MS17.1.4">
 					<p><handShift new="Hand56"/>
 						<pb n="25r" xml:id="MS17.25r"
 							facs="https://www.isos.dias.ie/libraries/NLS/NLS_Adv_MS_72_1_4/small_jpgs/051.jpg"
@@ -367,11 +415,12 @@
 						<space type="scribal"/>
 						<w xml:lang="la">uoca<lb n="5" xml:id="MS17.25r.5"/>tur</w>
 						<space type="scribal"/>
-						<name type="personal"><w xml:lang="la">negel<abbr cert="high"><g ref="g7">us</g></abbr></w></name>
+						<name type="personal"><w xml:lang="la">negel<abbr cert="high"><g ref="g7"
+										>us</g></abbr></w></name>
 					</p>
 				</div>
-				<div n="1.4" type="divprose" hand="Hand24" corresp="MS17.1.4">
-					<p xml:id="MS17.1.4a"><handShift new="Hand24"/><lb n="6" xml:id="MS17.25r.6"/>
+				<div n="1.5" type="divprose" hand="Hand24" corresp="MS17.1.5">
+					<p xml:id="MS17.1.5a"><handShift new="Hand24"/><lb n="6" xml:id="MS17.25r.6"/>
 						<w xml:lang="la">Medicina<abbr cert="high">l<g ref="g3">is</g></abbr></w>
 						<space type="scribal"/>
 						<w xml:lang="la">specula<lb n="7" xml:id="MS17.25r.7"/>cio</w>
@@ -383,7 +432,7 @@
 						<lb n="8" xml:id="MS17.25r.8"/>
 						<w xml:lang="la">se<supplied resp="EPT">n</supplied>sum</w>
 					</p>
-					<p xml:id="MS17.1.4b">
+					<p xml:id="MS17.1.5b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" pos="abbreviation">.i.</w>
 						<space type="scribal"/>
 						<w lemma="as-beir" lemmaRef="http://www.dil.ie/4383" pos="verb">a<abbr
@@ -423,8 +472,8 @@
 						<pc>\\\</pc>
 					</p>
 				</div>
-				<div n="1.5" type="divprose" hand="Hand25" corresp="MS17.1.5">
-					<p xml:id="MS17.1.5a"><handShift new="Hand25"/><pb n="25v" xml:id="MS17.25v"
+				<div n="1.6" type="divprose" hand="Hand25" corresp="MS17.1.6">
+					<p xml:id="MS17.1.6a"><handShift new="Hand25"/><pb n="25v" xml:id="MS17.25v"
 							facs="https://www.isos.dias.ie/libraries/NLS/NLS_Adv_MS_72_1_4/small_jpgs/052.jpg"
 							/><lb n="1" xml:id="MS17.25v.1"/>
 						<w xml:lang="la"><unclear reason="text_obscure" cert="high" resp="EPT"
@@ -441,7 +490,7 @@
 						<w xml:lang="la">mo<abbr cert="high">d<g ref="g3">er</g></abbr>ni</w>
 						<space type="scribal"/>
 					</p>
-					<p xml:id="MS17.1.5b">
+					<p xml:id="MS17.1.6b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" pos="abbreviation">.i.</w>
 						<space type="scribal"/>
 						<w lemma="clechtaid" lemmaRef="http://www.dil.ie/9407" pos="verb">cle<abbr
@@ -500,7 +549,7 @@
 							>n</g></abbr></w>
 					</p>
 				</div>
-				<div n="1.6" type="prose" hand="Hand56" corresp="MS17.1.6">
+				<div n="1.7" type="prose" hand="Hand56" corresp="MS17.1.7">
 					<p><handShift new="Hand56"/>
 						<lb n="6" xml:id="MS17.25v.6"/>
 						<w pos="verb-pronoun"><w lemma="is" lemmaRef="http://www.dil.ie/29104"
