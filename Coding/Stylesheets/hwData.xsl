@@ -150,7 +150,7 @@
 									<span>
 										<xsl:attribute name="type">altLem</xsl:attribute>
 										<xsl:attribute name="n">
-											<xsl:value-of select="count(//w[@lemma = $firstLem])"/>
+											<xsl:value-of select="count(//tei:w[@lemma = $firstLem])"/>
 										</xsl:attribute>
 										<xsl:value-of select="$firstLem"/>
 									</span>
@@ -163,7 +163,7 @@
 												<xsl:attribute name="type">altLem</xsl:attribute>
 												<xsl:attribute name="n">
 												<xsl:value-of
-												select="count(//w[@lemma = $thisLem])"/>
+												select="count(//tei:w[@lemma = $thisLem])"/>
 												</xsl:attribute>
 												<xsl:value-of select="$thisLem"/>
 											</span>
