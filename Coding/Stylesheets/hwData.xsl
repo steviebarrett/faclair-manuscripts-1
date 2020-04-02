@@ -7,15 +7,15 @@
 	<xsl:variable name="timestamp">
 		<xsl:value-of
 			select="
-			(current-dateTime() -
-			xs:dateTime('1970-01-01T00:00:00'))
-			div xs:dayTimeDuration('PT1S') * 1000"
+				(current-dateTime() -
+				xs:dateTime('1970-01-01T00:00:00'))
+				div xs:dayTimeDuration('PT1S') * 1000"
 		/>
 	</xsl:variable>
 
 	<xsl:template match="/">
 		<xsl:result-document href="{concat('hwData_', $timestamp, '.xml')}">
-		<xsl:call-template name="hwDataUpdate"/>
+			<xsl:call-template name="hwDataUpdate"/>
 		</xsl:result-document>
 	</xsl:template>
 
@@ -61,10 +61,11 @@
 							created for them in the headword database. These are:<xsl:call-template
 								name="newHwList"/></p>
 						<xsl:if test="$lostHwCount > 0">
-							<p><xsl:value-of select="$lostHwCount"/> words have been removed from the
-							corpus since <xsl:call-template name="prevDate"/> and thus no longer
-							appear in the headword database. These are: <xsl:call-template
-								name="lostHwList"/></p></xsl:if>
+							<p><xsl:value-of select="$lostHwCount"/> words have been removed from
+								the corpus since <xsl:call-template name="prevDate"/> and thus no
+								longer appear in the headword database. These are:
+									<xsl:call-template name="lostHwList"/></p>
+						</xsl:if>
 					</sourceDesc>
 				</fileDesc>
 			</teiHeader>
@@ -143,7 +144,7 @@
 									</xsl:attribute>
 								</xsl:if>
 								<xsl:variable name="firstLem"
-									select="//tei:w[@lemmaRef = $wordID and not(@lemmaRef = preceding::tei:w/@lemmaRef)]/@lemma"/>
+									select="//tei:w[1][@lemmaRef = $wordID and not(@lemmaRef = preceding::tei:w/@lemmaRef)]/@lemma"/>
 								<xsl:if test="//tei:w[@lemmaRef = $wordID and @lemma != $firstLem]">
 									<span>
 										<xsl:attribute name="type">altLem</xsl:attribute>
@@ -224,11 +225,14 @@
 
 	<xsl:template name="lostHwList">
 		<list>
-			<xsl:for-each select="//tei:TEI[@xml:id = 'hwData']//tei:entryFree[not(@corresp = //tei:TEI[not(@xml:id = 'hwData')]//tei:w/@lemmaRef)]">
+			<xsl:for-each
+				select="//tei:TEI[@xml:id = 'hwData']//tei:entryFree[not(@corresp = //tei:TEI[not(@xml:id = 'hwData')]//tei:w/@lemmaRef)]">
 				<xsl:variable name="wordID" select="@corresp"/>
 				<xsl:if test="not(//tei:TEI[not(@xml:id = 'hwData')]//tei:w/@lemmaRef = $wordID)">
 					<item>
-						<xsl:value-of select="//tei:TEI[@xml:id = 'hwData']//tei:entryFree[@corresp = $wordID]/tei:w/@lemma"/>
+						<xsl:value-of
+							select="//tei:TEI[@xml:id = 'hwData']//tei:entryFree[@corresp = $wordID]/tei:w/@lemma"
+						/>
 					</item>
 				</xsl:if>
 			</xsl:for-each>
