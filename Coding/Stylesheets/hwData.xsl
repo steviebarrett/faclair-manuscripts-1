@@ -53,8 +53,9 @@
 							reviewing the headwords. Headwords and URLs from eDIL and Dwelly are
 							added during transcription. Morphological data and additional
 							headwords/URLs are added to the headwords database.</p>
-						<p>There are currently <xsl:call-template name="hwCount"/> headword entries
-							in the headword database. <xsl:call-template name="scgDataPc"/> of these
+						<p>There are currently <xsl:call-template name="wCount"/> Gaelic words in
+							the corpus and <xsl:call-template name="hwCount"/> headword entries in
+							the headword database. <xsl:call-template name="scgDataPc"/> of these
 							contain headwords from both eDIL and Dwelly.</p>
 						<p><xsl:call-template name="newHwCount"/> new words have been added to the
 							corpus since <xsl:call-template name="prevDate"/>. Entries have been
@@ -148,7 +149,9 @@
 								<xsl:if test="//tei:w[@lemmaRef = $wordID and @lemma != $firstLem]">
 									<span>
 										<xsl:attribute name="type">altLem</xsl:attribute>
-										<xsl:attribute name="n"><xsl:value-of select="count(//w[@lemma = $firstLem])"/></xsl:attribute>
+										<xsl:attribute name="n">
+											<xsl:value-of select="count(//w[@lemma = $firstLem])"/>
+										</xsl:attribute>
 										<xsl:value-of select="$firstLem"/>
 									</span>
 									<xsl:for-each
@@ -158,7 +161,10 @@
 											test="not(preceding::tei:w[@lemmaRef = $wordID]/@lemma = $thisLem)">
 											<span>
 												<xsl:attribute name="type">altLem</xsl:attribute>
-												<xsl:attribute name="n"><xsl:value-of select="count(//w[@lemma = $thisLem])"/></xsl:attribute>
+												<xsl:attribute name="n">
+												<xsl:value-of
+												select="count(//w[@lemma = $thisLem])"/>
+												</xsl:attribute>
 												<xsl:value-of select="$thisLem"/>
 											</span>
 										</xsl:if>
@@ -198,6 +204,11 @@
 
 	<xsl:template name="hwCount">
 		<xsl:value-of select="count(//tei:TEI[@xml:id = 'hwData']//tei:entryFree)"/>
+	</xsl:template>
+
+	<xsl:template name="wCount">
+		<xsl:value-of
+			select="count(//tei:w[not(descendant::w) and not(@xml:lang) and not(@type = 'data')])"/>
 	</xsl:template>
 
 	<xsl:template name="scgDataPc">
