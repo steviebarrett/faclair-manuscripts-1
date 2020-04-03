@@ -44,10 +44,10 @@
                         </thead>
                         <tbody>
                             <xsl:for-each
-                                select="//tei:handShift[@new != preceding::tei:handShift/@new]">
+                                select="//tei:handShift[not(@new = preceding::tei:handShift/@new)]">
                                 <xsl:variable name="handID" select="@new"/>
                                 <xsl:for-each
-                                    select="//tei:g[preceding::tei:handShift[1]/@new = $handID and @ref != preceding::tei:g[preceding::tei:handShift[1]/@new = $handID]/@ref]">
+                                    select="//tei:g[preceding::tei:handShift[1]/@new = $handID and not(@ref = preceding::tei:g[preceding::tei:handShift[1]/@new = $handID]/@ref)]">
                                     <xsl:variable name="glyphID" select="@ref"/>
                                     <tr>
                                         <td>
