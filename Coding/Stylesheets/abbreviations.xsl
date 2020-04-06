@@ -20,7 +20,7 @@
     <xsl:output method="xhtml" indent="no"/>
     <xsl:template match="/">
         <xsl:result-document href="Data\abbreviations_data\{$filename}">
-            <html>
+            <html xmlns="http://www.w3.org/1999/xhtml">
                 <head>
                     <title>FnaG MSS: Abbreviation Data</title>
                 </head>
