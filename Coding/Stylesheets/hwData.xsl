@@ -208,7 +208,7 @@
 
 	<xsl:template name="wCount">
 		<xsl:value-of
-			select="count(//tei:w[not(descendant::w) and not(@xml:lang) and not(@type = 'data')])"/>
+			select="count(//tei:w[not(descendant::tei:w) and not(@xml:lang) and not(@type = 'data')])"/>
 	</xsl:template>
 
 	<xsl:template name="scgDataPc">
