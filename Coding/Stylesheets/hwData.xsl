@@ -150,7 +150,8 @@
 									<span>
 										<xsl:attribute name="type">altLem</xsl:attribute>
 										<xsl:attribute name="n">
-											<xsl:value-of select="count(//tei:w[@lemma = $firstLem])"/>
+											<xsl:value-of
+												select="count(//tei:w[@lemma = $firstLem])"/>
 										</xsl:attribute>
 										<xsl:value-of select="$firstLem"/>
 									</span>
@@ -189,12 +190,14 @@
 								</xsl:if>
 							</w>
 							<xsl:copy-of
-								select="//tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree[@corresp = $wordID]/tei:gramGrp"/>
+								select="//tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree[@corresp = $wordID]/tei:gramGrp"
+								copy-namespaces="no"/>
 							<xsl:copy-of
-								select="//tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree[@corresp = $wordID]/tei:gen[not(ancestor::tei:gramGrp)]"/>
+								select="//tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree[@corresp = $wordID]/tei:gen[not(ancestor::tei:gramGrp)]"
+								copy-namespaces="no"/>
 							<xsl:copy-of
 								select="//tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree[@corresp = $wordID]/tei:iType[not(ancestor::tei:gramGrp)]"
-							/>
+								copy-namespaces="no"/>
 						</entryFree>
 					</xsl:for-each>
 				</body>
@@ -208,7 +211,8 @@
 
 	<xsl:template name="wCount">
 		<xsl:value-of
-			select="count(//tei:w[not(descendant::tei:w) and not(@xml:lang) and not(@type = 'data')])"/>
+			select="count(//tei:w[not(descendant::tei:w) and not(@xml:lang) and not(@type = 'data')])"
+		/>
 	</xsl:template>
 
 	<xsl:template name="scgDataPc">
