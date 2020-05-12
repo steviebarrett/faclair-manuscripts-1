@@ -189,11 +189,11 @@
 								</xsl:if>
 							</w>
 							<xsl:copy-of
-								select="//tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree[@corresp = $wordID]/tei:gramGrp"/>
+								select="//tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree[@corresp = $wordID]/tei:gramGrp" copy-namespaces="no"/>
 							<xsl:copy-of
-								select="//tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree[@corresp = $wordID]/tei:gen[not(ancestor::tei:gramGrp)]"/>
+								select="//tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree[@corresp = $wordID]/tei:gen[not(ancestor::tei:gramGrp)]" copy-namespaces="no"/>
 							<xsl:copy-of
-								select="//tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree[@corresp = $wordID]/tei:iType[not(ancestor::tei:gramGrp)]"
+								select="//tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree[@corresp = $wordID]/tei:iType[not(ancestor::tei:gramGrp)]" copy-namespaces="no"
 							/>
 						</entryFree>
 					</xsl:for-each>
