@@ -2,117 +2,225 @@
 <?xml-model href="../Schemas/fnag_mss2.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 <?xml-stylesheet type="text/xsl" href="../../Coding/Stylesheets/basic-info.xsl"?>
 <TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="T33">
-	<teiHeader>
-		<fileDesc>
-			<titleStmt>
-				<title>Transcription 3: The Argyll O'Donnell Treaty</title>
-				<respStmt corresp="EPT">
-					<name>Eystein P. Thanisch</name>
-					<resp>Transcriber</resp>
-					<resp>Editor</resp>
-				</respStmt>
-				<respStmt corresp="WGI">
-					<name>William Gillies</name>
-					<resp>Overseer</resp>
-				</respStmt>
-			</titleStmt>
-			<extent>24 words </extent>
-			<publicationStmt>
-				<authority sameAs="authority"/>
-				<availability sameAs="availability" status="restricted">
-					<licence/>
-				</availability>
-				<idno>T33</idno>
-			</publicationStmt>
-			<notesStmt>
-				<note>
-					<p/>
-				</note>
-			</notesStmt>
-			<sourceDesc>
-				<msDesc>
-					<msIdentifier sameAs="MS8">
-						<settlement>Inveraray</settlement>
-						<repository>Argyll Papers</repository>
-					    <idno type="shelfmark">Argyll–O’Donnell Treaty</idno>
-					</msIdentifier>
-					<msContents>
-						<summary>
-							<p/>
-						</summary>
-						<msItem n="1" xml:id="MS8.1">
-							<locus>fol.1r1–24</locus>
-						    <title>Argyll-O'Donnell Treaty</title>
-							<author role="scribe" corresp="Hand21"/>
-							<incipit>Is i so an contract ...</incipit>
-							<explicit>... agus mac eoin muidernach</explicit>
-							<note/>
-							<filiation/>
-							<textLang mainLang="ghc"/>
-							<biblFull>
-								<fileDesc>
-									<titleStmt>
-										<title>Argyll-O'Donnell Treaty</title>
-									</titleStmt>
-									<publicationStmt>
-										<p>Draft transcription</p>
-									</publicationStmt>
-									<sourceDesc>
-										<p>Transcribed from manuscript</p>
-									</sourceDesc>
-								</fileDesc>
-								<profileDesc>
-									<textClass>
-										<keywords>
-											<term>prose</term>
-											<term>legal</term>
-										</keywords>
-									</textClass>
-								</profileDesc>
-							</biblFull>
-						</msItem>
-					</msContents>
-					<physDesc>
-						<objectDesc>
-							<supportDesc>
-								<support><p/></support>
-								<foliation><p/></foliation>
-								<condition><p/></condition>
-							</supportDesc>
-							<layoutDesc>
-								<p/>
-							</layoutDesc>
-						</objectDesc>
-						<handDesc>
-							<handNote corresp="Hand21"/>
-						</handDesc>
-					</physDesc>
-					<history>
-						<origin><p/></origin>
-						<provenance><p/></provenance>
-						<acquisition><p/></acquisition>
-					</history>
-				</msDesc>
-			</sourceDesc>
-		</fileDesc>
-		<profileDesc>
-			<textClass>
-				<keywords>
-					<term>Prose</term>
-					<term>Legal</term>
-				</keywords>
-			</textClass>
-		</profileDesc>
-		<revisionDesc>
-			<change when="2018-05-28" who="EPT">Initial draft of text transcribed and marked up from
-				manuscript; draft introduction written.</change>
-		</revisionDesc>
-	</teiHeader>
-	<text>
-		<body>
-			<div n="1" type="prose" hand="" corresp="MS33.1">
-				
-			</div>
-		</body>
-	</text>
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Transcription 33: The Argyll O'Donnell Treaty</title>
+                <respStmt corresp="EPT">
+                    <name>Eystein P. Thanisch</name>
+                    <resp>Transcriber</resp>
+                    <resp>Editor</resp>
+                </respStmt>
+                <respStmt corresp="WGI">
+                    <name>William Gillies</name>
+                    <resp>Overseer</resp>
+                </respStmt>
+            </titleStmt>
+            <extent>24 words </extent>
+            <publicationStmt>
+                <authority sameAs="authority"/>
+                <availability sameAs="availability" status="restricted">
+                    <licence/>
+                </availability>
+                <idno>T33</idno>
+            </publicationStmt>
+            <notesStmt>
+                <note>
+                    <p/>
+                </note>
+            </notesStmt>
+            <sourceDesc>
+                <msDesc>
+                    <msIdentifier sameAs="MS8">
+                        <settlement>Inveraray</settlement>
+                        <repository>Argyll Papers</repository>
+                        <idno type="shelfmark">Argyll–O’Donnell Treaty</idno>
+                    </msIdentifier>
+                    <msContents>
+                        <summary>
+                            <p/>
+                        </summary>
+                        <msItem n="1" xml:id="MS8.1">
+                            <locus>fol.1r1–24</locus>
+                            <title>Argyll-O'Donnell Treaty</title>
+                            <author role="scribe" corresp="Hand21"/>
+                            <incipit>Is i so an contract ...</incipit>
+                            <explicit>... agus mac eoin muidernach</explicit>
+                            <note/>
+                            <filiation/>
+                            <textLang mainLang="ghc"/>
+                            <biblFull>
+                                <fileDesc>
+                                    <titleStmt>
+                                        <title>Argyll-O'Donnell Treaty</title>
+                                    </titleStmt>
+                                    <publicationStmt>
+                                        <p>Draft transcription</p>
+                                    </publicationStmt>
+                                    <sourceDesc>
+                                        <p>Transcribed from manuscript</p>
+                                    </sourceDesc>
+                                </fileDesc>
+                                <profileDesc>
+                                    <textClass>
+                                        <keywords>
+                                            <term>prose</term>
+                                            <term>legal</term>
+                                        </keywords>
+                                    </textClass>
+                                </profileDesc>
+                            </biblFull>
+                        </msItem>
+                    </msContents>
+                    <physDesc>
+                        <objectDesc>
+                            <supportDesc>
+                                <support><p/></support>
+                                <foliation><p/></foliation>
+                                <condition><p/></condition>
+                            </supportDesc>
+                            <layoutDesc>
+                                <p/>
+                            </layoutDesc>
+                        </objectDesc>
+                        <handDesc>
+                            <handNote corresp="Hand58"/>
+                        </handDesc>
+                    </physDesc>
+                    <history>
+                        <origin><p/></origin>
+                        <provenance><p/></provenance>
+                        <acquisition><p/></acquisition>
+                    </history>
+                </msDesc>
+            </sourceDesc>
+        </fileDesc>
+        <profileDesc>
+            <textClass>
+                <keywords>
+                    <term>Prose</term>
+                    <term>Legal</term>
+                </keywords>
+            </textClass>
+        </profileDesc>
+        <revisionDesc>
+            <change when="2020-05-14" who="EPT">File created.</change>
+        </revisionDesc>
+    </teiHeader>
+    <text>
+        <body>
+            <div n="1" type="prose" hand="Hand58" corresp="MS33.1">
+                <p>
+                    <handShift new="Hand58"/>
+                    <pb n="1r" xml:id="MS33.1r"/>
+                    <lb n="1" xml:id="MS33.1r.1"/>
+                    <w lemma="is" lemmaRef="http://www.dil.ie/29104" pos="verb">Is</w>
+                    <space type="scribal"/>
+                    <w lemma="í" lemmaRef="http://www.dil.ie/26895" pos="pronoun">í</w>
+                    <space type="scribal"/>
+                    <w lemma="so" lemmaRef="http://www.dil.ie/38191" pos="demonstrative_pronoun"
+                        >so</w>
+                    <space type="scribal"/>
+                    <w lemma="in" lemmaRef="http://www.dil.ie/28194" pos="article">an</w>
+                    <w lemma="*contract" source="contract"
+                        lemmaRef="https://www.dsl.ac.uk/entry/dost/contract_n" pos="noun"
+                        >contract</w>
+                    <space type="scribal"/>
+                    <w lemma="ocus" lemmaRef="http://www.dil.ie/33484" pos="conjunction"><abbr
+                            cert="high"><g ref="g2">agus</g></abbr></w>
+                    <space type="scribal"/>
+                    <w lemma="in" lemmaRef="http://www.dil.ie/28194" pos="article">an</w>
+                    <w lemma="comchengal" lemmaRef="http://www.dil.ie/10879" pos="noun"><w
+                            lemma="com-" lemmaRef="http://www.dil.ie/10554" pos="prefix">coi<abbr
+                                cert="high">m<g ref="g4">h</g></abbr></w>
+                        <w lemma="cengal" lemmaRef="http://www.dil.ie/8609" pos="noun"><abbr
+                                cert="high">g<g ref="g4">h</g></abbr><space type="scribal"
+                            />ceangal</w></w>
+                    <space type="scribal"/>
+                    <w pos="particle-verb"><w lemma="do" lemmaRef="http://www.dil.ie/17098"
+                            pos="particle"><abbr cert="high"><g ref="l25">do</g></abbr></w><space
+                            type="scribal"/><w lemma="do-gní" lemmaRef="http://www.dil.ie/17752"
+                            pos="verb">rine<abbr cert="high">d<g ref="g4">h</g></abbr></w></w>
+                    <space type="scribal"/>
+                    <w lemma="ar" lemmaRef="http://www.dil.ie/3902" pos="preposition">ar</w>
+                    <w lemma="tús" lemmaRef="http://www.dil.ie/42552" pos="noun">tus</w>
+                    <space type="scribal"/>
+                    <w lemma="eter" lemmaRef="http://www.dil.ie/20789" pos="preposition">eddir</w>
+                    <space type="scribal"/>
+                    <name type="personal"><w lemma="gilla" lemmaRef="http://www.dil.ie/25843"
+                            pos="noun">gilla</w><w lemma="epscop" lemmaRef="http://www.dil.ie/20188"
+                            pos="noun">escoib</w></name>
+                    <space type="scribal"/>
+                    <w lemma="íarla" lemmaRef="http://www.dil.ie/26989" pos="noun">ia<abbr
+                            cert="high"><g ref="l6">rr</g></abbr>la</w>
+                    <space type="scribal"/>
+                    <name type="place">
+                        <w>e<abbr cert="high"><g ref="l6">rr</g></abbr></w>
+                        <name type="population">
+                            <w lemma="Goídel" lemmaRef="http://www.dil.ie/26308" pos="noun"><abbr
+                                    cert="high">g<g ref="g4">h</g></abbr><abbr cert="high"><g
+                                        ref="l5">ao</g></abbr><abbr cert="high">d<g ref="g4"
+                                    >h</g></abbr>eal</w>
+                        </name>
+                    </name>
+                    <space type="scribal"/>
+                    <w lemma=".i." lemmaRef="http://www.dil.ie/26892" pos="abbreviation">.i.</w>
+                    <space type="scribal"/>
+                    <name type="personal">
+                        <w lemma="mac" lemmaRef="http://www.dil.ie/31166" pos="noun">mac</w>
+                        <name type="personal"><w pos="noun">calin</w></name>
+                    </name>
+                    <space type="scribal"/>
+                    <w pos="preposition-possessive"><w lemma="co" lemmaRef="http://www.dil.ie/9787"
+                            pos="preposition">g<abbr cert="high">u<g ref="g5">n</g></abbr></w><w
+                            lemma="a" lemmaRef="http://www.dil.ie/3" pos="possessive">a</w></w>
+                    <space type="scribal"/>
+                    <w lemma="slicht" lemmaRef="http://www.dil.ie/37930" pos="noun"><abbr
+                            cert="high">s<g ref="g4">h</g></abbr>lio<abbr cert="high"><g ref="g10"
+                                >cht</g></abbr></w>
+                    <space type="scribal"/>
+                    <w lemma="ocus" lemmaRef="http://www.dil.ie/33484" pos="conjunction">agas</w>
+                    <space type="scribal"/>
+                    <w lemma="a" lemmaRef="http://www.dil.ie/3" pos="possessive">a</w>
+                    <space type="scribal"/>
+                    <w lemma="eigre" lemmaRef="http://www.dil.ie/19767" pos="noun">oi<abbr
+                            cert="high">d<g ref="g4">h</g></abbr>rea<abbr cert="high">c<g ref="g4"
+                                >h</g></abbr>a</w>
+                    <space type="scribal"/>
+                    <w lemma="ocus" lemmaRef="http://www.dil.ie/33484" pos="conjunction"><abbr
+                            cert="high"><g ref="g2">agus</g></abbr></w>
+                    <space type="scribal"/>
+                    <name type="personal">
+                        <w lemma="in" lemmaRef="http://www.dil.ie/28194" pos="article">An</w>
+                        <space type="scribal"/>
+                        <w lemma="calbach" lemmaRef="http://www.dil.ie/8037" pos="noun">cal<abbr
+                                cert="high">b<g ref="g4">h</g></abbr>a<abbr cert="high">c<g ref="g4"
+                                    >h</g></abbr></w>
+                        <space type="scribal"/>
+                        <w lemma="úa" lemmaRef="http://www.dil.ie/42573" pos="noun">o</w>
+                        <name type="personal"><w lemma="Domnall" lemmaRef="http://www.dil.ie/18133"
+                                pos="noun">do<abbr cert="high">m<g ref="g4"
+                            >h</g></abbr>naill</w></name>
+                    </name>
+                    <space type="scribal"/>
+                    <w pos="particle-verb"><w lemma="do" lemmaRef="http://www.dil.ie/17098"
+                            pos="particle">do</w><w lemma="attá" lemmaRef="http://www.dil.ie/4927"
+                            pos="verb">bí</w></w>
+                    <space type="scribal"/>
+                    <w lemma="i" lemmaRef="http://www.dil.ie/26891" pos="prepositional_pronoun">a<abbr cert="high">n<g ref="g5">n</g></abbr></w>
+                    <space type="scribal"/>
+                    <w lemma="sin" lemmaRef="http://www.dil.ie/37567" pos="demonstrative_pronoun">sin</w>
+                    <space type="scribal"/>
+                    <w lemma="cen" lemmaRef="http://www.dil.ie/8581" pos="preposition">g<abbr cert="high">a<g ref="g5">n</g></abbr></w>
+                    <w lemma="tigernas" lemmaRef="http://www.dil.ie/40740" pos="noun">ti<abbr cert="high">g<g ref="g22">err</g></abbr>n<abbr cert="high"><g ref="g7">us</g></abbr></w>
+                    <lb n="2" xml:id="MS33.1r.2"/>
+                    <name type="place" corresp="https://www.logainm.ie/1166821.aspx ">
+                        <w lemma="tír" lemmaRef="http://www.dil.ie/40940" pos="noun">tire</w>
+                        <space type="scribal"/>
+                        <name type="personal"><w pos="noun"><abbr cert="high">c<g ref="g4">h</g></abbr>onaill</w></name>
+                    </name>
+                </p>
+            </div>
+        </body>
+    </text>
 </TEI>
