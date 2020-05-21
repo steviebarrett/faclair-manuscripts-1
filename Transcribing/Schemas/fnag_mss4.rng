@@ -214,18 +214,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
     </optional>
   </define>
   <define name="teiatt.canonical.attributes">
-    <ref name="teiatt.canonical.attribute.key"/>
     <ref name="teiatt.canonical.attribute.ref"/>
-  </define>
-  <define name="teiatt.canonical.attribute.key">
-    <optional>
-      <attribute name="key">
-        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">provides an
-          externally-defined means of identifying the entity (or entities) being named, using a
-          coded value of some kind.</a:documentation>
-        <data type="string"/>
-      </attribute>
-    </optional>
   </define>
   <define name="teiatt.canonical.attribute.ref">
     <optional>
@@ -242,41 +231,8 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
     </optional>
   </define>
   <define name="teiatt.ranging.attributes">
-    <ref name="teiatt.ranging.attribute.atLeast"/>
-    <ref name="teiatt.ranging.attribute.atMost"/>
     <ref name="teiatt.ranging.attribute.min"/>
     <ref name="teiatt.ranging.attribute.max"/>
-    <ref name="teiatt.ranging.attribute.confidence"/>
-  </define>
-  <define name="teiatt.ranging.attribute.atLeast">
-    <optional>
-      <attribute name="atLeast">
-        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">gives a
-          minimum estimated value for the approximate measurement.</a:documentation>
-        <choice>
-          <data type="double"/>
-          <data type="token">
-            <param name="pattern">(\-?[\d]+/\-?[\d]+)</param>
-          </data>
-          <data type="decimal"/>
-        </choice>
-      </attribute>
-    </optional>
-  </define>
-  <define name="teiatt.ranging.attribute.atMost">
-    <optional>
-      <attribute name="atMost">
-        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">gives a
-          maximum estimated value for the approximate measurement.</a:documentation>
-        <choice>
-          <data type="double"/>
-          <data type="token">
-            <param name="pattern">(\-?[\d]+/\-?[\d]+)</param>
-          </data>
-          <data type="decimal"/>
-        </choice>
-      </attribute>
-    </optional>
   </define>
   <define name="teiatt.ranging.attribute.min">
     <optional>
@@ -310,46 +266,41 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
       </attribute>
     </optional>
   </define>
-  <define name="teiatt.ranging.attribute.confidence">
-    <optional>
-      <attribute name="confidence">
-        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">specifies the
-          degree of statistical confidence (between zero and one) that a value falls within the
-          range specified by min and max, or the proportion of observed values that fall within that
-          range.</a:documentation>
-        <data type="double"/>
-      </attribute>
-    </optional>
-  </define>
   <define name="teiatt.dimensions.attributes">
     <ref name="teiatt.ranging.attributes"/>
     <ref name="teiatt.dimensions.attribute.unit"/>
     <ref name="teiatt.dimensions.attribute.quantity"/>
     <ref name="teiatt.dimensions.attribute.extent"/>
-    <ref name="teiatt.dimensions.attribute.precision"/>
-    <ref name="teiatt.dimensions.attribute.scope"/>
   </define>
   <define name="teiatt.dimensions.attribute.unit">
     <optional>
       <attribute name="unit">
         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">names the
-          unit used for the measurement Suggested values include: 1] cm(centimetres) ; 2]
-          mm(millimetres) ; 3] in(inches) ; 4] lines; 5] chars(characters) </a:documentation>
+          unit used for the measurement Suggested values include: 1] chars(characters) ; 2]
+          syllabs(syllables) ; 3] words ; 4] met_lines (metrical lines); 5] ms_lines(manuscript
+          lines); 6] pages; 7] fols(folios)</a:documentation>
         <choice>
-          <value>cm</value>
-          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
-            >(centimetres) </a:documentation>
-          <value>mm</value>
-          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
-            >(millimetres) </a:documentation>
-          <value>in</value>
-          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(inches) </a:documentation>
-          <value>lines</value>
-          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">lines of
-            text</a:documentation>
           <value>chars</value>
           <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
-            >(characters) characters of text</a:documentation>
+            >(characters)</a:documentation>
+          <value>syllabs</value>
+          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+            >(syllables)</a:documentation>
+          <value>words</value>
+          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+            >(words)</a:documentation>
+          <value>met_lines</value>
+          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(metrical
+            lines)</a:documentation>
+          <value>ms_lines</value>
+          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(manuscript
+            lines)</a:documentation>
+          <value>pages</value>
+          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+            >(pages)</a:documentation>
+          <value>fols</value>
+          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+            >(folios)</a:documentation>
           <data type="token">
             <param name="pattern">(\p{L}|\p{N}|\p{P}|\p{S})+</param>
           </data>
@@ -382,36 +333,6 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
       </attribute>
     </optional>
   </define>
-  <define name="teiatt.dimensions.attribute.precision">
-    <optional>
-      <attribute name="precision">
-        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">characterizes
-          the precision of the values specified by the other attributes.</a:documentation>
-        <choice>
-          <value>high</value>
-          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-          <value>medium</value>
-          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-          <value>low</value>
-          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-          <value>unknown</value>
-          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-        </choice>
-      </attribute>
-    </optional>
-  </define>
-  <define name="teiatt.dimensions.attribute.scope">
-    <optional>
-      <attribute name="scope">
-        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">where the
-          measurement summarizes more than one observation, specifies the applicability of this
-          measurement. Sample values include: 1] all; 2] most; 3] range</a:documentation>
-        <data type="token">
-          <param name="pattern">(\p{L}|\p{N}|\p{P}|\p{S})+</param>
-        </data>
-      </attribute>
-    </optional>
-  </define>
   <define name="teiatt.written.attributes">
     <ref name="teiatt.written.attribute.hand"/>
   </define>
@@ -429,8 +350,6 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
     <ref name="teiatt.dimensions.attributes"/>
     <ref name="teiatt.written.attributes"/>
     <ref name="teiatt.damaged.attribute.agent"/>
-    <ref name="teiatt.damaged.attribute.degree"/>
-    <ref name="teiatt.damaged.attribute.group"/>
   </define>
   <define name="teiatt.damaged.attribute.agent">
     <optional>
@@ -444,74 +363,8 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
       </attribute>
     </optional>
   </define>
-  <define name="teiatt.damaged.attribute.degree">
-    <optional>
-      <attribute name="degree">
-        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">provides a
-          coded representation of the degree of damage, either as a number between 0 (undamaged) and
-          1 (very extensively damaged), or as one of the codes high, medium, low, or unknown. The
-          damage element with the degree attribute should only be used where the text may be read
-          with some confidence; text supplied from other sources should be tagged as
-          supplied.</a:documentation>
-        <choice>
-          <data type="double"/>
-          <choice>
-            <value>high</value>
-            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-            <value>medium</value>
-            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-            <value>low</value>
-            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-            <value>unknown</value>
-            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-          </choice>
-        </choice>
-      </attribute>
-    </optional>
-  </define>
-  <define name="teiatt.damaged.attribute.group">
-    <optional>
-      <attribute name="group">
-        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">assigns an
-          arbitrary number to each stretch of damage regarded as forming part of the same physical
-          phenomenon.</a:documentation>
-        <data type="nonNegativeInteger"/>
-      </attribute>
-    </optional>
-  </define>
-  <define name="teiatt.breaking.attributes">
-    <ref name="teiatt.breaking.attribute.break"/>
-  </define>
-  <define name="teiatt.breaking.attribute.break">
-    <optional>
-      <attribute name="break">
-        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">indicates
-          whether or not the element bearing this attribute should be considered to mark the end of
-          an orthographic token in the same way as whitespace.</a:documentation>
-        <data type="token">
-          <param name="pattern">(\p{L}|\p{N}|\p{P}|\p{S})+</param>
-        </data>
-      </attribute>
-    </optional>
-  </define>
-  <define name="teiatt.cReferencing.attributes">
-    <ref name="teiatt.cReferencing.attribute.cRef"/>
-  </define>
-  <define name="teiatt.cReferencing.attribute.cRef">
-    <optional>
-      <attribute name="cRef">
-        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(canonical
-          reference) specifies the destination of the pointer by supplying a canonical reference
-          expressed using the scheme defined in a refsDecl element in the TEI
-          header</a:documentation>
-        <data type="string"/>
-      </attribute>
-    </optional>
-  </define>
   <define name="teiatt.datable.w3c.attributes">
     <ref name="teiatt.datable.w3c.attribute.when"/>
-    <ref name="teiatt.datable.w3c.attribute.notBefore"/>
-    <ref name="teiatt.datable.w3c.attribute.notAfter"/>
     <ref name="teiatt.datable.w3c.attribute.from"/>
     <ref name="teiatt.datable.w3c.attribute.to"/>
   </define>
@@ -520,42 +373,6 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
       <attribute name="when">
         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">supplies the
           value of the date or time in a standard form, e.g. yyyy-mm-dd.</a:documentation>
-        <choice>
-          <data type="date"/>
-          <data type="gYear"/>
-          <data type="gMonth"/>
-          <data type="gDay"/>
-          <data type="gYearMonth"/>
-          <data type="gMonthDay"/>
-          <data type="time"/>
-          <data type="dateTime"/>
-        </choice>
-      </attribute>
-    </optional>
-  </define>
-  <define name="teiatt.datable.w3c.attribute.notBefore">
-    <optional>
-      <attribute name="notBefore">
-        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">specifies the
-          earliest possible date for the event in standard form, e.g. yyyy-mm-dd.</a:documentation>
-        <choice>
-          <data type="date"/>
-          <data type="gYear"/>
-          <data type="gMonth"/>
-          <data type="gDay"/>
-          <data type="gYearMonth"/>
-          <data type="gMonthDay"/>
-          <data type="time"/>
-          <data type="dateTime"/>
-        </choice>
-      </attribute>
-    </optional>
-  </define>
-  <define name="teiatt.datable.w3c.attribute.notAfter">
-    <optional>
-      <attribute name="notAfter">
-        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">specifies the
-          latest possible date for the event in standard form, e.g. yyyy-mm-dd.</a:documentation>
         <choice>
           <data type="date"/>
           <data type="gYear"/>
@@ -613,199 +430,13 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
         be used with any other att.datable.w3c attributes.</sch:report>
     </sch:rule>
   </pattern>
-  <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-    id="fnag_mss-att.datable.w3c-att-datable-w3c-from-constraint-rule-2">
-    <sch:rule xmlns:sch="http://purl.oclc.org/dsdl/schematron" xmlns="http://www.tei-c.org/ns/1.0"
-      xmlns:rng="http://relaxng.org/ns/structure/1.0" context="tei:*[@from]">
-      <sch:report role="nonfatal" test="@notBefore">The @from and @notBefore attributes cannot be
-        used together.</sch:report>
-    </sch:rule>
-  </pattern>
-  <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-    id="fnag_mss-att.datable.w3c-att-datable-w3c-to-constraint-rule-3">
-    <sch:rule xmlns:sch="http://purl.oclc.org/dsdl/schematron" xmlns="http://www.tei-c.org/ns/1.0"
-      xmlns:rng="http://relaxng.org/ns/structure/1.0" context="tei:*[@to]">
-      <sch:report role="nonfatal" test="@notAfter">The @to and @notAfter attributes cannot be used
-        together.</sch:report>
-    </sch:rule>
-  </pattern>
   <define name="teiatt.datable.attributes">
     <ref name="teiatt.datable.w3c.attributes"/>
     <ref name="teiatt.datable.iso.attributes"/>
     <ref name="teiatt.datable.custom.attributes"/>
-    <ref name="teiatt.datable.attribute.calendar"/>
-    <ref name="teiatt.datable.attribute.period"/>
-  </define>
-  <define name="teiatt.datable.attribute.calendar">
-    <optional>
-      <attribute name="calendar">
-        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">indicates the
-          system or calendar to which the date represented by the content of this element
-          belongs.</a:documentation>
-        <data type="anyURI"/>
-      </attribute>
-    </optional>
-  </define>
-  <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-    id="fnag_mss-att.datable-calendar-calendar-constraint-rule-4">
-    <sch:rule xmlns:sch="http://purl.oclc.org/dsdl/schematron" xmlns="http://www.tei-c.org/ns/1.0"
-      xmlns:rng="http://relaxng.org/ns/structure/1.0" context="tei:*[@calendar]">
-      <sch:assert test="string-length(.) gt 0"> @calendar indicates the system or calendar to which
-        the date represented by the content of this element belongs, but this <sch:name/> element
-        has no textual content.</sch:assert>
-    </sch:rule>
-  </pattern>
-  <define name="teiatt.datable.attribute.period">
-    <optional>
-      <attribute name="period">
-        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">supplies a
-          pointer to some location defining a named period of time within which the datable item is
-          understood to have occurred.</a:documentation>
-        <data type="anyURI"/>
-      </attribute>
-    </optional>
-  </define>
-  <define name="teiatt.datcat.attributes">
-    <ref name="teiatt.datcat.attribute.datcat"/>
-    <ref name="teiatt.datcat.attribute.valueDatcat"/>
-  </define>
-  <define name="teiatt.datcat.attribute.datcat">
-    <optional>
-      <attribute name="datcat" ns="http://www.isocat.org/ns/dcr">
-        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">contains a
-          PID (persistent identifier) that aligns the given element with the appropriate Data
-          Category (or categories) in ISOcat.</a:documentation>
-        <list>
-          <oneOrMore>
-            <data type="anyURI"/>
-          </oneOrMore>
-        </list>
-      </attribute>
-    </optional>
-  </define>
-  <define name="teiatt.datcat.attribute.valueDatcat">
-    <optional>
-      <attribute name="valueDatcat" ns="http://www.isocat.org/ns/dcr">
-        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">contains a
-          PID (persistent identifier) that aligns the content of the given element or the value of
-          the given attribute with the appropriate simple Data Category (or categories) in
-          ISOcat.</a:documentation>
-        <list>
-          <oneOrMore>
-            <data type="anyURI"/>
-          </oneOrMore>
-        </list>
-      </attribute>
-    </optional>
-  </define>
-  <define name="teiatt.declarable.attributes">
-    <ref name="teiatt.declarable.attribute.default"/>
-  </define>
-  <define name="teiatt.declarable.attribute.default">
-    <optional>
-      <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" name="default"
-        a:defaultValue="false">
-        <a:documentation>indicates whether or not this element is selected by default when its
-          parent is selected.</a:documentation>
-        <choice>
-          <value>true</value>
-          <a:documentation>This element is selected if its parent is selected</a:documentation>
-          <value>false</value>
-          <a:documentation>This element can only be selected explicitly, unless it is the only one
-            of its kind, in which case it is selected if its parent is selected.</a:documentation>
-        </choice>
-      </attribute>
-    </optional>
-  </define>
-  <define name="teiatt.declaring.attributes">
-    <ref name="teiatt.declaring.attribute.decls"/>
-  </define>
-  <define name="teiatt.declaring.attribute.decls">
-    <optional>
-      <attribute name="decls">
-        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">identifies
-          one or more declarable elements within the header, which are understood to apply to the
-          element bearing this attribute and its content.</a:documentation>
-        <list>
-          <oneOrMore>
-            <data type="anyURI"/>
-          </oneOrMore>
-        </list>
-      </attribute>
-    </optional>
-  </define>
-  <define name="teiatt.fragmentable.attributes">
-    <ref name="teiatt.fragmentable.attribute.part"/>
-  </define>
-  <define name="teiatt.fragmentable.attribute.part">
-    <optional>
-      <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" name="part"
-        a:defaultValue="N">
-        <a:documentation>specifies whether or not its parent element is fragmented in some way,
-          typically by some other overlapping structure: for example a speech which is divided
-          between two or more verse stanzas, a paragraph which is split across a page division, a
-          verse line which is divided between two speakers.</a:documentation>
-        <choice>
-          <value>Y</value>
-          <a:documentation>(yes) the element is fragmented in some (unspecified)
-            respect</a:documentation>
-          <value>N</value>
-          <a:documentation>(no) the element is not fragmented, or no claim is made as to its
-            completeness</a:documentation>
-          <value>I</value>
-          <a:documentation>(initial) this is the initial part of a fragmented
-            element</a:documentation>
-          <value>M</value>
-          <a:documentation>(medial) this is a medial part of a fragmented element</a:documentation>
-          <value>F</value>
-          <a:documentation>(final) this is the final part of a fragmented element</a:documentation>
-        </choice>
-      </attribute>
-    </optional>
   </define>
   <define name="teiatt.divLike.attributes">
     <ref name="teiatt.metrical.attributes"/>
-    <ref name="teiatt.fragmentable.attributes"/>
-    <ref name="teiatt.divLike.attribute.org"/>
-    <ref name="teiatt.divLike.attribute.sample"/>
-  </define>
-  <define name="teiatt.divLike.attribute.org">
-    <optional>
-      <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" name="org"
-        a:defaultValue="uniform">
-        <a:documentation>(organization) specifies how the content of the division is
-          organized.</a:documentation>
-        <choice>
-          <value>composite</value>
-          <a:documentation>no claim is made about the sequence in which the immediate contents of
-            this division are to be processed, or their inter-relationships.</a:documentation>
-          <value>uniform</value>
-          <a:documentation>the immediate contents of this element are regarded as forming a logical
-            unit, to be processed in sequence.</a:documentation>
-        </choice>
-      </attribute>
-    </optional>
-  </define>
-  <define name="teiatt.divLike.attribute.sample">
-    <optional>
-      <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" name="sample"
-        a:defaultValue="complete">
-        <a:documentation>indicates whether this division is a sample of the original source and if
-          so, from which part.</a:documentation>
-        <choice>
-          <value>initial</value>
-          <a:documentation>division lacks material present at end in source.</a:documentation>
-          <value>medial</value>
-          <a:documentation>division lacks material at start and end.</a:documentation>
-          <value>final</value>
-          <a:documentation>division lacks material at start.</a:documentation>
-          <value>unknown</value>
-          <a:documentation>position of sampled material within original unknown.</a:documentation>
-          <value>complete</value>
-          <a:documentation>division is not a sample.</a:documentation>
-        </choice>
-      </attribute>
-    </optional>
   </define>
   <define name="teiatt.docStatus.attributes">
     <ref name="teiatt.docStatus.attribute.status"/>
@@ -821,32 +452,6 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
           15] withdrawn</a:documentation>
         <data type="token">
           <param name="pattern">(\p{L}|\p{N}|\p{P}|\p{S})+</param>
-        </data>
-      </attribute>
-    </optional>
-  </define>
-  <define name="teiatt.duration.w3c.attributes">
-    <ref name="teiatt.duration.w3c.attribute.dur"/>
-  </define>
-  <define name="teiatt.duration.w3c.attribute.dur">
-    <optional>
-      <attribute name="dur">
-        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(duration)
-          indicates the length of this element in time.</a:documentation>
-        <data type="duration"/>
-      </attribute>
-    </optional>
-  </define>
-  <define name="teiatt.duration.iso.attributes">
-    <ref name="teiatt.duration.iso.attribute.dur-iso"/>
-  </define>
-  <define name="teiatt.duration.iso.attribute.dur-iso">
-    <optional>
-      <attribute name="dur-iso">
-        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(duration)
-          indicates the length of this element in time.</a:documentation>
-        <data type="token">
-          <param name="pattern">[0-9.,DHMPRSTWYZ/:+\-]+</param>
         </data>
       </attribute>
     </optional>
@@ -891,60 +496,8 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
       </attribute>
     </optional>
   </define>
-  <define name="teiatt.editLike.attributes">
-    <ref name="teiatt.editLike.attribute.evidence"/>
-    <ref name="teiatt.editLike.attribute.instant"/>
-  </define>
-  <define name="teiatt.editLike.attribute.evidence">
-    <optional>
-      <attribute name="evidence">
-        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">indicates the
-          nature of the evidence supporting the reliability or accuracy of the intervention or
-          interpretation. Suggested values include: 1] internal; 2] external; 3]
-          conjecture</a:documentation>
-        <list>
-          <oneOrMore>
-            <choice>
-              <value>internal</value>
-              <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">there
-                is internal evidence to support the intervention.</a:documentation>
-              <value>external</value>
-              <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">there
-                is external evidence to support the intervention.</a:documentation>
-              <value>conjecture</value>
-              <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">the
-                intervention or interpretation has been made by the editor, cataloguer, or scholar
-                on the basis of their expertise.</a:documentation>
-              <data type="token">
-                <param name="pattern">(\p{L}|\p{N}|\p{P}|\p{S})+</param>
-              </data>
-            </choice>
-          </oneOrMore>
-        </list>
-      </attribute>
-    </optional>
-  </define>
-  <define name="teiatt.editLike.attribute.instant">
-    <optional>
-      <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" name="instant"
-        a:defaultValue="false">
-        <a:documentation>indicates whether this is an instant revision or not.</a:documentation>
-        <choice>
-          <data type="boolean"/>
-          <choice>
-            <value>unknown</value>
-            <a:documentation/>
-            <value>inapplicable</value>
-            <a:documentation/>
-          </choice>
-        </choice>
-      </attribute>
-    </optional>
-  </define>
   <define name="teiatt.global.rendition.attributes">
     <ref name="teiatt.global.rendition.attribute.rend"/>
-    <ref name="teiatt.global.rendition.attribute.style"/>
-    <ref name="teiatt.global.rendition.attribute.rendition"/>
   </define>
   <define name="teiatt.global.rendition.attribute.rend">
     <optional>
@@ -962,30 +515,6 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
       </attribute>
     </optional>
   </define>
-  <define name="teiatt.global.rendition.attribute.style">
-    <optional>
-      <attribute name="style">
-        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">contains an
-          expression in some formal style definition language which defines the rendering or
-          presentation used for this element in the source text</a:documentation>
-        <data type="string"/>
-      </attribute>
-    </optional>
-  </define>
-  <define name="teiatt.global.rendition.attribute.rendition">
-    <optional>
-      <attribute name="rendition">
-        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">points to a
-          description of the rendering or presentation used for this element in the source
-          text.</a:documentation>
-        <list>
-          <oneOrMore>
-            <data type="anyURI"/>
-          </oneOrMore>
-        </list>
-      </attribute>
-    </optional>
-  </define>
   <define name="teiatt.global.source.attributes">
     <ref name="teiatt.global.source.attribute.source"/>
   </define>
@@ -996,7 +525,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
           source from which some aspect of this element is drawn.</a:documentation>
         <list>
           <oneOrMore>
-            <data type="anyURI"/>
+            <data type="string"/>
           </oneOrMore>
         </list>
       </attribute>
@@ -1088,100 +617,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
       </attribute>
     </optional>
   </define>
-  <define name="teiatt.handFeatures.attributes">
-    <ref name="teiatt.handFeatures.attribute.scribe"/>
-    <ref name="teiatt.handFeatures.attribute.scribeRef"/>
-    <ref name="teiatt.handFeatures.attribute.script"/>
-    <ref name="teiatt.handFeatures.attribute.scriptRef"/>
-    <ref name="teiatt.handFeatures.attribute.medium"/>
-    <ref name="teiatt.handFeatures.attribute.scope"/>
-  </define>
-  <define name="teiatt.handFeatures.attribute.scribe">
-    <optional>
-      <attribute name="scribe">
-        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">gives a name
-          or other identifier for the scribe believed to be responsible for this
-          hand.</a:documentation>
-        <data type="Name"/>
-      </attribute>
-    </optional>
-  </define>
-  <define name="teiatt.handFeatures.attribute.scribeRef">
-    <optional>
-      <attribute name="scribeRef">
-        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">points to a
-          full description of the scribe concerned, typically supplied by a person element elsewhere
-          in the description.</a:documentation>
-        <list>
-          <oneOrMore>
-            <data type="anyURI"/>
-          </oneOrMore>
-        </list>
-      </attribute>
-    </optional>
-  </define>
-  <define name="teiatt.handFeatures.attribute.script">
-    <optional>
-      <attribute name="script">
-        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">characterizes
-          the particular script or writing style used by this hand, for example secretary,
-          copperplate, Chancery, Italian, etc.</a:documentation>
-        <list>
-          <oneOrMore>
-            <data type="Name"/>
-          </oneOrMore>
-        </list>
-      </attribute>
-    </optional>
-  </define>
-  <define name="teiatt.handFeatures.attribute.scriptRef">
-    <optional>
-      <attribute name="scriptRef">
-        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">points to a
-          full description of the script or writing style used by this hand, typically supplied by a
-          scriptNote element elsewhere in the description.</a:documentation>
-        <list>
-          <oneOrMore>
-            <data type="anyURI"/>
-          </oneOrMore>
-        </list>
-      </attribute>
-    </optional>
-  </define>
-  <define name="teiatt.handFeatures.attribute.medium">
-    <optional>
-      <attribute name="medium">
-        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">describes the
-          tint or type of ink, e.g. brown, or other writing medium, e.g. pencil</a:documentation>
-        <list>
-          <oneOrMore>
-            <data type="token">
-              <param name="pattern">(\p{L}|\p{N}|\p{P}|\p{S})+</param>
-            </data>
-          </oneOrMore>
-        </list>
-      </attribute>
-    </optional>
-  </define>
-  <define name="teiatt.handFeatures.attribute.scope">
-    <optional>
-      <attribute name="scope">
-        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">specifies how
-          widely this hand is used in the manuscript.</a:documentation>
-        <choice>
-          <value>sole</value>
-          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">only this
-            hand is used throughout the manuscript</a:documentation>
-          <value>major</value>
-          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">this hand
-            is used through most of the manuscript</a:documentation>
-          <value>minor</value>
-          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">this hand
-            is used occasionally in the manuscript</a:documentation>
-        </choice>
-      </attribute>
-    </optional>
-  </define>
+  <!-- STOPPED 21-05-2020 -->
   <define name="teiatt.internetMedia.attributes">
     <ref name="teiatt.internetMedia.attribute.mimeType"/>
   </define>
@@ -1672,8 +1108,6 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
   </define>
   <define name="teiatt.segLike.attributes">
     <ref name="teiatt.metrical.attributes"/>
-    <ref name="teiatt.datcat.attributes"/>
-    <ref name="teiatt.fragmentable.attributes"/>
     <ref name="teiatt.segLike.attribute.function"/>
   </define>
   <define name="teiatt.segLike.attribute.function">
@@ -1849,7 +1283,6 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
     </optional>
   </define>
   <define name="teiatt.timed.attributes">
-    <ref name="teiatt.duration.attributes"/>
     <ref name="teiatt.timed.attribute.start"/>
     <ref name="teiatt.timed.attribute.end"/>
   </define>
@@ -1872,7 +1305,6 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
     </optional>
   </define>
   <define name="teiatt.transcriptional.attributes">
-    <ref name="teiatt.editLike.attributes"/>
     <ref name="teiatt.written.attributes"/>
     <ref name="teiatt.transcriptional.attribute.status"/>
     <ref name="teiatt.transcriptional.attribute.cause"/>
@@ -4672,8 +4104,6 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
         </rule>
       </pattern>
       <ref name="teiatt.global.attributes"/>
-      <ref name="teiatt.declaring.attributes"/>
-      <ref name="teiatt.fragmentable.attributes"/>
       <ref name="teiatt.written.attributes"/>
       <empty/>
     </element>
@@ -4924,11 +4354,9 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
         Components]</a:documentation>
       <ref name="teimacro.phraseSeq"/>
       <ref name="teiatt.global.attributes"/>
-      <ref name="teiatt.declaring.attributes"/>
       <ref name="teiatt.translatable.attributes"/>
       <ref name="teiatt.typed.attributes"/>
       <ref name="teiatt.pointing.attributes"/>
-      <ref name="teiatt.cReferencing.attributes"/>
       <empty/>
     </element>
   </define>
@@ -4939,12 +4367,10 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
         [3.3.4. Terms, Glosses, Equivalents, and Descriptions]</a:documentation>
       <ref name="teimacro.phraseSeq"/>
       <ref name="teiatt.global.attributes"/>
-      <ref name="teiatt.declaring.attributes"/>
       <ref name="teiatt.pointing.attributes"/>
       <ref name="teiatt.typed.attributes"/>
       <ref name="teiatt.canonical.attributes"/>
       <ref name="teiatt.sortable.attributes"/>
-      <ref name="teiatt.cReferencing.attributes"/>
       <empty/>
     </element>
   </define>
@@ -4965,7 +4391,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
         Apparent Errors]</a:documentation>
       <ref name="teimacro.paraContent"/>
       <ref name="teiatt.global.attributes"/>
-      <ref name="teiatt.editLike.attributes"/>
+
       <ref name="teiatt.typed.attributes"/>
       <empty/>
     </element>
@@ -4992,7 +4418,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
         [3.4.2. Regularization and Normalization 12. Critical Apparatus]</a:documentation>
       <ref name="teimacro.paraContent"/>
       <ref name="teiatt.global.attributes"/>
-      <ref name="teiatt.editLike.attributes"/>
+
       <ref name="teiatt.typed.attributes"/>
       <empty/>
     </element>
@@ -5023,7 +4449,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
       </zeroOrMore>
       <ref name="teiatt.global.attributes"/>
       <ref name="teiatt.timed.attributes"/>
-      <ref name="teiatt.editLike.attributes"/>
+
       <ref name="teiatt.dimensions.attributes"/>
       <optional>
         <attribute name="reason">
@@ -5106,7 +4532,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
         Additions, Deletions, and Omissions]</a:documentation>
       <ref name="teimacro.paraContent"/>
       <ref name="teiatt.global.attributes"/>
-      <ref name="teiatt.editLike.attributes"/>
+
       <ref name="teiatt.dimensions.attributes"/>
       <optional>
         <attribute name="reason">
@@ -5156,7 +4582,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
       <ref name="teiatt.global.attributes"/>
       <ref name="teiatt.personal.attributes"/>
       <ref name="teiatt.datable.attributes"/>
-      <ref name="teiatt.editLike.attributes"/>
+
       <ref name="teiatt.typed.attributes"/>
       <empty/>
     </element>
@@ -5348,8 +4774,8 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
       </zeroOrMore>
       <ref name="teiatt.global.attributes"/>
       <ref name="teiatt.datable.attributes"/>
-      <ref name="teiatt.duration.attributes"/>
-      <ref name="teiatt.editLike.attributes"/>
+
+
       <ref name="teiatt.dimensions.attributes"/>
       <ref name="teiatt.typed.attributes"/>
       <empty/>
@@ -5369,8 +4795,8 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
       </zeroOrMore>
       <ref name="teiatt.global.attributes"/>
       <ref name="teiatt.datable.attributes"/>
-      <ref name="teiatt.duration.attributes"/>
-      <ref name="teiatt.editLike.attributes"/>
+
+
       <ref name="teiatt.dimensions.attributes"/>
       <ref name="teiatt.typed.attributes"/>
       <empty/>
@@ -5405,7 +4831,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
         Expansions]</a:documentation>
       <ref name="teimacro.phraseSeq"/>
       <ref name="teiatt.global.attributes"/>
-      <ref name="teiatt.editLike.attributes"/>
+
       <empty/>
     </element>
   </define>
@@ -5426,8 +4852,6 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
       <ref name="teiatt.pointing.attributes"/>
       <ref name="teiatt.internetMedia.attributes"/>
       <ref name="teiatt.typed.attributes"/>
-      <ref name="teiatt.declaring.attributes"/>
-      <ref name="teiatt.cReferencing.attributes"/>
       <empty/>
     </element>
   </define>
@@ -5449,8 +4873,6 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
       <ref name="teiatt.pointing.attributes"/>
       <ref name="teiatt.internetMedia.attributes"/>
       <ref name="teiatt.typed.attributes"/>
-      <ref name="teiatt.declaring.attributes"/>
-      <ref name="teiatt.cReferencing.attributes"/>
       <empty/>
     </element>
   </define>
@@ -5690,7 +5112,6 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
       <ref name="teiatt.media.attribute.height"/>
       <ref name="teiatt.media.attribute.scale"/>
       <ref name="teiatt.resourced.attributes"/>
-      <ref name="teiatt.declaring.attributes"/>
       <ref name="teiatt.timed.attributes"/>
       <attribute name="mimeType">
         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(MIME media
@@ -5719,7 +5140,6 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
       <ref name="teiatt.global.attributes"/>
       <ref name="teiatt.media.attributes"/>
       <ref name="teiatt.resourced.attributes"/>
-      <ref name="teiatt.declaring.attributes"/>
       <empty/>
     </element>
   </define>
@@ -5763,7 +5183,6 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
       <ref name="teiatt.typed.attributes"/>
       <ref name="teiatt.edition.attributes"/>
       <ref name="teiatt.spanning.attributes"/>
-      <ref name="teiatt.breaking.attributes"/>
       <empty/>
     </element>
   </define>
@@ -5776,7 +5195,6 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
       <ref name="teiatt.global.attributes"/>
       <ref name="teiatt.typed.attributes"/>
       <ref name="teiatt.spanning.attributes"/>
-      <ref name="teiatt.breaking.attributes"/>
       <ref name="teiatt.edition.attributes"/>
       <empty/>
     </element>
@@ -5791,7 +5209,6 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
       <ref name="teiatt.typed.attributes"/>
       <ref name="teiatt.edition.attributes"/>
       <ref name="teiatt.spanning.attributes"/>
-      <ref name="teiatt.breaking.attributes"/>
       <empty/>
     </element>
   </define>
@@ -5805,7 +5222,6 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
       <ref name="teiatt.typed.attributes"/>
       <ref name="teiatt.edition.attributes"/>
       <ref name="teiatt.spanning.attributes"/>
-      <ref name="teiatt.breaking.attributes"/>
       <empty/>
     </element>
   </define>
@@ -5819,7 +5235,6 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
       <ref name="teiatt.typed.attributes"/>
       <ref name="teiatt.edition.attributes"/>
       <ref name="teiatt.spanning.attributes"/>
-      <ref name="teiatt.breaking.attributes"/>
       <empty/>
     </element>
   </define>
@@ -6204,7 +5619,6 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
         </choice>
       </zeroOrMore>
       <ref name="teiatt.global.attributes"/>
-      <ref name="teiatt.declarable.attributes"/>
       <ref name="teiatt.typed.attributes"/>
       <ref name="teiatt.sortable.attributes"/>
       <ref name="teiatt.docStatus.attributes"/>
@@ -6240,7 +5654,6 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
         </zeroOrMore>
       </group>
       <ref name="teiatt.global.attributes"/>
-      <ref name="teiatt.declarable.attributes"/>
       <ref name="teiatt.typed.attributes"/>
       <ref name="teiatt.sortable.attributes"/>
       <ref name="teiatt.docStatus.attributes"/>
@@ -6272,7 +5685,6 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
       </group>
       <ref name="teiatt.global.attributes"/>
       <ref name="teiatt.sortable.attributes"/>
-      <ref name="teiatt.declarable.attributes"/>
       <ref name="teiatt.typed.attributes"/>
       <empty/>
     </element>
@@ -6345,7 +5757,6 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
       <ref name="teiatt.global.attributes"/>
       <ref name="teiatt.metrical.attributes"/>
       <ref name="teiatt.enjamb.attributes"/>
-      <ref name="teiatt.fragmentable.attributes"/>
       <empty/>
     </element>
   </define>
@@ -6406,7 +5817,6 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
       <ref name="teiatt.global.attributes"/>
       <ref name="teiatt.divLike.attributes"/>
       <ref name="teiatt.typed.attributes"/>
-      <ref name="teiatt.declaring.attributes"/>
       <empty/>
     </element>
   </define>
@@ -7145,8 +6555,8 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
       <ref name="teiatt.global.attribute.xmlbase"/>
       <ref name="teiatt.global.attribute.xmlspace"/>
       <ref name="teiatt.global.rendition.attribute.rend"/>
-      <ref name="teiatt.global.rendition.attribute.style"/>
-      <ref name="teiatt.global.rendition.attribute.rendition"/>
+
+
       <ref name="teiatt.global.linking.attribute.corresp"/>
       <ref name="teiatt.global.linking.attribute.synch"/>
       <ref name="teiatt.global.linking.attribute.sameAs"/>
@@ -7304,7 +6714,6 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
         </oneOrMore>
       </group>
       <ref name="teiatt.global.attributes"/>
-      <ref name="teiatt.declarable.attributes"/>
       <empty/>
     </element>
   </define>
@@ -7327,7 +6736,6 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
         </oneOrMore>
       </choice>
       <ref name="teiatt.global.attributes"/>
-      <ref name="teiatt.declarable.attributes"/>
       <empty/>
     </element>
   </define>
@@ -7350,7 +6758,6 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
         </oneOrMore>
       </choice>
       <ref name="teiatt.global.attributes"/>
-      <ref name="teiatt.declarable.attributes"/>
       <empty/>
     </element>
   </define>
@@ -7732,7 +7139,6 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
     </optional>
   </define>
   <define name="teiatt.lexicographic.attributes">
-    <ref name="teiatt.datcat.attributes"/>
     <ref name="teiatt.lexicographic.attribute.expand"/>
     <ref name="teiatt.lexicographic.attribute.norm"/>
     <ref name="teiatt.lexicographic.attribute.split"/>
@@ -9749,7 +9155,6 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
         </choice>
       </oneOrMore>
       <ref name="teiatt.global.attributes"/>
-      <ref name="teiatt.declarable.attributes"/>
       <optional>
         <attribute name="status">
           <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">supplies a
@@ -9849,7 +9254,6 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
         </oneOrMore>
       </choice>
       <ref name="teiatt.global.attributes"/>
-      <ref name="teiatt.declarable.attributes"/>
       <empty/>
     </element>
   </define>
@@ -9888,7 +9292,6 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
         </group>
       </choice>
       <ref name="teiatt.global.attributes"/>
-      <ref name="teiatt.declarable.attributes"/>
       <ref name="teiatt.sortable.attributes"/>
       <ref name="teiatt.docStatus.attributes"/>
       <empty/>
@@ -9942,7 +9345,6 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
         <ref name="teimodel.pLike"/>
       </oneOrMore>
       <ref name="teiatt.global.attributes"/>
-      <ref name="teiatt.declarable.attributes"/>
       <empty/>
     </element>
   </define>
@@ -9956,7 +9358,6 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
         <ref name="teimodel.pLike"/>
       </oneOrMore>
       <ref name="teiatt.global.attributes"/>
-      <ref name="teiatt.declarable.attributes"/>
       <empty/>
     </element>
   </define>
@@ -9973,7 +9374,6 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
         </choice>
       </oneOrMore>
       <ref name="teiatt.global.attributes"/>
-      <ref name="teiatt.declarable.attributes"/>
       <empty/>
     </element>
   </define>
@@ -9986,7 +9386,6 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
         <ref name="teimodel.pLike"/>
       </oneOrMore>
       <ref name="teiatt.global.attributes"/>
-      <ref name="teiatt.declarable.attributes"/>
       <optional>
         <attribute name="status">
           <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">indicates
@@ -10033,7 +9432,6 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
         <ref name="teimodel.pLike"/>
       </oneOrMore>
       <ref name="teiatt.global.attributes"/>
-      <ref name="teiatt.declarable.attributes"/>
       <optional>
         <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" name="method"
           a:defaultValue="silent">
@@ -10068,7 +9466,6 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
         </rule>
       </pattern>
       <ref name="teiatt.global.attributes"/>
-      <ref name="teiatt.declarable.attributes"/>
       <optional>
         <attribute name="marks">
           <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(quotation
@@ -10099,7 +9496,6 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
         <ref name="teimodel.pLike"/>
       </oneOrMore>
       <ref name="teiatt.global.attributes"/>
-      <ref name="teiatt.declarable.attributes"/>
       <optional>
         <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" name="eol"
           a:defaultValue="some">
@@ -10134,7 +9530,6 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
         <ref name="teimodel.pLike"/>
       </oneOrMore>
       <ref name="teiatt.global.attributes"/>
-      <ref name="teiatt.declarable.attributes"/>
       <empty/>
     </element>
   </define>
@@ -10147,7 +9542,6 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
         <ref name="teimodel.pLike"/>
       </oneOrMore>
       <ref name="teiatt.global.attributes"/>
-      <ref name="teiatt.declarable.attributes"/>
       <empty/>
     </element>
   </define>
@@ -10160,7 +9554,6 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
         <ref name="teimodel.pLike"/>
       </oneOrMore>
       <ref name="teiatt.global.attributes"/>
-      <ref name="teiatt.declarable.attributes"/>
       <empty/>
     </element>
   </define>
@@ -10172,7 +9565,6 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
       <zeroOrMore>
         <ref name="teimodel.pLike"/>
       </zeroOrMore>
-      <ref name="teiatt.declarable.attributes"/>
       <ref name="teiatt.global.attributes"/>
       <optional>
         <attribute name="marks">
@@ -10328,7 +9720,6 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
         <ref name="teimodel.pLike"/>
       </zeroOrMore>
       <ref name="teiatt.global.attributes"/>
-      <ref name="teiatt.declarable.attributes"/>
       <ref name="teiatt.styleDef.attributes"/>
       <empty/>
     </element>
@@ -10351,7 +9742,6 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
         </oneOrMore>
       </choice>
       <ref name="teiatt.global.attributes"/>
-      <ref name="teiatt.declarable.attributes"/>
       <empty/>
     </element>
   </define>
@@ -10538,7 +9928,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
         The Geographic Coordinates Declaration]</a:documentation>
       <ref name="teimacro.phraseSeq"/>
       <ref name="teiatt.global.attributes"/>
-      <ref name="teiatt.declarable.attributes"/>
+
       <optional>
         <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" name="datum"
           a:defaultValue="WGS84">
@@ -10640,7 +10030,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
         Decoration, and Other Notations]</a:documentation>
       <ref name="teimacro.specialPara"/>
       <ref name="teiatt.global.attributes"/>
-      <ref name="teiatt.handFeatures.attributes"/>
+
       <empty/>
     </element>
   </define>
@@ -10691,7 +10081,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
         </oneOrMore>
       </choice>
       <ref name="teiatt.global.attributes"/>
-      <ref name="teiatt.declarable.attributes"/>
+
       <empty/>
     </element>
   </define>
@@ -10739,7 +10129,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
         </choice>
       </zeroOrMore>
       <ref name="teiatt.global.attributes"/>
-      <ref name="teiatt.declarable.attributes"/>
+
       <empty/>
     </element>
   </define>
@@ -10840,7 +10230,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
           <ref name="teimodel.pLike"/>
         </oneOrMore>
       </choice>
-      <ref name="teiatt.declarable.attributes"/>
+
       <ref name="teiatt.canonical.attributes"/>
       <ref name="teiatt.global.attributes"/>
       <ref name="teiatt.typed.attributes"/>
@@ -10917,7 +10307,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
         <ref name="anyElement-xenoData"/>
       </choice>
       <ref name="teiatt.global.attributes"/>
-      <ref name="teiatt.declarable.attributes"/>
+
       <ref name="teiatt.typed.attributes"/>
       <empty/>
     </element>
@@ -10972,7 +10362,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
         [10.7.2. Writing, Decoration, and Other Notations]</a:documentation>
       <ref name="teimacro.specialPara"/>
       <ref name="teiatt.global.attributes"/>
-      <ref name="teiatt.handFeatures.attributes"/>
+
       <empty/>
     </element>
   </define>
@@ -11283,7 +10673,6 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
         <ref name="teif"/>
       </zeroOrMore>
       <ref name="teiatt.global.attributes"/>
-      <ref name="teiatt.datcat.attributes"/>
       <optional>
         <attribute name="type">
           <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">specifies
@@ -11319,7 +10708,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
         <ref name="teimodel.featureVal"/>
       </choice>
       <ref name="teiatt.global.attributes"/>
-      <ref name="teiatt.datcat.attributes"/>
+
       <attribute name="name">
         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">a single word
           which follows the rules defining a legal XML name (see ), providing a name for the
@@ -11345,7 +10734,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
         Value]</a:documentation>
       <empty/>
       <ref name="teiatt.global.attributes"/>
-      <ref name="teiatt.datcat.attributes"/>
+
       <attribute name="value">
         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">supplies a
           binary value.</a:documentation>
@@ -11361,7 +10750,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
         finite list of symbols. [18.3. Other Atomic Feature Values]</a:documentation>
       <empty/>
       <ref name="teiatt.global.attributes"/>
-      <ref name="teiatt.datcat.attributes"/>
+
       <attribute name="value">
         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">supplies a
           symbolic value for the feature, one of a finite list that may be specified in a feature
@@ -11380,7 +10769,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
         range. [18.3. Other Atomic Feature Values]</a:documentation>
       <empty/>
       <ref name="teiatt.global.attributes"/>
-      <ref name="teiatt.datcat.attributes"/>
+
       <attribute name="value">
         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">supplies a
           lower bound for the numeric value represented, and also (if max is not supplied) its upper
@@ -11424,7 +10813,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
         Other Atomic Feature Values]</a:documentation>
       <ref name="teimacro.xtext"/>
       <ref name="teiatt.global.attributes"/>
-      <ref name="teiatt.datcat.attributes"/>
+
       <empty/>
     </element>
   </define>
@@ -11736,8 +11125,6 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
       </pattern>
       <ref name="teiatt.global.attributes"/>
       <ref name="teiatt.typed.attributes"/>
-      <ref name="teiatt.declaring.attributes"/>
-      <ref name="teiatt.fragmentable.attributes"/>
       <ref name="teiatt.written.attributes"/>
       <empty/>
     </element>
@@ -12154,7 +11541,6 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
       <ref name="teiatt.global.attributes"/>
       <ref name="teiatt.sortable.attributes"/>
       <ref name="teiatt.typed.attributes"/>
-      <ref name="teiatt.declaring.attributes"/>
       <ref name="teiatt.docStatus.attributes"/>
       <empty/>
     </element>
@@ -12390,7 +11776,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
       <ref name="teiatt.global.attributes"/>
       <ref name="teiatt.datable.attributes"/>
       <ref name="teiatt.dimensions.attributes"/>
-      <ref name="teiatt.editLike.attributes"/>
+
       <ref name="teiatt.typed.attributes"/>
       <empty/>
     </element>
@@ -12404,7 +11790,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
       <ref name="teiatt.global.attributes"/>
       <ref name="teiatt.naming.attributes"/>
       <ref name="teiatt.datable.attributes"/>
-      <ref name="teiatt.editLike.attributes"/>
+
       <ref name="teiatt.typed.attributes"/>
       <empty/>
     </element>
@@ -13157,7 +12543,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
         Notations]</a:documentation>
       <ref name="teimacro.specialPara"/>
       <ref name="teiatt.global.attributes"/>
-      <ref name="teiatt.handFeatures.attributes"/>
+
       <empty/>
     </element>
   </define>
@@ -13401,7 +12787,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
         [10.8. History]</a:documentation>
       <ref name="teimacro.specialPara"/>
       <ref name="teiatt.global.attributes"/>
-      <ref name="teiatt.editLike.attributes"/>
+
       <ref name="teiatt.datable.attributes"/>
       <empty/>
     </element>
@@ -13933,7 +13319,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
       <ref name="teimacro.phraseSeq"/>
       <ref name="teiatt.global.attributes"/>
       <ref name="teiatt.datable.attributes"/>
-      <ref name="teiatt.editLike.attributes"/>
+
       <ref name="teiatt.personal.attributes"/>
       <ref name="teiatt.typed.attributes"/>
       <empty/>
@@ -13948,7 +13334,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
       <ref name="teimacro.phraseSeq"/>
       <ref name="teiatt.global.attributes"/>
       <ref name="teiatt.datable.attributes"/>
-      <ref name="teiatt.editLike.attributes"/>
+
       <ref name="teiatt.personal.attributes"/>
       <ref name="teiatt.typed.attributes"/>
       <empty/>
@@ -14032,7 +13418,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
         absolute or relative place name. [13.2.3. Place Names]</a:documentation>
       <ref name="teimacro.phraseSeq"/>
       <ref name="teiatt.datable.attributes"/>
-      <ref name="teiatt.editLike.attributes"/>
+
       <ref name="teiatt.global.attributes"/>
       <ref name="teiatt.personal.attributes"/>
       <ref name="teiatt.typed.attributes"/>
@@ -14113,7 +13499,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
         Names]</a:documentation>
       <ref name="teimacro.phraseSeq"/>
       <ref name="teiatt.datable.attributes"/>
-      <ref name="teiatt.editLike.attributes"/>
+
       <ref name="teiatt.global.attributes"/>
       <ref name="teiatt.naming.attributes"/>
       <ref name="teiatt.typed.attributes"/>
@@ -14128,7 +13514,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
         Mount Sinai. [13.2.3. Place Names]</a:documentation>
       <ref name="teimacro.phraseSeq"/>
       <ref name="teiatt.datable.attributes"/>
-      <ref name="teiatt.editLike.attributes"/>
+
       <ref name="teiatt.global.attributes"/>
       <ref name="teiatt.naming.attributes"/>
       <ref name="teiatt.typed.attributes"/>
@@ -14142,7 +13528,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
         a geographic name, such as valley, mount, etc. [13.2.3. Place Names]</a:documentation>
       <ref name="teimacro.phraseSeq"/>
       <ref name="teiatt.datable.attributes"/>
-      <ref name="teiatt.editLike.attributes"/>
+
       <ref name="teiatt.global.attributes"/>
       <ref name="teiatt.naming.attributes"/>
       <ref name="teiatt.typed.attributes"/>
@@ -14157,7 +13543,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
         example an employer or sponsor. [15.2.2. The Participant Description]</a:documentation>
       <ref name="teimacro.phraseSeq"/>
       <ref name="teiatt.global.attributes"/>
-      <ref name="teiatt.editLike.attributes"/>
+
       <ref name="teiatt.datable.attributes"/>
       <ref name="teiatt.naming.attributes"/>
       <ref name="teiatt.typed.attribute.subtype"/>
@@ -14181,7 +13567,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
         age of a person. [13.3.2.1. Personal Characteristics]</a:documentation>
       <ref name="teimacro.phraseSeq.limited"/>
       <ref name="teiatt.global.attributes"/>
-      <ref name="teiatt.editLike.attributes"/>
+
       <ref name="teiatt.datable.attributes"/>
       <ref name="teiatt.typed.attribute.subtype"/>
       <ref name="teiatt.dimensions.attributes"/>
@@ -14214,7 +13600,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
         Description]</a:documentation>
       <ref name="teimacro.phraseSeq"/>
       <ref name="teiatt.global.attributes"/>
-      <ref name="teiatt.editLike.attributes"/>
+
       <ref name="teiatt.datable.attributes"/>
       <ref name="teiatt.dimensions.attributes"/>
       <ref name="teiatt.naming.attributes"/>
@@ -14266,7 +13652,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
       </group>
       <ref name="teiatt.global.attributes"/>
       <ref name="teiatt.datable.attributes"/>
-      <ref name="teiatt.editLike.attributes"/>
+
       <ref name="teiatt.naming.attributes"/>
       <ref name="teiatt.typed.attributes"/>
       <empty/>
@@ -14280,7 +13666,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
       <ref name="teimacro.phraseSeq"/>
       <ref name="teiatt.datable.attributes"/>
       <ref name="teiatt.dimensions.attributes"/>
-      <ref name="teiatt.editLike.attributes"/>
+
       <ref name="teiatt.global.attributes"/>
       <ref name="teiatt.naming.attributes"/>
       <ref name="teiatt.typed.attribute.subtype"/>
@@ -14305,7 +13691,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
         Description]</a:documentation>
       <ref name="teimacro.phraseSeq"/>
       <ref name="teiatt.global.attributes"/>
-      <ref name="teiatt.editLike.attributes"/>
+
       <ref name="teiatt.datable.attributes"/>
       <ref name="teiatt.naming.attributes"/>
       <ref name="teiatt.typed.attribute.subtype"/>
@@ -14354,7 +13740,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
       </group>
       <ref name="teiatt.global.attributes"/>
       <ref name="teiatt.datable.attributes"/>
-      <ref name="teiatt.editLike.attributes"/>
+
       <ref name="teiatt.typed.attributes"/>
       <ref name="teiatt.naming.attributes"/>
       <ref name="teiatt.sortable.attributes"/>
@@ -14375,7 +13761,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
         Characteristics]</a:documentation>
       <ref name="teimacro.phraseSeq"/>
       <ref name="teiatt.global.attributes"/>
-      <ref name="teiatt.editLike.attributes"/>
+
       <ref name="teiatt.datable.attributes"/>
       <ref name="teiatt.canonical.attributes"/>
       <ref name="teiatt.typed.attribute.subtype"/>
@@ -14402,7 +13788,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
       <ref name="teiatt.global.attributes"/>
       <ref name="teiatt.datable.attributes"/>
       <ref name="teiatt.dimensions.attributes"/>
-      <ref name="teiatt.editLike.attributes"/>
+
       <empty/>
     </element>
   </define>
@@ -14414,7 +13800,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
         Location]</a:documentation>
       <text/>
       <ref name="teiatt.global.attributes"/>
-      <ref name="teiatt.declaring.attributes"/>
+
       <empty/>
     </element>
   </define>
@@ -14436,7 +13822,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
       </group>
       <ref name="teiatt.global.attributes"/>
       <ref name="teiatt.datable.attributes"/>
-      <ref name="teiatt.editLike.attributes"/>
+
       <ref name="teiatt.typed.attribute.subtype"/>
       <optional>
         <attribute name="type">
@@ -14477,7 +13863,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
       <ref name="teimacro.phraseSeq.limited"/>
       <ref name="teiatt.global.attributes"/>
       <ref name="teiatt.datable.attributes"/>
-      <ref name="teiatt.editLike.attributes"/>
+
       <attribute name="tag">
         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">supplies a
           valid language tag for the language concerned.</a:documentation>
@@ -14525,7 +13911,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
       </group>
       <ref name="teiatt.global.attributes"/>
       <ref name="teiatt.typed.attributes"/>
-      <ref name="teiatt.declarable.attributes"/>
+
       <ref name="teiatt.sortable.attributes"/>
       <empty/>
     </element>
@@ -14551,7 +13937,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
       </group>
       <ref name="teiatt.global.attributes"/>
       <ref name="teiatt.typed.attributes"/>
-      <ref name="teiatt.declarable.attributes"/>
+
       <ref name="teiatt.sortable.attributes"/>
       <empty/>
     </element>
@@ -14583,7 +13969,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
       </group>
       <ref name="teiatt.global.attributes"/>
       <ref name="teiatt.typed.attributes"/>
-      <ref name="teiatt.declarable.attributes"/>
+
       <ref name="teiatt.sortable.attributes"/>
       <empty/>
     </element>
@@ -14613,7 +13999,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
       </group>
       <ref name="teiatt.global.attributes"/>
       <ref name="teiatt.typed.attributes"/>
-      <ref name="teiatt.declarable.attributes"/>
+
       <ref name="teiatt.sortable.attributes"/>
       <empty/>
     </element>
@@ -14638,7 +14024,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
       <ref name="teiatt.global.attributes"/>
       <ref name="teiatt.typed.attributes"/>
       <ref name="teiatt.datable.attributes"/>
-      <ref name="teiatt.editLike.attributes"/>
+
       <empty/>
     </element>
   </define>
@@ -14650,7 +14036,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
       <ref name="teimacro.phraseSeq"/>
       <ref name="teiatt.global.attributes"/>
       <ref name="teiatt.datable.attributes"/>
-      <ref name="teiatt.editLike.attributes"/>
+
       <ref name="teiatt.naming.attributes"/>
       <ref name="teiatt.typed.attribute.subtype"/>
       <optional>
@@ -14675,7 +14061,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
       <ref name="teimacro.specialPara"/>
       <ref name="teiatt.global.attributes"/>
       <ref name="teiatt.datable.attributes"/>
-      <ref name="teiatt.editLike.attributes"/>
+
       <ref name="teiatt.naming.attributes"/>
       <ref name="teiatt.typed.attribute.subtype"/>
       <optional>
@@ -14745,7 +14131,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
       </group>
       <ref name="teiatt.global.attributes"/>
       <ref name="teiatt.typed.attributes"/>
-      <ref name="teiatt.editLike.attributes"/>
+
       <ref name="teiatt.sortable.attributes"/>
       <optional>
         <attribute name="role">
@@ -14807,7 +14193,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
         </zeroOrMore>
       </choice>
       <ref name="teiatt.global.attributes"/>
-      <ref name="teiatt.editLike.attributes"/>
+
       <ref name="teiatt.sortable.attributes"/>
       <optional>
         <attribute name="role">
@@ -14864,7 +14250,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
         </zeroOrMore>
       </choice>
       <ref name="teiatt.global.attributes"/>
-      <ref name="teiatt.editLike.attributes"/>
+
       <ref name="teiatt.sortable.attributes"/>
       <optional>
         <attribute name="role">
@@ -15008,7 +14394,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
       </group>
       <ref name="teiatt.global.attributes"/>
       <ref name="teiatt.typed.attributes"/>
-      <ref name="teiatt.editLike.attributes"/>
+
       <ref name="teiatt.sortable.attributes"/>
       <empty/>
     </element>
@@ -15049,7 +14435,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
       </group>
       <ref name="teiatt.global.attributes"/>
       <ref name="teiatt.datable.attributes"/>
-      <ref name="teiatt.editLike.attributes"/>
+
       <ref name="teiatt.naming.attributes"/>
       <ref name="teiatt.typed.attributes"/>
       <ref name="teiatt.dimensions.attributes"/>
@@ -15088,7 +14474,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
       </pattern>
       <ref name="teiatt.global.attributes"/>
       <ref name="teiatt.datable.attributes"/>
-      <ref name="teiatt.editLike.attributes"/>
+
       <ref name="teiatt.canonical.attributes"/>
       <ref name="teiatt.sortable.attributes"/>
       <ref name="teiatt.typed.attributes"/>
@@ -15149,7 +14535,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
       <ref name="teimacro.phraseSeq"/>
       <ref name="teiatt.global.attributes"/>
       <ref name="teiatt.datable.attributes"/>
-      <ref name="teiatt.editLike.attributes"/>
+
       <ref name="teiatt.naming.attributes"/>
       <ref name="teiatt.typed.attribute.subtype"/>
       <optional>
@@ -15172,7 +14558,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
         sex of a person. [13.3.2.1. Personal Characteristics]</a:documentation>
       <ref name="teimacro.phraseSeq"/>
       <ref name="teiatt.global.attributes"/>
-      <ref name="teiatt.editLike.attributes"/>
+
       <ref name="teiatt.datable.attributes"/>
       <ref name="teiatt.typed.attribute.subtype"/>
       <optional>
@@ -15209,7 +14595,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
       <ref name="teimacro.phraseSeq"/>
       <ref name="teiatt.global.attributes"/>
       <ref name="teiatt.datable.attributes"/>
-      <ref name="teiatt.editLike.attributes"/>
+
       <ref name="teiatt.naming.attributes"/>
       <ref name="teiatt.typed.attribute.subtype"/>
       <optional>
@@ -15282,7 +14668,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
       </group>
       <ref name="teiatt.global.attributes"/>
       <ref name="teiatt.datable.attributes"/>
-      <ref name="teiatt.editLike.attributes"/>
+
       <ref name="teiatt.typed.attributes"/>
       <ref name="teiatt.naming.attributes"/>
       <ref name="teiatt.dimensions.attributes"/>
@@ -15321,7 +14707,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
       </group>
       <ref name="teiatt.global.attributes"/>
       <ref name="teiatt.datable.attributes"/>
-      <ref name="teiatt.editLike.attributes"/>
+
       <ref name="teiatt.naming.attributes"/>
       <ref name="teiatt.typed.attributes"/>
       <empty/>
@@ -15367,7 +14753,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
       </group>
       <ref name="teiatt.global.attributes"/>
       <ref name="teiatt.datable.attributes"/>
-      <ref name="teiatt.editLike.attributes"/>
+
       <ref name="teiatt.naming.attributes"/>
       <ref name="teiatt.typed.attributes"/>
       <ref name="teiatt.dimensions.attributes"/>
@@ -15431,7 +14817,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
       </group>
       <ref name="teiatt.global.attributes"/>
       <ref name="teiatt.typed.attributes"/>
-      <ref name="teiatt.declarable.attributes"/>
+
       <ref name="teiatt.sortable.attributes"/>
       <empty/>
     </element>
@@ -15991,10 +15377,6 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
       <empty/>
     </element>
   </define>
-  <define name="teiatt.duration.attributes">
-    <ref name="teiatt.duration.w3c.attributes"/>
-    <ref name="teiatt.duration.iso.attributes"/>
-  </define>
   <define name="teimodel.global.spoken">
     <choice>
       <ref name="teipause"/>
@@ -16067,7 +15449,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
         <ref name="teimodel.biblLike"/>
       </choice>
       <ref name="teiatt.global.attributes"/>
-      <ref name="teiatt.declarable.attributes"/>
+
       <empty/>
     </element>
   </define>
@@ -16102,8 +15484,6 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
         </choice>
       </zeroOrMore>
       <ref name="teiatt.global.attributes"/>
-      <ref name="teiatt.declarable.attributes"/>
-      <ref name="teiatt.duration.attributes"/>
       <ref name="teiatt.typed.attribute.subtype"/>
       <optional>
         <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" name="type"
@@ -16130,7 +15510,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
         <ref name="teimodel.pLike"/>
       </oneOrMore>
       <ref name="teiatt.global.attributes"/>
-      <ref name="teiatt.declarable.attributes"/>
+
       <empty/>
     </element>
   </define>
@@ -16147,7 +15527,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
         <ref name="teirecording"/>
       </choice>
       <ref name="teiatt.global.attributes"/>
-      <ref name="teiatt.declarable.attributes"/>
+
       <empty/>
     </element>
   </define>
@@ -16190,7 +15570,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
       <ref name="teimacro.paraContent"/>
       <ref name="teiatt.global.attributes"/>
       <ref name="teiatt.timed.attributes"/>
-      <ref name="teiatt.declaring.attributes"/>
+
       <ref name="teiatt.ascribed.attributes"/>
       <ref name="teiatt.notated.attributes"/>
       <optional>
@@ -16592,7 +15972,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
       </group>
       <ref name="teiatt.global.attributes"/>
       <ref name="teiatt.sortable.attributes"/>
-      <ref name="teiatt.declarable.attributes"/>
+
       <ref name="teiatt.typed.attributes"/>
       <empty/>
     </element>
@@ -16941,7 +16321,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
         </optional>
       </group>
       <ref name="teiatt.global.attributes"/>
-      <ref name="teiatt.declaring.attributes"/>
+
       <ref name="teiatt.typed.attributes"/>
       <ref name="teiatt.written.attributes"/>
       <empty/>
@@ -17048,7 +16428,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
         </zeroOrMore>
       </group>
       <ref name="teiatt.global.attributes"/>
-      <ref name="teiatt.declaring.attributes"/>
+
       <empty/>
     </element>
   </define>
@@ -17084,7 +16464,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
         </zeroOrMore>
       </group>
       <ref name="teiatt.global.attributes"/>
-      <ref name="teiatt.declaring.attributes"/>
+
       <ref name="teiatt.typed.attributes"/>
       <empty/>
     </element>
@@ -17124,7 +16504,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
         </optional>
       </group>
       <ref name="teiatt.global.attributes"/>
-      <ref name="teiatt.declaring.attributes"/>
+
       <ref name="teiatt.typed.attributes"/>
       <empty/>
     </element>
@@ -17208,7 +16588,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
       <ref name="teiatt.global.attributes"/>
       <ref name="teiatt.divLike.attributes"/>
       <ref name="teiatt.typed.attributes"/>
-      <ref name="teiatt.declaring.attributes"/>
+
       <ref name="teiatt.written.attributes"/>
       <empty/>
     </element>
@@ -17275,7 +16655,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
       <ref name="teiatt.global.attributes"/>
       <ref name="teiatt.divLike.attributes"/>
       <ref name="teiatt.typed.attributes"/>
-      <ref name="teiatt.declaring.attributes"/>
+
       <empty/>
     </element>
   </define>
@@ -17341,7 +16721,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
       <ref name="teiatt.global.attributes"/>
       <ref name="teiatt.divLike.attributes"/>
       <ref name="teiatt.typed.attributes"/>
-      <ref name="teiatt.declaring.attributes"/>
+
       <empty/>
     </element>
   </define>
@@ -17407,7 +16787,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
       <ref name="teiatt.global.attributes"/>
       <ref name="teiatt.divLike.attributes"/>
       <ref name="teiatt.typed.attributes"/>
-      <ref name="teiatt.declaring.attributes"/>
+
       <empty/>
     </element>
   </define>
@@ -17473,7 +16853,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
       <ref name="teiatt.global.attributes"/>
       <ref name="teiatt.divLike.attributes"/>
       <ref name="teiatt.typed.attributes"/>
-      <ref name="teiatt.declaring.attributes"/>
+
       <empty/>
     </element>
   </define>
@@ -17539,7 +16919,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
       <ref name="teiatt.global.attributes"/>
       <ref name="teiatt.divLike.attributes"/>
       <ref name="teiatt.typed.attributes"/>
-      <ref name="teiatt.declaring.attributes"/>
+
       <empty/>
     </element>
   </define>
@@ -17605,7 +16985,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
       <ref name="teiatt.global.attributes"/>
       <ref name="teiatt.divLike.attributes"/>
       <ref name="teiatt.typed.attributes"/>
-      <ref name="teiatt.declaring.attributes"/>
+
       <empty/>
     </element>
   </define>
@@ -17645,7 +17025,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
       <ref name="teiatt.global.attributes"/>
       <ref name="teiatt.divLike.attributes"/>
       <ref name="teiatt.typed.attributes"/>
-      <ref name="teiatt.declaring.attributes"/>
+
       <empty/>
     </element>
   </define>
@@ -18067,7 +17447,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
         </optional>
       </group>
       <ref name="teiatt.global.attributes"/>
-      <ref name="teiatt.declaring.attributes"/>
+
       <empty/>
     </element>
   </define>
@@ -18123,7 +17503,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
         </optional>
       </group>
       <ref name="teiatt.global.attributes"/>
-      <ref name="teiatt.declaring.attributes"/>
+
       <empty/>
     </element>
   </define>
@@ -18287,7 +17667,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
         </optional>
       </group>
       <ref name="teiatt.global.attributes"/>
-      <ref name="teiatt.declaring.attributes"/>
+
       <empty/>
     </element>
   </define>
@@ -18306,7 +17686,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
         </choice>
       </oneOrMore>
       <ref name="teiatt.global.attributes"/>
-      <ref name="teiatt.declaring.attributes"/>
+
       <empty/>
     </element>
   </define>
@@ -18341,7 +17721,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
       </group>
       <ref name="teiatt.global.attributes"/>
       <ref name="teiatt.coordinated.attributes"/>
-      <ref name="teiatt.declaring.attributes"/>
+
       <ref name="teiatt.typed.attributes"/>
       <optional>
         <attribute name="attachment">
@@ -18378,7 +17758,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
         </choice>
       </oneOrMore>
       <ref name="teiatt.global.attributes"/>
-      <ref name="teiatt.declaring.attributes"/>
+
       <ref name="teiatt.typed.attributes"/>
       <empty/>
     </element>
@@ -18520,7 +17900,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
         an abbreviation. [11.3.1.2. Abbreviation and Expansion]</a:documentation>
       <ref name="teimacro.xtext"/>
       <ref name="teiatt.global.attributes"/>
-      <ref name="teiatt.editLike.attributes"/>
+
       <ref name="teiatt.dimensions.attributes"/>
       <empty/>
     </element>
@@ -18567,7 +17947,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
         [11.3.2.1. Document Hands]</a:documentation>
       <empty/>
       <ref name="teiatt.global.attributes"/>
-      <ref name="teiatt.handFeatures.attributes"/>
+
       <optional>
         <attribute name="new">
           <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">indicates a
@@ -18593,7 +17973,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
       </zeroOrMore>
       <ref name="teiatt.global.attributes"/>
       <ref name="teiatt.typed.attributes"/>
-      <ref name="teiatt.editLike.attributes"/>
+
       <empty/>
     </element>
   </define>
@@ -18627,8 +18007,8 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
       <ref name="teiatt.global.attribute.xmlbase"/>
       <ref name="teiatt.global.attribute.xmlspace"/>
       <ref name="teiatt.global.rendition.attribute.rend"/>
-      <ref name="teiatt.global.rendition.attribute.style"/>
-      <ref name="teiatt.global.rendition.attribute.rendition"/>
+
+
       <ref name="teiatt.global.linking.attribute.corresp"/>
       <ref name="teiatt.global.linking.attribute.synch"/>
       <ref name="teiatt.global.linking.attribute.sameAs"/>
@@ -18726,7 +18106,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
         scribe. [11.3.3.1. Damage, Illegibility, and Supplied Text]</a:documentation>
       <ref name="teimacro.paraContent"/>
       <ref name="teiatt.global.attributes"/>
-      <ref name="teiatt.editLike.attributes"/>
+
       <ref name="teiatt.dimensions.attributes"/>
       <optional>
         <attribute name="reason">
@@ -18752,7 +18132,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
         Damage, Illegibility, and Supplied Text]</a:documentation>
       <ref name="teimacro.paraContent"/>
       <ref name="teiatt.global.attributes"/>
-      <ref name="teiatt.editLike.attributes"/>
+
       <ref name="teiatt.dimensions.attributes"/>
       <optional>
         <attribute name="reason">
@@ -18779,7 +18159,6 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
         Transcription]</a:documentation>
       <ref name="teimacro.paraContent"/>
       <ref name="teiatt.global.attributes"/>
-      <ref name="teiatt.editLike.attributes"/>
       <ref name="teiatt.dimensions.attributes"/>
       <optional>
         <attribute name="reason">
@@ -19027,7 +18406,7 @@ TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
         </oneOrMore>
       </choice>
       <ref name="teiatt.global.attributes"/>
-      <ref name="teiatt.declarable.attributes"/>
+
       <optional>
         <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" name="type"
           a:defaultValue="met real">
