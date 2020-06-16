@@ -13,9 +13,10 @@ as well as the hand responsible and the MS line reference. It is sorted by abbre
                 <tr>
                     <th>Glyph ID</th>
                     <th>Glyph Exp.</th>
-                    <th>Word Context</th>
-                    <th>Word Context (HW)</th>
-                    <th>Word Context (POS)</th>
+                    <th>Context Word</th>
+                    <th>Context Word (HW)</th>
+                    <th>Context Word (POS)</th>
+                    <th>Context Word (Plene)</th>
                     <th>Hand</th>
                     <th>MS Ref</th>
                 </tr>
@@ -29,6 +30,16 @@ as well as the hand responsible and the MS line reference. It is sorted by abbre
                     let $word_context_hwRef := $x/ancestor::w[1]/@lemmaRef
                     let $word_context_pos := $x/ancestor::w[1]/@pos
                     let $hand := $x/preceding::handShift[1]/@new
+                    let $word_context_plene :=
+                    for $y in //w[@lemmaRef = $word_context_hw and preceding::handShift[1]/@new = $hand and not(descendant::g)]
+                    let $form := string($y)
+                        where $form != preceding::w[@lemmaRef = $word_context_hw and preceding::handShift[1]/@new = $hand and not(descendant::g)]/string(self::*)
+                    return
+                        if ($y[not(following::w[@lemmaRef = $word_context_hw and preceding::handShift[1]/@new = $hand and not(descendant::g)])])
+                        then
+                            $form
+                        else
+                            concat($form, ", ")
                     let $ms_ref := if ($x/preceding::lb[1]/@sameAs) then
                         string($x/preceding::lb[1]/@sameAs)
                     else
@@ -44,6 +55,7 @@ as well as the hand responsible and the MS line reference. It is sorted by abbre
                                     href="{$word_context_hwRef}"
                                     target="_blank">{string($word_context_hw)}</a></td>
                             <td>{string($word_context_pos)}</td>
+                            <td>{$word_context_plene}</td>
                             <td>{string($hand)}</td>
                             <td>{string($ms_ref)}</td>
                         </tr>
