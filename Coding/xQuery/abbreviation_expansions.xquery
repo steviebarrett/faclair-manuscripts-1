@@ -1,7 +1,8 @@
 declare default element namespace "http://www.tei-c.org/ns/1.0";
 declare option saxon:output "omit-xml-declaration=yes";
 declare option saxon:output "method=html";
-
+(: This xQuery produces a table of abbreviations, how they are expanded, and the word in which they appear, 
+as well as the hand responsible and the MS line reference. It is sorted by abbreviation type. :)
 <html>
     <head>
         <title>Abbreviations</title>
