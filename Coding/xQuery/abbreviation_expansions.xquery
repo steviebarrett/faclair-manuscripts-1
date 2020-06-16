@@ -30,16 +30,6 @@ as well as the hand responsible and the MS line reference. It is sorted by abbre
                     let $word_context_hwRef := $x/ancestor::w[1]/@lemmaRef
                     let $word_context_pos := $x/ancestor::w[1]/@pos
                     let $hand := $x/preceding::handShift[1]/@new
-                    let $word_context_plene :=
-                    for $y in //w[@lemmaRef = $word_context_hw and preceding::handShift[1]/@new = $hand and not(descendant::g)]
-                    let $form := string($y)
-                        where $form != preceding::w[@lemmaRef = $word_context_hw and preceding::handShift[1]/@new = $hand and not(descendant::g)]/string(self::*)
-                    return
-                        if ($y[not(following::w[@lemmaRef = $word_context_hw and preceding::handShift[1]/@new = $hand and not(descendant::g)])])
-                        then
-                            $form
-                        else
-                            concat($form, ", ")
                     let $ms_ref := if ($x/preceding::lb[1]/@sameAs) then
                         string($x/preceding::lb[1]/@sameAs)
                     else
@@ -50,12 +40,22 @@ as well as the hand responsible and the MS line reference. It is sorted by abbre
                         <tr>
                             <td>{string($glyph_id)}</td>
                             <td>{string($glyph_exp)}</td>
-                            <td>{string(normalize-space($word_context))}</td>
+                            <td>{string(translate(normalize-space($word_context), " ", ""))}</td>
                             <td><a
                                     href="{$word_context_hwRef}"
                                     target="_blank">{string($word_context_hw)}</a></td>
                             <td>{string($word_context_pos)}</td>
-                            <td>{$word_context_plene}</td>
+                            <td>{
+                                    for $y in //w[@lemmaRef = $word_context_hwRef and preceding::handShift[1]/@new = $hand and not(descendant::g)]
+                                    let $form := string($y/self::*)
+                                        where $y/not(preceding::w[@lemmaRef = $word_context_hwRef and preceding::handShift[1]/@new = $hand and not(descendant::g) and string(self::*) = $form])
+                                    return
+                                        if ($y[not(following::w[@lemmaRef = $word_context_hwRef and preceding::handShift[1]/@new = $hand and not(descendant::g)])])
+                                        then
+                                            string(translate(normalize-space($form), " ", ""))
+                                        else
+                                            concat(string(translate(normalize-space($form), " ", "")), ", ")
+                                }</td>
                             <td>{string($hand)}</td>
                             <td>{string($ms_ref)}</td>
                         </tr>
