@@ -21,6 +21,7 @@
     <xsl:template match="/">
         <xsl:result-document href="Data\abbreviations_data\{$filename}">
             <html xmlns="http://www.w3.org/1999/xhtml">
+            <html>
                 <head>
                     <title>FnaG MSS: Abbreviation Data</title>
                 </head>
