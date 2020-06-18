@@ -35,7 +35,7 @@ as well as the hand responsible and the MS line reference. It is sorted by abbre
                     else
                         string($x/preceding::lb[1]/@xml:id)
                     let $word_context := $x/ancestor::w[1][not(descendant::del) and not(descendant::supplied)]
-                        order by substring(string($glyph_id),2)
+                        order by substring(string($glyph_id), 2)
                     return
                         <tr>
                             <td>{string($glyph_id)}</td>
@@ -46,7 +46,7 @@ as well as the hand responsible and the MS line reference. It is sorted by abbre
                                     target="_blank">{string($word_context_hw)}</a></td>
                             <td>{string($word_context_pos)}</td>
                             <td>{
-                                    for $y in //w[@lemmaRef = $word_context_hwRef and preceding::handShift[1]/@new = $hand and not(descendant::g[contains(@ref, "g") and not(@ref = "g4")])]
+                                    for $y in //w[@lemmaRef = $word_context_hwRef and preceding::handShift[1]/@new = $hand and not(descendant::g[contains(@ref, "g") and not(@ref = "g4") and not(@ref = "g8") and not(@ref = "g11") and not(@ref = "g13") and not(@ref = "g67") and not(@ref = "g72") and not(@ref = "g77")])]
                                     let $form := string($y/self::*)
                                         where $y/not(preceding::w[@lemmaRef = $word_context_hwRef and preceding::handShift[1]/@new = $hand and not(descendant::g) and string(self::*) = $form])
                                     return
