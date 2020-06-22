@@ -12,9 +12,18 @@ else
     string($x/preceding::lb[1]/@xml:id)
 let $chars := for $z at $i in (1 to $length)
 let $char := substring($form, $i, 1)
+let $charType := if (string(translate(normalize-space(lower-case($char)), " ", "")) = ("b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "q", "r", "s", "t", "v", "x", "z"))
+then
+    "C"
+else
+    if (string(translate(normalize-space(lower-case($char)), " ", "")) = ("a", "e", "i", "o", "u", "á", "é", "í", "ó", "ú"))
+    then
+        "V"
+    else
+        "?"
 return
     <char
-        n="{string($i)}">{string(translate(normalize-space($char), " ", ""))}</char>
+        n="{string($i)}" type="{$charType}">{string(translate(normalize-space($char), " ", ""))}</char>
 return
     <w
         lemma="{$hw}"
