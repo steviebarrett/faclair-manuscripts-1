@@ -21,4 +21,4 @@ return
         lemmaRef="{$hwRef}"
         hand="{$hand}"
         ref="{$msLine}"
-        >{$chars}</w>
+    >{$chars}</w>
