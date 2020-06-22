@@ -16,4 +16,9 @@ return
     <char
         n="{string($i)}">{string(translate(normalize-space($char), " ", ""))}</char>
 return
-    <w>{$chars}</w>
+    <w
+        lemma="{$hw}"
+        lemmaRef="{$hwRef}"
+        hand="{$hand}"
+        ref="{$msLine}"
+        >{$chars}</w>
