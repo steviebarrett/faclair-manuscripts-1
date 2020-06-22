@@ -5,12 +5,13 @@ let $form := string(translate(normalize-space($x/self::*), " ", ""))
 let $length := string-length($form)
 let $hw := $x/@lemma
 let $hwRef := $x/@lemmaRef
-let $hand := $x/preceding::handShift/@new
+let $hand := $x/preceding::handShift[1]/@new
 let $msLine := if ($x/preceding::lb[1]/@sameAs) then
     string($x/preceding::lb[1]/@sameAs)
 else
     string($x/preceding::lb[1]/@xml:id)
-let $chars := for $z at $i in (1 to $length)
+let $chars :=
+for $z at $i in (1 to $length)
 let $char := substring($form, $i, 1)
 let $charType := if (string(translate(normalize-space(lower-case($char)), " ", "")) = ("b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "q", "r", "s", "t", "v", "x", "z"))
 then
@@ -26,9 +27,43 @@ return
         n="{string($i)}"
         type="{$charType}">{string(translate(normalize-space($char), " ", ""))}</char>
 let $wordData := <w>{$chars}</w>
+let $chars_2 :=
 for $c in $wordData/char
 let $num := $c/@n
-let $type := $c/@type
 let $char := string($c/self::*)
+let $prevV := string($c/preceding-sibling::char[@type = "V"][1])
+let $nextV := string($c/following-sibling::char[@type = "V"][1])
+let $cType := if ($c/ancestor::w/char/@type = "V")
+then
+    if ($prevV = ("e", "i", "é", "í") or $nextV = ("e", "i", "é", "í"))
+    then
+        "C´"
+    else
+        "C`"
+else
+    "C"
+let $type := if (string($c/@type) = "C")
+then
+    if ($char = "h")
+    then
+        "h"
+    else
+        $cType
+else
+    if (string($c/@type) = "V")
+    then
+        "V"
+    else
+        "?"
 return
-    $wordData
+    <char
+        n="{$num}"
+        type="{$type}">{$char}</char>
+let $wshape := translate(string-join($chars_2/@type), "h?", "")
+return
+    <w
+        lemma="{$hw}"
+        lemmaRef="{$hwRef}"
+        hand="{$hand}"
+        ref="{$msLine}"
+        wshape="{$wshape}">{$chars_2}</w>
