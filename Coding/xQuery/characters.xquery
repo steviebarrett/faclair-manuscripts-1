@@ -5,6 +5,24 @@ let $form := string(translate(normalize-space($x/self::*), " ", ""))
 let $length := string-length($form)
 let $hw := $x/@lemma
 let $hwRef := $x/@lemmaRef
+let $stem := if (count(doc("hwData.xml")//entryFree[@corresp = $hwRef]//iType) = 1)
+then
+    doc("hwData.xml")//entryFree[@corresp = $hwRef]//iType
+else
+    if (count(doc("hwData.xml")//entryFree[@corresp = $hwRef]//iType) > 1)
+    then
+        "var"
+    else
+        "-"
+let $gen := if (count(doc("hwData.xml")//entryFree[@corresp = $hwRef]//iType) = 1)
+then
+    doc("hwData.xml")//entryFree[@corresp = $hwRef]//gen
+else
+    if (count(doc("hwData.xml")//entryFree[@corresp = $hwRef]//gen) > 1)
+    then
+        "var"
+    else
+        "-"
 let $hand := $x/preceding::handShift[1]/@new
 let $msLine := if ($x/preceding::lb[1]/@sameAs) then
     string($x/preceding::lb[1]/@sameAs)
@@ -27,6 +45,19 @@ return
         n="{string($i)}"
         type="{$charType}">{string(translate(normalize-space($char), " ", ""))}</char>
 let $wordData := <w>{$chars}</w>
+let $syllabCount := if ($wordData/char/@type = "V" and $wordData/char/@type = "C")
+then
+    if ($wordData/char[1]/@type = "V")
+    then
+        count($wordData/char[@type = "C" and following-sibling::char[1]/@type = "V"]) + 1
+    else
+        count($wordData/char[@type = "C" and following-sibling::char[1]/@type = "V"])
+else
+    if ($wordData/char/@type = "V" and not($wordData/char/@type = "C"))
+    then
+        1
+    else
+        0
 let $chars_2 :=
 for $c in $wordData/char
 let $num := $c/@n
@@ -35,7 +66,7 @@ let $prevV := string($c/preceding-sibling::char[@type = "V"][1])
 let $nextV := string($c/following-sibling::char[@type = "V"][1])
 let $cType := if ($c/ancestor::w/char/@type = "V")
 then
-    if (string($c/following-sibling::char[1]) = ("e", "i", "é", "í"))
+    if ($nextV = ("e", "i", "é", "í"))
     then
         "C´"
     else
@@ -66,4 +97,7 @@ return
         lemmaRef="{$hwRef}"
         hand="{$hand}"
         ref="{$msLine}"
-        wshape="{$wshape}">{$chars_2}</w>
+        wshape="{$wshape}"
+        scount="{$syllabCount}"
+        stem="{$stem}"
+        gen="{$gen}">{$chars_2}</w>
