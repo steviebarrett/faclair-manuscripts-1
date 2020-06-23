@@ -35,9 +35,13 @@ let $prevV := string($c/preceding-sibling::char[@type = "V"][1])
 let $nextV := string($c/following-sibling::char[@type = "V"][1])
 let $cType := if ($c/ancestor::w/char/@type = "V")
 then
-    if ($prevV = ("e", "i", "é", "í") or $nextV = ("e", "i", "é", "í"))
+    if ($nextV = ("e", "i", "é", "í"))
     then
         "C´"
+    else 
+        if ()
+        then 
+        else
     else
         "C`"
 else
