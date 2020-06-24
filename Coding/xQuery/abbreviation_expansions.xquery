@@ -3,7 +3,8 @@ declare namespace c = "https://example.com/cdata";
 declare option saxon:output "omit-xml-declaration=yes";
 declare option saxon:output "method=html";
 (: This xQuery produces a table of abbreviations, how they are expanded, and the word in which they appear, 
-as well as the hand responsible and the MS line reference. It is sorted by abbreviation type. :)
+as well as the hand responsible and the MS line reference. It also shows the same word written plene by the 
+same scribe and a list of similarly shaped words of the same POS and in the same hand. It is sorted by abbreviation type. :)
 <html>
     <head>
         <title>Abbreviations</title>
@@ -124,7 +125,7 @@ as well as the hand responsible and the MS line reference. It is sorted by abbre
                             <td>
                                 {
                                     for $w in doc("Data/character_data/cData.xml")/c:data/c:w[@pos = $word_context_pos and @hand = $hand and @wshape = $cword_shape and @lemmaRef != $word_context_hwRef]
-                                        where $w[not(preceding::c:w[@pos = $word_context_pos and @hand = $hand and @wshape = $cword_shape and @lemmaRef != $word_context_hwRef and string(translate(normalize-space(self::*))) = string(translate(normalize-space($w)))])]
+                                        where $w[not(preceding::c:w[@pos = $word_context_pos and @hand = $hand and @wshape = $cword_shape and @lemmaRef != $word_context_hwRef and string(normalize-space(self::*)) = string(normalize-space($w))])]
                                     return
                                         concat(string(translate(normalize-space($w), " ", "")), ", ")
                                 }
