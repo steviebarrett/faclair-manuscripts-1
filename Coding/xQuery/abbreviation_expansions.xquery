@@ -14,11 +14,11 @@ as well as the hand responsible and the MS line reference. It is sorted by abbre
                     <th>Glyph ID</th>
                     <th>Glyph Exp.</th>
                     <th>Context Word</th>
-                    <th>Context Word (HW)</th>
-                    <th>Context Word (POS)</th>
-                    <th>Context Word (Plene)</th>
                     <th>Hand</th>
                     <th>MS Ref</th>
+                    <th>Context Word (HW)</th>
+                    <th>Context Word (POS)</th>
+                    <th>Context Word (Plene Examples)</th>
                 </tr>
             </thead>
             <tbody>
@@ -41,6 +41,8 @@ as well as the hand responsible and the MS line reference. It is sorted by abbre
                             <td>{string($glyph_id)}</td>
                             <td>{string($glyph_exp)}</td>
                             <td>{string(translate(normalize-space($word_context), " ", ""))}</td>
+                            <td>{string($hand)}</td>
+                            <td>{string($ms_ref)}</td>
                             <td><a
                                     href="{$word_context_hwRef}"
                                     target="_blank">{string($word_context_hw)}</a></td>
@@ -56,8 +58,6 @@ as well as the hand responsible and the MS line reference. It is sorted by abbre
                                         else
                                             concat(string(translate(normalize-space($form), " ", "")), ", ")
                                 }</td>
-                            <td>{string($hand)}</td>
-                            <td>{string($ms_ref)}</td>
                         </tr>
                 }
             </tbody>
