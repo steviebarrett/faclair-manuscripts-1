@@ -58,39 +58,29 @@ else
         1
     else
         0
-let $chars_2 :=
-for $c in $wordData/char
-let $num := $c/@n
-let $char := string($c/self::*)
-let $prevV := string($c/preceding-sibling::char[@type = "V"][1])
-let $nextV := string($c/following-sibling::char[@type = "V"][1])
-let $cType := if ($c/ancestor::w/char/@type = "V")
+let $cshapes := for $c in $wordData/char
+let $cshape := if (string($c/@type) = "?")
 then
-    if ($nextV = ("e", "i", "é", "í"))
-    then
-        "C´"
-    else
-        "C"
+    "?"
 else
-    "C"
-let $type := if (string($c/@type) = "C")
-then
-    if ($char = "h")
+    if (string($c/@type) = "C")
     then
-        "h"
+        if (string($c) = "h")
+        then
+            "h"
+        else 
+            if (string($c/following-sibling::char[not(string(self::*) = "h")][1]/@type) = "C")
+            then ""
+            else "C"
     else
-        $cType
-else
-    if (string($c/@type) = "V")
-    then
-        "V"
-    else
-        "?"
+        if (string($c/following-sibling::char[1]/@type) = "V")
+        then
+            ""
+        else
+            "V"
 return
-    <char
-        n="{$num}"
-        type="{$type}">{$char}</char>
-let $wshape := translate(string-join($chars_2/@type), "h?", "")
+    $cshape
+let $wshape := translate(string-join($cshapes), "h?", "")
 return
     <w
         lemma="{$hw}"
@@ -100,4 +90,4 @@ return
         wshape="{$wshape}"
         scount="{$syllabCount}"
         stem="{$stem}"
-        gen="{$gen}">{$chars_2}</w>
+        gen="{$gen}">{$wordData/char}</w>
