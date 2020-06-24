@@ -68,10 +68,12 @@ else
         if (string($c) = "h")
         then
             "h"
-        else 
+        else
             if (string($c/following-sibling::char[not(string(self::*) = "h")][1]/@type) = "C")
-            then ""
-            else "C"
+            then
+                ""
+            else
+                "C"
     else
         if (string($c/following-sibling::char[1]/@type) = "V")
         then
