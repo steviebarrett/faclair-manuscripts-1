@@ -177,14 +177,14 @@
 									test="//tei:w[not(descendant::tei:w) and not(@type = 'data') and @lemmaRef = $wordID and not(string(self::*) = $firstForm)]">
 									<span>
 										<xsl:attribute name="type">altForm</xsl:attribute>
-										<xsl:value-of select="$firstForm"/>
+										<xsl:value-of select="translate(normalize-space($firstForm), ' ', '')"/>
 									</span>
 									<xsl:for-each
 										select="//tei:w[not(descendant::tei:w) and not(@type = 'data') and @lemmaRef = $wordID and not(string(self::*) = preceding::tei:w[not(@type = 'data') and @lemmaRef = $wordID]/string(self::*)) and not(string(self::*) = $firstForm)]">
 										<xsl:variable name="thisForm" select="string(self::*)"/>
 										<span>
 											<xsl:attribute name="type">altForm</xsl:attribute>
-											<xsl:value-of select="$thisForm"/>
+											<xsl:value-of select="translate(normalize-space($thisForm), ' ', '')"/>
 										</span>
 									</xsl:for-each>
 								</xsl:if>
