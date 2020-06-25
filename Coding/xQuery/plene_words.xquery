@@ -31,6 +31,7 @@ declare option saxon:output "method=html";
                     let $pos := $x/@pos
                     let $hand := $x/@hand
                     let $ref := $x/@ref
+                    where number($syllables) > 1
                     return
                         <tr>
                             <td>{$form}</td>
