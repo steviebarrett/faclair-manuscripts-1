@@ -792,10 +792,11 @@
 						<space type="scribal"/>
 						<w lemma="in" lemmaRef="http://www.dil.ie/28194" pos="article">an</w>
 						<space type="scribal"/>
-						<w lemma="dán" lemmaRef="http://www.dil.ie/14559" pos="noun">dán</w>
-						<space type="scribal"/>
-						<w lemma="so" lemmaRef="http://www.dil.ie/38191" pos="demonstrative_pronoun"
-							>sa</w>
+						<w pos="noun-demonstrative_pronoun"><w lemma="dán"
+								lemmaRef="http://www.dil.ie/14559" pos="noun">dán</w>
+							<space type="scribal"/>
+							<w lemma="so" lemmaRef="http://www.dil.ie/38191"
+								pos="demonstrative_pronoun">sa</w></w>
 						<space type="scribal"/>
 						<w lemma="oc" lemmaRef="http://www.dil.ie/33397" pos="preposition">ag</w>
 						<space type="scribal"/>
@@ -10677,15 +10678,17 @@
 								pos="possessive_pronoun">d</w>
 						</w>
 						<space type="scribal"/>
-						<w lemma="grád" lemmaRef="http://www.dil.ie/26460" pos="noun">
-							<abbr cert="high">g<g ref="g16">ra</g>
-							</abbr>
-							<abbr cert="high">d<g ref="g4">h</g>
-							</abbr>
-						</w>
-						<space type="scribal"/>
-						<w lemma="so" lemmaRef="http://www.dil.ie/38191" pos="demonstrative_pronoun"
-							>sa</w>
+						<w pos="noun-emphatic"><w lemma="grád" lemmaRef="http://www.dil.ie/26460"
+								pos="noun">
+								<abbr cert="high">g<g ref="g16">ra</g>
+								</abbr>
+								<abbr cert="high">d<g ref="g4">h</g>
+								</abbr>
+							</w>
+							<space type="scribal"/>
+							<w lemma="-sa"
+								lemmaRef="https://www.faclair.com/ViewDictionaryEntry.aspx?ID=8E7EC4D84D90FA679719FCB1A880E5F1"
+								pos="emphatic">sa</w></w>
 						<space type="scribal"/>
 						<w lemma="a" lemmaRef="http://www.dil.ie/2" pos="particle">a</w>
 						<w lemma="ingen" lemmaRef="http://www.dil.ie/28651" pos="noun">in<abbr
@@ -12589,7 +12592,9 @@
 							<w lemma="gasta" lemmaRef="http://www.dil.ie/25448"
 								slipRef="https://dasg.ac.uk/slips/index.php?id=0090067"
 								lemmaSL="gasda" pos="adjective">gasdai</w>
-							<w lemma="-ni" lemmaRef="http://www.dil.ie/33150" pos="emphatic">ne</w>
+							<w lemma="ne"
+								lemmaRef="https://www.faclair.com/ViewDictionaryEntry.aspx?ID=7E145C01680F4B96EC0D6B602D966228"
+								pos="emphatic">ne</w>
 						</w>
 						<space type="scribal"/>
 						<w lemma="co" lemmaRef="http://www.dil.ie/9787" pos="preposition">go</w>
