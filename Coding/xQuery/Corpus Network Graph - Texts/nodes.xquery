@@ -6,9 +6,14 @@ for $x in //w[not(descendant::w) and not(@lemmaRef = preceding::w/@lemmaRef) and
 let $x_id := string($x/@lemmaRef)
 let $x_label := string($x/@lemma)
 let $pos := string($x/@pos)
+let $average := count(//w[not(descendant::w) and not(@type = "data")]) div count(//div[not(ancestor::div)])
 let $affil := "N/A"
 let $size := "N/A"
-let $aboveAverage := "N/A"
+let $aboveAverage := if (//div[not(ancestor::div) and descendant::w/@lemmaRef = $x_id and count(descendant::w[not(descendant::w)]) > $average])
+then
+    "yes"
+else
+    "no"
 let $medical := if (//msItem[@xml:id = //div[descendant::w/@lemmaRef = $x_id]/@corresp]//term/text() = "medical") then
     "yes"
 else
