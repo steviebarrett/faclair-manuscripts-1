@@ -1,12 +1,12 @@
 declare default element namespace "http://www.tei-c.org/ns/1.0";
 declare option saxon:output "omit-xml-declaration=yes";
 declare option saxon:output "method=text";
+declare variable $average := count(//w[not(descendant::w) and not(@type = "data")]) div count(//div[not(ancestor::div)]);
 concat("id,label,pos,affil,size,aboveAverage,medical,bardic,fc,legal,poetry,grammatica,type", "&#10;", string-join(
 for $x in //w[not(descendant::w) and not(@lemmaRef = preceding::w/@lemmaRef) and @lemmaRef and not(@xml:lang) and not(@type = "data")]
 let $x_id := string($x/@lemmaRef)
 let $x_label := string($x/@lemma)
 let $pos := string($x/@pos)
-let $average := count(//w[not(descendant::w) and not(@type = "data")]) div count(//div[not(ancestor::div)])
 let $affil := "N/A"
 let $size := "N/A"
 let $aboveAverage := if (//div[not(ancestor::div) and descendant::w/@lemmaRef = $x_id and count(descendant::w[not(descendant::w)]) > $average])
@@ -47,7 +47,6 @@ let $hand := //msItem[@xml:id = $y_id]/descendant::author[1]/@corresp
 let $pos := "N/A"
 let $affil := string(//handNote[@xml:id = $hand]/affiliation)
 let $size := count($y/descendant::w[not(descendant::w)])
-let $average := count(//w[not(descendant::w) and not(@type = "data")]) div count(//div[not(ancestor::div)])
 let $aboveAverage := if ($size >= $average) then
     "yes"
 else
