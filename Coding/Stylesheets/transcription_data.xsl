@@ -521,6 +521,9 @@
     <xsl:template match="tei:num" mode="context">
         <xsl:apply-templates mode="context"/>
     </xsl:template>
+    <xsl:template match="tei:note" mode="context">
+        <xsl:text/>
+    </xsl:template>
     <xsl:template match="tei:c" mode="context">
         <xsl:apply-templates mode="context"/>
     </xsl:template>
