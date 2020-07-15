@@ -11,10 +11,10 @@
         />
     </xsl:variable>
     <xsl:variable name="transcriptionID">
-        <xsl:value-of select="//tei:TEI[not(@xml:id='hwData')]/@xml:id"/>
+        <xsl:value-of select="//tei:TEI[not(@xml:id = 'hwData')]/@xml:id"/>
     </xsl:variable>
     <xsl:variable name="filename">
-        <xsl:value-of select="concat($transcriptionID,'_data', '-', $timestamp, '.xhtml')"/>
+        <xsl:value-of select="concat($transcriptionID, '_data', '-', $timestamp, '.xhtml')"/>
     </xsl:variable>
     <xsl:strip-space elements="*"/>
     <xsl:output method="xhtml" indent="no"/>
@@ -372,9 +372,16 @@
         <xsl:apply-templates mode="form"/>
     </xsl:template>
     <xsl:template match="tei:g" mode="form">
-        <span class="expansion">
-            <xsl:apply-templates mode="form"/>
-        </span>
+        <xsl:choose>
+            <xsl:when test="contains(@ref, 'l')">
+                <xsl:apply-templates mode="form"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <span class="expansion">
+                    <xsl:apply-templates mode="form"/>
+                </span>
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:template>
     <xsl:template match="tei:add[@type = 'insertion']" mode="form">
         <span class="insertion">
@@ -486,12 +493,22 @@
     <xsl:template match="tei:g" mode="context">
         <xsl:param name="formID"/>
         <xsl:param name="formLemRef"/>
-        <span class="expansion">
-            <xsl:apply-templates mode="context">
-                <xsl:with-param name="formID" select="$formID"/>
-                <xsl:with-param name="formLemRef" select="$formLemRef"/>
-            </xsl:apply-templates>
-        </span>
+        <xsl:choose>
+            <xsl:when test="contains(@ref, 'l')">
+                <xsl:apply-templates mode="context">
+                    <xsl:with-param name="formID" select="$formID"/>
+                    <xsl:with-param name="formLemRef" select="$formLemRef"/>
+                </xsl:apply-templates>
+            </xsl:when>
+            <xsl:otherwise>
+                <span class="expansion">
+                    <xsl:apply-templates mode="context">
+                        <xsl:with-param name="formID" select="$formID"/>
+                        <xsl:with-param name="formLemRef" select="$formLemRef"/>
+                    </xsl:apply-templates>
+                </span>
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:template>
     <xsl:template match="tei:name" mode="context">
         <xsl:param name="formID"/>
