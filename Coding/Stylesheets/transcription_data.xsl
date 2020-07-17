@@ -46,7 +46,11 @@
                         span.form_in_context {
                             background-color: #05ffb0;
                             font-weight: bold;
-                        }</style>
+                        }
+                        del {
+                            text-decoration: line-through;
+                        }
+                    </style>
                 </head>
                 <body>
                     <table
