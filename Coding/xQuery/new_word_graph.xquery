@@ -3,7 +3,7 @@ declare variable $text := "MS7.1";
 declare option saxon:output "method=html";
 <html>
     <head>
-        <title>Abbreviations</title>
+        <title>New Words</title>
     </head>
     <body>
         <table>
