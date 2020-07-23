@@ -1049,7 +1049,7 @@
 						<space type="scribal"/>
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" pos="abbreviation">.i.</w>
 						<space type="scribal"/>
-						<w lemma="immar" lemmaRef="http://www.dil.ie/27721" pos="preposition">
+						<w lemma="immar" lemmaRef="http://www.dil.ie/27721" pos="conjunction">
 							<abbr cert="high">m<g ref="g16">ur</g>
 							</abbr>
 						</w>
@@ -1316,13 +1316,15 @@
 							</abbr>
 						</w>
 						<space type="scribal"/>
-						<w lemma="so" lemmaRef="http://www.dil.ie/38191" pos="demonstrative_pronoun"
+						<w pos="prefix-noun">
+							<w lemma="so" lemmaRef="http://www.dil.ie/38192" pos="prefix"
 							>so</w>
 						<space type="scribal"/>
 						<w lemma="aimseracht" lemmaRef="http://www.dil.ie/1150" pos="noun"
 								>aimsiora<abbr cert="high">
 								<g ref="g10">chd</g>
 							</abbr>
+						</w>
 						</w>
 						<space type="scribal"/>
 						<w lemma="sín" lemmaRef="http://www.dil.ie/37569" pos="noun">síne</w>
@@ -2912,9 +2914,8 @@
 							<space type="scribal"/>
 						</l>
 						<l n="d" xml:id="MS7.1.12d">
-							<w lemma="daingen" lemmaRef="http://www.dil.ie/14232" lemmaSL="daingne"
-								slipRef="https://dasg.ac.uk/slips/index.php?id=0002332"
-								pos="adjective">daingne</w>
+							<w lemma="daingen" lemmaRef="http://www.dil.ie/14232" pos="adjective"
+								>daingne</w>
 							<space type="scribal"/>
 							<w lemma="a" lemmaRef="http://www.dil.ie/3" pos="possessive_pronoun"
 								>an</w>
@@ -3263,8 +3264,8 @@
 							<space type="scribal"/>
 						</l>
 						<l n="d" xml:id="MS7.1.15d">
-							<w lemma="daingne" lemmaRef="http://www.dil.ie/14234"
-								corresp="https://dasg.ac.uk/slips/index.php?id=0002332" pos="noun"
+							<w lemma="daingne" lemmaRef="http://www.dil.ie/14234" lemmaSL="daingne"
+								slipRef="https://dasg.ac.uk/slips/index.php?id=0002332" pos="noun"
 								>daingne</w>
 							<space type="scribal"/>
 							<w lemma="in" lemmaRef="http://www.dil.ie/28194" pos="article">an</w>
@@ -5744,7 +5745,8 @@
 							</name>
 							<space type="scribal"/>
 							<w pos="adverb-verb">
-								<w lemma="ní" lemmaRef="http://www.dil.ie/33147" pos="particle">ni</w>
+								<w lemma="ní" lemmaRef="http://www.dil.ie/33147" pos="particle"
+									>ni</w>
 								<w lemma="is" lemmaRef="http://www.dil.ie/29104" pos="verb">r</w>
 							</w>
 							<space type="scribal"/>
@@ -6403,7 +6405,7 @@
 					<lg n="41" type="stanza" xml:id="MS7.1.41">
 						<l n="a" xml:id="MS7.1.41a">
 							<lb n="3" xml:id="MS7.5r.3"/>
-							<w lemma="imm" lemmaRef="http://www.dil.ie/27635" pos="preposition"
+							<w lemma="immar" lemmaRef="http://www.dil.ie/27721" pos="preposition"
 									>M<abbr cert="high">
 									<g ref="g8">ar</g>
 								</abbr>
