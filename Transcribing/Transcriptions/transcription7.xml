@@ -11728,13 +11728,17 @@
 						</l>
 						<l n="c" xml:id="MS7.4.8c">
 							<lb n="17" xml:id="MS7.12r.17"/>
-							<w pos="adverb-verb"><w lemma="ní" lemmaRef="http://www.dil.ie/33147"
-									pos="particle">nio</w><w lemma="is"
-									lemmaRef="http://www.dil.ie/29104" pos="verb">r</w></w>
-							<space type="scribal"/>
+							<w pos="adverb-particle-verb"><w lemma="ní"
+									lemmaRef="http://www.dil.ie/33147" pos="particle">nio</w><w
+									lemma="ro" lemmaRef="http://www.dil.ie/35364" pos="particle"
+									>r</w>
+								<space type="scribal"/>
+								<w lemma="is" lemmaRef="http://www.dil.ie/29104" pos="verb"><abbr
+										cert="high">b<g ref="g4">h</g>
+									</abbr></w>
+							</w>
 							<w lemma="maith" lemmaRef="http://www.dil.ie/31438" pos="adjective">
-								<abbr cert="high">b<g ref="g4">h</g>
-								</abbr>fear</w>
+								fear<supplied resp="EPT">r</supplied></w>
 							<space type="scribal"/>
 							<supplied resp="BPD"><w lemma="a" lemmaRef="http://www.dil.ie/3"
 									pos="possessive_pronoun">a</w></supplied>
@@ -11745,8 +11749,14 @@
 							<w lemma="imm" lemmaRef="http://www.dil.ie/27635" pos="preposition"
 								>fa</w>
 							<space type="scribal"/>
-							<w lemma="ellach" lemmaRef="http://www.dil.ie/19971" pos="noun">f<add
-									place="above" hand="Hand11">e</add>allach</w>
+							<choice>
+								<sic><w lemma="ellach" lemmaRef="http://www.dil.ie/19971" pos="noun"
+											>f<add type="insertion" place="above" hand="Hand11">e</add>alla<abbr
+											cert="high">c<g ref="g4">h</g></abbr></w></sic>
+								<corr resp="EPT"><w lemma="ellach"
+										lemmaRef="http://www.dil.ie/19971" pos="noun">ealla<abbr
+											cert="high">c<g ref="g4">h</g></abbr></w></corr>
+							</choice>
 							<space type="scribal"/>
 							<pc>.</pc>
 							<space type="scribal"/>
