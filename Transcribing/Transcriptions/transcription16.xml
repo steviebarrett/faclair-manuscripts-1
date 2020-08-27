@@ -999,13 +999,13 @@
 									<g ref="g8">Ar</g>
 								</abbr>
 							</w>
-							<w lemma="síl" lemmaRef="http://www.dil.ie/37503" pos="noun">
+							<name type="population"><w lemma="síl" lemmaRef="http://www.dil.ie/37503" pos="noun">
 								<abbr cert="high">s<g ref="g4">h</g>
 								</abbr>íol</w>
 							<space type="scribal"/>
 							<name type="personal">
 								<w pos="noun">leoíd</w>
-							</name>
+							</name></name>
 							<space type="scribal"/>
 							<w lemma="tar" lemmaRef="http://www.dil.ie/40049" pos="preposition"
 									>t<abbr cert="high">
@@ -1214,7 +1214,7 @@
 							<space type="scribal"/>
 							<name type="place"
 								corresp="https://www.ainmean-aite.scot/placename/skye/">
-								<w pos="noun">sgí</w>
+								<w lemma="*Sgí" source="An t-Eilean Sgitheanach" lemmaRef="https://www.ainmean-aite.scot/placename/skye/" pos="noun">sgí</w>
 							</name>
 						</l>
 						<l n="b" xml:id="MS16.1.2.10b">
@@ -1617,7 +1617,7 @@
 								<w pos="noun">eóin</w>
 							</name>
 							<space type="scribal"/>
-							<w lemma="mac" lemmaRef="http://www.dil.ie/31166" pos="noun">
+							<name type="personal"><w lemma="mac" lemmaRef="http://www.dil.ie/31166" pos="noun">
 								<abbr cert="high">m<g ref="g4">h</g>
 									<g ref="g12">ic</g>
 								</abbr>
@@ -1625,7 +1625,7 @@
 							<space type="scribal"/>
 							<name type="personal">
 								<w pos="noun">leóid</w>
-							</name>
+							</name></name>
 							<space type="scribal"/>
 							<w lemma="menma" lemmaRef="http://www.dil.ie/31948" pos="noun">menma</w>
 							<space type="scribal"/>
@@ -1833,14 +1833,12 @@
 						</l>
 						<l n="b" xml:id="MS16.1.2.16b">
 							<lb n="8" xml:id="MS16.p4.8"/>
-							<name type="personal">
 								<w lemma="úa" lemmaRef="http://www.dil.ie/42573" pos="noun">úa</w>
 								<space type="scribal"/>
 								<name type="personal">
 									<w pos="noun">to<abbr cert="high">r<g ref="g1">m</g>
 										</abbr>óid</w>
 								</name>
-							</name>
 							<space type="scribal"/>
 							<w lemma="cenn" lemmaRef="http://www.dil.ie/8622" pos="noun">ce<abbr
 									cert="high">n<g ref="g5">n</g>
@@ -2100,7 +2098,7 @@
 							<space type="scribal"/>
 							<w lemma="onóir" lemmaRef="http://www.dil.ie/33894" pos="noun">onóra</w>
 							<space type="scribal"/>
-							<name type="place">
+							<name type="place" corresp="https://www.logainm.ie/1420121.aspx">
 								<w lemma="Ériu" lemmaRef="http://www.dil.ie/20288" pos="noun"
 										>éirea<abbr cert="high">n<g ref="g5">n</g>
 									</abbr>
@@ -2173,7 +2171,7 @@
 							<w lemma="sideng" lemmaRef="http://www.dil.ie/37470" pos="pronoun"
 									>sí<abbr cert="high">d<g ref="g4">h</g>
 								</abbr>einge</w>
-							<name type="place">
+							<name type="place" corresp="https://www.logainm.ie/1424123.aspx">
 								<w lemma="Brega" lemmaRef="http://www.dil.ie/6667" pos="noun"
 										>bre<abbr cert="high">d<g ref="g4">h</g>
 									</abbr>
@@ -2457,7 +2455,7 @@
 							<w lemma="oc" lemmaRef="http://www.dil.ie/33397" pos="preposition"
 								>ag</w>
 							<space type="scribal"/>
-							<name type="place">
+							<name type="place" corresp="https://www.logainm.ie/1420121.aspx">
 								<w lemma="Banba" lemmaRef="http://www.dil.ie/5331" pos="noun"
 										>ban<abbr cert="high">b<g ref="g4">h</g>
 									</abbr>a</w>
@@ -2716,7 +2714,7 @@
 							<lb n="5" xml:id="MS16.p6.5"/>
 							<w lemma="rí" lemmaRef="http://www.dil.ie/35181" pos="noun">Rí</w>
 							<space type="scribal"/>
-							<name type="place">
+							<name type="place" corresp="https://www.logainm.ie/1420121.aspx">
 								<w lemma="Ériu" lemmaRef="http://www.dil.ie/20288" pos="noun"
 										>éire<abbr cert="high">n<g ref="g5">n</g>
 									</abbr>
@@ -2823,7 +2821,7 @@
 								<w lemma="in" lemmaRef="http://www.dil.ie/28194" pos="article">n</w>
 							</w>
 							<space type="scribal"/>
-							<name type="place">
+							<name type="place" corresp="https://www.logainm.ie/1420121.aspx">
 								<w lemma="Banba" lemmaRef="http://www.dil.ie/5331" pos="noun"
 										>mban<abbr cert="high">b<g ref="g4">h</g>
 									</abbr>a</w>
@@ -5280,8 +5278,10 @@
 						<space type="scribal"/>
 						<name type="personal">
 							<w pos="noun">eóin</w>
+						</name>
 							<space type="scribal"/>
-							<w lemma="mac" lemmaRef="http://www.dil.ie/31166" pos="noun">
+						<name type="personal">	
+						<w lemma="mac" lemmaRef="http://www.dil.ie/31166" pos="noun">
 								<abbr cert="high">m<g ref="g4">h</g>
 									<g ref="g88">ic</g>
 								</abbr>
@@ -5301,8 +5301,10 @@
 						<lb n="16" xml:id="MS16.p11.16"/>
 						<name type="personal">
 							<w pos="noun">Cathelus</w>
+						</name>
 							<space type="scribal"/>
-							<w lemma="mac" lemmaRef="http://www.dil.ie/31166" pos="noun">Mak</w>
+						<name type="personal">	
+						<w lemma="mac" lemmaRef="http://www.dil.ie/31166" pos="noun">Mak</w>
 							<space type="scribal"/>
 							<name type="personal">
 								<w lemma="muiredach" lemmaRef="http://www.dil.ie/32775" pos="noun"
@@ -5321,8 +5323,10 @@
 						<name type="personal">
 							<w pos="noun">Ca<abbr cert="high">t<g ref="g4">h</g>
 								</abbr>al</w>
+						</name>
 							<space type="scribal"/>
-							<w lemma="mac" lemmaRef="http://www.dil.ie/31166" pos="noun">
+						<name type="personal">	
+						<w lemma="mac" lemmaRef="http://www.dil.ie/31166" pos="noun">
 								<abbr cert="high">m<g ref="g12">ac</g>
 								</abbr>
 							</w>
@@ -7215,7 +7219,7 @@
 							</w>
 							<space type="scribal"/>
 							<name type="personal">
-								<w pos="noun">a<abbr cert="high">d<g ref="g4">h</g>
+								<w lemma="Ádam" lemmaRef="http://www.dil.ie/282" pos="noun">a<abbr cert="high">d<g ref="g4">h</g>
 									</abbr>
 									<abbr cert="high">ui<g ref="g1">m</g>
 									</abbr>
@@ -10045,7 +10049,7 @@
 						<space type="scribal"/>
 						<name type="place"
 							corresp="https://www.ainmean-aite.scot/placename/loch-ness/">
-							<w lemma="noun">nis</w>
+							<w lemma="*Nis" source="Loch Nis" lemmaRef="https://www.ainmean-aite.scot/placename/loch-ness/" pos="noun">nis</w>
 						</name>
 						<pc>.</pc>
 						<space type="scribal"/>
@@ -10125,9 +10129,9 @@
 								</abbr>
 							</w>
 							<space type="editorial"/>
-							<name type="place">
+							<name type="place" corresp="https://www.ainmean-aite.scot/placename/ross/">
 								<w lemma="Ros"
-									lemmaRef="https://www.faclair.com/ViewEntry.aspx?ID=65FC5552B28AF1C73FA0EF22CFDFFCE7"
+									lemmaRef="https://www.ainmean-aite.scot/placename/ross/"
 									pos="noun">rois</w>
 							</name>
 						</unclear>
@@ -10382,7 +10386,7 @@
 						</w>
 						<space type="scribal"/>
 						<w lemma="ó" lemmaRef="http://www.dil.ie/33364" pos="preposition">ó</w>
-						<name type="place" corresp="https://www.logainm.ie/ga/111014">
+						<name type="place" corresp="https://www.logainm.ie/111014.aspx">
 							<w pos="adjective-noun">
 								<w lemma="ríg-" lemmaRef="http://www.dil.ie/35266" pos="adjective"
 										>ri<supplied resp="Matheson1964-1966">gh</supplied>
@@ -11074,7 +11078,7 @@
 								<g ref="g20">re</g>
 							</abbr>accan</w>
 						<space type="scribal"/>
-						<name type="place">
+						<name type="place" corresp="https://www.ainmean-aite.scot/placename/duntulm/">
 							<w lemma="dún" lemmaRef="http://www.dil.ie/19227" pos="noun">duin</w>
 							<space type="scribal"/>
 							<w lemma="tolm"
@@ -12939,12 +12943,12 @@
 							>do</w>
 						<space type="scribal"/>
 						<name type="personal">
-							<w pos="noun">
-								<abbr cert="high">c<g ref="g4">h</g>
+							<w pos="noun-noun">
+								<w lemma="Caitir" lemmaRef="http://www.dil.ie/8017" pos="noun"><abbr cert="high">c<g ref="g4">h</g>
 								</abbr>ai<abbr cert="high">t<g ref="g21">er</g>
-								</abbr>
-								<abbr cert="high">f<g ref="g4">h</g>
-								</abbr>iona</w>
+								</abbr></w>
+								<w pos="noun"><abbr cert="high">f<g ref="g4">h</g>
+								</abbr>iona</w></w>
 						</name>
 						<space type="scribal"/>
 						<w lemma="is" lemmaRef="http://www.dil.ie/29104" pos="verb">as</w>
@@ -13440,7 +13444,7 @@
 						<w lemma="do" lemmaRef="http://www.dil.ie/17096" pos="preposition">do</w>
 						<w lemma="síl" lemmaRef="http://www.dil.ie/37503" pos="noun">síol</w>
 						<name type="personal">
-							<w pos="noun">a<abbr cert="high">d<g ref="g4">h</g>
+							<w lemma="Ádam" lemmaRef="http://www.dil.ie/282" pos="noun">a<abbr cert="high">d<g ref="g4">h</g>
 								</abbr>u<abbr cert="high">i<g ref="g1">m</g>
 									<g ref="g4">h</g>
 								</abbr>
@@ -13719,10 +13723,10 @@
 					<space type="scribal"/>
 					<w lemma="a" lemmaRef="http://www.dil.ie/2" pos="particle">a</w>
 					<space type="scribal"/>
+					<w lemma="Sior" lemmaRef="http://www.dil.ie/37645" pos="noun">
+						<abbr cert="high">S<g ref="g4">h</g>
+						</abbr>ior</w>
 					<name type="personal">
-						<w lemma="Sior" lemmaRef="http://www.dil.ie/37645" pos="noun">
-							<abbr cert="high">S<g ref="g4">h</g>
-							</abbr>ior</w>
 						<lb n="2" xml:id="MS16.p23.2"/>
 						<w pos="noun">to<abbr cert="high">r<g ref="g1">m</g>
 							</abbr>od</w>
@@ -13876,7 +13880,7 @@
 						<w lemma="Oengus" lemmaRef="http://www.dil.ie/33532" pos="noun">
 							<abbr cert="high">
 								<g ref="l5">ao</g>
-							</abbr>
+							</abbr>n
 							<abbr cert="high">g<g ref="g4">h</g>
 							</abbr>
 							<abbr cert="high">
