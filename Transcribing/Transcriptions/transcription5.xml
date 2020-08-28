@@ -4333,7 +4333,8 @@
 								reason="fold" cert="high" resp="WGI">be</unclear>
 							<lb n="15" xml:id="MS5.p36.15"/>ga</w>
 						<space type="scribal"/>
-						<w lemma="immach" lemmaRef="http://www.dil.ie/27644" pos="particle">amach</w>
+						<w lemma="immach" lemmaRef="http://www.dil.ie/27644" pos="particle"
+							>amach</w>
 						<space type="scribal"/>
 						<w pos="preposition-particle">
 							<w lemma="a" lemmaRef="http://www.dil.ie/8" pos="preposition">as</w>
@@ -10583,8 +10584,8 @@
 					<p xml:id="MS5.3.8b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" pos="abbreviation">.i.</w>
 						<space type="scribal"/>
-						<w lemma="do-gní" lemmaRef="http://www.dil.ie/17752" pos="verb">do<space type="scribal"/>ni<abbr
-								cert="high">t<g ref="g21">ear</g>
+						<w lemma="do-gní" lemmaRef="http://www.dil.ie/17752" pos="verb">do<space
+								type="scribal"/>ni<abbr cert="high">t<g ref="g21">ear</g>
 							</abbr>
 						</w>
 						<space type="scribal"/>
@@ -10957,8 +10958,8 @@
 								cert="high">b<g ref="g3">e</g>
 							</abbr>rti</w>
 						<space type="scribal"/>
-						<w lemma="do-gní" lemmaRef="http://www.dil.ie/17752" pos="verb">do<space type="scribal"/>ri<abbr
-								cert="medium">n<g ref="g5">n</g>
+						<w lemma="do-gní" lemmaRef="http://www.dil.ie/17752" pos="verb">do<space
+								type="scribal"/>ri<abbr cert="medium">n<g ref="g5">n</g>
 							</abbr>
 							<abbr cert="medium">
 								<g ref="g2">ed</g>
@@ -14445,9 +14446,9 @@
 								<g ref="g27">dhe</g>
 							</abbr>
 						</w>
-						<w lemma="immallé" lemmaRef="http://www.dil.ie/27701" pos="particle">mai<abbr
-								cert="high" corresp="b4e37140">ll<g ref="g41" corresp="b4e37140"
-									>e</g>
+						<w lemma="immallé" lemmaRef="http://www.dil.ie/27701" pos="particle"
+								>mai<abbr cert="high" corresp="b4e37140">ll<g ref="g41"
+									corresp="b4e37140">e</g>
 							</abbr>
 						</w>
 						<w lemma="fri" lemmaRef="http://www.dil.ie/24329" pos="preposition">
@@ -14566,7 +14567,8 @@
 									>ri</w>
 							</sic>
 							<corr resp="EPT">
-								<w lemma="ní" lemmaRef="http://www.dil.ie/33147" pos="particle">ni</w>
+								<w lemma="ní" lemmaRef="http://www.dil.ie/33147" pos="particle"
+									>ni</w>
 							</corr>
 						</choice>
 						<w lemma="dligid" lemmaRef="http://www.dil.ie/17037" pos="verb">d<abbr
@@ -16734,7 +16736,7 @@
 						</w>
 						<space type="editorial"/>
 						<name type="personal">
-							<w pos="noun">L<unclear reason="damage" cert="unknown" resp="Black1978"
+							<w lemma="Lochlann" lemmaRef="http://www.dil.ie/30451" pos="noun">L<unclear reason="damage" cert="unknown" resp="Black1978"
 									>oc</unclear>h<abbr cert="unknown">l<g ref="g27">oinn</g>
 								</abbr>
 							</w>
@@ -16800,15 +16802,15 @@
 								</abbr>
 							</w>
 						</name>
-						<space type="scribal"/>
-						<w lemma="mac" lemmaRef="http://www.dil.ie/31166" pos="noun">maic</w>
-						<name type="personal">
-							<w pos="noun">
-								<abbr cert="high">b<g ref="g4">h</g>
-								</abbr>ea<abbr cert="high">t<g ref="g4">h</g>
-								</abbr>
-							</w>
-						</name>
+					</name>
+					<space type="scribal"/>
+					<w lemma="mac" lemmaRef="http://www.dil.ie/31166" pos="noun">maic</w>
+					<name type="personal">
+						<w pos="noun">
+							<abbr cert="high">b<g ref="g4">h</g>
+							</abbr>ea<abbr cert="high">t<g ref="g4">h</g>
+							</abbr>
+						</w>
 					</name>
 					<space type="scribal"/>
 					<w lemma="ocus" lemmaRef="http://www.dil.ie/33484" pos="conjunction">
@@ -16884,30 +16886,16 @@
 							<g ref="g8">ar</g>
 						</abbr>na</w>
 					<space type="scribal"/>
-					<name type="place">
+					<name type="place" corresp="https://www.ainmean-aite.scot/placename/coll/">
 						<w pos="noun">colla</w>
 					</name>
 					<space type="scribal"/>
-					<choice>
-						<unclear n="1" reason="interp_obscure" cert="medium" resp="Black1978">
-							<w n="1" lemma="frecrae" lemmaRef="http://www.dil.ie/24273" pos="noun"
-									>reg<abbr cert="high">
-									<g ref="g8">ar</g>
-								</abbr>a</w>
-						</unclear>
-						<unclear n="2" reason="interp_obscure" cert="medium" resp="Black1978">
+						<unclear reason="interp_obscure" cert="medium" resp="Black1978">
 							<w n="1" lemma="fris-gair" lemmaRef="http://www.dil.ie/24363" pos="verb"
 									>reg<abbr cert="high">
 									<g ref="g8">ar</g>
 								</abbr>a</w>
 						</unclear>
-					</choice>
-					<note n="2" type="fn" resp="EPT">
-						<p>As Black points out, this could either be the noun <hi rend="italics"
-								>frecrae</hi> or the verb <hi rend="italics">fris-gair</hi>. If the
-							latter, it is an example of a lenited Scottish vernacular infinitive
-							without <hi rend="italics">do</hi>.</p>
-					</note>
 					<space type="scribal"/>
 					<w lemma="fo" lemmaRef="http://www.dil.ie/22333" pos="preposition">fa</w>
 					<space type="scribal"/>
@@ -16915,35 +16903,17 @@
 						<abbr cert="high">d<g ref="g4">h</g>
 						</abbr>ul</w>
 					<space type="scribal"/>
-					<choice>
-						<unclear n="1" reason="interp_obscure" cert="medium" resp="Black1978">
-							<w n="1" lemma="do" lemmaRef="http://www.dil.ie/17096" pos="preposition"
-									>da<abbr cert="high">c<g ref="g4">h</g>
-								</abbr>
-							</w>
-						</unclear>
-						<unclear n="2" reason="interp_obscure" cert="medium" resp="Black1978">
+						<unclear reason="interp_obscure" cert="medium" resp="Black1978">
 							<w n="1" lemma="dochum" lemmaRef="http://www.dil.ie/17406"
 								pos="preposition">da<abbr cert="high">c<g ref="g4">h</g>
-								</abbr>
+								</abbr><supplied resp="EPT">um</supplied>
 							</w>
 						</unclear>
-					</choice>
 					<space type="scribal"/>
-					<choice>
-						<unclear n="1" reason="abbrv" cert="medium" resp="Black1978">
-							<w n="1" lemma="ingen" lemmaRef="http://www.dil.ie/28651" pos="noun"
-									>i<abbr cert="medium">n<g ref="g3">ghean</g>
-								</abbr>
-							</w>
-						</unclear>
-						<unclear n="2" reason="abbrv" cert="medium" resp="Black1978">
-							<w n="1" lemma="ingen" lemmaRef="http://www.dil.ie/28651" pos="noun"
+							<w lemma="ingen" lemmaRef="http://www.dil.ie/28651" pos="noun"
 									>i<abbr cert="medium">n<g ref="g3">ghin</g>
 								</abbr>
 							</w>
-						</unclear>
-					</choice>
 					<space type="scribal"/>
 					<w lemma="ingen" lemmaRef="http://www.dil.ie/28651" pos="noun" resp="Black1978">
 						<abbr cert="medium">i<g ref="g3">nghine</g>
@@ -17039,7 +17009,8 @@
 							</abbr>
 						</w>
 						<space type="scribal"/>
-						<w pos="noun">st<supplied>i</supplied>uf<abbr cert="high">
+						<w lemma="stíbard" lemmaRef="http://www.dil.ie/38934" pos="noun">st<supplied
+								resp="EPT">i</supplied>uf<abbr cert="high">
 								<g ref="g8">ar</g>
 							</abbr>t</w>
 					</name>
@@ -17059,7 +17030,7 @@
 					<lb n="5" xml:id="MS5.insert1.5"/>
 					<w lemma="mé" lemmaRef="http://www.dil.ie/31705" pos="pronoun">MISI</w>
 					<name type="personal">
-						<w pos="noun">LOCHLOI<abbr cert="high">N<g ref="g5">N</g>
+						<w lemma="Lochlann" lemmaRef="http://www.dil.ie/30451" pos="noun">LOCHLOI<abbr cert="high">N<g ref="g5">N</g>
 							</abbr>
 						</w>
 					</name>
