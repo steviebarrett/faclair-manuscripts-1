@@ -5,7 +5,7 @@
          xmlns="http://relaxng.org/ns/structure/1.0"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2020-08-31T16:53:53Z. .
+Schema generated from ODD source 2020-09-01T10:16:34Z. .
 TEI Edition: Version 4.1.0. Last updated on
 	19th August 2020, revision b414ba550
 TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 4.1.0/
@@ -211,6 +211,9 @@ Suggested values include: 1] cm (centimetres); 2] mm (millimetres); 3] in (inche
             <data type="string"/>
          </attribute>
       </optional>
+   </define>
+   <define name="tei_att.written.attributes">
+      <ref name="tei_att.written.attribute.hand"/>
    </define>
    <define name="tei_att.written.attribute.hand">
       <optional>
@@ -465,6 +468,10 @@ Sample values include: 1] approved; 2] candidate; 3] cleared; 4] deprecated; 5] 
          </attribute>
       </optional>
    </define>
+   <define name="tei_att.global.responsibility.attributes">
+      <ref name="tei_att.global.responsibility.attribute.cert"/>
+      <ref name="tei_att.global.responsibility.attribute.resp"/>
+   </define>
    <define name="tei_att.global.responsibility.attribute.cert">
       <optional>
          <attribute name="cert">
@@ -538,6 +545,11 @@ Suggested values include: 1] internal; 2] external; 3] conjecture</a:documentati
          </attribute>
       </optional>
    </define>
+   <define name="tei_att.global.rendition.attributes">
+      <ref name="tei_att.global.rendition.attribute.rend"/>
+      <ref name="tei_att.global.rendition.attribute.style"/>
+      <ref name="tei_att.global.rendition.attribute.rendition"/>
+   </define>
    <define name="tei_att.global.rendition.attribute.rend">
       <optional>
          <attribute name="rend">
@@ -572,6 +584,9 @@ Suggested values include: 1] internal; 2] external; 3] conjecture</a:documentati
          </attribute>
       </optional>
    </define>
+   <define name="tei_att.global.source.attributes">
+      <ref name="tei_att.global.source.attribute.source"/>
+   </define>
    <define name="tei_att.global.source.attribute.source">
       <optional>
          <attribute name="source">
@@ -581,6 +596,29 @@ Suggested values include: 1] internal; 2] external; 3] conjecture</a:documentati
                   <data type="anyURI"/>
                </oneOrMore>
             </list>
+         </attribute>
+      </optional>
+   </define>
+   <define name="tei_att.global.attributes">
+      <ref name="tei_att.global.rendition.attributes"/>
+      <ref name="tei_att.global.linking.attributes"/>
+      <ref name="tei_att.global.analytic.attributes"/>
+      <ref name="tei_att.global.facs.attributes"/>
+      <ref name="tei_att.global.change.attributes"/>
+      <ref name="tei_att.global.responsibility.attributes"/>
+      <ref name="tei_att.global.source.attributes"/>
+      <ref name="tei_att.global.attribute.comment"/>
+      <ref name="tei_att.global.attribute.xmlid"/>
+      <ref name="tei_att.global.attribute.n"/>
+      <ref name="tei_att.global.attribute.xmllang"/>
+      <ref name="tei_att.global.attribute.xmlbase"/>
+      <ref name="tei_att.global.attribute.xmlspace"/>
+   </define>
+   <define name="tei_att.global.attribute.comment">
+      <optional>
+         <attribute name="comment">
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">provides a title or summary for paragraphs and notes.</a:documentation>
+            <text/>
          </attribute>
       </optional>
    </define>
@@ -620,6 +658,19 @@ Suggested values include: 1] internal; 2] external; 3] conjecture</a:documentati
          <attribute name="xml:base">
             <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">provides a base URI reference with which applications can resolve relative URI references into absolute URI references.</a:documentation>
             <data type="anyURI"/>
+         </attribute>
+      </optional>
+   </define>
+   <define name="tei_att.global.attribute.xmlspace">
+      <optional>
+         <attribute name="xml:space">
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">signals an intention about how white space should be managed by applications.</a:documentation>
+            <choice>
+               <value>default</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">signals that the application's default white-space processing modes are acceptable</a:documentation>
+               <value>preserve</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">indicates the intent that applications preserve all white space</a:documentation>
+            </choice>
          </attribute>
       </optional>
    </define>
@@ -745,6 +796,19 @@ Suggested values include: 1] below; 2] bottom; 3] margin; 4] top; 5] opposite; 6
       <optional>
          <attribute name="function">
             <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">characterizes the function of the segment.</a:documentation>
+            <data type="token">
+               <param name="pattern">[^\p{C}\p{Z}]+</param>
+            </data>
+         </attribute>
+      </optional>
+   </define>
+   <define name="tei_att.sortable.attributes">
+      <ref name="tei_att.sortable.attribute.sortKey"/>
+   </define>
+   <define name="tei_att.sortable.attribute.sortKey">
+      <optional>
+         <attribute name="sortKey">
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">supplies the sort key for this element in an index, list or group which contains it.</a:documentation>
             <data type="token">
                <param name="pattern">[^\p{C}\p{Z}]+</param>
             </data>
@@ -1701,6 +1765,13 @@ Suggested values include: 1] volume; 2] issue; 3] page; 4] line; 5] chapter; 6] 
          <ref name="tei_supplied"/>
       </choice>
    </define>
+   <define name="tei_model.imprintPart">
+      <choice>
+         <ref name="tei_publisher"/>
+         <ref name="tei_biblScope"/>
+         <ref name="tei_pubPlace"/>
+      </choice>
+   </define>
    <define name="tei_model.addressLike">
       <choice>
          <ref name="tei_email"/>
@@ -1896,7 +1967,9 @@ Suggested values include: 1] volume; 2] issue; 3] page; 4] line; 5] chapter; 6] 
       </choice>
    </define>
    <define name="tei_model.divLike">
-      <notAllowed/>
+      <choice>
+         <ref name="tei_div"/>
+      </choice>
    </define>
    <define name="tei_model.divGenLike">
       <notAllowed/>
@@ -1927,6 +2000,7 @@ Suggested values include: 1] volume; 2] issue; 3] page; 4] line; 5] chapter; 6] 
    </define>
    <define name="tei_model.editorialDeclPart">
       <choice>
+         <ref name="tei_correction"/>
          <ref name="tei_normalization"/>
          <ref name="tei_segmentation"/>
          <ref name="tei_punctuation"/>
@@ -1988,7 +2062,15 @@ Suggested values include: 1] volume; 2] issue; 3] page; 4] line; 5] chapter; 6] 
             </rule>
          </pattern>
          <ref name="tei_att.global.attribute.xmlid"/>
+         <ref name="tei_att.global.attribute.n"/>
+         <ref name="tei_att.global.attribute.xmlspace"/>
          <ref name="tei_att.fragmentable.attributes"/>
+         <optional>
+            <attribute name="comment">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">provides a summary or title for the paragraph.</a:documentation>
+               <text/>
+            </attribute>
+         </optional>
          <empty/>
       </element>
    </define>
@@ -1996,6 +2078,7 @@ Suggested values include: 1] volume; 2] issue; 3] page; 4] line; 5] chapter; 6] 
       <element name="hi">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(highlighted) marks a word or phrase as graphically distinct from the surrounding text, for reasons concerning which no claim is made. [3.3.2.2. Emphatic Words and Phrases 3.3.2. Emphasis, Foreign Words, and Unusual Language]</a:documentation>
          <ref name="tei_macro.paraContent"/>
+         <ref name="tei_att.global.attribute.comment"/>
          <ref name="tei_att.global.rendition.attribute.rend"/>
          <empty/>
       </element>
@@ -2004,12 +2087,15 @@ Suggested values include: 1] volume; 2] issue; 3] page; 4] line; 5] chapter; 6] 
       <element name="quote">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(quotation) contains a phrase or passage attributed by the narrator or author to some agency external to the text. [3.3.3. Quotation 4.3.1. Grouped Texts]</a:documentation>
          <ref name="tei_macro.specialPara"/>
+         <ref name="tei_att.global.attribute.comment"/>
+         <empty/>
       </element>
    </define>
    <define name="tei_gloss">
       <element name="gloss">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">identifies a phrase or word used to provide a gloss or definition for some other word or phrase. [3.3.4. Terms, Glosses, Equivalents, and Descriptions 22.4.1. Description of Components]</a:documentation>
          <ref name="tei_macro.phraseSeq"/>
+         <ref name="tei_att.global.attribute.comment"/>
          <ref name="tei_att.global.attribute.xmlid"/>
          <empty/>
       </element>
@@ -2018,18 +2104,23 @@ Suggested values include: 1] volume; 2] issue; 3] page; 4] line; 5] chapter; 6] 
       <element name="term">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">contains a single-word, multi-word, or symbolic designation which is regarded as a technical term. [3.3.4. Terms, Glosses, Equivalents, and Descriptions]</a:documentation>
          <ref name="tei_macro.phraseSeq"/>
+         <ref name="tei_att.global.attribute.comment"/>
+         <empty/>
       </element>
    </define>
    <define name="tei_sic">
       <element name="sic">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(Latin for thus or so) contains text reproduced although apparently incorrect or inaccurate. [3.4.1. Apparent Errors]</a:documentation>
          <ref name="tei_macro.paraContent"/>
+         <ref name="tei_att.global.attribute.comment"/>
+         <empty/>
       </element>
    </define>
    <define name="tei_corr">
       <element name="corr">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(correction) contains the correct form of a passage apparently erroneous in the copy text. [3.4.1. Apparent Errors]</a:documentation>
          <ref name="tei_macro.paraContent"/>
+         <ref name="tei_att.global.attribute.comment"/>
          <ref name="tei_att.global.responsibility.attribute.resp"/>
          <ref name="tei_att.editLike.attribute.instant"/>
          <empty/>
@@ -2044,6 +2135,8 @@ Suggested values include: 1] volume; 2] issue; 3] page; 4] line; 5] chapter; 6] 
                <ref name="tei_choice"/>
             </choice>
          </oneOrMore>
+         <ref name="tei_att.global.attribute.comment"/>
+         <empty/>
       </element>
    </define>
    <define name="tei_gap">
@@ -2055,6 +2148,7 @@ Suggested values include: 1] volume; 2] issue; 3] page; 4] line; 5] chapter; 6] 
                <ref name="tei_model.certLike"/>
             </choice>
          </zeroOrMore>
+         <ref name="tei_att.global.attribute.comment"/>
          <ref name="tei_att.global.responsibility.attribute.resp"/>
          <ref name="tei_att.editLike.attribute.instant"/>
          <ref name="tei_att.dimensions.attribute.unit"/>
@@ -2096,6 +2190,7 @@ Suggested values include: 1] cancelled; 2] deleted; 3] editorial; 4] illegible; 
       <element name="add">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(addition) contains letters, words, or phrases inserted in the source text by an author, scribe, or a previous annotator or corrector. [3.4.3. Additions, Deletions, and Omissions]</a:documentation>
          <ref name="tei_macro.paraContent"/>
+         <ref name="tei_att.global.attribute.comment"/>
          <ref name="tei_att.transcriptional.attribute.status"/>
          <ref name="tei_att.editLike.attribute.instant"/>
          <ref name="tei_att.written.attribute.hand"/>
@@ -2108,6 +2203,7 @@ Suggested values include: 1] cancelled; 2] deleted; 3] editorial; 4] illegible; 
       <element name="del">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(deletion) contains a letter, word, or passage deleted, marked as deleted, or otherwise indicated as superfluous or spurious in the copy text by an author, scribe, or a previous annotator or corrector. [3.4.3. Additions, Deletions, and Omissions]</a:documentation>
          <ref name="tei_macro.paraContent"/>
+         <ref name="tei_att.global.attribute.comment"/>
          <ref name="tei_att.transcriptional.attribute.status"/>
          <ref name="tei_att.editLike.attribute.instant"/>
          <ref name="tei_att.written.attribute.hand"/>
@@ -2118,6 +2214,7 @@ Suggested values include: 1] cancelled; 2] deleted; 3] editorial; 4] illegible; 
       <element name="unclear">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">contains a word, phrase, or passage which cannot be transcribed with certainty because it is illegible or inaudible in the source. [11.3.3.1. Damage, Illegibility, and Supplied Text 3.4.3. Additions, Deletions, and Omissions]</a:documentation>
          <ref name="tei_macro.paraContent"/>
+         <ref name="tei_att.global.attribute.comment"/>
          <ref name="tei_att.global.responsibility.attribute.cert"/>
          <ref name="tei_att.global.responsibility.attribute.resp"/>
          <ref name="tei_att.editLike.attribute.instant"/>
@@ -2153,7 +2250,9 @@ Suggested values include: 1] illegible; 2] inaudible; 3] faded; 4] background_no
       <element name="name">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(name, proper noun) contains a proper noun or noun phrase. [3.5.1. Referring Strings]</a:documentation>
          <ref name="tei_macro.phraseSeq"/>
+         <ref name="tei_att.global.attribute.comment"/>
          <ref name="tei_att.global.attribute.xmlid"/>
+         <ref name="tei_att.global.linking.attribute.corresp"/>
          <ref name="tei_att.personal.attribute.full"/>
          <ref name="tei_att.editLike.attribute.instant"/>
          <ref name="tei_att.typed.attribute.type"/>
@@ -2164,6 +2263,8 @@ Suggested values include: 1] illegible; 2] inaudible; 3] faded; 4] background_no
       <element name="email">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(electronic mail address) contains an email address identifying a location to which email messages can be delivered. [3.5.2. Addresses]</a:documentation>
          <ref name="tei_macro.phraseSeq"/>
+         <ref name="tei_att.global.attribute.comment"/>
+         <empty/>
       </element>
    </define>
    <define name="tei_address">
@@ -2182,12 +2283,16 @@ Suggested values include: 1] illegible; 2] inaudible; 3] faded; 4] background_no
                </group>
             </oneOrMore>
          </group>
+         <ref name="tei_att.global.attribute.comment"/>
+         <empty/>
       </element>
    </define>
    <define name="tei_addrLine">
       <element name="addrLine">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(address line) contains one line of a postal address. [3.5.2. Addresses 2.2.4. Publication, Distribution, Licensing, etc. 3.11.2.4. Imprint, Size of a Document, and Reprint Information]</a:documentation>
          <ref name="tei_macro.phraseSeq"/>
+         <ref name="tei_att.global.attribute.comment"/>
+         <empty/>
       </element>
    </define>
    <define name="tei_num">
@@ -2195,6 +2300,8 @@ Suggested values include: 1] illegible; 2] inaudible; 3] faded; 4] background_no
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(number) contains a number, written in any form. [3.5.3. Numbers and
 Measures]</a:documentation>
          <ref name="tei_macro.phraseSeq"/>
+         <ref name="tei_att.global.attribute.comment"/>
+         <empty/>
       </element>
    </define>
    <define name="tei_date">
@@ -2208,6 +2315,8 @@ Measures]</a:documentation>
                <ref name="tei_model.global"/>
             </choice>
          </zeroOrMore>
+         <ref name="tei_att.global.attribute.comment"/>
+         <ref name="tei_att.global.responsibility.attribute.cert"/>
          <ref name="tei_att.datable.w3c.attribute.from"/>
          <ref name="tei_att.datable.w3c.attribute.to"/>
          <ref name="tei_att.datable.custom.attribute.from-custom"/>
@@ -2222,6 +2331,7 @@ Measures]</a:documentation>
       <element name="abbr">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(abbreviation) contains an abbreviation of any sort. [3.5.5. Abbreviations and Their Expansions]</a:documentation>
          <ref name="tei_macro.phraseSeq"/>
+         <ref name="tei_att.global.attribute.comment"/>
          <ref name="tei_att.global.linking.attribute.corresp"/>
          <ref name="tei_att.global.responsibility.attribute.cert"/>
          <empty/>
@@ -2239,6 +2349,7 @@ Measures]</a:documentation>
                </report>
             </rule>
          </pattern>
+         <ref name="tei_att.global.attribute.comment"/>
          <ref name="tei_att.pointing.attribute.target"/>
          <ref name="tei_att.typed.attribute.type"/>
          <empty/>
@@ -2255,15 +2366,21 @@ Measures]</a:documentation>
                </choice>
             </zeroOrMore>
             <choice>
-               <zeroOrMore>
-                  <ref name="tei_model.global"/>
-               </zeroOrMore>
+               <oneOrMore>
+                  <group>
+                     <ref name="tei_item"/>
+                     <zeroOrMore>
+                        <ref name="tei_model.global"/>
+                     </zeroOrMore>
+                  </group>
+               </oneOrMore>
                <group>
                   <oneOrMore>
                      <group>
                         <zeroOrMore>
                            <ref name="tei_model.global"/>
                         </zeroOrMore>
+                        <ref name="tei_item"/>
                         <zeroOrMore>
                            <ref name="tei_model.global"/>
                         </zeroOrMore>
@@ -2288,6 +2405,17 @@ Measures]</a:documentation>
 	              <sch:assert test="tei:label">The content of a "gloss" list should include a sequence of one or more pairs of a label element followed by an item element</sch:assert>
             </sch:rule>
          </pattern>
+         <ref name="tei_att.global.attribute.comment"/>
+         <empty/>
+      </element>
+   </define>
+   <define name="tei_item">
+      <element name="item">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">contains one component of a list. [3.7. Lists 2.6. The Revision Description]</a:documentation>
+         <ref name="tei_macro.specialPara"/>
+         <ref name="tei_att.global.attributes"/>
+         <ref name="tei_att.sortable.attributes"/>
+         <empty/>
       </element>
    </define>
    <define name="tei_head">
@@ -2304,6 +2432,7 @@ Measures]</a:documentation>
                <ref name="tei_model.global"/>
             </choice>
          </zeroOrMore>
+         <ref name="tei_att.global.attribute.comment"/>
          <ref name="tei_att.typed.attribute.type"/>
          <empty/>
       </element>
@@ -2312,8 +2441,15 @@ Measures]</a:documentation>
       <element name="note">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">contains a note or annotation. [3.8.1. Notes and Simple Annotation 2.2.6. The Notes Statement 3.11.2.8. Notes and Statement of Language 9.3.5.4. Notes within Entries]</a:documentation>
          <ref name="tei_macro.specialPara"/>
+         <ref name="tei_att.global.linking.attribute.corresp"/>
          <ref name="tei_att.global.responsibility.attribute.resp"/>
          <ref name="tei_att.typed.attribute.type"/>
+         <optional>
+            <attribute name="comment">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">provides a title or summary for the note. </a:documentation>
+               <text/>
+            </attribute>
+         </optional>
          <optional>
             <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
                        name="anchored"
@@ -2336,6 +2472,8 @@ Measures]</a:documentation>
                </optional>
             </group>
          </zeroOrMore>
+         <ref name="tei_att.global.attribute.comment"/>
+         <empty/>
       </element>
    </define>
    <define name="tei_pb">
@@ -2343,6 +2481,7 @@ Measures]</a:documentation>
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(page beginning) marks the beginning of a new page in a paginated document. [3.10.3. Milestone
 Elements]</a:documentation>
          <empty/>
+         <ref name="tei_att.global.attribute.comment"/>
          <ref name="tei_att.global.attribute.xmlid"/>
          <ref name="tei_att.global.attribute.n"/>
          <ref name="tei_att.global.linking.attribute.sameAs"/>
@@ -2355,6 +2494,7 @@ Elements]</a:documentation>
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(line beginning) marks the beginning of a new (typographic) line in some edition or version of a text. [3.10.3. Milestone
 Elements 7.2.5. Speech Contents]</a:documentation>
          <empty/>
+         <ref name="tei_att.global.attribute.comment"/>
          <ref name="tei_att.global.attribute.xmlid"/>
          <ref name="tei_att.global.attribute.n"/>
          <ref name="tei_att.global.linking.attribute.sameAs"/>
@@ -2366,6 +2506,7 @@ Elements 7.2.5. Speech Contents]</a:documentation>
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(column beginning) marks the beginning of a new column of a text on a multi-column page. [3.10.3. Milestone
 Elements]</a:documentation>
          <empty/>
+         <ref name="tei_att.global.attribute.comment"/>
          <ref name="tei_att.global.attribute.xmlid"/>
          <ref name="tei_att.global.attribute.n"/>
          <ref name="tei_att.global.linking.attribute.sameAs"/>
@@ -2388,6 +2529,95 @@ Elements]</a:documentation>
                <ref name="tei_availability"/>
             </choice>
          </zeroOrMore>
+         <ref name="tei_att.global.attribute.comment"/>
+         <empty/>
+      </element>
+   </define>
+   <define name="tei_monogr">
+      <element name="monogr">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(monographic level) contains bibliographic elements describing an item (e.g. a book or journal) published as an independent item (i.e. as a separate physical object). [3.11.2.1. Analytic, Monographic, and Series Levels]</a:documentation>
+         <group>
+            <optional>
+               <choice>
+                  <group>
+                     <choice>
+                        <ref name="tei_author"/>
+                        <ref name="tei_editor"/>
+                        <ref name="tei_respStmt"/>
+                     </choice>
+                     <zeroOrMore>
+                        <choice>
+                           <ref name="tei_author"/>
+                           <ref name="tei_editor"/>
+                           <ref name="tei_respStmt"/>
+                        </choice>
+                     </zeroOrMore>
+                     <oneOrMore>
+                        <ref name="tei_title"/>
+                     </oneOrMore>
+                     <zeroOrMore>
+                        <choice>
+                           <ref name="tei_model.ptrLike"/>
+                           <ref name="tei_idno"/>
+                           <ref name="tei_textLang"/>
+                           <ref name="tei_editor"/>
+                           <ref name="tei_respStmt"/>
+                        </choice>
+                     </zeroOrMore>
+                  </group>
+                  <group>
+                     <oneOrMore>
+                        <choice>
+                           <ref name="tei_title"/>
+                           <ref name="tei_model.ptrLike"/>
+                           <ref name="tei_idno"/>
+                        </choice>
+                     </oneOrMore>
+                     <zeroOrMore>
+                        <choice>
+                           <ref name="tei_textLang"/>
+                           <ref name="tei_author"/>
+                           <ref name="tei_editor"/>
+                           <ref name="tei_respStmt"/>
+                        </choice>
+                     </zeroOrMore>
+                  </group>
+                  <group>
+                     <ref name="tei_authority"/>
+                     <ref name="tei_idno"/>
+                  </group>
+               </choice>
+            </optional>
+            <zeroOrMore>
+               <ref name="tei_availability"/>
+            </zeroOrMore>
+            <zeroOrMore>
+               <ref name="tei_model.noteLike"/>
+            </zeroOrMore>
+            <zeroOrMore>
+               <group>
+                  <ref name="tei_edition"/>
+                  <zeroOrMore>
+                     <choice>
+                        <ref name="tei_idno"/>
+                        <ref name="tei_model.ptrLike"/>
+                        <ref name="tei_editor"/>
+                        <ref name="tei_respStmt"/>
+                     </choice>
+                  </zeroOrMore>
+               </group>
+            </zeroOrMore>
+            <ref name="tei_imprint"/>
+            <zeroOrMore>
+               <choice>
+                  <ref name="tei_imprint"/>
+                  <ref name="tei_extent"/>
+                  <ref name="tei_biblScope"/>
+               </choice>
+            </zeroOrMore>
+         </group>
+         <ref name="tei_att.global.attribute.comment"/>
+         <empty/>
       </element>
    </define>
    <define name="tei_series">
@@ -2408,12 +2638,15 @@ Elements]</a:documentation>
                <ref name="tei_availability"/>
             </choice>
          </zeroOrMore>
+         <ref name="tei_att.global.attribute.comment"/>
+         <empty/>
       </element>
    </define>
    <define name="tei_author">
       <element name="author">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">in a bibliographic reference, contains the name(s) of an author, personal or corporate, of a work; for example in the same form as that provided by a recognized bibliographic name authority. [3.11.2.2. Titles, Authors, and Editors 2.2.1. The Title Statement]</a:documentation>
          <ref name="tei_macro.phraseSeq"/>
+         <ref name="tei_att.global.attribute.comment"/>
          <ref name="tei_att.global.linking.attribute.corresp"/>
          <ref name="tei_att.naming.attribute.role"/>
          <empty/>
@@ -2423,6 +2656,8 @@ Elements]</a:documentation>
       <element name="editor">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">contains a secondary statement of responsibility for a bibliographic item, for example the name of an individual, institution or organization, (or of several such) acting as editor, compiler, translator, etc. [3.11.2.2. Titles, Authors, and Editors]</a:documentation>
          <ref name="tei_macro.phraseSeq"/>
+         <ref name="tei_att.global.attribute.comment"/>
+         <empty/>
       </element>
    </define>
    <define name="tei_respStmt">
@@ -2451,6 +2686,7 @@ Elements]</a:documentation>
                <ref name="tei_note"/>
             </zeroOrMore>
          </group>
+         <ref name="tei_att.global.attribute.comment"/>
          <ref name="tei_att.global.linking.attribute.corresp"/>
          <empty/>
       </element>
@@ -2459,12 +2695,24 @@ Elements]</a:documentation>
       <element name="resp">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(responsibility) contains a phrase describing the nature of a person's intellectual responsibility, or an organization's role in the production or distribution of a work. [3.11.2.2. Titles, Authors, and Editors 2.2.1. The Title Statement 2.2.2. The Edition Statement 2.2.5. The Series Statement]</a:documentation>
          <ref name="tei_macro.phraseSeq.limited"/>
+         <ref name="tei_att.global.attribute.comment"/>
+         <empty/>
       </element>
    </define>
    <define name="tei_title">
       <element name="title">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">contains a title for any kind of work. [3.11.2.2. Titles, Authors, and Editors 2.2.1. The Title Statement 2.2.5. The Series Statement]</a:documentation>
          <ref name="tei_macro.paraContent"/>
+         <ref name="tei_att.global.attribute.comment"/>
+         <optional>
+            <attribute name="type">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">classifies the title according to some convenient typology.
+Sample values include: 1] main; 2] sub (subordinate); 3] alt (alternate); 4] short; 5] desc (descriptive)</a:documentation>
+               <data type="token">
+                  <param name="pattern">[^\p{C}\p{Z}]+</param>
+               </data>
+            </attribute>
+         </optional>
          <optional>
             <attribute name="level">
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">indicates the bibliographic level for a title, that is, whether it identifies an article, book, journal, series, or unpublished material.</a:documentation>
@@ -2485,16 +2733,45 @@ Elements]</a:documentation>
          <empty/>
       </element>
    </define>
+   <define name="tei_imprint">
+      <element name="imprint">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">groups information relating to the publication or distribution of a bibliographic item. [3.11.2.4. Imprint, Size of a Document, and Reprint Information]</a:documentation>
+         <group>
+            <zeroOrMore>
+               <empty/>
+            </zeroOrMore>
+            <oneOrMore>
+               <group>
+                  <choice>
+                     <ref name="tei_model.imprintPart"/>
+                     <ref name="tei_model.dateLike"/>
+                  </choice>
+                  <zeroOrMore>
+                     <ref name="tei_respStmt"/>
+                  </zeroOrMore>
+                  <zeroOrMore>
+                     <ref name="tei_model.global"/>
+                  </zeroOrMore>
+               </group>
+            </oneOrMore>
+         </group>
+         <ref name="tei_att.global.attribute.comment"/>
+         <empty/>
+      </element>
+   </define>
    <define name="tei_publisher">
       <element name="publisher">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">provides the name of the organization responsible for the publication or distribution of a bibliographic item. [3.11.2.4. Imprint, Size of a Document, and Reprint Information 2.2.4. Publication, Distribution, Licensing, etc.]</a:documentation>
          <ref name="tei_macro.phraseSeq"/>
+         <ref name="tei_att.global.attribute.comment"/>
+         <empty/>
       </element>
    </define>
    <define name="tei_biblScope">
       <element name="biblScope">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(scope of bibliographic reference) defines the scope of a bibliographic reference, for example as a list of page numbers, or a named subdivision of a larger work. [3.11.2.5. Scopes and Ranges in Bibliographic Citations]</a:documentation>
          <ref name="tei_macro.phraseSeq"/>
+         <ref name="tei_att.global.attribute.comment"/>
          <ref name="tei_att.citing.attribute.unit"/>
          <empty/>
       </element>
@@ -2503,6 +2780,8 @@ Elements]</a:documentation>
       <element name="pubPlace">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(publication place) contains the name of the place where a bibliographic item was published. [3.11.2.4. Imprint, Size of a Document, and Reprint Information]</a:documentation>
          <ref name="tei_macro.phraseSeq"/>
+         <ref name="tei_att.global.attribute.comment"/>
+         <empty/>
       </element>
    </define>
    <define name="tei_biblStruct">
@@ -2512,9 +2791,14 @@ Elements]</a:documentation>
             <zeroOrMore>
                <ref name="tei_analytic"/>
             </zeroOrMore>
-            <zeroOrMore>
-               <ref name="tei_series"/>
-            </zeroOrMore>
+            <oneOrMore>
+               <group>
+                  <ref name="tei_monogr"/>
+                  <zeroOrMore>
+                     <ref name="tei_series"/>
+                  </zeroOrMore>
+               </group>
+            </oneOrMore>
             <zeroOrMore>
                <choice>
                   <ref name="tei_model.noteLike"/>
@@ -2522,6 +2806,7 @@ Elements]</a:documentation>
                </choice>
             </zeroOrMore>
          </group>
+         <ref name="tei_att.global.attribute.comment"/>
          <ref name="tei_att.global.attribute.xmlid"/>
          <ref name="tei_att.declarable.attributes"/>
          <ref name="tei_att.typed.attribute.type"/>
@@ -2546,6 +2831,7 @@ Elements]</a:documentation>
                <empty/>
             </zeroOrMore>
          </group>
+         <ref name="tei_att.global.attribute.comment"/>
          <ref name="tei_att.declarable.attributes"/>
          <ref name="tei_att.typed.attribute.type"/>
          <empty/>
@@ -2571,6 +2857,7 @@ Elements]</a:documentation>
       </report>
             </rule>
          </pattern>
+         <ref name="tei_att.global.attribute.comment"/>
          <ref name="tei_att.global.attribute.xmlid"/>
          <ref name="tei_att.global.attribute.n"/>
          <ref name="tei_att.fragmentable.attributes"/>
@@ -2628,6 +2915,7 @@ Elements]</a:documentation>
       </report>
             </rule>
          </pattern>
+         <ref name="tei_att.global.attribute.comment"/>
          <ref name="tei_att.global.attribute.xmlid"/>
          <ref name="tei_att.global.attribute.n"/>
          <ref name="tei_att.divLike.attribute.org"/>
@@ -2649,12 +2937,16 @@ Elements]</a:documentation>
                <ref name="tei_model.describedResource"/>
             </oneOrMore>
          </group>
+         <ref name="tei_att.global.attribute.comment"/>
+         <empty/>
       </element>
    </define>
    <define name="tei_textLang">
       <element name="textLang">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(text language) describes the languages and writing systems identified within the bibliographic work being described, rather than its description. [3.11.2.4. Imprint, Size of a Document, and Reprint Information 10.6.6. Languages and Writing Systems]</a:documentation>
          <ref name="tei_macro.phraseSeq"/>
+         <ref name="tei_att.global.attribute.comment"/>
+         <ref name="tei_att.global.linking.attribute.sameAs"/>
          <optional>
             <attribute name="mainLang">
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(main language) supplies a code which identifies the chief language used in the bibliographic work.</a:documentation>
@@ -2698,6 +2990,8 @@ Elements]</a:documentation>
                <ref name="tei_revisionDesc"/>
             </optional>
          </group>
+         <ref name="tei_att.global.attribute.comment"/>
+         <empty/>
       </element>
    </define>
    <define name="tei_fileDesc">
@@ -2718,6 +3012,8 @@ Elements]</a:documentation>
                <ref name="tei_sourceDesc"/>
             </oneOrMore>
          </group>
+         <ref name="tei_att.global.attribute.comment"/>
+         <empty/>
       </element>
    </define>
    <define name="tei_titleStmt">
@@ -2731,12 +3027,24 @@ Elements]</a:documentation>
                <ref name="tei_model.respLike"/>
             </zeroOrMore>
          </group>
+         <ref name="tei_att.global.attribute.comment"/>
+         <empty/>
+      </element>
+   </define>
+   <define name="tei_edition">
+      <element name="edition">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">describes the particularities of one edition of a text. [2.2.2. The Edition Statement]</a:documentation>
+         <ref name="tei_macro.phraseSeq"/>
+         <ref name="tei_att.global.attribute.comment"/>
+         <empty/>
       </element>
    </define>
    <define name="tei_extent">
       <element name="extent">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">describes the approximate size of a text stored on some carrier medium or of some other object, digital or non-digital, specified in any convenient units. [2.2.3. Type and Extent of File 2.2. The File Description 3.11.2.4. Imprint, Size of a Document, and Reprint Information 10.7.1. Object Description]</a:documentation>
          <ref name="tei_macro.phraseSeq"/>
+         <ref name="tei_att.global.attribute.comment"/>
+         <empty/>
       </element>
    </define>
    <define name="tei_publicationStmt">
@@ -2755,12 +3063,16 @@ Elements]</a:documentation>
                <ref name="tei_model.pLike"/>
             </oneOrMore>
          </choice>
+         <ref name="tei_att.global.attribute.comment"/>
+         <empty/>
       </element>
    </define>
    <define name="tei_authority">
       <element name="authority">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(release authority) supplies the name of a person or other agency responsible for making a work available, other than a publisher or distributor. [2.2.4. Publication, Distribution, Licensing, etc.]</a:documentation>
          <ref name="tei_macro.phraseSeq.limited"/>
+         <ref name="tei_att.global.attribute.comment"/>
+         <ref name="tei_att.global.attribute.xmlid"/>
          <ref name="tei_att.global.linking.attribute.sameAs"/>
          <empty/>
       </element>
@@ -2775,6 +3087,7 @@ Elements]</a:documentation>
                <ref name="tei_idno"/>
             </choice>
          </zeroOrMore>
+         <ref name="tei_att.global.attribute.comment"/>
          <optional>
             <attribute name="type">
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">categorizes the identifier, for example as an ISBN, Social Security number, etc.
@@ -2814,6 +3127,8 @@ Suggested values include: 1] ISBN; 2] ISSN; 3] DOI; 4] URI; 5] VIAF; 6] ESTC; 7]
                <ref name="tei_model.pLike"/>
             </choice>
          </oneOrMore>
+         <ref name="tei_att.global.attribute.comment"/>
+         <ref name="tei_att.global.attribute.xmlid"/>
          <ref name="tei_att.declarable.attributes"/>
          <optional>
             <attribute name="status">
@@ -2835,6 +3150,8 @@ Suggested values include: 1] ISBN; 2] ISSN; 3] DOI; 4] URI; 5] VIAF; 6] ESTC; 7]
       <element name="licence">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">contains information about a licence or other legal agreement applicable to the text. [2.2.4. Publication, Distribution, Licensing, etc.]</a:documentation>
          <ref name="tei_macro.specialPara"/>
+         <ref name="tei_att.global.attribute.comment"/>
+         <empty/>
       </element>
    </define>
    <define name="tei_notesStmt">
@@ -2845,6 +3162,8 @@ Suggested values include: 1] ISBN; 2] ISSN; 3] DOI; 4] URI; 5] VIAF; 6] ESTC; 7]
                <ref name="tei_model.noteLike"/>
             </choice>
          </oneOrMore>
+         <ref name="tei_att.global.attribute.comment"/>
+         <empty/>
       </element>
    </define>
    <define name="tei_sourceDesc">
@@ -2862,6 +3181,7 @@ Suggested values include: 1] ISBN; 2] ISSN; 3] DOI; 4] URI; 5] VIAF; 6] ESTC; 7]
                </choice>
             </oneOrMore>
          </choice>
+         <ref name="tei_att.global.attribute.comment"/>
          <ref name="tei_att.declarable.attributes"/>
          <empty/>
       </element>
@@ -2890,6 +3210,7 @@ Suggested values include: 1] ISBN; 2] ISSN; 3] DOI; 4] URI; 5] VIAF; 6] ESTC; 7]
                <ref name="tei_profileDesc"/>
             </group>
          </choice>
+         <ref name="tei_att.global.attribute.comment"/>
          <ref name="tei_att.declarable.attributes"/>
          <ref name="tei_att.docStatus.attributes"/>
          <empty/>
@@ -2904,6 +3225,8 @@ Suggested values include: 1] ISBN; 2] ISSN; 3] DOI; 4] URI; 5] VIAF; 6] ESTC; 7]
                <ref name="tei_model.pLike"/>
             </choice>
          </oneOrMore>
+         <ref name="tei_att.global.attribute.comment"/>
+         <empty/>
       </element>
    </define>
    <define name="tei_schemaRef">
@@ -2912,6 +3235,8 @@ Suggested values include: 1] ISBN; 2] ISSN; 3] DOI; 4] URI; 5] VIAF; 6] ESTC; 7]
          <optional>
             <ref name="tei_model.descLike"/>
          </optional>
+         <ref name="tei_att.global.attribute.comment"/>
+         <empty/>
       </element>
    </define>
    <define name="tei_projectDesc">
@@ -2920,6 +3245,7 @@ Suggested values include: 1] ISBN; 2] ISSN; 3] DOI; 4] URI; 5] VIAF; 6] ESTC; 7]
          <oneOrMore>
             <ref name="tei_model.pLike"/>
          </oneOrMore>
+         <ref name="tei_att.global.attribute.comment"/>
          <ref name="tei_att.declarable.attributes"/>
          <empty/>
       </element>
@@ -2930,6 +3256,7 @@ Suggested values include: 1] ISBN; 2] ISSN; 3] DOI; 4] URI; 5] VIAF; 6] ESTC; 7]
          <oneOrMore>
             <ref name="tei_model.pLike"/>
          </oneOrMore>
+         <ref name="tei_att.global.attribute.comment"/>
          <ref name="tei_att.declarable.attributes"/>
          <empty/>
       </element>
@@ -2943,7 +3270,18 @@ Suggested values include: 1] ISBN; 2] ISSN; 3] DOI; 4] URI; 5] VIAF; 6] ESTC; 7]
                <ref name="tei_model.editorialDeclPart"/>
             </choice>
          </oneOrMore>
+         <ref name="tei_att.global.attribute.comment"/>
          <ref name="tei_att.declarable.attributes"/>
+         <empty/>
+      </element>
+   </define>
+   <define name="tei_correction">
+      <element name="correction">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(correction principles) states how and under what circumstances corrections have been made in the text. [2.3.3. The Editorial Practices Declaration 15.3.2. Declarable Elements]</a:documentation>
+         <oneOrMore>
+            <ref name="tei_model.pLike"/>
+         </oneOrMore>
+         <ref name="tei_att.global.attribute.comment"/>
          <empty/>
       </element>
    </define>
@@ -2953,6 +3291,7 @@ Suggested values include: 1] ISBN; 2] ISSN; 3] DOI; 4] URI; 5] VIAF; 6] ESTC; 7]
          <oneOrMore>
             <ref name="tei_model.pLike"/>
          </oneOrMore>
+         <ref name="tei_att.global.attribute.comment"/>
          <ref name="tei_att.declarable.attributes"/>
          <optional>
             <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
@@ -2976,6 +3315,7 @@ Suggested values include: 1] ISBN; 2] ISSN; 3] DOI; 4] URI; 5] VIAF; 6] ESTC; 7]
          <oneOrMore>
             <ref name="tei_model.pLike"/>
          </oneOrMore>
+         <ref name="tei_att.global.attribute.comment"/>
          <ref name="tei_att.declarable.attributes"/>
          <empty/>
       </element>
@@ -2987,6 +3327,7 @@ Suggested values include: 1] ISBN; 2] ISSN; 3] DOI; 4] URI; 5] VIAF; 6] ESTC; 7]
             <ref name="tei_model.pLike"/>
          </zeroOrMore>
          <ref name="tei_att.declarable.attributes"/>
+         <ref name="tei_att.global.attribute.comment"/>
          <empty/>
       </element>
    </define>
@@ -2998,6 +3339,7 @@ Suggested values include: 1] ISBN; 2] ISSN; 3] DOI; 4] URI; 5] VIAF; 6] ESTC; 7]
                <ref name="tei_model.pLike"/>
             </oneOrMore>
          </choice>
+         <ref name="tei_att.global.attribute.comment"/>
          <ref name="tei_att.declarable.attributes"/>
          <empty/>
       </element>
@@ -3008,6 +3350,8 @@ Suggested values include: 1] ISBN; 2] ISSN; 3] DOI; 4] URI; 5] VIAF; 6] ESTC; 7]
          <oneOrMore>
             <ref name="tei_taxonomy"/>
          </oneOrMore>
+         <ref name="tei_att.global.attribute.comment"/>
+         <empty/>
       </element>
    </define>
    <define name="tei_taxonomy">
@@ -3043,6 +3387,7 @@ Suggested values include: 1] ISBN; 2] ISSN; 3] DOI; 4] URI; 5] VIAF; 6] ESTC; 7]
                </zeroOrMore>
             </group>
          </choice>
+         <ref name="tei_att.global.attribute.comment"/>
          <ref name="tei_att.global.attribute.xmlid"/>
          <empty/>
       </element>
@@ -3053,14 +3398,17 @@ Suggested values include: 1] ISBN; 2] ISSN; 3] DOI; 4] URI; 5] VIAF; 6] ESTC; 7]
          <zeroOrMore>
             <ref name="tei_model.profileDescPart"/>
          </zeroOrMore>
+         <ref name="tei_att.global.attribute.comment"/>
+         <empty/>
       </element>
    </define>
    <define name="tei_handNote">
       <element name="handNote">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(note on hand) describes a particular style or hand distinguished within a manuscript. [10.7.2. Writing, Decoration, and Other Notations]</a:documentation>
          <ref name="tei_macro.specialPara"/>
+         <ref name="tei_att.global.attribute.comment"/>
          <ref name="tei_att.global.attribute.xmlid"/>
-         <ref name="tei_att.global.linking.attribute.sameAs"/>
+         <ref name="tei_att.global.linking.attribute.corresp"/>
          <empty/>
       </element>
    </define>
@@ -3072,6 +3420,8 @@ Suggested values include: 1] ISBN; 2] ISSN; 3] DOI; 4] URI; 5] VIAF; 6] ESTC; 7]
                <ref name="tei_model.pLike"/>
             </oneOrMore>
          </choice>
+         <ref name="tei_att.global.attribute.comment"/>
+         <ref name="tei_att.global.attribute.xmlid"/>
          <ref name="tei_att.declarable.attributes"/>
          <empty/>
       </element>
@@ -3084,6 +3434,7 @@ Suggested values include: 1] ISBN; 2] ISSN; 3] DOI; 4] URI; 5] VIAF; 6] ESTC; 7]
                <ref name="tei_keywords"/>
             </choice>
          </zeroOrMore>
+         <ref name="tei_att.global.attribute.comment"/>
          <ref name="tei_att.declarable.attributes"/>
          <empty/>
       </element>
@@ -3097,6 +3448,8 @@ Suggested values include: 1] ISBN; 2] ISSN; 3] DOI; 4] URI; 5] VIAF; 6] ESTC; 7]
             </oneOrMore>
             <ref name="tei_list"/>
          </choice>
+         <ref name="tei_att.global.attribute.comment"/>
+         <empty/>
       </element>
    </define>
    <define name="tei_revisionDesc">
@@ -3108,6 +3461,7 @@ Suggested values include: 1] ISBN; 2] ISSN; 3] DOI; 4] URI; 5] VIAF; 6] ESTC; 7]
                <ref name="tei_change"/>
             </oneOrMore>
          </choice>
+         <ref name="tei_att.global.attribute.comment"/>
          <ref name="tei_att.docStatus.attributes"/>
          <empty/>
       </element>
@@ -3119,6 +3473,7 @@ Suggested values include: 1] ISBN; 2] ISSN; 3] DOI; 4] URI; 5] VIAF; 6] ESTC; 7]
          <ref name="tei_att.ascribed.attributes"/>
          <ref name="tei_att.datable.w3c.attribute.when"/>
          <ref name="tei_att.docStatus.attributes"/>
+         <ref name="tei_att.global.attribute.comment"/>
          <empty/>
       </element>
    </define>
@@ -3156,6 +3511,7 @@ Suggested values include: 1] ISBN; 2] ISSN; 3] DOI; 4] URI; 5] VIAF; 6] ESTC; 7]
                  xmlns="http://www.tei-c.org/ns/1.0"
                  prefix="rng"
                  uri="http://relaxng.org/ns/structure/1.0"/>
+         <ref name="tei_att.global.attribute.comment"/>
          <ref name="tei_att.global.attribute.xmlid"/>
          <ref name="tei_att.global.attribute.xmlbase"/>
          <empty/>
@@ -3175,6 +3531,8 @@ Suggested values include: 1] ISBN; 2] ISSN; 3] DOI; 4] URI; 5] VIAF; 6] ESTC; 7]
                <ref name="tei_model.global"/>
             </zeroOrMore>
          </group>
+         <ref name="tei_att.global.attribute.comment"/>
+         <empty/>
       </element>
    </define>
    <define name="tei_body">
@@ -3275,6 +3633,90 @@ Suggested values include: 1] ISBN; 2] ISSN; 3] DOI; 4] URI; 5] VIAF; 6] ESTC; 7]
                </group>
             </zeroOrMore>
          </group>
+         <ref name="tei_att.global.attribute.comment"/>
+         <empty/>
+      </element>
+   </define>
+   <define name="tei_div">
+      <element name="div">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(text division) contains a subdivision of the front, body, or back of a text. [4.1. Divisions of the Body]</a:documentation>
+         <group>
+            <zeroOrMore>
+               <choice>
+                  <ref name="tei_model.divTop"/>
+                  <ref name="tei_model.global"/>
+               </choice>
+            </zeroOrMore>
+            <optional>
+               <group>
+                  <choice>
+                     <oneOrMore>
+                        <group>
+                           <choice>
+                              <ref name="tei_model.divLike"/>
+                              <ref name="tei_model.divGenLike"/>
+                           </choice>
+                           <zeroOrMore>
+                              <ref name="tei_model.global"/>
+                           </zeroOrMore>
+                        </group>
+                     </oneOrMore>
+                     <group>
+                        <oneOrMore>
+                           <group>
+                              <ref name="tei_model.common"/>
+                              <zeroOrMore>
+                                 <ref name="tei_model.global"/>
+                              </zeroOrMore>
+                           </group>
+                        </oneOrMore>
+                        <zeroOrMore>
+                           <group>
+                              <choice>
+                                 <ref name="tei_model.divLike"/>
+                                 <ref name="tei_model.divGenLike"/>
+                              </choice>
+                              <zeroOrMore>
+                                 <ref name="tei_model.global"/>
+                              </zeroOrMore>
+                           </group>
+                        </zeroOrMore>
+                     </group>
+                  </choice>
+                  <zeroOrMore>
+                     <group>
+                        <ref name="tei_model.divBottom"/>
+                        <zeroOrMore>
+                           <ref name="tei_model.global"/>
+                        </zeroOrMore>
+                     </group>
+                  </zeroOrMore>
+               </group>
+            </optional>
+         </group>
+         <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
+                  id="fnag_mss4-div-abstractModel-structure-l-constraint-report-9">
+            <rule context="tei:div">
+               <report test="ancestor::tei:l">
+        Abstract model violation: Lines may not contain higher-level structural elements such as div.
+      </report>
+            </rule>
+         </pattern>
+         <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
+                  id="fnag_mss4-div-abstractModel-structure-p-constraint-report-10">
+            <rule context="tei:div">
+               <report test="ancestor::tei:p or ancestor::tei:ab and not(ancestor::tei:floatingText)">
+        Abstract model violation: p and ab may not contain higher-level structural elements such as div.
+      </report>
+            </rule>
+         </pattern>
+         <ref name="tei_att.global.attribute.comment"/>
+         <ref name="tei_att.global.attribute.xmlid"/>
+         <ref name="tei_att.global.attribute.n"/>
+         <ref name="tei_att.global.linking.attribute.corresp"/>
+         <ref name="tei_att.typed.attribute.type"/>
+         <ref name="tei_att.written.attributes"/>
+         <empty/>
       </element>
    </define>
    <define name="tei_att.metrical.attribute.met">
@@ -3312,6 +3754,7 @@ Suggested values include: 1] ISBN; 2] ISSN; 3] DOI; 4] URI; 5] VIAF; 6] ESTC; 7]
                </choice>
             </oneOrMore>
          </choice>
+         <ref name="tei_att.global.attribute.comment"/>
          <ref name="tei_att.declarable.attributes"/>
          <optional>
             <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
@@ -3583,6 +4026,8 @@ Suggested values include: 1] ISBN; 2] ISSN; 3] DOI; 4] URI; 5] VIAF; 6] ESTC; 7]
       <element name="surname">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">contains a family (inherited) name, as opposed to a given, baptismal, or nick name. [13.2.1. Personal Names]</a:documentation>
          <ref name="tei_macro.phraseSeq"/>
+         <ref name="tei_att.global.attribute.comment"/>
+         <ref name="tei_att.global.responsibility.attribute.cert"/>
          <ref name="tei_att.personal.attribute.full"/>
          <empty/>
       </element>
@@ -3591,6 +4036,7 @@ Suggested values include: 1] ISBN; 2] ISSN; 3] DOI; 4] URI; 5] VIAF; 6] ESTC; 7]
       <element name="forename">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">contains a forename, given or baptismal name. [13.2.1. Personal Names]</a:documentation>
          <ref name="tei_macro.phraseSeq"/>
+         <ref name="tei_att.global.attribute.comment"/>
          <ref name="tei_att.personal.attribute.full"/>
          <empty/>
       </element>
@@ -3599,6 +4045,7 @@ Suggested values include: 1] ISBN; 2] ISSN; 3] DOI; 4] URI; 5] VIAF; 6] ESTC; 7]
       <element name="region">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">contains the name of an administrative unit such as a state, province, or county, larger than a settlement, but smaller than a country. [13.2.3. Place Names]</a:documentation>
          <ref name="tei_macro.phraseSeq"/>
+         <ref name="tei_att.global.attribute.comment"/>
          <ref name="tei_att.global.responsibility.attribute.cert"/>
          <empty/>
       </element>
@@ -3607,12 +4054,15 @@ Suggested values include: 1] ISBN; 2] ISSN; 3] DOI; 4] URI; 5] VIAF; 6] ESTC; 7]
       <element name="settlement">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">contains the name of a settlement such as a city, town, or village identified as a single geo-political or administrative unit. [13.2.3. Place Names]</a:documentation>
          <ref name="tei_macro.phraseSeq"/>
+         <ref name="tei_att.global.attribute.comment"/>
+         <empty/>
       </element>
    </define>
    <define name="tei_affiliation">
       <element name="affiliation">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">contains an informal description of a person's present or past affiliation with some organization, for example an employer or sponsor. [15.2.2. The Participant Description]</a:documentation>
          <ref name="tei_macro.phraseSeq"/>
+         <ref name="tei_att.global.attribute.comment"/>
          <ref name="tei_att.editLike.attribute.instant"/>
          <empty/>
       </element>
@@ -3631,6 +4081,7 @@ Suggested values include: 1] ISBN; 2] ISSN; 3] DOI; 4] URI; 5] VIAF; 6] ESTC; 7]
                <ref name="tei_model.biblLike"/>
             </choice>
          </zeroOrMore>
+         <ref name="tei_att.global.attribute.comment"/>
          <ref name="tei_att.editLike.attribute.instant"/>
          <empty/>
       </element>
@@ -3661,6 +4112,7 @@ Suggested values include: 1] ISBN; 2] ISSN; 3] DOI; 4] URI; 5] VIAF; 6] ESTC; 7]
                </group>
             </choice>
          </group>
+         <ref name="tei_att.global.attribute.comment"/>
          <ref name="tei_att.docStatus.attributes"/>
          <empty/>
       </element>
@@ -3676,6 +4128,7 @@ Suggested values include: 1] ISBN; 2] ISSN; 3] DOI; 4] URI; 5] VIAF; 6] ESTC; 7]
                <ref name="tei_locus"/>
             </choice>
          </zeroOrMore>
+         <ref name="tei_att.global.attribute.comment"/>
          <ref name="tei_att.global.attribute.n"/>
          <empty/>
       </element>
@@ -3705,11 +4158,12 @@ Suggested values include: 1] ISBN; 2] ISSN; 3] DOI; 4] URI; 5] VIAF; 6] ESTC; 7]
             </zeroOrMore>
          </group>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="fnag_mss4-msIdentifier-msId_minimal-constraint-report-9">
+                  id="fnag_mss4-msIdentifier-msId_minimal-constraint-report-11">
             <rule context="tei:msIdentifier">
                <report test="not(parent::tei:msPart) and (local-name(*[1])='idno' or local-name(*[1])='altIdentifier' or normalize-space(.)='')">An msIdentifier must contain either a repository or location.</report>
             </rule>
          </pattern>
+         <ref name="tei_att.global.attribute.comment"/>
          <ref name="tei_att.global.attribute.xmlid"/>
          <ref name="tei_att.global.linking.attribute.sameAs"/>
          <empty/>
@@ -3719,6 +4173,8 @@ Suggested values include: 1] ISBN; 2] ISSN; 3] DOI; 4] URI; 5] VIAF; 6] ESTC; 7]
       <element name="repository">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">contains the name of a repository within which manuscripts or other objects are stored, possibly forming part of an institution. [10.4. The Manuscript Identifier]</a:documentation>
          <ref name="tei_macro.phraseSeq.limited"/>
+         <ref name="tei_att.global.attribute.comment"/>
+         <empty/>
       </element>
    </define>
    <define name="tei_msName">
@@ -3731,24 +4187,32 @@ Suggested values include: 1] ISBN; 2] ISSN; 3] DOI; 4] URI; 5] VIAF; 6] ESTC; 7]
                <ref name="tei_name"/>
             </choice>
          </zeroOrMore>
+         <ref name="tei_att.global.attribute.comment"/>
+         <empty/>
       </element>
    </define>
    <define name="tei_explicit">
       <element name="explicit">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">contains the explicit of a item, that is, the closing words of the text proper, exclusive of any rubric or colophon which might follow it. [10.6.1. The msItem and msItemStruct Elements]</a:documentation>
          <ref name="tei_macro.phraseSeq"/>
+         <ref name="tei_att.global.attribute.comment"/>
+         <empty/>
       </element>
    </define>
    <define name="tei_filiation">
       <element name="filiation">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">contains information concerning the manuscript or other object's filiation, i.e. its relationship to other surviving manuscripts or other objects of the same text or contents, its protographs, antigraphs and apographs. [10.6.1. The msItem and msItemStruct Elements]</a:documentation>
          <ref name="tei_macro.specialPara"/>
+         <ref name="tei_att.global.attribute.comment"/>
+         <empty/>
       </element>
    </define>
    <define name="tei_incipit">
       <element name="incipit">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">contains the incipit of a manuscript or similar object item, that is the opening words of the text proper, exclusive of any rubric which might precede it, of sufficient length to identify the work uniquely; such incipits were, in former times, frequently used a means of reference to a work, in place of a title. [10.6.1. The msItem and msItemStruct Elements]</a:documentation>
          <ref name="tei_macro.phraseSeq"/>
+         <ref name="tei_att.global.attribute.comment"/>
+         <empty/>
       </element>
    </define>
    <define name="tei_msContents">
@@ -3772,6 +4236,8 @@ Suggested values include: 1] ISBN; 2] ISSN; 3] DOI; 4] URI; 5] VIAF; 6] ESTC; 7]
                </zeroOrMore>
             </group>
          </choice>
+         <ref name="tei_att.global.attribute.comment"/>
+         <empty/>
       </element>
    </define>
    <define name="tei_msItem">
@@ -3796,6 +4262,7 @@ Suggested values include: 1] ISBN; 2] ISSN; 3] DOI; 4] URI; 5] VIAF; 6] ESTC; 7]
                </oneOrMore>
             </choice>
          </group>
+         <ref name="tei_att.global.attribute.comment"/>
          <ref name="tei_att.global.attribute.xmlid"/>
          <ref name="tei_att.global.attribute.n"/>
          <empty/>
@@ -3805,6 +4272,8 @@ Suggested values include: 1] ISBN; 2] ISSN; 3] DOI; 4] URI; 5] VIAF; 6] ESTC; 7]
       <element name="summary">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">contains an overview of the available information concerning some aspect of an item or object (for example, its intellectual content, history, layout, typography etc.) as a complement or alternative to the more detailed information carried by more specific elements. [10.6. Intellectual Content]</a:documentation>
          <ref name="tei_macro.specialPara"/>
+         <ref name="tei_att.global.attribute.comment"/>
+         <empty/>
       </element>
    </define>
    <define name="tei_physDesc">
@@ -3821,6 +4290,8 @@ Suggested values include: 1] ISBN; 2] ISSN; 3] DOI; 4] URI; 5] VIAF; 6] ESTC; 7]
                <ref name="tei_handDesc"/>
             </optional>
          </group>
+         <ref name="tei_att.global.attribute.comment"/>
+         <empty/>
       </element>
    </define>
    <define name="tei_objectDesc">
@@ -3839,6 +4310,8 @@ Suggested values include: 1] ISBN; 2] ISSN; 3] DOI; 4] URI; 5] VIAF; 6] ESTC; 7]
                </optional>
             </group>
          </choice>
+         <ref name="tei_att.global.attribute.comment"/>
+         <empty/>
       </element>
    </define>
    <define name="tei_supportDesc">
@@ -3863,24 +4336,32 @@ Suggested values include: 1] ISBN; 2] ISSN; 3] DOI; 4] URI; 5] VIAF; 6] ESTC; 7]
                </optional>
             </group>
          </choice>
+         <ref name="tei_att.global.attribute.comment"/>
+         <empty/>
       </element>
    </define>
    <define name="tei_support">
       <element name="support">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">contains a description of the materials etc. which make up the physical support for the written part of a manuscript or other object. [10.7.1. Object Description]</a:documentation>
          <ref name="tei_macro.specialPara"/>
+         <ref name="tei_att.global.attribute.comment"/>
+         <empty/>
       </element>
    </define>
    <define name="tei_foliation">
       <element name="foliation">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">describes the numbering system or systems used to count the leaves or pages in a codex or similar object. [10.7.1.4. Foliation]</a:documentation>
          <ref name="tei_macro.specialPara"/>
+         <ref name="tei_att.global.attribute.comment"/>
+         <empty/>
       </element>
    </define>
    <define name="tei_condition">
       <element name="condition">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">contains a description of the physical condition of the manuscript or object. [10.7.1.5. Condition]</a:documentation>
          <ref name="tei_macro.specialPara"/>
+         <ref name="tei_att.global.attribute.comment"/>
+         <empty/>
       </element>
    </define>
    <define name="tei_layoutDesc">
@@ -3896,6 +4377,8 @@ Suggested values include: 1] ISBN; 2] ISSN; 3] DOI; 4] URI; 5] VIAF; 6] ESTC; 7]
                </optional>
             </group>
          </choice>
+         <ref name="tei_att.global.attribute.comment"/>
+         <empty/>
       </element>
    </define>
    <define name="tei_handDesc">
@@ -3914,6 +4397,8 @@ Suggested values include: 1] ISBN; 2] ISSN; 3] DOI; 4] URI; 5] VIAF; 6] ESTC; 7]
                </oneOrMore>
             </group>
          </choice>
+         <ref name="tei_att.global.attribute.comment"/>
+         <empty/>
       </element>
    </define>
    <define name="tei_history">
@@ -3938,12 +4423,15 @@ Suggested values include: 1] ISBN; 2] ISSN; 3] DOI; 4] URI; 5] VIAF; 6] ESTC; 7]
                </optional>
             </group>
          </choice>
+         <ref name="tei_att.global.attribute.comment"/>
+         <empty/>
       </element>
    </define>
    <define name="tei_origin">
       <element name="origin">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">contains any descriptive or other information concerning the origin of a manuscript, manuscript part, or other object. [10.8. History]</a:documentation>
          <ref name="tei_macro.specialPara"/>
+         <ref name="tei_att.global.attribute.comment"/>
          <ref name="tei_att.editLike.attribute.instant"/>
          <empty/>
       </element>
@@ -3952,12 +4440,16 @@ Suggested values include: 1] ISBN; 2] ISSN; 3] DOI; 4] URI; 5] VIAF; 6] ESTC; 7]
       <element name="provenance">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">contains any descriptive or other information concerning a single identifiable episode during the history of a manuscript, manuscript part, or other object after its creation but before its acquisition. [10.8. History]</a:documentation>
          <ref name="tei_macro.specialPara"/>
+         <ref name="tei_att.global.attribute.comment"/>
+         <empty/>
       </element>
    </define>
    <define name="tei_acquisition">
       <element name="acquisition">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">contains any descriptive or other information concerning the process by which a manuscript or manuscript part or other object entered the holding institution. [10.8. History]</a:documentation>
          <ref name="tei_macro.specialPara"/>
+         <ref name="tei_att.global.attribute.comment"/>
+         <empty/>
       </element>
    </define>
    <define name="tei_model.entryLike">
@@ -4042,6 +4534,7 @@ Suggested values include: 1] main; 2] hom (homograph); 3] xref (cross reference)
                <ref name="tei_model.global"/>
             </choice>
          </zeroOrMore>
+         <ref name="tei_att.global.attribute.comment"/>
          <ref name="tei_att.global.attribute.n"/>
          <ref name="tei_att.global.linking.attribute.corresp"/>
          <ref name="tei_att.entryLike.attributes"/>
@@ -4053,6 +4546,7 @@ Suggested values include: 1] main; 2] hom (homograph); 3] xref (cross reference)
       <element name="gen">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(gender) identifies the morphological gender of a lexical item, as given in the dictionary. [9.3.1. Information on Written and Spoken Forms]</a:documentation>
          <ref name="tei_macro.paraContent"/>
+         <ref name="tei_att.global.attribute.comment"/>
          <ref name="tei_att.global.attribute.n"/>
          <ref name="tei_att.global.attribute.xmllang"/>
          <ref name="tei_att.lexicographic.attribute.opt"/>
@@ -4063,6 +4557,7 @@ Suggested values include: 1] main; 2] hom (homograph); 3] xref (cross reference)
       <element name="iType">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(inflectional class) indicates the inflectional class associated with a lexical item. [9.3.1. Information on Written and Spoken Forms]</a:documentation>
          <ref name="tei_macro.paraContent"/>
+         <ref name="tei_att.global.attribute.comment"/>
          <ref name="tei_att.global.attribute.n"/>
          <ref name="tei_att.global.attribute.xmllang"/>
          <ref name="tei_att.lexicographic.attribute.opt"/>
@@ -4082,6 +4577,7 @@ Suggested values include: 1] main; 2] hom (homograph); 3] xref (cross reference)
                <ref name="tei_model.global"/>
             </choice>
          </zeroOrMore>
+         <ref name="tei_att.global.attribute.comment"/>
          <ref name="tei_att.lexicographic.attribute.opt"/>
          <ref name="tei_att.typed.attribute.type"/>
          <empty/>
@@ -4100,6 +4596,54 @@ Suggested values include: 1] main; 2] hom (homograph); 3] xref (cross reference)
          <attribute name="orig">
             <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(original) gives the original string or is the empty string when the element does not appear in the source text.</a:documentation>
             <data type="string"/>
+         </attribute>
+      </optional>
+   </define>
+   <define name="tei_att.linguistic.attribute.lemmaDW">
+      <optional>
+         <attribute name="lemmaDW">
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">provides a headword from Dwelly.</a:documentation>
+            <text/>
+         </attribute>
+      </optional>
+   </define>
+   <define name="tei_att.linguistic.attribute.lemmaRefDW">
+      <optional>
+         <attribute name="lemmaRefDW">
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">points to an entry in Dwelly.</a:documentation>
+            <text/>
+         </attribute>
+      </optional>
+   </define>
+   <define name="tei_att.linguistic.attribute.lemmaSL">
+      <optional>
+         <attribute name="lemmaSL">
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">provides a headword from a corresponding HDSG slip.</a:documentation>
+            <text/>
+         </attribute>
+      </optional>
+   </define>
+   <define name="tei_att.linguistic.attribute.slipRef">
+      <optional>
+         <attribute name="slipRef">
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">points to an URL for a corresponding HDSG slip.</a:documentation>
+            <text/>
+         </attribute>
+      </optional>
+   </define>
+   <define name="tei_att.linguistic.attribute.lemmaTG">
+      <optional>
+         <attribute name="lemmaTG">
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">provides a headword from https://www.teanglann.ie.</a:documentation>
+            <text/>
+         </attribute>
+      </optional>
+   </define>
+   <define name="tei_att.linguistic.attribute.lemmaRefTG">
+      <optional>
+         <attribute name="lemmaRefTG">
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">points to an URL for a corresponding headword from https://www.teanglann.ie.</a:documentation>
+            <text/>
          </attribute>
       </optional>
    </define>
@@ -4126,6 +4670,9 @@ Suggested values include: 1] main; 2] hom (homograph); 3] xref (cross reference)
             <data type="string"/>
          </attribute>
       </optional>
+   </define>
+   <define name="tei_att.global.analytic.attributes">
+      <ref name="tei_att.global.analytic.attribute.ana"/>
    </define>
    <define name="tei_att.global.analytic.attribute.ana">
       <optional>
@@ -4158,13 +4705,46 @@ Suggested values include: 1] main; 2] hom (homograph); 3] xref (cross reference)
          </zeroOrMore>
          <ref name="tei_att.global.attribute.n"/>
          <ref name="tei_att.global.attribute.xmllang"/>
+         <ref name="tei_att.global.linking.attribute.corresp"/>
          <ref name="tei_att.global.source.attribute.source"/>
          <ref name="tei_att.segLike.attribute.function"/>
          <ref name="tei_att.fragmentable.attribute.part"/>
          <ref name="tei_att.typed.attribute.type"/>
+         <ref name="tei_att.linguistic.attribute.lemmaTG"/>
+         <ref name="tei_att.linguistic.attribute.lemmaRefTG"/>
          <ref name="tei_att.linguistic.attribute.lemma"/>
          <ref name="tei_att.linguistic.attribute.lemmaRef"/>
          <ref name="tei_att.linguistic.attribute.pos"/>
+         <optional>
+            <attribute name="comment">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">adds a comment on any aspect of this word.</a:documentation>
+               <text/>
+            </attribute>
+         </optional>
+         <optional>
+            <attribute name="lemmaDW">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">provides a headword from Dwelly, overriding the headword from hwData.</a:documentation>
+               <text/>
+            </attribute>
+         </optional>
+         <optional>
+            <attribute name="lemmaRefDW">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">points to the URL for the entry corresponding to this headword in Dwelly, overriding the URL from hwData.</a:documentation>
+               <text/>
+            </attribute>
+         </optional>
+         <optional>
+            <attribute name="lemmaSL">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">The headword from a corresponding HDSG slip.</a:documentation>
+               <text/>
+            </attribute>
+         </optional>
+         <optional>
+            <attribute name="slipRef">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">The URL for the HDSG slip for this word.</a:documentation>
+               <text/>
+            </attribute>
+         </optional>
          <empty/>
       </element>
    </define>
@@ -4172,6 +4752,7 @@ Suggested values include: 1] main; 2] hom (homograph); 3] xref (cross reference)
       <element name="c">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(character) represents a character. [17.1. Linguistic Segment Categories]</a:documentation>
          <ref name="tei_macro.xtext"/>
+         <ref name="tei_att.global.attribute.comment"/>
          <ref name="tei_att.fragmentable.attribute.part"/>
          <empty/>
       </element>
@@ -4187,7 +4768,14 @@ Suggested values include: 1] main; 2] hom (homograph); 3] xref (cross reference)
                <ref name="tei_model.pPart.edit"/>
             </choice>
          </zeroOrMore>
+         <ref name="tei_att.global.attribute.comment"/>
          <ref name="tei_att.fragmentable.attribute.part"/>
+         <ref name="tei_att.linguistic.attribute.lemmaDW"/>
+         <ref name="tei_att.linguistic.attribute.lemmaRefDW"/>
+         <ref name="tei_att.linguistic.attribute.lemmaSL"/>
+         <ref name="tei_att.linguistic.attribute.slipRef"/>
+         <ref name="tei_att.linguistic.attribute.lemmaTG"/>
+         <ref name="tei_att.linguistic.attribute.lemmaRefTG"/>
          <empty/>
       </element>
    </define>
@@ -4196,7 +4784,7 @@ Suggested values include: 1] main; 2] hom (homograph); 3] xref (cross reference)
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">associates an interpretative annotation directly with a span of text. [17.3. Spans and Interpretations]</a:documentation>
          <ref name="tei_macro.phraseSeq.limited"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="fnag_mss4-span-targetfrom-constraint-report-10">
+                  id="fnag_mss4-span-targetfrom-constraint-report-12">
             <rule context="tei:span">
                <report test="@from and @target">
 Only one of the attributes @target and @from may be supplied on <name/>
@@ -4204,7 +4792,7 @@ Only one of the attributes @target and @from may be supplied on <name/>
             </rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="fnag_mss4-span-targetto-constraint-report-11">
+                  id="fnag_mss4-span-targetto-constraint-report-13">
             <rule context="tei:span">
                <report test="@to and @target">
 Only one of the attributes @target and @to may be supplied on <name/>
@@ -4212,19 +4800,21 @@ Only one of the attributes @target and @to may be supplied on <name/>
             </rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="fnag_mss4-span-tonotfrom-constraint-report-12">
+                  id="fnag_mss4-span-tonotfrom-constraint-report-14">
             <rule context="tei:span">
                <report test="@to and not(@from)">
 If @to is supplied on <name/>, @from must be supplied as well</report>
             </rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="fnag_mss4-span-tofrom-constraint-report-13">
+                  id="fnag_mss4-span-tofrom-constraint-report-15">
             <rule context="tei:span">
                <report test="contains(normalize-space(@to),' ') or contains(normalize-space(@from),' ')">
 The attributes @to and @from on <name/> may each contain only a single value</report>
             </rule>
          </pattern>
+         <ref name="tei_att.global.attribute.comment"/>
+         <ref name="tei_att.global.attribute.n"/>
          <ref name="tei_att.typed.attribute.type"/>
          <empty/>
       </element>
@@ -4233,6 +4823,7 @@ The attributes @to and @from on <name/> may each contain only a single value</re
       <element name="g">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(character or glyph) represents a glyph, or a non-standard character. [5. Characters, Glyphs, and Writing Modes]</a:documentation>
          <text/>
+         <ref name="tei_att.global.attribute.comment"/>
          <ref name="tei_att.global.linking.attribute.corresp"/>
          <optional>
             <attribute name="ref">
@@ -4253,6 +4844,8 @@ The attributes @to and @from on <name/> may each contain only a single value</re
                </choice>
             </oneOrMore>
          </group>
+         <ref name="tei_att.global.attribute.comment"/>
+         <empty/>
       </element>
    </define>
    <define name="tei_glyph">
@@ -4266,6 +4859,7 @@ The attributes @to and @from on <name/> may each contain only a single value</re
                <ref name="tei_model.descLike"/>
             </choice>
          </zeroOrMore>
+         <ref name="tei_att.global.attribute.comment"/>
          <ref name="tei_att.global.attribute.xmlid"/>
          <ref name="tei_att.global.linking.attribute.corresp"/>
          <empty/>
@@ -4275,7 +4869,19 @@ The attributes @to and @from on <name/> may each contain only a single value</re
       <element name="glyphName">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(character glyph name) contains the name of a glyph, expressed following Unicode conventions for character names. [5.2. Markup Constructs for Representation of Characters and Glyphs]</a:documentation>
          <text/>
+         <ref name="tei_att.global.attribute.comment"/>
+         <empty/>
       </element>
+   </define>
+   <define name="tei_att.global.linking.attributes">
+      <ref name="tei_att.global.linking.attribute.corresp"/>
+      <ref name="tei_att.global.linking.attribute.synch"/>
+      <ref name="tei_att.global.linking.attribute.sameAs"/>
+      <ref name="tei_att.global.linking.attribute.copyOf"/>
+      <ref name="tei_att.global.linking.attribute.next"/>
+      <ref name="tei_att.global.linking.attribute.prev"/>
+      <ref name="tei_att.global.linking.attribute.exclude"/>
+      <ref name="tei_att.global.linking.attribute.select"/>
    </define>
    <define name="tei_att.global.linking.attribute.corresp">
       <optional>
@@ -4364,6 +4970,12 @@ The attributes @to and @from on <name/> may each contain only a single value</re
          <ref name="tei_att.global.linking.attribute.copyOf"/>
          <ref name="tei_att.global.source.attribute.source"/>
          <ref name="tei_att.typed.attribute.type"/>
+         <optional>
+            <attribute name="comment">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">provides a title for what the block of text being anchored.</a:documentation>
+               <text/>
+            </attribute>
+         </optional>
          <empty/>
       </element>
    </define>
@@ -4371,10 +4983,15 @@ The attributes @to and @from on <name/> may each contain only a single value</re
       <element name="seg">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(arbitrary segment) represents any segmentation of text below the chunk level. [16.3. Blocks, Segments, and Anchors 6.2. Components of the Verse Line 7.2.5. Speech Contents]</a:documentation>
          <ref name="tei_macro.paraContent"/>
+         <ref name="tei_att.global.attribute.comment"/>
+         <ref name="tei_att.global.attribute.xmlid"/>
          <ref name="tei_att.fragmentable.attribute.part"/>
          <ref name="tei_att.typed.attribute.type"/>
          <empty/>
       </element>
+   </define>
+   <define name="tei_att.global.facs.attributes">
+      <ref name="tei_att.global.facs.attribute.facs"/>
    </define>
    <define name="tei_att.global.facs.attribute.facs">
       <optional>
@@ -4387,6 +5004,9 @@ The attributes @to and @from on <name/> may each contain only a single value</re
             </list>
          </attribute>
       </optional>
+   </define>
+   <define name="tei_att.global.change.attributes">
+      <ref name="tei_att.global.change.attribute.change"/>
    </define>
    <define name="tei_att.global.change.attribute.change">
       <optional>
@@ -4406,12 +5026,15 @@ The attributes @to and @from on <name/> may each contain only a single value</re
          <oneOrMore>
             <ref name="tei_handNote"/>
          </oneOrMore>
+         <ref name="tei_att.global.attribute.comment"/>
+         <empty/>
       </element>
    </define>
    <define name="tei_handShift">
       <element name="handShift">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">marks the beginning of a sequence of text written in a new hand, or the beginning of a scribal stint. [11.3.2.1. Document Hands]</a:documentation>
          <empty/>
+         <ref name="tei_att.global.attribute.comment"/>
          <optional>
             <attribute name="new">
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">indicates a <code xmlns="http://www.w3.org/1999/xhtml">&lt;handNote&gt;</code> element describing the hand concerned.</a:documentation>
@@ -4430,7 +5053,18 @@ The attributes @to and @from on <name/> may each contain only a single value</re
                <ref name="tei_model.certLike"/>
             </choice>
          </zeroOrMore>
+         <ref name="tei_att.global.attribute.comment"/>
          <ref name="tei_att.typed.attribute.type"/>
+         <optional>
+            <attribute name="resp">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(responsible party) (responsible party) indicates the individual responsible for identifying and measuring the space</a:documentation>
+               <list>
+                  <oneOrMore>
+                     <data type="anyURI"/>
+                  </oneOrMore>
+               </list>
+            </attribute>
+         </optional>
          <empty/>
       </element>
    </define>
@@ -4438,6 +5072,7 @@ The attributes @to and @from on <name/> may each contain only a single value</re
       <element name="supplied">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">signifies text supplied by the transcriber or editor for any reason; for example because the original cannot be read due to physical damage, or because of an obvious omission by the author or scribe. [11.3.3.1. Damage, Illegibility, and Supplied Text]</a:documentation>
          <ref name="tei_macro.paraContent"/>
+         <ref name="tei_att.global.attribute.comment"/>
          <ref name="tei_att.global.responsibility.attribute.resp"/>
          <ref name="tei_att.editLike.attribute.instant"/>
          <empty/>
@@ -4524,6 +5159,8 @@ Suggested values include: 1] label; 2] data</a:documentation>
                </group>
             </zeroOrMore>
          </group>
+         <ref name="tei_att.global.attribute.comment"/>
+         <empty/>
       </element>
    </define>
    <define name="tei_row">
@@ -4532,6 +5169,7 @@ Suggested values include: 1] label; 2] data</a:documentation>
          <oneOrMore>
             <ref name="tei_cell"/>
          </oneOrMore>
+         <ref name="tei_att.global.attribute.comment"/>
          <ref name="tei_att.tableDecoration.attributes"/>
          <empty/>
       </element>
@@ -4540,6 +5178,7 @@ Suggested values include: 1] label; 2] data</a:documentation>
       <element name="cell">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">contains one cell of a table. [14.1.1. TEI Tables]</a:documentation>
          <ref name="tei_macro.specialPara"/>
+         <ref name="tei_att.global.attribute.comment"/>
          <ref name="tei_att.tableDecoration.attributes"/>
          <empty/>
       </element>
