@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="../Schemas/fnag_mss2.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 <?xml-stylesheet type="text/xsl" href="../../Coding/Stylesheets/basic-info.xsl"?>
+<?xml-model href="../Schemas/fnag_mss.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 <TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="T31">
     <teiHeader>
         <fileDesc>
@@ -14,7 +14,7 @@
             <extent/>
             <publicationStmt>
                 <authority sameAs="authority"/>
-                <availability status="restricted" sameAs="availability">
+                <availability status="restricted">
                     <p>For internal use by the Faclair na Gàidhlig/DASG projects</p>
                 </availability>
                 <idno>T31</idno>
@@ -94,7 +94,7 @@
         </encodingDesc>
         <profileDesc>
             <handNotes>
-                <handNote sameAs="Hand10"/>
+                <handNote corresp="Hand10"/>
             </handNotes>
             <textClass>
                 <keywords>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="../Schemas/fnag_mss2.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 <?xml-stylesheet type="text/xsl" href="../../Coding/Stylesheets/basic-info.xsl"?>
+<?xml-model href="../Schemas/fnag_mss.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 <TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="T11">
     <teiHeader>
         <fileDesc>
@@ -101,7 +101,10 @@
         </encodingDesc>
         <profileDesc>
             <handNotes>
-                <handNote sameAs="Hand28"/>
+                <handNote corresp="Hand31"/>
+                <handNote corresp="Hand32"/>
+                <handNote corresp="Hand33"/>
+                <handNote corresp="Hand34"/>
             </handNotes>
             <textClass>
                 <keywords>
@@ -110,7 +113,7 @@
             </textClass>
         </profileDesc>
         <revisionDesc>
-            <change when="2019-04-02" resp="EPT">File created</change>
+            <change when="2019-04-02" who="EPT">File created</change>
         </revisionDesc>
     </teiHeader>
     <text>
@@ -1831,7 +1834,7 @@
                     <space type="scribal"/>
                     <w lemma="in" lemmaRef="http://www.dil.ie/28194" pos="article">an</w>
                     <space type="em"/>
-                    <seg type="signature" n="1">
+                    <seg type="signature">
                         <space type="scribal"/>
                         <space type="scribal"/>
                         <space type="scribal"/>
@@ -1869,7 +1872,7 @@
                     <w lemma="deec" lemmaRef="http://www.dil.ie/15020" pos="number">x</w>
                     <pc>.</pc>
                     <lb n="27" xml:id="MS11.p1.27"/>
-                    <seg type="signature" n="2">
+                    <seg type="signature">
                         <name type="personal">
                             <w lemma="*Tairdelbach" source="tairdelb" lemmaRef="http://www.dil.ie/39687" pos="noun">toirdel<abbr cert="high">b<g ref="g3">ach</g>
                                 </abbr>
@@ -1899,7 +1902,7 @@
                         <space type="scribal"/>
                         <space type="scribal"/>
                     </seg>
-                    <seg type="signature" n="3">
+                    <seg type="signature">
                         <handShift new="Hand32"/>
                         <name type="personal">
                             <w pos="noun">jon</w>
@@ -1918,7 +1921,7 @@
                         <pc>/</pc>
                     </seg>
                     <lb n="29" xml:id="MS11.p1.29"/>
-                    <seg type="signature" n="4">
+                    <seg type="signature">
                         <handShift new="Hand33"/>
                         <w xml:lang="sco">
                             <abbr cert="high">m<g ref="g59">aister</g>
@@ -1940,7 +1943,7 @@
                         <w xml:lang="sco">witnes</w>
                     </seg>
                     <lb n="30" xml:id="MS11.p1.30"/>
-                    <seg type="signature" n="5">
+                    <seg type="signature">
                         <handShift new="Hand34"/>
                         <space type="scribal"/>
                         <space type="scribal"/>

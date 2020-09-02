@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="../Schemas/fnag_mss2.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 <?xml-stylesheet type="text/xsl" href="../../Coding/Stylesheets/basic-info.xsl"?>
+<?xml-model href="../Schemas/fnag_mss.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 <TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="T16">
 	<teiHeader>
 		<fileDesc>
@@ -264,6 +264,7 @@
 			<handNotes>
 				<handNote corresp="Hand22"/>
 				<handNote corresp="Hand39"/>
+				<handNote corresp="Hand999"/>
 			</handNotes>
 			<textClass>
 				<keywords>
@@ -272,7 +273,7 @@
 			</textClass>
 		</profileDesc>
 		<revisionDesc>
-			<change when="2018-06-04" resp="EPT">Began initial transcription</change>
+			<change when="2018-06-04" who="EPT">Began initial transcription</change>
 		</revisionDesc>
 	</teiHeader>
 	<text>
@@ -10426,8 +10427,8 @@
 						<w lemma="uaigneas"
 							lemmaRef="https://www.faclair.com/ViewDictionaryEntry.aspx?ID=E699D989D0790DC5B3B9C099CF47E5B8"
 							pos="noun"
-							comment="*Dwelly URL*; this is only being used until eDIL can provide an URL for 'úaignes'"
 							>nuaignes</w>
+						<note type="fn" resp="EPT"><p>*Dwelly URL*; this is only being used until eDIL can provide an URL for 'úaignes'.</p></note>
 						<space type="scribal"/>
 						<w lemma="ól" lemmaRef="http://www.dil.ie/33765" pos="verbal_noun">oil</w>
 					</l>
@@ -13085,7 +13086,7 @@
 						<space type="scribal"/>
 						<pc>.</pc>
 					</l>
-					<l n="d" xml:id="MS16.4.14d">
+					<l n="d" xml:id="MS16.4.13d">
 						<w lemma="tall" lemmaRef="http://www.dil.ie/39945" pos="adverb">
 							<abbr cert="high">t<g ref="g4">h</g>
 							</abbr>all</w>
@@ -13178,7 +13179,7 @@
 						<pc>.</pc>
 						<space type="scribal"/>
 					</l>
-					<l n="d" xml:base="MS16.4.14d">
+					<l n="d" xml:id="MS16.4.14d">
 						<w lemma="cen" lemmaRef="http://www.dil.ie/8581" pos="preposition">gan</w>
 						<space type="scribal"/>
 						<w lemma="pían" lemmaRef="http://www.dil.ie/34308" pos="noun">

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="../Schemas/fnag_mss2.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 <?xml-stylesheet type="text/xsl" href="../../Coding/Stylesheets/basic-info.xsl"?>
+<?xml-model href="../Schemas/fnag_mss.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 <TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="T25">
     <teiHeader>
         <fileDesc>
@@ -124,7 +124,7 @@
         </encodingDesc>
         <profileDesc>
             <handNotes>
-                <handNote sameAs="Hand43"/>
+                <handNote corresp="Hand43"/>
             </handNotes>
             <textClass>
                 <keywords>
@@ -133,7 +133,7 @@
             </textClass>
         </profileDesc>
         <revisionDesc>
-            <change when="2019-08-19" resp="MMA">Began initial transcription</change>
+            <change when="2019-08-19" who="MMA">Began initial transcription</change>
         </revisionDesc>
     </teiHeader>
     <text>

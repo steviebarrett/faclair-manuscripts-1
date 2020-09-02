@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="../Schemas/fnag_mss2.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 <?xml-stylesheet type="text/xsl" href="../../Coding/Stylesheets/basic-info.xsl"?>
+<?xml-model href="../Schemas/fnag_mss.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 <TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="T8">
 	<teiHeader>
 		<fileDesc>
@@ -20,7 +20,7 @@
 			<extent>24 words </extent>
 			<publicationStmt>
 				<authority sameAs="authority"/>
-				<availability sameAs="availability" status="restricted">
+				<availability status="restricted">
 					<licence/>
 				</availability>
 				<idno>T8</idno>
@@ -508,7 +508,6 @@
 						<lb n="4" xml:id="MS8.231v.4"/>
 						<gap reason="damage" quantity="2" unit="syllables" resp="EPT"/>
 						<w lemma="ar" lemmaRef="http://www.dil.ie/3902" pos="preposition"
-							comment="This may be the final syllable of a longer word, rather than a word in itself."
 							>air</w>
 						<note type="fn" resp="EPT">
 							<p>The visibility of text drops to zero to the immediate left of the
