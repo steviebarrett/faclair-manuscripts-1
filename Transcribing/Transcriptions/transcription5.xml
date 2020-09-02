@@ -333,7 +333,14 @@
 		</encodingDesc>
 		<profileDesc>
 			<handNotes>
-				<handNote sameAs="Handn"/>
+				<handNote corresp="Hand12"/>
+				<handNote corresp="Hand13"/>
+				<handNote corresp="Hand14"/>
+				<handNote corresp="Hand15"/>
+				<handNote corresp="Hand16"/>
+				<handNote corresp="Hand17"/>
+				<handNote corresp="Hand26"/>
+				<handNote corresp="Hand999"/>
 			</handNotes>
 			<textClass>
 				<keywords>
@@ -1143,20 +1150,11 @@
 							</abbr>
 						</w>
 						<space type="scribal"/>
-						<choice>
-							<unclear n="1" reason="interp_obscure" cert="medium" resp="EPT">
-								<w n="1" lemma="ainimm" lemmaRef="http://www.dil.ie/1402" pos="noun"
-										>an<abbr cert="high">i<g ref="g1">m</g>
-									</abbr>
-								</w>
-							</unclear>
-							<unclear n="2" reason="interp_obscure" cert="medium" resp="EPT">
-								<w n="1" lemma="ainim" lemmaRef="http://www.dil.ie/1400" pos="noun"
-										>an<abbr cert="high">i<g ref="g1">m</g>
-									</abbr>
-								</w>
-							</unclear>
-						</choice>
+						<unclear reason="interp_obscure" cert="medium" resp="EPT"><w lemma="ainimm"
+								lemmaRef="http://www.dil.ie/1402" pos="noun">an<abbr cert="high">i<g
+										ref="g1">m</g>
+								</abbr>
+							</w></unclear>
 						<space type="scribal"/>
 						<c>h</c>
 						<gap reason="text_obscure" extent="unknown" resp="EPT"/>
@@ -4357,7 +4355,7 @@
 				<div n="1l" type="prose" corresp="MS5.1l" hand="Hand16">
 					<p>
 						<handShift new="Hand16"/>
-						<lb n="15" corresp="MS5.p36.15"/>
+						<lb n="15" sameAs="MS5.p36.15"/>
 						<space type="em"/>
 						<w lemma="orra"
 							lemmaRef="https://www.faclair.com/ViewDictionaryEntry.aspx?ID=D1C90D6A245030A54E88A97A7121EFE6"
@@ -7644,7 +7642,7 @@
 					<w lemma="in" lemmaRef="http://www.dil.ie/28194" pos="article">an</w>
 					<space type="scribal"/>
 					<w lemma="dochum" lemmaRef="http://www.dil.ie/17406" pos="preposition">
-						<abbr cert="high">c<g resp="g4">h</g>
+						<abbr cert="high">c<g ref="g4">h</g>
 						</abbr>um</w>
 					<space type="scribal"/>
 					<w lemma="in" lemmaRef="http://www.dil.ie/28194" pos="article">an</w>
@@ -10148,8 +10146,8 @@
 					</p>
 				</div>
 				<div n="2" type="prosediv" xml:id="MS5.3.2">
-					<p>
-						<w xml:lang="la" xml:id="MS5.3.2a">Omne</w>
+					<p xml:id="MS5.3.2a">
+						<w xml:lang="la">Omne</w>
 						<space type="scribal"/>
 						<w xml:lang="la">bon<abbr cert="high">u<g ref="g1">m</g>
 							</abbr>
@@ -12148,8 +12146,8 @@
 					</p>
 				</div>
 				<div n="31" type="prosediv" xml:id="MS5.3.31">
-					<p>
-						<w xml:lang="la" xml:id="MS5.3.31a">In</w>
+					<p xml:id="MS5.3.31a">
+						<w xml:lang="la">In</w>
 						<space type="scribal"/>
 						<w xml:lang="la">fu<abbr cert="high">t<g ref="g16">ur</g>
 							</abbr>is</w>
@@ -12502,7 +12500,7 @@
 						<w lemma="ní" lemmaRef="http://www.dil.ie/33145" pos="noun">ni</w>
 						<lb n="20" xml:id="MS5.p38.20"/>
 						<w lemma="dílegaid" lemmaRef="http://www.dil.ie/16394" pos="verb">di<abbr
-								cert="medium">l<g ref="g3" cert="medium">eagt</g>
+								cert="medium">l<g ref="g3">eagt</g>
 								<g ref="g4">h</g>
 								<g ref="g21">ear</g>
 							</abbr>
@@ -12636,7 +12634,7 @@
 								cert="high">b<g ref="g3">ad</g>
 							</abbr>
 						</w>
-						<note n="2" type="fn" resp="EPT">
+						<note type="fn" resp="EPT">
 							<p>James Beaton (Hand14) adds a "d" above "tab<hi rend="italics"
 								>ad</hi>". This could be to clarify the meaning of the original
 								suspension stroke or he could have been altering it to <hi
@@ -16724,8 +16722,7 @@
 					<pb n="insert" xml:id="MS5.insert1"/>
 					<lb n="1" xml:id="MS5.insert1.1"/>
 					<unclear reason="damage" resp="Black1978" cert="unknown">
-						<w lemma="míle" lemmaRef="http://www.dil.ie/32234" pos="number"
-							resp="Black1978">Mile</w>
+						<w lemma="míle" lemmaRef="http://www.dil.ie/32234" pos="number">Mile</w>
 						<space type="editorial"/>
 						<w lemma="bennacht" lemmaRef="http://www.dil.ie/5661" pos="noun"
 								>benn<unclear reason="damage" cert="unknown" resp="Black1978"
@@ -16736,7 +16733,8 @@
 						</w>
 						<space type="editorial"/>
 						<name type="personal">
-							<w lemma="Lochlann" lemmaRef="http://www.dil.ie/30451" pos="noun">L<unclear reason="damage" cert="unknown" resp="Black1978"
+							<w lemma="Lochlann" lemmaRef="http://www.dil.ie/30451" pos="noun"
+									>L<unclear reason="damage" cert="unknown" resp="Black1978"
 									>oc</unclear>h<abbr cert="unknown">l<g ref="g27">oinn</g>
 								</abbr>
 							</w>
@@ -16751,7 +16749,7 @@
 							>Mh</unclear>ic</w>
 						<space type="editorial"/>
 					</unclear>
-					<note n="1" type="fn" resp="EPT">
+					<note type="fn" resp="EPT">
 						<p>The first 6 words of the text are now completely lost but seem to have
 							been well-preserved when Black examined them in the 1970s.</p>
 					</note>
@@ -16822,18 +16820,14 @@
 					<w lemma="attá" lemmaRef="http://www.dil.ie/4927" pos="verb">ata</w>
 					<lb n="2" xml:id="MS5.insert1.2"/>
 					<unclear reason="damage" resp="Black1978" cert="unknown">
-						<w lemma="sé" lemmaRef="http://www.dil.ie/36709" pos="pronoun"
-							resp="Black1978">se</w>
+						<w lemma="sé" lemmaRef="http://www.dil.ie/36709" pos="pronoun">se</w>
 						<space type="editorial"/>
 						<w pos="preposition-possessive_pronoun">
-							<w lemma="do" lemmaRef="http://www.dil.ie/17096" pos="preposition"
-								resp="Black1978">d</w>
-							<w lemma="a" lemmaRef="http://www.dil.ie/3" pos="possessive_pronoun"
-								resp="Black1978">a</w>
+							<w lemma="do" lemmaRef="http://www.dil.ie/17096" pos="preposition">d</w>
+							<w lemma="a" lemmaRef="http://www.dil.ie/3" pos="possessive_pronoun">a</w>
 						</w>
 						<space type="editorial"/>
-						<w lemma="íarraid" lemmaRef="http://www.dil.ie/27061" pos="verbal_noun"
-							resp="Black1978">i<abbr cert="unknown">a<g ref="g27">raidh</g>
+						<w lemma="íarraid" lemmaRef="http://www.dil.ie/27061" pos="verbal_noun">i<abbr cert="unknown">a<g ref="g27">raidh</g>
 							</abbr>
 						</w>
 					</unclear>
@@ -16890,12 +16884,12 @@
 						<w pos="noun">colla</w>
 					</name>
 					<space type="scribal"/>
-						<unclear reason="interp_obscure" cert="medium" resp="Black1978">
-							<w n="1" lemma="fris-gair" lemmaRef="http://www.dil.ie/24363" pos="verb"
-									>reg<abbr cert="high">
-									<g ref="g8">ar</g>
-								</abbr>a</w>
-						</unclear>
+					<unclear reason="interp_obscure" cert="medium" resp="Black1978">
+						<w n="1" lemma="fris-gair" lemmaRef="http://www.dil.ie/24363" pos="verb"
+								>reg<abbr cert="high">
+								<g ref="g8">ar</g>
+							</abbr>a</w>
+					</unclear>
 					<space type="scribal"/>
 					<w lemma="fo" lemmaRef="http://www.dil.ie/22333" pos="preposition">fa</w>
 					<space type="scribal"/>
@@ -16903,19 +16897,19 @@
 						<abbr cert="high">d<g ref="g4">h</g>
 						</abbr>ul</w>
 					<space type="scribal"/>
-						<unclear reason="interp_obscure" cert="medium" resp="Black1978">
-							<w n="1" lemma="dochum" lemmaRef="http://www.dil.ie/17406"
-								pos="preposition">da<abbr cert="high">c<g ref="g4">h</g>
-								</abbr><supplied resp="EPT">um</supplied>
-							</w>
-						</unclear>
+					<unclear reason="interp_obscure" cert="medium" resp="Black1978">
+						<w n="1" lemma="dochum" lemmaRef="http://www.dil.ie/17406" pos="preposition"
+								>da<abbr cert="high">c<g ref="g4">h</g>
+							</abbr><supplied resp="EPT">um</supplied>
+						</w>
+					</unclear>
 					<space type="scribal"/>
-							<w lemma="ingen" lemmaRef="http://www.dil.ie/28651" pos="noun"
-									>i<abbr cert="medium">n<g ref="g3">ghin</g>
-								</abbr>
-							</w>
+					<w lemma="ingen" lemmaRef="http://www.dil.ie/28651" pos="noun">i<abbr
+							cert="medium">n<g ref="g3">ghin</g>
+						</abbr>
+					</w>
 					<space type="scribal"/>
-					<w lemma="ingen" lemmaRef="http://www.dil.ie/28651" pos="noun" resp="Black1978">
+					<w lemma="ingen" lemmaRef="http://www.dil.ie/28651" pos="noun">
 						<abbr cert="medium">i<g ref="g3">nghine</g>
 						</abbr>
 					</w>
@@ -17030,7 +17024,8 @@
 					<lb n="5" xml:id="MS5.insert1.5"/>
 					<w lemma="mé" lemmaRef="http://www.dil.ie/31705" pos="pronoun">MISI</w>
 					<name type="personal">
-						<w lemma="Lochlann" lemmaRef="http://www.dil.ie/30451" pos="noun">LOCHLOI<abbr cert="high">N<g ref="g5">N</g>
+						<w lemma="Lochlann" lemmaRef="http://www.dil.ie/30451" pos="noun"
+								>LOCHLOI<abbr cert="high">N<g ref="g5">N</g>
 							</abbr>
 						</w>
 					</name>

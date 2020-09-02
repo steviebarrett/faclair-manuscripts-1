@@ -1584,8 +1584,11 @@
 		</encodingDesc>
 		<profileDesc>
 			<handNotes>
-				<handNote sameAs="Handn"/>
-				<!-- Template 1.2 -->
+				<handNote corresp="Hand16"/>
+				<handNote corresp="Hand17"/>
+				<handNote corresp="Hand20"/>
+				<handNote corresp="Hand35"/>
+				<handNote corresp="Hand99"/>
 			</handNotes>
 			<textClass>
 				<keywords>
@@ -16229,7 +16232,7 @@
 					<space type="scribal"/>
 					<w pos="preposition-article">
 						<w lemma="de" lemmaRef="http://www.dil.ie/14787" pos="preposition">d<abbr
-								resp="cert" corresp="369e9fc0">o</abbr>
+								cert="high" corresp="369e9fc0">o</abbr>
 						</w>
 						<w lemma="in" lemmaRef="http://www.dil.ie/28194" pos="article">
 							<g ref="g5" corresp="369e9fc0">n</g>
@@ -25784,7 +25787,7 @@
 					<w lemma="corp" lemmaRef="http://www.dil.ie/12497" pos="noun">c<abbr
 							cert="medium">o<g ref="g3">r</g>
 						</abbr>
-						<abbr type="medium">p<g ref="g3">aib</g>
+						<abbr cert="medium">p<g ref="g3">aib</g>
 						</abbr>
 					</w>
 					<space type="scribal"/>
@@ -26044,23 +26047,23 @@
 							cert="high">g<g ref="g4">h</g>
 						</abbr>i</w>
 					<space type="scribal"/>
-					<hi rend="underline" hand="Hand20">
+					<w lemma="résúnta" lemmaRef="http://www.dil.ie/35157" pos="adjective">res<abbr
+							cert="high">u<g ref="g5">n</g>
+						</abbr>ta</w>
+					<space type="scribal"/>
+					<w lemma="ocus" lemmaRef="http://www.dil.ie/33484" pos="conjunction">
+						<abbr cert="high">
+							<g ref="g2">agus</g>
+						</abbr>
+					</w>
+					<w pos="prefix-adjective">
+						<w lemma="mí-" lemmaRef="http://www.dil.ie/32121" pos="prefix">mí</w>
 						<w lemma="résúnta" lemmaRef="http://www.dil.ie/35157" pos="adjective"
 								>res<abbr cert="high">u<g ref="g5">n</g>
 							</abbr>ta</w>
-						<space type="scribal"/>
-						<w lemma="ocus" lemmaRef="http://www.dil.ie/33484" pos="conjunction">
-							<abbr cert="high">
-								<g ref="g2">agus</g>
-							</abbr>
-						</w>
-						<w pos="prefix-adjective">
-							<w lemma="mí-" lemmaRef="http://www.dil.ie/32121" pos="prefix">mí</w>
-							<w lemma="résúnta" lemmaRef="http://www.dil.ie/35157" pos="adjective"
-									>res<abbr cert="high">u<g ref="g5">n</g>
-								</abbr>ta</w>
-						</w>
-					</hi>
+					</w>
+					<note type="fn" resp="EPT"><p>"resunta ... míresunta" has been underlined by the
+							scribe.</p></note>
 					<lb n="23" xml:id="MS14.35v.23"/>
 					<w lemma="ocus" lemmaRef="http://www.dil.ie/33484" pos="conjunction">
 						<abbr cert="high">
@@ -28487,7 +28490,7 @@
 						</abbr>
 					</w>
 					<space type="scribal"/>
-					<w cert="high">
+					<w xml:lang="la">
 						<abbr cert="high">
 							<g ref="g2">et</g>
 						</abbr>
@@ -40501,7 +40504,7 @@
 						</abbr>
 					</w>
 					<space type="scribal"/>
-					<w lemma="enáir" lemmaRef="http://www.dil.ie/20051" pos="noun">gi<del resp="EPT"
+					<w lemma="enáir" lemmaRef="http://www.dil.ie/20051" pos="noun">gi<del hand="Hand20"
 							>n</del>an<abbr cert="high">
 							<g ref="g11">air</g>
 						</abbr>
@@ -51794,7 +51797,7 @@
 							<abbr cert="high">e<g ref="g3">ss</g>e</abbr>
 						</w>
 						<space type="scribal"/>
-						<w xml:base="la">
+						<w xml:lang="la">
 							<abbr cert="high">s<g ref="g40">ub</g>
 							</abbr>ect<abbr cert="high">u<g ref="g1">m</g>
 							</abbr>
@@ -52225,7 +52228,7 @@
 						</w>
 						<w xml:lang="la">sexsus</w>
 						<space type="scribal"/>
-						<w xml:base="la">cec<abbr cert="high">u<g ref="g5">n</g>
+						<w xml:lang="la">cec<abbr cert="high">u<g ref="g5">n</g>
 							</abbr>dum</w>
 						<space type="scribal"/>
 						<w xml:lang="la">dista<abbr cert="high">n<g ref="g5">n</g>
@@ -62207,7 +62210,7 @@
 					</w>
 					<space type="scribal"/>
 					<w lemma="UNKNOWN" pos="noun">la<abbr cert="high">m<g ref="g4">h</g>
-						</abbr>antra<del resp="Hand20">nd</del>
+						</abbr>antra<del hand="Hand20">nd</del>
 					</w>
 					<lb n="9" xml:id="MS14.49r.9"/>
 					<w lemma="glas" lemmaRef="http://www.dil.ie/25996" pos="adjective">glas</w>
