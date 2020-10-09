@@ -2896,10 +2896,16 @@
 						</abbr>
 					</w>
 					<pc>.</pc>
-					<w xml:lang="la">glanc<abbr cert="high">
-							<g ref="g7">us</g>
-						</abbr>
-					</w>
+					<choice>
+						<sic><w xml:lang="la">glanc<abbr cert="high">
+									<g ref="g7">us</g>
+								</abbr>
+							</w></sic>
+						<corr resp="EPT"><w xml:lang="la">glauc<abbr cert="high">
+									<g ref="g7">us</g>
+								</abbr>
+							</w></corr>
+					</choice>
 					<space type="scribal"/>
 					<w lemma="immar" lemmaRef="http://www.dil.ie/27721" pos="preposition">mar</w>
 					<pb n="28v" xml:id="MS14.28v"/>
@@ -29528,6 +29534,13 @@
 							<g ref="g3">r</g>p</abbr>
 					</w>
 					<space type="scribal"/>
+					<w lemma="ór" lemmaRef="http://www.dil.ie/33928" pos="conjunction">oir</w>
+					<space type="scribal"/>
+					<w lemma="is" lemmaRef="http://www.dil.ie/29104" pos="verb">ni</w>
+					<space type="scribal"/>
+					<w lemma="corp" lemmaRef="http://www.dil.ie/12497" pos="noun">co<abbr
+							cert="high"><g ref="g3">r</g>p</abbr></w>
+					<space type="scribal"/>
 					<w lemma="in" lemmaRef="http://www.dil.ie/28194" pos="article">an</w>
 					<w lemma="dath" lemmaRef="http://www.dil.ie/14728" pos="noun">da<abbr
 							cert="high">t<g ref="g4">h</g>
@@ -29552,24 +29565,6 @@
 					<space type="scribal"/>
 					<w lemma="é" lemmaRef="http://www.dil.ie/19325" pos="pronoun">é</w>
 					<space type="scribal"/>
-					<seg type="margNote" xml:id="MS14.37v.ltop1">
-						<lb n="2" xml:id="MS14.37v.ltop1.2"/>
-						<w lemma="in" lemmaRef="http://www.dil.ie/28194" pos="article">in</w>
-						<w lemma="cethramad" lemmaRef="http://www.dil.ie/8928" pos="number">.4.</w>
-						<space type="scribal"/>
-						<w lemma="aiccidit" lemmaRef="http://www.dil.ie/762" pos="noun">aicid</w>
-						<space type="scribal"/>
-						<w lemma="fri" lemmaRef="http://www.dil.ie/24329" pos="preposition">re</w>
-						<w lemma="as-beir" lemmaRef="http://www.dil.ie/4383" pos="verb">na<abbr
-								cert="high">b<g ref="g3">ur</g>
-							</abbr>
-						</w>
-						<lb n="1" xml:id="MS14.37v.ltop1.1"/>
-						<w xml:lang="la">aiccidens</w>
-						<space type="scribal"/>
-						<w xml:lang="la">ex<abbr cert="high">p<g ref="g20">re</g>
-							</abbr>mens</w>
-					</seg>
 					<del hand="Hand20">
 						<w xml:lang="la">
 							<abbr cert="high">
@@ -29607,6 +29602,24 @@
 						<space type="scribal"/>
 						<w lemma="is" lemmaRef="http://www.dil.ie/29104" pos="verb">as</w>
 					</del>
+					<seg type="margNote" xml:id="MS14.37v.ltop1">
+						<lb n="2" xml:id="MS14.37v.ltop1.2"/>
+						<w lemma="in" lemmaRef="http://www.dil.ie/28194" pos="article">in</w>
+						<w lemma="cethramad" lemmaRef="http://www.dil.ie/8928" pos="number">.4.</w>
+						<space type="scribal"/>
+						<w lemma="aiccidit" lemmaRef="http://www.dil.ie/762" pos="noun">aicid</w>
+						<space type="scribal"/>
+						<w lemma="fri" lemmaRef="http://www.dil.ie/24329" pos="preposition">re</w>
+						<w lemma="as-beir" lemmaRef="http://www.dil.ie/4383" pos="verb">na<abbr
+								cert="high">b<g ref="g3">ur</g>
+							</abbr>
+						</w>
+						<lb n="1" xml:id="MS14.37v.ltop1.1"/>
+						<w xml:lang="la">aiccidens</w>
+						<space type="scribal"/>
+						<w xml:lang="la">ex<abbr cert="high">p<g ref="g20">re</g>
+							</abbr>mens</w>
+					</seg>
 					<add type="gloss" place="above">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" pos="abbreviation">.i.</w>
 						<space type="scribal"/>
@@ -67966,7 +67979,7 @@
 							<g ref="g11">air</g>
 						</abbr>
 					</w>
-					<w lemma="comair" lemmaRef="http://www.dil.ie/10630" pos="noun">co<abbr
+					<w lemma="comar" lemmaRef="http://www.dil.ie/10733f" pos="noun">co<abbr
 							cert="high">m<g ref="g4">h</g>
 						</abbr>
 						<space type="scribal"/>air</w>
@@ -68074,8 +68087,8 @@
 						</w>
 					</unclear>
 					<lb n="19" xml:id="MS14.50v.19"/>
-					<w lemma="*uuea" source="fovea"
-						lemmaRef="http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.04.0059%3Aentry%3Dfovea"
+					<w lemma="*uuea" source="uvea"
+						lemmaRef="https://www.oed.com/view/Entry/220841"
 						pos="noun">huuea</w>
 					<w lemma="é" lemmaRef="http://www.dil.ie/19325" pos="pronoun">é</w>
 					<space type="scribal"/>
