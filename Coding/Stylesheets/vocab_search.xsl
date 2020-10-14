@@ -265,16 +265,20 @@
         </xsl:apply-templates>
     </xsl:template>
     <xsl:template match="tei:num" mode="context">
-        <xsl:apply-templates mode="context"/>
+        <xsl:apply-templates mode="context"/><xsl:text xml:space="preserve"> </xsl:text>
     </xsl:template>
     <xsl:template match="tei:note" mode="context">
         <xsl:text/>
     </xsl:template>
     <xsl:template match="tei:c" mode="context">
-        <xsl:apply-templates mode="context"/>
+        <xsl:apply-templates mode="context"/><xsl:text xml:space="preserve"> </xsl:text>
+    </xsl:template>
+    <xsl:template match="tei:pc" mode="context">
+        <xsl:apply-templates mode="context"/><xsl:text xml:space="preserve"> </xsl:text>
+        
     </xsl:template>
     <xsl:template match="tei:date" mode="context">
-        <xsl:apply-templates mode="context"/>
+        <xsl:apply-templates mode="context"/><xsl:text xml:space="preserve"> </xsl:text>
     </xsl:template>
     <xsl:template match="tei:add[@type = 'insertion']" mode="context">
         <xsl:param name="formLemRef"/>
