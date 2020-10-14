@@ -66,7 +66,8 @@
                             <xsl:variable name="textID"
                                 select="ancestor::tei:div[not(ancestor::tei:div)]/@corresp"/>
                             <xsl:variable name="msLine" select="preceding::tei:lb[1]/@xml:id"/>
-                            <xsl:variable name="msLinePos" select="count(preceding::tei:lb[1][@xml:id]/preceding::tei:lb[@xml:id])"/>
+                            <xsl:variable name="msLinePos"
+                                select="count(preceding::tei:lb[1][@xml:id]/preceding::tei:lb[@xml:id])"/>
                             <xsl:variable name="hand" select="preceding::tei:handShift[1]/@new"/>
                             <tr>
                                 <td>
@@ -88,11 +89,18 @@
                                                 test="preceding::tei:pb[1]/following::*[1]/name() = 'cb'">
                                                 <xsl:value-of
                                                   select="preceding::tei:pb[1]/following::*[1]/@n"/>
-                                            </xsl:if><xsl:if
-                                                test="ancestor::tei:lg[@type = 'stanza']"
-                                                ><xsl:variable name="lbCount" select="count(ancestor::tei:lg[@type = 'stanza']//tei:lb)"/><xsl:value-of
-                                                    select="ancestor::tei:lg[@type = 'stanza']//tei:lb[1]/@n"/>-<xsl:value-of
-                                                        select="ancestor::tei:lg[@type = 'stanza']//tei:lb[$lbCount]/@n"/></xsl:if>
+                                            </xsl:if><xsl:choose><xsl:when
+                                                  test="ancestor::tei:lg[@type = 'stanza']"
+                                                  ><xsl:variable name="lbCount"
+                                                  select="count(ancestor::tei:lg[@type = 'stanza']//tei:lb)"
+                                                  /><xsl:value-of
+                                                  select="ancestor::tei:lg[@type = 'stanza']//tei:lb[1]/@n"
+                                                  />-<xsl:value-of
+                                                  select="ancestor::tei:lg[@type = 'stanza']//tei:lb[$lbCount]/@n"
+                                                  />
+                                                </xsl:when><xsl:otherwise>,&#160;line&#160;<xsl:value-of
+                                                  select="preceding::tei:lb[1][@xml:id]/@n"
+                                                  /></xsl:otherwise></xsl:choose>
                                         </b>
                                     </span>
                                 </td>
@@ -130,27 +138,34 @@
                                             </xsl:apply-templates>
                                         </xsl:when>
                                         <xsl:when test="ancestor::tei:p">
-                                            <xsl:variable name="prevMsLine" select="preceding::tei:lb[1][@xml:id]/preceding::tei:lb[1][@xml:id]/@xml:id"/>
-                                            <xsl:variable name="nextMsLine" select="preceding::tei:lb[1][@xml:id]/following::tei:lb[1][@xml:id]/@xml:id"/>
+                                            <xsl:variable name="prevMsLine"
+                                                select="preceding::tei:lb[1][@xml:id]/preceding::tei:lb[1][@xml:id]/@xml:id"/>
+                                            <xsl:variable name="nextMsLine"
+                                                select="preceding::tei:lb[1][@xml:id]/following::tei:lb[1][@xml:id]/@xml:id"/>
                                             <span class="line_number"><xsl:value-of
-                                                select="preceding::tei:lb[1][@xml:id]/preceding::tei:lb[1][@xml:id]/@n"/></span>&#160;
-                                            <xsl:apply-templates
+                                                  select="preceding::tei:lb[1][@xml:id]/preceding::tei:lb[1][@xml:id]/@n"
+                                                /></span>&#160; <xsl:apply-templates
                                                 select="preceding::tei:lb[1][@xml:id]/preceding::tei:lb[1][@xml:id]/following::*[parent::tei:p and not(descendant-or-self::tei:lg) and ancestor::tei:div[@corresp = $textID] and preceding::tei:lb[1][@xml:id]/@xml:id = $prevMsLine and not(ancestor::tei:TEI[@xml:id = 'hwData'])]"
                                                 mode="context">
                                                 <xsl:with-param name="formLemRef"
-                                                    select="$vocabItemRef"/></xsl:apply-templates><br/><span class="line_number"><xsl:value-of
-                                                  select="preceding::tei:lb[1][@xml:id]/@n"/></span>&#160;
-                                                <xsl:apply-templates
-                                                    select="preceding::tei:lb[1][@xml:id]/following::*[parent::tei:p and not(descendant-or-self::tei:lg) and ancestor::tei:div[@corresp = $textID] and preceding::tei:lb[1][@xml:id]/@xml:id = $msLine and not(ancestor::tei:TEI[@xml:id = 'hwData'])]"
+                                                  select="$vocabItemRef"
+                                                /></xsl:apply-templates><br/><span
+                                                class="line_number"><xsl:value-of
+                                                  select="preceding::tei:lb[1][@xml:id]/@n"
+                                            /></span>&#160; <xsl:apply-templates
+                                                select="preceding::tei:lb[1][@xml:id]/following::*[parent::tei:p and not(descendant-or-self::tei:lg) and ancestor::tei:div[@corresp = $textID] and preceding::tei:lb[1][@xml:id]/@xml:id = $msLine and not(ancestor::tei:TEI[@xml:id = 'hwData'])]"
                                                 mode="context">
                                                 <xsl:with-param name="formLemRef"
-                                                  select="$vocabItemRef"/></xsl:apply-templates><br/><span class="line_number"><xsl:value-of
-                                                select="preceding::tei:lb[1][@xml:id]/following::tei:lb[1][@xml:id]/@n"/></span>&#160;
-                                            <xsl:apply-templates
+                                                  select="$vocabItemRef"
+                                                /></xsl:apply-templates><br/><span
+                                                class="line_number"><xsl:value-of
+                                                  select="preceding::tei:lb[1][@xml:id]/following::tei:lb[1][@xml:id]/@n"
+                                                /></span>&#160; <xsl:apply-templates
                                                 select="preceding::tei:lb[1][@xml:id]/following::tei:lb[1][@xml:id]/following::*[parent::tei:p and not(descendant-or-self::tei:lg) and ancestor::tei:div[@corresp = $textID] and preceding::tei:lb[1][@xml:id]/@xml:id = $nextMsLine and not(ancestor::tei:TEI[@xml:id = 'hwData'])]"
                                                 mode="context">
                                                 <xsl:with-param name="formLemRef"
-                                                    select="$vocabItemRef"/></xsl:apply-templates><br/>
+                                                  select="$vocabItemRef"
+                                            /></xsl:apply-templates><br/>
                                         </xsl:when>
                                         <xsl:otherwise>
                                             <xsl:text>[unavailable]</xsl:text>
@@ -265,20 +280,24 @@
         </xsl:apply-templates>
     </xsl:template>
     <xsl:template match="tei:num" mode="context">
-        <xsl:apply-templates mode="context"/><xsl:text xml:space="preserve"> </xsl:text>
+        <xsl:apply-templates mode="context"/>
+        <xsl:text xml:space="preserve"> </xsl:text>
     </xsl:template>
     <xsl:template match="tei:note" mode="context">
         <xsl:text/>
     </xsl:template>
     <xsl:template match="tei:c" mode="context">
-        <xsl:apply-templates mode="context"/><xsl:text xml:space="preserve"> </xsl:text>
+        <xsl:apply-templates mode="context"/>
+        <xsl:text xml:space="preserve"> </xsl:text>
     </xsl:template>
     <xsl:template match="tei:pc" mode="context">
-        <xsl:apply-templates mode="context"/><xsl:text xml:space="preserve"> </xsl:text>
-        
+        <xsl:apply-templates mode="context"/>
+        <xsl:text xml:space="preserve"> </xsl:text>
+
     </xsl:template>
     <xsl:template match="tei:date" mode="context">
-        <xsl:apply-templates mode="context"/><xsl:text xml:space="preserve"> </xsl:text>
+        <xsl:apply-templates mode="context"/>
+        <xsl:text xml:space="preserve"> </xsl:text>
     </xsl:template>
     <xsl:template match="tei:add[@type = 'insertion']" mode="context">
         <xsl:param name="formLemRef"/>
