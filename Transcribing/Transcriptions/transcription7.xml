@@ -11,7 +11,7 @@
 					<resp>Transcriber</resp>
 					<resp>Editor</resp>
 				</respStmt>
-				<respStmt corresp="#WGI">
+				<respStmt corresp="WGI">
 					<name>William Gillies</name>
 					<resp>Overseer</resp>
 				</respStmt>
@@ -784,11 +784,12 @@
 	</teiHeader>
 	<text>
 		<body>
-			<div n="1" type="verse" corresp="MS7.1" hand="Hand10">
-				<div n="1.1" type="prose" corresp="MS7.1a" hand="Hand10">
+			<div n="1" type="prosimetrum" corresp="MS7.1">
+				
 					<p>
 						<handShift new="Hand10"/>
-						<pb n="3r" xml:id="MS7.3r"/>
+						<pb n="3r" xml:id="MS7.3r" facs="https://www.isos.dias.ie/libraries/NLS/NLS_Adv_MS_72_2_2/small_jpgs/008.jpg"/>
+						<!-- @fasc added by MMA 14OCt20-->
 						<lb n="1" xml:id="MS7.3r.1"/>
 						<w lemma="attá" lemmaRef="http://www.dil.ie/4927" pos="verb">Ata</w>
 						<space type="scribal"/>
@@ -857,11 +858,12 @@
 						<space type="scribal"/>
 						<w pos="preposition-possessive_pronoun">
 							<w lemma="fri" lemmaRef="http://www.dil.ie/24329" pos="preposition"
-								>ren</w>
+								>re</w>
 							<space type="scribal"/>
 							<w lemma="a" lemmaRef="http://www.dil.ie/3" pos="possessive_pronoun"
-								>a</w>
+								>na</w>
 						</w>
+					<!-- Changed by MMA 14OCt20: "ren + a" to "re + na"-->
 						<space type="scribal"/>
 						<w lemma="onóir" lemmaRef="http://www.dil.ie/33894" pos="noun">onóir</w>
 						<space type="scribal"/>
@@ -914,9 +916,10 @@
 							</abbr>
 						</w>
 						<space type="scribal"/>
-						<w lemma="stíl" lemmaRef="http://www.dil.ie/38938" pos="noun">sdai<abbr
+						<w lemma="stoidhil" lemmaRef="https://www.faclair.com/ViewDictionaryEntry.aspx?ID=91172017720F8AAF5FCA5A5001CD2B5A" pos="noun">sdai<abbr
 								cert="high">g<g ref="g4">h</g>
 							</abbr>le</w>
+					<!-- HW changed by MMA 14OCt20-->
 						<space type="scribal"/>
 						<w lemma="ocus" lemmaRef="http://www.dil.ie/33484" pos="conjunction">
 							<abbr cert="high">
@@ -941,12 +944,8 @@
 						<w lemma="do" lemmaRef="http://www.dil.ie/17096" pos="prepositional_pronoun"
 							>do</w>
 						<space type="scribal"/>
-						<w pos="preposition-verbal_noun">
-							<w lemma="do" lemmaRef="http://www.dil.ie/17096" pos="preposition">d</w>
-							<w lemma="fagbál" lemmaRef="http://www.dil.ie/21049" pos="verbal_noun"
-									>fa<abbr cert="high">g<g ref="g4">h</g>
-								</abbr>ail</w>
-						</w>
+						<w lemma="fagbál" lemmaRef="http://www.dil.ie/21049" pos="verbal_noun">dfa<abbr cert="high">g<g ref="g4">h</g></abbr>ail</w>
+					<!-- Changed by MMA 14OCt20: Believe this is the ScG "lenition" of f where as well as fh you get "dh" before the "fh". -->
 						<space type="scribal"/>
 						<w pos="preposition-article">
 							<w lemma="ó" lemmaRef="http://www.dil.ie/33364" pos="preposition">o</w>
@@ -1347,9 +1346,9 @@
 						<space type="scribal"/>
 						<w pos="preposition-possessive_pronoun">
 							<w lemma="fri" lemmaRef="http://www.dil.ie/24329" pos="preposition"
-								>ren</w>
+								>re</w>
 							<w lemma="a" lemmaRef="http://www.dil.ie/3" pos="possessive_pronoun"
-								>a</w>
+								>na</w>
 						</w>
 						<space type="scribal"/>
 						<w lemma="linn" lemmaRef="http://www.dil.ie/30276" pos="noun">li<abbr
@@ -1409,9 +1408,7 @@
 						<space type="scribal"/>
 						<w lemma="de" lemmaRef="http://www.dil.ie/14787" pos="preposition">do</w>
 						<space type="scribal"/>
-						<w lemma="toradh"
-							lemmaRef="https://www.faclair.com/ViewDictionaryEntry.aspx?ID=193610E3B74A2AC652B79354489BB6E7"
-							pos="noun">
+						<w lemma="torad" lemmaRef="http://www.dil.ie/43360" pos="noun">
 							<abbr cert="high">t<g ref="g4">h</g>
 							</abbr>o<abbr cert="high">r<g ref="g3">ad</g>
 								<g ref="g4">h</g>
@@ -1515,20 +1512,11 @@
 								cert="high">t<g ref="g4">h</g>
 							</abbr>is</w>
 						<space type="scribal"/>
-						<w lemma="is" lemmaRef="http://www.dil.ie/29104" pos="verb">
-							<abbr cert="high">b<g ref="g4">h</g>
-							</abbr>u<abbr cert="high">d<g ref="g4">h</g>
-							</abbr>
-						</w>
-						<space type="scribal"/>
-						<unclear reason="interp_obscure" cert="medium" resp="EPT">
-							<w lemma="descad" lemmaRef="http://www.dil.ie/15747" pos="noun">
-								<abbr cert="high">d<g ref="g4">h</g>
-								</abbr>easda</w>
-						</unclear>
+						<w lemma="fo-dechtsa" lemmaRef="http://www.dil.ie/22584" pos="adverb"><abbr cert="high">b<g ref="g4">h</g></abbr>u<abbr cert="high">d<g ref="g4">h</g></abbr><space type="scribal"/><space type="force"/><abbr cert="high">d<g ref="g4">h</g></abbr>easda</w>
+					<!-- budh dheasda changed by MM 14Oct 20. -->
 					</p>
-				</div>
-				<div n="1.2" type="verse" corresp="MS7.1b" hand="Hand10">
+				
+				<p>
 					<lg n="1" type="stanza" xml:id="MS7.1.1">
 						<l n="a" xml:id="MS7.1.1a">
 							<lb n="17" xml:id="MS7.3r.17"/>
@@ -1990,7 +1978,7 @@
 					</lg>
 					<lg n="5" type="stanza" xml:id="MS7.1.5">
 						<l n="a" xml:id="MS7.1.5a">
-							<pb n="3v" xml:id="MS7.3v"/>
+							<pb n="3v" xml:id="MS7.3v" facs="https://www.isos.dias.ie/libraries/NLS/NLS_Adv_MS_72_2_2/small_jpgs/009.jpg"/>
 							<lb n="1" xml:id="MS7.3v.1"/>
 							<w lemma="fúasclaid" lemmaRef="http://www.dil.ie/24686"
 								lemmaSL="Fuasglaim"
@@ -3418,7 +3406,7 @@
 					</lg>
 					<lg n="17" type="stanza" xml:id="MS7.1.17">
 						<l n="a" xml:id="MS7.1.17a">
-							<pb n="4r" xml:id="MS17.4r"/>
+							<pb n="4r" xml:id="MS17.4r" facs="https://www.isos.dias.ie/libraries/NLS/NLS_Adv_MS_72_2_2/small_jpgs/010.jpg"/>
 							<lb n="1" xml:id="MS7.4r.1"/>
 							<w lemma="cóir" lemmaRef="http://www.dil.ie/10380" pos="adjective"
 								>Cóir</w>
@@ -4909,7 +4897,7 @@
 					</lg>
 					<lg n="29" type="stanza" xml:id="MS7.1.29">
 						<l n="a" xml:id="MS7.1.29a">
-							<pb n="4v" xml:id="MS7.4v"/>
+							<pb n="4v" xml:id="MS7.4v" facs="https://www.isos.dias.ie/libraries/NLS/NLS_Adv_MS_72_2_2/small_jpgs/011.jpg"/>
 							<lb n="1" xml:id="MS7.4v.1"/>
 							<w lemma="gaibid" lemmaRef="http://www.dil.ie/25119" pos="verb">Ga<abbr
 									cert="high">b<g ref="g4">h</g>
@@ -6289,7 +6277,7 @@
 					</lg>
 					<lg n="40" type="stanza" xml:id="MS7.1.40">
 						<l n="a" xml:id="MS7.1.40a">
-							<pb n="5r" xml:id="MS7.5r"/>
+							<pb n="5r" xml:id="MS7.5r" facs="https://www.isos.dias.ie/libraries/NLS/NLS_Adv_MS_72_2_2/small_jpgs/012.jpg"/>
 							<lb n="1" xml:id="MS7.5r.1"/>
 							<w lemma="íar" lemmaRef="http://www.dil.ie/26931" pos="preposition"
 								>Ar</w>
@@ -7758,13 +7746,13 @@
 							</w>
 						</l>
 					</lg>
-				</div>
+				</p>
 			</div>
 			<div n="2" type="verse" corresp="MS7.2" hand="Hand8">
 				<lg n="1" xml:id="MS7.2.1">
 					<l n="a" xml:id="MS7.2.1a">
 						<handShift new="Hand8"/>
-						<pb n="7v" xml:id="MS7.7v"/>
+						<pb n="7v" xml:id="MS7.7v" facs="https://www.isos.dias.ie/libraries/NLS/NLS_Adv_MS_72_2_2/small_jpgs/017.jpg"/>
 						<lb n="1" xml:id="MS7.7v.1"/>
 						<unclear reason="damage" cert="high" resp="Black2015">
 							<name type="personal">
@@ -8708,7 +8696,7 @@
 				</lg>
 				<lg n="13" type="stanza" xml:id="MS7.2.13">
 					<l n="a" xml:id="MS7.2.13a">
-						<pb n="8r" xml:id="MS7.8r"/>
+						<pb n="8r" xml:id="MS7.8r" facs="https://www.isos.dias.ie/libraries/NLS/NLS_Adv_MS_72_2_2/small_jpgs/018.jpg"/>
 						<lb n="1" xml:id="MS7.8r.1"/>
 						<name type="personal">
 							<w lemma="goll" lemmaRef="http://www.dil.ie/26369" pos="noun">goll</w>
@@ -9545,7 +9533,7 @@
 				<lg n="1" type="stanza" xml:id="MS7.3.1">
 					<l n="a" xml:id="MS7.3.1a">
 						<handShift new="Hand8"/>
-						<pb n="9r" xml:id="MS7.9r"/>
+						<pb n="9r" xml:id="MS7.9r" facs="https://www.isos.dias.ie/libraries/NLS/NLS_Adv_MS_72_2_2/small_jpgs/020.jpg"/>
 						<lb n="1" xml:id="MS7.9r.1"/>
 						<w lemma="in" lemmaRef="http://www.dil.ie/28195" pos="interrogative">An</w>
 						<space type="scribal"/>
@@ -10580,7 +10568,7 @@
 				</lg>
 				<lg n="11" type="stanza" xml:id="MS7.3.11">
 					<l n="a" xml:id="MS7.3.11a">
-						<pb n="9v" xml:id="MS7.9v"/>
+						<pb n="9v" xml:id="MS7.9v" facs="https://www.isos.dias.ie/libraries/NLS/NLS_Adv_MS_72_2_2/small_jpgs/021.jpg"/>
 						<lb n="1" xml:id="MS7.9v.1"/>
 						<unclear reason="damage" cert="medium" resp="WGI">
 							<w lemma="immar" lemmaRef="http://www.dil.ie/27721" pos="preposition"
@@ -10897,10 +10885,10 @@
 				</lg>
 			</div>
 			<div n="4" type="verse" corresp="MS7.4" hand="Hand11">
-				<div n="4.1" type="prose" corresp="MS7.4a" hand="Hand11">
+				
 					<p>
 						<handShift new="Hand11"/>
-						<pb n="12r" xml:id="MS7.12r"/>
+						<pb n="12r" xml:id="MS7.12r" facs="https://www.isos.dias.ie/libraries/NLS/NLS_Adv_MS_72_2_2/small_jpgs/026.jpg"/>
 						<lb n="1" xml:id="MS7.12r.1"/>
 						<w lemma="i" lemmaRef="http://www.dil.ie/26891" pos="preposition">A</w>
 						<space type="scribal"/>
@@ -10963,8 +10951,8 @@
 								<g ref="g2">ead</g>
 							</abbr>na</w>
 					</p>
-				</div>
-				<div n="4.2" type="verse" corresp="MS7.4" hand="Hand11">
+				
+				<p>
 					<lg n="1" type="stanza" xml:id="MS7.4.1">
 						<l n="a" xml:id="MS7.4.1a">
 							<lb n="3" xml:id="MS7.12r.3"/>
@@ -12119,7 +12107,7 @@
 							</w>
 						</l>
 					</lg>
-					<pb n="12v" xml:id="MS7.12v"/>
+					<pb n="12v" xml:id="MS7.12v" facs="https://www.isos.dias.ie/libraries/NLS/NLS_Adv_MS_72_2_2/small_jpgs/027.jpg"/>
 					<lg n="12" type="stanza" xml:id="MS7.4.12">
 						<l n="a" xml:id="MS7.4.12a">
 							<lb n="1" xml:id="MS7.12v.1"/>
@@ -12461,13 +12449,13 @@
 							<w lemma="mesc" lemmaRef="http://www.dil.ie/32044" pos="noun">miosg</w>
 						</l>
 					</lg>
-				</div>
+				</p>
 			</div>
 			<div n="5" type="verse" corresp="MS7.5" hand="Hand10">
 				<lg n="1" type="stanza" xml:id="MS7.5.1">
 					<l n="a" xml:id="MS7.5.1a">
 						<handShift new="Hand10"/>
-						<pb n="16r" xml:id="MS7.16r"/>
+						<pb n="16r" xml:id="MS7.16r" facs="https://www.isos.dias.ie/libraries/NLS/NLS_Adv_MS_72_2_2/small_jpgs/034.jpg"/>
 						<lb n="1" xml:id="MS7.16r.1"/>
 						<name type="personal">
 							<w lemma="Domnall" lemmaRef="http://www.dil.ie/18133" pos="noun">D<abbr
@@ -13681,7 +13669,7 @@
 				</lg>
 				<lg n="11" type="stanza" xml:id="MS7.5.11">
 					<l n="a" xml:id="MS7.5.11a">
-						<pb n="16v" xml:id="MS7.16v"/>
+						<pb n="16v" xml:id="MS7.16v" facs="https://www.isos.dias.ie/libraries/NLS/NLS_Adv_MS_72_2_2/small_jpgs/035.jpg"/>
 						<lb n="1" xml:id="MS7.16v.1"/>
 						<w lemma="is" lemmaRef="http://www.dil.ie/29104" pos="verb">As</w>
 						<space type="scribal"/>
@@ -14659,7 +14647,7 @@
 				<lg n="1" type="stanza" xml:id="MS7.6.1">
 					<l n="a" xml:id="MS7.6.1a">
 						<handShift new="Hand11"/>
-						<pb n="17r" xml:id="MS7.17r"/>
+						<pb n="17r" xml:id="MS7.17r" facs="https://www.isos.dias.ie/libraries/NLS/NLS_Adv_MS_72_2_2/small_jpgs/036.jpg"/>
 						<lb n="1" xml:id="MS7.17r.1"/>
 						<w lemma="cóir" lemmaRef="http://www.dil.ie/10380" pos="adjective">Coir</w>
 						<space type="scribal"/>
@@ -15170,7 +15158,7 @@
 				</lg>
 				<lg n="6" type="stanza" xml:id="MS7.6.6">
 					<l n="a" xml:id="MS7.6.6a">
-						<pb n="17v" xml:id="MS7.17v"/>
+						<pb n="17v" xml:id="MS7.17v" facs="https://www.isos.dias.ie/libraries/NLS/NLS_Adv_MS_72_2_2/small_jpgs/037.jpg"/>
 						<lb n="1" xml:id="MS7.17v.1"/>
 						<w lemma="do" lemmaRef="http://www.dil.ie/17098" pos="particle">a</w>
 						<space type="scribal"/>
@@ -15458,7 +15446,7 @@
 				</lg>
 				<lg n="9" type="stanza" xml:id="MS7.6.9">
 					<l n="a" xml:id="MS7.6.9a">
-						<pb n="18v" xml:id="MS7.18v"/>
+						<pb n="18v" xml:id="MS7.18v" facs="https://www.isos.dias.ie/libraries/NLS/NLS_Adv_MS_72_2_2/small_jpgs/039.jpg"/>
 						<lb n="1" xml:id="MS7.18v.1"/>
 						<w lemma="cóir" lemmaRef="http://www.dil.ie/10380" pos="adjective">Coir</w>
 						<space type="scribal"/>
@@ -15660,7 +15648,7 @@
 			<div n="7" type="prose" corresp="MS7.7" hand="Hand10">
 				<p>
 					<handShift new="Hand10"/>
-					<pb n="48r" xml:id="MS7.48r"/>
+					<pb n="48r" xml:id="MS7.48r" facs="https://www.isos.dias.ie/libraries/NLS/NLS_Adv_MS_72_2_2/small_jpgs/098.jpg"/>
 					<lb n="1" xml:id="MS7.48r.1"/>
 					<name type="personal">
 						<w lemma="Donnchad" lemmaRef="http://www.dil.ie/18224" pos="noun">Do<abbr
@@ -16345,7 +16333,7 @@
 						</abbr>
 					</w>
 					<gap reason="text_obscure" quantity="4" unit="chars" resp="EPT"/>
-					<pb n="48v" xml:id="MS7.48v"/>
+					<pb n="48v" xml:id="MS7.48v" facs="https://www.isos.dias.ie/libraries/NLS/NLS_Adv_MS_72_2_2/small_jpgs/099.jpg"/>
 					<lb n="1" xml:id="MS7.48v.1"/>
 					<name type="personal">
 						<w pos="noun">
