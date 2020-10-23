@@ -172,16 +172,16 @@
 									</xsl:for-each>
 								</xsl:if>
 								<xsl:variable name="firstForm"
-									select="//tei:w[not(descendant::tei:w) and not(@type = 'data') and @lemmaRef = $wordID and not(@lemmaRef = preceding::tei:w[not(descendant::tei:w)]/@lemmaRef)]/string(self::*)"/>
+									select="//tei:w[not(descendant::tei:w) and not(@type = 'data') and @lemmaRef = $wordID and not(@lemmaRef = preceding::tei:w[not(descendant::tei:w)]/@lemmaRef)]/string(translate(normalize-space(self::*), ' ', ''))"/>
 								<xsl:if
-									test="//tei:w[not(descendant::tei:w) and not(@type = 'data') and @lemmaRef = $wordID and not(string(self::*) = $firstForm)]">
+									test="//tei:w[not(descendant::tei:w) and not(@type = 'data') and @lemmaRef = $wordID and not(string(translate(normalize-space(self::*), ' ', '')) = $firstForm)]">
 									<span>
 										<xsl:attribute name="type">altForm</xsl:attribute>
 										<xsl:value-of select="translate(normalize-space($firstForm), ' ', '')"/>
 									</span>
 									<xsl:for-each
-										select="//tei:w[not(descendant::tei:w) and not(@type = 'data') and @lemmaRef = $wordID and not(string(self::*) = preceding::tei:w[not(@type = 'data') and @lemmaRef = $wordID]/string(self::*)) and not(string(self::*) = $firstForm)]">
-										<xsl:variable name="thisForm" select="string(self::*)"/>
+										select="//tei:w[not(descendant::tei:w) and not(@type = 'data') and @lemmaRef = $wordID and not(string(translate(normalize-space(self::*), ' ', '')) = preceding::tei:w[not(@type = 'data') and @lemmaRef = $wordID]/string(translate(normalize-space(self::*), ' ', ''))) and not(string(translate(normalize-space(self::*), ' ', '')) = $firstForm)]">
+										<xsl:variable name="thisForm" select="string(translate(normalize-space(self::*), ' ', ''))"/>
 										<span>
 											<xsl:attribute name="type">altForm</xsl:attribute>
 											<xsl:value-of select="translate(normalize-space($thisForm), ' ', '')"/>
