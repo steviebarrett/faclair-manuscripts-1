@@ -1580,8 +1580,7 @@
                               <w lemma="ocus" lemmaRef="http://www.dil.ie/33484" pos="conjunction"><abbr cert="high"><g ref="g2">agus</g></abbr></w>
                               <space type="scribal"/>
                               <w lemma="i" lemmaRef="http://www.dil.ie/26891" pos="preposition">a</w>
-                              <name type="population"><w lemma="Ulaid" lemmaRef="http://www.dil.ie/43099" pos="noun" lemmaSL="Uladh" slipRef="https://dasg.ac.uk/slips/index.php?id=0131113">nuiltui<abbr cert="high">b<g ref="g4">h</g></abbr></w></name>
-                          <!-- Have Connacht as PN but Ulaid as a population name? Black's slips seem to do same and are noted here. Change or reason for keepng the same? -->
+                              <name type="place"><w lemma="Ulaid" lemmaRef="http://www.dil.ie/43099" pos="noun" lemmaSL="Uladh" slipRef="https://dasg.ac.uk/slips/index.php?id=0131113">nuiltui<abbr cert="high">b<g ref="g4">h</g></abbr></w></name>
                               <pc>.</pc>
                               <space type="scribal"/>
                               <w lemma="clann" lemmaRef="http://www.dil.ie/9365" pos="noun">cla<abbr cert="high">n<g ref="g5">n</g></abbr></w>
@@ -1743,7 +1742,7 @@
                               <w lemma="gaibid" lemmaRef="http://www.dil.ie/25119" pos="verb" lemmaSL="gabh" slipRef="https://dasg.ac.uk/slips/index.php?id=0002514">ga<abbr cert="high">b<g ref="g4">h</g></abbr>ais</w>
                               <space type="scribal"/>
                               <name type="personal">
-                                  <name type="personal"><w pos="noun">Coll</w></name>
+                                  <name type="personal"><w pos="noun">Coll<supplied resp="MMA">a</supplied></w></name>
                                   <w lemma="úais" lemmaRef="http://www.dil.ie/42660" pos="adjective">úas</w>
                               </name>
                           <!-- Check physical MS. Unclear in scan. -->
@@ -1861,9 +1860,12 @@
                               <space type="scribal"/>
                               <w lemma="ór" lemmaRef="http://www.dil.ie/33928" pos="conjunction">oir</w>
                               <space type="scribal"/>
-                              <w lemma="do" lemmaRef="http://www.dil.ie/17098" pos="particle">do</w>
-                              <space type="scribal"/>
-                              <w lemma="attá" lemmaRef="http://www.dil.ie/4927" pos="verb"><abbr cert="high">b<g ref="g4">h</g></abbr>i</w>
+                              <w pos="particle-verb">
+                                  <w lemma="do" lemmaRef="http://www.dil.ie/17098" pos="particle">do</w>
+                                  <space type="scribal"/>
+                                  <w lemma="is" lemmaRef="http://www.dil.ie/29104" pos="verb"><abbr cert="high">b<g ref="g4">h</g></abbr></w>
+                              </w>
+                              <w lemma="í" lemmaRef="http://www.dil.ie/26895" pos="pronoun">i</w>
                           <!-- Check physical MS. Unclear in scan. -->
                               <space type="scribal"/>
                               <name type="personal"><w pos="noun">Oil<pc>=</pc><lb n="7" xml:id="MS32.p109.7"/>ea<abbr cert="high">c<g ref="g4">h</g></abbr></w></name>
@@ -1952,7 +1954,7 @@
                               <space type="scribal"/>
                               <w lemma="ocus" lemmaRef="http://www.dil.ie/33484" pos="conjunction"><abbr cert="high"><g ref="g2">agus</g></abbr></w>
                               <space type="scribal"/>
-                              <name type="population"><w lemma="Ulaid" lemmaRef="http://www.dil.ie/43099" pos="noun">ulltui<abbr cert="high">g<g ref="g4">h</g></abbr></w></name>
+                              <name type="population"><w lemma="ulltach" lemmaRef="http://www.dil.ie/43126" pos="noun">ulltui<abbr cert="high">g<g ref="g4">h</g></abbr></w></name>
                               <space type="scribal"/>
                               <w lemma=".i." lemmaRef="http://www.dil.ie/26892" pos="abbreviation">.i.</w>
                               <space type="scribal"/>
@@ -2047,7 +2049,7 @@
                               <space type="scribal"/>
                               <w lemma="cocad" lemmaRef="http://www.dil.ie/9864" pos="noun" lemmaSL="cogadh" slipRef="https://dasg.ac.uk/slips/index.php?id=0040689">coga<abbr cert="high">d<g ref="g4">h</g></abbr></w>
                               <space type="scribal"/>
-                              <w lemma="neimnech" lemmaRef="http://www.dil.ie/33041" pos="adjective" lemmaSL="neimhneach" slipRef="https://dasg.ac.uk/slips/index.php?id=0110388">mei<abbr cert="high">m<g ref="g4">h</g></abbr>ne<abbr cert="high">c<g ref="g4">h</g></abbr></w>
+                              <w lemma="neimnech" lemmaRef="http://www.dil.ie/33041" pos="adjective" lemmaSL="neimhneach" slipRef="https://dasg.ac.uk/slips/index.php?id=0110388">nei<abbr cert="high">m<g ref="g4">h</g></abbr>ne<abbr cert="high">c<g ref="g4">h</g></abbr></w>
                           <!-- Check physical MS. Unclear in scan. -->
                               <space type="scribal"/>
                               <w lemma="fri" lemmaRef="http://www.dil.ie/24329" pos="preposition">re</w>
@@ -2072,9 +2074,10 @@
                                   <name type="personal">
                                       <w pos="noun-noun">
                                           <w lemma="fer" lemmaRef="http://www.dil.ie/21665" pos="noun"><abbr cert="high">f<g ref="g21">er</g></abbr></w>
-                                          <w lemma="gus" lemmaRef="http://www.dil.ie/26839" pos="noun"><abbr cert="high">g<g ref="g4">h</g></abbr><abbr cert="high"><g ref="g7">us</g></abbr>a</w>
+                                          <w lemma="gus" lemmaRef="http://www.dil.ie/26839" pos="noun"><abbr cert="high">g<g ref="g4">h</g></abbr><abbr cert="high"><g ref="g7">us</g></abbr></w>
                                       </w>
                                   </name>
+                          <!-- Check physical MS. Unclear in scan. -->
                                   <space type="scribal"/>
                                   <w lemma="foga" lemmaRef="http://www.dil.ie/22689" pos="noun">foga</w>
                               </name>
@@ -2160,8 +2163,11 @@
                               <space type="scribal"/>
                               <w lemma="rí" lemmaRef="http://www.dil.ie/35181" pos="noun">río<abbr cert="high">g<g ref="g4">h</g></abbr>ui<abbr cert="high">b<g ref="g4">h</g></abbr></w>
                           <!-- Check physical MS. Unclear in scan. -->
+                              <space type="scribal"/>
                               <name type="place" corresp="https://www.logainm.ie/1420121.aspx"><w lemma="Ériu" lemmaRef="http://www.dil.ie/20288" pos="noun">eirenn</w></name>
-                          <!-- Check physical MS. Unclear in scan. -->    
+                          <!-- Check physical MS. Unclear in scan. -->
+                          </p>
+                          <p>
                           <lb n="22" xml:id="MS32.p109.22"/>
                               <w lemma="imthús" lemmaRef="http://www.dil.ie/28188" pos="noun">Iom<abbr cert="high">t<g ref="g4">h</g></abbr>os</w>
                               <space type="scribal"/>
