@@ -4,7 +4,7 @@
     exclude-result-prefixes="xs" version="2.0">
     <xsl:variable name="vocabItemRef">
         <!-- USER: add URL below -->
-        <xsl:value-of select="'http://www.dil.ie/19067'"/>
+        <xsl:value-of select="'http://www.dil.ie/36264'"/>
     </xsl:variable>
     <xsl:variable name="timestamp">
         <xsl:value-of
@@ -55,11 +55,14 @@
                         }
                         span.msRef {
                             text-align: center;
-                        }</style>
+                        }
+                        span.del {
+                            text-decoration: line-through;
+                            }</style>
                 </head>
                 <body>
                     <table>
-                        <th> Instances of <i><xsl:value-of select="$vocabItem"/></i> (<xsl:value-of
+                        <th>Instances of <i><xsl:value-of select="$vocabItem"/></i> (<xsl:value-of
                                 select="current-dateTime()"/>) </th>
                         <xsl:for-each
                             select="//tei:w[not(@type = 'data') and @lemmaRef = $vocabItemRef]">
@@ -327,11 +330,11 @@
     </xsl:template>
     <xsl:template match="tei:del" mode="context">
         <xsl:param name="formLemRef"/>
-        <del>
+        <span class="del">
             <xsl:apply-templates mode="context">
                 <xsl:with-param name="formLemRef" select="$formLemRef"/>
             </xsl:apply-templates>
-        </del>
+        </span>
     </xsl:template>
     <xsl:template match="tei:unclear[not(@reason = 'damage')]" mode="context">
         <xsl:param name="formLemRef"/>
