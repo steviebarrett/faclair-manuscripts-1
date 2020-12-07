@@ -4,7 +4,7 @@
     exclude-result-prefixes="xs" version="2.0">
     <xsl:variable name="vocabItemRef">
         <!-- USER: add URL below -->
-        <xsl:value-of select="'http://www.dil.ie/35902'"/>
+        <xsl:value-of select="'http://www.dil.ie/36264'"/>
     </xsl:variable>
     <xsl:variable name="timestamp">
         <xsl:value-of
@@ -143,8 +143,12 @@
                                     </ul>
                                     <p>Multiple occurrences of the same headword may appear in the
                                         same line (if so, each will be highlighted), but a separate
-                                        entry is provided for each occurrence; the same transcription extract
-                                        may therefore appear multiple times.</p>
+                                        entry is provided for each occurrence; the same
+                                        transcription extract may therefore appear multiple times.
+                                        The layout of the extract will vary depending on whether the
+                                        text is poetry or prose and, in the case of the latter,
+                                        depending on whether the paragraph is short enought to be
+                                        quoted in its entirety.</p>
                                     <p>Only occurrences of the headword specified by the inputted
                                         headword will be returned. Instances of closely related
                                         headwords will not be returned. For example, if the
@@ -162,7 +166,8 @@
                                 select="//tei:w[not(@type = 'data') and @lemmaRef = $vocabItemRef]">
                                 <xsl:variable name="textID"
                                     select="ancestor::tei:div[not(ancestor::tei:div)]/@corresp"/>
-                                <xsl:variable name="msLine" select="preceding::tei:lb[1][@xml:id]/@xml:id"/>
+                                <xsl:variable name="msLine"
+                                    select="preceding::tei:lb[1][@xml:id]/@xml:id"/>
                                 <xsl:variable name="hand" select="preceding::tei:handShift[1]/@new"/>
                                 <tr>
                                     <td>
@@ -184,8 +189,10 @@
                                                   test="preceding::tei:pb[1]/following::*[1]/name() = 'cb'">
                                                   <xsl:value-of
                                                   select="preceding::tei:pb[1]/following::*[1]/@n"/>
-                                                </xsl:if>,&#160;line&#160;<xsl:value-of select="preceding::tei:lb[1][@xml:id]/@n"/>&#160;(@xml:id = <xsl:value-of
-                                                    select="$msLine"/>)</b>
+                                                </xsl:if>,&#160;line&#160;<xsl:value-of
+                                                  select="preceding::tei:lb[1][@xml:id]/@n"
+                                                />&#160;(@xml:id = <xsl:value-of select="$msLine"
+                                                />)</b>
                                         </span>
                                     </td>
                                 </tr>
@@ -215,7 +222,7 @@
                                 <tr>
                                     <td>
                                         <xsl:choose>
-                                            <xsl:when test="ancestor::tei:lg[@type = 'stanza']">
+                                            <xsl:when test="ancestor::tei:lg">
                                                 <xsl:apply-templates select="ancestor::tei:lg"
                                                   mode="context">
                                                   <xsl:with-param name="formLemRef"
