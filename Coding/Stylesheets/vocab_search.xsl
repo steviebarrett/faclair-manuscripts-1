@@ -4,7 +4,7 @@
     exclude-result-prefixes="xs" version="2.0">
     <xsl:variable name="vocabItemRef">
         <!-- USER: add URL below -->
-        <xsl:value-of select="'http://www.dil.ie/1821'"/>
+        <xsl:value-of select="'http://www.dil.ie/35902'"/>
     </xsl:variable>
     <xsl:variable name="timestamp">
         <xsl:value-of
@@ -41,7 +41,9 @@
     </xsl:variable>
     <xsl:variable name="gdVocabItem">
         <xsl:if test="$gdVocabItemRef != 'NULL'">
-            <xsl:value-of select="document('..\..\Transcribing\hwData.xml')//tei:w[@lemmaRef = $vocabItemRef]/@lemmaDW"/>
+            <xsl:value-of
+                select="document('..\..\Transcribing\hwData.xml')//tei:w[@lemmaRef = $vocabItemRef]/@lemmaDW"
+            />
         </xsl:if>
     </xsl:variable>
     <xsl:strip-space elements="*"/>
@@ -95,7 +97,7 @@
                         <thead>
                             <th>Instances of <i><a href="{$vocabItemRef}"><xsl:value-of
                                             select="$vocabItem"/></a></i><xsl:if
-                                    test="$gdVocabItemRef != 'NULL'"> (<i><a
+                                    test="$gdVocabItemRef != 'NULL'"> (ScG. <i><a
                                             href="{$gdVocabItemRef}"><xsl:value-of
                                                 select="$gdVocabItem"/></a></i>)</xsl:if> at
                                     <xsl:value-of select="current-dateTime()"/></th>
@@ -141,7 +143,7 @@
                                     </ul>
                                     <p>Multiple occurrences of the same headword may appear in the
                                         same line (if so, each will be highlighted), but a separate
-                                        extract is provided for each occurrence; the same extract
+                                        entry is provided for each occurrence; the same transcription extract
                                         may therefore appear multiple times.</p>
                                     <p>Only occurrences of the headword specified by the inputted
                                         headword will be returned. Instances of closely related
@@ -160,7 +162,7 @@
                                 select="//tei:w[not(@type = 'data') and @lemmaRef = $vocabItemRef]">
                                 <xsl:variable name="textID"
                                     select="ancestor::tei:div[not(ancestor::tei:div)]/@corresp"/>
-                                <xsl:variable name="msLine" select="preceding::tei:lb[1]/@xml:id"/>
+                                <xsl:variable name="msLine" select="preceding::tei:lb[1][@xml:id]/@xml:id"/>
                                 <xsl:variable name="hand" select="preceding::tei:handShift[1]/@new"/>
                                 <tr>
                                     <td>
@@ -182,32 +184,8 @@
                                                   test="preceding::tei:pb[1]/following::*[1]/name() = 'cb'">
                                                   <xsl:value-of
                                                   select="preceding::tei:pb[1]/following::*[1]/@n"/>
-                                                </xsl:if><xsl:choose><xsl:when
-                                                  test="ancestor::tei:lg[@type = 'stanza']"
-                                                  ><xsl:variable name="lbCount"
-                                                  select="count(ancestor::tei:lg[@type = 'stanza']//tei:lb)"
-                                                  />,&#160;lines&#160;<xsl:choose><xsl:when
-                                                  test="$lbCount > 1"><xsl:value-of
-                                                  select="ancestor::tei:lg[@type = 'stanza']/descendant::tei:lb[1]/@n"
-                                                  />-<xsl:value-of
-                                                  select="ancestor::tei:lg[@type = 'stanza']/descendant::tei:lb[$lbCount]/@n"
-                                                  /></xsl:when><xsl:otherwise>,&#160;line&#160;<xsl:value-of
-                                                  select="$lbCount"/></xsl:otherwise></xsl:choose>
-                                                  </xsl:when><xsl:otherwise><xsl:choose><xsl:when
-                                                  test="count(ancestor::tei:p/descendant::tei:w[not(descendant::tei:w)]) &lt; 200"
-                                                  ><xsl:variable name="lbCount"
-                                                  select="count(ancestor::tei:p//tei:lb)"
-                                                  />,&#160;lines&#160;<xsl:choose><xsl:when
-                                                  test="$lbCount > 1"><xsl:value-of
-                                                  select="ancestor::tei:p/descendant::tei:lb[1]/@n"
-                                                  />-<xsl:value-of
-                                                  select="ancestor::tei:p/descendant::tei:lb[$lbCount]/@n"
-                                                  /></xsl:when><xsl:otherwise>,&#160;line&#160;<xsl:value-of
-                                                  select="$lbCount"
-                                                  /></xsl:otherwise></xsl:choose></xsl:when><xsl:otherwise>,&#160;line&#160;<xsl:value-of
-                                                  select="preceding::tei:lb[1][@xml:id]/@n"
-                                                  /></xsl:otherwise></xsl:choose></xsl:otherwise></xsl:choose>
-                                            </b>
+                                                </xsl:if>,&#160;line&#160;<xsl:value-of select="preceding::tei:lb[1][@xml:id]/@n"/>&#160;(@xml:id = <xsl:value-of
+                                                    select="$msLine"/>)</b>
                                         </span>
                                     </td>
                                 </tr>
@@ -455,7 +433,7 @@
             <xsl:with-param name="formLemRef" select="$formLemRef"/>
         </xsl:apply-templates>
         <span class="annotation">[&#160;<i>sic</i><xsl:choose><xsl:when
-                    test="tei:corr/descendant::*">;&#160;<i>leg.</i>&#160;<xsl:apply-templates
+                    test="tei:corr/descendant::*">&#160;;&#160;<i>leg.</i>&#160;<xsl:apply-templates
                         select="tei:corr/child::*" mode="context">
                         <xsl:with-param name="formLemRef" select="$formLemRef"/>
                     </xsl:apply-templates></xsl:when><xsl:otherwise>&#160;</xsl:otherwise></xsl:choose>]&#160;</span>
@@ -466,7 +444,12 @@
         </span>
     </xsl:template>
     <xsl:template match="tei:seg[@type = 'cfe']" mode="context">
-        <xsl:text/>
+        <xsl:param name="formLemRef"/>
+        <span class="cfe">
+            <xsl:apply-templates mode="context">
+                <xsl:with-param name="formLemRef" select="$formLemRef"/>
+            </xsl:apply-templates>
+        </span>
     </xsl:template>
     <xsl:template match="tei:gap" mode="context">
         <span class="annotation">
