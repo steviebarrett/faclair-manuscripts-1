@@ -94,104 +94,98 @@
                 </head>
                 <body>
                     <table>
-                        <thead>
-                            <th>Instances of <i><a href="{$vocabItemRef}"><xsl:value-of
-                                            select="$vocabItem"/></a></i><xsl:if
-                                    test="$gdVocabItemRef != 'NULL'"> (ScG. <i><a
-                                            href="{$gdVocabItemRef}"><xsl:value-of
-                                                select="$gdVocabItem"/></a></i>)</xsl:if> at
-                                    <xsl:value-of select="current-dateTime()"/></th>
-                        </thead>
-                        <tbody>
-                            <tr class="introduction">
+                        <th>Instances of <i><a href="{$vocabItemRef}"><xsl:value-of
+                                        select="$vocabItem"/></a></i><xsl:if
+                                test="$gdVocabItemRef != 'NULL'"> (ScG. <i><a
+                                        href="{$gdVocabItemRef}"><xsl:value-of select="$gdVocabItem"
+                                        /></a></i>)</xsl:if> at <xsl:value-of
+                                select="current-dateTime()"/></th>
+                        <tr class="introduction">
+                            <td>
+                                <p>The extracts below are presented according to the following
+                                    editorial conventions. Please note that these sometimes differ
+                                    from those normally employed in printed editions of medieval
+                                    Gaelic texts and from those employed on the FnaG MSS Webtool.
+                                    This is to avoid computational difficulties associated with
+                                    using brackets at the same time as normalising word
+                                    division.</p>
+                                <ul>
+                                    <li>All expansions from abbreviations are <span
+                                            class="expansion">italicised</span>.</li>
+                                    <li>Text deleted by a scribe (whether the main scribe or a later
+                                        scribe) is struck through: <span class="deletion">example of
+                                            text deleted by a scribe</span>.</li>
+                                    <li>Material inserted by a scribe is in superscript, regardless
+                                        of where the scribe added it: <sup>example of text inserted
+                                            by a scribe</sup>.</li>
+                                    <li>Text supplied by an editor is in red small caps: <span
+                                            class="supplied">example of text supplied by an
+                                            editor</span>.</li>
+                                    <li>Text that has been tagged as unclear is greyed out: <span
+                                            class="unclear">example of text that is unclear</span>.
+                                        This could be due to issues with legibility or because the
+                                        FnaG MSS transcribers are unsure of its interpretation.
+                                        Users should consult the TEI XML file or the webtool in
+                                        order to learn why the text has been tagged as unclear.</li>
+                                    <li><span class="annotation">[...]</span> indicates a lacuna in
+                                        the manuscript.</li>
+                                    <li>Editorial annotations are presented in a distinctive font:
+                                            <span class="annotation">example of an editorial
+                                            annotation</span>.</li>
+                                    <li>All punctuation is as per the MS, unless otherwise
+                                        indicated.</li>
+                                    <li>Ocurrences of the searched for headword are <span
+                                            class="form_in_context">highlighted</span>.</li>
+                                </ul>
+                                <p>Multiple occurrences of the same headword may appear in the same
+                                    line (if so, each will be highlighted), but a separate entry is
+                                    provided for each occurrence; the same transcription extract may
+                                    therefore appear multiple times. The layout of the extract will
+                                    vary depending on whether the text is poetry or prose and, in
+                                    the case of the latter, depending on whether the paragraph is
+                                    short enought to be quoted in its entirety.</p>
+                                <p>Only occurrences of the headword specified by the inputted
+                                    headword will be returned. Instances of closely related
+                                    headwords will not be returned. For example, if the specified
+                                    headword is a verb, one should not expect the search results to
+                                    include instances of the verbal noun or the past participle, if
+                                    these have their own dictionary entries: to retrieve instances
+                                    of the related verbal noun and past participle, two additional
+                                    searches would need to be conducted, one for the verbal noun and
+                                    one for the past participle. For more information, see the FnaG
+                                    MSS <i>Editorial Policy</i>.</p>
+                            </td>
+                        </tr>
+                        <xsl:for-each
+                            select="//tei:w[not(@type = 'data') and @lemmaRef = $vocabItemRef]">
+                            <xsl:variable name="textID"
+                                select="ancestor::tei:div[not(ancestor::tei:div)]/@corresp"/>
+                            <xsl:variable name="msLine"
+                                select="preceding::tei:lb[1][@xml:id]/@xml:id"/>
+                            <xsl:variable name="hand" select="preceding::tei:handShift[1]/@new"/>
+                            <tr>
                                 <td>
-                                    <p>The extracts below are presented according to the following
-                                        editorial conventions. Please note that these sometimes
-                                        differ from those normally employed in printed editions of
-                                        medieval Gaelic texts and from those employed on the FnaG
-                                        MSS Webtool. This is to avoid computational difficulties
-                                        associated with using brackets at the same time as
-                                        normalising word division.</p>
-                                    <ul>
-                                        <li>All expansions from abbreviations are <span
-                                                class="expansion">italicised</span>.</li>
-                                        <li>Text deleted by a scribe (whether the main scribe or a
-                                            later scribe) is struck through: <span class="deletion"
-                                                >example of text deleted by a scribe</span>.</li>
-                                        <li>Material inserted by a scribe is in superscript,
-                                            regardless of where the scribe added it: <sup>example of
-                                                text inserted by a scribe</sup>.</li>
-                                        <li>Text supplied by an editor is in red small caps: <span
-                                                class="supplied">example of text supplied by an
-                                                editor</span>.</li>
-                                        <li>Text that has been tagged as unclear is greyed out:
-                                                <span class="unclear">example of text that is
-                                                unclear</span>. This could be due to issues with
-                                            legibility or because the FnaG MSS transcribers are
-                                            unsure of its interpretation. Users should consult the
-                                            TEI XML file or the webtool in order to learn why the
-                                            text has been tagged as unclear.</li>
-                                        <li><span class="annotation">[...]</span> indicates a lacuna
-                                            in the manuscript.</li>
-                                        <li>Editorial annotations are presented in a distinctive
-                                            font: <span class="annotation">example of an editorial
-                                                annotation</span>.</li>
-                                        <li>All punctuation is as per the MS, unless otherwise
-                                            indicated.</li>
-                                        <li>Ocurrences of the searched for headword are <span
-                                                class="form_in_context">highlighted</span>.</li>
-                                    </ul>
-                                    <p>Multiple occurrences of the same headword may appear in the
-                                        same line (if so, each will be highlighted), but a separate
-                                        entry is provided for each occurrence; the same
-                                        transcription extract may therefore appear multiple times.
-                                        The layout of the extract will vary depending on whether the
-                                        text is poetry or prose and, in the case of the latter,
-                                        depending on whether the paragraph is short enought to be
-                                        quoted in its entirety.</p>
-                                    <p>Only occurrences of the headword specified by the inputted
-                                        headword will be returned. Instances of closely related
-                                        headwords will not be returned. For example, if the
-                                        specified headword is a verb, one should not expect the
-                                        search results to include instances of the verbal noun or
-                                        the past participle, if these have their own dictionary
-                                        entries: to retrieve instances of the related verbal noun
-                                        and past participle, two additional searches would need to
-                                        be conducted, one for the verbal noun and one for the past
-                                        participle. For more information, see the FnaG MSS
-                                            <i>Editorial Policy</i>.</p>
-                                </td>
-                            </tr>
-                            <xsl:for-each
-                                select="//tei:w[not(@type = 'data') and @lemmaRef = $vocabItemRef]">
-                                <xsl:variable name="textID"
-                                    select="ancestor::tei:div[not(ancestor::tei:div)]/@corresp"/>
-                                <xsl:variable name="msLine"
-                                    select="preceding::tei:lb[1][@xml:id]/@xml:id"/>
-                                <xsl:variable name="hand" select="preceding::tei:handShift[1]/@new"/>
-                                <tr>
-                                    <td>
-                                        <span class="msRef">
-                                            <b>
-                                                <xsl:value-of
-                                                  select="ancestor::tei:TEI//tei:sourceDesc/tei:msDesc//tei:msIdentifier/tei:settlement"
-                                                  />,&#160;<xsl:value-of
-                                                  select="ancestor::tei:TEI//tei:sourceDesc/tei:msDesc//tei:msIdentifier/tei:repository"
-                                                  />&#160;<xsl:value-of
-                                                  select="ancestor::tei:TEI//tei:sourceDesc/tei:msDesc//tei:msIdentifier/tei:idno"/>:&#160;<xsl:choose>
-                                                  <xsl:when
+                                    <span class="msRef">
+                                        <b>
+                                            <xsl:value-of
+                                                select="ancestor::tei:TEI//tei:sourceDesc/tei:msDesc//tei:msIdentifier/tei:settlement"
+                                                />,&#160;<xsl:value-of
+                                                select="ancestor::tei:TEI//tei:sourceDesc/tei:msDesc//tei:msIdentifier/tei:repository"
+                                                />&#160;<xsl:value-of
+                                                select="ancestor::tei:TEI//tei:sourceDesc/tei:msDesc//tei:msIdentifier/tei:idno"/>:&#160;<xsl:choose>
+                                                <xsl:when
                                                   test="contains(preceding::tei:pb[1]/@n, 'r') or contains(preceding::tei:pb[1]/@n, 'v')"
                                                   >fol.&#160;</xsl:when>
-                                                  <xsl:otherwise>p.&#160;</xsl:otherwise>
-                                                </xsl:choose>
-                                                <xsl:value-of select="preceding::tei:pb[1]/@n"/>
-                                                <xsl:if
-                                                  test="preceding::tei:pb[1]/following::*[1]/name() = 'cb'">
-                                                  <xsl:value-of
+                                                <xsl:otherwise>p.&#160;</xsl:otherwise>
+                                            </xsl:choose>
+                                            <xsl:value-of select="preceding::tei:pb[1]/@n"/>
+                                            <xsl:if
+                                                test="preceding::tei:pb[1]/following::*[1]/name() = 'cb'">
+                                                <xsl:value-of
                                                   select="preceding::tei:pb[1]/following::*[1]/@n"/>
-                                                </xsl:if>
-                                                <xsl:choose>
-                                                  <xsl:when test="ancestor::tei:lg">
+                                            </xsl:if>
+                                            <xsl:choose>
+                                                <xsl:when test="ancestor::tei:lg">
                                                   <xsl:variable name="wordCount"
                                                   select="count(ancestor::tei:lg//tei:w)"/>
                                                   <xsl:variable name="startLine"
@@ -212,8 +206,8 @@
                                                   />;&#160;<xsl:value-of select="$msLine"/>)
                                                   </xsl:otherwise>
                                                   </xsl:choose>
-                                                  </xsl:when>
-                                                  <xsl:otherwise>
+                                                </xsl:when>
+                                                <xsl:otherwise>
                                                   <xsl:choose>
                                                   <xsl:when
                                                   test="count(ancestor::tei:p/descendant::tei:w[not(descendant::tei:w)]) &lt; 200">
@@ -243,56 +237,55 @@
                                                   />&#160;(<xsl:value-of select="$msLine"/>)
                                                   </xsl:otherwise>
                                                   </xsl:choose>
-                                                  </xsl:otherwise>
-                                                </xsl:choose>
-                                            </b>
-                                        </span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <b>Scribe:&#160;</b><xsl:choose>
-                                            <xsl:when
-                                                test="$hand = //tei:handNote[tei:forename | tei:surname]/@xml:id">
-                                                <xsl:value-of
-                                                  select="//tei:handNote[@xml:id = $hand]/tei:forename"
-                                                  />&#160;<xsl:value-of
-                                                  select="//tei:handNote[@xml:id = $hand]/tei:surname"
-                                                />
-                                            </xsl:when>
-                                            <xsl:otherwise>
-                                                <xsl:value-of select="$hand"/>
-                                            </xsl:otherwise>
-                                        </xsl:choose>&#160;(saec. <xsl:value-of
-                                            select="//tei:handNote[@xml:id = $hand]/tei:date"/>)
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <b>Text</b>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <xsl:choose>
-                                            <xsl:when test="ancestor::tei:lg">
-                                                <xsl:apply-templates select="ancestor::tei:lg"
-                                                  mode="context">
-                                                  <xsl:with-param name="formLemRef"
+                                                </xsl:otherwise>
+                                            </xsl:choose>
+                                        </b>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <b>Scribe:&#160;</b><xsl:choose>
+                                        <xsl:when
+                                            test="$hand = //tei:handNote[tei:forename | tei:surname]/@xml:id">
+                                            <xsl:value-of
+                                                select="//tei:handNote[@xml:id = $hand]/tei:forename"
+                                                />&#160;<xsl:value-of
+                                                select="//tei:handNote[@xml:id = $hand]/tei:surname"
+                                            />
+                                        </xsl:when>
+                                        <xsl:otherwise>
+                                            <xsl:value-of select="$hand"/>
+                                        </xsl:otherwise>
+                                    </xsl:choose>&#160;(saec. <xsl:value-of
+                                        select="//tei:handNote[@xml:id = $hand]/tei:date"/>) </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <b>Text</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <xsl:choose>
+                                        <xsl:when test="ancestor::tei:lg">
+                                            <xsl:apply-templates select="ancestor::tei:lg"
+                                                mode="context">
+                                                <xsl:with-param name="formLemRef"
                                                   select="$vocabItemRef"/>
-                                                </xsl:apply-templates>
-                                            </xsl:when>
-                                            <xsl:when test="ancestor::tei:p">
-                                                <xsl:choose>
-                                                  <xsl:when
+                                            </xsl:apply-templates>
+                                        </xsl:when>
+                                        <xsl:when test="ancestor::tei:p">
+                                            <xsl:choose>
+                                                <xsl:when
                                                   test="count(ancestor::tei:p/descendant::tei:w[not(descendant::tei:w)]) &lt; 200">
                                                   <xsl:apply-templates select="ancestor::tei:p"
                                                   mode="context">
                                                   <xsl:with-param name="formLemRef"
                                                   select="$vocabItemRef"/>
                                                   </xsl:apply-templates>
-                                                  </xsl:when>
-                                                  <xsl:otherwise>
+                                                </xsl:when>
+                                                <xsl:otherwise>
                                                   <xsl:variable name="prevMsLine"
                                                   select="preceding::tei:lb[1][@xml:id]/preceding::tei:lb[1][@xml:id]/@xml:id"/>
                                                   <xsl:variable name="nextMsLine"
@@ -315,40 +308,40 @@
                                                   /></span>&#160;<xsl:apply-templates
                                                   select="preceding::tei:lb[1][@xml:id]/following::tei:lb[1][@xml:id]/following::*[parent::tei:p and not(descendant-or-self::tei:lg) and ancestor::tei:div[@corresp = $textID] and preceding::tei:lb[1][@xml:id]/@xml:id = $nextMsLine and not(ancestor::tei:TEI[@xml:id = 'hwData'])]"
                                                   mode="context"/><br/></xsl:otherwise>
-                                                </xsl:choose>
-                                            </xsl:when>
-                                            <xsl:otherwise>
-                                                <xsl:text>[unavailable]</xsl:text>
-                                            </xsl:otherwise>
-                                        </xsl:choose>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <b>Translation</b>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <br/>
-                                        <br/>
-                                        <br/>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <b>Notes</b>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <br/>
-                                        <br/>
-                                        <br/>
-                                    </td>
-                                </tr>
-                            </xsl:for-each>
-                        </tbody>
+                                            </xsl:choose>
+                                        </xsl:when>
+                                        <xsl:otherwise>
+                                            <xsl:text>[unavailable]</xsl:text>
+                                        </xsl:otherwise>
+                                    </xsl:choose>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <b>Translation</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <br/>
+                                    <br/>
+                                    <br/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <b>Notes</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <br/>
+                                    <br/>
+                                    <br/>
+                                </td>
+                            </tr>
+                        </xsl:for-each>
+
                     </table>
                 </body>
             </html>
