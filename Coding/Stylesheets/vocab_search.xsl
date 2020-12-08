@@ -154,7 +154,7 @@
                                         headwords will not be returned. For example, if the
                                         specified headword is a verb, one should not expect the
                                         search results to include instances of the verbal noun or
-                                        the part participle, if these have their own dictionary
+                                        the past participle, if these have their own dictionary
                                         entries: to retrieve instances of the related verbal noun
                                         and past participle, two additional searches would need to
                                         be conducted, one for the verbal noun and one for the past
@@ -189,10 +189,63 @@
                                                   test="preceding::tei:pb[1]/following::*[1]/name() = 'cb'">
                                                   <xsl:value-of
                                                   select="preceding::tei:pb[1]/following::*[1]/@n"/>
-                                                </xsl:if>,&#160;line&#160;<xsl:value-of
+                                                </xsl:if>
+                                                <xsl:choose>
+                                                  <xsl:when test="ancestor::tei:lg">
+                                                  <xsl:variable name="wordCount"
+                                                  select="count(ancestor::tei:lg//tei:w)"/>
+                                                  <xsl:variable name="startLine"
+                                                  select="ancestor::tei:lg/descendant::tei:w[1]/preceding::tei:lb[1][@xml:id]/@xml:id"/>
+                                                  <xsl:variable name="endLine"
+                                                  select="ancestor::tei:lg/descendant::tei:w[$wordCount]/preceding::tei:lb[1][@xml:id]/@xml:id"/>
+                                                  <xsl:choose>
+                                                  <xsl:when test="$startLine = $endLine">
+                                                  ,&#160;line&#160;<xsl:value-of
                                                   select="preceding::tei:lb[1][@xml:id]/@n"
-                                                />&#160;(@xml:id = <xsl:value-of select="$msLine"
-                                                />)</b>
+                                                  />&#160;(<xsl:value-of select="$msLine"/>) </xsl:when>
+                                                  <xsl:otherwise> ,&#160;lines&#160;<xsl:value-of
+                                                  select="//tei:lb[@xml:id = $startLine]/@n"
+                                                  />-<xsl:value-of
+                                                  select="//tei:lb[@xml:id = $endLine]/@n"
+                                                  />&#160;(<xsl:value-of
+                                                  select="preceding::tei:lb[1][@xml:id]/@n"
+                                                  />;&#160;<xsl:value-of select="$msLine"/>)
+                                                  </xsl:otherwise>
+                                                  </xsl:choose>
+                                                  </xsl:when>
+                                                  <xsl:otherwise>
+                                                  <xsl:choose>
+                                                  <xsl:when
+                                                  test="count(ancestor::tei:p/descendant::tei:w[not(descendant::tei:w)]) &lt; 200">
+                                                  <xsl:variable name="wordCount"
+                                                  select="count(ancestor::tei:p/descendant::tei:w)"/>
+                                                  <xsl:variable name="startLine"
+                                                  select="ancestor::tei:p/descendant::tei:w[1]/preceding::tei:lb[1][@xml:id]/@xml:id"/>
+                                                  <xsl:variable name="endLine"
+                                                  select="ancestor::tei:p/descendant::tei:w[$wordCount]/preceding::tei:lb[1][@xml:id]/@xml:id"/>
+                                                  <xsl:choose>
+                                                  <xsl:when test="$startLine = $endLine">
+                                                  ,&#160;line&#160;<xsl:value-of
+                                                  select="preceding::tei:lb[1][@xml:id]/@n"
+                                                  />&#160;(<xsl:value-of select="$msLine"/>) </xsl:when>
+                                                  <xsl:otherwise> ,&#160;lines&#160;<xsl:value-of
+                                                  select="//tei:lb[@xml:id = $startLine]/@n"
+                                                  />-<xsl:value-of
+                                                  select="//tei:lb[@xml:id = $endLine]/@n"
+                                                  />&#160;(<xsl:value-of
+                                                  select="preceding::tei:lb[1][@xml:id]/@n"
+                                                  />;&#160;<xsl:value-of select="$msLine"/>)
+                                                  </xsl:otherwise>
+                                                  </xsl:choose>
+                                                  </xsl:when>
+                                                  <xsl:otherwise> ,&#160;line&#160;<xsl:value-of
+                                                  select="preceding::tei:lb[1][@xml:id]/@n"
+                                                  />&#160;(<xsl:value-of select="$msLine"/>)
+                                                  </xsl:otherwise>
+                                                  </xsl:choose>
+                                                  </xsl:otherwise>
+                                                </xsl:choose>
+                                            </b>
                                         </span>
                                     </td>
                                 </tr>
