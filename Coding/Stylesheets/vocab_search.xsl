@@ -4,7 +4,7 @@
     exclude-result-prefixes="xs" version="2.0">
     <xsl:variable name="vocabItemRef">
         <!-- USER: add URL below -->
-        <xsl:value-of select="'http://www.dil.ie/36264'"/>
+        <xsl:value-of select="'http://www.dil.ie/12707'"/>
     </xsl:variable>
     <xsl:variable name="timestamp">
         <xsl:value-of
@@ -293,12 +293,12 @@
                                                   <span class="line_number"><xsl:value-of
                                                   select="preceding::tei:lb[1][@xml:id]/preceding::tei:lb[1][@xml:id]/@n"
                                                   /></span>&#160;<xsl:apply-templates
-                                                  select="preceding::tei:lb[1][@xml:id]/preceding::tei:lb[1][@xml:id]/following::*[parent::tei:p and not(descendant-or-self::tei:lg) and ancestor::tei:div[@corresp = $textID] and preceding::tei:lb[1][@xml:id]/@xml:id = $prevMsLine and not(ancestor::tei:TEI[@xml:id = 'hwData'])]"
+                                                      select="preceding::tei:lb[1][@xml:id]/preceding::tei:lb[1][@xml:id]/following::*[parent::tei:p and not(descendant-or-self::tei:lg) and not(ancestor::tei:note) and ancestor::tei:div[@corresp = $textID] and preceding::tei:lb[1][@xml:id]/@xml:id = $prevMsLine and not(ancestor::tei:TEI[@xml:id = 'hwData'])]"
                                                   mode="context"/><br/><span class="line_number"
                                                   ><xsl:value-of
                                                   select="preceding::tei:lb[1][@xml:id]/@n"
                                                   /></span>&#160;<xsl:apply-templates
-                                                  select="preceding::tei:lb[1][@xml:id]/following::*[parent::tei:p and not(descendant-or-self::tei:lg) and ancestor::tei:div[@corresp = $textID] and preceding::tei:lb[1][@xml:id]/@xml:id = $msLine and not(ancestor::tei:TEI[@xml:id = 'hwData'])]"
+                                                  select="preceding::tei:lb[1][@xml:id]/following::*[parent::tei:p and not(descendant-or-self::tei:lg) and not(ancestor::tei:note) and ancestor::tei:div[@corresp = $textID] and preceding::tei:lb[1][@xml:id]/@xml:id = $msLine and not(ancestor::tei:TEI[@xml:id = 'hwData'])]"
                                                   mode="context">
                                                   <xsl:with-param name="formLemRef"
                                                   select="$vocabItemRef"
@@ -306,7 +306,7 @@
                                                   class="line_number"><xsl:value-of
                                                   select="preceding::tei:lb[1][@xml:id]/following::tei:lb[1][@xml:id]/@n"
                                                   /></span>&#160;<xsl:apply-templates
-                                                  select="preceding::tei:lb[1][@xml:id]/following::tei:lb[1][@xml:id]/following::*[parent::tei:p and not(descendant-or-self::tei:lg) and ancestor::tei:div[@corresp = $textID] and preceding::tei:lb[1][@xml:id]/@xml:id = $nextMsLine and not(ancestor::tei:TEI[@xml:id = 'hwData'])]"
+                                                      select="preceding::tei:lb[1][@xml:id]/following::tei:lb[1][@xml:id]/following::*[parent::tei:p and not(descendant-or-self::tei:lg) and not(ancestor::tei:note) and ancestor::tei:div[@corresp = $textID] and preceding::tei:lb[1][@xml:id]/@xml:id = $nextMsLine and not(ancestor::tei:TEI[@xml:id = 'hwData'])]"
                                                   mode="context"/><br/></xsl:otherwise>
                                             </xsl:choose>
                                         </xsl:when>
