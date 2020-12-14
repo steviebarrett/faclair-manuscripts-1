@@ -147,6 +147,14 @@
                                         xml:id=&quot;MS1.3v.1&quot;/&gt;) to facilitate searching of
                                         the source transcription files, if needed."</li>
                                 </ul>
+                                <p>The order of the occurrences of the specified headword is that in
+                                    which the manuscripts involved were added to the corpus, which
+                                    does not relate to any relevant factor like date or provenance.
+                                    While all results from the same manuscript are presented
+                                    together, the order will otherwise come across to the user as
+                                    random. The first result in the document will not necessarily be
+                                    the earliest attestation of the headword, which may be found
+                                    later in the document.</p>
                                 <p>Multiple occurrences of the same headword may appear in the same
                                     line (if so, each will be highlighted), but a separate entry is
                                     provided for each occurrence; the same transcription extract may
@@ -391,7 +399,9 @@
     </xsl:template>
     <xsl:template match="tei:pc" mode="context">
         <xsl:apply-templates mode="context"/>
-        <xsl:if test="not(ancestor::tei:w)"><xsl:text xml:space="preserve"> </xsl:text></xsl:if>
+        <xsl:if test="not(ancestor::tei:w)">
+            <xsl:text xml:space="preserve"> </xsl:text>
+        </xsl:if>
     </xsl:template>
     <xsl:template match="tei:date" mode="context">
         <xsl:apply-templates mode="context"/>
