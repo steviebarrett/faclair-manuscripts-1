@@ -58,7 +58,7 @@
                         th,
                         td {
                             border: 1px solid black;
-                            font-size: 11;
+                            font-size: 15;
                             width: 70%;
                         }
                         del {
@@ -90,7 +90,6 @@
                         }
                         span.annotation {
                             font-family: "Courier New", monospace;
-                            font-size: 75%;
                         }</style>
                 </head>
                 <body>
@@ -392,8 +391,7 @@
     </xsl:template>
     <xsl:template match="tei:pc" mode="context">
         <xsl:apply-templates mode="context"/>
-        <xsl:text xml:space="preserve"> </xsl:text>
-
+        <xsl:if test="not(ancestor::tei:w)"><xsl:text xml:space="preserve"> </xsl:text></xsl:if>
     </xsl:template>
     <xsl:template match="tei:date" mode="context">
         <xsl:apply-templates mode="context"/>
