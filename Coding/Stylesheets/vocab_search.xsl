@@ -4,7 +4,7 @@
     exclude-result-prefixes="xs" version="2.0">
     <xsl:variable name="vocabItemRef">
         <!-- USER: add URL below -->
-        <xsl:value-of select="'http://www.dil.ie/12707'"/>
+        <xsl:value-of select="'http://www.dil.ie/36264'"/>
     </xsl:variable>
     <xsl:variable name="timestamp">
         <xsl:value-of
@@ -90,6 +90,7 @@
                         }
                         span.annotation {
                             font-family: "Courier New", monospace;
+                            font-size: 75%;
                         }</style>
                 </head>
                 <body>
@@ -127,33 +128,45 @@
                                         FnaG MSS transcribers are unsure of its interpretation.
                                         Users should consult the TEI XML file or the webtool in
                                         order to learn why the text has been tagged as unclear.</li>
-                                    <li><span class="annotation">[...]</span> indicates a lacuna in
-                                        the manuscript.</li>
                                     <li>Editorial annotations are presented in a distinctive font:
                                             <span class="annotation">example of an editorial
                                             annotation</span>.</li>
+                                    <li><span class="annotation">[...]</span> indicates a lacuna in
+                                        the manuscript.</li>
+                                    <li>Page, column (where applicable), and line breaks appear
+                                        within the extract as editorial annotations.</li>
                                     <li>All punctuation is as per the MS, unless otherwise
                                         indicated.</li>
-                                    <li>Ocurrences of the searched for headword are <span
+                                    <li>Occurrences of the searched for headword are <span
                                             class="form_in_context">highlighted</span>.</li>
+                                    <li>The line reference (following the shelfmark) given <b>in
+                                            bold</b> above the extract is to the occurrence of the
+                                        specified headword to which the extract relates. The
+                                        tripartite code following it (e.g. "<b>MS1.3v.1</b>")
+                                        identifies the line-beginning (&lt;lb&gt;) element in the
+                                        TEI XML relating to this line (e.g. &lt;lb n=&quot;1&quot;
+                                        xml:id=&quot;MS1.3v.1&quot;/&gt;) to facilitate searching of
+                                        the source transcription files, if needed."</li>
                                 </ul>
                                 <p>Multiple occurrences of the same headword may appear in the same
                                     line (if so, each will be highlighted), but a separate entry is
                                     provided for each occurrence; the same transcription extract may
                                     therefore appear multiple times. The layout of the extract will
-                                    vary depending on whether the text is poetry or prose and, in
-                                    the case of the latter, depending on whether the paragraph is
-                                    short enought to be quoted in its entirety.</p>
-                                <p>Only occurrences of the headword specified by the inputted
-                                    headword will be returned. Instances of closely related
-                                    headwords will not be returned. For example, if the specified
-                                    headword is a verb, one should not expect the search results to
-                                    include instances of the verbal noun or the past participle, if
-                                    these have their own dictionary entries: to retrieve instances
-                                    of the related verbal noun and past participle, two additional
-                                    searches would need to be conducted, one for the verbal noun and
-                                    one for the past participle. For more information, see the FnaG
-                                    MSS <i>Editorial Policy</i>.</p>
+                                    vary depending on whether the text is poetry or prose. With
+                                    prose, if the headword occurs within a paragrph that is 200
+                                    words or less, the entire paragraph will be returned. Otherwise,
+                                    the MS line, plus the preceding and following lines, will be
+                                    returned.</p>
+                                <p>Only occurrences of the headword specified by the inputted URL
+                                    will be returned. Instances of closely related headwords will
+                                    not be returned. For example, if the specified headword is a
+                                    verb, one should not expect the search results to include
+                                    instances of the verbal noun or the past participle, if these
+                                    have their own dictionary entries: to retrieve instances of the
+                                    related verbal noun and past participle, two additional searches
+                                    would need to be conducted, one for the verbal noun and one for
+                                    the past participle. For more information, see the FnaG MSS
+                                        <i>Editorial Policy</i>.</p>
                             </td>
                         </tr>
                         <xsl:for-each
@@ -162,6 +175,8 @@
                                 select="ancestor::tei:div[not(ancestor::tei:div)]/@corresp"/>
                             <xsl:variable name="msLine"
                                 select="preceding::tei:lb[1][@xml:id]/@xml:id"/>
+                            <xsl:variable name="msPage"
+                                select="preceding::tei:pb[1][@xml:id]/@xml:id"/>
                             <xsl:variable name="hand" select="preceding::tei:handShift[1]/@new"/>
                             <tr>
                                 <td>
@@ -172,7 +187,7 @@
                                                 />,&#160;<xsl:value-of
                                                 select="ancestor::tei:TEI//tei:sourceDesc/tei:msDesc//tei:msIdentifier/tei:repository"
                                                 />&#160;<xsl:value-of
-                                                select="ancestor::tei:TEI//tei:sourceDesc/tei:msDesc//tei:msIdentifier/tei:idno"/>:&#160;<xsl:choose>
+                                                select="ancestor::tei:TEI//tei:sourceDesc/tei:msDesc//tei:msIdentifier/tei:idno"/>,&#160;<xsl:choose>
                                                 <xsl:when
                                                   test="contains(preceding::tei:pb[1]/@n, 'r') or contains(preceding::tei:pb[1]/@n, 'v')"
                                                   >fol.&#160;</xsl:when>
@@ -180,66 +195,11 @@
                                             </xsl:choose>
                                             <xsl:value-of select="preceding::tei:pb[1]/@n"/>
                                             <xsl:if
-                                                test="preceding::tei:pb[1]/following::*[1]/name() = 'cb'">
-                                                <xsl:value-of
-                                                  select="preceding::tei:pb[1]/following::*[1]/@n"/>
-                                            </xsl:if>
-                                            <xsl:choose>
-                                                <xsl:when test="ancestor::tei:lg">
-                                                  <xsl:variable name="wordCount"
-                                                  select="count(ancestor::tei:lg//tei:w)"/>
-                                                  <xsl:variable name="startLine"
-                                                  select="ancestor::tei:lg/descendant::tei:w[1]/preceding::tei:lb[1][@xml:id]/@xml:id"/>
-                                                  <xsl:variable name="endLine"
-                                                  select="ancestor::tei:lg/descendant::tei:w[$wordCount]/preceding::tei:lb[1][@xml:id]/@xml:id"/>
-                                                  <xsl:choose>
-                                                  <xsl:when test="$startLine = $endLine">
-                                                  ,&#160;line&#160;<xsl:value-of
-                                                  select="preceding::tei:lb[1][@xml:id]/@n"
-                                                  />&#160;(<xsl:value-of select="$msLine"/>) </xsl:when>
-                                                  <xsl:otherwise> ,&#160;lines&#160;<xsl:value-of
-                                                  select="//tei:lb[@xml:id = $startLine]/@n"
-                                                  />-<xsl:value-of
-                                                  select="//tei:lb[@xml:id = $endLine]/@n"
-                                                  />&#160;(<xsl:value-of
-                                                  select="preceding::tei:lb[1][@xml:id]/@n"
-                                                  />;&#160;<xsl:value-of select="$msLine"/>)
-                                                  </xsl:otherwise>
-                                                  </xsl:choose>
-                                                </xsl:when>
-                                                <xsl:otherwise>
-                                                  <xsl:choose>
-                                                  <xsl:when
-                                                  test="count(ancestor::tei:p/descendant::tei:w[not(descendant::tei:w)]) &lt; 200">
-                                                  <xsl:variable name="wordCount"
-                                                  select="count(ancestor::tei:p/descendant::tei:w)"/>
-                                                  <xsl:variable name="startLine"
-                                                  select="ancestor::tei:p/descendant::tei:w[1]/preceding::tei:lb[1][@xml:id]/@xml:id"/>
-                                                  <xsl:variable name="endLine"
-                                                  select="ancestor::tei:p/descendant::tei:w[$wordCount]/preceding::tei:lb[1][@xml:id]/@xml:id"/>
-                                                  <xsl:choose>
-                                                  <xsl:when test="$startLine = $endLine">
-                                                  ,&#160;line&#160;<xsl:value-of
-                                                  select="preceding::tei:lb[1][@xml:id]/@n"
-                                                  />&#160;(<xsl:value-of select="$msLine"/>) </xsl:when>
-                                                  <xsl:otherwise> ,&#160;lines&#160;<xsl:value-of
-                                                  select="//tei:lb[@xml:id = $startLine]/@n"
-                                                  />-<xsl:value-of
-                                                  select="//tei:lb[@xml:id = $endLine]/@n"
-                                                  />&#160;(<xsl:value-of
-                                                  select="preceding::tei:lb[1][@xml:id]/@n"
-                                                  />;&#160;<xsl:value-of select="$msLine"/>)
-                                                  </xsl:otherwise>
-                                                  </xsl:choose>
-                                                  </xsl:when>
-                                                  <xsl:otherwise> ,&#160;line&#160;<xsl:value-of
-                                                  select="preceding::tei:lb[1][@xml:id]/@n"
-                                                  />&#160;(<xsl:value-of select="$msLine"/>)
-                                                  </xsl:otherwise>
-                                                  </xsl:choose>
-                                                </xsl:otherwise>
-                                            </xsl:choose>
-                                        </b>
+                                                test="//tei:pb[@xml:id = $msPage]/following::tei:cb/following::tei:lb[@xml:id = $msLine]">
+                                                <xsl:value-of select="preceding::tei:cb[1]/@n"/>
+                                            </xsl:if>,&#160;line&#160;<xsl:value-of
+                                                select="preceding::tei:lb[1][@xml:id]/@n"
+                                                />&#160;(<xsl:value-of select="$msLine"/>)</b>
                                     </span>
                                 </td>
                             </tr>
@@ -290,24 +250,20 @@
                                                   select="preceding::tei:lb[1][@xml:id]/preceding::tei:lb[1][@xml:id]/@xml:id"/>
                                                   <xsl:variable name="nextMsLine"
                                                   select="preceding::tei:lb[1][@xml:id]/following::tei:lb[1][@xml:id]/@xml:id"/>
-                                                  <span class="line_number"><xsl:value-of
-                                                  select="preceding::tei:lb[1][@xml:id]/preceding::tei:lb[1][@xml:id]/@n"
-                                                  /></span>&#160;<xsl:apply-templates
-                                                      select="preceding::tei:lb[1][@xml:id]/preceding::tei:lb[1][@xml:id]/following::*[parent::tei:p and not(descendant-or-self::tei:lg) and not(ancestor::tei:note) and ancestor::tei:div[@corresp = $textID] and preceding::tei:lb[1][@xml:id]/@xml:id = $prevMsLine and not(ancestor::tei:TEI[@xml:id = 'hwData'])]"
-                                                  mode="context"/><br/><span class="line_number"
-                                                  ><xsl:value-of
-                                                  select="preceding::tei:lb[1][@xml:id]/@n"
-                                                  /></span>&#160;<xsl:apply-templates
+                                                  <xsl:apply-templates
+                                                  select="preceding::tei:lb[1][@xml:id]/preceding::tei:lb[1][@xml:id]/following::*[parent::tei:p and not(descendant-or-self::tei:lg) and not(ancestor::tei:note) and ancestor::tei:div[@corresp = $textID] and preceding::tei:lb[1][@xml:id]/@xml:id = $prevMsLine and not(ancestor::tei:TEI[@xml:id = 'hwData'])]"
+                                                  mode="context"/>
+                                                  <xsl:apply-templates
                                                   select="preceding::tei:lb[1][@xml:id]/following::*[parent::tei:p and not(descendant-or-self::tei:lg) and not(ancestor::tei:note) and ancestor::tei:div[@corresp = $textID] and preceding::tei:lb[1][@xml:id]/@xml:id = $msLine and not(ancestor::tei:TEI[@xml:id = 'hwData'])]"
                                                   mode="context">
                                                   <xsl:with-param name="formLemRef"
-                                                  select="$vocabItemRef"
-                                                  /></xsl:apply-templates><br/><span
-                                                  class="line_number"><xsl:value-of
-                                                  select="preceding::tei:lb[1][@xml:id]/following::tei:lb[1][@xml:id]/@n"
-                                                  /></span>&#160;<xsl:apply-templates
-                                                      select="preceding::tei:lb[1][@xml:id]/following::tei:lb[1][@xml:id]/following::*[parent::tei:p and not(descendant-or-self::tei:lg) and not(ancestor::tei:note) and ancestor::tei:div[@corresp = $textID] and preceding::tei:lb[1][@xml:id]/@xml:id = $nextMsLine and not(ancestor::tei:TEI[@xml:id = 'hwData'])]"
-                                                  mode="context"/><br/></xsl:otherwise>
+                                                  select="$vocabItemRef"/>
+                                                  </xsl:apply-templates>
+                                                  <xsl:apply-templates
+                                                  select="preceding::tei:lb[1][@xml:id]/following::tei:lb[1][@xml:id]/following::*[parent::tei:p and not(descendant-or-self::tei:lg) and not(ancestor::tei:note) and ancestor::tei:div[@corresp = $textID] and preceding::tei:lb[1][@xml:id]/@xml:id = $nextMsLine and not(ancestor::tei:TEI[@xml:id = 'hwData'])]"
+                                                  mode="context"/>
+                                                  <br/>
+                                                </xsl:otherwise>
                                             </xsl:choose>
                                         </xsl:when>
                                         <xsl:otherwise>
@@ -514,6 +470,25 @@
         <xsl:text xml:space="preserve"> </xsl:text>
     </xsl:template>
     <xsl:template match="tei:space" mode="context">
-        <xsl:text/>
+        <xsl:choose>
+            <xsl:when test="@type = 'force'">&#160;</xsl:when>
+            <xsl:otherwise>
+                <xsl:text/>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:template>
+    <xsl:template match="tei:lb | tei:cb | tei:pb" mode="context">
+        <span class="annotation">[<xsl:if test="name() = 'pb'">
+                <xsl:choose>
+                    <xsl:when test="contains(@n, 'r') or contains(@n, 'v')">fol.&#160;</xsl:when>
+                    <xsl:otherwise>p.&#160;</xsl:otherwise>
+                </xsl:choose>
+                <xsl:value-of select="@n"/>
+            </xsl:if>
+            <xsl:if test="name() = 'cb'"> col.&#160;<xsl:value-of select="@n"/>
+            </xsl:if>
+            <xsl:if test="name() = 'lb'">
+                <xsl:value-of select="@n"/>
+            </xsl:if>]</span>
     </xsl:template>
 </xsl:stylesheet>
