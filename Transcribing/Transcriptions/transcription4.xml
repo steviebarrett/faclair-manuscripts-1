@@ -50484,8 +50484,8 @@
 							<w lemma="i" lemmaRef="http://www.dil.ie/26891" pos="preposition">s</w>
 							<w lemma="in" lemmaRef="http://www.dil.ie/28194" pos="article">a</w>
 						</w>
-						<w lemma="soiscél" lemmaRef="http://www.dil.ie/38383" pos="noun"
-							>tsoisgel</w>
+						<w lemma="soiscél" lemmaRef="http://www.dil.ie/38383" pos="noun">t<supplied
+								resp="EPT">s</supplied>ois<space type="scribal"/>gel</w>
 					</p>
 					<p>
 						<w lemma="*bainnsigid" source="bainsiugud" lemmaRef="http://www.dil.ie/5216"
@@ -50495,7 +50495,7 @@
 							</abbr>
 						</w>
 						<space type="scribal"/>
-						<w lemma="in" lemmaRef="http://www.dil.ie/28194" pos="article">a</w>
+						<w lemma="a" lemmaRef="http://www.dil.ie/2" pos="particle">a</w>
 						<w lemma="clann" lemmaRef="http://www.dil.ie/9365" pos="noun">cla<abbr
 								cert="high">n<g ref="g5">n</g>
 							</abbr>a</w>
@@ -50508,7 +50508,9 @@
 								cert="high">o<g ref="g1">m</g>
 							</abbr>in</w>
 						<lb n="28" xml:id="MS4.7rb.28"/>
-						<c>an</c>
+						<unclear reason="interp_obscure" cert="medium" resp="EPT"><w lemma="i"
+								lemmaRef="http://www.dil.ie/26891" pos="prepositional_pronoun"
+								>an</w></unclear>
 						<w lemma="ocus" lemmaRef="http://www.dil.ie/33484" pos="conjunction">
 							<abbr cert="high">
 								<g ref="g2">agus</g>
@@ -50618,7 +50620,7 @@
 							</abbr>
 						</w>
 						<w lemma="do-beir" lemmaRef="http://www.dil.ie/17216" pos="verb">ta<abbr
-								cert="high">b<g ref="g16">ur</g>
+								cert="high">b<g ref="g16">uir</g>
 							</abbr>
 						</w>
 						<space type="scribal"/>
@@ -50632,28 +50634,16 @@
 						<lb n="31" xml:id="MS4.7rb.31"/>
 						<w lemma="dul" lemmaRef="http://www.dil.ie/19189" pos="verbal_noun">dul</w>
 						<space type="scribal"/>
-						<unclear reason="abbrv" cert="high" resp="EPT">
-							<w lemma="drúb" lemmaRef="http://www.dil.ie/18837" pos="noun">d<abbr
-									cert="high">h<g ref="g3">ruib</g>
-								</abbr>
-							</w>
-						</unclear>
+						<w lemma="do" lemmaRef="http://www.dil.ie/17096" pos="prepositional_pronoun"
+								>d<abbr cert="high">h<g ref="g3">uib</g>
+							</abbr>
+						</w>
 						<w lemma="co" lemmaRef="http://www.dil.ie/9786" pos="preposition">co</w>
 						<w lemma="bráth" lemmaRef="http://www.dil.ie/6579" pos="noun">
 							<abbr cert="high">b<g ref="g17">ra</g>
 							</abbr>t</w>
 						<w lemma="ór" lemmaRef="http://www.dil.ie/33928" pos="conjunction">oir</w>
-						<w lemma="attá" lemmaRef="http://www.dil.ie/4927" pos="verb">ata</w>
-						<choice>
-							<sic>
-								<w lemma="íat" lemmaRef="http://www.dil.ie/27113" pos="pronoun"
-									>it</w>
-							</sic>
-							<corr resp="EPT">
-								<w lemma="íat" lemmaRef="http://www.dil.ie/27113" pos="pronoun"
-									>íat</w>
-							</corr>
-						</choice>
+						<w lemma="attá" lemmaRef="http://www.dil.ie/4927" pos="verb">atait</w>
 						<w pos="prefix-adjective">
 							<w lemma="com-" lemmaRef="http://www.dil.ie/10554" pos="prefix">com</w>
 							<w lemma="cutrummae" lemmaRef="http://www.dil.ie/14059" pos="adjective"
@@ -50662,7 +50652,7 @@
 						</w>
 						<space type="scribal"/>
 						<w lemma="fri" lemmaRef="http://www.dil.ie/24329" pos="preposition">re</w>
-						<w lemma="aingel" lemmaRef="http://www.dil.ie/1364" pos="noun">a<abbr
+						<w lemma="aingel" lemmaRef="http://www.dil.ie/1364" pos="noun">ha<abbr
 								cert="high">i<g ref="g5">n</g>
 							</abbr>glib</w>
 						<w lemma="nem" lemmaRef="http://www.dil.ie/33070" pos="noun">n<abbr
@@ -50674,7 +50664,7 @@
 						<w lemma="is" lemmaRef="http://www.dil.ie/29104" pos="verb">is</w>
 						<space type="scribal"/>
 						<w lemma="mac" lemmaRef="http://www.dil.ie/31166" pos="noun">
-							<abbr cert="high">m<g ref="g12">eic</g>
+							<abbr cert="high">m<g ref="g12">ic</g>
 							</abbr>
 						</w>
 						<w lemma="día" lemmaRef="http://www.dil.ie/15847" pos="noun">dia</w>
@@ -50694,13 +50684,15 @@
 							</sic>
 							<corr resp="EPT">
 								<w lemma="íat" lemmaRef="http://www.dil.ie/27113" pos="pronoun"
-									>íat</w>
+									>iat</w>
 							</corr>
 						</choice>
 						<space type="scribal"/>
-						<w lemma="ó" lemmaRef="http://www.dil.ie/33364" pos="preposition">o</w>
-						<w lemma="attá" lemmaRef="http://www.dil.ie/4927" pos="verb">tait</w>
-						<w lemma="síat" lemmaRef="http://www.dil.ie/37393" pos="pronoun">síat</w>
+						<w pos="preposition-verb">
+							<w lemma="ó" lemmaRef="http://www.dil.ie/33364" pos="preposition">o</w>
+							<w lemma="attá" lemmaRef="http://www.dil.ie/4927" pos="verb">tait</w>
+						</w>
+						<w lemma="síat" lemmaRef="http://www.dil.ie/37393" pos="pronoun">siat</w>
 						<space type="scribal"/>
 						<w pos="preposition-possessive_pronoun">
 							<w lemma="i" lemmaRef="http://www.dil.ie/26891" pos="preposition">n</w>
@@ -50716,26 +50708,15 @@
 						</w>
 						<lb n="33" xml:id="MS4.7rb.33"/>
 						<w lemma="esséirge" lemmaRef="http://www.dil.ie/20489" pos="verbal_noun"
-								>ai<abbr cert="high">s<g ref="g21">er</g>
+								>ai<abbr cert="high">s<g ref="g21">eir</g>
 							</abbr>ge</w>
 						<note type="fn" resp="EPT">
 							<p>
-								<hi rend="bold">Luke 20:34–36</hi>
-							</p>
-							<p>
-								<hi rend="italics">Lib. Scint.</hi> XIII:1: Filii seculi huius
-								nubunt et traduntur ad nuptias; illi uero digni habentur seculo illo
-								et resurrectionem ex mortuis neque nubent, neque ducunt uxores,
-								neque enim ultra mori potuerunt, aequalis enim angelis sunt, et
-								filii sunt Dei, sum sint filii resurrectionis.</p>
-							<p>Agus fhreagair Iosa, agus thubhairt e riu, <hi rend="underline">Tha
-									clann an tsaoghail so a' pòsadh, agus air an toirt ann am
-									pòsadh: ach an dream sin a mheasar gur àiridh iad air an
-									tsaoghal ud fhaghail, agus an aiseirigh o na mairbh, cha-n'eil
-									iad a' pòsadh, no air an toirt ann am pòsadh. Agus cha-n urrainn
-									iad bàs fhaghail ni's mò; oir tha iad 'an co-inbhe ris na
-									h-ainglibh; agus is iad clann Dhé iad, air bhi dhoibh 'n an
-									cloinn do'n aiseirigh</hi>.</p>
+								<hi rend="italics">Lib. Scint.</hi> XIII:1 (Luke 20:34–36): Filii
+								seculi huius nubunt et traduntur ad nuptias; illi uero digni
+								habentur seculo illo et resurrectionem ex mortuis neque nubent,
+								neque ducunt uxores, neque enim ultra mori potuerunt, aequalis enim
+								angelis sunt, et filii sunt Dei, sum sint filii resurrectionis.</p>
 						</note>
 					</p>
 					<p>
@@ -50750,8 +50731,8 @@
 						<name type="personal">
 							<w pos="noun">pol</w>
 						</name>
-						<w lemma="esbal" lemmaRef="http://www.dil.ie/20397" pos="noun">as<abbr
-								cert="high">p<g ref="g3">al</g>
+						<w lemma="esbal" lemmaRef="http://www.dil.ie/20397" pos="noun">ap<abbr
+								cert="high">s<g ref="g3">al</g>
 							</abbr>
 						</w>
 					</p>
@@ -50819,14 +50800,13 @@
 							<w lemma="do-goa" lemmaRef="http://www.dil.ie/17757" pos="verb">to<abbr
 									cert="high">g<g ref="g4">h</g>
 								</abbr>a</w>
-							<w lemma="día" lemmaRef="http://www.dil.ie/15847" pos="noun">dia</w>
-							<space type="scribal"/>
-							<w lemma="do" lemmaRef="http://www.dil.ie/17096" pos="preposition"
-								>do</w>
-							<w lemma="coimét" lemmaRef="http://www.dil.ie/10185" pos="verbal_noun"
-									>coim<add place="above" type="insertion" hand="Hand18">uid</add>
-							</w>
 						</unclear>
+						<w lemma="día" lemmaRef="http://www.dil.ie/15847" pos="noun">dia</w>
+						<space type="scribal"/>
+						<w lemma="do" lemmaRef="http://www.dil.ie/17096" pos="preposition">do</w>
+						<w lemma="coimét" lemmaRef="http://www.dil.ie/10185" pos="verbal_noun"
+								>coimm<add place="above" type="insertion" hand="Hand18">uid</add>
+						</w>
 						<lb n="35" xml:id="MS4.7rb.35"/>
 						<w lemma="ocus" lemmaRef="http://www.dil.ie/33484" pos="conjunction">
 							<abbr cert="high">
@@ -50839,7 +50819,7 @@
 						<space type="scribal"/>
 						<w lemma="cenglaid" lemmaRef="http://www.dil.ie/8616" pos="verb">
 							<abbr cert="high">c<g ref="g4">h</g>
-							</abbr>eangail<abbr cert="high">t<g ref="g25">ir</g>
+							</abbr>eangail<abbr cert="high">t<g ref="g21">er</g>
 							</abbr>
 						</w>
 						<space type="scribal"/>
@@ -50854,19 +50834,9 @@
 						<gap reason="text_omitted" extent="unknown" resp="EPT"/>
 						<note type="fn" resp="EPT">
 							<p>
-								<hi rend="bold">1 Cor. 7:32 or 34</hi>
-							</p>
-							<p>
-								<hi rend="italics">Lib. Scint.</hi> XIII:2: Virgo que innupta est
-								cogitat que Domini sunt, quomodo placeat Deo.</p>
-							<p>32: Ach b'àill leam sibhse 'bhi gun rochùram. And ti nach 'eil pòsda,
-								bithidh cùram nan nithean sin a bhuineas do'n Tighearn air, cionnus
-								a thoilicheas e an Tighearn.</p>
-							<p>34: Tha mar an ceudna eadar-dhealachadh eadar bean agus oigh: tha
-								cùram oirresa nach 'eil pòsda mu nithibh an Tighearna, chum gu'm bi
-								naomh, maraon 'n a corp agus 'n a spiorad; ach bithidh cúram air a'
-								mhnaoi a tha pòsda mu nithibh an tsaoghail, cionnus a dh'fheudas i
-								toil a fir a dheanamh.</p>
+								<hi rend="italics">Lib. Scint.</hi> XIII:2 (1 Cor. 7:32 or 34):
+								Virgo que innupta est cogitat que Domini sunt, quomodo placeat
+								Deo.</p>
 						</note>
 					</p>
 				</div>
@@ -50898,11 +50868,11 @@
 					<p>
 						<w pos="pronoun-verb">
 							<w lemma="cía" lemmaRef="http://www.dil.ie/8965" pos="pronoun">ge</w>
-							<w lemma="is" lemmaRef="http://www.dil.ie/29104" pos="verb">be</w>
+							<w lemma="attá" lemmaRef="http://www.dil.ie/4927" pos="verb">be</w>
 						</w>
 						<lb n="36" xml:id="MS4.7rb.36"/>
 						<w lemma="fo-luigi" lemmaRef="http://www.dil.ie/23191" pos="verb">fail<abbr
-								cert="high">g<g ref="g7">us</g>
+								cert="high">g<g ref="g7">is</g>
 							</abbr>
 						</w>
 						<w lemma="a" lemmaRef="http://www.dil.ie/3" pos="possessive_pronoun">a</w>
@@ -50917,7 +50887,7 @@
 							</abbr>ea<abbr cert="high">n<g ref="g5">n</g>
 							</abbr>
 						</w>
-						<w lemma="i" lemmaRef="http://www.dil.ie/26891" pos="preposition">an</w>
+						<w lemma="in" lemmaRef="http://www.dil.ie/28194" pos="article">an</w>
 						<w lemma="cathair" lemmaRef="http://www.dil.ie/8362" pos="noun">cat<abbr
 								cert="high">h<g ref="g3">air</g>
 							</abbr>
@@ -50937,10 +50907,10 @@
 									cert="high">g<g ref="g4">h</g>
 								</abbr>
 							</w>
-							<w lemma="is" lemmaRef="http://www.dil.ie/29104" pos="verb">be</w>
+							<w lemma="attá" lemmaRef="http://www.dil.ie/4927" pos="verb">be</w>
 						</w>
 						<space type="scribal"/>
-						<w lemma="do-gní" lemmaRef="http://www.dil.ie/17752" pos="verb"> d<abbr
+						<w lemma="do-gní" lemmaRef="http://www.dil.ie/17752" pos="verb">d<abbr
 								cert="high">o<g ref="g5">n</g></abbr>i</w>
 						<lb n="37" xml:id="MS4.7rb.37"/>
 						<w lemma="a" lemmaRef="http://www.dil.ie/3" pos="possessive_pronoun">a</w>
@@ -50976,15 +50946,9 @@
 							<abbr cert="high">t<g ref="g15">ro</g>
 							</abbr>caire</w>
 						<note type="fn" resp="EPT">
-							<p>
-								<hi rend="bold">Prov. 28:13</hi>
-							</p>
-							<p>
-								<hi rend="italics">Lib. Scint.</hi> VIII:4: Qui abscondit scelera
-								sua, non dirigetur; qui autem confessus fuerit et reliquerit,
-								misericordiam consequitur.</p>
-							<p>An ti a dh'fholaicheas a pheacaidhean, cha soirbich leis; ach esan a
-								dh'aidicheas agus a thréigeas iad, gheibh e tròcair.</p>
+							<p><hi rend="italics">Lib. Scint.</hi> VIII:4 (Prov. 28:13): Qui
+								abscondit scelera sua, non dirigetur; qui autem confessus fuerit et
+								reliquerit, misericordiam consequitur.</p>
 						</note>
 					</p>
 					<p>
@@ -51004,7 +50968,8 @@
 							</w>
 						</name>
 						<unclear reason="text_obscure" cert="high" resp="EPT">
-							<w lemma="esbal" lemmaRef="http://www.dil.ie/20397" pos="noun">as<abbr
+							<w lemma="esbal" lemmaRef="http://www.dil.ie/20397" pos="noun"><unclear
+									reason="text_obscure" cert="medium" resp="EPT">e</unclear>s<abbr
 									cert="high">p<g ref="g3">al</g>
 								</abbr>
 							</w>
@@ -51052,7 +51017,7 @@
 						</w>
 						<w lemma="cintugud" lemmaRef="http://www.dil.ie/9172" pos="verbal_noun"
 								>ci<abbr cert="high">n<g ref="g5">n</g>
-							</abbr>ta<abbr cert="high">g<g ref="g3">ud</g>
+							</abbr>to<abbr cert="high">g<g ref="g3">ud</g>
 							</abbr>
 						</w>
 						<lb n="39" xml:id="MS4.7rb.39"/>
@@ -51078,7 +51043,8 @@
 							</abbr>
 						</w>
 						<w pos="conjunction-verb-pronoun">
-							<w lemma="cía" lemmaRef="http://www.dil.ie/8966" pos="conjunction">gi </w>
+							<w lemma="cía" lemmaRef="http://www.dil.ie/8966" pos="conjunction"
+								>gi</w>
 							<w lemma="is" lemmaRef="http://www.dil.ie/29104" pos="verb"><abbr
 									cert="high">d<g ref="g4">h</g>
 								</abbr></w>
@@ -51144,8 +51110,8 @@
 						<w lemma="indraic" lemmaRef="http://www.dil.ie/28515" pos="adjective">
 							<abbr cert="high">i<g ref="g14">nn</g>
 							</abbr>raic</w>
-						<w lemma="mé" lemmaRef="http://www.dil.ie/31705" pos="pronoun">si<abbr
-								cert="high">n<g ref="g5">n</g>
+						<w lemma="fri" lemmaRef="http://www.dil.ie/24329"
+							pos="prepositional_pronoun">ri<abbr cert="high">n<g ref="g5">n</g>
 							</abbr>
 						</w>
 						<space type="scribal"/>
@@ -51157,14 +51123,11 @@
 						<w lemma="is" lemmaRef="http://www.dil.ie/29104" pos="verb">is</w>
 						<w lemma="umal" lemmaRef="http://www.dil.ie/43143" pos="adjective">
 							<abbr cert="high">u<g ref="g1">m</g>
-							</abbr>al</w>
-						<space type="scribal"/>
-						<w lemma="dá n-" lemmaRef="http://www.dil.ie/14079" pos="conjunction">
-							<abbr cert="high">d<g ref="g4">h</g>
+							</abbr>al<space type="scribal"/><abbr cert="high">d<g ref="g4">h</g>
 							</abbr>a</w>
 						<lb n="41" xml:id="MS4.7rb.41"/>
-						<w lemma="do" lemmaRef="http://www.dil.ie/17098" pos="particle">do</w>
-						<w lemma="maithid" lemmaRef="http://www.dil.ie/31445" pos="verb">
+						<w lemma="do" lemmaRef="http://www.dil.ie/17096" pos="preposition">do</w>
+						<w lemma="maithem" lemmaRef="http://www.dil.ie/31441" pos="verbal_noun">
 							<abbr cert="high">m<g ref="g4">h</g>
 							</abbr>ai<abbr cert="high">t<g ref="g4">h</g>
 							</abbr>e<abbr cert="high">a<g ref="g1">m</g>
@@ -51182,8 +51145,8 @@
 							</abbr>
 						</w>
 						<space type="scribal"/>
-						<w lemma="duine" lemmaRef="http://www.dil.ie/19139" pos="noun">du<abbr
-								cert="high">i<g ref="g5">n</g>
+						<w lemma="do" lemmaRef="http://www.dil.ie/17096" pos="prepositional_pronoun"
+								>du<abbr cert="high">i<g ref="g5">n</g>
 							</abbr>e</w>
 						<space type="scribal"/>
 						<w lemma="ocus" lemmaRef="http://www.dil.ie/33484" pos="conjunction">
@@ -51191,14 +51154,14 @@
 								<g ref="g2">agus</g>
 							</abbr>
 						</w>
-						<w lemma="glanaich"
-							lemmaRef="https://www.faclair.com/ViewDictionaryEntry.aspx?ID=5E501A74FCE60B09B350801D1AB8B8A9"
-							pos="verb">gl<unclear reason="text_obscure" cert="medium" resp="EPT"
-								>an</unclear>ai<abbr cert="high">c<g ref="g4">h</g>
-							</abbr>
+						<w lemma="glanaid" lemmaRef="http://www.dil.ie/25977" pos="verb">gl<unclear
+								reason="text_obscure" cert="medium" resp="EPT"
+								>an</unclear>ai<unclear reason="text_obscure" cert="medium"
+								resp="EPT"><abbr cert="high">d<g ref="g4">h</g>
+								</abbr></unclear>
 						</w>
-						<w lemma="mé" lemmaRef="http://www.dil.ie/31705" pos="pronoun">si<abbr
-								cert="high">n<g ref="g5">n</g>
+						<w lemma="fri" lemmaRef="http://www.dil.ie/24329"
+							pos="prepositional_pronoun">ri<abbr cert="high">n<g ref="g5">n</g>
 							</abbr>
 						</w>
 						<space type="scribal"/>
@@ -51215,17 +51178,11 @@
 						</w>
 						<note type="fn" resp="EPT">
 							<p>
-								<hi rend="bold">1 John 1:8–9</hi>
-							</p>
-							<p>
-								<hi rend="italics">Lib. Scint.</hi> VIII:5: Si dixerimus quia
-								peccatum non abemus, ipse nos seducimus, et ueritas in nobis non
-								est. Si autem confiteamur peccata nostra, fidelis et iustus est, ut
-								remittat nobis peccata et mundet nos ab omni peccato.</p>
-							<p>Ma their sinn nach 'eil peacadh againn, tha sinn 'g ar mealladh féin,
-								agus cha-n' eil an fhìrinn annainn. Ach ma ghluaiseas sinn anns an
-								t-solus, mar a tha esan 's an t-solus, tha comunn againn r'a chéile,
-								agus glanaidh fuil Iosa Criosd a Mhic sinn o gach uile pheacadh.</p>
+								<hi rend="italics">Lib. Scint.</hi> VIII:5 (1 John 1:8–9): Si
+								dixerimus quia peccatum non abemus, ipse nos seducimus, et ueritas
+								in nobis non est. Si autem confiteamur peccata nostra, fidelis et
+								iustus est, ut remittat nobis peccata et mundet nos ab omni
+								peccato.</p>
 						</note>
 					</p>
 					<p>
@@ -51238,16 +51195,19 @@
 							</abbr>
 						</w>
 						<lb n="42" xml:id="MS4.7rb.42"/>
-						<name type="personal">
-							<choice>
-								<sic>
-									<w pos="noun">ihc</w>
-								</sic>
-								<corr resp="EPT">
-									<w pos="noun">iesus</w>
-								</corr>
-							</choice>
-						</name>
+						<choice>
+							<sic>
+								<name type="personal">
+									<w pos="noun">i<abbr cert="high">h<g ref="g3"
+										>esus</g></abbr></w>
+									<w lemma="Críst" lemmaRef="http://www.dil.ie/12985" pos="noun"
+											><abbr cert="high">c<g ref="g27">rist</g></abbr></w>
+								</name>
+							</sic>
+							<corr resp="EPT">
+								<name type="personal"><w pos="noun">ihesus</w></name>
+							</corr>
+						</choice>
 						<w lemma="mac" lemmaRef="http://www.dil.ie/31166" pos="noun">
 							<abbr cert="high">m<g ref="g12">ac</g>
 							</abbr>
@@ -51276,27 +51236,28 @@
 							</abbr>
 						</w>
 						<space type="scribal"/>
-						<unclear reason="text_obscure" cert="high" resp="EPT">
-							<w lemma="do" lemmaRef="http://www.dil.ie/17097"
-								pos="possessive_pronoun">do</w>
-						</unclear>
+						<w lemma="do" lemmaRef="http://www.dil.ie/17097" pos="possessive_pronoun"
+							>do</w>
 						<w lemma="peccad" lemmaRef="http://www.dil.ie/34237" pos="noun">
-							<abbr cert="high">p<supplied resp="EPT">h</supplied>
-								<g ref="g12">ec</g>
+							<abbr cert="high">p<g ref="g12">ec</g>
 							</abbr>t<abbr cert="high">h<g ref="g3">a</g>
 							</abbr>
 						</w>
 						<space type="scribal"/>
-						<w lemma="do" lemmaRef="http://www.dil.ie/17096" pos="preposition">d</w>
-						<w lemma="indisin" lemmaRef="http://www.dil.ie/28440" pos="verbal_noun">
-							<abbr cert="high">i<g ref="g14">nn</g>
-							</abbr>is<abbr cert="high">i<g ref="g5">n</g>
-							</abbr>
+						<w pos="preposition-verbal_noun">
+							<w lemma="do" lemmaRef="http://www.dil.ie/17096" pos="preposition">d</w>
+							<w lemma="indisin" lemmaRef="http://www.dil.ie/28440" pos="verbal_noun">
+								<abbr cert="high">i<g ref="g14">nn</g>
+								</abbr>is<abbr cert="high">i<g ref="g5">n</g>
+								</abbr>
+							</w>
 						</w>
 						<space type="scribal"/>
-						<w lemma="ré" lemmaRef="http://www.dil.ie/34869" pos="preposition">ria</w>
+						<w lemma="ocus" lemmaRef="http://www.dil.ie/33484" pos="conjunction"><abbr
+								cert="high"><g ref="g2">agus</g></abbr></w>
+						<w lemma="ná" lemmaRef="http://www.dil.ie/32901" pos="conjunction">na</w>
 						<lb n="43" xml:id="MS4.7rb.43"/>
-						<w lemma="lóg" lemmaRef="http://www.dil.ie/30495" pos="noun">lai<abbr
+						<w lemma="laigid" lemmaRef="http://www.dil.ie/29387" pos="verb">lai<abbr
 								cert="high">g<g ref="g4">h</g>
 							</abbr>
 						</w>
@@ -51312,13 +51273,9 @@
 						<space type="scribal"/>
 						<note type="fn" resp="EPT">
 							<p>
-								<hi rend="bold">Eccli. 4:26</hi>
-							</p>
-							<p>
-								<hi rend="italics">Lib. Scint.</hi> VIII:6: Non confunderis
-								confiteri peccata tua, ne subicias te homine peccato.</p>
-							<p>Na biodh faiteachas ort do pheacanna aideachadh; agus na co'-éignich
-								slighe na àibhne.</p>
+								<hi rend="italics">Lib. Scint.</hi> VIII:6 (Sir. 4:31): Non
+								confunderis confiteri peccata tua, ne subicias te homine
+								peccato.</p>
 						</note>
 					</p>
 					<p>
@@ -51329,10 +51286,11 @@
 						<w lemma="in" lemmaRef="http://www.dil.ie/28194" pos="article">an</w>
 						<w lemma="bás" lemmaRef="http://www.dil.ie/5444" pos="noun">bas</w>
 						<space type="scribal"/>
-						<w lemma="do" lemmaRef="http://www.dil.ie/17096" pos="preposition">d</w>
-						<w lemma="fagbál" lemmaRef="http://www.dil.ie/21049" pos="verbal_noun">
-							<supplied resp="EPT">fh</supplied>a<abbr cert="high">g<g ref="g4">h</g>
-							</abbr>bail</w>
+						<w pos="preposition-verbal_noun"><w lemma="do"
+								lemmaRef="http://www.dil.ie/17096" pos="preposition">d</w>
+							<w lemma="fagbál" lemmaRef="http://www.dil.ie/21049" pos="verbal_noun">
+									a<abbr cert="high">g<g ref="g4">h</g>
+								</abbr>bail</w></w>
 						<space type="scribal"/>
 						<w pos="conjunction-verb-pronoun">
 							<w lemma="má" lemmaRef="http://www.dil.ie/31164" pos="conjunction"
@@ -51345,9 +51303,7 @@
 							</w>
 						</w>
 						<space type="scribal"/>
-						<unclear reason="text_obscure" cert="medium" resp="EPT">
-							<w lemma="do-gní" lemmaRef="http://www.dil.ie/17752" pos="verb">dent</w>
-						</unclear>
+						<w lemma="do-gní" lemmaRef="http://www.dil.ie/17752" pos="verb">dent</w>
 						<w lemma="faísitiu" lemmaRef="http://www.dil.ie/21189" pos="verbal_noun"
 								>faisid<abbr cert="high">i<g ref="g5">n</g>
 							</abbr>
@@ -51356,10 +51312,9 @@
 						<w pos="preposition-possessive_pronoun">
 							<w lemma="i" lemmaRef="http://www.dil.ie/26891" pos="preposition">a</w>
 							<w lemma="do" lemmaRef="http://www.dil.ie/17097"
-								pos="possessive_pronoun">dt</w>
+								pos="possessive_pronoun">d</w>
 						</w>
-						<space type="scribal"/>
-						<w lemma="sláinte" lemmaRef="http://www.dil.ie/37822" pos="noun">sla<abbr
+						<w lemma="sláinte" lemmaRef="http://www.dil.ie/37822" pos="noun">tsla<abbr
 								cert="high">i<g ref="g5">n</g>
 							</abbr>ti</w>
 						<space type="scribal"/>
@@ -51423,18 +51378,13 @@
 							</abbr>c<unclear reason="text_obscure" cert="high" resp="EPT"
 								>ai</unclear>re</w>
 						<space type="scribal"/>
-						<w lemma="de" lemmaRef="http://www.dil.ie/14787" pos="prepositional_pronoun"
+						<w lemma="do" lemmaRef="http://www.dil.ie/17096" pos="prepositional_pronoun"
 							>di</w>
 						<note type="fn" resp="EPT">
 							<p>
-								<hi rend="bold">Eccli. 17:27</hi>
-							</p>
-							<p>
-								<hi rend="italics">Lib. Scint.</hi> VIII:7: Ante morte confitere,
-								uiuus sanus confiteberis, et laudabis Dominum, et gloriaberis in
-								miserationibus illius.</p>
-							<p>Cò a mholas an Ti a 's Airde anns an uaigh? a thuilleadh orrasan a ta
-								bèo agus tabhairt buidheachais?</p>
+								<hi rend="italics">Lib. Scint.</hi> VIII:7 (Sir. 17:27): Ante morte
+								confitere, uiuus sanus confiteberis, et laudabis Dominum, et
+								gloriaberis in miserationibus illius.</p>
 						</note>
 					</p>
 					<p>
@@ -51461,17 +51411,16 @@
 								cert="medium">m<g ref="g16">ur</g>
 							</abbr>
 						</w>
-						<unclear reason="text_obscure" cert="high" resp="EPT">
-							<w lemma="do" lemmaRef="http://www.dil.ie/17097"
-								pos="possessive_pronoun">do</w>
-						</unclear>
+						<w lemma="do" lemmaRef="http://www.dil.ie/17097" pos="possessive_pronoun"
+								>d<unclear reason="text_obscure" cert="high" resp="EPT"
+							>o</unclear></w>
 						<lb n="46" xml:id="MS4.7rb.46"/>
 						<w lemma="peccad" lemmaRef="http://www.dil.ie/34237" pos="noun">
 							<abbr cert="high">p<g ref="g12">ec</g>
 							</abbr>t<abbr cert="high">h<g ref="g3">a</g>
 							</abbr>
 						</w>
-						<w lemma="for" lemmaRef="http://www.dil.ie/23272" pos="preposition">
+						<w lemma="ar" lemmaRef="http://www.dil.ie/3902" pos="preposition">
 							<abbr cert="high"><g ref="g8">ar</g>
 							</abbr>
 						</w>
@@ -51488,12 +51437,12 @@
 						<w lemma="fri" lemmaRef="http://www.dil.ie/24329"
 							pos="prepositional_pronoun">ruit</w>
 						<space type="scribal"/>
-						<w lemma="immar" lemmaRef="http://www.dil.ie/27721" pos="preposition">
+						<w lemma="immar" lemmaRef="http://www.dil.ie/27721" pos="conjunction">
 							<abbr cert="high">m<g ref="g16">ar</g>
 							</abbr>
 						</w>
 						<w lemma="éistid" lemmaRef="http://www.dil.ie/19896" pos="verb">eisd<abbr
-								cert="high">i<g ref="g7">us</g>
+								cert="high">i<g ref="g7">s</g>
 							</abbr>
 						</w>
 						<space type="scribal"/>
@@ -51506,13 +51455,9 @@
 								cert="high">e<g ref="g5">n</g>
 							</abbr>
 						</w>
+						<space type="scribal"/>
 						<note type="fn" resp="EPT">
-							<p>
-								<hi rend="bold">Origen, <hi rend="italics">On Leviticus</hi>
-									9:8</hi>
-							</p>
-							<p>
-								<hi rend="italics">Lib. Scint.</hi> VIII:8: Si dixeris peccata
+							<p>Lib. Scint. VIII:8 (Origen, On Leviticus 9:8): Si dixeris peccata
 								prior, exaudiet te Dominus tamquam populum sanctum.</p>
 						</note>
 					</p>
@@ -51550,7 +51495,7 @@
 						</w>
 						<space type="scribal"/>
 						<w lemma="is" lemmaRef="http://www.dil.ie/29104" pos="verb">as</w>
-						<w lemma="toísech" lemmaRef="http://www.dil.ie/41302" pos="noun">tosa<abbr
+						<w lemma="tosach" lemmaRef="http://www.dil.ie/41498" pos="noun">tosa<abbr
 								cert="high">c<g ref="g4">h</g>
 							</abbr>
 						</w>
@@ -51574,16 +51519,11 @@
 							<lb n="48" xml:id="MS4.7rb.48"/>
 							<w lemma="oipred" lemmaRef="http://www.dil.ie/33686" pos="noun">oi<abbr
 									cert="high">b<g ref="g25">ri</g>
-								</abbr>gib</w>
+								</abbr><abbr cert="high">g<g ref="g4">h</g></abbr>ib</w>
 						</w>
 						<note type="fn" resp="EPT">
-							<p>
-								<hi rend="bold">Augustine, <hi rend="italics">On the Gospel of
-										John</hi> XII:13</hi>
-							</p>
-							<p>
-								<hi rend="italics">Lib. Scint.</hi> VIII:9: Confessio omnium malorum
-								inicium est operum bonorum.</p>
+							<p>Lib. Scint. VIII:9 (Augustine, On the Gospel of John XII:13):
+								Confessio omnium malorum inicium est operum bonorum.</p>
 						</note>
 					</p>
 					<p>
@@ -51617,7 +51557,7 @@
 						</w>
 						<w lemma="do" lemmaRef="http://www.dil.ie/17096" pos="preposition">do</w>
 						<w lemma="leiges" lemmaRef="http://www.dil.ie/29783" pos="noun">
-							<abbr cert="high">l<g ref="l1">eigis</g>
+							<abbr cert="high">l<g ref="g89">eigis</g>
 							</abbr>
 						</w>
 						<space type="scribal"/>
@@ -51648,7 +51588,7 @@
 						<w lemma="is" lemmaRef="http://www.dil.ie/29104" pos="verb">is</w>
 						<space type="scribal"/>
 						<w lemma="immar" lemmaRef="http://www.dil.ie/27721" pos="preposition">
-							<abbr cert="high">m<g ref="g16">ar</g>
+							<abbr cert="high">m<g ref="g16">ur</g>
 							</abbr>
 						</w>
 						<w lemma="sin" lemmaRef="http://www.dil.ie/37567"
@@ -51686,12 +51626,8 @@
 							</abbr>t<abbr cert="high">h<g ref="g3">a</g>
 							</abbr>
 						</w>
-						<w lemma="fo-luigi" lemmaRef="http://www.dil.ie/23191" pos="verb">fo<abbr
-								cert="medium" corresp="b2cac160">
-								<abbr cert="high">l<g ref="g3" corresp="b2cac160">aigt</g>
-									<g ref="g4">h</g>
-									<g ref="g3" corresp="b2cac160">e</g>
-								</abbr>
+						<w lemma="folaigthech" lemmaRef="http://www.dil.ie/23061" pos="adjective">fo
+								<abbr cert="high">l<g ref="g3">aigec</g><g ref="g4">h</g>
 							</abbr>
 						</w>
 						<lb n="50" xml:id="MS4.7rb.50"/>
@@ -51700,7 +51636,7 @@
 								cert="high">
 								<g ref="g2">et</g>
 							</abbr>
-							<abbr cert="high">t<g ref="g16">ur</g>
+							<abbr cert="high">t<g ref="g16">uir</g>
 							</abbr>
 						</w>
 						<space type="scribal"/>
@@ -51710,12 +51646,8 @@
 							</abbr>
 						</w>
 						<note type="fn" resp="EPT">
-							<p>
-								<hi rend="bold">"Ambrose"; source unknown</hi>
-							</p>
-							<p>
-								<hi rend="italics">Lib. Scint.</hi> VIII:15: Neque enim adhibere ei
-								potest remedium cuius est uulnus occultum.</p>
+							<p>Lib. Scint. VIII:15 ("Ambrose"; source unknown): Neque enim adhibere
+								ei potest remedium cuius est uulnus occultum.</p>
 						</note>
 					</p>
 				</div>
