@@ -22,9 +22,9 @@
         <xsl:for-each select="//tei:div[not(ancestor::tei:div)]"
             exclude-result-prefixes="xs xsl tei">
             <xsl:variable name="text_id" select="string(@corresp)"/>
-            <xsl:variable name="scribe" select="string(descendant::tei:handShift[1]/@new)"/>
-            <xsl:variable name="affil" select="//tei:teiCorpus//tei:handNotes/tei:handNote[@xml:id = $scribe]/tei:affiliation"/>
-            <xsl:element name="node" namespace="">
+            <xsl:variable name="scribe" select="string(ancestor::tei:TEI//tei:msItem[@xml:id = $text_id]/tei:author[@role = 'scribe'][1]/@corresp)"/>
+            <xsl:variable name="affil" select="string(//tei:teiCorpus//tei:handNotes/tei:handNote[@xml:id = $scribe]/tei:affiliation)"/>
+            <xsl:element name="node">
                 <xsl:attribute name="id" select="$text_id"/>
                 <xsl:attribute name="label" select="string(ancestor::tei:TEI//tei:msItem[@xml:id = $text_id]/tei:title)"/>
                 <viz:size value="100"/>
@@ -52,7 +52,7 @@
             exclude-result-prefixes="xs xsl tei">
             <xsl:variable name="lemRef" select="string(@lemmaRef)"/>
             <xsl:variable name="lem" select="string(@lemma)"/>
-            <xsl:element name="node" namespace="">
+            <xsl:element name="node">
                 <xsl:attribute name="id" select="$lemRef"/>
                 <xsl:attribute name="label" select="$lem"/>
                 <viz:size value="15"/>
@@ -66,7 +66,7 @@
             exclude-result-prefixes="xs xsl tei">
             <xsl:variable name="word" select="string(@lemmaRef)"/>
             <xsl:variable name="text" select="string(ancestor::tei:div[not(ancestor::tei:div)]/@corresp)"/>
-            <xsl:element name="edge" namespace="">
+            <xsl:element name="edge">
                 <xsl:attribute name="id" select="generate-id()"/>
                 <xsl:attribute name="source" select="$text"/>
                 <xsl:attribute name="target" select="$word"/>
