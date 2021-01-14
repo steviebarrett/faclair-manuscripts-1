@@ -24,7 +24,7 @@
     </xsl:template>
 
     <xsl:template name="nodes">
-        <xsl:for-each select="//tei:div[not(ancestor::tei:div)]"
+        <xsl:for-each select="//tei:div[not(ancestor::tei:div) and @corresp = //tei:msItem[descendant::tei:term = ('bardic')]/@xml:id]"
             exclude-result-prefixes="xs xsl tei">
             <xsl:variable name="text_id" select="string(@corresp)"/>
             <xsl:variable name="scribe"
@@ -44,8 +44,7 @@
             </xsl:variable>
             <xsl:element name="node">
                 <xsl:attribute name="id" select="$text_id"/>
-                <xsl:attribute name="label"
-                    select="string(ancestor::tei:TEI//tei:msItem[@xml:id = $text_id]/tei:title)"/>
+                <xsl:attribute name="label" select="string(ancestor::tei:TEI//tei:msItem[@xml:id = $text_id]/tei:title)"/>
                 <attValues>
                     <attValue for="att_2" value="_"/>
                     <attValue for="att_3" value="_"/>
@@ -71,7 +70,8 @@
                 </xsl:element>
             </xsl:element>
         </xsl:for-each>
-        <xsl:for-each select="//tei:w[@lemmaRef and not(@type = 'data')]"
+        <xsl:for-each
+            select="//tei:w[@lemmaRef and not(@type = 'data') and ancestor::tei:div[not(ancestor::tei:div)]/@corresp = //tei:msItem[descendant::tei:term = ('bardic')]/@xml:id]"
             exclude-result-prefixes="xs xsl tei">
             <xsl:variable name="lemRef" select="string(@lemmaRef)"/>
             <xsl:variable name="lem" select="string(@lemma)"/>
@@ -102,7 +102,7 @@
     </xsl:template>
 
     <xsl:template name="edges">
-        <xsl:for-each select="//tei:w[@lemmaRef and not(@type = 'data')]"
+        <xsl:for-each select="//tei:w[@lemmaRef and not(@type = 'data') and ancestor::tei:div[not(ancestor::tei:div)]/@corresp = //tei:msItem[descendant::tei:term = ('bardic')]/@xml:id]"
             exclude-result-prefixes="xs xsl tei">
             <xsl:variable name="word" select="string(@lemmaRef)"/>
             <xsl:variable name="text"
