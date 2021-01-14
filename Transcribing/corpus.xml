@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="Schemas/fnag_mss.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
-<?xml-stylesheet type="text/xsl" href="../Coding/Stylesheets/home.xsl"?>
+<?xml-stylesheet type="text/xsl" href="../Coding/Stylesheets/tv.xsl"?>
 <teiCorpus xmlns="http://www.tei-c.org/ns/1.0" xmlns:xi="http://www.w3.org/2001/XInclude">
   <teiHeader>
     <fileDesc>
@@ -2429,6 +2429,11 @@
           <affiliation>macmhuirich</affiliation>
           <note>Main scribe of NLS Adv. 72.1.48</note>
         </handNote>
+        <handNote xml:id="Hand55">
+          <date type="floruit" min="1601" max="1699">17</date>
+          <affiliation>misc</affiliation>
+          <note>Scribe of 'Do bheirim barr búadha is áigh' in TCD 1362a.</note>
+        </handNote>
         <handNote xml:id="Hand56">
           <date type="floruit" min="1501" max="1599">17</date>
           <forename>Níall Óg mac Néill</forename>
@@ -2508,6 +2513,11 @@
           <affiliation>misc</affiliation>
           <note>Hand 1 of NLS Adv. 72.1.3.</note>
         </handNote>
+        <handNote xml:id="Hand67">
+          <date type="floruit" min="1700" max="1799">18</date>
+          <affiliation>misc</affiliation>
+          <note>Writes out an elegy on Allan of Clanranald (ob. 1715).</note>
+        </handNote>
         <handNote xml:id="Hand999">
           <forename>an unidentfied</forename>
           <surname>hand</surname>
@@ -2578,44 +2588,44 @@
   <TEI corresp="Transcriptions/transcription34.xml"/>
   -->
 
-  <!-- <xi:include href="Transcriptions/transcription1.xml" parse="xml"/> -->
-  <!-- <xi:include href="Transcriptions/transcription2.xml" parse="xml"/> -->
-  <!-- <xi:include href="Transcriptions/transcription3.xml" parse="xml"/> -->
-  <!-- <xi:include href="Transcriptions/transcription4.xml" parse="xml"/> -->
-  <!-- <xi:include href="Transcriptions/transcription5.xml" parse="xml"/> -->
-  <!-- <xi:include href="Transcriptions/transcription6.xml" parse="xml"/> -->
-  <!-- <xi:include href="Transcriptions/transcription7.xml" parse="xml"/> -->
-  <!-- <xi:include href="Transcriptions/transcription8.xml" parse="xml"/> -->
-  <!-- <xi:include href="Transcriptions/transcription9.xml" parse="xml"/> -->
-  <!-- <xi:include href="Transcriptions/transcription10.xml" parse="xml"/> -->
-  <!-- <xi:include href="Transcriptions/transcription11.xml" parse="xml"/> -->
-  <!-- <xi:include href="Transcriptions/transcription12.xml" parse="xml"/> -->
-  <!-- <xi:include href="Transcriptions/transcription13.xml" parse="xml"/> -->
-  <!-- <xi:include href="Transcriptions/transcription14.xml" parse="xml"/> -->
-  <!-- <xi:include href="Transcriptions/transcription15.xml" parse="xml"/> -->
-  <!-- <xi:include href="Transcriptions/transcription16.xml" parse="xml"/> -->
-  <!-- <xi:include href="Transcriptions/transcription17.xml" parse="xml"/> -->
-  <!-- <xi:include href="Transcriptions/transcription18.xml" parse="xml"/> -->
-  <!-- <xi:include href="Transcriptions/transcription19.xml" parse="xml"/> -->
-  <!-- <xi:include href="Transcriptions/transcription20.xml" parse="xml"/> -->
-  <!-- <xi:include href="Transcriptions/transcription21.xml" parse="xml"/> -->
-  <!-- <xi:include href="Transcriptions/transcription22.xml" parse="xml"/> -->
-  <!-- <xi:include href="Transcriptions/transcription23.xml" parse="xml"/> -->
-  <!-- <xi:include href="Transcriptions/transcription24.xml" parse="xml"/> -->
-  <!-- <xi:include href="Transcriptions/transcription25.xml" parse="xml"/> -->
-  <!-- <xi:include href="Transcriptions/transcription26.xml" parse="xml"/> -->
-  <!-- <xi:include href="Transcriptions/transcription27.xml" parse="xml"/> -->
-  <!-- <xi:include href="Transcriptions/transcription28.xml" parse="xml"/> -->
-  <!-- <xi:include href="Transcriptions/transcription29.xml" parse="xml"/> -->
-  <!-- <xi:include href="Transcriptions/transcription30.xml" parse="xml"/> -->
-  <!-- <xi:include href="Transcriptions/transcription31.xml" parse="xml"/> -->
-  <!-- <xi:include href="Transcriptions/transcription32.xml" parse="xml"/> -->
-  <!-- <xi:include href="Transcriptions/transcription33.xml" parse="xml"/> -->
-  <!-- <xi:include href="Transcriptions/transcription34.xml" parse="xml"/> -->
-  <!-- <xi:include href="Transcriptions/transcription35.xml" parse="xml"/> -->
-  <!-- <xi:include href="Transcriptions/transcription36.xml" parse="xml"/> -->
-  <!-- <xi:include href="Transcriptions/transcription37.xml" parse="xml"/> -->
-  <!-- <xi:include href="Transcriptions/transcription38.xml" parse="xml"/> -->
-  <!-- <xi:include href="hwData.xml" parse="xml"/> -->
+  <xi:include href="Transcriptions/transcription1.xml" parse="xml"/>
+  <xi:include href="Transcriptions/transcription2.xml" parse="xml"/>
+  <xi:include href="Transcriptions/transcription3.xml" parse="xml"/>
+  <xi:include href="Transcriptions/transcription4.xml" parse="xml"/>
+  <xi:include href="Transcriptions/transcription5.xml" parse="xml"/>
+  <xi:include href="Transcriptions/transcription6.xml" parse="xml"/>
+  <xi:include href="Transcriptions/transcription7.xml" parse="xml"/>
+  <xi:include href="Transcriptions/transcription8.xml" parse="xml"/>
+  <xi:include href="Transcriptions/transcription9.xml" parse="xml"/>
+  <xi:include href="Transcriptions/transcription10.xml" parse="xml"/>
+  <xi:include href="Transcriptions/transcription11.xml" parse="xml"/>
+  <xi:include href="Transcriptions/transcription12.xml" parse="xml"/>
+  <xi:include href="Transcriptions/transcription13.xml" parse="xml"/>
+  <xi:include href="Transcriptions/transcription14.xml" parse="xml"/>
+  <xi:include href="Transcriptions/transcription15.xml" parse="xml"/>
+  <xi:include href="Transcriptions/transcription16.xml" parse="xml"/>
+  <xi:include href="Transcriptions/transcription17.xml" parse="xml"/>
+  <xi:include href="Transcriptions/transcription18.xml" parse="xml"/>
+  <xi:include href="Transcriptions/transcription19.xml" parse="xml"/>
+  <xi:include href="Transcriptions/transcription20.xml" parse="xml"/>
+  <xi:include href="Transcriptions/transcription21.xml" parse="xml"/>
+  <xi:include href="Transcriptions/transcription22.xml" parse="xml"/>
+  <xi:include href="Transcriptions/transcription23.xml" parse="xml"/>
+  <xi:include href="Transcriptions/transcription24.xml" parse="xml"/>
+  <xi:include href="Transcriptions/transcription25.xml" parse="xml"/>
+  <xi:include href="Transcriptions/transcription26.xml" parse="xml"/>
+  <xi:include href="Transcriptions/transcription27.xml" parse="xml"/>
+  <xi:include href="Transcriptions/transcription28.xml" parse="xml"/>
+  <xi:include href="Transcriptions/transcription29.xml" parse="xml"/>
+  <xi:include href="Transcriptions/transcription30.xml" parse="xml"/>
+  <xi:include href="Transcriptions/transcription31.xml" parse="xml"/>
+  <xi:include href="Transcriptions/transcription32.xml" parse="xml"/>
+  <xi:include href="Transcriptions/transcription33.xml" parse="xml"/>
+  <xi:include href="Transcriptions/transcription34.xml" parse="xml"/>
+  <xi:include href="Transcriptions/transcription35.xml" parse="xml"/>
+  <xi:include href="Transcriptions/transcription36.xml" parse="xml"/>
+  <xi:include href="Transcriptions/transcription37.xml" parse="xml"/>
+  <xi:include href="Transcriptions/transcription38.xml" parse="xml"/>
+  <xi:include href="hwData.xml" parse="xml"/>
 
 </teiCorpus>
