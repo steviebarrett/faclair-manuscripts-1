@@ -27,6 +27,18 @@
             <xsl:element name="node">
                 <xsl:attribute name="id" select="$text_id"/>
                 <xsl:attribute name="label" select="string(ancestor::tei:TEI//tei:msItem[@xml:id = $text_id]/tei:title)"/>
+                <xsl:attribute name="pos">
+                    <xsl:text>_</xsl:text>
+                </xsl:attribute>
+                <xsl:attribute name="cb">
+                    <xsl:text>_</xsl:text>
+                </xsl:attribute>
+                <xsl:attribute name="genre">
+                    <xsl:variable name="term_count" select="count(ancestor::tei:TEI//tei:msItem[@xml:id = $text_id]//tei:keywords/tei:term)"/>
+                    <xsl:for-each select="ancestor::tei:TEI//tei:msItem[@xml:id = $text_id]//tei:keywords/tei:term">
+                        <xsl:value-of select="string(.)"/><xsl:if test="position() &lt; $term_count"><xsl:text>|</xsl:text></xsl:if>
+                    </xsl:for-each>
+                </xsl:attribute>
                 <viz:size value="100"/>
                 <xsl:element namespace="viz" name="color">
                     <xsl:attribute name="r">
@@ -55,6 +67,20 @@
             <xsl:element name="node">
                 <xsl:attribute name="id" select="$lemRef"/>
                 <xsl:attribute name="label" select="$lem"/>
+                <xsl:attribute name="pos" select="@pos"/>
+                <xsl:attribute name="cb">
+                    <xsl:choose>
+                        <xsl:when test="@pos = ('noun', 'verb', 'verbal_noun', 'adjective', 'adverb', 'participle', 'verbal_of_necessity')">
+                            <xsl:text>true</xsl:text>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:text>false</xsl:text>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </xsl:attribute>
+                <xsl:attribute name="genre">
+                    <xsl:text>_</xsl:text>
+                </xsl:attribute>
                 <viz:size value="15"/>
                 <viz:color r="0" g="0" b="0"/>
             </xsl:element>
