@@ -352,7 +352,7 @@
                         <note type="fn" resp="MMA"><p>WGI, RB gives the verbs "teirig" and "tàirr" as two different verbs in the HDSG slips. I would have given both verbs the OIr HW of "do-airicc" (http://www.dil.ie/17140) but have split them up into "do-airicc" goes to "teirig" and "do-airret" goes to "tàirr". Is that right or not?</p></note>
                         <space type="scribal"/>
                         <w lemma="ó" lemmaRef="http://www.dil.ie/33364" pos="preposition">o</w>
-                        <w lemma="toísech" lemmaRef="http://www.dil.ie/41302" pos="noun"><abbr cert="high">t<g ref="g4">h</g></abbr>ósui<abbr cert="high">d<g ref="g4">h</g></abbr></w>
+                        <w lemma="tosach" lemmaRef="http://www.dil.ie/41302" pos="noun"><abbr cert="high">t<g ref="g4">h</g></abbr>ósui<abbr cert="high">d<g ref="g4">h</g></abbr></w>
                         <space type="scribal"/>
                     </l>
                     <l n="d" xml:id="MS28.1.4d">
@@ -812,7 +812,10 @@
                         <space type="scribal"/>
                         <w lemma="do" lemmaRef="http://www.dil.ie/17098" pos="particle">do</w>
                         <w lemma="do-gní" lemmaRef="http://www.dil.ie/17752" pos="verb">ni</w>
-                        <w lemma="sé" lemmaRef="http://www.dil.ie/36709" pos="pronoun" lemmaSL="esan" slipRef="https://dasg.ac.uk/slips/index.php?id=0120336">sei<abbr cert="high">si<g ref="g5">n</g></abbr></w>
+                        <w pos="pronoun-emphatic" lemmaSL="esan" slipRef="https://dasg.ac.uk/slips/index.php?id=0120336">
+                            <w lemma="sé" lemmaRef="http://www.dil.ie/36709" pos="pronoun">sei</w>
+                            <w lemma="sin" lemmaRef="https://www.faclair.com/ViewDictionaryEntry.aspx?ID=7E145C01680F4B96EC0D6B602D966228" pos="emphatic"><abbr cert="high">si<g ref="g5">n</g></abbr></w>
+                        </w>
                         <pc>.</pc>
                     </l>
                     <l n="b" xml:id="MS28.1.12b">
@@ -1768,7 +1771,7 @@
                         <w lemma="guin" lemmaRef="http://www.dil.ie/26798" pos="noun" lemmaSL="guin" slipRef="https://dasg.ac.uk/slips/index.php?id=0090502"><abbr cert="high">g<g ref="g4">h</g></abbr>onta</w>
                         <pc>.</pc>
                         <w lemma="ocus" lemmaRef="http://www.dil.ie/33484" pos="conjunction"><abbr cert="high"><g ref="g2">agus</g></abbr></w>
-                        <w lemma="í" lemmaRef="http://www.dil.ie/26895" pos="pronoun">sí</w>
+                        <w lemma="sí" lemmaRef="http://www.dil.ie/37356" pos="pronoun">sí</w>
                         <space type="scribal"/>
                         <w lemma="slán" lemmaRef="http://www.dil.ie/37834" pos="adjective" lemmaSL="slàn" slipRef="https://dasg.ac.uk/slips/index.php?id=0120699">slan</w>
                         <space type="scribal"/>
@@ -1864,7 +1867,7 @@
                         <space type="scribal"/>
                         <name type="place"><w lemma="Troí" lemmaRef="http://www.dil.ie/42008" pos="noun" lemmaSL="Traoi" slipRef="https://dasg.ac.uk/slips/index.php?id=0130679">tr<abbr cert="high"><g ref="l5">ao</g></abbr>i</w></name>
                         <space type="scribal"/>
-                        <w lemma="toísech" lemmaRef="http://www.dil.ie/41302" pos="noun" lemmaSL="toiseach" slipRef="https://dasg.ac.uk/slips/index.php?id=0130642">tosui<abbr cert="high">d<g ref="g4">h</g></abbr></w>
+                        <w lemma="tosach" lemmaRef="http://www.dil.ie/41302" pos="noun" lemmaSL="toiseach" slipRef="https://dasg.ac.uk/slips/index.php?id=0130642">tosui<abbr cert="high">d<g ref="g4">h</g></abbr></w>
                         <space type="scribal"/>
                     </l>
                     <l n="d" xml:id="MS28.1.29d">
@@ -2075,7 +2078,7 @@
                         <space type="scribal"/>
                         <w lemma="ar" lemmaRef="http://www.dil.ie/3902" pos="preposition" lemmaSL="air" slipRef="https://dasg.ac.uk/slips/index.php?id=0020910"><abbr cert="high"><g ref="g8">ar</g></abbr></w>
                         <space type="scribal"/>
-                        <w lemma="toísech" lemmaRef="http://www.dil.ie/41302" pos="noun" lemmaSL="toiseach" slipRef="https://dasg.ac.uk/slips/index.php?id=0130643">ttosui<abbr cert="high">d<g ref="g4">h</g></abbr></w>
+                        <w lemma="tosach" lemmaRef="http://www.dil.ie/41302" pos="noun" lemmaSL="toiseach" slipRef="https://dasg.ac.uk/slips/index.php?id=0130643">ttosui<abbr cert="high">d<g ref="g4">h</g></abbr></w>
                         <space type="scribal"/>
                         <pc>.</pc>
                         <space type="scribal"/>
@@ -2537,7 +2540,10 @@
                         <del hand="Hand8">
                             <w lemma="téit" lemmaRef="http://www.dil.ie/40447" pos="verb">t<abbr cert="high"><g ref="g2">éid</g></abbr></w>
                             <space type="scribal"/>
-                            <w lemma="sí" lemmaRef="http://www.dil.ie/37356" pos="pronoun">sise</w>
+                            <w pos="pronoun-emphatic">
+                                <w lemma="sí" lemmaRef="http://www.dil.ie/37356" pos="pronoun">si</w>
+                                <w lemma="se" lemmaRef="https://www.faclair.com/ViewDictionaryEntry.aspx?ID=7E145C01680F4B96EC0D6B602D966228" pos="emphatic">se</w>
+                            </w>
                             <space type="scribal"/>
                             <w lemma="ar" lemmaRef="http://www.dil.ie/3902" pos="preposition"><abbr cert="high"><g ref="g8">ar</g></abbr></w>
                             <space type="scribal"/>
@@ -2617,7 +2623,10 @@
                     <lb n="21" xml:id="MS28.f2r.21"/>
                         <w lemma="téit" lemmaRef="http://www.dil.ie/40447" pos="verb">T<space type="scribal"/>éid</w>
                         <space type="scribal"/>
-                        <w lemma="sí" lemmaRef="http://www.dil.ie/37356" pos="pronoun">sise</w>
+                        <w pos="pronoun-emphatic">
+                            <w lemma="sí" lemmaRef="http://www.dil.ie/37356" pos="pronoun">si</w>
+                            <w lemma="se" lemmaRef="https://www.faclair.com/ViewDictionaryEntry.aspx?ID=7E145C01680F4B96EC0D6B602D966228" pos="emphatic">se</w>
+                        </w>
                         <space type="scribal"/>
                         <w lemma="ar" lemmaRef="http://www.dil.ie/3902" pos="preposition"><abbr cert="high"><g ref="g8">ar</g></abbr></w>
                         <space type="scribal"/>
