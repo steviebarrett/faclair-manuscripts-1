@@ -87,13 +87,13 @@ It creates a diplomatic MS view.
     </span>
   </xsl:template>
   
-  <xsl:template match="tei:name[not(ancestor::tei:name) and count(tei:w|tei:name)=1 and count(tei:w/tei:w)>1]"> 
+  <xsl:template match="tei:name[not(ancestor::tei:name) and count(tei:w|tei:name|tei:add)=1 and count(tei:w/tei:w)>1]"> 
     <span class="chunk syntagm name">
       <xsl:apply-templates select="tei:w/tei:w | tei:w/tei:lb | tei:w/tei:space"/>
     </span>
   </xsl:template>
   
-  <xsl:template match="tei:name[not(ancestor::tei:name) and count(tei:w|tei:name)=1 and count(tei:w/tei:w)=0]"> 
+  <xsl:template match="tei:name[not(ancestor::tei:name) and count(tei:w|tei:name|tei:add)=1 and count(tei:w/tei:w)=0]"> 
     <span class="word chunk syntagm name">
       <xsl:call-template name="addNameAttributes"/>
       <xsl:for-each select="tei:w">
@@ -103,7 +103,7 @@ It creates a diplomatic MS view.
     </span>
   </xsl:template>
   
-  <xsl:template match="tei:name[not(ancestor::tei:name) and count(tei:w|tei:name)>1]"> 
+  <xsl:template match="tei:name[not(ancestor::tei:name) and count(tei:w|tei:name|tei:add)>1]"> 
     <span class="chunk syntagm name">
       <xsl:call-template name="addNameAttributes"/>
       <xsl:apply-templates/>

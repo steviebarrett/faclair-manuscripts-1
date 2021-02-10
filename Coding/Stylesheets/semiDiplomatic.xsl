@@ -40,7 +40,7 @@ It creates a semi-diplomatic MS view.
     </span>
   </xsl:template>
 
-  <xsl:template match="tei:name[not(ancestor::tei:name) and count(tei:w|tei:name)=1 and count(tei:w/tei:w)>1]"> <!-- Dubhghaill -->
+  <xsl:template match="tei:name[not(ancestor::tei:name) and count(tei:w|tei:name|tei:add)=1 and count(tei:w/tei:w)>1]"> <!-- Dubhghaill -->
     <xsl:text> </xsl:text>
     <span class="chunk syntagm name">
       <xsl:apply-templates select="tei:w/tei:w | tei:w/tei:lb"/>
@@ -48,7 +48,7 @@ It creates a semi-diplomatic MS view.
     <xsl:text> </xsl:text>
   </xsl:template>
   
-  <xsl:template match="tei:name[not(ancestor::tei:name) and count(tei:w|tei:name)=1 and count(tei:w/tei:w)=0]"> <!-- Drostan -->
+  <xsl:template match="tei:name[not(ancestor::tei:name) and count(tei:w|tei:name|tei:add)=1 and count(tei:w/tei:w)=0]"> <!-- Drostan -->
     <xsl:text> </xsl:text>
     <span class="word chunk syntagm name">
       <xsl:call-template name="addNameAttributes"/>
@@ -60,7 +60,7 @@ It creates a semi-diplomatic MS view.
     <xsl:text> </xsl:text>
   </xsl:template>
   
-  <xsl:template match="tei:name[not(ancestor::tei:name) and count(tei:w|tei:name)>1]"> <!-- Calum cille -->
+  <xsl:template match="tei:name[not(ancestor::tei:name) and count(tei:w|tei:name|tei:add)>1]"> <!-- Calum cille -->
     <xsl:text> </xsl:text>
     <span class="chunk syntagm name">
       <xsl:call-template name="addNameAttributes"/>
