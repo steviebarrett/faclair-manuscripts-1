@@ -260,6 +260,12 @@ It creates a semi-diplomatic MS view.
     </span>
   </xsl:template>
 
+  <xsl:template match="tei:add[@type='gloss']">
+    <span class="gloss" data-place="{@place}">
+      <xsl:apply-templates/>
+    </span>
+  </xsl:template>
+
   <xsl:template match="tei:add[@type='insertion']">
     <span class="insertion" data-place="{@place}">
       <xsl:apply-templates/>
