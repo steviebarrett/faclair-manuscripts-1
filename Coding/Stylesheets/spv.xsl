@@ -3,7 +3,7 @@
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:viz="http://www.gexf.net/1.2draft/viz" exclude-result-prefixes="xs xsl tei" version="3.0">
     <xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
-    <xsl:variable name="text_id" select="('MS13.3', 'MS14.29', 'MS14.30', 'MS17.2')"/>
+    <xsl:variable name="text_id" select="('MS30.1', 'MS30.2', 'MS30.3', 'MS30.4', 'MS30.5', 'MS30.6', 'MS30.7', 'MS30.8', 'MS30.9', 'MS30.10', 'MS30.11', 'MS30.12', 'MS30.13', 'MS30.14', 'MS30.15', 'MS30.16', 'MS30.17', 'MS30.18', 'MS30.19', 'MS30.20', 'MS30.21', 'MS30.22', 'MS30.23', 'MS30.24', 'MS30.25', 'MS30.26', 'MS30.27', 'MS30.28', 'MS30.29', 'MS30.30')"/>
 
 
     <xsl:template match="/" exclude-result-prefixes="xs xsl tei">
@@ -95,8 +95,10 @@
                     <xsl:otherwise>
                         <xsl:choose>
                             <xsl:when test="ancestor::tei:p">
+                                <xsl:variable name="div_id"
+                                    select="string(ancestor::tei:div[not(ancestor::tei:div)]/@corresp)"/>
                                 <xsl:value-of
-                                    select="concat('para_', count(ancestor::tei:p/preceding::tei:p[ancestor::tei:div/@corresp = $text_id]) + 1)"
+                                    select="concat($div_id, '-para_', count(ancestor::tei:p/preceding::tei:p[ancestor::tei:div/@corresp = $div_id]) + 1)"
                                 />
                             </xsl:when>
                             <xsl:otherwise>
