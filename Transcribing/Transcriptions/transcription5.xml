@@ -24616,9 +24616,6 @@
 						<w lemma="is" lemmaRef="http://www.dil.ie/29104" pos="verb">as</w>
 						<w lemma="í" lemmaRef="http://www.dil.ie/26895" pos="pronoun">i</w>
 						<lb n="19" xml:id="MS5.p38.19"/>
-						<add type="gloss" place="margin, right" hand="Hand12">
-							<c>TNA</c>
-						</add>
 						<w lemma="in" lemmaRef="http://www.dil.ie/28194" pos="article">an</w>
 						<space type="scribal"/>
 						<w lemma="fuil" lemmaRef="http://www.dil.ie/24792" pos="noun">
@@ -24650,6 +24647,12 @@
 				</div>
 				<div n="35" type="prosediv" xml:id="MS5.14.35">
 					<p xml:id="MS5.14.35a">
+						<add type="gloss" place="margin, right" hand="Hand12">
+							<w xml:lang="la"><abbr cert="high" corresp="a6038ef0"><abbr
+										cert="medium"><g ref="l5" corresp="a6038ef0">n</g><g
+											ref="g29">ot</g><g ref="l5" corresp="a6038ef0"
+										>a</g></abbr></abbr></w>
+						</add>
 						<w xml:lang="la">Cib<abbr cert="high">
 								<g ref="g7">us</g>
 							</abbr>
@@ -24693,7 +24696,8 @@
 						<w lemma="do" lemmaRef="http://www.dil.ie/17096" pos="preposition">do</w>
 						<space type="scribal"/>
 						<w lemma="dílegud" lemmaRef="http://www.dil.ie/16399" pos="verbal_noun"
-								>di<abbr cert="medium" corresp="52691e20">
+								><abbr cert="high"><g ref="l17">di</g></abbr><abbr cert="medium"
+								corresp="52691e20">
 								<abbr cert="high">l<g ref="g3" corresp="52691e20">eag</g>
 									<g ref="g4">h</g>
 									<g ref="g3" corresp="52691e20">ud</g>
@@ -24708,7 +24712,9 @@
 								cert="high">c<g ref="g4">h</g>
 							</abbr>
 						</w>
+						<space type="scribal"/>
 						<pc>.</pc>
+						<space type="scribal"/>
 					</p>
 				</div>
 				<div n="36" type="prosediv" xml:id="MS5.14.36">
@@ -24748,15 +24754,15 @@
 							<w lemma="i" lemmaRef="http://www.dil.ie/26891" pos="preposition">s</w>
 							<w lemma="in" lemmaRef="http://www.dil.ie/28194" pos="article">a</w>
 						</w>
-						<unclear reason="interp_obscure" cert="medium" resp="EPT">
-							<w lemma="daig" lemmaRef="http://www.dil.ie/14169" pos="noun">di<abbr
-									cert="high">g<g ref="g4">h</g>
-								</abbr>
-							</w>
-						</unclear>
+						<w lemma="tiug" lemmaRef="http://www.dil.ie/40992" pos="noun">di<abbr
+								cert="high">g<g ref="g4">h</g>
+							</abbr>
+						</w>
 						<space type="scribal"/>
 						<w lemma="téit" lemmaRef="http://www.dil.ie/40447" pos="verb">teid</w>
+						<space type="scribal"/>
 						<pc>.</pc>
+						<space type="scribal"/>
 					</p>
 				</div>
 				<div n="37" type="prosediv" xml:id="MS5.14.37">
@@ -24765,8 +24771,7 @@
 								<g ref="g18">est</g>
 							</abbr>io</w>
 						<space type="scribal"/>
-						<w xml:lang="la">incidit</w>
-						<space type="scribal"/>
+						<w xml:lang="la">inci<abbr cert="high"><g ref="l17">di</g></abbr>t</w>
 						<pc>,</pc>
 						<space type="scribal"/>
 						<w xml:lang="la">inspissat</w>
@@ -24815,14 +24820,13 @@
 						</del>
 						<add type="insertion" place="above" hand="Hand14">
 							<handShift new="Hand14"/>
-							<unclear reason="text_obscure" cert="medium" resp="EPT">
-								<w lemma="inntech" lemmaRef="http://www.dil.ie/28932" pos="noun"
-									>antec</w>
-							</unclear>
+							<w lemma="in" lemmaRef="http://www.dil.ie/28194" pos="article">an</w>
+							<w lemma="adbar" lemmaRef="http://www.dil.ie/340" pos="noun">t<abbr
+									cert="medium">a<g ref="g63">adbhur</g></abbr></w>
 						</add>
 						<handShift new="Hand12"/>
 						<space type="scribal"/>
-						<w lemma="éicen" lemmaRef="http://www.dil.ie/19711" pos="noun">ri<abbr
+						<w lemma="rigin" lemmaRef="http://www.dil.ie/35287" pos="adjective">ri<abbr
 								cert="high">g<g ref="g4">h</g>
 							</abbr>in</w>
 						<space type="scribal"/>
@@ -24840,9 +24844,10 @@
 						</w>
 						<space type="scribal"/>
 						<w lemma="in" lemmaRef="http://www.dil.ie/28194" pos="article">in</w>
-						<w lemma="tabad" lemmaRef="http://www.dil.ie/39360" pos="noun">ta<abbr
-								cert="medium">b<g ref="g3">ad</g>
-								<g ref="g4">h</g>
+						<w lemma="adbar" lemmaRef="http://www.dil.ie/340" pos="noun">ta<add
+								type="insertion" place="above" hand="Hand14"><handShift new="Hand14"
+									/><abbr cert="high">d<g ref="g4">h</g></abbr></add><handShift
+								new="Hand12"/><abbr cert="medium">b<g ref="g3">ur</g>
 							</abbr>
 						</w>
 						<space type="scribal"/>
@@ -24868,21 +24873,13 @@
 						<space type="scribal"/>
 						<w lemma="in" lemmaRef="http://www.dil.ie/28194" pos="article">in</w>
 						<space type="scribal"/>
-						<w lemma="tabad" lemmaRef="http://www.dil.ie/39360" pos="noun">ta<abbr
-								cert="high">b<g ref="g3">ad</g>
+						<w lemma="adbar" lemmaRef="http://www.dil.ie/340" pos="noun">ta<add
+								type="insertion" place="above" hand="Hand14"><handShift new="Hand14"
+									/><abbr cert="high">d<g ref="g4">h</g></abbr></add><handShift
+								new="Hand12"/><abbr cert="medium">b<g ref="g3">ur</g>
 							</abbr>
 						</w>
-						<note type="fn" resp="EPT">
-							<p>James Beaton (Hand14) adds a "d" above "tab<hi rend="italics"
-								>ad</hi>". This could be to clarify the meaning of the original
-								suspension stroke or he could have been altering it to <hi
-									rend="italics">tadbad</hi> ("appearance"), although how the
-								latter would fit in in terms of meaning is not clear.</p>
-						</note>
 						<lb n="23" xml:id="MS5.p38.23"/>
-						<add type="gloss" place="margin, right" hand="Hand12">
-							<c>TNA</c>
-						</add>
 						<w lemma="séim" lemmaRef="http://www.dil.ie/36913" pos="noun">se<abbr
 								cert="high">i<g ref="g1">m</g>
 								<g ref="g4">h</g>
@@ -24891,7 +24888,8 @@
 						<space type="scribal"/>
 						<w lemma="do" lemmaRef="http://www.dil.ie/17096" pos="preposition">do</w>
 						<w lemma="remraigid" lemmaRef="http://www.dil.ie/35081" pos="verbal_noun"
-								>rea<abbr cert="high">m<g ref="g4">h</g>
+								>r<abbr cert="high"><g ref="l5">ea</g></abbr><abbr cert="high">m<g
+									ref="g4">h</g>
 							</abbr>
 							<abbr cert="high">r<g ref="g3">ug</g>
 								<g ref="g4">h</g>
@@ -24902,6 +24900,12 @@
 				</div>
 				<div n="38" type="prosediv" xml:id="MS5.14.38">
 					<p xml:id="MS5.14.38a">
+						<add type="gloss" place="margin, left" hand="Hand12">
+							<w xml:lang="la"><abbr cert="high" corresp="cd55aec0"><abbr
+										cert="medium"><g ref="l5" corresp="cd55aec0">n</g><g
+											ref="g29">ot</g><g ref="l5" corresp="cd55aec0"
+										>a</g></abbr></abbr></w>
+						</add>
 						<w xml:lang="la">Dig<abbr cert="high">
 								<g ref="g18">est</g>
 							</abbr>io</w>
@@ -24919,19 +24923,19 @@
 							</abbr>
 						</w>
 						<space type="scribal"/>
-						<w xml:lang="la">fa<abbr cert="high">c<g ref="g21">er</g>
+						<w xml:lang="la">f<abbr cert="high"><g ref="l3">ac</g><g ref="g21">er</g>
 							</abbr>e</w>
 						<space type="scribal"/>
 						<w xml:lang="la">
-							<abbr cert="low">ae<g ref="l1">re</g>
-							</abbr>m</w>
+							<abbr cert="low"><g ref="l9">ae</g></abbr><supplied resp="EPT"
+								>re</supplied>m</w>
 						<space type="scribal"/>
-						<w xml:lang="la">a<abbr cert="high">p<g ref="g36">er</g>
-							</abbr>t<abbr cert="high">u<g ref="g1">m</g>
+						<w xml:lang="la">apt<abbr cert="high">u<g ref="g1">m</g>
 							</abbr>
 						</w>
 						<space type="scribal"/>
 						<w xml:lang="la">ex<lb n="24" xml:id="MS5.p38.24"/>pulsioni</w>
+						<space type="scribal"/>
 					</p>
 					<p xml:id="MS5.14.38b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" pos="abbreviation">.i.</w>
@@ -24944,12 +24948,11 @@
 							<abbr cert="high">e<g ref="g39">il</g>e</abbr>
 						</w>
 						<space type="scribal"/>
-						<w lemma="in" lemmaRef="http://www.dil.ie/28194" pos="article">a<add
-								type="insertion" place="above" hand="Hand14">
+						<w lemma="in" lemmaRef="http://www.dil.ie/28194" pos="article"><abbr
+								cert="high" corresp="a4ddc4e0">a</abbr><add type="insertion"
+								place="above" hand="Hand14">
 								<handShift new="Hand14"/>
-								<abbr cert="high">
-									<g ref="g5">n</g>
-								</abbr>
+								<g ref="g5" corresp="a4ddc4e0">n</g>
 							</add>
 						</w>
 						<handShift new="Hand12"/>
@@ -24958,7 +24961,6 @@
 								<abbr cert="high">l<g ref="g3" corresp="8acf22f0">eag</g>
 									<g ref="g4">h</g>
 									<g ref="g3" corresp="8acf22f0">ud</g>
-									<g ref="g4">h</g>
 								</abbr>
 							</abbr>
 						</w>
@@ -24970,19 +24972,20 @@
 						</w>
 						<space type="scribal"/>
 						<w lemma="in" lemmaRef="http://www.dil.ie/28194" pos="article">an</w>
-						<w lemma="ellmugud" lemmaRef="http://www.dil.ie/19986" pos="verbal_noun">
-							<del hand="Hand14">f</del>ull<abbr cert="high">m<g ref="g3">iug</g>
-								<g ref="g4">h</g>
-							</abbr>a<abbr cert="high">d<g ref="g4">h</g>
-							</abbr>
-						</w>
+						<w lemma="adbar" lemmaRef="http://www.dil.ie/340" pos="noun">t<abbr
+								cert="high">a<g ref="g3">db</g><g ref="g4">h</g><g ref="g16"
+								>ur</g></abbr></w>
 						<space type="scribal"/>
-						<w lemma="do" lemmaRef="http://www.dil.ie/17096" pos="preposition">do</w>
+						<w pos="preposition-verbal_noun"><w lemma="do"
+								lemmaRef="http://www.dil.ie/17096" pos="preposition">d</w>
+							<w lemma="ellmugud" lemmaRef="http://www.dil.ie/19986" pos="verbal_noun"
+									><del hand="Hand14">f</del>ull<abbr cert="high">m<g ref="g3"
+										>ug</g><g ref="g4">h</g></abbr><space type="scribal"/>a<abbr
+									cert="high">d<g ref="g4">h</g></abbr></w></w>
 						<space type="scribal"/>
-						<w lemma="coim" lemmaRef="http://www.dil.ie/10134" pos="noun">c<abbr
-								cert="high">u<g ref="g1">m</g>
-							</abbr>
-						</w>
+						<w lemma="dochum" lemmaRef="http://www.dil.ie/17406" pos="preposition"
+								>do<space type="scribal"/>c<abbr cert="high">u<g ref="g1"
+								>m</g></abbr></w>
 						<space type="scribal"/>
 						<w lemma="a" lemmaRef="http://www.dil.ie/8" pos="preposition">a</w>
 						<w lemma="indarbanad" lemmaRef="http://www.dil.ie/28330" pos="verbal_noun"
@@ -24990,28 +24993,26 @@
 							</abbr>
 							<abbr cert="high">a<g ref="g13">rr</g>
 							</abbr>
-							<abbr cert="high">b<g ref="g4">h</g>a</abbr>
+							<abbr cert="high">b<g ref="g4">h</g></abbr>
 							<add type="insertion" place="above" hand="Hand14">
 								<handShift new="Hand14"/>
-								<abbr cert="high">
-									<g ref="g5">n</g>
-									<g ref="g3">ad</g>
-									<g ref="g4">h</g>
-								</abbr>
-							</add>
-						</w>
-						<handShift new="Hand12"/>
+								<abbr cert="high">t<g ref="g4">h</g></abbr>
+							</add><handShift new="Hand12"/>a</w>
+						<space type="scribal"/>
 						<pc>.</pc>
+						<space type="scribal"/>
 					</p>
 				</div>
 				<div n="39" type="prosediv" xml:id="MS5.14.39">
 					<p xml:id="MS5.14.39a">
+						<add type="gloss" place="margin, right" hand="Hand12">
+							<w xml:lang="la"><abbr cert="high" corresp="a5036360"><abbr
+										cert="medium"><g ref="l5" corresp="a5036360">n</g><g
+											ref="g29">ot</g><g ref="l5" corresp="a5036360"
+										>a</g></abbr></abbr></w>
+						</add>
 						<w xml:lang="la">Per</w>
 						<w xml:lang="la">ca<lb n="25" xml:id="MS5.p38.25"/>
-							<add type="gloss" place="margin, right" hand="Hand14">
-								<handShift new="Hand14"/>
-								<c>TNA</c>
-							</add>
 							<handShift new="Hand12"/>lid<abbr cert="high">u<g ref="g1">m</g>
 							</abbr>
 						</w>
@@ -25028,43 +25029,34 @@
 						</w>
 						<space type="scribal"/>
 						<w xml:lang="la">
-							<abbr cert="high">p<g ref="g26">er</g>
+							<abbr cert="high">p<g ref="g36">er</g>
 							</abbr>
 						</w>
 						<w xml:lang="la">
 							<abbr cert="high">f<g ref="g21">ri</g>
-							</abbr>git<abbr cert="high">u<g ref="g1">m</g>
+							</abbr>gid<abbr cert="high">u<g ref="g1">m</g>
 							</abbr>
 						</w>
 						<space type="scribal"/>
-						<add type="insertion" place="above" hand="Hand12">
-							<pc>"</pc>
-						</add>
-						<add type="insertion" place="above" hand="Hand12">
-							<pc>"</pc>
-						</add>
-						<w xml:lang="la">nu<abbr cert="high">t<g ref="g25">ri</g>
-							</abbr>
-							<abbr cert="high">m<g ref="g16">ur</g>
-							</abbr>
-						</w>
-						<add type="insertion" place="below" hand="Hand12">
-							<pc>"</pc>
-						</add>
-						<add type="insertion" place="above" hand="Hand12">
-							<pc>"</pc>
-						</add>
+						<del hand="Hand14">
+							<w xml:lang="la">nu<abbr cert="high">t<g ref="g25">ri</g>
+								</abbr>
+								<abbr cert="high">m<g ref="g16">ur</g>
+								</abbr>
+							</w>
+						</del>
 						<space type="scribal"/>
 						<w xml:lang="la">et</w>
 						<space type="scribal"/>
 						<w xml:lang="la">sicc<abbr cert="high">u<g ref="g1">m</g>
 							</abbr>
 						</w>
-						<add type="insertion" place="below" hand="Hand12">
-							<pc>"</pc>
-						</add>
-						<add type="insertion" place="above" hand="Hand12">
-							<pc>"</pc>
+						<add type="insertion" place="inline" hand="Hand14">
+							<w xml:lang="la">nu<abbr cert="high">t<g ref="g25">ri</g>
+								</abbr>
+								<abbr cert="high">m<g ref="g16">ur</g>
+								</abbr>
+							</w>
 						</add>
 					</p>
 					<p xml:id="MS5.14.39b">
@@ -25119,7 +25111,7 @@
 						</w>
 						<pc>.</pc>
 						<w lemma="úacht" lemmaRef="http://www.dil.ie/42580" pos="noun">
-							<abbr cert="high">f<g ref="g3">uacht</g>
+							<abbr cert="medium">f<g ref="g3">uacht</g>
 							</abbr>
 						</w>
 						<space type="scribal"/>
@@ -25137,7 +25129,7 @@
 							</abbr>
 						</w>
 						<space type="scribal"/>
-						<w lemma="ailid" lemmaRef="http://www.dil.ie/1016" pos="verb">óil<abbr
+						<w lemma="ailid" lemmaRef="http://www.dil.ie/1016" pos="verb">oil<abbr
 								cert="medium">t<g ref="g21">ear</g>
 							</abbr>
 						</w>
@@ -25146,7 +25138,9 @@
 								cert="high">n<g ref="g5">n</g>
 							</abbr>
 						</w>
+						<space type="scribal"/>
 						<pc>.</pc>
+						<space type="scribal"/>
 					</p>
 				</div>
 				<div n="40" type="prosediv" xml:id="MS5.14.40">
@@ -25181,9 +25175,10 @@
 						<space type="scribal"/>
 						<w xml:lang="la">respectu</w>
 						<space type="scribal"/>
-						<w xml:lang="la">spirit<abbr cert="high">u<g ref="g7">us</g>
+						<w xml:lang="la">spirit<abbr cert="medium">u<g ref="g7">s</g>
 							</abbr>
 						</w>
+						<space type="scribal"/>
 					</p>
 					<p xml:id="MS5.14.40b">
 						<w lemma=".i." lemmaRef="http://www.dil.ie/26892" pos="abbreviation">.i.</w>
@@ -25206,34 +25201,30 @@
 						<w lemma="is" lemmaRef="http://www.dil.ie/29104" pos="verb">is</w>
 						<pc>.</pc>
 						<space type="scribal"/>
-						<w lemma="úacht" lemmaRef="http://www.dil.ie/42580" pos="noun">
-							<abbr cert="medium">f<g ref="g3">uacht</g>
-							</abbr>
-						</w>
+						<w lemma="úar" lemmaRef="http://www.dil.ie/42762" pos="adjective"><abbr
+								cert="high">f<g ref="g3">uar</g></abbr></w>
 						<pc>.</pc>
 						<space type="scribal"/>
-						<w lemma="tírmach" lemmaRef="http://www.dil.ie/40960" pos="noun">
-							<abbr cert="medium">t<g ref="g21">irmach</g>
-							</abbr>
-						</w>
-						<pc>:,</pc>
+						<w lemma="tírim" lemmaRef="http://www.dil.ie/40958" pos="adjective"><abbr
+								cert="high">t<g ref="g21">ir</g><g ref="g63">im</g></abbr></w>
+						<space type="scribal"/>
 						<w lemma="é" lemmaRef="http://www.dil.ie/19325" pos="pronoun">he</w>
 						<lb n="28" xml:id="MS5.p38.28"/>
-						<w lemma="i" lemmaRef="http://www.dil.ie/26891" pos="preposition">an</w>
-						<add type="insertion" place="above" hand="Hand12">
-							<w lemma="taeb" lemmaRef="http://www.dil.ie/39454" pos="noun">
-								<abbr cert="low">t<g ref="g9">haeb</g>
+						<unclear reason="interp_obscure" cert="medium" resp="EPT">
+							<w lemma="i" lemmaRef="http://www.dil.ie/26891" pos="preposition">an</w>
+							<w lemma="fégain" lemmaRef="http://www.dil.ie/21450" pos="verbal_noun"
+									><add type="insertion" place="above" hand="Hand14"><abbr
+										cert="high">t<g ref="g4">h</g></abbr></add>feg<abbr
+									cert="high">h<g ref="g3">ain</g>
 								</abbr>
 							</w>
-						</add>
-						<w lemma="fégain" lemmaRef="http://www.dil.ie/21450" pos="verbal_noun"
-								>feg<abbr cert="high">h<g ref="g3">ain</g>
-							</abbr>
-						</w>
+						</unclear>
 						<space type="scribal"/>
 						<w lemma="in" lemmaRef="http://www.dil.ie/28194" pos="article">na</w>
 						<w lemma="spirut" lemmaRef="http://www.dil.ie/38630" pos="noun">spirad</w>
+						<space type="scribal"/>
 						<pc>.</pc>
+						<space type="scribal"/>
 					</p>
 				</div>
 				<div n="41" type="prosediv" xml:id="MS5.14.41">
