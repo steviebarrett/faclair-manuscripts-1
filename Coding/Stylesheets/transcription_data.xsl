@@ -343,7 +343,7 @@
                                             </xsl:when>
                                             <xsl:when test="ancestor::tei:p">
                                                 <xsl:apply-templates
-                                                  select="//tei:lb[@xml:id = $lineID or @sameAs = $lineID]/following::*[parent::tei:p and preceding::tei:lb[1]/@* = $lineID and not(ancestor::tei:TEI[@xml:id = 'hwData'])]"
+                                                  select="//tei:lb[@xml:id = $lineID or @sameAs = $lineID]/following::*[parent::tei:p and preceding::tei:lb[1]/@* = $lineID and not(ancestor::tei:TEI[@xml:id = 'hwData']) and not(ancestor::tei:note[@type = 'fn'])]"
                                                   mode="context">
                                                   <xsl:with-param name="formID">
                                                   <xsl:value-of
