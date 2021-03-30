@@ -17654,7 +17654,8 @@
 							slipRef="https://dasg.ac.uk/slips/index.php?id=0090092" pos="noun"
 							>geaga</w>
 						<space type="scribal"/>
-						<w lemma="cenél" lemmaRef="http://www.dil.ie/8601" pos="noun">gineoil</w>
+						<unclear reason="interp_obscure" cert="medium" resp="EPT"><w lemma="cenél"
+								lemmaRef="http://www.dil.ie/8601" pos="noun">gineoil</w></unclear>
 						<note type="fn" resp="EPT"><p>Black (HDDG Slip 0090200) suggests that
 								"gineoil" is not a form of "cenél" but is instead a compound of
 								"gein" (birth) and "eól" (knowledge), meaning
@@ -20421,7 +20422,12 @@
 						<w lemma="ocus" lemmaRef="http://www.dil.ie/33484" pos="conjunction">s</w>
 						<w lemma="beirid" lemmaRef="http://www.dil.ie/5583" pos="verb">beir</w>
 						<space type="scribal"/>
-						<w lemma="nó" lemmaRef="http://www.dil.ie/33204" pos="conjunction">no</w>
+						<choice>
+							<sic><w lemma="nó" lemmaRef="http://www.dil.ie/33204" pos="conjunction"
+									>no</w></sic>
+							<corr resp="EPT"><w lemma="mo" lemmaRef="http://www.dil.ie/32400"
+									pos="possessive_pronoun">mo</w></corr>
+						</choice>
 						<space type="scribal"/>
 						<w lemma="bennacht" lemmaRef="http://www.dil.ie/5661" pos="noun">
 							<abbr cert="high">b<g ref="g4">h</g>
@@ -22846,7 +22852,7 @@
 						</w>
 					</l>
 				</lg>
-				<lg n="3" type="stanza" xml:id="MS30.25.4">
+				<lg n="4" type="stanza" xml:id="MS30.25.4">
 					<l n="a" xml:id="MS30.25.4a">
 						<pb n="22v" xml:id="MS30.22v"/>
 						<lb n="1" xml:id="MS30.22v.1"/>
@@ -22934,7 +22940,7 @@
 						</w>
 					</l>
 				</lg>
-				<lg n="4" type="stanza" xml:id="MS30.25.5">
+				<lg n="5" type="stanza" xml:id="MS30.25.5">
 					<l n="a" xml:id="MS30.25.5a">
 						<lb n="3" xml:id="MS30.22v.3"/>
 						<w pos="particle-particle">
@@ -23033,7 +23039,7 @@
 								type="force"/><abbr cert="high">c<g ref="g4">h</g>
 							</abbr>a</w>
 						<space type="scribal"/>
-						<w lemma="trebad" lemmaRef="http://www.dil.ie/41618" pos="noun">trea<abbr
+						<w lemma="trebaid" lemmaRef="http://www.dil.ie/41619" pos="verb">trea<abbr
 								cert="high">b<g ref="g3">ad</g>
 								<g ref="g4">h</g>
 							</abbr>
@@ -25827,12 +25833,13 @@
 							<w lemma="in" lemmaRef="http://www.dil.ie/28194" pos="article">n</w>
 						</w>
 						<space type="scribal"/>
-						<w pos="noun-noun">
-							<w lemma="mell" lemmaRef="http://www.dil.ie/31898" pos="noun">
-								<abbr cert="high">m<g ref="g4">h</g>
-								</abbr>eall</w>
-							<w lemma="tóir" lemmaRef="http://www.dil.ie/41242" pos="noun">toir</w>
-						</w>
+						<unclear reason="interp_obscure" cert="medium" resp="EPT"><w pos="noun-noun">
+								<w lemma="mell" lemmaRef="http://www.dil.ie/31898" pos="noun">
+									<abbr cert="high">m<g ref="g4">h</g>
+									</abbr>eall</w>
+								<w lemma="tóir" lemmaRef="http://www.dil.ie/41242" pos="noun"
+									>toir</w>
+							</w></unclear>
 					</l>
 					<l n="d" xml:id="MS30.27.3d">
 						<lb n="13" xml:id="MS30.24v.13"/>
