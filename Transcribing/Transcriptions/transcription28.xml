@@ -374,9 +374,11 @@
                         <name type="personal"><w pos="noun">cailin</w></name>
                         <space type="scribal"/>
                         <w lemma="a" lemmaRef="http://www.dil.ie/3" pos="possessive_pronoun">a</w>
-                        <w lemma="cét-" lemmaRef="http://www.dil.ie/8866" pos="adjective"><abbr cert="high">c<g ref="g4">h</g></abbr>éad</w>
-                        <space type="scribal"/>
-                        <w lemma="ainmm" lemmaRef="http://www.dil.ie/1471" pos="noun"><abbr cert="high">ain<g ref="g1">m</g></abbr></w>
+                        <w pos="adjective-noun">
+                            <w lemma="cét-" lemmaRef="http://www.dil.ie/8866" pos="adjective"><abbr cert="high">c<g ref="g4">h</g></abbr>éad</w>
+                            <space type="scribal"/>
+                            <w lemma="ainmm" lemmaRef="http://www.dil.ie/1471" pos="noun"><abbr cert="high">ain<g ref="g1">m</g></abbr></w>
+                        </w>
                         <space type="scribal"/>
                         <w lemma="fadéin" lemmaRef="http://www.dil.ie/20990" pos="pronoun">f<abbr cert="high">ei<g ref="g5">n</g></abbr></w>
                         <pc>.</pc>
@@ -514,7 +516,6 @@
                         <w lemma="ar" lemmaRef="http://www.dil.ie/3902" pos="prepositional_pronoun"><abbr cert="high"><g ref="g11">air</g></abbr></w>
                         <space type="scribal"/>
                         <w lemma="is" lemmaRef="http://www.dil.ie/29104" pos="verb">as</w>
-                        <note type="fn" resp="MMA"><p>WGI, 'as', a form of 'is' or 'os' for 'ós'? I think this is an 'a' based on the 'ainm' two lines previous as the penstroke appears to curve downwards the right as he does with his 'a's do but EPT has suggested 'os'.</p></note>
                         <space type="scribal"/>
                         <w lemma="ainmm" lemmaRef="http://www.dil.ie/1471" pos="noun"><abbr cert="high">ain<g ref="g1">m</g></abbr></w>
                         <space type="scribal"/>
@@ -926,7 +927,7 @@
                 <lb n="27" xml:id="MS28.f1r.27"/>
                         <name type="personal"><w pos="noun" lemmaSL="Filib" slipRef="https://dasg.ac.uk/slips/index.php?id=0080561">Filib</w></name>
                         <space type="scribal"/>
-                        <w lemma="de" lemmaRef="http://www.dil.ie/14787" pos="preposition">de</w>
+                        <w lemma="do" lemmaRef="http://www.dil.ie/17098" pos="particle">de</w>
                         <space type="scribal"/>
                         <w pos="verb-pronoun">
                             <w lemma="is" lemmaRef="http://www.dil.ie/29104" pos="verb">b</w>
@@ -1603,9 +1604,10 @@
                         <space type="scribal"/>
                         <w lemma="athair" lemmaRef="http://www.dil.ie/4625" pos="noun">a<abbr cert="high">t<g ref="g4">h</g></abbr><abbr cert="high"><g ref="g11">air</g></abbr></w>
                         <space type="scribal"/>
-                        <w pos="preposition-particle-verb">
+                        <w pos="preposition-pronoun-particle-verb">
                             <w lemma="do" lemmaRef="http://www.dil.ie/17096" pos="preposition">d</w>
-                            <w lemma="ro" lemmaRef="http://www.dil.ie/35364" pos="particle"><abbr cert="high"><g ref="g21">ar</g></abbr></w>
+                            <w lemma="a" lemmaRef="http://www.dil.ie/5" pos="pronoun"><abbr cert="high" corresp="c96c27d0"><g ref="g21" corresp="c96c27d0">a</g></abbr></w>
+                            <w lemma="ro" lemmaRef="http://www.dil.ie/35364" pos="particle"><g ref="g21" corresp="c96c27d0">r</g></w>
                             <w lemma="is" lemmaRef="http://www.dil.ie/29104" pos="verb">ob</w>
                         </w>
                         <w lemma="ainmm" lemmaRef="http://www.dil.ie/1471" pos="noun">a<abbr cert="high">in<g ref="g1">m</g></abbr></w>
