@@ -2821,7 +2821,7 @@
 					<lb n="11" xml:id="MS3.p3.11"/>
 						<w lemma="acht" lemmaRef="http://www.dil.ie/200" pos="conjunction">A<abbr cert="high"><g ref="g10">cht</g></abbr></w>
 						<space type="scribal"/>
-						<w lemma="cen" lemmaRef="http://www.dil.ie/8581" pos="adverb"><abbr cert="high">c<g ref="g4">h</g></abbr>ena</w>
+						%a<w lemma="cen" lemmaRef="http://www.dil.ie/8581" pos="adverb"><abbr cert="high">c<g ref="g4">h</g></abbr>ena</w>
 						<space type="scribal"/>
 						<w lemma="is" lemmaRef="http://www.dil.ie/29104" pos="verb"><abbr cert="high">b<g ref="g3">a</g></abbr></w>
 						<space type="scribal"/>
@@ -4631,8 +4631,10 @@
 							<w lemma="bárc" lemmaRef="http://www.dil.ie/5400" pos="noun">bairc</w>
 						</name>
 						<space type="scribal"/>
-						<w lemma="do" lemmaRef="http://www.dil.ie/17096" pos="preposition">d</w>
-						<w lemma="ainmm" lemmaRef="http://www.dil.ie/1471" pos="noun">ainm</w>
+						<w pos="preposition-noun">
+							<w lemma="de" lemmaRef="http://www.dil.ie/14787" pos="preposition">d</w>
+							<w lemma="ainmm" lemmaRef="http://www.dil.ie/1471" pos="noun">ainm</w>
+						</w>
 						<space type="scribal"/>
 						<w lemma="for" lemmaRef="http://www.dil.ie/23272" pos="prepositional_pronoun">f<abbr cert="high"><g ref="g8">ar</g></abbr></w>
 					<lb n="32" xml:id="MS3.p4.32"/>
@@ -37110,9 +37112,9 @@
 							<lb n="22" xml:id="MS3.p31.22"/>
 								<name type="place" corresp="https://www.logainm.ie/1420121.aspx"><w lemma="Ériu" lemmaRef="http://www.dil.ie/20288" pos="noun">ei<abbr cert="high">r<g ref="g23">enn</g></abbr></w></name>
 								<space type="scribal"/>
-								<w pos="preposition-possessive_pronoun">
-									<w lemma="de" lemmaRef="http://www.dil.ie/14787" pos="preposition">g</w>
-									<w lemma="a" lemmaRef="http://www.dil.ie/3" pos="possessive_pronoun">a</w>
+								<w pos="preposition-pronoun">
+									<w lemma="do" lemmaRef="http://www.dil.ie/17096" pos="preposition">g</w>
+									<w lemma="a" lemmaRef="http://www.dil.ie/5" pos="pronoun">a</w>
 								</w>
 								<space type="scribal"/>
 								<w lemma="ainmm" lemmaRef="http://www.dil.ie/1471" pos="noun">nainm</w>
@@ -39933,7 +39935,10 @@
 									<w lemma="Danann" lemmaRef="http://www.dil.ie/14594" pos="noun">d<abbr cert="high"><g ref="g63">anuinn</g></abbr></w>
 								</name>
 								<space type="scribal"/>
-								<w lemma="do" lemmaRef="http://www.dil.ie/17098" pos="particle"><abbr cert="high">g<g ref="g3">o</g></abbr></w>
+								<w pos="preposition-pronoun">
+									<w lemma="do" lemmaRef="http://www.dil.ie/17096" pos="preposition">g</w>
+									<w lemma="a" lemmaRef="http://www.dil.ie/5" pos="pronoun"><abbr cert="high"><g ref="g3">a</g></abbr></w>
+								</w>
 								<space type="scribal"/>
 								<w pos="verb-noun">
 									<w lemma="is" lemmaRef="http://www.dil.ie/29104" pos="verb">mb</w>
@@ -44289,9 +44294,14 @@
 									<space type="scribal"/>
 									<w lemma="forránach" lemmaRef="http://www.dil.ie/23858" pos="adjective">forrani<abbr cert="high">c<g ref="g4">h</g></abbr></w>
 									<space type="scribal"/>
-									<w lemma="do" lemmaRef="http://www.dil.ie/17096" pos="preposition">ga</w>
-									<w lemma="is" lemmaRef="http://www.dil.ie/29104" pos="verb">m<space type="scribal"/>b</w>
-									<w lemma="ainmm" lemmaRef="http://www.dil.ie/1471" pos="noun">ai<abbr cert="high">n<g ref="g1">m</g></abbr></w>
+									<w pos="preposition-pronoun">
+										<w lemma="do" lemmaRef="http://www.dil.ie/17096" pos="preposition">g</w>
+										<w lemma="a" lemmaRef="http://www.dil.ie/5" pos="pronoun">a</w>
+									</w>
+									<w pos="verb-noun">
+										<w lemma="is" lemmaRef="http://www.dil.ie/29104" pos="verb">m<space type="scribal"/>b</w>
+										<w lemma="ainmm" lemmaRef="http://www.dil.ie/1471" pos="noun">ai<abbr cert="high">n<g ref="g1">m</g></abbr></w>
+									</w>
 									<space type="scribal"/>
 									<w pos="noun">To<abbr cert="high">c<g ref="g4">h</g></abbr>a</w>
 								<lb n="32" xml:id="MS3.p36.32"/>
@@ -45378,9 +45388,14 @@
 									<space type="scribal"/>
 									<name type="place"><w lemma="Lochlann" lemmaRef="http://www.dil.ie/30451" pos="noun">lo<abbr cert="high">c<g ref="g4">h</g></abbr><abbr cert="high">l<g ref="g23">ann</g></abbr></w></name>
 								<lb n="23" xml:id="MS3.p37.23"/>
-									<w lemma="do" lemmaRef="http://www.dil.ie/17096" pos="preposition">ga</w>
-									<w lemma="is" lemmaRef="http://www.dil.ie/29104" pos="verb">m<space type="scribal"/>b</w>
-									<w lemma="ainmm" lemmaRef="http://www.dil.ie/1471" pos="noun">ai<abbr cert="high">n<g ref="g1">m</g></abbr></w>
+									<w pos="preposition-pronoun">
+										<w lemma="do" lemmaRef="http://www.dil.ie/17096" pos="preposition">g</w>
+										<w lemma="a" lemmaRef="http://www.dil.ie/5" pos="pronoun">a</w>
+									</w>
+									<w pos="verb-noun">
+										<w lemma="is" lemmaRef="http://www.dil.ie/29104" pos="verb">m<space type="scribal"/>b</w>
+										<w lemma="ainmm" lemmaRef="http://www.dil.ie/1471" pos="noun">ai<abbr cert="high">n<g ref="g1">m</g></abbr></w>
+									</w>
 									<space type="scribal"/>
 									<name type="personal"><w lemma="mongach" lemmaRef="http://www.dil.ie/32533" pos="adjective">Monga<abbr cert="high">c<g ref="g4">h</g></abbr></w></name>
 									<space type="scribal"/>
@@ -45755,7 +45770,10 @@
 									<w lemma="sin" lemmaRef="http://www.dil.ie/37567" pos="demonstrative_pronoun"><abbr cert="high">si<g ref="g5">n</g></abbr></w>
 									<pc>-</pc>
 								<lb n="32" xml:id="MS3.p37.32"/>
-									<w lemma="do" lemmaRef="http://www.dil.ie/17096" pos="preposition"><abbr cert="high">g<g ref="g3">a</g></abbr><abbr cert="high"><g ref="g4"/></abbr></w>
+									<w pos="preposition-pronoun">
+										<w lemma="do" lemmaRef="http://www.dil.ie/17096" pos="preposition">g</w>
+										<w lemma="a" lemmaRef="http://www.dil.ie/5" pos="pronoun"><abbr cert="high"><g ref="g3">a</g></abbr><abbr cert="high"><g ref="g4"/></abbr></w>
+									</w>
 								<!-- Check why empty g4. -->
 									<space type="scribal"/>
 									<w pos="verb-noun">
