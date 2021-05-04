@@ -190,7 +190,7 @@
 								</xsl:if>
 								<xsl:for-each select="//tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree[@corresp = $wordID]/tei:w/comment()">
 									<xsl:comment>
-										<xsl:value-of select="concat(string(' ', preceding::tei:span[1]/@type), ' &quot;', preceding::tei:span[1], '&quot;', ': ', string(.))"/>
+										<xsl:value-of select="concat(' ', string(preceding::tei:span[1]/@type), ' &quot;', preceding::tei:span[1], '&quot;', ': ', string(.))"/>
 									</xsl:comment>
 								</xsl:for-each>
 							</w>
