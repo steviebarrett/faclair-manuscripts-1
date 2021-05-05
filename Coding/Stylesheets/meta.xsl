@@ -80,9 +80,11 @@
   </xsl:template>
 
   <xsl:template match="tei:term">
-    <li>
-      <xsl:apply-templates/>
-    </li>
+    <ul>
+      <li>
+        <xsl:apply-templates/>
+      </li>
+    </ul>
   </xsl:template>
 
   <xsl:template match="tei:hi[@rend = 'italics']">
@@ -98,11 +100,13 @@
   </xsl:template>
 
   <xsl:template match="tei:handNote">
-    <li>
-      <strong>
-        <xsl:value-of select="@corresp"/>
-      </strong>
-    </li>
+    <ul>
+      <li>
+        <strong>
+          <xsl:value-of select="@corresp"/>
+        </strong>
+      </li>
+    </ul>
   </xsl:template>
 
 
