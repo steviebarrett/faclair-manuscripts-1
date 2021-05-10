@@ -37,7 +37,6 @@
     </p>
     <h2>Source</h2>
     <xsl:apply-templates select="tei:fileDesc/tei:sourceDesc/tei:msDesc"/>
-    <xsl:apply-templates select="tei:encodingDesc/tei:refsDecl/tei:p"/>
     <xsl:if test="tei:profileDesc/tei:langUsage">
       <h2>Language and Style</h2>
       <xsl:apply-templates select="tei:profileDesc/tei:langUsage/tei:p"/>
@@ -57,22 +56,25 @@
       </li>
       <xsl:if test="tei:physDesc/tei:objectDesc/tei:supportDesc/tei:support/node()">
         <li>
-          <xsl:apply-templates select="tei:physDesc/tei:objectDesc/tei:supportDesc/tei:support/node()"/>
+          <xsl:apply-templates
+            select="tei:physDesc/tei:objectDesc/tei:supportDesc/tei:support/node()"/>
         </li>
       </xsl:if>
-      <xsl:if test="tei:physDesc/tei:objectDesc/tei:layoutDesc/tei:p/node()">
+      <xsl:if test="tei:physDesc/tei:objectDesc/tei:layoutDesc/tei:p">
         <li>
           <xsl:apply-templates select="tei:physDesc/tei:objectDesc/tei:layoutDesc/tei:p/node()"/>
         </li>
       </xsl:if>
       <xsl:if test="tei:physDesc/tei:objectDesc/tei:supportDesc/tei:foliation/node()">
         <li>
-          <xsl:apply-templates select="tei:physDesc/tei:objectDesc/tei:supportDesc/tei:foliation/node()"/>
+          <xsl:apply-templates
+            select="tei:physDesc/tei:objectDesc/tei:supportDesc/tei:foliation/node()"/>
         </li>
       </xsl:if>
       <xsl:if test="tei:physDesc/tei:objectDesc/tei:supportDesc/tei:condition/node()">
         <li>
-          <xsl:apply-templates select="tei:physDesc/tei:objectDesc/tei:supportDesc/tei:condition/node()"/>
+          <xsl:apply-templates
+            select="tei:physDesc/tei:objectDesc/tei:supportDesc/tei:condition/node()"/>
         </li>
       </xsl:if>
       <li>
@@ -83,13 +85,16 @@
         </ul>
       </li>
     </ul>
+    <h3>History</h3>
+    <xsl:apply-templates select="tei:history/tei:summary/tei:p"/>
     <h3>Physical Description</h3>
     <xsl:apply-templates select="tei:physDesc/tei:p"/>
   </xsl:template>
 
   <xsl:template match="tei:msItem">
     <li>
-      <xsl:value-of select="string(@xml:id)"/><xsl:text> </xsl:text>
+      <xsl:value-of select="string(@xml:id)"/>
+      <xsl:text> </xsl:text>
       <strong>
         <xsl:value-of select="tei:title"/>
         <xsl:text> [</xsl:text>
@@ -130,7 +135,39 @@
     <ul>
       <li>
         <strong>
-          <xsl:value-of select="@corresp"/>
+          <xsl:choose>
+            <xsl:when
+              test="document('..\..\Transcribing\corpus.xml')//tei:handNotes/tei:handNote[@xml:id = $handID]/tei:forename or document('..\..\Transcribing\corpus.xml')//tei:handNotes/tei:handNote[@xml:id = $handID]/tei:surname">
+              <xsl:if
+                test="document('..\..\Transcribing\corpus.xml')//tei:handNotes/tei:handNote[@xml:id = $handID]/tei:forename">
+                <xsl:value-of
+                  select="document('..\..\Transcribing\corpus.xml')//tei:handNotes/tei:handNote[@xml:id = $handID]/tei:forename"/>
+                <xsl:text> </xsl:text>
+              </xsl:if>
+              <xsl:if
+                test="document('..\..\Transcribing\corpus.xml')//tei:handNotes/tei:handNote[@xml:id = $handID]/tei:surname">
+                <xsl:value-of
+                  select="document('..\..\Transcribing\corpus.xml')//tei:handNotes/tei:handNote[@xml:id = $handID]/tei:surname"/>
+                <xsl:text> </xsl:text>
+              </xsl:if>
+              <xsl:value-of select="concat('(', @corresp, ')')"/>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:value-of select="@corresp"/>
+            </xsl:otherwise>
+          </xsl:choose>
+          <xsl:text>, </xsl:text>
+          <em>saec.</em>
+          <xsl:text> </xsl:text>
+          <xsl:value-of
+            select="document('..\..\Transcribing\corpus.xml')//tei:handNotes/tei:handNote[@xml:id = $handID]/tei:date"/>
+          <xsl:if
+            test="document('..\..\Transcribing\corpus.xml')//tei:handNotes/tei:handNote[@xml:id = $handID]/tei:region">
+            <xsl:text>, </xsl:text>
+            <xsl:value-of
+              select="document('..\..\Transcribing\corpus.xml')//tei:handNotes/tei:handNote[@xml:id = $handID]/tei:region"
+            />
+          </xsl:if>
           <xsl:text>: </xsl:text>
         </strong>
         <xsl:apply-templates
