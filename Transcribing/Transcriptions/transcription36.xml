@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="../Schemas/fnag_mss.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
-<?xml-stylesheet type="text/xsl" href="../../Coding/Stylesheets/basic-info.xsl"?>
+<?xml-stylesheet type="text/xsl" href="../../Coding/Stylesheets/meta.xsl"?>
 <TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="T36">
     <teiHeader>
         <fileDesc>
@@ -15,25 +15,25 @@
                     <resp>Overseer</resp>
                 </respStmt>
             </titleStmt>
-            <extent>687 words</extent>
+            <extent>618 words</extent>
             <publicationStmt>
                 <authority sameAs="authority"/>
                 <availability status="restricted">
                     <p>For internal use by the Faclair na Gàidhlig/DASG projects</p>
                 </availability>
-                <idno>T35</idno>
+                <idno>T36</idno>
             </publicationStmt>
             <notesStmt>
                 <note>
                     <p>Section 4 of YBL is a collection of bardic poetry compiled by Seanchán mac
-                        Maoil Mhuire Ó Mhaoil Chonaire (Hand63) in 1473. This collection includes 'Fuarus
-                        aiscidh gan iarraidh' (cols 182.7-183.18), a praise poem in Classical Gaelic
-                        by Tadhg Óg Ó hUiginn (d. 1448) addressed to Alasdair Mac Domhnaill (ob.
-                        1449), Lord of the Isles and Earl of Ross. In the poem, Tadhg Óg rejects
-                        Alasdair's invitation to him to come to Scotland and instead exhorts
-                        Alasdair to come to Ireland and assert his ancestral right to the kingship
-                        thereof. While Tadhg Óg might be Irish, the poem is likely intended for a
-                        Scottish audience. It thus sheds light on the Classical Gaelic bardic
+                        Maoil Mhuire Ó Mhaoil Chonaire (Hand63) in 1473. This collection includes
+                        'Fuarus aiscidh gan iarraidh' (cols 182.7-183.18), a praise poem in
+                        Classical Gaelic by Tadhg Óg Ó hUiginn (d. 1448) addressed to Alasdair Mac
+                        Domhnaill (ob. 1449), Lord of the Isles and Earl of Ross. In the poem, Tadhg
+                        Óg rejects Alasdair's invitation to him to come to Scotland and instead
+                        exhorts Alasdair to come to Ireland and assert his ancestral right to the
+                        kingship thereof. While Tadhg Óg might be Irish, the poem is likely intended
+                        for a Scottish audience. It thus sheds light on the Classical Gaelic bardic
                         culture that was common, at least to the elites, of both Scotland and
                         Ireland.</p>
                 </note>
@@ -48,10 +48,11 @@
                     <msContents>
                         <summary><p>'Fuarus aiscidh gan iarraidh' is the only text in YBL judged at
                                 the present time to be of sufficiently certain Scottish relevance to
-                                merit transcription.</p></summary>
+                                merit transcription. This appears to be the only extant manuscript
+                                version of the poem.</p></summary>
                         <msItem xml:id="MS36.1">
                             <locus>cols 182.7-183.18</locus>
-                            <title>Fuarus aiscidh gan iarraidh</title>
+                            <title>'Fuarus aiscidh gan iarraidh'</title>
                             <author role="scribe" corresp="Hand63"/>
                             <incipit>Tadhg cecinit. Fuarus aiscidh gan iarraidh ...</incipit>
                             <explicit>... sgel derb ainfis fuarus ./ Fuarus</explicit>
@@ -88,22 +89,27 @@
                             problems are caused by smudging and erosion down the centre of col. 182.
                             Our text is the work of a single scribe, Seanchán mac Maoil Mhuire Ó
                             Mhaoil Chonaire (Hand63).</p>
-                        <p>This appears to be the only extant manuscript version of our poem. YBL
-                            Section 4 was produced in Connacht and had been combined with YBL proper
-                            and other components by the time it was acquired c. 1700 by Edward Lhuyd
-                            from one of his contacts in the same region. There is no evidence that
-                            it ever left Connacht, let alone Ireland, before that date.</p>
                         <objectDesc>
                             <supportDesc>
                                 <support>Vellum, approx. 20cm by 26.5cm</support>
                                 <foliation>Modern foliation (Edward Lhuyd)</foliation>
-                                <condition>Mostly very good condition, with only occasional smudging</condition>
+                                <condition>Mostly very good condition, with only occasional
+                                    smudging</condition>
                             </supportDesc>
-                            <layoutDesc><p>2 columns per page</p></layoutDesc>
+                            <layoutDesc>
+                                <p>2 columns per page</p>
+                            </layoutDesc>
                         </objectDesc>
                     </physDesc>
                     <history>
-                        <provenance/>
+                        <summary><p>As noted above, the section of YBL from which this transcription
+                                has been made (section 4) was compiled by Seanchán mac Maoil Mhuire
+                                Ó Mhaoil Chonaire (Hand63) in 1473, apparently as an Ó hUiginn poem
+                                book. This had been combined with YBL proper, which originated in
+                                north Connacht, and other components by the time it was acquired c.
+                                1700 by Edward Lhuyd, probably from one of his contacts in north
+                                Connacht. There is no evidence that it ever left that region, let
+                                alone Ireland, before its acquisition by Lhuyd.</p></summary>
                     </history>
                 </msDesc>
             </sourceDesc>
@@ -119,22 +125,17 @@
         <profileDesc>
             <langUsage>
                 <p>As 'Fuarus aiscidh gan iarraidh' was composed by an Irish poet and written out in
-                    the extant version by an Irish scribe for use in Ireland
-                    (quite possibly all in Connacht), there is no reason to
-                    expect any Scotticisms in terms of orthography. They are
-                    also unlikely to appear in the language. This is indeed
-                    the picture that emerges. The text is in fairly
-                    middle-of-the-road Classical Gaelic. There are no
-                    prominent archaisms and even features of the earlier
-                    language that sometimes endured in the Classical dialect
-                    (e.g. a distinctive accusative) are not strongly in
-                    evidence. The main distinguishing feature being the
-                    slightly archaistic orthography (e.g. “ae(i)” is
-                    preferred over "ao(i)"). No Scottish dialectal features
-                    are detectable. As it was composed for a Scottish
-                    patron, however, it shows that this sort of composition
-                    was accessible in an elite context in Gaelic Scotland at
-                    the time.</p>
+                    the extant version by an Irish scribe for use in Ireland (quite possibly all in
+                    Connacht), there is no reason to expect any Scotticisms in terms of orthography.
+                    They are also unlikely to appear in the language. This is indeed the picture
+                    that emerges. The text is in fairly middle-of-the-road Classical Gaelic. There
+                    are no prominent archaisms and even features of the earlier language that
+                    sometimes endured in the Classical dialect (e.g. a distinctive accusative) are
+                    not strongly in evidence. The main distinguishing feature being the slightly
+                    archaistic orthography (e.g. “ae(i)” is preferred over "ao(i)"). No Scottish
+                    dialectal features are detectable. As it was composed for a Scottish patron,
+                    however, it shows that this sort of composition was accessible in an elite
+                    context in Gaelic Scotland at the time.</p>
             </langUsage>
             <handNotes>
                 <handNote corresp="Hand63"/>
