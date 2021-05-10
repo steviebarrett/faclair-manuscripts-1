@@ -38,8 +38,10 @@
     <h2>Source</h2>
     <xsl:apply-templates select="tei:fileDesc/tei:sourceDesc/tei:msDesc"/>
     <xsl:apply-templates select="tei:encodingDesc/tei:refsDecl/tei:p"/>
-    <h2>Language</h2>
-    <xsl:apply-templates select="tei:profileDesc/tei:langUsage/tei:p"/>
+    <xsl:if test="tei:profileDesc/tei:langUsage">
+      <h2>Language and Style</h2>
+      <xsl:apply-templates select="tei:profileDesc/tei:langUsage/tei:p"/>
+    </xsl:if>
     <h2>Hands</h2>
     <xsl:apply-templates select="tei:profileDesc/tei:handNotes/tei:handNote"/>
     <h2>Keywords</h2>
@@ -53,12 +55,29 @@
         <xsl:text> </xsl:text>
         <xsl:value-of select="tei:msIdentifier/tei:idno"/>
       </li>
-      <li>
-        <xsl:apply-templates select="tei:physDesc/tei:objectDesc/tei:supportDesc/tei:support"/>
-      </li>
+      <xsl:if test="tei:physDesc/tei:objectDesc/tei:supportDesc/tei:support/node()">
+        <li>
+          <xsl:apply-templates select="tei:physDesc/tei:objectDesc/tei:supportDesc/tei:support/node()"/>
+        </li>
+      </xsl:if>
+      <xsl:if test="tei:physDesc/tei:objectDesc/tei:layoutDesc/tei:p/node()">
+        <li>
+          <xsl:apply-templates select="tei:physDesc/tei:objectDesc/tei:layoutDesc/tei:p/node()"/>
+        </li>
+      </xsl:if>
+      <xsl:if test="tei:physDesc/tei:objectDesc/tei:supportDesc/tei:foliation/node()">
+        <li>
+          <xsl:apply-templates select="tei:physDesc/tei:objectDesc/tei:supportDesc/tei:foliation/node()"/>
+        </li>
+      </xsl:if>
+      <xsl:if test="tei:physDesc/tei:objectDesc/tei:supportDesc/tei:condition/node()">
+        <li>
+          <xsl:apply-templates select="tei:physDesc/tei:objectDesc/tei:supportDesc/tei:condition/node()"/>
+        </li>
+      </xsl:if>
       <li>
         <xsl:text>Contents: </xsl:text>
-        <xsl:apply-templates select="tei:msContents/tei:summary"/>
+        <xsl:apply-templates select="tei:msContents/tei:summary/tei:p/*"/>
         <ul>
           <xsl:apply-templates select="tei:msContents/tei:msItem"/>
         </ul>
@@ -70,12 +89,19 @@
 
   <xsl:template match="tei:msItem">
     <li>
+      <xsl:value-of select="string(@xml:id)"/><xsl:text> </xsl:text>
       <strong>
         <xsl:value-of select="tei:title"/>
+        <xsl:text> [</xsl:text>
+        <xsl:value-of select="tei:locus"/>
+        <xsl:text>]</xsl:text>
       </strong>
-      <xsl:text> [</xsl:text>
-      <xsl:value-of select="tei:locus"/>
-      <xsl:text>] </xsl:text>
+      <xsl:if test="tei:note">
+        <strong>
+          <xsl:text>: </xsl:text>
+        </strong>
+        <xsl:apply-templates select="tei:note/text() | tei:note/*"/>
+      </xsl:if>
     </li>
   </xsl:template>
 
@@ -100,11 +126,16 @@
   </xsl:template>
 
   <xsl:template match="tei:handNote">
+    <xsl:variable name="handID" select="@corresp"/>
     <ul>
       <li>
         <strong>
           <xsl:value-of select="@corresp"/>
+          <xsl:text>: </xsl:text>
         </strong>
+        <xsl:apply-templates
+          select="document('..\..\Transcribing\corpus.xml')//tei:handNotes/tei:handNote[@xml:id = $handID]/tei:note"
+        />
       </li>
     </ul>
   </xsl:template>
