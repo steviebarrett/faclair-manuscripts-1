@@ -124,6 +124,12 @@
     </em>
   </xsl:template>
 
+  <xsl:template match="tei:ref">
+    <a href="{@target}" target="_blank">
+      <xsl:apply-templates/>
+    </a>
+  </xsl:template>
+
   <xsl:template match="tei:p">
     <p>
       <xsl:apply-templates/>
