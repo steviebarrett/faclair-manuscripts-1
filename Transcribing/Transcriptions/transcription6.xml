@@ -2277,19 +2277,11 @@
 						<space type="scribal"/>
 					</l>
 					<l n="d" xml:id="MS6.5.2.5d">
-						<w pos="prefix-noun">
-							<w lemma="ro" lemmaRef="http://www.dil.ie/35365" pos="prefix">
-								<unclear reason="text_obscure" cert="medium" resp="EPT"
-								>r</unclear>o</w>
-							<w lemma="cara" lemmaRef="http://www.dil.ie/8205" pos="noun">cara</w>
-						</w>
-						<w pos="adjective-emphatic">
-							<w lemma="caín" lemmaRef="http://www.dil.ie/7787" pos="adjective"
-								>cain</w>
-							<w lemma="se"
-								lemmaRef="https://www.faclair.com/ViewDictionaryEntry.aspx?ID=7E145C01680F4B96EC0D6B602D966228"
-								pos="emphatic">se</w>
-						</w>
+						<w lemma="ro" lemmaRef="http://www.dil.ie/35364" pos="particle">
+							<unclear reason="text_obscure" cert="medium" resp="EPT">r</unclear>o</w>
+						<w lemma="caraid" lemmaRef="http://www.dil.ie/8212" pos="verb">car</w>
+						<w lemma="a" lemmaRef="http://www.dil.ie/3" pos="possessive_pronoun">a</w>
+						<w lemma="cuinnsiu" lemmaRef="http://www.dil.ie/13632" pos="noun">cainse</w>
 						<space type="scribal"/>
 						<w lemma="a" lemmaRef="http://www.dil.ie/2" pos="particle">a</w>
 						<space type="scribal"/>
@@ -2320,20 +2312,18 @@
 				</lg>
 			</div>
 			<div n="6" type="verse" hand="Hand7" corresp="MS6.6">
-				<div n="6.1" type="prose" hand="Hand7" corresp="MMS6.6.1">
-					<p>
-						<name type="personal">
-							<w lemma="colum" lemmaRef="http://www.dil.ie/10546" pos="noun">Col<abbr
-									cert="high">u<g ref="g1">m</g>
-								</abbr>
-							</w>
-							<space type="scribal"/>
-							<w lemma="cell" lemmaRef="http://www.dil.ie/8562" pos="noun">cille</w>
-						</name>
+				<p>
+					<name type="personal">
+						<w lemma="colum" lemmaRef="http://www.dil.ie/10546" pos="noun">Col<abbr
+								cert="high">u<g ref="g1">m</g>
+							</abbr>
+						</w>
 						<space type="scribal"/>
-						<w xml:lang="la">cecinit</w>
-					</p>
-				</div>
+						<w lemma="cell" lemmaRef="http://www.dil.ie/8562" pos="noun">cille</w>
+					</name>
+					<space type="scribal"/>
+					<w xml:lang="la">cecinit</w>
+				</p>
 				<div n="6.2" type="verse" hand="Hand7" corresp="MS6.6.2">
 					<lg n="1" type="stanza" xml:id="MS6.6.2.1">
 						<l n="a" xml:id="MS6.6.2.1a">
@@ -2367,8 +2357,11 @@
 							<space type="scribal"/>
 						</l>
 						<l n="b" xml:id="MS6.6.2.1b">
-							<w lemma="cía" lemmaRef="http://www.dil.ie/8966" pos="conjunction"
-								>gi</w>
+							<w pos="conjunction-verb"><w lemma="cía"
+									lemmaRef="http://www.dil.ie/8966" pos="conjunction">gi</w>
+								<supplied resp="EPT"><w lemma="is"
+										lemmaRef="http://www.dil.ie/29104" pos="verb"
+									>dh</w></supplied></w>
 							<space type="scribal"/>
 							<w lemma="álaind" lemmaRef="http://www.dil.ie/2881" pos="adjective"
 								>alaind</w>
@@ -2397,23 +2390,27 @@
 								</abbr>is</w>
 							<space type="scribal"/>
 							<w lemma="indiu" lemmaRef="http://www.dil.ie/28446" pos="particle"
-									>andiui<abbr cert="high">g<g ref="g4">h</g>
+									>andiu<abbr cert="high">g<g ref="g4">h</g>
 								</abbr>
 							</w>
 							<space type="scribal"/>
 							<w lemma="co" lemmaRef="http://www.dil.ie/9786" pos="preposition">go</w>
 							<w lemma="saidbir" lemmaRef="http://www.dil.ie/35932" pos="adjective"
-									>sai<abbr cert="high">b<g ref="g4">h</g>
+									>sei<abbr cert="high">b<g ref="g4">h</g>
 								</abbr>ir</w>
 							<space type="scribal"/>
 						</l>
 						<l n="d" xml:id="MS6.6.2.1d">
-							<w lemma="attá" lemmaRef="http://www.dil.ie/4927" pos="verb">ata</w>
-							<space type="scribal"/>
-							<w lemma="fri" lemmaRef="http://www.dil.ie/24329"
-								pos="prepositional_pronoun">ris</w>
-							<space type="scribal"/>
-							<w lemma="co" lemmaRef="http://www.dil.ie/9786" pos="preposition">go</w>
+							<unclear reason="interp_obscure" cert="medium" resp="MMA">
+								<w lemma="do-tuit" lemmaRef="http://www.dil.ie/18533" pos="verb"
+									>titu</w>
+								<space type="scribal"/>
+								<w lemma="frithissi" lemmaRef="http://www.dil.ie/24509" pos="adverb"
+									>ris</w>
+								<space type="scribal"/>
+								<w lemma="co" lemmaRef="http://www.dil.ie/9788" pos="conjunction"
+									>go</w>
+							</unclear>
 							<w lemma="daidbir" lemmaRef="http://www.dil.ie/14165" pos="adjective"
 								>daibir</w>
 							<space type="scribal"/>
@@ -2426,11 +2423,12 @@
 							<gap reason="text_obscure" quantity="6" unit="chars" resp="EPT"/>
 							<c>rac</c>
 							<gap reason="text_obscure" quantity="9" unit="chars" resp="EPT"/>
-							<c>dugud</c>
+							<w lemma="do-beir" lemmaRef="http://www.dil.ie/17216" pos="verb"
+								>dugud</w>
 							<space type="scribal"/>
 							<w lemma="do" lemmaRef="http://www.dil.ie/17096"
-								pos="prepositional_pronoun">duit</w>
-							<space type="scribal"/>
+								pos="prepositional_pronoun">d<unclear reason="text_obscure"
+									cert="medium" resp="EPT">uid</unclear></w>
 							<w lemma="acht" lemmaRef="http://www.dil.ie/200" pos="preposition">
 								<abbr cert="high">
 									<g ref="g10">acht</g>
@@ -2457,13 +2455,11 @@
 								</abbr>
 							</w>
 							<space type="scribal"/>
-							<w lemma="nó" lemmaRef="http://www.dil.ie/33204" pos="conjunction"
-								>no</w>
-							<w lemma="co" lemmaRef="http://www.dil.ie/9786" pos="preposition">go</w>
-							<w lemma="trúag" lemmaRef="http://www.dil.ie/42079" pos="adjective"
-									>t<add type="insertion" place="above" hand="Hand7">r</add>
-								<unclear reason="text_obscure" cert="medium" resp="EPT"
-								>oi</unclear>g</w>
+							<w lemma="no co" lemmaRef="http://www.dil.ie/33229" pos="conjunction"
+									>no<space type="force"/>go</w>
+							<w lemma="tréicid" lemmaRef="http://www.dil.ie/41739" pos="verb"><add
+									type="insertion" place="above" hand="Hand7">t</add>r <unclear
+									reason="text_obscure" cert="medium" resp="EPT">ei</unclear>g</w>
 							<pc>.</pc>
 							<space type="scribal"/>
 						</l>
