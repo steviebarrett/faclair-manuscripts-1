@@ -210,7 +210,7 @@ if ($diplo=='both') {
       </div>
   </body>
   <!-- SB: zoom function for images - needed to put it here due to jQuery conflicts -->
-  <script src="../JS_Files/zoomio/zoomio.js"/>
+  <script src="https://cdn.jsdelivr.net/npm/zoomio@2.0.2/zoomio.min.js"></script>
   <script>
     $(function() {
 
