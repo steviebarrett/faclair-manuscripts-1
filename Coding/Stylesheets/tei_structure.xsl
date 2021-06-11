@@ -2,6 +2,8 @@
 <!-- This stylesheet prints out a table in XHTML giving each TEI XML element in use in the corpus (or the portions of it in scope), with all its possible attributes, parents, and children, with a space for further documentation. -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema" exclude-result-prefixes="xs" version="2.0">
+    <xsl:strip-space elements="*"/>
+    
     <xsl:template match="/">
         <html xmlns="http://www.w3.org/1999/xhtml">
             <head>
@@ -102,15 +104,18 @@
                                                   select="//*[name() = $element_name]/child::*">
                                                   <xsl:variable name="child_name" select="name()"/>
                                                   <item>
-                                                  <xsl:value-of select="$child_name"/>
+                                                      &lt;<xsl:value-of select="$child_name"/>&gt;
                                                   </item>
                                                 </xsl:for-each>
+                                                <xsl:if test="text()">
+                                                    <item>text()</item>
+                                                </xsl:if>
                                             </array>
                                         </xsl:variable>
                                         <xsl:for-each select="$children_array/*">
                                             <xsl:if
                                                 test="not(string(.) = preceding-sibling::*/text())">
-                                                  &lt;<xsl:value-of select="string(.)"/>&gt; <br/>
+                                                  <xsl:value-of select="string(.)"/><br/>
                                             </xsl:if>
                                         </xsl:for-each>
                                     </td>
