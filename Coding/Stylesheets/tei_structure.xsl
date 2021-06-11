@@ -3,22 +3,23 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema" exclude-result-prefixes="xs" version="2.0">
     <xsl:strip-space elements="*"/>
-    
+
     <xsl:variable name="timestamp">
         <xsl:value-of
             select="
-            (current-dateTime() -
-            xs:dateTime('1970-01-01T00:00:00'))
-            div xs:dayTimeDuration('PT1S') * 1000"
+                (current-dateTime() -
+                xs:dateTime('1970-01-01T00:00:00'))
+                div xs:dayTimeDuration('PT1S') * 1000"
         />
     </xsl:variable>
-    
+
     <xsl:template match="/">
-        <xsl:result-document href="{concat('Data\TEI Structure\teiStructure_', $timestamp, '.xhtml')}">
+        <xsl:result-document
+            href="{concat('Data\TEI Structure\teiStructure_', $timestamp, '.xhtml')}">
             <xsl:call-template name="main_table"/>
         </xsl:result-document>
     </xsl:template>
-    
+
     <xsl:template name="main_table">
         <html xmlns="http://www.w3.org/1999/xhtml" n="{$timestamp}">
             <head>
@@ -29,26 +30,6 @@
                     td {
                         border: 1px solid black;
                         font-size: 11;
-                    }
-                    span {
-                        display: inline;
-                    }
-                    span.expansion {
-                        font-style: italic;
-                    }
-                    span.unclear {
-                        color: #696969;
-                    }
-                    span.supplied {
-                        font-variant: small-caps;
-                        color: #ff0000;
-                    }
-                    span.form_in_context {
-                        background-color: #05ffb0;
-                        font-weight: bold;
-                    }
-                    del {
-                        text-decoration: line-through;
                     }</style>
             </head>
             <body>
@@ -68,7 +49,13 @@
                                 <tr>
                                     <xsl:attribute name="id" select="concat('row_', $element_name)"/>
                                     <!-- 'Name' Column -->
-                                    <td>&lt;<xsl:value-of select="$element_name"/>&gt;</td>
+                                    <td>
+                                        <b>
+                                            <xsl:call-template name="element_name">
+                                                <xsl:with-param name="name" select="$element_name"/>
+                                            </xsl:call-template>
+                                        </b>
+                                    </td>
                                     <!-- 'Attributes' Column -->
                                     <td>
                                         <xsl:variable name="attributes_array" as="element()">
@@ -107,7 +94,10 @@
                                         <xsl:for-each select="$parents_array/*">
                                             <xsl:if
                                                 test="not(string(.) = preceding-sibling::*/text())">
-                                                  &lt;<xsl:value-of select="string(.)"/>&gt; <br/>
+                                                <xsl:call-template name="element_name">
+                                                  <xsl:with-param name="name" select="string(.)"/>
+                                                </xsl:call-template>
+                                                <br/>
                                             </xsl:if>
                                         </xsl:for-each>
                                     </td>
@@ -119,18 +109,21 @@
                                                   select="//*[name() = $element_name]/child::*">
                                                   <xsl:variable name="child_name" select="name()"/>
                                                   <item>
-                                                      &lt;<xsl:value-of select="$child_name"/>&gt;
+                                                  <xsl:value-of select="$child_name"/>
                                                   </item>
                                                 </xsl:for-each>
                                                 <xsl:if test="text()">
-                                                    <item>text()</item>
+                                                  <item>text()</item>
                                                 </xsl:if>
                                             </array>
                                         </xsl:variable>
                                         <xsl:for-each select="$children_array/*">
                                             <xsl:if
                                                 test="not(string(.) = preceding-sibling::*/text())">
-                                                  <xsl:value-of select="string(.)"/><br/>
+                                                <xsl:call-template name="element_name">
+                                                  <xsl:with-param name="name" select="string(.)"/>
+                                                </xsl:call-template>
+                                                <br/>
                                             </xsl:if>
                                         </xsl:for-each>
                                     </td>
@@ -143,6 +136,16 @@
                 </table>
             </body>
         </html>
+    </xsl:template>
+
+    <xsl:template name="element_name">
+        <xsl:param name="name"/>
+        <xsl:choose>
+            <xsl:when test="$name = 'text()'">
+                <xsl:value-of select="$name"/>
+            </xsl:when>
+            <xsl:otherwise>&lt;<xsl:value-of select="$name"/>&gt;</xsl:otherwise>
+        </xsl:choose>
     </xsl:template>
 
 </xsl:stylesheet>
