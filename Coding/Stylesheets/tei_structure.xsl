@@ -4,8 +4,23 @@
     xmlns:xs="http://www.w3.org/2001/XMLSchema" exclude-result-prefixes="xs" version="2.0">
     <xsl:strip-space elements="*"/>
     
+    <xsl:variable name="timestamp">
+        <xsl:value-of
+            select="
+            (current-dateTime() -
+            xs:dateTime('1970-01-01T00:00:00'))
+            div xs:dayTimeDuration('PT1S') * 1000"
+        />
+    </xsl:variable>
+    
     <xsl:template match="/">
-        <html xmlns="http://www.w3.org/1999/xhtml">
+        <xsl:result-document href="{concat('Data\TEI Structure\teiStructure_', $timestamp, '.xhtml')}">
+            <xsl:call-template name="main_table"/>
+        </xsl:result-document>
+    </xsl:template>
+    
+    <xsl:template name="main_table">
+        <html xmlns="http://www.w3.org/1999/xhtml" n="{$timestamp}">
             <head>
                 <title>FnaG MSS Corpus: TEI XML Structure</title>
                 <style>
@@ -120,7 +135,7 @@
                                         </xsl:for-each>
                                     </td>
                                     <!-- 'Description' Column -->
-                                    <td> </td>
+                                    <td/>
                                 </tr>
                             </xsl:if>
                         </xsl:for-each>
