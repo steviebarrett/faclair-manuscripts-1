@@ -30,7 +30,8 @@
                     td {
                         border: 1px solid black;
                         font-size: 11;
-                    }</style>
+                    }
+                </style>
             </head>
             <body>
                 <table>
@@ -144,7 +145,11 @@
             <xsl:when test="$name = 'text()'">
                 <xsl:value-of select="$name"/>
             </xsl:when>
-            <xsl:otherwise>&lt;<xsl:value-of select="$name"/>&gt;</xsl:otherwise>
+            <xsl:otherwise>
+                <xsl:variable name="url"
+                    select="concat('https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-', $name, '.html')"/>
+                <a href="{$url}" target="_blank">&lt;<xsl:value-of select="$name"/>&gt;</a>
+            </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
 
