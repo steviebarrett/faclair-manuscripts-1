@@ -45,6 +45,10 @@
     <xsl:apply-templates select="tei:profileDesc/tei:handNotes/tei:handNote"/>
     <h2>Keywords</h2>
     <xsl:apply-templates select="tei:profileDesc/tei:textClass/tei:keywords/tei:term"/>
+    <xsl:if test="tei:encodingDesc/tei:p/text()">
+      <h2>Keywords</h2>
+      <xsl:apply-templates select="tei:encodingDesc/tei:p"/>
+    </xsl:if>
   </xsl:template>
 
   <xsl:template match="tei:msDesc">
@@ -118,10 +122,27 @@
     </ul>
   </xsl:template>
 
-  <xsl:template match="tei:hi[@rend = 'italics']">
-    <em>
-      <xsl:apply-templates/>
-    </em>
+  <xsl:template match="tei:hi">
+    <xsl:choose>
+      <xsl:when test="@rend = 'italics'">
+        <em>
+          <xsl:apply-templates/>
+        </em>
+      </xsl:when>
+      <xsl:when test="@rend = 'sup'">
+        <sup>
+          <xsl:apply-templates/>
+        </sup>
+      </xsl:when>
+      <xsl:when test="@rend = 'bold'">
+        <b>
+          <xsl:apply-templates/>
+        </b>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:apply-templates/>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
   <xsl:template match="tei:ref">
