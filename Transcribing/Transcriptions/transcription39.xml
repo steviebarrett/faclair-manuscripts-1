@@ -9,14 +9,13 @@
 				<respStmt corresp="MMA">
 					<name>Martina Maher</name>
 					<resp>Transcriber</resp>
-					<resp>Editor</resp>
 				</respStmt>
 				<respStmt corresp="WGI">
 					<name>William Gillies</name>
 					<resp>Overseer</resp>
 				</respStmt>
 			</titleStmt>
-			<extent> ... words </extent>
+			<extent>7304 words</extent>
 			<publicationStmt>
 				<authority sameAs="authority"/>
 				<availability status="restricted">
@@ -45,9 +44,8 @@
 							<explicit>XXX</explicit>
 							<filiation/>
 							<author role="scribe" corresp="Hand68"/>
-							<textLang mainLang="ghc" otherLangs="gd">
-								<note/>
-							</textLang>
+							<textLang mainLang="ghc" otherLangs="gd"/>
+							<note><p/></note>
 							<biblFull>
 								<fileDesc>
 									<titleStmt>
@@ -60,6 +58,59 @@
 									<textClass>
 										<keywords>
 											<term>narrative</term>
+											<term>prose</term>
+										</keywords>
+									</textClass>
+								</profileDesc>
+							</biblFull>
+						</msItem>
+						<msItem xml:id="MS39.2">
+							<locus>XXX</locus>
+							<title>Meisneach mileadh a mic eóin</title>
+							<incipit>XXX</incipit>
+							<explicit>XXX</explicit>
+							<filiation/>
+							<author role="scribe" corresp="Hand68"/>
+							<textLang mainLang="ghc" otherLangs="gd"/>
+							<note><p/></note>
+							<biblFull>
+								<fileDesc>
+									<titleStmt>
+										<title>Meisneach mileadh a mic eóin</title>
+									</titleStmt>
+									<publicationStmt><p>Draft transcription</p></publicationStmt>
+									<sourceDesc><p>Transcribed from manuscript</p></sourceDesc>
+								</fileDesc>
+								<profileDesc>
+									<textClass>
+										<keywords>
+											<term>poetry</term>
+										</keywords>
+									</textClass>
+								</profileDesc>
+							</biblFull>
+						</msItem>
+						<msItem xml:id="MS39.3">
+							<locus>XXX</locus>
+							<title>Dual freasdal ar ferg flatha</title>
+							<incipit>XXX</incipit>
+							<explicit>XXX</explicit>
+							<filiation/>
+							<author role="scribe" corresp="Hand68"/>
+							<textLang mainLang="ghc" otherLangs="gd"/>
+							<note><p/></note>
+							<biblFull>
+								<fileDesc>
+									<titleStmt>
+										<title>Dual freasdal ar ferg flatha</title>
+									</titleStmt>
+									<publicationStmt><p>Draft transcription</p></publicationStmt>
+									<sourceDesc><p>Transcribed from manuscript</p></sourceDesc>
+								</fileDesc>
+								<profileDesc>
+									<textClass>
+										<keywords>
+											<term>poetry</term>
 										</keywords>
 									</textClass>
 								</profileDesc>
@@ -80,26 +131,24 @@
 						</objectDesc>
 					</physDesc>
 					<history>
-						<provenance/>
+						<summary/>
 					</history>
 				</msDesc>
 			</sourceDesc>
 		</fileDesc>
-		<encodingDesc>
-			<metDecl>
-				<p/>
-			</metDecl>
-			<refsDecl>
-				<p/>
-			</refsDecl>
-		</encodingDesc>
+		<encodingDesc><p/></encodingDesc>
 		<profileDesc>
+			<langUsage>
+				<p/>
+			</langUsage>
 			<handNotes>
 				<handNote corresp="Hand68"/>
 			</handNotes>
 			<textClass>
 				<keywords>
-					<term/>
+					<term>narrative</term>
+					<term>prose</term>
+					<term>poetry</term>
 				</keywords>
 			</textClass>
 		</profileDesc>
@@ -15706,7 +15755,7 @@
 					</l>
 				</lg>
 			</div>
-			<div n="3" type="poetry" corresp="MS39.3">
+			<div n="3" type="verse" corresp="MS39.3">
 				<lg n="1" type="stanza" xml:id="MS39.3.1">
 					<l n="a" xml:id="MS39.3.1a">
 					<pb n="31r" xml:id="MS39.f31r"/>
