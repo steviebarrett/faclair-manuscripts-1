@@ -10649,7 +10649,8 @@
 							</abbr>
 						</w>
 						<space type="scribal"/>
-						<w pos="prefix-adjective" lemmaSL="an-shocair" slipRef="https://dasg.ac.uk/slips/index.php?id=0020680">
+						<w pos="prefix-adjective" lemmaSL="an-shocair"
+							slipRef="https://dasg.ac.uk/slips/index.php?id=0020680">
 							<w lemma="in-" lemmaRef="http://www.dil.ie/28197" pos="prefix">an</w>
 							<w lemma="socair" lemmaRef="http://www.dil.ie/38224" pos="adjective">
 								<abbr cert="high">s<g ref="g4">h</g>
@@ -30349,14 +30350,16 @@
 					</l>
 					<l n="b" xml:id="MS30.27.63b">
 						<lb n="17" xml:id="MS30.30r.17"/>
-						<sic><w lemma="immar" lemmaRef="http://www.dil.ie/27721" pos="conjunction"
-								>mar</w></sic>
-						<corr resp="EPT">
-							<w lemma="nár" lemmaRef="http://www.dil.ie/32974" pos="particle"><w
-									lemma="ná" lemmaRef="http://www.dil.ie/32900" pos="particle"
-									>na</w><w lemma="ro" lemmaRef="http://www.dil.ie/35364"
-									pos="particle">r</w></w>
-						</corr>
+						<choice>
+							<sic><w lemma="immar" lemmaRef="http://www.dil.ie/27721"
+									pos="conjunction">mar</w></sic>
+							<corr resp="EPT">
+								<w lemma="nár" lemmaRef="http://www.dil.ie/32974" pos="particle"><w
+										lemma="ná" lemmaRef="http://www.dil.ie/32900" pos="particle"
+										>na</w><w lemma="ro" lemmaRef="http://www.dil.ie/35364"
+										pos="particle">r</w></w>
+							</corr>
+						</choice>
 						<space type="scribal"/>
 						<unclear reason="interp_obscure" cert="medium" resp="EPT"><w lemma="opaid"
 								lemmaRef="http://www.dil.ie/33904" pos="verb">ob<abbr cert="high"><g
