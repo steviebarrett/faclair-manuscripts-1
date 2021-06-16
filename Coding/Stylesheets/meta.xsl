@@ -83,7 +83,7 @@
       </xsl:if>
       <li>
         <xsl:text>Contents: </xsl:text>
-        <xsl:apply-templates select="tei:msContents/tei:summary/tei:p/*"/>
+        <xsl:apply-templates select="tei:msContents/tei:summary/tei:p"/>
         <ul>
           <xsl:apply-templates select="tei:msContents/tei:msItem"/>
         </ul>
