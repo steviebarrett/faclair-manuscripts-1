@@ -144,7 +144,29 @@
 										/>
 									</xsl:attribute>
 								</xsl:if>
-								<xsl:variable name="firstLem"
+								<!-- New -->
+								<xsl:variable name="lems" as="element()">
+									<lems>
+										<xsl:for-each
+											select="//tei:w[@lemmaRef = $wordID and not(@type = 'data')]">
+											<lem>
+												<xsl:value-of select="@lemma"/>
+											</lem>
+										</xsl:for-each>
+									</lems>
+								</xsl:variable>
+								<xsl:for-each select="$lems/*">
+									<xsl:variable name="lem" select="string(.)"/>
+									<xsl:if test="not(self::* = preceding-sibling::*)">
+										<span>
+											<xsl:attribute name="type">lem</xsl:attribute>
+											<xsl:attribute name="n"
+												select="count($lems/*[self::* = $lem])"/>
+											<xsl:value-of select="$lem"/>
+										</span>
+									</xsl:if>
+								</xsl:for-each>
+								<!-- <xsl:variable name="firstLem"
 									select="//tei:w[1][@lemmaRef = $wordID and not(@lemmaRef = preceding::tei:w/@lemmaRef)]/@lemma"/>
 								<xsl:if test="//tei:w[@lemmaRef = $wordID and @lemma != $firstLem]">
 									<span>
@@ -170,31 +192,63 @@
 											</span>
 										</xsl:if>
 									</xsl:for-each>
-								</xsl:if>
-								<xsl:variable name="firstForm"
+								</xsl:if> -->
+								<!-- New -->
+								<xsl:variable name="forms" as="element()">
+									<forms>
+										<xsl:for-each
+											select="//tei:w[@lemmaRef = $wordID and not(@type = 'data')]">
+											<form>
+												<xsl:value-of
+												select="string(translate(normalize-space(.), ' ', ''))"
+												/>
+											</form>
+										</xsl:for-each>
+									</forms>
+								</xsl:variable>
+								<xsl:for-each select="$forms/*">
+									<xsl:variable name="form" select="string(.)"/>
+									<xsl:if test="not(self::* = preceding-sibling::*)">
+										<span>
+											<xsl:attribute name="type">form</xsl:attribute>
+											<xsl:attribute name="n"
+												select="count($forms/*[self::* = $form])"/>
+											<xsl:value-of select="$form"/>
+										</span>
+									</xsl:if>
+								</xsl:for-each>
+								<!-- <xsl:variable name="firstForm"
 									select="//tei:w[not(descendant::tei:w) and not(@type = 'data') and @lemmaRef = $wordID and not(@lemmaRef = preceding::tei:w[not(descendant::tei:w)]/@lemmaRef)]/string(translate(normalize-space(self::*), ' ', ''))"/>
 								<xsl:if
 									test="//tei:w[not(descendant::tei:w) and not(@type = 'data') and @lemmaRef = $wordID and not(string(translate(normalize-space(self::*), ' ', '')) = $firstForm)]">
 									<span>
 										<xsl:attribute name="type">altForm</xsl:attribute>
-										<xsl:value-of select="translate(normalize-space($firstForm), ' ', '')"/>
+										<xsl:value-of
+											select="translate(normalize-space($firstForm), ' ', '')"
+										/>
 									</span>
 									<xsl:for-each
 										select="//tei:w[not(descendant::tei:w) and not(@type = 'data') and @lemmaRef = $wordID and not(string(translate(normalize-space(self::*), ' ', '')) = preceding::tei:w[not(@type = 'data') and @lemmaRef = $wordID]/string(translate(normalize-space(self::*), ' ', ''))) and not(string(translate(normalize-space(self::*), ' ', '')) = $firstForm)]">
-										<xsl:variable name="thisForm" select="string(translate(normalize-space(self::*), ' ', ''))"/>
+										<xsl:variable name="thisForm"
+											select="string(translate(normalize-space(self::*), ' ', ''))"/>
 										<span>
 											<xsl:attribute name="type">altForm</xsl:attribute>
-											<xsl:value-of select="translate(normalize-space($thisForm), ' ', '')"/>
+											<xsl:value-of
+												select="translate(normalize-space($thisForm), ' ', '')"
+											/>
 										</span>
 									</xsl:for-each>
 								</xsl:if>
-								<xsl:for-each select="//tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree[@corresp = $wordID]/tei:w/comment()">
+								<xsl:for-each
+									select="//tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree[@corresp = $wordID]/tei:w/comment()">
 									<xsl:comment>
 										<xsl:value-of select="concat(' ', string(preceding::tei:span[1]/@type), ' &quot;', preceding::tei:span[1], '&quot;', ': ', string(.))"/>
 									</xsl:comment>
-								</xsl:for-each>
+								</xsl:for-each> -->
 							</w>
-							<xsl:copy-of select="//tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree[@corresp = $wordID]/comment()" copy-namespaces="no"/>
+							<xsl:copy-of
+								select="//tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree[@corresp = $wordID]/comment()"
+								copy-namespaces="no"/>
 							<xsl:copy-of
 								select="//tei:TEI[@xml:id = 'hwData']/descendant::tei:entryFree[@corresp = $wordID]/tei:gramGrp"
 								copy-namespaces="no"/>
