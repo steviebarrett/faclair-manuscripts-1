@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- This stylesheet prints out a table in XHTML giving each TEI XML element in use in the corpus (or the portions of it in scope), with all its possible attributes, parents, and children, with a space for further documentation. -->
+<!-- This stylesheet prints out a table in HTML giving each TEI XML element in use in the corpus (or the portions of it in scope), 
+    with all its possible attributes, parents, and children. -->
+<!-- The rightmost column is populated from another document ('teiStructure_descs.xml'). This is updated every time this stylesheet is
+run with any new elements encountered in the corpus. -->
+<!-- TO DO: get 'teiStructure_descs.xml' to add new attributes to pre-existing elements too. -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema" exclude-result-prefixes="xs" version="2.0">
     <xsl:strip-space elements="*"/>
@@ -13,11 +17,56 @@
         />
     </xsl:variable>
 
+    <xsl:variable name="old_descs">
+        <xsl:choose>
+            <xsl:when
+                test="document('..\..\Transcribing\Data\TEI Structure\teiStructure_descs.xml')">
+                <xsl:copy-of
+                    select="document('..\..\Transcribing\Data\TEI Structure\teiStructure_descs.xml')"
+                />
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:value-of select="'null'"/>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:variable>
+
     <xsl:template match="/">
         <xsl:result-document
-            href="{concat('Data\TEI Structure\teiStructure_', $timestamp, '.xhtml')}">
+            href="{concat('Data\TEI Structure\teiStructure_', $timestamp, '.html')}" method="html">
             <xsl:call-template name="main_table"/>
         </xsl:result-document>
+        <xsl:result-document href="{'Data\TEI Structure\teiStructure_descs.xml'}" method="xml">
+            <xsl:call-template name="descs"/>
+        </xsl:result-document>
+    </xsl:template>
+
+    <xsl:template name="descs">
+        <xsl:element name="descs">
+            <xsl:for-each select="//*">
+                <xsl:variable name="element_name" select="name()"/>
+                <xsl:variable name="row_id" select="concat('row_', $element_name)"/>
+                <xsl:if test="not(preceding::*/name() = $element_name)">
+                    <xsl:choose>
+                        <xsl:when
+                            test="$old_descs != 'null' and $old_descs//desc[@corresp = $row_id and child::text()]">
+                            <xsl:copy-of
+                                select="$old_descs//desc[@corresp = $row_id and child::text()]"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:element name="desc">
+                                <xsl:attribute name="element">
+                                    <xsl:value-of select="$element_name"/>
+                                </xsl:attribute>
+                                <xsl:attribute name="corresp">
+                                    <xsl:value-of select="$row_id"/>
+                                </xsl:attribute>
+                            </xsl:element>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </xsl:if>
+            </xsl:for-each>
+        </xsl:element>
     </xsl:template>
 
     <xsl:template name="main_table">
@@ -30,8 +79,7 @@
                     td {
                         border: 1px solid black;
                         font-size: 11;
-                    }
-                </style>
+                    }</style>
             </head>
             <body>
                 <table>
@@ -46,9 +94,10 @@
                         </tr>
                         <xsl:for-each select="//*">
                             <xsl:variable name="element_name" select="name()"/>
+                            <xsl:variable name="row_id" select="concat('row_', $element_name)"/>
                             <xsl:if test="not(preceding::*/name() = $element_name)">
                                 <tr>
-                                    <xsl:attribute name="id" select="concat('row_', $element_name)"/>
+                                    <xsl:attribute name="id" select="$row_id"/>
                                     <!-- 'Name' Column -->
                                     <td>
                                         <b>
@@ -129,7 +178,11 @@
                                         </xsl:for-each>
                                     </td>
                                     <!-- 'Description' Column -->
-                                    <td/>
+                                    <td>
+                                        <xsl:apply-templates
+                                            select="document('..\..\Transcribing\Data\TEI Structure\teiStructure_descs.xml')//desc[@corresp = $row_id]"
+                                        />
+                                    </td>
                                 </tr>
                             </xsl:if>
                         </xsl:for-each>
@@ -148,9 +201,32 @@
             <xsl:otherwise>
                 <xsl:variable name="url"
                     select="concat('https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-', $name, '.html')"/>
-                <a href="{$url}" target="_blank">&lt;<xsl:value-of select="$name"/>&gt;</a>
+                &lt;<a href="{$url}" target="_blank"><xsl:value-of select="$name"/></a>&gt;
             </xsl:otherwise>
         </xsl:choose>
+    </xsl:template>
+    
+    <xsl:template match="hi">
+        <xsl:if test="@rend = 'italics'">
+            <i><xsl:apply-templates></xsl:apply-templates></i>
+        </xsl:if>
+        <xsl:if test="@rend = 'bold'">
+            <b><xsl:apply-templates></xsl:apply-templates></b>
+        </xsl:if>
+        <xsl:if test="@rend = 'underline'">
+            <u><xsl:apply-templates></xsl:apply-templates></u>
+        </xsl:if>
+        <xsl:if test="@rend = 'superscript'">
+            <sup><xsl:apply-templates></xsl:apply-templates></sup>
+        </xsl:if>
+    </xsl:template>
+    
+    <xsl:template match="ref">
+        <xsl:element name="a">
+            <xsl:attribute name="href" select="@target"/>
+            <xsl:attribute name="target" select="'_blank'"/>
+            <xsl:apply-templates/>
+        </xsl:element>
     </xsl:template>
 
 </xsl:stylesheet>
