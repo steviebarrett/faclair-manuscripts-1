@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:tei="http://www.tei-c.org/ns/1.0"
-    xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns="https://dasg.ac.uk/corpus/"
     exclude-result-prefixes="xs" version="2.0">
     <xsl:variable name="timestamp">
         <xsl:value-of
@@ -11,7 +11,7 @@
         />
     </xsl:variable>
     <xsl:variable name="transcriptionID">
-        <xsl:value-of select="//tei:TEI[not(@xml:id = 'hwData')]/@xml:id"/>
+        <xsl:value-of select="//ns:TEI[not(@xml:id = 'hwData')]/@xml:id"/>
     </xsl:variable>
     <xsl:variable name="filename">
         <xsl:value-of select="concat($transcriptionID, '_data', '-', $timestamp, '.xhtml')"/>
@@ -96,32 +96,32 @@
                         </thead>
                         <tbody>
                             <xsl:for-each
-                                select="//tei:w[not(descendant::tei:w or @xml:lang or @type = 'data' or ancestor::tei:supplied or ancestor::tei:unclear[@reason = 'damage'] or ancestor::tei:corr) and @lemma]">
+                                select="//ns:w[not(descendant::ns:w or @xml:lang or @type = 'data' or ancestor::ns:supplied or ancestor::ns:unclear[@reason = 'damage'] or ancestor::ns:corr) and @lemma]">
                                 <xsl:sort order="ascending"
                                     select="translate(translate(@lemma, '*-.', ''), 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
                                 <xsl:sort select="@pos"/>
                                 <xsl:sort select="@lemmaRef"/>
                                 <xsl:variable name="lineID">
                                     <xsl:choose>
-                                        <xsl:when test="preceding::tei:lb[1]/@xml:id">
-                                            <xsl:value-of select="preceding::tei:lb[1]/@xml:id"/>
+                                        <xsl:when test="preceding::ns:lb[1]/@xml:id">
+                                            <xsl:value-of select="preceding::ns:lb[1]/@xml:id"/>
                                         </xsl:when>
-                                        <xsl:when test="preceding::tei:lb[1]/@sameAs">
-                                            <xsl:value-of select="preceding::tei:lb[1]/@sameAs"/>
+                                        <xsl:when test="preceding::ns:lb[1]/@sameAs">
+                                            <xsl:value-of select="preceding::ns:lb[1]/@sameAs"/>
                                         </xsl:when>
                                     </xsl:choose>
                                 </xsl:variable>
                                 <xsl:variable name="formID"
-                                    select="concat(ancestor::tei:TEI/@xml:id, '_', count(preceding::*))"/>
+                                    select="concat(ancestor::ns:TEI/@xml:id, '_', count(preceding::*))"/>
                                 <xsl:variable name="lemRef" select="@lemmaRef"/>
                                 <xsl:variable name="pos" select="@pos"/>
                                 <xsl:variable name="divRef">
                                     <xsl:choose>
-                                        <xsl:when test="ancestor::tei:div[1]/@corresp">
-                                            <xsl:value-of select="ancestor::tei:div[1]/@corresp"/>
+                                        <xsl:when test="ancestor::ns:div[1]/@corresp">
+                                            <xsl:value-of select="ancestor::ns:div[1]/@corresp"/>
                                         </xsl:when>
-                                        <xsl:when test="ancestor::tei:div[1]/@xml:id">
-                                            <xsl:value-of select="ancestor::tei:div[1]/@xml:id"/>
+                                        <xsl:when test="ancestor::ns:div[1]/@xml:id">
+                                            <xsl:value-of select="ancestor::ns:div[1]/@xml:id"/>
                                         </xsl:when>
                                     </xsl:choose>
                                 </xsl:variable>
@@ -153,7 +153,7 @@
                                     <td>
                                         <xsl:choose>
                                             <xsl:when
-                                                test="descendant::tei:abbr[@cert != 'high'] or descendant::tei:unclear or descendant::tei:supplied or @lemma = 'unknown' or ancestor::tei:unclear or ancestor::tei:choice">
+                                                test="descendant::ns:abbr[@cert != 'high'] or descendant::ns:unclear or descendant::ns:supplied or @lemma = 'unknown' or ancestor::ns:unclear or ancestor::ns:choice">
                                                 <xsl:text>yes</xsl:text>
                                             </xsl:when>
                                             <xsl:otherwise>
@@ -304,7 +304,7 @@
                                             <xsl:when test="@pos">
                                                 <span class="scribe">
                                                   <xsl:value-of
-                                                  select="preceding::tei:handShift[1]/@new"/>
+                                                  select="preceding::ns:handShift[1]/@new"/>
                                                 </span>
                                             </xsl:when>
                                             <xsl:otherwise>
@@ -319,8 +319,8 @@
                                     </td>
                                     <td class="textref_cell">
                                         <xsl:choose>
-                                            <xsl:when test="ancestor::tei:lg">
-                                                <xsl:value-of select="ancestor::tei:l/@xml:id"/>
+                                            <xsl:when test="ancestor::ns:lg">
+                                                <xsl:value-of select="ancestor::ns:l/@xml:id"/>
                                             </xsl:when>
                                             <xsl:otherwise>
                                                 <xsl:value-of select="$divRef"/>
@@ -329,9 +329,9 @@
                                     </td>
                                     <td class="context_cell">
                                         <xsl:choose>
-                                            <xsl:when test="ancestor::tei:lg[@type = 'stanza']">
+                                            <xsl:when test="ancestor::ns:lg[@type = 'stanza']">
                                                 <xsl:apply-templates
-                                                  select="ancestor::tei:l/child::*" mode="context">
+                                                  select="ancestor::ns:l/child::*" mode="context">
                                                   <xsl:with-param name="formID">
                                                   <xsl:value-of
                                                   select="substring-after($formID, '_')"/>
@@ -341,9 +341,9 @@
                                                   </xsl:with-param>
                                                 </xsl:apply-templates>
                                             </xsl:when>
-                                            <xsl:when test="ancestor::tei:p">
+                                            <xsl:when test="ancestor::ns:p">
                                                 <xsl:apply-templates
-                                                  select="//tei:lb[@xml:id = $lineID or @sameAs = $lineID]/following::*[parent::tei:p and preceding::tei:lb[1]/@* = $lineID and not(ancestor::tei:TEI[@xml:id = 'hwData']) and not(ancestor::tei:note[@type = 'fn'])]"
+                                                  select="//ns:lb[@xml:id = $lineID or @sameAs = $lineID]/following::*[parent::ns:p and preceding::ns:lb[1]/@* = $lineID and not(ancestor::ns:TEI[@xml:id = 'hwData']) and not(ancestor::ns:note[@type = 'fn'])]"
                                                   mode="context">
                                                   <xsl:with-param name="formID">
                                                   <xsl:value-of
@@ -372,10 +372,10 @@
             <xsl:apply-templates mode="form"/>
         </span>
     </xsl:template>
-    <xsl:template match="tei:abbr" mode="form">
+    <xsl:template match="ns:abbr" mode="form">
         <xsl:apply-templates mode="form"/>
     </xsl:template>
-    <xsl:template match="tei:g" mode="form">
+    <xsl:template match="ns:g" mode="form">
         <xsl:choose>
             <xsl:when test="contains(@ref, 'l')">
                 <xsl:apply-templates mode="form"/>
@@ -387,37 +387,37 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-    <xsl:template match="tei:add[@type = 'insertion']" mode="form">
+    <xsl:template match="ns:add[@type = 'insertion']" mode="form">
         <span class="insertion">
             <sup>
                 <xsl:apply-templates mode="form"/>
             </sup>
         </span>
     </xsl:template>
-    <xsl:template match="tei:del" mode="form">
+    <xsl:template match="ns:del" mode="form">
         <span class="deletion">
             <del>
                 <xsl:apply-templates mode="form"/>
             </del>
         </span>
     </xsl:template>
-    <xsl:template match="tei:unclear" mode="form">
+    <xsl:template match="ns:unclear" mode="form">
         <span class="unclear">
             <xsl:apply-templates mode="form"/>
         </span>
     </xsl:template>
-    <xsl:template match="tei:supplied" mode="form">
+    <xsl:template match="ns:supplied" mode="form">
         <span class="supplied">
             <xsl:apply-templates mode="form"/>
         </span>
     </xsl:template>
-    <xsl:template match="tei:seg[@type = 'cfe']" mode="form">
+    <xsl:template match="ns:seg[@type = 'cfe']" mode="form">
         <xsl:text/>
     </xsl:template>
-    <xsl:template match="tei:space" mode="form">
+    <xsl:template match="ns:space" mode="form">
         <xsl:text xml:space="preserve"> </xsl:text>
     </xsl:template>
-    <xsl:template match="tei:l" mode="context">
+    <xsl:template match="ns:l" mode="context">
         <xsl:param name="formID"/>
         <xsl:param name="formLemRef"/>
         <xsl:apply-templates select="child::*" mode="context">
@@ -425,26 +425,26 @@
             <xsl:with-param name="formLemRef" select="$formLemRef"/>
         </xsl:apply-templates>
     </xsl:template>
-    <xsl:template match="tei:w[descendant::tei:w]" mode="context">
+    <xsl:template match="ns:w[descendant::ns:w]" mode="context">
         <xsl:param name="formID"/>
         <xsl:param name="formLemRef"/>
         <xsl:apply-templates mode="context">
             <xsl:with-param name="formID" select="$formID"/>
             <xsl:with-param name="formLemRef" select="$formLemRef"/>
         </xsl:apply-templates>
-        <xsl:if test="not(ancestor::tei:w)">
+        <xsl:if test="not(ancestor::ns:w)">
             <xsl:text xml:space="preserve"> </xsl:text>
         </xsl:if>
     </xsl:template>
-    <xsl:template match="tei:w[not(descendant::tei:w)]" mode="context">
+    <xsl:template match="ns:w[not(descendant::ns:w)]" mode="context">
         <xsl:param name="formID"/>
         <xsl:param name="formLemRef"/>
         <xsl:variable name="lemRef" select="@lemmaRef"/>
         <xsl:choose>
-            <xsl:when test="ancestor::tei:w">
+            <xsl:when test="ancestor::ns:w">
                 <xsl:choose>
                     <xsl:when
-                        test="following::tei:w[1][@pos = 'verb' and not(@lemmaRef = 'http://www.dil.ie/29104')]">
+                        test="following::ns:w[1][@pos = 'verb' and not(@lemmaRef = 'http://www.dil.ie/29104')]">
                         <span class="context_form" title="{concat(@lemma, ', ', @pos)}">
                             <xsl:if test="$lemRef = $formLemRef">
                                 <xsl:if test="count(preceding::*) = $formID">
@@ -486,7 +486,7 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-    <xsl:template match="tei:abbr" mode="context">
+    <xsl:template match="ns:abbr" mode="context">
         <xsl:param name="formID"/>
         <xsl:param name="formLemRef"/>
         <xsl:apply-templates mode="context">
@@ -494,7 +494,7 @@
             <xsl:with-param name="formLemRef" select="$formLemRef"/>
         </xsl:apply-templates>
     </xsl:template>
-    <xsl:template match="tei:g" mode="context">
+    <xsl:template match="ns:g" mode="context">
         <xsl:param name="formID"/>
         <xsl:param name="formLemRef"/>
         <xsl:choose>
@@ -514,7 +514,7 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-    <xsl:template match="tei:name" mode="context">
+    <xsl:template match="ns:name" mode="context">
         <xsl:param name="formID"/>
         <xsl:param name="formLemRef"/>
         <xsl:apply-templates mode="context">
@@ -522,19 +522,19 @@
             <xsl:with-param name="formLemRef" select="$formLemRef"/>
         </xsl:apply-templates>
     </xsl:template>
-    <xsl:template match="tei:num" mode="context">
+    <xsl:template match="ns:num" mode="context">
         <xsl:apply-templates mode="context"/>
     </xsl:template>
-    <xsl:template match="tei:note" mode="context">
+    <xsl:template match="ns:note" mode="context">
         <xsl:text/>
     </xsl:template>
-    <xsl:template match="tei:c" mode="context">
+    <xsl:template match="ns:c" mode="context">
         <xsl:apply-templates mode="context"/>
     </xsl:template>
-    <xsl:template match="tei:date" mode="context">
+    <xsl:template match="ns:date" mode="context">
         <xsl:apply-templates mode="context"/>
     </xsl:template>
-    <xsl:template match="tei:add[@type = 'insertion']" mode="context">
+    <xsl:template match="ns:add[@type = 'insertion']" mode="context">
         <xsl:param name="formID"/>
         <xsl:param name="formLemRef"/>
         <span class="insertion">
@@ -546,7 +546,7 @@
             </sup>
         </span>
     </xsl:template>
-    <xsl:template match="tei:del" mode="context">
+    <xsl:template match="ns:del" mode="context">
         <xsl:param name="formID"/>
         <xsl:param name="formLemRef"/>
         <del>
@@ -556,7 +556,7 @@
             </xsl:apply-templates>
         </del>
     </xsl:template>
-    <xsl:template match="tei:unclear[not(@reason = 'damage')]" mode="context">
+    <xsl:template match="ns:unclear[not(@reason = 'damage')]" mode="context">
         <xsl:param name="formID"/>
         <xsl:param name="formLemRef"/>
         <span class="unclear">
@@ -566,7 +566,7 @@
             </xsl:apply-templates>
         </span>
     </xsl:template>
-    <xsl:template match="tei:supplied | tei:unclear[@reason = 'damage']" mode="context">
+    <xsl:template match="ns:supplied | ns:unclear[@reason = 'damage']" mode="context">
         <xsl:param name="formID"/>
         <xsl:param name="formLemRef"/>
         <span class="supplied">
@@ -576,26 +576,26 @@
             </xsl:apply-templates>
         </span>
     </xsl:template>
-    <xsl:template match="tei:choice" mode="context">
+    <xsl:template match="ns:choice" mode="context">
         <xsl:param name="formID"/>
         <xsl:param name="formLemRef"/>
-        <xsl:apply-templates select="tei:corr/child::*" mode="context">
+        <xsl:apply-templates select="ns:corr/child::*" mode="context">
             <xsl:with-param name="formID" select="$formID"/>
             <xsl:with-param name="formLemRef" select="$formLemRef"/>
         </xsl:apply-templates>
     </xsl:template>
-    <xsl:template match="tei:seg[@type = 'fragment']" mode="context">
+    <xsl:template match="ns:seg[@type = 'fragment']" mode="context">
         <span class="fragment">
             <xsl:apply-templates mode="context"/>
         </span>
     </xsl:template>
-    <xsl:template match="tei:seg[@type = 'cfe']" mode="context">
+    <xsl:template match="ns:seg[@type = 'cfe']" mode="context">
         <xsl:text/>
     </xsl:template>
-    <xsl:template match="tei:gap" mode="context">
+    <xsl:template match="ns:gap" mode="context">
         <xsl:text xml:space="preserve">[...] </xsl:text>
     </xsl:template>
-    <xsl:template match="tei:space" mode="context">
+    <xsl:template match="ns:space" mode="context">
         <xsl:text/>
     </xsl:template>
 </xsl:stylesheet>
