@@ -107,7 +107,7 @@ echo '" data-toggle="tooltip" title="compare editions">compare</a>';
           <div class="list-group list-group-flush">
 <?php
 $ms = new SimpleXMLElement("../../Transcribing/Transcriptions/transcription" . $t . ".xml", 0, true);
-$ms->registerXPathNamespace('tei', 'http://www.tei-c.org/ns/1.0');
+$ms->registerXPathNamespace('tei', 'https://dasg.ac.uk/corpus/');
 $lemmas = [];
 foreach ($ms->xpath('descendant::tei:w[@lemmaRef and not(descendant::tei:w)]') as $nextWord) {
   $pair = array($nextWord['lemma'], $nextWord['lemmaRef']);
@@ -118,7 +118,7 @@ foreach ($ms->xpath('descendant::tei:anchor') as $nextAnchor) {
   $copyOf = $nextAnchor['copyOf'];
   $file = '../../Transcribing/Transcriptions/transcription' . $source . '.xml';
   $mms = new SimpleXMLElement($file, 0, true);
-  $mms->registerXPathNamespace('tei', 'http://www.tei-c.org/ns/1.0');
+  $mms->registerXPathNamespace('tei', 'https://dasg.ac.uk/corpus/');
   foreach ($mms->xpath('descendant::tei:div[@corresp=\'' . $copyOf . '\']/descendant::tei:w[@lemmaRef and not(descendant::tei:w)]') as $nextWord) {
     $pair = array($nextWord['lemma'], $nextWord['lemmaRef']);
     $lemmas[] = implode("|", $pair);
