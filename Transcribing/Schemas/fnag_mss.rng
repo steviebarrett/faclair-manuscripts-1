@@ -5618,11 +5618,21 @@ TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 4.1.0/
             segment) represents any segmentation of text below the chunk level. [16.3. Blocks,
             Segments, and Anchors 6.2. Components of the Verse Line 7.2.5. Speech
             Contents]</a:documentation>
-         <ref name="tei_macro.paraContent"/>
-         <!-- <ref name="tei_att.global.attribute.id"/> -->
-         <ref name="tei_att.global.attribute.xmlid"/>
-         <ref name="tei_att.fragmentable.attribute.part"/>
-         <ref name="tei_att.typed.attribute.type"/>
+         <choice>
+            <group>
+               <attribute name="type">
+                  <value>fragment</value>
+               </attribute>
+               <oneOrMore><ref name="tei_att.global.attribute.id"/></oneOrMore>
+            </group>
+            <group>
+               <ref name="tei_macro.paraContent"/>
+               <ref name="tei_att.global.attribute.xmlid"/>
+               <ref name="tei_att.fragmentable.attribute.part"/>
+               <ref name="tei_att.typed.attribute.type"/>
+               <empty/>
+            </group>
+         </choice>
          <empty/>
       </element>
    </define>
