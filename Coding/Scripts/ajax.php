@@ -265,7 +265,7 @@ SQL;
         $xmlId = $id;
         $filepath = "../../Transcribing/corpus.xml";
         $xml = simplexml_load_file($filepath);
-        $xml->registerXPathNamespace('tei', 'http://www.tei-c.org/ns/1.0');
+        $xml->registerXPathNamespace('tei', 'https://dasg.ac.uk/corpus/');
         $nodes = $xml->xpath("/tei:teiCorpus/tei:teiHeader/tei:encodingDesc/tei:charDecl/tei:glyph[@xml:id='{$xmlId}']");
         $node = $nodes[0];
         //$xmlId = (string)$node->attributes($ns="xml", true)[0];     //the xml:id
@@ -279,7 +279,7 @@ SQL;
     public static function getDwelly($edil) {
         $filepath = "../..//Transcribing/hwData.xml"; // change back to /mss/
         $xml = simplexml_load_file($filepath);
-        $xml->registerXPathNamespace('tei', 'http://www.tei-c.org/ns/1.0');
+        $xml->registerXPathNamespace('tei', 'https://dasg.ac.uk/corpus/');
         $nodes = $xml->xpath("/tei:TEI/tei:text/tei:body/tei:entryFree[@corresp='{$edil}']/tei:w");
         $node = $nodes[0];
         $lemmaDW = (string)$node["lemmaDW"];
@@ -291,7 +291,7 @@ SQL;
     public static function getTextInfo($ms, $text) {
         $filepath = "../../Transcribing/Transcriptions/transcription" . $ms . ".xml";
         $xml = simplexml_load_file($filepath);
-        $xml->registerXPathNamespace('tei', 'http://www.tei-c.org/ns/1.0');
+        $xml->registerXPathNamespace('tei', 'https://dasg.ac.uk/corpus/');
         $text = $xml->xpath("/tei:TEI/tei:teiHeader/tei:fileDesc/tei:sourceDesc/tei:msDesc/tei:msContents/tei:msItem[@xml:id='{$text}']")[0];
         return array("title" => (string)$text->title);
     }
@@ -299,7 +299,7 @@ SQL;
     public static function getHandInfo($handid) {
         $filepath = "../../Transcribing/corpus.xml";
         $xml = simplexml_load_file($filepath);
-        $xml->registerXPathNamespace('tei', 'http://www.tei-c.org/ns/1.0');
+        $xml->registerXPathNamespace('tei', 'https://dasg.ac.uk/corpus/');
         $hand = $xml->xpath("/tei:teiCorpus/tei:teiHeader/tei:profileDesc/tei:handNotes/tei:handNote[@xml:id='{$handid}']")[0];
         $notes = array();
         foreach ($hand->note as $note) { $notes[] = $note->asXML(); }
