@@ -1,31 +1,29 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="../Coding/Stylesheets/home.xsl"?>
-<?xml-model href="Schemas/fnag_mss_tei.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
-<teiCorpus xmlns="http://www.tei-c.org/ns/1.0" xmlns:xi="http://www.w3.org/2001/XInclude">
+﻿<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="../Coding/Stylesheets/home.xsl"?><?xml-model href="Schemas/fnag_mss_tei.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<teiCorpus xmlns="https://dasg.ac.uk/corpus/" xmlns:xi="http://www.w3.org/2001/XInclude">
   <teiHeader>
     <fileDesc>
       <titleStmt>
         <title>Faclair na Gaìdhlig: Medieval and Early Modern Manuscript Corpus</title>
         <respStmt>
-          <name xml:id="EPT">Eystein P. Thanisch</name>
+          <name id="d1e16" xml:id="EPT">Eystein P. Thanisch</name>
           <resp>Transcriber</resp>
           <resp>Editor</resp>
         </respStmt>
         <respStmt>
-          <name xml:id="MMA">Martina Maher</name>
+          <name id="d1e28" xml:id="MMA">Martina Maher</name>
           <resp>Transcriber</resp>
           <resp>Editor</resp>
         </respStmt>
         <respStmt>
-          <name xml:id="WGI">William Gillies</name>
+          <name id="d1e40" xml:id="WGI">William Gillies</name>
           <resp>Overseer</resp>
         </respStmt>
         <respStmt>
-          <name xml:id="MMC">Mark McConville</name>
+          <name id="d1e49" xml:id="MMC">Mark McConville</name>
           <resp>Developer</resp>
         </respStmt>
         <respStmt>
-          <name xml:id="SBA">Stephen Barrett</name>
+          <name id="d1e59" xml:id="SBA">Stephen Barrett</name>
           <resp>Developer</resp>
         </respStmt>
       </titleStmt>
@@ -39,7 +37,7 @@
             <addrLine>Isle of Skye</addrLine>
             <addrLine>IV44 8RQ</addrLine>
             <addrLine><email>mail@faclair.ac.uk</email></addrLine>
-            <addrLine><num>01471 888 273</num>
+            <addrLine><num id="d1e97">01471 888 273</num>
             </addrLine>
           </address>
         </authority>
@@ -58,7 +56,7 @@
             </msIdentifier>
             <history>
               <origin>
-                <date from-custom="12">12</date>
+                <date id="d1e136" from-custom="12">12</date>
               </origin>
             </history>
           </msDesc>
@@ -70,7 +68,7 @@
             </msIdentifier>
             <history>
               <origin>
-                <date from-custom="14">14/15</date>
+                <date id="d1e160" from-custom="14">14/15</date>
               </origin>
             </history>
           </msDesc>
@@ -82,7 +80,7 @@
             </msIdentifier>
             <history>
               <origin>
-                <date from-custom="18">18</date>
+                <date id="d1e184" from-custom="18">18</date>
               </origin>
             </history>
           </msDesc>
@@ -94,7 +92,7 @@
             </msIdentifier>
             <history>
               <origin>
-                <date from-custom="15">15</date>
+                <date id="d1e208" from-custom="15">15</date>
               </origin>
             </history>
           </msDesc>
@@ -106,7 +104,7 @@
             </msIdentifier>
             <history>
               <origin>
-                <date from-custom="16">16/17</date>
+                <date id="d1e232" from-custom="16">16/17</date>
               </origin>
             </history>
           </msDesc>
@@ -118,7 +116,7 @@
             </msIdentifier>
             <history>
               <origin>
-                <date from-custom="15">15/16/17</date>
+                <date id="d1e257" from-custom="15">15/16/17</date>
               </origin>
             </history>
           </msDesc>
@@ -130,7 +128,7 @@
             </msIdentifier>
             <history>
               <origin>
-                <date from-custom="17">17</date>
+                <date id="d1e281" from-custom="17">17</date>
               </origin>
             </history>
           </msDesc>
@@ -142,7 +140,7 @@
             </msIdentifier>
             <history>
               <origin>
-                <date from-custom="15">15/16</date>
+                <date id="d1e305" from-custom="15">15/16</date>
               </origin>
             </history>
           </msDesc>
@@ -154,7 +152,7 @@
             </msIdentifier>
             <history>
               <origin>
-                <date from-custom="17">17</date>
+                <date id="d1e329" from-custom="17">17</date>
               </origin>
             </history>
           </msDesc>
@@ -167,7 +165,7 @@
             </msIdentifier>
             <history>
               <origin>
-                <date from-custom="15">15</date>
+                <date id="d1e356" from-custom="15">15</date>
               </origin>
             </history>
           </msDesc>
@@ -180,7 +178,7 @@
             </msIdentifier>
             <history>
               <origin>
-                <date from-custom="17">1610</date>
+                <date id="d1e383" from-custom="17">1610</date>
               </origin>
             </history>
           </msDesc>
@@ -192,7 +190,7 @@
             </msIdentifier>
             <history>
               <origin>
-                <date from-custom="17">17</date>
+                <date id="d1e408" from-custom="17">17</date>
               </origin>
             </history>
           </msDesc>
@@ -204,7 +202,7 @@
             </msIdentifier>
             <history>
               <origin>
-                <date from-custom="16">16/17</date>
+                <date id="d1e432" from-custom="16">16/17</date>
               </origin>
             </history>
           </msDesc>
@@ -216,7 +214,7 @@
             </msIdentifier>
             <history>
               <origin>
-                <date from-custom="16">16</date>
+                <date id="d1e456" from-custom="16">16</date>
               </origin>
             </history>
           </msDesc>
@@ -228,7 +226,7 @@
             </msIdentifier>
             <history>
               <origin>
-                <date from-custom="17">17</date>
+                <date id="d1e480" from-custom="17">17</date>
               </origin>
             </history>
           </msDesc>
@@ -240,7 +238,7 @@
             </msIdentifier>
             <history>
               <origin>
-                <date from-custom="17">17</date>
+                <date id="d1e504" from-custom="17">17</date>
               </origin>
             </history>
           </msDesc>
@@ -252,7 +250,7 @@
             </msIdentifier>
             <history>
               <origin>
-                <date from-custom="16">16</date>
+                <date id="d1e528" from-custom="16">16</date>
               </origin>
             </history>
           </msDesc>
@@ -264,7 +262,7 @@
             </msIdentifier>
             <history>
               <origin>
-                <date from-custom="16">16</date>
+                <date id="d1e553" from-custom="16">16</date>
               </origin>
             </history>
           </msDesc>
@@ -276,7 +274,7 @@
             </msIdentifier>
             <history>
               <origin>
-                <date from-custom="17">17</date>
+                <date id="d1e577" from-custom="17">17</date>
               </origin>
             </history>
           </msDesc>
@@ -288,7 +286,7 @@
             </msIdentifier>
             <history>
               <origin>
-                <date from-custom="17">17</date>
+                <date id="d1e601" from-custom="17">17</date>
               </origin>
             </history>
           </msDesc>
@@ -300,7 +298,7 @@
             </msIdentifier>
             <history>
               <origin>
-                <date from-custom="20">20</date>
+                <date id="d1e625" from-custom="20">20</date>
               </origin>
             </history>
           </msDesc>
@@ -312,7 +310,7 @@
             </msIdentifier>
             <history>
               <origin>
-                <date from-custom="18">18</date>
+                <date id="d1e649" from-custom="18">18</date>
               </origin>
             </history>
           </msDesc>
@@ -324,7 +322,7 @@
             </msIdentifier>
             <history>
               <origin>
-                <date from-custom="18">18</date>
+                <date id="d1e673" from-custom="18">18</date>
               </origin>
             </history>
           </msDesc>
@@ -336,7 +334,7 @@
             </msIdentifier>
             <history>
               <origin>
-                <date from-custom="18">18</date>
+                <date id="d1e698" from-custom="18">18</date>
               </origin>
             </history>
           </msDesc>
@@ -348,7 +346,7 @@
             </msIdentifier>
             <history>
               <origin>
-                <date from-custom="18">18</date>
+                <date id="d1e722" from-custom="18">18</date>
               </origin>
             </history>
           </msDesc>
@@ -360,7 +358,7 @@
             </msIdentifier>
             <history>
               <origin>
-                <date from-custom="17">17</date>
+                <date id="d1e746" from-custom="17">17</date>
               </origin>
             </history>
           </msDesc>
@@ -372,7 +370,7 @@
             </msIdentifier>
             <history>
               <origin>
-                <date from-custom="17">17</date>
+                <date id="d1e770" from-custom="17">17</date>
               </origin>
             </history>
           </msDesc>
@@ -384,7 +382,7 @@
             </msIdentifier>
             <history>
               <origin>
-                <date from-custom="17">17</date>
+                <date id="d1e794" from-custom="17">17</date>
               </origin>
             </history>
           </msDesc>
@@ -396,7 +394,7 @@
             </msIdentifier>
             <history>
               <origin>
-                <date from-custom="17">17</date>
+                <date id="d1e818" from-custom="17">17</date>
               </origin>
             </history>
           </msDesc>
@@ -408,7 +406,7 @@
             </msIdentifier>
             <history>
               <origin>
-                <date from-custom="17">17</date>
+                <date id="d1e843" from-custom="17">17</date>
               </origin>
             </history>
           </msDesc>
@@ -420,7 +418,7 @@
             </msIdentifier>
             <history>
               <origin>
-                <date from-custom="17">17</date>
+                <date id="d1e867" from-custom="17">17</date>
               </origin>
             </history>
           </msDesc>
@@ -432,7 +430,7 @@
             </msIdentifier>
             <history>
               <origin>
-                <date from-custom="18">18</date>
+                <date id="d1e891" from-custom="18">18</date>
               </origin>
             </history>
           </msDesc>
@@ -444,7 +442,7 @@
             </msIdentifier>
             <history>
               <origin>
-                <date from-custom="16">1650</date>
+                <date id="d1e915" from-custom="16">1650</date>
               </origin>
             </history>
           </msDesc>
@@ -456,7 +454,7 @@
             </msIdentifier>
             <history>
               <origin>
-                <date from-custom="17">1609</date>
+                <date id="d1e939" from-custom="17">1609</date>
               </origin>
             </history>
           </msDesc>
@@ -468,7 +466,7 @@
             </msIdentifier>
             <history>
               <origin>
-                <date from-custom="17">17</date>
+                <date id="d1e963" from-custom="17">17</date>
               </origin>
             </history>
           </msDesc>
@@ -481,7 +479,7 @@
             </msIdentifier>
             <history>
               <origin>
-                <date from-custom="1350">14/15</date>
+                <date id="d1e991" from-custom="1350">14/15</date>
               </origin>
             </history>
           </msDesc>
@@ -494,7 +492,7 @@
             </msIdentifier>
             <history>
               <origin>
-                <date from-custom="17">17</date>
+                <date id="d1e1017" from-custom="17">17</date>
               </origin>
             </history>
           </msDesc>
@@ -585,7 +583,7 @@
               <idno type="callNumber">AIR-9453</idno>
               <respStmt>
                 <resp>editor</resp>
-                <name>
+                <name id="d1e1211">
                   <forename>Patrick</forename>
                   <surname>MacSweeney</surname>
                 </name>
@@ -593,7 +591,7 @@
               <imprint>
                 <pubPlace>London</pubPlace>
                 <publisher>ITS</publisher>
-                <date>1904</date>
+                <date id="d1e1229">1904</date>
               </imprint>
             </monogr>
             <series>
@@ -606,7 +604,7 @@
               <title level="a">A Gaelic Contract of Lease, c. 1603x1616</title>
               <respStmt>
                 <resp>editor</resp>
-                <name>
+                <name id="d1e1256">
                   <forename>Ronald</forename>
                   <surname>Black</surname>
                 </name>
@@ -616,7 +614,7 @@
               <title level="m">The Stair Society. Miscellany Two.</title>
               <respStmt>
                 <resp>editor</resp>
-                <name>
+                <name id="d1e1277">
                   <forename>David</forename>
                   <surname>Sellar</surname>
                 </name>
@@ -625,7 +623,7 @@
                 <pubPlace>Edinburgh</pubPlace>
                 <biblScope unit="page">132-143</biblScope>
                 <publisher>Stair Society</publisher>
-                <date>1984</date>
+                <date id="d1e1298">1984</date>
               </imprint>
             </monogr>
           </biblStruct>
@@ -635,20 +633,20 @@
                 Library, Oxford, MS. Arch. Selden. B.24</title>
               <respStmt>
                 <resp>editor</resp>
-                <name><forename>Julia</forename><surname>Boffey</surname></name>
+                <name id="d1e1316"><forename>Julia</forename><surname>Boffey</surname></name>
               </respStmt>
               <respStmt>
                 <resp>editor</resp>
-                <name><forename>A. S. G</forename><surname>Edwards</surname></name>
+                <name id="d1e1328"><forename>A. S. G</forename><surname>Edwards</surname></name>
               </respStmt>
               <respStmt>
                 <resp>editor</resp>
-                <name><forename>B.C.</forename><surname>Barker-Benfield</surname></name>
+                <name id="d1e1340"><forename>B.C.</forename><surname>Barker-Benfield</surname></name>
               </respStmt>
               <imprint>
                 <pubPlace>Cambridge</pubPlace>
                 <publisher>DS Brewer</publisher>
-                <date>1997</date>
+                <date id="d1e1355">1997</date>
               </imprint>
             </monogr>
           </biblStruct>
@@ -657,12 +655,12 @@
               <title level="m">The Kingis Quair</title>
               <respStmt>
                 <resp>editor</resp>
-                <name><forename>William Mackay</forename><surname>MacKenzie</surname></name>
+                <name id="d1e1373"><forename>William Mackay</forename><surname>MacKenzie</surname></name>
               </respStmt>
               <imprint>
                 <pubPlace>London</pubPlace>
                 <publisher>Faber &amp; Faber</publisher>
-                <date>1939</date>
+                <date id="d1e1388">1939</date>
               </imprint>
             </monogr>
           </biblStruct>
@@ -672,7 +670,7 @@
                 Tradition</title>
               <respStmt>
                 <resp>author</resp>
-                <name>
+                <name id="d1e1406">
                   <forename>John</forename>
                   <surname>Bannerman</surname>
                 </name>
@@ -680,7 +678,7 @@
               <imprint>
                 <pubPlace>Edinburgh</pubPlace>
                 <publisher>John Donald</publisher>
-                <date>2015</date>
+                <date id="d1e1424">2015</date>
               </imprint>
             </monogr>
           </biblStruct>
@@ -692,13 +690,13 @@
               <title level="j">Scottish Gaelic Studies</title>
               <respStmt>
                 <resp>editor</resp>
-                <name><forename>Ronald</forename>
+                <name id="d1e1449"><forename>Ronald</forename>
                   <surname>Black</surname></name>
               </respStmt>
               <imprint>
                 <biblScope unit="volume">13</biblScope>
                 <biblScope unit="page">56-65</biblScope>
-                <date>1978</date>
+                <date id="d1e1465">1978</date>
               </imprint>
             </monogr>
           </biblStruct>
@@ -707,7 +705,7 @@
               <title level="a">ansa.</title>
               <respStmt>
                 <resp>author</resp>
-                <name>
+                <name id="d1e1483">
                   <forename>R. A.</forename><surname>Breatnach</surname>
                 </name>
               </respStmt>
@@ -718,7 +716,7 @@
                 <biblScope unit="volume">9</biblScope>
                 <biblScope unit="issue">3</biblScope>
                 <biblScope unit="page">161-162</biblScope>
-                <date>1959</date>
+                <date id="d1e1509">1959</date>
               </imprint>
             </monogr>
           </biblStruct>
@@ -727,7 +725,7 @@
               <title level="a">Mitteilungen aus irischen Handschriften (Fortsetzung)</title>
               <respStmt>
                 <resp>author</resp>
-                <name>
+                <name id="d1e1527">
                   <forename>Kuno</forename><surname>Meyer</surname>
                 </name>
               </respStmt>
@@ -737,7 +735,7 @@
               <imprint>
                 <biblScope unit="volume">12</biblScope>
                 <biblScope unit="page">358-397</biblScope>
-                <date>1917</date>
+                <date id="d1e1550">1917</date>
               </imprint>
             </monogr>
           </biblStruct>
@@ -746,7 +744,7 @@
               <title level="a">Mitteilungen aus irischen Handschriften</title>
               <respStmt>
                 <resp>author</resp>
-                <name>
+                <name id="d1e1568">
                   <forename>Kuno</forename><surname>Meyer</surname>
                 </name>
               </respStmt>
@@ -756,7 +754,7 @@
               <imprint>
                 <biblScope unit="volume">13</biblScope>
                 <biblScope unit="page">3-31</biblScope>
-                <date>1921</date>
+                <date id="d1e1591">1921</date>
               </imprint>
             </monogr>
           </biblStruct>
@@ -765,7 +763,7 @@
               <title level="a">Two Hebridean Liturgical Items</title>
               <respStmt>
                 <resp>author</resp>
-                <name>
+                <name id="d1e1609">
                   <forename>David</forename>
                   <surname>McRoberts</surname>
                 </name>
@@ -777,7 +775,7 @@
                 <biblScope unit="volume">19</biblScope>
                 <biblScope unit="issue">2</biblScope>
                 <biblScope unit="page">170-173</biblScope>
-                <date>1968</date>
+                <date id="d1e1636">1968</date>
               </imprint>
             </monogr>
           </biblStruct>
@@ -786,7 +784,7 @@
               <title level="a">The Gaelic poems of Sir Duncan Campbell of Glenorchy (I)</title>
               <respStmt>
                 <resp>author</resp>
-                <name><forename>William</forename><surname>Gillies</surname></name>
+                <name id="d1e1654"><forename>William</forename><surname>Gillies</surname></name>
               </respStmt>
             </analytic>
             <monogr>
@@ -795,7 +793,7 @@
                 <biblScope unit="volume">13</biblScope>
                 <biblScope unit="issue">1</biblScope>
                 <biblScope unit="page">18-45</biblScope>
-                <date>1978</date>
+                <date id="d1e1678">1978</date>
               </imprint>
             </monogr>
           </biblStruct>
@@ -804,7 +802,7 @@
               <title level="a">The Gaelic poems of Sir Duncan Campbell of Glenorchy (II)</title>
               <respStmt>
                 <resp>author</resp>
-                <name><forename>William</forename><surname>Gillies</surname></name>
+                <name id="d1e1697"><forename>William</forename><surname>Gillies</surname></name>
               </respStmt>
             </analytic>
             <monogr>
@@ -813,7 +811,7 @@
                 <biblScope unit="volume">13</biblScope>
                 <biblScope unit="issue">2</biblScope>
                 <biblScope unit="page">263-288</biblScope>
-                <date>1981</date>
+                <date id="d1e1721">1981</date>
               </imprint>
             </monogr>
           </biblStruct>
@@ -822,24 +820,24 @@
               <title level="a">Imchlód Aingel</title>
               <respStmt>
                 <resp>editor</resp>
-                <name><forename>Thomas</forename><surname>O'Nolan</surname></name>
+                <name id="d1e1739"><forename>Thomas</forename><surname>O'Nolan</surname></name>
               </respStmt>
             </analytic>
             <monogr>
               <title level="m">Miscellany presented to Kuno Meyer</title>
               <respStmt>
                 <resp>editor</resp>
-                <name><forename>Osborn</forename><surname>Bergin</surname></name>
+                <name id="d1e1757"><forename>Osborn</forename><surname>Bergin</surname></name>
               </respStmt>
               <respStmt>
                 <resp>editor</resp>
-                <name><forename>Carl</forename><surname>Marstrander</surname></name>
+                <name id="d1e1769"><forename>Carl</forename><surname>Marstrander</surname></name>
               </respStmt>
               <imprint>
                 <pubPlace>Halle</pubPlace>
                 <biblScope unit="page">253-57</biblScope>
                 <publisher>Max Niemeyer</publisher>
-                <date>1912</date>
+                <date id="d1e1787">1912</date>
               </imprint>
             </monogr>
           </biblStruct>
@@ -850,7 +848,7 @@
               <title type="short">Chaucer Abroad, Chaucer at Home</title>
               <respStmt>
                 <resp>author</resp>
-                <name><forename>T. S.</forename><surname>Miller</surname></name>
+                <name id="d1e1808"><forename>T. S.</forename><surname>Miller</surname></name>
               </respStmt>
             </analytic>
             <monogr>
@@ -860,7 +858,7 @@
                 <biblScope unit="volume">47</biblScope>
                 <biblScope unit="issue">1</biblScope>
                 <biblScope unit="page">25-47</biblScope>
-                <date>2012</date>
+                <date id="d1e1835">2012</date>
                 <note type="accessed">2018-05-25T18:30:37Z</note>
                 <note type="url">https://muse.jhu.edu/article/480686</note>
               </imprint>
@@ -871,17 +869,17 @@
               <title>The Clan Donald</title>
               <respStmt>
                 <resp>author</resp>
-                <name><forename>Angus</forename><surname>MacDonald</surname></name>
+                <name id="d1e1860"><forename>Angus</forename><surname>MacDonald</surname></name>
               </respStmt>
               <respStmt>
                 <resp>author</resp>
-                <name><forename>Archibald</forename><surname>MacDonald</surname></name>
+                <name id="d1e1872"><forename>Archibald</forename><surname>MacDonald</surname></name>
               </respStmt>
               <imprint>
                 <publisher>The Northern Counties Publishing Company</publisher>
                 <biblScope unit="volume">III</biblScope>
                 <pubPlace>Inverness</pubPlace>
-                <date>1904</date>
+                <date id="d1e1890">1904</date>
                 <note type="accessed">2018-05-25T18:58:10Z</note>
                 <note type="url">https://archive.org/details/clandonald03macd</note>
               </imprint>
@@ -893,16 +891,16 @@
                 Oxford</title>
               <respStmt>
                 <resp>contributor</resp>
-                <name><forename>Richard William</forename><surname>Hunt</surname></name>
+                <name id="d1e1915"><forename>Richard William</forename><surname>Hunt</surname></name>
               </respStmt>
               <respStmt>
                 <resp>contributor</resp>
-                <name><forename>Falconer</forename><surname>Madan</surname></name>
+                <name id="d1e1927"><forename>Falconer</forename><surname>Madan</surname></name>
               </respStmt>
               <imprint>
                 <pubPlace>Oxford</pubPlace>
                 <publisher>Clarendon Press</publisher>
-                <date>1895</date>
+                <date id="d1e1942">1895</date>
                 <note type="accessed">2018-05-28T14:13:29Z</note>
                 <note type="url">https://purl.ox.ac.uk/uuid/54ec44343a7442b49308585518caef93</note>
               </imprint>
@@ -913,7 +911,7 @@
               <title level="a">The Authorship of "The Kingis Quair"</title>
               <respStmt>
                 <resp>author</resp>
-                <name><forename>J. T. T.</forename><surname>Brown</surname></name>
+                <name id="d1e1966"><forename>J. T. T.</forename><surname>Brown</surname></name>
               </respStmt>
             </analytic>
             <monogr>
@@ -922,7 +920,7 @@
                 <biblScope unit="volume">3</biblScope>
                 <biblScope unit="issue">1</biblScope>
                 <biblScope unit="page">93-166</biblScope>
-                <date>1899</date>
+                <date id="d1e1990">1899</date>
                 <note type="accessed">2018-05-28T14:22:06Z</note>
                 <note type="url">https://www.jstor.org/stable/24680618</note>
               </imprint>
@@ -933,7 +931,7 @@
               <title level="a">The Genius of Cathal Mac Mhuirich</title>
               <respStmt>
                 <resp>author</resp>
-                <name><forename>Ronald</forename><surname>Black</surname></name>
+                <name id="d1e2016"><forename>Ronald</forename><surname>Black</surname></name>
               </respStmt>
             </analytic>
             <monogr>
@@ -941,7 +939,7 @@
               <imprint>
                 <biblScope unit="volume">50</biblScope>
                 <biblScope unit="page">327-66</biblScope>
-                <date>1976</date>
+                <date id="d1e2037">1976</date>
               </imprint>
             </monogr>
           </biblStruct>
@@ -950,7 +948,7 @@
               <title level="a">Becoming an Exile: Colum Cille in Middle-Irish Poetry</title>
               <respStmt>
                 <resp>author</resp>
-                <name><forename>Maíre</forename><surname>Herbert</surname></name>
+                <name id="d1e2055"><forename>Maíre</forename><surname>Herbert</surname></name>
               </respStmt>
             </analytic>
             <monogr>
@@ -958,33 +956,32 @@
                 Patrick K. Ford</title>
               <respStmt>
                 <resp>editor</resp>
-                <name><forename>Joseph F.</forename><surname>Nagy</surname></name>
+                <name id="d1e2073"><forename>Joseph F.</forename><surname>Nagy</surname></name>
               </respStmt>
               <respStmt>
                 <resp>editor</resp>
-                <name><forename>L. E.</forename><surname>Jones</surname></name>
+                <name id="d1e2085"><forename>L. E.</forename><surname>Jones</surname></name>
               </respStmt>
               <imprint>
                 <pubPlace>Dublin</pubPlace>
                 <publisher>Four Courts Press</publisher>
-                <date>2005</date>
+                <date id="d1e2100">2005</date>
                 <biblScope unit="page">131-40</biblScope>
               </imprint>
             </monogr>
-            <series><title level="s">CSANA Yearbook</title><biblScope unit="volume"
-              >3-4</biblScope></series>
+            <series><title level="s">CSANA Yearbook</title><biblScope unit="volume">3-4</biblScope></series>
           </biblStruct>
           <biblStruct type="book" xml:id="Flower1926">
             <monogr>
               <title level="m">Catalogue of Irish manuscripts in the British Museum: Vol. 2</title>
               <respStmt>
                 <resp>author</resp>
-                <name><forename>Robin</forename><surname>Flower</surname></name>
+                <name id="d1e2127"><forename>Robin</forename><surname>Flower</surname></name>
               </respStmt>
               <imprint>
                 <pubPlace>London</pubPlace>
                 <publisher>British Museum</publisher>
-                <date>1926</date>
+                <date id="d1e2142">1926</date>
               </imprint>
             </monogr>
           </biblStruct>
@@ -993,11 +990,11 @@
               <title level="a">The Provenance of Laud Misc. 615</title>
               <respStmt>
                 <resp>author</resp>
-                <name><forename>Máire</forename><surname>Herbert</surname></name>
+                <name id="d1e2160"><forename>Máire</forename><surname>Herbert</surname></name>
               </respStmt>
               <respStmt>
                 <resp>author</resp>
-                <name><forename>Anne</forename><surname>O'Sullivan</surname></name>
+                <name id="d1e2172"><forename>Anne</forename><surname>O'Sullivan</surname></name>
               </respStmt>
             </analytic>
             <monogr>
@@ -1005,7 +1002,7 @@
               <imprint>
                 <biblScope unit="volume">10</biblScope>
                 <biblScope unit="page">174-92</biblScope>
-                <date>1973</date>
+                <date id="d1e2193">1973</date>
               </imprint>
             </monogr>
           </biblStruct>
@@ -1014,25 +1011,25 @@
               <title level="a">Scottish Gaelic</title>
               <respStmt>
                 <resp>author</resp>
-                <name><forename>William</forename><surname>Gillies</surname></name>
+                <name id="d1e2211"><forename>William</forename><surname>Gillies</surname></name>
               </respStmt>
             </analytic>
             <monogr>
               <title level="m">The Celtic Languages</title>
               <respStmt>
                 <resp>editor</resp>
-                <name><forename>Martin J.</forename><surname>Ball</surname></name>
+                <name id="d1e2229"><forename>Martin J.</forename><surname>Ball</surname></name>
               </respStmt>
               <respStmt>
                 <resp>editor</resp>
-                <name><forename>Nicole</forename><surname>Müller</surname></name>
+                <name id="d1e2241"><forename>Nicole</forename><surname>Müller</surname></name>
               </respStmt>
               <edition>2</edition>
               <imprint>
                 <pubPlace>London</pubPlace>
                 <biblScope unit="page">230-304</biblScope>
                 <publisher>Routledge</publisher>
-                <date>2010</date>
+                <date id="d1e2262">2010</date>
               </imprint>
             </monogr>
             <series><title level="s">Routledge Language Family Series</title></series>
@@ -1043,7 +1040,7 @@
                 List</title>
               <respStmt>
                 <resp>author</resp>
-                <name><forename>Richard A.V.</forename><surname>Cox</surname></name>
+                <name id="d1e2284"><forename>Richard A.V.</forename><surname>Cox</surname></name>
               </respStmt>
             </analytic>
             <monogr>
@@ -1051,7 +1048,7 @@
               <imprint>
                 <biblScope unit="volume">24</biblScope>
                 <biblScope unit="page">169-180</biblScope>
-                <date>2008</date>
+                <date id="d1e2305">2008</date>
               </imprint>
             </monogr>
           </biblStruct>
@@ -1060,12 +1057,12 @@
               <title level="m">Report on ‘Classical’ Gaelic Manuscripts</title>
               <respStmt>
                 <resp>author</resp>
-                <name><forename>Ronald</forename><surname>Black</surname></name>
+                <name id="d1e2324"><forename>Ronald</forename><surname>Black</surname></name>
               </respStmt>
               <imprint>
                 <pubPlace>Teangue</pubPlace>
                 <publisher>Faclair na Gaìdhlig</publisher>
-                <date>2017</date>
+                <date id="d1e2339">2017</date>
               </imprint>
             </monogr>
           </biblStruct>
@@ -1075,10 +1072,10 @@
                 Scotland</title>
               <respStmt>
                 <resp>author</resp>
-                <name><forename>Ronald</forename><surname>Black</surname></name>
+                <name id="d1e2357"><forename>Ronald</forename><surname>Black</surname></name>
               </respStmt>
               <imprint>
-                <date>2011</date>
+                <date id="d1e2366">2011</date>
                 <note type="accessed">2018-05-30</note>
                 <note type="url">https://www.isos.dias.ie</note>
               </imprint>
@@ -1089,10 +1086,10 @@
               <title level="m">Explore Archives and Manuscripts</title>
               <respStmt>
                 <resp>author</resp>
-                <name>British Library</name>
+                <name id="d1e2390">British Library</name>
               </respStmt>
               <imprint>
-                <date>2016</date>
+                <date id="d1e2396">2016</date>
                 <note type="accessed">2018-05-30</note>
                 <note type="url">https://searcharchives.bl.uk</note>
               </imprint>
@@ -1103,10 +1100,10 @@
               <title level="m">Electronic Dictionary of the Irish Language</title>
               <respStmt>
                 <resp>author</resp>
-                <name>eDIL</name>
+                <name id="d1e2420">eDIL</name>
               </respStmt>
               <imprint>
-                <date>2013</date>
+                <date id="d1e2426">2013</date>
                 <note type="accessed">2018-05-30</note>
                 <note type="url">https://www.dil.ie</note>
               </imprint>
@@ -1117,12 +1114,12 @@
               <title>An Lasair: Anthology of 18th Century Scottish Gaelic Verse</title>
               <respStmt>
                 <resp>editor</resp>
-                <name><forename>Ronald</forename><surname>Black</surname></name>
+                <name id="d1e2450"><forename>Ronald</forename><surname>Black</surname></name>
               </respStmt>
               <imprint>
                 <pubPlace>Edinburgh</pubPlace>
                 <publisher>Birlinn</publisher>
-                <date>2001</date>
+                <date id="d1e2465">2001</date>
               </imprint>
             </monogr>
           </biblStruct>
@@ -1183,8 +1180,7 @@
             segmented by &lt;w&gt; elements within the outer &lt;w&gt; element. The inner &lt;w&gt;
             element encloses a morpheme that could constitute a lemma in its own right and which
             cannot be subdivided into further lemmata. This is done in cases where both the compound
-            word as a whole could also constitute a lemma. For example, <hi rend="italic"
-              >do-beir</hi> is both a lemma in eDIL and contains the <hi rend="italic">do-</hi>
+            word as a whole could also constitute a lemma. For example, <hi rend="italic">do-beir</hi> is both a lemma in eDIL and contains the <hi rend="italic">do-</hi>
             preverbal particle, which is a lemma in eDIL in its own right. In such cases, in the
             outer &lt;w&gt; element, the @lemma, @lemmaRef, and @ana attributes will include data
             for all the lemmata contained in the inner &lt;w&gt; element elements seperated by
@@ -1315,14 +1311,12 @@
           <note>An "a" with a descender on the right-hand side (very like "q"), with a cross-stroke
             on the descender, standing for "ar".</note>
         </glyph>
-        <glyph xml:id="g9"
-          corresp="https://www.vanhamel.nl/codecs/Enclosing_punctus_(critical_sign)">
+        <glyph xml:id="g9" corresp="https://www.vanhamel.nl/codecs/Enclosing_punctus_(critical_sign)">
           <glyphName>enclosing puncta</glyphName>
           <note>An punctum both before and after a letter or set of letters that may stand for any
             character(s).</note>
         </glyph>
-        <glyph xml:id="g10"
-          corresp="https://www.vanhamel.nl/codecs/S_(insular)_with_suspension_stroke">
+        <glyph xml:id="g10" corresp="https://www.vanhamel.nl/codecs/S_(insular)_with_suspension_stroke">
           <glyphName>s with suspension stroke (acht/sed)</glyphName>
           <note>An "s" with a horizontal superscript suspension stroke. Originally for Latin "sed"
             but used to represent "(e/a/ea)ch(t/d)" in Gaelic contexts.</note>
@@ -1522,8 +1516,7 @@
           <note>An "x", standing either for the numeral 10, for the spelling "deich", "deith", or
             similar.</note>
         </glyph>
-        <glyph xml:id="g52"
-          corresp="https://www.vanhamel.nl/codecs/I_with_acute_diacritic_(disambiguation)">
+        <glyph xml:id="g52" corresp="https://www.vanhamel.nl/codecs/I_with_acute_diacritic_(disambiguation)">
           <glyphName>upward diagonal overstroke</glyphName>
           <note>A stroke from the lower left of a character to the upper right, crossing the
             character itself, standing for a string of subsequent letters.</note>
@@ -2040,7 +2033,7 @@
     <profileDesc>
       <handNotes>
         <handNote xml:id="Hand1">
-          <date from="1100" to="1150" min="1100" max="1200">12</date>
+          <date id="d1e4196" from="1100" to="1150" min="1100" max="1200">12</date>
           <region cert="high">NE Scotland</region>
           <affiliation>deer</affiliation>
           <note><p>Hand A in the Gaelic Notes in the Book of Deer</p>
@@ -2051,7 +2044,7 @@
           </note>
         </handNote>
         <handNote xml:id="Hand2">
-          <date from="1100" to="1150" min="1100" max="1200">12</date>
+          <date id="d1e4216" from="1100" to="1150" min="1100" max="1200">12</date>
           <region cert="high">NE Scotland</region>
           <affiliation>deer</affiliation>
           <note><p>Hand B in the Gaelic Notes in the Book of Deer</p><p>Jackson (1972): (p.13)
@@ -2059,7 +2052,7 @@
               with A; late 11th/early 12th centuries?</p></note>
         </handNote>
         <handNote xml:id="Hand3">
-          <date from="1100" to="1150" min="1100" max="1200">12</date>
+          <date id="d1e4234" from="1100" to="1150" min="1100" max="1200">12</date>
           <region cert="high">NE Scotland</region>
           <affiliation>deer</affiliation>
           <note><p>Hand C in the Gaelic Notes in the Book of Deer</p><p>Jackson (1972): (p.13) Uses
@@ -2067,7 +2060,7 @@
               than A and B. (p.16) "lateish in the period" [what is the period?]</p></note>
         </handNote>
         <handNote xml:id="Hand4">
-          <date from="1100" to="1150" min="1100" max="1200">12</date>
+          <date id="d1e4252" from="1100" to="1150" min="1100" max="1200">12</date>
           <region cert="high">NE Scotland</region>
           <affiliation>deer</affiliation>
           <note><p>Hand D in the Gaelic Notes in the Book of Deer</p><p>Jackson (1972): (p.14) Less
@@ -2077,7 +2070,7 @@
               1131.</p></note>
         </handNote>
         <handNote xml:id="Hand5">
-          <date from="1100" to="1150" min="1100" max="1200">12</date>
+          <date id="d1e4279" from="1100" to="1150" min="1100" max="1200">12</date>
           <region cert="high">NE Scotland</region>
           <affiliation>deer</affiliation>
           <note><p>Hand E in the Gaelic Notes in the Book of Deer</p><p>Jackson (1972): (p.15):
@@ -2085,36 +2078,31 @@
               influences. (p.16) Late in the period.</p></note>
         </handNote>
         <handNote xml:id="Hand6">
-          <date cert="medium" from="0900" to="1000" min="900" max="1000">10</date>
+          <date id="d1e4298" cert="medium" from="0900" to="1000" min="900" max="1000">10</date>
           <region cert="high">NE Scotland</region>
           <affiliation>deer</affiliation>
           <note><p>Scribe of main text in the Book of Deer</p></note>
         </handNote>
         <handNote xml:id="Hand7">
           <surname cert="medium">MacEwen (?)</surname>
-          <date from="1450" to="1550" min="1501" max="1599">15/16</date>
+          <date id="d1e4317" from="1450" to="1550" min="1501" max="1599">15/16</date>
           <region cert="medium">Argyll</region>
           <affiliation>mcewen</affiliation>
-          <note><p>This is the scribe of '<ref target="T2">Aingil Dé dom dhín</ref>' in <ref
-                target="MS2">London, BL MS. Egerton 2899</ref> and a set of Columban poems in
+          <note><p>This is the scribe of '<ref target="T2">Aingil Dé dom dhín</ref>' in <ref target="MS2">London, BL MS. Egerton 2899</ref> and a set of Columban poems in
               Edinburgh, NLS Adv. MS 72.1.31. Black has suggested that he was a MacEwen working for
               the Campbells of Glenorchy.</p>
             <p>On the whole, the scribe follows the conventions of medieval Gaelic orthography and
               restricts himself to the most conventional abbreviations.</p>
             <p>The scribe displays a curious attitude towards lenition, often omitting it from
-              monosyllables ending with /X'/ (e.g. <hi rend="italic">nac</hi>, <ref
-                target="#T2.1.1d">q1d</ref> not <hi rend="italic">nach</hi>. At the same time,
-              lenition markers are added where lenition would not normally be written (e.g. <hi
-                rend="italic">mainḋir</hi>, <ref target="#T2.1.2b">q2b</ref>. There is also one
-              occasion where lenition is used to indicate eclipsis (<ref target="#T2.1.10a"
-                >q10a</ref>). The absence of lenition from final /X'/ may be designed to represent
+              monosyllables ending with /X'/ (e.g. <hi rend="italic">nac</hi>, <ref target="#T2.1.1d">q1d</ref> not <hi rend="italic">nach</hi>. At the same time,
+              lenition markers are added where lenition would not normally be written (e.g. <hi rend="italic">mainḋir</hi>, <ref target="#T2.1.2b">q2b</ref>. There is also one
+              occasion where lenition is used to indicate eclipsis (<ref target="#T2.1.10a">q10a</ref>). The absence of lenition from final /X'/ may be designed to represent
               Scottish Gaelic pronounciation in some way, but I am yet to find a way of making sense
               of the feature along these lines.</p>
             <p>He also tends to add a hair-stroke flick towards the upper right above the letter
               “i”, in the absence of any other diacritic. This closely resembles an acute accent but
               is probably meant merely as a minim marker. Examination of words in which “i” really
-              should have an acute accent (e.g. <ref target="#T2-1-17b">q17b</ref>, “nac bí”; <ref
-                target="#T2-1-24c">q24c</ref>, “tísat”) reveals no reliable visual indicator of when
+              should have an acute accent (e.g. <ref target="#T2-1-17b">q17b</ref>, “nac bí”; <ref target="#T2-1-24c">q24c</ref>, “tísat”) reveals no reliable visual indicator of when
               the flick is an accent or not, so accents on “i” are included in the diplomatic text
               simply when they would be expected in mainstream Classical Gaelic orthography.</p>
           </note>
@@ -2122,7 +2110,7 @@
         <handNote xml:id="Hand8">
           <forename>Eoghan</forename>
           <surname>Mac Pháil</surname>
-          <date cert="high" from="1600" to="1650" min="1600" max="1700">17</date>
+          <date id="d1e4380" cert="high" from="1600" to="1650" min="1600" max="1700">17</date>
           <region cert="high">W Scotland</region>
           <affiliation>emp</affiliation>
           <note/>
@@ -2130,7 +2118,7 @@
         <handNote xml:id="Hand9">
           <forename>Eoghan</forename>
           <surname>Mac Gilleoin</surname>
-          <date cert="medium" from="1650" to="1700" min="1600" max="1700">17</date>
+          <date id="d1e4401" cert="medium" from="1650" to="1700" min="1600" max="1700">17</date>
           <region cert="high">SW Scotland</region>
           <affiliation>misc</affiliation>
           <note/>
@@ -2138,7 +2126,7 @@
         <handNote xml:id="Hand10">
           <forename>Niall</forename>
           <surname>MacMhuirich</surname>
-          <date cert="medium" from="1600" to="1660" min="1601" max="1799">17/18</date>
+          <date id="d1e4422" cert="medium" from="1600" to="1660" min="1601" max="1799">17/18</date>
           <region cert="high">W Scotland</region>
           <affiliation>macmhuirich</affiliation>
           <note/>
@@ -2146,13 +2134,13 @@
         <handNote xml:id="Hand11">
           <forename>Domnall</forename>
           <surname>MacMhuirich</surname>
-          <date type="floruit" cert="medium" from="1707" to="1745" min="1700" max="1800">18</date>
+          <date id="d1e4443" type="floruit" cert="medium" from="1707" to="1745" min="1700" max="1800">18</date>
           <region cert="high">W Scotland</region>
           <affiliation>macmhuirich</affiliation>
           <note/>
         </handNote>
         <handNote xml:id="Hand12">
-          <date type="floruit" cert="medium" from="1500" to="1590" min="1500" max="1600">16</date>
+          <date id="d1e4459" type="floruit" cert="medium" from="1500" to="1590" min="1500" max="1600">16</date>
           <region cert="high">W Scotland</region>
           <affiliation>beaton</affiliation>
           <note>Hand M in NLS Adv. MS 72.1.33.</note>
@@ -2160,7 +2148,7 @@
         <handNote xml:id="Hand13">
           <forename>Lachlan Mór</forename>
           <surname>MacLean</surname>
-          <date type="floruit" cert="medium" from="1577" to="1598" min="1500" max="1600">16</date>
+          <date id="d1e4480" type="floruit" cert="medium" from="1577" to="1598" min="1500" max="1600">16</date>
           <region cert="high">Isle of Mull</region>
           <affiliation>misc</affiliation>
           <note/>
@@ -2168,13 +2156,13 @@
         <handNote xml:id="Hand14">
           <forename>James</forename>
           <surname>Beaton</surname>
-          <date type="floruit" cert="medium" from="1613" to="1621" min="1600" max="1700">17</date>
+          <date id="d1e4501" type="floruit" cert="medium" from="1613" to="1621" min="1600" max="1700">17</date>
           <region/>
           <affiliation>beaton</affiliation>
           <note><p>Black's Hand K (NLS Adv. 72.1.33)</p></note>
         </handNote>
         <handNote xml:id="Hand15">
-          <date type="floruit" cert="low" from="1590" to="1700" min="1600" max="1700">17</date>
+          <date id="d1e4517" type="floruit" cert="low" from="1590" to="1700" min="1600" max="1700">17</date>
           <region/>
           <affiliation>beaton</affiliation>
           <note><p>Like James Beaton's, this hand makes occasional brief interventions in
@@ -2185,7 +2173,7 @@
         <handNote xml:id="Hand16">
           <forename>John</forename>
           <surname>Beaton</surname>
-          <date type="life" cert="medium" from="1640" to="1715" min="1640" max="1715">17</date>
+          <date id="d1e4538" type="life" cert="medium" from="1640" to="1715" min="1640" max="1715">17</date>
           <region>Mull</region>
           <affiliation>beaton</affiliation>
           <note><p>Rev. John Beaton (c. 1640-1715) attended grammar school in Inveraray and
@@ -2202,7 +2190,7 @@
         <handNote xml:id="Hand17">
           <forename>Neil</forename>
           <surname>Beaton</surname>
-          <date type="floruit" cert="medium" from="1656" to="1656" min="1600" max="1700">17</date>
+          <date id="d1e4561" type="floruit" cert="medium" from="1656" to="1656" min="1600" max="1700">17</date>
           <region/>
           <affiliation>beaton</affiliation>
           <note><p>Black's Hand D (NLS Adv. 72.1.33)</p></note>
@@ -2210,7 +2198,7 @@
         <handNote xml:id="Hand18">
           <forename>Dubhghall Albanach</forename>
           <surname>mac mhic Cathail</surname>
-          <date type="floruit" cert="medium" from="1467" to="1467" min="1400" max="1500">15</date>
+          <date id="d1e4584" type="floruit" cert="medium" from="1467" to="1467" min="1400" max="1500">15</date>
           <region>Ireland/Hebrides</region>
           <affiliation>DAC</affiliation>
           <note/>
@@ -2218,7 +2206,7 @@
         <handNote xml:id="Hand19">
           <forename>Cairbre</forename>
           <surname>Ó Ceannmhain</surname>
-          <date type="floruit" cert="high" from="1560" to="1563" min="1500" max="1600">16</date>
+          <date id="d1e4605" type="floruit" cert="high" from="1560" to="1563" min="1500" max="1600">16</date>
           <region/>
           <affiliation>misc</affiliation>
           <note><p>EUL La. III.21</p></note>
@@ -2226,7 +2214,7 @@
         <handNote xml:id="Hand20">
           <forename>Eoin</forename>
           <surname>mac Domhnaill Ó Conchubhair</surname>
-          <date type="life" cert="medium" from="1541" to="1601" min="1500" max="1600">16</date>
+          <date id="d1e4627" type="life" cert="medium" from="1541" to="1601" min="1500" max="1600">16</date>
           <region>Lorne</region>
           <region>Ireland</region>
           <affiliation>ó_conchubair</affiliation>
@@ -2241,7 +2229,7 @@
         <handNote xml:id="Hand21">
           <forename>Domhnall Gorm</forename>
           <surname>?Mac Domhnaill</surname>
-          <date min="1501" max="1699">16/17</date>
+          <date id="d1e4654" min="1501" max="1699">16/17</date>
           <region>Sleat (?)</region>
           <affiliation>misc</affiliation>
           <note>
@@ -2265,7 +2253,7 @@
         <handNote xml:id="Hand22">
           <forename>Cathal</forename>
           <surname>Mac Mhuirich</surname>
-          <date min="1600" max="1700">17</date>
+          <date id="d1e4685" min="1600" max="1700">17</date>
           <region>Western Isles/Skye</region>
           <affiliation>macmhuirich</affiliation>
           <note/>
@@ -2273,13 +2261,13 @@
         <handNote xml:id="Hand23">
           <forename>Alasdair</forename>
           <surname>Mac Mhaighstir Alasdair</surname>
-          <date min="1700" max="1800">18</date>
+          <date id="d1e4706" min="1700" max="1800">18</date>
           <region>Western Highlands</region>
           <affiliation>AMD</affiliation>
           <note/>
         </handNote>
         <handNote xml:id="Hand24">
-          <date type="floruit" min="1500" max="1600">16</date>
+          <date id="d1e4722" type="floruit" min="1500" max="1600">16</date>
           <region cert="medium">Islay</region>
           <affiliation>beaton</affiliation>
           <note><p>This individual is unidentified but they appear to have been a physician active
@@ -2287,15 +2275,14 @@
                 35</ref> (fol. 67<hi rend="sup">r</hi>), he records a series of treatments performed
               there and makes reference to the same region in <ref target="NLS72127" type="mss">NLS
                 Adv. 72.1.27</ref>, fol. 3<hi rend="sup">v</hi>. They also add frequent notes to
-                <ref type="mss" target="MS14">MS14</ref>. In each of these cases and in that of <ref
-                target="MS17" type="mss">MS17</ref>, Hand24 is interacting with a Beaton manuscript
+                <ref type="mss" target="MS14">MS14</ref>. In each of these cases and in that of <ref target="MS17" type="mss">MS17</ref>, Hand24 is interacting with a Beaton manuscript
               alongside Beaton scribes and glossators so he was evidently closely associated with
               this family, if not a member himself.</p></note>
         </handNote>
         <handNote xml:id="Hand25">
           <forename>Maol-Sheachlainn</forename>
           <surname>mac Iollainn Mhic an Leagha Ruaidh</surname>
-          <date type="floruit" min="1450" max="1550" from="1512" to="1512">15/16</date>
+          <date id="d1e4763" type="floruit" min="1450" max="1550" from="1512" to="1512">15/16</date>
           <region cert="high">Sligo</region>
           <region cert="high">Kildare</region>
           <affiliation>misc</affiliation>
@@ -2303,20 +2290,19 @@
               associated with Sligo and Kildare. In <ref target="MS17" type="mss">MS17</ref> (fol.
                 100<hi rend="sup">r</hi>6), he calls Niall Óg mac Néill Mhic Beathadh "mo sesi",
               which could mean either "my friend" or, less likely, "my patron" and states that he
-              wrote his potion of <ref target="MS17" type="mss">MS17</ref> for him. Bannerman (<ref
-                target="Bannerman2015" type="bib">2015</ref>: 7–8) points out that the Beatons
+              wrote his potion of <ref target="MS17" type="mss">MS17</ref> for him. Bannerman (<ref target="Bannerman2015" type="bib">2015</ref>: 7–8) points out that the Beatons
               claims to be relatively close relations of Meic an Leagha Ruaidh.</p></note>
         </handNote>
         <handNote xml:id="Hand26">
           <forename>Maol Coluim</forename>
           <surname>mac Beathadh</surname>
-          <date type="floruit" min="1501" max="1699" from="1582" to="1603">16/17</date>
+          <date id="d1e4801" type="floruit" min="1501" max="1699" from="1582" to="1603">16/17</date>
           <region/>
           <affiliation>beaton</affiliation>
           <note><p>Hand G/H(?)/I(?) in NLS Adv. 72.1.33</p></note>
         </handNote>
         <handNote xml:id="Hand27">
-          <date type="floruit" min="1501" max="1599">16</date>
+          <date id="d1e4817" type="floruit" min="1501" max="1599">16</date>
           <region/>
           <affiliation>misc</affiliation>
           <note><p>Hand 5 in NLS Adv. 72.1.40; hand of Section B of NLS Adv. 72.1.31</p></note>
@@ -2324,20 +2310,20 @@
         <handNote xml:id="Hand28">
           <forename>Fergus</forename>
           <surname>Beaton</surname>
-          <date type="floruit" min="1350" max="1550" from="1408" to="1408">14/15</date>
+          <date id="d1e4838" type="floruit" min="1350" max="1550" from="1408" to="1408">14/15</date>
           <region>Islay</region>
           <affiliation>beaton</affiliation>
         </handNote>
         <handNote xml:id="Hand29">
           <forename>Domhnall</forename>
           <surname>Mac Domhnaill</surname>
-          <date type="floruit" min="1386" max="1423" from="1386" to="1423">14/15</date>
+          <date id="d1e4856" type="floruit" min="1386" max="1423" from="1386" to="1423">14/15</date>
           <region>Islay</region>
           <affiliation>misc</affiliation>
           <note><p>Lord of the Isles (1386–1408)</p></note>
         </handNote>
         <handNote xml:id="Hand30">
-          <date type="floruit" min="1601" max="1699">17</date>
+          <date id="d1e4874" type="floruit" min="1601" max="1699">17</date>
           <region>Western Isles</region>
           <affiliation>macmhuirich</affiliation>
           <note><p>Intervenes briefly in NLS Adv. 72.1.48, at fol. 12v</p></note>
@@ -2345,7 +2331,7 @@
         <handNote xml:id="Hand31">
           <forename>Toirdealbach</forename>
           <surname>Ó Muirgheasa</surname>
-          <date type="floruit" from="1614" to="1614" min="1601" max="1699">17</date>
+          <date id="d1e4896" type="floruit" from="1614" to="1614" min="1601" max="1699">17</date>
           <region>Skye</region>
           <affiliation>misc</affiliation>
           <note><p>Scribe (?) and first witness of the MacLeod Fosterage Contract (1614).</p></note>
@@ -2353,7 +2339,7 @@
         <handNote xml:id="Hand32">
           <forename>Eoin</forename>
           <surname>Mac Colgan</surname>
-          <date type="floruit" from="1614" to="1614" min="1601" max="1699">17</date>
+          <date id="d1e4919" type="floruit" from="1614" to="1614" min="1601" max="1699">17</date>
           <region>Skye</region>
           <affiliation>misc</affiliation>
           <note><p>Minister of Bracadale; witness of the MacLeod Fosterage Contract
@@ -2362,7 +2348,7 @@
         <handNote xml:id="Hand33">
           <forename>Eoghan</forename>
           <surname>Mac Suibhne</surname>
-          <date type="floruit" from="1614" to="1614" min="1601" max="1699">17</date>
+          <date id="d1e4942" type="floruit" from="1614" to="1614" min="1601" max="1699">17</date>
           <region>Skye</region>
           <affiliation>misc</affiliation>
           <note><p>Minister of Duirinish; witness of the MacLeod Fosterage Contract
@@ -2371,38 +2357,38 @@
         <handNote xml:id="Hand34">
           <forename>Domhnall</forename>
           <surname>Mac Pail</surname>
-          <date type="floruit" from="1614" to="1614" min="1601" max="1699">17</date>
+          <date id="d1e4965" type="floruit" from="1614" to="1614" min="1601" max="1699">17</date>
           <region>Skye</region>
           <affiliation>misc</affiliation>
           <note><p>Witness of the MacLeod Fosterage Contract (1614).</p></note>
         </handNote>
         <handNote xml:id="Hand35">
-          <date type="floruit" min="1501" max="1599">16</date>
+          <date id="d1e4982" type="floruit" min="1501" max="1599">16</date>
           <note>Hand 48 in NLS Adv. 72.1.2.</note>
           <affiliation>beaton</affiliation>
         </handNote>
         <handNote xml:id="Hand36">
-          <date type="floruit" min="1501" max="1599">16</date>
+          <date id="d1e4995" type="floruit" min="1501" max="1599">16</date>
           <note><p>Hand 1 in NLS Adv. 72.1.27; "akin to those of Dáibhí Ó Cearnaigh, the Ó
               Ceannamháins and John Beaton in EUL MS. Laing III 21 and BL MS. Add.
             15,582".</p></note>
           <affiliation>beaton</affiliation>
         </handNote>
         <handNote xml:id="Hand37">
-          <date type="floruit" min="1501" max="1599">16</date>
+          <date id="d1e5008" type="floruit" min="1501" max="1599">16</date>
           <note><p>Intervenes briefly in Hand 1's text in NLS Adv. 72.1.27.</p></note>
           <affiliation>beaton</affiliation>
         </handNote>
         <handNote xml:id="Hand38">
           <forename>Neil</forename>
           <surname>MacEwen</surname>
-          <date type="floruit" from="1631" to="1631" min="1601" max="1699">17</date>
+          <date id="d1e5027" type="floruit" from="1631" to="1631" min="1601" max="1699">17</date>
           <region>Argyll</region>
           <affiliation>mcewen</affiliation>
           <note><p>Scribe of 'Mór in broinsgel' in NAS RH. 13/40.</p></note>
         </handNote>
         <handNote xml:id="Hand39">
-          <date type="floruit" min="1649" max="1705">17/18</date>
+          <date id="d1e5044" type="floruit" min="1649" max="1705">17/18</date>
           <region>Skye</region>
           <affiliation>misc</affiliation>
           <note><p>Address Sir Norman McLeod in RIA E.i.3.</p></note>
@@ -2410,7 +2396,7 @@
         <handNote xml:id="Hand40">
           <forename>Walter</forename>
           <surname>MacFarlane</surname>
-          <date type="lifespan" min="1689" max="1767">18</date>
+          <date id="d1e5066" type="lifespan" min="1689" max="1767">18</date>
           <region>Argyll</region>
           <affiliation>misc</affiliation>
           <note/>
@@ -2418,7 +2404,7 @@
         <handNote xml:id="Hand41">
           <forename>Uilleam</forename>
           <surname>Mac Mhurchaidh</surname>
-          <date type="floruit" from="1750" to="1750" min="1701" max="1799">18</date>
+          <date id="d1e5087" type="floruit" from="1750" to="1750" min="1701" max="1799">18</date>
           <region>Argyll</region>
           <affiliation>misc</affiliation>
           <note/>
@@ -2426,7 +2412,7 @@
         <handNote xml:id="Hand42">
           <forename>Lachlan</forename>
           <surname>Mac Mhuirich</surname>
-          <date type="floruit" from="1749" to="1749" min="1701" max="1799">18</date>
+          <date id="d1e5109" type="floruit" from="1749" to="1749" min="1701" max="1799">18</date>
           <region>Argyll</region>
           <affiliation>macmhuirich</affiliation>
           <note/>
@@ -2434,20 +2420,20 @@
         <handNote xml:id="Hand43">
           <forename>Domhnall</forename>
           <surname>Mac Mharcuis</surname>
-          <date type="floruit" from="1700" to="1700" min="1701" max="1799">18</date>
+          <date id="d1e5130" type="floruit" from="1700" to="1700" min="1701" max="1799">18</date>
           <region>Argyll</region>
           <affiliation>misc</affiliation>
           <note/>
         </handNote>
         <handNote xml:id="Hand44">
-          <date type="floruit" min="1501" max="1599">16</date>
+          <date id="d1e5145" type="floruit" min="1501" max="1599">16</date>
           <region>Argyll</region>
           <affiliation>beaton</affiliation>
           <note><p>Hand 2 in NLS Adv. 72.1.27</p></note>
         </handNote>
         <handNote xml:id="Hand45">
           <forename>Niall</forename>
-          <date type="floruit" min="1501" max="1599">16</date>
+          <date id="d1e5164" type="floruit" min="1501" max="1599">16</date>
           <region>Argyll</region>
           <affiliation>beaton</affiliation>
           <note><p>Hand 3 in NLS Adv. 72.1.27</p></note>
@@ -2455,25 +2441,25 @@
         <handNote xml:id="Hand46">
           <forename>Christopher</forename>
           <surname>Beaton</surname>
-          <date type="floruit" min="1601" max="1699">17</date>
+          <date id="d1e5186" type="floruit" min="1601" max="1699">17</date>
           <region>Antrim</region>
           <affiliation>beaton</affiliation>
           <note><p>Scribe and redactor of the Black Book of Clanranald.</p></note>
         </handNote>
         <handNote xml:id="Hand47">
-          <date type="floruit" min="1501" max="1599">16</date>
+          <date id="d1e5203" type="floruit" min="1501" max="1599">16</date>
           <region>Argyll</region>
           <affiliation>beaton</affiliation>
           <note><p>Hand 4 in NLS Adv. 72.1.27</p></note>
         </handNote>
         <handNote xml:id="Hand48">
-          <date type="floruit" min="1501" max="1599">16</date>
+          <date id="d1e5220" type="floruit" min="1501" max="1599">16</date>
           <region>Argyll</region>
           <affiliation>beaton</affiliation>
           <note><p>Hand 6 in NLS Adv. 72.1.27</p></note>
         </handNote>
         <handNote xml:id="Hand49">
-          <date type="floruit" min="1501" max="1599">16</date>
+          <date id="d1e5236" type="floruit" min="1501" max="1599">16</date>
           <region>Argyll</region>
           <affiliation>beaton</affiliation>
           <note><p>Hand 7 in NLS Adv. 72.1.27</p></note>
@@ -2481,13 +2467,13 @@
         <handNote xml:id="Hand50">
           <forename>[unk.]</forename>
           <surname>Beaton [?]</surname>
-          <date type="floruit" min="1501" max="1599">16</date>
+          <date id="d1e5258" type="floruit" min="1501" max="1599">16</date>
           <region>Argyll</region>
           <affiliation>beaton</affiliation>
           <note><p>Hand 8 in NLS Adv. 72.1.27</p></note>
         </handNote>
         <handNote xml:id="Hand52">
-          <date type="floruit" min="1401" max="1499">15</date>
+          <date id="d1e5275" type="floruit" min="1401" max="1499">15</date>
           <region>unknown</region>
           <affiliation>misc</affiliation>
           <note><p>Hand 2 in NLS Adv. 72.1.1</p></note>
@@ -2495,24 +2481,24 @@
         <handNote xml:id="Hand53">
           <forename>Domhnall</forename>
           <surname>Ó Dálaigh</surname>
-          <date type="floruit" min="1401" max="1499">15</date>
+          <date id="d1e5297" type="floruit" min="1401" max="1499">15</date>
           <region>Western Highlands</region>
           <affiliation>misc</affiliation>
           <note/>
         </handNote>
         <handNote xml:id="Hand54">
-          <date type="floruit" min="1601" max="1699">17</date>
+          <date id="d1e5312" type="floruit" min="1601" max="1699">17</date>
           <region>Western Isles</region>
           <affiliation>macmhuirich</affiliation>
           <note><p>Main scribe of NLS Adv. 72.1.48</p></note>
         </handNote>
         <handNote xml:id="Hand55">
-          <date type="floruit" min="1601" max="1699">17</date>
+          <date id="d1e5329" type="floruit" min="1601" max="1699">17</date>
           <affiliation>misc</affiliation>
           <note><p>Scribe of 'Do bheirim barr búadha is áigh' in TCD 1362a.</p></note>
         </handNote>
         <handNote xml:id="Hand56">
-          <date type="floruit" min="1501" max="1599">17</date>
+          <date id="d1e5342" type="floruit" min="1501" max="1599">17</date>
           <forename>Níall Óg mac Néill</forename>
           <surname>Mhic Beathadh</surname>
           <region>Islay</region>
@@ -2522,13 +2508,13 @@
         <handNote xml:id="Hand57">
           <forename>Níall</forename>
           <surname>Mac Beathadh</surname>
-          <date type="floruit" min="1451" max="1549">15/16</date>
+          <date id="d1e5371" type="floruit" min="1451" max="1549">15/16</date>
           <region>Islay</region>
           <affiliation>beaton</affiliation>
           <note><p>Hand appears in NLS Adv. 72.1.4</p></note>
         </handNote>
         <handNote xml:id="Hand58">
-          <date type="floruit" min="1560" max="1560">16</date>
+          <date id="d1e5388" type="floruit" min="1560" max="1560">16</date>
           <region>Argyll/Ulster</region>
           <affiliation>misc</affiliation>
           <note><p>The main scribe of the Argyll-O'Donnell Agreement, which he wrote out in 1560. He
@@ -2536,24 +2522,23 @@
               by either Ó Domhnaill or Argyll. As Argyll is very much the dominant party in the
               arrangement, it seems marginally more likely that he supplied the scribe.</p>
             <p>The hand is generally careful and elegant, employing minimal abbreviation. It is
-              somewhat eccentric orthographically, however (e.g. "tigerrna" for <hi rend="italics"
-                >tigerna</hi>; "ghaodheal" for <hi rend="italics">Ghaoidheal</hi>).</p></note>
+              somewhat eccentric orthographically, however (e.g. "tigerrna" for <hi rend="italics">tigerna</hi>; "ghaodheal" for <hi rend="italics">Ghaoidheal</hi>).</p></note>
         </handNote>
         <handNote xml:id="Hand59">
-          <date type="floruit" min="1601" max="1699">17</date>
+          <date id="d1e5413" type="floruit" min="1601" max="1699">17</date>
           <region>Skye</region>
           <affiliation>misc</affiliation>
           <note><p>Hand H in RIA A.v.2.</p></note>
         </handNote>
         <handNote xml:id="Hand60">
-          <date type="floruit" min="1560" max="1560">16</date>
+          <date id="d1e5429" type="floruit" min="1560" max="1560">16</date>
           <region>Argyll/Ulster</region>
           <affiliation>misc</affiliation>
           <note><p>The hand that writes out the witness list in the Argyll-O'Donnell Agreement
               (1560).</p></note>
         </handNote>
         <handNote xml:id="Hand61">
-          <date type="floruit" min="1560" max="1560">16</date>
+          <date id="d1e5446" type="floruit" min="1560" max="1560">16</date>
           <region>Argyll/Ulster</region>
           <affiliation>misc</affiliation>
           <note><p>The hand that wrote out Ó Domhnaill's signature in the Argyll-O'Donnell Agreement
@@ -2561,7 +2546,7 @@
             hand.</p></note>
         </handNote>
         <handNote xml:id="Hand62">
-          <date type="floruit" min="1633" max="1699">17</date>
+          <date id="d1e5462" type="floruit" min="1633" max="1699">17</date>
           <region>Ireland</region>
           <affiliation>misc</affiliation>
           <note><p>The main hand of RIA A.iv.3 (743), a collection of bardic poetry, Hand62 writes
@@ -2572,16 +2557,14 @@
               strokes.</p>
             <p>Based on the focus of the poems he transcribes and on the manuscript's subsequent
               history, he was probably based in Ireland, although it is not clear where. His
-              activity can be dated to the latter two thirds of the 17th century based on a <hi
-                rend="italics">terminus post quem</hi> of some of the texts he transcribes and a <hi
-                rend="italics">terminus ante quem</hi> of the decline of the Classical tradition in
+              activity can be dated to the latter two thirds of the 17th century based on a <hi rend="italics">terminus post quem</hi> of some of the texts he transcribes and a <hi rend="italics">terminus ante quem</hi> of the decline of the Classical tradition in
               which he is evidently immersed.</p>
           </note>
         </handNote>
         <handNote xml:id="Hand63">
           <forename>Seanchán</forename>
           <surname>mac Maoil Mhuire Ó Mhaoil Chonaire</surname>
-          <date type="floruit" min="1473" max="1473">15</date>
+          <date id="d1e5494" type="floruit" min="1473" max="1473">15</date>
           <region>Ireland</region>
           <affiliation>misc</affiliation>
           <note><p>Seanchán mac Maoil Mhuire Ó Mhaoil Chonaire (fl. 1473) was a member of the
@@ -2599,14 +2582,14 @@
         <handNote xml:id="Hand64">
           <forename>Donnchadh Albannach</forename>
           <surname> Ó Conchubhair</surname>
-          <date type="life" min="1571" max="1647">16/17</date>
+          <date id="d1e5517" type="life" min="1571" max="1647">16/17</date>
           <region>Lorne</region>
           <affiliation>ó_conchubair</affiliation>
           <note><p>Completes a text begun by Neil Beaton (Hand17) in NLS Adv. MS 72.1.33
             (MS5).</p></note>
         </handNote>
         <handNote xml:id="Hand65">
-          <date type="floruit" min="1071" max="1082">11</date>
+          <date id="d1e5534" type="floruit" min="1071" max="1082">11</date>
           <region>Mainz</region>
           <affiliation>misc</affiliation>
           <note><p>Hand65 is the anonymous amanuensis to Marianus Scotus (ob. 1082) in Codex
@@ -2617,56 +2600,56 @@
               monastery in Mainz with Marianus.</p></note>
         </handNote>
         <handNote xml:id="Hand66">
-          <date type="floruit" min="1400" max="1499">15</date>
+          <date id="d1e5550" type="floruit" min="1400" max="1499">15</date>
           <affiliation>misc</affiliation>
           <note><p>Hand 1 of NLS Adv. 72.1.3.</p></note>
         </handNote>
         <handNote xml:id="Hand67">
-          <date type="floruit" min="1700" max="1799">18</date>
+          <date id="d1e5564" type="floruit" min="1700" max="1799">18</date>
           <affiliation>misc</affiliation>
           <note><p>Writes out an elegy on Allan of Clanranald (ob. 1715).</p></note>
         </handNote>
         <handNote xml:id="Hand68">
-          <date type="floruit" min="1600" max="1699">17</date>
+          <date id="d1e5577" type="floruit" min="1600" max="1699">17</date>
           <affiliation>misc</affiliation>
           <note><p>Hand of The Seven Wise Masters (+ further texts?) in NLS Adv. 72.1.39.</p></note>
         </handNote>
         <handNote xml:id="Hand69">
-          <date type="floruit" min="1400" max="1499">15</date>
+          <date id="d1e5590" type="floruit" min="1400" max="1499">15</date>
           <forename>Gilla Padrig</forename>
           <surname>O Toindidh</surname>
           <affiliation>misc</affiliation>
           <note><p>Hand 2 of NLS Adv. 72.1.3.</p></note>
         </handNote>
         <handNote xml:id="Hand70">
-          <date type="floruit" min="1600" max="1699">17</date>
+          <date id="d1e5609" type="floruit" min="1600" max="1699">17</date>
           <forename>Domhnall na Foghlach</forename>
           <surname>Mac Bheathadh</surname>
           <affiliation>beaton</affiliation>
           <note><p>Signs EUL Laing III.21</p></note>
         </handNote>
         <handNote xml:id="Hand71">
-          <date type="floruit" min="1500" max="1599">16</date>
+          <date id="d1e5628" type="floruit" min="1500" max="1599">16</date>
           <forename>Domhnall</forename>
           <surname>mac Coinnigh</surname>
           <affiliation>ó_conchubair</affiliation>
           <note><p>Hand 3 of NLS Adv. 72.1.3.</p></note>
         </handNote>
         <handNote xml:id="Hand72">
-          <date type="floruit" min="1500" max="1599">16</date>
+          <date id="d1e5647" type="floruit" min="1500" max="1599">16</date>
           <forename>Gilla Coluim</forename>
           <affiliation>ó_conchubair</affiliation>
           <note><p>Adds a note to NLS Adv. 72.1.3 identifying Gilla Padrig Ó Toindidh as one of the
               main scribes.</p></note>
         </handNote>
         <handNote xml:id="Hand73">
-          <date type="floruit" min="1600" max="1699">17</date>
+          <date id="d1e5664" type="floruit" min="1600" max="1699">17</date>
           <forename/>
           <affiliation/>
           <note><p>Writes the (psuedo-)historical text on pp.780-785 of TCD MS 1337/4.</p></note>
         </handNote>
         <handNote xml:id="Hand74">
-          <date type="floruit" min="1600" max="1699">17</date>
+          <date id="d1e5678" type="floruit" min="1600" max="1699">17</date>
           <forename/>
           <affiliation>MacMhuirich</affiliation>
           <note><p>Scribe of the crosántacht 'Mór mo mholadh ar Mhac Colla' in TCD MS
@@ -2674,7 +2657,7 @@
         </handNote>
         <handNote xml:id="Hand999">
           <forename>an unidentfied hand</forename>
-          <date>unknown</date>
+          <date id="d1e5696">unknown</date>
           <region>unknown</region>
           <affiliation>misc</affiliation>
           <note><p>This hand not only cannot be associated with a known scribe but cannot even be
