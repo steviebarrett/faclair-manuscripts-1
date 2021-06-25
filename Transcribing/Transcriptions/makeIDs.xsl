@@ -8,7 +8,7 @@
   </xsl:template>
 
   <!-- add a unique id to each headword element -->
-  <xsl:template match="tei:w | tei:name | tei:g | tei:pc | tei:date | tei:num | tei:c | tei:gap | tei:seg">
+  <xsl:template match="tei:w | tei:name | tei:g | tei:pc | tei:date | tei:num | tei:c | tei:gap | tei:seg[@type='fragment']">
     <xsl:copy>
       <xsl:attribute name="id">
         <xsl:value-of select="generate-id(.)"/>
