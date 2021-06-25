@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-  xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tei="http://www.tei-c.org/ns/1.0"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tei="http://www.tei-c.org/ns/1.0" xmlns:ns="https://dasg.ac.uk/corpus/"
   exclude-result-prefixes="xs" version="1.0">
 
   <xsl:output method="html"/>
 
   <xsl:template match="/">
-    <xsl:apply-templates select="tei:TEI/tei:teiHeader"/>
+    <xsl:apply-templates select="ns:TEI/ns:teiHeader"/>
   </xsl:template>
 
-  <xsl:template match="tei:teiHeader">
+  <xsl:template match="ns:teiHeader">
     <h1>
-      <xsl:value-of select="tei:fileDesc/tei:titleStmt/tei:title"/>
+      <xsl:value-of select="ns:fileDesc/ns:titleStmt/ns:title"/>
     </h1>
     <ul>
-      <xsl:for-each select="tei:fileDesc/tei:titleStmt/tei:respStmt">
+      <xsl:for-each select="ns:fileDesc/ns:titleStmt/ns:respStmt">
         <li>
-          <xsl:value-of select="tei:name"/>
+          <xsl:value-of select="ns:name"/>
           <xsl:text>: </xsl:text>
-          <xsl:for-each select="tei:resp">
+          <xsl:for-each select="ns:resp">
             <xsl:value-of select="."/>
             <xsl:text> </xsl:text>
           </xsl:for-each>
@@ -26,95 +26,95 @@
       </xsl:for-each>
       <li>
         <xsl:text>Extent: </xsl:text>
-        <xsl:value-of select="tei:fileDesc/tei:extent"/>
+        <xsl:value-of select="ns:fileDesc/ns:extent"/>
       </li>
       <li>
-        <xsl:value-of select="tei:fileDesc/tei:publicationStmt/tei:availability/tei:p"/>
+        <xsl:value-of select="ns:fileDesc/ns:publicationStmt/ns:availability/ns:p"/>
       </li>
     </ul>
     <p>
-      <xsl:apply-templates select="tei:fileDesc/tei:notesStmt/tei:note/tei:p"/>
+      <xsl:apply-templates select="ns:fileDesc/ns:notesStmt/ns:note/ns:p"/>
     </p>
     <h2>Source</h2>
-    <xsl:apply-templates select="tei:fileDesc/tei:sourceDesc/tei:msDesc"/>
-    <xsl:if test="tei:profileDesc/tei:langUsage">
+    <xsl:apply-templates select="ns:fileDesc/ns:sourceDesc/ns:msDesc"/>
+    <xsl:if test="ns:profileDesc/ns:langUsage">
       <h2>Language and Style</h2>
-      <xsl:apply-templates select="tei:profileDesc/tei:langUsage/tei:p"/>
+      <xsl:apply-templates select="ns:profileDesc/ns:langUsage/ns:p"/>
     </xsl:if>
     <h2>Hands</h2>
-    <xsl:apply-templates select="tei:profileDesc/tei:handNotes/tei:handNote"/>
+    <xsl:apply-templates select="ns:profileDesc/ns:handNotes/ns:handNote"/>
     <h2>Keywords</h2>
-    <xsl:apply-templates select="tei:profileDesc/tei:textClass/tei:keywords/tei:term"/>
-    <xsl:if test="tei:encodingDesc/tei:p/text()">
+    <xsl:apply-templates select="ns:profileDesc/ns:textClass/ns:keywords/ns:term"/>
+    <xsl:if test="ns:encodingDesc/ns:p/text()">
       <h2>Keywords</h2>
-      <xsl:apply-templates select="tei:encodingDesc/tei:p"/>
+      <xsl:apply-templates select="ns:encodingDesc/ns:p"/>
     </xsl:if>
   </xsl:template>
 
-  <xsl:template match="tei:msDesc">
+  <xsl:template match="ns:msDesc">
     <ul>
       <li>
-        <xsl:value-of select="tei:msIdentifier/tei:repository"/>
+        <xsl:value-of select="ns:msIdentifier/ns:repository"/>
         <xsl:text> </xsl:text>
-        <xsl:value-of select="tei:msIdentifier/tei:idno"/>
+        <xsl:value-of select="ns:msIdentifier/ns:idno"/>
       </li>
-      <xsl:if test="tei:physDesc/tei:objectDesc/tei:supportDesc/tei:support/node()">
+      <xsl:if test="ns:physDesc/ns:objectDesc/ns:supportDesc/ns:support/node()">
         <li>
           <xsl:apply-templates
-            select="tei:physDesc/tei:objectDesc/tei:supportDesc/tei:support/node()"/>
+            select="ns:physDesc/ns:objectDesc/ns:supportDesc/ns:support/node()"/>
         </li>
       </xsl:if>
-      <xsl:if test="tei:physDesc/tei:objectDesc/tei:layoutDesc/tei:p">
+      <xsl:if test="ns:physDesc/ns:objectDesc/ns:layoutDesc/ns:p">
         <li>
-          <xsl:apply-templates select="tei:physDesc/tei:objectDesc/tei:layoutDesc/tei:p/node()"/>
+          <xsl:apply-templates select="ns:physDesc/ns:objectDesc/ns:layoutDesc/ns:p/node()"/>
         </li>
       </xsl:if>
-      <xsl:if test="tei:physDesc/tei:objectDesc/tei:supportDesc/tei:foliation/node()">
-        <li>
-          <xsl:apply-templates
-            select="tei:physDesc/tei:objectDesc/tei:supportDesc/tei:foliation/node()"/>
-        </li>
-      </xsl:if>
-      <xsl:if test="tei:physDesc/tei:objectDesc/tei:supportDesc/tei:condition/node()">
+      <xsl:if test="ns:physDesc/ns:objectDesc/ns:supportDesc/ns:foliation/node()">
         <li>
           <xsl:apply-templates
-            select="tei:physDesc/tei:objectDesc/tei:supportDesc/tei:condition/node()"/>
+            select="ns:physDesc/ns:objectDesc/ns:supportDesc/ns:foliation/node()"/>
+        </li>
+      </xsl:if>
+      <xsl:if test="ns:physDesc/ns:objectDesc/ns:supportDesc/ns:condition/node()">
+        <li>
+          <xsl:apply-templates
+            select="ns:physDesc/ns:objectDesc/ns:supportDesc/ns:condition/node()"/>
         </li>
       </xsl:if>
       <li>
         <xsl:text>Contents: </xsl:text>
-        <xsl:apply-templates select="tei:msContents/tei:summary/tei:p"/>
+        <xsl:apply-templates select="ns:msContents/ns:summary/ns:p"/>
         <ul>
-          <xsl:apply-templates select="tei:msContents/tei:msItem"/>
+          <xsl:apply-templates select="ns:msContents/ns:msItem"/>
         </ul>
       </li>
     </ul>
     <h3>History</h3>
-    <xsl:apply-templates select="tei:history/tei:summary/tei:p"/>
+    <xsl:apply-templates select="ns:history/ns:summary/ns:p"/>
     <h3>Physical Description</h3>
-    <xsl:apply-templates select="tei:physDesc/tei:p"/>
+    <xsl:apply-templates select="ns:physDesc/ns:p"/>
   </xsl:template>
 
-  <xsl:template match="tei:msItem">
+  <xsl:template match="ns:msItem">
     <li>
       <xsl:value-of select="string(@xml:id)"/>
       <xsl:text> </xsl:text>
       <strong>
-        <xsl:value-of select="tei:title"/>
+        <xsl:value-of select="ns:title"/>
         <xsl:text> [</xsl:text>
-        <xsl:value-of select="tei:locus"/>
+        <xsl:value-of select="ns:locus"/>
         <xsl:text>]</xsl:text>
       </strong>
-      <xsl:if test="tei:note">
+      <xsl:if test="ns:note">
         <strong>
           <xsl:text>: </xsl:text>
         </strong>
-        <xsl:apply-templates select="tei:note/text() | tei:note/*"/>
+        <xsl:apply-templates select="ns:note/text() | ns:note/*"/>
       </xsl:if>
     </li>
   </xsl:template>
 
-  <xsl:template match="tei:term">
+  <xsl:template match="ns:term">
     <ul>
       <li>
         <xsl:apply-templates/>
@@ -122,7 +122,7 @@
     </ul>
   </xsl:template>
 
-  <xsl:template match="tei:hi">
+  <xsl:template match="ns:hi">
     <xsl:choose>
       <xsl:when test="@rend = 'italics'">
         <em>
@@ -145,36 +145,36 @@
     </xsl:choose>
   </xsl:template>
 
-  <xsl:template match="tei:ref">
+  <xsl:template match="ns:ref">
     <a href="{@target}" target="_blank">
       <xsl:apply-templates/>
     </a>
   </xsl:template>
 
-  <xsl:template match="tei:p">
+  <xsl:template match="ns:p">
     <p>
       <xsl:apply-templates/>
     </p>
   </xsl:template>
 
-  <xsl:template match="tei:handNote">
+  <xsl:template match="ns:handNote">
     <xsl:variable name="handID" select="@corresp"/>
     <ul>
       <li>
         <strong>
           <xsl:choose>
             <xsl:when
-              test="document('..\..\Transcribing\corpus.xml')//tei:handNotes/tei:handNote[@xml:id = $handID]/tei:forename or document('..\..\Transcribing\corpus.xml')//tei:handNotes/tei:handNote[@xml:id = $handID]/tei:surname">
+              test="document('..\..\Transcribing\corpus.xml')//ns:handNotes/ns:handNote[@xml:id = $handID]/ns:forename or document('..\..\Transcribing\corpus.xml')//ns:handNotes/ns:handNote[@xml:id = $handID]/ns:surname">
               <xsl:if
-                test="document('..\..\Transcribing\corpus.xml')//tei:handNotes/tei:handNote[@xml:id = $handID]/tei:forename">
+                test="document('..\..\Transcribing\corpus.xml')//ns:handNotes/ns:handNote[@xml:id = $handID]/ns:forename">
                 <xsl:value-of
-                  select="document('..\..\Transcribing\corpus.xml')//tei:handNotes/tei:handNote[@xml:id = $handID]/tei:forename"/>
+                  select="document('..\..\Transcribing\corpus.xml')//ns:handNotes/ns:handNote[@xml:id = $handID]/ns:forename"/>
                 <xsl:text> </xsl:text>
               </xsl:if>
               <xsl:if
-                test="document('..\..\Transcribing\corpus.xml')//tei:handNotes/tei:handNote[@xml:id = $handID]/tei:surname">
+                test="document('..\..\Transcribing\corpus.xml')//ns:handNotes/ns:handNote[@xml:id = $handID]/ns:surname">
                 <xsl:value-of
-                  select="document('..\..\Transcribing\corpus.xml')//tei:handNotes/tei:handNote[@xml:id = $handID]/tei:surname"/>
+                  select="document('..\..\Transcribing\corpus.xml')//ns:handNotes/ns:handNote[@xml:id = $handID]/ns:surname"/>
                 <xsl:text> </xsl:text>
               </xsl:if>
               <xsl:value-of select="concat('(', @corresp, ')')"/>
@@ -187,18 +187,18 @@
           <em>saec.</em>
           <xsl:text> </xsl:text>
           <xsl:value-of
-            select="document('..\..\Transcribing\corpus.xml')//tei:handNotes/tei:handNote[@xml:id = $handID]/tei:date"/>
+            select="document('..\..\Transcribing\corpus.xml')//ns:handNotes/ns:handNote[@xml:id = $handID]/ns:date"/>
           <xsl:if
-            test="document('..\..\Transcribing\corpus.xml')//tei:handNotes/tei:handNote[@xml:id = $handID]/tei:region">
+            test="document('..\..\Transcribing\corpus.xml')//ns:handNotes/ns:handNote[@xml:id = $handID]/ns:region">
             <xsl:text>, </xsl:text>
             <xsl:value-of
-              select="document('..\..\Transcribing\corpus.xml')//tei:handNotes/tei:handNote[@xml:id = $handID]/tei:region"
+              select="document('..\..\Transcribing\corpus.xml')//ns:handNotes/ns:handNote[@xml:id = $handID]/ns:region"
             />
           </xsl:if>
           <xsl:text>: </xsl:text>
         </strong>
         <xsl:apply-templates
-          select="document('..\..\Transcribing\corpus.xml')//tei:handNotes/tei:handNote[@xml:id = $handID]/tei:note"
+          select="document('..\..\Transcribing\corpus.xml')//ns:handNotes/ns:handNote[@xml:id = $handID]/ns:note"
         />
       </li>
     </ul>
