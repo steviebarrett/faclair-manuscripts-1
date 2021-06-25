@@ -109,6 +109,9 @@
 								</xsl:otherwise>
 							</xsl:choose>
 							<w>
+								<xsl:attribute name="id">
+									<xsl:value-of select="generate-id(.)"/>
+								</xsl:attribute>
 								<xsl:attribute name="type">
 									<xsl:text>data</xsl:text>
 								</xsl:attribute>
@@ -144,7 +147,6 @@
 										/>
 									</xsl:attribute>
 								</xsl:if>
-								<!-- New -->
 								<xsl:variable name="lems" as="element()">
 									<lems>
 										<xsl:for-each
@@ -166,34 +168,6 @@
 										</span>
 									</xsl:if>
 								</xsl:for-each>
-								<!-- <xsl:variable name="firstLem"
-									select="//ns:w[1][@lemmaRef = $wordID and not(@lemmaRef = preceding::ns:w/@lemmaRef)]/@lemma"/>
-								<xsl:if test="//ns:w[@lemmaRef = $wordID and @lemma != $firstLem]">
-									<span>
-										<xsl:attribute name="type">altLem</xsl:attribute>
-										<xsl:attribute name="n">
-											<xsl:value-of
-												select="count(//ns:w[@lemma = $firstLem])"/>
-										</xsl:attribute>
-										<xsl:value-of select="$firstLem"/>
-									</span>
-									<xsl:for-each
-										select="//ns:w[@lemmaRef = $wordID and @lemma != $firstLem]">
-										<xsl:variable name="thisLem" select="@lemma"/>
-										<xsl:if
-											test="not(preceding::ns:w[@lemmaRef = $wordID]/@lemma = $thisLem)">
-											<span>
-												<xsl:attribute name="type">altLem</xsl:attribute>
-												<xsl:attribute name="n">
-												<xsl:value-of
-												select="count(//ns:w[@lemma = $thisLem])"/>
-												</xsl:attribute>
-												<xsl:value-of select="$thisLem"/>
-											</span>
-										</xsl:if>
-									</xsl:for-each>
-								</xsl:if> -->
-								<!-- New -->
 								<xsl:variable name="forms" as="element()">
 									<forms>
 										<xsl:for-each
@@ -217,34 +191,6 @@
 										</span>
 									</xsl:if>
 								</xsl:for-each>
-								<!-- <xsl:variable name="firstForm"
-									select="//ns:w[not(descendant::ns:w) and not(@type = 'data') and @lemmaRef = $wordID and not(@lemmaRef = preceding::ns:w[not(descendant::ns:w)]/@lemmaRef)]/string(translate(normalize-space(self::*), ' ', ''))"/>
-								<xsl:if
-									test="//ns:w[not(descendant::ns:w) and not(@type = 'data') and @lemmaRef = $wordID and not(string(translate(normalize-space(self::*), ' ', '')) = $firstForm)]">
-									<span>
-										<xsl:attribute name="type">altForm</xsl:attribute>
-										<xsl:value-of
-											select="translate(normalize-space($firstForm), ' ', '')"
-										/>
-									</span>
-									<xsl:for-each
-										select="//ns:w[not(descendant::ns:w) and not(@type = 'data') and @lemmaRef = $wordID and not(string(translate(normalize-space(self::*), ' ', '')) = preceding::ns:w[not(@type = 'data') and @lemmaRef = $wordID]/string(translate(normalize-space(self::*), ' ', ''))) and not(string(translate(normalize-space(self::*), ' ', '')) = $firstForm)]">
-										<xsl:variable name="thisForm"
-											select="string(translate(normalize-space(self::*), ' ', ''))"/>
-										<span>
-											<xsl:attribute name="type">altForm</xsl:attribute>
-											<xsl:value-of
-												select="translate(normalize-space($thisForm), ' ', '')"
-											/>
-										</span>
-									</xsl:for-each>
-								</xsl:if>
-								<xsl:for-each
-									select="//ns:TEI[@xml:id = 'hwData']/descendant::ns:entryFree[@corresp = $wordID]/ns:w/comment()">
-									<xsl:comment>
-										<xsl:value-of select="concat(' ', string(preceding::ns:span[1]/@type), ' &quot;', preceding::ns:span[1], '&quot;', ': ', string(.))"/>
-									</xsl:comment>
-								</xsl:for-each> -->
 							</w>
 							<xsl:copy-of
 								select="//ns:TEI[@xml:id = 'hwData']/descendant::ns:entryFree[@corresp = $wordID]/comment()"
