@@ -14529,7 +14529,7 @@
                         <w id="d1e58001" lemma="in" lemmaRef="http://www.dil.ie/28194" pos="article">an</w>
                         <w id="d1e58004" pos="prefix-noun">
                             <w id="d1e58006" lemma="aith-" lemmaRef="http://www.dil.ie/2544" pos="prefix">a</w>
-                            <seg type="catchword"><seg type="fragment">ana<abbr cert="high">f<g id="d1e58014" ref="g4">h</g></abbr></seg></seg>
+                            <seg type="catchword"><seg id="d1e58004" type="fragment">ana<abbr cert="high">f<g id="d1e58014" ref="g4">h</g></abbr></seg></seg>
                             <w id="d1e58017" pos="noun">falla</w>
                         </w>
                     </name>
@@ -17251,7 +17251,7 @@
                     <space type="scribal"/>
                     <w id="d1e69123" lemma="arm" lemmaRef="http://www.dil.ie/4184" pos="noun"><abbr cert="high"><g id="d1e69125" ref="g8">ar</g></abbr><abbr cert="high"><g id="d1e69128" ref="g1">m</g></abbr></w>
                     <space type="scribal"/>
-                    <del hand="Hand46"><seg type="fragment">m<abbr cert="high"><g id="d1e69137" ref="g8">ar</g></abbr>c</seg></del>
+                    <del hand="Hand46"><seg id="d1e69129" type="fragment">m<abbr cert="high"><g id="d1e69137" ref="g8">ar</g></abbr>c</seg></del>
                     <space type="scribal"/>
                     <w id="d1e69143" lemma="in" lemmaRef="http://www.dil.ie/28194" pos="article">na</w>
                     <space type="scribal"/>
@@ -18816,7 +18816,7 @@
                     <w id="d1e75756" lemma="is" lemmaRef="http://www.dil.ie/29104" pos="verb">fa</w>
                     <space type="scribal"/>
                     <choice>
-                        <sic><seg type="fragment"/></sic>
+                        <sic><seg id="d1e75760" type="fragment"/></sic>
                         <corr resp="MMA"><w id="d1e75768" lemma="dead" lemmaRef="http://www.dil.ie/14812" pos="noun">de<lb n="3" sameAs="MS32.p150.3"/>oid<pc id="d1e75772">-</pc>oi<abbr cert="high">d<g id="d1e75777" ref="g4">h</g></abbr></w></corr>
                     </choice>
                 <!-- Return to this. 1) Add in the sic. 2) Black has deireadh, https://dasg.ac.uk/slips/index.php?id=0061098, at last. --> 
@@ -22144,7 +22144,7 @@
                             <space type="scribal"/>
                             <w id="d1e89115" lemma="íarraid" lemmaRef="http://www.dil.ie/27062" pos="verb">í<abbr cert="high"><g id="d1e89118" ref="g13">arr</g></abbr></w>
                             <space type="scribal"/>
-                            <del hand="Hand46"><seg type="fragment"><abbr cert="high">a<g id="d1e89127" ref="g5">n</g></abbr><space type="scribal"/>m<abbr cert="high"><g id="d1e89132" ref="g8">ar</g></abbr></seg></del>
+                            <del hand="Hand46"><seg id="d1e89119" type="fragment"><abbr cert="high">a<g id="d1e89127" ref="g5">n</g></abbr><space type="scribal"/>m<abbr cert="high"><g id="d1e89132" ref="g8">ar</g></abbr></seg></del>
                             <space type="scribal"/>
                             <name id="d1e89138" type="personal"><w id="d1e89139" lemma="Mon Rois" lemmaRef="https://www.ainmean-aite.scot/placename/montrose/" pos="noun">M<abbr cert="high">u<g id="d1e89143" ref="g5">n</g></abbr>tros</w></name>
                             <space type="scribal"/>
@@ -23247,7 +23247,7 @@
                             <space type="scribal"/>
                             <name id="d1e93442" type="place" corresp="https://www.ainmean-aite.scot/placename/kintyre/">
                                 <choice>
-                                    <sic><seg type="fragment">ci<abbr cert="high">n<g id="d1e93451" ref="g5">n</g></abbr>te</seg></sic>
+                                    <sic><seg id="d1e93442" type="fragment">ci<abbr cert="high">n<g id="d1e93451" ref="g5">n</g></abbr>te</seg></sic>
                                     <corr resp="MMA"><w id="d1e93456" lemma="cenn" lemmaRef="http://www.dil.ie/8622" pos="noun">ci<abbr cert="high">n<g id="d1e93460" ref="g5">n</g></abbr></w></corr>
                                 </choice>
                         <!-- Check physical MS. Unclear in scan. -->
@@ -23968,7 +23968,7 @@
                             <w id="d1e96215" lemma="do" lemmaRef="http://www.dil.ie/17098" pos="particle">do</w>
                             <space type="scribal"/>
                             <choice>
-                                <sic><seg type="fragment"><abbr cert="high">f<g id="d1e96226" ref="g4">h</g></abbr>ui<abbr cert="high">d<g id="d1e96231" ref="g4">h</g></abbr></seg></sic>
+                                <sic><seg id="d1e96218" type="fragment"><abbr cert="high">f<g id="d1e96226" ref="g4">h</g></abbr>ui<abbr cert="high">d<g id="d1e96231" ref="g4">h</g></abbr></seg></sic>
                                 <corr resp="MMA"><w id="d1e96235" lemma="fo-rig" lemmaRef="http://www.dil.ie/23698" pos="verb"><abbr cert="high">f<g id="d1e96238" ref="g4">h</g></abbr>uiri<abbr cert="high">d<g id="d1e96243" ref="g4">h</g></abbr></w></corr>
                             </choice>
                             <space type="scribal"/>
@@ -26399,7 +26399,7 @@
                             <w id="d1e105621" lemma="*Rosach" source="Ros" lemmaRef="https://www.ainmean-aite.scot/placename/ross/" pos="noun">rosac<abbr cert="high">h<g id="d1e105625" ref="g3">uib</g></abbr><abbr cert="high"><g id="d1e105628" ref="g4">h</g></abbr></w>
                             <space type="scribal"/>
                             <w id="d1e105633" lemma="a" lemmaRef="http://www.dil.ie/3" pos="possessive_pronoun">a</w>
-                            <del hand="Hand10"><seg type="fragment"><abbr cert="high">c<g id="d1e105640" ref="g4">h</g></abbr></seg></del>
+                            <del hand="Hand10"><seg id="d1e105629" type="fragment"><abbr cert="high">c<g id="d1e105640" ref="g4">h</g></abbr></seg></del>
                             <w id="d1e105644" lemma="slondud" lemmaRef="http://www.dil.ie/38000" pos="noun"><supplied resp="MMA"><abbr cert="high">s<g id="d1e105648" ref="g4">h</g></abbr></supplied>loi<abbr cert="high">n<g id="d1e105653" ref="g5">n</g></abbr>ea<abbr cert="high">d<g id="d1e105658" ref="g4">h</g></abbr></w>
                             <space type="scribal"/>
                             <w id="d1e105663" lemma="ocus" lemmaRef="http://www.dil.ie/33484" pos="conjunction"><abbr cert="high"><g id="d1e105665" ref="g2">agus</g></abbr></w>
@@ -26689,7 +26689,7 @@
                                     <space type="scribal"/>
                                     <w id="d1e106755" lemma="uillenn" lemmaRef="http://www.dil.ie/42983" pos="noun">huille<abbr cert="high">n<g id="d1e106759" ref="g5">n</g></abbr></w>
                                     <space type="scribal"/>
-                                    <seg type="fragment">ua<abbr cert="high">t<g id="d1e106768" ref="g4">h</g></abbr></seg>
+                                    <seg id="d1e106756" type="fragment">ua<abbr cert="high">t<g id="d1e106768" ref="g4">h</g></abbr></seg>
                                     <pc id="d1e106771">.</pc>
                                     <space type="scribal"/>
                                     <c id="d1e106776">ui</c>
@@ -26697,7 +26697,7 @@
                                     <space type="scribal"/>
                                     <w id="d1e106785" lemma="uillenn" lemmaRef="http://www.dil.ie/42983" pos="noun">uillen</w>
                                     <space type="scribal"/>
-                                    <seg type="fragment">úi<abbr cert="high">g<g id="d1e106794" ref="g4">h</g></abbr></seg>
+                                    <seg id="d1e106782" type="fragment">úi<abbr cert="high">g<g id="d1e106794" ref="g4">h</g></abbr></seg>
                                     <space type="scribal"/>
                                     <pc id="d1e106800">.</pc>
                                     <space type="scribal"/>
@@ -26708,7 +26708,7 @@
                                     <space type="scribal"/>
                                     <pc id="d1e106823">.</pc>
                                     <space type="scribal"/>
-                                    <seg type="fragment">úai<abbr cert="high">g<g id="d1e106832" ref="g4">h</g></abbr></seg>
+                                    <seg id="d1e106820" type="fragment">úai<abbr cert="high">g<g id="d1e106832" ref="g4">h</g></abbr></seg>
                                     <space type="scribal"/>
                                     <pc id="d1e106837">.</pc>
                                     <space type="scribal"/>
@@ -26724,23 +26724,23 @@
                                     <space type="scribal"/>
                                     <w id="d1e106896" lemma="emoncholl" lemmaRef="http://www.dil.ie/20036" pos="noun"><w id="d1e106897" lemma="emon" lemmaRef="http://www.dil.ie/20034" pos="noun">h<abbr cert="high">a<g id="d1e106901" ref="g1">m</g><g id="d1e106903" ref="g4">h</g></abbr><abbr cert="high"><g id="d1e106906" ref="g8">ar</g></abbr></w><w id="d1e106908" lemma="coll" lemmaRef="http://www.dil.ie/10500" pos="noun"><abbr cert="high">c<g id="d1e106911" ref="g4">h</g></abbr>oll</w></w>
                                     <space type="scribal"/>
-                                    <seg type="fragment">ái<abbr cert="high">g<g id="d1e106921" ref="g4">h</g></abbr></seg>
+                                    <seg id="d1e106909" type="fragment">ái<abbr cert="high">g<g id="d1e106921" ref="g4">h</g></abbr></seg>
                                     <pc id="d1e106924">,</pc>
                                     <pc id="d1e106927">.</pc>
-                                    <seg type="fragment"><abbr cert="high"><g id="d1e106932" ref="l5">ao</g></abbr></seg>
+                                    <seg id="d1e106922" type="fragment"><abbr cert="high"><g id="d1e106932" ref="l5">ao</g></abbr></seg>
                                     <space type="scribal"/>
                                     <w id="d1e106938" lemma="emoncholl" lemmaRef="http://www.dil.ie/20036" pos="noun"><w id="d1e106939" lemma="emon" lemmaRef="http://www.dil.ie/20034" pos="noun"><abbr cert="high">a<g id="d1e106942" ref="g1">m</g><g id="d1e106944" ref="g4">h</g></abbr><abbr cert="high"><g id="d1e106947" ref="g8">ar</g></abbr></w><w id="d1e106949" lemma="coll" lemmaRef="http://www.dil.ie/10500" pos="noun"><abbr cert="high">c<g id="d1e106952" ref="g4">h</g></abbr>oll</w></w>
                                     <pc id="d1e106956">.</pc>
                                     <space type="scribal"/>
-                                    <seg type="fragment"><abbr cert="high"><g id="d1e106963" ref="l5">ao</g></abbr><abbr cert="high">t<g id="d1e106967" ref="g4">h</g></abbr></seg>
+                                    <seg id="d1e106953" type="fragment"><abbr cert="high"><g id="d1e106963" ref="l5">ao</g></abbr><abbr cert="high">t<g id="d1e106967" ref="g4">h</g></abbr></seg>
                                     <space type="scribal"/>
                                     <pc id="d1e106973">.</pc>
                                     <space type="scribal"/>
-                                    <seg type="fragment"><abbr cert="high"><g id="d1e106980" ref="l5">ao</g></abbr></seg>
+                                    <seg id="d1e106970" type="fragment"><abbr cert="high"><g id="d1e106980" ref="l5">ao</g></abbr></seg>
                                     <pc id="d1e106983">.</pc>
                                     <w id="d1e106986" lemma="emoncholl" lemmaRef="http://www.dil.ie/20036" pos="noun"><w id="d1e106987" lemma="emon" lemmaRef="http://www.dil.ie/20034" pos="noun"><abbr cert="high">a<g id="d1e106990" ref="g1">m</g><g id="d1e106992" ref="g4">h</g></abbr><pc id="d1e106994">-</pc><lb n="11" xml:id="MS32.84r.11"/><abbr cert="high"><g id="d1e106998" ref="g8">ar</g></abbr></w><w id="d1e107000" lemma="coll" lemmaRef="http://www.dil.ie/10500" pos="noun"><abbr cert="high">c<g id="d1e107003" ref="g4">h</g></abbr>oll</w></w>
                                     <space type="scribal"/>
-                                    <seg type="fragment"><abbr cert="high"><g id="d1e107012" ref="l5">ao</g></abbr>i<abbr cert="high">d<g id="d1e107017" ref="g4">h</g></abbr></seg>
+                                    <seg id="d1e107002" type="fragment"><abbr cert="high"><g id="d1e107012" ref="l5">ao</g></abbr>i<abbr cert="high">d<g id="d1e107017" ref="g4">h</g></abbr></seg>
                                     <space type="scribal"/>
                                     <c id="d1e107022">ae</c>
                                     <space type="scribal"/>
@@ -26751,7 +26751,7 @@
                                           <corr resp="EPT"><w id="d1e107049" lemma="emoncholl" lemmaRef="http://www.dil.ie/20036" pos="noun"><w id="d1e107050" lemma="emon" lemmaRef="http://www.dil.ie/20034" pos="noun"><abbr cert="high">a<g id="d1e107053" ref="g1">m</g></abbr><abbr cert="high"><g id="d1e107056" ref="g8">ar</g></abbr></w><w id="d1e107058" lemma="coll" lemmaRef="http://www.dil.ie/10500" pos="noun">coll</w></w></corr>
                                     </choice>
                                     <space type="scribal"/>
-                                    <seg type="fragment"><abbr cert="high"><g id="d1e107066" ref="l9">ae</g></abbr></seg>
+                                    <seg id="d1e107056" type="fragment"><abbr cert="high"><g id="d1e107066" ref="l9">ae</g></abbr></seg>
                                     <space type="scribal"/>
                                     <pc id="d1e107071">.</pc>
                                     <space type="scribal"/>
@@ -26767,7 +26767,7 @@
                                     <space type="scribal"/>
                                     <w id="d1e107103" lemma="iphín" lemmaRef="http://www.dil.ie/29027" pos="noun">ifine</w>
                                     <space type="scribal"/>
-                                    <seg type="fragment">ía<abbr cert="high">t<g id="d1e107113" ref="g4">h</g></abbr></seg>
+                                    <seg id="d1e107101" type="fragment">ía<abbr cert="high">t<g id="d1e107113" ref="g4">h</g></abbr></seg>
                                     <space type="scribal"/>
                                     <pc id="d1e107118">.</pc>
                                     <space type="scribal"/>
@@ -26777,7 +26777,7 @@
                                     <space type="scribal"/>
                                     <w id="d1e107134" lemma="iphín" lemmaRef="http://www.dil.ie/29027" pos="noun">ifine</w>
                                     <space type="scribal"/>
-                                    <seg type="fragment">iai<abbr cert="high">g<g id="d1e107143" ref="g4">h</g></abbr></seg>
+                                    <seg id="d1e107131" type="fragment">iai<abbr cert="high">g<g id="d1e107143" ref="g4">h</g></abbr></seg>
                                     <pc id="d1e107146">.</pc>
                                     <lb n="13" xml:id="MS32.84r.13"/>
                                     <c id="d1e107152">iu</c>
@@ -26795,7 +26795,7 @@
                                     <space type="scribal"/>
                                     <w id="d1e107188" lemma="iphín" lemmaRef="http://www.dil.ie/29027" pos="noun">ifin</w>
                                     <space type="scribal"/>
-                                    <seg type="fragment">ui<abbr cert="high">g<g id="d1e107197" ref="g4">h</g></abbr></seg>
+                                    <seg id="d1e107185" type="fragment">ui<abbr cert="high">g<g id="d1e107197" ref="g4">h</g></abbr></seg>
                                     <space type="scribal"/>
                                     <pc id="d1e107203">.</pc>
                                     <space type="scribal"/>
@@ -27087,7 +27087,7 @@
                                     <space type="scribal"/>
                                     <c id="d1e108222">gh</c>
                                     <space type="scribal"/>
-                                    <seg type="fragment"><abbr cert="high">m<g id="d1e108230" ref="g4">h</g></abbr></seg>
+                                    <seg id="d1e108216" type="fragment"><abbr cert="high">m<g id="d1e108230" ref="g4">h</g></abbr></seg>
                                     <space type="scribal"/>
                                     <pc id="d1e108235">.</pc>
                                     <space type="scribal"/>
