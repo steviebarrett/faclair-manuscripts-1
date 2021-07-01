@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet xmlns:tei="http://www.tei-c.org/ns/1.0"
+<xsl:stylesheet xmlns:ns="https://dasg.ac.uk/corpus/"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    xmlns:viz="http://www.gexf.net/1.2draft/viz" exclude-result-prefixes="xs xsl tei" version="3.0">
+    xmlns:viz="http://www.gexf.net/1.2draft/viz" exclude-result-prefixes="xs xsl ns" version="3.0">
     <xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
 
-    <xsl:template match="/" exclude-result-prefixes="xs xsl tei">
+    <xsl:template match="/" exclude-result-prefixes="xs xsl ns">
         <gexf xmlns="http://www.gexf.net/1.2draft" xmlns:viz="http://www.gexf.net/1.2draft/viz"
             version="1.2">
             <graph mode="static" defaultedgetype="directed">
@@ -24,18 +24,18 @@
     </xsl:template>
 
     <xsl:template name="nodes">
-        <xsl:for-each select="//tei:div[not(ancestor::tei:div)]"
-            exclude-result-prefixes="xs xsl tei">
+        <xsl:for-each select="//ns:div[not(ancestor::ns:div)]"
+            exclude-result-prefixes="xs xsl ns">
             <xsl:variable name="text_id" select="string(@corresp)"/>
             <xsl:variable name="scribe"
-                select="string(ancestor::tei:TEI//tei:msItem[@xml:id = $text_id]/tei:author[@role = 'scribe'][1]/@corresp)"/>
+                select="string(ancestor::ns:TEI//ns:msItem[@xml:id = $text_id]/ns:author[@role = 'scribe'][1]/@corresp)"/>
             <xsl:variable name="affil"
-                select="string(//tei:teiCorpus//tei:handNotes/tei:handNote[@xml:id = $scribe]/tei:affiliation)"/>
+                select="string(//ns:teiCorpus//ns:handNotes/ns:handNote[@xml:id = $scribe]/ns:affiliation)"/>
             <xsl:variable name="genre">
                 <xsl:variable name="term_count"
-                    select="count(ancestor::tei:TEI//tei:msItem[@xml:id = $text_id]//tei:keywords/tei:term)"/>
+                    select="count(ancestor::ns:TEI//ns:msItem[@xml:id = $text_id]//ns:keywords/ns:term)"/>
                 <xsl:for-each
-                    select="ancestor::tei:TEI//tei:msItem[@xml:id = $text_id]//tei:keywords/tei:term">
+                    select="ancestor::ns:TEI//ns:msItem[@xml:id = $text_id]//ns:keywords/ns:term">
                     <xsl:value-of select="string(.)"/>
                     <xsl:if test="position() &lt; $term_count">
                         <xsl:text xml:space="preserve"> | </xsl:text>
@@ -45,7 +45,7 @@
             <xsl:element name="node">
                 <xsl:attribute name="id" select="$text_id"/>
                 <xsl:attribute name="label"
-                    select="string(ancestor::tei:TEI//tei:msItem[@xml:id = $text_id]/tei:title)"/>
+                    select="string(ancestor::ns:TEI//ns:msItem[@xml:id = $text_id]/ns:title)"/>
                 <attValues>
                     <attValue for="att_2" value="_"/>
                     <attValue for="att_3" value="_"/>
@@ -71,8 +71,8 @@
                 </xsl:element>
             </xsl:element>
         </xsl:for-each>
-        <xsl:for-each select="//tei:w[@lemmaRef and not(@type = 'data')]"
-            exclude-result-prefixes="xs xsl tei">
+        <xsl:for-each select="//ns:w[@lemmaRef and not(@type = 'data')]"
+            exclude-result-prefixes="xs xsl ns">
             <xsl:variable name="lemRef" select="string(@lemmaRef)"/>
             <xsl:variable name="lem" select="string(@lemma)"/>
             <xsl:variable name="cb">
@@ -102,11 +102,11 @@
     </xsl:template>
 
     <xsl:template name="edges">
-        <xsl:for-each select="//tei:w[@lemmaRef and not(@type = 'data')]"
-            exclude-result-prefixes="xs xsl tei">
+        <xsl:for-each select="//ns:w[@lemmaRef and not(@type = 'data')]"
+            exclude-result-prefixes="xs xsl ns">
             <xsl:variable name="word" select="string(@lemmaRef)"/>
             <xsl:variable name="text"
-                select="string(ancestor::tei:div[not(ancestor::tei:div)]/@corresp)"/>
+                select="string(ancestor::ns:div[not(ancestor::ns:div)]/@corresp)"/>
             <xsl:element name="edge">
                 <xsl:attribute name="id" select="generate-id()"/>
                 <xsl:attribute name="source" select="$text"/>
