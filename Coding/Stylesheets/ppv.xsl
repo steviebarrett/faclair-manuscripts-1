@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Returns a GEXF graph file showing vocab used by indvidual paragraphs and poems within one or more texts. The graph can be filtered for content-bearing vocabulary and, where multiple texts are involved, colour-coded by text. -->
-<xsl:stylesheet xmlns:tei="http://www.tei-c.org/ns/1.0"
+<xsl:stylesheet xmlns:ns="https://dasg.ac.uk/corpus/"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    xmlns:viz="http://www.gexf.net/1.2draft/viz" exclude-result-prefixes="xs xsl tei" version="3.0">
+    xmlns:viz="http://www.gexf.net/1.2draft/viz" exclude-result-prefixes="xs xsl ns" version="3.0">
     <xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
     <!-- USER: Enter <div> @corresp value for desired text within single quotes as the value of @select. To return data on multiple texts, enter each @corresp value within its own set of single quotes, separated by commas, 
         with the whole list enclosed by round brackets; e.g. "select=('MS12.5', 'MS30.2', 'MS30.24')".-->
     <xsl:variable name="text_id"
-        select="('MS31.1', 'MS31.2', 'MS31.3', 'MS31.4', 'MS31.5', 'MS32.1', 'MS32.2', 'MS32.3', 'MS32.4')"/>
+        select="('MS4.1', 'MS4.2', 'MS4.3', 'MS4.4', 'MS4.5', 'MS4.6', 'MS4.7', 'MS4.8', 'MS4.9', 'MS4.10', 'MS4.11', 'MS4.12', 'MS4.13', 'MS4.14', 'MS4.15', 'MS4.16', 'MS4.17', 'MS4.18')"/>
 
 
-    <xsl:template match="/" exclude-result-prefixes="xs xsl tei">
+    <xsl:template match="/" exclude-result-prefixes="xs xsl ns">
         <gexf xmlns="http://www.gexf.net/1.2draft" xmlns:viz="http://www.gexf.net/1.2draft/viz"
             version="1.2">
             <graph mode="static" defaultedgetype="directed">
@@ -29,7 +29,7 @@
     </xsl:template>
 
     <xsl:template name="nodes">
-        <xsl:for-each select="//tei:lg[ancestor::tei:div/@corresp = $text_id and @n]">
+        <xsl:for-each select="//ns:lg[ancestor::ns:div/@corresp = $text_id and @n]">
             <xsl:variable name="id">
                 <xsl:choose>
                     <xsl:when
@@ -55,7 +55,7 @@
                 </xsl:choose>
             </xsl:variable>
             <xsl:variable name="div_id"
-                select="string(ancestor::tei:div[not(ancestor::tei:div)]/@corresp)"/>
+                select="string(ancestor::ns:div[not(ancestor::ns:div)]/@corresp)"/>
             <xsl:element name="node">
                 <xsl:attribute name="id" select="$id"/>
                 <xsl:attribute name="label" select="$id"/>
@@ -68,11 +68,11 @@
             </xsl:element>
         </xsl:for-each>
         <xsl:for-each
-            select="//tei:p[ancestor::tei:div/@corresp = $text_id and not(parent::tei:note) and descendant::tei:w[@lemmaRef and not(ancestor::tei:lg)]]">
+            select="//ns:p[ancestor::ns:div/@corresp = $text_id and not(parent::ns:note) and descendant::ns:w[@lemmaRef and not(ancestor::ns:lg)]]">
             <xsl:variable name="div_id"
-                select="string(ancestor::tei:div[not(ancestor::tei:div)]/@corresp)"/>
+                select="string(ancestor::ns:div[not(ancestor::ns:div)]/@corresp)"/>
             <xsl:variable name="id"
-                select="concat($div_id, '-para_', count(preceding::tei:p[ancestor::tei:div/@corresp = $div_id]) + 1)"/>
+                select="concat($div_id, '-para_', count(preceding::ns:p[ancestor::ns:div/@corresp = $div_id]) + 1)"/>
             <xsl:element name="node">
                 <xsl:attribute name="id" select="$id"/>
                 <xsl:attribute name="label" select="$id"/>
@@ -85,7 +85,7 @@
             </xsl:element>
         </xsl:for-each>
         <xsl:for-each
-            select="//tei:w[@lemmaRef and not(@type = 'data') and ancestor::tei:div/@corresp = $text_id]">
+            select="//ns:w[@lemmaRef and not(@type = 'data') and ancestor::ns:div/@corresp = $text_id]">
             <xsl:variable name="cb">
                 <xsl:choose>
                     <xsl:when
@@ -112,28 +112,28 @@
 
     <xsl:template name="edges">
         <xsl:for-each
-            select="//tei:w[@lemmaRef and not(@type = 'data') and ancestor::tei:div/@corresp = $text_id and not(ancestor::tei:lg[not(@n)])]">
+            select="//ns:w[@lemmaRef and not(@type = 'data') and ancestor::ns:div/@corresp = $text_id and not(ancestor::ns:lg[not(@n)])]">
             <xsl:variable name="word_id" select="@lemmaRef"/>
             <xsl:variable name="section_id">
                 <xsl:choose>
-                    <xsl:when test="ancestor::tei:lg[@n]">
+                    <xsl:when test="ancestor::ns:lg[@n]">
                         <xsl:choose>
                             <xsl:when
-                                test="not(ancestor::tei:lg/preceding-sibling::*[1]/name() = 'lg') and not(ancestor::tei:lg/following-sibling::*[1]/name() = 'lg')">
-                                <xsl:value-of select="string(ancestor::tei:lg/@xml:id)"/>
+                                test="not(ancestor::ns:lg/preceding-sibling::*[1]/name() = 'lg') and not(ancestor::ns:lg/following-sibling::*[1]/name() = 'lg')">
+                                <xsl:value-of select="string(ancestor::ns:lg/@xml:id)"/>
                             </xsl:when>
                             <xsl:otherwise>
                                 <xsl:variable name="stanza_id_length"
-                                    select="string-length(string(ancestor::tei:lg/@xml:id))"/>
+                                    select="string-length(string(ancestor::ns:lg/@xml:id))"/>
                                 <xsl:choose>
-                                    <xsl:when test="ancestor::tei:lg/@n &lt; 10">
+                                    <xsl:when test="ancestor::ns:lg/@n &lt; 10">
                                         <xsl:value-of
-                                            select="substring(string(ancestor::tei:lg/@xml:id), 1, ($stanza_id_length - 2))"
+                                            select="substring(string(ancestor::ns:lg/@xml:id), 1, ($stanza_id_length - 2))"
                                         />
                                     </xsl:when>
                                     <xsl:otherwise>
                                         <xsl:value-of
-                                            select="substring(string(ancestor::tei:lg/@xml:id), 1, ($stanza_id_length - 3))"
+                                            select="substring(string(ancestor::ns:lg/@xml:id), 1, ($stanza_id_length - 3))"
                                         />
                                     </xsl:otherwise>
                                 </xsl:choose>
@@ -142,11 +142,11 @@
                     </xsl:when>
                     <xsl:otherwise>
                         <xsl:choose>
-                            <xsl:when test="ancestor::tei:p">
+                            <xsl:when test="ancestor::ns:p">
                                 <xsl:variable name="div_id"
-                                    select="string(ancestor::tei:div[not(ancestor::tei:div)]/@corresp)"/>
+                                    select="string(ancestor::ns:div[not(ancestor::ns:div)]/@corresp)"/>
                                 <xsl:value-of
-                                    select="concat($div_id, '-para_', count(ancestor::tei:p/preceding::tei:p[ancestor::tei:div/@corresp = $div_id]) + 1)"
+                                    select="concat($div_id, '-para_', count(ancestor::ns:p/preceding::ns:p[ancestor::ns:div/@corresp = $div_id]) + 1)"
                                 />
                             </xsl:when>
                             <xsl:otherwise>
