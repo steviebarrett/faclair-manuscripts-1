@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Returns a graph with nodes representing headwords and edges linking a word with the following word within the same metrical line. Run on corpus.xml with xInclude links to in-scope files open. -->
-<xsl:stylesheet xmlns:tei="http://www.tei-c.org/ns/1.0"
+<xsl:stylesheet xmlns:ns="https://dasg.ac.uk/corpus/"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    xmlns:viz="http://www.gexf.net/1.2draft/viz" exclude-result-prefixes="xs xsl tei" version="3.0">
+    xmlns:viz="http://www.gexf.net/1.2draft/viz" exclude-result-prefixes="xs xsl ns" version="3.0">
     <xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
 
-    <xsl:template match="/" exclude-result-prefixes="xs xsl tei">
+    <xsl:template match="/" exclude-result-prefixes="xs xsl ns">
         <gexf xmlns="http://www.gexf.net/1.2draft" xmlns:viz="http://www.gexf.net/1.2draft/viz"
             version="1.2">
             <graph mode="static" defaultedgetype="directed">
@@ -23,7 +23,7 @@
     </xsl:template>
 
     <xsl:template name="nodes">
-        <xsl:for-each select="//tei:w[ancestor::tei:l and not(descendant::tei:w) and @lemmaRef]">
+        <xsl:for-each select="//ns:w[ancestor::ns:l and not(descendant::ns:w) and @lemmaRef]">
             <xsl:variable name="id" select="string(@lemmaRef)"/>
             <xsl:variable name="label" select="string(@lemma)"/>
             <xsl:variable name="pos" select="string(@pos)"/>
@@ -38,13 +38,13 @@
     </xsl:template>
 
     <xsl:template name="edges">
-        <xsl:for-each select="//tei:l//tei:w[not(descendant::tei:w) and @lemmaRef]">
-            <xsl:variable name="line_id" select="ancestor::tei:l/@xml:id"/>
+        <xsl:for-each select="//ns:l//ns:w[not(descendant::ns:w) and @lemmaRef]">
+            <xsl:variable name="line_id" select="ancestor::ns:l/@xml:id"/>
             <xsl:if
-                test="following::tei:w[not(descendant::tei:w) and @lemmaRef and ancestor::tei:l/@xml:id = $line_id][1]">
+                test="following::ns:w[not(descendant::ns:w) and @lemmaRef and ancestor::ns:l/@xml:id = $line_id][1]">
                 <xsl:variable name="word_id" select="string(@lemmaRef)"/>
                 <xsl:variable name="next_word_id"
-                    select="string(following::tei:w[not(descendant::tei:w) and @lemmaRef and ancestor::tei:l/@xml:id = $line_id][1]/@lemmaRef)"/>
+                    select="string(following::ns:w[not(descendant::ns:w) and @lemmaRef and ancestor::ns:l/@xml:id = $line_id][1]/@lemmaRef)"/>
                 <xsl:element name="edge">
                     <xsl:attribute name="id" select="generate-id()"/>
                     <xsl:attribute name="source" select="$word_id"/>
