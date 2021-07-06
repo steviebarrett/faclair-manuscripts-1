@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Run on corpus.xml with xInclude links open to hwData.xml and one or more transcription files.  -->
+<!-- This will generate an XHTML file for each selected transcription containing a table providing detailed information on each word, which can be opened in MS Excel. -->
+<!-- Warning! This stylesheet can take several minutes to run on even one large transcription file. Generating tables for multiple large files is likely to take a long time. -->
 <xsl:stylesheet xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:tei="http://www.tei-c.org/ns/1.0"
-    xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns="https://dasg.ac.uk/corpus/"
-    exclude-result-prefixes="xs" version="2.0">
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:ns="https://dasg.ac.uk/corpus/" exclude-result-prefixes="xs" version="2.0">
     <xsl:variable name="timestamp">
         <xsl:value-of
             select="
@@ -10,15 +13,22 @@
                 div xs:dayTimeDuration('PT1S') * 1000"
         />
     </xsl:variable>
-    <xsl:variable name="transcriptionID">
-        <xsl:value-of select="//ns:TEI[not(@xml:id = 'hwData')]/@xml:id"/>
-    </xsl:variable>
-    <xsl:variable name="filename">
-        <xsl:value-of select="concat($transcriptionID, '_data', '-', $timestamp, '.xhtml')"/>
-    </xsl:variable>
-    <xsl:strip-space elements="*"/>
     <xsl:output method="xhtml" indent="no"/>
+    <xsl:strip-space elements="*"/>
+
     <xsl:template match="/">
+        <xsl:for-each select="//ns:TEI[not(@xml:id = 'hwData')]">
+            <xsl:call-template name="transcr"/>
+        </xsl:for-each>
+    </xsl:template>
+
+    <xsl:template name="transcr">
+        <xsl:variable name="transcriptionID">
+            <xsl:value-of select="@xml:id"/>
+        </xsl:variable>
+        <xsl:variable name="filename">
+            <xsl:value-of select="concat($transcriptionID, '_data', '-', $timestamp, '.xhtml')"/>
+        </xsl:variable>
         <xsl:result-document href="Data\transcription_data\{$filename}">
             <html xmlns="http://www.w3.org/1999/xhtml">
                 <head>
@@ -49,8 +59,7 @@
                         }
                         del {
                             text-decoration: line-through;
-                        }
-                    </style>
+                        }</style>
                 </head>
                 <body>
                     <table
@@ -96,7 +105,7 @@
                         </thead>
                         <tbody>
                             <xsl:for-each
-                                select="//ns:w[not(descendant::ns:w or @xml:lang or @type = 'data' or ancestor::ns:supplied or ancestor::ns:unclear[@reason = 'damage'] or ancestor::ns:corr) and @lemma]">
+                                select="descendant::ns:w[not(descendant::ns:w or @xml:lang or @type = 'data' or ancestor::ns:supplied or ancestor::ns:unclear[@reason = 'damage'] or ancestor::ns:corr) and @lemma]">
                                 <xsl:sort order="ascending"
                                     select="translate(translate(@lemma, '*-.', ''), 'AÁÀáàBCDEÉÈéèFGHIÍÌíìJKLMNOÓÒóòPQRSTUÚÙúùVWXYZ', 'aaaaabcdeeeeefghiiiiijklmnooooopqrstuuuuuvwxyz')"/>
                                 <xsl:sort select="@pos"/>
@@ -176,20 +185,20 @@
                                     <td class="stem_cell">
                                         <xsl:choose>
                                             <xsl:when
-                                                test="//tei:entryFree[@corresp = $lemRef]//tei:iType[@xml:lang = 'sga' or not(@xml:lang)]">
+                                                test="ancestor::ns:teiCorpus//ns:entryFree[@corresp = $lemRef]//ns:iType[@xml:lang = 'sga' or not(@xml:lang)]">
                                                 <xsl:choose>
                                                   <xsl:when
-                                                  test="//tei:entryFree[@corresp = $lemRef]/tei:gramGrp">
+                                                  test="ancestor::ns:teiCorpus//ns:entryFree[@corresp = $lemRef]/ns:gramGrp">
                                                   <xsl:choose>
                                                   <xsl:when
-                                                  test="//tei:entryFree[@corresp = $lemRef]/tei:gramGrp/@type = $pos">
+                                                  test="ancestor::ns:teiCorpus//ns:entryFree[@corresp = $lemRef]/ns:gramGrp/@type = $pos">
                                                   <xsl:choose>
                                                   <xsl:when
-                                                  test="count(//tei:entryFree[@corresp = $lemRef]/tei:gramGrp[@type = $pos]/tei:iType[@xml:lang = 'sga' or not(@xml:lang)]) > 1">
+                                                  test="count(ancestor::ns:teiCorpus//ns:entryFree[@corresp = $lemRef]/ns:gramGrp[@type = $pos]/ns:iType[@xml:lang = 'sga' or not(@xml:lang)]) > 1">
                                                   <xsl:variable name="iTypeCount"
-                                                  select="count(//tei:entryFree[@corresp = $lemRef]/tei:gramGrp[@type = $pos]/tei:iType[@xml:lang = 'sga' or not(@xml:lang)])"/>
+                                                  select="count(ancestor::ns:teiCorpus//ns:entryFree[@corresp = $lemRef]/ns:gramGrp[@type = $pos]/ns:iType[@xml:lang = 'sga' or not(@xml:lang)])"/>
                                                   <xsl:for-each
-                                                  select="//tei:entryFree[@corresp = $lemRef]/tei:gramGrp[@type = $pos]/tei:iType[@xml:lang = 'sga' or not(@xml:lang)]">
+                                                  select="ancestor::ns:teiCorpus//ns:entryFree[@corresp = $lemRef]/ns:gramGrp[@type = $pos]/ns:iType[@xml:lang = 'sga' or not(@xml:lang)]">
                                                   <xsl:value-of select="string(self::*)"/>
                                                   <xsl:if test="position() &lt; $iTypeCount">
                                                   <xsl:text xml:space="preserve">, </xsl:text>
@@ -198,7 +207,7 @@
                                                   </xsl:when>
                                                   <xsl:otherwise>
                                                   <xsl:value-of
-                                                  select="//tei:entryFree[@corresp = $lemRef]/tei:iType[@xml:lang = 'sga' or not(@xml:lang)]"
+                                                  select="ancestor::ns:teiCorpus//ns:entryFree[@corresp = $lemRef]/ns:iType[@xml:lang = 'sga' or not(@xml:lang)]"
                                                   />
                                                   </xsl:otherwise>
                                                   </xsl:choose>
@@ -211,11 +220,11 @@
                                                   <xsl:otherwise>
                                                   <xsl:choose>
                                                   <xsl:when
-                                                  test="count(//tei:entryFree[@corresp = $lemRef]/tei:iType[@xml:lang = 'sga' or not(@xml:lang)]) > 1">
+                                                  test="count(ancestor::ns:teiCorpus//ns:entryFree[@corresp = $lemRef]/ns:iType[@xml:lang = 'sga' or not(@xml:lang)]) > 1">
                                                   <xsl:variable name="iTypeCount"
-                                                  select="count(//tei:entryFree[@corresp = $lemRef]/tei:iType[@xml:lang = 'sga' or not(@xml:lang)])"/>
+                                                  select="count(ancestor::ns:teiCorpus//ns:entryFree[@corresp = $lemRef]/ns:iType[@xml:lang = 'sga' or not(@xml:lang)])"/>
                                                   <xsl:for-each
-                                                  select="//tei:entryFree[@corresp = $lemRef]/tei:iType[@xml:lang = 'sga' or not(@xml:lang)]">
+                                                  select="ancestor::ns:teiCorpus//ns:entryFree[@corresp = $lemRef]/ns:iType[@xml:lang = 'sga' or not(@xml:lang)]">
                                                   <xsl:value-of select="string(self::*)"/>
                                                   <xsl:if test="position() &lt; $iTypeCount">
                                                   <xsl:text xml:space="preserve">, </xsl:text>
@@ -224,7 +233,7 @@
                                                   </xsl:when>
                                                   <xsl:otherwise>
                                                   <xsl:value-of
-                                                  select="//tei:entryFree[@corresp = $lemRef]/tei:iType[@xml:lang = 'sga' or not(@xml:lang)]"
+                                                  select="ancestor::ns:teiCorpus//ns:entryFree[@corresp = $lemRef]/ns:iType[@xml:lang = 'sga' or not(@xml:lang)]"
                                                   />
                                                   </xsl:otherwise>
                                                   </xsl:choose>
@@ -239,20 +248,20 @@
                                     <td class="gender_cell">
                                         <xsl:choose>
                                             <xsl:when
-                                                test="//tei:entryFree[@corresp = $lemRef]//tei:gen[@xml:lang = 'sga' or not(@xml:lang)]">
+                                                test="ancestor::ns:teiCorpus//ns:entryFree[@corresp = $lemRef]//ns:gen[@xml:lang = 'sga' or not(@xml:lang)]">
                                                 <xsl:choose>
                                                   <xsl:when
-                                                  test="//tei:entryFree[@corresp = $lemRef]/tei:gramGrp">
+                                                  test="ancestor::ns:teiCorpus//ns:entryFree[@corresp = $lemRef]/ns:gramGrp">
                                                   <xsl:choose>
                                                   <xsl:when
-                                                  test="//tei:entryFree[@corresp = $lemRef]/tei:gramGrp/@type = $pos">
+                                                  test="ancestor::ns:teiCorpus//ns:entryFree[@corresp = $lemRef]/ns:gramGrp/@type = $pos">
                                                   <xsl:choose>
                                                   <xsl:when
-                                                  test="count(//tei:entryFree[@corresp = $lemRef]/tei:gramGrp[@type = $pos]/tei:gen[@xml:lang = 'sga' or not(@xml:lang)]) > 1">
+                                                  test="count(ancestor::ns:teiCorpus//ns:entryFree[@corresp = $lemRef]/ns:gramGrp[@type = $pos]/ns:gen[@xml:lang = 'sga' or not(@xml:lang)]) > 1">
                                                   <xsl:variable name="genCount"
-                                                  select="count(//tei:entryFree[@corresp = $lemRef]/tei:gramGrp[@type = $pos]/tei:gen[@xml:lang = 'sga' or not(@xml:lang)])"/>
+                                                  select="count(ancestor::ns:teiCorpus//ns:entryFree[@corresp = $lemRef]/ns:gramGrp[@type = $pos]/ns:gen[@xml:lang = 'sga' or not(@xml:lang)])"/>
                                                   <xsl:for-each
-                                                  select="//tei:entryFree[@corresp = $lemRef]/tei:gramGrp[@type = $pos]/tei:gen[@xml:lang = 'sga' or not(@xml:lang)]">
+                                                  select="ancestor::ns:teiCorpus//ns:entryFree[@corresp = $lemRef]/ns:gramGrp[@type = $pos]/ns:gen[@xml:lang = 'sga' or not(@xml:lang)]">
                                                   <xsl:value-of select="string(self::*)"/>
                                                   <xsl:if test="position() &lt; $genCount">
                                                   <xsl:text xml:space="preserve">, </xsl:text>
@@ -261,7 +270,7 @@
                                                   </xsl:when>
                                                   <xsl:otherwise>
                                                   <xsl:value-of
-                                                  select="//tei:entryFree[@corresp = $lemRef]/tei:gen[@xml:lang = 'sga' or not(@xml:lang)]"
+                                                  select="ancestor::ns:teiCorpus//ns:entryFree[@corresp = $lemRef]/ns:gen[@xml:lang = 'sga' or not(@xml:lang)]"
                                                   />
                                                   </xsl:otherwise>
                                                   </xsl:choose>
@@ -274,11 +283,11 @@
                                                   <xsl:otherwise>
                                                   <xsl:choose>
                                                   <xsl:when
-                                                  test="count(//tei:entryFree[@corresp = $lemRef]/tei:gen[@xml:lang = 'sga' or not(@xml:lang)]) > 1">
+                                                  test="count(ancestor::ns:teiCorpus//ns:entryFree[@corresp = $lemRef]/ns:gen[@xml:lang = 'sga' or not(@xml:lang)]) > 1">
                                                   <xsl:variable name="genCount"
-                                                  select="count(//tei:entryFree[@corresp = $lemRef]/tei:gen[@xml:lang = 'sga' or not(@xml:lang)])"/>
+                                                  select="count(ancestor::ns:teiCorpus//ns:entryFree[@corresp = $lemRef]/ns:gen[@xml:lang = 'sga' or not(@xml:lang)])"/>
                                                   <xsl:for-each
-                                                  select="//tei:entryFree[@corresp = $lemRef]/tei:gen[@xml:lang = 'sga' or not(@xml:lang)]">
+                                                  select="ancestor::ns:teiCorpus//ns:entryFree[@corresp = $lemRef]/ns:gen[@xml:lang = 'sga' or not(@xml:lang)]">
                                                   <xsl:value-of select="string(self::*)"/>
                                                   <xsl:if test="position() &lt; $genCount">
                                                   <xsl:text xml:space="preserve">, </xsl:text>
@@ -287,7 +296,7 @@
                                                   </xsl:when>
                                                   <xsl:otherwise>
                                                   <xsl:value-of
-                                                  select="//tei:entryFree[@corresp = $lemRef]/tei:gen[@xml:lang = 'sga' or not(@xml:lang)]"
+                                                  select="ancestor::ns:teiCorpus//ns:entryFree[@corresp = $lemRef]/ns:gen[@xml:lang = 'sga' or not(@xml:lang)]"
                                                   />
                                                   </xsl:otherwise>
                                                   </xsl:choose>
