@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:tei="http://www.tei-c.org/ns/1.0"
-	xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns="https://dasg.ac.uk/corpus/"
-	exclude-result-prefixes="xs" version="3.0">
+	xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:ns="https://dasg.ac.uk/corpus/" exclude-result-prefixes="xs" version="3.0">
 	<xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
 
 	<xsl:variable name="timestamp">
@@ -25,7 +25,8 @@
 				select="count(//ns:TEI[@xml:id = 'hwData']//ns:entryFree[not(@corresp = //ns:TEI[not(@xml:id = 'hwData')]//ns:w/@lemmaRef)])"
 			/>
 		</xsl:variable>
-		<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="hwData">
+		<TEI xmlns="https://dasg.ac.uk/corpus/" xmlns:tei="https://dasg.ac.uk/corpus/"
+			xmlns:ns="https://dasg.ac.uk/corpus/" xml:id="hwData">
 			<teiHeader>
 				<fileDesc>
 					<titleStmt>
