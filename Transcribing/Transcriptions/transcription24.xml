@@ -224,13 +224,15 @@
                         <space type="scribal"/>
                         <w id="d1e491" xml:lang="en">bredth</w>
                         <space type="scribal"/>
-                        <w id="d1e496" xml:lang="en">and</w>
                         <choice>
                             <sic>
-                                <w id="d1e504" xml:lang="en">and</w>
+                                <w id="d1e496" xml:lang="en">and</w>
                                 <space type="scribal"/>
+                                <w id="d1e504" xml:lang="en">and</w>
                             </sic>
-                            <corr resp="MMA"/>
+                            <corr resp="MMA">
+                                <w id="d1e497" xml:lang="en">and</w>
+                            </corr>
                         </choice>
                         <space type="scribal"/>
                         <w id="d1e515" xml:lang="en">length</w>
@@ -661,11 +663,16 @@
                         <space type="scribal"/>
                         <w id="d1e1647" xml:lang="en">and</w>
                         <space type="scribal"/>
-                        <w id="d1e1652" xml:lang="en">the</w>
-                    <lb n="24" xml:id="MS24.f148r.24"/>
                         <choice>
-                            <sic><w id="d1e1661" xml:lang="en">the</w></sic>
-                            <corr resp="MMA"/>
+                            <sic>
+                                <w id="d1e1652" xml:lang="en">the</w>
+                    <lb n="24" xml:id="MS24.f148r.24"/>
+                                <w id="d1e1661" xml:lang="en">the</w>
+                            </sic>
+                            <corr resp="MMA">
+                                <w id="d1e1653" xml:lang="en">the</w>
+                    <lb n="24" sameAs="MS24.f148r.24"/>
+                            </corr>
                         </choice>
                         <space type="scribal"/>
                         <w id="d1e1669" xml:lang="en">firth</w>
