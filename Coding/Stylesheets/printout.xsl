@@ -16,67 +16,108 @@
     </xsl:template>
 
     <xsl:template match="TEI[not(@xml:id = 'hwData')]">
-            <xsl:variable name="filename" select="concat('t', substring(@xml:id,2),'.html')"/>
-            <xsl:result-document href="Printouts\{$filename}"><html>
-            <head>
-                <style>
-                    html,
-                    body {
-                        width: 100%;
-                    }
-                    div {
-                        width: inherit
-                    }
-                    p {
-                        display: block;
-                        width: inherit;
-                        max-width: 500px;
-                        font-size: 12;
-                    }
-                    p.stanza {
-                        width: inherit;
-                        display: block;
-                        margin-left: 4em;
-                    }
-                    sub {
-                        font-size: 0.6em;
-                        vertical-align: bottom;
-                    }
-                    sup {
-                        vertical-align: top;
-                        font-size: 0.6em;
-                    }
-                    span.unclear {
-                        background-color: silver;
-                    }
-                    span.supplied {
-                        font-variant: small-caps;
-                        color: red;
-                    }</style>
-                <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-            </head>
-            <body>
-                <xsl:variable name="msID" select="@xml:id"/>
-                <xsl:variable name="transTitle" select="concat('Transcription ', substring($msID, 2))"/>
-                <div class="transcription">
-                    <h2>
-                        <xsl:value-of
-                            select="concat($transTitle, ': ', ns:teiHeader/ns:fileDesc/ns:sourceDesc/ns:msDesc/ns:msIdentifier/ns:settlement, ', ', ns:teiHeader/ns:fileDesc/ns:sourceDesc/ns:msDesc/ns:msIdentifier/ns:repository, ' ', ns:teiHeader/ns:fileDesc/ns:sourceDesc/ns:msDesc/ns:msIdentifier/ns:idno)"
-                        />
-                    </h2>
-                    <xsl:for-each select="text/body/div">
-                        <xsl:apply-templates select="."/>
-                    </xsl:for-each>
-                </div>
-            </body>
-        </html>
-            </xsl:result-document>
+        <xsl:variable name="timestamp">
+            <xsl:value-of select="current-dateTime()"/>
+        </xsl:variable>
+        <xsl:variable name="filename" select="concat('t', substring(@xml:id, 2), '.html')"/>
+        <xsl:result-document href="Printouts\{$filename}">
+            <html>
+                <head>
+                    <style>
+                        html,
+                        body {
+                            width: 100%;
+                        }
+                        div {
+                            width: inherit
+                        }
+                        p {
+                            display: block;
+                            width: inherit;
+                            max-width: 500px;
+                            font-size: 14;
+                        }
+                        table.stanza {
+                            font-size: 14;
+                            width: inherit;
+                            display: block;
+                            margin-left: 4em;
+                            border: none;
+                            padding-bottom:5px;
+                            padding-top:5px;
+                        }
+                        td.number {
+                            width: 40px;
+                            text-align: left;
+                            vertical-align: top;
+                        }
+                        sub {
+                            font-size: 0.6em;
+                            vertical-align: bottom;
+                        }
+                        sup {
+                            vertical-align: top;
+                            font-size: 0.6em;
+                        }
+                        span.unclear {
+                            background-color: silver;
+                        }
+                        span.supplied {
+                            font-variant: small-caps;
+                            color: red;
+                        }
+                        ul {
+                            font-size: 0.6em;
+                        }</style>
+                    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+                </head>
+                <body>
+                    <xsl:variable name="msID" select="@xml:id"/>
+                    <xsl:variable name="transTitle"
+                        select="concat('Transcription ', substring($msID, 2))"/>
+                    <div class="transcription">
+                        <h2>
+                            <xsl:value-of
+                                select="concat($transTitle, ': ', ns:teiHeader/ns:fileDesc/ns:sourceDesc/ns:msDesc/ns:msIdentifier/ns:settlement, ', ', ns:teiHeader/ns:fileDesc/ns:sourceDesc/ns:msDesc/ns:msIdentifier/ns:repository, ' ', ns:teiHeader/ns:fileDesc/ns:sourceDesc/ns:msDesc/ns:msIdentifier/ns:idno)"
+                            />
+                        </h2>
+                        <ul>
+                            <li>Generated from the Faclair na Gàidhlig MSS Corpus at <xsl:value-of
+                                    select="$timestamp"/>.</li>
+                            <li>This document should not be shared beyond the Faclair na Gàidhlig
+                                project without permission (contact mail@faclair.ac.uk).</li>
+                            <li>All expansions from abbreviations are <i>italicised</i>.</li>
+                            <li>Text deleted by a scribe (whether the main scribe or a later scribe)
+                                is struck through: <strike>example of text deleted by a
+                                    scribe</strike>.</li>
+                            <li>Material inserted by a scribe is in superscript, regardless of where
+                                the scribe added it: <sup>example of text inserted by a
+                                scribe</sup>.</li>
+                            <li>Text supplied by an editor is in red small caps: <span
+                                    class="supplied">example of text supplied by an
+                                editor</span>.</li>
+                            <li>Text that has been tagged as unclear is greyed out: <span
+                                    class="unclear">example of text that is unclear</span>. This
+                                could be due to issues with legibility or because the FnaG MSS
+                                transcribers are unsure of its interpretation.</li>
+                            <li>"[...]" indicates a lacuna in the manuscript.</li>
+                        </ul>
+                        <xsl:for-each select="text/body/div">
+                            <xsl:apply-templates select="."/>
+                        </xsl:for-each>
+                    </div>
+                </body>
+            </html>
+        </xsl:result-document>
     </xsl:template>
 
     <xsl:template match="div[not(ancestor::ns:div)]">
         <xsl:variable name="textID" select="@corresp"/>
         <div class="text">
             <h3>
+                <xsl:if test="@n">
+                    <xsl:value-of select="concat('Text ', @n, ': ')"/>
+                </xsl:if>
                 <xsl:value-of select="//ns:msItem[@xml:id = $textID]/ns:title"/>
             </h3>
         </div>
@@ -100,9 +141,16 @@
     </xsl:template>
 
     <xsl:template match="lg">
-        <p class="stanza">
-            <xsl:apply-templates select="l"/>
-        </p>
+        <table class="stanza">
+            <tr>
+                <td class="number">
+                    <xsl:value-of select="@n"/>
+                </td>
+                <td class="text">
+                    <xsl:apply-templates select="l"/>
+                </td>
+            </tr>
+        </table>
     </xsl:template>
 
     <xsl:template match="l">
@@ -221,6 +269,12 @@
             </xsl:if>
             <xsl:apply-templates/>
         </sup>
+    </xsl:template>
+
+    <xsl:template match="del">
+        <strike>
+            <xsl:apply-templates/>
+        </strike>
     </xsl:template>
 
     <xsl:template match="unclear">
