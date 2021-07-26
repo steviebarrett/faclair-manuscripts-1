@@ -6,6 +6,8 @@ run with any new elements encountered in the corpus. -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:d="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml" exclude-result-prefixes="xs" version="2.0">
     <xsl:strip-space elements="*"/>
+    
+    <xsl:output method="xml" indent="yes"/>
 
     <xsl:variable name="timestamp">
         <xsl:value-of
@@ -49,9 +51,9 @@ run with any new elements encountered in the corpus. -->
                 <xsl:if test="not(preceding::*/name() = $element_name)">
                     <xsl:choose>
                         <xsl:when
-                            test="$old_descs != 'null' and $old_descs//d:desc[@corresp = $row_id and child::text()]">
+                            test="$old_descs != 'null' and $old_descs//d:desc[@corresp = $row_id and descendant::text()]">
                             <xsl:copy-of
-                                select="$old_descs//d:desc[@corresp = $row_id and child::text()]"/>
+                                select="$old_descs//d:desc[@corresp = $row_id and descendant::text()]"/>
                         </xsl:when>
                         <xsl:otherwise>
                             <xsl:element name="d:desc">
@@ -227,6 +229,20 @@ run with any new elements encountered in the corpus. -->
             <xsl:attribute name="target" select="'_blank'"/>
             <xsl:apply-templates/>
         </xsl:element>
+    </xsl:template>
+    
+    <xsl:template match="d:list">
+        <ul>
+            <xsl:for-each select="d:item">
+                <li><xsl:apply-templates/></li>
+            </xsl:for-each>
+        </ul>
+    </xsl:template>
+    
+    <xsl:template match="d:p">
+        <p>
+            <xsl:apply-templates/>
+        </p>
     </xsl:template>
 
 </xsl:stylesheet>
