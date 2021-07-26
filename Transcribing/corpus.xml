@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="../Coding/Stylesheets/home.xsl"?>
 <?xml-model href="Schemas/fnag_mss.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-stylesheet type="text/xsl" href="../Coding/Stylesheets/home.xsl"?>
 <teiCorpus xmlns="https://dasg.ac.uk/corpus/" xmlns:xi="http://www.w3.org/2001/XInclude">
   <teiHeader>
     <fileDesc>
@@ -70,7 +70,7 @@
             </msIdentifier>
             <history>
               <origin>
-                <date id="d1e160" from-custom="14">14/15</date>
+                <date id="d1e160" from-custom="14">15</date>
               </origin>
             </history>
           </msDesc>
@@ -481,7 +481,7 @@
             </msIdentifier>
             <history>
               <origin>
-                <date id="d1e991" from-custom="1350">14/15</date>
+                <date id="d1e991" from-custom="1350">15</date>
               </origin>
             </history>
           </msDesc>
@@ -643,7 +643,8 @@
               </respStmt>
               <respStmt>
                 <resp>editor</resp>
-                <name id="d1e1340"><forename>B.C.</forename><surname>Barker-Benfield</surname></name>
+                <name id="d1e1340"
+                  ><forename>B.C.</forename><surname>Barker-Benfield</surname></name>
               </respStmt>
               <imprint>
                 <pubPlace>Cambridge</pubPlace>
@@ -657,7 +658,8 @@
               <title level="m">The Kingis Quair</title>
               <respStmt>
                 <resp>editor</resp>
-                <name id="d1e1373"><forename>William Mackay</forename><surname>MacKenzie</surname></name>
+                <name id="d1e1373"><forename>William
+                  Mackay</forename><surname>MacKenzie</surname></name>
               </respStmt>
               <imprint>
                 <pubPlace>London</pubPlace>
@@ -893,7 +895,8 @@
                 Oxford</title>
               <respStmt>
                 <resp>contributor</resp>
-                <name id="d1e1915"><forename>Richard William</forename><surname>Hunt</surname></name>
+                <name id="d1e1915"><forename>Richard
+                  William</forename><surname>Hunt</surname></name>
               </respStmt>
               <respStmt>
                 <resp>contributor</resp>
@@ -971,7 +974,8 @@
                 <biblScope unit="page">131-40</biblScope>
               </imprint>
             </monogr>
-            <series><title level="s">CSANA Yearbook</title><biblScope unit="volume">3-4</biblScope></series>
+            <series><title level="s">CSANA Yearbook</title><biblScope unit="volume"
+              >3-4</biblScope></series>
           </biblStruct>
           <biblStruct type="book" xml:id="Flower1926">
             <monogr>
@@ -1182,7 +1186,8 @@
             segmented by &lt;w&gt; elements within the outer &lt;w&gt; element. The inner &lt;w&gt;
             element encloses a morpheme that could constitute a lemma in its own right and which
             cannot be subdivided into further lemmata. This is done in cases where both the compound
-            word as a whole could also constitute a lemma. For example, <hi rend="italic">do-beir</hi> is both a lemma in eDIL and contains the <hi rend="italic">do-</hi>
+            word as a whole could also constitute a lemma. For example, <hi rend="italic"
+              >do-beir</hi> is both a lemma in eDIL and contains the <hi rend="italic">do-</hi>
             preverbal particle, which is a lemma in eDIL in its own right. In such cases, in the
             outer &lt;w&gt; element, the @lemma, @lemmaRef, and @ana attributes will include data
             for all the lemmata contained in the inner &lt;w&gt; element elements seperated by
@@ -1313,12 +1318,14 @@
           <note>An "a" with a descender on the right-hand side (very like "q"), with a cross-stroke
             on the descender, standing for "ar".</note>
         </glyph>
-        <glyph xml:id="g9" corresp="https://www.vanhamel.nl/codecs/Enclosing_punctus_(critical_sign)">
+        <glyph xml:id="g9"
+          corresp="https://www.vanhamel.nl/codecs/Enclosing_punctus_(critical_sign)">
           <glyphName>enclosing puncta</glyphName>
           <note>An punctum both before and after a letter or set of letters that may stand for any
             character(s).</note>
         </glyph>
-        <glyph xml:id="g10" corresp="https://www.vanhamel.nl/codecs/S_(insular)_with_suspension_stroke">
+        <glyph xml:id="g10"
+          corresp="https://www.vanhamel.nl/codecs/S_(insular)_with_suspension_stroke">
           <glyphName>s with suspension stroke (acht/sed)</glyphName>
           <note>An "s" with a horizontal superscript suspension stroke. Originally for Latin "sed"
             but used to represent "(e/a/ea)ch(t/d)" in Gaelic contexts.</note>
@@ -1516,9 +1523,11 @@
         </glyph>
         <glyph xml:id="g51" corresp="https://www.vanhamel.nl/codecs/X_(regular)">
           <glyphName>letter x</glyphName>
-          <note>An "x", standing either for the numeral 10; for the spelling "dec", "deith", or similar; or for the spelling "ex" or "ecs".</note>
+          <note>An "x", standing either for the numeral 10; for the spelling "dec", "deith", or
+            similar; or for the spelling "ex" or "ecs".</note>
         </glyph>
-        <glyph xml:id="g52" corresp="https://www.vanhamel.nl/codecs/I_with_acute_diacritic_(disambiguation)">
+        <glyph xml:id="g52"
+          corresp="https://www.vanhamel.nl/codecs/I_with_acute_diacritic_(disambiguation)">
           <glyphName>upward diagonal overstroke</glyphName>
           <note>A stroke from the lower left of a character to the upper right, crossing the
             character itself, standing for a string of subsequent letters.</note>
@@ -2081,21 +2090,26 @@
           <date id="d1e4317" from="1450" to="1550" min="1501" max="1599">15/16</date>
           <region cert="medium">Argyll</region>
           <affiliation>mcewen</affiliation>
-          <note><p>This is the scribe of '<ref target="T2">Aingil Dé dom dhín</ref>' in <ref target="MS2">London, BL MS. Egerton 2899</ref> and a set of Columban poems in
+          <note><p>This is the scribe of '<ref target="T2">Aingil Dé dom dhín</ref>' in <ref
+                target="MS2">London, BL MS. Egerton 2899</ref> and a set of Columban poems in
               Edinburgh, NLS Adv. MS 72.1.31. Black has suggested that he was a MacEwen working for
               the Campbells of Glenorchy.</p>
             <p>On the whole, the scribe follows the conventions of medieval Gaelic orthography and
               restricts himself to the most conventional abbreviations.</p>
             <p>The scribe displays a curious attitude towards lenition, often omitting it from
-              monosyllables ending with /X'/ (e.g. <hi rend="italic">nac</hi>, <ref target="#T2.1.1d">q1d</ref> not <hi rend="italic">nach</hi>. At the same time,
-              lenition markers are added where lenition would not normally be written (e.g. <hi rend="italic">mainḋir</hi>, <ref target="#T2.1.2b">q2b</ref>. There is also one
-              occasion where lenition is used to indicate eclipsis (<ref target="#T2.1.10a">q10a</ref>). The absence of lenition from final /X'/ may be designed to represent
+              monosyllables ending with /X'/ (e.g. <hi rend="italic">nac</hi>, <ref
+                target="#T2.1.1d">q1d</ref> not <hi rend="italic">nach</hi>. At the same time,
+              lenition markers are added where lenition would not normally be written (e.g. <hi
+                rend="italic">mainḋir</hi>, <ref target="#T2.1.2b">q2b</ref>. There is also one
+              occasion where lenition is used to indicate eclipsis (<ref target="#T2.1.10a"
+                >q10a</ref>). The absence of lenition from final /X'/ may be designed to represent
               Scottish Gaelic pronounciation in some way, but I am yet to find a way of making sense
               of the feature along these lines.</p>
             <p>He also tends to add a hair-stroke flick towards the upper right above the letter
               “i”, in the absence of any other diacritic. This closely resembles an acute accent but
               is probably meant merely as a minim marker. Examination of words in which “i” really
-              should have an acute accent (e.g. <ref target="#T2-1-17b">q17b</ref>, “nac bí”; <ref target="#T2-1-24c">q24c</ref>, “tísat”) reveals no reliable visual indicator of when
+              should have an acute accent (e.g. <ref target="#T2-1-17b">q17b</ref>, “nac bí”; <ref
+                target="#T2-1-24c">q24c</ref>, “tísat”) reveals no reliable visual indicator of when
               the flick is an accent or not, so accents on “i” are included in the diplomatic text
               simply when they would be expected in mainstream Classical Gaelic orthography.</p>
           </note>
@@ -2127,13 +2141,15 @@
         <handNote xml:id="Hand11">
           <forename>Domnall</forename>
           <surname>MacMhuirich</surname>
-          <date id="d1e4443" type="floruit" cert="medium" from="1707" to="1745" min="1700" max="1800">18</date>
+          <date id="d1e4443" type="floruit" cert="medium" from="1707" to="1745" min="1700"
+            max="1800">18</date>
           <region cert="high">W Scotland</region>
           <affiliation>macmhuirich</affiliation>
           <note/>
         </handNote>
         <handNote xml:id="Hand12">
-          <date id="d1e4459" type="floruit" cert="medium" from="1500" to="1590" min="1500" max="1600">16</date>
+          <date id="d1e4459" type="floruit" cert="medium" from="1500" to="1590" min="1500"
+            max="1600">16</date>
           <region cert="high">W Scotland</region>
           <affiliation>beaton</affiliation>
           <note>Hand M in NLS Adv. MS 72.1.33.</note>
@@ -2141,7 +2157,8 @@
         <handNote xml:id="Hand13">
           <forename>Lachlan Mór</forename>
           <surname>MacLean</surname>
-          <date id="d1e4480" type="floruit" cert="medium" from="1577" to="1598" min="1500" max="1600">16</date>
+          <date id="d1e4480" type="floruit" cert="medium" from="1577" to="1598" min="1500"
+            max="1600">16</date>
           <region cert="high">Isle of Mull</region>
           <affiliation>misc</affiliation>
           <note/>
@@ -2149,13 +2166,15 @@
         <handNote xml:id="Hand14">
           <forename>James</forename>
           <surname>Beaton</surname>
-          <date id="d1e4501" type="floruit" cert="medium" from="1613" to="1621" min="1600" max="1700">17</date>
+          <date id="d1e4501" type="floruit" cert="medium" from="1613" to="1621" min="1600"
+            max="1700">17</date>
           <region/>
           <affiliation>beaton</affiliation>
           <note><p>Black's Hand K (NLS Adv. 72.1.33)</p></note>
         </handNote>
         <handNote xml:id="Hand15">
-          <date id="d1e4517" type="floruit" cert="low" from="1590" to="1700" min="1600" max="1700">17</date>
+          <date id="d1e4517" type="floruit" cert="low" from="1590" to="1700" min="1600" max="1700"
+            >17</date>
           <region/>
           <affiliation>beaton</affiliation>
           <note><p>Like James Beaton's, this hand makes occasional brief interventions in
@@ -2166,7 +2185,8 @@
         <handNote xml:id="Hand16">
           <forename>John</forename>
           <surname>Beaton</surname>
-          <date id="d1e4538" type="life" cert="medium" from="1640" to="1715" min="1640" max="1715">17</date>
+          <date id="d1e4538" type="life" cert="medium" from="1640" to="1715" min="1640" max="1715"
+            >17</date>
           <region>Mull</region>
           <affiliation>beaton</affiliation>
           <note><p>Rev. John Beaton (c. 1640-1715) attended grammar school in Inveraray and
@@ -2183,7 +2203,8 @@
         <handNote xml:id="Hand17">
           <forename>Neil</forename>
           <surname>Beaton</surname>
-          <date id="d1e4561" type="floruit" cert="medium" from="1656" to="1656" min="1600" max="1700">17</date>
+          <date id="d1e4561" type="floruit" cert="medium" from="1656" to="1656" min="1600"
+            max="1700">17</date>
           <region/>
           <affiliation>beaton</affiliation>
           <note><p>Black's Hand D (NLS Adv. 72.1.33)</p></note>
@@ -2191,7 +2212,8 @@
         <handNote xml:id="Hand18">
           <forename>Dubhghall Albanach</forename>
           <surname>mac mhic Cathail</surname>
-          <date id="d1e4584" type="floruit" cert="medium" from="1467" to="1467" min="1400" max="1500">15</date>
+          <date id="d1e4584" type="floruit" cert="medium" from="1467" to="1467" min="1400"
+            max="1500">15</date>
           <region>Ireland/Hebrides</region>
           <affiliation>DAC</affiliation>
           <note/>
@@ -2199,7 +2221,8 @@
         <handNote xml:id="Hand19">
           <forename>Cairbre</forename>
           <surname>Ó Ceannmhain</surname>
-          <date id="d1e4605" type="floruit" cert="high" from="1560" to="1563" min="1500" max="1600">16</date>
+          <date id="d1e4605" type="floruit" cert="high" from="1560" to="1563" min="1500" max="1600"
+            >16</date>
           <region/>
           <affiliation>misc</affiliation>
           <note><p>EUL La. III.21</p></note>
@@ -2207,7 +2230,8 @@
         <handNote xml:id="Hand20">
           <forename>Eoin</forename>
           <surname>mac Domhnaill Ó Conchubhair</surname>
-          <date id="d1e4627" type="life" cert="medium" from="1541" to="1601" min="1500" max="1600">16</date>
+          <date id="d1e4627" type="life" cert="medium" from="1541" to="1601" min="1500" max="1600"
+            >16</date>
           <region>Lorne</region>
           <region>Ireland</region>
           <affiliation>ó_conchubair</affiliation>
@@ -2268,7 +2292,8 @@
                 35</ref> (fol. 67<hi rend="sup">r</hi>), he records a series of treatments performed
               there and makes reference to the same region in <ref target="NLS72127" type="mss">NLS
                 Adv. 72.1.27</ref>, fol. 3<hi rend="sup">v</hi>. They also add frequent notes to
-                <ref type="mss" target="MS14">MS14</ref>. In each of these cases and in that of <ref target="MS17" type="mss">MS17</ref>, Hand24 is interacting with a Beaton manuscript
+                <ref type="mss" target="MS14">MS14</ref>. In each of these cases and in that of <ref
+                target="MS17" type="mss">MS17</ref>, Hand24 is interacting with a Beaton manuscript
               alongside Beaton scribes and glossators so he was evidently closely associated with
               this family, if not a member himself.</p></note>
         </handNote>
@@ -2283,7 +2308,8 @@
               associated with Sligo and Kildare. In <ref target="MS17" type="mss">MS17</ref> (fol.
                 100<hi rend="sup">r</hi>6), he calls Niall Óg mac Néill Mhic Beathadh "mo sesi",
               which could mean either "my friend" or, less likely, "my patron" and states that he
-              wrote his potion of <ref target="MS17" type="mss">MS17</ref> for him. Bannerman (<ref target="Bannerman2015" type="bib">2015</ref>: 7–8) points out that the Beatons
+              wrote his potion of <ref target="MS17" type="mss">MS17</ref> for him. Bannerman (<ref
+                target="Bannerman2015" type="bib">2015</ref>: 7–8) points out that the Beatons
               claims to be relatively close relations of Meic an Leagha Ruaidh.</p></note>
         </handNote>
         <handNote xml:id="Hand26">
@@ -2303,14 +2329,14 @@
         <handNote xml:id="Hand28">
           <forename>Fergus</forename>
           <surname>Beaton</surname>
-          <date id="d1e4838" type="floruit" min="1350" max="1550" from="1408" to="1408">14/15</date>
+          <date id="d1e4838" type="floruit" min="1350" max="1550" from="1408" to="1408">15</date>
           <region>Islay</region>
           <affiliation>beaton</affiliation>
         </handNote>
         <handNote xml:id="Hand29">
           <forename>Domhnall</forename>
           <surname>Mac Domhnaill</surname>
-          <date id="d1e4856" type="floruit" min="1386" max="1423" from="1386" to="1423">14/15</date>
+          <date id="d1e4856" type="floruit" min="1386" max="1423" from="1386" to="1423">15</date>
           <region>Islay</region>
           <affiliation>misc</affiliation>
           <note><p>Lord of the Isles (1386–1408)</p></note>
@@ -2515,7 +2541,8 @@
               by either Ó Domhnaill or Argyll. As Argyll is very much the dominant party in the
               arrangement, it seems marginally more likely that he supplied the scribe.</p>
             <p>The hand is generally careful and elegant, employing minimal abbreviation. It is
-              somewhat eccentric orthographically, however (e.g. "tigerrna" for <hi rend="italics">tigerna</hi>; "ghaodheal" for <hi rend="italics">Ghaoidheal</hi>).</p></note>
+              somewhat eccentric orthographically, however (e.g. "tigerrna" for <hi rend="italics"
+                >tigerna</hi>; "ghaodheal" for <hi rend="italics">Ghaoidheal</hi>).</p></note>
         </handNote>
         <handNote xml:id="Hand59">
           <date id="d1e5413" type="floruit" min="1601" max="1699">17</date>
@@ -2550,7 +2577,9 @@
               strokes.</p>
             <p>Based on the focus of the poems he transcribes and on the manuscript's subsequent
               history, he was probably based in Ireland, although it is not clear where. His
-              activity can be dated to the latter two thirds of the 17th century based on a <hi rend="italics">terminus post quem</hi> of some of the texts he transcribes and a <hi rend="italics">terminus ante quem</hi> of the decline of the Classical tradition in
+              activity can be dated to the latter two thirds of the 17th century based on a <hi
+                rend="italics">terminus post quem</hi> of some of the texts he transcribes and a <hi
+                rend="italics">terminus ante quem</hi> of the decline of the Classical tradition in
               which he is evidently immersed.</p>
           </note>
         </handNote>
