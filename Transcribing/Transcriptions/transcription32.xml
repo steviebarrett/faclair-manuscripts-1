@@ -5656,9 +5656,9 @@
                                   <space type="scribal"/>
                                   <w id="d1e22321" lemma="sin" lemmaRef="http://www.dil.ie/37567" pos="demonstrative_pronoun"><abbr cert="high">si<g id="d1e22324" ref="g5">n</g></abbr></w>
                                   <space type="scribal"/>
-                                  <w id="d1e22330" lemma="a" lemmaRef="http://www.dil.ie/5" pos="pronoun">a</w>
                                   <unclear reason="interp_obscure" cert="medium" resp="MMA">
-                                      <w id="d1e22335" lemma="UNKNOWN">b<abbr cert="high"><g id="d1e22338" ref="g10">acht</g></abbr></w>
+                                      <w id="d1e22330" lemma="is" lemmaRef="http://www.dil.ie/29104" pos="verb">ab</w>
+                                      <w id="d1e22335" lemma="acht" lemmaRef="http://www.dil.ie/205" pos="noun">b<abbr cert="high"><g id="d1e22338" ref="g10">acht</g></abbr></w>
                                   </unclear>
                                   <space type="scribal"/>
                                   <w id="d1e22344" lemma="ó" lemmaRef="http://www.dil.ie/33364" pos="preposition">o</w>
@@ -18316,7 +18316,10 @@
                     <space type="scribal"/>
                     <w id="d1e73571" lemma="maith" lemmaRef="http://www.dil.ie/31438" pos="adjective">ma<lb n="22" xml:id="MS32.p148.22"/>i<abbr cert="high">t<g id="d1e73577" ref="g4">h</g></abbr></w>
                     <space type="scribal"/>
-                    <w id="d1e73582" lemma="UNKNOWN">ful<abbr cert="high">a<g id="d1e73586" ref="g14">nn</g></abbr></w>
+                    <w id="d1e73580" pos="particle-verb">
+                        <supplied resp="MMA"><w id="d1e73581" lemma="do" lemmaRef="http://www.dil.ie/17098" pos="particle">d</w></supplied>
+                        <w id="d1e73582" lemma="fo-loing" lemmaRef="23150" pos="verb">ful<abbr cert="high">a<g id="d1e73586" ref="g23">ng</g></abbr></w>    
+                    </w>
                     <space type="scribal"/>
                     <w id="d1e73592" lemma="sin" lemmaRef="http://www.dil.ie/37567" pos="demonstrative_pronoun"><abbr cert="high">si<g id="d1e73595" ref="g5">n</g></abbr></w>
                     <space type="scribal"/>
@@ -21741,7 +21744,10 @@
                             <space type="scribal"/>
                             <w id="d1e87440" lemma="la" lemmaRef="http://www.dil.ie/29233" pos="preposition">le</w>
                             <space type="scribal"/>
-                            <w id="d1e87445" lemma="UNKNOWN">asg<abbr cert="high"><g id="d1e87448" ref="g8">ar</g></abbr><pc id="d1e87450">-</pc><lb n="11" xml:id="MS32.p156.11"/><pc id="d1e87453">-</pc>buib</w>
+                            <choice>
+                                <sic><seg id="d1e87445" type="fragment">asg<abbr cert="high"><g id="d1e87448" ref="g8">ar</g></abbr><pc id="d1e87450">-</pc><lb n="11" xml:id="MS32.p156.11"/><pc id="d1e87453">-</pc>buib</seg></sic>
+                                <corr resp="MMA"><w id="d1e87446" lemma="ascart" lemmaRef="https://www.faclair.com/ViewDictionaryEntry.aspx?ID=1045EC6BBE67AE57DD1CCDF4112061C7" pos="noun">asg<abbr cert="high"><g id="d1e87449" ref="g8">ar</g></abbr><pc id="d1e87451">-</pc><lb n="11" sameAs="MS32.p156.11"/><pc id="d1e87454">-</pc>tuib</w></corr>
+                            </choice>
                             <space type="scribal"/>
                             <w id="d1e87459" lemma="sróll" lemmaRef="http://www.dil.ie/38830" pos="noun">sróil</w>
                             <space type="scribal"/>
