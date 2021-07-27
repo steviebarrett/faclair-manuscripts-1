@@ -1,35 +1,243 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<d:descs xmlns:d="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml">
+<d:descs
+   xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+   xmlns:d="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml">
    <d:desc element="teiCorpus" corresp="row_teiCorpus">
-      <p>This element encloses the entire corpus.</p>
+      <d:p>This element encloses the entire corpus and is the common ancestor of all other
+         elements.</d:p>
+      <d:p>XPath: /*</d:p>
    </d:desc>
-   <d:desc element="teiHeader" corresp="row_teiHeader"/>
-   <d:desc element="fileDesc" corresp="row_fileDesc"/>
-   <d:desc element="titleStmt" corresp="row_titleStmt"/>
-   <d:desc element="title" corresp="row_title"/>
-   <d:desc element="respStmt" corresp="row_respStmt"/>
-   <d:desc element="name" corresp="row_name"/>
-   <d:desc element="resp" corresp="row_resp"/>
-   <d:desc element="publicationStmt" corresp="row_publicationStmt"/>
-   <d:desc element="authority" corresp="row_authority"/>
-   <d:desc element="address" corresp="row_address"/>
-   <d:desc element="addrLine" corresp="row_addrLine"/>
-   <d:desc element="email" corresp="row_email"/>
-   <d:desc element="num" corresp="row_num"/>
-   <d:desc element="availability" corresp="row_availability"/>
-   <d:desc element="licence" corresp="row_licence"/>
-   <d:desc element="p" corresp="row_p"/>
-   <d:desc element="sourceDesc" corresp="row_sourceDesc"/>
-   <d:desc element="listBibl" corresp="row_listBibl"/>
-   <d:desc element="msDesc" corresp="row_msDesc"/>
-   <d:desc element="msIdentifier" corresp="row_msIdentifier"/>
-   <d:desc element="settlement" corresp="row_settlement"/>
-   <d:desc element="repository" corresp="row_repository"/>
-   <d:desc element="idno" corresp="row_idno"/>
-   <d:desc element="msName" corresp="row_msName"/>
-   <d:desc element="history" corresp="row_history"/>
-   <d:desc element="origin" corresp="row_origin"/>
-   <d:desc element="date" corresp="row_date"/>
+   <d:desc element="teiHeader" corresp="row_teiHeader">
+      <d:p>This element contains metadata about a TEI file. Where used in corpus.xml, it contains
+         data referenced by <d:c>@xml:id</d:c> from across the rest of the corpus. It includes names
+         and other details of scribes and abbreviations, for example.</d:p>
+   </d:desc>
+   <d:desc element="fileDesc" corresp="row_fileDesc">
+      <d:p>When a direct child of <d:c>teiHeader</d:c>, <d:c>fileDesc</d:c> contains bibliographical
+         information about the file itself. It is also used within <d:c>msItem/biblFull</d:c> to
+         contain a keyword list relating to the individual text; this latter structure is mostly
+         unnecessary for the purposes of the corpus but is required for TEI conformance.</d:p>
+   </d:desc>
+   <d:desc element="titleStmt" corresp="row_titleStmt">
+      <d:p>This contains the most basic bibliographical information about the work to which it
+         relates, namely, the title and optionally details of anyone responsible.</d:p>
+      <d:p>Where its parent is <d:c>teiHeader/fileDesc</d:c>, it provides details for the entire TEI
+         file. When that file is corpus.xml, it contains the corpus title and a list of those who
+         have worked on the corpus in various capacities. Where that file is a transcription file,
+         it provides a title for the transcription and names the editor primarily responsible for
+         that transcription, although it is likely that it has been reviewed by multiple team
+         members in reality.</d:p>
+      <d:p>Where its parent is <d:c>biblFull/fileDesc</d:c> (i.e. it relates to an individual text),
+         it provides the title for that text.</d:p>
+   </d:desc>
+   <d:desc element="title" corresp="row_title">
+      <d:p>This is used in a variety of contexts to contain the title of a file, bibliographical
+         work, or a transcribed text within the corpus or a subsection thereof.</d:p>
+      <d:p>Even where the <d:c>title</d:c> element appears within a transcription (e.g.
+            <d:c>TEI/text/body/div/head/title</d:c>), it remains part of the editorial apparatus. In
+         other words, the <d:c>title</d:c> element is never used to mark up titles that appear in
+         manuscripts. For avoidance of doubt, the <d:c>title</d:c> element is also never used for a
+         person's title.</d:p>
+      <d:list>
+         <d:item>
+            <d:c>@level</d:c> is only used in the context of a bibliography entry; it is used to
+            differentiate a monograph title from the title of a multi-authored book in which the
+            work being described appears, for example.</d:item>
+         <d:item>
+            <d:c>@type</d:c> is also only used in the context of a bibliography entry, where it
+            distinguishes a condensed version of a work's title from the full version.</d:item>
+      </d:list>
+   </d:desc>
+   <d:desc element="respStmt" corresp="row_respStmt">
+      <d:p>The <d:c>respStmt</d:c> element contains other elements detailing one or more
+         individuals' responsibility for a file or bibliographical work.</d:p>
+   </d:desc>
+   <d:desc element="name" corresp="row_name">
+      <d:p>The <d:c>name</d:c> element is used in a variety of contexts to contain an anthroponym,
+         toponym, demonym, or other sort of name.</d:p>
+      <d:p>Where it appears within <cdoe>respStmt</cdoe>, it contains the name of an individual
+         responsible for a file or bibliographical work. In this context, the name is split into
+            <d:c>forename</d:c> and <d:c>surname</d:c>.</d:p>
+      <d:p>Where it appears within a transcription (<d:c>text//name</d:c>), it is used to mark up
+         the occurrence of a name in a transcription. In this context, it must contain at least one
+            <d:c>w</d:c> element and could contain any of the markup used for transcribed text (e.g.
+         unclear, space). If part or all of the name requires emendation, the <d:c>choice</d:c>
+         element must be contained within <d:c>name</d:c> and not contain it. <d:c>name</d:c> can
+         also contain a nested <d:c>name</d:c> element, where one <d:c>name</d:c> contains another
+            <d:c>name</d:c> (e.g. Mael Coluim).</d:p>
+      <d:p>The following attributes are in active use with <d:c>name</d:c>:</d:p>
+      <d:list>
+         <d:item>
+            <d:c>@id</d:c>: all <d:c>name</d:c> elements require this attribute to be compliant with
+            the DASG schema.</d:item>
+         <d:item>
+            <d:c>@xml:id</d:c>: when names of project members are given in <d:c>respStmt</d:c>
+            elements in corpus.xml, they are assigned unique IDs via this attribute there. These IDS
+            can be used to reference them elsewhere, usually using <d:c>@resp</d:c>.</d:item>
+         <d:item>
+            <d:c>@type</d:c>: when the <d:c>name</d:c> element is used to mark up a name in a
+            transcription, this identifies what sort of name it is (e.g. personal, place).</d:item>
+         <d:item>
+            <d:c>@corresp</d:c>: when the <d:c>name</d:c> element is used to mark up a placename in
+            a transcription, this attribute can be used to link to an entry for that name in an
+            external placenames database (e.g. logainm.ie) via an URL. It can be used whether or not
+            the word(s) in the name have also been linked to headwords and the same URL can be used
+            here and for a contained word's <d:c>@lemmaRef</d:c>.</d:item>
+      </d:list>
+      <d:p>Other attributes (<d:c>@full</d:c>, <d:c>@instant</d:c>) are at the time of writing (July
+         2021) assumed by the schema but are not actively used in the mark-up.</d:p>
+   </d:desc>
+   <d:desc element="resp" corresp="row_resp">
+      <d:p>
+         <d:c>resp</d:c> is used within respStmt to describe a responsibility belonging to the
+         person named in the sibling <d:c>name</d:c> element.</d:p>
+   </d:desc>
+   <d:desc element="publicationStmt" corresp="row_publicationStmt">
+      <d:p>When used in the <d:code>fileDesc</d:code> element relating to a TEI file, this element
+         contains information relating to the publication of the file and its contents, such as who
+         is responsbile for it and any restrictions on its use.</d:p>
+      <d:p>When used in the <d:code>fileDesc</d:code> element relating to a text item from a
+         transcription (<d:code>msItem/biblFull/fileDesc/publicationStmt</d:code>), this element
+         simply contains the statement that the item is a "Draft transcription"; publication is
+         already provided by the <d:code>publicationStmt</d:code> at file level.</d:p>
+   </d:desc>
+   <d:desc element="authority" corresp="row_authority">
+      <d:p><d:c>authority</d:c> refers to the body responsible for the file and its
+         publication.</d:p>
+      <d:p>In corpus.xml, this element contains the contact details for the Faclair na Gàidhlig
+         project and is identified with the <d:c>@xml:id</d:c> "authority". Elsewhere, this element
+         links to these details via <d:c>@sameAs="authority"</d:c>.</d:p>
+   </d:desc>
+   <d:desc element="address" corresp="row_address">
+      <d:p>This contains contact details for the Faclair na Gàidhlig project, comprised of a series
+            <d:c>addrLine</d:c> elements.</d:p>
+   </d:desc>
+   <d:desc element="addrLine" corresp="row_addrLine">
+      <d:p>This contains a line of the street address for the Faclair na Gàidhlig project.</d:p>
+   </d:desc>
+   <d:desc element="email" corresp="row_email">
+      <d:p>This contains an email address for the Faclair na Gàidhlig project.</d:p>
+   </d:desc>
+   <d:desc element="num" corresp="row_num">
+      <d:p>The meaning of this element varies depending on context.</d:p>
+      <d:p>When it appears within <d:c>addrLine</d:c>, it contains a telephone number for the
+         Faclair na Gàidhlig project.</d:p>
+      <d:p>When it appears within a transcription, it is used to mark up a number that cannot be
+         tagged as a single word and link to a dictionary headword or where the number appears in a
+         manuscript as apparatus rather than in a syntactic context.</d:p>
+   </d:desc>
+   <d:desc element="availability" corresp="row_availability">
+      <d:p>This contains information on how the file can be used. This is set to "restricted" via
+            <d:c>status</d:c> and contains the following (within <d:c>p</d:c>): "For internal use by
+         the Faclair na Gàidhlig/DASG projects." </d:p>
+      <d:p>The attribute <d:c>@default</d:c> is at the time of writing (July 2021) assumed by the
+         schema but is not actively used in the mark-up.</d:p>
+   </d:desc>
+   <d:desc element="p" corresp="row_p">
+      <d:p><d:c>p</d:c> is a very widely used element. It is used to contain text belonging in a
+         single paragraph.</d:p>
+      <d:p>In corpus.xml and in the <d:c>teiHeader</d:c> of transcription files and the hwData file,
+         it is used to organise prose metadata added by editors.</d:p>
+      <d:p>Within transcriptions (<d:c>text//p</d:c>), it is used to contain transcribed prose. A
+         new <d:c>p</d:c> element is begun when the text switches back from verse to prose, when the
+         scribe visually indicates a major new subdivision of a prose text, or if the editors feel a
+         new paragraph is needed for ease of reading.</d:p>
+      <d:p>The attribute <d:c>@part</d:c> is at the time of writing (July 2021) assumed by the
+         schema but is not actively used in the mark-up.</d:p>
+   </d:desc>
+   <d:desc element="sourceDesc" corresp="row_sourceDesc">
+      <d:p>When used in corpus.xml (<d:c>/teiCorpus/teiHeader/fileDesc/sourceDesc</d:c>),
+            <d:c>sourceDesc</d:c> contains the project bibliography.</d:p>
+      <d:p>When used in a transcription file header (<d:c>/TEI/teiHeader/fileDesc/sourceDesc</d:c>),
+            <d:c>sourceDesc</d:c> contains details on the texts transcribed from the manuscript in
+         question (<d:c>msContents</d:c>) and a physical description of the manuscript
+            (<d:c>physDesc</d:c>).</d:p>
+   </d:desc>
+   <d:desc element="listBibl" corresp="row_listBibl">
+      <d:p>This element contains a bibliography. The type of works detailed in the bibliography is
+         indicated via <d:c>@type</d:c>.</d:p>
+      <d:p>The attribute <d:c>@default</d:c> is at the time of writing (July 2021) assumed by the
+         schema but is not actively used in the mark-up.</d:p>
+   </d:desc>
+   <d:desc element="msDesc" corresp="row_msDesc">
+      <d:p>This element contains details about a particular manuscript. It can be used to list a
+         manuscript within the corpus bibliography in corpus.xml or in the transcription file header
+         to describe the manuscript from which transcription has been made.</d:p>
+      <d:p>The attribute <d:c>@status</d:c> is at the time of writing (July 2021) assumed by the
+         schema but is not actively used in the mark-up.</d:p>
+   </d:desc>
+   <d:desc element="msIdentifier" corresp="row_msIdentifier">
+      <d:p>This element contains identifying details about a manuscript. When used in the corpus
+         bibliography in corpus.xml, the manuscript is assigned a unique ID via <d:c>@xml:id</d:c>.
+         When used in transcription file headers, this ID is referenced via
+         <d:c>@sameAs</d:c>.</d:p>
+   </d:desc>
+   <d:desc element="settlement" corresp="row_settlement">
+      <d:p>Used within <d:c>msIdentifier</d:c>, this contains the location of the manuscript
+         repository.</d:p>
+   </d:desc>
+   <d:desc element="repository" corresp="row_repository">
+      <d:p>Used within <d:c>msIdentifier</d:c>, this contains the name of the manuscript
+         repository.</d:p>
+   </d:desc>
+   <d:desc element="idno" corresp="row_idno">
+      <d:p>Used within <d:c>msIdentifier</d:c>, this contains the manuscript's shelfmark.</d:p>
+      <d:p>Used within <d:c>publicationStmt</d:c> in a transcription file header, this provides a
+         publication ID for the transcription. This should be the same as the value of the
+            <d:c>@xml:id</d:c> attribute of the ancestor <d:c>TEI</d:c>.</d:p>
+      <d:p>How <d:c>idno</d:c> is being used is identified by <d:c>@type</d:c>.</d:p>
+   </d:desc>
+   <d:desc element="msName" corresp="row_msName">
+      <d:p>This optional element within <d:c>msIdentifier</d:c> can be used to provide a name
+         commonly in use for the manuscript being identified (e.g. 'The Yellow Book of Lecan' for
+         Dublin, TCD H.2.16 (1318)).</d:p>
+   </d:desc>
+   <d:desc element="history" corresp="row_history">
+      <d:p>This provides information on a manuscript's history. When used within the corpus
+         bibliography, it simply contains the manuscript's approximate date
+            (<d:c>history/origin/date</d:c>). When used within a transcription file header, it
+         contains narrative metadata describing the manuscript's history
+            (<d:c>history/summary/p</d:c>).</d:p>
+   </d:desc>
+   <d:desc element="origin" corresp="row_origin">
+      <d:p>This is used within the corpus bibliography to provide the manuscript's approximate date
+            (<d:c>history/origin/date</d:c>).</d:p>
+   </d:desc>
+   <d:desc element="date" corresp="row_date">
+      <d:p>When used in corpus.xml or in a transcription file header, this element provides a date
+         for a manuscript(<d:c>history/origin/date</d:c>), bibliographical work
+            (<d:c>listBibl/biblStruct/monogr/imprint/date</d:c>), or scribe
+            (<d:c>profileDesc/handNotes/handNote</d:c>). For bibliographical works, this is a
+         calendar year. For manuscripts and scribes, it is a century or pair of centuries.</d:p>
+      <d:p>When used within a transcription, this element is used to mark up a date, but only when
+         this date is in a format that cannot be analysed and marked up as words. For example,
+         "1411" would be marked up with <d:c>date</d:c>, whereas "annaladh an tigerna ann so .i.
+         mile bliadain cetra cead acus seacht bliadna acus tri .xx." ("the year of the Lord today,
+         1467") would be marked up as normal transcribed text.</d:p>
+      <d:p>In terms of the use of <d:c>date</d:c> to provide a date for a scribe, this can require
+         particularly complex use of attributes:</d:p>
+      <d:list>
+         <d:item><d:c>@from</d:c> and <d:c>@to</d:c> indicate a precise span of years in which the
+            scribe is known to have been active, where this information is available. If there is
+            only evidence for them being active in a single year, then both attributes point to that
+            year.</d:item>
+         <d:item><d:c>@min</d:c> and <d:c>@max</d:c> are used to give a much broader estimate of the
+            period in which the scribe was active and may be the only dating attributes used if not
+            positive information about the scribe is available.</d:item>
+         <d:item><d:c>@type</d:c> indicates what sort of span <d:c>@from</d:c> and <d:c>@to</d:c> /
+               <d:c>@min</d:c> and <d:c>@max</d:c> relate to. Possible values include "floruit" and
+            "lifespan".</d:item>
+         <d:item><d:c>@cert</d:c> provides an editorial certainty level for the dating information
+            contained in the rest of the element.</d:item>
+      </d:list>
+      <d:p>At the time of writing (July 2021), the dating information for scribal hands is in some
+         disrepair and could use thorough checking in terms of data and standardisation in terms of
+         encoding.</d:p>
+      <d:p>Where <d:c>date</d:c> is used to provide the date of a manuscript, the century in which
+         the manuscript was mainly created is indicated via <d:c>@from-custom</d:c>.</d:p>
+      <d:p>All <d:c>date</d:c> elements require an <d:c>@id</d:c> attribute to be compliant with the
+         DASG schema.</d:p>
+   </d:desc>
    <d:desc element="biblStruct" corresp="row_biblStruct"/>
    <d:desc element="monogr" corresp="row_monogr"/>
    <d:desc element="forename" corresp="row_forename"/>
