@@ -795,12 +795,89 @@
       <d:p>Note that this element should <d:hi rend="bold">not</d:hi> be used to make an editorial
          addition to the transcription; that is done via <d:c>supplied</d:c>.</d:p>
    </d:desc>
-   <d:desc element="del" corresp="row_del"/>
-   <d:desc element="supplied" corresp="row_supplied"/>
-   <d:desc element="seg" corresp="row_seg"/>
-   <d:desc element="unclear" corresp="row_unclear"/>
-   <d:desc element="lg" corresp="row_lg"/>
-   <d:desc element="l" corresp="row_l"/>
+   <d:desc element="del" corresp="row_del">
+      <d:p>This element marks up text deleted by a scribe, either by the scribe that wrote it or by
+         another.</d:p>
+      <d:p>Note that this element should <d:hi rend="bold">not</d:hi> be used to make an editorial
+         deletion from the transcription; that is done via <d:c>choice</d:c>.</d:p>
+      <d:p>The scribe responsible for the deletion is identified, where possible, via
+            <d:c>@hand</d:c> using their unique ID.</d:p>
+      <d:p>At the time of writing (July, 2021), the schema assumes that this element has the
+         attributes <d:c>@status</d:c> and <d:c>@instant</d:c>.</d:p>
+   </d:desc>
+   <d:desc element="supplied" corresp="row_supplied">
+      <d:p>A transcriber can use <d:c>supplied</d:c> to add characters or words to a transcription,
+         if it is thought that these have been omitted purely in error or if their absence risks
+         causing serious confusion. The member of the project team responsible is identified via
+            <d:c>@resp</d:c> using their unique ID.</d:p>
+      <d:p>At the time of writing (July, 2021), the schema assumes that this element has the
+         attribute <d:c>@instant</d:c>.</d:p>
+   </d:desc>
+   <d:desc element="seg" corresp="row_seg">
+      <d:p><d:c>seg</d:c> has various purposes within a transcription. How it is being used is
+         determined by <d:c>@type</d:c>. The most common values, which are handled on Meanma, are
+         "cfe" (<d:hi rend="italics">ceann fo eite</d:hi>), "fragment" (characters from a word that
+         is partly obliterated and cannot be reconstructed), and "catchword". "title" and "margNote"
+         (with <d:c>@xml:id</d:c>) are in use but not currently handled on Meanma; their use should
+         be reviewed.</d:p>
+      <d:p>In all circumstances, <d:c>g</d:c> requires a unique <d:c>@id</d:c> in order to be
+         compliant with the DASG schema.</d:p>
+   </d:desc>
+   <d:desc element="unclear" corresp="row_unclear">
+      <d:p>This element is used to mark up text that the transcriber judges to be unclear.</d:p>
+      <d:p>Why the text is being marked up is indicated via <d:c>@reason</d:c>:</d:p>
+      <d:list>
+         <d:item>"text_obscure": the writing is difficult to make out due to erosion, smudging, or
+            unconventional ductus.</d:item>
+         <d:item>"damage": the writing surface is completely gone, with no chance of the original
+            text being recovered; the transcriber has been able to postulate what was written there,
+            however.</d:item>
+         <d:item>"fold": the writing is obscured by the way the page is arranged in the digital
+            image, in a way that is unlikely to be a problem if the manuscript were to be examined
+            in person.</d:item>
+         <d:item>"interp_obscure": the writing is perfectly legible but the words cannot be tagged
+            with confidence.</d:item>
+      </d:list>
+      <d:p>The certainty with which the transcriber has provided the text in <d:c>unclear</d:c> is
+         indicated via <d:c>@cert</d:c>. The transcriber responsible is identified via
+            <d:c>@resp</d:c>.</d:p>
+      <d:p>At the time of writing (July, 2021), the schema assumes that this element has the
+         attribute <d:c>@instant</d:c>.</d:p>
+   </d:desc>
+   <d:desc element="lg" corresp="row_lg">
+      <d:p>This element contains the metrical lines that make up a stanza, whether determined by
+         metrical analysis or scribal layout. It should always be the direct child of
+         <d:c>div</d:c>, whether the stanzas constitute an indepdent verse text in the manuscript or
+         are embedded within a prose text.</d:p>
+      <d:p>The following attributes are used:</d:p>
+      <d:list>
+         <d:item><d:c>@n</d:c>: This is the stanza number; it is not a unique ID but it will be
+            displayed in most outputs.</d:item>
+         <d:item><d:c>@type</d:c>: This should always be set to "stanza".</d:item>
+         <d:item><d:c>@xml:id</d:c>: This is a unique ID for the stanza.</d:item>
+         <d:item><d:c>@sameAs</d:c>: At the time of writing (July, 2021), in one instance, this is
+            used to link a couplet placed elsewhere in the poem to the stanza to which it is thought
+            to belong. This usage should be reviwed, as it is the only example and it may not be
+            handled in any outputs.</d:item>
+      </d:list>
+      <d:p>At the time of writing (July, 2021), the schema assumes that this element has the
+         attributes <d:c>@org</d:c>, <d:c>@sample</d:c>, and <d:c>@part</d:c>.</d:p>
+   </d:desc>
+   <d:desc element="l" corresp="row_l">
+      <d:p>This element represents a metrical line within a stanza (<d:c>lg</d:c>).</d:p>
+      <d:p>The following attributes are used:</d:p>
+      <d:list>
+         <d:item><d:c>@n</d:c>: This is the line letter; it is not a unique ID but it will be
+            displayed in most outputs.</d:item>
+         <d:item><d:c>@xml:id</d:c>: This is a unique ID for the metrical line.</d:item>
+         <d:item><d:c>@sameAs</d:c>: At the time of writing (July, 2021), in one instance, this is
+            used to link a couplet placed elsewhere in the poem to the stanza to which it is thought
+            to belong. This usage should be reviwed, as it is the only example and it may not be
+            handled in any outputs.</d:item>
+      </d:list>
+      <d:p>At the time of writing (July, 2021), the schema assumes that this element has the
+         attribute <d:c>@part</d:c>.</d:p>
+   </d:desc>
    <d:desc element="choice" corresp="row_choice"/>
    <d:desc element="sic" corresp="row_sic"/>
    <d:desc element="corr" corresp="row_corr"/>
