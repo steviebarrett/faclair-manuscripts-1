@@ -1164,8 +1164,8 @@
             below. Words that contain multipel syntactic units but where these units might be
             expected to appear within the dictionary entry on that word (e.g. conjugated
             prepositions) will remain within a single &lt;w&gt; element.</p>
-          <p>Both scribal and analytic word division will be encoded; which is to be displayed will
-            be determined by the stylesheet. The the &lt;space/&gt; element will be used to
+          <p>Both scribal and analytic word division will be available; which is to be displayed
+            will be determined by the stylesheet. The the &lt;space/&gt; element will be used to
             represent scribal or orthographic word division. The word (&lt;w&gt;) element will be
             used to indicate editorial word division. Verse (&lt;l&gt; and &lt;lg&gt;) division will
             be normalised where the metre can be securely interpreted from the manuscript text of a
@@ -1201,66 +1201,48 @@
             cases (punctuation and capitals being absent) and it is unnecessary, since context in
             the DASG Corpus is determined by word count rather than by sentence segmentation. If a
             prose text is clearly organised into units (e.g. some medical texts consist of
-            commentary around propositions), then the &lt;ab&gt; element will be used to delineate
-            these..</p>
+            commentary around propositions), then lower-level &lt;div&gt; elements within the
+            &lt;div&gt; that represents the text will be used to delineate these. Prose texts are
+            split up into paragraphs, represented by &lt;p&gt;. These follow the scribe's visual
+            layour where possible but imposing editorial sub-divisions based on perceived junctures
+            in the narrative or argument where necessary to enhance readability of the
+            semi-diplomatic output.</p>
           <p>Verse texts are segmented by line (&lt;l&gt;) and stanza (&lt;lg&gt;).</p>
-          <p>Slips created by Ronald Black during the HDSG project are currently being digitised by
-            DASG and it is an aim of this project to integrate this material into the metadata on
-            the corpus. Thus, segments that have also been transcribed on a slip will be contained
-            in the &lt;seg&gt; element and a link provided to the corresponding digitised slip.</p>
           <p>A transcription file (a &lt;text&gt; in the &lt;teiCorpus&gt;) corresponds to a
-            physical manuscript. If multiple texts are being transcribed from the same manuscript,
-            then the &lt;div1&gt; element will be used to subdivide them within the file. If one
-            text contains another text (e.g. a prose text with a verse citation), then &lt;div2&gt;
-            and so on will be used to segment this text.</p>
+            physical manuscript. Each text transcribed from the manuscript is contained within a &lt;div&gt;.</p>
           <p>The &lt;lb/&gt; element, with attribute @n, will be used to indicate a new line in the
             manuscript. This is a distinct and seperate segementation system from &lt;l&gt;, which
-            segments metrical lines. To publish a diplomatic edition of a verse text, use
+            segments metrical lines. Thus, to publish a diplomatic edition of a verse text, use
             &lt;lb/&gt;; to publish a metrically analysed version of the text, use &lt;lg&gt; and
             &lt;l&gt;.</p>
           <p>Sections of text in other languages (e.g. Latin) appear in some transcriptions. Other
             languages will be indicated at the &lt;w&gt; level using the @lang attribute. If a
             &lt;w&gt; element has no @lang attribute, it can be assumed to be Gaelic of some sort.
             Each Gaelic text's linguistic profile will be set out in the relevant &lt;msItem&gt; and
-            under &lt;langUsage&gt; in the &lt;teiHeader&gt;. As much commentary as possible will be
-            provided on the different linguistic strata in each text but it is expected that more
-            will be discovered in the course of analysis.</p>
+            under &lt;langUsage&gt; in the &lt;teiHeader&gt;.</p>
         </segmentation>
       </editorialDecl>
       <classDecl>
         <taxonomy xml:id="POS">
-          <gloss xml:id="conj">conj.</gloss>
+          <!-- TO DO: parts of speech and meanings. -->
+          <!-- e.g. -->
           <gloss xml:id="noun">noun</gloss>
-          <gloss xml:id="pron">pronoun</gloss>
-          <gloss xml:id="pronom">pronom.</gloss>
-          <gloss xml:id="verb">verb</gloss>
-          <gloss xml:id="part">particle</gloss>
-          <gloss xml:id="adj">adjective</gloss>
-          <gloss xml:id="poss">poss. pron</gloss>
-          <gloss xml:id="art">article</gloss>
-          <gloss xml:id="dpron">dem. pronoun</gloss>
-          <gloss xml:id="abbr">abbreviation</gloss>
-          <gloss xml:id="adv">adverb</gloss>
-          <gloss xml:id="num">numeral</gloss>
-          <gloss xml:id="vnoun">verbal noun</gloss>
-          <gloss xml:id="pref">prefix</gloss>
-          <gloss xml:id="intj">interjection</gloss>
-          <gloss xml:id="tit">title</gloss>
-          <gloss xml:id="ptcp">participle</gloss>
-          <gloss xml:id="name">name</gloss>
-          <gloss xml:id="prep">preposition</gloss>
-          <gloss xml:id="emph">emphatic</gloss>
-          <gloss xml:id="vblnecess">verb of necessity</gloss>
         </taxonomy>
         <taxonomy xml:id="probs">
-          <gloss xml:id="interp_obscure">- the interpretation of this word is doubtful.</gloss>
-          <gloss xml:id="text_obscure">- some characters in this word are difficult to
-            decipher.</gloss>
-          <gloss xml:id="abbrv">- this word is based on the doubtful expansion of an
-            abbreviation.</gloss>
-          <gloss xml:id="damage">- loss of vellum means some characters have had to be
-            supplied.</gloss>
-          <gloss xml:id="new_vocab">- possibly a previously unattested headword.</gloss>
+          <!-- TO DO: reasons for <gap> or <unclear> -->
+          <!-- e.g. -->
+          <gloss xml:id="interp_obscure">The interpretation and tagging of this word is doubtful.</gloss>
+        </taxonomy>
+        <taxonomy xml:id="social_group">
+          <gloss xml:id="AMD">Alasdair mac Mhaighstir Alasdair</gloss>
+          <gloss xml:id="beaton">A member of the Beaton medical family.</gloss>
+          <gloss xml:id="DAC">Dubhghall Albanach Mac Mhic Cathail</gloss>
+          <gloss xml:id="deer">A scribe that contributed to the Book of Deer.</gloss>
+          <gloss xml:id="EMP">Eoghan Mac Pháil</gloss>
+          <gloss xml:id="macmhuirich">A member of the MacMhuirich bardic family.</gloss>
+          <gloss xml:id="mcewen">A member of the McEwen bardic family.</gloss>
+          <gloss xml:id="misc">A scribe that does not fit into any other category.</gloss>
+          <gloss xml:id="ó_conchubair">A member of the Ó Conchubhair medical family.</gloss>
         </taxonomy>
         <taxonomy xml:id="lang">
           <gloss xml:id="la">Latin</gloss>
@@ -2086,30 +2068,26 @@
           <note><p>Scribe of main text in the Book of Deer</p></note>
         </handNote>
         <handNote xml:id="Hand7">
-          <surname cert="medium">MacEwen (?)</surname>
+          <surname>MacEwen (?)</surname>
           <date id="d1e4317" from="1450" to="1550" min="1501" max="1599">15/16</date>
           <region cert="medium">Argyll</region>
           <affiliation>mcewen</affiliation>
-          <note><p>This is the scribe of '<ref target="T2">Aingil Dé dom dhín</ref>' in <ref
-                target="MS2">London, BL MS. Egerton 2899</ref> and a set of Columban poems in
+          <note><p>This is the scribe of 'Aingil Dé dom dhín' in London, BL MS. Egerton 2899 and a set of Columban poems in
               Edinburgh, NLS Adv. MS 72.1.31. Black has suggested that he was a MacEwen working for
               the Campbells of Glenorchy.</p>
             <p>On the whole, the scribe follows the conventions of medieval Gaelic orthography and
               restricts himself to the most conventional abbreviations.</p>
             <p>The scribe displays a curious attitude towards lenition, often omitting it from
-              monosyllables ending with /X'/ (e.g. <hi rend="italic">nac</hi>, <ref
-                target="#T2.1.1d">q1d</ref> not <hi rend="italic">nach</hi>. At the same time,
+              monosyllables ending with /X'/ (e.g. <hi rend="italic">nac</hi>, q1d not <hi rend="italic">nach</hi>. At the same time,
               lenition markers are added where lenition would not normally be written (e.g. <hi
-                rend="italic">mainḋir</hi>, <ref target="#T2.1.2b">q2b</ref>. There is also one
-              occasion where lenition is used to indicate eclipsis (<ref target="#T2.1.10a"
-                >q10a</ref>). The absence of lenition from final /X'/ may be designed to represent
+                rend="italic">mainḋir</hi>, q2b. There is also one
+              occasion where lenition is used to indicate eclipsis (q10a). The absence of lenition from final /X'/ may be designed to represent
               Scottish Gaelic pronounciation in some way, but I am yet to find a way of making sense
               of the feature along these lines.</p>
             <p>He also tends to add a hair-stroke flick towards the upper right above the letter
               “i”, in the absence of any other diacritic. This closely resembles an acute accent but
               is probably meant merely as a minim marker. Examination of words in which “i” really
-              should have an acute accent (e.g. <ref target="#T2-1-17b">q17b</ref>, “nac bí”; <ref
-                target="#T2-1-24c">q24c</ref>, “tísat”) reveals no reliable visual indicator of when
+              should have an acute accent (e.g. q17b, “nac bí”; q24c, “tísat”) reveals no reliable visual indicator of when
               the flick is an accent or not, so accents on “i” are included in the diplomatic text
               simply when they would be expected in mainstream Classical Gaelic orthography.</p>
           </note>
@@ -2235,12 +2213,11 @@
           <region>Lorne</region>
           <region>Ireland</region>
           <affiliation>ó_conchubair</affiliation>
-          <note><p>
-						- "a good, clear hand varying in size from average to large" (Black, 2011)
-						- tendency to use accents frequently (related to stress patterns in Latinate vocab?); difficult to distinguish from hairstrokes on "i" in minim clusters.
-						- subtle use of word division (e.g. copula plus prep. as well as copula plus pronoun).
-						- flexible use of abbreviations (e.g. sed-abbreviation for "echt"; tironian et for "it").
-					</p>
+          <note><p> - "a good, clear hand varying in size from average to large" (Black, 2011) -
+              tendency to use accents frequently (related to stress patterns in Latinate vocab?);
+              difficult to distinguish from hairstrokes on "i" in minim clusters. - subtle use of
+              word division (e.g. copula plus prep. as well as copula plus pronoun). - flexible use
+              of abbreviations (e.g. sed-abbreviation for "echt"; tironian et for "it"). </p>
           </note>
         </handNote>
         <handNote xml:id="Hand21">
@@ -2288,12 +2265,11 @@
           <region cert="medium">Islay</region>
           <affiliation>beaton</affiliation>
           <note><p>This individual is unidentified but they appear to have been a physician active
-              in Islay in the 16th century. In <ref type="mss" target="JRIr35">John Rylands MS. Ir
-                35</ref> (fol. 67<hi rend="sup">r</hi>), he records a series of treatments performed
-              there and makes reference to the same region in <ref target="NLS72127" type="mss">NLS
-                Adv. 72.1.27</ref>, fol. 3<hi rend="sup">v</hi>. They also add frequent notes to
-                <ref type="mss" target="MS14">MS14</ref>. In each of these cases and in that of <ref
-                target="MS17" type="mss">MS17</ref>, Hand24 is interacting with a Beaton manuscript
+              in Islay in the 16th century. In John Rylands MS. Ir
+                35 (fol. 67<hi rend="sup">r</hi>), he records a series of treatments performed
+              there and makes reference to the same region in NLS
+                Adv. 72.1.27, fol. 3<hi rend="sup">v</hi>. They also add frequent notes to
+                MS14. In each of these cases and in that of MS17, Hand24 is interacting with a Beaton manuscript
               alongside Beaton scribes and glossators so he was evidently closely associated with
               this family, if not a member himself.</p></note>
         </handNote>
@@ -2305,11 +2281,10 @@
           <region cert="high">Kildare</region>
           <affiliation>misc</affiliation>
           <note><p>This scribe appears to be based in Ireland. He contributes to manuscripts
-              associated with Sligo and Kildare. In <ref target="MS17" type="mss">MS17</ref> (fol.
+              associated with Sligo and Kildare. In MS17 (fol.
                 100<hi rend="sup">r</hi>6), he calls Niall Óg mac Néill Mhic Beathadh "mo sesi",
               which could mean either "my friend" or, less likely, "my patron" and states that he
-              wrote his potion of <ref target="MS17" type="mss">MS17</ref> for him. Bannerman (<ref
-                target="Bannerman2015" type="bib">2015</ref>: 7–8) points out that the Beatons
+              wrote his potion of MS17 for him. Bannerman (1998: 7–8) points out that the Beatons
               claims to be relatively close relations of Meic an Leagha Ruaidh.</p></note>
         </handNote>
         <handNote xml:id="Hand26">
