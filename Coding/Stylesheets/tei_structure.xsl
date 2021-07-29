@@ -4,9 +4,11 @@
 <!-- The rightmost column is populated from another document ('teiStructure_descs.xml'). This is updated every time this stylesheet is
 run with any new elements encountered in the corpus. -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-    xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:d="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml" exclude-result-prefixes="xs" version="2.0">
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:d="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+    exclude-result-prefixes="xs" version="2.0">
     <xsl:strip-space elements="*"/>
-    
+
     <xsl:output method="xml" indent="yes"/>
 
     <xsl:variable name="timestamp">
@@ -44,7 +46,8 @@ run with any new elements encountered in the corpus. -->
 
     <xsl:template name="descs">
         <xsl:element name="d:descs">
-            <xsl:namespace name="d" select="'https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml'"/>
+            <xsl:namespace name="d"
+                select="'https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml'"/>
             <xsl:for-each select="//*">
                 <xsl:variable name="element_name" select="name()"/>
                 <xsl:variable name="row_id" select="concat('row_', $element_name)"/>
@@ -53,7 +56,8 @@ run with any new elements encountered in the corpus. -->
                         <xsl:when
                             test="$old_descs != 'null' and $old_descs//d:desc[@corresp = $row_id and descendant::text()]">
                             <xsl:copy-of
-                                select="$old_descs//d:desc[@corresp = $row_id and descendant::text()]"/>
+                                select="$old_descs//d:desc[@corresp = $row_id and descendant::text()]"
+                            />
                         </xsl:when>
                         <xsl:otherwise>
                             <xsl:element name="d:desc">
@@ -202,27 +206,35 @@ run with any new elements encountered in the corpus. -->
             </xsl:when>
             <xsl:otherwise>
                 <xsl:variable name="url"
-                    select="concat('https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-', $name, '.html')"/>
-                &lt;<a href="{$url}" target="_blank"><xsl:value-of select="$name"/></a>&gt;
+                    select="concat('https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-', $name, '.html')"
+                /> &lt;<a href="{$url}" target="_blank"><xsl:value-of select="$name"/></a>&gt;
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-    
+
     <xsl:template match="d:hi">
         <xsl:if test="@rend = 'italics'">
-            <i><xsl:apply-templates></xsl:apply-templates></i>
+            <i>
+                <xsl:apply-templates/>
+            </i>
         </xsl:if>
         <xsl:if test="@rend = 'bold'">
-            <b><xsl:apply-templates></xsl:apply-templates></b>
+            <b>
+                <xsl:apply-templates/>
+            </b>
         </xsl:if>
         <xsl:if test="@rend = 'underline'">
-            <u><xsl:apply-templates></xsl:apply-templates></u>
+            <u>
+                <xsl:apply-templates/>
+            </u>
         </xsl:if>
         <xsl:if test="@rend = 'superscript'">
-            <sup><xsl:apply-templates></xsl:apply-templates></sup>
+            <sup>
+                <xsl:apply-templates/>
+            </sup>
         </xsl:if>
     </xsl:template>
-    
+
     <xsl:template match="d:ref">
         <xsl:element name="a">
             <xsl:attribute name="href" select="@target"/>
@@ -230,19 +242,28 @@ run with any new elements encountered in the corpus. -->
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
-    
+
     <xsl:template match="d:list">
         <ul>
             <xsl:for-each select="d:item">
-                <li><xsl:apply-templates/></li>
+                <li>
+                    <xsl:apply-templates/>
+                </li>
             </xsl:for-each>
         </ul>
     </xsl:template>
-    
+
     <xsl:template match="d:p">
         <p>
             <xsl:apply-templates/>
         </p>
+    </xsl:template>
+
+    <xsl:template match="d:c">
+        <span
+            style="background-color:silver;font-family: 'Lucida Console', 'Courier New', monospace;">
+            <xsl:apply-templates/>
+        </span>
     </xsl:template>
 
 </xsl:stylesheet>

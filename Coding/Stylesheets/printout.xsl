@@ -160,7 +160,7 @@
         <br/>
     </xsl:template>
 
-    <xsl:template match="name | number | date | abbr">
+    <xsl:template match="name | num | date | abbr">
         <xsl:apply-templates/>
     </xsl:template>
 

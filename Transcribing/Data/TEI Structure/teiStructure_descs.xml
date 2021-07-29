@@ -1,128 +1,1377 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <d:descs xmlns:d="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml">
-   <d:desc element="teiCorpus" corresp="row_teiCorpus">
-      <p>This element encloses the entire corpus.</p>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="teiCorpus"
+           corresp="row_teiCorpus">
+      <d:p>This element encloses the entire corpus and is the common ancestor of all other
+         elements.</d:p>
+      <d:p>XPath: /*</d:p>
    </d:desc>
-   <d:desc element="teiHeader" corresp="row_teiHeader"/>
-   <d:desc element="fileDesc" corresp="row_fileDesc"/>
-   <d:desc element="titleStmt" corresp="row_titleStmt"/>
-   <d:desc element="title" corresp="row_title"/>
-   <d:desc element="respStmt" corresp="row_respStmt"/>
-   <d:desc element="name" corresp="row_name"/>
-   <d:desc element="resp" corresp="row_resp"/>
-   <d:desc element="publicationStmt" corresp="row_publicationStmt"/>
-   <d:desc element="authority" corresp="row_authority"/>
-   <d:desc element="address" corresp="row_address"/>
-   <d:desc element="addrLine" corresp="row_addrLine"/>
-   <d:desc element="email" corresp="row_email"/>
-   <d:desc element="num" corresp="row_num"/>
-   <d:desc element="availability" corresp="row_availability"/>
-   <d:desc element="licence" corresp="row_licence"/>
-   <d:desc element="p" corresp="row_p"/>
-   <d:desc element="sourceDesc" corresp="row_sourceDesc"/>
-   <d:desc element="listBibl" corresp="row_listBibl"/>
-   <d:desc element="msDesc" corresp="row_msDesc"/>
-   <d:desc element="msIdentifier" corresp="row_msIdentifier"/>
-   <d:desc element="settlement" corresp="row_settlement"/>
-   <d:desc element="repository" corresp="row_repository"/>
-   <d:desc element="idno" corresp="row_idno"/>
-   <d:desc element="msName" corresp="row_msName"/>
-   <d:desc element="history" corresp="row_history"/>
-   <d:desc element="origin" corresp="row_origin"/>
-   <d:desc element="date" corresp="row_date"/>
-   <d:desc element="biblStruct" corresp="row_biblStruct"/>
-   <d:desc element="monogr" corresp="row_monogr"/>
-   <d:desc element="forename" corresp="row_forename"/>
-   <d:desc element="surname" corresp="row_surname"/>
-   <d:desc element="imprint" corresp="row_imprint"/>
-   <d:desc element="pubPlace" corresp="row_pubPlace"/>
-   <d:desc element="publisher" corresp="row_publisher"/>
-   <d:desc element="series" corresp="row_series"/>
-   <d:desc element="biblScope" corresp="row_biblScope"/>
-   <d:desc element="analytic" corresp="row_analytic"/>
-   <d:desc element="note" corresp="row_note"/>
-   <d:desc element="edition" corresp="row_edition"/>
-   <d:desc element="encodingDesc" corresp="row_encodingDesc"/>
-   <d:desc element="projectDesc" corresp="row_projectDesc"/>
-   <d:desc element="samplingDecl" corresp="row_samplingDecl"/>
-   <d:desc element="editorialDecl" corresp="row_editorialDecl"/>
-   <d:desc element="correction" corresp="row_correction"/>
-   <d:desc element="normalization" corresp="row_normalization"/>
-   <d:desc element="punctuation" corresp="row_punctuation"/>
-   <d:desc element="segmentation" corresp="row_segmentation"/>
-   <d:desc element="hi" corresp="row_hi"/>
-   <d:desc element="classDecl" corresp="row_classDecl"/>
-   <d:desc element="taxonomy" corresp="row_taxonomy"/>
-   <d:desc element="gloss" corresp="row_gloss"/>
-   <d:desc element="charDecl" corresp="row_charDecl"/>
-   <d:desc element="glyph" corresp="row_glyph"/>
-   <d:desc element="glyphName" corresp="row_glyphName"/>
-   <d:desc element="profileDesc" corresp="row_profileDesc"/>
-   <d:desc element="handNotes" corresp="row_handNotes"/>
-   <d:desc element="handNote" corresp="row_handNote"/>
-   <d:desc element="region" corresp="row_region"/>
-   <d:desc element="affiliation" corresp="row_affiliation"/>
-   <d:desc element="ref" corresp="row_ref"/>
-   <d:desc element="revisionDesc" corresp="row_revisionDesc"/>
-   <d:desc element="change" corresp="row_change"/>
-   <d:desc element="TEI" corresp="row_TEI"/>
-   <d:desc element="extent" corresp="row_extent"/>
-   <d:desc element="notesStmt" corresp="row_notesStmt"/>
-   <d:desc element="msContents" corresp="row_msContents"/>
-   <d:desc element="summary" corresp="row_summary"/>
-   <d:desc element="msItem" corresp="row_msItem"/>
-   <d:desc element="locus" corresp="row_locus"/>
-   <d:desc element="author" corresp="row_author"/>
-   <d:desc element="incipit" corresp="row_incipit"/>
-   <d:desc element="explicit" corresp="row_explicit"/>
-   <d:desc element="filiation" corresp="row_filiation"/>
-   <d:desc element="textLang" corresp="row_textLang"/>
-   <d:desc element="biblFull" corresp="row_biblFull"/>
-   <d:desc element="textClass" corresp="row_textClass"/>
-   <d:desc element="keywords" corresp="row_keywords"/>
-   <d:desc element="term" corresp="row_term"/>
-   <d:desc element="physDesc" corresp="row_physDesc"/>
-   <d:desc element="objectDesc" corresp="row_objectDesc"/>
-   <d:desc element="supportDesc" corresp="row_supportDesc"/>
-   <d:desc element="support" corresp="row_support"/>
-   <d:desc element="foliation" corresp="row_foliation"/>
-   <d:desc element="condition" corresp="row_condition"/>
-   <d:desc element="layoutDesc" corresp="row_layoutDesc"/>
-   <d:desc element="langUsage" corresp="row_langUsage"/>
-   <d:desc element="text" corresp="row_text"/>
-   <d:desc element="body" corresp="row_body"/>
-   <d:desc element="div" corresp="row_div"/>
-   <d:desc element="handShift" corresp="row_handShift"/>
-   <d:desc element="pb" corresp="row_pb"/>
-   <d:desc element="lb" corresp="row_lb"/>
-   <d:desc element="w" corresp="row_w"/>
-   <d:desc element="abbr" corresp="row_abbr"/>
-   <d:desc element="g" corresp="row_g"/>
-   <d:desc element="space" corresp="row_space"/>
-   <d:desc element="pc" corresp="row_pc"/>
-   <d:desc element="add" corresp="row_add"/>
-   <d:desc element="del" corresp="row_del"/>
-   <d:desc element="supplied" corresp="row_supplied"/>
-   <d:desc element="seg" corresp="row_seg"/>
-   <d:desc element="unclear" corresp="row_unclear"/>
-   <d:desc element="lg" corresp="row_lg"/>
-   <d:desc element="l" corresp="row_l"/>
-   <d:desc element="choice" corresp="row_choice"/>
-   <d:desc element="sic" corresp="row_sic"/>
-   <d:desc element="corr" corresp="row_corr"/>
-   <d:desc element="c" corresp="row_c"/>
-   <d:desc element="gap" corresp="row_gap"/>
-   <d:desc element="provenance" corresp="row_provenance"/>
-   <d:desc element="cb" corresp="row_cb"/>
-   <d:desc element="head" corresp="row_head"/>
-   <d:desc element="handDesc" corresp="row_handDesc"/>
-   <d:desc element="anchor" corresp="row_anchor"/>
-   <d:desc element="mod" corresp="row_mod"/>
-   <d:desc element="list" corresp="row_list"/>
-   <d:desc element="item" corresp="row_item"/>
-   <d:desc element="entryFree" corresp="row_entryFree"/>
-   <d:desc element="span" corresp="row_span"/>
-   <d:desc element="gen" corresp="row_gen"/>
-   <d:desc element="iType" corresp="row_iType"/>
-   <d:desc element="gramGrp" corresp="row_gramGrp"/>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="teiHeader"
+           corresp="row_teiHeader">
+      <d:p>This element contains metadata about a TEI file. Where used in corpus.xml, it contains
+         data referenced by <d:c>@xml:id</d:c> from across the rest of the corpus. It includes names
+         and other details of scribes and abbreviations, for example.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="fileDesc"
+           corresp="row_fileDesc">
+      <d:p>When a direct child of <d:c>teiHeader</d:c>, <d:c>fileDesc</d:c> contains bibliographical
+         information about the file itself. It is also used within <d:c>msItem/biblFull</d:c> to
+         contain a keyword list relating to the individual text; this latter structure is mostly
+         unnecessary for the purposes of the corpus but is required for TEI conformance.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="titleStmt"
+           corresp="row_titleStmt">
+      <d:p>This contains the most basic bibliographical information about the work to which it
+         relates, namely, the title and optionally details of anyone responsible.</d:p>
+      <d:p>Where its parent is <d:c>teiHeader/fileDesc</d:c>, it provides details for the entire TEI
+         file. When that file is corpus.xml, it contains the corpus title and a list of those who
+         have worked on the corpus in various capacities. Where that file is a transcription file,
+         it provides a title for the transcription and names the editor primarily responsible for
+         that transcription, although it is likely that it has been reviewed by multiple team
+         members in reality.</d:p>
+      <d:p>Where its parent is <d:c>biblFull/fileDesc</d:c> (i.e. it relates to an individual text),
+         it provides the title for that text.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="title"
+           corresp="row_title">
+      <d:p>This is used in a variety of contexts to contain the title of a file, bibliographical
+         work, or a transcribed text within the corpus or a subsection thereof.</d:p>
+      <d:p>Even where the <d:c>title</d:c> element appears within a transcription (e.g.
+            <d:c>TEI/text/body/div/head/title</d:c>), it remains part of the editorial apparatus. In
+         other words, the <d:c>title</d:c> element is never used to mark up titles that appear in
+         manuscripts. For avoidance of doubt, the <d:c>title</d:c> element is also never used for a
+         person's title.</d:p>
+      <d:list>
+         <d:item>
+            <d:c>@level</d:c> is only used in the context of a bibliography entry; it is used to
+            differentiate a monograph title from the title of a multi-authored book in which the
+            work being described appears, for example.</d:item>
+         <d:item>
+            <d:c>@type</d:c> is also only used in the context of a bibliography entry, where it
+            distinguishes a condensed version of a work's title from the full version.</d:item>
+      </d:list>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="respStmt"
+           corresp="row_respStmt">
+      <d:p>The <d:c>respStmt</d:c> element contains other elements detailing one or more
+         individuals' responsibility for a file or bibliographical work.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="name"
+           corresp="row_name">
+      <d:p>The <d:c>name</d:c> element is used in a variety of contexts to contain an anthroponym,
+         toponym, demonym, or other sort of name.</d:p>
+      <d:p>Where it appears within <cdoe>respStmt</cdoe>, it contains the name of an individual
+         responsible for a file or bibliographical work. In this context, the name is split into
+            <d:c>forename</d:c> and <d:c>surname</d:c>.</d:p>
+      <d:p>Where it appears within a transcription (<d:c>text//name</d:c>), it is used to mark up
+         the occurrence of a name in a transcription. In this context, it must contain at least one
+            <d:c>w</d:c> element and could contain any of the markup used for transcribed text (e.g.
+         unclear, space). If part or all of the name requires emendation, the <d:c>choice</d:c>
+         element must be contained within <d:c>name</d:c> and not contain it. <d:c>name</d:c> can
+         also contain a nested <d:c>name</d:c> element, where one <d:c>name</d:c> contains another
+            <d:c>name</d:c> (e.g. Mael Coluim).</d:p>
+      <d:p>The following attributes are in active use with <d:c>name</d:c>:</d:p>
+      <d:list>
+         <d:item>
+            <d:c>@id</d:c>: all <d:c>name</d:c> elements require this attribute to be compliant with
+            the DASG schema.</d:item>
+         <d:item>
+            <d:c>@xml:id</d:c>: when names of project members are given in <d:c>respStmt</d:c>
+            elements in corpus.xml, they are assigned unique IDs via this attribute there. These IDS
+            can be used to reference them elsewhere, usually using <d:c>@resp</d:c>.</d:item>
+         <d:item>
+            <d:c>@type</d:c>: when the <d:c>name</d:c> element is used to mark up a name in a
+            transcription, this identifies what sort of name it is (e.g. personal, place).</d:item>
+         <d:item>
+            <d:c>@corresp</d:c>: when the <d:c>name</d:c> element is used to mark up a placename in
+            a transcription, this attribute can be used to link to an entry for that name in an
+            external placenames database (e.g. logainm.ie) via an URL. It can be used whether or not
+            the word(s) in the name have also been linked to headwords and the same URL can be used
+            here and for a contained word's <d:c>@lemmaRef</d:c>.</d:item>
+      </d:list>
+      <d:p>Other attributes (<d:c>@full</d:c>, <d:c>@instant</d:c>) are at the time of writing (July
+         2021) assumed by the schema but are not actively used in the mark-up.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="resp"
+           corresp="row_resp">
+      <d:p>
+         <d:c>resp</d:c> is used within respStmt to describe a responsibility belonging to the
+         person named in the sibling <d:c>name</d:c> element.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="publicationStmt"
+           corresp="row_publicationStmt">
+      <d:p>When used in the <d:code>fileDesc</d:code> element relating to a TEI file, this element
+         contains information relating to the publication of the file and its contents, such as who
+         is responsbile for it and any restrictions on its use.</d:p>
+      <d:p>When used in the <d:code>fileDesc</d:code> element relating to a text item from a
+         transcription (<d:code>msItem/biblFull/fileDesc/publicationStmt</d:code>), this element
+         simply contains the statement that the item is a "Draft transcription"; publication is
+         already provided by the <d:code>publicationStmt</d:code> at file level.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="authority"
+           corresp="row_authority">
+      <d:p>
+         <d:c>authority</d:c> refers to the body responsible for the file and its
+         publication.</d:p>
+      <d:p>In corpus.xml, this element contains the contact details for the Faclair na Gàidhlig
+         project and is identified with the <d:c>@xml:id</d:c> "authority". Elsewhere, this element
+         links to these details via <d:c>@sameAs="authority"</d:c>.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="address"
+           corresp="row_address">
+      <d:p>This contains contact details for the Faclair na Gàidhlig project, comprised of a series
+            <d:c>addrLine</d:c> elements.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="addrLine"
+           corresp="row_addrLine">
+      <d:p>This contains a line of the street address for the Faclair na Gàidhlig project.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="email"
+           corresp="row_email">
+      <d:p>This contains an email address for the Faclair na Gàidhlig project.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="num"
+           corresp="row_num">
+      <d:p>The meaning of this element varies depending on context.</d:p>
+      <d:p>When it appears within <d:c>addrLine</d:c>, it contains a telephone number for the
+         Faclair na Gàidhlig project.</d:p>
+      <d:p>When it appears within a transcription, it is used to mark up a number that cannot be
+         tagged as a single word and link to a dictionary headword or where the number appears in a
+         manuscript as apparatus rather than in a syntactic context.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="availability"
+           corresp="row_availability">
+      <d:p>This contains information on how the file can be used. This is set to "restricted" via
+            <d:c>status</d:c> and contains the following (within <d:c>p</d:c>): "For internal use by
+         the Faclair na Gàidhlig/DASG projects." </d:p>
+      <d:p>The attribute <d:c>@default</d:c> is at the time of writing (July 2021) assumed by the
+         schema but is not actively used in the mark-up.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="p"
+           corresp="row_p">
+      <d:p>
+         <d:c>p</d:c> is a very widely used element. It is used to contain text belonging in a
+         single paragraph.</d:p>
+      <d:p>In corpus.xml and in the <d:c>teiHeader</d:c> of transcription files and the hwData file,
+         it is used to organise prose metadata added by editors.</d:p>
+      <d:p>Within transcriptions (<d:c>text//p</d:c>), it is used to contain transcribed prose. A
+         new <d:c>p</d:c> element is begun when the text switches back from verse to prose, when the
+         scribe visually indicates a major new subdivision of a prose text, or if the editors feel a
+         new paragraph is needed for ease of reading.</d:p>
+      <d:p>The attribute <d:c>@part</d:c> is at the time of writing (July 2021) assumed by the
+         schema but is not actively used in the mark-up.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="sourceDesc"
+           corresp="row_sourceDesc">
+      <d:p>When used in corpus.xml (<d:c>/teiCorpus/teiHeader/fileDesc/sourceDesc</d:c>),
+            <d:c>sourceDesc</d:c> contains the project bibliography.</d:p>
+      <d:p>When used in a transcription file header (<d:c>/TEI/teiHeader/fileDesc/sourceDesc</d:c>),
+            <d:c>sourceDesc</d:c> contains details on the texts transcribed from the manuscript in
+         question (<d:c>msContents</d:c>) and a physical description of the manuscript
+            (<d:c>physDesc</d:c>).</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="listBibl"
+           corresp="row_listBibl">
+      <d:p>This element contains a bibliography. The type of works detailed in the bibliography is
+         indicated via <d:c>@type</d:c>.</d:p>
+      <d:p>The attribute <d:c>@default</d:c> is at the time of writing (July 2021) assumed by the
+         schema but is not actively used in the mark-up.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="msDesc"
+           corresp="row_msDesc">
+      <d:p>This element contains details about a particular manuscript. It can be used to list a
+         manuscript within the corpus bibliography in corpus.xml or in the transcription file header
+         to describe the manuscript from which transcription has been made.</d:p>
+      <d:p>The attribute <d:c>@status</d:c> is at the time of writing (July 2021) assumed by the
+         schema but is not actively used in the mark-up.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="msIdentifier"
+           corresp="row_msIdentifier">
+      <d:p>This element contains identifying details about a manuscript. When used in the corpus
+         bibliography in corpus.xml, the manuscript is assigned a unique ID via <d:c>@xml:id</d:c>.
+         When used in transcription file headers, this ID is referenced via
+         <d:c>@sameAs</d:c>.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="settlement"
+           corresp="row_settlement">
+      <d:p>Used within <d:c>msIdentifier</d:c>, this contains the location of the manuscript
+         repository.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="repository"
+           corresp="row_repository">
+      <d:p>Used within <d:c>msIdentifier</d:c>, this contains the name of the manuscript
+         repository.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="idno"
+           corresp="row_idno">
+      <d:p>Used within <d:c>msIdentifier</d:c>, this contains the manuscript's shelfmark.</d:p>
+      <d:p>Used within <d:c>publicationStmt</d:c> in a transcription file header, this provides a
+         publication ID for the transcription. This should be the same as the value of the
+            <d:c>@xml:id</d:c> attribute of the ancestor <d:c>TEI</d:c>.</d:p>
+      <d:p>This element is also used in some bibliography items (e.g.
+            <d:c>/teiCorpus/teiHeader/fileDesc/sourceDesc/listBibl/biblStruct/monogr/idno</d:c>).</d:p>
+      <d:p>How <d:c>idno</d:c> is being used is identified by <d:c>@type</d:c>.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="msName"
+           corresp="row_msName">
+      <d:p>This optional element within <d:c>msIdentifier</d:c> can be used to provide a name
+         commonly in use for the manuscript being identified (e.g. 'The Yellow Book of Lecan' for
+         Dublin, TCD H.2.16 (1318)).</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="history"
+           corresp="row_history">
+      <d:p>This provides information on a manuscript's history. When used within the corpus
+         bibliography, it simply contains the manuscript's approximate date
+            (<d:c>history/origin/date</d:c>). When used within a transcription file header, it
+         contains narrative metadata describing the manuscript's history
+            (<d:c>history/summary/p</d:c>).</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="origin"
+           corresp="row_origin">
+      <d:p>This is used within the corpus bibliography to provide the manuscript's approximate date
+            (<d:c>history/origin/date</d:c>).</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="date"
+           corresp="row_date">
+      <d:p>When used in corpus.xml or in a transcription file header, this element provides a date
+         for a manuscript(<d:c>history/origin/date</d:c>), bibliographical work
+            (<d:c>listBibl/biblStruct/monogr/imprint/date</d:c>), or scribe
+            (<d:c>profileDesc/handNotes/handNote</d:c>). For bibliographical works, this is a
+         calendar year. For manuscripts and scribes, it is a century or pair of centuries.</d:p>
+      <d:p>When used within a transcription, this element is used to mark up a date, but only when
+         this date is in a format that cannot be analysed and marked up as words. For example,
+         "1411" would be marked up with <d:c>date</d:c>, whereas "annaladh an tigerna ann so .i.
+         mile bliadain cetra cead acus seacht bliadna acus tri .xx." ("the year of the Lord today,
+         1467") would be marked up as normal transcribed text.</d:p>
+      <d:p>In terms of the use of <d:c>date</d:c> to provide a date for a scribe, this can require
+         particularly complex use of attributes:</d:p>
+      <d:list>
+         <d:item>
+            <d:c>@from</d:c> and <d:c>@to</d:c> indicate a precise span of years in which the
+            scribe is known to have been active, where this information is available. If there is
+            only evidence for them being active in a single year, then both attributes point to that
+            year.</d:item>
+         <d:item>
+            <d:c>@min</d:c> and <d:c>@max</d:c> are used to give a much broader estimate of the
+            period in which the scribe was active and may be the only dating attributes used if not
+            positive information about the scribe is available.</d:item>
+         <d:item>
+            <d:c>@type</d:c> indicates what sort of span <d:c>@from</d:c> and <d:c>@to</d:c> /
+               <d:c>@min</d:c> and <d:c>@max</d:c> relate to. Possible values include "floruit" and
+            "lifespan".</d:item>
+         <d:item>
+            <d:c>@cert</d:c> provides an editorial certainty level for the dating information
+            contained in the rest of the element.</d:item>
+      </d:list>
+      <d:p>At the time of writing (July 2021), the dating information for scribal hands is in some
+         disrepair and could use thorough checking in terms of data and standardisation in terms of
+         encoding.</d:p>
+      <d:p>Where <d:c>date</d:c> is used to provide the date of a manuscript, the century in which
+         the manuscript was mainly created is indicated via <d:c>@from-custom</d:c>.</d:p>
+      <d:p>All <d:c>date</d:c> elements require an <d:c>@id</d:c> attribute to be compliant with the
+         DASG schema.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="biblStruct"
+           corresp="row_biblStruct">
+      <d:p>Appearing within the corpus bibliograhy, this element contains an individual bibliography
+         item that is not a manuscript. In other words, it is the equivalent of
+            <d:code>msDesc</d:code> for monographs, journal articles, book chapters, etc.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="monogr"
+           corresp="row_monogr">
+      <d:p>Appearing within the corpus bibliograhy, this contains details for either a monograph or
+         the "top-level" component of a publication (e.g. the journal, in the context of a journal
+         article). The "bottom-level" component is detailed under <d:c>analytic</d:c>.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="forename"
+           corresp="row_forename">
+      <d:p>In the corpus bibliography, this element is a child of <d:c>name</d:c> and contains the
+         author or editor's first name.</d:p>
+      <d:p>This element also appears as a direct child of <d:c>handNote</d:c>, containing the
+         scribe's first name, where known.</d:p>
+      <d:p>The attribute <d:c>@full</d:c> is at the time of writing (July 2021) assumed by the
+         schema but is not actively used in the mark-up.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="surname"
+           corresp="row_surname">
+      <d:p>In the corpus bibliography, this element is a child of <d:c>name</d:c> and contains the
+         author or editor's surname.</d:p>
+      <d:p>This element also appears as a direct child of <d:c>handNote</d:c>, containing the
+         scribe's surname, where known.</d:p>
+      <d:p>The attribute <d:c>@full</d:c> is at the time of writing (July 2021) assumed by the
+         schema but is not actively used in the mark-up.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="imprint"
+           corresp="row_imprint">
+      <d:p>This contains child elements providing information relating specifically to the
+         publication of a bibliography item.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="pubPlace"
+           corresp="row_pubPlace">
+      <d:p>This identifies the bibliograhy item's place of publication.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="publisher"
+           corresp="row_publisher">
+      <d:p>This identifies the bibliograhy item's publisher.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="series"
+           corresp="row_series">
+      <d:p>This identifies the series of which a bibliograhy item is part, where applicable.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="biblScope"
+           corresp="row_biblScope">
+      <d:p>This element contains a number or range, which is the number of pages, volumes, etc.
+         taken up by the bibliography item. The unit involved is indicated via
+         <d:c>@unit</d:c>.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="analytic"
+           corresp="row_analytic">
+      <d:p>This element details the "bottom-level" component of a bibliography item (e.g. the
+         article, as distinct from the journal, in an entry on a journal article); it is used
+         alongside <d:c>monogr</d:c>, which details the "top-level" component.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="note"
+           corresp="row_note">
+      <d:p>This element is used in a variety of contexts.</d:p>
+      <d:p>Within <d:c>teiHeader</d:c>, <d:c>note</d:c> contains text providing a free prose account
+         of the aspect or datum indicated by an ancestor element. For example, <d:c>note</d:c>
+         within <d:c>handNote</d:c> provides background information and a description of a
+         particular scribe. In this context, depending on where <d:c>note</d:c> is used,
+            <d:c>p</d:c> is sometimes required and sometimes not.</d:p>
+      <d:p>Within transcriptions, <d:c>note</d:c> is used to insert a footnote. In these cases, it
+         is identfied as such by <d:c>@type</d:c> and the editor responsible for the footnote is
+         identified by <d:c>@resp</d:c>. In this context, the footnote must be contained within a
+            <d:c>p</d:c> child element.</d:p>
+      <d:p>The attribute <d:c>@anchored</d:c> is at the time of writing (July 2021) assumed by the
+         schema but is not actively used in the mark-up.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="edition"
+           corresp="row_edition">
+      <d:p>This element identifies which edition of a bibliography item was used.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="encodingDesc"
+           corresp="row_encodingDesc">
+      <d:p>This contains a number of child elements detailing differnt aspects of how the source
+         material is encoded in the file.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="projectDesc"
+           corresp="row_projectDesc">
+      <d:p>This element is only used in <d:c>teiHeader</d:c> in corpus.xml. It provides a brief
+         overview of the FnaG MSS project.</d:p>
+      <d:p>The attribute <d:c>@default</d:c> is at the time of writing (July 2021) assumed by the
+         schema but is not actively used in the mark-up.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="samplingDecl"
+           corresp="row_samplingDecl">
+      <d:p>This element is only used in <d:c>teiHeader</d:c> in corpus.xml. It provides an
+         explanation of how material was selected for transcription.</d:p>
+      <d:p>The attribute <d:c>@default</d:c> is at the time of writing (July 2021) assumed by the
+         schema but is not actively used in the mark-up.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="editorialDecl"
+           corresp="row_editorialDecl">
+      <d:p>This element is only used in <d:c>teiHeader</d:c> in corpus.xml. It contains a number of
+         child elements detailing different editorial aspects of the project's transcription
+         process.</d:p>
+      <d:p>The attribute <d:c>@default</d:c> is at the time of writing (July 2021) assumed by the
+         schema but is not actively used in the mark-up.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="correction"
+           corresp="row_correction">
+      <d:p>This element is only used in <d:c>teiHeader</d:c> in corpus.xml. It details the approach
+         taken to emendations of source material on the project.</d:p>
+      <d:p>The attribute <d:c>@default</d:c> is at the time of writing (July 2021) assumed by the
+         schema but is not actively used in the mark-up.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="normalization"
+           corresp="row_normalization">
+      <d:p>This element is only used in <d:c>teiHeader</d:c> in corpus.xml. It details the approach
+         taken to normalisation of spelling in source material on the project.</d:p>
+      <d:p>The attributes <d:c>@default</d:c> and <d:c>@method</d:c> is at the time of writing (July
+         2021) assumed by the schema but is not actively used in the mark-up.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="punctuation"
+           corresp="row_punctuation">
+      <d:p>This element is only used in <d:c>teiHeader</d:c> in corpus.xml. It details the approach
+         taken to punctuation in source material and transcriptions on the project.</d:p>
+      <d:p>The attribute <d:c>@default</d:c> is at the time of writing (July 2021) assumed by the
+         schema but is not actively used in the mark-up.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="segmentation"
+           corresp="row_segmentation">
+      <d:p>This element is only used in <d:c>teiHeader</d:c> in corpus.xml. It details the approach
+         taken to sub-dividing source material, from manuscript to word level, on the project.</d:p>
+      <d:p>The attribute <d:c>@default</d:c> is at the time of writing (July 2021) assumed by the
+         schema but is not actively used in the mark-up.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="hi"
+           corresp="row_hi">
+      <d:p>This element is used within editorial commentary (in <d:c>teiHeader</d:c> or in
+         footnotes) to specify how a string of text is to be formatted in the output. This is done
+         using <d:c>@rend</d:c>, which can use values like:</d:p>
+      <d:list>
+         <d:item>"italics"</d:item>
+         <d:item>"bold"</d:item>
+         <d:item>"sup" (superscript)</d:item>
+      </d:list>
+      <d:p>Note that this tag will not necessarily result in the output being formatted this way, as
+         matching handling for <d:c>hi</d:c> will need to have been implemented in the appropriate
+         stylesheet.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="classDecl"
+           corresp="row_classDecl">
+      <d:p>This provides a series of child elements detailing systems of IDs and attribute values in
+         use across the corpus and definitions thereof.</d:p>
+      <d:p>At the time of writing (July 2021), many of these are incomplete or require review.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="taxonomy"
+           corresp="row_taxonomy">
+      <d:p>Within <d:c>classDecl</d:c>, this element contains child elements that detail a
+         particular category of IDs and attribute or element values in use in the corpus. The
+         category is identified via <d:c>@xml:id</d:c>.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="gloss"
+           corresp="row_gloss">
+      <d:p>This element is contained by <d:c>taxonomy</d:c> and details an ID or attribute/element
+         value in use across the corpus. The ID or attribute/element value is identified via
+            <d:c>@xml:id</d:c> and the definition contained as text within <d:c>gloss</d:c>.</d:p>
+      <d:p>Note that this element does <d:hi rend="italics">not</d:hi> have anything to do with
+         editorial or scribal glossing of texts. The latter is marked up within transcriptions using
+            <d:c>add</d:c>.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="charDecl"
+           corresp="row_charDecl">
+      <d:p>This element is only used in <d:c>teiHeader</d:c> in corpus.xml. It contains child
+         elements detailing each abbreviation and ligature (<d:c>glyph</d:c>) used in the
+         corpus.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="glyph"
+           corresp="row_glyph">
+      <d:p>This element contains details on a single abbreviation or ligature, as identified and
+         classified by the project transcribers when encountered in the manuscript material.</d:p>
+      <d:p>The abbreviation or ligature is assigned a unique ID via <d:c>@xml:id</d:c>;
+         abbreviations' IDs are prefixed "g" and ligatures' IDs are prefixed "l". If it appears in
+         the <d:ref target="https://www.vanhamel.nl/codecs/Show:Tionscadal_na_Nod">Tionscadal na
+            Nod</d:ref> database, then a URL for its entry there is provided via
+         <d:c>@corresp</d:c>.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="glyphName"
+           corresp="row_glyphName">
+      <d:p>This is the name of the abbreviation or ligature, as determined by the project
+         transcribers.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="profileDesc"
+           corresp="row_profileDesc">
+      <d:p>In the <d:c>teiHeader</d:c> of corpus.xml, this element contains details of each of the
+         scribes whose hands appear in the corpus</d:p>
+      <d:p>In the <d:c>teiHeader</d:c> of each transcription file, this element contains details on
+         the linguistic profile(s) of the text(s) transcribed, a list of scribal hands present in
+         the portion(s) of the manuscript from which transcription was made, and a list of keywords
+         describing the transcription as a whole.</d:p>
+      <d:p>When it appears in <d:c>msItem</d:c>, this element is there to contain a list of keywords
+         describing the individual text.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="handNotes"
+           corresp="row_handNotes">
+      <d:p>This element contains a set of <d:c>handNote</d:c> elements.</d:p>
+      <d:p>In the <d:c>teiHeader</d:c> of corpus.xml, these in turn contain details on the
+         scribes.</d:p>
+      <d:p>In the <d:c>teiHeader</d:c> of a transcription file, these <d:c>handNote</d:c> elements
+         are empty and merely point to the <d:c>handNote</d:c> elements in copus.xml via the
+         latter's unique IDs.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="handNote"
+           corresp="row_handNote">
+      <d:p>This element contains child elements providing information about a scribe.</d:p>
+      <d:p>In the <d:c>teiHeader</d:c> of corpus.xml, it contains details on the scribe, who is
+         assigned a unique ID (prefixed "Hand") via <d:c>@xml:id</d:c>.</d:p>
+      <d:p>In the <d:c>teiHeader</d:c> of a transcription file, these <d:c>handNote</d:c> elements
+         are empty and merely point to the <d:c>handNote</d:c> elements in copus.xml via
+            <d:c>@corresp</d:c>, which has as a value the scribe's unique ID.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="region"
+           corresp="row_region">
+      <d:p>This element appears within a <d:c>handNote</d:c> element in corpus.xml and details a
+         region in which the scribe was known to be active. Multiple <d:c>region</d:c> elements can
+         be identified if need be.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="affiliation"
+           corresp="row_affiliation">
+      <d:p>This identifies the social network to which the scribe belongs. A specific set of element
+         values must be used, they must be spelt correctly, and only one <d:c>affiliation</d:c>
+         element can be added to each <d:c>handNote</d:c>. A list of these values can be found at
+            <d:c>taxonomy xml:id="social_group"</d:c> in corpus.xml. These strict rules are in place
+         because this data determines the colour-coding of Gephi graphs and the program that
+         generates these graphs is expecting particular text strings.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="revisionDesc"
+           corresp="row_revisionDesc">
+      <d:p>Appearing at the end of each <d:c>teiHeader</d:c>, this contains a changelog of changes
+         made to the file.</d:p>
+      <d:p>At the time of writing (July, 2021), the schema assumes that this element has the
+         attribute <d:c>@status</d:c> with the value "draft". Also, transcribers have not hitherto
+         kept these changelogs up to date, due to the frequency of changes made while preparing the
+         corpus, sometimes to multiple files. These changelogs are therefore likely to be
+         out-of-date and possibly inaccurate. Their continued presence should be reviewed.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="change"
+           corresp="row_change">
+      <d:p>This element describes a change made to the file. It has the following attributes:</d:p>
+      <d:list>
+         <d:item>
+            <d:c>@when</d:c>: the date of the change (yyy-mm-dd).</d:item>
+         <d:item>
+            <d:c>@who</d:c>: the ID of the editor responsible.</d:item>
+      </d:list>
+      <d:p>At the time of writing (July, 2021), the schema assumes that this element has the
+         attribute <d:c>@status</d:c> with the value "draft".</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="TEI"
+           corresp="row_TEI">
+      <d:p>This is the highest-level element and ultimate common ancestor of a transcription file.
+         The transcription is assigned a unique ID via <d:c>@xml:id</d:c>
+      </d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="extent"
+           corresp="row_extent">
+      <d:p>This indicates how many words are in the transcription ("{count(//w[not(ancestor::w)])}
+         words").</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="notesStmt"
+           corresp="row_notesStmt">
+      <d:p>This provides a short summary that introduces the manuscript, briefly surveys the
+         contents, and explains why it has been included in the FnaG MSS Corpus.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="msContents"
+           corresp="row_msContents">
+      <d:p>This contains one or more <d:c>msItem</d:c> elements, each of which details a text
+         included in the transcription.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="summary"
+           corresp="row_summary">
+      <d:p>This introduces the texts transcribed from the manuscript, providing an overall summary
+         of date, genre, subject-matter, authorship, and so forth, as well the reasons for
+         transcribing them and an evaluation of what they contribute to the corpus.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="msItem"
+           corresp="row_msItem">
+      <d:p>This contains a series of child elements providing details on a single text transcription
+         from the manuscript. The text is assigned a unique ID via <d:c>@xml:id</d:c>.</d:p>
+      <d:p>Information specific to this text can be provided via a <d:c>note</d:c> child node.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="locus"
+           corresp="row_locus">
+      <d:p>This specifies the location of the text in the manuscript, usually in terms of start and
+         end page/folio, column, and line.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="author"
+           corresp="row_author">
+      <d:p>Each of these elements identifies an author or scribe responsible for the text.</d:p>
+      <d:p>The <d:c>@role</d:c> attribute identifies whether the individual in question is an
+         "author" or a "scribe"; <d:c>@corresp</d:c> has as its value the individual's unique
+         ID.</d:p>
+      <d:p>There is currently no system for formally documenting authors. This is perhaps because
+         relatively few texts in the corpus have a confirmed author; almost all texts that do are
+         likely to be poetry. For this reason, there are currently no <d:c>author</d:c> elements
+         where <d:c>@type</d:c> has the value "author" and there are no unique IDs specified for
+         authors.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="incipit"
+           corresp="row_incipit">
+      <d:p>This contains the first few words of the text, as transcribed. If the text appears to be
+         acephalous, this should be indicated with [...] and the first transcribed words added
+         thereafter.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="explicit"
+           corresp="row_explicit">
+      <d:p>This contains the last few words of the text, as transcribed. If the ending appears to be
+         missing, this should be indicated with [...] and the last transcribed words added
+         thereafter.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="filiation"
+           corresp="row_filiation">
+      <d:p>This element can be used to provide details on other versions of the text and this
+         version's relationship thereto.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="textLang"
+           corresp="row_textLang">
+      <d:p>This element identifies the main language used in the text, via <d:c>@mainLang</d:c>. If
+         there are other languages that have a significant influence, these can be detailed in a
+         whitespace-separated list as the value of <d:c>@otherLangs</d:c>.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="biblFull"
+           corresp="row_biblFull">
+      <d:p>Within <d:c>msItem</d:c>, this element is only used to ultimately contain a keyword list
+         for the text; the only TEI-compliant way to add such a list at text-level is to create a
+         bibliography item for it via this element.</d:p>
+      <d:p>At the time of writing (July, 2021), the schema assumes that this element has the
+         attributes <d:c>@status</d:c> and <d:c>@default</d:c>.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="textClass"
+           corresp="row_textClass">
+      <d:p>
+         <d:c>textClass</d:c>, in <d:c>msItem</d:c>, contains a keyword list relating to the
+         text.</d:p>
+      <d:p>At the time of writing (July, 2021), the schema assumes that this element has the
+         attribute <d:c>@default</d:c>.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="keywords"
+           corresp="row_keywords">
+      <d:c>keywords</d:c> in <d:c>msItem</d:c>
+      contains a set of keywords relating to the text.</d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="term"
+           corresp="row_term">
+      <d:p>
+         <d:c>term</d:c>
+      </d:p> in <d:c>msItem</d:c>
+      contains a keyword that has been used to help classify the text.</d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="ref"
+           corresp="row_ref">
+      <d:p>This element appears in editorial commentary (header material and footnotes). It is used
+         to mark up a reference to another source and provide, where possible, an ID for that source
+            (<d:c>@target</d:c>). The type of source is indicated via <d:c>@type</d:c>.</d:p>
+      <d:p>There is currently (July 2021) no output for material from the corpus that makes use of
+         data from the <d:c>ref</d:c> tag or its attributes and it is not used consistently. It
+         should be decided whether it can be used, for example, to automatically generate content
+         for popin windows that would provide bibliographical details or whether the tag should be
+         retired and all referencing done via the in-text author-date references only.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="physDesc"
+           corresp="row_physDesc">
+      <d:p>This element contains a description of physical aspects of the manuscript from which
+         transcription has been made. This is done in general via direct child <d:c>p</d:c> nodes
+         and <d:c>objectDesc</d:c> and <d:c>handDesc</d:c>.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="objectDesc"
+           corresp="row_objectDesc">
+      <d:p>
+         <d:c>objectDesc</d:c> provides details specifically about the physical state and
+         appearance of the mauscript page.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="supportDesc"
+           corresp="row_supportDesc">
+      <d:p>
+         <d:c>supportDesc</d:c> provides details specifically about the physical state of the
+         mauscript page.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="support"
+           corresp="row_support">
+      <d:p>
+         <d:c>support</d:c> contains a brief formal description of the typical writing surface in
+         the manuscript.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="foliation"
+           corresp="row_foliation">
+      <d:p>
+         <d:c>foliation</d:c> indicates whether the foliation is modern, scribal, or post-scribal,
+         or if multiple systems are in use.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="condition"
+           corresp="row_condition">
+      <d:p>
+         <d:c>condition</d:c>
+      </d:p> describes the
+      overall condition of the manuscript.</d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="layoutDesc"
+           corresp="row_layoutDesc">
+      <d:p>
+         <d:c>layout</d:c>
+      </d:p> provides a
+      brief description of the typical layout of the manuscript page.</d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="langUsage"
+           corresp="row_langUsage">
+      <d:p>This element provides more detailed information on the language(s) used in the material
+         transcribed from the manuscript to which the file relates.</d:p>
+      <d:p>At the time of writing (July, 2021), the schema assumes that this element has the
+         attribute <d:c>@default</d:c>.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="text"
+           corresp="row_text">
+      <d:p>This element represents a text within the corpus represented <d:c>teiCorpus</d:c>; it
+         contains all transcribed material in the file.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="body"
+           corresp="row_body">
+      <d:p>This element contains all transcribed material in the file.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="div"
+           corresp="row_div">
+      <d:p>Where <d:c>div</d:c> has no ancestor <d:c>div</d:c>, it represents a text within a
+         transcription, although some transcriptions consist of a single text. It is linked to the
+         details about the text in <d:c>msItem</d:c> via <d:c>@corresp</d:c> using the text's unique
+         ID.</d:p>
+      <d:p>Where <d:c>div</d:c> has an ancestor <d:c>div</d:c>, it represents a subdivision of a
+         text. This is used when the text is prose but consists of clearly identifiable units (e.g.
+         a collection of medical aphorisms). This subdivision is assigned a unique ID via
+            <d:c>@xml:id</d:c>.</d:p>
+      <d:p>In both cases, the text/subdivision are described with the followign information via
+         attributes:</d:p>
+      <d:list>
+         <d:item>
+            <d:c>@n</d:c>: this is the number assigned to the text/subdivision; it is not a
+            unique ID but will display on screen to indicate where the text is in the transcription
+            in certain sorts of output.</d:item>
+         <d:item>
+            <d:c>@type</d:c>: this identifies whether the text is "prose", "verse", or
+            "divprose" (subdivided prose); if it is a subdivision of prose text, the value will be
+            "prosediv".</d:item>
+         <d:item>
+            <d:c>@hand</d:c>: this identifies the main scribe responsible for the text; if
+            multiple scribes are involved, it identifies the first major scribal
+            contributor.</d:item>
+      </d:list>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="handShift"
+           corresp="row_handShift">
+      <d:p>This element is placed wherever a new scribe begins writing, whether this is at the
+         beginning of the transcription, where they take over mid-text, or where they make an
+         addition to the text. At least one <d:c>handShift</d:c> element must appear at the start of
+         the transcription but, if the scribe does not change thereafter, it is not necessary to add
+         any more. The new scribe is indicated via <d:c>@new</d:c> using their unique ID.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="pb"
+           corresp="row_pb">
+      <d:p>This element indicates the start of transcription from a new page.</d:p>
+      <d:p>It uses the following elements:</d:p>
+      <d:list>
+         <d:item>
+            <d:c>@n</d:c>: This is the number of the new page, based on the conventional
+            foliation of the manuscript; it need not be a unique ID but it will appear to designate
+            the new page in some outputs.</d:item>
+         <d:item>
+            <d:c>@xml:id</d:c>: This is a unique ID for the new page.</d:item>
+         <d:item>
+            <d:c>@facs</d:c>: This provides a URL for an online image of the new page, where
+            available; it must be a link directly to the image, not to a page that contains the
+            image.</d:item>
+         <d:item>
+            <d:c>@sameAs</d:c>: Where the new page begins in the middle of a word that requires
+            editorial emendation, the <d:c>pb</d:c> element must be provided twice; as it cannot be
+            given two <d:c>@xml:id</d:c> attributes with the same value, as there can only be one
+               <d:c>@xml:id</d:c> with a given value in a document, <d:c>@sameAs</d:c> must be used
+            in any other instances of the <d:c>pb</d:c>.</d:item>
+      </d:list>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="lb"
+           corresp="row_lb">
+      <d:p>This element indicates the start of transcription from a new line.</d:p>
+      <d:p>It uses the following elements:</d:p>
+      <d:list>
+         <d:item>
+            <d:c>@n</d:c>: This is the number of the new line; it need not be a unique ID but
+            it will appear to designate the new line in some outputs.</d:item>
+         <d:item>
+            <d:c>@xml:id</d:c>: This is a unique ID for the new line.</d:item>
+         <d:item>
+            <d:c>@sameAs</d:c>: Where the new line begins in the middle of a word that requires
+            editorial emendation, the <d:c>lb</d:c> element must be provided twice; as it cannot be
+            given two <d:c>@xml:id</d:c> attributes with the same value, as there can only be one
+               <d:c>@xml:id</d:c> with a given value in a document, <d:c>@sameAs</d:c> must be used
+            in any other instances of the <d:c>lb</d:c>.</d:item>
+      </d:list>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="w"
+           corresp="row_w">
+      <d:p>
+         <d:c>w</d:c> can be used to mark up a transcribed word within a transcription. In the
+         case of compound words, it is used to mark up both the "lower-level" individual component
+         words and the "upper-level" containing word. Alternatively, in hwData.xml, it appears
+         within <d:c>entryFree</d:c> providing lexical data on a headword from the corpus.</d:p>
+      <d:p>When used to mark up a transcribed word (whether "lower-level" or "upper-level"), it can
+         have the following attributes:</d:p>
+      <d:list>
+         <d:item>
+            <d:c>@lemma</d:c>: this indicates the headword of which the transcribed word has
+            been identified as a form. If the word cannot be identified with a headword in the form
+            in which it appears, the value of <d:c>@lemma</d:c> is "UNKNOWN".</d:item>
+         <d:item>
+            <d:c>@source</d:c>: if the headword has been postulated based on another headword,
+            the postulated headword is provided via <d:c>@lemma</d:c> (prefixed with *) and the
+            nearest identified headword provided via <d:c>@source</d:c>; the URL for the
+               <d:c>@source</d:c> headword is provided via <d:c>@lemmaRef</d:c>.</d:item>
+         <d:item>
+            <d:c>@lemmaRef</d:c>: this provides a URL for the dictionary entry for the headword
+            (where available) in a recognised dictionary (in order of preference, eDIL, Dwelly via
+            Faclair Beag, Teanglann, placename databases). Where the URL is from Dwelly via Faclair
+            Beag, hwData.xml should be checked to see if the headword is already present and the URL
+            from hwData used instead of the new URL that Faclair Beag will offer.</d:item>
+         <d:item>
+            <d:c>@lemmaSL</d:c>: when the transcribed word is the subject of an HDSG slip, this
+            attribute provides the HDSG version of the headword from the slip.</d:item>
+         <d:item>
+            <d:c>@slipRef</d:c>: when the transcribed word is the subject of an HDSG slip, this
+            attribute provides the URL for the HDSG slip in the DASG database.</d:item>
+         <d:item>
+            <d:c>@pos</d:c>: this details the word's part of speech.</d:item>
+         <d:item>
+            <d:c>@xml:lang</d:c>: if the word is not in some form of Gaelic, the language is
+            specified via this attribute using its XML language code. In such cases, no attributes
+            other than <d:c>@id</d:c> (see below).</d:item>
+         <d:item>
+            <d:c>@corresp</d:c>: When a transcribed word is not found in any recognised
+            dictionary, is documented in an HDSG slip, but not in an HDSG slip that relates to the
+            particular transcribed word in question, the URL for the slip in the DASG database is
+            referenced via <d:c>@corresp</d:c>.</d:item>
+         <d:item>
+            <d:c>@lemmaDW</d:c>: If the Scottish Gaelic headword to which an eDIL headword is
+            linked in hwData.xml is not the correct Scottish Gaelic headword to which to link the
+            transcribed word, the transcribed word can be linked to a Dwelly headword via this
+            attribute.</d:item>
+         <d:item>
+            <d:c>@lemmaRefDW</d:c>: If the Scottish Gaelic headword to which an eDIL headword
+            is linked in hwData.xml is not the correct Scottish Gaelic headword to which to link the
+            transcribed word, the transcribed word can be linked to an URL for the correct Dwelly
+            headword via this attribute. hwData.xml should be checked to see if the Dwelly headword
+            is already present and the URL from hwData used instead of the new URL that Faclair Beag
+            will offer.</d:item>
+         <d:item>
+            <d:c>@lemmaTG</d:c>: Where an Irish headword from Teanglann is also of relevance,
+            this can be referenced via this attribute.</d:item>
+         <d:item>
+            <d:c>@lemmaRefTG</d:c>: Where an Irish headword from Teanglann is also of
+            relevance, its URL can be provided via this attribute.</d:item>
+         <d:item>
+            <d:c>@function</d:c>: In T10, words have been linked via <d:c>@function</d:c> to an
+            XML file which provides different readings for these words in previous transcriptions.
+            This is not handled in any output from the corpus and it should be reviewed whether this
+            attribute is still needed.</d:item>
+      </d:list>
+      <d:p>None of these attributes except <d:c>@id</d:c> (see below) is compulsory and should not
+         be included unless the information can be securely associated with the transcribed
+         word.</d:p>
+      <d:p>When used to provide information on a headword in hwData.xml, it can have the following
+         attributes:</d:p>
+      <d:list>
+         <d:item>
+            <d:c>@type</d:c>: Uses of the <d:c>w</d:c> element in hwData are distinguished from
+               <d:c>w</d:c> elsewhere via <d:c>@type="data"</d:c>.</d:item>
+         <d:item>
+            <d:c>@lemma</d:c>: This provides the first instance of the headword linked to the
+               <d:c>@lemmaRef</d:c> encountered in the corpus.</d:item>
+         <d:item>
+            <d:c>@lemmaRef</d:c>: This is the unique ID for the headword entry in
+            hwData.</d:item>
+         <d:item>
+            <d:c>@pos</d:c>: This provides the <d:c>@pos</d:c> value from the first instance of
+            the headword linked to the <d:c>@lemmaRef</d:c> encountered in the corpus.</d:item>
+         <d:item>
+            <d:c>@lemmaDW</d:c>: If the headword is from eDIL, the equivalent headword from
+            Dwelly can be provided here.</d:item>
+         <d:item>
+            <d:c>@lemmaDW</d:c>: If the headword is from eDIL, the equivalent headword from
+            Dwelly can be identified via its Faclair Beag URL using this attribute.</d:item>
+      </d:list>
+      <d:p>In all circumstances, <d:c>w</d:c> requires a unique <d:c>@id</d:c> in order to be
+         compliant with the DASG schema.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="abbr"
+           corresp="row_abbr">
+      <d:p>This is used to enclose all transcribed characters involved in an abbreviation or
+         ligature. The direct text children of this element are characters that have been written
+         plene; the characters in the <d:c>g</d:c> element(s) are the expansion of one or more
+         abbreviations placed on those characters. Alternatively, the abbreviation could be
+         freestanding, meaning there is only one or more <d:c>g</d:c>elements; all ligatures are
+         freestanding.</d:p>
+      <d:p>
+         <d:c>@cert</d:c> identifies the certainty with which the transcriber has expanded the
+         abbreviation. <d:c>@cert="unknown"</d:c> is used when the transcription is not being made
+         from the manuscript itself but from another modern transcription, where text has been
+         formatted as an abbreviation expansion but no information has been provided on the
+         abbreviation; it means that the transcriber is aware that an abbreviation is used here but
+         cannot comment on the certainty of its expansion as they have no direct access to it.</d:p>
+      <d:p>When the abbreviation has been placed on one word but the expansion belongs in the
+         preceding or following word, or where the expanion straddles a word boundary, <d:c>g</d:c>
+         elements are placed where needed to place letters in the words to which they belong. They
+         are then all linked to each other and their parent <d:c>abbr</d:c> using a unique ID via
+            <d:c>@corresp</d:c>.</d:p>
+      <d:p>An <d:c>abbr</d:c> element can be nested within another <d:c>abbr</d:c> element, for
+         example, if there is one abbreviation whose expansion is confinsed to the word on which it
+         is placed and one whose expansion straddles a word boundary placed on the same letter.
+         Nested <d:c>abbr</d:c> elements can also be used to distinguish two expansions with
+         significantly different certainty levels.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="g"
+           corresp="row_g">
+      <d:p>This element contains characters expanded from an abbreviation or ligature. The
+         abbreviation or ligature is identified via its unique ID using <d:c>@ref</d:c>.</d:p>
+      <d:p>When the abbreviation has been placed on one word but the expansion belongs in the
+         preceding or following word, or where the expanion straddles a word boundary, <d:c>g</d:c>
+         elements are placed where needed to place letters in the words to which they belong. They
+         are then all linked to each other and their parent <d:c>abbr</d:c> using a unique ID via
+            <d:c>@corresp</d:c>.</d:p>
+      <d:p>In all circumstances, <d:c>g</d:c> requires a unique <d:c>@id</d:c> in order to be
+         compliant with the DASG schema.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="space"
+           corresp="row_space">
+      <d:p>This element represents a space left by the scribe between words within a manuscript
+         line.</d:p>
+      <d:p>Its attribute, <d:c>@type</d:c>, can have one of several values:</d:p>
+      <d:list>
+         <d:item>
+            <d:c>@scribal</d:c>: this means that the space is an ordinary space for this
+            scribe.</d:item>
+         <d:item>
+            <d:c>@em</d:c>: this means that the space is approximately three times as large as
+            a standard space for this scribe.</d:item>
+         <d:item>
+            <d:c>@force</d:c>: this will create a space in the "Semi-Diplomatic" edition on
+            Meanma where a space would not otherwise be added according to the standard rules that
+            Meanma applies.</d:item>
+         <d:item>
+            <d:c>@editorial</d:c>: this is used when the text is not being transcribed from a
+            manuscript but from another modern transcription where word division has been
+            standardised; it means that the transcriber does not know whether the scribe is
+            responsible for this space, but the space is there in their source.</d:item>
+      </d:list>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="pc"
+           corresp="row_pc">
+      <d:p>This element contains scribal punctuation.</d:p>
+      <d:p>In all circumstances, <d:c>pc</d:c> requires a unique <d:c>@id</d:c> in order to be
+         compliant with the DASG schema.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="add"
+           corresp="row_add">
+      <d:p>This element contains a later scribal addition to the main text, whether by the main
+         scribe of the text or another hand.</d:p>
+      <d:p>It can have the following attributes:</d:p>
+      <d:list>
+         <d:item>
+            <d:c>@type</d:c>: this determines whether the addition is an "insertion" or a
+            "gloss".</d:item>
+         <d:item>
+            <d:c>@hand</d:c>: this identifies the hand responsible for the addition via its
+            unique ID. Note that, if a different scribe is making the addition compared to that
+            writing the main text, <d:c>handShift</d:c> should still be used within <d:c>add</d:c>
+            alongside <d:c>@hand</d:c>. Note also that the resumption of the first hand should be
+            indicated via <d:c>handShift</d:c> after <d:c>add</d:c>.</d:item>
+         <d:item>
+            <d:c>@place</d:c>: This identifies the location on the page where the insertion has
+            been written (e.g. "above" [the line], "below" [the line], "margin, top").</d:item>
+      </d:list>
+      <d:p>Note that this element should <d:hi rend="bold">not</d:hi> be used to make an editorial
+         addition to the transcription; that is done via <d:c>supplied</d:c>.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="del"
+           corresp="row_del">
+      <d:p>This element marks up text deleted by a scribe, either by the scribe that wrote it or by
+         another.</d:p>
+      <d:p>Note that this element should <d:hi rend="bold">not</d:hi> be used to make an editorial
+         deletion from the transcription; that is done via <d:c>choice</d:c>.</d:p>
+      <d:p>The scribe responsible for the deletion is identified, where possible, via
+            <d:c>@hand</d:c> using their unique ID.</d:p>
+      <d:p>At the time of writing (July, 2021), the schema assumes that this element has the
+         attributes <d:c>@status</d:c> and <d:c>@instant</d:c>.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="supplied"
+           corresp="row_supplied">
+      <d:p>A transcriber can use <d:c>supplied</d:c> to add characters or words to a transcription,
+         if it is thought that these have been omitted purely in error or if their absence risks
+         causing serious confusion. The member of the project team responsible is identified via
+            <d:c>@resp</d:c> using their unique ID.</d:p>
+      <d:p>At the time of writing (July, 2021), the schema assumes that this element has the
+         attribute <d:c>@instant</d:c>.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="seg"
+           corresp="row_seg">
+      <d:p>
+         <d:c>seg</d:c> has various purposes within a transcription. How it is being used is
+         determined by <d:c>@type</d:c>. The most common values, which are handled on Meanma, are
+         "cfe" (<d:hi rend="italics">ceann fo eite</d:hi>), "fragment" (characters from a word that
+         is partly obliterated and cannot be reconstructed), and "catchword". "title" and "margNote"
+         (with <d:c>@xml:id</d:c>) are in use but not currently handled on Meanma; their use should
+         be reviewed.</d:p>
+      <d:p>Where <d:c>@type="fragment"</d:c>, <d:c>seg</d:c> requires a unique <d:c>@id</d:c> in
+         order to be compliant with the DASG schema.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="unclear"
+           corresp="row_unclear">
+      <d:p>This element is used to mark up text that the transcriber judges to be unclear.</d:p>
+      <d:p>Why the text is being marked up is indicated via <d:c>@reason</d:c>:</d:p>
+      <d:list>
+         <d:item>"text_obscure": the writing is difficult to make out due to erosion, smudging, or
+            unconventional ductus.</d:item>
+         <d:item>"damage": the writing surface is completely gone, with no chance of the original
+            text being recovered; the transcriber has been able to postulate what was written there,
+            however. This is thus editorially equivalent to <d:c>supplied</d:c>. The difference is
+            that <d:c>supplied</d:c> contains material that was possibly never present in the text
+            but is thought to be needed anyway, whereas <d:c>unclear reason="damage"</d:c>
+            postulates a reading for a span of text that probably was once physically
+            present.</d:item>
+         <d:item>"fold": the writing is obscured by the way the page is arranged in the digital
+            image, in a way that is unlikely to be a problem if the manuscript were to be examined
+            in person.</d:item>
+         <d:item>"interp_obscure": the writing is perfectly legible but the words cannot be tagged
+            with confidence.</d:item>
+      </d:list>
+      <d:p>The certainty with which the transcriber has provided the text in <d:c>unclear</d:c> is
+         indicated via <d:c>@cert</d:c>. The transcriber responsible is identified via
+            <d:c>@resp</d:c>.</d:p>
+      <d:p>At the time of writing (July, 2021), the schema assumes that this element has the
+         attribute <d:c>@instant</d:c>.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="lg"
+           corresp="row_lg">
+      <d:p>This element contains the metrical lines that make up a stanza, whether determined by
+         metrical analysis or scribal layout. It should always be the direct child of
+         <d:c>div</d:c>, whether the stanzas constitute an indepdent verse text in the manuscript or
+         are embedded within a prose text.</d:p>
+      <d:p>The following attributes are used:</d:p>
+      <d:list>
+         <d:item>
+            <d:c>@n</d:c>: This is the stanza number; it is not a unique ID but it will be
+            displayed in most outputs.</d:item>
+         <d:item>
+            <d:c>@type</d:c>: This should always be set to "stanza".</d:item>
+         <d:item>
+            <d:c>@xml:id</d:c>: This is a unique ID for the stanza.</d:item>
+         <d:item>
+            <d:c>@sameAs</d:c>: At the time of writing (July, 2021), in one instance, this is
+            used to link a couplet placed elsewhere in the poem to the stanza to which it is thought
+            to belong. This usage should be reviwed, as it is the only example and it may not be
+            handled in any outputs.</d:item>
+      </d:list>
+      <d:p>At the time of writing (July, 2021), the schema assumes that this element has the
+         attributes <d:c>@org</d:c>, <d:c>@sample</d:c>, and <d:c>@part</d:c>.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="l"
+           corresp="row_l">
+      <d:p>This element represents a metrical line within a stanza (<d:c>lg</d:c>).</d:p>
+      <d:p>The following attributes are used:</d:p>
+      <d:list>
+         <d:item>
+            <d:c>@n</d:c>: This is the line letter; it is not a unique ID but it will be
+            displayed in most outputs.</d:item>
+         <d:item>
+            <d:c>@xml:id</d:c>: This is a unique ID for the metrical line.</d:item>
+         <d:item>
+            <d:c>@sameAs</d:c>: At the time of writing (July, 2021), in one instance, this is
+            used to link a couplet placed elsewhere in the poem to the stanza to which it is thought
+            to belong. This usage should be reviwed, as it is the only example and it may not be
+            handled in any outputs.</d:item>
+      </d:list>
+      <d:p>At the time of writing (July, 2021), the schema assumes that this element has the
+         attribute <d:c>@part</d:c>.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="choice"
+           corresp="row_choice">
+      <d:p>This element contains an emendation made to the text by one of the FnaG MSS project
+         transcribers.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="sic"
+           corresp="row_sic">
+      <d:p>Appearing within an emendation (<d:c>choice</d:c>), this element contains the original
+         reading from the manuscript.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="corr"
+           corresp="row_corr">
+      <d:p>Appearing within an emendation (<d:c>choice</d:c>), this element contains the
+         transcriber's amended reading. If the emendation is to delete the manuscript reading, then
+            <d:c>corr</d:c> should be left empty.</d:p>
+      <d:p>The transcriber is identified using their unique ID via <d:c>@resp</d:c>.</d:p>
+      <d:p>At the time of writing (July, 2021), the schema assumes that this element has the
+         attribute <d:c>@instant</d:c>.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="c"
+           corresp="row_c">
+      <d:p>This element is used to mark up one or more transcribed characters that cannot be
+         assigned to a marked up word, date, or number. This is usually because the rest of the word
+         is unclear but it can also be because a scribe simply added a single character without
+         meaning it to be grouped with anything else.</d:p>
+      <d:p>
+         <d:c>c</d:c> and <d:c>seg type="fragment"</d:c> play essentially the same editorial role.
+            <d:c>seg type="fragment"</d:c> was introduced because the TEI Guidelines do not permit
+         the use of <d:c>abbr</d:c> within <d:c>c</d:c> and some "fragments" in the transcriptions
+         contain expandable abbreviations. Going forwards, it could well be possible to mark up all
+         fragments as <d:c>seg type="fragment"</d:c> and use <d:c>c</d:c> only to mark up
+         intentionally solitary characters.</d:p>
+      <d:p>In all circumstances, <d:c>c</d:c> requires a unique <d:c>@id</d:c> in order to be
+         compliant with the DASG schema.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="gap"
+           corresp="row_gap">
+      <d:p>
+         <d:c>gap</d:c> indicates that material from the text once appeared, or should appear, at
+         this point but cannot be transcribed. It is always empty as, by definition, there is
+         nothing to transcribe.</d:p>
+      <d:p> The reason for the <d:c>gap</d:c>, which often resembles that for <d:c>unclear</d:c>, is
+         indicated via <d:c>reason</d:c> e.g.: </d:p>
+      <d:list>
+         <d:item>"text_obscure": the writing is illegible due to erosion, smudging, or
+            unconventional ductus.</d:item>
+         <d:item>"damage": the writing surface is completely gone, with no chance of the original
+            text being recovered and the transcriber has not been able to postulate what was written
+            there.</d:item>
+         <d:item>"fold": the writing is obscured by the way the page is arranged in the digital
+            image, in a way that is unlikely to be a problem if the manuscript were to be examined
+            in person.</d:item>
+         <d:item>"text_omitted": there is no physical problem with the manuscript but analysis of
+            the syntax or sense or comparison with other versions of the text implies that material
+            has been omitted.</d:item>
+         <d:item>"loss_of_folios": the text is missing its beginning or end or contains a chasm due
+            to the loss of one or more entire folios from the manuscript.</d:item>
+      </d:list>
+      <d:p>Various other reasons are in use in addition to the above at the time of writing (July,
+         2021). Not all of the reasons currently in use are handled on Meanma, which can lead to no
+         information being returned for a <d:c>gap</d:c>. The reasons in use in this context should
+         be reviewed and streamlined and proper handling developed for what remains.</d:p>
+      <d:p>What other attributes are used depend on what is known about the gap.</d:p>
+      <d:p>If an estimate can be made of how long the gap is, the following are included:</d:p>
+      <d:list>
+         <d:item>
+            <d:c>@unit</d:c>: the unit of measurement being used to estimate the gap (e.g.
+            "chars", "words", "folios".</d:item>
+         <d:item>
+            <d:c>@quantity</d:c>: the length of the gap in the specified unit (e.g. "3", where
+               <d:c>@unit="chars"</d:c>, to indicate that the gap allows space for three
+            characters).</d:item>
+      </d:list>
+      <d:p>If the length of the gap is unknown (common where <d:c>@reason="text_omitted"</d:c>),
+         this is indicated by instead using <d:c>@extent</d:c> with the value "unknown".</d:p>
+      <d:p>In all instances, the editor responsible for attempting to estimate the gap is indicated
+         via <d:c>@resp</d:c> using their unique ID. Furthermore, <d:c>c</d:c> requires a unique
+            <d:c>@id</d:c> in order to be compliant with the DASG schema.</d:p>
+      <d:p>At the time of writing (July, 2021), the schema assumes that this element has the
+         attribute <d:c>@instant</d:c>.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="cb"
+           corresp="row_cb">
+      <d:p>This element indicates the start of transcription from a new column.</d:p>
+      <d:p>It uses the following elements:</d:p>
+      <d:list>
+         <d:item>
+            <d:c>@n</d:c>: This is the letter of the new column; it need not be a unique ID but
+            it will appear to designate the new column in some outputs.</d:item>
+         <d:item>
+            <d:c>@xml:id</d:c>: This is a unique ID for the new column.</d:item>
+         <d:item>
+            <d:c>@sameAs</d:c>: Where the new column begins in the middle of a word that
+            requires editorial emendation, the <d:c>cb</d:c> element must be provided twice; as it
+            cannot be given two <d:c>@xml:id</d:c> attributes with the same value, as there can only
+            be one <d:c>@xml:id</d:c> with a given value in a document, <d:c>@sameAs</d:c> must be
+            used in any other instances of the <d:c>cb</d:c>.</d:item>
+      </d:list>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="head"
+           corresp="row_head">
+      <d:p>This element contains a title (<d:c>title</d:c>) for a transcribed text or subdivision
+         thereof. At the time of writing (July, 2021), however, it is used inconsistently, sometimes
+         containing a purely editorial title and sometimes containing a title that is part of the
+         transcribed text. This should be reviewed and standardised; alternatively, the two usages
+         should be distinguished via an attribute.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="anchor"
+           corresp="row_anchor">
+      <d:p>This element is currently (July, 2021) used only once, where a folio of one manuscript in
+         the corpus (MS9) is physically part of another manuscript (MS7). This folio comprises part
+         of a larger text, the rest of which is still present in MS9 (MS9.7). The contents of the
+         folio have been transcribed as a text within Transcription 7 (MS7.7) and an
+            <d:c>anchor</d:c> placed at its location within the larger text in MS9. It is linked to
+         the larger text via the <d:c>@copyOf</d:c> and <d:c>@source</d:c> attributes and its role
+         is identified via <d:c>@type</d:c> ("crossRef").</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="list"
+           corresp="row_list">
+      <d:p>This element is used in hwData.xml to present lists of headwords either added or removed
+         from the corpus since hwData.xml was last generated.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="item"
+           corresp="row_item">
+      <d:p>This element is used within <d:c>list</d:c> in hwData.xml to present a headword either
+         added or removed from the corpus since hwData.xml was last generated.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="entryFree"
+           corresp="row_entryFree">
+      <d:p>This element represents an entry in the hwData.xml database. It contains a record for a
+         single headword from the corpus.</d:p>
+      <d:p>It has the following attributes:</d:p>
+      <d:list>
+         <d:item>
+            <d:c>@corresp</d:c> has as its value the URL for the headword (its unique
+            identifier).</d:item>
+         <d:item>
+            <d:c>@n</d:c> has as its value the number of times this headword occurs in the
+            corpus.</d:item>
+         <d:item>
+            <d:c>@source:</d:c> is added to new <d:c>entryFree</d:c> elements when they are
+            added to the database, with the value set to "new". Once the transcriber adding the
+            headword data has finished with the entry, this attribute is removed. It can be retained
+            if the entry needs further attention and will be retained automatically if present when
+            the database is re-generated.</d:item>
+      </d:list>
+      <d:p>At the time of writing (July, 2021), the schema assumes that this element has the
+         attributes <d:c>@type</d:c> and <d:c>@opt</d:c>.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="span"
+           corresp="row_span">
+      <d:p>This element appears within <d:c>w</d:c> in hwData.xml. It is used to present both the
+         headword itself (or the different versions thereof, if headwords have been postulated based
+         on the URL) and forms of the headword(s) that occurs in the corpus.</d:p>
+      <d:p>It uses two attributes:</d:p>
+      <d:list>
+         <d:item>
+            <d:c>@type</d:c>: this determines if it is a headword ("lem") or a "form".</d:item>
+         <d:item>
+            <d:c>@n</d:c>: this presents the number of times this headword or form appears in
+            the corpus.</d:item>
+      </d:list>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="gen"
+           corresp="row_gen">
+      <d:p>This element appears within <d:c>w</d:c> in hwData.xml. It indicates the gender of the
+         headword ("m", "f", or "n"), where applicable, as given in whichever recognised
+         dictionaries are being drawn on for this headword.</d:p>
+      <d:p>The linguistic period during which this is the headword's gender is indicated via
+            <d:c>@xml:lang</d:c> using XML language codes. If the gender changes between periods,
+         multiple <d:c>gen</d:c> elements are used. If a word can have different genders within the
+         same linguistic period, these are distinguished from each other and linked to their
+         accompanying stem (<d:c>iType</d:c>) using <d:c>@n</d:c>. If the gender remains the same
+         from a given linguistic period onwards, it is the current convention to not list subsequent
+         periods unless the stem changes.</d:p>
+      <d:p>At the time of writing (July, 2021), the schema assumes that this element has the
+         attribute <d:c>@opt</d:c>.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="iType"
+           corresp="row_iType">
+      <d:p>This element appears within <d:c>w</d:c> in hwData.xml. It indicates the declensional
+         stem of the headword, where applicable, as given in eDIL.</d:p>
+      <d:p>The linguistic period during which this is the headword's stem is indicated via
+            <d:c>@xml:lang</d:c> using XML language codes. If the stem changes between periods,
+         multiple <d:c>iType</d:c> elements are used. If a word can have different declensions
+         within the same linguistic period, these are distinguished from each other and linked to
+         their accompanying gender (<d:c>gen</d:c>) using <d:c>@n</d:c>. If the declensional stem
+         remains the same from a given linguistic period onwards, it is the current convention to
+         not list subsequent periods unless the gender changes.</d:p>
+      <d:p>At the time of writing (July, 2021), the schema assumes that this element has the
+         attribute <d:c>@opt</d:c>.</d:p>
+   </d:desc>
+   <d:desc xmlns="https://github.com/conmaol/faclair-manuscripts/blob/master/Transcribing/Data/TEI%20Structure/teiStructure_descs.xml"
+           element="gramGrp"
+           corresp="row_gramGrp">
+      <d:p>This element is used in a hwData.xml entry when the word be used in different
+         parts-of-speech and have different genders and declensional stems depending on how it is
+         used. The POS is identified via <d:c>@type</d:c>. Currently, this is only needed for nouns
+         and adjectives.</d:p>
+      <d:p>At the time of writing (July, 2021), the schema assumes that this element has the
+         attribute <d:c>@opt</d:c>.</d:p>
+   </d:desc>
 </d:descs>
