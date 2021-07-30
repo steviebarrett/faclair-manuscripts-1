@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Returns a GEXF graph file showing vocab used by indvidual paragraphs and poems within one or more texts. The graph can be filtered for content-bearing vocabulary and, where multiple texts are involved, colour-coded by text. -->
+<!-- Returns a GEXF graph file showing vocab used by indvidual paragraphs and poems within one or more user-specified texts. The graph can be filtered for content-bearing vocabulary and, where multiple texts are involved, colour-coded by text. -->
 <xsl:stylesheet xmlns:ns="https://dasg.ac.uk/corpus/"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:viz="http://www.gexf.net/1.2draft/viz" exclude-result-prefixes="xs xsl ns" version="3.0">
@@ -9,23 +9,37 @@
     <xsl:variable name="text_id"
         select="('MS4.1', 'MS4.2', 'MS4.3', 'MS4.4', 'MS4.5', 'MS4.6', 'MS4.7', 'MS4.8', 'MS4.9', 'MS4.10', 'MS4.11', 'MS4.12', 'MS4.13', 'MS4.14', 'MS4.15', 'MS4.16', 'MS4.17', 'MS4.18')"/>
 
+    <xsl:variable name="timestamp">
+        <xsl:value-of
+            select="
+                (current-dateTime() -
+                xs:dateTime('1970-01-01T00:00:00'))
+                div xs:dayTimeDuration('PT1S') * 1000"
+        />
+    </xsl:variable>
+
+    <xsl:variable name="filename">
+        <xsl:value-of select="concat('ppv', '-', $timestamp, '.gexf')"/>
+    </xsl:variable>
 
     <xsl:template match="/" exclude-result-prefixes="xs xsl ns">
-        <gexf xmlns="http://www.gexf.net/1.2draft" xmlns:viz="http://www.gexf.net/1.2draft/viz"
-            version="1.2">
-            <graph mode="static" defaultedgetype="directed">
-                <attributes class="node">
-                    <attribute id="att_3" title="cb" type="string"/>
-                    <attribute id="att_4" title="div" type="string"/>
-                </attributes>
-                <nodes>
-                    <xsl:call-template name="nodes"/>
-                </nodes>
-                <edges>
-                    <xsl:call-template name="edges"/>
-                </edges>
-            </graph>
-        </gexf>
+        <xsl:result-document href="Data\viz\outputs\{$filename}">
+            <gexf xmlns="http://www.gexf.net/1.2draft" xmlns:viz="http://www.gexf.net/1.2draft/viz"
+                version="1.2">
+                <graph mode="static" defaultedgetype="directed">
+                    <attributes class="node">
+                        <attribute id="att_3" title="cb" type="string"/>
+                        <attribute id="att_4" title="div" type="string"/>
+                    </attributes>
+                    <nodes>
+                        <xsl:call-template name="nodes"/>
+                    </nodes>
+                    <edges>
+                        <xsl:call-template name="edges"/>
+                    </edges>
+                </graph>
+            </gexf>
+        </xsl:result-document>
     </xsl:template>
 
     <xsl:template name="nodes">

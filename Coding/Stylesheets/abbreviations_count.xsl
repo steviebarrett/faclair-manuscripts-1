@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- This stylesheet is a work-in-progress. It may be affected by slow performance and results may not be accurate. -->
-<xsl:stylesheet xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:tei="http://www.tei-c.org/ns/1.0"
-    xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    exclude-result-prefixes="xs" version="2.0">
+<!-- Run this stylesheet on corpus.xml with XInclude links open to get an XHTML table of abbreviation counts by scribe. -->
+<!-- Results will be listed under a hand ID but will be based only on transcriptions that in scope. -->
+<!-- This table will appear with a unique filename in "faclair-manuscripts\Transcribing\Data\abbreviations_data". -->
+<!-- This stylesheet is a work-in-progress. It may be affected by slow performance, especially when run on all or a large part of the corpus, and results may not be accurate. -->
+<xsl:stylesheet xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:tei="https://dasg.ac.uk/corpus/"
+    xmlns:ns="https://dasg.ac.uk/corpus/" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema" exclude-result-prefixes="xs" version="2.0">
     <xsl:variable name="timestamp">
         <xsl:value-of
             select="
@@ -11,11 +14,8 @@
                 div xs:dayTimeDuration('PT1S') * 1000"
         />
     </xsl:variable>
-    <xsl:variable name="transcriptionID">
-        <xsl:value-of select="//tei:TEI[not(@xml:id = 'hwData')]/@xml:id"/>
-    </xsl:variable>
     <xsl:variable name="filename">
-        <xsl:value-of select="concat($transcriptionID, '_abbrvs', '-', $timestamp, '.xhtml')"/>
+        <xsl:value-of select="concat('abbrvs', '-', $timestamp, '.xhtml')"/>
     </xsl:variable>
     <xsl:strip-space elements="*"/>
     <xsl:output method="xhtml" indent="no"/>
@@ -45,10 +45,10 @@
                         </thead>
                         <tbody>
                             <xsl:for-each
-                                select="//tei:handShift[not(@new = preceding::tei:handShift/@new)]">
+                                select="//ns:handShift[not(@new = preceding::ns:handShift/@new)]">
                                 <xsl:variable name="handID" select="@new"/>
                                 <xsl:for-each
-                                    select="//tei:g[preceding::tei:handShift[1]/@new = $handID and not(@ref = preceding::tei:g[preceding::tei:handShift[1]/@new = $handID]/@ref)]">
+                                    select="//ns:g[preceding::ns:handShift[1]/@new = $handID and not(@ref = preceding::ns:g[preceding::ns:handShift[1]/@new = $handID]/@ref)]">
                                     <xsl:variable name="glyphID" select="@ref"/>
                                     <tr>
                                         <td>
@@ -59,12 +59,12 @@
                                         </td>
                                         <td>
                                             <xsl:value-of
-                                                select="//tei:glyph[@xml:id = $glyphID]/tei:glyphName"
+                                                select="//ns:glyph[@xml:id = $glyphID]/ns:glyphName"
                                             />
                                         </td>
                                         <td>
                                             <xsl:value-of
-                                                select="count(//tei:g[preceding::tei:handShift[1]/@new = $handID and @ref = $glyphID])"
+                                                select="count(//ns:g[preceding::ns:handShift[1]/@new = $handID and @ref = $glyphID])"
                                             />
                                         </td>
                                     </tr>

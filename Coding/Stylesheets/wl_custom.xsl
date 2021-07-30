@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Returns a graph with nodes representing headwords and edges linking a word with the following word within the same metrical line. User can specify the text(s) for which data is to be returned. 
     Run on corpus.xml with xInclude links to in-scope file(s) open. -->
-<xsl:stylesheet xmlns:tei="http://www.tei-c.org/ns/1.0"
+<xsl:stylesheet xmlns:tei="https://dasg.ac.uk/corpus/" xmlns:ns="https://dasg.ac.uk/corpus/"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:viz="http://www.gexf.net/1.2draft/viz" exclude-result-prefixes="xs xsl tei" version="3.0">
     <xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
@@ -9,9 +9,22 @@
     <!-- USER: Enter <div> @corresp value for desired text within single quotes @select. To return data on multiple texts, enter each @corresp value within its own set of single quotes, separated by commas, 
         with the whole list enclosed by round brackets; e.g. "('MS12.5', 'MS30.2', 'MS30.24')".-->
     <xsl:variable name="target_text" select="('MS12.5', 'MS30.2', 'MS30.24')"/>
+    
+    <xsl:variable name="timestamp">
+        <xsl:value-of
+            select="
+            (current-dateTime() -
+            xs:dateTime('1970-01-01T00:00:00'))
+            div xs:dayTimeDuration('PT1S') * 1000"
+        />
+    </xsl:variable>
+    
+    <xsl:variable name="filename">
+        <xsl:value-of select="concat('wl', '-', $timestamp, '.gexf')"/>
+    </xsl:variable>
 
     <xsl:template match="/" exclude-result-prefixes="xs xsl tei">
-        <gexf xmlns="http://www.gexf.net/1.2draft" xmlns:viz="http://www.gexf.net/1.2draft/viz"
+        <xsl:result-document href="Data\viz\outputs\{$filename}"><gexf xmlns="http://www.gexf.net/1.2draft" xmlns:viz="http://www.gexf.net/1.2draft/viz"
             version="1.2">
             <graph mode="static" defaultedgetype="directed">
                 <attributes class="node">
@@ -24,12 +37,12 @@
                     <xsl:call-template name="edges"/>
                 </edges>
             </graph>
-        </gexf>
+        </gexf></xsl:result-document>
     </xsl:template>
 
     <xsl:template name="nodes">
         <xsl:for-each
-            select="//tei:w[ancestor::tei:div[@corresp = $target_text] and ancestor::tei:l and not(descendant::tei:w) and @lemmaRef]">
+            select="//ns:w[ancestor::ns:div[@corresp = $target_text] and ancestor::ns:l and not(descendant::ns:w) and @lemmaRef]">
             <xsl:variable name="id" select="string(@lemmaRef)"/>
             <xsl:variable name="label" select="string(@lemma)"/>
             <xsl:variable name="pos" select="string(@pos)"/>
@@ -45,13 +58,13 @@
 
     <xsl:template name="edges">
         <xsl:for-each
-            select="//tei:l[ancestor::tei:div[@corresp = $target_text]]//tei:w[not(descendant::tei:w) and @lemmaRef]">
-            <xsl:variable name="line_id" select="ancestor::tei:l/@xml:id"/>
+            select="//ns:l[ancestor::ns:div[@corresp = $target_text]]//ns:w[not(descendant::ns:w) and @lemmaRef]">
+            <xsl:variable name="line_id" select="ancestor::ns:l/@xml:id"/>
             <xsl:if
-                test="following::tei:w[not(descendant::tei:w) and @lemmaRef and ancestor::tei:l/@xml:id = $line_id][1]">
+                test="following::ns:w[not(descendant::ns:w) and @lemmaRef and ancestor::ns:l/@xml:id = $line_id][1]">
                 <xsl:variable name="word_id" select="string(@lemmaRef)"/>
                 <xsl:variable name="next_word_id"
-                    select="string(following::tei:w[not(descendant::tei:w) and @lemmaRef and ancestor::tei:l/@xml:id = $line_id][1]/@lemmaRef)"/>
+                    select="string(following::ns:w[not(descendant::ns:w) and @lemmaRef and ancestor::ns:l/@xml:id = $line_id][1]/@lemmaRef)"/>
                 <xsl:element name="edge">
                     <xsl:attribute name="id" select="generate-id()"/>
                     <xsl:attribute name="source" select="$word_id"/>

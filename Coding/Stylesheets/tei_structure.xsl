@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- This stylesheet prints out a table in HTML giving each TEI XML element in use in the corpus (or the portions of it in scope), 
+<!-- This stylesheet is run on corpus.xml with all XInclude links open. -->
+<!-- It returns a table in HTML (saved in faclair-manuscripts\Transcribing\Data\TEI Structure) giving each TEI XML element in use in the corpus (or the portions of it in scope), 
     with all its possible attributes, parents, and children. -->
 <!-- The rightmost column is populated from another document ('teiStructure_descs.xml'). This is updated every time this stylesheet is
 run with any new elements encountered in the corpus. -->

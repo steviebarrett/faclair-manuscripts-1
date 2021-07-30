@@ -1,31 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- This stylesheet ("texts + vocab") should be run on corpus.xml with XInclude links to transcription files open. -->
+<!-- It will return a GEXF network graph file showing vocabulary item use by individual text, which will be saved to "faclair-manuscripts\Transcribing\Data\viz". This can be opened directly in Gephi.  -->
 <xsl:stylesheet xmlns:ns="https://dasg.ac.uk/corpus/"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:viz="http://www.gexf.net/1.2draft/viz" exclude-result-prefixes="xs xsl ns" version="3.0">
     <xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
 
+    <xsl:variable name="timestamp">
+        <xsl:value-of
+            select="
+                (current-dateTime() -
+                xs:dateTime('1970-01-01T00:00:00'))
+                div xs:dayTimeDuration('PT1S') * 1000"
+        />
+    </xsl:variable>
+
+    <xsl:variable name="filename">
+        <xsl:value-of select="concat('tv', '-', $timestamp, '.gexf')"/>
+    </xsl:variable>
+
     <xsl:template match="/" exclude-result-prefixes="xs xsl ns">
-        <gexf xmlns="http://www.gexf.net/1.2draft" xmlns:viz="http://www.gexf.net/1.2draft/viz"
-            version="1.2">
-            <graph mode="static" defaultedgetype="directed">
-                <attributes class="node">
-                    <attribute id="att_2" title="pos" type="string"/>
-                    <attribute id="att_3" title="cb" type="string"/>
-                    <attribute id="att_4" title="genre" type="string"/>
-                </attributes>
-                <nodes>
-                    <xsl:call-template name="nodes"/>
-                </nodes>
-                <edges>
-                    <xsl:call-template name="edges"/>
-                </edges>
-            </graph>
-        </gexf>
+        <xsl:result-document href="Data\viz\outputs\{$filename}">
+            <gexf xmlns="http://www.gexf.net/1.2draft" xmlns:viz="http://www.gexf.net/1.2draft/viz"
+                version="1.2">
+                <graph mode="static" defaultedgetype="directed">
+                    <attributes class="node">
+                        <attribute id="att_2" title="pos" type="string"/>
+                        <attribute id="att_3" title="cb" type="string"/>
+                        <attribute id="att_4" title="genre" type="string"/>
+                    </attributes>
+                    <nodes>
+                        <xsl:call-template name="nodes"/>
+                    </nodes>
+                    <edges>
+                        <xsl:call-template name="edges"/>
+                    </edges>
+                </graph>
+            </gexf>
+        </xsl:result-document>
     </xsl:template>
 
     <xsl:template name="nodes">
-        <xsl:for-each select="//ns:div[not(ancestor::ns:div)]"
-            exclude-result-prefixes="xs xsl ns">
+        <xsl:for-each select="//ns:div[not(ancestor::ns:div)]" exclude-result-prefixes="xs xsl ns">
             <xsl:variable name="text_id" select="string(@corresp)"/>
             <xsl:variable name="scribe"
                 select="string(ancestor::ns:TEI//ns:msItem[@xml:id = $text_id]/ns:author[@role = 'scribe'][1]/@corresp)"/>

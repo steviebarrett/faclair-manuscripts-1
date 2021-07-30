@@ -1,4 +1,5 @@
-declare default element namespace "http://www.tei-c.org/ns/1.0";
+declare default element namespace "https://dasg.ac.uk/corpus/";
+(: Seems to be designed for use with plene_words.xquery :)
 declare namespace  c="https://example.com/cdata";
 declare option saxon:output "method=xml";
 <c:data>{

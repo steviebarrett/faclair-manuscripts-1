@@ -1,4 +1,4 @@
-declare default element namespace "http://www.tei-c.org/ns/1.0";
+declare default element namespace "https://dasg.ac.uk/corpus/";
 declare option saxon:output "omit-xml-declaration=yes";
 declare option saxon:output "method=text";
 

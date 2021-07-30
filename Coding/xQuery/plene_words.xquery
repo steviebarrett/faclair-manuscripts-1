@@ -1,4 +1,5 @@
-declare default element namespace "http://www.tei-c.org/ns/1.0";
+declare default element namespace "https://dasg.ac.uk/corpus/";
+(: Seems to be designed for use with characters.xquery :)
 declare namespace c = "https://example.com/cdata";
 declare option saxon:output "omit-xml-declaration=yes";
 declare option saxon:output "method=html";

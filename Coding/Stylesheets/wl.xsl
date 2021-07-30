@@ -5,8 +5,21 @@
     xmlns:viz="http://www.gexf.net/1.2draft/viz" exclude-result-prefixes="xs xsl ns" version="3.0">
     <xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
 
+    <xsl:variable name="timestamp">
+        <xsl:value-of
+            select="
+            (current-dateTime() -
+            xs:dateTime('1970-01-01T00:00:00'))
+            div xs:dayTimeDuration('PT1S') * 1000"
+        />
+    </xsl:variable>
+    
+    <xsl:variable name="filename">
+        <xsl:value-of select="concat('wl', '-', $timestamp, '.gexf')"/>
+    </xsl:variable>
+
     <xsl:template match="/" exclude-result-prefixes="xs xsl ns">
-        <gexf xmlns="http://www.gexf.net/1.2draft" xmlns:viz="http://www.gexf.net/1.2draft/viz"
+        <xsl:result-document href="Data\viz\outputs\{$filename}"><gexf xmlns="http://www.gexf.net/1.2draft" xmlns:viz="http://www.gexf.net/1.2draft/viz"
             version="1.2">
             <graph mode="static" defaultedgetype="directed">
                 <attributes class="node">
@@ -19,7 +32,7 @@
                     <xsl:call-template name="edges"/>
                 </edges>
             </graph>
-        </gexf>
+        </gexf></xsl:result-document>
     </xsl:template>
 
     <xsl:template name="nodes">
