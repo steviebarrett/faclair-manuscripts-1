@@ -1,4 +1,5 @@
-declare default element namespace "http://www.tei-c.org/ns/1.0";
+declare default element namespace "https://dasg.ac.uk/corpus/";
+(: USER: input text via ID to be searched here :)
 declare variable $text := "MS7.1";
 declare option saxon:output "method=html";
 <html>

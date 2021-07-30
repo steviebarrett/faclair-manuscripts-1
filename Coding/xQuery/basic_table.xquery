@@ -1,4 +1,4 @@
-declare default element namespace "http://www.tei-c.org/ns/1.0";
+declare default element namespace "https://dasg.ac.uk/corpus/";
 declare option saxon:output "method=text";
 for $x in //w[not(descendant::w) and not(@xml:lang) and not(@type = "data") and @lemma]
 let $msRef := if ($x/preceding::lb[1]/@sameAs) then

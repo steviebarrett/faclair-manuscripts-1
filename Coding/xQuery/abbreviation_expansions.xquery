@@ -1,10 +1,11 @@
-declare default element namespace "http://www.tei-c.org/ns/1.0";
+declare default element namespace "https://dasg.ac.uk/corpus/";
 declare namespace c = "https://example.com/cdata";
 declare option saxon:output "omit-xml-declaration=yes";
 declare option saxon:output "method=html";
 (: This xQuery produces a table of abbreviations, how they are expanded, and the word in which they appear, 
 as well as the hand responsible and the MS line reference. It also shows the same word written plene by the 
 same scribe and a list of similarly shaped words of the same POS and in the same hand. It is sorted by abbreviation type. :)
+(: NB: Revisiting this file in July 2021, it ran for a long time on the corpus without producing results and the query eventually had to be aborted. It should be used with caution. :)
 <html>
     <head>
         <title>Abbreviations</title>
