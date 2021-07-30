@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Run on corpus.xml with xInclude links open to hwData.xml and one or more transcription files.  -->
 <!-- This will generate an XHTML file for each selected transcription containing a table providing detailed information on each word, which can be opened in MS Excel. -->
-<!-- Warning! This stylesheet can take several minutes to run on even one large transcription file. Generating tables for multiple large files is likely to take a long time. -->
+<!-- Warning! This stylesheet can take several minutes to run on just one large transcription file. Generating tables for multiple large files is likely to take a long time. -->
 <xsl:stylesheet xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:tei="http://www.tei-c.org/ns/1.0"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:ns="https://dasg.ac.uk/corpus/" exclude-result-prefixes="xs" version="2.0">

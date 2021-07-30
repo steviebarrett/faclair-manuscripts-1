@@ -4,29 +4,45 @@
 <!-- Words will not be connected between metrical lines or between <div> elements. -->
 <!-- Edges have a "medium" property showing whether they are from prose or verse (NB: depends on merge strategy) -->
 <!-- NB: Data will not be entirely accurate, as links will be made across, for example, <gap> and <date> elements. Also, sentence boundaries are not marked up in prose. -->
+<!-- wl.xsl generates similar output but just for individual metrical lines; this is more restricted but may be more reliable, as metrical lines typically do form coherent syntactic units (where physically complete). -->
 <xsl:stylesheet xmlns:tei="http://www.tei-c.org/ns/1.0"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:viz="http://www.gexf.net/1.2draft/viz" exclude-result-prefixes="xs xsl tei" version="3.0">
     <xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
 
+    <xsl:variable name="timestamp">
+        <xsl:value-of
+            select="
+                (current-dateTime() -
+                xs:dateTime('1970-01-01T00:00:00'))
+                div xs:dayTimeDuration('PT1S') * 1000"
+        />
+    </xsl:variable>
+
+    <xsl:variable name="filename">
+        <xsl:value-of select="concat('pwl', '-', $timestamp, '.gexf')"/>
+    </xsl:variable>
+
     <xsl:template match="/" exclude-result-prefixes="xs xsl tei">
-        <gexf xmlns="http://www.gexf.net/1.2draft" xmlns:viz="http://www.gexf.net/1.2draft/viz"
-            version="1.2">
-            <graph mode="static" defaultedgetype="directed">
-                <attributes class="node">
-                    <attribute id="att_1" title="pos" type="string"/>
-                </attributes>
-                <attributes class="edge">
-                    <attribute id="att_2" title="medium" type="string"/>
-                </attributes>
-                <nodes>
-                    <xsl:call-template name="nodes"/>
-                </nodes>
-                <edges>
-                    <xsl:call-template name="edges"/>
-                </edges>
-            </graph>
-        </gexf>
+        <xsl:result-document href="Data\viz\outputs\{$filename}">
+            <gexf xmlns="http://www.gexf.net/1.2draft" xmlns:viz="http://www.gexf.net/1.2draft/viz"
+                version="1.2">
+                <graph mode="static" defaultedgetype="directed">
+                    <attributes class="node">
+                        <attribute id="att_1" title="pos" type="string"/>
+                    </attributes>
+                    <attributes class="edge">
+                        <attribute id="att_2" title="medium" type="string"/>
+                    </attributes>
+                    <nodes>
+                        <xsl:call-template name="nodes"/>
+                    </nodes>
+                    <edges>
+                        <xsl:call-template name="edges"/>
+                    </edges>
+                </graph>
+            </gexf>
+        </xsl:result-document>
     </xsl:template>
 
     <xsl:template name="nodes">
