@@ -3838,7 +3838,7 @@
 							>a<abbr cert="high">c<g id="d1e7991" ref="g4">h</g>
 						</abbr>
 					</w>
-					<w id="d1e7997" pos="conjunction-particle-particle">
+					<w id="d1e7997" pos="conjunction-particle-particle-verb">
 						<w id="d1e7999" lemma="má" lemmaRef="http://www.dil.ie/31164"
 							pos="conjunction">m<abbr cert="high" corresp="33294a30">u</abbr>
 						</w>
@@ -3849,8 +3849,8 @@
 						<space type="scribal"/>
 						<w id="d1e8013" lemma="ro" lemmaRef="http://www.dil.ie/35364" pos="particle"
 								><g id="d1e8015" ref="g8" corresp="d9478e90">r</g></w>
+						<w id="d1e8017" lemma="is" lemmaRef="http://www.dil.ie/29104" pos="verb">b</w>
 					</w>
-					<w id="d1e8017" lemma="is" lemmaRef="http://www.dil.ie/29104" pos="verb">b</w>
 					<w id="d1e8020" lemma="aithnid" lemmaRef="http://www.dil.ie/2763"
 						pos="adjective">ai<abbr cert="high">t<g id="d1e8024" ref="g4">h</g>
 						</abbr>nit</w>
@@ -8543,12 +8543,10 @@
 						</abbr>
 					</w>
 					<space type="scribal"/>
-					<w id="d1e17899"><w id="d1e17901" lemma="do-" lemmaRef="http://www.dil.ie/17099"
-							pos="prefix">do</w>
-						<w id="d1e17904" lemma="gnáth" lemmaRef="http://www.dil.ie/26193"
-							pos="adjective">gnai<abbr cert="high">t<g id="d1e17908" ref="g4">h</g>
-							</abbr>
-						</w></w>
+					<w id="d1e17901" lemma="do" lemmaRef="http://www.dil.ie/17096" pos="preposition">do</w>
+					<w id="d1e17904" lemma="gnáth" lemmaRef="http://www.dil.ie/26193"
+						pos="adjective">gnai<abbr cert="high">t<g id="d1e17908" ref="g4">h</g>
+						</abbr></w>
 					<space type="scribal"/>
 					<w id="d1e17916" lemma="foillsigid" lemmaRef="http://www.dil.ie/22888"
 						pos="verb">foi<abbr cert="high">ll<g id="d1e17920" ref="g41">sigid</g>
@@ -10974,7 +10972,7 @@
 						</abbr>
 					</w>
 					<space type="scribal"/>
-					<w id="d1e22977">.xi.</w>
+					<w id="d1e22977" pos="number">.xi.</w>
 					<space type="scribal"/>
 					<w id="d1e22982" lemma="corp" lemmaRef="http://www.dil.ie/12497" pos="noun"
 							>c<abbr cert="high">
@@ -22698,20 +22696,22 @@
 					<w id="d1e47094" lemma="fer" lemmaRef="http://www.dil.ie/21665" pos="noun"><abbr
 							cert="high">f<g id="d1e47095" ref="g21">er</g></abbr></w>
 					<space type="scribal"/>
-					<w id="d1e47096"><w id="d1e47097" lemma="droch"
+					<w id="d1e47096" pos="adjective-noun">
+						<w id="d1e47097" lemma="droch"
 							lemmaRef="http://www.dil.ie/18753" pos="adjective">droch</w>
 						<space type="scribal"/>
 						<w id="d1e47098" lemma="liter" lemmaRef="http://www.dil.ie/30335" pos="noun"
 								>lit<abbr cert="high">r<g id="d1e47099x" ref="g12"
 						>ac</g></abbr></w></w>
 					<space type="scribal"/>
-					<w id="d1e47099y"><w id="d1e47099z" lemma="i" lemmaRef="http://www.dil.ie/26891"
+					<w id="d1e47099y" pos="preposition-article">
+						<w id="d1e47099z" lemma="i" lemmaRef="http://www.dil.ie/26891"
 							pos="preposition">s</w>
 						<w id="d1e47099a" lemma="in" lemmaRef="http://www.dil.ie/28194"
 							pos="article">a</w></w>
 					<space type="scribal"/>
-					<w id="d1e47099b">bi<unclear reason="text_obscure" cert="high" resp="EPT"><abbr
-								cert="high">t<g id="d1e47099c" ref="g4">h</g></abbr></unclear></w>
+					<seg type="fragment" id="d1e47099b">bi<unclear reason="text_obscure" cert="high" resp="EPT"><abbr
+						cert="high">t<g id="d1e47099c" ref="g4">h</g></abbr></unclear></seg>
 					<note type="fn" resp="EPT"><p>This 'commórtas' has been tentatively identified
 							as being in the hand of the Rev. John Beaton (Hand16). The ink is
 							similar to that used by the latter on fol. 92v of the present manuscript
@@ -38505,7 +38505,7 @@
 						pos="verbal_noun">fo<abbr cert="high">t<g id="d1e79411" ref="g4">h</g>
 						</abbr>raici</w>
 					<space type="scribal"/>
-					<w id="d1e79419" pos="prepositon-possessive_pronoun">
+					<w id="d1e79419" pos="preposition-possessive_pronoun">
 						<w id="d1e79421" lemma="co" lemmaRef="http://www.dil.ie/9787"
 							pos="preposition">
 							<abbr cert="high">
@@ -77770,7 +77770,7 @@
 						<unclear reason="interp_obscure" cert="medium" resp="WGI">
 							<w id="d1e159279" lemma="srùbadh"
 								lemmaRef="https://www.faclair.com/ViewDictionaryEntry.aspx?ID=9EC1099134004C5FAD3BCC7CCD63B3DD"
-								pos="verbal_">sru<lb n="11" xml:id="MS14.92v.11"/><abbr
+								pos="verbal_noun">sru<lb n="11" xml:id="MS14.92v.11"/><abbr
 									cert="medium">b<g id="d1e159292" ref="g3">ad</g>
 								</abbr></w>
 						</unclear>
