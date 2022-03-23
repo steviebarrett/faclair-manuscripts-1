@@ -177,7 +177,7 @@
                         <space type="scribal"/>
                         <w id="d1e414" lemma="ocus" lemmaRef="http://www.dil.ie/33484" pos="conjunction">as</w>
                         <space type="scribal"/>
-                        <w id="d1e419" lemma="recht" lemmaRef="http://www.dil.ie/34898" pos="noun" lemmaSL="reachd" slipRef="https://dasg.ac.uk/slips/index.php?id=0111027">rea<abbr cert="high"><g id="d1e422" ref="g10">cht</g></abbr></w>
+                        <w id="d1e419" lemma="recht" lemmaRef="http://www.dil.ie/34898" pos="noun" lemmaSL="reachd" slipRef="https://dasg.ac.uk/slips/index.php?id=0111027">rea<abbr cert="high"><g id="d1e422" ref="g10">cht</g></abbr><supplied resp="WGI">a</supplied></w>
                     </l>
                     <l n="d" xml:id="MS28.1.1d">
                         <w id="d1e428" lemma="indaas" lemmaRef="http://www.dil.ie/28307" pos="particle">na</w>
@@ -221,6 +221,7 @@
                         <space type="scribal"/>
                         <w id="d1e554" lemma="a" lemmaRef="http://www.dil.ie/5" pos="pronoun">a</w>
                         <w id="d1e557" lemma="ráidid" lemmaRef="http://www.dil.ie/34742" pos="verb">r<space type="scribal"/>ai<abbr cert="high">t<g id="d1e563" ref="g21">ear</g></abbr></w>
+                        <note type="fn" resp="MMA"><p>For this to conform to the metre the "a" before raiter should be omitted.</p></note>
                     </l>
                     <l n="c" xml:id="MS28.1.2c">
                     <lb n="4" xml:id="MS28.f1r.4"/>
@@ -280,8 +281,7 @@
                         <space type="scribal"/>
                         <w id="d1e753" lemma="snaidm" lemmaRef="http://www.dil.ie/38123" pos="verbal_noun" lemmaSL="snaidhm" slipRef="https://dasg.ac.uk/slips/index.php?id=0120830">snai<abbr cert="high">d<g id="d1e757" ref="g4">h</g></abbr><abbr cert="high"><g id="d1e760" ref="g1">m</g></abbr></w>
                         <space type="scribal"/>
-                        <w id="d1e766" lemma="aiteamh" lemmaRef="https://www.faclair.com/ViewDictionaryEntry.aspx?ID=B204AD3D703832CA5E84C3A3A8CE796C" pos="noun">aitea<abbr cert="high">d<g id="d1e770" ref="g4">h</g></abbr></w>
-                        <note type="fn" resp="MMA"><p>Black (<ref target="0120830" type="slip">0120830</ref>) gives this as a form of 'àite' but doesn't quite know what to make of it. Could it be a form of <hi rend="italics">aiteamh</hi> as noted here?</p></note>
+                        <w id="d1e766" lemma="áitt" lemmaRef="http://www.dil.ie/2826" pos="noun" lemmaSL="àite" slipRef="https://dasg.ac.uk/slips/index.php?id=0120830">aitea<abbr cert="high">d<g id="d1e770" ref="g4">h</g></abbr></w>
                         <space type="scribal"/>
                         <w id="d1e785" lemma="is" lemmaRef="http://www.dil.ie/29104" pos="verb">ní</w>
                         <space type="scribal"/>
@@ -344,6 +344,7 @@
                         <space type="scribal"/>
                         <w id="d1e1014" lemma="íarla" lemmaRef="http://www.dil.ie/26989" pos="noun">i<abbr cert="high"><g id="d1e1017" ref="g13">arr</g></abbr>la</w>
                         <w id="d1e1021" lemma="sin" lemmaRef="http://www.dil.ie/37567" pos="demonstrative_pronoun">sin</w>
+                        <note type="fn" resp="WGI"><p>Lines 4c and 4d are manifestly corrupt: <hi rend="italics">taineamh</hi> and <hi rend="italics">tartha</hi> should rhyme with <hi rend="italics">bathaidh</hi> and <hi rend="italics">ainm</hi>.</p></note>
                     </l>
                 </lg>
                 <lg n="5" type="stanza" xml:id="MS28.1.5">
@@ -373,8 +374,7 @@
                         <name id="d1e1103" type="personal"><w id="d1e1104" lemma="Duibne" lemmaRef="http://www.dil.ie/19080" pos="noun" lemmaSL="Duibhne" slipRef="https://dasg.ac.uk/slips/index.php?id=0070761">ndui<abbr cert="high">b<g id="d1e1108" ref="g4">h</g></abbr>ne</w></name>
                         <space type="scribal"/>
                         <w id="d1e1115" lemma="drech" lemmaRef="http://www.dil.ie/18592" pos="noun">drea<abbr cert="high">c<g id="d1e1119" ref="g4">h</g></abbr></w>
-                        <c id="d1e1122">s</c>
-                        <gap id="d1e1125" reason="lost_writing_surface" extent="unknown" resp="MMA"/>
+                        <w id="d1e1122" lemma="soiléir" lemmaRef="http://www.dil.ie/38336" pos="adjective">s<unclear reason="damage" cert="high" resp="WGI">oiléir</unclear></w>
                     </l>
                     <l n="c" xml:id="MS28.1.5c">
                 <lb n="10" xml:id="MS28.f1r.10"/>
@@ -400,12 +400,12 @@
                         <w id="d1e1212" lemma="rí" lemmaRef="http://www.dil.ie/35181" pos="noun">rio<abbr cert="high">g<g id="d1e1216" ref="g4">h</g></abbr></w>
                         <space type="scribal"/>
                         <w id="d1e1221" lemma="cen" lemmaRef="http://www.dil.ie/8581" pos="preposition">gan</w>
-                        <c id="d1e1224">r</c>
-                        <gap id="d1e1227" reason="damage" quantity="2" unit="chars" resp="MMA"/>
+                        <w id="d1e1224" pos="prefix-noun">
+                            <w id="d1e1225" lemma="ríg-" lemmaRef="http://www.dil.ie/35266" pos="prefix">r<unclear reason="damage" cert="medium" resp="WGI">íogh</unclear></w>
+                            <unclear reason="damage" cert="high" resp="WGI"><w id="d1e1226" lemma="damnae" lemmaRef="http://www.dil.ie/14522" pos="noun">dhamhna</w></unclear>
+                        </w>
                         <space type="scribal"/>
-                        <gap id="d1e1232" reason="text_obscure" quantity="2" unit="chars" resp="MMA"/>
-                        <gap id="d1e1234" reason="damage" extent="unknown" resp="MMA"/>
-                        <note type="fn" resp="MMA"><p>The digitised HDSG Collection of Slips consists of the slips Ronald Black made for the HDSG and for himself. As is evident from this edition, the MS is damaged at this point. The digital slip (<ref target="0120694" type="slip">0120694</ref>) gives the headword <hi rend="italics">slabhra</hi> and the quotation is <hi rend="italics">ríoghsh[labhra]</hi> but it is written in the Notes section that no dictionary slip was made out [and thus that the] reading [is] conjectural.</p></note>
+                        <note type="fn" resp="MMA"><p>Black (<ref target="0120694" type="slip">0120694</ref>) created a slip with the headword <hi rend="italics">slabhra</hi> for this point, giving the quotation is <hi rend="italics">ríoghsh[labhra]</hi>. As the MS is damaged at this point, his reading is also conjectural and the present editor thinks Professor William Gillies' suggestion of "ríoghdhamhna" would fit better in this context.</p></note>
                     </l>
                 </lg>
                 <lg n="6" type="stanza" xml:id="MS28.1.6">
@@ -528,10 +528,20 @@
                     <l n="d" xml:id="MS28.1.7d">
                         <w id="d1e1613" lemma="cin" lemmaRef="http://www.dil.ie/9104" pos="noun" lemmaDW="cion" lemmaRefDW="https://www.faclair.com/ViewDictionaryEntry.aspx?ID=352263DF555275E5CFCED1DAB80445DB" lemmaSL="cion" slipRef="https://dasg.ac.uk/slips/index.php?id=0040423">cion</w>
                         <space type="scribal"/>
-                        <w id="d1e1618" pos="preposition-noun">
-                            <w id="d1e1620" lemma="de" lemmaRef="http://www.dil.ie/14787" pos="preposition">d</w>
-                            <w id="d1e1623" lemma="airet" lemmaRef="http://www.dil.ie/1949" pos="noun" lemmaSL="uiread" slipRef="https://dasg.ac.uk/slips/index.php?id=0110619">oirea<abbr cert="high">d<g id="d1e1627" ref="g4">h</g></abbr>a</w>
-                        </w>
+                        <choice>
+                            <sic>
+                                <w id="d1e1618" pos="preposition-noun">
+                                    <w id="d1e1620" lemma="de" lemmaRef="http://www.dil.ie/14787" pos="preposition">d</w>
+                                    <w id="d1e1623" lemma="airet" lemmaRef="http://www.dil.ie/1949" pos="noun" lemmaSL="uiread" slipRef="https://dasg.ac.uk/slips/index.php?id=0110619">oirea<abbr cert="high">d<g id="d1e1627" ref="g4">h</g></abbr>a</w>
+                                </w>
+                            </sic>
+                            <corr resp="WGI">
+                                <w id="d1e1619" pos="preposition-noun">
+                                    <w id="d1e1621" lemma="de" lemmaRef="http://www.dil.ie/14787" pos="preposition">d</w>
+                                    <w id="d1e1624" lemma="airet" lemmaRef="http://www.dil.ie/1949" pos="noun" lemmaSL="uiread" slipRef="https://dasg.ac.uk/slips/index.php?id=0110619">oiread</w>
+                                </w>
+                            </corr>
+                        </choice>
                         <space type="scribal"/>
                         <w id="d1e1634" lemma="a" lemmaRef="http://www.dil.ie/3" pos="possessive_pronoun">a</w>
                         <w id="d1e1638" lemma="atharda" lemmaRef="http://www.dil.ie/4648" pos="noun" lemmaSL="athardha" slipRef="https://dasg.ac.uk/slips/index.php?id=0021090"><unclear reason="text_obscure" cert="high" resp="Ronald_Black">a</unclear>t<unclear reason="text_obscure" cert="high" resp="Ronald_Black">h</unclear><abbr cert="high"><g id="d1e1645" ref="g13">arr</g></abbr>d<space type="scribal"/>a</w>
@@ -591,7 +601,7 @@
                         <space type="scribal"/>
                     </l>
                     <l n="d" xml:id="MS28.1.8d">
-                        <w id="d1e1821" lemma="" lemmaRef="http://www.dil.ie/XXX" pos="noun" lemmaSL="eirr" slipRef="https://dasg.ac.uk/slips/index.php?id=0071149">ei<abbr cert="high"><g id="d1e1824" ref="l6">rr</g></abbr></w>
+                        <w id="d1e1821" lemma="eirr" lemmaRef="http://www.dil.ie/19835" pos="noun" lemmaSL="eirr" slipRef="https://dasg.ac.uk/slips/index.php?id=0071149">ei<abbr cert="high"><g id="d1e1824" ref="l6">rr</g></abbr></w>
                         <w id="d1e1827" pos="adjective-noun">
                             <w id="d1e1829" lemma="gorm" lemmaRef="http://www.dil.ie/26408" pos="adjective" lemmaSL="gorm" slipRef="https://dasg.ac.uk/slips/index.php?id=0090535">gorm</w>
                             <space type="scribal"/>
@@ -645,6 +655,7 @@
                         </w>
                         <pc id="d1e1999">·</pc>
                         <space type="scribal"/>
+                        <gap id="d1e2000" reason="lost_writing_surface" quantity="1" unit="syllable" resp="MMA"/>
                     </l>
                     <l n="d" xml:id="MS28.1.9d">
                         <w id="d1e2009" lemma="indiu" lemmaRef="http://www.dil.ie/28446" pos="adverb" lemmaSL="a-niudh" slipRef="https://dasg.ac.uk/slips/index.php?id=0020655">aniú<abbr cert="high">d<g id="d1e2013" ref="g4">h</g></abbr></w>
@@ -658,6 +669,7 @@
                         <space type="scribal"/>
                         <unclear reason="interp_obscure" cert="medium" resp="MMA">
 							<w id="d1e2041" lemma="gort" lemmaRef="http://www.dil.ie/26421" pos="adjective"><abbr cert="high">g<g id="d1e2044" ref="g4">h</g></abbr>uirt</w>
+                            <gap id="d1e2042" reason="lost_writing_surface" quantity="1" unit="syllable" resp="MMA"/>
                         </unclear>
                     </l>
                 </lg>
@@ -774,7 +786,7 @@
                         <space type="scribal"/>
                         <w id="d1e2451" lemma="íath" lemmaRef="http://www.dil.ie/27115" pos="noun">ía<abbr cert="high">t<g id="d1e2455" ref="g4">h</g></abbr></w>
                         <space type="scribal"/>
-                        <w id="d1e2460" lemma="airdirc" lemmaRef="http://www.dil.ie/1842" pos="adjective">orr<abbr cert="high">d<g id="d1e2464" ref="g3">ear</g></abbr>c</w>
+                        <w id="d1e2460" lemma="airdirc" lemmaRef="http://www.dil.ie/1842" pos="adjective">orr<abbr cert="high">d<g id="d1e2464" ref="g3">ir</g></abbr>c</w>
                         <space type="scribal"/>
                         <name id="d1e2470" type="place"><w id="d1e2471" lemma="Albu" lemmaRef="http://www.dil.ie/2890" pos="noun">al<abbr cert="high">b<g id="d1e2475" ref="g3">an</g></abbr></w></name>
                     </l>
@@ -810,7 +822,7 @@
                         <space type="scribal"/>
                         <w id="d1e2565" lemma="a" lemmaRef="http://www.dil.ie/3" pos="possessive_pronoun">a</w>
                         <space type="scribal"/>
-                        <w pos="noun-emphatic">
+                        <w id="d1e2569" pos="noun-emphatic">
 							<w id="d1e2570" lemma="eigre" lemmaRef="http://www.dil.ie/19767" pos="noun">oigréi</w>
 							<w id="d1e2574" lemma="-sin" lemmaRef="https://www.faclair.com/ViewDictionaryEntry.aspx?ID=8E7EC4D84D90FA679719FCB1A880E5F1" pos="emphatic">sion</w>
 						</w>
@@ -843,7 +855,7 @@
                         <space type="scribal"/>
                         <w id="d1e2655" lemma="imresan" lemmaRef="http://www.dil.ie/28035" pos="noun" lemmaSL="imreasan" slipRef="https://dasg.ac.uk/slips/index.php?id=0090826">himréasuin</w>
                         <space type="scribal"/>
-                        <w id="d1e2661" lemma="ág" lemmaRef="http://www.dil.ie/673" pos="noun">áige</w>
+                        <w id="d1e2661" lemma="oc" lemmaRef="http://www.dil.ie/33397" pos="prepositional_pronoun">áige</w>
                     </l>
                 </lg>
                 <lg n="13" type="stanza" xml:id="MS28.1.13">
@@ -911,7 +923,7 @@
 						<w id="d1e2877" pos="particle-verb">
 							<choice>
 								<sic><w id="d1e2878" lemma="do" lemmaRef="http://www.dil.ie/17098" pos="particle">de</w></sic>
-								<corr resp="MMA"><w id="d1e2878" lemma="do" lemmaRef="http://www.dil.ie/17098" pos="particle">do</w></corr>
+								<corr resp="MMA"><w id="d1e2879" lemma="do" lemmaRef="http://www.dil.ie/17098" pos="particle">do</w></corr>
 							</choice>
 							<space type="scribal"/>
 							<w id="d1e2886" lemma="is" lemmaRef="http://www.dil.ie/29104" pos="verb">b</w>
@@ -1137,7 +1149,7 @@
                         <space type="scribal"/>
                         <w id="d1e3676" lemma="coinglecc" lemmaRef="http://www.dil.ie/10353" pos="noun" lemmaSL="comh-ghleachd" slipRef="https://dasg.ac.uk/slips/index.php?id=0040822">
 							<w id="d1e3677" lemma="com-" lemmaRef="http://www.dil.ie/10554" pos="prefix"><abbr cert="high">c<g id="d1e3680" ref="g4">h</g></abbr>oin</w>
-							<w id="d1e3678" lemma="glecc" lemmaRef="http://www.dil.ie/26022" pos="noun"><abbr cert="high">g<g id="d1e3685" ref="g4">h</g></abbr>lea<abbr cert="high">c<g id="d1e3690" ref="g4">h</g></abbr>t</w>
+							<w id="d1e3678" lemma="glecc" lemmaRef="http://www.dil.ie/26022" pos="noun"><abbr cert="high">g<g id="d1e3685" ref="g4">h</g></abbr>lea<abbr cert="high">c<g id="d1e3690" ref="g4">h</g></abbr>t<supplied resp="WGI">a</supplied></w>
 						</w>
                         <note type="fn" resp="MMA"><p>The lenition marker is placed over the final <hi rend="italics">t</hi> in this word but has been transcribed as after the <hi rend="italics">c</hi> to render the ending -cht.</p></note>
                         <space type="scribal"/>
@@ -1176,7 +1188,8 @@
                         <space type="scribal"/>
 						<w id="d1e3826" lemma="a" lemmaRef="http://www.dil.ie/3" pos="possessive_pronoun">an</w>
                         <space type="scribal"/>
-                        <w id="d1e3831" lemma="táth" lemmaRef="http://www.dil.ie/40201" pos="noun" lemmaSL="tath" slipRef="https://dasg.ac.uk/slips/index.php?id=0130069">tta<abbr cert="high">t<g id="d1e3835" ref="g4">h</g></abbr></w>
+                        <w id="d1e3831" lemma="triath" lemmaRef="http://www.dil.ie/41897" pos="noun">t<abbr cert="high">t<g id="d1e3832" ref="g25">ri</g></abbr>a<abbr cert="high">t<g id="d1e3835" ref="g4">h</g></abbr></w>
+                        <note type="fn" resp="MMA"><p>Black (<ref target="0130069" type="slip">0130069</ref>) notes the headword here as <hi rend="italics">tath</hi>. This is what it seems like is in the MS but if one looks closely there appears to be a faint superscript <hi rend="italics">i</hi> over the second <hi rend="italics">t</hi>, thus indicating that the headword would be <hi rend="italics">tríath</hi>.</p></note>
                         <space type="scribal"/>
                         <w id="d1e3841" pos="preposition-noun">
                             <w id="d1e3843" lemma="de" lemmaRef="http://www.dil.ie/14787" pos="preposition">d</w>
@@ -1195,7 +1208,7 @@
                         <space type="scribal"/>
 						<w id="d1e3883" lemma="gád" lemmaRef="http://www.dil.ie/25071" pos="noun" lemmaSL="ca" slipRef="https://dasg.ac.uk/slips/index.php?id=0002490">gá</w>
                         <space type="scribal"/>
-                        <w id="d1e3905" lemma="dán" lemmaRef="http://www.dil.ie/14559" pos="noun">dán</w>
+                        <w id="d1e3905" lemma="dám" lemmaRef="http://www.dil.ie/14472" pos="noun">dám</w>
                         <space type="scribal"/>
                         <w id="d1e3921" lemma="do" lemmaRef="http://www.dil.ie/17096" pos="prepositional_pronoun" lemmaSL="do" slipRef="https://dasg.ac.uk/slips/index.php?id=0070183">dí</w>
                         <pc id="d1e3925">.</pc>
@@ -1277,8 +1290,8 @@
                         <space type="scribal"/>
                         <w id="d1e4147" pos="possessive_pronoun-noun-emphatic">
                             <w id="d1e4149" lemma="mo" lemmaRef="http://www.dil.ie/32400" pos="possessive_pronoun"><abbr cert="high">m<g id="d1e4152" ref="g4">h</g></abbr></w>
-                            <w id="d1e4155" lemma="aire" lemmaRef="http://www.dil.ie/1883" pos="noun" lemmaSL="aire" slipRef="https://dasg.ac.uk/slips/index.php?id=0020397"><abbr cert="high"><g id="d1e4157" ref="g11">air</g></abbr>is</w>
-                            <w id="d1e4161" lemma="-se" lemmaRef="https://www.faclair.com/ViewDictionaryEntry.aspx?ID=8E7EC4D84D90FA679719FCB1A880E5F1" pos="emphatic">i</w>
+                            <w id="d1e4155" lemma="aire" lemmaRef="http://www.dil.ie/1883" pos="noun" lemmaSL="aire" slipRef="https://dasg.ac.uk/slips/index.php?id=0020397"><abbr cert="high"><g id="d1e4157" ref="g11">air</g></abbr>i</w>
+                            <w id="d1e4161" lemma="-se" lemmaRef="https://www.faclair.com/ViewDictionaryEntry.aspx?ID=8E7EC4D84D90FA679719FCB1A880E5F1" pos="emphatic">si</w>
                         </w>
                     </l>
                 </lg>
@@ -1396,7 +1409,10 @@
                         <space type="scribal"/>
                         <w id="d1e4561" lemma="attá" lemmaRef="http://www.dil.ie/4927" pos="verb"><abbr cert="high">b<g id="d1e4564" ref="g4">h</g></abbr>i</w>
                         <space type="scribal"/>
-                        <w id="d1e4571" lemma="fota" lemmaRef="http://www.dil.ie/24135" pos="adjective">fad</w>
+                        <w id="d1e4570" pos="preposition-possessive_pronoun">
+                            <w id="d1e4571" lemma="fo" lemmaRef="http://www.dil.ie/22333" pos="preposition">fa</w>
+                            <w id="d1e4572" lemma="do" lemmaRef="http://www.dil.ie/17097" pos="possessive_pronoun">d</w>
+                        </w>
                         <space type="scribal"/>
                         <w id="d1e4576" lemma="treise" lemmaRef="http://www.dil.ie/41750" pos="noun" lemmaSL="treise" slipRef="https://dasg.ac.uk/slips/index.php?id=0130780"><abbr cert="high">t<g id="d1e4579" ref="g20">re</g></abbr>ise</w>
                         <space type="scribal"/>
@@ -1415,7 +1431,7 @@
                         <space type="scribal"/>
                         <w id="d1e4622" lemma="mac" lemmaRef="http://www.dil.ie/31166" pos="noun"><abbr cert="high">m<g id="d1e4625" ref="g88">hic</g></abbr></w>
                         <space type="scribal"/>
-                        <w id="d1e4631" lemma="a" lemmaRef="http://www.dil.ie/2" pos="particle">a</w>
+                        <w id="d1e4631" lemma="a" lemmaRef="http://www.dil.ie/2" pos="particle">a</w>/
                         <name id="d1e4633" type="personal">
 							<w id="d1e4634" lemma="mac" lemmaRef="http://www.dil.ie/31166" pos="noun"><abbr cert="high">m<g id="d1e4637" ref="g88">hic</g></abbr></w>
 							<space type="scribal"/>
@@ -1424,17 +1440,19 @@
                     </l>
                     <l n="c" xml:id="MS28.1.22c">
                 <lb n="15" xml:id="MS28.f1v.15"/>
-                        <w id="d1e4651" lemma="ré" lemmaRef="http://www.dil.ie/34864" pos="noun">ré</w>
+                        <w id="d1e4651" lemma="réid" lemmaRef="http://www.dil.ie/34942" pos="adjective">ré</w>
                         <space type="scribal"/>
                         <w id="d1e4656" lemma="do" lemmaRef="http://www.dil.ie/17097" pos="possessive_pronoun">do</w>
                         <space type="scribal"/>
                         <w id="d1e4662" lemma="deercc" lemmaRef="http://www.dil.ie/15024" pos="noun" lemmaSL="déirc" slipRef="https://dasg.ac.uk/slips/index.php?id=0061092"><abbr cert="high">d<g id="d1e4665" ref="g4">h</g></abbr>éiric</w>
                         <space type="scribal"/>
-                        <w id="d1e4671" lemma="réid" lemmaRef="http://www.dil.ie/34942" pos="adjective">réi<abbr cert="high">d<g id="d1e4675" ref="g4">h</g></abbr></w>
+                        <choice>
+                            <sic><w id="d1e4671" lemma="réid" lemmaRef="http://www.dil.ie/34942" pos="adjective">réi<abbr cert="high">d<g id="d1e4675" ref="g4">h</g></abbr></w></sic>
+                            <corr resp="WGI"/>
+                        </choice>
                         <space type="scribal"/>
-                        <w id="d1e4680" lemma="i" lemmaRef="http://www.dil.ie/26891" pos="preposition">an</w>
-                        <space type="scribal"/>
-                        <w id="d1e4686" lemma="dead" lemmaRef="http://www.dil.ie/14812" pos="noun">deag<abbr cert="high">h<g id="d1e4690" ref="g3">aid</g></abbr><abbr cert="high"><g id="d1e4693" ref="g4">h</g></abbr></w>
+                        <w id="d1e4680" lemma="i" lemmaRef="http://www.dil.ie/26891" pos="preposition">a</w>
+                        <w id="d1e4686" lemma="dead" lemmaRef="http://www.dil.ie/14812" pos="noun">n<space type="scribal"/>deag<abbr cert="high">h<g id="d1e4690" ref="g3">aid</g></abbr><abbr cert="high"><g id="d1e4693" ref="g4">h</g></abbr></w>
                         <space type="scribal"/>
                         <w id="d1e4698" lemma="aistriugad" lemmaRef="http://www.dil.ie/2528" pos="verbal_noun" lemmaSL="aisdrigh" slipRef="https://dasg.ac.uk/slips/index.php?id=0020453">aisdri<abbr cert="high">g<g id="d1e4702" ref="g4">h</g></abbr></w>
                         <pc id="d1e4705">.</pc>
@@ -1487,7 +1505,10 @@
                         <w id="d1e4856" lemma="fri" lemmaRef="http://www.dil.ie/24329" pos="preposition">re</w>
                         <space type="scribal"/>
                         <w id="d1e4861" lemma="a" lemmaRef="http://www.dil.ie/3" pos="possessive_pronoun">a</w>
-                        <w id="d1e4864" lemma="gasrad" lemmaRef="http://www.dil.ie/25446" pos="noun" lemmaSL="gasraidh" slipRef="https://dasg.ac.uk/slips/index.php?id=0090074">gasrai<abbr cert="high">b<g id="d1e4868" ref="g4">h</g></abbr></w>
+                        <choice>
+                            <sic><w id="d1e4864" lemma="gasrad" lemmaRef="http://www.dil.ie/25446" pos="noun" lemmaSL="gasraidh" slipRef="https://dasg.ac.uk/slips/index.php?id=0090074">gasrai<abbr cert="high">b<g id="d1e4868" ref="g4">h</g></abbr></w></sic>
+                            <corr resp="WGI"><w id="d1e4865" lemma="gasrad" lemmaRef="http://www.dil.ie/25446" pos="noun" lemmaSL="gasraidh" slipRef="https://dasg.ac.uk/slips/index.php?id=0090074">gasrai<abbr cert="high">d<g id="d1e4869" ref="g4">h</g></abbr></w></corr>
+                        </choice>
                         <space type="scribal"/>
                         <w id="d1e4874" lemma="grip" lemmaRef="http://www.dil.ie/26673" pos="adjective" lemmaSL="grib" slipRef="https://dasg.ac.uk/slips/index.php?id=0090610">gri<abbr cert="high">b<g id="d1e4878" ref="g4">h</g></abbr></w>
                         <pc id="d1e4881">.</pc>
@@ -1506,7 +1527,7 @@
                 <lg n="24" type="stanza" xml:id="MS28.1.24">
                     <l n="a" xml:id="MS28.1.24a">
                 <lb n="18" xml:id="MS28.f1v.18"/>
-                        <unclear reason="damage" cert="high" resp="Ronald_Black"><w lemma="maith" lemmaRef="http://www.dil.ie/31438" pos="adjective"><abbr cert="high">F<g ref="g22">err</g></abbr></w></unclear>
+                        <unclear reason="damage" cert="high" resp="Ronald_Black"><w id="d1e4920" lemma="maith" lemmaRef="http://www.dil.ie/31438" pos="adjective"><abbr cert="high">F<g id="d1e4921" ref="g22">err</g></abbr></w></unclear>
                         <space type="scribal"/>
                         <w id="d1e4930" lemma="tú" lemmaRef="http://www.dil.ie/42137" pos="pronoun">tu</w>
                         <space type="scribal"/>
@@ -1611,13 +1632,15 @@
                         <space type="scribal"/>
                     </l>
                     <l n="d" xml:id="MS28.1.25d">
-                        <w id="d1e5263" lemma="de" lemmaRef="http://www.dil.ie/14787" pos="preposition" lemmaSL="de" slipRef="https://dasg.ac.uk/slips/index.php?id=0060883">do</w>
-                        <w id="d1e5266" lemma="barr" lemmaRef="http://www.dil.ie/5416" pos="noun" lemmaSL="bàrr" slipRef="https://dasg.ac.uk/slips/index.php?id=0030185"><abbr cert="high">b<g id="d1e5269" ref="g4">h</g></abbr><abbr cert="high"><g id="d1e5272" ref="g13">arr</g></abbr></w>
+                        <w id="d1e5263" lemma="do" lemmaRef="http://www.dil.ie/17098" pos="particle">do</w>
+                        <w id="d1e5266" lemma="barraid" lemmaRef="http://www.dil.ie/5425" pos="verb"><abbr cert="high">b<g id="d1e5269" ref="g4">h</g></abbr><abbr cert="high"><g id="d1e5272" ref="g13">arr</g></abbr></w>
                         <space type="scribal"/>
                         <w id="d1e5277" lemma="oc" lemmaRef="http://www.dil.ie/33397" pos="prepositional_pronoun">agui<abbr cert="high">b<g id="d1e5281" ref="g4">h</g></abbr></w>
                         <space type="scribal"/>
-                        <w id="d1e5287" lemma="ó" lemmaRef="http://www.dil.ie/33364" pos="prepositional_pronoun" lemmaSL="o" slipRef="https://dasg.ac.uk/slips/index.php?id=0002759">úait<add place="above" type="insertion" hand="Hand8">ui<abbr cert="high">b<g id="d1e5293" ref="g4">h</g></abbr></add></w>
-                        <w id="d1e5296" lemma="sin" lemmaRef="http://www.dil.ie/37567" pos="demonstrative_pronoun">se<abbr cert="high">in<g id="d1e5300" ref="g5">n</g></abbr></w>
+                        <w id="d1e5286" pos="prepositional_pronoun-emphatic">
+                            <w id="d1e5287" lemma="ó" lemmaRef="http://www.dil.ie/33364" pos="prepositional_pronoun" lemmaSL="o" slipRef="https://dasg.ac.uk/slips/index.php?id=0002759">úait<add place="above" type="insertion" hand="Hand8">ui<abbr cert="high">b<g id="d1e5293" ref="g4">h</g></abbr></add></w>
+                            <w id="d1e5296" lemma="sin" lemmaRef="https://www.faclair.com/ViewDictionaryEntry.aspx?ID=7E145C01680F4B96EC0D6B602D966228" pos="emphatic">se<abbr cert="high">in<g id="d1e5300" ref="g5">n</g></abbr></w>
+                        </w>
                     </l>
                 </lg>
                 <lg n="26" type="stanza" xml:id="MS28.1.26">
@@ -1651,7 +1674,8 @@
                             <w id="d1e5388" lemma="do" lemmaRef="http://www.dil.ie/17097" pos="possessive_pronoun">d</w>
                         </w>
                         <space type="scribal"/>
-                        <w id="d1e5394" lemma="grécach" lemmaRef="http://www.dil.ie/26553" pos="noun" lemmaSL="Greugach" slipRef="https://dasg.ac.uk/slips/index.php?id=0090573"><abbr cert="high">g<g id="d1e5397" ref="g25">ri</g></abbr>gui<abbr cert="high">b<g id="d1e5402" ref="g4">h</g></abbr></w>
+                        <w id="d1e5394" lemma="géc" lemmaRef="http://www.dil.ie/25489" pos="noun">gégui<abbr cert="high">b<g id="d1e5402" ref="g4">h</g></abbr></w>
+                   <!-- lemmaSL="Greugach" slipRef="https://dasg.ac.uk/slips/index.php?id=0090573" -->
                         <space type="scribal"/>
                         <w id="d1e5408" lemma="genelach" lemmaRef="http://www.dil.ie/25662" pos="noun" lemmaSL="ginealach" slipRef="https://dasg.ac.uk/slips/index.php?id=0090199">geinea<abbr cert="high">l<g id="d1e5412" ref="g3">aig</g></abbr></w>
                     </l>
@@ -1665,7 +1689,7 @@
                         <space type="scribal"/>
                         <w id="d1e5443" pos="noun-noun">
 							<w id="d1e5444" lemma="tathaír" lemmaRef="http://www.dil.ie/40215" pos="noun" lemmaSL="tathaoir" slipRef="https://dasg.ac.uk/slips/index.php?id=0130076">ta<abbr cert="high">t<g id="d1e5448" ref="g4">h</g></abbr><abbr cert="high"><g id="d1e5451" ref="l5">áo</g></abbr>ir</w>
-							<w id="d1e5445" lemma="mess" lemmaRef="http://www.dil.ie/32021\" pos="noun">mes</w>
+							<w id="d1e5445" lemma="mess" lemmaRef="http://www.dil.ie/32021" pos="noun">mes</w>
 						</w>
                         <space type="scribal"/>
                         <w id="d1e5457" lemma="do-beir" lemmaRef="http://www.dil.ie/17216" pos="verb" lemmaSL="thoir" slipRef="https://dasg.ac.uk/slips/index.php?id=0070287">t<unclear reason="text_obscure" cert="medium" resp="MMA"><abbr cert="high"><g id="d1e5461" ref="g4">h</g></abbr></unclear>ug</w>
@@ -1673,7 +1697,11 @@
                         <space type="scribal"/>
                     </l>
                     <l n="d" xml:id="MS28.1.26d">
-                        <w id="d1e5474" lemma="flaithemnas" lemmaRef="http://www.dil.ie/22288" pos="noun" lemmaSL="flaitheamhnas" slipRef="https://dasg.ac.uk/slips/index.php?id=0080686">flai<abbr cert="high">t<g id="d1e5478" ref="g4">h</g></abbr>ea<abbr cert="high">m<g id="d1e5483" ref="g4">h</g></abbr>nes</w>
+                        <w id="d1e5474" pos="noun-noun">
+                            <w id="d1e5475" lemma="flaith" lemmaRef="http://www.dil.ie/22281" pos="noun">flai<abbr cert="high">t<g id="d1e5478" ref="g4">h</g></abbr></w>
+                            <w id="d1e5476" lemma="oíbnius" lemmaRef="http://www.dil.ie/33609" pos="noun">ea<abbr cert="high">m<g id="d1e5483" ref="g4">h</g></abbr>nes</w>
+                        </w>
+                <!-- lemmaSL="flaitheamhnas" slipRef="https://dasg.ac.uk/slips/index.php?id=0080686" -->
                         <space type="scribal"/>
                         <w id="d1e5489" lemma="in" lemmaRef="http://www.dil.ie/28194" pos="article">an</w>
                         <space type="scribal"/>
@@ -1736,13 +1764,13 @@
                     </l>
                     <l n="d" xml:id="MS28.1.27d">
                         <w id="d1e5701" lemma="a" lemmaRef="http://www.dil.ie/2" pos="particle">a</w>
-                        <w id="d1e5703" pos="noun-noun">
-							<w id="d1e5704" lemma="serc" lemmaRef="http://www.dil.ie/37233" pos="noun"><abbr cert="high">s<g id="d1e5707" ref="g4">h</g></abbr>earc</w>
-							<space type="scribal"/>
-							<w id="d1e5713" lemma="bráen" lemmaRef="http://www.dil.ie/6469" pos="noun"><abbr cert="high">b<g id="d1e5716" ref="g4">h</g></abbr>r<abbr cert="high"><g id="d1e5720" ref="l5">ao</g></abbr>in</w>
-						</w>
-                        <space type="scribal"/>
-                        <w id="d1e5727" lemma="inis" lemmaRef="http://www.dil.ie/28744" pos="noun">i<abbr cert="high">n<g id="d1e5731" ref="g5">n</g></abbr>si</w>
+						<w id="d1e5704" lemma="serc" lemmaRef="http://www.dil.ie/37233" pos="noun"><abbr cert="high">s<g id="d1e5707" ref="g4">h</g></abbr>earc</w>
+						<space type="scribal"/>
+                        <w id="d1e5712" pos="noun-noun">
+                            <w id="d1e5713" lemma="bráen" lemmaRef="http://www.dil.ie/6469" pos="noun"><abbr cert="high">b<g id="d1e5716" ref="g4">h</g></abbr>r<abbr cert="high"><g id="d1e5720" ref="l5">ao</g></abbr>in</w>
+                            <space type="scribal"/>
+                            <w id="d1e5727" lemma="inis" lemmaRef="http://www.dil.ie/28744" pos="noun">i<abbr cert="high">n<g id="d1e5731" ref="g5">n</g></abbr>si</w>
+                        </w>
                         <space type="scribal"/>
                         <name id="d1e5737" type="place"><w id="d1e5738" lemma="Bretain" lemmaRef="http://www.dil.ie/6755" pos="noun">bretan</w></name>
                     </l>
@@ -1785,8 +1813,10 @@
                         <w id="d1e5852" lemma="tú" lemmaRef="http://www.dil.ie/42137" pos="pronoun">tu</w>
                         <space type="scribal"/>
                         <w id="d1e5857" lemma="oc" lemmaRef="http://www.dil.ie/33397" pos="preposition">ag</w>
-                        <w id="d1e5860" lemma="fognam" lemmaRef="http://www.dil.ie/22777" pos="verbal_noun" lemmaSL="oineamh" slipRef="https://dasg.ac.uk/slips/index.php?id=0080817">foin<abbr cert="high">i<g id="d1e5864" ref="g1">m</g></abbr><abbr cert="high"><g id="d1e5867" ref="g4">h</g></abbr></w>
-                        <note type="fn" resp="MMA"><p>There are three HDSG slips for this, Black (<ref target="0080817" type="slip">0080817</ref>), (<ref target="0130543" type="slip">0130543</ref>), and (<ref target="0110588" type="slip">0110588\</ref>).</p></note>
+                        <choice>
+                            <sic><w id="d1e5860" lemma="fognam" lemmaRef="http://www.dil.ie/22777" pos="verbal_noun">foin<abbr cert="high">i<g id="d1e5864" ref="g1">m</g></abbr><abbr cert="high"><g id="d1e5867" ref="g4">h</g></abbr></w></sic>
+                            <corr resp="WGI"><w id="d1e5861" lemma="fognam" lemmaRef="http://www.dil.ie/22777" pos="verbal_noun" lemmaSL="toineamh" slipRef="https://dasg.ac.uk/slips/index.php?id=0130543">toin<abbr cert="high">i<g id="d1e5865" ref="g1">m</g></abbr><abbr cert="high"><g id="d1e5868" ref="g4">h</g></abbr></w></corr>
+                        </choice>
                         <space type="scribal"/>
                         <w id="d1e5886" lemma="cach" lemmaRef="http://www.dil.ie/7528" pos="adjective"><abbr cert="high">g<g id="d1e5889" ref="g12">ac</g></abbr><abbr cert="high"><g id="d1e5892" ref="g4">h</g></abbr></w>
                         <space type="scribal"/>
@@ -1804,8 +1834,8 @@
                         <space type="scribal"/>
                         <w id="d1e5934" lemma="port" lemmaRef="http://www.dil.ie/34476" pos="noun" lemmaSL="port" slipRef="https://dasg.ac.uk/slips/index.php?id=0110869">puirt</w>
                         <space type="scribal"/>
-                        <w id="d1e5940" lemma="pasáiste" lemmaRef="https://www.teanglann.ie/ga/fgb/pasáiste" pos="noun" lemmaSL="pàsaise" slipRef="https://dasg.ac.uk/slips/index.php?id=0110801"><abbr cert="high">p<g id="d1e5943" ref="g4">h</g></abbr>asaisi</w>
-                    </l>
+                        <w id="d1e5940" lemma="*pasáise" source="pardus" lemmaRef="http://www.dil.ie/34193" pos="noun" lemmaSL="pàsaise" slipRef="https://dasg.ac.uk/slips/index.php?id=0110801"><abbr cert="high">p<g id="d1e5943" ref="g4">h</g></abbr>asaisi</w>
+                        </l>
                 </lg>
                 <lg n="29" type="stanza" xml:id="MS28.1.29">
                     <l n="a" xml:id="MS28.1.29a">
@@ -1856,7 +1886,7 @@
                         <space type="scribal"/>
                         <name id="d1e6116" type="place"><w id="d1e6117" lemma="Troí" lemmaRef="http://www.dil.ie/42008" pos="noun" lemmaSL="Traoi" slipRef="https://dasg.ac.uk/slips/index.php?id=0130679">tr<abbr cert="high"><g id="d1e6120" ref="l5">ao</g></abbr>i</w></name>
                         <space type="scribal"/>
-                        <w id="d1e6126" lemma="toísech" lemmaRef="http://www.dil.ie/41302" pos="noun" lemmaSL="toiseach" slipRef="https://dasg.ac.uk/slips/index.php?id=0130642">tosui<abbr cert="high">d<g id="d1e6130" ref="g4">h</g></abbr></w>
+                        <w id="d1e6126" lemma="tosach" lemmaRef="http://www.dil.ie/41302" pos="noun" lemmaSL="toiseach" slipRef="https://dasg.ac.uk/slips/index.php?id=0130642">tosui<abbr cert="high">d<g id="d1e6130" ref="g4">h</g></abbr></w>
                         <space type="scribal"/>
                     </l>
                     <l n="d" xml:id="MS28.1.29d">
@@ -2068,7 +2098,7 @@
                         <space type="scribal"/>
                         <w id="d1e6822" lemma="ar" lemmaRef="http://www.dil.ie/3902" pos="preposition" lemmaSL="air" slipRef="https://dasg.ac.uk/slips/index.php?id=0020910"><abbr cert="high"><g id="d1e6824" ref="g8">ar</g></abbr></w>
                         <space type="scribal"/>
-                        <w id="d1e6830" lemma="toísech" lemmaRef="http://www.dil.ie/41302" pos="noun" lemmaSL="toiseach" slipRef="https://dasg.ac.uk/slips/index.php?id=0130643">ttosui<abbr cert="high">d<g id="d1e6834" ref="g4">h</g></abbr></w>
+                        <w id="d1e6830" lemma="tosach" lemmaRef="http://www.dil.ie/41302" pos="noun" lemmaSL="toiseach" slipRef="https://dasg.ac.uk/slips/index.php?id=0130643">ttosui<abbr cert="high">d<g id="d1e6834" ref="g4">h</g></abbr></w>
                         <space type="scribal"/>
                         <pc id="d1e6839">.</pc>
                         <space type="scribal"/>
@@ -2086,7 +2116,7 @@
                     </l>
                     <l n="c" xml:id="MS28.1.33c">
                     <lb n="2" xml:id="MS28.f2r.2"/>
-                        <w id="d1e6907" lemma="for" lemmaRef="http://www.dil.ie/23272" pos="preposition"> lemmaSL="air" slipRef="https://dasg.ac.uk/slips/index.php?id=0020846"><abbr cert="high"><g id="d1e6909" ref="g8">ar</g></abbr></w>
+                        <w id="d1e6907" lemma="for" lemmaRef="http://www.dil.ie/23272" pos="preposition" lemmaSL="air" slipRef="https://dasg.ac.uk/slips/index.php?id=0020846"><abbr cert="high"><g id="d1e6909" ref="g8">ar</g></abbr></w>
                         <space type="scribal"/>
                         <w id="d1e6914" lemma="barr" lemmaRef="http://www.dil.ie/5416" pos="noun" lemmaSL="bàrr" slipRef="https://dasg.ac.uk/slips/index.php?id=0030179"><abbr cert="high">b<g id="d1e6917" ref="g4">h</g></abbr><abbr cert="high"><g id="d1e6920" ref="g13">arr</g></abbr></w>
                         <space type="scribal"/>
@@ -2142,9 +2172,11 @@
                         <space type="scribal"/>
                         <w id="d1e7119" lemma="óc" lemmaRef="http://www.dil.ie/33398" pos="noun" lemmaSL="òg" slipRef="https://dasg.ac.uk/slips/index.php?id=0110487">óig</w>
                         <space type="scribal"/>
-                        <w id="d1e7124" lemma="abra" lemmaRef="http://www.dil.ie/77" pos="noun" lemmaSL="abhra" slipRef="https://dasg.ac.uk/slips/index.php?id=0020044">a<space type="scribal"/><abbr cert="high">b<g id="d1e7130" ref="g4">h</g></abbr>ra</w>
-                        <space type="scribal"/>
-                        <w id="d1e7135" lemma="dub" lemmaRef="http://www.dil.ie/18985" pos="adjective" lemmaSL="dubh" slipRef="https://dasg.ac.uk/slips/index.php?id=0070739">dui<abbr cert="high">b<g id="d1e7139" ref="g4">h</g></abbr></w>
+                        <w id="d1e7123" pos="noun-adjective">
+                            <w id="d1e7124" lemma="abra" lemmaRef="http://www.dil.ie/77" pos="noun" lemmaSL="abhra" slipRef="https://dasg.ac.uk/slips/index.php?id=0020044">a<space type="scribal"/><abbr cert="high">b<g id="d1e7130" ref="g4">h</g></abbr>ra</w>
+                            <space type="scribal"/>
+                            <w id="d1e7135" lemma="dub" lemmaRef="http://www.dil.ie/18985" pos="adjective" lemmaSL="dubh" slipRef="https://dasg.ac.uk/slips/index.php?id=0070739">dui<abbr cert="high">b<g id="d1e7139" ref="g4">h</g></abbr></w>
+                        </w>
                     </l>
                     <l n="c" xml:id="MS28.1.34c">
                     <lb n="4" xml:id="MS28.f2r.4"/>
@@ -2191,7 +2223,7 @@
                         <space type="scribal"/>
                     </l>
                     <l n="b" xml:id="MS28.1.35b">
-                        <w id="d1e7298" lemma="con-secha" lemmaRef="http://www.dil.ie/12299" pos="verb">cois<abbr cert="high">g<g id="d1e7302" ref="g3">ead</g></abbr><abbr cert="high"><g id="d1e7305" ref="g4">h</g></abbr></w>
+                        <w id="d1e7298" lemma="con-secha" lemmaRef="http://www.dil.ie/12299" pos="verb">cois<abbr cert="high">g<g id="d1e7302" ref="g3">id</g></abbr><abbr cert="high"><g id="d1e7305" ref="g4">h</g></abbr></w>
                         <space type="scribal"/>
                         <w id="d1e7310" lemma="tú" lemmaRef="http://www.dil.ie/42137" pos="pronoun">tu</w>
                         <space type="scribal"/>
@@ -2207,7 +2239,7 @@
                         <w id="d1e7350" lemma="deccair" lemmaRef="http://www.dil.ie/14860" pos="noun" lemmaSL="deacra" slipRef="https://dasg.ac.uk/slips/index.php?id=0060922"><abbr cert="high">d<g id="d1e7353" ref="g4">h</g></abbr>eacra</w>
                         <space type="scribal"/>
                         <w id="d1e7359" lemma="i" lemmaRef="http://www.dil.ie/26891" pos="preposition">i</w>
-                        <w id="d1e7363" lemma="caill" lemmaRef="http://www.dil.ie/7742" pos="noun" lemmaSL="coille" slipRef="https://dasg.ac.uk/slips/index.php?id=0040726">ccoill</w>
+                        <w id="d1e7363" lemma="coll" lemmaRef="http://www.dil.ie/10501" pos="noun" lemmaSL="coille" slipRef="https://dasg.ac.uk/slips/index.php?id=0040726">ccoill</w>
                         <space type="scribal"/>
                         <w id="d1e7368" lemma="do" lemmaRef="http://www.dil.ie/17097" pos="possessive_pronoun">do</w>
                         <w id="d1e7371" lemma="cáin" lemmaRef="http://www.dil.ie/7786" pos="noun" lemmaSL="càin" slipRef="https://dasg.ac.uk/slips/index.php?id=0031001"><abbr cert="high">c<g id="d1e7374" ref="g4">h</g></abbr>ána</w>
@@ -2215,7 +2247,7 @@
                         <space type="scribal"/>
                     </l>
                     <l n="d" xml:id="MS28.1.35d">
-                        <w id="d1e7386" lemma="ad-cí" lemmaRef="http://www.dil.ie/391" pos="verb" lemmaSL="feac" slipRef="https://dasg.ac.uk/slips/index.php?id=0080232">feacfa</w>
+                        <w id="d1e7386" lemma="feccaid" lemmaRef="http://www.dil.ie/21392" pos="verb" lemmaSL="feac" slipRef="https://dasg.ac.uk/slips/index.php?id=0080232">feacfa</w>
                         <space type="scribal"/>
                         <w id="d1e7391" lemma="in" lemmaRef="http://www.dil.ie/28194" pos="article">an</w>
                         <space type="scribal"/>
@@ -2290,7 +2322,7 @@
                 <lg n="37" type="stanza" xml:id="MS28.1.37">
                     <l n="a" xml:id="MS28.1.37a">
                     <lb n="9" xml:id="MS28.f2r.9"/>
-                        <w id="d1e7622" lemma="ad-cí" lemmaRef="http://www.dil.ie/391" pos="verb" lemmaSL="feuch" slipRef="https://dasg.ac.uk/slips/index.php?id=0080235">F<space type="scribal"/>ea<abbr cert="high">c<g id="d1e7628" ref="g4">h</g></abbr><abbr cert="high">t<g id="d1e7632" ref="g4">h</g></abbr><abbr cert="high"><g id="d1e7635" ref="g8">ar</g></abbr></w>
+                        <w id="d1e7622" lemma="fégaid" lemmaRef="http://www.dil.ie/21449" pos="verb" lemmaSL="feuch" slipRef="https://dasg.ac.uk/slips/index.php?id=0080235">F<space type="scribal"/>ea<abbr cert="high">c<g id="d1e7628" ref="g4">h</g></abbr><abbr cert="high">t<g id="d1e7632" ref="g4">h</g></abbr><abbr cert="high"><g id="d1e7635" ref="g8">ar</g></abbr></w>
                         <space type="scribal"/>
                         <w id="d1e7640" lemma="cach" lemmaRef="http://www.dil.ie/7528" pos="adjective"><abbr cert="high">g<g id="d1e7643" ref="g12">ach</g></abbr></w>
                         <space type="scribal"/>
@@ -2338,7 +2370,7 @@
                         <space type="scribal"/>
                         <w id="d1e7782" lemma="ní" lemmaRef="http://www.dil.ie/33147" pos="particle">ní</w>
                         <space type="scribal"/>
-                        <w id="d1e7788" lemma="fo-gaib" lemmaRef="http://www.dil.ie/22696" pos="verb">fa<abbr cert="high">g<g id="d1e7792" ref="g4">h</g></abbr><abbr cert="high"><g id="d1e7795" ref="g8">ar</g></abbr></w>
+                        <w id="d1e7788" lemma="fo-gaib" lemmaRef="http://www.dil.ie/22696" pos="verb">f<supplied resp="WGI">h</supplied>a<abbr cert="high">g<g id="d1e7792" ref="g4">h</g></abbr><abbr cert="high" corresp="6dffeb90"><g id="d1e7795" ref="g8" corresp="6dffeb90">a</g></abbr><supplied resp="WGI">i</supplied><g id="d1e7796" ref="g8" corresp="6dffeb90">r</g></w>
                         <space type="scribal"/>
                         <w id="d1e7800" lemma="aimbrit" lemmaRef="http://www.dil.ie/1098" pos="adjective" lemmaSL="aimrid" slipRef="https://dasg.ac.uk/slips/index.php?id=002028">ai<abbr cert="high">m<g id="d1e7804" ref="g4">h</g></abbr>rid</w>
                     </l>
@@ -2439,16 +2471,22 @@
                         <space type="scribal"/>
                         <w id="d1e8124" lemma="airer" lemmaRef="http://www.dil.ie/1930" pos="noun">oirir</w>
                         <note type="fn" resp="MMA"><p>Black (<ref target="0110626" type="slip">0110626</ref>) takes this as a form of ScG. <hi rend="italics">oirthir</hi> whereas in this edition it is understood to be a form of the Early Gaelic <hi rend="italics">airer</hi>.</p></note>
-                        <w id="d1e8140" lemma="oc" lemmaRef="http://www.dil.ie/33397" pos="prepositional_pronoun">aige</w>
+                        <choice>
+                            <sic><w id="d1e8140" lemma="oc" lemmaRef="http://www.dil.ie/33397" pos="prepositional_pronoun">aige</w></sic>
+                            <corr resp="WGI"><w id="d1e8141" lemma="oc" lemmaRef="http://www.dil.ie/33397" pos="prepositional_pronoun">aice</w></corr>
+                        </choice>
                         <pc id="d1e8143">.</pc>
                         <space type="scribal"/>
                     </l>
                     <l n="d" xml:id="MS28.1.39d">
                         <w id="d1e8152" lemma="cenn" lemmaRef="http://www.dil.ie/8622" pos="noun" lemmaSL="ceann" slipRef="https://dasg.ac.uk/slips/index.php?id=0040118">cea<abbr cert="high">n<g id="d1e8156" ref="g5">n</g></abbr></w>
                         <space type="scribal"/>
-                        <name id="d1e8161" type="personal"><w id="d1e8162" lemma="Oengus" lemmaRef="http://www.dil.ie/33532" pos="noun">oín<abbr cert="high">g<g id="d1e8166" ref="g4">h</g></abbr>is</w></name>
+                        <choice>
+                            <sic><name id="d1e8161" type="personal"><w id="d1e8162" lemma="Oengus" lemmaRef="http://www.dil.ie/33532" pos="noun">oín<abbr cert="high">g<g id="d1e8166" ref="g4">h</g></abbr>is</w></name></sic>
+                            <corr resp="WGI"><w id="d1e8163" lemma="enech" lemmaRef="http://www.dil.ie/20066" pos="noun">oínigh</w></corr>
+                        </choice>
                         <space type="scribal"/>
-                        <w id="d1e8172" lemma="airrde" lemmaRef="http://www.dil.ie/2360" pos="noun">orr<abbr cert="high">d<g id="d1e8176" ref="g4">h</g></abbr>e</w>
+                        <w id="d1e8172" lemma="airdirc" lemmaRef="http://www.dil.ie/1842" pos="noun">orr<abbr cert="high">d<g id="d1e8176" ref="g4">h</g></abbr>r<unclear reason="damage" cert="high" resp="WGI">aice</unclear></w>
                     </l>
                 </lg>
                 <lg n="40" type="stanza" xml:id="MS28.1.40">
@@ -2609,7 +2647,7 @@
                         <space type="scribal"/>
                         <w id="d1e8679" lemma="comdíne" lemmaRef="http://www.dil.ie/11034" pos="noun" lemmaSL="comh-dhìne" slipRef="https://dasg.ac.uk/slips/index.php?id=0040755">
                             <w id="d1e8681" lemma="com-" lemmaRef="http://www.dil.ie/10554" pos="prefix">coi<abbr cert="high">m<g id="d1e8685" ref="g4">h</g></abbr></w>
-                            <w id="d1e8688" lemma="duine" lemmaRef="http://www.dil.ie/19139" pos="noun"><abbr cert="high">d<g id="d1e8691" ref="g4">h</g></abbr>íne</w>
+                            <w id="d1e8688" lemma="díne" lemmaRef="http://www.dil.ie/16596" pos="noun"><abbr cert="high">d<g id="d1e8691" ref="g4">h</g></abbr>íne</w>
                         </w>
                     </l>
                     <l n="c" xml:id="MS28.1.42c">
@@ -2757,7 +2795,7 @@
                         <space type="scribal"/>
                         <w id="d1e9139" lemma="cuimnigidir" lemmaRef="http://www.dil.ie/13568" pos="verb">cui<abbr cert="high">m<g id="d1e9143" ref="g4">h</g></abbr><abbr cert="high">n<g id="d1e9147" ref="g12">ic</g></abbr><abbr cert="high"><g id="d1e9150" ref="g4">h</g></abbr></w>
                         <space type="scribal"/>
-                        <w id="d1e9155" lemma="díl" lemmaRef="http://www.dil.ie/16367" pos="noun">dial</w>
+                        <w id="d1e9155" lemma="díall" lemmaRef="http://www.dil.ie/15921" pos="noun">dial</w>
                         <space type="scribal"/>
                         <c id="d1e9161">re</c>
                         <gap id="d1e9164" reason="damage" extent="unknown" resp="MMA"/>
@@ -2788,7 +2826,7 @@
                         <w id="d1e9244" lemma="in" lemmaRef="http://www.dil.ie/28194" pos="article">in</w>
                         <space type="scribal"/>
                         <c id="d1e9249">da</c>
-						<gap id="d1e9249" reason="damage" extent="remainder_of_line" resp="MMA"/>
+						<gap id="d1e9250" reason="damage" extent="remainder_of_line" resp="MMA"/>
                     </l>
                     <l n="c" xml:id="MS28.2.2c">
                     <lb n="4" xml:id="MS28.f3r.4"/>
@@ -2838,19 +2876,13 @@
                         <space type="scribal"/>
                         <w id="d1e9412" lemma="lán" lemmaRef="http://www.dil.ie/29542" pos="adjective">lan</w>
                         <space type="scribal"/>
-                        <unclear reason="interp_obscure" cert="medium" resp="MMA">
-						<add place="above" type="insertion" hand="Hand8">
-							<c id="d1e9420">i</c></add>
-							<w id="d1e9423" lemma="desse" lemmaRef="http://www.dil.ie/15789" pos="noun">dese</w>
-						</unclear>
-						<note type="fn" resp="MMA"><p>There are three complicating factors here. First, we have what looks like a superscript i; second the letter in the middle may be an f or an s with the horizontal strokes of the letters e on both sides crossing it; third the remainder of the line is missing due to loss of paper. The laudatory phrase "lán dese" is one which would fit well in a praise poem generally and thus seems the most likely option but due to complicating factors this cannot be said with absolute certainty.</p></note>
-                        <gap id="d1e9427" reason="damage" extent="remainder_of_line" resp="MMA"/>
+                        <w id="d1e9423" lemma="deisecht" lemmaRef="http://www.dil.ie/15274" pos="noun">de<add place="above" type="insertion" hand="Hand55">i</add>se<unclear reason="damage" cert="high" resp="WGI">cht</unclear></w>
                     </l>
                     <l n="c" xml:id="MS28.2.3c">
                     <lb n="6" xml:id="MS28.f3r.6"/>
                         <w id="d1e9434" lemma="gein" lemmaRef="http://www.dil.ie/25530" pos="noun">gein</w>
                         <space type="scribal"/>
-                        <w id="d1e9439" lemma="*súamain" source="súaimnech" lemmaRef="http://www.dil.ie/39065" pos="noun">su<abbr cert="high">m<g id="d1e9443" ref="g4">h</g></abbr>ain</w>
+                        <w id="d1e9439" lemma="suthain" lemmaRef="http://www.dil.ie/39343" pos="noun">su<abbr cert="high">m<g id="d1e9443" ref="g4">h</g></abbr>ain</w>
                         <space type="scribal"/>
                         <w id="d1e9450" lemma="de" lemmaRef="http://www.dil.ie/14787" pos="preposition">do</w>
                         <space type="scribal"/>
@@ -2900,7 +2932,7 @@
                             <pc id="d1e9599">.</pc>
                             <w id="d1e9602" lemma="in" lemmaRef="http://www.dil.ie/28194" pos="article">an</w>
                             <space type="scribal"/>
-                            <w id="d1e9607" lemma="lenab" lemmaRef="http://www.dil.ie/29890" pos="noun">lean<space type="scribal"/>b<unclear reason="text_obscure" cert="high" resp="MMA">ai</unclear><abbr cert="high">n<g id="d1e9615" ref="g5">n</g></abbr></w>
+                            <w id="d1e9607" lemma="lenbán" lemmaRef="http://www.dil.ie/29903" pos="noun">lean<space type="scribal"/>báin</w>
                             <pc id="d1e9618">.</pc>
                         </add>
                         <space type="scribal"/>
@@ -2930,8 +2962,7 @@
                         <space type="scribal"/>
                         <w id="d1e9685" lemma="co" lemmaRef="http://www.dil.ie/9787" pos="preposition">go</w>
                         <space type="scribal"/>
-                        <w id="d1e9690" lemma="amar" lemmaRef="http://www.dil.ie/3081" pos="noun">há<abbr cert="high">m<g id="d1e9694" ref="g4">h</g></abbr><abbr cert="high"><g id="d1e9697" ref="g8">ar</g></abbr></w>
-                    <!-- Check these last two HWs. -->
+                        <w id="d1e9690" lemma="ágmar" lemmaRef="http://www.dil.ie/701" pos="adjective">h<supplied resp="MMA">gh</supplied>á<abbr cert="high">m<g id="d1e9694" ref="g4">h</g></abbr><abbr cert="high"><g id="d1e9697" ref="g8">ar</g></abbr></w>
                     </l>
                 </lg>
                 <lg n="5" type="stanza" xml:id="MS28.2.5">
@@ -2954,7 +2985,10 @@
                         <space type="scribal"/>
                         <w id="d1e9768" lemma="in" lemmaRef="http://www.dil.ie/28194" pos="article">na</w>
                         <space type="scribal"/>
-                        <name id="d1e9774" type="place"><w id="d1e9775" lemma="Emain" lemmaRef="http://www.dil.ie/20014" pos="noun">ea<abbr cert="high">m<g id="d1e9779" ref="g4">h</g></abbr>ui<unclear reason="damage" cert="medium" resp="MMA">n</unclear></w></name>
+                        <choice>
+                            <sic><name id="d1e9774" type="place"><w id="d1e9775" lemma="Emain" lemmaRef="http://www.dil.ie/20014" pos="noun">ea<abbr cert="high">m<g id="d1e9779" ref="g4">h</g></abbr>ui<unclear reason="damage" cert="medium" resp="MMA">n</unclear></w></name></sic>
+                            <corr resp="WGI"><w id="d1e9776" lemma="eclais" lemmaRef="http://www.dil.ie/19585" pos="noun">eagluis</w></corr>
+                        </choice>
                     </l>
                     <l n="c" xml:id="MS28.2.5c">
                         <w id="d1e9788" lemma="cía" lemmaRef="http://www.dil.ie/8966" pos="conjunction">ge</w>
@@ -3048,7 +3082,7 @@
                         <space type="scribal"/>
                         <w id="d1e10074" lemma="frém" lemmaRef="http://www.dil.ie/24278" pos="noun"><abbr cert="high">f<g id="d1e10077" ref="g4">h</g></abbr>rei<abbr cert="high">m<g id="d1e10082" ref="g4">h</g></abbr></w>
                         <space type="scribal"/>
-                        <c id="d1e10087">r</c>
+                        <w id="d1e10080" pos="adjective">r<unclear reason="damage" cert="high" resp="WGI">aghallaigh</unclear></w>
                     </l>
                 </lg>
                 <lg n="7" type="stanza" xml:id="MS28.2.7">
@@ -3139,7 +3173,7 @@
                                 <seg id="d1e10375" type="fragment">s</seg>
                             </w>
                         </w>
-						<gap id="d1e9980" reason="damage" extent="remainder_of_line" resp="MMA"/>
+						<gap id="d1e9981" reason="damage" extent="remainder_of_line" resp="MMA"/>
                     </l>
                     <l n="c" xml:id="MS28.2.8c">
                     <lb n="16" xml:id="MS28.f3r.16"/>
