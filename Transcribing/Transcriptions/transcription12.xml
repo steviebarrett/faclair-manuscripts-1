@@ -4885,10 +4885,11 @@
 					<l n="d" xml:id="MS12.2.12d">
 						<w id="d1e11306" lemma="do" lemmaRef="http://www.dil.ie/17096" pos="preposition">do</w>
 						<space type="scribal"/>
-						<w id="d1e11312" lemma="nem-" lemmaRef="http://www.dil.ie/33072" pos="prefix">ne<abbr cert="high">m<g id="d1e11316" ref="g4">h</g></abbr></w>
-						<space type="scribal"/>
-						<w id="d1e11319" lemma="tol" lemmaRef="http://www.dil.ie/41316" pos="noun"><abbr cert="high">t<g id="d1e11322" ref="g4">h</g></abbr>ol</w>
-					<!-- Should this be a compound? -->
+						<w id="d1e11311" pos="prefix-noun">
+							<w id="d1e11312" lemma="nem-" lemmaRef="http://www.dil.ie/33072" pos="prefix">ne<abbr cert="high">m<g id="d1e11316" ref="g4">h</g></abbr></w>
+							<space type="scribal"/>
+							<w id="d1e11319" lemma="tol" lemmaRef="http://www.dil.ie/41316" pos="noun"><abbr cert="high">t<g id="d1e11322" ref="g4">h</g></abbr>ol</w>
+						</w>
 						<space type="scribal"/>
 						<w id="d1e11328" lemma="cethair" lemmaRef="http://www.dil.ie/8908"
 							pos="number"><abbr cert="high">c<g id="d1e11331" ref="g4"
@@ -9405,9 +9406,8 @@
 							>agus</g></abbr></w>
 					<space type="scribal"/>
 					<w id="d1e21563" lemma="do-gní" lemmaRef="http://www.dil.ie/17752" pos="verb"
-							>do<space type="scribal"/>rina<abbr cert="high">d<g id="d1e21569"
+							>do<space type="scribal"/><space type="force"/>rina<abbr cert="high">d<g id="d1e21569"
 								ref="g4">h</g></abbr></w>
-					<!-- Is this a compound? -->
 					<space type="scribal"/>
 					<w id="d1e21577" lemma="immar" lemmaRef="http://www.dil.ie/27721"
 						pos="preposition"><abbr cert="high">m<g id="d1e21580" ref="g16"
@@ -11777,9 +11777,8 @@
 							>agus</g></abbr></w>
 					<space type="scribal"/>
 					<w id="d1e27126" lemma="do-gní" lemmaRef="http://www.dil.ie/17752" pos="verb"
-							>do<space type="scribal"/>ri<abbr>n<g id="d1e27132" ref="g5"
+							>do<space type="scribal"/><space type="force"/>ri<abbr>n<g id="d1e27132" ref="g5"
 							>n</g></abbr>adur</w>
-					<!-- Is this a compound? -->
 					<lb n="4" xml:id="MS12.108r.4"/>
 					<w id="d1e27140" lemma="glecc" lemmaRef="http://www.dil.ie/26022" pos="noun"
 							><abbr cert="high">g<g id="d1e27143" ref="g4">h</g></abbr>leic</w>
@@ -19377,8 +19376,7 @@
 						<space type="scribal"/>
 						<w id="d1e43939" lemma="úamnaigid" lemmaRef="http://www.dil.ie/42745"
 							pos="verb">hua<abbr cert="high">i<g id="d1e43943" ref="g5">n</g>
-							</abbr>fi<abbr cert="high">d<g id="d1e43949" ref="g12">ig</g>
-					<!-- Check this. Abbr is g12 but no c -->
+							</abbr>fi<abbr cert="high">d<g id="d1e43949" ref="g3">ig</g>
 								<g id="d1e43952" ref="g4">h</g>
 							</abbr>
 						</w>
@@ -23681,8 +23679,7 @@
 					<l n="a" xml:id="MS12.5.67a">
 						<lb n="13" xml:id="MS12.113v.13"/>
 						<w id="d1e53326" lemma="do-gní" lemmaRef="http://www.dil.ie/17752"
-							pos="verb">Do<space type="scribal"/>rin</w>
-						<!-- Compound? -->
+							pos="verb">Do<space type="scribal"/><space type="force"/>rin</w>
 						<space type="scribal"/>
 						<name id="d1e53335" type="personal">
 							<w id="d1e53337" lemma="in" lemmaRef="http://www.dil.ie/28194"
@@ -24432,7 +24429,7 @@
 						<w id="d1e55165" lemma="in" lemmaRef="http://www.dil.ie/28194" pos="article"
 							>an</w>
 						<space type="scribal"/>
-						<w id="d1e55170" lemma="aigen" lemmaRef="http://www.dil.ie/925" pos="noun" lemmaSL="àmhuinn" slipRef="https://dasg.ac.uk/slips/index.php?id=0020564">nei<abbr cert="high">m<g id="d1e55174" ref="g4">h</g></abbr>uin</w>
+						<w id="d1e55170" lemma="àmhainn" lemmaRef="https://www.faclair.com/ViewDictionaryEntry.aspx?ID=FB2F7874237112FB2526C655F0942C4F" pos="noun" lemmaSL="àmhuinn" slipRef="https://dasg.ac.uk/slips/index.php?id=0020564">nei<abbr cert="high">m<g id="d1e55174" ref="g4">h</g></abbr>uin</w>
 						<space type="scribal"/>
 						<w id="d1e55182" lemma="lasrach" lemmaRef="http://www.dil.ie/29613"
 							pos="adjective" lemmaSL="lasrach" slipRef="https://dasg.ac.uk/slips/index.php?id=0100180">las<abbr cert="high">r<g id="d1e55186" ref="g12">ac</g>
