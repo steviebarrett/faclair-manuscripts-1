@@ -132,6 +132,7 @@
         </profileDesc>
         <revisionDesc>
             <change when="2018-12-03" who="MMA">Created file and began transcription</change>
+            <change when="2022-07-29" who="MMA">Transcription file for Faclair na Gàidhlig closed.</change>
         </revisionDesc>
     </teiHeader>
     <text>
@@ -694,14 +695,18 @@
                         <space type="scribal"/>
                         <w id="d1e2112" lemma="tócbáil" lemmaRef="http://www.dil.ie/41060" pos="verbal_noun" lemmaSL="togail" slipRef="https://dasg.ac.uk/slips/index.php?id=0130494">togbal</w>
                         <space type="scribal"/>
-                        <w id="d1e2118" lemma="ainimm" lemmaRef="http://www.dil.ie/1402" pos="noun" lemmaSL="anam" slipRef="https://dasg.ac.uk/slips/index.php?id=0020619">a<abbr cert="high">n<g id="d1e2122" ref="g1">m</g></abbr>a<abbr cert="high">n<g id="d1e2127" ref="g5">n</g></abbr></w>
+                        <w id="d1e2118" lemma="anfann" lemmaRef="http://www.dil.ie/3559" pos="noun" lemmaSL="anam">a<abbr cert="high">n<g id="d1e2122" ref="g1">m</g></abbr>a<abbr cert="high">n<g id="d1e2127" ref="g5">n</g></abbr></w>
+                        <note type="fn" resp="MMA"><p>Black (<ref target="0020619" type="slip">0020619</ref>) took this headword to be <hi rend="italics">anam</hi>. In this edition, however, it is understood to be a form of the word anfann/anfhann, neaming that in this line we get '... of the strong ... of the weak'.</p></note>
                     </l>
                     <l n="c" xml:id="MS28.1.10c">
                 <lb n="20" xml:id="MS28.f1r.20"/>
                         <w id="d1e2137" lemma="brath" lemmaRef="http://www.dil.ie/6578" pos="noun" lemmaSL="brath" slipRef="https://dasg.ac.uk/slips/index.php?id=0030694"><abbr cert="high">b<g id="d1e2140" ref="g17">ra</g></abbr><abbr cert="high">t<g id="d1e2144" ref="g4">h</g></abbr></w>
                         <space type="scribal"/>
-                        <unclear reason="interp_obscure" cert="medium" resp="MMA"><w id="d1e2150" lemma="cétal" lemmaRef="http://www.dil.ie/8886" pos="noun" lemmaSL="ceadal" slipRef="https://dasg.ac.uk/slips/index.php?id=0040047">céadala</w></unclear>
-                        <note type="fn" resp="MMA"><p>Possibly corrupt. As <hi rend="italics">ceadal</hi> and <hi rend="italics">eagartha</hi> must rhyme, and of the two <hi rend="italics">eagartha</hi> makes more sense. Thus, either <hi rend="italics">ceadala</hi> has a short vowel, which we would not usually expect in bardic poetry, or we should have another word here for the rhyme to work. If we read <hi rend="italics">ceadala</hi> with a short vowel, Black has suggested the sense "subject of song for the land of A[lba]."</p></note>   
+                        <w id="d1e2149" pos="prefix-noun">
+                            <w id="d1e2150" lemma="cét-" lemmaRef="http://www.dil.ie/8866" pos="prefix">céad</w>
+                            <w id="d1e2151" lemma="fuil" lemmaRef="http://www.dil.ie/24792" pos="noun"><supplied resp="WGI">fh</supplied>ala</w>
+                        </w>
+                        <note type="fn" resp="MMA"><p>Black (<ref target="0040047" type="slip">0040047</ref>) read this as a single word, <hi rend="italics">ceadal</hi>, of doubtful meaning. In this edition it is understood to be a compound word from <hi rend="italics">cét</hi>/<hi rend="italics">ciad</hi> and the genitive <hi rend="italics">fala</hi>, genitive of <hi rend="italics">fuil</hi>, with the sense of this line akin to "a sign (in the sense of exemplar?) of the primary line/race of Scotland".</p></note>
                         <space type="scribal"/>
                         <w id="d1e2156" pos="preposition-noun">
                             <w id="d1e2158" lemma="de" lemmaRef="http://www.dil.ie/14787" pos="preposition">d</w>
@@ -2076,7 +2081,7 @@
                         <space type="scribal"/>
                         <w id="d1e6764" lemma="airde" lemmaRef="http://www.dil.ie/1812" pos="noun" lemmaSL="àirdhe" slipRef="https://dasg.ac.uk/slips/index.php?id=0020385"><abbr cert="high"><g id="d1e6766" ref="g77">airr</g></abbr><abbr cert="high">g<g id="d1e6770" ref="g4">h</g></abbr>eana</w>
                         <space type="scribal"/>
-                        <w id="d1e6777" lemma="tre" lemmaRef="http://www.dil.ie/41608" pos="prepositional_pronoun" lemmaSL="troimh" slipRef="https://dasg.ac.uk/slips/index.php?id=0130709">troid</w>
+                        <w id="d1e6777" lemma="tre" lemmaRef="http://www.dil.ie/41608" pos="prepositional_pronoun" lemmaSL="troimh" slipRef="https://dasg.ac.uk/slips/index.php?id=0130709">tríot</w>
                         <space type="scribal"/>
                         <w id="d1e6782" lemma="do-icc" lemmaRef="http://www.dil.ie/17788" pos="verb">tainaig</w>
                     </l>
@@ -2431,7 +2436,7 @@
                         <name id="d1e7990" type="place" corresp="https://www.ainmean-aite.scot/placename/argyll/">
                             <w id="d1e7992" pos="noun-noun" lemmaSL="Earraghaidheal" slipRef="https://dasg.ac.uk/slips/index.php?id=0070967">
                                 <w id="d1e7994" lemma="airer" lemmaRef="http://www.dil.ie/1930" pos="noun">E<space type="scribal"/><abbr cert="high"><g id="d1e7998" ref="g13">arr</g></abbr></w>
-                                <space type="scribal"/>
+                                <space type="scribal"/><space type="force"/>
                                 <w id="d1e8003" lemma="Goídel" lemmaRef="http://www.dil.ie/26308" pos="noun"><abbr cert="high">g<g id="d1e8006" ref="g4">h</g></abbr><abbr cert="high"><g id="d1e8009" ref="l5">ao</g></abbr>i<abbr cert="high">d<g id="d1e8014" ref="g4">h</g></abbr>iol</w>
                             </w>
                         </name>
@@ -2941,10 +2946,7 @@
                         <space type="scribal"/>
                         <w id="d1e9641" lemma="fo" lemmaRef="http://www.dil.ie/22333" pos="preposition">fo</w>
                         <space type="scribal"/>
-                        <unclear reason="interp_obscure" cert="medium" resp="MMA">
-							<w id="d1e9647" lemma="búas" lemmaRef="http://www.dil.ie/7293" pos="noun">b<space type="scribal"/><unclear reason="text_obscure" cert="high" resp="MMA">u</unclear>ais</w>
-						</unclear>
-						<note type="fn" resp="MMA"><p>While the most obvious meaning for this would be fruit, mast, or similar, the present editor cannot find such a word with similar spelling and meaning in eDIL, Dwelly or Ó Domhnaill. Perhaps the meaning is a back formation from búasach meaning wealthy but to postulate such a backformation it would likely have been understood to mean  wealthy in more general agricultural terms or wealthy generally.</p></note>
+                        <w id="d1e9647" lemma="búas" lemmaRef="http://www.dil.ie/7293" pos="noun">b<space type="scribal"/><unclear reason="text_obscure" cert="high" resp="MMA">u</unclear>ais</w>
                         <space type="scribal"/>
                         <w id="d1e9656" lemma="co" lemmaRef="http://www.dil.ie/9787" pos="preposition">go</w>
                         <gap id="d1e9661" reason="damage" extent="unknown" resp="MMA"/>
@@ -2959,7 +2961,7 @@
                         <space type="scribal"/>
                         <w id="d1e9685" lemma="co" lemmaRef="http://www.dil.ie/9787" pos="preposition">go</w>
                         <space type="scribal"/>
-                        <w id="d1e9690" lemma="ágmar" lemmaRef="http://www.dil.ie/701" pos="adjective">há<supplied resp="MMA">gh</supplied><abbr cert="high">m<g id="d1e9694" ref="g4">h</g></abbr><abbr cert="high"><g id="d1e9697" ref="g8">ar</g></abbr></w>
+                        <w id="d1e9690" lemma="ádmar" lemmaRef="http://www.dil.ie/496" pos="adjective">há<supplied resp="MMA">gh</supplied><abbr cert="high">m<g id="d1e9694" ref="g4">h</g></abbr><abbr cert="high"><g id="d1e9697" ref="g8">ar</g></abbr></w>
                     </l>
                 </lg>
                 <lg n="5" type="stanza" xml:id="MS28.2.5">
